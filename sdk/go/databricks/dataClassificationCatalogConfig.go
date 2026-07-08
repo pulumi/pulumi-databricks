@@ -82,6 +82,11 @@ type DataClassificationCatalogConfig struct {
 	// List of auto-tagging configurations for this catalog.
 	// Empty list means no auto-tagging is enabled
 	AutoTagConfigs DataClassificationCatalogConfigAutoTagConfigArrayOutput `pulumi:"autoTagConfigs"`
+	// Schemas to exclude from the scan, each named relative to the parent catalog.
+	// If specified, all schemas except the specified ones will be scanned.
+	// Mutually exclusive with `includedSchemas`: only one may be set per request.
+	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+	ExcludedSchemas DataClassificationCatalogConfigExcludedSchemasPtrOutput `pulumi:"excludedSchemas"`
 	// Schemas to include in the scan, each named relative to the parent catalog.
 	// If specified, only listed schemas will be scanned.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -131,6 +136,11 @@ type dataClassificationCatalogConfigState struct {
 	// List of auto-tagging configurations for this catalog.
 	// Empty list means no auto-tagging is enabled
 	AutoTagConfigs []DataClassificationCatalogConfigAutoTagConfig `pulumi:"autoTagConfigs"`
+	// Schemas to exclude from the scan, each named relative to the parent catalog.
+	// If specified, all schemas except the specified ones will be scanned.
+	// Mutually exclusive with `includedSchemas`: only one may be set per request.
+	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+	ExcludedSchemas *DataClassificationCatalogConfigExcludedSchemas `pulumi:"excludedSchemas"`
 	// Schemas to include in the scan, each named relative to the parent catalog.
 	// If specified, only listed schemas will be scanned.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -148,6 +158,11 @@ type DataClassificationCatalogConfigState struct {
 	// List of auto-tagging configurations for this catalog.
 	// Empty list means no auto-tagging is enabled
 	AutoTagConfigs DataClassificationCatalogConfigAutoTagConfigArrayInput
+	// Schemas to exclude from the scan, each named relative to the parent catalog.
+	// If specified, all schemas except the specified ones will be scanned.
+	// Mutually exclusive with `includedSchemas`: only one may be set per request.
+	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+	ExcludedSchemas DataClassificationCatalogConfigExcludedSchemasPtrInput
 	// Schemas to include in the scan, each named relative to the parent catalog.
 	// If specified, only listed schemas will be scanned.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -169,6 +184,11 @@ type dataClassificationCatalogConfigArgs struct {
 	// List of auto-tagging configurations for this catalog.
 	// Empty list means no auto-tagging is enabled
 	AutoTagConfigs []DataClassificationCatalogConfigAutoTagConfig `pulumi:"autoTagConfigs"`
+	// Schemas to exclude from the scan, each named relative to the parent catalog.
+	// If specified, all schemas except the specified ones will be scanned.
+	// Mutually exclusive with `includedSchemas`: only one may be set per request.
+	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+	ExcludedSchemas *DataClassificationCatalogConfigExcludedSchemas `pulumi:"excludedSchemas"`
 	// Schemas to include in the scan, each named relative to the parent catalog.
 	// If specified, only listed schemas will be scanned.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -185,6 +205,11 @@ type DataClassificationCatalogConfigArgs struct {
 	// List of auto-tagging configurations for this catalog.
 	// Empty list means no auto-tagging is enabled
 	AutoTagConfigs DataClassificationCatalogConfigAutoTagConfigArrayInput
+	// Schemas to exclude from the scan, each named relative to the parent catalog.
+	// If specified, all schemas except the specified ones will be scanned.
+	// Mutually exclusive with `includedSchemas`: only one may be set per request.
+	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+	ExcludedSchemas DataClassificationCatalogConfigExcludedSchemasPtrInput
 	// Schemas to include in the scan, each named relative to the parent catalog.
 	// If specified, only listed schemas will be scanned.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -289,6 +314,16 @@ func (o DataClassificationCatalogConfigOutput) AutoTagConfigs() DataClassificati
 	return o.ApplyT(func(v *DataClassificationCatalogConfig) DataClassificationCatalogConfigAutoTagConfigArrayOutput {
 		return v.AutoTagConfigs
 	}).(DataClassificationCatalogConfigAutoTagConfigArrayOutput)
+}
+
+// Schemas to exclude from the scan, each named relative to the parent catalog.
+// If specified, all schemas except the specified ones will be scanned.
+// Mutually exclusive with `includedSchemas`: only one may be set per request.
+// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+func (o DataClassificationCatalogConfigOutput) ExcludedSchemas() DataClassificationCatalogConfigExcludedSchemasPtrOutput {
+	return o.ApplyT(func(v *DataClassificationCatalogConfig) DataClassificationCatalogConfigExcludedSchemasPtrOutput {
+		return v.ExcludedSchemas
+	}).(DataClassificationCatalogConfigExcludedSchemasPtrOutput)
 }
 
 // Schemas to include in the scan, each named relative to the parent catalog.

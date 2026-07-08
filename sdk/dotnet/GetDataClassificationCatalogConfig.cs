@@ -195,6 +195,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataClassificationCatalogConfigAutoTagConfigResult> AutoTagConfigs;
         /// <summary>
+        /// (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
+        /// If specified, all schemas except the specified ones will be scanned.
+        /// Mutually exclusive with `IncludedSchemas`: only one may be set per request.
+        /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
+        /// </summary>
+        public readonly Outputs.GetDataClassificationCatalogConfigExcludedSchemasResult ExcludedSchemas;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -215,6 +222,8 @@ namespace Pulumi.Databricks
         private GetDataClassificationCatalogConfigResult(
             ImmutableArray<Outputs.GetDataClassificationCatalogConfigAutoTagConfigResult> autoTagConfigs,
 
+            Outputs.GetDataClassificationCatalogConfigExcludedSchemasResult excludedSchemas,
+
             string id,
 
             Outputs.GetDataClassificationCatalogConfigIncludedSchemasResult includedSchemas,
@@ -224,6 +233,7 @@ namespace Pulumi.Databricks
             Outputs.GetDataClassificationCatalogConfigProviderConfigResult? providerConfig)
         {
             AutoTagConfigs = autoTagConfigs;
+            ExcludedSchemas = excludedSchemas;
             Id = id;
             IncludedSchemas = includedSchemas;
             Name = name;

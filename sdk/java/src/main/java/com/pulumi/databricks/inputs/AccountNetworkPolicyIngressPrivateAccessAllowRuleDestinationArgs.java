@@ -22,33 +22,51 @@ public final class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationA
 
     public static final AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationArgs Empty = new AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationArgs();
 
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     * 
+     */
     @Import(name="accountApi")
     private @Nullable Output<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApiArgs> accountApi;
 
+    /**
+     * @return Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApiArgs>> accountApi() {
         return Optional.ofNullable(this.accountApi);
     }
 
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      * 
      */
     @Import(name="accountDatabricksOne")
     private @Nullable Output<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne;
 
     /**
-     * @return Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * @return Account DatabricksOne destination is not supported
      * 
      */
     public Optional<Output<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOneArgs>> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }
 
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     * 
+     */
     @Import(name="accountUi")
     private @Nullable Output<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUiArgs> accountUi;
 
+    /**
+     * @return Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUiArgs>> accountUi() {
         return Optional.ofNullable(this.accountUi);
     }
@@ -119,18 +137,31 @@ public final class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationA
             $ = new AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountApi Matches requests to account-level APIs.
+         * Can only be used in the account-level network policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountApi(@Nullable Output<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApiArgs> accountApi) {
             $.accountApi = accountApi;
             return this;
         }
 
+        /**
+         * @param accountApi Matches requests to account-level APIs.
+         * Can only be used in the account-level network policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountApi(AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApiArgs accountApi) {
             return accountApi(Output.of(accountApi));
         }
 
         /**
-         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
-         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported
          * 
          * @return builder
          * 
@@ -141,8 +172,7 @@ public final class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationA
         }
 
         /**
-         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
-         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported
          * 
          * @return builder
          * 
@@ -151,11 +181,25 @@ public final class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationA
             return accountDatabricksOne(Output.of(accountDatabricksOne));
         }
 
+        /**
+         * @param accountUi Matches requests to the account console UI.
+         * Can only be used in the account-level network policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountUi(@Nullable Output<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUiArgs> accountUi) {
             $.accountUi = accountUi;
             return this;
         }
 
+        /**
+         * @param accountUi Matches requests to the account console UI.
+         * Can only be used in the account-level network policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountUi(AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUiArgs accountUi) {
             return accountUi(Output.of(accountUi));
         }

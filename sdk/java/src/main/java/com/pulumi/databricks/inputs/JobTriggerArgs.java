@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTriggerFileArrivalArgs;
 import com.pulumi.databricks.inputs.JobTriggerModelArgs;
 import com.pulumi.databricks.inputs.JobTriggerPeriodicArgs;
+import com.pulumi.databricks.inputs.JobTriggerSqlConditionArgs;
 import com.pulumi.databricks.inputs.JobTriggerTableUpdateArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -71,6 +72,13 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.periodic);
     }
 
+    @Import(name="sqlCondition")
+    private @Nullable Output<JobTriggerSqlConditionArgs> sqlCondition;
+
+    public Optional<Output<JobTriggerSqlConditionArgs>> sqlCondition() {
+        return Optional.ofNullable(this.sqlCondition);
+    }
+
     /**
      * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
      * 
@@ -93,6 +101,7 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         this.model = $.model;
         this.pauseStatus = $.pauseStatus;
         this.periodic = $.periodic;
+        this.sqlCondition = $.sqlCondition;
         this.tableUpdate = $.tableUpdate;
     }
 
@@ -184,6 +193,15 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder periodic(JobTriggerPeriodicArgs periodic) {
             return periodic(Output.of(periodic));
+        }
+
+        public Builder sqlCondition(@Nullable Output<JobTriggerSqlConditionArgs> sqlCondition) {
+            $.sqlCondition = sqlCondition;
+            return this;
+        }
+
+        public Builder sqlCondition(JobTriggerSqlConditionArgs sqlCondition) {
+            return sqlCondition(Output.of(sqlCondition));
         }
 
         /**

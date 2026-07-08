@@ -11,6 +11,7 @@ import com.pulumi.databricks.DataClassificationCatalogConfigArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DataClassificationCatalogConfigState;
 import com.pulumi.databricks.outputs.DataClassificationCatalogConfigAutoTagConfig;
+import com.pulumi.databricks.outputs.DataClassificationCatalogConfigExcludedSchemas;
 import com.pulumi.databricks.outputs.DataClassificationCatalogConfigIncludedSchemas;
 import com.pulumi.databricks.outputs.DataClassificationCatalogConfigProviderConfig;
 import java.lang.String;
@@ -107,6 +108,26 @@ public class DataClassificationCatalogConfig extends com.pulumi.resources.Custom
      */
     public Output<Optional<List<DataClassificationCatalogConfigAutoTagConfig>>> autoTagConfigs() {
         return Codegen.optional(this.autoTagConfigs);
+    }
+    /**
+     * Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     * 
+     */
+    @Export(name="excludedSchemas", refs={DataClassificationCatalogConfigExcludedSchemas.class}, tree="[0]")
+    private Output</* @Nullable */ DataClassificationCatalogConfigExcludedSchemas> excludedSchemas;
+
+    /**
+     * @return Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     * 
+     */
+    public Output<Optional<DataClassificationCatalogConfigExcludedSchemas>> excludedSchemas() {
+        return Codegen.optional(this.excludedSchemas);
     }
     /**
      * Schemas to include in the scan, each named relative to the parent catalog.

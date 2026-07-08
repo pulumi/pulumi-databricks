@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigKeySchemaProtoSchema;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,18 +13,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringKafkaConfigKeySchema {
     /**
+     * @return Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     * 
+     */
+    private @Nullable String avroSchema;
+    /**
      * @return Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      * 
      */
     private @Nullable String jsonSchema;
+    /**
+     * @return Protocol Buffer schema with its payload message name
+     * 
+     */
+    private @Nullable FeatureEngineeringKafkaConfigKeySchemaProtoSchema protoSchema;
 
     private FeatureEngineeringKafkaConfigKeySchema() {}
+    /**
+     * @return Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     * 
+     */
+    public Optional<String> avroSchema() {
+        return Optional.ofNullable(this.avroSchema);
+    }
     /**
      * @return Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      * 
      */
     public Optional<String> jsonSchema() {
         return Optional.ofNullable(this.jsonSchema);
+    }
+    /**
+     * @return Protocol Buffer schema with its payload message name
+     * 
+     */
+    public Optional<FeatureEngineeringKafkaConfigKeySchemaProtoSchema> protoSchema() {
+        return Optional.ofNullable(this.protoSchema);
     }
 
     public static Builder builder() {
@@ -35,22 +60,40 @@ public final class FeatureEngineeringKafkaConfigKeySchema {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String avroSchema;
         private @Nullable String jsonSchema;
+        private @Nullable FeatureEngineeringKafkaConfigKeySchemaProtoSchema protoSchema;
         public Builder() {}
         public Builder(FeatureEngineeringKafkaConfigKeySchema defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.avroSchema = defaults.avroSchema;
     	      this.jsonSchema = defaults.jsonSchema;
+    	      this.protoSchema = defaults.protoSchema;
         }
 
+        @CustomType.Setter
+        public Builder avroSchema(@Nullable String avroSchema) {
+
+            this.avroSchema = avroSchema;
+            return this;
+        }
         @CustomType.Setter
         public Builder jsonSchema(@Nullable String jsonSchema) {
 
             this.jsonSchema = jsonSchema;
             return this;
         }
+        @CustomType.Setter
+        public Builder protoSchema(@Nullable FeatureEngineeringKafkaConfigKeySchemaProtoSchema protoSchema) {
+
+            this.protoSchema = protoSchema;
+            return this;
+        }
         public FeatureEngineeringKafkaConfigKeySchema build() {
             final var _resultValue = new FeatureEngineeringKafkaConfigKeySchema();
+            _resultValue.avroSchema = avroSchema;
             _resultValue.jsonSchema = jsonSchema;
+            _resultValue.protoSchema = protoSchema;
             return _resultValue;
         }
     }

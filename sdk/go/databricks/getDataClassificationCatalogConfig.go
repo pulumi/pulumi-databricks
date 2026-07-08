@@ -80,6 +80,11 @@ type LookupDataClassificationCatalogConfigResult struct {
 	// (list of AutoTaggingConfig) - List of auto-tagging configurations for this catalog.
 	// Empty list means no auto-tagging is enabled
 	AutoTagConfigs []GetDataClassificationCatalogConfigAutoTagConfig `pulumi:"autoTagConfigs"`
+	// (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
+	// If specified, all schemas except the specified ones will be scanned.
+	// Mutually exclusive with `includedSchemas`: only one may be set per request.
+	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+	ExcludedSchemas GetDataClassificationCatalogConfigExcludedSchemas `pulumi:"excludedSchemas"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
@@ -134,6 +139,16 @@ func (o LookupDataClassificationCatalogConfigResultOutput) AutoTagConfigs() GetD
 	return o.ApplyT(func(v LookupDataClassificationCatalogConfigResult) []GetDataClassificationCatalogConfigAutoTagConfig {
 		return v.AutoTagConfigs
 	}).(GetDataClassificationCatalogConfigAutoTagConfigArrayOutput)
+}
+
+// (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
+// If specified, all schemas except the specified ones will be scanned.
+// Mutually exclusive with `includedSchemas`: only one may be set per request.
+// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+func (o LookupDataClassificationCatalogConfigResultOutput) ExcludedSchemas() GetDataClassificationCatalogConfigExcludedSchemasOutput {
+	return o.ApplyT(func(v LookupDataClassificationCatalogConfigResult) GetDataClassificationCatalogConfigExcludedSchemas {
+		return v.ExcludedSchemas
+	}).(GetDataClassificationCatalogConfigExcludedSchemasOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

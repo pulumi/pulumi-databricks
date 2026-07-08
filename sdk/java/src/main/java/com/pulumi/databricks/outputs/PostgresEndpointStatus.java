@@ -61,6 +61,11 @@ public final class PostgresEndpointStatus {
      */
     private @Nullable PostgresEndpointStatusHosts hosts;
     /**
+     * @return (string) - A timestamp indicating when the compute endpoint was last active
+     * 
+     */
+    private @Nullable String lastActiveTime;
+    /**
      * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
@@ -138,6 +143,13 @@ public final class PostgresEndpointStatus {
         return Optional.ofNullable(this.hosts);
     }
     /**
+     * @return (string) - A timestamp indicating when the compute endpoint was last active
+     * 
+     */
+    public Optional<String> lastActiveTime() {
+        return Optional.ofNullable(this.lastActiveTime);
+    }
+    /**
      * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
@@ -176,6 +188,7 @@ public final class PostgresEndpointStatus {
         private @Nullable String endpointType;
         private @Nullable PostgresEndpointStatusGroup group;
         private @Nullable PostgresEndpointStatusHosts hosts;
+        private @Nullable String lastActiveTime;
         private @Nullable String pendingState;
         private @Nullable PostgresEndpointStatusSettings settings;
         private @Nullable String suspendTimeoutDuration;
@@ -190,6 +203,7 @@ public final class PostgresEndpointStatus {
     	      this.endpointType = defaults.endpointType;
     	      this.group = defaults.group;
     	      this.hosts = defaults.hosts;
+    	      this.lastActiveTime = defaults.lastActiveTime;
     	      this.pendingState = defaults.pendingState;
     	      this.settings = defaults.settings;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
@@ -244,6 +258,12 @@ public final class PostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder lastActiveTime(@Nullable String lastActiveTime) {
+
+            this.lastActiveTime = lastActiveTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pendingState(@Nullable String pendingState) {
 
             this.pendingState = pendingState;
@@ -271,6 +291,7 @@ public final class PostgresEndpointStatus {
             _resultValue.endpointType = endpointType;
             _resultValue.group = group;
             _resultValue.hosts = hosts;
+            _resultValue.lastActiveTime = lastActiveTime;
             _resultValue.pendingState = pendingState;
             _resultValue.settings = settings;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;

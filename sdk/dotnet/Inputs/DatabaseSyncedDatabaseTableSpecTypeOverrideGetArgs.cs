@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// Size parameter for the target type. Required when PgType is PG_SPECIFIC_TYPE_VECTOR
-        /// (specifies the vector dimension, e.g., 1024)
+        /// or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

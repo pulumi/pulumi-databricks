@@ -18,8 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessResult? CrossWorkspaceAccess;
         /// <summary>
-        /// (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
-        /// Configures how registered private endpoints are allowed or denied access
+        /// (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
+        /// Configures how requests arriving over private connectivity are governed
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyIngressPrivateAccessResult? PrivateAccess;
         /// <summary>

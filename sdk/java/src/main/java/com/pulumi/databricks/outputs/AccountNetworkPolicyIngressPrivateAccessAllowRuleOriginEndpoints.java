@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints {
+    /**
+     * @return The IDs of the registered endpoints. Must contain at least one endpoint ID
+     * 
+     */
     private @Nullable List<String> endpointIds;
 
     private AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints() {}
+    /**
+     * @return The IDs of the registered endpoints. Must contain at least one endpoint ID
+     * 
+     */
     public List<String> endpointIds() {
         return this.endpointIds == null ? List.of() : this.endpointIds;
     }

@@ -84,6 +84,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.azureAttributes);
     }
 
+    /**
+     * If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+     * 
+     */
+    @Import(name="clearCloudAttributesOnRemove")
+    private @Nullable Output<Boolean> clearCloudAttributesOnRemove;
+
+    /**
+     * @return If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+     * 
+     */
+    public Optional<Output<Boolean>> clearCloudAttributesOnRemove() {
+        return Optional.ofNullable(this.clearCloudAttributesOnRemove);
+    }
+
     @Import(name="clusterLogConf")
     private @Nullable Output<ClusterClusterLogConfArgs> clusterLogConf;
 
@@ -637,6 +652,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
         this.azureAttributes = $.azureAttributes;
+        this.clearCloudAttributesOnRemove = $.clearCloudAttributesOnRemove;
         this.clusterLogConf = $.clusterLogConf;
         this.clusterMountInfos = $.clusterMountInfos;
         this.clusterName = $.clusterName;
@@ -759,6 +775,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder azureAttributes(ClusterAzureAttributesArgs azureAttributes) {
             return azureAttributes(Output.of(azureAttributes));
+        }
+
+        /**
+         * @param clearCloudAttributesOnRemove If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clearCloudAttributesOnRemove(@Nullable Output<Boolean> clearCloudAttributesOnRemove) {
+            $.clearCloudAttributesOnRemove = clearCloudAttributesOnRemove;
+            return this;
+        }
+
+        /**
+         * @param clearCloudAttributesOnRemove If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clearCloudAttributesOnRemove(Boolean clearCloudAttributesOnRemove) {
+            return clearCloudAttributesOnRemove(Output.of(clearCloudAttributesOnRemove));
         }
 
         public Builder clusterLogConf(@Nullable Output<ClusterClusterLogConfArgs> clusterLogConf) {

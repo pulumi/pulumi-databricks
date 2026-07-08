@@ -24,6 +24,17 @@ public final class PostgresEndpointStatusHosts {
      * 
      */
     private @Nullable String readOnlyHost;
+    /**
+     * @return (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+     * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+     * 
+     */
+    private @Nullable String readOnlyPooledHost;
+    /**
+     * @return (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+     * 
+     */
+    private @Nullable String readWritePooledHost;
 
     private PostgresEndpointStatusHosts() {}
     /**
@@ -43,6 +54,21 @@ public final class PostgresEndpointStatusHosts {
     public Optional<String> readOnlyHost() {
         return Optional.ofNullable(this.readOnlyHost);
     }
+    /**
+     * @return (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+     * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+     * 
+     */
+    public Optional<String> readOnlyPooledHost() {
+        return Optional.ofNullable(this.readOnlyPooledHost);
+    }
+    /**
+     * @return (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+     * 
+     */
+    public Optional<String> readWritePooledHost() {
+        return Optional.ofNullable(this.readWritePooledHost);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -55,11 +81,15 @@ public final class PostgresEndpointStatusHosts {
     public static final class Builder {
         private @Nullable String host;
         private @Nullable String readOnlyHost;
+        private @Nullable String readOnlyPooledHost;
+        private @Nullable String readWritePooledHost;
         public Builder() {}
         public Builder(PostgresEndpointStatusHosts defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
     	      this.readOnlyHost = defaults.readOnlyHost;
+    	      this.readOnlyPooledHost = defaults.readOnlyPooledHost;
+    	      this.readWritePooledHost = defaults.readWritePooledHost;
         }
 
         @CustomType.Setter
@@ -74,10 +104,24 @@ public final class PostgresEndpointStatusHosts {
             this.readOnlyHost = readOnlyHost;
             return this;
         }
+        @CustomType.Setter
+        public Builder readOnlyPooledHost(@Nullable String readOnlyPooledHost) {
+
+            this.readOnlyPooledHost = readOnlyPooledHost;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder readWritePooledHost(@Nullable String readWritePooledHost) {
+
+            this.readWritePooledHost = readWritePooledHost;
+            return this;
+        }
         public PostgresEndpointStatusHosts build() {
             final var _resultValue = new PostgresEndpointStatusHosts();
             _resultValue.host = host;
             _resultValue.readOnlyHost = readOnlyHost;
+            _resultValue.readOnlyPooledHost = readOnlyPooledHost;
+            _resultValue.readWritePooledHost = readWritePooledHost;
             return _resultValue;
         }
     }

@@ -288,6 +288,66 @@ class PostgresDatabase(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Managing Implicitly Created Database
+
+        A database named `databricks-postgres` (Postgres name `databricks_postgres`) is implicitly created on every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created database in Pulumi state and immediately apply the provided configuration to it.
+
+        `replace_existing = true` only affects the initial adoption. Once the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual database** (and its data), not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
+
+        `spec.role` is optional: omit it to keep the database's existing owner (as shown below). When you do set it — to change ownership — it must reference a role in the same branch, written as `<branch-name>/roles/<role_id>`.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        production = databricks.PostgresBranch("production",
+            branch_id="production",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            },
+            replace_existing=True)
+        databricks_postgres = databricks.PostgresDatabase("databricks_postgres",
+            database_id="databricks-postgres",
+            parent=production.name,
+            spec={
+                "postgres_database": "databricks_postgres",
+            },
+            replace_existing=True)
+        ```
+
+        ### Managing a Database Inherited by a Child Branch
+
+        A child branch created from a source branch (via `spec.source_branch`) shares the source's storage through copy-on-write, so every database on the source branch — including the implicit `databricks-postgres` database — already exists on the child at the branch point. These inherited databases are not created by Pulumi, so managing one requires `replace_existing = true`, exactly as for the implicitly created database above.
+
+        You typically adopt an inherited database when you want to manage its configuration (for example, transfer ownership via `spec.role`) on the child branch independently of the source.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        child = databricks.PostgresBranch("child",
+            branch_id="feature-x",
+            parent=this["name"],
+            spec={
+                "source_branch": production["name"],
+                "no_expiry": True,
+            })
+        inherited = databricks.PostgresDatabase("inherited",
+            database_id="databricks-postgres",
+            parent=child.name,
+            spec={
+                "postgres_database": "databricks_postgres",
+            },
+            replace_existing=True)
+        ```
+
         ### Database Owned by a Specific Role
 
         Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
@@ -399,6 +459,66 @@ class PostgresDatabase(pulumi.CustomResource):
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
         ## Example Usage
+
+        ### Managing Implicitly Created Database
+
+        A database named `databricks-postgres` (Postgres name `databricks_postgres`) is implicitly created on every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created database in Pulumi state and immediately apply the provided configuration to it.
+
+        `replace_existing = true` only affects the initial adoption. Once the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual database** (and its data), not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
+
+        `spec.role` is optional: omit it to keep the database's existing owner (as shown below). When you do set it — to change ownership — it must reference a role in the same branch, written as `<branch-name>/roles/<role_id>`.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        production = databricks.PostgresBranch("production",
+            branch_id="production",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            },
+            replace_existing=True)
+        databricks_postgres = databricks.PostgresDatabase("databricks_postgres",
+            database_id="databricks-postgres",
+            parent=production.name,
+            spec={
+                "postgres_database": "databricks_postgres",
+            },
+            replace_existing=True)
+        ```
+
+        ### Managing a Database Inherited by a Child Branch
+
+        A child branch created from a source branch (via `spec.source_branch`) shares the source's storage through copy-on-write, so every database on the source branch — including the implicit `databricks-postgres` database — already exists on the child at the branch point. These inherited databases are not created by Pulumi, so managing one requires `replace_existing = true`, exactly as for the implicitly created database above.
+
+        You typically adopt an inherited database when you want to manage its configuration (for example, transfer ownership via `spec.role`) on the child branch independently of the source.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        child = databricks.PostgresBranch("child",
+            branch_id="feature-x",
+            parent=this["name"],
+            spec={
+                "source_branch": production["name"],
+                "no_expiry": True,
+            })
+        inherited = databricks.PostgresDatabase("inherited",
+            database_id="databricks-postgres",
+            parent=child.name,
+            spec={
+                "postgres_database": "databricks_postgres",
+            },
+            replace_existing=True)
+        ```
 
         ### Database Owned by a Specific Role
 

@@ -13,9 +13,27 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyIngressPrivateAccessDenyRuleOrigin
     {
+        /// <summary>
+        /// Matches requests arriving over any private connectivity, including registered
+        /// endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+        /// Can only be used in deny rules of workspace-level network policies.
+        /// Must be set to true when specified
+        /// </summary>
         public readonly bool? AllPrivateAccess;
+        /// <summary>
+        /// Matches requests arriving through any endpoint registered to the account.
+        /// Must be set to true when specified
+        /// </summary>
         public readonly bool? AllRegisteredEndpoints;
+        /// <summary>
+        /// Matches requests arriving through the workspace's Azure Private Link (ui-api)
+        /// endpoints. Can only be used in deny rules of workspace-level network policies.
+        /// Must be set to true when specified
+        /// </summary>
         public readonly bool? AzureWorkspacePrivateLink;
+        /// <summary>
+        /// Matches requests arriving through any of the specified registered endpoints
+        /// </summary>
         public readonly Outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints? Endpoints;
 
         [OutputConstructor]

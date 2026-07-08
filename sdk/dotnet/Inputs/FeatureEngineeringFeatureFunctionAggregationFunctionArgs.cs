@@ -27,8 +27,20 @@ namespace Pulumi.Databricks.Inputs
         [Input("first")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstArgs>? First { get; set; }
 
+        [Input("firstDistinct")]
+        public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinctArgs>? FirstDistinct { get; set; }
+
+        [Input("firstN")]
+        public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstNArgs>? FirstN { get; set; }
+
         [Input("last")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastArgs>? Last { get; set; }
+
+        [Input("lastDistinct")]
+        public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinctArgs>? LastDistinct { get; set; }
+
+        [Input("lastN")]
+        public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastNArgs>? LastN { get; set; }
 
         [Input("max")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMaxArgs>? Max { get; set; }

@@ -12,19 +12,103 @@ namespace Pulumi.Databricks
     public static class GetSecretUcs
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+        /// 
+        /// The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+        /// 
+        /// This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Basic Example
+        /// This example lists the secrets in a given catalog and schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetSecretUcs.Invoke(new()
+        ///     {
+        ///         CatalogName = "my_catalog",
+        ///         SchemaName = "my_schema",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSecretUcsResult> InvokeAsync(GetSecretUcsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretUcsResult>("databricks:index/getSecretUcs:getSecretUcs", args ?? new GetSecretUcsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+        /// 
+        /// The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+        /// 
+        /// This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Basic Example
+        /// This example lists the secrets in a given catalog and schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetSecretUcs.Invoke(new()
+        ///     {
+        ///         CatalogName = "my_catalog",
+        ///         SchemaName = "my_schema",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecretUcsResult> Invoke(GetSecretUcsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretUcsResult>("databricks:index/getSecretUcs:getSecretUcs", args ?? new GetSecretUcsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+        /// 
+        /// The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+        /// 
+        /// This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Basic Example
+        /// This example lists the secrets in a given catalog and schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetSecretUcs.Invoke(new()
+        ///     {
+        ///         CatalogName = "my_catalog",
+        ///         SchemaName = "my_schema",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecretUcsResult> Invoke(GetSecretUcsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretUcsResult>("databricks:index/getSecretUcs:getSecretUcs", args ?? new GetSecretUcsInvokeArgs(), options.WithDefaults());
@@ -41,18 +125,11 @@ namespace Pulumi.Databricks
         public string? CatalogName { get; set; }
 
         /// <summary>
-        /// Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-        /// which limits access to metadata
-        /// </summary>
-        [Input("includeBrowse")]
-        public bool? IncludeBrowse { get; set; }
-
-        /// <summary>
         /// Maximum number of secrets to return.
         /// 
-        /// - If not specified, at most 10000 secrets are returned.
-        /// - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-        /// - If set to 0, the page length is set to 10000.
+        /// - If not specified, at most 1000 secrets are returned.
+        /// - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+        /// - If set to 0, the page length is set to 1000.
         /// - If set to a value less than 0, an invalid parameter error is returned
         /// </summary>
         [Input("pageSize")]
@@ -87,18 +164,11 @@ namespace Pulumi.Databricks
         public Input<string>? CatalogName { get; set; }
 
         /// <summary>
-        /// Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-        /// which limits access to metadata
-        /// </summary>
-        [Input("includeBrowse")]
-        public Input<bool>? IncludeBrowse { get; set; }
-
-        /// <summary>
         /// Maximum number of secrets to return.
         /// 
-        /// - If not specified, at most 10000 secrets are returned.
-        /// - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-        /// - If set to 0, the page length is set to 10000.
+        /// - If not specified, at most 1000 secrets are returned.
+        /// - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+        /// - If set to 0, the page length is set to 1000.
         /// - If set to a value less than 0, an invalid parameter error is returned
         /// </summary>
         [Input("pageSize")]
@@ -135,7 +205,6 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly bool? IncludeBrowse;
         public readonly int? PageSize;
         public readonly Outputs.GetSecretUcsProviderConfigResult? ProviderConfig;
         /// <summary>
@@ -150,8 +219,6 @@ namespace Pulumi.Databricks
 
             string id,
 
-            bool? includeBrowse,
-
             int? pageSize,
 
             Outputs.GetSecretUcsProviderConfigResult? providerConfig,
@@ -162,7 +229,6 @@ namespace Pulumi.Databricks
         {
             CatalogName = catalogName;
             Id = id;
-            IncludeBrowse = includeBrowse;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             SchemaName = schemaName;

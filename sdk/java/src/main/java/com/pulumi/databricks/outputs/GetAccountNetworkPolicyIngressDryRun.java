@@ -19,8 +19,8 @@ public final class GetAccountNetworkPolicyIngressDryRun {
      */
     private @Nullable GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccess crossWorkspaceAccess;
     /**
-     * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      * 
      */
     private @Nullable GetAccountNetworkPolicyIngressDryRunPrivateAccess privateAccess;
@@ -40,8 +40,8 @@ public final class GetAccountNetworkPolicyIngressDryRun {
         return Optional.ofNullable(this.crossWorkspaceAccess);
     }
     /**
-     * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      * 
      */
     public Optional<GetAccountNetworkPolicyIngressDryRunPrivateAccess> privateAccess() {

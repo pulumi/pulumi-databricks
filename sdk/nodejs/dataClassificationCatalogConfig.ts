@@ -86,6 +86,13 @@ export class DataClassificationCatalogConfig extends pulumi.CustomResource {
      */
     declare public readonly autoTagConfigs: pulumi.Output<outputs.DataClassificationCatalogConfigAutoTagConfig[] | undefined>;
     /**
+     * Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     */
+    declare public readonly excludedSchemas: pulumi.Output<outputs.DataClassificationCatalogConfigExcludedSchemas | undefined>;
+    /**
      * Schemas to include in the scan, each named relative to the parent catalog.
      * If specified, only listed schemas will be scanned.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -119,6 +126,7 @@ export class DataClassificationCatalogConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DataClassificationCatalogConfigState | undefined;
             resourceInputs["autoTagConfigs"] = state?.autoTagConfigs;
+            resourceInputs["excludedSchemas"] = state?.excludedSchemas;
             resourceInputs["includedSchemas"] = state?.includedSchemas;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
@@ -129,6 +137,7 @@ export class DataClassificationCatalogConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["autoTagConfigs"] = args?.autoTagConfigs;
+            resourceInputs["excludedSchemas"] = args?.excludedSchemas;
             resourceInputs["includedSchemas"] = args?.includedSchemas;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
@@ -148,6 +157,13 @@ export interface DataClassificationCatalogConfigState {
      * Empty list means no auto-tagging is enabled
      */
     autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[] | undefined>;
+    /**
+     * Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     */
+    excludedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigExcludedSchemas | undefined>;
     /**
      * Schemas to include in the scan, each named relative to the parent catalog.
      * If specified, only listed schemas will be scanned.
@@ -178,6 +194,13 @@ export interface DataClassificationCatalogConfigArgs {
      * Empty list means no auto-tagging is enabled
      */
     autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[] | undefined>;
+    /**
+     * Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     */
+    excludedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigExcludedSchemas | undefined>;
     /**
      * Schemas to include in the scan, each named relative to the parent catalog.
      * If specified, only listed schemas will be scanned.

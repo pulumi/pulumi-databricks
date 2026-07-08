@@ -23,6 +23,7 @@ class DataClassificationCatalogConfigArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
                  auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]] = None,
+                 excluded_schemas: pulumi.Input[Optional['DataClassificationCatalogConfigExcludedSchemasArgs']] = None,
                  included_schemas: pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']] = None,
                  provider_config: pulumi.Input[Optional['DataClassificationCatalogConfigProviderConfigArgs']] = None):
         """
@@ -31,6 +32,10 @@ class DataClassificationCatalogConfigArgs:
         :param pulumi.Input[_builtins.str] parent: Parent resource in the format: catalogs/{catalog_name}
         :param pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]] auto_tag_configs: List of auto-tagging configurations for this catalog.
                Empty list means no auto-tagging is enabled
+        :param pulumi.Input['DataClassificationCatalogConfigExcludedSchemasArgs'] excluded_schemas: Schemas to exclude from the scan, each named relative to the parent catalog.
+               If specified, all schemas except the specified ones will be scanned.
+               Mutually exclusive with `included_schemas`: only one may be set per request.
+               If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs'] included_schemas: Schemas to include in the scan, each named relative to the parent catalog.
                If specified, only listed schemas will be scanned.
                Mutually exclusive with `excluded_schemas`: only one may be set per request.
@@ -40,6 +45,8 @@ class DataClassificationCatalogConfigArgs:
         pulumi.set(__self__, "parent", parent)
         if auto_tag_configs is not None:
             pulumi.set(__self__, "auto_tag_configs", auto_tag_configs)
+        if excluded_schemas is not None:
+            pulumi.set(__self__, "excluded_schemas", excluded_schemas)
         if included_schemas is not None:
             pulumi.set(__self__, "included_schemas", included_schemas)
         if provider_config is not None:
@@ -69,6 +76,21 @@ class DataClassificationCatalogConfigArgs:
     @auto_tag_configs.setter
     def auto_tag_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]):
         pulumi.set(self, "auto_tag_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedSchemas")
+    def excluded_schemas(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigExcludedSchemasArgs']]:
+        """
+        Schemas to exclude from the scan, each named relative to the parent catalog.
+        If specified, all schemas except the specified ones will be scanned.
+        Mutually exclusive with `included_schemas`: only one may be set per request.
+        If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
+        """
+        return pulumi.get(self, "excluded_schemas")
+
+    @excluded_schemas.setter
+    def excluded_schemas(self, value: pulumi.Input[Optional['DataClassificationCatalogConfigExcludedSchemasArgs']]):
+        pulumi.set(self, "excluded_schemas", value)
 
     @_builtins.property
     @pulumi.getter(name="includedSchemas")
@@ -102,6 +124,7 @@ class DataClassificationCatalogConfigArgs:
 class _DataClassificationCatalogConfigState:
     def __init__(__self__, *,
                  auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]] = None,
+                 excluded_schemas: pulumi.Input[Optional['DataClassificationCatalogConfigExcludedSchemasArgs']] = None,
                  included_schemas: pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -111,6 +134,10 @@ class _DataClassificationCatalogConfigState:
 
         :param pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]] auto_tag_configs: List of auto-tagging configurations for this catalog.
                Empty list means no auto-tagging is enabled
+        :param pulumi.Input['DataClassificationCatalogConfigExcludedSchemasArgs'] excluded_schemas: Schemas to exclude from the scan, each named relative to the parent catalog.
+               If specified, all schemas except the specified ones will be scanned.
+               Mutually exclusive with `included_schemas`: only one may be set per request.
+               If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs'] included_schemas: Schemas to include in the scan, each named relative to the parent catalog.
                If specified, only listed schemas will be scanned.
                Mutually exclusive with `excluded_schemas`: only one may be set per request.
@@ -121,6 +148,8 @@ class _DataClassificationCatalogConfigState:
         """
         if auto_tag_configs is not None:
             pulumi.set(__self__, "auto_tag_configs", auto_tag_configs)
+        if excluded_schemas is not None:
+            pulumi.set(__self__, "excluded_schemas", excluded_schemas)
         if included_schemas is not None:
             pulumi.set(__self__, "included_schemas", included_schemas)
         if name is not None:
@@ -142,6 +171,21 @@ class _DataClassificationCatalogConfigState:
     @auto_tag_configs.setter
     def auto_tag_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]):
         pulumi.set(self, "auto_tag_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedSchemas")
+    def excluded_schemas(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigExcludedSchemasArgs']]:
+        """
+        Schemas to exclude from the scan, each named relative to the parent catalog.
+        If specified, all schemas except the specified ones will be scanned.
+        Mutually exclusive with `included_schemas`: only one may be set per request.
+        If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
+        """
+        return pulumi.get(self, "excluded_schemas")
+
+    @excluded_schemas.setter
+    def excluded_schemas(self, value: pulumi.Input[Optional['DataClassificationCatalogConfigExcludedSchemasArgs']]):
+        pulumi.set(self, "excluded_schemas", value)
 
     @_builtins.property
     @pulumi.getter(name="includedSchemas")
@@ -202,6 +246,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
+                 excluded_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigExcludedSchemasArgs', 'DataClassificationCatalogConfigExcludedSchemasArgsDict']]] = None,
                  included_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict']]] = None,
@@ -256,6 +301,10 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]] auto_tag_configs: List of auto-tagging configurations for this catalog.
                Empty list means no auto-tagging is enabled
+        :param pulumi.Input[Union['DataClassificationCatalogConfigExcludedSchemasArgs', 'DataClassificationCatalogConfigExcludedSchemasArgsDict']] excluded_schemas: Schemas to exclude from the scan, each named relative to the parent catalog.
+               If specified, all schemas except the specified ones will be scanned.
+               Mutually exclusive with `included_schemas`: only one may be set per request.
+               If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']] included_schemas: Schemas to include in the scan, each named relative to the parent catalog.
                If specified, only listed schemas will be scanned.
                Mutually exclusive with `excluded_schemas`: only one may be set per request.
@@ -331,6 +380,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
+                 excluded_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigExcludedSchemasArgs', 'DataClassificationCatalogConfigExcludedSchemasArgsDict']]] = None,
                  included_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict']]] = None,
@@ -344,6 +394,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
             __props__ = DataClassificationCatalogConfigArgs.__new__(DataClassificationCatalogConfigArgs)
 
             __props__.__dict__["auto_tag_configs"] = auto_tag_configs
+            __props__.__dict__["excluded_schemas"] = excluded_schemas
             __props__.__dict__["included_schemas"] = included_schemas
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
@@ -361,6 +412,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
+            excluded_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigExcludedSchemasArgs', 'DataClassificationCatalogConfigExcludedSchemasArgsDict']]] = None,
             included_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -374,6 +426,10 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]] auto_tag_configs: List of auto-tagging configurations for this catalog.
                Empty list means no auto-tagging is enabled
+        :param pulumi.Input[Union['DataClassificationCatalogConfigExcludedSchemasArgs', 'DataClassificationCatalogConfigExcludedSchemasArgsDict']] excluded_schemas: Schemas to exclude from the scan, each named relative to the parent catalog.
+               If specified, all schemas except the specified ones will be scanned.
+               Mutually exclusive with `included_schemas`: only one may be set per request.
+               If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']] included_schemas: Schemas to include in the scan, each named relative to the parent catalog.
                If specified, only listed schemas will be scanned.
                Mutually exclusive with `excluded_schemas`: only one may be set per request.
@@ -387,6 +443,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         __props__ = _DataClassificationCatalogConfigState.__new__(_DataClassificationCatalogConfigState)
 
         __props__.__dict__["auto_tag_configs"] = auto_tag_configs
+        __props__.__dict__["excluded_schemas"] = excluded_schemas
         __props__.__dict__["included_schemas"] = included_schemas
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
@@ -401,6 +458,17 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         Empty list means no auto-tagging is enabled
         """
         return pulumi.get(self, "auto_tag_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="excludedSchemas")
+    def excluded_schemas(self) -> pulumi.Output[Optional['outputs.DataClassificationCatalogConfigExcludedSchemas']]:
+        """
+        Schemas to exclude from the scan, each named relative to the parent catalog.
+        If specified, all schemas except the specified ones will be scanned.
+        Mutually exclusive with `included_schemas`: only one may be set per request.
+        If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
+        """
+        return pulumi.get(self, "excluded_schemas")
 
     @_builtins.property
     @pulumi.getter(name="includedSchemas")

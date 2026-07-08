@@ -27,6 +27,10 @@ import javax.annotation.Nullable;
  * 
  * &gt; This feature is available on Azure, and in Public Preview on AWS.
  * 
+ * ## Plugin Framework Opt-In
+ * 
+ * A Plugin Framework implementation of this resource is available. The default remains the SDK V2 implementation; to opt in, set the environment variable `export DATABRICKS_TF_ENABLED_PF_RESOURCES=&#34;databricks.MwsNccPrivateEndpointRule&#34;`. Once opted in, `pulumi up` waits for the rule to leave `CREATING` before returning: `PENDING` and `ESTABLISHED` succeed, while a `CREATE_FAILED`, `REJECTED`, `DISCONNECTED`, or `EXPIRED` connection state surfaces as an apply-time error instead of on the next plan.
+ * 
  * ## Example Usage
  * 
  * Create private endpoints to an Azure storage account and an Azure standard load balancer.
@@ -141,33 +145,45 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")
 public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResource {
+    /**
+     * The Databricks account ID that owns this private endpoint rule.
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
+    /**
+     * @return The Databricks account ID that owns this private endpoint rule.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+     * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the cloud console before they take effect.
      * The possible values are:
      * * `PENDING`: The endpoint has been created and pending approval.
      * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
      * * `REJECTED`: Connection was rejected by the private link resource owner.
      * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
      * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
+     * * `CREATING`: The endpoint creation is in progress. Once successfully created, the state transitions to `PENDING`.
+     * * `CREATE_FAILED`: The endpoint creation failed; see `errorMessage` for details.
      * 
      */
     @Export(name="connectionState", refs={String.class}, tree="[0]")
     private Output<String> connectionState;
 
     /**
-     * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+     * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the cloud console before they take effect.
      * The possible values are:
      * * `PENDING`: The endpoint has been created and pending approval.
      * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
      * * `REJECTED`: Connection was rejected by the private link resource owner.
      * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
      * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
+     * * `CREATING`: The endpoint creation is in progress. Once successfully created, the state transitions to `PENDING`.
+     * * `CREATE_FAILED`: The endpoint creation failed; see `errorMessage` for details.
      * 
      */
     public Output<String> connectionState() {
@@ -192,28 +208,28 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="deactivated", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> deactivated;
+    private Output<Boolean> deactivated;
 
     /**
      * @return Whether this private endpoint is deactivated.
      * 
      */
-    public Output<Optional<Boolean>> deactivated() {
-        return Codegen.optional(this.deactivated);
+    public Output<Boolean> deactivated() {
+        return this.deactivated;
     }
     /**
      * Time in epoch milliseconds when this object was deactivated.
      * 
      */
     @Export(name="deactivatedAt", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> deactivatedAt;
+    private Output<Integer> deactivatedAt;
 
     /**
      * @return Time in epoch milliseconds when this object was deactivated.
      * 
      */
-    public Output<Optional<Integer>> deactivatedAt() {
-        return Codegen.optional(this.deactivatedAt);
+    public Output<Integer> deactivatedAt() {
+        return this.deactivatedAt;
     }
     /**
      * * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `groupId`.
@@ -273,11 +289,19 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
     public Output<Optional<String>> endpointService() {
         return Codegen.optional(this.endpointService);
     }
+    /**
+     * Error message describing why the rule is in a `CREATE_FAILED` or otherwise failed state, if any.
+     * 
+     */
     @Export(name="errorMessage", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> errorMessage;
+    private Output<String> errorMessage;
 
-    public Output<Optional<String>> errorMessage() {
-        return Codegen.optional(this.errorMessage);
+    /**
+     * @return Error message describing why the rule is in a `CREATE_FAILED` or otherwise failed state, if any.
+     * 
+     */
+    public Output<String> errorMessage() {
+        return this.errorMessage;
     }
     @Export(name="gcpEndpoint", refs={MwsNccPrivateEndpointRuleGcpEndpoint.class}, tree="[0]")
     private Output</* @Nullable */ MwsNccPrivateEndpointRuleGcpEndpoint> gcpEndpoint;

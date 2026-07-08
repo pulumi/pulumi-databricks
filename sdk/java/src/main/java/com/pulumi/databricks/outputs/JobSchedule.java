@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobScheduleSqlCondition;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -22,6 +23,7 @@ public final class JobSchedule {
      * 
      */
     private String quartzCronExpression;
+    private @Nullable JobScheduleSqlCondition sqlCondition;
     /**
      * @return A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
      * 
@@ -43,6 +45,9 @@ public final class JobSchedule {
     public String quartzCronExpression() {
         return this.quartzCronExpression;
     }
+    public Optional<JobScheduleSqlCondition> sqlCondition() {
+        return Optional.ofNullable(this.sqlCondition);
+    }
     /**
      * @return A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
      * 
@@ -62,12 +67,14 @@ public final class JobSchedule {
     public static final class Builder {
         private @Nullable String pauseStatus;
         private String quartzCronExpression;
+        private @Nullable JobScheduleSqlCondition sqlCondition;
         private String timezoneId;
         public Builder() {}
         public Builder(JobSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pauseStatus = defaults.pauseStatus;
     	      this.quartzCronExpression = defaults.quartzCronExpression;
+    	      this.sqlCondition = defaults.sqlCondition;
     	      this.timezoneId = defaults.timezoneId;
         }
 
@@ -86,6 +93,12 @@ public final class JobSchedule {
             return this;
         }
         @CustomType.Setter
+        public Builder sqlCondition(@Nullable JobScheduleSqlCondition sqlCondition) {
+
+            this.sqlCondition = sqlCondition;
+            return this;
+        }
+        @CustomType.Setter
         public Builder timezoneId(String timezoneId) {
             if (timezoneId == null) {
               throw new MissingRequiredPropertyException("JobSchedule", "timezoneId");
@@ -97,6 +110,7 @@ public final class JobSchedule {
             final var _resultValue = new JobSchedule();
             _resultValue.pauseStatus = pauseStatus;
             _resultValue.quartzCronExpression = quartzCronExpression;
+            _resultValue.sqlCondition = sqlCondition;
             _resultValue.timezoneId = timezoneId;
             return _resultValue;
         }

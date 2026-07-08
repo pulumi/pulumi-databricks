@@ -167,7 +167,6 @@ class SecretUcArgs:
 @pulumi.input_type
 class _SecretUcState:
     def __init__(__self__, *,
-                 browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -175,7 +174,6 @@ class _SecretUcState:
                  effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_value: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 external_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -188,8 +186,6 @@ class _SecretUcState:
         """
         Input properties used for looking up and filtering SecretUc resources.
 
-        :param pulumi.Input[_builtins.bool] browse_only: (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-               through the **BROWSE** privilege when **include_browse** is enabled in the request
         :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the secret reside
         :param pulumi.Input[_builtins.str] comment: User-provided free-form text description of the secret
         :param pulumi.Input[_builtins.str] create_time: (string) - The time at which this secret was created
@@ -201,7 +197,6 @@ class _SecretUcState:
         :param pulumi.Input[_builtins.str] expire_time: User-provided expiration time of the secret. This field indicates when the secret should no
                longer be used and may be displayed as a warning in the UI. It is purely informational and
                does not trigger any automatic actions or affect the secret's lifecycle
-        :param pulumi.Input[_builtins.str] external_secret_id: (string)
         :param pulumi.Input[_builtins.str] full_name: (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of the metastore hosting the secret
         :param pulumi.Input[_builtins.str] name: The name of the secret, relative to its parent schema
@@ -216,8 +211,6 @@ class _SecretUcState:
                secret value. The maximum size is 60 KiB (pre-encryption). Accepted content includes
                passwords, tokens, keys, and other sensitive credential data
         """
-        if browse_only is not None:
-            pulumi.set(__self__, "browse_only", browse_only)
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
@@ -232,8 +225,6 @@ class _SecretUcState:
             pulumi.set(__self__, "effective_value", effective_value)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
-        if external_secret_id is not None:
-            pulumi.set(__self__, "external_secret_id", external_secret_id)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if metastore_id is not None:
@@ -252,19 +243,6 @@ class _SecretUcState:
             pulumi.set(__self__, "updated_by", updated_by)
         if value is not None:
             pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-        through the **BROWSE** privilege when **include_browse** is enabled in the request
-        """
-        return pulumi.get(self, "browse_only")
-
-    @browse_only.setter
-    def browse_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "browse_only", value)
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
@@ -353,18 +331,6 @@ class _SecretUcState:
     @expire_time.setter
     def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
-
-    @_builtins.property
-    @pulumi.getter(name="externalSecretId")
-    def external_secret_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "external_secret_id")
-
-    @external_secret_id.setter
-    def external_secret_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "external_secret_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -495,7 +461,9 @@ class SecretUc(pulumi.CustomResource):
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
 
         The Secret resource allows you to manage secrets in Unity Catalog. Secrets provide a secure way to store and access sensitive information such as credentials, API keys, and tokens within Unity Catalog.
 
@@ -545,7 +513,9 @@ class SecretUc(pulumi.CustomResource):
                  args: SecretUcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
 
         The Secret resource allows you to manage secrets in Unity Catalog. Secrets provide a secure way to store and access sensitive information such as credentials, API keys, and tokens within Unity Catalog.
 
@@ -617,12 +587,10 @@ class SecretUc(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
-            __props__.__dict__["browse_only"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["effective_owner"] = None
             __props__.__dict__["effective_value"] = None
-            __props__.__dict__["external_secret_id"] = None
             __props__.__dict__["full_name"] = None
             __props__.__dict__["metastore_id"] = None
             __props__.__dict__["update_time"] = None
@@ -637,7 +605,6 @@ class SecretUc(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
             catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -645,7 +612,6 @@ class SecretUc(pulumi.CustomResource):
             effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
             effective_value: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-            external_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -662,8 +628,6 @@ class SecretUc(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] browse_only: (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-               through the **BROWSE** privilege when **include_browse** is enabled in the request
         :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the secret reside
         :param pulumi.Input[_builtins.str] comment: User-provided free-form text description of the secret
         :param pulumi.Input[_builtins.str] create_time: (string) - The time at which this secret was created
@@ -675,7 +639,6 @@ class SecretUc(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expire_time: User-provided expiration time of the secret. This field indicates when the secret should no
                longer be used and may be displayed as a warning in the UI. It is purely informational and
                does not trigger any automatic actions or affect the secret's lifecycle
-        :param pulumi.Input[_builtins.str] external_secret_id: (string)
         :param pulumi.Input[_builtins.str] full_name: (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of the metastore hosting the secret
         :param pulumi.Input[_builtins.str] name: The name of the secret, relative to its parent schema
@@ -694,7 +657,6 @@ class SecretUc(pulumi.CustomResource):
 
         __props__ = _SecretUcState.__new__(_SecretUcState)
 
-        __props__.__dict__["browse_only"] = browse_only
         __props__.__dict__["catalog_name"] = catalog_name
         __props__.__dict__["comment"] = comment
         __props__.__dict__["create_time"] = create_time
@@ -702,7 +664,6 @@ class SecretUc(pulumi.CustomResource):
         __props__.__dict__["effective_owner"] = effective_owner
         __props__.__dict__["effective_value"] = effective_value
         __props__.__dict__["expire_time"] = expire_time
-        __props__.__dict__["external_secret_id"] = external_secret_id
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -713,15 +674,6 @@ class SecretUc(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         __props__.__dict__["value"] = value
         return SecretUc(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> pulumi.Output[_builtins.bool]:
-        """
-        (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-        through the **BROWSE** privilege when **include_browse** is enabled in the request
-        """
-        return pulumi.get(self, "browse_only")
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
@@ -782,14 +734,6 @@ class SecretUc(pulumi.CustomResource):
         does not trigger any automatic actions or affect the secret's lifecycle
         """
         return pulumi.get(self, "expire_time")
-
-    @_builtins.property
-    @pulumi.getter(name="externalSecretId")
-    def external_secret_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "external_secret_id")
 
     @_builtins.property
     @pulumi.getter(name="fullName")

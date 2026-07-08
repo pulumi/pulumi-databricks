@@ -17758,7 +17758,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getFunctions:getFunctions", TypeShape.of(GetFunctionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * Retrieves information about databricks.Group members, entitlements and roles.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -17826,7 +17826,7 @@ public final class DatabricksFunctions {
         return getGroup(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * Retrieves information about databricks.Group members, entitlements and roles.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -17894,7 +17894,7 @@ public final class DatabricksFunctions {
         return getGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * Retrieves information about databricks.Group members, entitlements and roles.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -17962,7 +17962,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * Retrieves information about databricks.Group members, entitlements and roles.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -18030,7 +18030,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * Retrieves information about databricks.Group members, entitlements and roles.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -30894,84 +30894,595 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+     * 
+     * This returns the secret&#39;s metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example reads a secret in Unity Catalog by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getSecretUc(GetSecretUcArgs.builder()
+     *             .fullName("my_catalog.my_schema.my_secret")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecretUcResult> getSecretUc(GetSecretUcArgs args) {
         return getSecretUc(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+     * 
+     * This returns the secret&#39;s metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example reads a secret in Unity Catalog by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getSecretUc(GetSecretUcArgs.builder()
+     *             .fullName("my_catalog.my_schema.my_secret")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSecretUcResult> getSecretUcPlain(GetSecretUcPlainArgs args) {
         return getSecretUcPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+     * 
+     * This returns the secret&#39;s metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example reads a secret in Unity Catalog by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getSecretUc(GetSecretUcArgs.builder()
+     *             .fullName("my_catalog.my_schema.my_secret")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecretUcResult> getSecretUc(GetSecretUcArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+     * 
+     * This returns the secret&#39;s metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example reads a secret in Unity Catalog by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getSecretUc(GetSecretUcArgs.builder()
+     *             .fullName("my_catalog.my_schema.my_secret")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecretUcResult> getSecretUc(GetSecretUcArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+     * 
+     * This returns the secret&#39;s metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example reads a secret in Unity Catalog by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getSecretUc(GetSecretUcArgs.builder()
+     *             .fullName("my_catalog.my_schema.my_secret")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSecretUcResult> getSecretUcPlain(GetSecretUcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+     * 
+     * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example lists the secrets in a given catalog and schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSecretUcs(GetSecretUcsArgs.builder()
+     *             .catalogName("my_catalog")
+     *             .schemaName("my_schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecretUcsResult> getSecretUcs() {
         return getSecretUcs(GetSecretUcsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+     * 
+     * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example lists the secrets in a given catalog and schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSecretUcs(GetSecretUcsArgs.builder()
+     *             .catalogName("my_catalog")
+     *             .schemaName("my_schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSecretUcsResult> getSecretUcsPlain() {
         return getSecretUcsPlain(GetSecretUcsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+     * 
+     * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example lists the secrets in a given catalog and schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSecretUcs(GetSecretUcsArgs.builder()
+     *             .catalogName("my_catalog")
+     *             .schemaName("my_schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecretUcsResult> getSecretUcs(GetSecretUcsArgs args) {
         return getSecretUcs(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+     * 
+     * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example lists the secrets in a given catalog and schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSecretUcs(GetSecretUcsArgs.builder()
+     *             .catalogName("my_catalog")
+     *             .schemaName("my_schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSecretUcsResult> getSecretUcsPlain(GetSecretUcsPlainArgs args) {
         return getSecretUcsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+     * 
+     * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example lists the secrets in a given catalog and schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSecretUcs(GetSecretUcsArgs.builder()
+     *             .catalogName("my_catalog")
+     *             .schemaName("my_schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecretUcsResult> getSecretUcs(GetSecretUcsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSecretUcs:getSecretUcs", TypeShape.of(GetSecretUcsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+     * 
+     * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example lists the secrets in a given catalog and schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSecretUcs(GetSecretUcsArgs.builder()
+     *             .catalogName("my_catalog")
+     *             .schemaName("my_schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecretUcsResult> getSecretUcs(GetSecretUcsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSecretUcs:getSecretUcs", TypeShape.of(GetSecretUcsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+     * 
+     * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+     * 
+     * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * This example lists the secrets in a given catalog and schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSecretUcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSecretUcs(GetSecretUcsArgs.builder()
+     *             .catalogName("my_catalog")
+     *             .schemaName("my_schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSecretUcsResult> getSecretUcsPlain(GetSecretUcsPlainArgs args, InvokeOptions options) {

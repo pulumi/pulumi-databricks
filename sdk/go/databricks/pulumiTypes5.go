@@ -13,6 +13,3413 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetPostgresDataApiSpec struct {
+	// (boolean) - Actual aggregate function setting read from the database
+	DbAggregatesEnabled *bool `pulumi:"dbAggregatesEnabled"`
+	// (list of string) - Actual extra search path schemas read from the database
+	DbExtraSearchPaths []string `pulumi:"dbExtraSearchPaths"`
+	// (integer) - Actual max rows setting read from the database
+	DbMaxRows *int `pulumi:"dbMaxRows"`
+	// (list of string) - Actual exposed schemas read from the database
+	DbSchemas []string `pulumi:"dbSchemas"`
+	// (string) - Actual JWT cache max lifetime read from the database
+	JwtCacheMaxLifetime *string `pulumi:"jwtCacheMaxLifetime"`
+	// (string) - Actual JWT role claim key read from the database
+	JwtRoleClaimKey *string `pulumi:"jwtRoleClaimKey"`
+	// (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+	OpenapiMode *string `pulumi:"openapiMode"`
+	// (list of string) - Actual CORS allowed origins read from the database
+	ServerCorsAllowedOrigins []string `pulumi:"serverCorsAllowedOrigins"`
+	// (boolean) - Actual Server-Timing header setting read from the database
+	ServerTimingEnabled *bool `pulumi:"serverTimingEnabled"`
+}
+
+// GetPostgresDataApiSpecInput is an input type that accepts GetPostgresDataApiSpecArgs and GetPostgresDataApiSpecOutput values.
+// You can construct a concrete instance of `GetPostgresDataApiSpecInput` via:
+//
+//	GetPostgresDataApiSpecArgs{...}
+type GetPostgresDataApiSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresDataApiSpecOutput() GetPostgresDataApiSpecOutput
+	ToGetPostgresDataApiSpecOutputWithContext(context.Context) GetPostgresDataApiSpecOutput
+}
+
+type GetPostgresDataApiSpecArgs struct {
+	// (boolean) - Actual aggregate function setting read from the database
+	DbAggregatesEnabled pulumi.BoolPtrInput `pulumi:"dbAggregatesEnabled"`
+	// (list of string) - Actual extra search path schemas read from the database
+	DbExtraSearchPaths pulumi.StringArrayInput `pulumi:"dbExtraSearchPaths"`
+	// (integer) - Actual max rows setting read from the database
+	DbMaxRows pulumi.IntPtrInput `pulumi:"dbMaxRows"`
+	// (list of string) - Actual exposed schemas read from the database
+	DbSchemas pulumi.StringArrayInput `pulumi:"dbSchemas"`
+	// (string) - Actual JWT cache max lifetime read from the database
+	JwtCacheMaxLifetime pulumi.StringPtrInput `pulumi:"jwtCacheMaxLifetime"`
+	// (string) - Actual JWT role claim key read from the database
+	JwtRoleClaimKey pulumi.StringPtrInput `pulumi:"jwtRoleClaimKey"`
+	// (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+	OpenapiMode pulumi.StringPtrInput `pulumi:"openapiMode"`
+	// (list of string) - Actual CORS allowed origins read from the database
+	ServerCorsAllowedOrigins pulumi.StringArrayInput `pulumi:"serverCorsAllowedOrigins"`
+	// (boolean) - Actual Server-Timing header setting read from the database
+	ServerTimingEnabled pulumi.BoolPtrInput `pulumi:"serverTimingEnabled"`
+}
+
+func (GetPostgresDataApiSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDataApiSpec)(nil)).Elem()
+}
+
+func (i GetPostgresDataApiSpecArgs) ToGetPostgresDataApiSpecOutput() GetPostgresDataApiSpecOutput {
+	return i.ToGetPostgresDataApiSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDataApiSpecArgs) ToGetPostgresDataApiSpecOutputWithContext(ctx context.Context) GetPostgresDataApiSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDataApiSpecOutput)
+}
+
+type GetPostgresDataApiSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDataApiSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDataApiSpec)(nil)).Elem()
+}
+
+func (o GetPostgresDataApiSpecOutput) ToGetPostgresDataApiSpecOutput() GetPostgresDataApiSpecOutput {
+	return o
+}
+
+func (o GetPostgresDataApiSpecOutput) ToGetPostgresDataApiSpecOutputWithContext(ctx context.Context) GetPostgresDataApiSpecOutput {
+	return o
+}
+
+// (boolean) - Actual aggregate function setting read from the database
+func (o GetPostgresDataApiSpecOutput) DbAggregatesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) *bool { return v.DbAggregatesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// (list of string) - Actual extra search path schemas read from the database
+func (o GetPostgresDataApiSpecOutput) DbExtraSearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) []string { return v.DbExtraSearchPaths }).(pulumi.StringArrayOutput)
+}
+
+// (integer) - Actual max rows setting read from the database
+func (o GetPostgresDataApiSpecOutput) DbMaxRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) *int { return v.DbMaxRows }).(pulumi.IntPtrOutput)
+}
+
+// (list of string) - Actual exposed schemas read from the database
+func (o GetPostgresDataApiSpecOutput) DbSchemas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) []string { return v.DbSchemas }).(pulumi.StringArrayOutput)
+}
+
+// (string) - Actual JWT cache max lifetime read from the database
+func (o GetPostgresDataApiSpecOutput) JwtCacheMaxLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) *string { return v.JwtCacheMaxLifetime }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Actual JWT role claim key read from the database
+func (o GetPostgresDataApiSpecOutput) JwtRoleClaimKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) *string { return v.JwtRoleClaimKey }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+func (o GetPostgresDataApiSpecOutput) OpenapiMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) *string { return v.OpenapiMode }).(pulumi.StringPtrOutput)
+}
+
+// (list of string) - Actual CORS allowed origins read from the database
+func (o GetPostgresDataApiSpecOutput) ServerCorsAllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) []string { return v.ServerCorsAllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// (boolean) - Actual Server-Timing header setting read from the database
+func (o GetPostgresDataApiSpecOutput) ServerTimingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresDataApiSpec) *bool { return v.ServerTimingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresDataApiStatus struct {
+	// (list of string) - Schemas available in the database (for reference when configuring db_schemas)
+	AvailableSchemas []string `pulumi:"availableSchemas"`
+	// (boolean) - Actual aggregate function setting read from the database
+	DbAggregatesEnabled bool `pulumi:"dbAggregatesEnabled"`
+	// (list of string) - Actual extra search path schemas read from the database
+	DbExtraSearchPaths []string `pulumi:"dbExtraSearchPaths"`
+	// (integer) - Actual max rows setting read from the database
+	DbMaxRows int `pulumi:"dbMaxRows"`
+	// (list of string) - Actual exposed schemas read from the database
+	DbSchemas []string `pulumi:"dbSchemas"`
+	// (string) - Actual JWT cache max lifetime read from the database
+	JwtCacheMaxLifetime string `pulumi:"jwtCacheMaxLifetime"`
+	// (string) - Actual JWT role claim key read from the database
+	JwtRoleClaimKey string `pulumi:"jwtRoleClaimKey"`
+	// (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+	OpenapiMode string `pulumi:"openapiMode"`
+	// (list of string) - Actual CORS allowed origins read from the database
+	ServerCorsAllowedOrigins []string `pulumi:"serverCorsAllowedOrigins"`
+	// (boolean) - Actual Server-Timing header setting read from the database
+	ServerTimingEnabled bool `pulumi:"serverTimingEnabled"`
+	// (string) - Data API endpoint URL
+	Url string `pulumi:"url"`
+}
+
+// GetPostgresDataApiStatusInput is an input type that accepts GetPostgresDataApiStatusArgs and GetPostgresDataApiStatusOutput values.
+// You can construct a concrete instance of `GetPostgresDataApiStatusInput` via:
+//
+//	GetPostgresDataApiStatusArgs{...}
+type GetPostgresDataApiStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresDataApiStatusOutput() GetPostgresDataApiStatusOutput
+	ToGetPostgresDataApiStatusOutputWithContext(context.Context) GetPostgresDataApiStatusOutput
+}
+
+type GetPostgresDataApiStatusArgs struct {
+	// (list of string) - Schemas available in the database (for reference when configuring db_schemas)
+	AvailableSchemas pulumi.StringArrayInput `pulumi:"availableSchemas"`
+	// (boolean) - Actual aggregate function setting read from the database
+	DbAggregatesEnabled pulumi.BoolInput `pulumi:"dbAggregatesEnabled"`
+	// (list of string) - Actual extra search path schemas read from the database
+	DbExtraSearchPaths pulumi.StringArrayInput `pulumi:"dbExtraSearchPaths"`
+	// (integer) - Actual max rows setting read from the database
+	DbMaxRows pulumi.IntInput `pulumi:"dbMaxRows"`
+	// (list of string) - Actual exposed schemas read from the database
+	DbSchemas pulumi.StringArrayInput `pulumi:"dbSchemas"`
+	// (string) - Actual JWT cache max lifetime read from the database
+	JwtCacheMaxLifetime pulumi.StringInput `pulumi:"jwtCacheMaxLifetime"`
+	// (string) - Actual JWT role claim key read from the database
+	JwtRoleClaimKey pulumi.StringInput `pulumi:"jwtRoleClaimKey"`
+	// (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+	OpenapiMode pulumi.StringInput `pulumi:"openapiMode"`
+	// (list of string) - Actual CORS allowed origins read from the database
+	ServerCorsAllowedOrigins pulumi.StringArrayInput `pulumi:"serverCorsAllowedOrigins"`
+	// (boolean) - Actual Server-Timing header setting read from the database
+	ServerTimingEnabled pulumi.BoolInput `pulumi:"serverTimingEnabled"`
+	// (string) - Data API endpoint URL
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetPostgresDataApiStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDataApiStatus)(nil)).Elem()
+}
+
+func (i GetPostgresDataApiStatusArgs) ToGetPostgresDataApiStatusOutput() GetPostgresDataApiStatusOutput {
+	return i.ToGetPostgresDataApiStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDataApiStatusArgs) ToGetPostgresDataApiStatusOutputWithContext(ctx context.Context) GetPostgresDataApiStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDataApiStatusOutput)
+}
+
+type GetPostgresDataApiStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDataApiStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDataApiStatus)(nil)).Elem()
+}
+
+func (o GetPostgresDataApiStatusOutput) ToGetPostgresDataApiStatusOutput() GetPostgresDataApiStatusOutput {
+	return o
+}
+
+func (o GetPostgresDataApiStatusOutput) ToGetPostgresDataApiStatusOutputWithContext(ctx context.Context) GetPostgresDataApiStatusOutput {
+	return o
+}
+
+// (list of string) - Schemas available in the database (for reference when configuring db_schemas)
+func (o GetPostgresDataApiStatusOutput) AvailableSchemas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) []string { return v.AvailableSchemas }).(pulumi.StringArrayOutput)
+}
+
+// (boolean) - Actual aggregate function setting read from the database
+func (o GetPostgresDataApiStatusOutput) DbAggregatesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) bool { return v.DbAggregatesEnabled }).(pulumi.BoolOutput)
+}
+
+// (list of string) - Actual extra search path schemas read from the database
+func (o GetPostgresDataApiStatusOutput) DbExtraSearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) []string { return v.DbExtraSearchPaths }).(pulumi.StringArrayOutput)
+}
+
+// (integer) - Actual max rows setting read from the database
+func (o GetPostgresDataApiStatusOutput) DbMaxRows() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) int { return v.DbMaxRows }).(pulumi.IntOutput)
+}
+
+// (list of string) - Actual exposed schemas read from the database
+func (o GetPostgresDataApiStatusOutput) DbSchemas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) []string { return v.DbSchemas }).(pulumi.StringArrayOutput)
+}
+
+// (string) - Actual JWT cache max lifetime read from the database
+func (o GetPostgresDataApiStatusOutput) JwtCacheMaxLifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) string { return v.JwtCacheMaxLifetime }).(pulumi.StringOutput)
+}
+
+// (string) - Actual JWT role claim key read from the database
+func (o GetPostgresDataApiStatusOutput) JwtRoleClaimKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) string { return v.JwtRoleClaimKey }).(pulumi.StringOutput)
+}
+
+// (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+func (o GetPostgresDataApiStatusOutput) OpenapiMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) string { return v.OpenapiMode }).(pulumi.StringOutput)
+}
+
+// (list of string) - Actual CORS allowed origins read from the database
+func (o GetPostgresDataApiStatusOutput) ServerCorsAllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) []string { return v.ServerCorsAllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// (boolean) - Actual Server-Timing header setting read from the database
+func (o GetPostgresDataApiStatusOutput) ServerTimingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) bool { return v.ServerTimingEnabled }).(pulumi.BoolOutput)
+}
+
+// (string) - Data API endpoint URL
+func (o GetPostgresDataApiStatusOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDataApiStatus) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetPostgresDatabaseProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresDatabaseProviderConfigInput is an input type that accepts GetPostgresDatabaseProviderConfigArgs and GetPostgresDatabaseProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresDatabaseProviderConfigInput` via:
+//
+//	GetPostgresDatabaseProviderConfigArgs{...}
+type GetPostgresDatabaseProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabaseProviderConfigOutput() GetPostgresDatabaseProviderConfigOutput
+	ToGetPostgresDatabaseProviderConfigOutputWithContext(context.Context) GetPostgresDatabaseProviderConfigOutput
+}
+
+type GetPostgresDatabaseProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresDatabaseProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabaseProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresDatabaseProviderConfigArgs) ToGetPostgresDatabaseProviderConfigOutput() GetPostgresDatabaseProviderConfigOutput {
+	return i.ToGetPostgresDatabaseProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabaseProviderConfigArgs) ToGetPostgresDatabaseProviderConfigOutputWithContext(ctx context.Context) GetPostgresDatabaseProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabaseProviderConfigOutput)
+}
+
+func (i GetPostgresDatabaseProviderConfigArgs) ToGetPostgresDatabaseProviderConfigPtrOutput() GetPostgresDatabaseProviderConfigPtrOutput {
+	return i.ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabaseProviderConfigArgs) ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabaseProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabaseProviderConfigOutput).ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresDatabaseProviderConfigPtrInput is an input type that accepts GetPostgresDatabaseProviderConfigArgs, GetPostgresDatabaseProviderConfigPtr and GetPostgresDatabaseProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresDatabaseProviderConfigPtrInput` via:
+//
+//	        GetPostgresDatabaseProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresDatabaseProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabaseProviderConfigPtrOutput() GetPostgresDatabaseProviderConfigPtrOutput
+	ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(context.Context) GetPostgresDatabaseProviderConfigPtrOutput
+}
+
+type getPostgresDatabaseProviderConfigPtrType GetPostgresDatabaseProviderConfigArgs
+
+func GetPostgresDatabaseProviderConfigPtr(v *GetPostgresDatabaseProviderConfigArgs) GetPostgresDatabaseProviderConfigPtrInput {
+	return (*getPostgresDatabaseProviderConfigPtrType)(v)
+}
+
+func (*getPostgresDatabaseProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresDatabaseProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresDatabaseProviderConfigPtrType) ToGetPostgresDatabaseProviderConfigPtrOutput() GetPostgresDatabaseProviderConfigPtrOutput {
+	return i.ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresDatabaseProviderConfigPtrType) ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabaseProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabaseProviderConfigPtrOutput)
+}
+
+type GetPostgresDatabaseProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabaseProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabaseProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresDatabaseProviderConfigOutput) ToGetPostgresDatabaseProviderConfigOutput() GetPostgresDatabaseProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresDatabaseProviderConfigOutput) ToGetPostgresDatabaseProviderConfigOutputWithContext(ctx context.Context) GetPostgresDatabaseProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresDatabaseProviderConfigOutput) ToGetPostgresDatabaseProviderConfigPtrOutput() GetPostgresDatabaseProviderConfigPtrOutput {
+	return o.ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresDatabaseProviderConfigOutput) ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabaseProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresDatabaseProviderConfig) *GetPostgresDatabaseProviderConfig {
+		return &v
+	}).(GetPostgresDatabaseProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresDatabaseProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabaseProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresDatabaseProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabaseProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresDatabaseProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresDatabaseProviderConfigPtrOutput) ToGetPostgresDatabaseProviderConfigPtrOutput() GetPostgresDatabaseProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresDatabaseProviderConfigPtrOutput) ToGetPostgresDatabaseProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabaseProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresDatabaseProviderConfigPtrOutput) Elem() GetPostgresDatabaseProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresDatabaseProviderConfig) GetPostgresDatabaseProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresDatabaseProviderConfig
+		return ret
+	}).(GetPostgresDatabaseProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresDatabaseProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresDatabaseProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresDatabaseSpec struct {
+	// (string) - The name of the Postgres database
+	PostgresDatabase *string `pulumi:"postgresDatabase"`
+	// (string) - The name of the role that owns the database.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Role *string `pulumi:"role"`
+}
+
+// GetPostgresDatabaseSpecInput is an input type that accepts GetPostgresDatabaseSpecArgs and GetPostgresDatabaseSpecOutput values.
+// You can construct a concrete instance of `GetPostgresDatabaseSpecInput` via:
+//
+//	GetPostgresDatabaseSpecArgs{...}
+type GetPostgresDatabaseSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabaseSpecOutput() GetPostgresDatabaseSpecOutput
+	ToGetPostgresDatabaseSpecOutputWithContext(context.Context) GetPostgresDatabaseSpecOutput
+}
+
+type GetPostgresDatabaseSpecArgs struct {
+	// (string) - The name of the Postgres database
+	PostgresDatabase pulumi.StringPtrInput `pulumi:"postgresDatabase"`
+	// (string) - The name of the role that owns the database.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (GetPostgresDatabaseSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabaseSpec)(nil)).Elem()
+}
+
+func (i GetPostgresDatabaseSpecArgs) ToGetPostgresDatabaseSpecOutput() GetPostgresDatabaseSpecOutput {
+	return i.ToGetPostgresDatabaseSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabaseSpecArgs) ToGetPostgresDatabaseSpecOutputWithContext(ctx context.Context) GetPostgresDatabaseSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabaseSpecOutput)
+}
+
+type GetPostgresDatabaseSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabaseSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabaseSpec)(nil)).Elem()
+}
+
+func (o GetPostgresDatabaseSpecOutput) ToGetPostgresDatabaseSpecOutput() GetPostgresDatabaseSpecOutput {
+	return o
+}
+
+func (o GetPostgresDatabaseSpecOutput) ToGetPostgresDatabaseSpecOutputWithContext(ctx context.Context) GetPostgresDatabaseSpecOutput {
+	return o
+}
+
+// (string) - The name of the Postgres database
+func (o GetPostgresDatabaseSpecOutput) PostgresDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabaseSpec) *string { return v.PostgresDatabase }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The name of the role that owns the database.
+// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+func (o GetPostgresDatabaseSpecOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabaseSpec) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresDatabaseStatus struct {
+	// (string) - Part of the resource name
+	DatabaseId string `pulumi:"databaseId"`
+	// (string) - The name of the Postgres database
+	PostgresDatabase *string `pulumi:"postgresDatabase"`
+	// (string) - The name of the role that owns the database.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Role *string `pulumi:"role"`
+}
+
+// GetPostgresDatabaseStatusInput is an input type that accepts GetPostgresDatabaseStatusArgs and GetPostgresDatabaseStatusOutput values.
+// You can construct a concrete instance of `GetPostgresDatabaseStatusInput` via:
+//
+//	GetPostgresDatabaseStatusArgs{...}
+type GetPostgresDatabaseStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabaseStatusOutput() GetPostgresDatabaseStatusOutput
+	ToGetPostgresDatabaseStatusOutputWithContext(context.Context) GetPostgresDatabaseStatusOutput
+}
+
+type GetPostgresDatabaseStatusArgs struct {
+	// (string) - Part of the resource name
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// (string) - The name of the Postgres database
+	PostgresDatabase pulumi.StringPtrInput `pulumi:"postgresDatabase"`
+	// (string) - The name of the role that owns the database.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (GetPostgresDatabaseStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabaseStatus)(nil)).Elem()
+}
+
+func (i GetPostgresDatabaseStatusArgs) ToGetPostgresDatabaseStatusOutput() GetPostgresDatabaseStatusOutput {
+	return i.ToGetPostgresDatabaseStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabaseStatusArgs) ToGetPostgresDatabaseStatusOutputWithContext(ctx context.Context) GetPostgresDatabaseStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabaseStatusOutput)
+}
+
+type GetPostgresDatabaseStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabaseStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabaseStatus)(nil)).Elem()
+}
+
+func (o GetPostgresDatabaseStatusOutput) ToGetPostgresDatabaseStatusOutput() GetPostgresDatabaseStatusOutput {
+	return o
+}
+
+func (o GetPostgresDatabaseStatusOutput) ToGetPostgresDatabaseStatusOutputWithContext(ctx context.Context) GetPostgresDatabaseStatusOutput {
+	return o
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresDatabaseStatusOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabaseStatus) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// (string) - The name of the Postgres database
+func (o GetPostgresDatabaseStatusOutput) PostgresDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabaseStatus) *string { return v.PostgresDatabase }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The name of the role that owns the database.
+// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+func (o GetPostgresDatabaseStatusOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabaseStatus) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresDatabasesDatabase struct {
+	// (string) - A timestamp indicating when the database was created
+	CreateTime string `pulumi:"createTime"`
+	// (string) - Part of the resource name
+	DatabaseId string `pulumi:"databaseId"`
+	// (string) - The resource name of the database.
+	// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
+	Name string `pulumi:"name"`
+	// The Branch that owns this collection of databases.
+	// Format: projects/{project_id}/branches/{branch_id}
+	Parent string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresDatabasesDatabaseProviderConfig `pulumi:"providerConfig"`
+	// (DatabaseDatabaseSpec) - The desired state of the Database
+	Spec GetPostgresDatabasesDatabaseSpec `pulumi:"spec"`
+	// (DatabaseDatabaseStatus) - The observed state of the Database
+	Status GetPostgresDatabasesDatabaseStatus `pulumi:"status"`
+	// (string) - A timestamp indicating when the database was last updated
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetPostgresDatabasesDatabaseInput is an input type that accepts GetPostgresDatabasesDatabaseArgs and GetPostgresDatabasesDatabaseOutput values.
+// You can construct a concrete instance of `GetPostgresDatabasesDatabaseInput` via:
+//
+//	GetPostgresDatabasesDatabaseArgs{...}
+type GetPostgresDatabasesDatabaseInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabasesDatabaseOutput() GetPostgresDatabasesDatabaseOutput
+	ToGetPostgresDatabasesDatabaseOutputWithContext(context.Context) GetPostgresDatabasesDatabaseOutput
+}
+
+type GetPostgresDatabasesDatabaseArgs struct {
+	// (string) - A timestamp indicating when the database was created
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - Part of the resource name
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// (string) - The resource name of the database.
+	// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Branch that owns this collection of databases.
+	// Format: projects/{project_id}/branches/{branch_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresDatabasesDatabaseProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (DatabaseDatabaseSpec) - The desired state of the Database
+	Spec GetPostgresDatabasesDatabaseSpecInput `pulumi:"spec"`
+	// (DatabaseDatabaseStatus) - The observed state of the Database
+	Status GetPostgresDatabasesDatabaseStatusInput `pulumi:"status"`
+	// (string) - A timestamp indicating when the database was last updated
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetPostgresDatabasesDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetPostgresDatabasesDatabaseArgs) ToGetPostgresDatabasesDatabaseOutput() GetPostgresDatabasesDatabaseOutput {
+	return i.ToGetPostgresDatabasesDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabasesDatabaseArgs) ToGetPostgresDatabasesDatabaseOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesDatabaseOutput)
+}
+
+// GetPostgresDatabasesDatabaseArrayInput is an input type that accepts GetPostgresDatabasesDatabaseArray and GetPostgresDatabasesDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetPostgresDatabasesDatabaseArrayInput` via:
+//
+//	GetPostgresDatabasesDatabaseArray{ GetPostgresDatabasesDatabaseArgs{...} }
+type GetPostgresDatabasesDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabasesDatabaseArrayOutput() GetPostgresDatabasesDatabaseArrayOutput
+	ToGetPostgresDatabasesDatabaseArrayOutputWithContext(context.Context) GetPostgresDatabasesDatabaseArrayOutput
+}
+
+type GetPostgresDatabasesDatabaseArray []GetPostgresDatabasesDatabaseInput
+
+func (GetPostgresDatabasesDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetPostgresDatabasesDatabaseArray) ToGetPostgresDatabasesDatabaseArrayOutput() GetPostgresDatabasesDatabaseArrayOutput {
+	return i.ToGetPostgresDatabasesDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabasesDatabaseArray) ToGetPostgresDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesDatabaseArrayOutput)
+}
+
+type GetPostgresDatabasesDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabasesDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetPostgresDatabasesDatabaseOutput) ToGetPostgresDatabasesDatabaseOutput() GetPostgresDatabasesDatabaseOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseOutput) ToGetPostgresDatabasesDatabaseOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseOutput {
+	return o
+}
+
+// (string) - A timestamp indicating when the database was created
+func (o GetPostgresDatabasesDatabaseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabase) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresDatabasesDatabaseOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabase) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the database.
+// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
+func (o GetPostgresDatabasesDatabaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabase) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Branch that owns this collection of databases.
+// Format: projects/{project_id}/branches/{branch_id}
+func (o GetPostgresDatabasesDatabaseOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabase) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetPostgresDatabasesDatabaseOutput) ProviderConfig() GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabase) *GetPostgresDatabasesDatabaseProviderConfig {
+		return v.ProviderConfig
+	}).(GetPostgresDatabasesDatabaseProviderConfigPtrOutput)
+}
+
+// (DatabaseDatabaseSpec) - The desired state of the Database
+func (o GetPostgresDatabasesDatabaseOutput) Spec() GetPostgresDatabasesDatabaseSpecOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabase) GetPostgresDatabasesDatabaseSpec { return v.Spec }).(GetPostgresDatabasesDatabaseSpecOutput)
+}
+
+// (DatabaseDatabaseStatus) - The observed state of the Database
+func (o GetPostgresDatabasesDatabaseOutput) Status() GetPostgresDatabasesDatabaseStatusOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabase) GetPostgresDatabasesDatabaseStatus { return v.Status }).(GetPostgresDatabasesDatabaseStatusOutput)
+}
+
+// (string) - A timestamp indicating when the database was last updated
+func (o GetPostgresDatabasesDatabaseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabase) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetPostgresDatabasesDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabasesDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetPostgresDatabasesDatabaseArrayOutput) ToGetPostgresDatabasesDatabaseArrayOutput() GetPostgresDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseArrayOutput) ToGetPostgresDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetPostgresDatabasesDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresDatabasesDatabase {
+		return vs[0].([]GetPostgresDatabasesDatabase)[vs[1].(int)]
+	}).(GetPostgresDatabasesDatabaseOutput)
+}
+
+type GetPostgresDatabasesDatabaseProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresDatabasesDatabaseProviderConfigInput is an input type that accepts GetPostgresDatabasesDatabaseProviderConfigArgs and GetPostgresDatabasesDatabaseProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresDatabasesDatabaseProviderConfigInput` via:
+//
+//	GetPostgresDatabasesDatabaseProviderConfigArgs{...}
+type GetPostgresDatabasesDatabaseProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabasesDatabaseProviderConfigOutput() GetPostgresDatabasesDatabaseProviderConfigOutput
+	ToGetPostgresDatabasesDatabaseProviderConfigOutputWithContext(context.Context) GetPostgresDatabasesDatabaseProviderConfigOutput
+}
+
+type GetPostgresDatabasesDatabaseProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresDatabasesDatabaseProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesDatabaseProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresDatabasesDatabaseProviderConfigArgs) ToGetPostgresDatabasesDatabaseProviderConfigOutput() GetPostgresDatabasesDatabaseProviderConfigOutput {
+	return i.ToGetPostgresDatabasesDatabaseProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabasesDatabaseProviderConfigArgs) ToGetPostgresDatabasesDatabaseProviderConfigOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesDatabaseProviderConfigOutput)
+}
+
+func (i GetPostgresDatabasesDatabaseProviderConfigArgs) ToGetPostgresDatabasesDatabaseProviderConfigPtrOutput() GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return i.ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabasesDatabaseProviderConfigArgs) ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesDatabaseProviderConfigOutput).ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresDatabasesDatabaseProviderConfigPtrInput is an input type that accepts GetPostgresDatabasesDatabaseProviderConfigArgs, GetPostgresDatabasesDatabaseProviderConfigPtr and GetPostgresDatabasesDatabaseProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresDatabasesDatabaseProviderConfigPtrInput` via:
+//
+//	        GetPostgresDatabasesDatabaseProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresDatabasesDatabaseProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabasesDatabaseProviderConfigPtrOutput() GetPostgresDatabasesDatabaseProviderConfigPtrOutput
+	ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(context.Context) GetPostgresDatabasesDatabaseProviderConfigPtrOutput
+}
+
+type getPostgresDatabasesDatabaseProviderConfigPtrType GetPostgresDatabasesDatabaseProviderConfigArgs
+
+func GetPostgresDatabasesDatabaseProviderConfigPtr(v *GetPostgresDatabasesDatabaseProviderConfigArgs) GetPostgresDatabasesDatabaseProviderConfigPtrInput {
+	return (*getPostgresDatabasesDatabaseProviderConfigPtrType)(v)
+}
+
+func (*getPostgresDatabasesDatabaseProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresDatabasesDatabaseProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresDatabasesDatabaseProviderConfigPtrType) ToGetPostgresDatabasesDatabaseProviderConfigPtrOutput() GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return i.ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresDatabasesDatabaseProviderConfigPtrType) ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesDatabaseProviderConfigPtrOutput)
+}
+
+type GetPostgresDatabasesDatabaseProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabasesDatabaseProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesDatabaseProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresDatabasesDatabaseProviderConfigOutput) ToGetPostgresDatabasesDatabaseProviderConfigOutput() GetPostgresDatabasesDatabaseProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseProviderConfigOutput) ToGetPostgresDatabasesDatabaseProviderConfigOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseProviderConfigOutput) ToGetPostgresDatabasesDatabaseProviderConfigPtrOutput() GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return o.ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresDatabasesDatabaseProviderConfigOutput) ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresDatabasesDatabaseProviderConfig) *GetPostgresDatabasesDatabaseProviderConfig {
+		return &v
+	}).(GetPostgresDatabasesDatabaseProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresDatabasesDatabaseProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabaseProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresDatabasesDatabaseProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabasesDatabaseProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresDatabasesDatabaseProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresDatabasesDatabaseProviderConfigPtrOutput) ToGetPostgresDatabasesDatabaseProviderConfigPtrOutput() GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseProviderConfigPtrOutput) ToGetPostgresDatabasesDatabaseProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseProviderConfigPtrOutput) Elem() GetPostgresDatabasesDatabaseProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresDatabasesDatabaseProviderConfig) GetPostgresDatabasesDatabaseProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresDatabasesDatabaseProviderConfig
+		return ret
+	}).(GetPostgresDatabasesDatabaseProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresDatabasesDatabaseProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresDatabasesDatabaseProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresDatabasesDatabaseSpec struct {
+	// (string) - The name of the Postgres database
+	PostgresDatabase *string `pulumi:"postgresDatabase"`
+	// (string) - The name of the role that owns the database.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Role *string `pulumi:"role"`
+}
+
+// GetPostgresDatabasesDatabaseSpecInput is an input type that accepts GetPostgresDatabasesDatabaseSpecArgs and GetPostgresDatabasesDatabaseSpecOutput values.
+// You can construct a concrete instance of `GetPostgresDatabasesDatabaseSpecInput` via:
+//
+//	GetPostgresDatabasesDatabaseSpecArgs{...}
+type GetPostgresDatabasesDatabaseSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabasesDatabaseSpecOutput() GetPostgresDatabasesDatabaseSpecOutput
+	ToGetPostgresDatabasesDatabaseSpecOutputWithContext(context.Context) GetPostgresDatabasesDatabaseSpecOutput
+}
+
+type GetPostgresDatabasesDatabaseSpecArgs struct {
+	// (string) - The name of the Postgres database
+	PostgresDatabase pulumi.StringPtrInput `pulumi:"postgresDatabase"`
+	// (string) - The name of the role that owns the database.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (GetPostgresDatabasesDatabaseSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesDatabaseSpec)(nil)).Elem()
+}
+
+func (i GetPostgresDatabasesDatabaseSpecArgs) ToGetPostgresDatabasesDatabaseSpecOutput() GetPostgresDatabasesDatabaseSpecOutput {
+	return i.ToGetPostgresDatabasesDatabaseSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabasesDatabaseSpecArgs) ToGetPostgresDatabasesDatabaseSpecOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesDatabaseSpecOutput)
+}
+
+type GetPostgresDatabasesDatabaseSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabasesDatabaseSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesDatabaseSpec)(nil)).Elem()
+}
+
+func (o GetPostgresDatabasesDatabaseSpecOutput) ToGetPostgresDatabasesDatabaseSpecOutput() GetPostgresDatabasesDatabaseSpecOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseSpecOutput) ToGetPostgresDatabasesDatabaseSpecOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseSpecOutput {
+	return o
+}
+
+// (string) - The name of the Postgres database
+func (o GetPostgresDatabasesDatabaseSpecOutput) PostgresDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabaseSpec) *string { return v.PostgresDatabase }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The name of the role that owns the database.
+// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+func (o GetPostgresDatabasesDatabaseSpecOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabaseSpec) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresDatabasesDatabaseStatus struct {
+	// (string) - Part of the resource name
+	DatabaseId string `pulumi:"databaseId"`
+	// (string) - The name of the Postgres database
+	PostgresDatabase *string `pulumi:"postgresDatabase"`
+	// (string) - The name of the role that owns the database.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Role *string `pulumi:"role"`
+}
+
+// GetPostgresDatabasesDatabaseStatusInput is an input type that accepts GetPostgresDatabasesDatabaseStatusArgs and GetPostgresDatabasesDatabaseStatusOutput values.
+// You can construct a concrete instance of `GetPostgresDatabasesDatabaseStatusInput` via:
+//
+//	GetPostgresDatabasesDatabaseStatusArgs{...}
+type GetPostgresDatabasesDatabaseStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabasesDatabaseStatusOutput() GetPostgresDatabasesDatabaseStatusOutput
+	ToGetPostgresDatabasesDatabaseStatusOutputWithContext(context.Context) GetPostgresDatabasesDatabaseStatusOutput
+}
+
+type GetPostgresDatabasesDatabaseStatusArgs struct {
+	// (string) - Part of the resource name
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// (string) - The name of the Postgres database
+	PostgresDatabase pulumi.StringPtrInput `pulumi:"postgresDatabase"`
+	// (string) - The name of the role that owns the database.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (GetPostgresDatabasesDatabaseStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesDatabaseStatus)(nil)).Elem()
+}
+
+func (i GetPostgresDatabasesDatabaseStatusArgs) ToGetPostgresDatabasesDatabaseStatusOutput() GetPostgresDatabasesDatabaseStatusOutput {
+	return i.ToGetPostgresDatabasesDatabaseStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabasesDatabaseStatusArgs) ToGetPostgresDatabasesDatabaseStatusOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesDatabaseStatusOutput)
+}
+
+type GetPostgresDatabasesDatabaseStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabasesDatabaseStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesDatabaseStatus)(nil)).Elem()
+}
+
+func (o GetPostgresDatabasesDatabaseStatusOutput) ToGetPostgresDatabasesDatabaseStatusOutput() GetPostgresDatabasesDatabaseStatusOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesDatabaseStatusOutput) ToGetPostgresDatabasesDatabaseStatusOutputWithContext(ctx context.Context) GetPostgresDatabasesDatabaseStatusOutput {
+	return o
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresDatabasesDatabaseStatusOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabaseStatus) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// (string) - The name of the Postgres database
+func (o GetPostgresDatabasesDatabaseStatusOutput) PostgresDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabaseStatus) *string { return v.PostgresDatabase }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The name of the role that owns the database.
+// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+func (o GetPostgresDatabasesDatabaseStatusOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabaseStatus) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresDatabasesProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresDatabasesProviderConfigInput is an input type that accepts GetPostgresDatabasesProviderConfigArgs and GetPostgresDatabasesProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresDatabasesProviderConfigInput` via:
+//
+//	GetPostgresDatabasesProviderConfigArgs{...}
+type GetPostgresDatabasesProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabasesProviderConfigOutput() GetPostgresDatabasesProviderConfigOutput
+	ToGetPostgresDatabasesProviderConfigOutputWithContext(context.Context) GetPostgresDatabasesProviderConfigOutput
+}
+
+type GetPostgresDatabasesProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresDatabasesProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresDatabasesProviderConfigArgs) ToGetPostgresDatabasesProviderConfigOutput() GetPostgresDatabasesProviderConfigOutput {
+	return i.ToGetPostgresDatabasesProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabasesProviderConfigArgs) ToGetPostgresDatabasesProviderConfigOutputWithContext(ctx context.Context) GetPostgresDatabasesProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesProviderConfigOutput)
+}
+
+func (i GetPostgresDatabasesProviderConfigArgs) ToGetPostgresDatabasesProviderConfigPtrOutput() GetPostgresDatabasesProviderConfigPtrOutput {
+	return i.ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDatabasesProviderConfigArgs) ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabasesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesProviderConfigOutput).ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresDatabasesProviderConfigPtrInput is an input type that accepts GetPostgresDatabasesProviderConfigArgs, GetPostgresDatabasesProviderConfigPtr and GetPostgresDatabasesProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresDatabasesProviderConfigPtrInput` via:
+//
+//	        GetPostgresDatabasesProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresDatabasesProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresDatabasesProviderConfigPtrOutput() GetPostgresDatabasesProviderConfigPtrOutput
+	ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(context.Context) GetPostgresDatabasesProviderConfigPtrOutput
+}
+
+type getPostgresDatabasesProviderConfigPtrType GetPostgresDatabasesProviderConfigArgs
+
+func GetPostgresDatabasesProviderConfigPtr(v *GetPostgresDatabasesProviderConfigArgs) GetPostgresDatabasesProviderConfigPtrInput {
+	return (*getPostgresDatabasesProviderConfigPtrType)(v)
+}
+
+func (*getPostgresDatabasesProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresDatabasesProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresDatabasesProviderConfigPtrType) ToGetPostgresDatabasesProviderConfigPtrOutput() GetPostgresDatabasesProviderConfigPtrOutput {
+	return i.ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresDatabasesProviderConfigPtrType) ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabasesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDatabasesProviderConfigPtrOutput)
+}
+
+type GetPostgresDatabasesProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabasesProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDatabasesProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresDatabasesProviderConfigOutput) ToGetPostgresDatabasesProviderConfigOutput() GetPostgresDatabasesProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesProviderConfigOutput) ToGetPostgresDatabasesProviderConfigOutputWithContext(ctx context.Context) GetPostgresDatabasesProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesProviderConfigOutput) ToGetPostgresDatabasesProviderConfigPtrOutput() GetPostgresDatabasesProviderConfigPtrOutput {
+	return o.ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresDatabasesProviderConfigOutput) ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabasesProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresDatabasesProviderConfig) *GetPostgresDatabasesProviderConfig {
+		return &v
+	}).(GetPostgresDatabasesProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresDatabasesProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresDatabasesProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDatabasesProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresDatabasesProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresDatabasesProviderConfigPtrOutput) ToGetPostgresDatabasesProviderConfigPtrOutput() GetPostgresDatabasesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesProviderConfigPtrOutput) ToGetPostgresDatabasesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDatabasesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresDatabasesProviderConfigPtrOutput) Elem() GetPostgresDatabasesProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresDatabasesProviderConfig) GetPostgresDatabasesProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresDatabasesProviderConfig
+		return ret
+	}).(GetPostgresDatabasesProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresDatabasesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresDatabasesProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresEndpointProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresEndpointProviderConfigInput is an input type that accepts GetPostgresEndpointProviderConfigArgs and GetPostgresEndpointProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointProviderConfigInput` via:
+//
+//	GetPostgresEndpointProviderConfigArgs{...}
+type GetPostgresEndpointProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointProviderConfigOutput() GetPostgresEndpointProviderConfigOutput
+	ToGetPostgresEndpointProviderConfigOutputWithContext(context.Context) GetPostgresEndpointProviderConfigOutput
+}
+
+type GetPostgresEndpointProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresEndpointProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointProviderConfigArgs) ToGetPostgresEndpointProviderConfigOutput() GetPostgresEndpointProviderConfigOutput {
+	return i.ToGetPostgresEndpointProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointProviderConfigArgs) ToGetPostgresEndpointProviderConfigOutputWithContext(ctx context.Context) GetPostgresEndpointProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointProviderConfigOutput)
+}
+
+func (i GetPostgresEndpointProviderConfigArgs) ToGetPostgresEndpointProviderConfigPtrOutput() GetPostgresEndpointProviderConfigPtrOutput {
+	return i.ToGetPostgresEndpointProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointProviderConfigArgs) ToGetPostgresEndpointProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointProviderConfigOutput).ToGetPostgresEndpointProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointProviderConfigPtrInput is an input type that accepts GetPostgresEndpointProviderConfigArgs, GetPostgresEndpointProviderConfigPtr and GetPostgresEndpointProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointProviderConfigPtrInput` via:
+//
+//	        GetPostgresEndpointProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointProviderConfigPtrOutput() GetPostgresEndpointProviderConfigPtrOutput
+	ToGetPostgresEndpointProviderConfigPtrOutputWithContext(context.Context) GetPostgresEndpointProviderConfigPtrOutput
+}
+
+type getPostgresEndpointProviderConfigPtrType GetPostgresEndpointProviderConfigArgs
+
+func GetPostgresEndpointProviderConfigPtr(v *GetPostgresEndpointProviderConfigArgs) GetPostgresEndpointProviderConfigPtrInput {
+	return (*getPostgresEndpointProviderConfigPtrType)(v)
+}
+
+func (*getPostgresEndpointProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointProviderConfigPtrType) ToGetPostgresEndpointProviderConfigPtrOutput() GetPostgresEndpointProviderConfigPtrOutput {
+	return i.ToGetPostgresEndpointProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointProviderConfigPtrType) ToGetPostgresEndpointProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointProviderConfigPtrOutput)
+}
+
+type GetPostgresEndpointProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointProviderConfigOutput) ToGetPostgresEndpointProviderConfigOutput() GetPostgresEndpointProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresEndpointProviderConfigOutput) ToGetPostgresEndpointProviderConfigOutputWithContext(ctx context.Context) GetPostgresEndpointProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresEndpointProviderConfigOutput) ToGetPostgresEndpointProviderConfigPtrOutput() GetPostgresEndpointProviderConfigPtrOutput {
+	return o.ToGetPostgresEndpointProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointProviderConfigOutput) ToGetPostgresEndpointProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointProviderConfig) *GetPostgresEndpointProviderConfig {
+		return &v
+	}).(GetPostgresEndpointProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresEndpointProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresEndpointProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointProviderConfigPtrOutput) ToGetPostgresEndpointProviderConfigPtrOutput() GetPostgresEndpointProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointProviderConfigPtrOutput) ToGetPostgresEndpointProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointProviderConfigPtrOutput) Elem() GetPostgresEndpointProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointProviderConfig) GetPostgresEndpointProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointProviderConfig
+		return ret
+	}).(GetPostgresEndpointProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresEndpointProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresEndpointSpec struct {
+	// (number) - The maximum number of Compute Units. The maximum value is 64.
+	// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units
+	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - Whether to restrict connections to the compute endpoint.
+	// Enabling this option schedules a suspend compute operation.
+	// A disabled compute endpoint cannot be enabled by a connection or
+	// console action
+	Disabled *bool `pulumi:"disabled"`
+	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group *GetPostgresEndpointSpecGroup `pulumi:"group"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+	NoSuspension *bool `pulumi:"noSuspension"`
+	// (EndpointSettings)
+	Settings *GetPostgresEndpointSpecSettings `pulumi:"settings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+	SuspendTimeoutDuration *string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresEndpointSpecInput is an input type that accepts GetPostgresEndpointSpecArgs and GetPostgresEndpointSpecOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointSpecInput` via:
+//
+//	GetPostgresEndpointSpecArgs{...}
+type GetPostgresEndpointSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointSpecOutput() GetPostgresEndpointSpecOutput
+	ToGetPostgresEndpointSpecOutputWithContext(context.Context) GetPostgresEndpointSpecOutput
+}
+
+type GetPostgresEndpointSpecArgs struct {
+	// (number) - The maximum number of Compute Units. The maximum value is 64.
+	// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units
+	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - Whether to restrict connections to the compute endpoint.
+	// Enabling this option schedules a suspend compute operation.
+	// A disabled compute endpoint cannot be enabled by a connection or
+	// console action
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointSpecGroupPtrInput `pulumi:"group"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
+	// (EndpointSettings)
+	Settings GetPostgresEndpointSpecSettingsPtrInput `pulumi:"settings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+	SuspendTimeoutDuration pulumi.StringPtrInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresEndpointSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointSpec)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointSpecArgs) ToGetPostgresEndpointSpecOutput() GetPostgresEndpointSpecOutput {
+	return i.ToGetPostgresEndpointSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointSpecArgs) ToGetPostgresEndpointSpecOutputWithContext(ctx context.Context) GetPostgresEndpointSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecOutput)
+}
+
+type GetPostgresEndpointSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointSpec)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointSpecOutput) ToGetPostgresEndpointSpecOutput() GetPostgresEndpointSpecOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecOutput) ToGetPostgresEndpointSpecOutputWithContext(ctx context.Context) GetPostgresEndpointSpecOutput {
+	return o
+}
+
+// (number) - The maximum number of Compute Units. The maximum value is 64.
+// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+func (o GetPostgresEndpointSpecOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) *float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units
+func (o GetPostgresEndpointSpecOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) *float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64PtrOutput)
+}
+
+// (boolean) - Whether to restrict connections to the compute endpoint.
+// Enabling this option schedules a suspend compute operation.
+// A disabled compute endpoint cannot be enabled by a connection or
+// console action
+func (o GetPostgresEndpointSpecOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+func (o GetPostgresEndpointSpecOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o GetPostgresEndpointSpecOutput) Group() GetPostgresEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) *GetPostgresEndpointSpecGroup { return v.Group }).(GetPostgresEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+func (o GetPostgresEndpointSpecOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) *bool { return v.NoSuspension }).(pulumi.BoolPtrOutput)
+}
+
+// (EndpointSettings)
+func (o GetPostgresEndpointSpecOutput) Settings() GetPostgresEndpointSpecSettingsPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) *GetPostgresEndpointSpecSettings { return v.Settings }).(GetPostgresEndpointSpecSettingsPtrOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+func (o GetPostgresEndpointSpecOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresEndpointSpecGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresEndpointSpecGroupInput is an input type that accepts GetPostgresEndpointSpecGroupArgs and GetPostgresEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointSpecGroupInput` via:
+//
+//	GetPostgresEndpointSpecGroupArgs{...}
+type GetPostgresEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointSpecGroupOutput() GetPostgresEndpointSpecGroupOutput
+	ToGetPostgresEndpointSpecGroupOutputWithContext(context.Context) GetPostgresEndpointSpecGroupOutput
+}
+
+type GetPostgresEndpointSpecGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointSpecGroupArgs) ToGetPostgresEndpointSpecGroupOutput() GetPostgresEndpointSpecGroupOutput {
+	return i.ToGetPostgresEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointSpecGroupArgs) ToGetPostgresEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecGroupOutput)
+}
+
+func (i GetPostgresEndpointSpecGroupArgs) ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointSpecGroupArgs) ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecGroupOutput).ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointSpecGroupPtrInput is an input type that accepts GetPostgresEndpointSpecGroupArgs, GetPostgresEndpointSpecGroupPtr and GetPostgresEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointSpecGroupPtrInput` via:
+//
+//	        GetPostgresEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput
+	ToGetPostgresEndpointSpecGroupPtrOutputWithContext(context.Context) GetPostgresEndpointSpecGroupPtrOutput
+}
+
+type getPostgresEndpointSpecGroupPtrType GetPostgresEndpointSpecGroupArgs
+
+func GetPostgresEndpointSpecGroupPtr(v *GetPostgresEndpointSpecGroupArgs) GetPostgresEndpointSpecGroupPtrInput {
+	return (*getPostgresEndpointSpecGroupPtrType)(v)
+}
+
+func (*getPostgresEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointSpecGroupPtrType) ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointSpecGroupPtrType) ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointSpecGroupOutput) ToGetPostgresEndpointSpecGroupOutput() GetPostgresEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecGroupOutput) ToGetPostgresEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecGroupOutput) ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput {
+	return o.ToGetPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointSpecGroupOutput) ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointSpecGroup) *GetPostgresEndpointSpecGroup {
+		return &v
+	}).(GetPostgresEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointSpecGroupPtrOutput) ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecGroupPtrOutput) ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecGroupPtrOutput) Elem() GetPostgresEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecGroup) GetPostgresEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointSpecGroup
+		return ret
+	}).(GetPostgresEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresEndpointSpecSettings struct {
+	// (object) - A raw representation of Postgres settings
+	PgSettings map[string]string `pulumi:"pgSettings"`
+}
+
+// GetPostgresEndpointSpecSettingsInput is an input type that accepts GetPostgresEndpointSpecSettingsArgs and GetPostgresEndpointSpecSettingsOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointSpecSettingsInput` via:
+//
+//	GetPostgresEndpointSpecSettingsArgs{...}
+type GetPostgresEndpointSpecSettingsInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointSpecSettingsOutput() GetPostgresEndpointSpecSettingsOutput
+	ToGetPostgresEndpointSpecSettingsOutputWithContext(context.Context) GetPostgresEndpointSpecSettingsOutput
+}
+
+type GetPostgresEndpointSpecSettingsArgs struct {
+	// (object) - A raw representation of Postgres settings
+	PgSettings pulumi.StringMapInput `pulumi:"pgSettings"`
+}
+
+func (GetPostgresEndpointSpecSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointSpecSettings)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointSpecSettingsArgs) ToGetPostgresEndpointSpecSettingsOutput() GetPostgresEndpointSpecSettingsOutput {
+	return i.ToGetPostgresEndpointSpecSettingsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointSpecSettingsArgs) ToGetPostgresEndpointSpecSettingsOutputWithContext(ctx context.Context) GetPostgresEndpointSpecSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecSettingsOutput)
+}
+
+func (i GetPostgresEndpointSpecSettingsArgs) ToGetPostgresEndpointSpecSettingsPtrOutput() GetPostgresEndpointSpecSettingsPtrOutput {
+	return i.ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointSpecSettingsArgs) ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecSettingsOutput).ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointSpecSettingsPtrInput is an input type that accepts GetPostgresEndpointSpecSettingsArgs, GetPostgresEndpointSpecSettingsPtr and GetPostgresEndpointSpecSettingsPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointSpecSettingsPtrInput` via:
+//
+//	        GetPostgresEndpointSpecSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointSpecSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointSpecSettingsPtrOutput() GetPostgresEndpointSpecSettingsPtrOutput
+	ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(context.Context) GetPostgresEndpointSpecSettingsPtrOutput
+}
+
+type getPostgresEndpointSpecSettingsPtrType GetPostgresEndpointSpecSettingsArgs
+
+func GetPostgresEndpointSpecSettingsPtr(v *GetPostgresEndpointSpecSettingsArgs) GetPostgresEndpointSpecSettingsPtrInput {
+	return (*getPostgresEndpointSpecSettingsPtrType)(v)
+}
+
+func (*getPostgresEndpointSpecSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointSpecSettings)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointSpecSettingsPtrType) ToGetPostgresEndpointSpecSettingsPtrOutput() GetPostgresEndpointSpecSettingsPtrOutput {
+	return i.ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointSpecSettingsPtrType) ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecSettingsPtrOutput)
+}
+
+type GetPostgresEndpointSpecSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointSpecSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointSpecSettings)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointSpecSettingsOutput) ToGetPostgresEndpointSpecSettingsOutput() GetPostgresEndpointSpecSettingsOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecSettingsOutput) ToGetPostgresEndpointSpecSettingsOutputWithContext(ctx context.Context) GetPostgresEndpointSpecSettingsOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecSettingsOutput) ToGetPostgresEndpointSpecSettingsPtrOutput() GetPostgresEndpointSpecSettingsPtrOutput {
+	return o.ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointSpecSettingsOutput) ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointSpecSettings) *GetPostgresEndpointSpecSettings {
+		return &v
+	}).(GetPostgresEndpointSpecSettingsPtrOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresEndpointSpecSettingsOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpecSettings) map[string]string { return v.PgSettings }).(pulumi.StringMapOutput)
+}
+
+type GetPostgresEndpointSpecSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointSpecSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointSpecSettings)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointSpecSettingsPtrOutput) ToGetPostgresEndpointSpecSettingsPtrOutput() GetPostgresEndpointSpecSettingsPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecSettingsPtrOutput) ToGetPostgresEndpointSpecSettingsPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecSettingsPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecSettingsPtrOutput) Elem() GetPostgresEndpointSpecSettingsOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecSettings) GetPostgresEndpointSpecSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointSpecSettings
+		return ret
+	}).(GetPostgresEndpointSpecSettingsOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresEndpointSpecSettingsPtrOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PgSettings
+	}).(pulumi.StringMapOutput)
+}
+
+type GetPostgresEndpointStatus struct {
+	// (number) - The maximum number of Compute Units. The maximum value is 64.
+	// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+	AutoscalingLimitMaxCu float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units
+	AutoscalingLimitMinCu float64 `pulumi:"autoscalingLimitMinCu"`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+	CurrentState string `pulumi:"currentState"`
+	// (boolean) - Whether to restrict connections to the compute endpoint.
+	// Enabling this option schedules a suspend compute operation.
+	// A disabled compute endpoint cannot be enabled by a connection or
+	// console action
+	Disabled bool `pulumi:"disabled"`
+	// (string) - Part of the resource name
+	EndpointId string `pulumi:"endpointId"`
+	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointStatusGroup `pulumi:"group"`
+	// (EndpointHosts) - Contains host information for connecting to the endpoint
+	Hosts GetPostgresEndpointStatusHosts `pulumi:"hosts"`
+	// (string) - A timestamp indicating when the compute endpoint was last active
+	LastActiveTime string `pulumi:"lastActiveTime"`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+	PendingState string `pulumi:"pendingState"`
+	// (EndpointSettings)
+	Settings GetPostgresEndpointStatusSettings `pulumi:"settings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+	SuspendTimeoutDuration string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresEndpointStatusInput is an input type that accepts GetPostgresEndpointStatusArgs and GetPostgresEndpointStatusOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointStatusInput` via:
+//
+//	GetPostgresEndpointStatusArgs{...}
+type GetPostgresEndpointStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointStatusOutput() GetPostgresEndpointStatusOutput
+	ToGetPostgresEndpointStatusOutputWithContext(context.Context) GetPostgresEndpointStatusOutput
+}
+
+type GetPostgresEndpointStatusArgs struct {
+	// (number) - The maximum number of Compute Units. The maximum value is 64.
+	// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+	AutoscalingLimitMaxCu pulumi.Float64Input `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units
+	AutoscalingLimitMinCu pulumi.Float64Input `pulumi:"autoscalingLimitMinCu"`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+	CurrentState pulumi.StringInput `pulumi:"currentState"`
+	// (boolean) - Whether to restrict connections to the compute endpoint.
+	// Enabling this option schedules a suspend compute operation.
+	// A disabled compute endpoint cannot be enabled by a connection or
+	// console action
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// (string) - Part of the resource name
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointStatusGroupInput `pulumi:"group"`
+	// (EndpointHosts) - Contains host information for connecting to the endpoint
+	Hosts GetPostgresEndpointStatusHostsInput `pulumi:"hosts"`
+	// (string) - A timestamp indicating when the compute endpoint was last active
+	LastActiveTime pulumi.StringInput `pulumi:"lastActiveTime"`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+	PendingState pulumi.StringInput `pulumi:"pendingState"`
+	// (EndpointSettings)
+	Settings GetPostgresEndpointStatusSettingsInput `pulumi:"settings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+	SuspendTimeoutDuration pulumi.StringInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresEndpointStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatus)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointStatusArgs) ToGetPostgresEndpointStatusOutput() GetPostgresEndpointStatusOutput {
+	return i.ToGetPostgresEndpointStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointStatusArgs) ToGetPostgresEndpointStatusOutputWithContext(ctx context.Context) GetPostgresEndpointStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointStatusOutput)
+}
+
+type GetPostgresEndpointStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatus)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointStatusOutput) ToGetPostgresEndpointStatusOutput() GetPostgresEndpointStatusOutput {
+	return o
+}
+
+func (o GetPostgresEndpointStatusOutput) ToGetPostgresEndpointStatusOutputWithContext(ctx context.Context) GetPostgresEndpointStatusOutput {
+	return o
+}
+
+// (number) - The maximum number of Compute Units. The maximum value is 64.
+// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+func (o GetPostgresEndpointStatusOutput) AutoscalingLimitMaxCu() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64Output)
+}
+
+// (number) - The minimum number of Compute Units
+func (o GetPostgresEndpointStatusOutput) AutoscalingLimitMinCu() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64Output)
+}
+
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+func (o GetPostgresEndpointStatusOutput) CurrentState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.CurrentState }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether to restrict connections to the compute endpoint.
+// Enabling this option schedules a suspend compute operation.
+// A disabled compute endpoint cannot be enabled by a connection or
+// console action
+func (o GetPostgresEndpointStatusOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresEndpointStatusOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+func (o GetPostgresEndpointStatusOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o GetPostgresEndpointStatusOutput) Group() GetPostgresEndpointStatusGroupOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) GetPostgresEndpointStatusGroup { return v.Group }).(GetPostgresEndpointStatusGroupOutput)
+}
+
+// (EndpointHosts) - Contains host information for connecting to the endpoint
+func (o GetPostgresEndpointStatusOutput) Hosts() GetPostgresEndpointStatusHostsOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) GetPostgresEndpointStatusHosts { return v.Hosts }).(GetPostgresEndpointStatusHostsOutput)
+}
+
+// (string) - A timestamp indicating when the compute endpoint was last active
+func (o GetPostgresEndpointStatusOutput) LastActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.LastActiveTime }).(pulumi.StringOutput)
+}
+
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+func (o GetPostgresEndpointStatusOutput) PendingState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.PendingState }).(pulumi.StringOutput)
+}
+
+// (EndpointSettings)
+func (o GetPostgresEndpointStatusOutput) Settings() GetPostgresEndpointStatusSettingsOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) GetPostgresEndpointStatusSettings { return v.Settings }).(GetPostgresEndpointStatusSettingsOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+func (o GetPostgresEndpointStatusOutput) SuspendTimeoutDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.SuspendTimeoutDuration }).(pulumi.StringOutput)
+}
+
+type GetPostgresEndpointStatusGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresEndpointStatusGroupInput is an input type that accepts GetPostgresEndpointStatusGroupArgs and GetPostgresEndpointStatusGroupOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointStatusGroupInput` via:
+//
+//	GetPostgresEndpointStatusGroupArgs{...}
+type GetPostgresEndpointStatusGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointStatusGroupOutput() GetPostgresEndpointStatusGroupOutput
+	ToGetPostgresEndpointStatusGroupOutputWithContext(context.Context) GetPostgresEndpointStatusGroupOutput
+}
+
+type GetPostgresEndpointStatusGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresEndpointStatusGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatusGroup)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointStatusGroupArgs) ToGetPostgresEndpointStatusGroupOutput() GetPostgresEndpointStatusGroupOutput {
+	return i.ToGetPostgresEndpointStatusGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointStatusGroupArgs) ToGetPostgresEndpointStatusGroupOutputWithContext(ctx context.Context) GetPostgresEndpointStatusGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointStatusGroupOutput)
+}
+
+type GetPostgresEndpointStatusGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointStatusGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatusGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointStatusGroupOutput) ToGetPostgresEndpointStatusGroupOutput() GetPostgresEndpointStatusGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointStatusGroupOutput) ToGetPostgresEndpointStatusGroupOutputWithContext(ctx context.Context) GetPostgresEndpointStatusGroupOutput {
+	return o
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointStatusGroupOutput) EnableReadableSecondaries() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusGroup) bool { return v.EnableReadableSecondaries }).(pulumi.BoolOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointStatusGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointStatusGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresEndpointStatusHosts struct {
+	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+	Host string `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost string `pulumi:"readOnlyHost"`
+	// (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+	// and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+	ReadOnlyPooledHost string `pulumi:"readOnlyPooledHost"`
+	// (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+	ReadWritePooledHost string `pulumi:"readWritePooledHost"`
+}
+
+// GetPostgresEndpointStatusHostsInput is an input type that accepts GetPostgresEndpointStatusHostsArgs and GetPostgresEndpointStatusHostsOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointStatusHostsInput` via:
+//
+//	GetPostgresEndpointStatusHostsArgs{...}
+type GetPostgresEndpointStatusHostsInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointStatusHostsOutput() GetPostgresEndpointStatusHostsOutput
+	ToGetPostgresEndpointStatusHostsOutputWithContext(context.Context) GetPostgresEndpointStatusHostsOutput
+}
+
+type GetPostgresEndpointStatusHostsArgs struct {
+	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+	Host pulumi.StringInput `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost pulumi.StringInput `pulumi:"readOnlyHost"`
+	// (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+	// and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+	ReadOnlyPooledHost pulumi.StringInput `pulumi:"readOnlyPooledHost"`
+	// (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+	ReadWritePooledHost pulumi.StringInput `pulumi:"readWritePooledHost"`
+}
+
+func (GetPostgresEndpointStatusHostsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatusHosts)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointStatusHostsArgs) ToGetPostgresEndpointStatusHostsOutput() GetPostgresEndpointStatusHostsOutput {
+	return i.ToGetPostgresEndpointStatusHostsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointStatusHostsArgs) ToGetPostgresEndpointStatusHostsOutputWithContext(ctx context.Context) GetPostgresEndpointStatusHostsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointStatusHostsOutput)
+}
+
+type GetPostgresEndpointStatusHostsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointStatusHostsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatusHosts)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointStatusHostsOutput) ToGetPostgresEndpointStatusHostsOutput() GetPostgresEndpointStatusHostsOutput {
+	return o
+}
+
+func (o GetPostgresEndpointStatusHostsOutput) ToGetPostgresEndpointStatusHostsOutputWithContext(ctx context.Context) GetPostgresEndpointStatusHostsOutput {
+	return o
+}
+
+// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+func (o GetPostgresEndpointStatusHostsOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusHosts) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+func (o GetPostgresEndpointStatusHostsOutput) ReadOnlyHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusHosts) string { return v.ReadOnlyHost }).(pulumi.StringOutput)
+}
+
+// (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+// and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+func (o GetPostgresEndpointStatusHostsOutput) ReadOnlyPooledHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusHosts) string { return v.ReadOnlyPooledHost }).(pulumi.StringOutput)
+}
+
+// (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+func (o GetPostgresEndpointStatusHostsOutput) ReadWritePooledHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusHosts) string { return v.ReadWritePooledHost }).(pulumi.StringOutput)
+}
+
+type GetPostgresEndpointStatusSettings struct {
+	// (object) - A raw representation of Postgres settings
+	PgSettings map[string]string `pulumi:"pgSettings"`
+}
+
+// GetPostgresEndpointStatusSettingsInput is an input type that accepts GetPostgresEndpointStatusSettingsArgs and GetPostgresEndpointStatusSettingsOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointStatusSettingsInput` via:
+//
+//	GetPostgresEndpointStatusSettingsArgs{...}
+type GetPostgresEndpointStatusSettingsInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointStatusSettingsOutput() GetPostgresEndpointStatusSettingsOutput
+	ToGetPostgresEndpointStatusSettingsOutputWithContext(context.Context) GetPostgresEndpointStatusSettingsOutput
+}
+
+type GetPostgresEndpointStatusSettingsArgs struct {
+	// (object) - A raw representation of Postgres settings
+	PgSettings pulumi.StringMapInput `pulumi:"pgSettings"`
+}
+
+func (GetPostgresEndpointStatusSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatusSettings)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointStatusSettingsArgs) ToGetPostgresEndpointStatusSettingsOutput() GetPostgresEndpointStatusSettingsOutput {
+	return i.ToGetPostgresEndpointStatusSettingsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointStatusSettingsArgs) ToGetPostgresEndpointStatusSettingsOutputWithContext(ctx context.Context) GetPostgresEndpointStatusSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointStatusSettingsOutput)
+}
+
+type GetPostgresEndpointStatusSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointStatusSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatusSettings)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointStatusSettingsOutput) ToGetPostgresEndpointStatusSettingsOutput() GetPostgresEndpointStatusSettingsOutput {
+	return o
+}
+
+func (o GetPostgresEndpointStatusSettingsOutput) ToGetPostgresEndpointStatusSettingsOutputWithContext(ctx context.Context) GetPostgresEndpointStatusSettingsOutput {
+	return o
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresEndpointStatusSettingsOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusSettings) map[string]string { return v.PgSettings }).(pulumi.StringMapOutput)
+}
+
+type GetPostgresEndpointsEndpoint struct {
+	// (string) - A timestamp indicating when the compute endpoint was created
+	CreateTime string `pulumi:"createTime"`
+	// (string) - Part of the resource name
+	EndpointId string `pulumi:"endpointId"`
+	// (string) - Output only. The full resource path of the endpoint.
+	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+	Name string `pulumi:"name"`
+	// The Branch that owns this collection of endpoints.
+	// Format: projects/{project_id}/branches/{branch_id}
+	Parent string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresEndpointsEndpointProviderConfig `pulumi:"providerConfig"`
+	// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+	Spec GetPostgresEndpointsEndpointSpec `pulumi:"spec"`
+	// (EndpointStatus) - Current operational status of the compute endpoint
+	Status GetPostgresEndpointsEndpointStatus `pulumi:"status"`
+	// (string) - System-generated unique ID for the endpoint
+	Uid string `pulumi:"uid"`
+	// (string) - A timestamp indicating when the compute endpoint was last updated
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetPostgresEndpointsEndpointInput is an input type that accepts GetPostgresEndpointsEndpointArgs and GetPostgresEndpointsEndpointOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointInput` via:
+//
+//	GetPostgresEndpointsEndpointArgs{...}
+type GetPostgresEndpointsEndpointInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointOutput() GetPostgresEndpointsEndpointOutput
+	ToGetPostgresEndpointsEndpointOutputWithContext(context.Context) GetPostgresEndpointsEndpointOutput
+}
+
+type GetPostgresEndpointsEndpointArgs struct {
+	// (string) - A timestamp indicating when the compute endpoint was created
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - Part of the resource name
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// (string) - Output only. The full resource path of the endpoint.
+	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Branch that owns this collection of endpoints.
+	// Format: projects/{project_id}/branches/{branch_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresEndpointsEndpointProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+	Spec GetPostgresEndpointsEndpointSpecInput `pulumi:"spec"`
+	// (EndpointStatus) - Current operational status of the compute endpoint
+	Status GetPostgresEndpointsEndpointStatusInput `pulumi:"status"`
+	// (string) - System-generated unique ID for the endpoint
+	Uid pulumi.StringInput `pulumi:"uid"`
+	// (string) - A timestamp indicating when the compute endpoint was last updated
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetPostgresEndpointsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointArgs) ToGetPostgresEndpointsEndpointOutput() GetPostgresEndpointsEndpointOutput {
+	return i.ToGetPostgresEndpointsEndpointOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointArgs) ToGetPostgresEndpointsEndpointOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointOutput)
+}
+
+// GetPostgresEndpointsEndpointArrayInput is an input type that accepts GetPostgresEndpointsEndpointArray and GetPostgresEndpointsEndpointArrayOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointArrayInput` via:
+//
+//	GetPostgresEndpointsEndpointArray{ GetPostgresEndpointsEndpointArgs{...} }
+type GetPostgresEndpointsEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointArrayOutput() GetPostgresEndpointsEndpointArrayOutput
+	ToGetPostgresEndpointsEndpointArrayOutputWithContext(context.Context) GetPostgresEndpointsEndpointArrayOutput
+}
+
+type GetPostgresEndpointsEndpointArray []GetPostgresEndpointsEndpointInput
+
+func (GetPostgresEndpointsEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointArray) ToGetPostgresEndpointsEndpointArrayOutput() GetPostgresEndpointsEndpointArrayOutput {
+	return i.ToGetPostgresEndpointsEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointArray) ToGetPostgresEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointArrayOutput)
+}
+
+type GetPostgresEndpointsEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointOutput) ToGetPostgresEndpointsEndpointOutput() GetPostgresEndpointsEndpointOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointOutput) ToGetPostgresEndpointsEndpointOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointOutput {
+	return o
+}
+
+// (string) - A timestamp indicating when the compute endpoint was created
+func (o GetPostgresEndpointsEndpointOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresEndpointsEndpointOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// (string) - Output only. The full resource path of the endpoint.
+// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+func (o GetPostgresEndpointsEndpointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Branch that owns this collection of endpoints.
+// Format: projects/{project_id}/branches/{branch_id}
+func (o GetPostgresEndpointsEndpointOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetPostgresEndpointsEndpointOutput) ProviderConfig() GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) *GetPostgresEndpointsEndpointProviderConfig {
+		return v.ProviderConfig
+	}).(GetPostgresEndpointsEndpointProviderConfigPtrOutput)
+}
+
+// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+func (o GetPostgresEndpointsEndpointOutput) Spec() GetPostgresEndpointsEndpointSpecOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) GetPostgresEndpointsEndpointSpec { return v.Spec }).(GetPostgresEndpointsEndpointSpecOutput)
+}
+
+// (EndpointStatus) - Current operational status of the compute endpoint
+func (o GetPostgresEndpointsEndpointOutput) Status() GetPostgresEndpointsEndpointStatusOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) GetPostgresEndpointsEndpointStatus { return v.Status }).(GetPostgresEndpointsEndpointStatusOutput)
+}
+
+// (string) - System-generated unique ID for the endpoint
+func (o GetPostgresEndpointsEndpointOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the compute endpoint was last updated
+func (o GetPostgresEndpointsEndpointOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpoint) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetPostgresEndpointsEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointArrayOutput) ToGetPostgresEndpointsEndpointArrayOutput() GetPostgresEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointArrayOutput) ToGetPostgresEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetPostgresEndpointsEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresEndpointsEndpoint {
+		return vs[0].([]GetPostgresEndpointsEndpoint)[vs[1].(int)]
+	}).(GetPostgresEndpointsEndpointOutput)
+}
+
+type GetPostgresEndpointsEndpointProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresEndpointsEndpointProviderConfigInput is an input type that accepts GetPostgresEndpointsEndpointProviderConfigArgs and GetPostgresEndpointsEndpointProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointProviderConfigInput` via:
+//
+//	GetPostgresEndpointsEndpointProviderConfigArgs{...}
+type GetPostgresEndpointsEndpointProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointProviderConfigOutput() GetPostgresEndpointsEndpointProviderConfigOutput
+	ToGetPostgresEndpointsEndpointProviderConfigOutputWithContext(context.Context) GetPostgresEndpointsEndpointProviderConfigOutput
+}
+
+type GetPostgresEndpointsEndpointProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresEndpointsEndpointProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointProviderConfigArgs) ToGetPostgresEndpointsEndpointProviderConfigOutput() GetPostgresEndpointsEndpointProviderConfigOutput {
+	return i.ToGetPostgresEndpointsEndpointProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointProviderConfigArgs) ToGetPostgresEndpointsEndpointProviderConfigOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointProviderConfigOutput)
+}
+
+func (i GetPostgresEndpointsEndpointProviderConfigArgs) ToGetPostgresEndpointsEndpointProviderConfigPtrOutput() GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return i.ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointProviderConfigArgs) ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointProviderConfigOutput).ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointsEndpointProviderConfigPtrInput is an input type that accepts GetPostgresEndpointsEndpointProviderConfigArgs, GetPostgresEndpointsEndpointProviderConfigPtr and GetPostgresEndpointsEndpointProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointProviderConfigPtrInput` via:
+//
+//	        GetPostgresEndpointsEndpointProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointsEndpointProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointProviderConfigPtrOutput() GetPostgresEndpointsEndpointProviderConfigPtrOutput
+	ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(context.Context) GetPostgresEndpointsEndpointProviderConfigPtrOutput
+}
+
+type getPostgresEndpointsEndpointProviderConfigPtrType GetPostgresEndpointsEndpointProviderConfigArgs
+
+func GetPostgresEndpointsEndpointProviderConfigPtr(v *GetPostgresEndpointsEndpointProviderConfigArgs) GetPostgresEndpointsEndpointProviderConfigPtrInput {
+	return (*getPostgresEndpointsEndpointProviderConfigPtrType)(v)
+}
+
+func (*getPostgresEndpointsEndpointProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsEndpointProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointsEndpointProviderConfigPtrType) ToGetPostgresEndpointsEndpointProviderConfigPtrOutput() GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return i.ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointsEndpointProviderConfigPtrType) ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointProviderConfigPtrOutput)
+}
+
+type GetPostgresEndpointsEndpointProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointProviderConfigOutput) ToGetPostgresEndpointsEndpointProviderConfigOutput() GetPostgresEndpointsEndpointProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointProviderConfigOutput) ToGetPostgresEndpointsEndpointProviderConfigOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointProviderConfigOutput) ToGetPostgresEndpointsEndpointProviderConfigPtrOutput() GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return o.ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointsEndpointProviderConfigOutput) ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointsEndpointProviderConfig) *GetPostgresEndpointsEndpointProviderConfig {
+		return &v
+	}).(GetPostgresEndpointsEndpointProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresEndpointsEndpointProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresEndpointsEndpointProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsEndpointProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointProviderConfigPtrOutput) ToGetPostgresEndpointsEndpointProviderConfigPtrOutput() GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointProviderConfigPtrOutput) ToGetPostgresEndpointsEndpointProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointProviderConfigPtrOutput) Elem() GetPostgresEndpointsEndpointProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointProviderConfig) GetPostgresEndpointsEndpointProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointsEndpointProviderConfig
+		return ret
+	}).(GetPostgresEndpointsEndpointProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresEndpointsEndpointProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresEndpointsEndpointSpec struct {
+	// (number) - The maximum number of Compute Units. The maximum value is 64.
+	// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units
+	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - Whether to restrict connections to the compute endpoint.
+	// Enabling this option schedules a suspend compute operation.
+	// A disabled compute endpoint cannot be enabled by a connection or
+	// console action
+	Disabled *bool `pulumi:"disabled"`
+	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group *GetPostgresEndpointsEndpointSpecGroup `pulumi:"group"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+	NoSuspension *bool `pulumi:"noSuspension"`
+	// (EndpointSettings)
+	Settings *GetPostgresEndpointsEndpointSpecSettings `pulumi:"settings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+	SuspendTimeoutDuration *string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresEndpointsEndpointSpecInput is an input type that accepts GetPostgresEndpointsEndpointSpecArgs and GetPostgresEndpointsEndpointSpecOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointSpecInput` via:
+//
+//	GetPostgresEndpointsEndpointSpecArgs{...}
+type GetPostgresEndpointsEndpointSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointSpecOutput() GetPostgresEndpointsEndpointSpecOutput
+	ToGetPostgresEndpointsEndpointSpecOutputWithContext(context.Context) GetPostgresEndpointsEndpointSpecOutput
+}
+
+type GetPostgresEndpointsEndpointSpecArgs struct {
+	// (number) - The maximum number of Compute Units. The maximum value is 64.
+	// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units
+	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - Whether to restrict connections to the compute endpoint.
+	// Enabling this option schedules a suspend compute operation.
+	// A disabled compute endpoint cannot be enabled by a connection or
+	// console action
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointsEndpointSpecGroupPtrInput `pulumi:"group"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
+	// (EndpointSettings)
+	Settings GetPostgresEndpointsEndpointSpecSettingsPtrInput `pulumi:"settings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+	SuspendTimeoutDuration pulumi.StringPtrInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresEndpointsEndpointSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointSpec)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointSpecArgs) ToGetPostgresEndpointsEndpointSpecOutput() GetPostgresEndpointsEndpointSpecOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointSpecArgs) ToGetPostgresEndpointsEndpointSpecOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointSpec)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointSpecOutput) ToGetPostgresEndpointsEndpointSpecOutput() GetPostgresEndpointsEndpointSpecOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecOutput) ToGetPostgresEndpointsEndpointSpecOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecOutput {
+	return o
+}
+
+// (number) - The maximum number of Compute Units. The maximum value is 64.
+// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+func (o GetPostgresEndpointsEndpointSpecOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units
+func (o GetPostgresEndpointsEndpointSpecOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64PtrOutput)
+}
+
+// (boolean) - Whether to restrict connections to the compute endpoint.
+// Enabling this option schedules a suspend compute operation.
+// A disabled compute endpoint cannot be enabled by a connection or
+// console action
+func (o GetPostgresEndpointsEndpointSpecOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+func (o GetPostgresEndpointsEndpointSpecOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o GetPostgresEndpointsEndpointSpecOutput) Group() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *GetPostgresEndpointsEndpointSpecGroup { return v.Group }).(GetPostgresEndpointsEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+func (o GetPostgresEndpointsEndpointSpecOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *bool { return v.NoSuspension }).(pulumi.BoolPtrOutput)
+}
+
+// (EndpointSettings)
+func (o GetPostgresEndpointsEndpointSpecOutput) Settings() GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *GetPostgresEndpointsEndpointSpecSettings { return v.Settings }).(GetPostgresEndpointsEndpointSpecSettingsPtrOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+func (o GetPostgresEndpointsEndpointSpecOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresEndpointsEndpointSpecGroupInput is an input type that accepts GetPostgresEndpointsEndpointSpecGroupArgs and GetPostgresEndpointsEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointSpecGroupInput` via:
+//
+//	GetPostgresEndpointsEndpointSpecGroupArgs{...}
+type GetPostgresEndpointsEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointSpecGroupOutput() GetPostgresEndpointsEndpointSpecGroupOutput
+	ToGetPostgresEndpointsEndpointSpecGroupOutputWithContext(context.Context) GetPostgresEndpointsEndpointSpecGroupOutput
+}
+
+type GetPostgresEndpointsEndpointSpecGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresEndpointsEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointSpecGroupArgs) ToGetPostgresEndpointsEndpointSpecGroupOutput() GetPostgresEndpointsEndpointSpecGroupOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointSpecGroupArgs) ToGetPostgresEndpointsEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecGroupOutput)
+}
+
+func (i GetPostgresEndpointsEndpointSpecGroupArgs) ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointSpecGroupArgs) ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecGroupOutput).ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointsEndpointSpecGroupPtrInput is an input type that accepts GetPostgresEndpointsEndpointSpecGroupArgs, GetPostgresEndpointsEndpointSpecGroupPtr and GetPostgresEndpointsEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointSpecGroupPtrInput` via:
+//
+//	        GetPostgresEndpointsEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointsEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput
+	ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput
+}
+
+type getPostgresEndpointsEndpointSpecGroupPtrType GetPostgresEndpointsEndpointSpecGroupArgs
+
+func GetPostgresEndpointsEndpointSpecGroupPtr(v *GetPostgresEndpointsEndpointSpecGroupArgs) GetPostgresEndpointsEndpointSpecGroupPtrInput {
+	return (*getPostgresEndpointsEndpointSpecGroupPtrType)(v)
+}
+
+func (*getPostgresEndpointsEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointsEndpointSpecGroupPtrType) ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointsEndpointSpecGroupPtrType) ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) ToGetPostgresEndpointsEndpointSpecGroupOutput() GetPostgresEndpointsEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) ToGetPostgresEndpointsEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o.ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointsEndpointSpecGroup) *GetPostgresEndpointsEndpointSpecGroup {
+		return &v
+	}).(GetPostgresEndpointsEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) Elem() GetPostgresEndpointsEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecGroup) GetPostgresEndpointsEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointsEndpointSpecGroup
+		return ret
+	}).(GetPostgresEndpointsEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecSettings struct {
+	// (object) - A raw representation of Postgres settings
+	PgSettings map[string]string `pulumi:"pgSettings"`
+}
+
+// GetPostgresEndpointsEndpointSpecSettingsInput is an input type that accepts GetPostgresEndpointsEndpointSpecSettingsArgs and GetPostgresEndpointsEndpointSpecSettingsOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointSpecSettingsInput` via:
+//
+//	GetPostgresEndpointsEndpointSpecSettingsArgs{...}
+type GetPostgresEndpointsEndpointSpecSettingsInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointSpecSettingsOutput() GetPostgresEndpointsEndpointSpecSettingsOutput
+	ToGetPostgresEndpointsEndpointSpecSettingsOutputWithContext(context.Context) GetPostgresEndpointsEndpointSpecSettingsOutput
+}
+
+type GetPostgresEndpointsEndpointSpecSettingsArgs struct {
+	// (object) - A raw representation of Postgres settings
+	PgSettings pulumi.StringMapInput `pulumi:"pgSettings"`
+}
+
+func (GetPostgresEndpointsEndpointSpecSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointSpecSettings)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointSpecSettingsArgs) ToGetPostgresEndpointsEndpointSpecSettingsOutput() GetPostgresEndpointsEndpointSpecSettingsOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecSettingsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointSpecSettingsArgs) ToGetPostgresEndpointsEndpointSpecSettingsOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecSettingsOutput)
+}
+
+func (i GetPostgresEndpointsEndpointSpecSettingsArgs) ToGetPostgresEndpointsEndpointSpecSettingsPtrOutput() GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointSpecSettingsArgs) ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecSettingsOutput).ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointsEndpointSpecSettingsPtrInput is an input type that accepts GetPostgresEndpointsEndpointSpecSettingsArgs, GetPostgresEndpointsEndpointSpecSettingsPtr and GetPostgresEndpointsEndpointSpecSettingsPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointSpecSettingsPtrInput` via:
+//
+//	        GetPostgresEndpointsEndpointSpecSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointsEndpointSpecSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointSpecSettingsPtrOutput() GetPostgresEndpointsEndpointSpecSettingsPtrOutput
+	ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(context.Context) GetPostgresEndpointsEndpointSpecSettingsPtrOutput
+}
+
+type getPostgresEndpointsEndpointSpecSettingsPtrType GetPostgresEndpointsEndpointSpecSettingsArgs
+
+func GetPostgresEndpointsEndpointSpecSettingsPtr(v *GetPostgresEndpointsEndpointSpecSettingsArgs) GetPostgresEndpointsEndpointSpecSettingsPtrInput {
+	return (*getPostgresEndpointsEndpointSpecSettingsPtrType)(v)
+}
+
+func (*getPostgresEndpointsEndpointSpecSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsEndpointSpecSettings)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointsEndpointSpecSettingsPtrType) ToGetPostgresEndpointsEndpointSpecSettingsPtrOutput() GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointsEndpointSpecSettingsPtrType) ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecSettingsPtrOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointSpecSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointSpecSettings)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointSpecSettingsOutput) ToGetPostgresEndpointsEndpointSpecSettingsOutput() GetPostgresEndpointsEndpointSpecSettingsOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecSettingsOutput) ToGetPostgresEndpointsEndpointSpecSettingsOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecSettingsOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecSettingsOutput) ToGetPostgresEndpointsEndpointSpecSettingsPtrOutput() GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return o.ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointsEndpointSpecSettingsOutput) ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointsEndpointSpecSettings) *GetPostgresEndpointsEndpointSpecSettings {
+		return &v
+	}).(GetPostgresEndpointsEndpointSpecSettingsPtrOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresEndpointsEndpointSpecSettingsOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpecSettings) map[string]string { return v.PgSettings }).(pulumi.StringMapOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointSpecSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsEndpointSpecSettings)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointSpecSettingsPtrOutput) ToGetPostgresEndpointsEndpointSpecSettingsPtrOutput() GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecSettingsPtrOutput) ToGetPostgresEndpointsEndpointSpecSettingsPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecSettingsPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecSettingsPtrOutput) Elem() GetPostgresEndpointsEndpointSpecSettingsOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecSettings) GetPostgresEndpointsEndpointSpecSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointsEndpointSpecSettings
+		return ret
+	}).(GetPostgresEndpointsEndpointSpecSettingsOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresEndpointsEndpointSpecSettingsPtrOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PgSettings
+	}).(pulumi.StringMapOutput)
+}
+
+type GetPostgresEndpointsEndpointStatus struct {
+	// (number) - The maximum number of Compute Units. The maximum value is 64.
+	// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+	AutoscalingLimitMaxCu float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units
+	AutoscalingLimitMinCu float64 `pulumi:"autoscalingLimitMinCu"`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+	CurrentState string `pulumi:"currentState"`
+	// (boolean) - Whether to restrict connections to the compute endpoint.
+	// Enabling this option schedules a suspend compute operation.
+	// A disabled compute endpoint cannot be enabled by a connection or
+	// console action
+	Disabled bool `pulumi:"disabled"`
+	// (string) - Part of the resource name
+	EndpointId string `pulumi:"endpointId"`
+	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointsEndpointStatusGroup `pulumi:"group"`
+	// (EndpointHosts) - Contains host information for connecting to the endpoint
+	Hosts GetPostgresEndpointsEndpointStatusHosts `pulumi:"hosts"`
+	// (string) - A timestamp indicating when the compute endpoint was last active
+	LastActiveTime string `pulumi:"lastActiveTime"`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+	PendingState string `pulumi:"pendingState"`
+	// (EndpointSettings)
+	Settings GetPostgresEndpointsEndpointStatusSettings `pulumi:"settings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+	SuspendTimeoutDuration string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresEndpointsEndpointStatusInput is an input type that accepts GetPostgresEndpointsEndpointStatusArgs and GetPostgresEndpointsEndpointStatusOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointStatusInput` via:
+//
+//	GetPostgresEndpointsEndpointStatusArgs{...}
+type GetPostgresEndpointsEndpointStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointStatusOutput() GetPostgresEndpointsEndpointStatusOutput
+	ToGetPostgresEndpointsEndpointStatusOutputWithContext(context.Context) GetPostgresEndpointsEndpointStatusOutput
+}
+
+type GetPostgresEndpointsEndpointStatusArgs struct {
+	// (number) - The maximum number of Compute Units. The maximum value is 64.
+	// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+	AutoscalingLimitMaxCu pulumi.Float64Input `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units
+	AutoscalingLimitMinCu pulumi.Float64Input `pulumi:"autoscalingLimitMinCu"`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+	CurrentState pulumi.StringInput `pulumi:"currentState"`
+	// (boolean) - Whether to restrict connections to the compute endpoint.
+	// Enabling this option schedules a suspend compute operation.
+	// A disabled compute endpoint cannot be enabled by a connection or
+	// console action
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// (string) - Part of the resource name
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointsEndpointStatusGroupInput `pulumi:"group"`
+	// (EndpointHosts) - Contains host information for connecting to the endpoint
+	Hosts GetPostgresEndpointsEndpointStatusHostsInput `pulumi:"hosts"`
+	// (string) - A timestamp indicating when the compute endpoint was last active
+	LastActiveTime pulumi.StringInput `pulumi:"lastActiveTime"`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+	PendingState pulumi.StringInput `pulumi:"pendingState"`
+	// (EndpointSettings)
+	Settings GetPostgresEndpointsEndpointStatusSettingsInput `pulumi:"settings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+	SuspendTimeoutDuration pulumi.StringInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresEndpointsEndpointStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatus)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointStatusArgs) ToGetPostgresEndpointsEndpointStatusOutput() GetPostgresEndpointsEndpointStatusOutput {
+	return i.ToGetPostgresEndpointsEndpointStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointStatusArgs) ToGetPostgresEndpointsEndpointStatusOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointStatusOutput)
+}
+
+type GetPostgresEndpointsEndpointStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatus)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointStatusOutput) ToGetPostgresEndpointsEndpointStatusOutput() GetPostgresEndpointsEndpointStatusOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointStatusOutput) ToGetPostgresEndpointsEndpointStatusOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusOutput {
+	return o
+}
+
+// (number) - The maximum number of Compute Units. The maximum value is 64.
+// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
+func (o GetPostgresEndpointsEndpointStatusOutput) AutoscalingLimitMaxCu() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64Output)
+}
+
+// (number) - The minimum number of Compute Units
+func (o GetPostgresEndpointsEndpointStatusOutput) AutoscalingLimitMinCu() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64Output)
+}
+
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+func (o GetPostgresEndpointsEndpointStatusOutput) CurrentState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.CurrentState }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether to restrict connections to the compute endpoint.
+// Enabling this option schedules a suspend compute operation.
+// A disabled compute endpoint cannot be enabled by a connection or
+// console action
+func (o GetPostgresEndpointsEndpointStatusOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresEndpointsEndpointStatusOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+func (o GetPostgresEndpointsEndpointStatusOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o GetPostgresEndpointsEndpointStatusOutput) Group() GetPostgresEndpointsEndpointStatusGroupOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) GetPostgresEndpointsEndpointStatusGroup { return v.Group }).(GetPostgresEndpointsEndpointStatusGroupOutput)
+}
+
+// (EndpointHosts) - Contains host information for connecting to the endpoint
+func (o GetPostgresEndpointsEndpointStatusOutput) Hosts() GetPostgresEndpointsEndpointStatusHostsOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) GetPostgresEndpointsEndpointStatusHosts { return v.Hosts }).(GetPostgresEndpointsEndpointStatusHostsOutput)
+}
+
+// (string) - A timestamp indicating when the compute endpoint was last active
+func (o GetPostgresEndpointsEndpointStatusOutput) LastActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.LastActiveTime }).(pulumi.StringOutput)
+}
+
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+func (o GetPostgresEndpointsEndpointStatusOutput) PendingState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.PendingState }).(pulumi.StringOutput)
+}
+
+// (EndpointSettings)
+func (o GetPostgresEndpointsEndpointStatusOutput) Settings() GetPostgresEndpointsEndpointStatusSettingsOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) GetPostgresEndpointsEndpointStatusSettings {
+		return v.Settings
+	}).(GetPostgresEndpointsEndpointStatusSettingsOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+func (o GetPostgresEndpointsEndpointStatusOutput) SuspendTimeoutDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.SuspendTimeoutDuration }).(pulumi.StringOutput)
+}
+
+type GetPostgresEndpointsEndpointStatusGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresEndpointsEndpointStatusGroupInput is an input type that accepts GetPostgresEndpointsEndpointStatusGroupArgs and GetPostgresEndpointsEndpointStatusGroupOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointStatusGroupInput` via:
+//
+//	GetPostgresEndpointsEndpointStatusGroupArgs{...}
+type GetPostgresEndpointsEndpointStatusGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointStatusGroupOutput() GetPostgresEndpointsEndpointStatusGroupOutput
+	ToGetPostgresEndpointsEndpointStatusGroupOutputWithContext(context.Context) GetPostgresEndpointsEndpointStatusGroupOutput
+}
+
+type GetPostgresEndpointsEndpointStatusGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresEndpointsEndpointStatusGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatusGroup)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointStatusGroupArgs) ToGetPostgresEndpointsEndpointStatusGroupOutput() GetPostgresEndpointsEndpointStatusGroupOutput {
+	return i.ToGetPostgresEndpointsEndpointStatusGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointStatusGroupArgs) ToGetPostgresEndpointsEndpointStatusGroupOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointStatusGroupOutput)
+}
+
+type GetPostgresEndpointsEndpointStatusGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointStatusGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatusGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) ToGetPostgresEndpointsEndpointStatusGroupOutput() GetPostgresEndpointsEndpointStatusGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) ToGetPostgresEndpointsEndpointStatusGroupOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusGroupOutput {
+	return o
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) EnableReadableSecondaries() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusGroup) bool { return v.EnableReadableSecondaries }).(pulumi.BoolOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresEndpointsEndpointStatusHosts struct {
+	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+	Host string `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost string `pulumi:"readOnlyHost"`
+	// (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+	// and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+	ReadOnlyPooledHost string `pulumi:"readOnlyPooledHost"`
+	// (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+	ReadWritePooledHost string `pulumi:"readWritePooledHost"`
+}
+
+// GetPostgresEndpointsEndpointStatusHostsInput is an input type that accepts GetPostgresEndpointsEndpointStatusHostsArgs and GetPostgresEndpointsEndpointStatusHostsOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointStatusHostsInput` via:
+//
+//	GetPostgresEndpointsEndpointStatusHostsArgs{...}
+type GetPostgresEndpointsEndpointStatusHostsInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointStatusHostsOutput() GetPostgresEndpointsEndpointStatusHostsOutput
+	ToGetPostgresEndpointsEndpointStatusHostsOutputWithContext(context.Context) GetPostgresEndpointsEndpointStatusHostsOutput
+}
+
+type GetPostgresEndpointsEndpointStatusHostsArgs struct {
+	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+	Host pulumi.StringInput `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost pulumi.StringInput `pulumi:"readOnlyHost"`
+	// (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+	// and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+	ReadOnlyPooledHost pulumi.StringInput `pulumi:"readOnlyPooledHost"`
+	// (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+	ReadWritePooledHost pulumi.StringInput `pulumi:"readWritePooledHost"`
+}
+
+func (GetPostgresEndpointsEndpointStatusHostsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatusHosts)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointStatusHostsArgs) ToGetPostgresEndpointsEndpointStatusHostsOutput() GetPostgresEndpointsEndpointStatusHostsOutput {
+	return i.ToGetPostgresEndpointsEndpointStatusHostsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointStatusHostsArgs) ToGetPostgresEndpointsEndpointStatusHostsOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusHostsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointStatusHostsOutput)
+}
+
+type GetPostgresEndpointsEndpointStatusHostsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointStatusHostsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatusHosts)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointStatusHostsOutput) ToGetPostgresEndpointsEndpointStatusHostsOutput() GetPostgresEndpointsEndpointStatusHostsOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointStatusHostsOutput) ToGetPostgresEndpointsEndpointStatusHostsOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusHostsOutput {
+	return o
+}
+
+// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+func (o GetPostgresEndpointsEndpointStatusHostsOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusHosts) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+func (o GetPostgresEndpointsEndpointStatusHostsOutput) ReadOnlyHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusHosts) string { return v.ReadOnlyHost }).(pulumi.StringOutput)
+}
+
+// (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+// and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+func (o GetPostgresEndpointsEndpointStatusHostsOutput) ReadOnlyPooledHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusHosts) string { return v.ReadOnlyPooledHost }).(pulumi.StringOutput)
+}
+
+// (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+func (o GetPostgresEndpointsEndpointStatusHostsOutput) ReadWritePooledHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusHosts) string { return v.ReadWritePooledHost }).(pulumi.StringOutput)
+}
+
+type GetPostgresEndpointsEndpointStatusSettings struct {
+	// (object) - A raw representation of Postgres settings
+	PgSettings map[string]string `pulumi:"pgSettings"`
+}
+
+// GetPostgresEndpointsEndpointStatusSettingsInput is an input type that accepts GetPostgresEndpointsEndpointStatusSettingsArgs and GetPostgresEndpointsEndpointStatusSettingsOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointStatusSettingsInput` via:
+//
+//	GetPostgresEndpointsEndpointStatusSettingsArgs{...}
+type GetPostgresEndpointsEndpointStatusSettingsInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointStatusSettingsOutput() GetPostgresEndpointsEndpointStatusSettingsOutput
+	ToGetPostgresEndpointsEndpointStatusSettingsOutputWithContext(context.Context) GetPostgresEndpointsEndpointStatusSettingsOutput
+}
+
+type GetPostgresEndpointsEndpointStatusSettingsArgs struct {
+	// (object) - A raw representation of Postgres settings
+	PgSettings pulumi.StringMapInput `pulumi:"pgSettings"`
+}
+
+func (GetPostgresEndpointsEndpointStatusSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatusSettings)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointStatusSettingsArgs) ToGetPostgresEndpointsEndpointStatusSettingsOutput() GetPostgresEndpointsEndpointStatusSettingsOutput {
+	return i.ToGetPostgresEndpointsEndpointStatusSettingsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointStatusSettingsArgs) ToGetPostgresEndpointsEndpointStatusSettingsOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointStatusSettingsOutput)
+}
+
+type GetPostgresEndpointsEndpointStatusSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointStatusSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatusSettings)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointStatusSettingsOutput) ToGetPostgresEndpointsEndpointStatusSettingsOutput() GetPostgresEndpointsEndpointStatusSettingsOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointStatusSettingsOutput) ToGetPostgresEndpointsEndpointStatusSettingsOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusSettingsOutput {
+	return o
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresEndpointsEndpointStatusSettingsOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusSettings) map[string]string { return v.PgSettings }).(pulumi.StringMapOutput)
+}
+
+type GetPostgresEndpointsProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresEndpointsProviderConfigInput is an input type that accepts GetPostgresEndpointsProviderConfigArgs and GetPostgresEndpointsProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsProviderConfigInput` via:
+//
+//	GetPostgresEndpointsProviderConfigArgs{...}
+type GetPostgresEndpointsProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsProviderConfigOutput() GetPostgresEndpointsProviderConfigOutput
+	ToGetPostgresEndpointsProviderConfigOutputWithContext(context.Context) GetPostgresEndpointsProviderConfigOutput
+}
+
+type GetPostgresEndpointsProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresEndpointsProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsProviderConfigArgs) ToGetPostgresEndpointsProviderConfigOutput() GetPostgresEndpointsProviderConfigOutput {
+	return i.ToGetPostgresEndpointsProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsProviderConfigArgs) ToGetPostgresEndpointsProviderConfigOutputWithContext(ctx context.Context) GetPostgresEndpointsProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsProviderConfigOutput)
+}
+
+func (i GetPostgresEndpointsProviderConfigArgs) ToGetPostgresEndpointsProviderConfigPtrOutput() GetPostgresEndpointsProviderConfigPtrOutput {
+	return i.ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsProviderConfigArgs) ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsProviderConfigOutput).ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointsProviderConfigPtrInput is an input type that accepts GetPostgresEndpointsProviderConfigArgs, GetPostgresEndpointsProviderConfigPtr and GetPostgresEndpointsProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsProviderConfigPtrInput` via:
+//
+//	        GetPostgresEndpointsProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointsProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsProviderConfigPtrOutput() GetPostgresEndpointsProviderConfigPtrOutput
+	ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(context.Context) GetPostgresEndpointsProviderConfigPtrOutput
+}
+
+type getPostgresEndpointsProviderConfigPtrType GetPostgresEndpointsProviderConfigArgs
+
+func GetPostgresEndpointsProviderConfigPtr(v *GetPostgresEndpointsProviderConfigArgs) GetPostgresEndpointsProviderConfigPtrInput {
+	return (*getPostgresEndpointsProviderConfigPtrType)(v)
+}
+
+func (*getPostgresEndpointsProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointsProviderConfigPtrType) ToGetPostgresEndpointsProviderConfigPtrOutput() GetPostgresEndpointsProviderConfigPtrOutput {
+	return i.ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointsProviderConfigPtrType) ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsProviderConfigPtrOutput)
+}
+
+type GetPostgresEndpointsProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsProviderConfigOutput) ToGetPostgresEndpointsProviderConfigOutput() GetPostgresEndpointsProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsProviderConfigOutput) ToGetPostgresEndpointsProviderConfigOutputWithContext(ctx context.Context) GetPostgresEndpointsProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsProviderConfigOutput) ToGetPostgresEndpointsProviderConfigPtrOutput() GetPostgresEndpointsProviderConfigPtrOutput {
+	return o.ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointsProviderConfigOutput) ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointsProviderConfig) *GetPostgresEndpointsProviderConfig {
+		return &v
+	}).(GetPostgresEndpointsProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresEndpointsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresEndpointsProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsProviderConfigPtrOutput) ToGetPostgresEndpointsProviderConfigPtrOutput() GetPostgresEndpointsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsProviderConfigPtrOutput) ToGetPostgresEndpointsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsProviderConfigPtrOutput) Elem() GetPostgresEndpointsProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsProviderConfig) GetPostgresEndpointsProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointsProviderConfig
+		return ret
+	}).(GetPostgresEndpointsProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresEndpointsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetPostgresProjectInitialBranchSpec struct {
 	// (boolean) - Whether the initial default branch should be protected from deletion
 	IsProtected *bool `pulumi:"isProtected"`
@@ -5124,7 +8531,7 @@ type GetPostgresSyncedTableSpecTypeOverride struct {
 	// (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
 	PgType string `pulumi:"pgType"`
 	// (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-	// (specifies the vector dimension, e.g., 1024)
+	// or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
 	Size *int `pulumi:"size"`
 }
 
@@ -5145,7 +8552,7 @@ type GetPostgresSyncedTableSpecTypeOverrideArgs struct {
 	// (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
 	PgType pulumi.StringInput `pulumi:"pgType"`
 	// (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-	// (specifies the vector dimension, e.g., 1024)
+	// or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -5211,7 +8618,7 @@ func (o GetPostgresSyncedTableSpecTypeOverrideOutput) PgType() pulumi.StringOutp
 }
 
 // (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-// (specifies the vector dimension, e.g., 1024)
+// or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
 func (o GetPostgresSyncedTableSpecTypeOverrideOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPostgresSyncedTableSpecTypeOverride) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -10744,9 +14151,6 @@ func (o GetSecretUcsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutpu
 }
 
 type GetSecretUcsSecret struct {
-	// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-	// through the **BROWSE** privilege when **include_browse** is enabled in the request
-	BrowseOnly bool `pulumi:"browseOnly"`
 	// The name of the catalog under which to list secrets. Both **catalog_name** and
 	// **schema_name** must be specified together
 	CatalogName string `pulumi:"catalogName"`
@@ -10766,8 +14170,6 @@ type GetSecretUcsSecret struct {
 	// longer be used and may be displayed as a warning in the UI. It is purely informational and
 	// does not trigger any automatic actions or affect the secret's lifecycle
 	ExpireTime string `pulumi:"expireTime"`
-	// (string)
-	ExternalSecretId string `pulumi:"externalSecretId"`
 	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
 	FullName string `pulumi:"fullName"`
 	// (string) - Unique identifier of the metastore hosting the secret
@@ -10805,9 +14207,6 @@ type GetSecretUcsSecretInput interface {
 }
 
 type GetSecretUcsSecretArgs struct {
-	// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-	// through the **BROWSE** privilege when **include_browse** is enabled in the request
-	BrowseOnly pulumi.BoolInput `pulumi:"browseOnly"`
 	// The name of the catalog under which to list secrets. Both **catalog_name** and
 	// **schema_name** must be specified together
 	CatalogName pulumi.StringInput `pulumi:"catalogName"`
@@ -10827,8 +14226,6 @@ type GetSecretUcsSecretArgs struct {
 	// longer be used and may be displayed as a warning in the UI. It is purely informational and
 	// does not trigger any automatic actions or affect the secret's lifecycle
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// (string)
-	ExternalSecretId pulumi.StringInput `pulumi:"externalSecretId"`
 	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
 	FullName pulumi.StringInput `pulumi:"fullName"`
 	// (string) - Unique identifier of the metastore hosting the secret
@@ -10905,12 +14302,6 @@ func (o GetSecretUcsSecretOutput) ToGetSecretUcsSecretOutputWithContext(ctx cont
 	return o
 }
 
-// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-// through the **BROWSE** privilege when **include_browse** is enabled in the request
-func (o GetSecretUcsSecretOutput) BrowseOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSecretUcsSecret) bool { return v.BrowseOnly }).(pulumi.BoolOutput)
-}
-
 // The name of the catalog under which to list secrets. Both **catalog_name** and
 // **schema_name** must be specified together
 func (o GetSecretUcsSecretOutput) CatalogName() pulumi.StringOutput {
@@ -10949,11 +14340,6 @@ func (o GetSecretUcsSecretOutput) EffectiveValue() pulumi.StringOutput {
 // does not trigger any automatic actions or affect the secret's lifecycle
 func (o GetSecretUcsSecretOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.ExpireTime }).(pulumi.StringOutput)
-}
-
-// (string)
-func (o GetSecretUcsSecretOutput) ExternalSecretId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.ExternalSecretId }).(pulumi.StringOutput)
 }
 
 // (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
@@ -32184,6 +35570,46 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDataApiSpecInput)(nil)).Elem(), GetPostgresDataApiSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDataApiStatusInput)(nil)).Elem(), GetPostgresDataApiStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabaseProviderConfigInput)(nil)).Elem(), GetPostgresDatabaseProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabaseProviderConfigPtrInput)(nil)).Elem(), GetPostgresDatabaseProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabaseSpecInput)(nil)).Elem(), GetPostgresDatabaseSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabaseStatusInput)(nil)).Elem(), GetPostgresDatabaseStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabasesDatabaseInput)(nil)).Elem(), GetPostgresDatabasesDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabasesDatabaseArrayInput)(nil)).Elem(), GetPostgresDatabasesDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabasesDatabaseProviderConfigInput)(nil)).Elem(), GetPostgresDatabasesDatabaseProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabasesDatabaseProviderConfigPtrInput)(nil)).Elem(), GetPostgresDatabasesDatabaseProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabasesDatabaseSpecInput)(nil)).Elem(), GetPostgresDatabasesDatabaseSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabasesDatabaseStatusInput)(nil)).Elem(), GetPostgresDatabasesDatabaseStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabasesProviderConfigInput)(nil)).Elem(), GetPostgresDatabasesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabasesProviderConfigPtrInput)(nil)).Elem(), GetPostgresDatabasesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointProviderConfigInput)(nil)).Elem(), GetPostgresEndpointProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointProviderConfigPtrInput)(nil)).Elem(), GetPostgresEndpointProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecInput)(nil)).Elem(), GetPostgresEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecGroupInput)(nil)).Elem(), GetPostgresEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecGroupPtrInput)(nil)).Elem(), GetPostgresEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecSettingsInput)(nil)).Elem(), GetPostgresEndpointSpecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecSettingsPtrInput)(nil)).Elem(), GetPostgresEndpointSpecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointStatusInput)(nil)).Elem(), GetPostgresEndpointStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointStatusGroupInput)(nil)).Elem(), GetPostgresEndpointStatusGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointStatusHostsInput)(nil)).Elem(), GetPostgresEndpointStatusHostsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointStatusSettingsInput)(nil)).Elem(), GetPostgresEndpointStatusSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointInput)(nil)).Elem(), GetPostgresEndpointsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointArrayInput)(nil)).Elem(), GetPostgresEndpointsEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointProviderConfigInput)(nil)).Elem(), GetPostgresEndpointsEndpointProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointProviderConfigPtrInput)(nil)).Elem(), GetPostgresEndpointsEndpointProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecGroupInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecGroupPtrInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecSettingsInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecSettingsPtrInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointStatusInput)(nil)).Elem(), GetPostgresEndpointsEndpointStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointStatusGroupInput)(nil)).Elem(), GetPostgresEndpointsEndpointStatusGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointStatusHostsInput)(nil)).Elem(), GetPostgresEndpointsEndpointStatusHostsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointStatusSettingsInput)(nil)).Elem(), GetPostgresEndpointsEndpointStatusSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsProviderConfigInput)(nil)).Elem(), GetPostgresEndpointsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsProviderConfigPtrInput)(nil)).Elem(), GetPostgresEndpointsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialBranchSpecInput)(nil)).Elem(), GetPostgresProjectInitialBranchSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecInput)(nil)).Elem(), GetPostgresProjectInitialEndpointSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroupInput)(nil)).Elem(), GetPostgresProjectInitialEndpointSpecGroupArgs{})
@@ -32613,6 +36039,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetPostgresDataApiSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresDataApiStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabaseProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabaseProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabaseSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabaseStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabasesDatabaseOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabasesDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabasesDatabaseProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabasesDatabaseProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabasesDatabaseSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabasesDatabaseStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabasesProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresDatabasesProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointSpecGroupPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointSpecSettingsOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointSpecSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointStatusGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointStatusHostsOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointStatusSettingsOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecGroupPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecSettingsOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointStatusGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointStatusHostsOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointStatusSettingsOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectInitialBranchSpecOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectInitialEndpointSpecOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectInitialEndpointSpecGroupOutput{})

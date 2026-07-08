@@ -25,7 +25,7 @@ public final class GetPostgresSyncedTableSpecTypeOverride {
     private String pgType;
     /**
      * @return (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      * 
      */
     private @Nullable Integer size;
@@ -47,7 +47,7 @@ public final class GetPostgresSyncedTableSpecTypeOverride {
     }
     /**
      * @return (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      * 
      */
     public Optional<Integer> size() {

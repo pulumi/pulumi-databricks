@@ -82,6 +82,15 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.DataClassificationCatalogConfigAutoTagConfig>> AutoTagConfigs { get; private set; } = null!;
 
         /// <summary>
+        /// Schemas to exclude from the scan, each named relative to the parent catalog.
+        /// If specified, all schemas except the specified ones will be scanned.
+        /// Mutually exclusive with `IncludedSchemas`: only one may be set per request.
+        /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
+        /// </summary>
+        [Output("excludedSchemas")]
+        public Output<Outputs.DataClassificationCatalogConfigExcludedSchemas?> ExcludedSchemas { get; private set; } = null!;
+
+        /// <summary>
         /// Schemas to include in the scan, each named relative to the parent catalog.
         /// If specified, only listed schemas will be scanned.
         /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
@@ -168,6 +177,15 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Schemas to exclude from the scan, each named relative to the parent catalog.
+        /// If specified, all schemas except the specified ones will be scanned.
+        /// Mutually exclusive with `IncludedSchemas`: only one may be set per request.
+        /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
+        /// </summary>
+        [Input("excludedSchemas")]
+        public Input<Inputs.DataClassificationCatalogConfigExcludedSchemasArgs>? ExcludedSchemas { get; set; }
+
+        /// <summary>
         /// Schemas to include in the scan, each named relative to the parent catalog.
         /// If specified, only listed schemas will be scanned.
         /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
@@ -208,6 +226,15 @@ namespace Pulumi.Databricks
             get => _autoTagConfigs ?? (_autoTagConfigs = new InputList<Inputs.DataClassificationCatalogConfigAutoTagConfigGetArgs>());
             set => _autoTagConfigs = value;
         }
+
+        /// <summary>
+        /// Schemas to exclude from the scan, each named relative to the parent catalog.
+        /// If specified, all schemas except the specified ones will be scanned.
+        /// Mutually exclusive with `IncludedSchemas`: only one may be set per request.
+        /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
+        /// </summary>
+        [Input("excludedSchemas")]
+        public Input<Inputs.DataClassificationCatalogConfigExcludedSchemasGetArgs>? ExcludedSchemas { get; set; }
 
         /// <summary>
         /// Schemas to include in the scan, each named relative to the parent catalog.

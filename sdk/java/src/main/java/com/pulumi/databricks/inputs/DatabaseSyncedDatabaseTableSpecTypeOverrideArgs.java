@@ -49,7 +49,7 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
 
     /**
      * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      * 
      */
     @Import(name="size")
@@ -57,7 +57,7 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
 
     /**
      * @return Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -134,7 +134,7 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
 
         /**
          * @param size Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-         * (specifies the vector dimension, e.g., 1024)
+         * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
 
         /**
          * @param size Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-         * (specifies the vector dimension, e.g., 1024)
+         * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
          * 
          * @return builder
          * 

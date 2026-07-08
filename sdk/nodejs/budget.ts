@@ -58,6 +58,41 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Budgets for Genie
+ *
+ * Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what's coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // Create a Budget with resource tags matching the Genie AI Gateway resource.
+ * // Prerequisite: Enable AI Gateway Budget (Public Preview)
+ * // https://docs.databricks.com/aws/en/genie/budgets#requirements
+ * const genieSharedBudget = new databricks.Budget("genie_shared_budget", {
+ *     displayName: "genie-shared-budget",
+ *     filter: {
+ *         tags: [{
+ *             key: "databricks-product",
+ *             value: {
+ *                 operator: "IN",
+ *                 values: ["genie"],
+ *             },
+ *         }],
+ *     },
+ *     alertConfigurations: [{
+ *         quantityThreshold: "2000",
+ *         quantityType: "LIST_PRICE_DOLLARS_USD",
+ *         triggerType: "CUMULATIVE_SPENDING_EXCEEDED",
+ *         timePeriod: "MONTH",
+ *         actionConfigurations: [{
+ *             actionType: "EMAIL_NOTIFICATION",
+ *             target: "abc@gmail.com",
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are used in the context:

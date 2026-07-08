@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousResult? Continuous;
         /// <summary>
+        /// (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRollingResult? LongRolling;
+        /// <summary>
         /// (RollingWindow)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRollingResult? Rolling;
@@ -34,6 +38,8 @@ namespace Pulumi.Databricks.Outputs
         private GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowResult(
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousResult? continuous,
 
+            Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRollingResult? longRolling,
+
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRollingResult? rolling,
 
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSlidingResult? sliding,
@@ -41,6 +47,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumblingResult? tumbling)
         {
             Continuous = continuous;
+            LongRolling = longRolling;
             Rolling = rolling;
             Sliding = sliding;
             Tumbling = tumbling;

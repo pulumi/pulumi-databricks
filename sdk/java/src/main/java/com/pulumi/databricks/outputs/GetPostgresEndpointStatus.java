@@ -60,6 +60,11 @@ public final class GetPostgresEndpointStatus {
      */
     private GetPostgresEndpointStatusHosts hosts;
     /**
+     * @return (string) - A timestamp indicating when the compute endpoint was last active
+     * 
+     */
+    private String lastActiveTime;
+    /**
      * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
@@ -137,6 +142,13 @@ public final class GetPostgresEndpointStatus {
         return this.hosts;
     }
     /**
+     * @return (string) - A timestamp indicating when the compute endpoint was last active
+     * 
+     */
+    public String lastActiveTime() {
+        return this.lastActiveTime;
+    }
+    /**
      * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
@@ -175,6 +187,7 @@ public final class GetPostgresEndpointStatus {
         private String endpointType;
         private GetPostgresEndpointStatusGroup group;
         private GetPostgresEndpointStatusHosts hosts;
+        private String lastActiveTime;
         private String pendingState;
         private GetPostgresEndpointStatusSettings settings;
         private String suspendTimeoutDuration;
@@ -189,6 +202,7 @@ public final class GetPostgresEndpointStatus {
     	      this.endpointType = defaults.endpointType;
     	      this.group = defaults.group;
     	      this.hosts = defaults.hosts;
+    	      this.lastActiveTime = defaults.lastActiveTime;
     	      this.pendingState = defaults.pendingState;
     	      this.settings = defaults.settings;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
@@ -259,6 +273,14 @@ public final class GetPostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder lastActiveTime(String lastActiveTime) {
+            if (lastActiveTime == null) {
+              throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "lastActiveTime");
+            }
+            this.lastActiveTime = lastActiveTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pendingState(String pendingState) {
             if (pendingState == null) {
               throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "pendingState");
@@ -292,6 +314,7 @@ public final class GetPostgresEndpointStatus {
             _resultValue.endpointType = endpointType;
             _resultValue.group = group;
             _resultValue.hosts = hosts;
+            _resultValue.lastActiveTime = lastActiveTime;
             _resultValue.pendingState = pendingState;
             _resultValue.settings = settings;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;

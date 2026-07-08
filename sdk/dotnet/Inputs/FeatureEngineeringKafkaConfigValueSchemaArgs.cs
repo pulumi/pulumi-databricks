@@ -13,10 +13,22 @@ namespace Pulumi.Databricks.Inputs
     public sealed class FeatureEngineeringKafkaConfigValueSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+        /// </summary>
+        [Input("avroSchema")]
+        public Input<string>? AvroSchema { get; set; }
+
+        /// <summary>
         /// Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
         /// </summary>
         [Input("jsonSchema")]
         public Input<string>? JsonSchema { get; set; }
+
+        /// <summary>
+        /// Protocol Buffer schema with its payload message name
+        /// </summary>
+        [Input("protoSchema")]
+        public Input<Inputs.FeatureEngineeringKafkaConfigValueSchemaProtoSchemaArgs>? ProtoSchema { get; set; }
 
         public FeatureEngineeringKafkaConfigValueSchemaArgs()
         {

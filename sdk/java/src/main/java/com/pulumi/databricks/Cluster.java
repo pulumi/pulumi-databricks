@@ -174,6 +174,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<ClusterAzureAttributes>> azureAttributes() {
         return Codegen.optional(this.azureAttributes);
     }
+    /**
+     * If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+     * 
+     */
+    @Export(name="clearCloudAttributesOnRemove", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> clearCloudAttributesOnRemove;
+
+    /**
+     * @return If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+     * 
+     */
+    public Output<Optional<Boolean>> clearCloudAttributesOnRemove() {
+        return Codegen.optional(this.clearCloudAttributesOnRemove);
+    }
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 

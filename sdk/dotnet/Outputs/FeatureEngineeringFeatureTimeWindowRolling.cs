@@ -13,10 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureTimeWindowRolling
     {
-        /// <summary>
-        /// The delay applied to the end of the rolling window (must be non-negative).
-        /// For example, delay=1d shifts the window end 1 day before the evaluation time
-        /// </summary>
         public readonly string? Delay;
         public readonly string WindowDuration;
 

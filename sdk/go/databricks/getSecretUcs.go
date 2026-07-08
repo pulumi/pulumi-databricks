@@ -11,7 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+//
+// The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+//
+// This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+//
+// ## Example Usage
+//
+// ### Basic Example
+// This example lists the secrets in a given catalog and schema:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetSecretUcs(ctx, &databricks.GetSecretUcsArgs{
+//				CatalogName: pulumi.StringRef("my_catalog"),
+//				SchemaName:  pulumi.StringRef("my_schema"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSecretUcs(ctx *pulumi.Context, args *GetSecretUcsArgs, opts ...pulumi.InvokeOption) (*GetSecretUcsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretUcsResult
@@ -27,14 +63,11 @@ type GetSecretUcsArgs struct {
 	// The name of the catalog under which to list secrets. Both **catalog_name** and
 	// **schema_name** must be specified together
 	CatalogName *string `pulumi:"catalogName"`
-	// Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-	// which limits access to metadata
-	IncludeBrowse *bool `pulumi:"includeBrowse"`
 	// Maximum number of secrets to return.
 	//
-	// - If not specified, at most 10000 secrets are returned.
-	// - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-	// - If set to 0, the page length is set to 10000.
+	// - If not specified, at most 1000 secrets are returned.
+	// - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+	// - If set to 0, the page length is set to 1000.
 	// - If set to a value less than 0, an invalid parameter error is returned
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
@@ -50,7 +83,6 @@ type GetSecretUcsResult struct {
 	CatalogName *string `pulumi:"catalogName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                      `pulumi:"id"`
-	IncludeBrowse  *bool                       `pulumi:"includeBrowse"`
 	PageSize       *int                        `pulumi:"pageSize"`
 	ProviderConfig *GetSecretUcsProviderConfig `pulumi:"providerConfig"`
 	// (string) - The name of the schema where the secret resides
@@ -72,14 +104,11 @@ type GetSecretUcsOutputArgs struct {
 	// The name of the catalog under which to list secrets. Both **catalog_name** and
 	// **schema_name** must be specified together
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-	// which limits access to metadata
-	IncludeBrowse pulumi.BoolPtrInput `pulumi:"includeBrowse"`
 	// Maximum number of secrets to return.
 	//
-	// - If not specified, at most 10000 secrets are returned.
-	// - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-	// - If set to 0, the page length is set to 10000.
+	// - If not specified, at most 1000 secrets are returned.
+	// - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+	// - If set to 0, the page length is set to 1000.
 	// - If set to a value less than 0, an invalid parameter error is returned
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
@@ -116,10 +145,6 @@ func (o GetSecretUcsResultOutput) CatalogName() pulumi.StringPtrOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetSecretUcsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretUcsResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetSecretUcsResultOutput) IncludeBrowse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSecretUcsResult) *bool { return v.IncludeBrowse }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetSecretUcsResultOutput) PageSize() pulumi.IntPtrOutput {

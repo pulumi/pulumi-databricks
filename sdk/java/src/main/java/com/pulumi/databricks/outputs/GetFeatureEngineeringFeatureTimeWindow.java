@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowLongRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowSliding;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowTumbling;
@@ -19,6 +20,11 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
      * 
      */
     private @Nullable GetFeatureEngineeringFeatureTimeWindowContinuous continuous;
+    /**
+     * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureTimeWindowLongRolling longRolling;
     /**
      * @return (RollingWindow)
      * 
@@ -42,6 +48,13 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
      */
     public Optional<GetFeatureEngineeringFeatureTimeWindowContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+    /**
+     * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureTimeWindowLongRolling> longRolling() {
+        return Optional.ofNullable(this.longRolling);
     }
     /**
      * @return (RollingWindow)
@@ -75,6 +88,7 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeatureTimeWindowContinuous continuous;
+        private @Nullable GetFeatureEngineeringFeatureTimeWindowLongRolling longRolling;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowRolling rolling;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowSliding sliding;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowTumbling tumbling;
@@ -82,6 +96,7 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
         public Builder(GetFeatureEngineeringFeatureTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
+    	      this.longRolling = defaults.longRolling;
     	      this.rolling = defaults.rolling;
     	      this.sliding = defaults.sliding;
     	      this.tumbling = defaults.tumbling;
@@ -91,6 +106,12 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
         public Builder continuous(@Nullable GetFeatureEngineeringFeatureTimeWindowContinuous continuous) {
 
             this.continuous = continuous;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder longRolling(@Nullable GetFeatureEngineeringFeatureTimeWindowLongRolling longRolling) {
+
+            this.longRolling = longRolling;
             return this;
         }
         @CustomType.Setter
@@ -114,6 +135,7 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
         public GetFeatureEngineeringFeatureTimeWindow build() {
             final var _resultValue = new GetFeatureEngineeringFeatureTimeWindow();
             _resultValue.continuous = continuous;
+            _resultValue.longRolling = longRolling;
             _resultValue.rolling = rolling;
             _resultValue.sliding = sliding;
             _resultValue.tumbling = tumbling;

@@ -11,7 +11,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+//
+// The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+//
+// This returns the secret's metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+//
+// ## Example Usage
+//
+// ### Basic Example
+// This example reads a secret in Unity Catalog by its fully qualified name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetSecretUc(ctx, &databricks.LookupSecretUcArgs{
+//				FullName: "my_catalog.my_schema.my_secret",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSecretUc(ctx *pulumi.Context, args *LookupSecretUcArgs, opts ...pulumi.InvokeOption) (*LookupSecretUcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretUcResult
@@ -32,9 +67,6 @@ type LookupSecretUcArgs struct {
 
 // A collection of values returned by getSecretUc.
 type LookupSecretUcResult struct {
-	// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-	// through the **BROWSE** privilege when **include_browse** is enabled in the request
-	BrowseOnly bool `pulumi:"browseOnly"`
 	// (string) - The name of the catalog where the schema and the secret reside
 	CatalogName string `pulumi:"catalogName"`
 	// (string) - User-provided free-form text description of the secret
@@ -53,8 +85,6 @@ type LookupSecretUcResult struct {
 	// longer be used and may be displayed as a warning in the UI. It is purely informational and
 	// does not trigger any automatic actions or affect the secret's lifecycle
 	ExpireTime string `pulumi:"expireTime"`
-	// (string)
-	ExternalSecretId string `pulumi:"externalSecretId"`
 	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
 	FullName string `pulumi:"fullName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -116,12 +146,6 @@ func (o LookupSecretUcResultOutput) ToLookupSecretUcResultOutputWithContext(ctx 
 	return o
 }
 
-// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-// through the **BROWSE** privilege when **include_browse** is enabled in the request
-func (o LookupSecretUcResultOutput) BrowseOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupSecretUcResult) bool { return v.BrowseOnly }).(pulumi.BoolOutput)
-}
-
 // (string) - The name of the catalog where the schema and the secret reside
 func (o LookupSecretUcResultOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretUcResult) string { return v.CatalogName }).(pulumi.StringOutput)
@@ -159,11 +183,6 @@ func (o LookupSecretUcResultOutput) EffectiveValue() pulumi.StringOutput {
 // does not trigger any automatic actions or affect the secret's lifecycle
 func (o LookupSecretUcResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretUcResult) string { return v.ExpireTime }).(pulumi.StringOutput)
-}
-
-// (string)
-func (o LookupSecretUcResultOutput) ExternalSecretId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSecretUcResult) string { return v.ExternalSecretId }).(pulumi.StringOutput)
 }
 
 // (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**

@@ -16,9 +16,17 @@ public final class AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoin
 
     public static final AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpointsArgs Empty = new AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpointsArgs();
 
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     * 
+     */
     @Import(name="endpointIds")
     private @Nullable Output<List<String>> endpointIds;
 
+    /**
+     * @return The IDs of the registered endpoints. Must contain at least one endpoint ID
+     * 
+     */
     public Optional<Output<List<String>>> endpointIds() {
         return Optional.ofNullable(this.endpointIds);
     }
@@ -47,15 +55,33 @@ public final class AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoin
             $ = new AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpointsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endpointIds The IDs of the registered endpoints. Must contain at least one endpoint ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointIds(@Nullable Output<List<String>> endpointIds) {
             $.endpointIds = endpointIds;
             return this;
         }
 
+        /**
+         * @param endpointIds The IDs of the registered endpoints. Must contain at least one endpoint ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointIds(List<String> endpointIds) {
             return endpointIds(Output.of(endpointIds));
         }
 
+        /**
+         * @param endpointIds The IDs of the registered endpoints. Must contain at least one endpoint ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointIds(String... endpointIds) {
             return endpointIds(List.of(endpointIds));
         }

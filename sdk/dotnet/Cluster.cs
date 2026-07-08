@@ -111,6 +111,12 @@ namespace Pulumi.Databricks
         [Output("azureAttributes")]
         public Output<Outputs.ClusterAzureAttributes?> AzureAttributes { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, removing a cloud attributes block (`AwsAttributes`, `AzureAttributes`, or `GcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+        /// </summary>
+        [Output("clearCloudAttributesOnRemove")]
+        public Output<bool?> ClearCloudAttributesOnRemove { get; private set; } = null!;
+
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
@@ -414,6 +420,12 @@ namespace Pulumi.Databricks
         [Input("azureAttributes")]
         public Input<Inputs.ClusterAzureAttributesArgs>? AzureAttributes { get; set; }
 
+        /// <summary>
+        /// If true, removing a cloud attributes block (`AwsAttributes`, `AzureAttributes`, or `GcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+        /// </summary>
+        [Input("clearCloudAttributesOnRemove")]
+        public Input<bool>? ClearCloudAttributesOnRemove { get; set; }
+
         [Input("clusterLogConf")]
         public Input<Inputs.ClusterClusterLogConfArgs>? ClusterLogConf { get; set; }
 
@@ -699,6 +711,12 @@ namespace Pulumi.Databricks
 
         [Input("azureAttributes")]
         public Input<Inputs.ClusterAzureAttributesGetArgs>? AzureAttributes { get; set; }
+
+        /// <summary>
+        /// If true, removing a cloud attributes block (`AwsAttributes`, `AzureAttributes`, or `GcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+        /// </summary>
+        [Input("clearCloudAttributesOnRemove")]
+        public Input<bool>? ClearCloudAttributesOnRemove { get; set; }
 
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }

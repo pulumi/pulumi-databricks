@@ -28,16 +28,13 @@ class GetSecretUcsResult:
     """
     A collection of values returned by getSecretUcs.
     """
-    def __init__(__self__, catalog_name=None, id=None, include_browse=None, page_size=None, provider_config=None, schema_name=None, secrets=None):
+    def __init__(__self__, catalog_name=None, id=None, page_size=None, provider_config=None, schema_name=None, secrets=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if include_browse and not isinstance(include_browse, bool):
-            raise TypeError("Expected argument 'include_browse' to be a bool")
-        pulumi.set(__self__, "include_browse", include_browse)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -66,11 +63,6 @@ class GetSecretUcsResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="includeBrowse")
-    def include_browse(self) -> Optional[_builtins.bool]:
-        return pulumi.get(self, "include_browse")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -104,7 +96,6 @@ class AwaitableGetSecretUcsResult(GetSecretUcsResult):
         return GetSecretUcsResult(
             catalog_name=self.catalog_name,
             id=self.id,
-            include_browse=self.include_browse,
             page_size=self.page_size,
             provider_config=self.provider_config,
             schema_name=self.schema_name,
@@ -112,24 +103,40 @@ class AwaitableGetSecretUcsResult(GetSecretUcsResult):
 
 
 def get_secret_ucs(catalog_name: Optional[_builtins.str] = None,
-                   include_browse: Optional[_builtins.bool] = None,
                    page_size: Optional[_builtins.int] = None,
                    provider_config: Optional[Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict']] = None,
                    schema_name: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretUcsResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+
+    The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+
+    This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+
+    ## Example Usage
+
+    ### Basic Example
+    This example lists the secrets in a given catalog and schema:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_secret_ucs(catalog_name="my_catalog",
+        schema_name="my_schema")
+    ```
 
 
     :param _builtins.str catalog_name: The name of the catalog under which to list secrets. Both **catalog_name** and
            **schema_name** must be specified together
-    :param _builtins.bool include_browse: Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-           which limits access to metadata
     :param _builtins.int page_size: Maximum number of secrets to return.
            
-           - If not specified, at most 10000 secrets are returned.
-           - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-           - If set to 0, the page length is set to 10000.
+           - If not specified, at most 1000 secrets are returned.
+           - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+           - If set to 0, the page length is set to 1000.
            - If set to a value less than 0, an invalid parameter error is returned
     :param Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str schema_name: The name of the schema under which to list secrets. Both **catalog_name** and
@@ -137,7 +144,6 @@ def get_secret_ucs(catalog_name: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name
-    __args__['includeBrowse'] = include_browse
     __args__['pageSize'] = page_size
     __args__['providerConfig'] = provider_config
     __args__['schemaName'] = schema_name
@@ -147,30 +153,45 @@ def get_secret_ucs(catalog_name: Optional[_builtins.str] = None,
     return AwaitableGetSecretUcsResult(
         catalog_name=pulumi.get(__ret__, 'catalog_name'),
         id=pulumi.get(__ret__, 'id'),
-        include_browse=pulumi.get(__ret__, 'include_browse'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'),
         secrets=pulumi.get(__ret__, 'secrets'))
 def get_secret_ucs_output(catalog_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          include_browse: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                           provider_config: pulumi.Input[Optional[Optional[Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict']]]] = None,
                           schema_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretUcsResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+
+    The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+
+    This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+
+    ## Example Usage
+
+    ### Basic Example
+    This example lists the secrets in a given catalog and schema:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_secret_ucs(catalog_name="my_catalog",
+        schema_name="my_schema")
+    ```
 
 
     :param _builtins.str catalog_name: The name of the catalog under which to list secrets. Both **catalog_name** and
            **schema_name** must be specified together
-    :param _builtins.bool include_browse: Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-           which limits access to metadata
     :param _builtins.int page_size: Maximum number of secrets to return.
            
-           - If not specified, at most 10000 secrets are returned.
-           - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-           - If set to 0, the page length is set to 10000.
+           - If not specified, at most 1000 secrets are returned.
+           - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+           - If set to 0, the page length is set to 1000.
            - If set to a value less than 0, an invalid parameter error is returned
     :param Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str schema_name: The name of the schema under which to list secrets. Both **catalog_name** and
@@ -178,7 +199,6 @@ def get_secret_ucs_output(catalog_name: pulumi.Input[Optional[Optional[_builtins
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name
-    __args__['includeBrowse'] = include_browse
     __args__['pageSize'] = page_size
     __args__['providerConfig'] = provider_config
     __args__['schemaName'] = schema_name
@@ -187,7 +207,6 @@ def get_secret_ucs_output(catalog_name: pulumi.Input[Optional[Optional[_builtins
     return __ret__.apply(lambda __response__: GetSecretUcsResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),
         id=pulumi.get(__response__, 'id'),
-        include_browse=pulumi.get(__response__, 'include_browse'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         schema_name=pulumi.get(__response__, 'schema_name'),

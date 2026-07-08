@@ -14,13 +14,22 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingModeResult
     {
         /// <summary>
+        /// (string) - The desired data freshness for feature materialization, expressed as a
+        /// duration string (e.g. "1 minute")
+        /// </summary>
+        public readonly string? FreshnessTarget;
+        /// <summary>
         /// (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
         /// </summary>
         public readonly string? Mode;
 
         [OutputConstructor]
-        private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingModeResult(string? mode)
+        private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingModeResult(
+            string? freshnessTarget,
+
+            string? mode)
         {
+            FreshnessTarget = freshnessTarget;
             Mode = mode;
         }
     }

@@ -18,6 +18,110 @@ import (
 //
 // ## Example Usage
 //
+// ### Managing Implicitly Created Database
+//
+// A database named `databricks-postgres` (Postgres name `databricksPostgres`) is implicitly created on every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created database in Pulumi state and immediately apply the provided configuration to it.
+//
+// `replaceExisting = true` only affects the initial adoption. Once the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual database** (and its data), not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
+//
+// `spec.role` is optional: omit it to keep the database's existing owner (as shown below). When you do set it — to change ownership — it must reference a role in the same branch, written as `<branch-name>/roles/<role_id>`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("My Project"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			production, err := databricks.NewPostgresBranch(ctx, "production", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("production"),
+//				Parent:   this.Name,
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					NoExpiry: pulumi.Bool(true),
+//				},
+//				ReplaceExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresDatabase(ctx, "databricks_postgres", &databricks.PostgresDatabaseArgs{
+//				DatabaseId: pulumi.String("databricks-postgres"),
+//				Parent:     production.Name,
+//				Spec: &databricks.PostgresDatabaseSpecArgs{
+//					PostgresDatabase: pulumi.String("databricks_postgres"),
+//				},
+//				ReplaceExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Managing a Database Inherited by a Child Branch
+//
+// A child branch created from a source branch (via `spec.source_branch`) shares the source's storage through copy-on-write, so every database on the source branch — including the implicit `databricks-postgres` database — already exists on the child at the branch point. These inherited databases are not created by Pulumi, so managing one requires `replaceExisting = true`, exactly as for the implicitly created database above.
+//
+// You typically adopt an inherited database when you want to manage its configuration (for example, transfer ownership via `spec.role`) on the child branch independently of the source.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			child, err := databricks.NewPostgresBranch(ctx, "child", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("feature-x"),
+//				Parent:   pulumi.Any(this.Name),
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					SourceBranch: pulumi.Any(production.Name),
+//					NoExpiry:     pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresDatabase(ctx, "inherited", &databricks.PostgresDatabaseArgs{
+//				DatabaseId: pulumi.String("databricks-postgres"),
+//				Parent:     child.Name,
+//				Spec: &databricks.PostgresDatabaseSpecArgs{
+//					PostgresDatabase: pulumi.String("databricks_postgres"),
+//				},
+//				ReplaceExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Database Owned by a Specific Role
 //
 // Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.

@@ -13,6 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class FeatureEngineeringMaterializedFeatureStreamingModeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The desired data freshness for feature materialization, expressed as a
+        /// duration string (e.g. "1 minute")
+        /// </summary>
+        [Input("freshnessTarget")]
+        public Input<string>? FreshnessTarget { get; set; }
+
+        /// <summary>
         /// The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
         /// </summary>
         [Input("mode")]

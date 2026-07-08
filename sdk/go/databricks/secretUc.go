@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
 //
 // The Secret resource allows you to manage secrets in Unity Catalog. Secrets provide a secure way to store and access sensitive information such as credentials, API keys, and tokens within Unity Catalog.
 //
@@ -57,9 +59,6 @@ import (
 type SecretUc struct {
 	pulumi.CustomResourceState
 
-	// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-	// through the **BROWSE** privilege when **include_browse** is enabled in the request
-	BrowseOnly pulumi.BoolOutput `pulumi:"browseOnly"`
 	// The name of the catalog where the schema and the secret reside
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	// User-provided free-form text description of the secret
@@ -78,8 +77,6 @@ type SecretUc struct {
 	// longer be used and may be displayed as a warning in the UI. It is purely informational and
 	// does not trigger any automatic actions or affect the secret's lifecycle
 	ExpireTime pulumi.StringPtrOutput `pulumi:"expireTime"`
-	// (string)
-	ExternalSecretId pulumi.StringOutput `pulumi:"externalSecretId"`
 	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// (string) - Unique identifier of the metastore hosting the secret
@@ -143,9 +140,6 @@ func GetSecretUc(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretUc resources.
 type secretUcState struct {
-	// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-	// through the **BROWSE** privilege when **include_browse** is enabled in the request
-	BrowseOnly *bool `pulumi:"browseOnly"`
 	// The name of the catalog where the schema and the secret reside
 	CatalogName *string `pulumi:"catalogName"`
 	// User-provided free-form text description of the secret
@@ -164,8 +158,6 @@ type secretUcState struct {
 	// longer be used and may be displayed as a warning in the UI. It is purely informational and
 	// does not trigger any automatic actions or affect the secret's lifecycle
 	ExpireTime *string `pulumi:"expireTime"`
-	// (string)
-	ExternalSecretId *string `pulumi:"externalSecretId"`
 	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
 	FullName *string `pulumi:"fullName"`
 	// (string) - Unique identifier of the metastore hosting the secret
@@ -191,9 +183,6 @@ type secretUcState struct {
 }
 
 type SecretUcState struct {
-	// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-	// through the **BROWSE** privilege when **include_browse** is enabled in the request
-	BrowseOnly pulumi.BoolPtrInput
 	// The name of the catalog where the schema and the secret reside
 	CatalogName pulumi.StringPtrInput
 	// User-provided free-form text description of the secret
@@ -212,8 +201,6 @@ type SecretUcState struct {
 	// longer be used and may be displayed as a warning in the UI. It is purely informational and
 	// does not trigger any automatic actions or affect the secret's lifecycle
 	ExpireTime pulumi.StringPtrInput
-	// (string)
-	ExternalSecretId pulumi.StringPtrInput
 	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
 	FullName pulumi.StringPtrInput
 	// (string) - Unique identifier of the metastore hosting the secret
@@ -380,12 +367,6 @@ func (o SecretUcOutput) ToSecretUcOutputWithContext(ctx context.Context) SecretU
 	return o
 }
 
-// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-// through the **BROWSE** privilege when **include_browse** is enabled in the request
-func (o SecretUcOutput) BrowseOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v *SecretUc) pulumi.BoolOutput { return v.BrowseOnly }).(pulumi.BoolOutput)
-}
-
 // The name of the catalog where the schema and the secret reside
 func (o SecretUcOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretUc) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
@@ -423,11 +404,6 @@ func (o SecretUcOutput) EffectiveValue() pulumi.StringOutput {
 // does not trigger any automatic actions or affect the secret's lifecycle
 func (o SecretUcOutput) ExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretUc) pulumi.StringPtrOutput { return v.ExpireTime }).(pulumi.StringPtrOutput)
-}
-
-// (string)
-func (o SecretUcOutput) ExternalSecretId() pulumi.StringOutput {
-	return o.ApplyT(func(v *SecretUc) pulumi.StringOutput { return v.ExternalSecretId }).(pulumi.StringOutput)
 }
 
 // (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**

@@ -12,12 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingMode {
     /**
+     * @return (string) - The desired data freshness for feature materialization, expressed as a
+     * duration string (e.g. &#34;1 minute&#34;)
+     * 
+     */
+    private @Nullable String freshnessTarget;
+    /**
      * @return (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      * 
      */
     private @Nullable String mode;
 
     private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingMode() {}
+    /**
+     * @return (string) - The desired data freshness for feature materialization, expressed as a
+     * duration string (e.g. &#34;1 minute&#34;)
+     * 
+     */
+    public Optional<String> freshnessTarget() {
+        return Optional.ofNullable(this.freshnessTarget);
+    }
     /**
      * @return (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      * 
@@ -35,13 +49,21 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureS
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String freshnessTarget;
         private @Nullable String mode;
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingMode defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.freshnessTarget = defaults.freshnessTarget;
     	      this.mode = defaults.mode;
         }
 
+        @CustomType.Setter
+        public Builder freshnessTarget(@Nullable String freshnessTarget) {
+
+            this.freshnessTarget = freshnessTarget;
+            return this;
+        }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
 
@@ -50,6 +72,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureS
         }
         public GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingMode build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingMode();
+            _resultValue.freshnessTarget = freshnessTarget;
             _resultValue.mode = mode;
             return _resultValue;
         }

@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("quartzCronExpression", required: true)]
         public Input<string> QuartzCronExpression { get; set; } = null!;
 
+        [Input("sqlCondition")]
+        public Input<Inputs.JobScheduleSqlConditionArgs>? SqlCondition { get; set; }
+
         /// <summary>
         /// A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
         /// </summary>

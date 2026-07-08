@@ -34,9 +34,25 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstResult? First;
         /// <summary>
+        /// (FirstDistinctFunction)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinctResult? FirstDistinct;
+        /// <summary>
+        /// (FirstNFunction)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstNResult? FirstN;
+        /// <summary>
         /// (LastFunction)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastResult? Last;
+        /// <summary>
+        /// (LastDistinctFunction)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinctResult? LastDistinct;
+        /// <summary>
+        /// (LastNFunction)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastNResult? LastN;
         /// <summary>
         /// (MaxFunction)
         /// </summary>
@@ -82,7 +98,15 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstResult? first,
 
+            Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinctResult? firstDistinct,
+
+            Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstNResult? firstN,
+
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastResult? last,
+
+            Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinctResult? lastDistinct,
+
+            Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastNResult? lastN,
 
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionMaxResult? max,
 
@@ -105,7 +129,11 @@ namespace Pulumi.Databricks.Outputs
             Avg = avg;
             CountFunction = countFunction;
             First = first;
+            FirstDistinct = firstDistinct;
+            FirstN = firstN;
             Last = last;
+            LastDistinct = lastDistinct;
+            LastN = lastN;
             Max = max;
             Min = min;
             StddevPop = stddevPop;

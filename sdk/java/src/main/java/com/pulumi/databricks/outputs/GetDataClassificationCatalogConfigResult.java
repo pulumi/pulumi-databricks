@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDataClassificationCatalogConfigAutoTagConfig;
+import com.pulumi.databricks.outputs.GetDataClassificationCatalogConfigExcludedSchemas;
 import com.pulumi.databricks.outputs.GetDataClassificationCatalogConfigIncludedSchemas;
 import com.pulumi.databricks.outputs.GetDataClassificationCatalogConfigProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -22,6 +23,14 @@ public final class GetDataClassificationCatalogConfigResult {
      * 
      */
     private List<GetDataClassificationCatalogConfigAutoTagConfig> autoTagConfigs;
+    /**
+     * @return (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     * 
+     */
+    private GetDataClassificationCatalogConfigExcludedSchemas excludedSchemas;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -50,6 +59,16 @@ public final class GetDataClassificationCatalogConfigResult {
      */
     public List<GetDataClassificationCatalogConfigAutoTagConfig> autoTagConfigs() {
         return this.autoTagConfigs;
+    }
+    /**
+     * @return (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     * 
+     */
+    public GetDataClassificationCatalogConfigExcludedSchemas excludedSchemas() {
+        return this.excludedSchemas;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -89,6 +108,7 @@ public final class GetDataClassificationCatalogConfigResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetDataClassificationCatalogConfigAutoTagConfig> autoTagConfigs;
+        private GetDataClassificationCatalogConfigExcludedSchemas excludedSchemas;
         private String id;
         private GetDataClassificationCatalogConfigIncludedSchemas includedSchemas;
         private String name;
@@ -97,6 +117,7 @@ public final class GetDataClassificationCatalogConfigResult {
         public Builder(GetDataClassificationCatalogConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoTagConfigs = defaults.autoTagConfigs;
+    	      this.excludedSchemas = defaults.excludedSchemas;
     	      this.id = defaults.id;
     	      this.includedSchemas = defaults.includedSchemas;
     	      this.name = defaults.name;
@@ -113,6 +134,14 @@ public final class GetDataClassificationCatalogConfigResult {
         }
         public Builder autoTagConfigs(GetDataClassificationCatalogConfigAutoTagConfig... autoTagConfigs) {
             return autoTagConfigs(List.of(autoTagConfigs));
+        }
+        @CustomType.Setter
+        public Builder excludedSchemas(GetDataClassificationCatalogConfigExcludedSchemas excludedSchemas) {
+            if (excludedSchemas == null) {
+              throw new MissingRequiredPropertyException("GetDataClassificationCatalogConfigResult", "excludedSchemas");
+            }
+            this.excludedSchemas = excludedSchemas;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -147,6 +176,7 @@ public final class GetDataClassificationCatalogConfigResult {
         public GetDataClassificationCatalogConfigResult build() {
             final var _resultValue = new GetDataClassificationCatalogConfigResult();
             _resultValue.autoTagConfigs = autoTagConfigs;
+            _resultValue.excludedSchemas = excludedSchemas;
             _resultValue.id = id;
             _resultValue.includedSchemas = includedSchemas;
             _resultValue.name = name;

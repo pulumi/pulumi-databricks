@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetSecretUcsProviderConfigArgs;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -36,28 +35,11 @@ public final class GetSecretUcsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-     * which limits access to metadata
-     * 
-     */
-    @Import(name="includeBrowse")
-    private @Nullable Output<Boolean> includeBrowse;
-
-    /**
-     * @return Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-     * which limits access to metadata
-     * 
-     */
-    public Optional<Output<Boolean>> includeBrowse() {
-        return Optional.ofNullable(this.includeBrowse);
-    }
-
-    /**
      * Maximum number of secrets to return.
      * 
-     * - If not specified, at most 10000 secrets are returned.
-     * - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-     * - If set to 0, the page length is set to 10000.
+     * - If not specified, at most 1000 secrets are returned.
+     * - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+     * - If set to 0, the page length is set to 1000.
      * - If set to a value less than 0, an invalid parameter error is returned
      * 
      */
@@ -67,9 +49,9 @@ public final class GetSecretUcsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return Maximum number of secrets to return.
      * 
-     * - If not specified, at most 10000 secrets are returned.
-     * - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-     * - If set to 0, the page length is set to 10000.
+     * - If not specified, at most 1000 secrets are returned.
+     * - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+     * - If set to 0, the page length is set to 1000.
      * - If set to a value less than 0, an invalid parameter error is returned
      * 
      */
@@ -113,7 +95,6 @@ public final class GetSecretUcsArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetSecretUcsArgs(GetSecretUcsArgs $) {
         this.catalogName = $.catalogName;
-        this.includeBrowse = $.includeBrowse;
         this.pageSize = $.pageSize;
         this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
@@ -161,34 +142,11 @@ public final class GetSecretUcsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param includeBrowse Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-         * which limits access to metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder includeBrowse(@Nullable Output<Boolean> includeBrowse) {
-            $.includeBrowse = includeBrowse;
-            return this;
-        }
-
-        /**
-         * @param includeBrowse Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-         * which limits access to metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder includeBrowse(Boolean includeBrowse) {
-            return includeBrowse(Output.of(includeBrowse));
-        }
-
-        /**
          * @param pageSize Maximum number of secrets to return.
          * 
-         * - If not specified, at most 10000 secrets are returned.
-         * - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-         * - If set to 0, the page length is set to 10000.
+         * - If not specified, at most 1000 secrets are returned.
+         * - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+         * - If set to 0, the page length is set to 1000.
          * - If set to a value less than 0, an invalid parameter error is returned
          * 
          * @return builder
@@ -202,9 +160,9 @@ public final class GetSecretUcsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param pageSize Maximum number of secrets to return.
          * 
-         * - If not specified, at most 10000 secrets are returned.
-         * - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-         * - If set to 0, the page length is set to 10000.
+         * - If not specified, at most 1000 secrets are returned.
+         * - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+         * - If set to 0, the page length is set to 1000.
          * - If set to a value less than 0, an invalid parameter error is returned
          * 
          * @return builder

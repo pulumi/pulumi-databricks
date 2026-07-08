@@ -65,6 +65,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.PostgresEndpointStatusHostsGetArgs>? Hosts { get; set; }
 
         /// <summary>
+        /// (string) - A timestamp indicating when the compute endpoint was last active
+        /// </summary>
+        [Input("lastActiveTime")]
+        public Input<string>? LastActiveTime { get; set; }
+
+        /// <summary>
         /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         [Input("pendingState")]

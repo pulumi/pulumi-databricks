@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
@@ -19,6 +20,11 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
      * 
      */
     private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+    /**
+     * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling;
     /**
      * @return (RollingWindow)
      * 
@@ -42,6 +48,13 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
      */
     public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+    /**
+     * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling> longRolling() {
+        return Optional.ofNullable(this.longRolling);
     }
     /**
      * @return (RollingWindow)
@@ -75,6 +88,7 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+        private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling tumbling;
@@ -82,6 +96,7 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
         public Builder(GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
+    	      this.longRolling = defaults.longRolling;
     	      this.rolling = defaults.rolling;
     	      this.sliding = defaults.sliding;
     	      this.tumbling = defaults.tumbling;
@@ -91,6 +106,12 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
         public Builder continuous(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous) {
 
             this.continuous = continuous;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder longRolling(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling) {
+
+            this.longRolling = longRolling;
             return this;
         }
         @CustomType.Setter
@@ -114,6 +135,7 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
         public GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow build() {
             final var _resultValue = new GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow();
             _resultValue.continuous = continuous;
+            _resultValue.longRolling = longRolling;
             _resultValue.rolling = rolling;
             _resultValue.sliding = sliding;
             _resultValue.tumbling = tumbling;

@@ -10,7 +10,11 @@ import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregation
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionAvgArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunctionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinctArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstNArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinctArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastNArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMaxArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMinArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPopArgs;
@@ -63,11 +67,39 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
         return Optional.ofNullable(this.first);
     }
 
+    @Import(name="firstDistinct")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinctArgs> firstDistinct;
+
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinctArgs>> firstDistinct() {
+        return Optional.ofNullable(this.firstDistinct);
+    }
+
+    @Import(name="firstN")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionFirstNArgs> firstN;
+
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionFirstNArgs>> firstN() {
+        return Optional.ofNullable(this.firstN);
+    }
+
     @Import(name="last")
     private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastArgs> last;
 
     public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastArgs>> last() {
         return Optional.ofNullable(this.last);
+    }
+
+    @Import(name="lastDistinct")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinctArgs> lastDistinct;
+
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinctArgs>> lastDistinct() {
+        return Optional.ofNullable(this.lastDistinct);
+    }
+
+    @Import(name="lastN")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastNArgs> lastN;
+
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastNArgs>> lastN() {
+        return Optional.ofNullable(this.lastN);
     }
 
     @Import(name="max")
@@ -144,7 +176,11 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
         this.avg = $.avg;
         this.countFunction = $.countFunction;
         this.first = $.first;
+        this.firstDistinct = $.firstDistinct;
+        this.firstN = $.firstN;
         this.last = $.last;
+        this.lastDistinct = $.lastDistinct;
+        this.lastN = $.lastN;
         this.max = $.max;
         this.min = $.min;
         this.stddevPop = $.stddevPop;
@@ -218,6 +254,24 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
             return first(Output.of(first));
         }
 
+        public Builder firstDistinct(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinctArgs> firstDistinct) {
+            $.firstDistinct = firstDistinct;
+            return this;
+        }
+
+        public Builder firstDistinct(FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinctArgs firstDistinct) {
+            return firstDistinct(Output.of(firstDistinct));
+        }
+
+        public Builder firstN(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionFirstNArgs> firstN) {
+            $.firstN = firstN;
+            return this;
+        }
+
+        public Builder firstN(FeatureEngineeringFeatureFunctionAggregationFunctionFirstNArgs firstN) {
+            return firstN(Output.of(firstN));
+        }
+
         public Builder last(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastArgs> last) {
             $.last = last;
             return this;
@@ -225,6 +279,24 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
 
         public Builder last(FeatureEngineeringFeatureFunctionAggregationFunctionLastArgs last) {
             return last(Output.of(last));
+        }
+
+        public Builder lastDistinct(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinctArgs> lastDistinct) {
+            $.lastDistinct = lastDistinct;
+            return this;
+        }
+
+        public Builder lastDistinct(FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinctArgs lastDistinct) {
+            return lastDistinct(Output.of(lastDistinct));
+        }
+
+        public Builder lastN(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionLastNArgs> lastN) {
+            $.lastN = lastN;
+            return this;
+        }
+
+        public Builder lastN(FeatureEngineeringFeatureFunctionAggregationFunctionLastNArgs lastN) {
+            return lastN(Output.of(lastN));
         }
 
         public Builder max(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionMaxArgs> max) {

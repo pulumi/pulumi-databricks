@@ -16,30 +16,74 @@ public final class AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginArgs ex
 
     public static final AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginArgs Empty = new AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginArgs();
 
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace&#39;s Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     * 
+     */
     @Import(name="allPrivateAccess")
     private @Nullable Output<Boolean> allPrivateAccess;
 
+    /**
+     * @return Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace&#39;s Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     * 
+     */
     public Optional<Output<Boolean>> allPrivateAccess() {
         return Optional.ofNullable(this.allPrivateAccess);
     }
 
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     * 
+     */
     @Import(name="allRegisteredEndpoints")
     private @Nullable Output<Boolean> allRegisteredEndpoints;
 
+    /**
+     * @return Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     * 
+     */
     public Optional<Output<Boolean>> allRegisteredEndpoints() {
         return Optional.ofNullable(this.allRegisteredEndpoints);
     }
 
+    /**
+     * Matches requests arriving through the workspace&#39;s Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     * 
+     */
     @Import(name="azureWorkspacePrivateLink")
     private @Nullable Output<Boolean> azureWorkspacePrivateLink;
 
+    /**
+     * @return Matches requests arriving through the workspace&#39;s Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     * 
+     */
     public Optional<Output<Boolean>> azureWorkspacePrivateLink() {
         return Optional.ofNullable(this.azureWorkspacePrivateLink);
     }
 
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     * 
+     */
     @Import(name="endpoints")
     private @Nullable Output<AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpointsArgs> endpoints;
 
+    /**
+     * @return Matches requests arriving through any of the specified registered endpoints
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpointsArgs>> endpoints() {
         return Optional.ofNullable(this.endpoints);
     }
@@ -71,38 +115,98 @@ public final class AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginArgs ex
             $ = new AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allPrivateAccess Matches requests arriving over any private connectivity, including registered
+         * endpoints and the workspace&#39;s Azure Private Link (ui-api) endpoints.
+         * Can only be used in deny rules of workspace-level network policies.
+         * Must be set to true when specified
+         * 
+         * @return builder
+         * 
+         */
         public Builder allPrivateAccess(@Nullable Output<Boolean> allPrivateAccess) {
             $.allPrivateAccess = allPrivateAccess;
             return this;
         }
 
+        /**
+         * @param allPrivateAccess Matches requests arriving over any private connectivity, including registered
+         * endpoints and the workspace&#39;s Azure Private Link (ui-api) endpoints.
+         * Can only be used in deny rules of workspace-level network policies.
+         * Must be set to true when specified
+         * 
+         * @return builder
+         * 
+         */
         public Builder allPrivateAccess(Boolean allPrivateAccess) {
             return allPrivateAccess(Output.of(allPrivateAccess));
         }
 
+        /**
+         * @param allRegisteredEndpoints Matches requests arriving through any endpoint registered to the account.
+         * Must be set to true when specified
+         * 
+         * @return builder
+         * 
+         */
         public Builder allRegisteredEndpoints(@Nullable Output<Boolean> allRegisteredEndpoints) {
             $.allRegisteredEndpoints = allRegisteredEndpoints;
             return this;
         }
 
+        /**
+         * @param allRegisteredEndpoints Matches requests arriving through any endpoint registered to the account.
+         * Must be set to true when specified
+         * 
+         * @return builder
+         * 
+         */
         public Builder allRegisteredEndpoints(Boolean allRegisteredEndpoints) {
             return allRegisteredEndpoints(Output.of(allRegisteredEndpoints));
         }
 
+        /**
+         * @param azureWorkspacePrivateLink Matches requests arriving through the workspace&#39;s Azure Private Link (ui-api)
+         * endpoints. Can only be used in deny rules of workspace-level network policies.
+         * Must be set to true when specified
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureWorkspacePrivateLink(@Nullable Output<Boolean> azureWorkspacePrivateLink) {
             $.azureWorkspacePrivateLink = azureWorkspacePrivateLink;
             return this;
         }
 
+        /**
+         * @param azureWorkspacePrivateLink Matches requests arriving through the workspace&#39;s Azure Private Link (ui-api)
+         * endpoints. Can only be used in deny rules of workspace-level network policies.
+         * Must be set to true when specified
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureWorkspacePrivateLink(Boolean azureWorkspacePrivateLink) {
             return azureWorkspacePrivateLink(Output.of(azureWorkspacePrivateLink));
         }
 
+        /**
+         * @param endpoints Matches requests arriving through any of the specified registered endpoints
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoints(@Nullable Output<AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpointsArgs> endpoints) {
             $.endpoints = endpoints;
             return this;
         }
 
+        /**
+         * @param endpoints Matches requests arriving through any of the specified registered endpoints
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoints(AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpointsArgs endpoints) {
             return endpoints(Output.of(endpoints));
         }

@@ -18,6 +18,10 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This feature is available on Azure, and in Public Preview on AWS.
     /// 
+    /// ## Plugin Framework Opt-In
+    /// 
+    /// A Plugin Framework implementation of this resource is available. The default remains the SDK V2 implementation; to opt in, set the environment variable `export DATABRICKS_TF_ENABLED_PF_RESOURCES="databricks.MwsNccPrivateEndpointRule"`. Once opted in, `pulumi up` waits for the rule to leave `CREATING` before returning: `PENDING` and `ESTABLISHED` succeed, while a `CREATE_FAILED`, `REJECTED`, `DISCONNECTED`, or `EXPIRED` connection state surfaces as an apply-time error instead of on the next plan.
+    /// 
     /// ## Example Usage
     /// 
     /// Create private endpoints to an Azure storage account and an Azure standard load balancer.
@@ -111,17 +115,22 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")]
     public partial class MwsNccPrivateEndpointRule : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The Databricks account ID that owns this private endpoint rule.
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        /// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the cloud console before they take effect.
         /// The possible values are:
         /// * `PENDING`: The endpoint has been created and pending approval.
         /// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
         /// * `REJECTED`: Connection was rejected by the private link resource owner.
         /// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         /// * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
+        /// * `CREATING`: The endpoint creation is in progress. Once successfully created, the state transitions to `PENDING`.
+        /// * `CREATE_FAILED`: The endpoint creation failed; see `ErrorMessage` for details.
         /// </summary>
         [Output("connectionState")]
         public Output<string> ConnectionState { get; private set; } = null!;
@@ -136,13 +145,13 @@ namespace Pulumi.Databricks
         /// Whether this private endpoint is deactivated.
         /// </summary>
         [Output("deactivated")]
-        public Output<bool?> Deactivated { get; private set; } = null!;
+        public Output<bool> Deactivated { get; private set; } = null!;
 
         /// <summary>
         /// Time in epoch milliseconds when this object was deactivated.
         /// </summary>
         [Output("deactivatedAt")]
-        public Output<int?> DeactivatedAt { get; private set; } = null!;
+        public Output<int> DeactivatedAt { get; private set; } = null!;
 
         /// <summary>
         /// * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `GroupId`.
@@ -169,8 +178,11 @@ namespace Pulumi.Databricks
         [Output("endpointService")]
         public Output<string?> EndpointService { get; private set; } = null!;
 
+        /// <summary>
+        /// Error message describing why the rule is in a `CREATE_FAILED` or otherwise failed state, if any.
+        /// </summary>
         [Output("errorMessage")]
-        public Output<string?> ErrorMessage { get; private set; } = null!;
+        public Output<string> ErrorMessage { get; private set; } = null!;
 
         [Output("gcpEndpoint")]
         public Output<Outputs.MwsNccPrivateEndpointRuleGcpEndpoint?> GcpEndpoint { get; private set; } = null!;
@@ -263,39 +275,6 @@ namespace Pulumi.Databricks
 
     public sealed class MwsNccPrivateEndpointRuleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-        /// The possible values are:
-        /// * `PENDING`: The endpoint has been created and pending approval.
-        /// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-        /// * `REJECTED`: Connection was rejected by the private link resource owner.
-        /// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-        /// * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
-        /// </summary>
-        [Input("connectionState")]
-        public Input<string>? ConnectionState { get; set; }
-
-        /// <summary>
-        /// Time in epoch milliseconds when this object was created.
-        /// </summary>
-        [Input("creationTime")]
-        public Input<int>? CreationTime { get; set; }
-
-        /// <summary>
-        /// Whether this private endpoint is deactivated.
-        /// </summary>
-        [Input("deactivated")]
-        public Input<bool>? Deactivated { get; set; }
-
-        /// <summary>
-        /// Time in epoch milliseconds when this object was deactivated.
-        /// </summary>
-        [Input("deactivatedAt")]
-        public Input<int>? DeactivatedAt { get; set; }
-
         [Input("domainNames")]
         private InputList<string>? _domainNames;
 
@@ -316,19 +295,10 @@ namespace Pulumi.Databricks
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
-        /// </summary>
-        [Input("endpointName")]
-        public Input<string>? EndpointName { get; set; }
-
-        /// <summary>
         /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
         /// </summary>
         [Input("endpointService")]
         public Input<string>? EndpointService { get; set; }
-
-        [Input("errorMessage")]
-        public Input<string>? ErrorMessage { get; set; }
 
         [Input("gcpEndpoint")]
         public Input<Inputs.MwsNccPrivateEndpointRuleGcpEndpointArgs>? GcpEndpoint { get; set; }
@@ -363,24 +333,6 @@ namespace Pulumi.Databricks
             set => _resourceNames = value;
         }
 
-        /// <summary>
-        /// the ID of a private endpoint rule.
-        /// </summary>
-        [Input("ruleId")]
-        public Input<string>? RuleId { get; set; }
-
-        /// <summary>
-        /// Time in epoch milliseconds when this object was updated.
-        /// </summary>
-        [Input("updatedTime")]
-        public Input<int>? UpdatedTime { get; set; }
-
-        /// <summary>
-        /// The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
-        /// </summary>
-        [Input("vpcEndpointId")]
-        public Input<string>? VpcEndpointId { get; set; }
-
         public MwsNccPrivateEndpointRuleArgs()
         {
         }
@@ -389,17 +341,22 @@ namespace Pulumi.Databricks
 
     public sealed class MwsNccPrivateEndpointRuleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Databricks account ID that owns this private endpoint rule.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        /// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the cloud console before they take effect.
         /// The possible values are:
         /// * `PENDING`: The endpoint has been created and pending approval.
         /// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
         /// * `REJECTED`: Connection was rejected by the private link resource owner.
         /// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         /// * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
+        /// * `CREATING`: The endpoint creation is in progress. Once successfully created, the state transitions to `PENDING`.
+        /// * `CREATE_FAILED`: The endpoint creation failed; see `ErrorMessage` for details.
         /// </summary>
         [Input("connectionState")]
         public Input<string>? ConnectionState { get; set; }
@@ -453,6 +410,9 @@ namespace Pulumi.Databricks
         [Input("endpointService")]
         public Input<string>? EndpointService { get; set; }
 
+        /// <summary>
+        /// Error message describing why the rule is in a `CREATE_FAILED` or otherwise failed state, if any.
+        /// </summary>
         [Input("errorMessage")]
         public Input<string>? ErrorMessage { get; set; }
 

@@ -7,14 +7,34 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+ *
+ * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+ *
+ * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+ *
+ * ## Example Usage
+ *
+ * ### Basic Example
+ * This example lists the secrets in a given catalog and schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSecretUcs({
+ *     catalogName: "my_catalog",
+ *     schemaName: "my_schema",
+ * });
+ * ```
  */
 export function getSecretUcs(args?: GetSecretUcsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretUcsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSecretUcs:getSecretUcs", {
         "catalogName": args.catalogName,
-        "includeBrowse": args.includeBrowse,
         "pageSize": args.pageSize,
         "providerConfig": args.providerConfig,
         "schemaName": args.schemaName,
@@ -31,16 +51,11 @@ export interface GetSecretUcsArgs {
      */
     catalogName?: string;
     /**
-     * Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-     * which limits access to metadata
-     */
-    includeBrowse?: boolean;
-    /**
      * Maximum number of secrets to return.
      *
-     * - If not specified, at most 10000 secrets are returned.
-     * - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-     * - If set to 0, the page length is set to 10000.
+     * - If not specified, at most 1000 secrets are returned.
+     * - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+     * - If set to 0, the page length is set to 1000.
      * - If set to a value less than 0, an invalid parameter error is returned
      */
     pageSize?: number;
@@ -67,7 +82,6 @@ export interface GetSecretUcsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly includeBrowse?: boolean;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetSecretUcsProviderConfig;
     /**
@@ -77,14 +91,34 @@ export interface GetSecretUcsResult {
     readonly secrets: outputs.GetSecretUcsSecret[];
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+ *
+ * The Secrets data source allows you to list secrets in Unity Catalog within a given catalog and schema.
+ *
+ * This returns the metadata of the secrets the calling principal is allowed to see. Secret values are not returned when listing.
+ *
+ * ## Example Usage
+ *
+ * ### Basic Example
+ * This example lists the secrets in a given catalog and schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSecretUcs({
+ *     catalogName: "my_catalog",
+ *     schemaName: "my_schema",
+ * });
+ * ```
  */
 export function getSecretUcsOutput(args?: GetSecretUcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretUcsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getSecretUcs:getSecretUcs", {
         "catalogName": args.catalogName,
-        "includeBrowse": args.includeBrowse,
         "pageSize": args.pageSize,
         "providerConfig": args.providerConfig,
         "schemaName": args.schemaName,
@@ -101,16 +135,11 @@ export interface GetSecretUcsOutputArgs {
      */
     catalogName?: pulumi.Input<string | undefined>;
     /**
-     * Whether to include secrets in the response for which you only have the **BROWSE** privilege,
-     * which limits access to metadata
-     */
-    includeBrowse?: pulumi.Input<boolean | undefined>;
-    /**
      * Maximum number of secrets to return.
      *
-     * - If not specified, at most 10000 secrets are returned.
-     * - If set to a value greater than 0, the page length is the minimum of this value and 10000.
-     * - If set to 0, the page length is set to 10000.
+     * - If not specified, at most 1000 secrets are returned.
+     * - If set to a value greater than 0, the page length is the minimum of this value and 1000.
+     * - If set to 0, the page length is set to 1000.
      * - If set to a value less than 0, an invalid parameter error is returned
      */
     pageSize?: pulumi.Input<number | undefined>;

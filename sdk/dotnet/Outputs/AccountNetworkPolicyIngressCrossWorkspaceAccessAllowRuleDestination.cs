@@ -13,12 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination
     {
+        /// <summary>
+        /// Matches requests to account-level APIs.
+        /// Can only be used in the account-level network policy
+        /// </summary>
         public readonly Outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi? AccountApi;
         /// <summary>
-        /// Account DatabricksOne destination is not supported.
-        /// DO NOT change the stage of this destination past PRIVATE_PREVIEW
+        /// Account DatabricksOne destination is not supported
         /// </summary>
         public readonly Outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne? AccountDatabricksOne;
+        /// <summary>
+        /// Matches requests to the account console UI.
+        /// Can only be used in the account-level network policy
+        /// </summary>
         public readonly Outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi? AccountUi;
         public readonly bool? AllDestinations;
         public readonly Outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime? AppsRuntime;

@@ -7,7 +7,27 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+ *
+ * The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+ *
+ * This returns the secret's metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+ *
+ * ## Example Usage
+ *
+ * ### Basic Example
+ * This example reads a secret in Unity Catalog by its fully qualified name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getSecretUc({
+ *     fullName: "my_catalog.my_schema.my_secret",
+ * });
+ * ```
  */
 export function getSecretUc(args: GetSecretUcArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretUcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,11 +55,6 @@ export interface GetSecretUcArgs {
  * A collection of values returned by getSecretUc.
  */
 export interface GetSecretUcResult {
-    /**
-     * (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     */
-    readonly browseOnly: boolean;
     /**
      * (string) - The name of the catalog where the schema and the secret reside
      */
@@ -72,10 +87,6 @@ export interface GetSecretUcResult {
      * does not trigger any automatic actions or affect the secret's lifecycle
      */
     readonly expireTime: string;
-    /**
-     * (string)
-     */
-    readonly externalSecretId: string;
     /**
      * (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
      */
@@ -119,7 +130,27 @@ export interface GetSecretUcResult {
     readonly value: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+ *
+ * The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+ *
+ * This returns the secret's metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+ *
+ * ## Example Usage
+ *
+ * ### Basic Example
+ * This example reads a secret in Unity Catalog by its fully qualified name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getSecretUc({
+ *     fullName: "my_catalog.my_schema.my_secret",
+ * });
+ * ```
  */
 export function getSecretUcOutput(args: GetSecretUcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretUcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

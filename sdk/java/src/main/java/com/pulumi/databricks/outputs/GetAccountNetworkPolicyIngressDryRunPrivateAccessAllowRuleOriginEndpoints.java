@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints {
     /**
-     * @return (list of string)
+     * @return (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      * 
      */
     private @Nullable List<String> endpointIds;
 
     private GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints() {}
     /**
-     * @return (list of string)
+     * @return (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      * 
      */
     public List<String> endpointIds() {

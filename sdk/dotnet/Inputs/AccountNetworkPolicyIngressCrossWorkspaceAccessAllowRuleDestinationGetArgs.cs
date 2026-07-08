@@ -12,16 +12,23 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Matches requests to account-level APIs.
+        /// Can only be used in the account-level network policy
+        /// </summary>
         [Input("accountApi")]
         public Input<Inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiGetArgs>? AccountApi { get; set; }
 
         /// <summary>
-        /// Account DatabricksOne destination is not supported.
-        /// DO NOT change the stage of this destination past PRIVATE_PREVIEW
+        /// Account DatabricksOne destination is not supported
         /// </summary>
         [Input("accountDatabricksOne")]
         public Input<Inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneGetArgs>? AccountDatabricksOne { get; set; }
 
+        /// <summary>
+        /// Matches requests to the account console UI.
+        /// Can only be used in the account-level network policy
+        /// </summary>
         [Input("accountUi")]
         public Input<Inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUiGetArgs>? AccountUi { get; set; }
 

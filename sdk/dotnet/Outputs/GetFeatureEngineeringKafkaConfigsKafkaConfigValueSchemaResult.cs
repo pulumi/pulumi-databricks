@@ -14,14 +14,29 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaResult
     {
         /// <summary>
+        /// (string) - Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+        /// </summary>
+        public readonly string? AvroSchema;
+        /// <summary>
         /// (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
         /// </summary>
         public readonly string? JsonSchema;
+        /// <summary>
+        /// (ProtoSchemaSpec) - Protocol Buffer schema with its payload message name
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaProtoSchemaResult? ProtoSchema;
 
         [OutputConstructor]
-        private GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaResult(string? jsonSchema)
+        private GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaResult(
+            string? avroSchema,
+
+            string? jsonSchema,
+
+            Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaProtoSchemaResult? protoSchema)
         {
+            AvroSchema = avroSchema;
             JsonSchema = jsonSchema;
+            ProtoSchema = protoSchema;
         }
     }
 }

@@ -33,6 +33,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("periodic")]
         public Input<Inputs.JobTriggerPeriodicGetArgs>? Periodic { get; set; }
 
+        [Input("sqlCondition")]
+        public Input<Inputs.JobTriggerSqlConditionGetArgs>? SqlCondition { get; set; }
+
         /// <summary>
         /// configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
         /// </summary>

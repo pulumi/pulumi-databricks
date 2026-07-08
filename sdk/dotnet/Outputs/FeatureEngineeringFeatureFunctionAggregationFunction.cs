@@ -18,7 +18,11 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionAvg? Avg;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction? CountFunction;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirst? First;
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct? FirstDistinct;
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstN? FirstN;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLast? Last;
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct? LastDistinct;
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastN? LastN;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionMax? Max;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionMin? Min;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop? StddevPop;
@@ -44,7 +48,15 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirst? first,
 
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct? firstDistinct,
+
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstN? firstN,
+
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLast? last,
+
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct? lastDistinct,
+
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastN? lastN,
 
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionMax? max,
 
@@ -67,7 +79,11 @@ namespace Pulumi.Databricks.Outputs
             Avg = avg;
             CountFunction = countFunction;
             First = first;
+            FirstDistinct = firstDistinct;
+            FirstN = firstN;
             Last = last;
+            LastDistinct = lastDistinct;
+            LastN = lastN;
             Max = max;
             Min = min;
             StddevPop = stddevPop;

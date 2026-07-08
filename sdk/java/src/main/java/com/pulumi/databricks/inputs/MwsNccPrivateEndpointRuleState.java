@@ -19,34 +19,46 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
 
     public static final MwsNccPrivateEndpointRuleState Empty = new MwsNccPrivateEndpointRuleState();
 
+    /**
+     * The Databricks account ID that owns this private endpoint rule.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return The Databricks account ID that owns this private endpoint rule.
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+     * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the cloud console before they take effect.
      * The possible values are:
      * * `PENDING`: The endpoint has been created and pending approval.
      * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
      * * `REJECTED`: Connection was rejected by the private link resource owner.
      * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
      * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
+     * * `CREATING`: The endpoint creation is in progress. Once successfully created, the state transitions to `PENDING`.
+     * * `CREATE_FAILED`: The endpoint creation failed; see `errorMessage` for details.
      * 
      */
     @Import(name="connectionState")
     private @Nullable Output<String> connectionState;
 
     /**
-     * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+     * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the cloud console before they take effect.
      * The possible values are:
      * * `PENDING`: The endpoint has been created and pending approval.
      * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
      * * `REJECTED`: Connection was rejected by the private link resource owner.
      * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
      * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
+     * * `CREATING`: The endpoint creation is in progress. Once successfully created, the state transitions to `PENDING`.
+     * * `CREATE_FAILED`: The endpoint creation failed; see `errorMessage` for details.
      * 
      */
     public Optional<Output<String>> connectionState() {
@@ -160,9 +172,17 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         return Optional.ofNullable(this.endpointService);
     }
 
+    /**
+     * Error message describing why the rule is in a `CREATE_FAILED` or otherwise failed state, if any.
+     * 
+     */
     @Import(name="errorMessage")
     private @Nullable Output<String> errorMessage;
 
+    /**
+     * @return Error message describing why the rule is in a `CREATE_FAILED` or otherwise failed state, if any.
+     * 
+     */
     public Optional<Output<String>> errorMessage() {
         return Optional.ofNullable(this.errorMessage);
     }
@@ -320,23 +340,37 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
             $ = new MwsNccPrivateEndpointRuleState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The Databricks account ID that owns this private endpoint rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId The Databricks account ID that owns this private endpoint rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the cloud console before they take effect.
          * The possible values are:
          * * `PENDING`: The endpoint has been created and pending approval.
          * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
          * * `REJECTED`: Connection was rejected by the private link resource owner.
          * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
          * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
+         * * `CREATING`: The endpoint creation is in progress. Once successfully created, the state transitions to `PENDING`.
+         * * `CREATE_FAILED`: The endpoint creation failed; see `errorMessage` for details.
          * 
          * @return builder
          * 
@@ -347,13 +381,15 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the cloud console before they take effect.
          * The possible values are:
          * * `PENDING`: The endpoint has been created and pending approval.
          * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
          * * `REJECTED`: Connection was rejected by the private link resource owner.
          * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
          * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
+         * * `CREATING`: The endpoint creation is in progress. Once successfully created, the state transitions to `PENDING`.
+         * * `CREATE_FAILED`: The endpoint creation failed; see `errorMessage` for details.
          * 
          * @return builder
          * 
@@ -522,11 +558,23 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
             return endpointService(Output.of(endpointService));
         }
 
+        /**
+         * @param errorMessage Error message describing why the rule is in a `CREATE_FAILED` or otherwise failed state, if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorMessage(@Nullable Output<String> errorMessage) {
             $.errorMessage = errorMessage;
             return this;
         }
 
+        /**
+         * @param errorMessage Error message describing why the rule is in a `CREATE_FAILED` or otherwise failed state, if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorMessage(String errorMessage) {
             return errorMessage(Output.of(errorMessage));
         }

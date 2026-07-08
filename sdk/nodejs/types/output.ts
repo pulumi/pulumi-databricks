@@ -171,8 +171,8 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 export interface AccountNetworkPolicyIngress {
     crossWorkspaceAccess?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccess;
     /**
-     * The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      */
     privateAccess?: outputs.AccountNetworkPolicyIngressPrivateAccess;
     /**
@@ -215,12 +215,19 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthent
 }
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime;
@@ -301,12 +308,19 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthenti
 }
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime;
@@ -363,8 +377,8 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSe
 export interface AccountNetworkPolicyIngressDryRun {
     crossWorkspaceAccess?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess;
     /**
-     * The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      */
     privateAccess?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccess;
     /**
@@ -407,12 +421,19 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleA
 }
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAppsRuntime;
@@ -493,12 +514,19 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAu
 }
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAppsRuntime;
@@ -585,12 +613,19 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthenti
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAppsRuntime;
@@ -630,13 +665,34 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinat
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOrigin {
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     allPrivateAccess?: boolean;
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     */
     allRegisteredEndpoints?: boolean;
+    /**
+     * Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     azureWorkspacePrivateLink?: boolean;
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     */
     endpoints?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints {
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     */
     endpointIds?: string[];
 }
 
@@ -667,12 +723,19 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthentic
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAppsRuntime;
@@ -712,13 +775,34 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinati
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOrigin {
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     allPrivateAccess?: boolean;
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     */
     allRegisteredEndpoints?: boolean;
+    /**
+     * Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     azureWorkspacePrivateLink?: boolean;
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     */
     endpoints?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints {
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     */
     endpointIds?: string[];
 }
 
@@ -755,12 +839,19 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentic
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime;
@@ -855,12 +946,19 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentica
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntime;
@@ -961,12 +1059,19 @@ export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleAuthentication
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAppsRuntime;
@@ -1006,13 +1111,34 @@ export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWor
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleOrigin {
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     allPrivateAccess?: boolean;
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     */
     allRegisteredEndpoints?: boolean;
+    /**
+     * Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     azureWorkspacePrivateLink?: boolean;
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     */
     endpoints?: outputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints;
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints {
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     */
     endpointIds?: string[];
 }
 
@@ -1043,12 +1169,19 @@ export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleAuthenticationI
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAppsRuntime;
@@ -1088,13 +1221,34 @@ export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWork
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleOrigin {
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     allPrivateAccess?: boolean;
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     */
     allRegisteredEndpoints?: boolean;
+    /**
+     * Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     azureWorkspacePrivateLink?: boolean;
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     */
     endpoints?: outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints;
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints {
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     */
     endpointIds?: string[];
 }
 
@@ -1131,12 +1285,19 @@ export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationI
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAppsRuntime;
@@ -1231,12 +1392,19 @@ export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationId
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
     appsRuntime?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime;
@@ -3394,6 +3562,13 @@ export interface DataClassificationCatalogConfigAutoTagConfig {
     classificationTag: string;
 }
 
+export interface DataClassificationCatalogConfigExcludedSchemas {
+    /**
+     * Schema names, each relative to the parent catalog. Must not be empty
+     */
+    names: string[];
+}
+
 export interface DataClassificationCatalogConfigIncludedSchemas {
     /**
      * Schema names, each relative to the parent catalog. Must not be empty
@@ -3971,7 +4146,7 @@ export interface DatabaseSyncedDatabaseTableSpecTypeOverride {
     pgType: string;
     /**
      * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      */
     size?: number;
 }
@@ -4427,7 +4602,11 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunction {
     avg?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionAvg;
     countFunction?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction;
     first?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirst;
+    firstDistinct?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct;
+    firstN?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstN;
     last?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLast;
+    lastDistinct?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct;
+    lastN?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastN;
     max?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionMax;
     min?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionMin;
     stddevPop?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop;
@@ -4474,8 +4653,28 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionFirst {
     input: string;
 }
 
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct {
+    input: string;
+    n: number;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionFirstN {
+    input: string;
+    n: number;
+}
+
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionLast {
     input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct {
+    input: string;
+    n: number;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionLastN {
+    input: string;
+    n: number;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionMax {
@@ -4500,6 +4699,10 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     continuous?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+    /**
+     * A long (multi-day) rolling window served via the hybrid batch + streaming path
+     */
+    longRolling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
     rolling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
     sliding?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
     tumbling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
@@ -4513,11 +4716,12 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowC
     windowDuration: string;
 }
 
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
+    delay?: string;
+    windowDuration: string;
+}
+
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
-    /**
-     * The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     */
     delay?: string;
     windowDuration: string;
 }
@@ -4722,6 +4926,10 @@ export interface FeatureEngineeringFeatureSourceStreamSource {
 
 export interface FeatureEngineeringFeatureTimeWindow {
     continuous?: outputs.FeatureEngineeringFeatureTimeWindowContinuous;
+    /**
+     * A long (multi-day) rolling window served via the hybrid batch + streaming path
+     */
+    longRolling?: outputs.FeatureEngineeringFeatureTimeWindowLongRolling;
     rolling?: outputs.FeatureEngineeringFeatureTimeWindowRolling;
     sliding?: outputs.FeatureEngineeringFeatureTimeWindowSliding;
     tumbling?: outputs.FeatureEngineeringFeatureTimeWindowTumbling;
@@ -4735,11 +4943,12 @@ export interface FeatureEngineeringFeatureTimeWindowContinuous {
     windowDuration: string;
 }
 
+export interface FeatureEngineeringFeatureTimeWindowLongRolling {
+    delay?: string;
+    windowDuration: string;
+}
+
 export interface FeatureEngineeringFeatureTimeWindowRolling {
-    /**
-     * The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     */
     delay?: string;
     windowDuration: string;
 }
@@ -4973,9 +5182,32 @@ export interface FeatureEngineeringKafkaConfigIngestionConfigIngestionDestinatio
 
 export interface FeatureEngineeringKafkaConfigKeySchema {
     /**
+     * Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     */
+    avroSchema?: string;
+    /**
      * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: string;
+    /**
+     * Protocol Buffer schema with its payload message name
+     */
+    protoSchema?: outputs.FeatureEngineeringKafkaConfigKeySchemaProtoSchema;
+}
+
+export interface FeatureEngineeringKafkaConfigKeySchemaProtoSchema {
+    /**
+     * The fully-qualified name of the message within schemaText that describes the Kafka payload
+     * (e.g. "Event" or "com.example.Event" if schemaText declares a package). Identifies which
+     * message is used to decode each Kafka record — a .proto file may declare multiple messages
+     * but only one represents the payload. Must not be empty
+     */
+    messageName: string;
+    /**
+     * The raw .proto file text (proto2 and proto3 syntax supported, see
+     * https://protobuf.dev/programming-guides/proto3/ and https://protobuf.dev/programming-guides/proto2/)
+     */
+    schemaText: string;
 }
 
 export interface FeatureEngineeringKafkaConfigProviderConfig {
@@ -5003,9 +5235,32 @@ export interface FeatureEngineeringKafkaConfigSubscriptionMode {
 
 export interface FeatureEngineeringKafkaConfigValueSchema {
     /**
+     * Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     */
+    avroSchema?: string;
+    /**
      * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: string;
+    /**
+     * Protocol Buffer schema with its payload message name
+     */
+    protoSchema?: outputs.FeatureEngineeringKafkaConfigValueSchemaProtoSchema;
+}
+
+export interface FeatureEngineeringKafkaConfigValueSchemaProtoSchema {
+    /**
+     * The fully-qualified name of the message within schemaText that describes the Kafka payload
+     * (e.g. "Event" or "com.example.Event" if schemaText declares a package). Identifies which
+     * message is used to decode each Kafka record — a .proto file may declare multiple messages
+     * but only one represents the payload. Must not be empty
+     */
+    messageName: string;
+    /**
+     * The raw .proto file text (proto2 and proto3 syntax supported, see
+     * https://protobuf.dev/programming-guides/proto3/ and https://protobuf.dev/programming-guides/proto2/)
+     */
+    schemaText: string;
 }
 
 export interface FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
@@ -5039,6 +5294,11 @@ export interface FeatureEngineeringMaterializedFeatureProviderConfig {
 }
 
 export interface FeatureEngineeringMaterializedFeatureStreamingMode {
+    /**
+     * The desired data freshness for feature materialization, expressed as a
+     * duration string (e.g. "1 minute")
+     */
+    freshnessTarget?: string;
     /**
      * The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      */
@@ -5315,8 +5575,8 @@ export interface GetAccountNetworkPoliciesItemIngress {
      */
     crossWorkspaceAccess?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccess;
     /**
-     * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      */
     privateAccess?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccess;
     /**
@@ -5384,16 +5644,17 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRu
 
 export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi;
     /**
@@ -5536,16 +5797,17 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRul
 
 export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi;
     /**
@@ -5651,8 +5913,8 @@ export interface GetAccountNetworkPoliciesItemIngressDryRun {
      */
     crossWorkspaceAccess?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess;
     /**
-     * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      */
     privateAccess?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccess;
     /**
@@ -5720,16 +5982,17 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessA
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi;
     /**
@@ -5872,16 +6135,17 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessD
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi;
     /**
@@ -6039,16 +6303,17 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRul
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleDestinationAccountUi;
     /**
@@ -6132,26 +6397,32 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRul
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleOrigin {
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     allPrivateAccess?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
      */
     allRegisteredEndpoints?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     azureWorkspacePrivateLink?: boolean;
     /**
-     * (CustomerFacingIngressNetworkPolicyEndpoints)
+     * (CustomerFacingIngressNetworkPolicyEndpoints) - Matches requests arriving through any of the specified registered endpoints
      */
     endpoints?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleOriginEndpoints;
 }
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleOriginEndpoints {
     /**
-     * (list of string)
+     * (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      */
     endpointIds?: string[];
 }
@@ -6199,16 +6470,17 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRule
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountUi;
     /**
@@ -6292,26 +6564,32 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRule
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleOrigin {
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     allPrivateAccess?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
      */
     allRegisteredEndpoints?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     azureWorkspacePrivateLink?: boolean;
     /**
-     * (CustomerFacingIngressNetworkPolicyEndpoints)
+     * (CustomerFacingIngressNetworkPolicyEndpoints) - Matches requests arriving through any of the specified registered endpoints
      */
     endpoints?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleOriginEndpoints;
 }
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleOriginEndpoints {
     /**
-     * (list of string)
+     * (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      */
     endpointIds?: string[];
 }
@@ -6374,16 +6652,17 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRule
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationAccountUi;
     /**
@@ -6537,16 +6816,17 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleA
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationAccountUi;
     /**
@@ -6715,16 +6995,17 @@ export interface GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleAuthe
 
 export interface GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDestinationAccountUi;
     /**
@@ -6808,26 +7089,32 @@ export interface GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDesti
 
 export interface GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleOrigin {
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     allPrivateAccess?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
      */
     allRegisteredEndpoints?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     azureWorkspacePrivateLink?: boolean;
     /**
-     * (CustomerFacingIngressNetworkPolicyEndpoints)
+     * (CustomerFacingIngressNetworkPolicyEndpoints) - Matches requests arriving through any of the specified registered endpoints
      */
     endpoints?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleOriginEndpoints;
 }
 
 export interface GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleOriginEndpoints {
     /**
-     * (list of string)
+     * (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      */
     endpointIds?: string[];
 }
@@ -6875,16 +7162,17 @@ export interface GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleAuthen
 
 export interface GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestinationAccountUi;
     /**
@@ -6968,26 +7256,32 @@ export interface GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestin
 
 export interface GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleOrigin {
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     allPrivateAccess?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
      */
     allRegisteredEndpoints?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     azureWorkspacePrivateLink?: boolean;
     /**
-     * (CustomerFacingIngressNetworkPolicyEndpoints)
+     * (CustomerFacingIngressNetworkPolicyEndpoints) - Matches requests arriving through any of the specified registered endpoints
      */
     endpoints?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleOriginEndpoints;
 }
 
 export interface GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleOriginEndpoints {
     /**
-     * (list of string)
+     * (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      */
     endpointIds?: string[];
 }
@@ -7050,16 +7344,17 @@ export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleAuthen
 
 export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountUi;
     /**
@@ -7213,16 +7508,17 @@ export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleAuthent
 
 export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationAccountUi;
     /**
@@ -7442,8 +7738,8 @@ export interface GetAccountNetworkPolicyIngress {
      */
     crossWorkspaceAccess?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccess;
     /**
-     * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      */
     privateAccess?: outputs.GetAccountNetworkPolicyIngressPrivateAccess;
     /**
@@ -7511,16 +7807,17 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuth
 
 export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi;
     /**
@@ -7663,16 +7960,17 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthe
 
 export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi;
     /**
@@ -7778,8 +8076,8 @@ export interface GetAccountNetworkPolicyIngressDryRun {
      */
     crossWorkspaceAccess?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccess;
     /**
-     * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      */
     privateAccess?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccess;
     /**
@@ -7847,16 +8145,17 @@ export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRu
 
 export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi;
     /**
@@ -7999,16 +8298,17 @@ export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRul
 
 export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi;
     /**
@@ -8166,16 +8466,17 @@ export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthe
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountUi;
     /**
@@ -8259,26 +8560,32 @@ export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDesti
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOrigin {
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     allPrivateAccess?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
      */
     allRegisteredEndpoints?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     azureWorkspacePrivateLink?: boolean;
     /**
-     * (CustomerFacingIngressNetworkPolicyEndpoints)
+     * (CustomerFacingIngressNetworkPolicyEndpoints) - Matches requests arriving through any of the specified registered endpoints
      */
     endpoints?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints;
 }
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints {
     /**
-     * (list of string)
+     * (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      */
     endpointIds?: string[];
 }
@@ -8326,16 +8633,17 @@ export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthen
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountUi;
     /**
@@ -8419,26 +8727,32 @@ export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestin
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOrigin {
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     allPrivateAccess?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
      */
     allRegisteredEndpoints?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     azureWorkspacePrivateLink?: boolean;
     /**
-     * (CustomerFacingIngressNetworkPolicyEndpoints)
+     * (CustomerFacingIngressNetworkPolicyEndpoints) - Matches requests arriving through any of the specified registered endpoints
      */
     endpoints?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints;
 }
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints {
     /**
-     * (list of string)
+     * (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      */
     endpointIds?: string[];
 }
@@ -8501,16 +8815,17 @@ export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthen
 
 export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi;
     /**
@@ -8664,16 +8979,17 @@ export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthent
 
 export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUi;
     /**
@@ -8842,16 +9158,17 @@ export interface GetAccountNetworkPolicyIngressPrivateAccessAllowRuleAuthenticat
 
 export interface GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi;
     /**
@@ -8935,26 +9252,32 @@ export interface GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestination
 
 export interface GetAccountNetworkPolicyIngressPrivateAccessAllowRuleOrigin {
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     allPrivateAccess?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
      */
     allRegisteredEndpoints?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     azureWorkspacePrivateLink?: boolean;
     /**
-     * (CustomerFacingIngressNetworkPolicyEndpoints)
+     * (CustomerFacingIngressNetworkPolicyEndpoints) - Matches requests arriving through any of the specified registered endpoints
      */
     endpoints?: outputs.GetAccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints;
 }
 
 export interface GetAccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints {
     /**
-     * (list of string)
+     * (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      */
     endpointIds?: string[];
 }
@@ -9002,16 +9325,17 @@ export interface GetAccountNetworkPolicyIngressPrivateAccessDenyRuleAuthenticati
 
 export interface GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountUi;
     /**
@@ -9095,26 +9419,32 @@ export interface GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationW
 
 export interface GetAccountNetworkPolicyIngressPrivateAccessDenyRuleOrigin {
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     allPrivateAccess?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
      */
     allRegisteredEndpoints?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
      */
     azureWorkspacePrivateLink?: boolean;
     /**
-     * (CustomerFacingIngressNetworkPolicyEndpoints)
+     * (CustomerFacingIngressNetworkPolicyEndpoints) - Matches requests arriving through any of the specified registered endpoints
      */
     endpoints?: outputs.GetAccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints;
 }
 
 export interface GetAccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints {
     /**
-     * (list of string)
+     * (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
      */
     endpointIds?: string[];
 }
@@ -9177,16 +9507,17 @@ export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticati
 
 export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi;
     /**
@@ -9340,16 +9671,17 @@ export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticatio
 
 export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      */
     accountUi?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi;
     /**
@@ -13594,6 +13926,13 @@ export interface GetDataClassificationCatalogConfigAutoTagConfig {
     classificationTag: string;
 }
 
+export interface GetDataClassificationCatalogConfigExcludedSchemas {
+    /**
+     * (list of string) - Schema names, each relative to the parent catalog. Must not be empty
+     */
+    names: string[];
+}
+
 export interface GetDataClassificationCatalogConfigIncludedSchemas {
     /**
      * (list of string) - Schema names, each relative to the parent catalog. Must not be empty
@@ -14783,7 +15122,7 @@ export interface GetDatabaseSyncedDatabaseTableSpecTypeOverride {
     pgType: string;
     /**
      * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      */
     size?: number;
 }
@@ -15124,7 +15463,7 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride {
     pgType: string;
     /**
      * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      */
     size?: number;
 }
@@ -15946,9 +16285,25 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunction {
      */
     first?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirst;
     /**
+     * (FirstDistinctFunction)
+     */
+    firstDistinct?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct;
+    /**
+     * (FirstNFunction)
+     */
+    firstN?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstN;
+    /**
      * (LastFunction)
      */
     last?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLast;
+    /**
+     * (LastDistinctFunction)
+     */
+    lastDistinct?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct;
+    /**
+     * (LastNFunction)
+     */
+    lastN?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastN;
     /**
      * (MaxFunction)
      */
@@ -16030,11 +16385,55 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionFirst {
     input: string;
 }
 
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (integer) - The number of values to return
+     */
+    n: number;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstN {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (integer) - The number of values to return
+     */
+    n: number;
+}
+
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionLast {
     /**
      * (string) - The input column from which the sample variance is computed
      */
     input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (integer) - The number of values to return
+     */
+    n: number;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionLastN {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (integer) - The number of values to return
+     */
+    n: number;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionMax {
@@ -16078,6 +16477,10 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
      */
     continuous?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
     /**
+     * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+     */
+    longRolling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
+    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
@@ -16096,6 +16499,18 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
      * (string) - The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
+    /**
+     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -16338,6 +16753,10 @@ export interface GetFeatureEngineeringFeatureTimeWindow {
      */
     continuous?: outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
     /**
+     * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+     */
+    longRolling?: outputs.GetFeatureEngineeringFeatureTimeWindowLongRolling;
+    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeatureTimeWindowRolling;
@@ -16356,6 +16775,18 @@ export interface GetFeatureEngineeringFeatureTimeWindowContinuous {
      * (string) - The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureTimeWindowLongRolling {
+    /**
+     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -16537,9 +16968,25 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      */
     first?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirst;
     /**
+     * (FirstDistinctFunction)
+     */
+    firstDistinct?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstDistinct;
+    /**
+     * (FirstNFunction)
+     */
+    firstN?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstN;
+    /**
      * (LastFunction)
      */
     last?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLast;
+    /**
+     * (LastDistinctFunction)
+     */
+    lastDistinct?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastDistinct;
+    /**
+     * (LastNFunction)
+     */
+    lastN?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastN;
     /**
      * (MaxFunction)
      */
@@ -16621,11 +17068,55 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
     input: string;
 }
 
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstDistinct {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (integer) - The number of values to return
+     */
+    n: number;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstN {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (integer) - The number of values to return
+     */
+    n: number;
+}
+
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLast {
     /**
      * (string) - The input column from which the sample variance is computed
      */
     input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastDistinct {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (integer) - The number of values to return
+     */
+    n: number;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastN {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (integer) - The number of values to return
+     */
+    n: number;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionMax {
@@ -16669,6 +17160,10 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      */
     continuous?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous;
     /**
+     * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+     */
+    longRolling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRolling;
+    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling;
@@ -16687,6 +17182,18 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      * (string) - The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRolling {
+    /**
+     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -16925,6 +17432,10 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
      */
     continuous?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous;
     /**
+     * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
+     */
+    longRolling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowLongRolling;
+    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowRolling;
@@ -16943,6 +17454,18 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous {
      * (string) - The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureTimeWindowLongRolling {
+    /**
+     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -17214,9 +17737,32 @@ export interface GetFeatureEngineeringKafkaConfigIngestionConfigIngestionDestina
 
 export interface GetFeatureEngineeringKafkaConfigKeySchema {
     /**
+     * (string) - Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     */
+    avroSchema?: string;
+    /**
      * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: string;
+    /**
+     * (ProtoSchemaSpec) - Protocol Buffer schema with its payload message name
+     */
+    protoSchema?: outputs.GetFeatureEngineeringKafkaConfigKeySchemaProtoSchema;
+}
+
+export interface GetFeatureEngineeringKafkaConfigKeySchemaProtoSchema {
+    /**
+     * (string) - The fully-qualified name of the message within schemaText that describes the Kafka payload
+     * (e.g. "Event" or "com.example.Event" if schemaText declares a package). Identifies which
+     * message is used to decode each Kafka record — a .proto file may declare multiple messages
+     * but only one represents the payload. Must not be empty
+     */
+    messageName: string;
+    /**
+     * (string) - The raw .proto file text (proto2 and proto3 syntax supported, see
+     * https://protobuf.dev/programming-guides/proto3/ and https://protobuf.dev/programming-guides/proto2/)
+     */
+    schemaText: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigProviderConfig {
@@ -17244,9 +17790,32 @@ export interface GetFeatureEngineeringKafkaConfigSubscriptionMode {
 
 export interface GetFeatureEngineeringKafkaConfigValueSchema {
     /**
+     * (string) - Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     */
+    avroSchema?: string;
+    /**
      * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: string;
+    /**
+     * (ProtoSchemaSpec) - Protocol Buffer schema with its payload message name
+     */
+    protoSchema?: outputs.GetFeatureEngineeringKafkaConfigValueSchemaProtoSchema;
+}
+
+export interface GetFeatureEngineeringKafkaConfigValueSchemaProtoSchema {
+    /**
+     * (string) - The fully-qualified name of the message within schemaText that describes the Kafka payload
+     * (e.g. "Event" or "com.example.Event" if schemaText declares a package). Identifies which
+     * message is used to decode each Kafka record — a .proto file may declare multiple messages
+     * but only one represents the payload. Must not be empty
+     */
+    messageName: string;
+    /**
+     * (string) - The raw .proto file text (proto2 and proto3 syntax supported, see
+     * https://protobuf.dev/programming-guides/proto3/ and https://protobuf.dev/programming-guides/proto2/)
+     */
+    schemaText: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfig {
@@ -17512,9 +18081,32 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigInge
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema {
     /**
+     * (string) - Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     */
+    avroSchema?: string;
+    /**
      * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: string;
+    /**
+     * (ProtoSchemaSpec) - Protocol Buffer schema with its payload message name
+     */
+    protoSchema?: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchemaProtoSchema;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchemaProtoSchema {
+    /**
+     * (string) - The fully-qualified name of the message within schemaText that describes the Kafka payload
+     * (e.g. "Event" or "com.example.Event" if schemaText declares a package). Identifies which
+     * message is used to decode each Kafka record — a .proto file may declare multiple messages
+     * but only one represents the payload. Must not be empty
+     */
+    messageName: string;
+    /**
+     * (string) - The raw .proto file text (proto2 and proto3 syntax supported, see
+     * https://protobuf.dev/programming-guides/proto3/ and https://protobuf.dev/programming-guides/proto2/)
+     */
+    schemaText: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigProviderConfig {
@@ -17542,9 +18134,32 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionMode {
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchema {
     /**
+     * (string) - Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     */
+    avroSchema?: string;
+    /**
      * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: string;
+    /**
+     * (ProtoSchemaSpec) - Protocol Buffer schema with its payload message name
+     */
+    protoSchema?: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaProtoSchema;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaProtoSchema {
+    /**
+     * (string) - The fully-qualified name of the message within schemaText that describes the Kafka payload
+     * (e.g. "Event" or "com.example.Event" if schemaText declares a package). Identifies which
+     * message is used to decode each Kafka record — a .proto file may declare multiple messages
+     * but only one represents the payload. Must not be empty
+     */
+    messageName: string;
+    /**
+     * (string) - The raw .proto file text (proto2 and proto3 syntax supported, see
+     * https://protobuf.dev/programming-guides/proto3/ and https://protobuf.dev/programming-guides/proto2/)
+     */
+    schemaText: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsProviderConfig {
@@ -17609,6 +18224,11 @@ export interface GetFeatureEngineeringMaterializedFeatureProviderConfig {
 }
 
 export interface GetFeatureEngineeringMaterializedFeatureStreamingMode {
+    /**
+     * (string) - The desired data freshness for feature materialization, expressed as a
+     * duration string (e.g. "1 minute")
+     */
+    freshnessTarget?: string;
     /**
      * (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      */
@@ -17733,6 +18353,11 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeaturePro
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingMode {
+    /**
+     * (string) - The desired data freshness for feature materialization, expressed as a
+     * duration string (e.g. "1 minute")
+     */
+    freshnessTarget?: string;
     /**
      * (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      */
@@ -21195,6 +21820,10 @@ export interface GetPostgresEndpointStatus {
      */
     hosts: outputs.GetPostgresEndpointStatusHosts;
     /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     */
+    lastActiveTime: string;
+    /**
      * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
@@ -21239,6 +21868,15 @@ export interface GetPostgresEndpointStatusHosts {
      * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
      */
     readOnlyHost: string;
+    /**
+     * (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+     * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+     */
+    readOnlyPooledHost: string;
+    /**
+     * (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+     */
+    readWritePooledHost: string;
 }
 
 export interface GetPostgresEndpointStatusSettings {
@@ -21401,6 +22039,10 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     hosts: outputs.GetPostgresEndpointsEndpointStatusHosts;
     /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     */
+    lastActiveTime: string;
+    /**
      * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
@@ -21445,6 +22087,15 @@ export interface GetPostgresEndpointsEndpointStatusHosts {
      * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
      */
     readOnlyHost: string;
+    /**
+     * (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+     * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+     */
+    readOnlyPooledHost: string;
+    /**
+     * (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+     */
+    readWritePooledHost: string;
 }
 
 export interface GetPostgresEndpointsEndpointStatusSettings {
@@ -22286,7 +22937,7 @@ export interface GetPostgresSyncedTableSpecTypeOverride {
     pgType: string;
     /**
      * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      */
     size?: number;
 }
@@ -22963,11 +23614,6 @@ export interface GetSecretUcsProviderConfig {
 
 export interface GetSecretUcsSecret {
     /**
-     * (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     */
-    browseOnly: boolean;
-    /**
      * The name of the catalog under which to list secrets. Both **catalog_name** and
      * **schema_name** must be specified together
      */
@@ -23000,10 +23646,6 @@ export interface GetSecretUcsSecret {
      * does not trigger any automatic actions or affect the secret's lifecycle
      */
     expireTime: string;
-    /**
-     * (string)
-     */
-    externalSecretId: string;
     /**
      * (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
      */
@@ -25904,10 +26546,17 @@ export interface JobSchedule {
      * A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
      */
     quartzCronExpression: string;
+    sqlCondition?: outputs.JobScheduleSqlCondition;
     /**
      * A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
      */
     timezoneId: string;
+}
+
+export interface JobScheduleSqlCondition {
+    sqlQueryId: string;
+    triggerMode?: string;
+    warehouseId: string;
 }
 
 export interface JobSparkJarTask {
@@ -28165,6 +28814,7 @@ export interface JobTrigger {
      * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
      */
     periodic?: outputs.JobTriggerPeriodic;
+    sqlCondition?: outputs.JobTriggerSqlCondition;
     /**
      * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
      */
@@ -28206,6 +28856,12 @@ export interface JobTriggerPeriodic {
      * The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
      */
     unit: string;
+}
+
+export interface JobTriggerSqlCondition {
+    sqlQueryId: string;
+    triggerMode?: string;
+    warehouseId: string;
 }
 
 export interface JobTriggerTableUpdate {
@@ -29504,7 +30160,7 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
 }
 
 export interface MwsNccPrivateEndpointRuleGcpEndpoint {
-    pscEndpointUri?: string;
+    pscEndpointUri: string;
     serviceAttachment?: string;
 }
 
@@ -29624,11 +30280,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -29695,11 +30351,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -31321,6 +31977,10 @@ export interface PostgresEndpointStatus {
      */
     hosts: outputs.PostgresEndpointStatusHosts;
     /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     */
+    lastActiveTime: string;
+    /**
      * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
@@ -31356,6 +32016,15 @@ export interface PostgresEndpointStatusHosts {
      * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
      */
     readOnlyHost: string;
+    /**
+     * (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+     * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+     */
+    readOnlyPooledHost: string;
+    /**
+     * (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+     */
+    readWritePooledHost: string;
 }
 
 export interface PostgresEndpointStatusSettings {
@@ -31689,7 +32358,7 @@ export interface PostgresSyncedTableSpecTypeOverride {
     pgType: string;
     /**
      * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      */
     size?: number;
 }

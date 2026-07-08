@@ -12,16 +12,23 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Matches requests to account-level APIs.
+        /// Can only be used in the account-level network policy
+        /// </summary>
         [Input("accountApi")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApiGetArgs>? AccountApi { get; set; }
 
         /// <summary>
-        /// Account DatabricksOne destination is not supported.
-        /// DO NOT change the stage of this destination past PRIVATE_PREVIEW
+        /// Account DatabricksOne destination is not supported
         /// </summary>
         [Input("accountDatabricksOne")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOneGetArgs>? AccountDatabricksOne { get; set; }
 
+        /// <summary>
+        /// Matches requests to the account console UI.
+        /// Can only be used in the account-level network policy
+        /// </summary>
         [Input("accountUi")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountUiGetArgs>? AccountUi { get; set; }
 

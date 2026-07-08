@@ -13,6 +13,88 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Managing Implicitly Created Owner Role
+ *
+ * An owner role is implicitly created on every branch, starting with `DATABRICKS_SUPERUSER` membership. Its `roleId` is derived from the identity that created the branch:
+ *
+ * - **User:** the part of the email before `@`, lowercased, with dots, underscores, and any other non-alphanumeric characters replaced by hyphens. For example, `Jane.Doe@databricks.com` becomes `jane-doe`.
+ * - **Service principal:** `sp-` followed by the application ID (for example, `sp-00000000-0000-0000-0000-000000000000`).
+ *
+ * If you're unsure of the exact value, find the role in the Lakebase UI (or list the branch's roles with the Postgres API) and read its `roleId` rather than deriving it by hand. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created role in Pulumi state and immediately apply the provided configuration to it.
+ *
+ * `replaceExisting = true` only affects the initial adoption. Once the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual role**, not just the state entry. This is unlike `databricks.PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
+ *
+ * `spec.membership_roles` overwrites the role's memberships on every apply. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "my-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "My Project",
+ *     },
+ * });
+ * const production = new databricks.PostgresBranch("production", {
+ *     branchId: "production",
+ *     parent: _this.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ *     replaceExisting: true,
+ * });
+ * const owner = new databricks.PostgresRole("owner", {
+ *     roleId: "jane-doe",
+ *     parent: production.name,
+ *     spec: {
+ *         postgresRole: "jane.doe@databricks.com",
+ *         membershipRoles: ["DATABRICKS_SUPERUSER"],
+ *         attributes: {
+ *             createdb: true,
+ *             createrole: true,
+ *             bypassrls: true,
+ *         },
+ *     },
+ *     replaceExisting: true,
+ * });
+ * ```
+ *
+ * ### Managing a Role Inherited by a Child Branch
+ *
+ * A child branch created from a source branch (via `spec.source_branch`) shares the source's storage through copy-on-write, so every role on the source branch — including the implicit owner role — already exists on the child at the branch point. These inherited roles are not created by Pulumi, so managing one requires `replaceExisting = true`, exactly as for the implicitly created owner role above.
+ *
+ * You typically adopt an inherited role when you want to manage its configuration (for example, its `membershipRoles` or `attributes`) on the child branch independently of the source.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const child = new databricks.PostgresBranch("child", {
+ *     branchId: "feature-x",
+ *     parent: _this.name,
+ *     spec: {
+ *         sourceBranch: production.name,
+ *         noExpiry: true,
+ *     },
+ * });
+ * const inheritedOwner = new databricks.PostgresRole("inherited_owner", {
+ *     roleId: "jane-doe",
+ *     parent: child.name,
+ *     spec: {
+ *         postgresRole: "jane.doe@databricks.com",
+ *         membershipRoles: ["DATABRICKS_SUPERUSER"],
+ *         attributes: {
+ *             createdb: true,
+ *             createrole: true,
+ *             bypassrls: true,
+ *         },
+ *     },
+ *     replaceExisting: true,
+ * });
+ * ```
+ *
  * ### Role Backed by a Databricks User Identity
  *
  * Create a role that is authenticated as a specific Databricks workspace user via OAuth. `authMethod` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.

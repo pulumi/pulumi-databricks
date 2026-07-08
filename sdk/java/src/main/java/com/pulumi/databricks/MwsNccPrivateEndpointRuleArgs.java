@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MwsNccPrivateEndpointRuleGcpEndpointArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,85 +18,6 @@ import javax.annotation.Nullable;
 public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MwsNccPrivateEndpointRuleArgs Empty = new MwsNccPrivateEndpointRuleArgs();
-
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
-
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
-    }
-
-    /**
-     * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-     * The possible values are:
-     * * `PENDING`: The endpoint has been created and pending approval.
-     * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-     * * `REJECTED`: Connection was rejected by the private link resource owner.
-     * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-     * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
-     * 
-     */
-    @Import(name="connectionState")
-    private @Nullable Output<String> connectionState;
-
-    /**
-     * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-     * The possible values are:
-     * * `PENDING`: The endpoint has been created and pending approval.
-     * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-     * * `REJECTED`: Connection was rejected by the private link resource owner.
-     * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-     * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
-     * 
-     */
-    public Optional<Output<String>> connectionState() {
-        return Optional.ofNullable(this.connectionState);
-    }
-
-    /**
-     * Time in epoch milliseconds when this object was created.
-     * 
-     */
-    @Import(name="creationTime")
-    private @Nullable Output<Integer> creationTime;
-
-    /**
-     * @return Time in epoch milliseconds when this object was created.
-     * 
-     */
-    public Optional<Output<Integer>> creationTime() {
-        return Optional.ofNullable(this.creationTime);
-    }
-
-    /**
-     * Whether this private endpoint is deactivated.
-     * 
-     */
-    @Import(name="deactivated")
-    private @Nullable Output<Boolean> deactivated;
-
-    /**
-     * @return Whether this private endpoint is deactivated.
-     * 
-     */
-    public Optional<Output<Boolean>> deactivated() {
-        return Optional.ofNullable(this.deactivated);
-    }
-
-    /**
-     * Time in epoch milliseconds when this object was deactivated.
-     * 
-     */
-    @Import(name="deactivatedAt")
-    private @Nullable Output<Integer> deactivatedAt;
-
-    /**
-     * @return Time in epoch milliseconds when this object was deactivated.
-     * 
-     */
-    public Optional<Output<Integer>> deactivatedAt() {
-        return Optional.ofNullable(this.deactivatedAt);
-    }
 
     /**
      * * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `groupId`.
@@ -132,21 +52,6 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The name of the Azure private endpoint resource, e.g. &#34;databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234&#34;
-     * 
-     */
-    @Import(name="endpointName")
-    private @Nullable Output<String> endpointName;
-
-    /**
-     * @return The name of the Azure private endpoint resource, e.g. &#34;databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234&#34;
-     * 
-     */
-    public Optional<Output<String>> endpointName() {
-        return Optional.ofNullable(this.endpointName);
-    }
-
-    /**
      * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      * 
      */
@@ -159,13 +64,6 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> endpointService() {
         return Optional.ofNullable(this.endpointService);
-    }
-
-    @Import(name="errorMessage")
-    private @Nullable Output<String> errorMessage;
-
-    public Optional<Output<String>> errorMessage() {
-        return Optional.ofNullable(this.errorMessage);
     }
 
     @Import(name="gcpEndpoint")
@@ -235,72 +133,17 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.resourceNames);
     }
 
-    /**
-     * the ID of a private endpoint rule.
-     * 
-     */
-    @Import(name="ruleId")
-    private @Nullable Output<String> ruleId;
-
-    /**
-     * @return the ID of a private endpoint rule.
-     * 
-     */
-    public Optional<Output<String>> ruleId() {
-        return Optional.ofNullable(this.ruleId);
-    }
-
-    /**
-     * Time in epoch milliseconds when this object was updated.
-     * 
-     */
-    @Import(name="updatedTime")
-    private @Nullable Output<Integer> updatedTime;
-
-    /**
-     * @return Time in epoch milliseconds when this object was updated.
-     * 
-     */
-    public Optional<Output<Integer>> updatedTime() {
-        return Optional.ofNullable(this.updatedTime);
-    }
-
-    /**
-     * The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
-     * 
-     */
-    @Import(name="vpcEndpointId")
-    private @Nullable Output<String> vpcEndpointId;
-
-    /**
-     * @return The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
-     * 
-     */
-    public Optional<Output<String>> vpcEndpointId() {
-        return Optional.ofNullable(this.vpcEndpointId);
-    }
-
     private MwsNccPrivateEndpointRuleArgs() {}
 
     private MwsNccPrivateEndpointRuleArgs(MwsNccPrivateEndpointRuleArgs $) {
-        this.accountId = $.accountId;
-        this.connectionState = $.connectionState;
-        this.creationTime = $.creationTime;
-        this.deactivated = $.deactivated;
-        this.deactivatedAt = $.deactivatedAt;
         this.domainNames = $.domainNames;
         this.enabled = $.enabled;
-        this.endpointName = $.endpointName;
         this.endpointService = $.endpointService;
-        this.errorMessage = $.errorMessage;
         this.gcpEndpoint = $.gcpEndpoint;
         this.groupId = $.groupId;
         this.networkConnectivityConfigId = $.networkConnectivityConfigId;
         this.resourceId = $.resourceId;
         this.resourceNames = $.resourceNames;
-        this.ruleId = $.ruleId;
-        this.updatedTime = $.updatedTime;
-        this.vpcEndpointId = $.vpcEndpointId;
     }
 
     public static Builder builder() {
@@ -319,111 +162,6 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
 
         public Builder(MwsNccPrivateEndpointRuleArgs defaults) {
             $ = new MwsNccPrivateEndpointRuleArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder accountId(@Nullable Output<String> accountId) {
-            $.accountId = accountId;
-            return this;
-        }
-
-        public Builder accountId(String accountId) {
-            return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-         * The possible values are:
-         * * `PENDING`: The endpoint has been created and pending approval.
-         * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-         * * `REJECTED`: Connection was rejected by the private link resource owner.
-         * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-         * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectionState(@Nullable Output<String> connectionState) {
-            $.connectionState = connectionState;
-            return this;
-        }
-
-        /**
-         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-         * The possible values are:
-         * * `PENDING`: The endpoint has been created and pending approval.
-         * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-         * * `REJECTED`: Connection was rejected by the private link resource owner.
-         * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-         * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectionState(String connectionState) {
-            return connectionState(Output.of(connectionState));
-        }
-
-        /**
-         * @param creationTime Time in epoch milliseconds when this object was created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder creationTime(@Nullable Output<Integer> creationTime) {
-            $.creationTime = creationTime;
-            return this;
-        }
-
-        /**
-         * @param creationTime Time in epoch milliseconds when this object was created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder creationTime(Integer creationTime) {
-            return creationTime(Output.of(creationTime));
-        }
-
-        /**
-         * @param deactivated Whether this private endpoint is deactivated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder deactivated(@Nullable Output<Boolean> deactivated) {
-            $.deactivated = deactivated;
-            return this;
-        }
-
-        /**
-         * @param deactivated Whether this private endpoint is deactivated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder deactivated(Boolean deactivated) {
-            return deactivated(Output.of(deactivated));
-        }
-
-        /**
-         * @param deactivatedAt Time in epoch milliseconds when this object was deactivated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder deactivatedAt(@Nullable Output<Integer> deactivatedAt) {
-            $.deactivatedAt = deactivatedAt;
-            return this;
-        }
-
-        /**
-         * @param deactivatedAt Time in epoch milliseconds when this object was deactivated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder deactivatedAt(Integer deactivatedAt) {
-            return deactivatedAt(Output.of(deactivatedAt));
         }
 
         /**
@@ -482,27 +220,6 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param endpointName The name of the Azure private endpoint resource, e.g. &#34;databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234&#34;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder endpointName(@Nullable Output<String> endpointName) {
-            $.endpointName = endpointName;
-            return this;
-        }
-
-        /**
-         * @param endpointName The name of the Azure private endpoint resource, e.g. &#34;databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234&#34;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder endpointName(String endpointName) {
-            return endpointName(Output.of(endpointName));
-        }
-
-        /**
          * @param endpointService Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
          * 
          * @return builder
@@ -521,15 +238,6 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
          */
         public Builder endpointService(String endpointService) {
             return endpointService(Output.of(endpointService));
-        }
-
-        public Builder errorMessage(@Nullable Output<String> errorMessage) {
-            $.errorMessage = errorMessage;
-            return this;
-        }
-
-        public Builder errorMessage(String errorMessage) {
-            return errorMessage(Output.of(errorMessage));
         }
 
         public Builder gcpEndpoint(@Nullable Output<MwsNccPrivateEndpointRuleGcpEndpointArgs> gcpEndpoint) {
@@ -633,69 +341,6 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
          */
         public Builder resourceNames(String... resourceNames) {
             return resourceNames(List.of(resourceNames));
-        }
-
-        /**
-         * @param ruleId the ID of a private endpoint rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(@Nullable Output<String> ruleId) {
-            $.ruleId = ruleId;
-            return this;
-        }
-
-        /**
-         * @param ruleId the ID of a private endpoint rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(String ruleId) {
-            return ruleId(Output.of(ruleId));
-        }
-
-        /**
-         * @param updatedTime Time in epoch milliseconds when this object was updated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updatedTime(@Nullable Output<Integer> updatedTime) {
-            $.updatedTime = updatedTime;
-            return this;
-        }
-
-        /**
-         * @param updatedTime Time in epoch milliseconds when this object was updated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updatedTime(Integer updatedTime) {
-            return updatedTime(Output.of(updatedTime));
-        }
-
-        /**
-         * @param vpcEndpointId The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vpcEndpointId(@Nullable Output<String> vpcEndpointId) {
-            $.vpcEndpointId = vpcEndpointId;
-            return this;
-        }
-
-        /**
-         * @param vpcEndpointId The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vpcEndpointId(String vpcEndpointId) {
-            return vpcEndpointId(Output.of(vpcEndpointId));
         }
 
         public MwsNccPrivateEndpointRuleArgs build() {

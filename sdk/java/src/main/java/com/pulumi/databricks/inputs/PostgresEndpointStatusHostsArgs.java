@@ -51,11 +51,45 @@ public final class PostgresEndpointStatusHostsArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.readOnlyHost);
     }
 
+    /**
+     * (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+     * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+     * 
+     */
+    @Import(name="readOnlyPooledHost")
+    private @Nullable Output<String> readOnlyPooledHost;
+
+    /**
+     * @return (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+     * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+     * 
+     */
+    public Optional<Output<String>> readOnlyPooledHost() {
+        return Optional.ofNullable(this.readOnlyPooledHost);
+    }
+
+    /**
+     * (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+     * 
+     */
+    @Import(name="readWritePooledHost")
+    private @Nullable Output<String> readWritePooledHost;
+
+    /**
+     * @return (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+     * 
+     */
+    public Optional<Output<String>> readWritePooledHost() {
+        return Optional.ofNullable(this.readWritePooledHost);
+    }
+
     private PostgresEndpointStatusHostsArgs() {}
 
     private PostgresEndpointStatusHostsArgs(PostgresEndpointStatusHostsArgs $) {
         this.host = $.host;
         this.readOnlyHost = $.readOnlyHost;
+        this.readOnlyPooledHost = $.readOnlyPooledHost;
+        this.readWritePooledHost = $.readWritePooledHost;
     }
 
     public static Builder builder() {
@@ -122,6 +156,50 @@ public final class PostgresEndpointStatusHostsArgs extends com.pulumi.resources.
          */
         public Builder readOnlyHost(String readOnlyHost) {
             return readOnlyHost(Output.of(readOnlyHost));
+        }
+
+        /**
+         * @param readOnlyPooledHost (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+         * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyPooledHost(@Nullable Output<String> readOnlyPooledHost) {
+            $.readOnlyPooledHost = readOnlyPooledHost;
+            return this;
+        }
+
+        /**
+         * @param readOnlyPooledHost (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+         * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyPooledHost(String readOnlyPooledHost) {
+            return readOnlyPooledHost(Output.of(readOnlyPooledHost));
+        }
+
+        /**
+         * @param readWritePooledHost (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readWritePooledHost(@Nullable Output<String> readWritePooledHost) {
+            $.readWritePooledHost = readWritePooledHost;
+            return this;
+        }
+
+        /**
+         * @param readWritePooledHost (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readWritePooledHost(String readWritePooledHost) {
+            return readWritePooledHost(Output.of(readWritePooledHost));
         }
 
         public PostgresEndpointStatusHostsArgs build() {

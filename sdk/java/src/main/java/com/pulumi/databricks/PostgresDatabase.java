@@ -25,6 +25,129 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Managing Implicitly Created Database
+ * 
+ * A database named `databricks-postgres` (Postgres name `databricksPostgres`) is implicitly created on every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created database in Pulumi state and immediately apply the provided configuration to it.
+ * 
+ * `replaceExisting = true` only affects the initial adoption. Once the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual database** (and its data), not just the state entry. This is unlike `databricks.PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
+ * 
+ * `spec.role` is optional: omit it to keep the database&#39;s existing owner (as shown below). When you do set it — to change ownership — it must reference a role in the same branch, written as `&lt;branch-name&gt;/roles/&lt;role_id&gt;`.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresDatabase;
+ * import com.pulumi.databricks.PostgresDatabaseArgs;
+ * import com.pulumi.databricks.inputs.PostgresDatabaseSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var production = new PostgresBranch("production", PostgresBranchArgs.builder()
+ *             .branchId("production")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .replaceExisting(true)
+ *             .build());
+ * 
+ *         var databricksPostgres = new PostgresDatabase("databricksPostgres", PostgresDatabaseArgs.builder()
+ *             .databaseId("databricks-postgres")
+ *             .parent(production.name())
+ *             .spec(PostgresDatabaseSpecArgs.builder()
+ *                 .postgresDatabase("databricks_postgres")
+ *                 .build())
+ *             .replaceExisting(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Managing a Database Inherited by a Child Branch
+ * 
+ * A child branch created from a source branch (via `spec.source_branch`) shares the source&#39;s storage through copy-on-write, so every database on the source branch — including the implicit `databricks-postgres` database — already exists on the child at the branch point. These inherited databases are not created by Pulumi, so managing one requires `replaceExisting = true`, exactly as for the implicitly created database above.
+ * 
+ * You typically adopt an inherited database when you want to manage its configuration (for example, transfer ownership via `spec.role`) on the child branch independently of the source.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresDatabase;
+ * import com.pulumi.databricks.PostgresDatabaseArgs;
+ * import com.pulumi.databricks.inputs.PostgresDatabaseSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var child = new PostgresBranch("child", PostgresBranchArgs.builder()
+ *             .branchId("feature-x")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .sourceBranch(production.name())
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var inherited = new PostgresDatabase("inherited", PostgresDatabaseArgs.builder()
+ *             .databaseId("databricks-postgres")
+ *             .parent(child.name())
+ *             .spec(PostgresDatabaseSpecArgs.builder()
+ *                 .postgresDatabase("databricks_postgres")
+ *                 .build())
+ *             .replaceExisting(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Database Owned by a Specific Role
  * 
  * Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.

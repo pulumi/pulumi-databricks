@@ -92,6 +92,65 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### Budgets for Genie
+    /// 
+    /// Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what's coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a Budget with resource tags matching the Genie AI Gateway resource.
+    ///     // Prerequisite: Enable AI Gateway Budget (Public Preview)
+    ///     // https://docs.databricks.com/aws/en/genie/budgets#requirements
+    ///     var genieSharedBudget = new Databricks.Budget("genie_shared_budget", new()
+    ///     {
+    ///         DisplayName = "genie-shared-budget",
+    ///         Filter = new Databricks.Inputs.BudgetFilterArgs
+    ///         {
+    ///             Tags = new[]
+    ///             {
+    ///                 new Databricks.Inputs.BudgetFilterTagArgs
+    ///                 {
+    ///                     Key = "databricks-product",
+    ///                     Value = new Databricks.Inputs.BudgetFilterTagValueArgs
+    ///                     {
+    ///                         Operator = "IN",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "genie",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         AlertConfigurations = new[]
+    ///         {
+    ///             new Databricks.Inputs.BudgetAlertConfigurationArgs
+    ///             {
+    ///                 QuantityThreshold = "2000",
+    ///                 QuantityType = "LIST_PRICE_DOLLARS_USD",
+    ///                 TriggerType = "CUMULATIVE_SPENDING_EXCEEDED",
+    ///                 TimePeriod = "MONTH",
+    ///                 ActionConfigurations = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.BudgetAlertConfigurationActionConfigurationArgs
+    ///                     {
+    ///                         ActionType = "EMAIL_NOTIFICATION",
+    ///                         Target = "abc@gmail.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are used in the context:
