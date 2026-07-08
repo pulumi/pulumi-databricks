@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
  *
  * The Secret resource allows you to manage secrets in Unity Catalog. Secrets provide a secure way to store and access sensitive information such as credentials, API keys, and tokens within Unity Catalog.
  *
@@ -62,11 +64,6 @@ export class SecretUc extends pulumi.CustomResource {
     }
 
     /**
-     * (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     */
-    declare public /*out*/ readonly browseOnly: pulumi.Output<boolean>;
-    /**
      * The name of the catalog where the schema and the secret reside
      */
     declare public readonly catalogName: pulumi.Output<string>;
@@ -98,10 +95,6 @@ export class SecretUc extends pulumi.CustomResource {
      * does not trigger any automatic actions or affect the secret's lifecycle
      */
     declare public readonly expireTime: pulumi.Output<string | undefined>;
-    /**
-     * (string)
-     */
-    declare public /*out*/ readonly externalSecretId: pulumi.Output<string>;
     /**
      * (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
      */
@@ -156,7 +149,6 @@ export class SecretUc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretUcState | undefined;
-            resourceInputs["browseOnly"] = state?.browseOnly;
             resourceInputs["catalogName"] = state?.catalogName;
             resourceInputs["comment"] = state?.comment;
             resourceInputs["createTime"] = state?.createTime;
@@ -164,7 +156,6 @@ export class SecretUc extends pulumi.CustomResource {
             resourceInputs["effectiveOwner"] = state?.effectiveOwner;
             resourceInputs["effectiveValue"] = state?.effectiveValue;
             resourceInputs["expireTime"] = state?.expireTime;
-            resourceInputs["externalSecretId"] = state?.externalSecretId;
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
@@ -193,12 +184,10 @@ export class SecretUc extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schemaName"] = args?.schemaName;
             resourceInputs["value"] = args?.value;
-            resourceInputs["browseOnly"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["effectiveOwner"] = undefined /*out*/;
             resourceInputs["effectiveValue"] = undefined /*out*/;
-            resourceInputs["externalSecretId"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["metastoreId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -213,11 +202,6 @@ export class SecretUc extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretUc resources.
  */
 export interface SecretUcState {
-    /**
-     * (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     */
-    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the catalog where the schema and the secret reside
      */
@@ -250,10 +234,6 @@ export interface SecretUcState {
      * does not trigger any automatic actions or affect the secret's lifecycle
      */
     expireTime?: pulumi.Input<string | undefined>;
-    /**
-     * (string)
-     */
-    externalSecretId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
      */

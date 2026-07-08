@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
     /// 
     /// The Secret resource allows you to manage secrets in Unity Catalog. Secrets provide a secure way to store and access sensitive information such as credentials, API keys, and tokens within Unity Catalog.
     /// 
@@ -50,13 +52,6 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/secretUc:SecretUc")]
     public partial class SecretUc : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-        /// through the **BROWSE** privilege when **include_browse** is enabled in the request
-        /// </summary>
-        [Output("browseOnly")]
-        public Output<bool> BrowseOnly { get; private set; } = null!;
-
         /// <summary>
         /// The name of the catalog where the schema and the secret reside
         /// </summary>
@@ -102,12 +97,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("expireTime")]
         public Output<string?> ExpireTime { get; private set; } = null!;
-
-        /// <summary>
-        /// (string)
-        /// </summary>
-        [Output("externalSecretId")]
-        public Output<string> ExternalSecretId { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
@@ -276,13 +265,6 @@ namespace Pulumi.Databricks
     public sealed class SecretUcState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-        /// through the **BROWSE** privilege when **include_browse** is enabled in the request
-        /// </summary>
-        [Input("browseOnly")]
-        public Input<bool>? BrowseOnly { get; set; }
-
-        /// <summary>
         /// The name of the catalog where the schema and the secret reside
         /// </summary>
         [Input("catalogName")]
@@ -327,12 +309,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
-
-        /// <summary>
-        /// (string)
-        /// </summary>
-        [Input("externalSecretId")]
-        public Input<string>? ExternalSecretId { get; set; }
 
         /// <summary>
         /// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**

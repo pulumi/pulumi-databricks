@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SecretUcProviderConfigArgs;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,6 @@ import javax.annotation.Nullable;
 public final class SecretUcState extends com.pulumi.resources.ResourceArgs {
 
     public static final SecretUcState Empty = new SecretUcState();
-
-    /**
-     * (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     * 
-     */
-    @Import(name="browseOnly")
-    private @Nullable Output<Boolean> browseOnly;
-
-    /**
-     * @return (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     * 
-     */
-    public Optional<Output<Boolean>> browseOnly() {
-        return Optional.ofNullable(this.browseOnly);
-    }
 
     /**
      * The name of the catalog where the schema and the secret reside
@@ -145,21 +127,6 @@ public final class SecretUcState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> expireTime() {
         return Optional.ofNullable(this.expireTime);
-    }
-
-    /**
-     * (string)
-     * 
-     */
-    @Import(name="externalSecretId")
-    private @Nullable Output<String> externalSecretId;
-
-    /**
-     * @return (string)
-     * 
-     */
-    public Optional<Output<String>> externalSecretId() {
-        return Optional.ofNullable(this.externalSecretId);
     }
 
     /**
@@ -308,7 +275,6 @@ public final class SecretUcState extends com.pulumi.resources.ResourceArgs {
     private SecretUcState() {}
 
     private SecretUcState(SecretUcState $) {
-        this.browseOnly = $.browseOnly;
         this.catalogName = $.catalogName;
         this.comment = $.comment;
         this.createTime = $.createTime;
@@ -316,7 +282,6 @@ public final class SecretUcState extends com.pulumi.resources.ResourceArgs {
         this.effectiveOwner = $.effectiveOwner;
         this.effectiveValue = $.effectiveValue;
         this.expireTime = $.expireTime;
-        this.externalSecretId = $.externalSecretId;
         this.fullName = $.fullName;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -344,29 +309,6 @@ public final class SecretUcState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SecretUcState defaults) {
             $ = new SecretUcState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param browseOnly (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-         * through the **BROWSE** privilege when **include_browse** is enabled in the request
-         * 
-         * @return builder
-         * 
-         */
-        public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
-            $.browseOnly = browseOnly;
-            return this;
-        }
-
-        /**
-         * @param browseOnly (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-         * through the **BROWSE** privilege when **include_browse** is enabled in the request
-         * 
-         * @return builder
-         * 
-         */
-        public Builder browseOnly(Boolean browseOnly) {
-            return browseOnly(Output.of(browseOnly));
         }
 
         /**
@@ -522,27 +464,6 @@ public final class SecretUcState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expireTime(String expireTime) {
             return expireTime(Output.of(expireTime));
-        }
-
-        /**
-         * @param externalSecretId (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder externalSecretId(@Nullable Output<String> externalSecretId) {
-            $.externalSecretId = externalSecretId;
-            return this;
-        }
-
-        /**
-         * @param externalSecretId (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder externalSecretId(String externalSecretId) {
-            return externalSecretId(Output.of(externalSecretId));
         }
 
         /**

@@ -25,6 +25,148 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Managing Implicitly Created Owner Role
+ * 
+ * An owner role is implicitly created on every branch, starting with `DATABRICKS_SUPERUSER` membership. Its `roleId` is derived from the identity that created the branch:
+ * 
+ * - **User:** the part of the email before `{@literal @}`, lowercased, with dots, underscores, and any other non-alphanumeric characters replaced by hyphens. For example, `Jane.Doe{@literal @}databricks.com` becomes `jane-doe`.
+ * - **Service principal:** `sp-` followed by the application ID (for example, `sp-00000000-0000-0000-0000-000000000000`).
+ * 
+ * If you&#39;re unsure of the exact value, find the role in the Lakebase UI (or list the branch&#39;s roles with the Postgres API) and read its `roleId` rather than deriving it by hand. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created role in Pulumi state and immediately apply the provided configuration to it.
+ * 
+ * `replaceExisting = true` only affects the initial adoption. Once the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual role**, not just the state entry. This is unlike `databricks.PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
+ * 
+ * `spec.membership_roles` overwrites the role&#39;s memberships on every apply. The list you provide fully replaces the previous one, it isn&#39;t merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role&#39;s memberships.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresRole;
+ * import com.pulumi.databricks.PostgresRoleArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecAttributesArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var production = new PostgresBranch("production", PostgresBranchArgs.builder()
+ *             .branchId("production")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .replaceExisting(true)
+ *             .build());
+ * 
+ *         var owner = new PostgresRole("owner", PostgresRoleArgs.builder()
+ *             .roleId("jane-doe")
+ *             .parent(production.name())
+ *             .spec(PostgresRoleSpecArgs.builder()
+ *                 .postgresRole("jane.doe}{@literal @}{@code databricks.com")
+ *                 .membershipRoles("DATABRICKS_SUPERUSER")
+ *                 .attributes(PostgresRoleSpecAttributesArgs.builder()
+ *                     .createdb(true)
+ *                     .createrole(true)
+ *                     .bypassrls(true)
+ *                     .build())
+ *                 .build())
+ *             .replaceExisting(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Managing a Role Inherited by a Child Branch
+ * 
+ * A child branch created from a source branch (via `spec.source_branch`) shares the source&#39;s storage through copy-on-write, so every role on the source branch — including the implicit owner role — already exists on the child at the branch point. These inherited roles are not created by Pulumi, so managing one requires `replaceExisting = true`, exactly as for the implicitly created owner role above.
+ * 
+ * You typically adopt an inherited role when you want to manage its configuration (for example, its `membershipRoles` or `attributes`) on the child branch independently of the source.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresRole;
+ * import com.pulumi.databricks.PostgresRoleArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecAttributesArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var child = new PostgresBranch("child", PostgresBranchArgs.builder()
+ *             .branchId("feature-x")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .sourceBranch(production.name())
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var inheritedOwner = new PostgresRole("inheritedOwner", PostgresRoleArgs.builder()
+ *             .roleId("jane-doe")
+ *             .parent(child.name())
+ *             .spec(PostgresRoleSpecArgs.builder()
+ *                 .postgresRole("jane.doe}{@literal @}{@code databricks.com")
+ *                 .membershipRoles("DATABRICKS_SUPERUSER")
+ *                 .attributes(PostgresRoleSpecAttributesArgs.builder()
+ *                     .createdb(true)
+ *                     .createrole(true)
+ *                     .bypassrls(true)
+ *                     .build())
+ *                 .build())
+ *             .replaceExisting(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ### Role Backed by a Databricks User Identity
  * 
  * Create a role that is authenticated as a specific Databricks workspace user via OAuth. `authMethod` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.

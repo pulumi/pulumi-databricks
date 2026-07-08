@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("endpointIds")]
         private InputList<string>? _endpointIds;
+
+        /// <summary>
+        /// The IDs of the registered endpoints. Must contain at least one endpoint ID
+        /// </summary>
         public InputList<string> EndpointIds
         {
             get => _endpointIds ?? (_endpointIds = new InputList<string>());

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobScheduleSqlConditionArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -46,6 +47,13 @@ public final class JobScheduleArgs extends com.pulumi.resources.ResourceArgs {
         return this.quartzCronExpression;
     }
 
+    @Import(name="sqlCondition")
+    private @Nullable Output<JobScheduleSqlConditionArgs> sqlCondition;
+
+    public Optional<Output<JobScheduleSqlConditionArgs>> sqlCondition() {
+        return Optional.ofNullable(this.sqlCondition);
+    }
+
     /**
      * A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
      * 
@@ -66,6 +74,7 @@ public final class JobScheduleArgs extends com.pulumi.resources.ResourceArgs {
     private JobScheduleArgs(JobScheduleArgs $) {
         this.pauseStatus = $.pauseStatus;
         this.quartzCronExpression = $.quartzCronExpression;
+        this.sqlCondition = $.sqlCondition;
         this.timezoneId = $.timezoneId;
     }
 
@@ -127,6 +136,15 @@ public final class JobScheduleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder quartzCronExpression(String quartzCronExpression) {
             return quartzCronExpression(Output.of(quartzCronExpression));
+        }
+
+        public Builder sqlCondition(@Nullable Output<JobScheduleSqlConditionArgs> sqlCondition) {
+            $.sqlCondition = sqlCondition;
+            return this;
+        }
+
+        public Builder sqlCondition(JobScheduleSqlConditionArgs sqlCondition) {
+            return sqlCondition(Output.of(sqlCondition));
         }
 
         /**

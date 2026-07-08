@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 public final class AccountNetworkPolicyIngress {
     private @Nullable AccountNetworkPolicyIngressCrossWorkspaceAccess crossWorkspaceAccess;
     /**
-     * @return The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * @return The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      * 
      */
     private @Nullable AccountNetworkPolicyIngressPrivateAccess privateAccess;
@@ -32,8 +32,8 @@ public final class AccountNetworkPolicyIngress {
         return Optional.ofNullable(this.crossWorkspaceAccess);
     }
     /**
-     * @return The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * @return The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      * 
      */
     public Optional<AccountNetworkPolicyIngressPrivateAccess> privateAccess() {

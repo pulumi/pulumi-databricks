@@ -293,6 +293,40 @@ class Budget(pulumi.CustomResource):
             })
         ```
 
+        ### Budgets for Genie
+
+        Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what's coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Create a Budget with resource tags matching the Genie AI Gateway resource.
+        # Prerequisite: Enable AI Gateway Budget (Public Preview)
+        # https://docs.databricks.com/aws/en/genie/budgets#requirements
+        genie_shared_budget = databricks.Budget("genie_shared_budget",
+            display_name="genie-shared-budget",
+            filter={
+                "tags": [{
+                    "key": "databricks-product",
+                    "value": {
+                        "operator": "IN",
+                        "values": ["genie"],
+                    },
+                }],
+            },
+            alert_configurations=[{
+                "quantity_threshold": "2000",
+                "quantity_type": "LIST_PRICE_DOLLARS_USD",
+                "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
+                "time_period": "MONTH",
+                "action_configurations": [{
+                    "action_type": "EMAIL_NOTIFICATION",
+                    "target": "abc@gmail.com",
+                }],
+            }])
+        ```
+
         ## Related Resources
 
         The following resources are used in the context:
@@ -361,6 +395,40 @@ class Budget(pulumi.CustomResource):
                     },
                 ],
             })
+        ```
+
+        ### Budgets for Genie
+
+        Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what's coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Create a Budget with resource tags matching the Genie AI Gateway resource.
+        # Prerequisite: Enable AI Gateway Budget (Public Preview)
+        # https://docs.databricks.com/aws/en/genie/budgets#requirements
+        genie_shared_budget = databricks.Budget("genie_shared_budget",
+            display_name="genie-shared-budget",
+            filter={
+                "tags": [{
+                    "key": "databricks-product",
+                    "value": {
+                        "operator": "IN",
+                        "values": ["genie"],
+                    },
+                }],
+            },
+            alert_configurations=[{
+                "quantity_threshold": "2000",
+                "quantity_type": "LIST_PRICE_DOLLARS_USD",
+                "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
+                "time_period": "MONTH",
+                "action_configurations": [{
+                    "action_type": "EMAIL_NOTIFICATION",
+                    "target": "abc@gmail.com",
+                }],
+            }])
         ```
 
         ## Related Resources

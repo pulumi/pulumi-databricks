@@ -97,6 +97,68 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Budgets for Genie
+ * 
+ * Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what&#39;s coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Budget;
+ * import com.pulumi.databricks.BudgetArgs;
+ * import com.pulumi.databricks.inputs.BudgetFilterArgs;
+ * import com.pulumi.databricks.inputs.BudgetFilterTagArgs;
+ * import com.pulumi.databricks.inputs.BudgetFilterTagValueArgs;
+ * import com.pulumi.databricks.inputs.BudgetAlertConfigurationArgs;
+ * import com.pulumi.databricks.inputs.BudgetAlertConfigurationActionConfigurationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Create a Budget with resource tags matching the Genie AI Gateway resource.
+ *         // Prerequisite: Enable AI Gateway Budget (Public Preview)
+ *         // https://docs.databricks.com/aws/en/genie/budgets#requirements
+ *         var genieSharedBudget = new Budget("genieSharedBudget", BudgetArgs.builder()
+ *             .displayName("genie-shared-budget")
+ *             .filter(BudgetFilterArgs.builder()
+ *                 .tags(BudgetFilterTagArgs.builder()
+ *                     .key("databricks-product")
+ *                     .value(BudgetFilterTagValueArgs.builder()
+ *                         .operator("IN")
+ *                         .values("genie")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .alertConfigurations(BudgetAlertConfigurationArgs.builder()
+ *                 .quantityThreshold("2000")
+ *                 .quantityType("LIST_PRICE_DOLLARS_USD")
+ *                 .triggerType("CUMULATIVE_SPENDING_EXCEEDED")
+ *                 .timePeriod("MONTH")
+ *                 .actionConfigurations(BudgetAlertConfigurationActionConfigurationArgs.builder()
+ *                     .actionType("EMAIL_NOTIFICATION")
+ *                     .target("abc}{@literal @}{@code gmail.com")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Related Resources
  * 
  * The following resources are used in the context:

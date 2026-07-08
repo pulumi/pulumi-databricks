@@ -19,18 +19,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestination {
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountApi accountApi;
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne accountDatabricksOne;
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountUi accountUi;
@@ -62,22 +63,23 @@ public final class GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRu
 
     private GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestination() {}
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountApi> accountApi() {
         return Optional.ofNullable(this.accountApi);
     }
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountUi> accountUi() {

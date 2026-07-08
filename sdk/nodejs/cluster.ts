@@ -111,6 +111,10 @@ export class Cluster extends pulumi.CustomResource {
     declare public readonly autoterminationMinutes: pulumi.Output<number | undefined>;
     declare public readonly awsAttributes: pulumi.Output<outputs.ClusterAwsAttributes | undefined>;
     declare public readonly azureAttributes: pulumi.Output<outputs.ClusterAzureAttributes | undefined>;
+    /**
+     * If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+     */
+    declare public readonly clearCloudAttributesOnRemove: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly clusterId: pulumi.Output<string>;
     declare public readonly clusterLogConf: pulumi.Output<outputs.ClusterClusterLogConf | undefined>;
     declare public readonly clusterMountInfos: pulumi.Output<outputs.ClusterClusterMountInfo[] | undefined>;
@@ -279,6 +283,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["autoterminationMinutes"] = state?.autoterminationMinutes;
             resourceInputs["awsAttributes"] = state?.awsAttributes;
             resourceInputs["azureAttributes"] = state?.azureAttributes;
+            resourceInputs["clearCloudAttributesOnRemove"] = state?.clearCloudAttributesOnRemove;
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["clusterLogConf"] = state?.clusterLogConf;
             resourceInputs["clusterMountInfos"] = state?.clusterMountInfos;
@@ -328,6 +333,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["autoterminationMinutes"] = args?.autoterminationMinutes;
             resourceInputs["awsAttributes"] = args?.awsAttributes;
             resourceInputs["azureAttributes"] = args?.azureAttributes;
+            resourceInputs["clearCloudAttributesOnRemove"] = args?.clearCloudAttributesOnRemove;
             resourceInputs["clusterLogConf"] = args?.clusterLogConf;
             resourceInputs["clusterMountInfos"] = args?.clusterMountInfos;
             resourceInputs["clusterName"] = args?.clusterName;
@@ -388,6 +394,10 @@ export interface ClusterState {
     autoterminationMinutes?: pulumi.Input<number | undefined>;
     awsAttributes?: pulumi.Input<inputs.ClusterAwsAttributes | undefined>;
     azureAttributes?: pulumi.Input<inputs.ClusterAzureAttributes | undefined>;
+    /**
+     * If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+     */
+    clearCloudAttributesOnRemove?: pulumi.Input<boolean | undefined>;
     clusterId?: pulumi.Input<string | undefined>;
     clusterLogConf?: pulumi.Input<inputs.ClusterClusterLogConf | undefined>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.ClusterClusterMountInfo>[] | undefined>;
@@ -554,6 +564,10 @@ export interface ClusterArgs {
     autoterminationMinutes?: pulumi.Input<number | undefined>;
     awsAttributes?: pulumi.Input<inputs.ClusterAwsAttributes | undefined>;
     azureAttributes?: pulumi.Input<inputs.ClusterAzureAttributes | undefined>;
+    /**
+     * If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+     */
+    clearCloudAttributesOnRemove?: pulumi.Input<boolean | undefined>;
     clusterLogConf?: pulumi.Input<inputs.ClusterClusterLogConf | undefined>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.ClusterClusterMountInfo>[] | undefined>;
     /**

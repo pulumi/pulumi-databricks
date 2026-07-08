@@ -18,6 +18,131 @@ import (
 //
 // ## Example Usage
 //
+// ### Managing Implicitly Created Owner Role
+//
+// An owner role is implicitly created on every branch, starting with `DATABRICKS_SUPERUSER` membership. Its `roleId` is derived from the identity that created the branch:
+//
+// - **User:** the part of the email before `@`, lowercased, with dots, underscores, and any other non-alphanumeric characters replaced by hyphens. For example, `Jane.Doe@databricks.com` becomes `jane-doe`.
+// - **Service principal:** `sp-` followed by the application ID (for example, `sp-00000000-0000-0000-0000-000000000000`).
+//
+// If you're unsure of the exact value, find the role in the Lakebase UI (or list the branch's roles with the Postgres API) and read its `roleId` rather than deriving it by hand. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created role in Pulumi state and immediately apply the provided configuration to it.
+//
+// `replaceExisting = true` only affects the initial adoption. Once the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual role**, not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
+//
+// `spec.membership_roles` overwrites the role's memberships on every apply. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("My Project"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			production, err := databricks.NewPostgresBranch(ctx, "production", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("production"),
+//				Parent:   this.Name,
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					NoExpiry: pulumi.Bool(true),
+//				},
+//				ReplaceExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresRole(ctx, "owner", &databricks.PostgresRoleArgs{
+//				RoleId: pulumi.String("jane-doe"),
+//				Parent: production.Name,
+//				Spec: &databricks.PostgresRoleSpecArgs{
+//					PostgresRole: pulumi.String("jane.doe@databricks.com"),
+//					MembershipRoles: pulumi.StringArray{
+//						pulumi.String("DATABRICKS_SUPERUSER"),
+//					},
+//					Attributes: &databricks.PostgresRoleSpecAttributesArgs{
+//						Createdb:   pulumi.Bool(true),
+//						Createrole: pulumi.Bool(true),
+//						Bypassrls:  pulumi.Bool(true),
+//					},
+//				},
+//				ReplaceExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Managing a Role Inherited by a Child Branch
+//
+// A child branch created from a source branch (via `spec.source_branch`) shares the source's storage through copy-on-write, so every role on the source branch — including the implicit owner role — already exists on the child at the branch point. These inherited roles are not created by Pulumi, so managing one requires `replaceExisting = true`, exactly as for the implicitly created owner role above.
+//
+// You typically adopt an inherited role when you want to manage its configuration (for example, its `membershipRoles` or `attributes`) on the child branch independently of the source.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			child, err := databricks.NewPostgresBranch(ctx, "child", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("feature-x"),
+//				Parent:   pulumi.Any(this.Name),
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					SourceBranch: pulumi.Any(production.Name),
+//					NoExpiry:     pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresRole(ctx, "inherited_owner", &databricks.PostgresRoleArgs{
+//				RoleId: pulumi.String("jane-doe"),
+//				Parent: child.Name,
+//				Spec: &databricks.PostgresRoleSpecArgs{
+//					PostgresRole: pulumi.String("jane.doe@databricks.com"),
+//					MembershipRoles: pulumi.StringArray{
+//						pulumi.String("DATABRICKS_SUPERUSER"),
+//					},
+//					Attributes: &databricks.PostgresRoleSpecAttributesArgs{
+//						Createdb:   pulumi.Bool(true),
+//						Createrole: pulumi.Bool(true),
+//						Bypassrls:  pulumi.Bool(true),
+//					},
+//				},
+//				ReplaceExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Role Backed by a Databricks User Identity
 //
 // Create a role that is authenticated as a specific Databricks workspace user via OAuth. `authMethod` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.

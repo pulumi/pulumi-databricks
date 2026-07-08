@@ -104,12 +104,14 @@ type Cluster struct {
 	ApplyPolicyDefaultValues pulumi.BoolPtrOutput      `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                ClusterAutoscalePtrOutput `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
-	AutoterminationMinutes pulumi.IntPtrOutput                `pulumi:"autoterminationMinutes"`
-	AwsAttributes          ClusterAwsAttributesPtrOutput      `pulumi:"awsAttributes"`
-	AzureAttributes        ClusterAzureAttributesPtrOutput    `pulumi:"azureAttributes"`
-	ClusterId              pulumi.StringOutput                `pulumi:"clusterId"`
-	ClusterLogConf         ClusterClusterLogConfPtrOutput     `pulumi:"clusterLogConf"`
-	ClusterMountInfos      ClusterClusterMountInfoArrayOutput `pulumi:"clusterMountInfos"`
+	AutoterminationMinutes pulumi.IntPtrOutput             `pulumi:"autoterminationMinutes"`
+	AwsAttributes          ClusterAwsAttributesPtrOutput   `pulumi:"awsAttributes"`
+	AzureAttributes        ClusterAzureAttributesPtrOutput `pulumi:"azureAttributes"`
+	// If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+	ClearCloudAttributesOnRemove pulumi.BoolPtrOutput               `pulumi:"clearCloudAttributesOnRemove"`
+	ClusterId                    pulumi.StringOutput                `pulumi:"clusterId"`
+	ClusterLogConf               ClusterClusterLogConfPtrOutput     `pulumi:"clusterLogConf"`
+	ClusterMountInfos            ClusterClusterMountInfoArrayOutput `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName pulumi.StringPtrOutput `pulumi:"clusterName"`
 	// should have tag `ResourceClass` set to value `Serverless`
@@ -251,12 +253,14 @@ type clusterState struct {
 	ApplyPolicyDefaultValues *bool             `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                *ClusterAutoscale `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
-	AutoterminationMinutes *int                      `pulumi:"autoterminationMinutes"`
-	AwsAttributes          *ClusterAwsAttributes     `pulumi:"awsAttributes"`
-	AzureAttributes        *ClusterAzureAttributes   `pulumi:"azureAttributes"`
-	ClusterId              *string                   `pulumi:"clusterId"`
-	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
-	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
+	AutoterminationMinutes *int                    `pulumi:"autoterminationMinutes"`
+	AwsAttributes          *ClusterAwsAttributes   `pulumi:"awsAttributes"`
+	AzureAttributes        *ClusterAzureAttributes `pulumi:"azureAttributes"`
+	// If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+	ClearCloudAttributesOnRemove *bool                     `pulumi:"clearCloudAttributesOnRemove"`
+	ClusterId                    *string                   `pulumi:"clusterId"`
+	ClusterLogConf               *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
+	ClusterMountInfos            []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName *string `pulumi:"clusterName"`
 	// should have tag `ResourceClass` set to value `Serverless`
@@ -369,9 +373,11 @@ type ClusterState struct {
 	AutoterminationMinutes pulumi.IntPtrInput
 	AwsAttributes          ClusterAwsAttributesPtrInput
 	AzureAttributes        ClusterAzureAttributesPtrInput
-	ClusterId              pulumi.StringPtrInput
-	ClusterLogConf         ClusterClusterLogConfPtrInput
-	ClusterMountInfos      ClusterClusterMountInfoArrayInput
+	// If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+	ClearCloudAttributesOnRemove pulumi.BoolPtrInput
+	ClusterId                    pulumi.StringPtrInput
+	ClusterLogConf               ClusterClusterLogConfPtrInput
+	ClusterMountInfos            ClusterClusterMountInfoArrayInput
 	// Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName pulumi.StringPtrInput
 	// should have tag `ResourceClass` set to value `Serverless`
@@ -485,11 +491,13 @@ type clusterArgs struct {
 	ApplyPolicyDefaultValues *bool             `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                *ClusterAutoscale `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
-	AutoterminationMinutes *int                      `pulumi:"autoterminationMinutes"`
-	AwsAttributes          *ClusterAwsAttributes     `pulumi:"awsAttributes"`
-	AzureAttributes        *ClusterAzureAttributes   `pulumi:"azureAttributes"`
-	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
-	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
+	AutoterminationMinutes *int                    `pulumi:"autoterminationMinutes"`
+	AwsAttributes          *ClusterAwsAttributes   `pulumi:"awsAttributes"`
+	AzureAttributes        *ClusterAzureAttributes `pulumi:"azureAttributes"`
+	// If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+	ClearCloudAttributesOnRemove *bool                     `pulumi:"clearCloudAttributesOnRemove"`
+	ClusterLogConf               *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
+	ClusterMountInfos            []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName *string `pulumi:"clusterName"`
 	// should have tag `ResourceClass` set to value `Serverless`
@@ -598,8 +606,10 @@ type ClusterArgs struct {
 	AutoterminationMinutes pulumi.IntPtrInput
 	AwsAttributes          ClusterAwsAttributesPtrInput
 	AzureAttributes        ClusterAzureAttributesPtrInput
-	ClusterLogConf         ClusterClusterLogConfPtrInput
-	ClusterMountInfos      ClusterClusterMountInfoArrayInput
+	// If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+	ClearCloudAttributesOnRemove pulumi.BoolPtrInput
+	ClusterLogConf               ClusterClusterLogConfPtrInput
+	ClusterMountInfos            ClusterClusterMountInfoArrayInput
 	// Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName pulumi.StringPtrInput
 	// should have tag `ResourceClass` set to value `Serverless`
@@ -806,6 +816,11 @@ func (o ClusterOutput) AwsAttributes() ClusterAwsAttributesPtrOutput {
 
 func (o ClusterOutput) AzureAttributes() ClusterAzureAttributesPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAzureAttributesPtrOutput { return v.AzureAttributes }).(ClusterAzureAttributesPtrOutput)
+}
+
+// If true, removing a cloud attributes block (`awsAttributes`, `azureAttributes`, or `gcpAttributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+func (o ClusterOutput) ClearCloudAttributesOnRemove() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.ClearCloudAttributesOnRemove }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterOutput) ClusterId() pulumi.StringOutput {

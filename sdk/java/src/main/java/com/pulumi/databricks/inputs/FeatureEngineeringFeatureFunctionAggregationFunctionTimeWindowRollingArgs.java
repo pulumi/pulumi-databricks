@@ -16,19 +16,9 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
     public static final FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs Empty = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs();
 
-    /**
-     * The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     * 
-     */
     @Import(name="delay")
     private @Nullable Output<String> delay;
 
-    /**
-     * @return The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     * 
-     */
     public Optional<Output<String>> delay() {
         return Optional.ofNullable(this.delay);
     }
@@ -65,25 +55,11 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
             $ = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param delay The delay applied to the end of the rolling window (must be non-negative).
-         * For example, delay=1d shifts the window end 1 day before the evaluation time
-         * 
-         * @return builder
-         * 
-         */
         public Builder delay(@Nullable Output<String> delay) {
             $.delay = delay;
             return this;
         }
 
-        /**
-         * @param delay The delay applied to the end of the rolling window (must be non-negative).
-         * For example, delay=1d shifts the window end 1 day before the evaluation time
-         * 
-         * @return builder
-         * 
-         */
         public Builder delay(String delay) {
             return delay(Output.of(delay));
         }

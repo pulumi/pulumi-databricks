@@ -171,8 +171,8 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 export interface AccountNetworkPolicyIngress {
     crossWorkspaceAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccess | undefined>;
     /**
-     * The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      */
     privateAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccess | undefined>;
     /**
@@ -215,12 +215,19 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthent
 }
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime | undefined>;
@@ -301,12 +308,19 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthenti
 }
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime | undefined>;
@@ -363,8 +377,8 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSe
 export interface AccountNetworkPolicyIngressDryRun {
     crossWorkspaceAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess | undefined>;
     /**
-     * The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      */
     privateAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccess | undefined>;
     /**
@@ -407,12 +421,19 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleA
 }
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAppsRuntime | undefined>;
@@ -493,12 +514,19 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAu
 }
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAppsRuntime | undefined>;
@@ -585,12 +613,19 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthenti
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAppsRuntime | undefined>;
@@ -630,13 +665,34 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinat
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOrigin {
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     allPrivateAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     */
     allRegisteredEndpoints?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     azureWorkspacePrivateLink?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     */
     endpoints?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints {
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     */
     endpointIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -667,12 +723,19 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthentic
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAppsRuntime | undefined>;
@@ -712,13 +775,34 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinati
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOrigin {
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     allPrivateAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     */
     allRegisteredEndpoints?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     azureWorkspacePrivateLink?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     */
     endpoints?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints {
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     */
     endpointIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -755,12 +839,19 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentic
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime | undefined>;
@@ -855,12 +946,19 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentica
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntime | undefined>;
@@ -961,12 +1059,19 @@ export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleAuthentication
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAppsRuntime | undefined>;
@@ -1006,13 +1111,34 @@ export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWor
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleOrigin {
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     allPrivateAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     */
     allRegisteredEndpoints?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     azureWorkspacePrivateLink?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     */
     endpoints?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints {
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     */
     endpointIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -1043,12 +1169,19 @@ export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleAuthenticationI
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAppsRuntime | undefined>;
@@ -1088,13 +1221,34 @@ export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWork
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleOrigin {
+    /**
+     * Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     allPrivateAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     */
     allRegisteredEndpoints?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through the workspace's Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     */
     azureWorkspacePrivateLink?: pulumi.Input<boolean | undefined>;
+    /**
+     * Matches requests arriving through any of the specified registered endpoints
+     */
     endpoints?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints {
+    /**
+     * The IDs of the registered endpoints. Must contain at least one endpoint ID
+     */
     endpointIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -1131,12 +1285,19 @@ export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationI
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAppsRuntime | undefined>;
@@ -1231,12 +1392,19 @@ export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationId
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     */
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi | undefined>;
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     */
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
     appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime | undefined>;
@@ -3394,6 +3562,13 @@ export interface DataClassificationCatalogConfigAutoTagConfig {
     classificationTag: pulumi.Input<string>;
 }
 
+export interface DataClassificationCatalogConfigExcludedSchemas {
+    /**
+     * Schema names, each relative to the parent catalog. Must not be empty
+     */
+    names: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface DataClassificationCatalogConfigIncludedSchemas {
     /**
      * Schema names, each relative to the parent catalog. Must not be empty
@@ -3971,7 +4146,7 @@ export interface DatabaseSyncedDatabaseTableSpecTypeOverride {
     pgType: pulumi.Input<string>;
     /**
      * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      */
     size?: pulumi.Input<number | undefined>;
 }
@@ -4427,7 +4602,11 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunction {
     avg?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionAvg | undefined>;
     countFunction?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction | undefined>;
     first?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirst | undefined>;
+    firstDistinct?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct | undefined>;
+    firstN?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirstN | undefined>;
     last?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLast | undefined>;
+    lastDistinct?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct | undefined>;
+    lastN?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLastN | undefined>;
     max?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMax | undefined>;
     min?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMin | undefined>;
     stddevPop?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop | undefined>;
@@ -4474,8 +4653,28 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionFirst {
     input: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct {
+    input: pulumi.Input<string>;
+    n: pulumi.Input<number>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionFirstN {
+    input: pulumi.Input<string>;
+    n: pulumi.Input<number>;
+}
+
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionLast {
     input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct {
+    input: pulumi.Input<string>;
+    n: pulumi.Input<number>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionLastN {
+    input: pulumi.Input<string>;
+    n: pulumi.Input<number>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionMax {
@@ -4500,6 +4699,10 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous | undefined>;
+    /**
+     * A long (multi-day) rolling window served via the hybrid batch + streaming path
+     */
+    longRolling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling | undefined>;
     rolling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling | undefined>;
     sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding | undefined>;
     tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling | undefined>;
@@ -4513,11 +4716,12 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowC
     windowDuration: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
+    delay?: pulumi.Input<string | undefined>;
+    windowDuration: pulumi.Input<string>;
+}
+
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
-    /**
-     * The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     */
     delay?: pulumi.Input<string | undefined>;
     windowDuration: pulumi.Input<string>;
 }
@@ -4722,6 +4926,10 @@ export interface FeatureEngineeringFeatureSourceStreamSource {
 
 export interface FeatureEngineeringFeatureTimeWindow {
     continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowContinuous | undefined>;
+    /**
+     * A long (multi-day) rolling window served via the hybrid batch + streaming path
+     */
+    longRolling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowLongRolling | undefined>;
     rolling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowRolling | undefined>;
     sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowSliding | undefined>;
     tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowTumbling | undefined>;
@@ -4735,11 +4943,12 @@ export interface FeatureEngineeringFeatureTimeWindowContinuous {
     windowDuration: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureTimeWindowLongRolling {
+    delay?: pulumi.Input<string | undefined>;
+    windowDuration: pulumi.Input<string>;
+}
+
 export interface FeatureEngineeringFeatureTimeWindowRolling {
-    /**
-     * The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     */
     delay?: pulumi.Input<string | undefined>;
     windowDuration: pulumi.Input<string>;
 }
@@ -4973,9 +5182,32 @@ export interface FeatureEngineeringKafkaConfigIngestionConfigIngestionDestinatio
 
 export interface FeatureEngineeringKafkaConfigKeySchema {
     /**
+     * Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     */
+    avroSchema?: pulumi.Input<string | undefined>;
+    /**
      * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: pulumi.Input<string | undefined>;
+    /**
+     * Protocol Buffer schema with its payload message name
+     */
+    protoSchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigKeySchemaProtoSchema | undefined>;
+}
+
+export interface FeatureEngineeringKafkaConfigKeySchemaProtoSchema {
+    /**
+     * The fully-qualified name of the message within schemaText that describes the Kafka payload
+     * (e.g. "Event" or "com.example.Event" if schemaText declares a package). Identifies which
+     * message is used to decode each Kafka record — a .proto file may declare multiple messages
+     * but only one represents the payload. Must not be empty
+     */
+    messageName: pulumi.Input<string>;
+    /**
+     * The raw .proto file text (proto2 and proto3 syntax supported, see
+     * https://protobuf.dev/programming-guides/proto3/ and https://protobuf.dev/programming-guides/proto2/)
+     */
+    schemaText: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringKafkaConfigProviderConfig {
@@ -5003,9 +5235,32 @@ export interface FeatureEngineeringKafkaConfigSubscriptionMode {
 
 export interface FeatureEngineeringKafkaConfigValueSchema {
     /**
+     * Avro schema in JSON format (https://avro.apache.org/docs/current/specification/)
+     */
+    avroSchema?: pulumi.Input<string | undefined>;
+    /**
      * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: pulumi.Input<string | undefined>;
+    /**
+     * Protocol Buffer schema with its payload message name
+     */
+    protoSchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigValueSchemaProtoSchema | undefined>;
+}
+
+export interface FeatureEngineeringKafkaConfigValueSchemaProtoSchema {
+    /**
+     * The fully-qualified name of the message within schemaText that describes the Kafka payload
+     * (e.g. "Event" or "com.example.Event" if schemaText declares a package). Identifies which
+     * message is used to decode each Kafka record — a .proto file may declare multiple messages
+     * but only one represents the payload. Must not be empty
+     */
+    messageName: pulumi.Input<string>;
+    /**
+     * The raw .proto file text (proto2 and proto3 syntax supported, see
+     * https://protobuf.dev/programming-guides/proto3/ and https://protobuf.dev/programming-guides/proto2/)
+     */
+    schemaText: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
@@ -5039,6 +5294,11 @@ export interface FeatureEngineeringMaterializedFeatureProviderConfig {
 }
 
 export interface FeatureEngineeringMaterializedFeatureStreamingMode {
+    /**
+     * The desired data freshness for feature materialization, expressed as a
+     * duration string (e.g. "1 minute")
+     */
+    freshnessTarget?: pulumi.Input<string | undefined>;
     /**
      * The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      */
@@ -16398,10 +16658,17 @@ export interface JobSchedule {
      * A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
      */
     quartzCronExpression: pulumi.Input<string>;
+    sqlCondition?: pulumi.Input<inputs.JobScheduleSqlCondition | undefined>;
     /**
      * A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
      */
     timezoneId: pulumi.Input<string>;
+}
+
+export interface JobScheduleSqlCondition {
+    sqlQueryId: pulumi.Input<string>;
+    triggerMode?: pulumi.Input<string | undefined>;
+    warehouseId: pulumi.Input<string>;
 }
 
 export interface JobSparkJarTask {
@@ -18659,6 +18926,7 @@ export interface JobTrigger {
      * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
      */
     periodic?: pulumi.Input<inputs.JobTriggerPeriodic | undefined>;
+    sqlCondition?: pulumi.Input<inputs.JobTriggerSqlCondition | undefined>;
     /**
      * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
      */
@@ -18700,6 +18968,12 @@ export interface JobTriggerPeriodic {
      * The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
      */
     unit: pulumi.Input<string>;
+}
+
+export interface JobTriggerSqlCondition {
+    sqlQueryId: pulumi.Input<string>;
+    triggerMode?: pulumi.Input<string | undefined>;
+    warehouseId: pulumi.Input<string>;
 }
 
 export interface JobTriggerTableUpdate {
@@ -20118,11 +20392,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -20189,11 +20463,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -21815,6 +22089,10 @@ export interface PostgresEndpointStatus {
      */
     hosts?: pulumi.Input<inputs.PostgresEndpointStatusHosts | undefined>;
     /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     */
+    lastActiveTime?: pulumi.Input<string | undefined>;
+    /**
      * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState?: pulumi.Input<string | undefined>;
@@ -21850,6 +22128,15 @@ export interface PostgresEndpointStatusHosts {
      * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
      */
     readOnlyHost?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The read-only hostname of the compute endpoint, with pooling. This attribute is always defined for read-only endpoints,
+     * and may be defined for read-write endpoints if configured with read replicas and allow read-only connections
+     */
+    readOnlyPooledHost?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The read-write hostname of the compute endpoint, with pooling. This attribute is only defined for read-write endpoints
+     */
+    readWritePooledHost?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresEndpointStatusSettings {
@@ -22183,7 +22470,7 @@ export interface PostgresSyncedTableSpecTypeOverride {
     pgType: pulumi.Input<string>;
     /**
      * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * (specifies the vector dimension, e.g., 1024)
+     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
      */
     size?: pulumi.Input<number | undefined>;
 }

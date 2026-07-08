@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
@@ -15,6 +16,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+    /**
+     * @return A long (multi-day) rolling window served via the hybrid batch + streaming path
+     * 
+     */
+    private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling tumbling;
@@ -22,6 +28,13 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow() {}
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+    /**
+     * @return A long (multi-day) rolling window served via the hybrid batch + streaming path
+     * 
+     */
+    public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling> longRolling() {
+        return Optional.ofNullable(this.longRolling);
     }
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling> rolling() {
         return Optional.ofNullable(this.rolling);
@@ -43,6 +56,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+        private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling tumbling;
@@ -50,6 +64,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
+    	      this.longRolling = defaults.longRolling;
     	      this.rolling = defaults.rolling;
     	      this.sliding = defaults.sliding;
     	      this.tumbling = defaults.tumbling;
@@ -59,6 +74,12 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public Builder continuous(@Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous) {
 
             this.continuous = continuous;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder longRolling(@Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling) {
+
+            this.longRolling = longRolling;
             return this;
         }
         @CustomType.Setter
@@ -82,6 +103,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow build() {
             final var _resultValue = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow();
             _resultValue.continuous = continuous;
+            _resultValue.longRolling = longRolling;
             _resultValue.rolling = rolling;
             _resultValue.sliding = sliding;
             _resultValue.tumbling = tumbling;

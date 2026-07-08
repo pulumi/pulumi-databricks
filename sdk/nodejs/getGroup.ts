@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Retrieves information about databricks.Group members, entitlements and instance profiles.
+ * Retrieves information about databricks.Group members, entitlements and roles.
  *
  * > This data source can be used with an account or workspace-level provider.
  *
@@ -56,6 +56,7 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
         "members": args.members,
         "providerConfig": args.providerConfig,
         "recursive": args.recursive,
+        "roles": args.roles,
         "servicePrincipals": args.servicePrincipals,
         "users": args.users,
         "workspaceAccess": args.workspaceAccess,
@@ -101,7 +102,9 @@ export interface GetGroupArgs {
      */
     groups?: string[];
     /**
-     * Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
+     *
+     * @deprecated Please use `roles` instead
      */
     instanceProfiles?: string[];
     /**
@@ -116,6 +119,10 @@ export interface GetGroupArgs {
      * Collect information for all nested groups. *Defaults to true.*
      */
     recursive?: boolean;
+    /**
+     * Set of role ARNs (e.g., instance profile ARNs), that can be modified by databricks.GroupInstanceProfile or databricks.GroupRole resources.
+     */
+    roles?: string[];
     /**
      * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      */
@@ -164,7 +171,9 @@ export interface GetGroupResult {
      */
     readonly id: string;
     /**
-     * Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
+     *
+     * @deprecated Please use `roles` instead
      */
     readonly instanceProfiles: string[];
     /**
@@ -173,6 +182,10 @@ export interface GetGroupResult {
     readonly members: string[];
     readonly providerConfig: outputs.GetGroupProviderConfig;
     readonly recursive?: boolean;
+    /**
+     * Set of role ARNs (e.g., instance profile ARNs), that can be modified by databricks.GroupInstanceProfile or databricks.GroupRole resources.
+     */
+    readonly roles: string[];
     /**
      * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      */
@@ -185,7 +198,7 @@ export interface GetGroupResult {
     readonly workspaceConsume?: boolean;
 }
 /**
- * Retrieves information about databricks.Group members, entitlements and instance profiles.
+ * Retrieves information about databricks.Group members, entitlements and roles.
  *
  * > This data source can be used with an account or workspace-level provider.
  *
@@ -234,6 +247,7 @@ export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOut
         "members": args.members,
         "providerConfig": args.providerConfig,
         "recursive": args.recursive,
+        "roles": args.roles,
         "servicePrincipals": args.servicePrincipals,
         "users": args.users,
         "workspaceAccess": args.workspaceAccess,
@@ -279,7 +293,9 @@ export interface GetGroupOutputArgs {
      */
     groups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
+     *
+     * @deprecated Please use `roles` instead
      */
     instanceProfiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -294,6 +310,10 @@ export interface GetGroupOutputArgs {
      * Collect information for all nested groups. *Defaults to true.*
      */
     recursive?: pulumi.Input<boolean | undefined>;
+    /**
+     * Set of role ARNs (e.g., instance profile ARNs), that can be modified by databricks.GroupInstanceProfile or databricks.GroupRole resources.
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      */

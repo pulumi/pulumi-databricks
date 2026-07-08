@@ -12,20 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringFeatureTimeWindowRolling {
-    /**
-     * @return The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     * 
-     */
     private @Nullable String delay;
     private String windowDuration;
 
     private FeatureEngineeringFeatureTimeWindowRolling() {}
-    /**
-     * @return The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     * 
-     */
     public Optional<String> delay() {
         return Optional.ofNullable(this.delay);
     }

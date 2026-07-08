@@ -12,19 +12,100 @@ namespace Pulumi.Databricks
     public static class GetSecretUc
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+        /// 
+        /// The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+        /// 
+        /// This returns the secret's metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Basic Example
+        /// This example reads a secret in Unity Catalog by its fully qualified name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetSecretUc.Invoke(new()
+        ///     {
+        ///         FullName = "my_catalog.my_schema.my_secret",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSecretUcResult> InvokeAsync(GetSecretUcArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretUcResult>("databricks:index/getSecretUc:getSecretUc", args ?? new GetSecretUcArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+        /// 
+        /// The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+        /// 
+        /// This returns the secret's metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Basic Example
+        /// This example reads a secret in Unity Catalog by its fully qualified name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetSecretUc.Invoke(new()
+        ///     {
+        ///         FullName = "my_catalog.my_schema.my_secret",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecretUcResult> Invoke(GetSecretUcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretUcResult>("databricks:index/getSecretUc:getSecretUc", args ?? new GetSecretUcInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+        /// 
+        /// The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+        /// 
+        /// This returns the secret's metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Basic Example
+        /// This example reads a secret in Unity Catalog by its fully qualified name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetSecretUc.Invoke(new()
+        ///     {
+        ///         FullName = "my_catalog.my_schema.my_secret",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecretUcResult> Invoke(GetSecretUcInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretUcResult>("databricks:index/getSecretUc:getSecretUc", args ?? new GetSecretUcInvokeArgs(), options.WithDefaults());
@@ -76,11 +157,6 @@ namespace Pulumi.Databricks
     public sealed class GetSecretUcResult
     {
         /// <summary>
-        /// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-        /// through the **BROWSE** privilege when **include_browse** is enabled in the request
-        /// </summary>
-        public readonly bool BrowseOnly;
-        /// <summary>
         /// (string) - The name of the catalog where the schema and the secret reside
         /// </summary>
         public readonly string CatalogName;
@@ -112,10 +188,6 @@ namespace Pulumi.Databricks
         /// does not trigger any automatic actions or affect the secret's lifecycle
         /// </summary>
         public readonly string ExpireTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
-        public readonly string ExternalSecretId;
         /// <summary>
         /// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
         /// </summary>
@@ -160,8 +232,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetSecretUcResult(
-            bool browseOnly,
-
             string catalogName,
 
             string comment,
@@ -175,8 +245,6 @@ namespace Pulumi.Databricks
             string effectiveValue,
 
             string expireTime,
-
-            string externalSecretId,
 
             string fullName,
 
@@ -198,7 +266,6 @@ namespace Pulumi.Databricks
 
             string value)
         {
-            BrowseOnly = browseOnly;
             CatalogName = catalogName;
             Comment = comment;
             CreateTime = createTime;
@@ -206,7 +273,6 @@ namespace Pulumi.Databricks
             EffectiveOwner = effectiveOwner;
             EffectiveValue = effectiveValue;
             ExpireTime = expireTime;
-            ExternalSecretId = externalSecretId;
             FullName = fullName;
             Id = id;
             MetastoreId = metastoreId;

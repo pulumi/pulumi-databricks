@@ -18,13 +18,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination {
+    /**
+     * @return Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     * 
+     */
     private @Nullable AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi accountApi;
     /**
-     * @return Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * @return Account DatabricksOne destination is not supported
      * 
      */
     private @Nullable AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne accountDatabricksOne;
+    /**
+     * @return Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     * 
+     */
     private @Nullable AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi accountUi;
     private @Nullable Boolean allDestinations;
     private @Nullable AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAppsRuntime appsRuntime;
@@ -33,17 +42,26 @@ public final class AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination 
     private @Nullable AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceUi workspaceUi;
 
     private AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination() {}
+    /**
+     * @return Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     * 
+     */
     public Optional<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi> accountApi() {
         return Optional.ofNullable(this.accountApi);
     }
     /**
-     * @return Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * @return Account DatabricksOne destination is not supported
      * 
      */
     public Optional<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }
+    /**
+     * @return Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     * 
+     */
     public Optional<AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi> accountUi() {
         return Optional.ofNullable(this.accountUi);
     }

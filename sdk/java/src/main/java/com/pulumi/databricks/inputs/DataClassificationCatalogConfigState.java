@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DataClassificationCatalogConfigAutoTagConfigArgs;
+import com.pulumi.databricks.inputs.DataClassificationCatalogConfigExcludedSchemasArgs;
 import com.pulumi.databricks.inputs.DataClassificationCatalogConfigIncludedSchemasArgs;
 import com.pulumi.databricks.inputs.DataClassificationCatalogConfigProviderConfigArgs;
 import java.lang.String;
@@ -34,6 +35,27 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
      */
     public Optional<Output<List<DataClassificationCatalogConfigAutoTagConfigArgs>>> autoTagConfigs() {
         return Optional.ofNullable(this.autoTagConfigs);
+    }
+
+    /**
+     * Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     * 
+     */
+    @Import(name="excludedSchemas")
+    private @Nullable Output<DataClassificationCatalogConfigExcludedSchemasArgs> excludedSchemas;
+
+    /**
+     * @return Schemas to exclude from the scan, each named relative to the parent catalog.
+     * If specified, all schemas except the specified ones will be scanned.
+     * Mutually exclusive with `includedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+     * 
+     */
+    public Optional<Output<DataClassificationCatalogConfigExcludedSchemasArgs>> excludedSchemas() {
+        return Optional.ofNullable(this.excludedSchemas);
     }
 
     /**
@@ -106,6 +128,7 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
 
     private DataClassificationCatalogConfigState(DataClassificationCatalogConfigState $) {
         this.autoTagConfigs = $.autoTagConfigs;
+        this.excludedSchemas = $.excludedSchemas;
         this.includedSchemas = $.includedSchemas;
         this.name = $.name;
         this.parent = $.parent;
@@ -162,6 +185,33 @@ public final class DataClassificationCatalogConfigState extends com.pulumi.resou
          */
         public Builder autoTagConfigs(DataClassificationCatalogConfigAutoTagConfigArgs... autoTagConfigs) {
             return autoTagConfigs(List.of(autoTagConfigs));
+        }
+
+        /**
+         * @param excludedSchemas Schemas to exclude from the scan, each named relative to the parent catalog.
+         * If specified, all schemas except the specified ones will be scanned.
+         * Mutually exclusive with `includedSchemas`: only one may be set per request.
+         * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedSchemas(@Nullable Output<DataClassificationCatalogConfigExcludedSchemasArgs> excludedSchemas) {
+            $.excludedSchemas = excludedSchemas;
+            return this;
+        }
+
+        /**
+         * @param excludedSchemas Schemas to exclude from the scan, each named relative to the parent catalog.
+         * If specified, all schemas except the specified ones will be scanned.
+         * Mutually exclusive with `includedSchemas`: only one may be set per request.
+         * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedSchemas(DataClassificationCatalogConfigExcludedSchemasArgs excludedSchemas) {
+            return excludedSchemas(Output.of(excludedSchemas));
         }
 
         /**

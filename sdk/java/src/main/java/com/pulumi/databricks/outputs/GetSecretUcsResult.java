@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSecretUcsProviderConfig;
 import com.pulumi.databricks.outputs.GetSecretUcsSecret;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -27,7 +26,6 @@ public final class GetSecretUcsResult {
      * 
      */
     private String id;
-    private @Nullable Boolean includeBrowse;
     private @Nullable Integer pageSize;
     private @Nullable GetSecretUcsProviderConfig providerConfig;
     /**
@@ -51,9 +49,6 @@ public final class GetSecretUcsResult {
      */
     public String id() {
         return this.id;
-    }
-    public Optional<Boolean> includeBrowse() {
-        return Optional.ofNullable(this.includeBrowse);
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -83,7 +78,6 @@ public final class GetSecretUcsResult {
     public static final class Builder {
         private @Nullable String catalogName;
         private String id;
-        private @Nullable Boolean includeBrowse;
         private @Nullable Integer pageSize;
         private @Nullable GetSecretUcsProviderConfig providerConfig;
         private @Nullable String schemaName;
@@ -93,7 +87,6 @@ public final class GetSecretUcsResult {
     	      Objects.requireNonNull(defaults);
     	      this.catalogName = defaults.catalogName;
     	      this.id = defaults.id;
-    	      this.includeBrowse = defaults.includeBrowse;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
@@ -112,12 +105,6 @@ public final class GetSecretUcsResult {
               throw new MissingRequiredPropertyException("GetSecretUcsResult", "id");
             }
             this.id = id;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder includeBrowse(@Nullable Boolean includeBrowse) {
-
-            this.includeBrowse = includeBrowse;
             return this;
         }
         @CustomType.Setter
@@ -153,7 +140,6 @@ public final class GetSecretUcsResult {
             final var _resultValue = new GetSecretUcsResult();
             _resultValue.catalogName = catalogName;
             _resultValue.id = id;
-            _resultValue.includeBrowse = includeBrowse;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;

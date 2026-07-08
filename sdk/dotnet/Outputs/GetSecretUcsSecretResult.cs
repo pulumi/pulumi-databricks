@@ -14,11 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetSecretUcsSecretResult
     {
         /// <summary>
-        /// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-        /// through the **BROWSE** privilege when **include_browse** is enabled in the request
-        /// </summary>
-        public readonly bool BrowseOnly;
-        /// <summary>
         /// The name of the catalog under which to list secrets. Both **catalog_name** and
         /// **schema_name** must be specified together
         /// </summary>
@@ -51,10 +46,6 @@ namespace Pulumi.Databricks.Outputs
         /// does not trigger any automatic actions or affect the secret's lifecycle
         /// </summary>
         public readonly string ExpireTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
-        public readonly string ExternalSecretId;
         /// <summary>
         /// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
         /// </summary>
@@ -99,8 +90,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetSecretUcsSecretResult(
-            bool browseOnly,
-
             string catalogName,
 
             string comment,
@@ -114,8 +103,6 @@ namespace Pulumi.Databricks.Outputs
             string effectiveValue,
 
             string expireTime,
-
-            string externalSecretId,
 
             string fullName,
 
@@ -135,7 +122,6 @@ namespace Pulumi.Databricks.Outputs
 
             string value)
         {
-            BrowseOnly = browseOnly;
             CatalogName = catalogName;
             Comment = comment;
             CreateTime = createTime;
@@ -143,7 +129,6 @@ namespace Pulumi.Databricks.Outputs
             EffectiveOwner = effectiveOwner;
             EffectiveValue = effectiveValue;
             ExpireTime = expireTime;
-            ExternalSecretId = externalSecretId;
             FullName = fullName;
             MetastoreId = metastoreId;
             Name = name;

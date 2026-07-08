@@ -28,7 +28,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, acl_principal_id=None, allow_cluster_create=None, allow_instance_pool_create=None, api=None, child_groups=None, databricks_sql_access=None, display_name=None, external_id=None, groups=None, id=None, instance_profiles=None, members=None, provider_config=None, recursive=None, service_principals=None, users=None, workspace_access=None, workspace_consume=None):
+    def __init__(__self__, acl_principal_id=None, allow_cluster_create=None, allow_instance_pool_create=None, api=None, child_groups=None, databricks_sql_access=None, display_name=None, external_id=None, groups=None, id=None, instance_profiles=None, members=None, provider_config=None, recursive=None, roles=None, service_principals=None, users=None, workspace_access=None, workspace_consume=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -71,6 +71,9 @@ class GetGroupResult:
         if recursive and not isinstance(recursive, bool):
             raise TypeError("Expected argument 'recursive' to be a bool")
         pulumi.set(__self__, "recursive", recursive)
+        if roles and not isinstance(roles, list):
+            raise TypeError("Expected argument 'roles' to be a list")
+        pulumi.set(__self__, "roles", roles)
         if service_principals and not isinstance(service_principals, list):
             raise TypeError("Expected argument 'service_principals' to be a list")
         pulumi.set(__self__, "service_principals", service_principals)
@@ -157,9 +160,10 @@ class GetGroupResult:
 
     @_builtins.property
     @pulumi.getter(name="instanceProfiles")
+    @_utilities.deprecated("""Please use `roles` instead""")
     def instance_profiles(self) -> Sequence[_builtins.str]:
         """
-        Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+        (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
         """
         return pulumi.get(self, "instance_profiles")
 
@@ -178,6 +182,14 @@ class GetGroupResult:
     @pulumi.getter
     def recursive(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "recursive")
+
+    @_builtins.property
+    @pulumi.getter
+    def roles(self) -> Sequence[_builtins.str]:
+        """
+        Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
+        """
+        return pulumi.get(self, "roles")
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipals")
@@ -226,6 +238,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             members=self.members,
             provider_config=self.provider_config,
             recursive=self.recursive,
+            roles=self.roles,
             service_principals=self.service_principals,
             users=self.users,
             workspace_access=self.workspace_access,
@@ -245,13 +258,14 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
               members: Optional[Sequence[_builtins.str]] = None,
               provider_config: Optional[Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict']] = None,
               recursive: Optional[_builtins.bool] = None,
+              roles: Optional[Sequence[_builtins.str]] = None,
               service_principals: Optional[Sequence[_builtins.str]] = None,
               users: Optional[Sequence[_builtins.str]] = None,
               workspace_access: Optional[_builtins.bool] = None,
               workspace_consume: Optional[_builtins.bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    Retrieves information about Group members, entitlements and instance profiles.
+    Retrieves information about Group members, entitlements and roles.
 
     > This data source can be used with an account or workspace-level provider.
 
@@ -290,9 +304,10 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
     :param _builtins.str display_name: Display name of the group. The group must exist before this resource can be planned.
     :param _builtins.str external_id: ID of the group in an external identity provider.
     :param Sequence[_builtins.str] groups: Set of group identifiers, that can be modified with GroupMember resource.
-    :param Sequence[_builtins.str] instance_profiles: Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+    :param Sequence[_builtins.str] instance_profiles: (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
     :param Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool recursive: Collect information for all nested groups. *Defaults to true.*
+    :param Sequence[_builtins.str] roles: Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
     :param Sequence[_builtins.str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
     :param Sequence[_builtins.str] users: Set of User identifiers, that can be modified with GroupMember resource.
     """
@@ -310,6 +325,7 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
     __args__['members'] = members
     __args__['providerConfig'] = provider_config
     __args__['recursive'] = recursive
+    __args__['roles'] = roles
     __args__['servicePrincipals'] = service_principals
     __args__['users'] = users
     __args__['workspaceAccess'] = workspace_access
@@ -332,6 +348,7 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
         members=pulumi.get(__ret__, 'members'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         recursive=pulumi.get(__ret__, 'recursive'),
+        roles=pulumi.get(__ret__, 'roles'),
         service_principals=pulumi.get(__ret__, 'service_principals'),
         users=pulumi.get(__ret__, 'users'),
         workspace_access=pulumi.get(__ret__, 'workspace_access'),
@@ -349,13 +366,14 @@ def get_group_output(acl_principal_id: pulumi.Input[Optional[Optional[_builtins.
                      members: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      provider_config: pulumi.Input[Optional[Optional[Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict']]]] = None,
                      recursive: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     roles: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      service_principals: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      users: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      workspace_access: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                      workspace_consume: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
-    Retrieves information about Group members, entitlements and instance profiles.
+    Retrieves information about Group members, entitlements and roles.
 
     > This data source can be used with an account or workspace-level provider.
 
@@ -394,9 +412,10 @@ def get_group_output(acl_principal_id: pulumi.Input[Optional[Optional[_builtins.
     :param _builtins.str display_name: Display name of the group. The group must exist before this resource can be planned.
     :param _builtins.str external_id: ID of the group in an external identity provider.
     :param Sequence[_builtins.str] groups: Set of group identifiers, that can be modified with GroupMember resource.
-    :param Sequence[_builtins.str] instance_profiles: Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+    :param Sequence[_builtins.str] instance_profiles: (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
     :param Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool recursive: Collect information for all nested groups. *Defaults to true.*
+    :param Sequence[_builtins.str] roles: Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
     :param Sequence[_builtins.str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
     :param Sequence[_builtins.str] users: Set of User identifiers, that can be modified with GroupMember resource.
     """
@@ -414,6 +433,7 @@ def get_group_output(acl_principal_id: pulumi.Input[Optional[Optional[_builtins.
     __args__['members'] = members
     __args__['providerConfig'] = provider_config
     __args__['recursive'] = recursive
+    __args__['roles'] = roles
     __args__['servicePrincipals'] = service_principals
     __args__['users'] = users
     __args__['workspaceAccess'] = workspace_access
@@ -435,6 +455,7 @@ def get_group_output(acl_principal_id: pulumi.Input[Optional[Optional[_builtins.
         members=pulumi.get(__response__, 'members'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         recursive=pulumi.get(__response__, 'recursive'),
+        roles=pulumi.get(__response__, 'roles'),
         service_principals=pulumi.get(__response__, 'service_principals'),
         users=pulumi.get(__response__, 'users'),
         workspace_access=pulumi.get(__response__, 'workspace_access'),

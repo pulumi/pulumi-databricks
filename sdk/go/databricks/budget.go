@@ -87,6 +87,64 @@ import (
 //
 // ```
 //
+// ### Budgets for Genie
+//
+// Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what's coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a Budget with resource tags matching the Genie AI Gateway resource.
+//			// Prerequisite: Enable AI Gateway Budget (Public Preview)
+//			// https://docs.databricks.com/aws/en/genie/budgets#requirements
+//			_, err := databricks.NewBudget(ctx, "genie_shared_budget", &databricks.BudgetArgs{
+//				DisplayName: pulumi.String("genie-shared-budget"),
+//				Filter: &databricks.BudgetFilterArgs{
+//					Tags: databricks.BudgetFilterTagArray{
+//						&databricks.BudgetFilterTagArgs{
+//							Key: pulumi.String("databricks-product"),
+//							Value: &databricks.BudgetFilterTagValueArgs{
+//								Operator: pulumi.String("IN"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("genie"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				AlertConfigurations: databricks.BudgetAlertConfigurationArray{
+//					&databricks.BudgetAlertConfigurationArgs{
+//						QuantityThreshold: pulumi.String("2000"),
+//						QuantityType:      pulumi.String("LIST_PRICE_DOLLARS_USD"),
+//						TriggerType:       pulumi.String("CUMULATIVE_SPENDING_EXCEEDED"),
+//						TimePeriod:        pulumi.String("MONTH"),
+//						ActionConfigurations: databricks.BudgetAlertConfigurationActionConfigurationArray{
+//							&databricks.BudgetAlertConfigurationActionConfigurationArgs{
+//								ActionType: pulumi.String("EMAIL_NOTIFICATION"),
+//								Target:     pulumi.String("abc@gmail.com"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Related Resources
 //
 // The following resources are used in the context:

@@ -14,16 +14,17 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationResult
     {
         /// <summary>
-        /// (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+        /// (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+        /// Can only be used in the account-level network policy
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApiResult? AccountApi;
         /// <summary>
-        /// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-        /// DO NOT change the stage of this destination past PRIVATE_PREVIEW
+        /// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOneResult? AccountDatabricksOne;
         /// <summary>
-        /// (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+        /// (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+        /// Can only be used in the account-level network policy
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUiResult? AccountUi;
         /// <summary>

@@ -149,6 +149,21 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     * 
+     */
+    @Import(name="lastActiveTime")
+    private @Nullable Output<String> lastActiveTime;
+
+    /**
+     * @return (string) - A timestamp indicating when the compute endpoint was last active
+     * 
+     */
+    public Optional<Output<String>> lastActiveTime() {
+        return Optional.ofNullable(this.lastActiveTime);
+    }
+
+    /**
      * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
@@ -204,6 +219,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         this.endpointType = $.endpointType;
         this.group = $.group;
         this.hosts = $.hosts;
+        this.lastActiveTime = $.lastActiveTime;
         this.pendingState = $.pendingState;
         this.settings = $.settings;
         this.suspendTimeoutDuration = $.suspendTimeoutDuration;
@@ -401,6 +417,27 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
          */
         public Builder hosts(PostgresEndpointStatusHostsArgs hosts) {
             return hosts(Output.of(hosts));
+        }
+
+        /**
+         * @param lastActiveTime (string) - A timestamp indicating when the compute endpoint was last active
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastActiveTime(@Nullable Output<String> lastActiveTime) {
+            $.lastActiveTime = lastActiveTime;
+            return this;
+        }
+
+        /**
+         * @param lastActiveTime (string) - A timestamp indicating when the compute endpoint was last active
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastActiveTime(String lastActiveTime) {
+            return lastActiveTime(Output.of(lastActiveTime));
         }
 
         /**

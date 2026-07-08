@@ -27,6 +27,7 @@ class ClusterArgs:
                  autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
                  aws_attributes: pulumi.Input[Optional['ClusterAwsAttributesArgs']] = None,
                  azure_attributes: pulumi.Input[Optional['ClusterAzureAttributesArgs']] = None,
+                 clear_cloud_attributes_on_remove: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_log_conf: pulumi.Input[Optional['ClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -67,6 +68,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         :param pulumi.Input[_builtins.bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[_builtins.int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
+        :param pulumi.Input[_builtins.bool] clear_cloud_attributes_on_remove: If true, removing a cloud attributes block (`aws_attributes`, `azure_attributes`, or `gcp_attributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
                
@@ -129,6 +131,8 @@ class ClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clear_cloud_attributes_on_remove is not None:
+            pulumi.set(__self__, "clear_cloud_attributes_on_remove", clear_cloud_attributes_on_remove)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if cluster_mount_infos is not None:
@@ -260,6 +264,18 @@ class ClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: pulumi.Input[Optional['ClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clearCloudAttributesOnRemove")
+    def clear_cloud_attributes_on_remove(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, removing a cloud attributes block (`aws_attributes`, `azure_attributes`, or `gcp_attributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+        """
+        return pulumi.get(self, "clear_cloud_attributes_on_remove")
+
+    @clear_cloud_attributes_on_remove.setter
+    def clear_cloud_attributes_on_remove(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "clear_cloud_attributes_on_remove", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterLogConf")
@@ -676,6 +692,7 @@ class _ClusterState:
                  autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
                  aws_attributes: pulumi.Input[Optional['ClusterAwsAttributesArgs']] = None,
                  azure_attributes: pulumi.Input[Optional['ClusterAzureAttributesArgs']] = None,
+                 clear_cloud_attributes_on_remove: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_log_conf: pulumi.Input[Optional['ClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
@@ -720,6 +737,7 @@ class _ClusterState:
 
         :param pulumi.Input[_builtins.bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[_builtins.int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
+        :param pulumi.Input[_builtins.bool] clear_cloud_attributes_on_remove: If true, removing a cloud attributes block (`aws_attributes`, `azure_attributes`, or `gcp_attributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
                
@@ -784,6 +802,8 @@ class _ClusterState:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clear_cloud_attributes_on_remove is not None:
+            pulumi.set(__self__, "clear_cloud_attributes_on_remove", clear_cloud_attributes_on_remove)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -913,6 +933,18 @@ class _ClusterState:
     @azure_attributes.setter
     def azure_attributes(self, value: pulumi.Input[Optional['ClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clearCloudAttributesOnRemove")
+    def clear_cloud_attributes_on_remove(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, removing a cloud attributes block (`aws_attributes`, `azure_attributes`, or `gcp_attributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+        """
+        return pulumi.get(self, "clear_cloud_attributes_on_remove")
+
+    @clear_cloud_attributes_on_remove.setter
+    def clear_cloud_attributes_on_remove(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "clear_cloud_attributes_on_remove", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -1386,6 +1418,7 @@ class Cluster(pulumi.CustomResource):
                  autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
                  aws_attributes: pulumi.Input[Optional[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
                  azure_attributes: pulumi.Input[Optional[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
+                 clear_cloud_attributes_on_remove: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_log_conf: pulumi.Input[Optional[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
                  cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1488,6 +1521,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[_builtins.int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
+        :param pulumi.Input[_builtins.bool] clear_cloud_attributes_on_remove: If true, removing a cloud attributes block (`aws_attributes`, `azure_attributes`, or `gcp_attributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
                
@@ -1628,6 +1662,7 @@ class Cluster(pulumi.CustomResource):
                  autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
                  aws_attributes: pulumi.Input[Optional[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
                  azure_attributes: pulumi.Input[Optional[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
+                 clear_cloud_attributes_on_remove: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_log_conf: pulumi.Input[Optional[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
                  cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1677,6 +1712,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["autotermination_minutes"] = autotermination_minutes
             __props__.__dict__["aws_attributes"] = aws_attributes
             __props__.__dict__["azure_attributes"] = azure_attributes
+            __props__.__dict__["clear_cloud_attributes_on_remove"] = clear_cloud_attributes_on_remove
             __props__.__dict__["cluster_log_conf"] = cluster_log_conf
             __props__.__dict__["cluster_mount_infos"] = cluster_mount_infos
             __props__.__dict__["cluster_name"] = cluster_name
@@ -1733,6 +1769,7 @@ class Cluster(pulumi.CustomResource):
             autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
             aws_attributes: pulumi.Input[Optional[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
             azure_attributes: pulumi.Input[Optional[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
+            clear_cloud_attributes_on_remove: pulumi.Input[Optional[_builtins.bool]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_log_conf: pulumi.Input[Optional[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
             cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
@@ -1781,6 +1818,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[_builtins.int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
+        :param pulumi.Input[_builtins.bool] clear_cloud_attributes_on_remove: If true, removing a cloud attributes block (`aws_attributes`, `azure_attributes`, or `gcp_attributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
                
@@ -1844,6 +1882,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["autotermination_minutes"] = autotermination_minutes
         __props__.__dict__["aws_attributes"] = aws_attributes
         __props__.__dict__["azure_attributes"] = azure_attributes
+        __props__.__dict__["clear_cloud_attributes_on_remove"] = clear_cloud_attributes_on_remove
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_log_conf"] = cluster_log_conf
         __props__.__dict__["cluster_mount_infos"] = cluster_mount_infos
@@ -1915,6 +1954,14 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="azureAttributes")
     def azure_attributes(self) -> pulumi.Output[Optional['outputs.ClusterAzureAttributes']]:
         return pulumi.get(self, "azure_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="clearCloudAttributesOnRemove")
+    def clear_cloud_attributes_on_remove(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, removing a cloud attributes block (`aws_attributes`, `azure_attributes`, or `gcp_attributes`) from the configuration clears it on the cluster instead of the removal being ignored. Defaults to false, in which case removing such a block is suppressed to avoid a perpetual diff caused by the platform returning default cloud attributes. Keeping the block, even partially specified, preserves the suppression; only removing the whole block clears.
+        """
+        return pulumi.get(self, "clear_cloud_attributes_on_remove")
 
     @_builtins.property
     @pulumi.getter(name="clusterId")

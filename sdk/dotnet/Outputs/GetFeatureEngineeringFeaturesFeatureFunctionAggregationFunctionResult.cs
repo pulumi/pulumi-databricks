@@ -34,9 +34,25 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstResult? First;
         /// <summary>
+        /// (FirstDistinctFunction)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstDistinctResult? FirstDistinct;
+        /// <summary>
+        /// (FirstNFunction)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstNResult? FirstN;
+        /// <summary>
         /// (LastFunction)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastResult? Last;
+        /// <summary>
+        /// (LastDistinctFunction)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastDistinctResult? LastDistinct;
+        /// <summary>
+        /// (LastNFunction)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastNResult? LastN;
         /// <summary>
         /// (MaxFunction)
         /// </summary>
@@ -82,7 +98,15 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstResult? first,
 
+            Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstDistinctResult? firstDistinct,
+
+            Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirstNResult? firstN,
+
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastResult? last,
+
+            Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastDistinctResult? lastDistinct,
+
+            Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLastNResult? lastN,
 
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionMaxResult? max,
 
@@ -105,7 +129,11 @@ namespace Pulumi.Databricks.Outputs
             Avg = avg;
             CountFunction = countFunction;
             First = first;
+            FirstDistinct = firstDistinct;
+            FirstN = firstN;
             Last = last;
+            LastDistinct = lastDistinct;
+            LastN = lastN;
             Max = max;
             Min = min;
             StddevPop = stddevPop;

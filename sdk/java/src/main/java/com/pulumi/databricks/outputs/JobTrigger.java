@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
 import com.pulumi.databricks.outputs.JobTriggerModel;
 import com.pulumi.databricks.outputs.JobTriggerPeriodic;
+import com.pulumi.databricks.outputs.JobTriggerSqlCondition;
 import com.pulumi.databricks.outputs.JobTriggerTableUpdate;
 import java.lang.String;
 import java.util.Objects;
@@ -31,6 +32,7 @@ public final class JobTrigger {
      * 
      */
     private @Nullable JobTriggerPeriodic periodic;
+    private @Nullable JobTriggerSqlCondition sqlCondition;
     /**
      * @return configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
      * 
@@ -62,6 +64,9 @@ public final class JobTrigger {
     public Optional<JobTriggerPeriodic> periodic() {
         return Optional.ofNullable(this.periodic);
     }
+    public Optional<JobTriggerSqlCondition> sqlCondition() {
+        return Optional.ofNullable(this.sqlCondition);
+    }
     /**
      * @return configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
      * 
@@ -83,6 +88,7 @@ public final class JobTrigger {
         private @Nullable JobTriggerModel model;
         private @Nullable String pauseStatus;
         private @Nullable JobTriggerPeriodic periodic;
+        private @Nullable JobTriggerSqlCondition sqlCondition;
         private @Nullable JobTriggerTableUpdate tableUpdate;
         public Builder() {}
         public Builder(JobTrigger defaults) {
@@ -91,6 +97,7 @@ public final class JobTrigger {
     	      this.model = defaults.model;
     	      this.pauseStatus = defaults.pauseStatus;
     	      this.periodic = defaults.periodic;
+    	      this.sqlCondition = defaults.sqlCondition;
     	      this.tableUpdate = defaults.tableUpdate;
         }
 
@@ -119,6 +126,12 @@ public final class JobTrigger {
             return this;
         }
         @CustomType.Setter
+        public Builder sqlCondition(@Nullable JobTriggerSqlCondition sqlCondition) {
+
+            this.sqlCondition = sqlCondition;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableUpdate(@Nullable JobTriggerTableUpdate tableUpdate) {
 
             this.tableUpdate = tableUpdate;
@@ -130,6 +143,7 @@ public final class JobTrigger {
             _resultValue.model = model;
             _resultValue.pauseStatus = pauseStatus;
             _resultValue.periodic = periodic;
+            _resultValue.sqlCondition = sqlCondition;
             _resultValue.tableUpdate = tableUpdate;
             return _resultValue;
         }

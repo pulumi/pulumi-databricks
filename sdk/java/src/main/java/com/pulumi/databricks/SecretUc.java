@@ -11,13 +11,14 @@ import com.pulumi.databricks.SecretUcArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SecretUcState;
 import com.pulumi.databricks.outputs.SecretUcProviderConfig;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
  * 
  * The Secret resource allows you to manage secrets in Unity Catalog. Secrets provide a secure way to store and access sensitive information such as credentials, API keys, and tokens within Unity Catalog.
  * 
@@ -68,22 +69,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/secretUc:SecretUc")
 public class SecretUc extends com.pulumi.resources.CustomResource {
-    /**
-     * (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     * 
-     */
-    @Export(name="browseOnly", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> browseOnly;
-
-    /**
-     * @return (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     * 
-     */
-    public Output<Boolean> browseOnly() {
-        return this.browseOnly;
-    }
     /**
      * The name of the catalog where the schema and the secret reside
      * 
@@ -189,20 +174,6 @@ public class SecretUc extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> expireTime() {
         return Codegen.optional(this.expireTime);
-    }
-    /**
-     * (string)
-     * 
-     */
-    @Export(name="externalSecretId", refs={String.class}, tree="[0]")
-    private Output<String> externalSecretId;
-
-    /**
-     * @return (string)
-     * 
-     */
-    public Output<String> externalSecretId() {
-        return this.externalSecretId;
     }
     /**
      * (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**

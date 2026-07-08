@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves information about Group members, entitlements and instance profiles.
+// Retrieves information about Group members, entitlements and roles.
 //
 // > This data source can be used with an account or workspace-level provider.
 //
@@ -95,7 +95,9 @@ type LookupGroupArgs struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Set of group identifiers, that can be modified with GroupMember resource.
 	Groups []string `pulumi:"groups"`
-	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+	// (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
+	//
+	// Deprecated: Please use `roles` instead
 	InstanceProfiles []string `pulumi:"instanceProfiles"`
 	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
 	Members []string `pulumi:"members"`
@@ -103,6 +105,8 @@ type LookupGroupArgs struct {
 	ProviderConfig *GetGroupProviderConfig `pulumi:"providerConfig"`
 	// Collect information for all nested groups. *Defaults to true.*
 	Recursive *bool `pulumi:"recursive"`
+	// Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
+	Roles []string `pulumi:"roles"`
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals []string `pulumi:"servicePrincipals"`
 	// Set of User identifiers, that can be modified with GroupMember resource.
@@ -130,12 +134,16 @@ type LookupGroupResult struct {
 	Groups []string `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+	// (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
+	//
+	// Deprecated: Please use `roles` instead
 	InstanceProfiles []string `pulumi:"instanceProfiles"`
 	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
 	Members        []string               `pulumi:"members"`
 	ProviderConfig GetGroupProviderConfig `pulumi:"providerConfig"`
 	Recursive      *bool                  `pulumi:"recursive"`
+	// Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
+	Roles []string `pulumi:"roles"`
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals []string `pulumi:"servicePrincipals"`
 	// Set of User identifiers, that can be modified with GroupMember resource.
@@ -172,7 +180,9 @@ type LookupGroupOutputArgs struct {
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// Set of group identifiers, that can be modified with GroupMember resource.
 	Groups pulumi.StringArrayInput `pulumi:"groups"`
-	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+	// (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
+	//
+	// Deprecated: Please use `roles` instead
 	InstanceProfiles pulumi.StringArrayInput `pulumi:"instanceProfiles"`
 	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
 	Members pulumi.StringArrayInput `pulumi:"members"`
@@ -180,6 +190,8 @@ type LookupGroupOutputArgs struct {
 	ProviderConfig GetGroupProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Collect information for all nested groups. *Defaults to true.*
 	Recursive pulumi.BoolPtrInput `pulumi:"recursive"`
+	// Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals pulumi.StringArrayInput `pulumi:"servicePrincipals"`
 	// Set of User identifiers, that can be modified with GroupMember resource.
@@ -254,7 +266,9 @@ func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+// (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
+//
+// Deprecated: Please use `roles` instead
 func (o LookupGroupResultOutput) InstanceProfiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.InstanceProfiles }).(pulumi.StringArrayOutput)
 }
@@ -270,6 +284,11 @@ func (o LookupGroupResultOutput) ProviderConfig() GetGroupProviderConfigOutput {
 
 func (o LookupGroupResultOutput) Recursive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGroupResult) *bool { return v.Recursive }).(pulumi.BoolPtrOutput)
+}
+
+// Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
+func (o LookupGroupResultOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 // Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.

@@ -6,7 +6,6 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSecretUcProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,12 +13,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretUcResult {
-    /**
-     * @return (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     * 
-     */
-    private Boolean browseOnly;
     /**
      * @return (string) - The name of the catalog where the schema and the secret reside
      * 
@@ -59,11 +52,6 @@ public final class GetSecretUcResult {
      * 
      */
     private String expireTime;
-    /**
-     * @return (string)
-     * 
-     */
-    private String externalSecretId;
     /**
      * @return (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
      * 
@@ -117,14 +105,6 @@ public final class GetSecretUcResult {
 
     private GetSecretUcResult() {}
     /**
-     * @return (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-     * through the **BROWSE** privilege when **include_browse** is enabled in the request
-     * 
-     */
-    public Boolean browseOnly() {
-        return this.browseOnly;
-    }
-    /**
      * @return (string) - The name of the catalog where the schema and the secret reside
      * 
      */
@@ -176,13 +156,6 @@ public final class GetSecretUcResult {
      */
     public String expireTime() {
         return this.expireTime;
-    }
-    /**
-     * @return (string)
-     * 
-     */
-    public String externalSecretId() {
-        return this.externalSecretId;
     }
     /**
      * @return (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
@@ -264,7 +237,6 @@ public final class GetSecretUcResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean browseOnly;
         private String catalogName;
         private String comment;
         private String createTime;
@@ -272,7 +244,6 @@ public final class GetSecretUcResult {
         private String effectiveOwner;
         private String effectiveValue;
         private String expireTime;
-        private String externalSecretId;
         private String fullName;
         private String id;
         private String metastoreId;
@@ -286,7 +257,6 @@ public final class GetSecretUcResult {
         public Builder() {}
         public Builder(GetSecretUcResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.browseOnly = defaults.browseOnly;
     	      this.catalogName = defaults.catalogName;
     	      this.comment = defaults.comment;
     	      this.createTime = defaults.createTime;
@@ -294,7 +264,6 @@ public final class GetSecretUcResult {
     	      this.effectiveOwner = defaults.effectiveOwner;
     	      this.effectiveValue = defaults.effectiveValue;
     	      this.expireTime = defaults.expireTime;
-    	      this.externalSecretId = defaults.externalSecretId;
     	      this.fullName = defaults.fullName;
     	      this.id = defaults.id;
     	      this.metastoreId = defaults.metastoreId;
@@ -307,14 +276,6 @@ public final class GetSecretUcResult {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
-        public Builder browseOnly(Boolean browseOnly) {
-            if (browseOnly == null) {
-              throw new MissingRequiredPropertyException("GetSecretUcResult", "browseOnly");
-            }
-            this.browseOnly = browseOnly;
-            return this;
-        }
         @CustomType.Setter
         public Builder catalogName(String catalogName) {
             if (catalogName == null) {
@@ -369,14 +330,6 @@ public final class GetSecretUcResult {
               throw new MissingRequiredPropertyException("GetSecretUcResult", "expireTime");
             }
             this.expireTime = expireTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder externalSecretId(String externalSecretId) {
-            if (externalSecretId == null) {
-              throw new MissingRequiredPropertyException("GetSecretUcResult", "externalSecretId");
-            }
-            this.externalSecretId = externalSecretId;
             return this;
         }
         @CustomType.Setter
@@ -459,7 +412,6 @@ public final class GetSecretUcResult {
         }
         public GetSecretUcResult build() {
             final var _resultValue = new GetSecretUcResult();
-            _resultValue.browseOnly = browseOnly;
             _resultValue.catalogName = catalogName;
             _resultValue.comment = comment;
             _resultValue.createTime = createTime;
@@ -467,7 +419,6 @@ public final class GetSecretUcResult {
             _resultValue.effectiveOwner = effectiveOwner;
             _resultValue.effectiveValue = effectiveValue;
             _resultValue.expireTime = expireTime;
-            _resultValue.externalSecretId = externalSecretId;
             _resultValue.fullName = fullName;
             _resultValue.id = id;
             _resultValue.metastoreId = metastoreId;

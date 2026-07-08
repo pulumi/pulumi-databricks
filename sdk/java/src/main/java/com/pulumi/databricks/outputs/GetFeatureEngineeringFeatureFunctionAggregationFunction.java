@@ -9,7 +9,11 @@ import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggrega
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionAvg;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionCountFunction;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirst;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstN;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLast;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLastN;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionMax;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionMin;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionStddevPop;
@@ -50,10 +54,30 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunction {
      */
     private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionFirst first;
     /**
+     * @return (FirstDistinctFunction)
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct firstDistinct;
+    /**
+     * @return (FirstNFunction)
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstN firstN;
+    /**
      * @return (LastFunction)
      * 
      */
     private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLast last;
+    /**
+     * @return (LastDistinctFunction)
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct lastDistinct;
+    /**
+     * @return (LastNFunction)
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLastN lastN;
     /**
      * @return (MaxFunction)
      * 
@@ -132,11 +156,39 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunction {
         return Optional.ofNullable(this.first);
     }
     /**
+     * @return (FirstDistinctFunction)
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct> firstDistinct() {
+        return Optional.ofNullable(this.firstDistinct);
+    }
+    /**
+     * @return (FirstNFunction)
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstN> firstN() {
+        return Optional.ofNullable(this.firstN);
+    }
+    /**
      * @return (LastFunction)
      * 
      */
     public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionLast> last() {
         return Optional.ofNullable(this.last);
+    }
+    /**
+     * @return (LastDistinctFunction)
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct> lastDistinct() {
+        return Optional.ofNullable(this.lastDistinct);
+    }
+    /**
+     * @return (LastNFunction)
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionLastN> lastN() {
+        return Optional.ofNullable(this.lastN);
     }
     /**
      * @return (MaxFunction)
@@ -209,7 +261,11 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunction {
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionAvg avg;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionCountFunction countFunction;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionFirst first;
+        private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct firstDistinct;
+        private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstN firstN;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLast last;
+        private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct lastDistinct;
+        private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLastN lastN;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionMax max;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionMin min;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionStddevPop stddevPop;
@@ -226,7 +282,11 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunction {
     	      this.avg = defaults.avg;
     	      this.countFunction = defaults.countFunction;
     	      this.first = defaults.first;
+    	      this.firstDistinct = defaults.firstDistinct;
+    	      this.firstN = defaults.firstN;
     	      this.last = defaults.last;
+    	      this.lastDistinct = defaults.lastDistinct;
+    	      this.lastN = defaults.lastN;
     	      this.max = defaults.max;
     	      this.min = defaults.min;
     	      this.stddevPop = defaults.stddevPop;
@@ -268,9 +328,33 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunction {
             return this;
         }
         @CustomType.Setter
+        public Builder firstDistinct(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstDistinct firstDistinct) {
+
+            this.firstDistinct = firstDistinct;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder firstN(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionFirstN firstN) {
+
+            this.firstN = firstN;
+            return this;
+        }
+        @CustomType.Setter
         public Builder last(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLast last) {
 
             this.last = last;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastDistinct(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLastDistinct lastDistinct) {
+
+            this.lastDistinct = lastDistinct;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastN(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionLastN lastN) {
+
+            this.lastN = lastN;
             return this;
         }
         @CustomType.Setter
@@ -328,7 +412,11 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunction {
             _resultValue.avg = avg;
             _resultValue.countFunction = countFunction;
             _resultValue.first = first;
+            _resultValue.firstDistinct = firstDistinct;
+            _resultValue.firstN = firstN;
             _resultValue.last = last;
+            _resultValue.lastDistinct = lastDistinct;
+            _resultValue.lastN = lastN;
             _resultValue.max = max;
             _resultValue.min = min;
             _resultValue.stddevPop = stddevPop;

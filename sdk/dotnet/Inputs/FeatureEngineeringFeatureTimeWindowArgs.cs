@@ -15,6 +15,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("continuous")]
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowContinuousArgs>? Continuous { get; set; }
 
+        /// <summary>
+        /// A long (multi-day) rolling window served via the hybrid batch + streaming path
+        /// </summary>
+        [Input("longRolling")]
+        public Input<Inputs.FeatureEngineeringFeatureTimeWindowLongRollingArgs>? LongRolling { get; set; }
+
         [Input("rolling")]
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowRollingArgs>? Rolling { get; set; }
 

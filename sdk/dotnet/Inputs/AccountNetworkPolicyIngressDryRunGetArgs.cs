@@ -16,8 +16,8 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessGetArgs>? CrossWorkspaceAccess { get; set; }
 
         /// <summary>
-        /// The network policy restrictions for private access to the workspace.
-        /// Configures how registered private endpoints are allowed or denied access
+        /// The network policy restrictions for private access.
+        /// Configures how requests arriving over private connectivity are governed
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPrivateAccessGetArgs>? PrivateAccess { get; set; }

@@ -54,9 +54,13 @@ public final class GetGroupResult {
      */
     private String id;
     /**
-     * @return Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * @return (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
+     * 
+     * @deprecated
+     * Please use `roles` instead
      * 
      */
+    @Deprecated /* Please use `roles` instead */
     private List<String> instanceProfiles;
     /**
      * @deprecated
@@ -67,6 +71,11 @@ public final class GetGroupResult {
     private List<String> members;
     private GetGroupProviderConfig providerConfig;
     private @Nullable Boolean recursive;
+    /**
+     * @return Set of role ARNs (e.g., instance profile ARNs), that can be modified by databricks.GroupInstanceProfile or databricks.GroupRole resources.
+     * 
+     */
+    private List<String> roles;
     /**
      * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      * 
@@ -140,9 +149,13 @@ public final class GetGroupResult {
         return this.id;
     }
     /**
-     * @return Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * @return (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `roles` instead.
+     * 
+     * @deprecated
+     * Please use `roles` instead
      * 
      */
+    @Deprecated /* Please use `roles` instead */
     public List<String> instanceProfiles() {
         return this.instanceProfiles;
     }
@@ -160,6 +173,13 @@ public final class GetGroupResult {
     }
     public Optional<Boolean> recursive() {
         return Optional.ofNullable(this.recursive);
+    }
+    /**
+     * @return Set of role ARNs (e.g., instance profile ARNs), that can be modified by databricks.GroupInstanceProfile or databricks.GroupRole resources.
+     * 
+     */
+    public List<String> roles() {
+        return this.roles;
     }
     /**
      * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
@@ -205,6 +225,7 @@ public final class GetGroupResult {
         private List<String> members;
         private GetGroupProviderConfig providerConfig;
         private @Nullable Boolean recursive;
+        private List<String> roles;
         private List<String> servicePrincipals;
         private List<String> users;
         private @Nullable Boolean workspaceAccess;
@@ -226,6 +247,7 @@ public final class GetGroupResult {
     	      this.members = defaults.members;
     	      this.providerConfig = defaults.providerConfig;
     	      this.recursive = defaults.recursive;
+    	      this.roles = defaults.roles;
     	      this.servicePrincipals = defaults.servicePrincipals;
     	      this.users = defaults.users;
     	      this.workspaceAccess = defaults.workspaceAccess;
@@ -347,6 +369,17 @@ public final class GetGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder roles(List<String> roles) {
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "roles");
+            }
+            this.roles = roles;
+            return this;
+        }
+        public Builder roles(String... roles) {
+            return roles(List.of(roles));
+        }
+        @CustomType.Setter
         public Builder servicePrincipals(List<String> servicePrincipals) {
             if (servicePrincipals == null) {
               throw new MissingRequiredPropertyException("GetGroupResult", "servicePrincipals");
@@ -396,6 +429,7 @@ public final class GetGroupResult {
             _resultValue.members = members;
             _resultValue.providerConfig = providerConfig;
             _resultValue.recursive = recursive;
+            _resultValue.roles = roles;
             _resultValue.servicePrincipals = servicePrincipals;
             _resultValue.users = users;
             _resultValue.workspaceAccess = workspaceAccess;

@@ -21,6 +21,7 @@ namespace Pulumi.Databricks.Outputs
         /// A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
         /// </summary>
         public readonly string QuartzCronExpression;
+        public readonly Outputs.JobScheduleSqlCondition? SqlCondition;
         /// <summary>
         /// A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
         /// </summary>
@@ -32,10 +33,13 @@ namespace Pulumi.Databricks.Outputs
 
             string quartzCronExpression,
 
+            Outputs.JobScheduleSqlCondition? sqlCondition,
+
             string timezoneId)
         {
             PauseStatus = pauseStatus;
             QuartzCronExpression = quartzCronExpression;
+            SqlCondition = sqlCondition;
             TimezoneId = timezoneId;
         }
     }

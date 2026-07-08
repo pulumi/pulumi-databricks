@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpointsResult
     {
         /// <summary>
-        /// (list of string)
+        /// (list of string) - The IDs of the registered endpoints. Must contain at least one endpoint ID
         /// </summary>
         public readonly ImmutableArray<string> EndpointIds;
 

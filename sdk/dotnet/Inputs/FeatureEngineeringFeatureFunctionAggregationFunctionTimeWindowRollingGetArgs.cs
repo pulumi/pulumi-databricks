@@ -12,10 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The delay applied to the end of the rolling window (must be non-negative).
-        /// For example, delay=1d shifts the window end 1 day before the evaluation time
-        /// </summary>
         [Input("delay")]
         public Input<string>? Delay { get; set; }
 

@@ -28,10 +28,13 @@ class GetDataClassificationCatalogConfigResult:
     """
     A collection of values returned by getDataClassificationCatalogConfig.
     """
-    def __init__(__self__, auto_tag_configs=None, id=None, included_schemas=None, name=None, provider_config=None):
+    def __init__(__self__, auto_tag_configs=None, excluded_schemas=None, id=None, included_schemas=None, name=None, provider_config=None):
         if auto_tag_configs and not isinstance(auto_tag_configs, list):
             raise TypeError("Expected argument 'auto_tag_configs' to be a list")
         pulumi.set(__self__, "auto_tag_configs", auto_tag_configs)
+        if excluded_schemas and not isinstance(excluded_schemas, dict):
+            raise TypeError("Expected argument 'excluded_schemas' to be a dict")
+        pulumi.set(__self__, "excluded_schemas", excluded_schemas)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -53,6 +56,17 @@ class GetDataClassificationCatalogConfigResult:
         Empty list means no auto-tagging is enabled
         """
         return pulumi.get(self, "auto_tag_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="excludedSchemas")
+    def excluded_schemas(self) -> 'outputs.GetDataClassificationCatalogConfigExcludedSchemasResult':
+        """
+        (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
+        If specified, all schemas except the specified ones will be scanned.
+        Mutually exclusive with `included_schemas`: only one may be set per request.
+        If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
+        """
+        return pulumi.get(self, "excluded_schemas")
 
     @_builtins.property
     @pulumi.getter
@@ -94,6 +108,7 @@ class AwaitableGetDataClassificationCatalogConfigResult(GetDataClassificationCat
             yield self
         return GetDataClassificationCatalogConfigResult(
             auto_tag_configs=self.auto_tag_configs,
+            excluded_schemas=self.excluded_schemas,
             id=self.id,
             included_schemas=self.included_schemas,
             name=self.name,
@@ -139,6 +154,7 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
 
     return AwaitableGetDataClassificationCatalogConfigResult(
         auto_tag_configs=pulumi.get(__ret__, 'auto_tag_configs'),
+        excluded_schemas=pulumi.get(__ret__, 'excluded_schemas'),
         id=pulumi.get(__ret__, 'id'),
         included_schemas=pulumi.get(__ret__, 'included_schemas'),
         name=pulumi.get(__ret__, 'name'),
@@ -181,6 +197,7 @@ def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_b
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig', __args__, opts=opts, typ=GetDataClassificationCatalogConfigResult)
     return __ret__.apply(lambda __response__: GetDataClassificationCatalogConfigResult(
         auto_tag_configs=pulumi.get(__response__, 'auto_tag_configs'),
+        excluded_schemas=pulumi.get(__response__, 'excluded_schemas'),
         id=pulumi.get(__response__, 'id'),
         included_schemas=pulumi.get(__response__, 'included_schemas'),
         name=pulumi.get(__response__, 'name'),

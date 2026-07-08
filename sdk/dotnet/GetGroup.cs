@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetGroup
     {
         /// <summary>
-        /// Retrieves information about databricks.Group members, entitlements and instance profiles.
+        /// Retrieves information about databricks.Group members, entitlements and roles.
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("databricks:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves information about databricks.Group members, entitlements and instance profiles.
+        /// Retrieves information about databricks.Group members, entitlements and roles.
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
@@ -112,7 +112,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("databricks:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves information about databricks.Group members, entitlements and instance profiles.
+        /// Retrieves information about databricks.Group members, entitlements and roles.
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
@@ -232,8 +232,9 @@ namespace Pulumi.Databricks
         private List<string>? _instanceProfiles;
 
         /// <summary>
-        /// Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+        /// (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `Roles` instead.
         /// </summary>
+        [Obsolete(@"Please use `Roles` instead")]
         public List<string> InstanceProfiles
         {
             get => _instanceProfiles ?? (_instanceProfiles = new List<string>());
@@ -260,6 +261,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("recursive")]
         public bool? Recursive { get; set; }
+
+        [Input("roles")]
+        private List<string>? _roles;
+
+        /// <summary>
+        /// Set of role ARNs (e.g., instance profile ARNs), that can be modified by databricks.GroupInstanceProfile or databricks.GroupRole resources.
+        /// </summary>
+        public List<string> Roles
+        {
+            get => _roles ?? (_roles = new List<string>());
+            set => _roles = value;
+        }
 
         [Input("servicePrincipals")]
         private List<string>? _servicePrincipals;
@@ -366,8 +379,9 @@ namespace Pulumi.Databricks
         private InputList<string>? _instanceProfiles;
 
         /// <summary>
-        /// Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+        /// (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `Roles` instead.
         /// </summary>
+        [Obsolete(@"Please use `Roles` instead")]
         public InputList<string> InstanceProfiles
         {
             get => _instanceProfiles ?? (_instanceProfiles = new InputList<string>());
@@ -394,6 +408,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("recursive")]
         public Input<bool>? Recursive { get; set; }
+
+        [Input("roles")]
+        private InputList<string>? _roles;
+
+        /// <summary>
+        /// Set of role ARNs (e.g., instance profile ARNs), that can be modified by databricks.GroupInstanceProfile or databricks.GroupRole resources.
+        /// </summary>
+        public InputList<string> Roles
+        {
+            get => _roles ?? (_roles = new InputList<string>());
+            set => _roles = value;
+        }
 
         [Input("servicePrincipals")]
         private InputList<string>? _servicePrincipals;
@@ -467,12 +493,16 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+        /// (Deprecated) Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource. Use `Roles` instead.
         /// </summary>
         public readonly ImmutableArray<string> InstanceProfiles;
         public readonly ImmutableArray<string> Members;
         public readonly Outputs.GetGroupProviderConfigResult ProviderConfig;
         public readonly bool? Recursive;
+        /// <summary>
+        /// Set of role ARNs (e.g., instance profile ARNs), that can be modified by databricks.GroupInstanceProfile or databricks.GroupRole resources.
+        /// </summary>
+        public readonly ImmutableArray<string> Roles;
         /// <summary>
         /// Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
         /// </summary>
@@ -514,6 +544,8 @@ namespace Pulumi.Databricks
 
             bool? recursive,
 
+            ImmutableArray<string> roles,
+
             ImmutableArray<string> servicePrincipals,
 
             ImmutableArray<string> users,
@@ -536,6 +568,7 @@ namespace Pulumi.Databricks
             Members = members;
             ProviderConfig = providerConfig;
             Recursive = recursive;
+            Roles = roles;
             ServicePrincipals = servicePrincipals;
             Users = users;
             WorkspaceAccess = workspaceAccess;

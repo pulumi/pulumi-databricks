@@ -12,15 +12,33 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Matches requests arriving over any private connectivity, including registered
+        /// endpoints and the workspace's Azure Private Link (ui-api) endpoints.
+        /// Can only be used in deny rules of workspace-level network policies.
+        /// Must be set to true when specified
+        /// </summary>
         [Input("allPrivateAccess")]
         public Input<bool>? AllPrivateAccess { get; set; }
 
+        /// <summary>
+        /// Matches requests arriving through any endpoint registered to the account.
+        /// Must be set to true when specified
+        /// </summary>
         [Input("allRegisteredEndpoints")]
         public Input<bool>? AllRegisteredEndpoints { get; set; }
 
+        /// <summary>
+        /// Matches requests arriving through the workspace's Azure Private Link (ui-api)
+        /// endpoints. Can only be used in deny rules of workspace-level network policies.
+        /// Must be set to true when specified
+        /// </summary>
         [Input("azureWorkspacePrivateLink")]
         public Input<bool>? AzureWorkspacePrivateLink { get; set; }
 
+        /// <summary>
+        /// Matches requests arriving through any of the specified registered endpoints
+        /// </summary>
         [Input("endpoints")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpointsGetArgs>? Endpoints { get; set; }
 

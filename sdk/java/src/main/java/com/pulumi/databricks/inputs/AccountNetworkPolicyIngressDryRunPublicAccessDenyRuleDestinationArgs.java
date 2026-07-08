@@ -22,33 +22,51 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
 
     public static final AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs Empty = new AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs();
 
+    /**
+     * Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     * 
+     */
     @Import(name="accountApi")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs> accountApi;
 
+    /**
+     * @return Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs>> accountApi() {
         return Optional.ofNullable(this.accountApi);
     }
 
     /**
-     * Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * Account DatabricksOne destination is not supported
      * 
      */
     @Import(name="accountDatabricksOne")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne;
 
     /**
-     * @return Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * @return Account DatabricksOne destination is not supported
      * 
      */
     public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs>> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }
 
+    /**
+     * Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     * 
+     */
     @Import(name="accountUi")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs> accountUi;
 
+    /**
+     * @return Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs>> accountUi() {
         return Optional.ofNullable(this.accountUi);
     }
@@ -119,18 +137,31 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
             $ = new AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountApi Matches requests to account-level APIs.
+         * Can only be used in the account-level network policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountApi(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs> accountApi) {
             $.accountApi = accountApi;
             return this;
         }
 
+        /**
+         * @param accountApi Matches requests to account-level APIs.
+         * Can only be used in the account-level network policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountApi(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs accountApi) {
             return accountApi(Output.of(accountApi));
         }
 
         /**
-         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
-         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported
          * 
          * @return builder
          * 
@@ -141,8 +172,7 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
         }
 
         /**
-         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
-         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported
          * 
          * @return builder
          * 
@@ -151,11 +181,25 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
             return accountDatabricksOne(Output.of(accountDatabricksOne));
         }
 
+        /**
+         * @param accountUi Matches requests to the account console UI.
+         * Can only be used in the account-level network policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountUi(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs> accountUi) {
             $.accountUi = accountUi;
             return this;
         }
 
+        /**
+         * @param accountUi Matches requests to the account console UI.
+         * Can only be used in the account-level network policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountUi(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs accountUi) {
             return accountUi(Output.of(accountUi));
         }

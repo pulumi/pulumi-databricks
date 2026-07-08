@@ -16,6 +16,23 @@ public final class FeatureEngineeringMaterializedFeatureStreamingModeArgs extend
     public static final FeatureEngineeringMaterializedFeatureStreamingModeArgs Empty = new FeatureEngineeringMaterializedFeatureStreamingModeArgs();
 
     /**
+     * The desired data freshness for feature materialization, expressed as a
+     * duration string (e.g. &#34;1 minute&#34;)
+     * 
+     */
+    @Import(name="freshnessTarget")
+    private @Nullable Output<String> freshnessTarget;
+
+    /**
+     * @return The desired data freshness for feature materialization, expressed as a
+     * duration string (e.g. &#34;1 minute&#34;)
+     * 
+     */
+    public Optional<Output<String>> freshnessTarget() {
+        return Optional.ofNullable(this.freshnessTarget);
+    }
+
+    /**
      * The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
      * 
      */
@@ -33,6 +50,7 @@ public final class FeatureEngineeringMaterializedFeatureStreamingModeArgs extend
     private FeatureEngineeringMaterializedFeatureStreamingModeArgs() {}
 
     private FeatureEngineeringMaterializedFeatureStreamingModeArgs(FeatureEngineeringMaterializedFeatureStreamingModeArgs $) {
+        this.freshnessTarget = $.freshnessTarget;
         this.mode = $.mode;
     }
 
@@ -52,6 +70,29 @@ public final class FeatureEngineeringMaterializedFeatureStreamingModeArgs extend
 
         public Builder(FeatureEngineeringMaterializedFeatureStreamingModeArgs defaults) {
             $ = new FeatureEngineeringMaterializedFeatureStreamingModeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param freshnessTarget The desired data freshness for feature materialization, expressed as a
+         * duration string (e.g. &#34;1 minute&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder freshnessTarget(@Nullable Output<String> freshnessTarget) {
+            $.freshnessTarget = freshnessTarget;
+            return this;
+        }
+
+        /**
+         * @param freshnessTarget The desired data freshness for feature materialization, expressed as a
+         * duration string (e.g. &#34;1 minute&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder freshnessTarget(String freshnessTarget) {
+            return freshnessTarget(Output.of(freshnessTarget));
         }
 
         /**

@@ -26,6 +26,7 @@ namespace Pulumi.Databricks.Outputs
         /// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
         /// </summary>
         public readonly Outputs.JobTriggerPeriodic? Periodic;
+        public readonly Outputs.JobTriggerSqlCondition? SqlCondition;
         /// <summary>
         /// configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
         /// </summary>
@@ -41,12 +42,15 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTriggerPeriodic? periodic,
 
+            Outputs.JobTriggerSqlCondition? sqlCondition,
+
             Outputs.JobTriggerTableUpdate? tableUpdate)
         {
             FileArrival = fileArrival;
             Model = model;
             PauseStatus = pauseStatus;
             Periodic = periodic;
+            SqlCondition = sqlCondition;
             TableUpdate = tableUpdate;
         }
     }

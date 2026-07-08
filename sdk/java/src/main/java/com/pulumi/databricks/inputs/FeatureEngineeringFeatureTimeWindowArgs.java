@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowContinuousArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowLongRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowSlidingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowTumblingArgs;
@@ -23,6 +24,21 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
     public Optional<Output<FeatureEngineeringFeatureTimeWindowContinuousArgs>> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+
+    /**
+     * A long (multi-day) rolling window served via the hybrid batch + streaming path
+     * 
+     */
+    @Import(name="longRolling")
+    private @Nullable Output<FeatureEngineeringFeatureTimeWindowLongRollingArgs> longRolling;
+
+    /**
+     * @return A long (multi-day) rolling window served via the hybrid batch + streaming path
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureTimeWindowLongRollingArgs>> longRolling() {
+        return Optional.ofNullable(this.longRolling);
     }
 
     @Import(name="rolling")
@@ -50,6 +66,7 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
     private FeatureEngineeringFeatureTimeWindowArgs(FeatureEngineeringFeatureTimeWindowArgs $) {
         this.continuous = $.continuous;
+        this.longRolling = $.longRolling;
         this.rolling = $.rolling;
         this.sliding = $.sliding;
         this.tumbling = $.tumbling;
@@ -80,6 +97,27 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
         public Builder continuous(FeatureEngineeringFeatureTimeWindowContinuousArgs continuous) {
             return continuous(Output.of(continuous));
+        }
+
+        /**
+         * @param longRolling A long (multi-day) rolling window served via the hybrid batch + streaming path
+         * 
+         * @return builder
+         * 
+         */
+        public Builder longRolling(@Nullable Output<FeatureEngineeringFeatureTimeWindowLongRollingArgs> longRolling) {
+            $.longRolling = longRolling;
+            return this;
+        }
+
+        /**
+         * @param longRolling A long (multi-day) rolling window served via the hybrid batch + streaming path
+         * 
+         * @return builder
+         * 
+         */
+        public Builder longRolling(FeatureEngineeringFeatureTimeWindowLongRollingArgs longRolling) {
+            return longRolling(Output.of(longRolling));
         }
 
         public Builder rolling(@Nullable Output<FeatureEngineeringFeatureTimeWindowRollingArgs> rolling) {

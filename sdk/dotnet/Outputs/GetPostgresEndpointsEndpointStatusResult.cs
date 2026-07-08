@@ -50,6 +50,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointStatusHostsResult Hosts;
         /// <summary>
+        /// (string) - A timestamp indicating when the compute endpoint was last active
+        /// </summary>
+        public readonly string LastActiveTime;
+        /// <summary>
         /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         public readonly string PendingState;
@@ -80,6 +84,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetPostgresEndpointsEndpointStatusHostsResult hosts,
 
+            string lastActiveTime,
+
             string pendingState,
 
             Outputs.GetPostgresEndpointsEndpointStatusSettingsResult settings,
@@ -94,6 +100,7 @@ namespace Pulumi.Databricks.Outputs
             EndpointType = endpointType;
             Group = group;
             Hosts = hosts;
+            LastActiveTime = lastActiveTime;
             PendingState = pendingState;
             Settings = settings;
             SuspendTimeoutDuration = suspendTimeoutDuration;

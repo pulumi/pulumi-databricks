@@ -28,10 +28,7 @@ class GetSecretUcResult:
     """
     A collection of values returned by getSecretUc.
     """
-    def __init__(__self__, browse_only=None, catalog_name=None, comment=None, create_time=None, created_by=None, effective_owner=None, effective_value=None, expire_time=None, external_secret_id=None, full_name=None, id=None, metastore_id=None, name=None, owner=None, provider_config=None, schema_name=None, update_time=None, updated_by=None, value=None):
-        if browse_only and not isinstance(browse_only, bool):
-            raise TypeError("Expected argument 'browse_only' to be a bool")
-        pulumi.set(__self__, "browse_only", browse_only)
+    def __init__(__self__, catalog_name=None, comment=None, create_time=None, created_by=None, effective_owner=None, effective_value=None, expire_time=None, full_name=None, id=None, metastore_id=None, name=None, owner=None, provider_config=None, schema_name=None, update_time=None, updated_by=None, value=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -53,9 +50,6 @@ class GetSecretUcResult:
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
-        if external_secret_id and not isinstance(external_secret_id, str):
-            raise TypeError("Expected argument 'external_secret_id' to be a str")
-        pulumi.set(__self__, "external_secret_id", external_secret_id)
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
@@ -86,15 +80,6 @@ class GetSecretUcResult:
         if value and not isinstance(value, str):
             raise TypeError("Expected argument 'value' to be a str")
         pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> _builtins.bool:
-        """
-        (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
-        through the **BROWSE** privilege when **include_browse** is enabled in the request
-        """
-        return pulumi.get(self, "browse_only")
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
@@ -155,14 +140,6 @@ class GetSecretUcResult:
         does not trigger any automatic actions or affect the secret's lifecycle
         """
         return pulumi.get(self, "expire_time")
-
-    @_builtins.property
-    @pulumi.getter(name="externalSecretId")
-    def external_secret_id(self) -> _builtins.str:
-        """
-        (string)
-        """
-        return pulumi.get(self, "external_secret_id")
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -252,7 +229,6 @@ class AwaitableGetSecretUcResult(GetSecretUcResult):
         if False:
             yield self
         return GetSecretUcResult(
-            browse_only=self.browse_only,
             catalog_name=self.catalog_name,
             comment=self.comment,
             create_time=self.create_time,
@@ -260,7 +236,6 @@ class AwaitableGetSecretUcResult(GetSecretUcResult):
             effective_owner=self.effective_owner,
             effective_value=self.effective_value,
             expire_time=self.expire_time,
-            external_secret_id=self.external_secret_id,
             full_name=self.full_name,
             id=self.id,
             metastore_id=self.metastore_id,
@@ -277,7 +252,25 @@ def get_secret_uc(full_name: Optional[_builtins.str] = None,
                   provider_config: Optional[Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretUcResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+
+    The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+
+    This returns the secret's metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+
+    ## Example Usage
+
+    ### Basic Example
+    This example reads a secret in Unity Catalog by its fully qualified name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example = databricks.get_secret_uc(full_name="my_catalog.my_schema.my_secret")
+    ```
 
 
     :param _builtins.str full_name: The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
@@ -290,7 +283,6 @@ def get_secret_uc(full_name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getSecretUc:getSecretUc', __args__, opts=opts, typ=GetSecretUcResult).value
 
     return AwaitableGetSecretUcResult(
-        browse_only=pulumi.get(__ret__, 'browse_only'),
         catalog_name=pulumi.get(__ret__, 'catalog_name'),
         comment=pulumi.get(__ret__, 'comment'),
         create_time=pulumi.get(__ret__, 'create_time'),
@@ -298,7 +290,6 @@ def get_secret_uc(full_name: Optional[_builtins.str] = None,
         effective_owner=pulumi.get(__ret__, 'effective_owner'),
         effective_value=pulumi.get(__ret__, 'effective_value'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
-        external_secret_id=pulumi.get(__ret__, 'external_secret_id'),
         full_name=pulumi.get(__ret__, 'full_name'),
         id=pulumi.get(__ret__, 'id'),
         metastore_id=pulumi.get(__ret__, 'metastore_id'),
@@ -313,7 +304,25 @@ def get_secret_uc_output(full_name: pulumi.Input[Optional[_builtins.str]] = None
                          provider_config: pulumi.Input[Optional[Optional[Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretUcResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
+
+    The Secret data source allows you to read a single secret in Unity Catalog by its three-level fully qualified name (`catalog_name.schema_name.secret_name`).
+
+    This returns the secret's metadata. The secret value is only returned to principals with the `READ_SECRET` privilege.
+
+    ## Example Usage
+
+    ### Basic Example
+    This example reads a secret in Unity Catalog by its fully qualified name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example = databricks.get_secret_uc(full_name="my_catalog.my_schema.my_secret")
+    ```
 
 
     :param _builtins.str full_name: The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
@@ -325,7 +334,6 @@ def get_secret_uc_output(full_name: pulumi.Input[Optional[_builtins.str]] = None
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getSecretUc:getSecretUc', __args__, opts=opts, typ=GetSecretUcResult)
     return __ret__.apply(lambda __response__: GetSecretUcResult(
-        browse_only=pulumi.get(__response__, 'browse_only'),
         catalog_name=pulumi.get(__response__, 'catalog_name'),
         comment=pulumi.get(__response__, 'comment'),
         create_time=pulumi.get(__response__, 'create_time'),
@@ -333,7 +341,6 @@ def get_secret_uc_output(full_name: pulumi.Input[Optional[_builtins.str]] = None
         effective_owner=pulumi.get(__response__, 'effective_owner'),
         effective_value=pulumi.get(__response__, 'effective_value'),
         expire_time=pulumi.get(__response__, 'expire_time'),
-        external_secret_id=pulumi.get(__response__, 'external_secret_id'),
         full_name=pulumi.get(__response__, 'full_name'),
         id=pulumi.get(__response__, 'id'),
         metastore_id=pulumi.get(__response__, 'metastore_id'),

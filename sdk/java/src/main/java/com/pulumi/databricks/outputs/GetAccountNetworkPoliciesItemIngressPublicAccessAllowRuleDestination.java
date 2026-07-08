@@ -19,18 +19,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestination {
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountApi accountApi;
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountDatabricksOne accountDatabricksOne;
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountUi accountUi;
@@ -62,22 +63,23 @@ public final class GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDest
 
     private GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestination() {}
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountApiDestination) - Matches requests to account-level APIs.
+     * Can only be used in the account-level network policy
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountApi> accountApi() {
         return Optional.ofNullable(this.accountApi);
     }
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
-     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountDatabricksOne> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountUiDestination) - Matches requests to the account console UI.
+     * Can only be used in the account-level network policy
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountUi> accountUi() {

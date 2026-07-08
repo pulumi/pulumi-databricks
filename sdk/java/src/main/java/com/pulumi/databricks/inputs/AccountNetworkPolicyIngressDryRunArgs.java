@@ -25,16 +25,16 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
     }
 
     /**
-     * The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunPrivateAccessArgs> privateAccess;
 
     /**
-     * @return The network policy restrictions for private access to the workspace.
-     * Configures how registered private endpoints are allowed or denied access
+     * @return The network policy restrictions for private access.
+     * Configures how requests arriving over private connectivity are governed
      * 
      */
     public Optional<Output<AccountNetworkPolicyIngressDryRunPrivateAccessArgs>> privateAccess() {
@@ -94,8 +94,8 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
         }
 
         /**
-         * @param privateAccess The network policy restrictions for private access to the workspace.
-         * Configures how registered private endpoints are allowed or denied access
+         * @param privateAccess The network policy restrictions for private access.
+         * Configures how requests arriving over private connectivity are governed
          * 
          * @return builder
          * 
@@ -106,8 +106,8 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
         }
 
         /**
-         * @param privateAccess The network policy restrictions for private access to the workspace.
-         * Configures how registered private endpoints are allowed or denied access
+         * @param privateAccess The network policy restrictions for private access.
+         * Configures how requests arriving over private connectivity are governed
          * 
          * @return builder
          * 

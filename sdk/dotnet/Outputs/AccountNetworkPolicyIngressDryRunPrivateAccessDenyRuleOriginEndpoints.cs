@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints
     {
+        /// <summary>
+        /// The IDs of the registered endpoints. Must contain at least one endpoint ID
+        /// </summary>
         public readonly ImmutableArray<string> EndpointIds;
 
         [OutputConstructor]

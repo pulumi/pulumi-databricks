@@ -12,21 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOrigin {
+    /**
+     * @return Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace&#39;s Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     * 
+     */
     private @Nullable Boolean allPrivateAccess;
+    /**
+     * @return Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     * 
+     */
     private @Nullable Boolean allRegisteredEndpoints;
+    /**
+     * @return Matches requests arriving through the workspace&#39;s Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     * 
+     */
     private @Nullable Boolean azureWorkspacePrivateLink;
+    /**
+     * @return Matches requests arriving through any of the specified registered endpoints
+     * 
+     */
     private @Nullable AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints endpoints;
 
     private AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOrigin() {}
+    /**
+     * @return Matches requests arriving over any private connectivity, including registered
+     * endpoints and the workspace&#39;s Azure Private Link (ui-api) endpoints.
+     * Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     * 
+     */
     public Optional<Boolean> allPrivateAccess() {
         return Optional.ofNullable(this.allPrivateAccess);
     }
+    /**
+     * @return Matches requests arriving through any endpoint registered to the account.
+     * Must be set to true when specified
+     * 
+     */
     public Optional<Boolean> allRegisteredEndpoints() {
         return Optional.ofNullable(this.allRegisteredEndpoints);
     }
+    /**
+     * @return Matches requests arriving through the workspace&#39;s Azure Private Link (ui-api)
+     * endpoints. Can only be used in deny rules of workspace-level network policies.
+     * Must be set to true when specified
+     * 
+     */
     public Optional<Boolean> azureWorkspacePrivateLink() {
         return Optional.ofNullable(this.azureWorkspacePrivateLink);
     }
+    /**
+     * @return Matches requests arriving through any of the specified registered endpoints
+     * 
+     */
     public Optional<AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints> endpoints() {
         return Optional.ofNullable(this.endpoints);
     }
