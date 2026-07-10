@@ -611,10 +611,10 @@ class Grant(pulumi.CustomResource):
 
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
-        things_grant: list[Any] = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
-            things_grant.append(databricks.Grant(f"things-{range['key']}",
-                table=range["value"],
+        things_grant: list[databricks.Grant] = []
+        for things_grant_range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
+            things_grant.append(databricks.Grant(f"things-{things_grant_range['key']}",
+                table=things_grant_range["value"],
                 principal="sensitive",
                 privileges=[
                     "SELECT",
@@ -645,10 +645,10 @@ class Grant(pulumi.CustomResource):
 
         customers = databricks.get_views(catalog_name="main",
             schema_name="customers")
-        customers_grant: list[Any] = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
-            customers_grant.append(databricks.Grant(f"customers-{range['key']}",
-                table=range["value"],
+        customers_grant: list[databricks.Grant] = []
+        for customers_grant_range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
+            customers_grant.append(databricks.Grant(f"customers-{customers_grant_range['key']}",
+                table=customers_grant_range["value"],
                 principal="sensitive",
                 privileges=[
                     "SELECT",
@@ -1007,10 +1007,10 @@ class Grant(pulumi.CustomResource):
 
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
-        things_grant: list[Any] = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
-            things_grant.append(databricks.Grant(f"things-{range['key']}",
-                table=range["value"],
+        things_grant: list[databricks.Grant] = []
+        for things_grant_range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
+            things_grant.append(databricks.Grant(f"things-{things_grant_range['key']}",
+                table=things_grant_range["value"],
                 principal="sensitive",
                 privileges=[
                     "SELECT",
@@ -1041,10 +1041,10 @@ class Grant(pulumi.CustomResource):
 
         customers = databricks.get_views(catalog_name="main",
             schema_name="customers")
-        customers_grant: list[Any] = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
-            customers_grant.append(databricks.Grant(f"customers-{range['key']}",
-                table=range["value"],
+        customers_grant: list[databricks.Grant] = []
+        for customers_grant_range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
+            customers_grant.append(databricks.Grant(f"customers-{customers_grant_range['key']}",
+                table=customers_grant_range["value"],
                 principal="sensitive",
                 privileges=[
                     "SELECT",

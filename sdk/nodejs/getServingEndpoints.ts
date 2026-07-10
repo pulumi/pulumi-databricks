@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  *
  * const all = databricks.getServingEndpoints({});
  * const mlServingUsage: databricks.Permissions[] = [];
- * for (const range = {value: 0}; range.value < allDatabricksServingEndpoints.endpoints; range.value++) {
- *     mlServingUsage.push(new databricks.Permissions(`ml_serving_usage-${range.value}`, {
+ * for (let range = 0; range < allDatabricksServingEndpoints.endpoints; range++) {
+ *     mlServingUsage.push(new databricks.Permissions(`ml_serving_usage-${range}`, {
  *         servingEndpointId: range.value.id,
  *         accessControls: [
  *             {
@@ -93,8 +93,8 @@ export interface GetServingEndpointsResult {
  *
  * const all = databricks.getServingEndpoints({});
  * const mlServingUsage: databricks.Permissions[] = [];
- * for (const range = {value: 0}; range.value < allDatabricksServingEndpoints.endpoints; range.value++) {
- *     mlServingUsage.push(new databricks.Permissions(`ml_serving_usage-${range.value}`, {
+ * for (let range = 0; range < allDatabricksServingEndpoints.endpoints; range++) {
+ *     mlServingUsage.push(new databricks.Permissions(`ml_serving_usage-${range}`, {
  *         servingEndpointId: range.value.id,
  *         accessControls: [
  *             {

@@ -126,11 +126,11 @@ def get_service_principals(api: Optional[_builtins.str] = None,
     admins = databricks.get_group(display_name="admins")
     spns = databricks.get_service_principals(display_name_contains="my-spn")
     spn = {str(__key): databricks.get_service_principal(application_id=__value) for __key, __value in enumerate(std.toset(input=spns.application_ids).result)}
-    my_member_spn: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
-        my_member_spn.append(databricks.GroupMember(f"my_member_spn-{range['key']}",
+    my_member_spn: list[databricks.GroupMember] = []
+    for my_member_spn_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
+        my_member_spn.append(databricks.GroupMember(f"my_member_spn-{my_member_spn_range['key']}",
             group_id=admins.id,
-            member_id=spn[range["value"]].sp_id))
+            member_id=spn[my_member_spn_range["value"]].sp_id))
     ```
 
     ## Related Resources
@@ -192,11 +192,11 @@ def get_service_principals_output(api: pulumi.Input[Optional[Optional[_builtins.
     admins = databricks.get_group(display_name="admins")
     spns = databricks.get_service_principals(display_name_contains="my-spn")
     spn = {str(__key): databricks.get_service_principal(application_id=__value) for __key, __value in enumerate(std.toset(input=spns.application_ids).result)}
-    my_member_spn: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
-        my_member_spn.append(databricks.GroupMember(f"my_member_spn-{range['key']}",
+    my_member_spn: list[databricks.GroupMember] = []
+    for my_member_spn_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
+        my_member_spn.append(databricks.GroupMember(f"my_member_spn-{my_member_spn_range['key']}",
             group_id=admins.id,
-            member_id=spn[range["value"]].sp_id))
+            member_id=spn[my_member_spn_range["value"]].sp_id))
     ```
 
     ## Related Resources

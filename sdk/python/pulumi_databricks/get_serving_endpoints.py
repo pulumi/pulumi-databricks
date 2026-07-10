@@ -88,10 +88,10 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
     import pulumi_databricks as databricks
 
     all = databricks.get_serving_endpoints()
-    ml_serving_usage: list[Any] = []
-    for range in [{"value": i} for i in range(0, all_databricks_serving_endpoints.endpoints)]:
-        ml_serving_usage.append(databricks.Permissions(f"ml_serving_usage-{range['value']}",
-            serving_endpoint_id=range["value"]["id"],
+    ml_serving_usage: list[databricks.Permissions] = []
+    for ml_serving_usage_range in [{"value": i} for i in range(0, all_databricks_serving_endpoints.endpoints)]:
+        ml_serving_usage.append(databricks.Permissions(f"ml_serving_usage-{ml_serving_usage_range['value']}",
+            serving_endpoint_id=ml_serving_usage_range["value"]["id"],
             access_controls=[
                 {
                     "group_name": "users",
@@ -143,10 +143,10 @@ def get_serving_endpoints_output(endpoints: pulumi.Input[Optional[Optional[Seque
     import pulumi_databricks as databricks
 
     all = databricks.get_serving_endpoints()
-    ml_serving_usage: list[Any] = []
-    for range in [{"value": i} for i in range(0, all_databricks_serving_endpoints.endpoints)]:
-        ml_serving_usage.append(databricks.Permissions(f"ml_serving_usage-{range['value']}",
-            serving_endpoint_id=range["value"]["id"],
+    ml_serving_usage: list[databricks.Permissions] = []
+    for ml_serving_usage_range in [{"value": i} for i in range(0, all_databricks_serving_endpoints.endpoints)]:
+        ml_serving_usage.append(databricks.Permissions(f"ml_serving_usage-{ml_serving_usage_range['value']}",
+            serving_endpoint_id=ml_serving_usage_range["value"]["id"],
             access_controls=[
                 {
                     "group_name": "users",
