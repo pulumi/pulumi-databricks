@@ -121,11 +121,11 @@ def get_users(api: Optional[_builtins.str] = None,
 
     company_users = databricks.get_users(filter="userName co \\"@domain.org\\"")
     data_users_group = databricks.Group("data_users_group", display_name="Data Users")
-    add_users_to_group: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate({user.id: user for user in company_users.users})]:
-        add_users_to_group.append(databricks.GroupMember(f"add_users_to_group-{range['key']}",
+    add_users_to_group: list[databricks.GroupMember] = []
+    for add_users_to_group_range in [{"key": k, "value": v} for [k, v] in enumerate({user.id: user for user in company_users.users})]:
+        add_users_to_group.append(databricks.GroupMember(f"add_users_to_group-{add_users_to_group_range['key']}",
             group_id=data_users_group.id,
-            member_id=range["value"].id))
+            member_id=add_users_to_group_range["value"].id))
     ```
 
     ## Related Resources
@@ -186,11 +186,11 @@ def get_users_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None
 
     company_users = databricks.get_users(filter="userName co \\"@domain.org\\"")
     data_users_group = databricks.Group("data_users_group", display_name="Data Users")
-    add_users_to_group: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate({user.id: user for user in company_users.users})]:
-        add_users_to_group.append(databricks.GroupMember(f"add_users_to_group-{range['key']}",
+    add_users_to_group: list[databricks.GroupMember] = []
+    for add_users_to_group_range in [{"key": k, "value": v} for [k, v] in enumerate({user.id: user for user in company_users.users})]:
+        add_users_to_group.append(databricks.GroupMember(f"add_users_to_group-{add_users_to_group_range['key']}",
             group_id=data_users_group.id,
-            member_id=range["value"].id))
+            member_id=add_users_to_group_range["value"].id))
     ```
 
     ## Related Resources

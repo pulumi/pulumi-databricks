@@ -62,7 +62,7 @@ export interface GetNotificationDestinationsArgs {
     displayNameContains?: string;
     providerConfig?: inputs.GetNotificationDestinationsProviderConfig;
     /**
-     * The type of the Notification Destination to filter by. Valid values are: 
+     * The type of the Notification Destination to filter by. Valid values are:
      * * `EMAIL` - Filters Notification Destinations of type Email.
      * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
      * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
@@ -144,7 +144,7 @@ export interface GetNotificationDestinationsOutputArgs {
     displayNameContains?: pulumi.Input<string | undefined>;
     providerConfig?: pulumi.Input<inputs.GetNotificationDestinationsProviderConfigArgs | undefined>;
     /**
-     * The type of the Notification Destination to filter by. Valid values are: 
+     * The type of the Notification Destination to filter by. Valid values are:
      * * `EMAIL` - Filters Notification Destinations of type Email.
      * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
      * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.

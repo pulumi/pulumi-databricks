@@ -48,7 +48,7 @@ class AlertV2Args:
                This field allows you to configure alerts to run as a specific user or service principal.
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-               If not specified, the alert will run as the request user
+                 If not specified, the alert will run as the request user
         :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
                On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
                Deprecated: Use `run_as` field instead. This field will be removed in a future release
@@ -195,7 +195,7 @@ class AlertV2Args:
         This field allows you to configure alerts to run as a specific user or service principal.
         - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
         - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-        If not specified, the alert will run as the request user
+          If not specified, the alert will run as the request user
         """
         return pulumi.get(self, "run_as")
 
@@ -258,7 +258,7 @@ class _AlertV2State:
                This field allows you to configure alerts to run as a specific user or service principal.
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-               If not specified, the alert will run as the request user
+                 If not specified, the alert will run as the request user
         :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
                On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
                Deprecated: Use `run_as` field instead. This field will be removed in a future release
@@ -451,7 +451,7 @@ class _AlertV2State:
         This field allows you to configure alerts to run as a specific user or service principal.
         - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
         - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-        If not specified, the alert will run as the request user
+          If not specified, the alert will run as the request user
         """
         return pulumi.get(self, "run_as")
 
@@ -590,7 +590,7 @@ class AlertV2(pulumi.CustomResource):
                This field allows you to configure alerts to run as a specific user or service principal.
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-               If not specified, the alert will run as the request user
+                 If not specified, the alert will run as the request user
         :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
                On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
                Deprecated: Use `run_as` field instead. This field will be removed in a future release
@@ -767,7 +767,7 @@ class AlertV2(pulumi.CustomResource):
                This field allows you to configure alerts to run as a specific user or service principal.
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-               If not specified, the alert will run as the request user
+                 If not specified, the alert will run as the request user
         :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
                On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
                Deprecated: Use `run_as` field instead. This field will be removed in a future release
@@ -900,7 +900,7 @@ class AlertV2(pulumi.CustomResource):
         This field allows you to configure alerts to run as a specific user or service principal.
         - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
         - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-        If not specified, the alert will run as the request user
+          If not specified, the alert will run as the request user
         """
         return pulumi.get(self, "run_as")
 

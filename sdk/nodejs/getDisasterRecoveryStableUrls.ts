@@ -41,9 +41,9 @@ export interface GetDisasterRecoveryStableUrlsArgs {
     /**
      * Maximum number of stable URLs to return per page:
      * - when set to a value greater than 0, the page length is the minimum of this value
-     * and a server configured value;
+     *   and a server configured value;
      * - when set to 0 or unset, the page length is set to a server configured value
-     * (recommended);
+     *   (recommended);
      * - when set to a value less than 0, an invalid parameter error is returned
      */
     pageSize?: number;
@@ -100,9 +100,9 @@ export interface GetDisasterRecoveryStableUrlsOutputArgs {
     /**
      * Maximum number of stable URLs to return per page:
      * - when set to a value greater than 0, the page length is the minimum of this value
-     * and a server configured value;
+     *   and a server configured value;
      * - when set to 0 or unset, the page length is set to a server configured value
-     * (recommended);
+     *   (recommended);
      * - when set to a value less than 0, an invalid parameter error is returned
      */
     pageSize?: pulumi.Input<number | undefined>;

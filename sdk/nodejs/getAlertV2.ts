@@ -111,7 +111,7 @@ export interface GetAlertV2Result {
      * This field allows you to configure alerts to run as a specific user or service principal.
      * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
      * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-     * If not specified, the alert will run as the request user
+     *   If not specified, the alert will run as the request user
      */
     readonly runAs: outputs.GetAlertV2RunAs;
     /**

@@ -303,7 +303,6 @@ class SqlVisualization(pulumi.CustomResource):
 
         - directory tree
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SqlVisualizationProviderConfigArgs', 'SqlVisualizationProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -368,7 +367,6 @@ class SqlVisualization(pulumi.CustomResource):
         ### Example
 
         - directory tree
-
 
         :param str resource_name: The name of the resource.
         :param SqlVisualizationArgs args: The arguments to use to populate this resource's properties.

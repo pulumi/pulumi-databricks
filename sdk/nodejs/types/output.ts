@@ -2884,7 +2884,7 @@ export interface BudgetPolicyCustomTag {
      * The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved
+     *   these tags are preserved
      */
     key: string;
     /**
@@ -10910,7 +10910,7 @@ export interface GetAlertsV2Alert {
      * This field allows you to configure alerts to run as a specific user or service principal.
      * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
      * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-     * If not specified, the alert will run as the request user
+     *   If not specified, the alert will run as the request user
      */
     runAs: outputs.GetAlertsV2AlertRunAs;
     /**
@@ -13012,7 +13012,7 @@ export interface GetBudgetPoliciesPolicyCustomTag {
      * (string) - The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved
+     *   these tags are preserved
      */
     key: string;
     /**
@@ -13037,7 +13037,7 @@ export interface GetBudgetPolicyCustomTag {
      * (string) - The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved
+     *   these tags are preserved
      */
     key: string;
     /**
@@ -33244,10 +33244,8 @@ export interface SqlPermissionsPrivilegeAssignment {
     /**
      * set of available privilege names in upper case.
      *
-     *
      * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     *
      *
      * * `SELECT` - gives read access to an object.
      * * `SELECT` - gives read access to an object.
@@ -33264,9 +33262,8 @@ export interface SqlPermissionsPrivilegeAssignment {
      * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
      * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
      *
-     *
      * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
-     * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     * Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
      */
     privileges: string[];
 }

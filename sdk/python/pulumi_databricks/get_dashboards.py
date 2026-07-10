@@ -97,11 +97,11 @@ def get_dashboards(dashboard_name_contains: Optional[_builtins.str] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_dashboards()
-    dashboards_permissions: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate([__item.dashboard_id for __item in all.dashboards])]:
-        dashboards_permissions.append(databricks.Permissions(f"dashboards_permissions-{range['key']}",
+    dashboards_permissions: list[databricks.Permissions] = []
+    for dashboards_permissions_range in [{"key": k, "value": v} for [k, v] in enumerate([__item.dashboard_id for __item in all.dashboards])]:
+        dashboards_permissions.append(databricks.Permissions(f"dashboards_permissions-{dashboards_permissions_range['key']}",
             depends=[all],
-            dashboard_id=range["value"],
+            dashboard_id=dashboards_permissions_range["value"],
             access_controls=[{
                 "group_name": "Example Group",
                 "permission_level": "CAN_MANAGE",
@@ -138,11 +138,11 @@ def get_dashboards_output(dashboard_name_contains: pulumi.Input[Optional[Optiona
     import pulumi_databricks as databricks
 
     all = databricks.get_dashboards()
-    dashboards_permissions: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate([__item.dashboard_id for __item in all.dashboards])]:
-        dashboards_permissions.append(databricks.Permissions(f"dashboards_permissions-{range['key']}",
+    dashboards_permissions: list[databricks.Permissions] = []
+    for dashboards_permissions_range in [{"key": k, "value": v} for [k, v] in enumerate([__item.dashboard_id for __item in all.dashboards])]:
+        dashboards_permissions.append(databricks.Permissions(f"dashboards_permissions-{dashboards_permissions_range['key']}",
             depends=[all],
-            dashboard_id=range["value"],
+            dashboard_id=dashboards_permissions_range["value"],
             access_controls=[{
                 "group_name": "Example Group",
                 "permission_level": "CAN_MANAGE",

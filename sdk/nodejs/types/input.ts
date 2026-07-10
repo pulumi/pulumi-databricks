@@ -2884,7 +2884,7 @@ export interface BudgetPolicyCustomTag {
      * The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved
+     *   these tags are preserved
      */
     key: pulumi.Input<string>;
     /**
@@ -23356,10 +23356,8 @@ export interface SqlPermissionsPrivilegeAssignment {
     /**
      * set of available privilege names in upper case.
      *
-     *
      * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     *
      *
      * * `SELECT` - gives read access to an object.
      * * `SELECT` - gives read access to an object.
@@ -23376,9 +23374,8 @@ export interface SqlPermissionsPrivilegeAssignment {
      * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
      * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
      *
-     *
      * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
-     * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     * Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
      */
     privileges: pulumi.Input<pulumi.Input<string>[]>;
 }

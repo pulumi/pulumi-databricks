@@ -112,10 +112,10 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs()
-    everyone_can_view_all_jobs: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
-        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
-            job_id=range["value"],
+    everyone_can_view_all_jobs: list[databricks.Permissions] = []
+    for everyone_can_view_all_jobs_range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{everyone_can_view_all_jobs_range['key']}",
+            job_id=everyone_can_view_all_jobs_range["value"],
             access_controls=[{
                 "group_name": "users",
                 "permission_level": "CAN_VIEW",
@@ -140,10 +140,10 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs(key="id")
-    everyone_can_view_all_jobs: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
-        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
-            job_id=range["value"],
+    everyone_can_view_all_jobs: list[databricks.Permissions] = []
+    for everyone_can_view_all_jobs_range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{everyone_can_view_all_jobs_range['key']}",
+            job_id=everyone_can_view_all_jobs_range["value"],
             access_controls=[{
                 "group_name": "users",
                 "permission_level": "CAN_VIEW",
@@ -198,10 +198,10 @@ def get_jobs_output(ids: pulumi.Input[Optional[Optional[Mapping[str, _builtins.s
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs()
-    everyone_can_view_all_jobs: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
-        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
-            job_id=range["value"],
+    everyone_can_view_all_jobs: list[databricks.Permissions] = []
+    for everyone_can_view_all_jobs_range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{everyone_can_view_all_jobs_range['key']}",
+            job_id=everyone_can_view_all_jobs_range["value"],
             access_controls=[{
                 "group_name": "users",
                 "permission_level": "CAN_VIEW",
@@ -226,10 +226,10 @@ def get_jobs_output(ids: pulumi.Input[Optional[Optional[Mapping[str, _builtins.s
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs(key="id")
-    everyone_can_view_all_jobs: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
-        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
-            job_id=range["value"],
+    everyone_can_view_all_jobs: list[databricks.Permissions] = []
+    for everyone_can_view_all_jobs_range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{everyone_can_view_all_jobs_range['key']}",
+            job_id=everyone_can_view_all_jobs_range["value"],
             access_controls=[{
                 "group_name": "users",
                 "permission_level": "CAN_VIEW",

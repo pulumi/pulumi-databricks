@@ -103,9 +103,9 @@ def get_disaster_recovery_failover_groups(page_size: Optional[_builtins.int] = N
 
     :param _builtins.int page_size: Maximum number of failover groups to return per page:
            - when set to a value greater than 0, the page length is the minimum of this value
-           and a server configured value;
+             and a server configured value;
            - when set to 0 or unset, the page length is set to a server configured value
-           (recommended);
+             (recommended);
            - when set to a value less than 0, an invalid parameter error is returned
     :param _builtins.str parent: The parent resource. Format: accounts/{account_id}
     """
@@ -146,9 +146,9 @@ def get_disaster_recovery_failover_groups_output(page_size: pulumi.Input[Optiona
 
     :param _builtins.int page_size: Maximum number of failover groups to return per page:
            - when set to a value greater than 0, the page length is the minimum of this value
-           and a server configured value;
+             and a server configured value;
            - when set to 0 or unset, the page length is set to a server configured value
-           (recommended);
+             (recommended);
            - when set to a value less than 0, an invalid parameter error is returned
     :param _builtins.str parent: The parent resource. Format: accounts/{account_id}
     """
