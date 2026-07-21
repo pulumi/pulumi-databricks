@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetMlflowExperimentProviderConfig;
 import com.pulumi.databricks.outputs.GetMlflowExperimentTag;
+import com.pulumi.databricks.outputs.GetMlflowExperimentTraceLocation;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -55,6 +56,7 @@ public final class GetMlflowExperimentResult {
      * 
      */
     private List<GetMlflowExperimentTag> tags;
+    private GetMlflowExperimentTraceLocation traceLocation;
 
     private GetMlflowExperimentResult() {}
     /**
@@ -116,6 +118,9 @@ public final class GetMlflowExperimentResult {
     public List<GetMlflowExperimentTag> tags() {
         return this.tags;
     }
+    public GetMlflowExperimentTraceLocation traceLocation() {
+        return this.traceLocation;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -135,6 +140,7 @@ public final class GetMlflowExperimentResult {
         private String name;
         private GetMlflowExperimentProviderConfig providerConfig;
         private List<GetMlflowExperimentTag> tags;
+        private GetMlflowExperimentTraceLocation traceLocation;
         public Builder() {}
         public Builder(GetMlflowExperimentResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -147,6 +153,7 @@ public final class GetMlflowExperimentResult {
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.tags = defaults.tags;
+    	      this.traceLocation = defaults.traceLocation;
         }
 
         @CustomType.Setter
@@ -224,6 +231,14 @@ public final class GetMlflowExperimentResult {
         public Builder tags(GetMlflowExperimentTag... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder traceLocation(GetMlflowExperimentTraceLocation traceLocation) {
+            if (traceLocation == null) {
+              throw new MissingRequiredPropertyException("GetMlflowExperimentResult", "traceLocation");
+            }
+            this.traceLocation = traceLocation;
+            return this;
+        }
         public GetMlflowExperimentResult build() {
             final var _resultValue = new GetMlflowExperimentResult();
             _resultValue.artifactLocation = artifactLocation;
@@ -235,6 +250,7 @@ public final class GetMlflowExperimentResult {
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.tags = tags;
+            _resultValue.traceLocation = traceLocation;
             return _resultValue;
         }
     }

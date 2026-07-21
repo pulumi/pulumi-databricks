@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PostgresDatabaseSpec
     {
         public readonly string? PostgresDatabase;
-        public readonly string? Role;
+        public readonly string Role;
 
         [OutputConstructor]
         private PostgresDatabaseSpec(
             string? postgresDatabase,
 
-            string? role)
+            string role)
         {
             PostgresDatabase = postgresDatabase;
             Role = role;

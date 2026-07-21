@@ -50,6 +50,29 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * Restrict ingress to private connectivity by only allowing requests from registered private endpoints:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const examplePrivateAccessPolicy = new databricks.AccountNetworkPolicy("example_private_access_policy", {
+ *     networkPolicyId: "example-private-access-policy",
+ *     ingress: {
+ *         privateAccess: {
+ *             restrictionMode: "RESTRICTED_ACCESS",
+ *             allowRules: [{
+ *                 origin: {
+ *                     endpoints: {
+ *                         endpointIds: ["example-private-endpoint-id"],
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class AccountNetworkPolicy extends pulumi.CustomResource {
     /**

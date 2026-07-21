@@ -51,7 +51,7 @@ type LookupSupervisorAgentToolResult struct {
 	ProviderConfig *GetSupervisorAgentToolProviderConfig `pulumi:"providerConfig"`
 	// (string) - User specified id of the Tool
 	ToolId string `pulumi:"toolId"`
-	// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+	// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "databricksWebSearch", "skill". The legacy values "lakeviewDashboard", "ucTable", and "webSearch" are also accepted and remain equivalent to "dashboard", "table", and "databricksWebSearch" respectively. The "databricksWebSearch" toolType maps to the `webSearch` spec field
 	ToolType string `pulumi:"toolType"`
 	// (UcConnection)
 	UcConnection GetSupervisorAgentToolUcConnection `pulumi:"ucConnection"`
@@ -140,7 +140,7 @@ func (o LookupSupervisorAgentToolResultOutput) ToolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSupervisorAgentToolResult) string { return v.ToolId }).(pulumi.StringOutput)
 }
 
-// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "databricksWebSearch", "skill". The legacy values "lakeviewDashboard", "ucTable", and "webSearch" are also accepted and remain equivalent to "dashboard", "table", and "databricksWebSearch" respectively. The "databricksWebSearch" toolType maps to the `webSearch` spec field
 func (o LookupSupervisorAgentToolResultOutput) ToolType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSupervisorAgentToolResult) string { return v.ToolType }).(pulumi.StringOutput)
 }

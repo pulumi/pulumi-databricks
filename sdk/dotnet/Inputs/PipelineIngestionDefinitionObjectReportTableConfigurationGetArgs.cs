@@ -70,6 +70,9 @@ namespace Pulumi.Databricks.Inputs
             set => _sequenceBies = value;
         }
 
+        [Input("sourceMetadataColumn")]
+        public Input<string>? SourceMetadataColumn { get; set; }
+
         [Input("tableProperties")]
         private InputMap<string>? _tableProperties;
         public InputMap<string> TableProperties

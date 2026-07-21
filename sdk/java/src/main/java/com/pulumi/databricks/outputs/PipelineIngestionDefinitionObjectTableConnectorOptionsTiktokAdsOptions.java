@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions {
+    private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions customReportOptions;
     private @Nullable String dataLevel;
     private @Nullable List<String> dimensions;
     private @Nullable Integer lookbackWindowDays;
@@ -23,6 +25,9 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokA
     private @Nullable String syncStartDate;
 
     private PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions() {}
+    public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions> customReportOptions() {
+        return Optional.ofNullable(this.customReportOptions);
+    }
     public Optional<String> dataLevel() {
         return Optional.ofNullable(this.dataLevel);
     }
@@ -54,6 +59,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokA
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions customReportOptions;
         private @Nullable String dataLevel;
         private @Nullable List<String> dimensions;
         private @Nullable Integer lookbackWindowDays;
@@ -64,6 +70,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokA
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customReportOptions = defaults.customReportOptions;
     	      this.dataLevel = defaults.dataLevel;
     	      this.dimensions = defaults.dimensions;
     	      this.lookbackWindowDays = defaults.lookbackWindowDays;
@@ -73,6 +80,12 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokA
     	      this.syncStartDate = defaults.syncStartDate;
         }
 
+        @CustomType.Setter
+        public Builder customReportOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions customReportOptions) {
+
+            this.customReportOptions = customReportOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder dataLevel(@Nullable String dataLevel) {
 
@@ -123,6 +136,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokA
         }
         public PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions();
+            _resultValue.customReportOptions = customReportOptions;
             _resultValue.dataLevel = dataLevel;
             _resultValue.dimensions = dimensions;
             _resultValue.lookbackWindowDays = lookbackWindowDays;

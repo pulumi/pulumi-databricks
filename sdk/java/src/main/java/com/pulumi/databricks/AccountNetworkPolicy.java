@@ -89,6 +89,56 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Restrict ingress to private connectivity by only allowing requests from registered private endpoints:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AccountNetworkPolicy;
+ * import com.pulumi.databricks.AccountNetworkPolicyArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressPrivateAccessArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpointsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var examplePrivateAccessPolicy = new AccountNetworkPolicy("examplePrivateAccessPolicy", AccountNetworkPolicyArgs.builder()
+ *             .networkPolicyId("example-private-access-policy")
+ *             .ingress(AccountNetworkPolicyIngressArgs.builder()
+ *                 .privateAccess(AccountNetworkPolicyIngressPrivateAccessArgs.builder()
+ *                     .restrictionMode("RESTRICTED_ACCESS")
+ *                     .allowRules(AccountNetworkPolicyIngressPrivateAccessAllowRuleArgs.builder()
+ *                         .origin(AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginArgs.builder()
+ *                             .endpoints(AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpointsArgs.builder()
+ *                                 .endpointIds("example-private-endpoint-id")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="databricks:index/accountNetworkPolicy:AccountNetworkPolicy")
 public class AccountNetworkPolicy extends com.pulumi.resources.CustomResource {

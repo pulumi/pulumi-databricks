@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,11 +23,11 @@ public final class PostgresDatabaseSpecArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.postgresDatabase);
     }
 
-    @Import(name="role")
-    private @Nullable Output<String> role;
+    @Import(name="role", required=true)
+    private Output<String> role;
 
-    public Optional<Output<String>> role() {
-        return Optional.ofNullable(this.role);
+    public Output<String> role() {
+        return this.role;
     }
 
     private PostgresDatabaseSpecArgs() {}
@@ -63,7 +64,7 @@ public final class PostgresDatabaseSpecArgs extends com.pulumi.resources.Resourc
             return postgresDatabase(Output.of(postgresDatabase));
         }
 
-        public Builder role(@Nullable Output<String> role) {
+        public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
@@ -73,6 +74,9 @@ public final class PostgresDatabaseSpecArgs extends com.pulumi.resources.Resourc
         }
 
         public PostgresDatabaseSpecArgs build() {
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("PostgresDatabaseSpecArgs", "role");
+            }
             return $;
         }
     }

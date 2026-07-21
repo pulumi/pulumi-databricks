@@ -24,6 +24,7 @@ export function getMlflowExperiment(args?: GetMlflowExperimentArgs, opts?: pulum
         "name": args.name,
         "providerConfig": args.providerConfig,
         "tags": args.tags,
+        "traceLocation": args.traceLocation,
     }, opts);
 }
 
@@ -67,6 +68,7 @@ export interface GetMlflowExperimentArgs {
      * Additional metadata key-value pairs.
      */
     tags?: inputs.GetMlflowExperimentTag[];
+    traceLocation?: inputs.GetMlflowExperimentTraceLocation;
 }
 
 /**
@@ -106,6 +108,7 @@ export interface GetMlflowExperimentResult {
      * Additional metadata key-value pairs.
      */
     readonly tags: outputs.GetMlflowExperimentTag[];
+    readonly traceLocation: outputs.GetMlflowExperimentTraceLocation;
 }
 /**
  * Retrieves the settings of databricks.MlflowExperiment by id or name.
@@ -125,6 +128,7 @@ export function getMlflowExperimentOutput(args?: GetMlflowExperimentOutputArgs, 
         "name": args.name,
         "providerConfig": args.providerConfig,
         "tags": args.tags,
+        "traceLocation": args.traceLocation,
     }, opts);
 }
 
@@ -168,4 +172,5 @@ export interface GetMlflowExperimentOutputArgs {
      * Additional metadata key-value pairs.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowExperimentTagArgs>[] | undefined>;
+    traceLocation?: pulumi.Input<inputs.GetMlflowExperimentTraceLocationArgs | undefined>;
 }

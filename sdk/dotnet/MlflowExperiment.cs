@@ -108,6 +108,9 @@ namespace Pulumi.Databricks
         [Output("tags")]
         public Output<ImmutableArray<Outputs.MlflowExperimentTag>> Tags { get; private set; } = null!;
 
+        [Output("traceLocation")]
+        public Output<Outputs.MlflowExperimentTraceLocation?> TraceLocation { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a MlflowExperiment resource with the given unique name, arguments, and options.
@@ -199,6 +202,9 @@ namespace Pulumi.Databricks
             set => _tags = value;
         }
 
+        [Input("traceLocation")]
+        public Input<Inputs.MlflowExperimentTraceLocationArgs>? TraceLocation { get; set; }
+
         public MlflowExperimentArgs()
         {
         }
@@ -251,6 +257,9 @@ namespace Pulumi.Databricks
             get => _tags ?? (_tags = new InputList<Inputs.MlflowExperimentTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("traceLocation")]
+        public Input<Inputs.MlflowExperimentTraceLocationGetArgs>? TraceLocation { get; set; }
 
         public MlflowExperimentState()
         {

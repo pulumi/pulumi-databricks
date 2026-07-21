@@ -71,6 +71,47 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// 
+    /// Restrict ingress to private connectivity by only allowing requests from registered private endpoints:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var examplePrivateAccessPolicy = new Databricks.AccountNetworkPolicy("example_private_access_policy", new()
+    ///     {
+    ///         NetworkPolicyId = "example-private-access-policy",
+    ///         Ingress = new Databricks.Inputs.AccountNetworkPolicyIngressArgs
+    ///         {
+    ///             PrivateAccess = new Databricks.Inputs.AccountNetworkPolicyIngressPrivateAccessArgs
+    ///             {
+    ///                 RestrictionMode = "RESTRICTED_ACCESS",
+    ///                 AllowRules = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleArgs
+    ///                     {
+    ///                         Origin = new Databricks.Inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginArgs
+    ///                         {
+    ///                             Endpoints = new Databricks.Inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpointsArgs
+    ///                             {
+    ///                                 EndpointIds = new[]
+    ///                                 {
+    ///                                     "example-private-endpoint-id",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/accountNetworkPolicy:AccountNetworkPolicy")]
     public partial class AccountNetworkPolicy : global::Pulumi.CustomResource

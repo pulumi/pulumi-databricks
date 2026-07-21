@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("customReportOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptionsGetArgs>? CustomReportOptions { get; set; }
+
         [Input("dataLevel")]
         public Input<string>? DataLevel { get; set; }
 

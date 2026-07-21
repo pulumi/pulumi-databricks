@@ -29,7 +29,8 @@ class MlflowExperimentArgs:
                  lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['MlflowExperimentProviderConfigArgs']] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None,
+                 trace_location: pulumi.Input[Optional['MlflowExperimentTraceLocationArgs']] = None):
         """
         The set of arguments for constructing a MlflowExperiment resource.
 
@@ -59,6 +60,8 @@ class MlflowExperimentArgs:
             pulumi.set(__self__, "provider_config", provider_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if trace_location is not None:
+            pulumi.set(__self__, "trace_location", trace_location)
 
     @_builtins.property
     @pulumi.getter(name="artifactLocation")
@@ -154,6 +157,15 @@ class MlflowExperimentArgs:
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="traceLocation")
+    def trace_location(self) -> pulumi.Input[Optional['MlflowExperimentTraceLocationArgs']]:
+        return pulumi.get(self, "trace_location")
+
+    @trace_location.setter
+    def trace_location(self, value: pulumi.Input[Optional['MlflowExperimentTraceLocationArgs']]):
+        pulumi.set(self, "trace_location", value)
+
 
 @pulumi.input_type
 class _MlflowExperimentState:
@@ -166,7 +178,8 @@ class _MlflowExperimentState:
                  lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['MlflowExperimentProviderConfigArgs']] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None,
+                 trace_location: pulumi.Input[Optional['MlflowExperimentTraceLocationArgs']] = None):
         """
         Input properties used for looking up and filtering MlflowExperiment resources.
 
@@ -196,6 +209,8 @@ class _MlflowExperimentState:
             pulumi.set(__self__, "provider_config", provider_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if trace_location is not None:
+            pulumi.set(__self__, "trace_location", trace_location)
 
     @_builtins.property
     @pulumi.getter(name="artifactLocation")
@@ -291,6 +306,15 @@ class _MlflowExperimentState:
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="traceLocation")
+    def trace_location(self) -> pulumi.Input[Optional['MlflowExperimentTraceLocationArgs']]:
+        return pulumi.get(self, "trace_location")
+
+    @trace_location.setter
+    def trace_location(self, value: pulumi.Input[Optional['MlflowExperimentTraceLocationArgs']]):
+        pulumi.set(self, "trace_location", value)
+
 
 @pulumi.type_token("databricks:index/mlflowExperiment:MlflowExperiment")
 class MlflowExperiment(pulumi.CustomResource):
@@ -307,6 +331,7 @@ class MlflowExperiment(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
+                 trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/experiments)
@@ -437,6 +462,7 @@ class MlflowExperiment(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
+                 trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -455,6 +481,7 @@ class MlflowExperiment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["trace_location"] = trace_location
         super(MlflowExperiment, __self__).__init__(
             'databricks:index/mlflowExperiment:MlflowExperiment',
             resource_name,
@@ -473,7 +500,8 @@ class MlflowExperiment(pulumi.CustomResource):
             lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
-            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None) -> 'MlflowExperiment':
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
+            trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']]] = None) -> 'MlflowExperiment':
         """
         Get an existing MlflowExperiment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -499,6 +527,7 @@ class MlflowExperiment(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["trace_location"] = trace_location
         return MlflowExperiment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -558,4 +587,9 @@ class MlflowExperiment(pulumi.CustomResource):
         Tags for the MLflow experiment.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="traceLocation")
+    def trace_location(self) -> pulumi.Output[Optional['outputs.MlflowExperimentTraceLocation']]:
+        return pulumi.get(self, "trace_location")
 

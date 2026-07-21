@@ -161,6 +161,10 @@ from .get_policy_infos import *
 from .get_postgres_branch import *
 from .get_postgres_branches import *
 from .get_postgres_catalog import *
+from .get_postgres_cdf_config import *
+from .get_postgres_cdf_configs import *
+from .get_postgres_cdf_status import *
+from .get_postgres_cdf_statuses import *
 from .get_postgres_data_api import *
 from .get_postgres_database import *
 from .get_postgres_databases import *
@@ -262,6 +266,7 @@ from .pipeline import *
 from .policy_info import *
 from .postgres_branch import *
 from .postgres_catalog import *
+from .postgres_cdf_config import *
 from .postgres_data_api import *
 from .postgres_database import *
 from .postgres_endpoint import *
@@ -1151,6 +1156,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/postgresCatalog:PostgresCatalog": "PostgresCatalog"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/postgresCdfConfig",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresCdfConfig:PostgresCdfConfig": "PostgresCdfConfig"
   }
  },
  {

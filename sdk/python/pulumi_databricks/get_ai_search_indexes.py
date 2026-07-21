@@ -92,7 +92,7 @@ def get_ai_search_indexes(page_size: Optional[_builtins.int] = None,
                           provider_config: Optional[Union['GetAiSearchIndexesProviderConfigArgs', 'GetAiSearchIndexesProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchIndexesResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 
@@ -128,7 +128,7 @@ def get_ai_search_indexes_output(page_size: pulumi.Input[Optional[Optional[_buil
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchIndexesProviderConfigArgs', 'GetAiSearchIndexesProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchIndexesResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 

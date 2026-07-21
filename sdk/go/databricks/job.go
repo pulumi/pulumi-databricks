@@ -154,6 +154,7 @@ type Job struct {
 	NotificationSettings JobNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
 	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters JobParameterArrayOutput `pulumi:"parameters"`
+	ParentPath pulumi.StringPtrOutput  `pulumi:"parentPath"`
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
 	// * `STANDARD`: Enables cost-efficient execution of serverless workloads.
@@ -274,6 +275,7 @@ type jobState struct {
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
 	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters []JobParameter `pulumi:"parameters"`
+	ParentPath *string        `pulumi:"parentPath"`
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
 	// * `STANDARD`: Enables cost-efficient execution of serverless workloads.
@@ -365,6 +367,7 @@ type JobState struct {
 	NotificationSettings JobNotificationSettingsPtrInput
 	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters JobParameterArrayInput
+	ParentPath pulumi.StringPtrInput
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
 	// * `STANDARD`: Enables cost-efficient execution of serverless workloads.
@@ -460,6 +463,7 @@ type jobArgs struct {
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
 	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters []JobParameter `pulumi:"parameters"`
+	ParentPath *string        `pulumi:"parentPath"`
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
 	// * `STANDARD`: Enables cost-efficient execution of serverless workloads.
@@ -550,6 +554,7 @@ type JobArgs struct {
 	NotificationSettings JobNotificationSettingsPtrInput
 	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters JobParameterArrayInput
+	ParentPath pulumi.StringPtrInput
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
 	// * `STANDARD`: Enables cost-efficient execution of serverless workloads.
@@ -795,6 +800,10 @@ func (o JobOutput) NotificationSettings() JobNotificationSettingsPtrOutput {
 // Specifies job parameter for the job. See parameter Configuration Block
 func (o JobOutput) Parameters() JobParameterArrayOutput {
 	return o.ApplyT(func(v *Job) JobParameterArrayOutput { return v.Parameters }).(JobParameterArrayOutput)
+}
+
+func (o JobOutput) ParentPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
 }
 
 // The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:

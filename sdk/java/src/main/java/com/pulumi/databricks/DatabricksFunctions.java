@@ -208,6 +208,14 @@ import com.pulumi.databricks.inputs.GetPostgresBranchesArgs;
 import com.pulumi.databricks.inputs.GetPostgresBranchesPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresCatalogArgs;
 import com.pulumi.databricks.inputs.GetPostgresCatalogPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresCdfConfigArgs;
+import com.pulumi.databricks.inputs.GetPostgresCdfConfigPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresCdfConfigsArgs;
+import com.pulumi.databricks.inputs.GetPostgresCdfConfigsPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresCdfStatusArgs;
+import com.pulumi.databricks.inputs.GetPostgresCdfStatusPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresCdfStatusesArgs;
+import com.pulumi.databricks.inputs.GetPostgresCdfStatusesPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresDataApiArgs;
 import com.pulumi.databricks.inputs.GetPostgresDataApiPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
@@ -412,6 +420,10 @@ import com.pulumi.databricks.outputs.GetPolicyInfosResult;
 import com.pulumi.databricks.outputs.GetPostgresBranchResult;
 import com.pulumi.databricks.outputs.GetPostgresBranchesResult;
 import com.pulumi.databricks.outputs.GetPostgresCatalogResult;
+import com.pulumi.databricks.outputs.GetPostgresCdfConfigResult;
+import com.pulumi.databricks.outputs.GetPostgresCdfConfigsResult;
+import com.pulumi.databricks.outputs.GetPostgresCdfStatusResult;
+import com.pulumi.databricks.outputs.GetPostgresCdfStatusesResult;
 import com.pulumi.databricks.outputs.GetPostgresDataApiResult;
 import com.pulumi.databricks.outputs.GetPostgresDatabaseResult;
 import com.pulumi.databricks.outputs.GetPostgresDatabasesResult;
@@ -1415,7 +1427,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1461,7 +1473,7 @@ public final class DatabricksFunctions {
         return getAiSearchEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1507,7 +1519,7 @@ public final class DatabricksFunctions {
         return getAiSearchEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1553,7 +1565,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1599,7 +1611,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1645,7 +1657,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1690,7 +1702,7 @@ public final class DatabricksFunctions {
         return getAiSearchEndpoints(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1735,7 +1747,7 @@ public final class DatabricksFunctions {
         return getAiSearchEndpointsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1780,7 +1792,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1825,7 +1837,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1870,7 +1882,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1885,7 +1897,7 @@ public final class DatabricksFunctions {
         return getAiSearchIndex(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1900,7 +1912,7 @@ public final class DatabricksFunctions {
         return getAiSearchIndexPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1915,7 +1927,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1930,7 +1942,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1945,7 +1957,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1960,7 +1972,7 @@ public final class DatabricksFunctions {
         return getAiSearchIndexes(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1975,7 +1987,7 @@ public final class DatabricksFunctions {
         return getAiSearchIndexesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -1990,7 +2002,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -2005,7 +2017,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -2020,7 +2032,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2073,7 +2085,7 @@ public final class DatabricksFunctions {
         return getAlertV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2126,7 +2138,7 @@ public final class DatabricksFunctions {
         return getAlertV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2179,7 +2191,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2232,7 +2244,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2285,7 +2297,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2335,7 +2347,7 @@ public final class DatabricksFunctions {
         return getAlertsV2(GetAlertsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2385,7 +2397,7 @@ public final class DatabricksFunctions {
         return getAlertsV2Plain(GetAlertsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2435,7 +2447,7 @@ public final class DatabricksFunctions {
         return getAlertsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2485,7 +2497,7 @@ public final class DatabricksFunctions {
         return getAlertsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2535,7 +2547,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -2585,7 +2597,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
@@ -13339,7 +13351,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13387,7 +13399,7 @@ public final class DatabricksFunctions {
         return getDisasterRecoveryFailoverGroup(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13435,7 +13447,7 @@ public final class DatabricksFunctions {
         return getDisasterRecoveryFailoverGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13483,7 +13495,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13531,7 +13543,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13579,7 +13591,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13626,7 +13638,7 @@ public final class DatabricksFunctions {
         return getDisasterRecoveryFailoverGroups(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13673,7 +13685,7 @@ public final class DatabricksFunctions {
         return getDisasterRecoveryFailoverGroupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13720,7 +13732,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13767,7 +13779,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13814,7 +13826,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13862,7 +13874,7 @@ public final class DatabricksFunctions {
         return getDisasterRecoveryStableUrl(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13910,7 +13922,7 @@ public final class DatabricksFunctions {
         return getDisasterRecoveryStableUrlPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -13958,7 +13970,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -14006,7 +14018,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -14054,7 +14066,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -14101,7 +14113,7 @@ public final class DatabricksFunctions {
         return getDisasterRecoveryStableUrls(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -14148,7 +14160,7 @@ public final class DatabricksFunctions {
         return getDisasterRecoveryStableUrlsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -14195,7 +14207,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -14242,7 +14254,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
      * 
@@ -27205,6 +27217,626 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetPostgresCatalogResult> getPostgresCatalogPlain(GetPostgresCatalogPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves a single Postgres CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Configuration by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfConfig(GetPostgresCdfConfigArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public")
+     *             .build());
+     * 
+     *         ctx.export("cdfTargetCatalog", this_.catalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresCdfConfigResult> getPostgresCdfConfig(GetPostgresCdfConfigArgs args) {
+        return getPostgresCdfConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves a single Postgres CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Configuration by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfConfig(GetPostgresCdfConfigArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public")
+     *             .build());
+     * 
+     *         ctx.export("cdfTargetCatalog", this_.catalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPostgresCdfConfigResult> getPostgresCdfConfigPlain(GetPostgresCdfConfigPlainArgs args) {
+        return getPostgresCdfConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves a single Postgres CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Configuration by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfConfig(GetPostgresCdfConfigArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public")
+     *             .build());
+     * 
+     *         ctx.export("cdfTargetCatalog", this_.catalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresCdfConfigResult> getPostgresCdfConfig(GetPostgresCdfConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCdfConfig:getPostgresCdfConfig", TypeShape.of(GetPostgresCdfConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves a single Postgres CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Configuration by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfConfig(GetPostgresCdfConfigArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public")
+     *             .build());
+     * 
+     *         ctx.export("cdfTargetCatalog", this_.catalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresCdfConfigResult> getPostgresCdfConfig(GetPostgresCdfConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCdfConfig:getPostgresCdfConfig", TypeShape.of(GetPostgresCdfConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves a single Postgres CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Configuration by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfConfig(GetPostgresCdfConfigArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public")
+     *             .build());
+     * 
+     *         ctx.export("cdfTargetCatalog", this_.catalog());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPostgresCdfConfigResult> getPostgresCdfConfigPlain(GetPostgresCdfConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCdfConfig:getPostgresCdfConfig", TypeShape.of(GetPostgresCdfConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists all Postgres CDF (Change Data Feed) configurations under a database.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All CDF Configurations in a Database
+     * 
+     */
+    public static Output<GetPostgresCdfConfigsResult> getPostgresCdfConfigs(GetPostgresCdfConfigsArgs args) {
+        return getPostgresCdfConfigs(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists all Postgres CDF (Change Data Feed) configurations under a database.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All CDF Configurations in a Database
+     * 
+     */
+    public static CompletableFuture<GetPostgresCdfConfigsResult> getPostgresCdfConfigsPlain(GetPostgresCdfConfigsPlainArgs args) {
+        return getPostgresCdfConfigsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists all Postgres CDF (Change Data Feed) configurations under a database.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All CDF Configurations in a Database
+     * 
+     */
+    public static Output<GetPostgresCdfConfigsResult> getPostgresCdfConfigs(GetPostgresCdfConfigsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCdfConfigs:getPostgresCdfConfigs", TypeShape.of(GetPostgresCdfConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists all Postgres CDF (Change Data Feed) configurations under a database.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All CDF Configurations in a Database
+     * 
+     */
+    public static Output<GetPostgresCdfConfigsResult> getPostgresCdfConfigs(GetPostgresCdfConfigsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCdfConfigs:getPostgresCdfConfigs", TypeShape.of(GetPostgresCdfConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists all Postgres CDF (Change Data Feed) configurations under a database.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All CDF Configurations in a Database
+     * 
+     */
+    public static CompletableFuture<GetPostgresCdfConfigsResult> getPostgresCdfConfigsPlain(GetPostgresCdfConfigsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCdfConfigs:getPostgresCdfConfigs", TypeShape.of(GetPostgresCdfConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the replication status of a single Postgres table replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Status by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfStatusArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfStatus(GetPostgresCdfStatusArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public/cdf-statuses/orders")
+     *             .build());
+     * 
+     *         ctx.export("cdfTableState", this_.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresCdfStatusResult> getPostgresCdfStatus(GetPostgresCdfStatusArgs args) {
+        return getPostgresCdfStatus(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the replication status of a single Postgres table replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Status by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfStatusArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfStatus(GetPostgresCdfStatusArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public/cdf-statuses/orders")
+     *             .build());
+     * 
+     *         ctx.export("cdfTableState", this_.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPostgresCdfStatusResult> getPostgresCdfStatusPlain(GetPostgresCdfStatusPlainArgs args) {
+        return getPostgresCdfStatusPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the replication status of a single Postgres table replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Status by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfStatusArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfStatus(GetPostgresCdfStatusArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public/cdf-statuses/orders")
+     *             .build());
+     * 
+     *         ctx.export("cdfTableState", this_.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresCdfStatusResult> getPostgresCdfStatus(GetPostgresCdfStatusArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCdfStatus:getPostgresCdfStatus", TypeShape.of(GetPostgresCdfStatusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the replication status of a single Postgres table replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Status by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfStatusArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfStatus(GetPostgresCdfStatusArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public/cdf-statuses/orders")
+     *             .build());
+     * 
+     *         ctx.export("cdfTableState", this_.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresCdfStatusResult> getPostgresCdfStatus(GetPostgresCdfStatusArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCdfStatus:getPostgresCdfStatus", TypeShape.of(GetPostgresCdfStatusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the replication status of a single Postgres table replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve CDF Status by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCdfStatusArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCdfStatus(GetPostgresCdfStatusArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app_db/cdf-configs/public/cdf-statuses/orders")
+     *             .build());
+     * 
+     *         ctx.export("cdfTableState", this_.state());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPostgresCdfStatusResult> getPostgresCdfStatusPlain(GetPostgresCdfStatusPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCdfStatus:getPostgresCdfStatus", TypeShape.of(GetPostgresCdfStatusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists the replication statuses of all Postgres tables replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Replicated Table Statuses in a CDF Configuration
+     * 
+     */
+    public static Output<GetPostgresCdfStatusesResult> getPostgresCdfStatuses(GetPostgresCdfStatusesArgs args) {
+        return getPostgresCdfStatuses(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists the replication statuses of all Postgres tables replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Replicated Table Statuses in a CDF Configuration
+     * 
+     */
+    public static CompletableFuture<GetPostgresCdfStatusesResult> getPostgresCdfStatusesPlain(GetPostgresCdfStatusesPlainArgs args) {
+        return getPostgresCdfStatusesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists the replication statuses of all Postgres tables replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Replicated Table Statuses in a CDF Configuration
+     * 
+     */
+    public static Output<GetPostgresCdfStatusesResult> getPostgresCdfStatuses(GetPostgresCdfStatusesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCdfStatuses:getPostgresCdfStatuses", TypeShape.of(GetPostgresCdfStatusesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists the replication statuses of all Postgres tables replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Replicated Table Statuses in a CDF Configuration
+     * 
+     */
+    public static Output<GetPostgresCdfStatusesResult> getPostgresCdfStatuses(GetPostgresCdfStatusesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCdfStatuses:getPostgresCdfStatuses", TypeShape.of(GetPostgresCdfStatusesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source lists the replication statuses of all Postgres tables replicated under a CDF (Change Data Feed) configuration.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Replicated Table Statuses in a CDF Configuration
+     * 
+     */
+    public static CompletableFuture<GetPostgresCdfStatusesResult> getPostgresCdfStatusesPlain(GetPostgresCdfStatusesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCdfStatuses:getPostgresCdfStatuses", TypeShape.of(GetPostgresCdfStatusesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

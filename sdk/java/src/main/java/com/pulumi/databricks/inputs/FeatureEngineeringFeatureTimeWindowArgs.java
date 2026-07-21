@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowContinuousArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowLifetimeArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowLongRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowSlidingArgs;
@@ -24,6 +25,21 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
     public Optional<Output<FeatureEngineeringFeatureTimeWindowContinuousArgs>> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+
+    /**
+     * A window that spans the entire lifetime of the data source
+     * 
+     */
+    @Import(name="lifetime")
+    private @Nullable Output<FeatureEngineeringFeatureTimeWindowLifetimeArgs> lifetime;
+
+    /**
+     * @return A window that spans the entire lifetime of the data source
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureTimeWindowLifetimeArgs>> lifetime() {
+        return Optional.ofNullable(this.lifetime);
     }
 
     /**
@@ -66,6 +82,7 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
     private FeatureEngineeringFeatureTimeWindowArgs(FeatureEngineeringFeatureTimeWindowArgs $) {
         this.continuous = $.continuous;
+        this.lifetime = $.lifetime;
         this.longRolling = $.longRolling;
         this.rolling = $.rolling;
         this.sliding = $.sliding;
@@ -97,6 +114,27 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
         public Builder continuous(FeatureEngineeringFeatureTimeWindowContinuousArgs continuous) {
             return continuous(Output.of(continuous));
+        }
+
+        /**
+         * @param lifetime A window that spans the entire lifetime of the data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifetime(@Nullable Output<FeatureEngineeringFeatureTimeWindowLifetimeArgs> lifetime) {
+            $.lifetime = lifetime;
+            return this;
+        }
+
+        /**
+         * @param lifetime A window that spans the entire lifetime of the data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifetime(FeatureEngineeringFeatureTimeWindowLifetimeArgs lifetime) {
+            return lifetime(Output.of(lifetime));
         }
 
         /**

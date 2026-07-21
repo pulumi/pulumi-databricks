@@ -69,7 +69,7 @@ export interface GetSupervisorAgentToolResult {
      */
     readonly toolId: string;
     /**
-     * (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+     * (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "databricksWebSearch", "skill". The legacy values "lakeviewDashboard", "ucTable", and "webSearch" are also accepted and remain equivalent to "dashboard", "table", and "databricksWebSearch" respectively. The "databricksWebSearch" toolType maps to the `webSearch` spec field
      */
     readonly toolType: string;
     /**

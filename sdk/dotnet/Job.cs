@@ -234,6 +234,9 @@ namespace Pulumi.Databricks
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.JobParameter>> Parameters { get; private set; } = null!;
 
+        [Output("parentPath")]
+        public Output<string?> ParentPath { get; private set; } = null!;
+
         /// <summary>
         /// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
         /// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -517,6 +520,9 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
+        [Input("parentPath")]
+        public Input<string>? ParentPath { get; set; }
+
         /// <summary>
         /// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
         /// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -767,6 +773,9 @@ namespace Pulumi.Databricks
             get => _parameters ?? (_parameters = new InputList<Inputs.JobParameterGetArgs>());
             set => _parameters = value;
         }
+
+        [Input("parentPath")]
+        public Input<string>? ParentPath { get; set; }
 
         /// <summary>
         /// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:

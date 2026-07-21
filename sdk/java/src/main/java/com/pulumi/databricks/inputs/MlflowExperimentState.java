@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MlflowExperimentProviderConfigArgs;
 import com.pulumi.databricks.inputs.MlflowExperimentTagArgs;
+import com.pulumi.databricks.inputs.MlflowExperimentTraceLocationArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -126,6 +127,13 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="traceLocation")
+    private @Nullable Output<MlflowExperimentTraceLocationArgs> traceLocation;
+
+    public Optional<Output<MlflowExperimentTraceLocationArgs>> traceLocation() {
+        return Optional.ofNullable(this.traceLocation);
+    }
+
     private MlflowExperimentState() {}
 
     private MlflowExperimentState(MlflowExperimentState $) {
@@ -138,6 +146,7 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.providerConfig = $.providerConfig;
         this.tags = $.tags;
+        this.traceLocation = $.traceLocation;
     }
 
     public static Builder builder() {
@@ -311,6 +320,15 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
          */
         public Builder tags(MlflowExperimentTagArgs... tags) {
             return tags(List.of(tags));
+        }
+
+        public Builder traceLocation(@Nullable Output<MlflowExperimentTraceLocationArgs> traceLocation) {
+            $.traceLocation = traceLocation;
+            return this;
+        }
+
+        public Builder traceLocation(MlflowExperimentTraceLocationArgs traceLocation) {
+            return traceLocation(Output.of(traceLocation));
         }
 
         public MlflowExperimentState build() {

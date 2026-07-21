@@ -13,7 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskAiRuntimeTask
     {
-        public readonly string? CodeSourcePath;
         public readonly ImmutableArray<Outputs.JobTaskAiRuntimeTaskDeployment> Deployments;
         public readonly string Experiment;
         public readonly string? MlflowExperimentDirectory;
@@ -21,8 +20,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTaskAiRuntimeTask(
-            string? codeSourcePath,
-
             ImmutableArray<Outputs.JobTaskAiRuntimeTaskDeployment> deployments,
 
             string experiment,
@@ -31,7 +28,6 @@ namespace Pulumi.Databricks.Outputs
 
             string? mlflowRun)
         {
-            CodeSourcePath = codeSourcePath;
             Deployments = deployments;
             Experiment = experiment;
             MlflowExperimentDirectory = mlflowExperimentDirectory;

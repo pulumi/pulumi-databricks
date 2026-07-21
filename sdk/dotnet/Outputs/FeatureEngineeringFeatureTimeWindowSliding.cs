@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureTimeWindowSliding
     {
-        /// <summary>
-        /// The slide duration (interval by which windows advance, must be positive and less than duration)
-        /// </summary>
         public readonly string SlideDuration;
         public readonly string WindowDuration;
 

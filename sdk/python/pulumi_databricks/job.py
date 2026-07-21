@@ -45,6 +45,7 @@ class JobArgs:
                  notebook_task: pulumi.Input[Optional['JobNotebookTaskArgs']] = None,
                  notification_settings: pulumi.Input[Optional['JobNotificationSettingsArgs']] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_target: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_task: pulumi.Input[Optional['JobPipelineTaskArgs']] = None,
                  provider_config: pulumi.Input[Optional['JobProviderConfigArgs']] = None,
@@ -160,6 +161,8 @@ class JobArgs:
             pulumi.set(__self__, "notification_settings", notification_settings)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if parent_path is not None:
+            pulumi.set(__self__, "parent_path", parent_path)
         if performance_target is not None:
             pulumi.set(__self__, "performance_target", performance_target)
         if pipeline_task is not None:
@@ -490,6 +493,15 @@ class JobArgs:
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parent_path")
+
+    @parent_path.setter
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent_path", value)
+
+    @_builtins.property
     @pulumi.getter(name="performanceTarget")
     def performance_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -718,6 +730,7 @@ class _JobState:
                  notebook_task: pulumi.Input[Optional['JobNotebookTaskArgs']] = None,
                  notification_settings: pulumi.Input[Optional['JobNotificationSettingsArgs']] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_target: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_task: pulumi.Input[Optional['JobPipelineTaskArgs']] = None,
                  provider_config: pulumi.Input[Optional['JobProviderConfigArgs']] = None,
@@ -835,6 +848,8 @@ class _JobState:
             pulumi.set(__self__, "notification_settings", notification_settings)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if parent_path is not None:
+            pulumi.set(__self__, "parent_path", parent_path)
         if performance_target is not None:
             pulumi.set(__self__, "performance_target", performance_target)
         if pipeline_task is not None:
@@ -1167,6 +1182,15 @@ class _JobState:
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "parent_path")
+
+    @parent_path.setter
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent_path", value)
+
+    @_builtins.property
     @pulumi.getter(name="performanceTarget")
     def performance_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1410,6 +1434,7 @@ class Job(pulumi.CustomResource):
                  notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
                  notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_target: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
                  provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
@@ -1655,6 +1680,7 @@ class Job(pulumi.CustomResource):
                  notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
                  notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_target: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
                  provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
@@ -1706,6 +1732,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["notebook_task"] = notebook_task
             __props__.__dict__["notification_settings"] = notification_settings
             __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["parent_path"] = parent_path
             __props__.__dict__["performance_target"] = performance_target
             __props__.__dict__["pipeline_task"] = pipeline_task
             __props__.__dict__["provider_config"] = provider_config
@@ -1759,6 +1786,7 @@ class Job(pulumi.CustomResource):
             notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
             notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
             parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
             performance_target: pulumi.Input[Optional[_builtins.str]] = None,
             pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
             provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
@@ -1845,6 +1873,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["notebook_task"] = notebook_task
         __props__.__dict__["notification_settings"] = notification_settings
         __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["parent_path"] = parent_path
         __props__.__dict__["performance_target"] = performance_target
         __props__.__dict__["pipeline_task"] = pipeline_task
         __props__.__dict__["provider_config"] = provider_config
@@ -2040,6 +2069,11 @@ class Job(pulumi.CustomResource):
         Specifies job parameter for the job. See parameter Configuration Block
         """
         return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "parent_path")
 
     @_builtins.property
     @pulumi.getter(name="performanceTarget")

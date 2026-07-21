@@ -82,7 +82,7 @@ def get_alerts_v2(page_size: Optional[_builtins.int] = None,
                   provider_config: Optional[Union['GetAlertsV2ProviderConfigArgs', 'GetAlertsV2ProviderConfigArgsDict']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertsV2Result:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
 
@@ -122,7 +122,7 @@ def get_alerts_v2_output(page_size: pulumi.Input[Optional[Optional[_builtins.int
                          provider_config: pulumi.Input[Optional[Optional[Union['GetAlertsV2ProviderConfigArgs', 'GetAlertsV2ProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertsV2Result]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
 

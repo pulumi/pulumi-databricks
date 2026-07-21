@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetDisasterRecoveryFailoverGroup
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDisasterRecoveryFailoverGroupResult>("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", args ?? new GetDisasterRecoveryFailoverGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryFailoverGroupResult>("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", args ?? new GetDisasterRecoveryFailoverGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 

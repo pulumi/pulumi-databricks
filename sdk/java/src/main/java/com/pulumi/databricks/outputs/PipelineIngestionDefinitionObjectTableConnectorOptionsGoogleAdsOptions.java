@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -13,11 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions {
+    private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions customReportOptions;
     private @Nullable Integer lookbackWindowDays;
     private String managerAccountId;
     private @Nullable String syncStartDate;
 
     private PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions() {}
+    public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions> customReportOptions() {
+        return Optional.ofNullable(this.customReportOptions);
+    }
     public Optional<Integer> lookbackWindowDays() {
         return Optional.ofNullable(this.lookbackWindowDays);
     }
@@ -37,17 +42,25 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleA
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions customReportOptions;
         private @Nullable Integer lookbackWindowDays;
         private String managerAccountId;
         private @Nullable String syncStartDate;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customReportOptions = defaults.customReportOptions;
     	      this.lookbackWindowDays = defaults.lookbackWindowDays;
     	      this.managerAccountId = defaults.managerAccountId;
     	      this.syncStartDate = defaults.syncStartDate;
         }
 
+        @CustomType.Setter
+        public Builder customReportOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions customReportOptions) {
+
+            this.customReportOptions = customReportOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder lookbackWindowDays(@Nullable Integer lookbackWindowDays) {
 
@@ -70,6 +83,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleA
         }
         public PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions();
+            _resultValue.customReportOptions = customReportOptions;
             _resultValue.lookbackWindowDays = lookbackWindowDays;
             _resultValue.managerAccountId = managerAccountId;
             _resultValue.syncStartDate = syncStartDate;

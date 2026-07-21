@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetDisasterRecoveryFailoverGroups
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDisasterRecoveryFailoverGroupsResult>("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", args ?? new GetDisasterRecoveryFailoverGroupsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryFailoverGroupsResult>("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", args ?? new GetDisasterRecoveryFailoverGroupsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 

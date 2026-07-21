@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The slide duration (interval by which windows advance, must be positive and less than duration)
-        /// </summary>
         [Input("slideDuration", required: true)]
         public Input<string> SlideDuration { get; set; } = null!;
 

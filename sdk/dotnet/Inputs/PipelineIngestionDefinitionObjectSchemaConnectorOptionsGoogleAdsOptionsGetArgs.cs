@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("customReportOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptionsGetArgs>? CustomReportOptions { get; set; }
+
         [Input("lookbackWindowDays")]
         public Input<int>? LookbackWindowDays { get; set; }
 

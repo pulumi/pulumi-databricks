@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 //
@@ -53,6 +53,13 @@ import (
 type DisasterRecoveryStableUrl struct {
 	pulumi.CustomResourceState
 
+	// (string) - The workspace this stable URL currently routes to. Set to
+	// `initialWorkspaceId` at creation, advanced to the failover group's primary
+	// while attached (including across a failover), and preserved when the stable
+	// URL is detached from its failover group. Read this to see where an unattached
+	// stable URL points: after a failover followed by a detach it reflects the
+	// post-failover primary, not `initialWorkspaceId`
+	EffectiveWorkspaceId pulumi.StringOutput `pulumi:"effectiveWorkspaceId"`
 	// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
 	// currently linked to, in the format
 	// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -70,6 +77,11 @@ type DisasterRecoveryStableUrl struct {
 	// Client-provided identifier for the stable URL. Used to construct the
 	// resource name as {parent}/stable-urls/{stable_url_id}
 	StableUrlId pulumi.StringOutput `pulumi:"stableUrlId"`
+	// (string) - The stable workspace ID for this stable URL. Generated on creation and
+	// immutable thereafter; identifies the URL across failovers and is the same
+	// value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+	// or in the `conn-<id>` hostname for Private-Link URLs)
+	StableWorkspaceId pulumi.StringOutput `pulumi:"stableWorkspaceId"`
 	// (string) - The stable URL endpoint. Generated on creation and
 	// immutable thereafter. For non-Private-Link workspaces this is
 	// `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
@@ -116,6 +128,13 @@ func GetDisasterRecoveryStableUrl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DisasterRecoveryStableUrl resources.
 type disasterRecoveryStableUrlState struct {
+	// (string) - The workspace this stable URL currently routes to. Set to
+	// `initialWorkspaceId` at creation, advanced to the failover group's primary
+	// while attached (including across a failover), and preserved when the stable
+	// URL is detached from its failover group. Read this to see where an unattached
+	// stable URL points: after a failover followed by a detach it reflects the
+	// post-failover primary, not `initialWorkspaceId`
+	EffectiveWorkspaceId *string `pulumi:"effectiveWorkspaceId"`
 	// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
 	// currently linked to, in the format
 	// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -133,6 +152,11 @@ type disasterRecoveryStableUrlState struct {
 	// Client-provided identifier for the stable URL. Used to construct the
 	// resource name as {parent}/stable-urls/{stable_url_id}
 	StableUrlId *string `pulumi:"stableUrlId"`
+	// (string) - The stable workspace ID for this stable URL. Generated on creation and
+	// immutable thereafter; identifies the URL across failovers and is the same
+	// value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+	// or in the `conn-<id>` hostname for Private-Link URLs)
+	StableWorkspaceId *string `pulumi:"stableWorkspaceId"`
 	// (string) - The stable URL endpoint. Generated on creation and
 	// immutable thereafter. For non-Private-Link workspaces this is
 	// `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
@@ -141,6 +165,13 @@ type disasterRecoveryStableUrlState struct {
 }
 
 type DisasterRecoveryStableUrlState struct {
+	// (string) - The workspace this stable URL currently routes to. Set to
+	// `initialWorkspaceId` at creation, advanced to the failover group's primary
+	// while attached (including across a failover), and preserved when the stable
+	// URL is detached from its failover group. Read this to see where an unattached
+	// stable URL points: after a failover followed by a detach it reflects the
+	// post-failover primary, not `initialWorkspaceId`
+	EffectiveWorkspaceId pulumi.StringPtrInput
 	// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
 	// currently linked to, in the format
 	// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -158,6 +189,11 @@ type DisasterRecoveryStableUrlState struct {
 	// Client-provided identifier for the stable URL. Used to construct the
 	// resource name as {parent}/stable-urls/{stable_url_id}
 	StableUrlId pulumi.StringPtrInput
+	// (string) - The stable workspace ID for this stable URL. Generated on creation and
+	// immutable thereafter; identifies the URL across failovers and is the same
+	// value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+	// or in the `conn-<id>` hostname for Private-Link URLs)
+	StableWorkspaceId pulumi.StringPtrInput
 	// (string) - The stable URL endpoint. Generated on creation and
 	// immutable thereafter. For non-Private-Link workspaces this is
 	// `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
@@ -281,6 +317,16 @@ func (o DisasterRecoveryStableUrlOutput) ToDisasterRecoveryStableUrlOutputWithCo
 	return o
 }
 
+// (string) - The workspace this stable URL currently routes to. Set to
+// `initialWorkspaceId` at creation, advanced to the failover group's primary
+// while attached (including across a failover), and preserved when the stable
+// URL is detached from its failover group. Read this to see where an unattached
+// stable URL points: after a failover followed by a detach it reflects the
+// post-failover primary, not `initialWorkspaceId`
+func (o DisasterRecoveryStableUrlOutput) EffectiveWorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DisasterRecoveryStableUrl) pulumi.StringOutput { return v.EffectiveWorkspaceId }).(pulumi.StringOutput)
+}
+
 // (string) - Fully qualified resource name of the FailoverGroup this stable URL is
 // currently linked to, in the format
 // `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -311,6 +357,14 @@ func (o DisasterRecoveryStableUrlOutput) Parent() pulumi.StringOutput {
 // resource name as {parent}/stable-urls/{stable_url_id}
 func (o DisasterRecoveryStableUrlOutput) StableUrlId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryStableUrl) pulumi.StringOutput { return v.StableUrlId }).(pulumi.StringOutput)
+}
+
+// (string) - The stable workspace ID for this stable URL. Generated on creation and
+// immutable thereafter; identifies the URL across failovers and is the same
+// value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+// or in the `conn-<id>` hostname for Private-Link URLs)
+func (o DisasterRecoveryStableUrlOutput) StableWorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DisasterRecoveryStableUrl) pulumi.StringOutput { return v.StableWorkspaceId }).(pulumi.StringOutput)
 }
 
 // (string) - The stable URL endpoint. Generated on creation and

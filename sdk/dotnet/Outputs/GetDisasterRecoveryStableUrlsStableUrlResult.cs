@@ -14,6 +14,15 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDisasterRecoveryStableUrlsStableUrlResult
     {
         /// <summary>
+        /// (string) - The workspace this stable URL currently routes to. Set to
+        /// `InitialWorkspaceId` at creation, advanced to the failover group's primary
+        /// while attached (including across a failover), and preserved when the stable
+        /// URL is detached from its failover group. Read this to see where an unattached
+        /// stable URL points: after a failover followed by a detach it reflects the
+        /// post-failover primary, not `InitialWorkspaceId`
+        /// </summary>
+        public readonly string EffectiveWorkspaceId;
+        /// <summary>
         /// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
         /// currently linked to, in the format
         /// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -32,6 +41,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// (string) - The stable workspace ID for this stable URL. Generated on creation and
+        /// immutable thereafter; identifies the URL across failovers and is the same
+        /// value embedded in the `Url` (as the `w=` query parameter for SPOG URLs,
+        /// or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+        /// </summary>
+        public readonly string StableWorkspaceId;
+        /// <summary>
         /// (string) - The stable URL endpoint. Generated on creation and
         /// immutable thereafter. For non-Private-Link workspaces this is
         /// `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
@@ -41,17 +57,23 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetDisasterRecoveryStableUrlsStableUrlResult(
+            string effectiveWorkspaceId,
+
             string failoverGroupName,
 
             string initialWorkspaceId,
 
             string name,
 
+            string stableWorkspaceId,
+
             string url)
         {
+            EffectiveWorkspaceId = effectiveWorkspaceId;
             FailoverGroupName = failoverGroupName;
             InitialWorkspaceId = initialWorkspaceId;
             Name = name;
+            StableWorkspaceId = stableWorkspaceId;
             Url = url;
         }
     }

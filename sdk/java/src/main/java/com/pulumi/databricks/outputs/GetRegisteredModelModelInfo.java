@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetRegisteredModelModelInfoAlias;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -20,7 +21,7 @@ public final class GetRegisteredModelModelInfo {
      * 
      */
     private @Nullable List<GetRegisteredModelModelInfoAlias> aliases;
-    private @Nullable Boolean browseOnly;
+    private Boolean browseOnly;
     /**
      * @return The name of the catalog where the schema and the registered model reside.
      * 
@@ -90,8 +91,8 @@ public final class GetRegisteredModelModelInfo {
     public List<GetRegisteredModelModelInfoAlias> aliases() {
         return this.aliases == null ? List.of() : this.aliases;
     }
-    public Optional<Boolean> browseOnly() {
-        return Optional.ofNullable(this.browseOnly);
+    public Boolean browseOnly() {
+        return this.browseOnly;
     }
     /**
      * @return The name of the catalog where the schema and the registered model reside.
@@ -188,7 +189,7 @@ public final class GetRegisteredModelModelInfo {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetRegisteredModelModelInfoAlias> aliases;
-        private @Nullable Boolean browseOnly;
+        private Boolean browseOnly;
         private @Nullable String catalogName;
         private @Nullable String comment;
         private @Nullable Integer createdAt;
@@ -230,8 +231,10 @@ public final class GetRegisteredModelModelInfo {
             return aliases(List.of(aliases));
         }
         @CustomType.Setter
-        public Builder browseOnly(@Nullable Boolean browseOnly) {
-
+        public Builder browseOnly(Boolean browseOnly) {
+            if (browseOnly == null) {
+              throw new MissingRequiredPropertyException("GetRegisteredModelModelInfo", "browseOnly");
+            }
             this.browseOnly = browseOnly;
             return this;
         }

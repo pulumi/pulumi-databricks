@@ -260,6 +260,28 @@ class AccountNetworkPolicy(pulumi.CustomResource):
             })
         ```
 
+        Restrict ingress to private connectivity by only allowing requests from registered private endpoints:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example_private_access_policy = databricks.AccountNetworkPolicy("example_private_access_policy",
+            network_policy_id="example-private-access-policy",
+            ingress={
+                "private_access": {
+                    "restriction_mode": "RESTRICTED_ACCESS",
+                    "allow_rules": [{
+                        "origin": {
+                            "endpoints": {
+                                "endpoint_ids": ["example-private-endpoint-id"],
+                            },
+                        },
+                    }],
+                },
+            })
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -317,6 +339,28 @@ class AccountNetworkPolicy(pulumi.CustomResource):
                     "policy_enforcement": {
                         "enforcement_mode": "ENFORCED",
                     },
+                },
+            })
+        ```
+
+        Restrict ingress to private connectivity by only allowing requests from registered private endpoints:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example_private_access_policy = databricks.AccountNetworkPolicy("example_private_access_policy",
+            network_policy_id="example-private-access-policy",
+            ingress={
+                "private_access": {
+                    "restriction_mode": "RESTRICTED_ACCESS",
+                    "allow_rules": [{
+                        "origin": {
+                            "endpoints": {
+                                "endpoint_ids": ["example-private-endpoint-id"],
+                            },
+                        },
+                    }],
                 },
             })
         ```

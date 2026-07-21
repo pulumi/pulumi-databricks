@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
         public Output<string> ToolId { get; private set; } = null!;
 
         /// <summary>
-        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch", "skill". The legacy values "LakeviewDashboard" and "UcTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "DatabricksWebSearch", "skill". The legacy values "LakeviewDashboard", "UcTable", and "WebSearch" are also accepted and remain equivalent to "dashboard", "table", and "DatabricksWebSearch" respectively. The "DatabricksWebSearch" ToolType maps to the `WebSearch` spec field
         /// </summary>
         [Output("toolType")]
         public Output<string> ToolType { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Databricks
         public Input<string> ToolId { get; set; } = null!;
 
         /// <summary>
-        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch", "skill". The legacy values "LakeviewDashboard" and "UcTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "DatabricksWebSearch", "skill". The legacy values "LakeviewDashboard", "UcTable", and "WebSearch" are also accepted and remain equivalent to "dashboard", "table", and "DatabricksWebSearch" respectively. The "DatabricksWebSearch" ToolType maps to the `WebSearch` spec field
         /// </summary>
         [Input("toolType", required: true)]
         public Input<string> ToolType { get; set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Databricks
         public Input<string>? ToolId { get; set; }
 
         /// <summary>
-        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch", "skill". The legacy values "LakeviewDashboard" and "UcTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "DatabricksWebSearch", "skill". The legacy values "LakeviewDashboard", "UcTable", and "WebSearch" are also accepted and remain equivalent to "dashboard", "table", and "DatabricksWebSearch" respectively. The "DatabricksWebSearch" ToolType maps to the `WebSearch` spec field
         /// </summary>
         [Input("toolType")]
         public Input<string>? ToolType { get; set; }

@@ -4700,6 +4700,10 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     continuous?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
     /**
+     * A window that spans the entire lifetime of the data source
+     */
+    lifetime?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime;
+    /**
      * A long (multi-day) rolling window served via the hybrid batch + streaming path
      */
     longRolling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
@@ -4716,6 +4720,10 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowC
     windowDuration: string;
 }
 
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime {
+    slideDuration?: string;
+}
+
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
     delay?: string;
     windowDuration: string;
@@ -4727,9 +4735,6 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowR
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
-    /**
-     * The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
     slideDuration: string;
     windowDuration: string;
 }
@@ -4927,6 +4932,10 @@ export interface FeatureEngineeringFeatureSourceStreamSource {
 export interface FeatureEngineeringFeatureTimeWindow {
     continuous?: outputs.FeatureEngineeringFeatureTimeWindowContinuous;
     /**
+     * A window that spans the entire lifetime of the data source
+     */
+    lifetime?: outputs.FeatureEngineeringFeatureTimeWindowLifetime;
+    /**
      * A long (multi-day) rolling window served via the hybrid batch + streaming path
      */
     longRolling?: outputs.FeatureEngineeringFeatureTimeWindowLongRolling;
@@ -4943,6 +4952,10 @@ export interface FeatureEngineeringFeatureTimeWindowContinuous {
     windowDuration: string;
 }
 
+export interface FeatureEngineeringFeatureTimeWindowLifetime {
+    slideDuration?: string;
+}
+
 export interface FeatureEngineeringFeatureTimeWindowLongRolling {
     delay?: string;
     windowDuration: string;
@@ -4954,9 +4967,6 @@ export interface FeatureEngineeringFeatureTimeWindowRolling {
 }
 
 export interface FeatureEngineeringFeatureTimeWindowSliding {
-    /**
-     * The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
     slideDuration: string;
     windowDuration: string;
 }
@@ -15687,6 +15697,15 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
 
 export interface GetDisasterRecoveryStableUrlsStableUrl {
     /**
+     * (string) - The workspace this stable URL currently routes to. Set to
+     * `initialWorkspaceId` at creation, advanced to the failover group's primary
+     * while attached (including across a failover), and preserved when the stable
+     * URL is detached from its failover group. Read this to see where an unattached
+     * stable URL points: after a failover followed by a detach it reflects the
+     * post-failover primary, not `initialWorkspaceId`
+     */
+    effectiveWorkspaceId: string;
+    /**
      * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
      * currently linked to, in the format
      * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -15704,6 +15723,13 @@ export interface GetDisasterRecoveryStableUrlsStableUrl {
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}
      */
     name: string;
+    /**
+     * (string) - The stable workspace ID for this stable URL. Generated on creation and
+     * immutable thereafter; identifies the URL across failovers and is the same
+     * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+     * or in the `conn-<id>` hostname for Private-Link URLs)
+     */
+    stableWorkspaceId: string;
     /**
      * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
@@ -16477,6 +16503,10 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
      */
     continuous?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
     /**
+     * (LifetimeWindow) - A window that spans the entire lifetime of the data source
+     */
+    lifetime?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime;
+    /**
      * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
      */
     longRolling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
@@ -16503,6 +16533,13 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
     windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime {
+    /**
+     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
@@ -16753,6 +16790,10 @@ export interface GetFeatureEngineeringFeatureTimeWindow {
      */
     continuous?: outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
     /**
+     * (LifetimeWindow) - A window that spans the entire lifetime of the data source
+     */
+    lifetime?: outputs.GetFeatureEngineeringFeatureTimeWindowLifetime;
+    /**
      * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
      */
     longRolling?: outputs.GetFeatureEngineeringFeatureTimeWindowLongRolling;
@@ -16779,6 +16820,13 @@ export interface GetFeatureEngineeringFeatureTimeWindowContinuous {
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
     windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureTimeWindowLifetime {
+    /**
+     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeatureTimeWindowLongRolling {
@@ -17160,6 +17208,10 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      */
     continuous?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous;
     /**
+     * (LifetimeWindow) - A window that spans the entire lifetime of the data source
+     */
+    lifetime?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLifetime;
+    /**
      * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
      */
     longRolling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRolling;
@@ -17186,6 +17238,13 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
     windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLifetime {
+    /**
+     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRolling {
@@ -17432,6 +17491,10 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
      */
     continuous?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous;
     /**
+     * (LifetimeWindow) - A window that spans the entire lifetime of the data source
+     */
+    lifetime?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowLifetime;
+    /**
      * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
      */
     longRolling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowLongRolling;
@@ -17458,6 +17521,13 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous {
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
     windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureTimeWindowLifetime {
+    /**
+     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindowLongRolling {
@@ -20651,6 +20721,16 @@ export interface GetMlflowExperimentTag {
     value?: string;
 }
 
+export interface GetMlflowExperimentTraceLocation {
+    ucTraceLocation?: outputs.GetMlflowExperimentTraceLocationUcTraceLocation;
+}
+
+export interface GetMlflowExperimentTraceLocationUcTraceLocation {
+    catalog: string;
+    schema: string;
+    tablePrefix?: string;
+}
+
 export interface GetMlflowModelLatestVersion {
     creationTimestamp?: number;
     currentStage?: string;
@@ -21501,6 +21581,126 @@ export interface GetPostgresCatalogStatus {
     project: string;
 }
 
+export interface GetPostgresCdfConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresCdfConfigsCdfConfig {
+    /**
+     * (string) - The Unity Catalog catalog that replicated tables are written into.
+     * Set at creation; the CdfConfig is immutable
+     */
+    catalog: string;
+    /**
+     * (string) - The user-specified id; equals the final segment of `name`. Defaults to the
+     * Postgres schema name for configs without an explicit id
+     */
+    cdfConfigId: string;
+    /**
+     * (string) - When the CdfConfig was created
+     */
+    createTime: string;
+    /**
+     * (string) - Output only. The full resource name of the CdfConfig.
+     * Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
+     */
+    name: string;
+    /**
+     * (string) - The Postgres schema this CdfConfig replicates from. Unique within the
+     * parent database. Set at creation; the CdfConfig is immutable
+     */
+    postgresSchema: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetPostgresCdfConfigsCdfConfigProviderConfig;
+    /**
+     * (string) - The Unity Catalog schema that replicated tables are written into.
+     * Set at creation; the CdfConfig is immutable
+     */
+    schema: string;
+}
+
+export interface GetPostgresCdfConfigsCdfConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresCdfConfigsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresCdfStatusProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresCdfStatusesCdfStatus {
+    /**
+     * (string) - The high-watermark Log Sequence Number (LSN) committed to Delta Lake
+     */
+    committedLsn: string;
+    /**
+     * (string) - When replication for this table was first established
+     */
+    createTime: string;
+    /**
+     * (string) - The last time changes for this table were written to Delta Lake
+     */
+    lastSyncTime: string;
+    /**
+     * (string) - Output only. The full resource name of the CdfStatus.
+     * Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}/cdf-statuses/{cdf_status}
+     * The {cdf_status} segment is the Postgres table name
+     */
+    name: string;
+    /**
+     * (string) - The Postgres table being replicated
+     */
+    postgresTable: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetPostgresCdfStatusesCdfStatusProviderConfig;
+    /**
+     * (string) - The current replication state of this table. Possible values are: `CDF_STATE_SKIPPED`, `CDF_STATE_SNAPSHOTTING`, `CDF_STATE_STREAMING`, `CDF_STATE_TERMINATED`
+     */
+    state: string;
+    /**
+     * (string) - Human-readable detail for the current state (e.g. the skip/error reason).
+     * Empty for healthy states
+     */
+    statusDetail: string;
+    /**
+     * (string) - The Unity Catalog table receiving replicated data
+     */
+    ucTable: string;
+}
+
+export interface GetPostgresCdfStatusesCdfStatusProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresCdfStatusesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetPostgresDataApiProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -21610,7 +21810,7 @@ export interface GetPostgresDatabaseSpec {
      * (string) - The name of the role that owns the database.
      * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
      */
-    role?: string;
+    role: string;
 }
 
 export interface GetPostgresDatabaseStatus {
@@ -21682,7 +21882,7 @@ export interface GetPostgresDatabasesDatabaseSpec {
      * (string) - The name of the role that owns the database.
      * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
      */
-    role?: string;
+    role: string;
 }
 
 export interface GetPostgresDatabasesDatabaseStatus {
@@ -23224,7 +23424,7 @@ export interface GetRegisteredModelModelInfo {
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
      */
     aliases?: outputs.GetRegisteredModelModelInfoAlias[];
-    browseOnly?: boolean;
+    browseOnly: boolean;
     /**
      * The name of the catalog where the schema and the registered model reside.
      */
@@ -24468,7 +24668,7 @@ export interface GetSupervisorAgentToolsTool {
      */
     toolId: string;
     /**
-     * (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+     * (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "databricksWebSearch", "skill". The legacy values "lakeviewDashboard", "ucTable", and "webSearch" are also accepted and remain equivalent to "dashboard", "table", and "databricksWebSearch" respectively. The "databricksWebSearch" toolType maps to the `webSearch` spec field
      */
     toolType: string;
     /**
@@ -26702,7 +26902,6 @@ export interface JobTask {
 }
 
 export interface JobTaskAiRuntimeTask {
-    codeSourcePath?: string;
     deployments: outputs.JobTaskAiRuntimeTaskDeployment[];
     experiment: string;
     mlflowExperimentDirectory?: string;
@@ -27050,7 +27249,6 @@ export interface JobTaskForEachTaskTask {
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTask {
-    codeSourcePath?: string;
     deployments: outputs.JobTaskForEachTaskTaskAiRuntimeTaskDeployment[];
     experiment: string;
     mlflowExperimentDirectory?: string;
@@ -29228,6 +29426,16 @@ export interface MlflowExperimentTag {
     value?: string;
 }
 
+export interface MlflowExperimentTraceLocation {
+    ucTraceLocation?: outputs.MlflowExperimentTraceLocationUcTraceLocation;
+}
+
+export interface MlflowExperimentTraceLocationUcTraceLocation {
+    catalog: string;
+    schema: string;
+    tablePrefix?: string;
+}
+
 export interface MlflowModelProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -30280,11 +30488,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -30351,11 +30559,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -30938,6 +31146,7 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    sourceMetadataColumn?: string;
     tableProperties?: {[key: string]: string};
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters;
 }
@@ -31021,9 +31230,17 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOp
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions {
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptions;
     lookbackWindowDays?: number;
     managerAccountId: string;
     syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptions {
+    metrics?: string[];
+    resource: string;
+    resourceFields?: string[];
+    segments?: string[];
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions {
@@ -31078,8 +31295,18 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsO
     actionReportTime?: string;
     breakdowns?: string[];
     customInsightsLookbackWindow?: number;
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions;
     level?: string;
     startDate?: string;
+    timeIncrement?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions {
+    actionAttributionWindows?: string[];
+    actionBreakdowns?: string[];
+    actionReportTime?: string;
+    breakdowns?: string[];
+    level?: string;
     timeIncrement?: string;
 }
 
@@ -31130,6 +31357,7 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartshe
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions {
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptions;
     dataLevel?: string;
     dimensions?: string[];
     lookbackWindowDays?: number;
@@ -31137,6 +31365,14 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAd
     queryLifetime?: boolean;
     reportType?: string;
     syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptions {
+    dataLevel?: string;
+    dimensions?: string[];
+    metrics?: string[];
+    queryLifetime?: boolean;
+    reportType?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions {
@@ -31155,6 +31391,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    sourceMetadataColumn?: string;
     tableProperties?: {[key: string]: string};
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters;
 }
@@ -31240,9 +31477,17 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOpt
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions {
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions;
     lookbackWindowDays?: number;
     managerAccountId: string;
     syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions {
+    metrics?: string[];
+    resource: string;
+    resourceFields?: string[];
+    segments?: string[];
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions {
@@ -31297,8 +31542,18 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOp
     actionReportTime?: string;
     breakdowns?: string[];
     customInsightsLookbackWindow?: number;
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptions;
     level?: string;
     startDate?: string;
+    timeIncrement?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptions {
+    actionAttributionWindows?: string[];
+    actionBreakdowns?: string[];
+    actionReportTime?: string;
+    breakdowns?: string[];
+    level?: string;
     timeIncrement?: string;
 }
 
@@ -31349,6 +31604,7 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSmartshee
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions {
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions;
     dataLevel?: string;
     dimensions?: string[];
     lookbackWindowDays?: number;
@@ -31356,6 +31612,14 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAds
     queryLifetime?: boolean;
     reportType?: string;
     syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions {
+    dataLevel?: string;
+    dimensions?: string[];
+    metrics?: string[];
+    queryLifetime?: boolean;
+    reportType?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions {
@@ -31374,6 +31638,7 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    sourceMetadataColumn?: string;
     tableProperties?: {[key: string]: string};
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters;
 }
@@ -31438,6 +31703,7 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    sourceMetadataColumn?: string;
     tableProperties?: {[key: string]: string};
     workdayReportParameters?: outputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters;
 }
@@ -31760,6 +32026,13 @@ export interface PostgresCatalogStatus {
     project: string;
 }
 
+export interface PostgresCdfConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface PostgresDataApiProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -31862,7 +32135,7 @@ export interface PostgresDatabaseProviderConfig {
 
 export interface PostgresDatabaseSpec {
     postgresDatabase?: string;
-    role?: string;
+    role: string;
 }
 
 export interface PostgresDatabaseStatus {

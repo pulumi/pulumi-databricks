@@ -79,15 +79,23 @@ class DisasterRecoveryStableUrlArgs:
 @pulumi.input_type
 class _DisasterRecoveryStableUrlState:
     def __init__(__self__, *,
+                 effective_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  stable_url_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stable_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisasterRecoveryStableUrl resources.
 
+        :param pulumi.Input[_builtins.str] effective_workspace_id: (string) - The workspace this stable URL currently routes to. Set to
+               `initial_workspace_id` at creation, advanced to the failover group's primary
+               while attached (including across a failover), and preserved when the stable
+               URL is detached from its failover group. Read this to see where an unattached
+               stable URL points: after a failover followed by a detach it reflects the
+               post-failover primary, not `initial_workspace_id`
         :param pulumi.Input[_builtins.str] failover_group_name: (string) - Fully qualified resource name of the FailoverGroup this stable URL is
                currently linked to, in the format
                `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -100,11 +108,17 @@ class _DisasterRecoveryStableUrlState:
         :param pulumi.Input[_builtins.str] parent: The parent resource. Format: accounts/{account_id}
         :param pulumi.Input[_builtins.str] stable_url_id: Client-provided identifier for the stable URL. Used to construct the
                resource name as {parent}/stable-urls/{stable_url_id}
+        :param pulumi.Input[_builtins.str] stable_workspace_id: (string) - The stable workspace ID for this stable URL. Generated on creation and
+               immutable thereafter; identifies the URL across failovers and is the same
+               value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+               or in the `conn-<id>` hostname for Private-Link URLs)
         :param pulumi.Input[_builtins.str] url: (string) - The stable URL endpoint. Generated on creation and
                immutable thereafter. For non-Private-Link workspaces this is
                `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
                this is the per-connection hostname
         """
+        if effective_workspace_id is not None:
+            pulumi.set(__self__, "effective_workspace_id", effective_workspace_id)
         if failover_group_name is not None:
             pulumi.set(__self__, "failover_group_name", failover_group_name)
         if initial_workspace_id is not None:
@@ -115,8 +129,27 @@ class _DisasterRecoveryStableUrlState:
             pulumi.set(__self__, "parent", parent)
         if stable_url_id is not None:
             pulumi.set(__self__, "stable_url_id", stable_url_id)
+        if stable_workspace_id is not None:
+            pulumi.set(__self__, "stable_workspace_id", stable_workspace_id)
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveWorkspaceId")
+    def effective_workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The workspace this stable URL currently routes to. Set to
+        `initial_workspace_id` at creation, advanced to the failover group's primary
+        while attached (including across a failover), and preserved when the stable
+        URL is detached from its failover group. Read this to see where an unattached
+        stable URL points: after a failover followed by a detach it reflects the
+        post-failover primary, not `initial_workspace_id`
+        """
+        return pulumi.get(self, "effective_workspace_id")
+
+    @effective_workspace_id.setter
+    def effective_workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "effective_workspace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="failoverGroupName")
@@ -186,6 +219,21 @@ class _DisasterRecoveryStableUrlState:
         pulumi.set(self, "stable_url_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="stableWorkspaceId")
+    def stable_workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The stable workspace ID for this stable URL. Generated on creation and
+        immutable thereafter; identifies the URL across failovers and is the same
+        value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+        or in the `conn-<id>` hostname for Private-Link URLs)
+        """
+        return pulumi.get(self, "stable_workspace_id")
+
+    @stable_workspace_id.setter
+    def stable_workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "stable_workspace_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -212,7 +260,7 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
                  stable_url_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 
@@ -252,7 +300,7 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
                  args: DisasterRecoveryStableUrlArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 
@@ -312,8 +360,10 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
             if stable_url_id is None and not opts.urn:
                 raise TypeError("Missing required property 'stable_url_id'")
             __props__.__dict__["stable_url_id"] = stable_url_id
+            __props__.__dict__["effective_workspace_id"] = None
             __props__.__dict__["failover_group_name"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["stable_workspace_id"] = None
             __props__.__dict__["url"] = None
         super(DisasterRecoveryStableUrl, __self__).__init__(
             'databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl',
@@ -325,11 +375,13 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            effective_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
             failover_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             initial_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             stable_url_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stable_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None) -> 'DisasterRecoveryStableUrl':
         """
         Get an existing DisasterRecoveryStableUrl resource's state with the given name, id, and optional extra
@@ -338,6 +390,12 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] effective_workspace_id: (string) - The workspace this stable URL currently routes to. Set to
+               `initial_workspace_id` at creation, advanced to the failover group's primary
+               while attached (including across a failover), and preserved when the stable
+               URL is detached from its failover group. Read this to see where an unattached
+               stable URL points: after a failover followed by a detach it reflects the
+               post-failover primary, not `initial_workspace_id`
         :param pulumi.Input[_builtins.str] failover_group_name: (string) - Fully qualified resource name of the FailoverGroup this stable URL is
                currently linked to, in the format
                `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -350,6 +408,10 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The parent resource. Format: accounts/{account_id}
         :param pulumi.Input[_builtins.str] stable_url_id: Client-provided identifier for the stable URL. Used to construct the
                resource name as {parent}/stable-urls/{stable_url_id}
+        :param pulumi.Input[_builtins.str] stable_workspace_id: (string) - The stable workspace ID for this stable URL. Generated on creation and
+               immutable thereafter; identifies the URL across failovers and is the same
+               value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+               or in the `conn-<id>` hostname for Private-Link URLs)
         :param pulumi.Input[_builtins.str] url: (string) - The stable URL endpoint. Generated on creation and
                immutable thereafter. For non-Private-Link workspaces this is
                `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
@@ -359,13 +421,28 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
 
         __props__ = _DisasterRecoveryStableUrlState.__new__(_DisasterRecoveryStableUrlState)
 
+        __props__.__dict__["effective_workspace_id"] = effective_workspace_id
         __props__.__dict__["failover_group_name"] = failover_group_name
         __props__.__dict__["initial_workspace_id"] = initial_workspace_id
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["stable_url_id"] = stable_url_id
+        __props__.__dict__["stable_workspace_id"] = stable_workspace_id
         __props__.__dict__["url"] = url
         return DisasterRecoveryStableUrl(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveWorkspaceId")
+    def effective_workspace_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The workspace this stable URL currently routes to. Set to
+        `initial_workspace_id` at creation, advanced to the failover group's primary
+        while attached (including across a failover), and preserved when the stable
+        URL is detached from its failover group. Read this to see where an unattached
+        stable URL points: after a failover followed by a detach it reflects the
+        post-failover primary, not `initial_workspace_id`
+        """
+        return pulumi.get(self, "effective_workspace_id")
 
     @_builtins.property
     @pulumi.getter(name="failoverGroupName")
@@ -413,6 +490,17 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
         resource name as {parent}/stable-urls/{stable_url_id}
         """
         return pulumi.get(self, "stable_url_id")
+
+    @_builtins.property
+    @pulumi.getter(name="stableWorkspaceId")
+    def stable_workspace_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The stable workspace ID for this stable URL. Generated on creation and
+        immutable thereafter; identifies the URL across failovers and is the same
+        value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+        or in the `conn-<id>` hostname for Private-Link URLs)
+        """
+        return pulumi.get(self, "stable_workspace_id")
 
     @_builtins.property
     @pulumi.getter

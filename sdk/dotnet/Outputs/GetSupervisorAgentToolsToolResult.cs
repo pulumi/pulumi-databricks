@@ -47,7 +47,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ToolId;
         /// <summary>
-        /// (string) - Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch", "skill". The legacy values "LakeviewDashboard" and "UcTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        /// (string) - Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "DatabricksWebSearch", "skill". The legacy values "LakeviewDashboard", "UcTable", and "WebSearch" are also accepted and remain equivalent to "dashboard", "table", and "DatabricksWebSearch" respectively. The "DatabricksWebSearch" ToolType maps to the `WebSearch` spec field
         /// </summary>
         public readonly string ToolType;
         /// <summary>

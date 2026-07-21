@@ -15,6 +15,10 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous? Continuous;
         /// <summary>
+        /// A window that spans the entire lifetime of the data source
+        /// </summary>
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime? Lifetime;
+        /// <summary>
         /// A long (multi-day) rolling window served via the hybrid batch + streaming path
         /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling? LongRolling;
@@ -26,6 +30,8 @@ namespace Pulumi.Databricks.Outputs
         private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow(
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous? continuous,
 
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime? lifetime,
+
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling? longRolling,
 
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling? rolling,
@@ -35,6 +41,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling? tumbling)
         {
             Continuous = continuous;
+            Lifetime = lifetime;
             LongRolling = longRolling;
             Rolling = rolling;
             Sliding = sliding;

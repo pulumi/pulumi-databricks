@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAd
     private @Nullable String actionReportTime;
     private @Nullable List<String> breakdowns;
     private @Nullable Integer customInsightsLookbackWindow;
+    private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions customReportOptions;
     private @Nullable String level;
     private @Nullable String startDate;
     private @Nullable String timeIncrement;
@@ -37,6 +39,9 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAd
     }
     public Optional<Integer> customInsightsLookbackWindow() {
         return Optional.ofNullable(this.customInsightsLookbackWindow);
+    }
+    public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions> customReportOptions() {
+        return Optional.ofNullable(this.customReportOptions);
     }
     public Optional<String> level() {
         return Optional.ofNullable(this.level);
@@ -62,6 +67,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAd
         private @Nullable String actionReportTime;
         private @Nullable List<String> breakdowns;
         private @Nullable Integer customInsightsLookbackWindow;
+        private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions customReportOptions;
         private @Nullable String level;
         private @Nullable String startDate;
         private @Nullable String timeIncrement;
@@ -73,6 +79,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAd
     	      this.actionReportTime = defaults.actionReportTime;
     	      this.breakdowns = defaults.breakdowns;
     	      this.customInsightsLookbackWindow = defaults.customInsightsLookbackWindow;
+    	      this.customReportOptions = defaults.customReportOptions;
     	      this.level = defaults.level;
     	      this.startDate = defaults.startDate;
     	      this.timeIncrement = defaults.timeIncrement;
@@ -118,6 +125,12 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAd
             return this;
         }
         @CustomType.Setter
+        public Builder customReportOptions(@Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions customReportOptions) {
+
+            this.customReportOptions = customReportOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder level(@Nullable String level) {
 
             this.level = level;
@@ -142,6 +155,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAd
             _resultValue.actionReportTime = actionReportTime;
             _resultValue.breakdowns = breakdowns;
             _resultValue.customInsightsLookbackWindow = customInsightsLookbackWindow;
+            _resultValue.customReportOptions = customReportOptions;
             _resultValue.level = level;
             _resultValue.startDate = startDate;
             _resultValue.timeIncrement = timeIncrement;

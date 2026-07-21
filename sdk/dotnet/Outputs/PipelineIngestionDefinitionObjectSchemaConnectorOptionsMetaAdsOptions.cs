@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? ActionReportTime;
         public readonly ImmutableArray<string> Breakdowns;
         public readonly int? CustomInsightsLookbackWindow;
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions? CustomReportOptions;
         public readonly string? Level;
         public readonly string? StartDate;
         public readonly string? TimeIncrement;
@@ -34,6 +35,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? customInsightsLookbackWindow,
 
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions? customReportOptions,
+
             string? level,
 
             string? startDate,
@@ -45,6 +48,7 @@ namespace Pulumi.Databricks.Outputs
             ActionReportTime = actionReportTime;
             Breakdowns = breakdowns;
             CustomInsightsLookbackWindow = customInsightsLookbackWindow;
+            CustomReportOptions = customReportOptions;
             Level = level;
             StartDate = startDate;
             TimeIncrement = timeIncrement;
