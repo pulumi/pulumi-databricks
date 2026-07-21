@@ -3618,6 +3618,16 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "trace_location": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uc_trace_location": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4532,7 +4542,27 @@
                                                                         }
                                                                     },
                                                                     "google_ads_options": {
-                                                                        "maxItemsOne": true
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "metrics": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "resource_fields": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "segments": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "jira_options": {
                                                                         "maxItemsOne": true,
@@ -4586,6 +4616,22 @@
                                                                                 },
                                                                                 "breakdowns": {
                                                                                     "maxItemsOne": false
+                                                                                },
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "action_attribution_windows": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "action_breakdowns": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "breakdowns": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -4642,6 +4688,19 @@
                                                                         "maxItemsOne": true,
                                                                         "elem": {
                                                                             "fields": {
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "dimensions": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "metrics": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
                                                                                 "dimensions": {
                                                                                     "maxItemsOne": false
                                                                                 },
@@ -4741,7 +4800,27 @@
                                                                         }
                                                                     },
                                                                     "google_ads_options": {
-                                                                        "maxItemsOne": true
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "metrics": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "resource_fields": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "segments": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "jira_options": {
                                                                         "maxItemsOne": true,
@@ -4795,6 +4874,22 @@
                                                                                 },
                                                                                 "breakdowns": {
                                                                                     "maxItemsOne": false
+                                                                                },
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "action_attribution_windows": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "action_breakdowns": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "breakdowns": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -4851,6 +4946,19 @@
                                                                         "maxItemsOne": true,
                                                                         "elem": {
                                                                             "fields": {
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "dimensions": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "metrics": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
                                                                                 "dimensions": {
                                                                                     "maxItemsOne": false
                                                                                 },
@@ -5100,6 +5208,10 @@
             },
             "databricks_postgres_catalog": {
                 "current": "databricks:index/postgresCatalog:PostgresCatalog",
+                "majorVersion": 1
+            },
+            "databricks_postgres_cdf_config": {
+                "current": "databricks:index/postgresCdfConfig:PostgresCdfConfig",
                 "majorVersion": 1
             },
             "databricks_postgres_data_api": {
@@ -10159,6 +10271,16 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "trace_location": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uc_trace_location": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -10441,6 +10563,32 @@
             "databricks_postgres_catalog": {
                 "current": "databricks:index/getPostgresCatalog:getPostgresCatalog",
                 "majorVersion": 1
+            },
+            "databricks_postgres_cdf_config": {
+                "current": "databricks:index/getPostgresCdfConfig:getPostgresCdfConfig",
+                "majorVersion": 1
+            },
+            "databricks_postgres_cdf_configs": {
+                "current": "databricks:index/getPostgresCdfConfigs:getPostgresCdfConfigs",
+                "majorVersion": 1,
+                "fields": {
+                    "cdf_configs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_postgres_cdf_status": {
+                "current": "databricks:index/getPostgresCdfStatus:getPostgresCdfStatus",
+                "majorVersion": 1
+            },
+            "databricks_postgres_cdf_statuses": {
+                "current": "databricks:index/getPostgresCdfStatuses:getPostgresCdfStatuses",
+                "majorVersion": 1,
+                "fields": {
+                    "cdf_statuses": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_postgres_data_api": {
                 "current": "databricks:index/getPostgresDataApi:getPostgresDataApi",
@@ -11644,6 +11792,11 @@
                     "kind": "missing"
                 }
             },
+            "databricks_postgres_cdf_config": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_postgres_data_api": {
                 "computeID": {
                     "kind": "missing"
@@ -11873,6 +12026,7 @@
             "databricks:index/policyInfo:PolicyInfo": 1,
             "databricks:index/postgresBranch:PostgresBranch": 1,
             "databricks:index/postgresCatalog:PostgresCatalog": 1,
+            "databricks:index/postgresCdfConfig:PostgresCdfConfig": 1,
             "databricks:index/postgresDataApi:PostgresDataApi": 1,
             "databricks:index/postgresDatabase:PostgresDatabase": 1,
             "databricks:index/postgresEndpoint:PostgresEndpoint": 1,
@@ -12030,6 +12184,10 @@
             "databricks:index/getPostgresBranch:getPostgresBranch": 1,
             "databricks:index/getPostgresBranches:getPostgresBranches": 1,
             "databricks:index/getPostgresCatalog:getPostgresCatalog": 1,
+            "databricks:index/getPostgresCdfConfig:getPostgresCdfConfig": 1,
+            "databricks:index/getPostgresCdfConfigs:getPostgresCdfConfigs": 1,
+            "databricks:index/getPostgresCdfStatus:getPostgresCdfStatus": 1,
+            "databricks:index/getPostgresCdfStatuses:getPostgresCdfStatuses": 1,
             "databricks:index/getPostgresDataApi:getPostgresDataApi": 1,
             "databricks:index/getPostgresDatabase:getPostgresDatabase": 1,
             "databricks:index/getPostgresDatabases:getPostgresDatabases": 1,
@@ -15275,6 +15433,9 @@
             "databricks_postgres_catalog": [
                 "provider_config.workspace_id"
             ],
+            "databricks_postgres_cdf_config": [
+                "provider_config.workspace_id"
+            ],
             "databricks_postgres_data_api": [
                 "provider_config.workspace_id"
             ],
@@ -15699,6 +15860,20 @@
                 "provider_config.workspace_id"
             ],
             "databricks_postgres_catalog": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_cdf_config": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_cdf_configs": [
+                "cdf_configs.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_cdf_status": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_cdf_statuses": [
+                "cdf_statuses.$.provider_config.workspace_id",
                 "provider_config.workspace_id"
             ],
             "databricks_postgres_data_api": [
