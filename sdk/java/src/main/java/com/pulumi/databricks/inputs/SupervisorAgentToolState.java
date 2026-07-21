@@ -123,14 +123,14 @@ public final class SupervisorAgentToolState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34; and &#34;ucTable&#34; are also accepted and remain equivalent to &#34;dashboard&#34; and &#34;table&#34; respectively
+     * Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;databricksWebSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34;, &#34;ucTable&#34;, and &#34;webSearch&#34; are also accepted and remain equivalent to &#34;dashboard&#34;, &#34;table&#34;, and &#34;databricksWebSearch&#34; respectively. The &#34;databricksWebSearch&#34; toolType maps to the `webSearch` spec field
      * 
      */
     @Import(name="toolType")
     private @Nullable Output<String> toolType;
 
     /**
-     * @return Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34; and &#34;ucTable&#34; are also accepted and remain equivalent to &#34;dashboard&#34; and &#34;table&#34; respectively
+     * @return Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;databricksWebSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34;, &#34;ucTable&#34;, and &#34;webSearch&#34; are also accepted and remain equivalent to &#34;dashboard&#34;, &#34;table&#34;, and &#34;databricksWebSearch&#34; respectively. The &#34;databricksWebSearch&#34; toolType maps to the `webSearch` spec field
      * 
      */
     public Optional<Output<String>> toolType() {
@@ -330,7 +330,7 @@ public final class SupervisorAgentToolState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param toolType Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34; and &#34;ucTable&#34; are also accepted and remain equivalent to &#34;dashboard&#34; and &#34;table&#34; respectively
+         * @param toolType Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;databricksWebSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34;, &#34;ucTable&#34;, and &#34;webSearch&#34; are also accepted and remain equivalent to &#34;dashboard&#34;, &#34;table&#34;, and &#34;databricksWebSearch&#34; respectively. The &#34;databricksWebSearch&#34; toolType maps to the `webSearch` spec field
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class SupervisorAgentToolState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param toolType Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34; and &#34;ucTable&#34; are also accepted and remain equivalent to &#34;dashboard&#34; and &#34;table&#34; respectively
+         * @param toolType Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;databricksWebSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34;, &#34;ucTable&#34;, and &#34;webSearch&#34; are also accepted and remain equivalent to &#34;dashboard&#34;, &#34;table&#34;, and &#34;databricksWebSearch&#34; respectively. The &#34;databricksWebSearch&#34; toolType maps to the `webSearch` spec field
          * 
          * @return builder
          * 

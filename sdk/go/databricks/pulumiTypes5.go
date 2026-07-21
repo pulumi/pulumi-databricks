@@ -13,6 +13,3315 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetPolicyInfosPolicyMatchColumn struct {
+	// (string) - Optional alias of the matched column
+	Alias *string `pulumi:"alias"`
+	// (string) - The condition expression used to match a table column
+	Condition *string `pulumi:"condition"`
+}
+
+// GetPolicyInfosPolicyMatchColumnInput is an input type that accepts GetPolicyInfosPolicyMatchColumnArgs and GetPolicyInfosPolicyMatchColumnOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyMatchColumnInput` via:
+//
+//	GetPolicyInfosPolicyMatchColumnArgs{...}
+type GetPolicyInfosPolicyMatchColumnInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyMatchColumnOutput() GetPolicyInfosPolicyMatchColumnOutput
+	ToGetPolicyInfosPolicyMatchColumnOutputWithContext(context.Context) GetPolicyInfosPolicyMatchColumnOutput
+}
+
+type GetPolicyInfosPolicyMatchColumnArgs struct {
+	// (string) - Optional alias of the matched column
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// (string) - The condition expression used to match a table column
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+}
+
+func (GetPolicyInfosPolicyMatchColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyMatchColumn)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyMatchColumnArgs) ToGetPolicyInfosPolicyMatchColumnOutput() GetPolicyInfosPolicyMatchColumnOutput {
+	return i.ToGetPolicyInfosPolicyMatchColumnOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyMatchColumnArgs) ToGetPolicyInfosPolicyMatchColumnOutputWithContext(ctx context.Context) GetPolicyInfosPolicyMatchColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyMatchColumnOutput)
+}
+
+// GetPolicyInfosPolicyMatchColumnArrayInput is an input type that accepts GetPolicyInfosPolicyMatchColumnArray and GetPolicyInfosPolicyMatchColumnArrayOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyMatchColumnArrayInput` via:
+//
+//	GetPolicyInfosPolicyMatchColumnArray{ GetPolicyInfosPolicyMatchColumnArgs{...} }
+type GetPolicyInfosPolicyMatchColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyMatchColumnArrayOutput() GetPolicyInfosPolicyMatchColumnArrayOutput
+	ToGetPolicyInfosPolicyMatchColumnArrayOutputWithContext(context.Context) GetPolicyInfosPolicyMatchColumnArrayOutput
+}
+
+type GetPolicyInfosPolicyMatchColumnArray []GetPolicyInfosPolicyMatchColumnInput
+
+func (GetPolicyInfosPolicyMatchColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyInfosPolicyMatchColumn)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyMatchColumnArray) ToGetPolicyInfosPolicyMatchColumnArrayOutput() GetPolicyInfosPolicyMatchColumnArrayOutput {
+	return i.ToGetPolicyInfosPolicyMatchColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyMatchColumnArray) ToGetPolicyInfosPolicyMatchColumnArrayOutputWithContext(ctx context.Context) GetPolicyInfosPolicyMatchColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyMatchColumnArrayOutput)
+}
+
+type GetPolicyInfosPolicyMatchColumnOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyMatchColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyMatchColumn)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyMatchColumnOutput) ToGetPolicyInfosPolicyMatchColumnOutput() GetPolicyInfosPolicyMatchColumnOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyMatchColumnOutput) ToGetPolicyInfosPolicyMatchColumnOutputWithContext(ctx context.Context) GetPolicyInfosPolicyMatchColumnOutput {
+	return o
+}
+
+// (string) - Optional alias of the matched column
+func (o GetPolicyInfosPolicyMatchColumnOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyMatchColumn) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The condition expression used to match a table column
+func (o GetPolicyInfosPolicyMatchColumnOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyMatchColumn) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+type GetPolicyInfosPolicyMatchColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyMatchColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyInfosPolicyMatchColumn)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyMatchColumnArrayOutput) ToGetPolicyInfosPolicyMatchColumnArrayOutput() GetPolicyInfosPolicyMatchColumnArrayOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyMatchColumnArrayOutput) ToGetPolicyInfosPolicyMatchColumnArrayOutputWithContext(ctx context.Context) GetPolicyInfosPolicyMatchColumnArrayOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyMatchColumnArrayOutput) Index(i pulumi.IntInput) GetPolicyInfosPolicyMatchColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyInfosPolicyMatchColumn {
+		return vs[0].([]GetPolicyInfosPolicyMatchColumn)[vs[1].(int)]
+	}).(GetPolicyInfosPolicyMatchColumnOutput)
+}
+
+type GetPolicyInfosPolicyProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPolicyInfosPolicyProviderConfigInput is an input type that accepts GetPolicyInfosPolicyProviderConfigArgs and GetPolicyInfosPolicyProviderConfigOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyProviderConfigInput` via:
+//
+//	GetPolicyInfosPolicyProviderConfigArgs{...}
+type GetPolicyInfosPolicyProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyProviderConfigOutput() GetPolicyInfosPolicyProviderConfigOutput
+	ToGetPolicyInfosPolicyProviderConfigOutputWithContext(context.Context) GetPolicyInfosPolicyProviderConfigOutput
+}
+
+type GetPolicyInfosPolicyProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPolicyInfosPolicyProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyProviderConfig)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyProviderConfigArgs) ToGetPolicyInfosPolicyProviderConfigOutput() GetPolicyInfosPolicyProviderConfigOutput {
+	return i.ToGetPolicyInfosPolicyProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyProviderConfigArgs) ToGetPolicyInfosPolicyProviderConfigOutputWithContext(ctx context.Context) GetPolicyInfosPolicyProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyProviderConfigOutput)
+}
+
+func (i GetPolicyInfosPolicyProviderConfigArgs) ToGetPolicyInfosPolicyProviderConfigPtrOutput() GetPolicyInfosPolicyProviderConfigPtrOutput {
+	return i.ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyProviderConfigArgs) ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyProviderConfigOutput).ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyProviderConfigPtrInput is an input type that accepts GetPolicyInfosPolicyProviderConfigArgs, GetPolicyInfosPolicyProviderConfigPtr and GetPolicyInfosPolicyProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyProviderConfigPtrInput` via:
+//
+//	        GetPolicyInfosPolicyProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyProviderConfigPtrOutput() GetPolicyInfosPolicyProviderConfigPtrOutput
+	ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(context.Context) GetPolicyInfosPolicyProviderConfigPtrOutput
+}
+
+type getPolicyInfosPolicyProviderConfigPtrType GetPolicyInfosPolicyProviderConfigArgs
+
+func GetPolicyInfosPolicyProviderConfigPtr(v *GetPolicyInfosPolicyProviderConfigArgs) GetPolicyInfosPolicyProviderConfigPtrInput {
+	return (*getPolicyInfosPolicyProviderConfigPtrType)(v)
+}
+
+func (*getPolicyInfosPolicyProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyProviderConfig)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyProviderConfigPtrType) ToGetPolicyInfosPolicyProviderConfigPtrOutput() GetPolicyInfosPolicyProviderConfigPtrOutput {
+	return i.ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyProviderConfigPtrType) ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyProviderConfigPtrOutput)
+}
+
+type GetPolicyInfosPolicyProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyProviderConfig)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyProviderConfigOutput) ToGetPolicyInfosPolicyProviderConfigOutput() GetPolicyInfosPolicyProviderConfigOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyProviderConfigOutput) ToGetPolicyInfosPolicyProviderConfigOutputWithContext(ctx context.Context) GetPolicyInfosPolicyProviderConfigOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyProviderConfigOutput) ToGetPolicyInfosPolicyProviderConfigPtrOutput() GetPolicyInfosPolicyProviderConfigPtrOutput {
+	return o.ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyProviderConfigOutput) ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyProviderConfig) *GetPolicyInfosPolicyProviderConfig {
+		return &v
+	}).(GetPolicyInfosPolicyProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPolicyInfosPolicyProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPolicyInfosPolicyProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyProviderConfig)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyProviderConfigPtrOutput) ToGetPolicyInfosPolicyProviderConfigPtrOutput() GetPolicyInfosPolicyProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyProviderConfigPtrOutput) ToGetPolicyInfosPolicyProviderConfigPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyProviderConfigPtrOutput) Elem() GetPolicyInfosPolicyProviderConfigOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyProviderConfig) GetPolicyInfosPolicyProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyProviderConfig
+		return ret
+	}).(GetPolicyInfosPolicyProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPolicyInfosPolicyProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilter struct {
+	// (string) - The fully qualified name of the row filter function.
+	// The function is called on each row of the target table. It should return a boolean value
+	// indicating whether the row should be visible to the user.
+	// Required on create and update
+	FunctionName string `pulumi:"functionName"`
+	// (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+	// The type of each column should match the positional argument of the row filter function
+	Usings []GetPolicyInfosPolicyRowFilterUsing `pulumi:"usings"`
+}
+
+// GetPolicyInfosPolicyRowFilterInput is an input type that accepts GetPolicyInfosPolicyRowFilterArgs and GetPolicyInfosPolicyRowFilterOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterInput` via:
+//
+//	GetPolicyInfosPolicyRowFilterArgs{...}
+type GetPolicyInfosPolicyRowFilterInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterOutput() GetPolicyInfosPolicyRowFilterOutput
+	ToGetPolicyInfosPolicyRowFilterOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterOutput
+}
+
+type GetPolicyInfosPolicyRowFilterArgs struct {
+	// (string) - The fully qualified name of the row filter function.
+	// The function is called on each row of the target table. It should return a boolean value
+	// indicating whether the row should be visible to the user.
+	// Required on create and update
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+	// The type of each column should match the positional argument of the row filter function
+	Usings GetPolicyInfosPolicyRowFilterUsingArrayInput `pulumi:"usings"`
+}
+
+func (GetPolicyInfosPolicyRowFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilter)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyRowFilterArgs) ToGetPolicyInfosPolicyRowFilterOutput() GetPolicyInfosPolicyRowFilterOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterArgs) ToGetPolicyInfosPolicyRowFilterOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilter)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterOutput) ToGetPolicyInfosPolicyRowFilterOutput() GetPolicyInfosPolicyRowFilterOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterOutput) ToGetPolicyInfosPolicyRowFilterOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterOutput {
+	return o
+}
+
+// (string) - The fully qualified name of the row filter function.
+// The function is called on each row of the target table. It should return a boolean value
+// indicating whether the row should be visible to the user.
+// Required on create and update
+func (o GetPolicyInfosPolicyRowFilterOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilter) string { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+// The type of each column should match the positional argument of the row filter function
+func (o GetPolicyInfosPolicyRowFilterOutput) Usings() GetPolicyInfosPolicyRowFilterUsingArrayOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilter) []GetPolicyInfosPolicyRowFilterUsing { return v.Usings }).(GetPolicyInfosPolicyRowFilterUsingArrayOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsing struct {
+	// (string) - Optional alias of the matched column
+	Alias *string `pulumi:"alias"`
+	// (string) - A constant literal
+	Constant *string `pulumi:"constant"`
+}
+
+// GetPolicyInfosPolicyRowFilterUsingInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingArgs and GetPolicyInfosPolicyRowFilterUsingOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingInput` via:
+//
+//	GetPolicyInfosPolicyRowFilterUsingArgs{...}
+type GetPolicyInfosPolicyRowFilterUsingInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingOutput() GetPolicyInfosPolicyRowFilterUsingOutput
+	ToGetPolicyInfosPolicyRowFilterUsingOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingOutput
+}
+
+type GetPolicyInfosPolicyRowFilterUsingArgs struct {
+	// (string) - Optional alias of the matched column
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// (string) - A constant literal
+	Constant pulumi.StringPtrInput `pulumi:"constant"`
+}
+
+func (GetPolicyInfosPolicyRowFilterUsingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsing)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingArgs) ToGetPolicyInfosPolicyRowFilterUsingOutput() GetPolicyInfosPolicyRowFilterUsingOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingArgs) ToGetPolicyInfosPolicyRowFilterUsingOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingOutput)
+}
+
+// GetPolicyInfosPolicyRowFilterUsingArrayInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingArray and GetPolicyInfosPolicyRowFilterUsingArrayOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingArrayInput` via:
+//
+//	GetPolicyInfosPolicyRowFilterUsingArray{ GetPolicyInfosPolicyRowFilterUsingArgs{...} }
+type GetPolicyInfosPolicyRowFilterUsingArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingArrayOutput() GetPolicyInfosPolicyRowFilterUsingArrayOutput
+	ToGetPolicyInfosPolicyRowFilterUsingArrayOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingArrayOutput
+}
+
+type GetPolicyInfosPolicyRowFilterUsingArray []GetPolicyInfosPolicyRowFilterUsingInput
+
+func (GetPolicyInfosPolicyRowFilterUsingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyInfosPolicyRowFilterUsing)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingArray) ToGetPolicyInfosPolicyRowFilterUsingArrayOutput() GetPolicyInfosPolicyRowFilterUsingArrayOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingArray) ToGetPolicyInfosPolicyRowFilterUsingArrayOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingArrayOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsing)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingOutput) ToGetPolicyInfosPolicyRowFilterUsingOutput() GetPolicyInfosPolicyRowFilterUsingOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingOutput) ToGetPolicyInfosPolicyRowFilterUsingOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingOutput {
+	return o
+}
+
+// (string) - Optional alias of the matched column
+func (o GetPolicyInfosPolicyRowFilterUsingOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsing) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// (string) - A constant literal
+func (o GetPolicyInfosPolicyRowFilterUsingOutput) Constant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsing) *string { return v.Constant }).(pulumi.StringPtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyInfosPolicyRowFilterUsing)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingArrayOutput) ToGetPolicyInfosPolicyRowFilterUsingArrayOutput() GetPolicyInfosPolicyRowFilterUsingArrayOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingArrayOutput) ToGetPolicyInfosPolicyRowFilterUsingArrayOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingArrayOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingArrayOutput) Index(i pulumi.IntInput) GetPolicyInfosPolicyRowFilterUsingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyInfosPolicyRowFilterUsing {
+		return vs[0].([]GetPolicyInfosPolicyRowFilterUsing)[vs[1].(int)]
+	}).(GetPolicyInfosPolicyRowFilterUsingOutput)
+}
+
+type GetPolicyInfosProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPolicyInfosProviderConfigInput is an input type that accepts GetPolicyInfosProviderConfigArgs and GetPolicyInfosProviderConfigOutput values.
+// You can construct a concrete instance of `GetPolicyInfosProviderConfigInput` via:
+//
+//	GetPolicyInfosProviderConfigArgs{...}
+type GetPolicyInfosProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosProviderConfigOutput() GetPolicyInfosProviderConfigOutput
+	ToGetPolicyInfosProviderConfigOutputWithContext(context.Context) GetPolicyInfosProviderConfigOutput
+}
+
+type GetPolicyInfosProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPolicyInfosProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosProviderConfig)(nil)).Elem()
+}
+
+func (i GetPolicyInfosProviderConfigArgs) ToGetPolicyInfosProviderConfigOutput() GetPolicyInfosProviderConfigOutput {
+	return i.ToGetPolicyInfosProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosProviderConfigArgs) ToGetPolicyInfosProviderConfigOutputWithContext(ctx context.Context) GetPolicyInfosProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosProviderConfigOutput)
+}
+
+func (i GetPolicyInfosProviderConfigArgs) ToGetPolicyInfosProviderConfigPtrOutput() GetPolicyInfosProviderConfigPtrOutput {
+	return i.ToGetPolicyInfosProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosProviderConfigArgs) ToGetPolicyInfosProviderConfigPtrOutputWithContext(ctx context.Context) GetPolicyInfosProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosProviderConfigOutput).ToGetPolicyInfosProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosProviderConfigPtrInput is an input type that accepts GetPolicyInfosProviderConfigArgs, GetPolicyInfosProviderConfigPtr and GetPolicyInfosProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosProviderConfigPtrInput` via:
+//
+//	        GetPolicyInfosProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosProviderConfigPtrOutput() GetPolicyInfosProviderConfigPtrOutput
+	ToGetPolicyInfosProviderConfigPtrOutputWithContext(context.Context) GetPolicyInfosProviderConfigPtrOutput
+}
+
+type getPolicyInfosProviderConfigPtrType GetPolicyInfosProviderConfigArgs
+
+func GetPolicyInfosProviderConfigPtr(v *GetPolicyInfosProviderConfigArgs) GetPolicyInfosProviderConfigPtrInput {
+	return (*getPolicyInfosProviderConfigPtrType)(v)
+}
+
+func (*getPolicyInfosProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosProviderConfig)(nil)).Elem()
+}
+
+func (i *getPolicyInfosProviderConfigPtrType) ToGetPolicyInfosProviderConfigPtrOutput() GetPolicyInfosProviderConfigPtrOutput {
+	return i.ToGetPolicyInfosProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosProviderConfigPtrType) ToGetPolicyInfosProviderConfigPtrOutputWithContext(ctx context.Context) GetPolicyInfosProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosProviderConfigPtrOutput)
+}
+
+type GetPolicyInfosProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosProviderConfig)(nil)).Elem()
+}
+
+func (o GetPolicyInfosProviderConfigOutput) ToGetPolicyInfosProviderConfigOutput() GetPolicyInfosProviderConfigOutput {
+	return o
+}
+
+func (o GetPolicyInfosProviderConfigOutput) ToGetPolicyInfosProviderConfigOutputWithContext(ctx context.Context) GetPolicyInfosProviderConfigOutput {
+	return o
+}
+
+func (o GetPolicyInfosProviderConfigOutput) ToGetPolicyInfosProviderConfigPtrOutput() GetPolicyInfosProviderConfigPtrOutput {
+	return o.ToGetPolicyInfosProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosProviderConfigOutput) ToGetPolicyInfosProviderConfigPtrOutputWithContext(ctx context.Context) GetPolicyInfosProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosProviderConfig) *GetPolicyInfosProviderConfig {
+		return &v
+	}).(GetPolicyInfosProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPolicyInfosProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPolicyInfosProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosProviderConfig)(nil)).Elem()
+}
+
+func (o GetPolicyInfosProviderConfigPtrOutput) ToGetPolicyInfosProviderConfigPtrOutput() GetPolicyInfosProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosProviderConfigPtrOutput) ToGetPolicyInfosProviderConfigPtrOutputWithContext(ctx context.Context) GetPolicyInfosProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosProviderConfigPtrOutput) Elem() GetPolicyInfosProviderConfigOutput {
+	return o.ApplyT(func(v *GetPolicyInfosProviderConfig) GetPolicyInfosProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosProviderConfig
+		return ret
+	}).(GetPolicyInfosProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPolicyInfosProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresBranchProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresBranchProviderConfigInput is an input type that accepts GetPostgresBranchProviderConfigArgs and GetPostgresBranchProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresBranchProviderConfigInput` via:
+//
+//	GetPostgresBranchProviderConfigArgs{...}
+type GetPostgresBranchProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchProviderConfigOutput() GetPostgresBranchProviderConfigOutput
+	ToGetPostgresBranchProviderConfigOutputWithContext(context.Context) GetPostgresBranchProviderConfigOutput
+}
+
+type GetPostgresBranchProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresBranchProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresBranchProviderConfigArgs) ToGetPostgresBranchProviderConfigOutput() GetPostgresBranchProviderConfigOutput {
+	return i.ToGetPostgresBranchProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchProviderConfigArgs) ToGetPostgresBranchProviderConfigOutputWithContext(ctx context.Context) GetPostgresBranchProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchProviderConfigOutput)
+}
+
+func (i GetPostgresBranchProviderConfigArgs) ToGetPostgresBranchProviderConfigPtrOutput() GetPostgresBranchProviderConfigPtrOutput {
+	return i.ToGetPostgresBranchProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchProviderConfigArgs) ToGetPostgresBranchProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchProviderConfigOutput).ToGetPostgresBranchProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresBranchProviderConfigPtrInput is an input type that accepts GetPostgresBranchProviderConfigArgs, GetPostgresBranchProviderConfigPtr and GetPostgresBranchProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresBranchProviderConfigPtrInput` via:
+//
+//	        GetPostgresBranchProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresBranchProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchProviderConfigPtrOutput() GetPostgresBranchProviderConfigPtrOutput
+	ToGetPostgresBranchProviderConfigPtrOutputWithContext(context.Context) GetPostgresBranchProviderConfigPtrOutput
+}
+
+type getPostgresBranchProviderConfigPtrType GetPostgresBranchProviderConfigArgs
+
+func GetPostgresBranchProviderConfigPtr(v *GetPostgresBranchProviderConfigArgs) GetPostgresBranchProviderConfigPtrInput {
+	return (*getPostgresBranchProviderConfigPtrType)(v)
+}
+
+func (*getPostgresBranchProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresBranchProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresBranchProviderConfigPtrType) ToGetPostgresBranchProviderConfigPtrOutput() GetPostgresBranchProviderConfigPtrOutput {
+	return i.ToGetPostgresBranchProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresBranchProviderConfigPtrType) ToGetPostgresBranchProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchProviderConfigPtrOutput)
+}
+
+type GetPostgresBranchProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresBranchProviderConfigOutput) ToGetPostgresBranchProviderConfigOutput() GetPostgresBranchProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresBranchProviderConfigOutput) ToGetPostgresBranchProviderConfigOutputWithContext(ctx context.Context) GetPostgresBranchProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresBranchProviderConfigOutput) ToGetPostgresBranchProviderConfigPtrOutput() GetPostgresBranchProviderConfigPtrOutput {
+	return o.ToGetPostgresBranchProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresBranchProviderConfigOutput) ToGetPostgresBranchProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresBranchProviderConfig) *GetPostgresBranchProviderConfig {
+		return &v
+	}).(GetPostgresBranchProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresBranchProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresBranchProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresBranchProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresBranchProviderConfigPtrOutput) ToGetPostgresBranchProviderConfigPtrOutput() GetPostgresBranchProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresBranchProviderConfigPtrOutput) ToGetPostgresBranchProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresBranchProviderConfigPtrOutput) Elem() GetPostgresBranchProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresBranchProviderConfig) GetPostgresBranchProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresBranchProviderConfig
+		return ret
+	}).(GetPostgresBranchProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresBranchProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresBranchProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresBranchSpec struct {
+	// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+	ExpireTime *string `pulumi:"expireTime"`
+	// (boolean) - Whether the branch is protected
+	IsProtected *bool `pulumi:"isProtected"`
+	// (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+	// If set to false, the request is invalid; provide either ttl or expireTime instead.
+	// Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
+	NoExpiry *bool `pulumi:"noExpiry"`
+	// (string) - The name of the source branch from which this branch was created.
+	// Format: projects/{project_id}/branches/{branch_id}
+	SourceBranch *string `pulumi:"sourceBranch"`
+	// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+	SourceBranchLsn *string `pulumi:"sourceBranchLsn"`
+	// (string) - The point in time on the source branch from which this branch was created
+	SourceBranchTime *string `pulumi:"sourceBranchTime"`
+	// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+	// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
+	Ttl *string `pulumi:"ttl"`
+}
+
+// GetPostgresBranchSpecInput is an input type that accepts GetPostgresBranchSpecArgs and GetPostgresBranchSpecOutput values.
+// You can construct a concrete instance of `GetPostgresBranchSpecInput` via:
+//
+//	GetPostgresBranchSpecArgs{...}
+type GetPostgresBranchSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchSpecOutput() GetPostgresBranchSpecOutput
+	ToGetPostgresBranchSpecOutputWithContext(context.Context) GetPostgresBranchSpecOutput
+}
+
+type GetPostgresBranchSpecArgs struct {
+	// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+	// (boolean) - Whether the branch is protected
+	IsProtected pulumi.BoolPtrInput `pulumi:"isProtected"`
+	// (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+	// If set to false, the request is invalid; provide either ttl or expireTime instead.
+	// Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
+	NoExpiry pulumi.BoolPtrInput `pulumi:"noExpiry"`
+	// (string) - The name of the source branch from which this branch was created.
+	// Format: projects/{project_id}/branches/{branch_id}
+	SourceBranch pulumi.StringPtrInput `pulumi:"sourceBranch"`
+	// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+	SourceBranchLsn pulumi.StringPtrInput `pulumi:"sourceBranchLsn"`
+	// (string) - The point in time on the source branch from which this branch was created
+	SourceBranchTime pulumi.StringPtrInput `pulumi:"sourceBranchTime"`
+	// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+	// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
+	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
+}
+
+func (GetPostgresBranchSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchSpec)(nil)).Elem()
+}
+
+func (i GetPostgresBranchSpecArgs) ToGetPostgresBranchSpecOutput() GetPostgresBranchSpecOutput {
+	return i.ToGetPostgresBranchSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchSpecArgs) ToGetPostgresBranchSpecOutputWithContext(ctx context.Context) GetPostgresBranchSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchSpecOutput)
+}
+
+type GetPostgresBranchSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchSpec)(nil)).Elem()
+}
+
+func (o GetPostgresBranchSpecOutput) ToGetPostgresBranchSpecOutput() GetPostgresBranchSpecOutput {
+	return o
+}
+
+func (o GetPostgresBranchSpecOutput) ToGetPostgresBranchSpecOutputWithContext(ctx context.Context) GetPostgresBranchSpecOutput {
+	return o
+}
+
+// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+func (o GetPostgresBranchSpecOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchSpec) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+// (boolean) - Whether the branch is protected
+func (o GetPostgresBranchSpecOutput) IsProtected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchSpec) *bool { return v.IsProtected }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+// If set to false, the request is invalid; provide either ttl or expireTime instead.
+// Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
+func (o GetPostgresBranchSpecOutput) NoExpiry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchSpec) *bool { return v.NoExpiry }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - The name of the source branch from which this branch was created.
+// Format: projects/{project_id}/branches/{branch_id}
+func (o GetPostgresBranchSpecOutput) SourceBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchSpec) *string { return v.SourceBranch }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+func (o GetPostgresBranchSpecOutput) SourceBranchLsn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchSpec) *string { return v.SourceBranchLsn }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The point in time on the source branch from which this branch was created
+func (o GetPostgresBranchSpecOutput) SourceBranchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchSpec) *string { return v.SourceBranchTime }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
+func (o GetPostgresBranchSpecOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchSpec) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresBranchStatus struct {
+	// (string) - Part of the resource name
+	BranchId string `pulumi:"branchId"`
+	// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+	CurrentState string `pulumi:"currentState"`
+	// (boolean) - Whether the branch is the project's default branch
+	Default bool `pulumi:"default"`
+	// (string) - A timestamp indicating when the branch was deleted.
+	// Empty if the branch is not deleted
+	DeleteTime string `pulumi:"deleteTime"`
+	// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+	ExpireTime string `pulumi:"expireTime"`
+	// (boolean) - Whether the branch is protected
+	IsProtected bool `pulumi:"isProtected"`
+	// (integer) - The logical size of the branch
+	LogicalSizeBytes int `pulumi:"logicalSizeBytes"`
+	// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+	PendingState string `pulumi:"pendingState"`
+	// (string) - A timestamp indicating when the branch is scheduled to be purged.
+	// Empty if the branch is not deleted, otherwise set to a timestamp in the future
+	PurgeTime string `pulumi:"purgeTime"`
+	// (string) - The name of the source branch from which this branch was created.
+	// Format: projects/{project_id}/branches/{branch_id}
+	SourceBranch string `pulumi:"sourceBranch"`
+	// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+	SourceBranchLsn string `pulumi:"sourceBranchLsn"`
+	// (string) - The point in time on the source branch from which this branch was created
+	SourceBranchTime string `pulumi:"sourceBranchTime"`
+	// (string) - A timestamp indicating when the `currentState` began
+	StateChangeTime string `pulumi:"stateChangeTime"`
+}
+
+// GetPostgresBranchStatusInput is an input type that accepts GetPostgresBranchStatusArgs and GetPostgresBranchStatusOutput values.
+// You can construct a concrete instance of `GetPostgresBranchStatusInput` via:
+//
+//	GetPostgresBranchStatusArgs{...}
+type GetPostgresBranchStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchStatusOutput() GetPostgresBranchStatusOutput
+	ToGetPostgresBranchStatusOutputWithContext(context.Context) GetPostgresBranchStatusOutput
+}
+
+type GetPostgresBranchStatusArgs struct {
+	// (string) - Part of the resource name
+	BranchId pulumi.StringInput `pulumi:"branchId"`
+	// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+	CurrentState pulumi.StringInput `pulumi:"currentState"`
+	// (boolean) - Whether the branch is the project's default branch
+	Default pulumi.BoolInput `pulumi:"default"`
+	// (string) - A timestamp indicating when the branch was deleted.
+	// Empty if the branch is not deleted
+	DeleteTime pulumi.StringInput `pulumi:"deleteTime"`
+	// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// (boolean) - Whether the branch is protected
+	IsProtected pulumi.BoolInput `pulumi:"isProtected"`
+	// (integer) - The logical size of the branch
+	LogicalSizeBytes pulumi.IntInput `pulumi:"logicalSizeBytes"`
+	// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+	PendingState pulumi.StringInput `pulumi:"pendingState"`
+	// (string) - A timestamp indicating when the branch is scheduled to be purged.
+	// Empty if the branch is not deleted, otherwise set to a timestamp in the future
+	PurgeTime pulumi.StringInput `pulumi:"purgeTime"`
+	// (string) - The name of the source branch from which this branch was created.
+	// Format: projects/{project_id}/branches/{branch_id}
+	SourceBranch pulumi.StringInput `pulumi:"sourceBranch"`
+	// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+	SourceBranchLsn pulumi.StringInput `pulumi:"sourceBranchLsn"`
+	// (string) - The point in time on the source branch from which this branch was created
+	SourceBranchTime pulumi.StringInput `pulumi:"sourceBranchTime"`
+	// (string) - A timestamp indicating when the `currentState` began
+	StateChangeTime pulumi.StringInput `pulumi:"stateChangeTime"`
+}
+
+func (GetPostgresBranchStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchStatus)(nil)).Elem()
+}
+
+func (i GetPostgresBranchStatusArgs) ToGetPostgresBranchStatusOutput() GetPostgresBranchStatusOutput {
+	return i.ToGetPostgresBranchStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchStatusArgs) ToGetPostgresBranchStatusOutputWithContext(ctx context.Context) GetPostgresBranchStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchStatusOutput)
+}
+
+type GetPostgresBranchStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchStatus)(nil)).Elem()
+}
+
+func (o GetPostgresBranchStatusOutput) ToGetPostgresBranchStatusOutput() GetPostgresBranchStatusOutput {
+	return o
+}
+
+func (o GetPostgresBranchStatusOutput) ToGetPostgresBranchStatusOutputWithContext(ctx context.Context) GetPostgresBranchStatusOutput {
+	return o
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresBranchStatusOutput) BranchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.BranchId }).(pulumi.StringOutput)
+}
+
+// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+func (o GetPostgresBranchStatusOutput) CurrentState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.CurrentState }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether the branch is the project's default branch
+func (o GetPostgresBranchStatusOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+// (string) - A timestamp indicating when the branch was deleted.
+// Empty if the branch is not deleted
+func (o GetPostgresBranchStatusOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+func (o GetPostgresBranchStatusOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether the branch is protected
+func (o GetPostgresBranchStatusOutput) IsProtected() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) bool { return v.IsProtected }).(pulumi.BoolOutput)
+}
+
+// (integer) - The logical size of the branch
+func (o GetPostgresBranchStatusOutput) LogicalSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) int { return v.LogicalSizeBytes }).(pulumi.IntOutput)
+}
+
+// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+func (o GetPostgresBranchStatusOutput) PendingState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.PendingState }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the branch is scheduled to be purged.
+// Empty if the branch is not deleted, otherwise set to a timestamp in the future
+func (o GetPostgresBranchStatusOutput) PurgeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.PurgeTime }).(pulumi.StringOutput)
+}
+
+// (string) - The name of the source branch from which this branch was created.
+// Format: projects/{project_id}/branches/{branch_id}
+func (o GetPostgresBranchStatusOutput) SourceBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.SourceBranch }).(pulumi.StringOutput)
+}
+
+// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+func (o GetPostgresBranchStatusOutput) SourceBranchLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.SourceBranchLsn }).(pulumi.StringOutput)
+}
+
+// (string) - The point in time on the source branch from which this branch was created
+func (o GetPostgresBranchStatusOutput) SourceBranchTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.SourceBranchTime }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the `currentState` began
+func (o GetPostgresBranchStatusOutput) StateChangeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.StateChangeTime }).(pulumi.StringOutput)
+}
+
+type GetPostgresBranchesBranch struct {
+	// (string) - Part of the resource name
+	BranchId string `pulumi:"branchId"`
+	// (string) - A timestamp indicating when the branch was created
+	CreateTime string `pulumi:"createTime"`
+	// (string) - Output only. The full resource path of the branch.
+	// Format: projects/{project_id}/branches/{branch_id}
+	Name string `pulumi:"name"`
+	// The Project that owns this collection of branches.
+	// Format: projects/{project_id}
+	Parent string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresBranchesBranchProviderConfig `pulumi:"providerConfig"`
+	// (BranchSpec) - The spec contains the branch configuration
+	Spec GetPostgresBranchesBranchSpec `pulumi:"spec"`
+	// (BranchStatus) - The current status of a Branch
+	Status GetPostgresBranchesBranchStatus `pulumi:"status"`
+	// (string) - System-generated unique ID for the branch
+	Uid string `pulumi:"uid"`
+	// (string) - A timestamp indicating when the branch was last updated
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetPostgresBranchesBranchInput is an input type that accepts GetPostgresBranchesBranchArgs and GetPostgresBranchesBranchOutput values.
+// You can construct a concrete instance of `GetPostgresBranchesBranchInput` via:
+//
+//	GetPostgresBranchesBranchArgs{...}
+type GetPostgresBranchesBranchInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchesBranchOutput() GetPostgresBranchesBranchOutput
+	ToGetPostgresBranchesBranchOutputWithContext(context.Context) GetPostgresBranchesBranchOutput
+}
+
+type GetPostgresBranchesBranchArgs struct {
+	// (string) - Part of the resource name
+	BranchId pulumi.StringInput `pulumi:"branchId"`
+	// (string) - A timestamp indicating when the branch was created
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - Output only. The full resource path of the branch.
+	// Format: projects/{project_id}/branches/{branch_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Project that owns this collection of branches.
+	// Format: projects/{project_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresBranchesBranchProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (BranchSpec) - The spec contains the branch configuration
+	Spec GetPostgresBranchesBranchSpecInput `pulumi:"spec"`
+	// (BranchStatus) - The current status of a Branch
+	Status GetPostgresBranchesBranchStatusInput `pulumi:"status"`
+	// (string) - System-generated unique ID for the branch
+	Uid pulumi.StringInput `pulumi:"uid"`
+	// (string) - A timestamp indicating when the branch was last updated
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetPostgresBranchesBranchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesBranch)(nil)).Elem()
+}
+
+func (i GetPostgresBranchesBranchArgs) ToGetPostgresBranchesBranchOutput() GetPostgresBranchesBranchOutput {
+	return i.ToGetPostgresBranchesBranchOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchesBranchArgs) ToGetPostgresBranchesBranchOutputWithContext(ctx context.Context) GetPostgresBranchesBranchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesBranchOutput)
+}
+
+// GetPostgresBranchesBranchArrayInput is an input type that accepts GetPostgresBranchesBranchArray and GetPostgresBranchesBranchArrayOutput values.
+// You can construct a concrete instance of `GetPostgresBranchesBranchArrayInput` via:
+//
+//	GetPostgresBranchesBranchArray{ GetPostgresBranchesBranchArgs{...} }
+type GetPostgresBranchesBranchArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchesBranchArrayOutput() GetPostgresBranchesBranchArrayOutput
+	ToGetPostgresBranchesBranchArrayOutputWithContext(context.Context) GetPostgresBranchesBranchArrayOutput
+}
+
+type GetPostgresBranchesBranchArray []GetPostgresBranchesBranchInput
+
+func (GetPostgresBranchesBranchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresBranchesBranch)(nil)).Elem()
+}
+
+func (i GetPostgresBranchesBranchArray) ToGetPostgresBranchesBranchArrayOutput() GetPostgresBranchesBranchArrayOutput {
+	return i.ToGetPostgresBranchesBranchArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchesBranchArray) ToGetPostgresBranchesBranchArrayOutputWithContext(ctx context.Context) GetPostgresBranchesBranchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesBranchArrayOutput)
+}
+
+type GetPostgresBranchesBranchOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchesBranchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesBranch)(nil)).Elem()
+}
+
+func (o GetPostgresBranchesBranchOutput) ToGetPostgresBranchesBranchOutput() GetPostgresBranchesBranchOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchOutput) ToGetPostgresBranchesBranchOutputWithContext(ctx context.Context) GetPostgresBranchesBranchOutput {
+	return o
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresBranchesBranchOutput) BranchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) string { return v.BranchId }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the branch was created
+func (o GetPostgresBranchesBranchOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - Output only. The full resource path of the branch.
+// Format: projects/{project_id}/branches/{branch_id}
+func (o GetPostgresBranchesBranchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Project that owns this collection of branches.
+// Format: projects/{project_id}
+func (o GetPostgresBranchesBranchOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetPostgresBranchesBranchOutput) ProviderConfig() GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) *GetPostgresBranchesBranchProviderConfig { return v.ProviderConfig }).(GetPostgresBranchesBranchProviderConfigPtrOutput)
+}
+
+// (BranchSpec) - The spec contains the branch configuration
+func (o GetPostgresBranchesBranchOutput) Spec() GetPostgresBranchesBranchSpecOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) GetPostgresBranchesBranchSpec { return v.Spec }).(GetPostgresBranchesBranchSpecOutput)
+}
+
+// (BranchStatus) - The current status of a Branch
+func (o GetPostgresBranchesBranchOutput) Status() GetPostgresBranchesBranchStatusOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) GetPostgresBranchesBranchStatus { return v.Status }).(GetPostgresBranchesBranchStatusOutput)
+}
+
+// (string) - System-generated unique ID for the branch
+func (o GetPostgresBranchesBranchOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the branch was last updated
+func (o GetPostgresBranchesBranchOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranch) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetPostgresBranchesBranchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchesBranchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresBranchesBranch)(nil)).Elem()
+}
+
+func (o GetPostgresBranchesBranchArrayOutput) ToGetPostgresBranchesBranchArrayOutput() GetPostgresBranchesBranchArrayOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchArrayOutput) ToGetPostgresBranchesBranchArrayOutputWithContext(ctx context.Context) GetPostgresBranchesBranchArrayOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchArrayOutput) Index(i pulumi.IntInput) GetPostgresBranchesBranchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresBranchesBranch {
+		return vs[0].([]GetPostgresBranchesBranch)[vs[1].(int)]
+	}).(GetPostgresBranchesBranchOutput)
+}
+
+type GetPostgresBranchesBranchProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresBranchesBranchProviderConfigInput is an input type that accepts GetPostgresBranchesBranchProviderConfigArgs and GetPostgresBranchesBranchProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresBranchesBranchProviderConfigInput` via:
+//
+//	GetPostgresBranchesBranchProviderConfigArgs{...}
+type GetPostgresBranchesBranchProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchesBranchProviderConfigOutput() GetPostgresBranchesBranchProviderConfigOutput
+	ToGetPostgresBranchesBranchProviderConfigOutputWithContext(context.Context) GetPostgresBranchesBranchProviderConfigOutput
+}
+
+type GetPostgresBranchesBranchProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresBranchesBranchProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesBranchProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresBranchesBranchProviderConfigArgs) ToGetPostgresBranchesBranchProviderConfigOutput() GetPostgresBranchesBranchProviderConfigOutput {
+	return i.ToGetPostgresBranchesBranchProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchesBranchProviderConfigArgs) ToGetPostgresBranchesBranchProviderConfigOutputWithContext(ctx context.Context) GetPostgresBranchesBranchProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesBranchProviderConfigOutput)
+}
+
+func (i GetPostgresBranchesBranchProviderConfigArgs) ToGetPostgresBranchesBranchProviderConfigPtrOutput() GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return i.ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchesBranchProviderConfigArgs) ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesBranchProviderConfigOutput).ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresBranchesBranchProviderConfigPtrInput is an input type that accepts GetPostgresBranchesBranchProviderConfigArgs, GetPostgresBranchesBranchProviderConfigPtr and GetPostgresBranchesBranchProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresBranchesBranchProviderConfigPtrInput` via:
+//
+//	        GetPostgresBranchesBranchProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresBranchesBranchProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchesBranchProviderConfigPtrOutput() GetPostgresBranchesBranchProviderConfigPtrOutput
+	ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(context.Context) GetPostgresBranchesBranchProviderConfigPtrOutput
+}
+
+type getPostgresBranchesBranchProviderConfigPtrType GetPostgresBranchesBranchProviderConfigArgs
+
+func GetPostgresBranchesBranchProviderConfigPtr(v *GetPostgresBranchesBranchProviderConfigArgs) GetPostgresBranchesBranchProviderConfigPtrInput {
+	return (*getPostgresBranchesBranchProviderConfigPtrType)(v)
+}
+
+func (*getPostgresBranchesBranchProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresBranchesBranchProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresBranchesBranchProviderConfigPtrType) ToGetPostgresBranchesBranchProviderConfigPtrOutput() GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return i.ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresBranchesBranchProviderConfigPtrType) ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesBranchProviderConfigPtrOutput)
+}
+
+type GetPostgresBranchesBranchProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchesBranchProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesBranchProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresBranchesBranchProviderConfigOutput) ToGetPostgresBranchesBranchProviderConfigOutput() GetPostgresBranchesBranchProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchProviderConfigOutput) ToGetPostgresBranchesBranchProviderConfigOutputWithContext(ctx context.Context) GetPostgresBranchesBranchProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchProviderConfigOutput) ToGetPostgresBranchesBranchProviderConfigPtrOutput() GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return o.ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresBranchesBranchProviderConfigOutput) ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresBranchesBranchProviderConfig) *GetPostgresBranchesBranchProviderConfig {
+		return &v
+	}).(GetPostgresBranchesBranchProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresBranchesBranchProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresBranchesBranchProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchesBranchProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresBranchesBranchProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresBranchesBranchProviderConfigPtrOutput) ToGetPostgresBranchesBranchProviderConfigPtrOutput() GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchProviderConfigPtrOutput) ToGetPostgresBranchesBranchProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchesBranchProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchProviderConfigPtrOutput) Elem() GetPostgresBranchesBranchProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresBranchesBranchProviderConfig) GetPostgresBranchesBranchProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresBranchesBranchProviderConfig
+		return ret
+	}).(GetPostgresBranchesBranchProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresBranchesBranchProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresBranchesBranchProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresBranchesBranchSpec struct {
+	// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+	ExpireTime *string `pulumi:"expireTime"`
+	// (boolean) - Whether the branch is protected
+	IsProtected *bool `pulumi:"isProtected"`
+	// (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+	// If set to false, the request is invalid; provide either ttl or expireTime instead.
+	// Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
+	NoExpiry *bool `pulumi:"noExpiry"`
+	// (string) - The name of the source branch from which this branch was created.
+	// Format: projects/{project_id}/branches/{branch_id}
+	SourceBranch *string `pulumi:"sourceBranch"`
+	// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+	SourceBranchLsn *string `pulumi:"sourceBranchLsn"`
+	// (string) - The point in time on the source branch from which this branch was created
+	SourceBranchTime *string `pulumi:"sourceBranchTime"`
+	// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+	// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
+	Ttl *string `pulumi:"ttl"`
+}
+
+// GetPostgresBranchesBranchSpecInput is an input type that accepts GetPostgresBranchesBranchSpecArgs and GetPostgresBranchesBranchSpecOutput values.
+// You can construct a concrete instance of `GetPostgresBranchesBranchSpecInput` via:
+//
+//	GetPostgresBranchesBranchSpecArgs{...}
+type GetPostgresBranchesBranchSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchesBranchSpecOutput() GetPostgresBranchesBranchSpecOutput
+	ToGetPostgresBranchesBranchSpecOutputWithContext(context.Context) GetPostgresBranchesBranchSpecOutput
+}
+
+type GetPostgresBranchesBranchSpecArgs struct {
+	// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+	// (boolean) - Whether the branch is protected
+	IsProtected pulumi.BoolPtrInput `pulumi:"isProtected"`
+	// (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+	// If set to false, the request is invalid; provide either ttl or expireTime instead.
+	// Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
+	NoExpiry pulumi.BoolPtrInput `pulumi:"noExpiry"`
+	// (string) - The name of the source branch from which this branch was created.
+	// Format: projects/{project_id}/branches/{branch_id}
+	SourceBranch pulumi.StringPtrInput `pulumi:"sourceBranch"`
+	// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+	SourceBranchLsn pulumi.StringPtrInput `pulumi:"sourceBranchLsn"`
+	// (string) - The point in time on the source branch from which this branch was created
+	SourceBranchTime pulumi.StringPtrInput `pulumi:"sourceBranchTime"`
+	// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+	// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
+	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
+}
+
+func (GetPostgresBranchesBranchSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesBranchSpec)(nil)).Elem()
+}
+
+func (i GetPostgresBranchesBranchSpecArgs) ToGetPostgresBranchesBranchSpecOutput() GetPostgresBranchesBranchSpecOutput {
+	return i.ToGetPostgresBranchesBranchSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchesBranchSpecArgs) ToGetPostgresBranchesBranchSpecOutputWithContext(ctx context.Context) GetPostgresBranchesBranchSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesBranchSpecOutput)
+}
+
+type GetPostgresBranchesBranchSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchesBranchSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesBranchSpec)(nil)).Elem()
+}
+
+func (o GetPostgresBranchesBranchSpecOutput) ToGetPostgresBranchesBranchSpecOutput() GetPostgresBranchesBranchSpecOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchSpecOutput) ToGetPostgresBranchesBranchSpecOutputWithContext(ctx context.Context) GetPostgresBranchesBranchSpecOutput {
+	return o
+}
+
+// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+func (o GetPostgresBranchesBranchSpecOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+// (boolean) - Whether the branch is protected
+func (o GetPostgresBranchesBranchSpecOutput) IsProtected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *bool { return v.IsProtected }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+// If set to false, the request is invalid; provide either ttl or expireTime instead.
+// Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
+func (o GetPostgresBranchesBranchSpecOutput) NoExpiry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *bool { return v.NoExpiry }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - The name of the source branch from which this branch was created.
+// Format: projects/{project_id}/branches/{branch_id}
+func (o GetPostgresBranchesBranchSpecOutput) SourceBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *string { return v.SourceBranch }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+func (o GetPostgresBranchesBranchSpecOutput) SourceBranchLsn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *string { return v.SourceBranchLsn }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The point in time on the source branch from which this branch was created
+func (o GetPostgresBranchesBranchSpecOutput) SourceBranchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *string { return v.SourceBranchTime }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
+func (o GetPostgresBranchesBranchSpecOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresBranchesBranchStatus struct {
+	// (string) - Part of the resource name
+	BranchId string `pulumi:"branchId"`
+	// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+	CurrentState string `pulumi:"currentState"`
+	// (boolean) - Whether the branch is the project's default branch
+	Default bool `pulumi:"default"`
+	// (string) - A timestamp indicating when the branch was deleted.
+	// Empty if the branch is not deleted
+	DeleteTime string `pulumi:"deleteTime"`
+	// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+	ExpireTime string `pulumi:"expireTime"`
+	// (boolean) - Whether the branch is protected
+	IsProtected bool `pulumi:"isProtected"`
+	// (integer) - The logical size of the branch
+	LogicalSizeBytes int `pulumi:"logicalSizeBytes"`
+	// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+	PendingState string `pulumi:"pendingState"`
+	// (string) - A timestamp indicating when the branch is scheduled to be purged.
+	// Empty if the branch is not deleted, otherwise set to a timestamp in the future
+	PurgeTime string `pulumi:"purgeTime"`
+	// (string) - The name of the source branch from which this branch was created.
+	// Format: projects/{project_id}/branches/{branch_id}
+	SourceBranch string `pulumi:"sourceBranch"`
+	// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+	SourceBranchLsn string `pulumi:"sourceBranchLsn"`
+	// (string) - The point in time on the source branch from which this branch was created
+	SourceBranchTime string `pulumi:"sourceBranchTime"`
+	// (string) - A timestamp indicating when the `currentState` began
+	StateChangeTime string `pulumi:"stateChangeTime"`
+}
+
+// GetPostgresBranchesBranchStatusInput is an input type that accepts GetPostgresBranchesBranchStatusArgs and GetPostgresBranchesBranchStatusOutput values.
+// You can construct a concrete instance of `GetPostgresBranchesBranchStatusInput` via:
+//
+//	GetPostgresBranchesBranchStatusArgs{...}
+type GetPostgresBranchesBranchStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchesBranchStatusOutput() GetPostgresBranchesBranchStatusOutput
+	ToGetPostgresBranchesBranchStatusOutputWithContext(context.Context) GetPostgresBranchesBranchStatusOutput
+}
+
+type GetPostgresBranchesBranchStatusArgs struct {
+	// (string) - Part of the resource name
+	BranchId pulumi.StringInput `pulumi:"branchId"`
+	// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+	CurrentState pulumi.StringInput `pulumi:"currentState"`
+	// (boolean) - Whether the branch is the project's default branch
+	Default pulumi.BoolInput `pulumi:"default"`
+	// (string) - A timestamp indicating when the branch was deleted.
+	// Empty if the branch is not deleted
+	DeleteTime pulumi.StringInput `pulumi:"deleteTime"`
+	// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// (boolean) - Whether the branch is protected
+	IsProtected pulumi.BoolInput `pulumi:"isProtected"`
+	// (integer) - The logical size of the branch
+	LogicalSizeBytes pulumi.IntInput `pulumi:"logicalSizeBytes"`
+	// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+	PendingState pulumi.StringInput `pulumi:"pendingState"`
+	// (string) - A timestamp indicating when the branch is scheduled to be purged.
+	// Empty if the branch is not deleted, otherwise set to a timestamp in the future
+	PurgeTime pulumi.StringInput `pulumi:"purgeTime"`
+	// (string) - The name of the source branch from which this branch was created.
+	// Format: projects/{project_id}/branches/{branch_id}
+	SourceBranch pulumi.StringInput `pulumi:"sourceBranch"`
+	// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+	SourceBranchLsn pulumi.StringInput `pulumi:"sourceBranchLsn"`
+	// (string) - The point in time on the source branch from which this branch was created
+	SourceBranchTime pulumi.StringInput `pulumi:"sourceBranchTime"`
+	// (string) - A timestamp indicating when the `currentState` began
+	StateChangeTime pulumi.StringInput `pulumi:"stateChangeTime"`
+}
+
+func (GetPostgresBranchesBranchStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesBranchStatus)(nil)).Elem()
+}
+
+func (i GetPostgresBranchesBranchStatusArgs) ToGetPostgresBranchesBranchStatusOutput() GetPostgresBranchesBranchStatusOutput {
+	return i.ToGetPostgresBranchesBranchStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchesBranchStatusArgs) ToGetPostgresBranchesBranchStatusOutputWithContext(ctx context.Context) GetPostgresBranchesBranchStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesBranchStatusOutput)
+}
+
+type GetPostgresBranchesBranchStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchesBranchStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesBranchStatus)(nil)).Elem()
+}
+
+func (o GetPostgresBranchesBranchStatusOutput) ToGetPostgresBranchesBranchStatusOutput() GetPostgresBranchesBranchStatusOutput {
+	return o
+}
+
+func (o GetPostgresBranchesBranchStatusOutput) ToGetPostgresBranchesBranchStatusOutputWithContext(ctx context.Context) GetPostgresBranchesBranchStatusOutput {
+	return o
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresBranchesBranchStatusOutput) BranchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.BranchId }).(pulumi.StringOutput)
+}
+
+// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+func (o GetPostgresBranchesBranchStatusOutput) CurrentState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.CurrentState }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether the branch is the project's default branch
+func (o GetPostgresBranchesBranchStatusOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+// (string) - A timestamp indicating when the branch was deleted.
+// Empty if the branch is not deleted
+func (o GetPostgresBranchesBranchStatusOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+func (o GetPostgresBranchesBranchStatusOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether the branch is protected
+func (o GetPostgresBranchesBranchStatusOutput) IsProtected() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) bool { return v.IsProtected }).(pulumi.BoolOutput)
+}
+
+// (integer) - The logical size of the branch
+func (o GetPostgresBranchesBranchStatusOutput) LogicalSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) int { return v.LogicalSizeBytes }).(pulumi.IntOutput)
+}
+
+// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+func (o GetPostgresBranchesBranchStatusOutput) PendingState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.PendingState }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the branch is scheduled to be purged.
+// Empty if the branch is not deleted, otherwise set to a timestamp in the future
+func (o GetPostgresBranchesBranchStatusOutput) PurgeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.PurgeTime }).(pulumi.StringOutput)
+}
+
+// (string) - The name of the source branch from which this branch was created.
+// Format: projects/{project_id}/branches/{branch_id}
+func (o GetPostgresBranchesBranchStatusOutput) SourceBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.SourceBranch }).(pulumi.StringOutput)
+}
+
+// (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+func (o GetPostgresBranchesBranchStatusOutput) SourceBranchLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.SourceBranchLsn }).(pulumi.StringOutput)
+}
+
+// (string) - The point in time on the source branch from which this branch was created
+func (o GetPostgresBranchesBranchStatusOutput) SourceBranchTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.SourceBranchTime }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the `currentState` began
+func (o GetPostgresBranchesBranchStatusOutput) StateChangeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.StateChangeTime }).(pulumi.StringOutput)
+}
+
+type GetPostgresBranchesProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresBranchesProviderConfigInput is an input type that accepts GetPostgresBranchesProviderConfigArgs and GetPostgresBranchesProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresBranchesProviderConfigInput` via:
+//
+//	GetPostgresBranchesProviderConfigArgs{...}
+type GetPostgresBranchesProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchesProviderConfigOutput() GetPostgresBranchesProviderConfigOutput
+	ToGetPostgresBranchesProviderConfigOutputWithContext(context.Context) GetPostgresBranchesProviderConfigOutput
+}
+
+type GetPostgresBranchesProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresBranchesProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresBranchesProviderConfigArgs) ToGetPostgresBranchesProviderConfigOutput() GetPostgresBranchesProviderConfigOutput {
+	return i.ToGetPostgresBranchesProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchesProviderConfigArgs) ToGetPostgresBranchesProviderConfigOutputWithContext(ctx context.Context) GetPostgresBranchesProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesProviderConfigOutput)
+}
+
+func (i GetPostgresBranchesProviderConfigArgs) ToGetPostgresBranchesProviderConfigPtrOutput() GetPostgresBranchesProviderConfigPtrOutput {
+	return i.ToGetPostgresBranchesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresBranchesProviderConfigArgs) ToGetPostgresBranchesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesProviderConfigOutput).ToGetPostgresBranchesProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresBranchesProviderConfigPtrInput is an input type that accepts GetPostgresBranchesProviderConfigArgs, GetPostgresBranchesProviderConfigPtr and GetPostgresBranchesProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresBranchesProviderConfigPtrInput` via:
+//
+//	        GetPostgresBranchesProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresBranchesProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresBranchesProviderConfigPtrOutput() GetPostgresBranchesProviderConfigPtrOutput
+	ToGetPostgresBranchesProviderConfigPtrOutputWithContext(context.Context) GetPostgresBranchesProviderConfigPtrOutput
+}
+
+type getPostgresBranchesProviderConfigPtrType GetPostgresBranchesProviderConfigArgs
+
+func GetPostgresBranchesProviderConfigPtr(v *GetPostgresBranchesProviderConfigArgs) GetPostgresBranchesProviderConfigPtrInput {
+	return (*getPostgresBranchesProviderConfigPtrType)(v)
+}
+
+func (*getPostgresBranchesProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresBranchesProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresBranchesProviderConfigPtrType) ToGetPostgresBranchesProviderConfigPtrOutput() GetPostgresBranchesProviderConfigPtrOutput {
+	return i.ToGetPostgresBranchesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresBranchesProviderConfigPtrType) ToGetPostgresBranchesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresBranchesProviderConfigPtrOutput)
+}
+
+type GetPostgresBranchesProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchesProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresBranchesProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresBranchesProviderConfigOutput) ToGetPostgresBranchesProviderConfigOutput() GetPostgresBranchesProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresBranchesProviderConfigOutput) ToGetPostgresBranchesProviderConfigOutputWithContext(ctx context.Context) GetPostgresBranchesProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresBranchesProviderConfigOutput) ToGetPostgresBranchesProviderConfigPtrOutput() GetPostgresBranchesProviderConfigPtrOutput {
+	return o.ToGetPostgresBranchesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresBranchesProviderConfigOutput) ToGetPostgresBranchesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchesProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresBranchesProviderConfig) *GetPostgresBranchesProviderConfig {
+		return &v
+	}).(GetPostgresBranchesProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresBranchesProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresBranchesProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresBranchesProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresBranchesProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresBranchesProviderConfigPtrOutput) ToGetPostgresBranchesProviderConfigPtrOutput() GetPostgresBranchesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresBranchesProviderConfigPtrOutput) ToGetPostgresBranchesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresBranchesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresBranchesProviderConfigPtrOutput) Elem() GetPostgresBranchesProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresBranchesProviderConfig) GetPostgresBranchesProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresBranchesProviderConfig
+		return ret
+	}).(GetPostgresBranchesProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresBranchesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresBranchesProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresCatalogProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresCatalogProviderConfigInput is an input type that accepts GetPostgresCatalogProviderConfigArgs and GetPostgresCatalogProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresCatalogProviderConfigInput` via:
+//
+//	GetPostgresCatalogProviderConfigArgs{...}
+type GetPostgresCatalogProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresCatalogProviderConfigOutput() GetPostgresCatalogProviderConfigOutput
+	ToGetPostgresCatalogProviderConfigOutputWithContext(context.Context) GetPostgresCatalogProviderConfigOutput
+}
+
+type GetPostgresCatalogProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresCatalogProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCatalogProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCatalogProviderConfigArgs) ToGetPostgresCatalogProviderConfigOutput() GetPostgresCatalogProviderConfigOutput {
+	return i.ToGetPostgresCatalogProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCatalogProviderConfigArgs) ToGetPostgresCatalogProviderConfigOutputWithContext(ctx context.Context) GetPostgresCatalogProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCatalogProviderConfigOutput)
+}
+
+func (i GetPostgresCatalogProviderConfigArgs) ToGetPostgresCatalogProviderConfigPtrOutput() GetPostgresCatalogProviderConfigPtrOutput {
+	return i.ToGetPostgresCatalogProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCatalogProviderConfigArgs) ToGetPostgresCatalogProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCatalogProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCatalogProviderConfigOutput).ToGetPostgresCatalogProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresCatalogProviderConfigPtrInput is an input type that accepts GetPostgresCatalogProviderConfigArgs, GetPostgresCatalogProviderConfigPtr and GetPostgresCatalogProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresCatalogProviderConfigPtrInput` via:
+//
+//	        GetPostgresCatalogProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresCatalogProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresCatalogProviderConfigPtrOutput() GetPostgresCatalogProviderConfigPtrOutput
+	ToGetPostgresCatalogProviderConfigPtrOutputWithContext(context.Context) GetPostgresCatalogProviderConfigPtrOutput
+}
+
+type getPostgresCatalogProviderConfigPtrType GetPostgresCatalogProviderConfigArgs
+
+func GetPostgresCatalogProviderConfigPtr(v *GetPostgresCatalogProviderConfigArgs) GetPostgresCatalogProviderConfigPtrInput {
+	return (*getPostgresCatalogProviderConfigPtrType)(v)
+}
+
+func (*getPostgresCatalogProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCatalogProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresCatalogProviderConfigPtrType) ToGetPostgresCatalogProviderConfigPtrOutput() GetPostgresCatalogProviderConfigPtrOutput {
+	return i.ToGetPostgresCatalogProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresCatalogProviderConfigPtrType) ToGetPostgresCatalogProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCatalogProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCatalogProviderConfigPtrOutput)
+}
+
+type GetPostgresCatalogProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCatalogProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCatalogProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCatalogProviderConfigOutput) ToGetPostgresCatalogProviderConfigOutput() GetPostgresCatalogProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCatalogProviderConfigOutput) ToGetPostgresCatalogProviderConfigOutputWithContext(ctx context.Context) GetPostgresCatalogProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCatalogProviderConfigOutput) ToGetPostgresCatalogProviderConfigPtrOutput() GetPostgresCatalogProviderConfigPtrOutput {
+	return o.ToGetPostgresCatalogProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresCatalogProviderConfigOutput) ToGetPostgresCatalogProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCatalogProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresCatalogProviderConfig) *GetPostgresCatalogProviderConfig {
+		return &v
+	}).(GetPostgresCatalogProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCatalogProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCatalogProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresCatalogProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCatalogProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCatalogProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCatalogProviderConfigPtrOutput) ToGetPostgresCatalogProviderConfigPtrOutput() GetPostgresCatalogProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCatalogProviderConfigPtrOutput) ToGetPostgresCatalogProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCatalogProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCatalogProviderConfigPtrOutput) Elem() GetPostgresCatalogProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresCatalogProviderConfig) GetPostgresCatalogProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresCatalogProviderConfig
+		return ret
+	}).(GetPostgresCatalogProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCatalogProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresCatalogProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresCatalogSpec struct {
+	// (string) - The resource path of the branch associated with the catalog.
+	Branch *string `pulumi:"branch"`
+	// (boolean) - If set to true, the specified postgresDatabase is created on behalf of the calling user
+	// if it does not already exist. In this case, the calling user has a role created for
+	// them in Postgres if they do not already have one.
+	CreateDatabaseIfMissing *bool `pulumi:"createDatabaseIfMissing"`
+	// (string) - The name of the Postgres database associated with the catalog
+	PostgresDatabase string `pulumi:"postgresDatabase"`
+}
+
+// GetPostgresCatalogSpecInput is an input type that accepts GetPostgresCatalogSpecArgs and GetPostgresCatalogSpecOutput values.
+// You can construct a concrete instance of `GetPostgresCatalogSpecInput` via:
+//
+//	GetPostgresCatalogSpecArgs{...}
+type GetPostgresCatalogSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresCatalogSpecOutput() GetPostgresCatalogSpecOutput
+	ToGetPostgresCatalogSpecOutputWithContext(context.Context) GetPostgresCatalogSpecOutput
+}
+
+type GetPostgresCatalogSpecArgs struct {
+	// (string) - The resource path of the branch associated with the catalog.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// (boolean) - If set to true, the specified postgresDatabase is created on behalf of the calling user
+	// if it does not already exist. In this case, the calling user has a role created for
+	// them in Postgres if they do not already have one.
+	CreateDatabaseIfMissing pulumi.BoolPtrInput `pulumi:"createDatabaseIfMissing"`
+	// (string) - The name of the Postgres database associated with the catalog
+	PostgresDatabase pulumi.StringInput `pulumi:"postgresDatabase"`
+}
+
+func (GetPostgresCatalogSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCatalogSpec)(nil)).Elem()
+}
+
+func (i GetPostgresCatalogSpecArgs) ToGetPostgresCatalogSpecOutput() GetPostgresCatalogSpecOutput {
+	return i.ToGetPostgresCatalogSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCatalogSpecArgs) ToGetPostgresCatalogSpecOutputWithContext(ctx context.Context) GetPostgresCatalogSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCatalogSpecOutput)
+}
+
+type GetPostgresCatalogSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCatalogSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCatalogSpec)(nil)).Elem()
+}
+
+func (o GetPostgresCatalogSpecOutput) ToGetPostgresCatalogSpecOutput() GetPostgresCatalogSpecOutput {
+	return o
+}
+
+func (o GetPostgresCatalogSpecOutput) ToGetPostgresCatalogSpecOutputWithContext(ctx context.Context) GetPostgresCatalogSpecOutput {
+	return o
+}
+
+// (string) - The resource path of the branch associated with the catalog.
+func (o GetPostgresCatalogSpecOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresCatalogSpec) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// (boolean) - If set to true, the specified postgresDatabase is created on behalf of the calling user
+// if it does not already exist. In this case, the calling user has a role created for
+// them in Postgres if they do not already have one.
+func (o GetPostgresCatalogSpecOutput) CreateDatabaseIfMissing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresCatalogSpec) *bool { return v.CreateDatabaseIfMissing }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - The name of the Postgres database associated with the catalog
+func (o GetPostgresCatalogSpecOutput) PostgresDatabase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCatalogSpec) string { return v.PostgresDatabase }).(pulumi.StringOutput)
+}
+
+type GetPostgresCatalogStatus struct {
+	// (string) - The resource path of the branch associated with the catalog.
+	Branch string `pulumi:"branch"`
+	// (string) - The name of the Postgres database associated with the catalog
+	PostgresDatabase string `pulumi:"postgresDatabase"`
+	// (string) - The resource path of the project associated with the catalog.
+	Project string `pulumi:"project"`
+}
+
+// GetPostgresCatalogStatusInput is an input type that accepts GetPostgresCatalogStatusArgs and GetPostgresCatalogStatusOutput values.
+// You can construct a concrete instance of `GetPostgresCatalogStatusInput` via:
+//
+//	GetPostgresCatalogStatusArgs{...}
+type GetPostgresCatalogStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresCatalogStatusOutput() GetPostgresCatalogStatusOutput
+	ToGetPostgresCatalogStatusOutputWithContext(context.Context) GetPostgresCatalogStatusOutput
+}
+
+type GetPostgresCatalogStatusArgs struct {
+	// (string) - The resource path of the branch associated with the catalog.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// (string) - The name of the Postgres database associated with the catalog
+	PostgresDatabase pulumi.StringInput `pulumi:"postgresDatabase"`
+	// (string) - The resource path of the project associated with the catalog.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (GetPostgresCatalogStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCatalogStatus)(nil)).Elem()
+}
+
+func (i GetPostgresCatalogStatusArgs) ToGetPostgresCatalogStatusOutput() GetPostgresCatalogStatusOutput {
+	return i.ToGetPostgresCatalogStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCatalogStatusArgs) ToGetPostgresCatalogStatusOutputWithContext(ctx context.Context) GetPostgresCatalogStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCatalogStatusOutput)
+}
+
+type GetPostgresCatalogStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCatalogStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCatalogStatus)(nil)).Elem()
+}
+
+func (o GetPostgresCatalogStatusOutput) ToGetPostgresCatalogStatusOutput() GetPostgresCatalogStatusOutput {
+	return o
+}
+
+func (o GetPostgresCatalogStatusOutput) ToGetPostgresCatalogStatusOutputWithContext(ctx context.Context) GetPostgresCatalogStatusOutput {
+	return o
+}
+
+// (string) - The resource path of the branch associated with the catalog.
+func (o GetPostgresCatalogStatusOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCatalogStatus) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// (string) - The name of the Postgres database associated with the catalog
+func (o GetPostgresCatalogStatusOutput) PostgresDatabase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCatalogStatus) string { return v.PostgresDatabase }).(pulumi.StringOutput)
+}
+
+// (string) - The resource path of the project associated with the catalog.
+func (o GetPostgresCatalogStatusOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCatalogStatus) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfConfigProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresCdfConfigProviderConfigInput is an input type that accepts GetPostgresCdfConfigProviderConfigArgs and GetPostgresCdfConfigProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresCdfConfigProviderConfigInput` via:
+//
+//	GetPostgresCdfConfigProviderConfigArgs{...}
+type GetPostgresCdfConfigProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfConfigProviderConfigOutput() GetPostgresCdfConfigProviderConfigOutput
+	ToGetPostgresCdfConfigProviderConfigOutputWithContext(context.Context) GetPostgresCdfConfigProviderConfigOutput
+}
+
+type GetPostgresCdfConfigProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresCdfConfigProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfConfigProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCdfConfigProviderConfigArgs) ToGetPostgresCdfConfigProviderConfigOutput() GetPostgresCdfConfigProviderConfigOutput {
+	return i.ToGetPostgresCdfConfigProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfConfigProviderConfigArgs) ToGetPostgresCdfConfigProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfConfigProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigProviderConfigOutput)
+}
+
+func (i GetPostgresCdfConfigProviderConfigArgs) ToGetPostgresCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfConfigProviderConfigArgs) ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigProviderConfigOutput).ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresCdfConfigProviderConfigPtrInput is an input type that accepts GetPostgresCdfConfigProviderConfigArgs, GetPostgresCdfConfigProviderConfigPtr and GetPostgresCdfConfigProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresCdfConfigProviderConfigPtrInput` via:
+//
+//	        GetPostgresCdfConfigProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresCdfConfigProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigProviderConfigPtrOutput
+	ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(context.Context) GetPostgresCdfConfigProviderConfigPtrOutput
+}
+
+type getPostgresCdfConfigProviderConfigPtrType GetPostgresCdfConfigProviderConfigArgs
+
+func GetPostgresCdfConfigProviderConfigPtr(v *GetPostgresCdfConfigProviderConfigArgs) GetPostgresCdfConfigProviderConfigPtrInput {
+	return (*getPostgresCdfConfigProviderConfigPtrType)(v)
+}
+
+func (*getPostgresCdfConfigProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfConfigProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresCdfConfigProviderConfigPtrType) ToGetPostgresCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresCdfConfigProviderConfigPtrType) ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigProviderConfigPtrOutput)
+}
+
+type GetPostgresCdfConfigProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfConfigProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfConfigProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfConfigProviderConfigOutput) ToGetPostgresCdfConfigProviderConfigOutput() GetPostgresCdfConfigProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigProviderConfigOutput) ToGetPostgresCdfConfigProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfConfigProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigProviderConfigOutput) ToGetPostgresCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigProviderConfigPtrOutput {
+	return o.ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresCdfConfigProviderConfigOutput) ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresCdfConfigProviderConfig) *GetPostgresCdfConfigProviderConfig {
+		return &v
+	}).(GetPostgresCdfConfigProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfConfigProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfConfigProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfConfigProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfConfigProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfConfigProviderConfigPtrOutput) ToGetPostgresCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigProviderConfigPtrOutput) ToGetPostgresCdfConfigProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigProviderConfigPtrOutput) Elem() GetPostgresCdfConfigProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresCdfConfigProviderConfig) GetPostgresCdfConfigProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresCdfConfigProviderConfig
+		return ret
+	}).(GetPostgresCdfConfigProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfConfigProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresCdfConfigProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresCdfConfigsCdfConfig struct {
+	// (string) - The Unity Catalog catalog that replicated tables are written into.
+	// Set at creation; the CdfConfig is immutable
+	Catalog string `pulumi:"catalog"`
+	// (string) - The user-specified id; equals the final segment of `name`. Defaults to the
+	// Postgres schema name for configs without an explicit id
+	CdfConfigId string `pulumi:"cdfConfigId"`
+	// (string) - When the CdfConfig was created
+	CreateTime string `pulumi:"createTime"`
+	// (string) - Output only. The full resource name of the CdfConfig.
+	// Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
+	Name string `pulumi:"name"`
+	// (string) - The Postgres schema this CdfConfig replicates from. Unique within the
+	// parent database. Set at creation; the CdfConfig is immutable
+	PostgresSchema string `pulumi:"postgresSchema"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresCdfConfigsCdfConfigProviderConfig `pulumi:"providerConfig"`
+	// (string) - The Unity Catalog schema that replicated tables are written into.
+	// Set at creation; the CdfConfig is immutable
+	Schema string `pulumi:"schema"`
+}
+
+// GetPostgresCdfConfigsCdfConfigInput is an input type that accepts GetPostgresCdfConfigsCdfConfigArgs and GetPostgresCdfConfigsCdfConfigOutput values.
+// You can construct a concrete instance of `GetPostgresCdfConfigsCdfConfigInput` via:
+//
+//	GetPostgresCdfConfigsCdfConfigArgs{...}
+type GetPostgresCdfConfigsCdfConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfConfigsCdfConfigOutput() GetPostgresCdfConfigsCdfConfigOutput
+	ToGetPostgresCdfConfigsCdfConfigOutputWithContext(context.Context) GetPostgresCdfConfigsCdfConfigOutput
+}
+
+type GetPostgresCdfConfigsCdfConfigArgs struct {
+	// (string) - The Unity Catalog catalog that replicated tables are written into.
+	// Set at creation; the CdfConfig is immutable
+	Catalog pulumi.StringInput `pulumi:"catalog"`
+	// (string) - The user-specified id; equals the final segment of `name`. Defaults to the
+	// Postgres schema name for configs without an explicit id
+	CdfConfigId pulumi.StringInput `pulumi:"cdfConfigId"`
+	// (string) - When the CdfConfig was created
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - Output only. The full resource name of the CdfConfig.
+	// Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
+	Name pulumi.StringInput `pulumi:"name"`
+	// (string) - The Postgres schema this CdfConfig replicates from. Unique within the
+	// parent database. Set at creation; the CdfConfig is immutable
+	PostgresSchema pulumi.StringInput `pulumi:"postgresSchema"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresCdfConfigsCdfConfigProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (string) - The Unity Catalog schema that replicated tables are written into.
+	// Set at creation; the CdfConfig is immutable
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (GetPostgresCdfConfigsCdfConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfConfigsCdfConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCdfConfigsCdfConfigArgs) ToGetPostgresCdfConfigsCdfConfigOutput() GetPostgresCdfConfigsCdfConfigOutput {
+	return i.ToGetPostgresCdfConfigsCdfConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfConfigsCdfConfigArgs) ToGetPostgresCdfConfigsCdfConfigOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigsCdfConfigOutput)
+}
+
+// GetPostgresCdfConfigsCdfConfigArrayInput is an input type that accepts GetPostgresCdfConfigsCdfConfigArray and GetPostgresCdfConfigsCdfConfigArrayOutput values.
+// You can construct a concrete instance of `GetPostgresCdfConfigsCdfConfigArrayInput` via:
+//
+//	GetPostgresCdfConfigsCdfConfigArray{ GetPostgresCdfConfigsCdfConfigArgs{...} }
+type GetPostgresCdfConfigsCdfConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfConfigsCdfConfigArrayOutput() GetPostgresCdfConfigsCdfConfigArrayOutput
+	ToGetPostgresCdfConfigsCdfConfigArrayOutputWithContext(context.Context) GetPostgresCdfConfigsCdfConfigArrayOutput
+}
+
+type GetPostgresCdfConfigsCdfConfigArray []GetPostgresCdfConfigsCdfConfigInput
+
+func (GetPostgresCdfConfigsCdfConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresCdfConfigsCdfConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCdfConfigsCdfConfigArray) ToGetPostgresCdfConfigsCdfConfigArrayOutput() GetPostgresCdfConfigsCdfConfigArrayOutput {
+	return i.ToGetPostgresCdfConfigsCdfConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfConfigsCdfConfigArray) ToGetPostgresCdfConfigsCdfConfigArrayOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigsCdfConfigArrayOutput)
+}
+
+type GetPostgresCdfConfigsCdfConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfConfigsCdfConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfConfigsCdfConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfConfigsCdfConfigOutput) ToGetPostgresCdfConfigsCdfConfigOutput() GetPostgresCdfConfigsCdfConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsCdfConfigOutput) ToGetPostgresCdfConfigsCdfConfigOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigOutput {
+	return o
+}
+
+// (string) - The Unity Catalog catalog that replicated tables are written into.
+// Set at creation; the CdfConfig is immutable
+func (o GetPostgresCdfConfigsCdfConfigOutput) Catalog() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsCdfConfig) string { return v.Catalog }).(pulumi.StringOutput)
+}
+
+// (string) - The user-specified id; equals the final segment of `name`. Defaults to the
+// Postgres schema name for configs without an explicit id
+func (o GetPostgresCdfConfigsCdfConfigOutput) CdfConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsCdfConfig) string { return v.CdfConfigId }).(pulumi.StringOutput)
+}
+
+// (string) - When the CdfConfig was created
+func (o GetPostgresCdfConfigsCdfConfigOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsCdfConfig) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - Output only. The full resource name of the CdfConfig.
+// Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
+func (o GetPostgresCdfConfigsCdfConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsCdfConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The Postgres schema this CdfConfig replicates from. Unique within the
+// parent database. Set at creation; the CdfConfig is immutable
+func (o GetPostgresCdfConfigsCdfConfigOutput) PostgresSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsCdfConfig) string { return v.PostgresSchema }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetPostgresCdfConfigsCdfConfigOutput) ProviderConfig() GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsCdfConfig) *GetPostgresCdfConfigsCdfConfigProviderConfig {
+		return v.ProviderConfig
+	}).(GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput)
+}
+
+// (string) - The Unity Catalog schema that replicated tables are written into.
+// Set at creation; the CdfConfig is immutable
+func (o GetPostgresCdfConfigsCdfConfigOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsCdfConfig) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfConfigsCdfConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfConfigsCdfConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresCdfConfigsCdfConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfConfigsCdfConfigArrayOutput) ToGetPostgresCdfConfigsCdfConfigArrayOutput() GetPostgresCdfConfigsCdfConfigArrayOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsCdfConfigArrayOutput) ToGetPostgresCdfConfigsCdfConfigArrayOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigArrayOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsCdfConfigArrayOutput) Index(i pulumi.IntInput) GetPostgresCdfConfigsCdfConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresCdfConfigsCdfConfig {
+		return vs[0].([]GetPostgresCdfConfigsCdfConfig)[vs[1].(int)]
+	}).(GetPostgresCdfConfigsCdfConfigOutput)
+}
+
+type GetPostgresCdfConfigsCdfConfigProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresCdfConfigsCdfConfigProviderConfigInput is an input type that accepts GetPostgresCdfConfigsCdfConfigProviderConfigArgs and GetPostgresCdfConfigsCdfConfigProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresCdfConfigsCdfConfigProviderConfigInput` via:
+//
+//	GetPostgresCdfConfigsCdfConfigProviderConfigArgs{...}
+type GetPostgresCdfConfigsCdfConfigProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfConfigsCdfConfigProviderConfigOutput() GetPostgresCdfConfigsCdfConfigProviderConfigOutput
+	ToGetPostgresCdfConfigsCdfConfigProviderConfigOutputWithContext(context.Context) GetPostgresCdfConfigsCdfConfigProviderConfigOutput
+}
+
+type GetPostgresCdfConfigsCdfConfigProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresCdfConfigsCdfConfigProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfConfigsCdfConfigProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCdfConfigsCdfConfigProviderConfigArgs) ToGetPostgresCdfConfigsCdfConfigProviderConfigOutput() GetPostgresCdfConfigsCdfConfigProviderConfigOutput {
+	return i.ToGetPostgresCdfConfigsCdfConfigProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfConfigsCdfConfigProviderConfigArgs) ToGetPostgresCdfConfigsCdfConfigProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigsCdfConfigProviderConfigOutput)
+}
+
+func (i GetPostgresCdfConfigsCdfConfigProviderConfigArgs) ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfConfigsCdfConfigProviderConfigArgs) ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigsCdfConfigProviderConfigOutput).ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresCdfConfigsCdfConfigProviderConfigPtrInput is an input type that accepts GetPostgresCdfConfigsCdfConfigProviderConfigArgs, GetPostgresCdfConfigsCdfConfigProviderConfigPtr and GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresCdfConfigsCdfConfigProviderConfigPtrInput` via:
+//
+//	        GetPostgresCdfConfigsCdfConfigProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresCdfConfigsCdfConfigProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput
+	ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(context.Context) GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput
+}
+
+type getPostgresCdfConfigsCdfConfigProviderConfigPtrType GetPostgresCdfConfigsCdfConfigProviderConfigArgs
+
+func GetPostgresCdfConfigsCdfConfigProviderConfigPtr(v *GetPostgresCdfConfigsCdfConfigProviderConfigArgs) GetPostgresCdfConfigsCdfConfigProviderConfigPtrInput {
+	return (*getPostgresCdfConfigsCdfConfigProviderConfigPtrType)(v)
+}
+
+func (*getPostgresCdfConfigsCdfConfigProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfConfigsCdfConfigProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresCdfConfigsCdfConfigProviderConfigPtrType) ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresCdfConfigsCdfConfigProviderConfigPtrType) ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput)
+}
+
+type GetPostgresCdfConfigsCdfConfigProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfConfigsCdfConfigProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfConfigsCdfConfigProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigOutput) ToGetPostgresCdfConfigsCdfConfigProviderConfigOutput() GetPostgresCdfConfigsCdfConfigProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigOutput) ToGetPostgresCdfConfigsCdfConfigProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigOutput) ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return o.ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigOutput) ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresCdfConfigsCdfConfigProviderConfig) *GetPostgresCdfConfigsCdfConfigProviderConfig {
+		return &v
+	}).(GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsCdfConfigProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfConfigsCdfConfigProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput) ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput() GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput) ToGetPostgresCdfConfigsCdfConfigProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput) Elem() GetPostgresCdfConfigsCdfConfigProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresCdfConfigsCdfConfigProviderConfig) GetPostgresCdfConfigsCdfConfigProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresCdfConfigsCdfConfigProviderConfig
+		return ret
+	}).(GetPostgresCdfConfigsCdfConfigProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresCdfConfigsCdfConfigProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresCdfConfigsProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresCdfConfigsProviderConfigInput is an input type that accepts GetPostgresCdfConfigsProviderConfigArgs and GetPostgresCdfConfigsProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresCdfConfigsProviderConfigInput` via:
+//
+//	GetPostgresCdfConfigsProviderConfigArgs{...}
+type GetPostgresCdfConfigsProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfConfigsProviderConfigOutput() GetPostgresCdfConfigsProviderConfigOutput
+	ToGetPostgresCdfConfigsProviderConfigOutputWithContext(context.Context) GetPostgresCdfConfigsProviderConfigOutput
+}
+
+type GetPostgresCdfConfigsProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresCdfConfigsProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfConfigsProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCdfConfigsProviderConfigArgs) ToGetPostgresCdfConfigsProviderConfigOutput() GetPostgresCdfConfigsProviderConfigOutput {
+	return i.ToGetPostgresCdfConfigsProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfConfigsProviderConfigArgs) ToGetPostgresCdfConfigsProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfConfigsProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigsProviderConfigOutput)
+}
+
+func (i GetPostgresCdfConfigsProviderConfigArgs) ToGetPostgresCdfConfigsProviderConfigPtrOutput() GetPostgresCdfConfigsProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfConfigsProviderConfigArgs) ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigsProviderConfigOutput).ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresCdfConfigsProviderConfigPtrInput is an input type that accepts GetPostgresCdfConfigsProviderConfigArgs, GetPostgresCdfConfigsProviderConfigPtr and GetPostgresCdfConfigsProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresCdfConfigsProviderConfigPtrInput` via:
+//
+//	        GetPostgresCdfConfigsProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresCdfConfigsProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfConfigsProviderConfigPtrOutput() GetPostgresCdfConfigsProviderConfigPtrOutput
+	ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(context.Context) GetPostgresCdfConfigsProviderConfigPtrOutput
+}
+
+type getPostgresCdfConfigsProviderConfigPtrType GetPostgresCdfConfigsProviderConfigArgs
+
+func GetPostgresCdfConfigsProviderConfigPtr(v *GetPostgresCdfConfigsProviderConfigArgs) GetPostgresCdfConfigsProviderConfigPtrInput {
+	return (*getPostgresCdfConfigsProviderConfigPtrType)(v)
+}
+
+func (*getPostgresCdfConfigsProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfConfigsProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresCdfConfigsProviderConfigPtrType) ToGetPostgresCdfConfigsProviderConfigPtrOutput() GetPostgresCdfConfigsProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresCdfConfigsProviderConfigPtrType) ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfConfigsProviderConfigPtrOutput)
+}
+
+type GetPostgresCdfConfigsProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfConfigsProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfConfigsProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfConfigsProviderConfigOutput) ToGetPostgresCdfConfigsProviderConfigOutput() GetPostgresCdfConfigsProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsProviderConfigOutput) ToGetPostgresCdfConfigsProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfConfigsProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsProviderConfigOutput) ToGetPostgresCdfConfigsProviderConfigPtrOutput() GetPostgresCdfConfigsProviderConfigPtrOutput {
+	return o.ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresCdfConfigsProviderConfigOutput) ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigsProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresCdfConfigsProviderConfig) *GetPostgresCdfConfigsProviderConfig {
+		return &v
+	}).(GetPostgresCdfConfigsProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfConfigsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfConfigsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfConfigsProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfConfigsProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfConfigsProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfConfigsProviderConfigPtrOutput) ToGetPostgresCdfConfigsProviderConfigPtrOutput() GetPostgresCdfConfigsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsProviderConfigPtrOutput) ToGetPostgresCdfConfigsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfConfigsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfConfigsProviderConfigPtrOutput) Elem() GetPostgresCdfConfigsProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresCdfConfigsProviderConfig) GetPostgresCdfConfigsProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresCdfConfigsProviderConfig
+		return ret
+	}).(GetPostgresCdfConfigsProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfConfigsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresCdfConfigsProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresCdfStatusProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresCdfStatusProviderConfigInput is an input type that accepts GetPostgresCdfStatusProviderConfigArgs and GetPostgresCdfStatusProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresCdfStatusProviderConfigInput` via:
+//
+//	GetPostgresCdfStatusProviderConfigArgs{...}
+type GetPostgresCdfStatusProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfStatusProviderConfigOutput() GetPostgresCdfStatusProviderConfigOutput
+	ToGetPostgresCdfStatusProviderConfigOutputWithContext(context.Context) GetPostgresCdfStatusProviderConfigOutput
+}
+
+type GetPostgresCdfStatusProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresCdfStatusProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfStatusProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCdfStatusProviderConfigArgs) ToGetPostgresCdfStatusProviderConfigOutput() GetPostgresCdfStatusProviderConfigOutput {
+	return i.ToGetPostgresCdfStatusProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfStatusProviderConfigArgs) ToGetPostgresCdfStatusProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfStatusProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusProviderConfigOutput)
+}
+
+func (i GetPostgresCdfStatusProviderConfigArgs) ToGetPostgresCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfStatusProviderConfigArgs) ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusProviderConfigOutput).ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresCdfStatusProviderConfigPtrInput is an input type that accepts GetPostgresCdfStatusProviderConfigArgs, GetPostgresCdfStatusProviderConfigPtr and GetPostgresCdfStatusProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresCdfStatusProviderConfigPtrInput` via:
+//
+//	        GetPostgresCdfStatusProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresCdfStatusProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusProviderConfigPtrOutput
+	ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(context.Context) GetPostgresCdfStatusProviderConfigPtrOutput
+}
+
+type getPostgresCdfStatusProviderConfigPtrType GetPostgresCdfStatusProviderConfigArgs
+
+func GetPostgresCdfStatusProviderConfigPtr(v *GetPostgresCdfStatusProviderConfigArgs) GetPostgresCdfStatusProviderConfigPtrInput {
+	return (*getPostgresCdfStatusProviderConfigPtrType)(v)
+}
+
+func (*getPostgresCdfStatusProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfStatusProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresCdfStatusProviderConfigPtrType) ToGetPostgresCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresCdfStatusProviderConfigPtrType) ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusProviderConfigPtrOutput)
+}
+
+type GetPostgresCdfStatusProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfStatusProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfStatusProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfStatusProviderConfigOutput) ToGetPostgresCdfStatusProviderConfigOutput() GetPostgresCdfStatusProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusProviderConfigOutput) ToGetPostgresCdfStatusProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfStatusProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusProviderConfigOutput) ToGetPostgresCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusProviderConfigPtrOutput {
+	return o.ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresCdfStatusProviderConfigOutput) ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresCdfStatusProviderConfig) *GetPostgresCdfStatusProviderConfig {
+		return &v
+	}).(GetPostgresCdfStatusProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfStatusProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfStatusProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfStatusProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfStatusProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfStatusProviderConfigPtrOutput) ToGetPostgresCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusProviderConfigPtrOutput) ToGetPostgresCdfStatusProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusProviderConfigPtrOutput) Elem() GetPostgresCdfStatusProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresCdfStatusProviderConfig) GetPostgresCdfStatusProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresCdfStatusProviderConfig
+		return ret
+	}).(GetPostgresCdfStatusProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfStatusProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresCdfStatusProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresCdfStatusesCdfStatus struct {
+	// (string) - The high-watermark Log Sequence Number (LSN) committed to Delta Lake
+	CommittedLsn string `pulumi:"committedLsn"`
+	// (string) - When replication for this table was first established
+	CreateTime string `pulumi:"createTime"`
+	// (string) - The last time changes for this table were written to Delta Lake
+	LastSyncTime string `pulumi:"lastSyncTime"`
+	// (string) - Output only. The full resource name of the CdfStatus.
+	// Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}/cdf-statuses/{cdf_status}
+	// The {cdf_status} segment is the Postgres table name
+	Name string `pulumi:"name"`
+	// (string) - The Postgres table being replicated
+	PostgresTable string `pulumi:"postgresTable"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresCdfStatusesCdfStatusProviderConfig `pulumi:"providerConfig"`
+	// (string) - The current replication state of this table. Possible values are: `CDF_STATE_SKIPPED`, `CDF_STATE_SNAPSHOTTING`, `CDF_STATE_STREAMING`, `CDF_STATE_TERMINATED`
+	State string `pulumi:"state"`
+	// (string) - Human-readable detail for the current state (e.g. the skip/error reason).
+	// Empty for healthy states
+	StatusDetail string `pulumi:"statusDetail"`
+	// (string) - The Unity Catalog table receiving replicated data
+	UcTable string `pulumi:"ucTable"`
+}
+
+// GetPostgresCdfStatusesCdfStatusInput is an input type that accepts GetPostgresCdfStatusesCdfStatusArgs and GetPostgresCdfStatusesCdfStatusOutput values.
+// You can construct a concrete instance of `GetPostgresCdfStatusesCdfStatusInput` via:
+//
+//	GetPostgresCdfStatusesCdfStatusArgs{...}
+type GetPostgresCdfStatusesCdfStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfStatusesCdfStatusOutput() GetPostgresCdfStatusesCdfStatusOutput
+	ToGetPostgresCdfStatusesCdfStatusOutputWithContext(context.Context) GetPostgresCdfStatusesCdfStatusOutput
+}
+
+type GetPostgresCdfStatusesCdfStatusArgs struct {
+	// (string) - The high-watermark Log Sequence Number (LSN) committed to Delta Lake
+	CommittedLsn pulumi.StringInput `pulumi:"committedLsn"`
+	// (string) - When replication for this table was first established
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - The last time changes for this table were written to Delta Lake
+	LastSyncTime pulumi.StringInput `pulumi:"lastSyncTime"`
+	// (string) - Output only. The full resource name of the CdfStatus.
+	// Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}/cdf-statuses/{cdf_status}
+	// The {cdf_status} segment is the Postgres table name
+	Name pulumi.StringInput `pulumi:"name"`
+	// (string) - The Postgres table being replicated
+	PostgresTable pulumi.StringInput `pulumi:"postgresTable"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresCdfStatusesCdfStatusProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (string) - The current replication state of this table. Possible values are: `CDF_STATE_SKIPPED`, `CDF_STATE_SNAPSHOTTING`, `CDF_STATE_STREAMING`, `CDF_STATE_TERMINATED`
+	State pulumi.StringInput `pulumi:"state"`
+	// (string) - Human-readable detail for the current state (e.g. the skip/error reason).
+	// Empty for healthy states
+	StatusDetail pulumi.StringInput `pulumi:"statusDetail"`
+	// (string) - The Unity Catalog table receiving replicated data
+	UcTable pulumi.StringInput `pulumi:"ucTable"`
+}
+
+func (GetPostgresCdfStatusesCdfStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfStatusesCdfStatus)(nil)).Elem()
+}
+
+func (i GetPostgresCdfStatusesCdfStatusArgs) ToGetPostgresCdfStatusesCdfStatusOutput() GetPostgresCdfStatusesCdfStatusOutput {
+	return i.ToGetPostgresCdfStatusesCdfStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfStatusesCdfStatusArgs) ToGetPostgresCdfStatusesCdfStatusOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusesCdfStatusOutput)
+}
+
+// GetPostgresCdfStatusesCdfStatusArrayInput is an input type that accepts GetPostgresCdfStatusesCdfStatusArray and GetPostgresCdfStatusesCdfStatusArrayOutput values.
+// You can construct a concrete instance of `GetPostgresCdfStatusesCdfStatusArrayInput` via:
+//
+//	GetPostgresCdfStatusesCdfStatusArray{ GetPostgresCdfStatusesCdfStatusArgs{...} }
+type GetPostgresCdfStatusesCdfStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfStatusesCdfStatusArrayOutput() GetPostgresCdfStatusesCdfStatusArrayOutput
+	ToGetPostgresCdfStatusesCdfStatusArrayOutputWithContext(context.Context) GetPostgresCdfStatusesCdfStatusArrayOutput
+}
+
+type GetPostgresCdfStatusesCdfStatusArray []GetPostgresCdfStatusesCdfStatusInput
+
+func (GetPostgresCdfStatusesCdfStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresCdfStatusesCdfStatus)(nil)).Elem()
+}
+
+func (i GetPostgresCdfStatusesCdfStatusArray) ToGetPostgresCdfStatusesCdfStatusArrayOutput() GetPostgresCdfStatusesCdfStatusArrayOutput {
+	return i.ToGetPostgresCdfStatusesCdfStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfStatusesCdfStatusArray) ToGetPostgresCdfStatusesCdfStatusArrayOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusesCdfStatusArrayOutput)
+}
+
+type GetPostgresCdfStatusesCdfStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfStatusesCdfStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfStatusesCdfStatus)(nil)).Elem()
+}
+
+func (o GetPostgresCdfStatusesCdfStatusOutput) ToGetPostgresCdfStatusesCdfStatusOutput() GetPostgresCdfStatusesCdfStatusOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesCdfStatusOutput) ToGetPostgresCdfStatusesCdfStatusOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusOutput {
+	return o
+}
+
+// (string) - The high-watermark Log Sequence Number (LSN) committed to Delta Lake
+func (o GetPostgresCdfStatusesCdfStatusOutput) CommittedLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) string { return v.CommittedLsn }).(pulumi.StringOutput)
+}
+
+// (string) - When replication for this table was first established
+func (o GetPostgresCdfStatusesCdfStatusOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - The last time changes for this table were written to Delta Lake
+func (o GetPostgresCdfStatusesCdfStatusOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) string { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
+// (string) - Output only. The full resource name of the CdfStatus.
+// Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}/cdf-statuses/{cdf_status}
+// The {cdf_status} segment is the Postgres table name
+func (o GetPostgresCdfStatusesCdfStatusOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The Postgres table being replicated
+func (o GetPostgresCdfStatusesCdfStatusOutput) PostgresTable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) string { return v.PostgresTable }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetPostgresCdfStatusesCdfStatusOutput) ProviderConfig() GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) *GetPostgresCdfStatusesCdfStatusProviderConfig {
+		return v.ProviderConfig
+	}).(GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput)
+}
+
+// (string) - The current replication state of this table. Possible values are: `CDF_STATE_SKIPPED`, `CDF_STATE_SNAPSHOTTING`, `CDF_STATE_STREAMING`, `CDF_STATE_TERMINATED`
+func (o GetPostgresCdfStatusesCdfStatusOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) string { return v.State }).(pulumi.StringOutput)
+}
+
+// (string) - Human-readable detail for the current state (e.g. the skip/error reason).
+// Empty for healthy states
+func (o GetPostgresCdfStatusesCdfStatusOutput) StatusDetail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) string { return v.StatusDetail }).(pulumi.StringOutput)
+}
+
+// (string) - The Unity Catalog table receiving replicated data
+func (o GetPostgresCdfStatusesCdfStatusOutput) UcTable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatus) string { return v.UcTable }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfStatusesCdfStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfStatusesCdfStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresCdfStatusesCdfStatus)(nil)).Elem()
+}
+
+func (o GetPostgresCdfStatusesCdfStatusArrayOutput) ToGetPostgresCdfStatusesCdfStatusArrayOutput() GetPostgresCdfStatusesCdfStatusArrayOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesCdfStatusArrayOutput) ToGetPostgresCdfStatusesCdfStatusArrayOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusArrayOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesCdfStatusArrayOutput) Index(i pulumi.IntInput) GetPostgresCdfStatusesCdfStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresCdfStatusesCdfStatus {
+		return vs[0].([]GetPostgresCdfStatusesCdfStatus)[vs[1].(int)]
+	}).(GetPostgresCdfStatusesCdfStatusOutput)
+}
+
+type GetPostgresCdfStatusesCdfStatusProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresCdfStatusesCdfStatusProviderConfigInput is an input type that accepts GetPostgresCdfStatusesCdfStatusProviderConfigArgs and GetPostgresCdfStatusesCdfStatusProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresCdfStatusesCdfStatusProviderConfigInput` via:
+//
+//	GetPostgresCdfStatusesCdfStatusProviderConfigArgs{...}
+type GetPostgresCdfStatusesCdfStatusProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfStatusesCdfStatusProviderConfigOutput() GetPostgresCdfStatusesCdfStatusProviderConfigOutput
+	ToGetPostgresCdfStatusesCdfStatusProviderConfigOutputWithContext(context.Context) GetPostgresCdfStatusesCdfStatusProviderConfigOutput
+}
+
+type GetPostgresCdfStatusesCdfStatusProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresCdfStatusesCdfStatusProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfStatusesCdfStatusProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCdfStatusesCdfStatusProviderConfigArgs) ToGetPostgresCdfStatusesCdfStatusProviderConfigOutput() GetPostgresCdfStatusesCdfStatusProviderConfigOutput {
+	return i.ToGetPostgresCdfStatusesCdfStatusProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfStatusesCdfStatusProviderConfigArgs) ToGetPostgresCdfStatusesCdfStatusProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusesCdfStatusProviderConfigOutput)
+}
+
+func (i GetPostgresCdfStatusesCdfStatusProviderConfigArgs) ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfStatusesCdfStatusProviderConfigArgs) ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusesCdfStatusProviderConfigOutput).ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresCdfStatusesCdfStatusProviderConfigPtrInput is an input type that accepts GetPostgresCdfStatusesCdfStatusProviderConfigArgs, GetPostgresCdfStatusesCdfStatusProviderConfigPtr and GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresCdfStatusesCdfStatusProviderConfigPtrInput` via:
+//
+//	        GetPostgresCdfStatusesCdfStatusProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresCdfStatusesCdfStatusProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput
+	ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(context.Context) GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput
+}
+
+type getPostgresCdfStatusesCdfStatusProviderConfigPtrType GetPostgresCdfStatusesCdfStatusProviderConfigArgs
+
+func GetPostgresCdfStatusesCdfStatusProviderConfigPtr(v *GetPostgresCdfStatusesCdfStatusProviderConfigArgs) GetPostgresCdfStatusesCdfStatusProviderConfigPtrInput {
+	return (*getPostgresCdfStatusesCdfStatusProviderConfigPtrType)(v)
+}
+
+func (*getPostgresCdfStatusesCdfStatusProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfStatusesCdfStatusProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresCdfStatusesCdfStatusProviderConfigPtrType) ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresCdfStatusesCdfStatusProviderConfigPtrType) ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput)
+}
+
+type GetPostgresCdfStatusesCdfStatusProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfStatusesCdfStatusProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfStatusesCdfStatusProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigOutput) ToGetPostgresCdfStatusesCdfStatusProviderConfigOutput() GetPostgresCdfStatusesCdfStatusProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigOutput) ToGetPostgresCdfStatusesCdfStatusProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigOutput) ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return o.ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigOutput) ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresCdfStatusesCdfStatusProviderConfig) *GetPostgresCdfStatusesCdfStatusProviderConfig {
+		return &v
+	}).(GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesCdfStatusProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfStatusesCdfStatusProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput) ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput() GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput) ToGetPostgresCdfStatusesCdfStatusProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput) Elem() GetPostgresCdfStatusesCdfStatusProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresCdfStatusesCdfStatusProviderConfig) GetPostgresCdfStatusesCdfStatusProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresCdfStatusesCdfStatusProviderConfig
+		return ret
+	}).(GetPostgresCdfStatusesCdfStatusProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresCdfStatusesCdfStatusProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresCdfStatusesProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresCdfStatusesProviderConfigInput is an input type that accepts GetPostgresCdfStatusesProviderConfigArgs and GetPostgresCdfStatusesProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresCdfStatusesProviderConfigInput` via:
+//
+//	GetPostgresCdfStatusesProviderConfigArgs{...}
+type GetPostgresCdfStatusesProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfStatusesProviderConfigOutput() GetPostgresCdfStatusesProviderConfigOutput
+	ToGetPostgresCdfStatusesProviderConfigOutputWithContext(context.Context) GetPostgresCdfStatusesProviderConfigOutput
+}
+
+type GetPostgresCdfStatusesProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresCdfStatusesProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfStatusesProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresCdfStatusesProviderConfigArgs) ToGetPostgresCdfStatusesProviderConfigOutput() GetPostgresCdfStatusesProviderConfigOutput {
+	return i.ToGetPostgresCdfStatusesProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfStatusesProviderConfigArgs) ToGetPostgresCdfStatusesProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfStatusesProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusesProviderConfigOutput)
+}
+
+func (i GetPostgresCdfStatusesProviderConfigArgs) ToGetPostgresCdfStatusesProviderConfigPtrOutput() GetPostgresCdfStatusesProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresCdfStatusesProviderConfigArgs) ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusesProviderConfigOutput).ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresCdfStatusesProviderConfigPtrInput is an input type that accepts GetPostgresCdfStatusesProviderConfigArgs, GetPostgresCdfStatusesProviderConfigPtr and GetPostgresCdfStatusesProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresCdfStatusesProviderConfigPtrInput` via:
+//
+//	        GetPostgresCdfStatusesProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresCdfStatusesProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresCdfStatusesProviderConfigPtrOutput() GetPostgresCdfStatusesProviderConfigPtrOutput
+	ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(context.Context) GetPostgresCdfStatusesProviderConfigPtrOutput
+}
+
+type getPostgresCdfStatusesProviderConfigPtrType GetPostgresCdfStatusesProviderConfigArgs
+
+func GetPostgresCdfStatusesProviderConfigPtr(v *GetPostgresCdfStatusesProviderConfigArgs) GetPostgresCdfStatusesProviderConfigPtrInput {
+	return (*getPostgresCdfStatusesProviderConfigPtrType)(v)
+}
+
+func (*getPostgresCdfStatusesProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfStatusesProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresCdfStatusesProviderConfigPtrType) ToGetPostgresCdfStatusesProviderConfigPtrOutput() GetPostgresCdfStatusesProviderConfigPtrOutput {
+	return i.ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresCdfStatusesProviderConfigPtrType) ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresCdfStatusesProviderConfigPtrOutput)
+}
+
+type GetPostgresCdfStatusesProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfStatusesProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresCdfStatusesProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfStatusesProviderConfigOutput) ToGetPostgresCdfStatusesProviderConfigOutput() GetPostgresCdfStatusesProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesProviderConfigOutput) ToGetPostgresCdfStatusesProviderConfigOutputWithContext(ctx context.Context) GetPostgresCdfStatusesProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesProviderConfigOutput) ToGetPostgresCdfStatusesProviderConfigPtrOutput() GetPostgresCdfStatusesProviderConfigPtrOutput {
+	return o.ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresCdfStatusesProviderConfigOutput) ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusesProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresCdfStatusesProviderConfig) *GetPostgresCdfStatusesProviderConfig {
+		return &v
+	}).(GetPostgresCdfStatusesProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfStatusesProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresCdfStatusesProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresCdfStatusesProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresCdfStatusesProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresCdfStatusesProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresCdfStatusesProviderConfigPtrOutput) ToGetPostgresCdfStatusesProviderConfigPtrOutput() GetPostgresCdfStatusesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesProviderConfigPtrOutput) ToGetPostgresCdfStatusesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresCdfStatusesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresCdfStatusesProviderConfigPtrOutput) Elem() GetPostgresCdfStatusesProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresCdfStatusesProviderConfig) GetPostgresCdfStatusesProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresCdfStatusesProviderConfig
+		return ret
+	}).(GetPostgresCdfStatusesProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresCdfStatusesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresCdfStatusesProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresDataApiProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresDataApiProviderConfigInput is an input type that accepts GetPostgresDataApiProviderConfigArgs and GetPostgresDataApiProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresDataApiProviderConfigInput` via:
+//
+//	GetPostgresDataApiProviderConfigArgs{...}
+type GetPostgresDataApiProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresDataApiProviderConfigOutput() GetPostgresDataApiProviderConfigOutput
+	ToGetPostgresDataApiProviderConfigOutputWithContext(context.Context) GetPostgresDataApiProviderConfigOutput
+}
+
+type GetPostgresDataApiProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresDataApiProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDataApiProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresDataApiProviderConfigArgs) ToGetPostgresDataApiProviderConfigOutput() GetPostgresDataApiProviderConfigOutput {
+	return i.ToGetPostgresDataApiProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDataApiProviderConfigArgs) ToGetPostgresDataApiProviderConfigOutputWithContext(ctx context.Context) GetPostgresDataApiProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDataApiProviderConfigOutput)
+}
+
+func (i GetPostgresDataApiProviderConfigArgs) ToGetPostgresDataApiProviderConfigPtrOutput() GetPostgresDataApiProviderConfigPtrOutput {
+	return i.ToGetPostgresDataApiProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresDataApiProviderConfigArgs) ToGetPostgresDataApiProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDataApiProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDataApiProviderConfigOutput).ToGetPostgresDataApiProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresDataApiProviderConfigPtrInput is an input type that accepts GetPostgresDataApiProviderConfigArgs, GetPostgresDataApiProviderConfigPtr and GetPostgresDataApiProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresDataApiProviderConfigPtrInput` via:
+//
+//	        GetPostgresDataApiProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresDataApiProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresDataApiProviderConfigPtrOutput() GetPostgresDataApiProviderConfigPtrOutput
+	ToGetPostgresDataApiProviderConfigPtrOutputWithContext(context.Context) GetPostgresDataApiProviderConfigPtrOutput
+}
+
+type getPostgresDataApiProviderConfigPtrType GetPostgresDataApiProviderConfigArgs
+
+func GetPostgresDataApiProviderConfigPtr(v *GetPostgresDataApiProviderConfigArgs) GetPostgresDataApiProviderConfigPtrInput {
+	return (*getPostgresDataApiProviderConfigPtrType)(v)
+}
+
+func (*getPostgresDataApiProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresDataApiProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresDataApiProviderConfigPtrType) ToGetPostgresDataApiProviderConfigPtrOutput() GetPostgresDataApiProviderConfigPtrOutput {
+	return i.ToGetPostgresDataApiProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresDataApiProviderConfigPtrType) ToGetPostgresDataApiProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDataApiProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresDataApiProviderConfigPtrOutput)
+}
+
+type GetPostgresDataApiProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDataApiProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresDataApiProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresDataApiProviderConfigOutput) ToGetPostgresDataApiProviderConfigOutput() GetPostgresDataApiProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresDataApiProviderConfigOutput) ToGetPostgresDataApiProviderConfigOutputWithContext(ctx context.Context) GetPostgresDataApiProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresDataApiProviderConfigOutput) ToGetPostgresDataApiProviderConfigPtrOutput() GetPostgresDataApiProviderConfigPtrOutput {
+	return o.ToGetPostgresDataApiProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresDataApiProviderConfigOutput) ToGetPostgresDataApiProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDataApiProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresDataApiProviderConfig) *GetPostgresDataApiProviderConfig {
+		return &v
+	}).(GetPostgresDataApiProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresDataApiProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDataApiProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresDataApiProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresDataApiProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresDataApiProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresDataApiProviderConfigPtrOutput) ToGetPostgresDataApiProviderConfigPtrOutput() GetPostgresDataApiProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresDataApiProviderConfigPtrOutput) ToGetPostgresDataApiProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresDataApiProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresDataApiProviderConfigPtrOutput) Elem() GetPostgresDataApiProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresDataApiProviderConfig) GetPostgresDataApiProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresDataApiProviderConfig
+		return ret
+	}).(GetPostgresDataApiProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresDataApiProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresDataApiProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetPostgresDataApiSpec struct {
 	// (boolean) - Actual aggregate function setting read from the database
 	DbAggregatesEnabled *bool `pulumi:"dbAggregatesEnabled"`
@@ -421,7 +3730,7 @@ type GetPostgresDatabaseSpec struct {
 	PostgresDatabase *string `pulumi:"postgresDatabase"`
 	// (string) - The name of the role that owns the database.
 	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
-	Role *string `pulumi:"role"`
+	Role string `pulumi:"role"`
 }
 
 // GetPostgresDatabaseSpecInput is an input type that accepts GetPostgresDatabaseSpecArgs and GetPostgresDatabaseSpecOutput values.
@@ -440,7 +3749,7 @@ type GetPostgresDatabaseSpecArgs struct {
 	PostgresDatabase pulumi.StringPtrInput `pulumi:"postgresDatabase"`
 	// (string) - The name of the role that owns the database.
 	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
-	Role pulumi.StringPtrInput `pulumi:"role"`
+	Role pulumi.StringInput `pulumi:"role"`
 }
 
 func (GetPostgresDatabaseSpecArgs) ElementType() reflect.Type {
@@ -476,8 +3785,8 @@ func (o GetPostgresDatabaseSpecOutput) PostgresDatabase() pulumi.StringPtrOutput
 
 // (string) - The name of the role that owns the database.
 // Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
-func (o GetPostgresDatabaseSpecOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetPostgresDatabaseSpec) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o GetPostgresDatabaseSpecOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabaseSpec) string { return v.Role }).(pulumi.StringOutput)
 }
 
 type GetPostgresDatabaseStatus struct {
@@ -863,7 +4172,7 @@ type GetPostgresDatabasesDatabaseSpec struct {
 	PostgresDatabase *string `pulumi:"postgresDatabase"`
 	// (string) - The name of the role that owns the database.
 	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
-	Role *string `pulumi:"role"`
+	Role string `pulumi:"role"`
 }
 
 // GetPostgresDatabasesDatabaseSpecInput is an input type that accepts GetPostgresDatabasesDatabaseSpecArgs and GetPostgresDatabasesDatabaseSpecOutput values.
@@ -882,7 +4191,7 @@ type GetPostgresDatabasesDatabaseSpecArgs struct {
 	PostgresDatabase pulumi.StringPtrInput `pulumi:"postgresDatabase"`
 	// (string) - The name of the role that owns the database.
 	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
-	Role pulumi.StringPtrInput `pulumi:"role"`
+	Role pulumi.StringInput `pulumi:"role"`
 }
 
 func (GetPostgresDatabasesDatabaseSpecArgs) ElementType() reflect.Type {
@@ -918,8 +4227,8 @@ func (o GetPostgresDatabasesDatabaseSpecOutput) PostgresDatabase() pulumi.String
 
 // (string) - The name of the role that owns the database.
 // Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
-func (o GetPostgresDatabasesDatabaseSpecOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetPostgresDatabasesDatabaseSpec) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o GetPostgresDatabasesDatabaseSpecOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresDatabasesDatabaseSpec) string { return v.Role }).(pulumi.StringOutput)
 }
 
 type GetPostgresDatabasesDatabaseStatus struct {
@@ -10931,7 +14240,7 @@ func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessVa
 type GetRegisteredModelModelInfo struct {
 	// the list of aliases associated with this model. Each item is object consisting of following attributes:
 	Aliases    []GetRegisteredModelModelInfoAlias `pulumi:"aliases"`
-	BrowseOnly *bool                              `pulumi:"browseOnly"`
+	BrowseOnly bool                               `pulumi:"browseOnly"`
 	// The name of the catalog where the schema and the registered model reside.
 	CatalogName *string `pulumi:"catalogName"`
 	// The comment attached to the registered model.
@@ -10972,7 +14281,7 @@ type GetRegisteredModelModelInfoInput interface {
 type GetRegisteredModelModelInfoArgs struct {
 	// the list of aliases associated with this model. Each item is object consisting of following attributes:
 	Aliases    GetRegisteredModelModelInfoAliasArrayInput `pulumi:"aliases"`
-	BrowseOnly pulumi.BoolPtrInput                        `pulumi:"browseOnly"`
+	BrowseOnly pulumi.BoolInput                           `pulumi:"browseOnly"`
 	// The name of the catalog where the schema and the registered model reside.
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
 	// The comment attached to the registered model.
@@ -11055,8 +14364,8 @@ func (o GetRegisteredModelModelInfoOutput) Aliases() GetRegisteredModelModelInfo
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) []GetRegisteredModelModelInfoAlias { return v.Aliases }).(GetRegisteredModelModelInfoAliasArrayOutput)
 }
 
-func (o GetRegisteredModelModelInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetRegisteredModelModelInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+func (o GetRegisteredModelModelInfoOutput) BrowseOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) bool { return v.BrowseOnly }).(pulumi.BoolOutput)
 }
 
 // The name of the catalog where the schema and the registered model reside.
@@ -23533,7 +26842,7 @@ type GetSupervisorAgentToolsTool struct {
 	ProviderConfig *GetSupervisorAgentToolsToolProviderConfig `pulumi:"providerConfig"`
 	// (string) - User specified id of the Tool
 	ToolId string `pulumi:"toolId"`
-	// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+	// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "databricksWebSearch", "skill". The legacy values "lakeviewDashboard", "ucTable", and "webSearch" are also accepted and remain equivalent to "dashboard", "table", and "databricksWebSearch" respectively. The "databricksWebSearch" toolType maps to the `webSearch` spec field
 	ToolType string `pulumi:"toolType"`
 	// (UcConnection)
 	UcConnection GetSupervisorAgentToolsToolUcConnection `pulumi:"ucConnection"`
@@ -23572,7 +26881,7 @@ type GetSupervisorAgentToolsToolArgs struct {
 	ProviderConfig GetSupervisorAgentToolsToolProviderConfigPtrInput `pulumi:"providerConfig"`
 	// (string) - User specified id of the Tool
 	ToolId pulumi.StringInput `pulumi:"toolId"`
-	// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+	// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "databricksWebSearch", "skill". The legacy values "lakeviewDashboard", "ucTable", and "webSearch" are also accepted and remain equivalent to "dashboard", "table", and "databricksWebSearch" respectively. The "databricksWebSearch" toolType maps to the `webSearch` spec field
 	ToolType pulumi.StringInput `pulumi:"toolType"`
 	// (UcConnection)
 	UcConnection GetSupervisorAgentToolsToolUcConnectionInput `pulumi:"ucConnection"`
@@ -23678,7 +26987,7 @@ func (o GetSupervisorAgentToolsToolOutput) ToolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSupervisorAgentToolsTool) string { return v.ToolId }).(pulumi.StringOutput)
 }
 
-// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
+// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "databricksWebSearch", "skill". The legacy values "lakeviewDashboard", "ucTable", and "webSearch" are also accepted and remain equivalent to "dashboard", "table", and "databricksWebSearch" respectively. The "databricksWebSearch" toolType maps to the `webSearch` spec field
 func (o GetSupervisorAgentToolsToolOutput) ToolType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSupervisorAgentToolsTool) string { return v.ToolType }).(pulumi.StringOutput)
 }
@@ -35570,6 +38879,49 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyMatchColumnInput)(nil)).Elem(), GetPolicyInfosPolicyMatchColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyMatchColumnArrayInput)(nil)).Elem(), GetPolicyInfosPolicyMatchColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyProviderConfigInput)(nil)).Elem(), GetPolicyInfosPolicyProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyProviderConfigPtrInput)(nil)).Elem(), GetPolicyInfosPolicyProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingArrayInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosProviderConfigInput)(nil)).Elem(), GetPolicyInfosProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosProviderConfigPtrInput)(nil)).Elem(), GetPolicyInfosProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchProviderConfigInput)(nil)).Elem(), GetPostgresBranchProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchProviderConfigPtrInput)(nil)).Elem(), GetPostgresBranchProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchSpecInput)(nil)).Elem(), GetPostgresBranchSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchStatusInput)(nil)).Elem(), GetPostgresBranchStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchesBranchInput)(nil)).Elem(), GetPostgresBranchesBranchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchesBranchArrayInput)(nil)).Elem(), GetPostgresBranchesBranchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchesBranchProviderConfigInput)(nil)).Elem(), GetPostgresBranchesBranchProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchesBranchProviderConfigPtrInput)(nil)).Elem(), GetPostgresBranchesBranchProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchesBranchSpecInput)(nil)).Elem(), GetPostgresBranchesBranchSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchesBranchStatusInput)(nil)).Elem(), GetPostgresBranchesBranchStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchesProviderConfigInput)(nil)).Elem(), GetPostgresBranchesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchesProviderConfigPtrInput)(nil)).Elem(), GetPostgresBranchesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCatalogProviderConfigInput)(nil)).Elem(), GetPostgresCatalogProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCatalogProviderConfigPtrInput)(nil)).Elem(), GetPostgresCatalogProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCatalogSpecInput)(nil)).Elem(), GetPostgresCatalogSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCatalogStatusInput)(nil)).Elem(), GetPostgresCatalogStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfConfigProviderConfigInput)(nil)).Elem(), GetPostgresCdfConfigProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfConfigProviderConfigPtrInput)(nil)).Elem(), GetPostgresCdfConfigProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfConfigsCdfConfigInput)(nil)).Elem(), GetPostgresCdfConfigsCdfConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfConfigsCdfConfigArrayInput)(nil)).Elem(), GetPostgresCdfConfigsCdfConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfConfigsCdfConfigProviderConfigInput)(nil)).Elem(), GetPostgresCdfConfigsCdfConfigProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfConfigsCdfConfigProviderConfigPtrInput)(nil)).Elem(), GetPostgresCdfConfigsCdfConfigProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfConfigsProviderConfigInput)(nil)).Elem(), GetPostgresCdfConfigsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfConfigsProviderConfigPtrInput)(nil)).Elem(), GetPostgresCdfConfigsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfStatusProviderConfigInput)(nil)).Elem(), GetPostgresCdfStatusProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfStatusProviderConfigPtrInput)(nil)).Elem(), GetPostgresCdfStatusProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfStatusesCdfStatusInput)(nil)).Elem(), GetPostgresCdfStatusesCdfStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfStatusesCdfStatusArrayInput)(nil)).Elem(), GetPostgresCdfStatusesCdfStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfStatusesCdfStatusProviderConfigInput)(nil)).Elem(), GetPostgresCdfStatusesCdfStatusProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfStatusesCdfStatusProviderConfigPtrInput)(nil)).Elem(), GetPostgresCdfStatusesCdfStatusProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfStatusesProviderConfigInput)(nil)).Elem(), GetPostgresCdfStatusesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresCdfStatusesProviderConfigPtrInput)(nil)).Elem(), GetPostgresCdfStatusesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDataApiProviderConfigInput)(nil)).Elem(), GetPostgresDataApiProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDataApiProviderConfigPtrInput)(nil)).Elem(), GetPostgresDataApiProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDataApiSpecInput)(nil)).Elem(), GetPostgresDataApiSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDataApiStatusInput)(nil)).Elem(), GetPostgresDataApiStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresDatabaseProviderConfigInput)(nil)).Elem(), GetPostgresDatabaseProviderConfigArgs{})
@@ -36039,6 +39391,49 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyMatchColumnOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyMatchColumnArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchesBranchOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchesBranchArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchesBranchProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchesBranchProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchesBranchSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchesBranchStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchesProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresBranchesProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresCatalogProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresCatalogProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresCatalogSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresCatalogStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfConfigProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfConfigProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfConfigsCdfConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfConfigsCdfConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfConfigsCdfConfigProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfConfigsCdfConfigProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfConfigsProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfConfigsProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfStatusProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfStatusProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfStatusesCdfStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfStatusesCdfStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfStatusesCdfStatusProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfStatusesCdfStatusProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfStatusesProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresCdfStatusesProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresDataApiProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresDataApiProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresDataApiSpecOutput{})
 	pulumi.RegisterOutputType(GetPostgresDataApiStatusOutput{})
 	pulumi.RegisterOutputType(GetPostgresDatabaseProviderConfigOutput{})

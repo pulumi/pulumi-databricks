@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
@@ -17,6 +18,11 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
     /**
+     * @return A window that spans the entire lifetime of the data source
+     * 
+     */
+    private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime lifetime;
+    /**
      * @return A long (multi-day) rolling window served via the hybrid batch + streaming path
      * 
      */
@@ -28,6 +34,13 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow() {}
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+    /**
+     * @return A window that spans the entire lifetime of the data source
+     * 
+     */
+    public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime> lifetime() {
+        return Optional.ofNullable(this.lifetime);
     }
     /**
      * @return A long (multi-day) rolling window served via the hybrid batch + streaming path
@@ -56,6 +69,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+        private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime lifetime;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
@@ -64,6 +78,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
+    	      this.lifetime = defaults.lifetime;
     	      this.longRolling = defaults.longRolling;
     	      this.rolling = defaults.rolling;
     	      this.sliding = defaults.sliding;
@@ -74,6 +89,12 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public Builder continuous(@Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous) {
 
             this.continuous = continuous;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lifetime(@Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime lifetime) {
+
+            this.lifetime = lifetime;
             return this;
         }
         @CustomType.Setter
@@ -103,6 +124,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow build() {
             final var _resultValue = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow();
             _resultValue.continuous = continuous;
+            _resultValue.lifetime = lifetime;
             _resultValue.longRolling = longRolling;
             _resultValue.rolling = rolling;
             _resultValue.sliding = sliding;

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
  *
@@ -49,6 +49,15 @@ export interface GetDisasterRecoveryStableUrlArgs {
  */
 export interface GetDisasterRecoveryStableUrlResult {
     /**
+     * (string) - The workspace this stable URL currently routes to. Set to
+     * `initialWorkspaceId` at creation, advanced to the failover group's primary
+     * while attached (including across a failover), and preserved when the stable
+     * URL is detached from its failover group. Read this to see where an unattached
+     * stable URL points: after a failover followed by a detach it reflects the
+     * post-failover primary, not `initialWorkspaceId`
+     */
+    readonly effectiveWorkspaceId: string;
+    /**
      * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
      * currently linked to, in the format
      * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -71,6 +80,13 @@ export interface GetDisasterRecoveryStableUrlResult {
      */
     readonly name: string;
     /**
+     * (string) - The stable workspace ID for this stable URL. Generated on creation and
+     * immutable thereafter; identifies the URL across failovers and is the same
+     * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+     * or in the `conn-<id>` hostname for Private-Link URLs)
+     */
+    readonly stableWorkspaceId: string;
+    /**
      * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
      * `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
@@ -79,7 +95,7 @@ export interface GetDisasterRecoveryStableUrlResult {
     readonly url: string;
 }
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
  *

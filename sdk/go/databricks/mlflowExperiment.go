@@ -89,7 +89,8 @@ type MlflowExperiment struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig MlflowExperimentProviderConfigOutput `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
-	Tags MlflowExperimentTagArrayOutput `pulumi:"tags"`
+	Tags          MlflowExperimentTagArrayOutput         `pulumi:"tags"`
+	TraceLocation MlflowExperimentTraceLocationPtrOutput `pulumi:"traceLocation"`
 }
 
 // NewMlflowExperiment registers a new resource with the given unique name, arguments, and options.
@@ -135,7 +136,8 @@ type mlflowExperimentState struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *MlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
-	Tags []MlflowExperimentTag `pulumi:"tags"`
+	Tags          []MlflowExperimentTag          `pulumi:"tags"`
+	TraceLocation *MlflowExperimentTraceLocation `pulumi:"traceLocation"`
 }
 
 type MlflowExperimentState struct {
@@ -152,7 +154,8 @@ type MlflowExperimentState struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig MlflowExperimentProviderConfigPtrInput
 	// Tags for the MLflow experiment.
-	Tags MlflowExperimentTagArrayInput
+	Tags          MlflowExperimentTagArrayInput
+	TraceLocation MlflowExperimentTraceLocationPtrInput
 }
 
 func (MlflowExperimentState) ElementType() reflect.Type {
@@ -173,7 +176,8 @@ type mlflowExperimentArgs struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *MlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
-	Tags []MlflowExperimentTag `pulumi:"tags"`
+	Tags          []MlflowExperimentTag          `pulumi:"tags"`
+	TraceLocation *MlflowExperimentTraceLocation `pulumi:"traceLocation"`
 }
 
 // The set of arguments for constructing a MlflowExperiment resource.
@@ -191,7 +195,8 @@ type MlflowExperimentArgs struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig MlflowExperimentProviderConfigPtrInput
 	// Tags for the MLflow experiment.
-	Tags MlflowExperimentTagArrayInput
+	Tags          MlflowExperimentTagArrayInput
+	TraceLocation MlflowExperimentTraceLocationPtrInput
 }
 
 func (MlflowExperimentArgs) ElementType() reflect.Type {
@@ -320,6 +325,10 @@ func (o MlflowExperimentOutput) ProviderConfig() MlflowExperimentProviderConfigO
 // Tags for the MLflow experiment.
 func (o MlflowExperimentOutput) Tags() MlflowExperimentTagArrayOutput {
 	return o.ApplyT(func(v *MlflowExperiment) MlflowExperimentTagArrayOutput { return v.Tags }).(MlflowExperimentTagArrayOutput)
+}
+
+func (o MlflowExperimentOutput) TraceLocation() MlflowExperimentTraceLocationPtrOutput {
+	return o.ApplyT(func(v *MlflowExperiment) MlflowExperimentTraceLocationPtrOutput { return v.TraceLocation }).(MlflowExperimentTraceLocationPtrOutput)
 }
 
 type MlflowExperimentArrayOutput struct{ *pulumi.OutputState }

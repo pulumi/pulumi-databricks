@@ -21,13 +21,13 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The name of the role that owns the database.
         /// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
         /// </summary>
-        public readonly string? Role;
+        public readonly string Role;
 
         [OutputConstructor]
         private GetPostgresDatabaseSpecResult(
             string? postgresDatabase,
 
-            string? role)
+            string role)
         {
             PostgresDatabase = postgresDatabase;
             Role = role;

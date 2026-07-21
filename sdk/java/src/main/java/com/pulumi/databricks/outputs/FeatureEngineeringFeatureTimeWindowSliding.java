@@ -10,18 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class FeatureEngineeringFeatureTimeWindowSliding {
-    /**
-     * @return The slide duration (interval by which windows advance, must be positive and less than duration)
-     * 
-     */
     private String slideDuration;
     private String windowDuration;
 
     private FeatureEngineeringFeatureTimeWindowSliding() {}
-    /**
-     * @return The slide duration (interval by which windows advance, must be positive and less than duration)
-     * 
-     */
     public String slideDuration() {
         return this.slideDuration;
     }

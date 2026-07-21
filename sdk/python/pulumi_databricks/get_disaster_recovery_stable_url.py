@@ -26,7 +26,10 @@ class GetDisasterRecoveryStableUrlResult:
     """
     A collection of values returned by getDisasterRecoveryStableUrl.
     """
-    def __init__(__self__, failover_group_name=None, id=None, initial_workspace_id=None, name=None, url=None):
+    def __init__(__self__, effective_workspace_id=None, failover_group_name=None, id=None, initial_workspace_id=None, name=None, stable_workspace_id=None, url=None):
+        if effective_workspace_id and not isinstance(effective_workspace_id, str):
+            raise TypeError("Expected argument 'effective_workspace_id' to be a str")
+        pulumi.set(__self__, "effective_workspace_id", effective_workspace_id)
         if failover_group_name and not isinstance(failover_group_name, str):
             raise TypeError("Expected argument 'failover_group_name' to be a str")
         pulumi.set(__self__, "failover_group_name", failover_group_name)
@@ -39,9 +42,25 @@ class GetDisasterRecoveryStableUrlResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if stable_workspace_id and not isinstance(stable_workspace_id, str):
+            raise TypeError("Expected argument 'stable_workspace_id' to be a str")
+        pulumi.set(__self__, "stable_workspace_id", stable_workspace_id)
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveWorkspaceId")
+    def effective_workspace_id(self) -> _builtins.str:
+        """
+        (string) - The workspace this stable URL currently routes to. Set to
+        `initial_workspace_id` at creation, advanced to the failover group's primary
+        while attached (including across a failover), and preserved when the stable
+        URL is detached from its failover group. Read this to see where an unattached
+        stable URL points: after a failover followed by a detach it reflects the
+        post-failover primary, not `initial_workspace_id`
+        """
+        return pulumi.get(self, "effective_workspace_id")
 
     @_builtins.property
     @pulumi.getter(name="failoverGroupName")
@@ -82,6 +101,17 @@ class GetDisasterRecoveryStableUrlResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="stableWorkspaceId")
+    def stable_workspace_id(self) -> _builtins.str:
+        """
+        (string) - The stable workspace ID for this stable URL. Generated on creation and
+        immutable thereafter; identifies the URL across failovers and is the same
+        value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+        or in the `conn-<id>` hostname for Private-Link URLs)
+        """
+        return pulumi.get(self, "stable_workspace_id")
+
+    @_builtins.property
     @pulumi.getter
     def url(self) -> _builtins.str:
         """
@@ -99,17 +129,19 @@ class AwaitableGetDisasterRecoveryStableUrlResult(GetDisasterRecoveryStableUrlRe
         if False:
             yield self
         return GetDisasterRecoveryStableUrlResult(
+            effective_workspace_id=self.effective_workspace_id,
             failover_group_name=self.failover_group_name,
             id=self.id,
             initial_workspace_id=self.initial_workspace_id,
             name=self.name,
+            stable_workspace_id=self.stable_workspace_id,
             url=self.url)
 
 
 def get_disaster_recovery_stable_url(name: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDisasterRecoveryStableUrlResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 
@@ -138,15 +170,17 @@ def get_disaster_recovery_stable_url(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl', __args__, opts=opts, typ=GetDisasterRecoveryStableUrlResult).value
 
     return AwaitableGetDisasterRecoveryStableUrlResult(
+        effective_workspace_id=pulumi.get(__ret__, 'effective_workspace_id'),
         failover_group_name=pulumi.get(__ret__, 'failover_group_name'),
         id=pulumi.get(__ret__, 'id'),
         initial_workspace_id=pulumi.get(__ret__, 'initial_workspace_id'),
         name=pulumi.get(__ret__, 'name'),
+        stable_workspace_id=pulumi.get(__ret__, 'stable_workspace_id'),
         url=pulumi.get(__ret__, 'url'))
 def get_disaster_recovery_stable_url_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDisasterRecoveryStableUrlResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 
@@ -174,8 +208,10 @@ def get_disaster_recovery_stable_url_output(name: pulumi.Input[Optional[_builtin
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl', __args__, opts=opts, typ=GetDisasterRecoveryStableUrlResult)
     return __ret__.apply(lambda __response__: GetDisasterRecoveryStableUrlResult(
+        effective_workspace_id=pulumi.get(__response__, 'effective_workspace_id'),
         failover_group_name=pulumi.get(__response__, 'failover_group_name'),
         id=pulumi.get(__response__, 'id'),
         initial_workspace_id=pulumi.get(__response__, 'initial_workspace_id'),
         name=pulumi.get(__response__, 'name'),
+        stable_workspace_id=pulumi.get(__response__, 'stable_workspace_id'),
         url=pulumi.get(__response__, 'url')))

@@ -187,7 +187,7 @@ class AwaitableGetDisasterRecoveryFailoverGroupResult(GetDisasterRecoveryFailove
 def get_disaster_recovery_failover_group(name: Optional[_builtins.str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDisasterRecoveryFailoverGroupResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 
@@ -231,7 +231,7 @@ def get_disaster_recovery_failover_group(name: Optional[_builtins.str] = None,
 def get_disaster_recovery_failover_group_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDisasterRecoveryFailoverGroupResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 

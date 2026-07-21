@@ -4700,6 +4700,10 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous | undefined>;
     /**
+     * A window that spans the entire lifetime of the data source
+     */
+    lifetime?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime | undefined>;
+    /**
      * A long (multi-day) rolling window served via the hybrid batch + streaming path
      */
     longRolling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling | undefined>;
@@ -4716,6 +4720,10 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowC
     windowDuration: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime {
+    slideDuration?: pulumi.Input<string | undefined>;
+}
+
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
     delay?: pulumi.Input<string | undefined>;
     windowDuration: pulumi.Input<string>;
@@ -4727,9 +4735,6 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowR
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
-    /**
-     * The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
     slideDuration: pulumi.Input<string>;
     windowDuration: pulumi.Input<string>;
 }
@@ -4927,6 +4932,10 @@ export interface FeatureEngineeringFeatureSourceStreamSource {
 export interface FeatureEngineeringFeatureTimeWindow {
     continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowContinuous | undefined>;
     /**
+     * A window that spans the entire lifetime of the data source
+     */
+    lifetime?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowLifetime | undefined>;
+    /**
      * A long (multi-day) rolling window served via the hybrid batch + streaming path
      */
     longRolling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowLongRolling | undefined>;
@@ -4943,6 +4952,10 @@ export interface FeatureEngineeringFeatureTimeWindowContinuous {
     windowDuration: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureTimeWindowLifetime {
+    slideDuration?: pulumi.Input<string | undefined>;
+}
+
 export interface FeatureEngineeringFeatureTimeWindowLongRolling {
     delay?: pulumi.Input<string | undefined>;
     windowDuration: pulumi.Input<string>;
@@ -4954,9 +4967,6 @@ export interface FeatureEngineeringFeatureTimeWindowRolling {
 }
 
 export interface FeatureEngineeringFeatureTimeWindowSliding {
-    /**
-     * The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
     slideDuration: pulumi.Input<string>;
     windowDuration: pulumi.Input<string>;
 }
@@ -12075,6 +12085,26 @@ export interface GetMlflowExperimentTagArgs {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface GetMlflowExperimentTraceLocation {
+    ucTraceLocation?: inputs.GetMlflowExperimentTraceLocationUcTraceLocation;
+}
+
+export interface GetMlflowExperimentTraceLocationArgs {
+    ucTraceLocation?: pulumi.Input<inputs.GetMlflowExperimentTraceLocationUcTraceLocationArgs | undefined>;
+}
+
+export interface GetMlflowExperimentTraceLocationUcTraceLocation {
+    catalog: string;
+    schema: string;
+    tablePrefix?: string;
+}
+
+export interface GetMlflowExperimentTraceLocationUcTraceLocationArgs {
+    catalog: pulumi.Input<string>;
+    schema: pulumi.Input<string>;
+    tablePrefix?: pulumi.Input<string | undefined>;
+}
+
 export interface GetMlflowModelLatestVersion {
     creationTimestamp?: number;
     currentStage?: string;
@@ -12647,6 +12677,62 @@ export interface GetPostgresCatalogProviderConfig {
 }
 
 export interface GetPostgresCatalogProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetPostgresCdfConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetPostgresCdfConfigProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetPostgresCdfConfigsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetPostgresCdfConfigsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetPostgresCdfStatusProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetPostgresCdfStatusProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetPostgresCdfStatusesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetPostgresCdfStatusesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -16814,7 +16900,6 @@ export interface JobTask {
 }
 
 export interface JobTaskAiRuntimeTask {
-    codeSourcePath?: pulumi.Input<string | undefined>;
     deployments: pulumi.Input<pulumi.Input<inputs.JobTaskAiRuntimeTaskDeployment>[]>;
     experiment: pulumi.Input<string>;
     mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
@@ -17162,7 +17247,6 @@ export interface JobTaskForEachTaskTask {
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTask {
-    codeSourcePath?: pulumi.Input<string | undefined>;
     deployments: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskAiRuntimeTaskDeployment>[]>;
     experiment: pulumi.Input<string>;
     mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
@@ -19340,6 +19424,16 @@ export interface MlflowExperimentTag {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface MlflowExperimentTraceLocation {
+    ucTraceLocation?: pulumi.Input<inputs.MlflowExperimentTraceLocationUcTraceLocation | undefined>;
+}
+
+export interface MlflowExperimentTraceLocationUcTraceLocation {
+    catalog: pulumi.Input<string>;
+    schema: pulumi.Input<string>;
+    tablePrefix?: pulumi.Input<string | undefined>;
+}
+
 export interface MlflowModelProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -20392,11 +20486,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -20463,11 +20557,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.121.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -21050,6 +21144,7 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
     scdType?: pulumi.Input<string | undefined>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sourceMetadataColumn?: pulumi.Input<string | undefined>;
     tableProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters | undefined>;
 }
@@ -21133,9 +21228,17 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOp
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions {
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptions | undefined>;
     lookbackWindowDays?: pulumi.Input<number | undefined>;
     managerAccountId: pulumi.Input<string>;
     syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptions {
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    resource: pulumi.Input<string>;
+    resourceFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions {
@@ -21190,8 +21293,18 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsO
     actionReportTime?: pulumi.Input<string | undefined>;
     breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     customInsightsLookbackWindow?: pulumi.Input<number | undefined>;
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions | undefined>;
     level?: pulumi.Input<string | undefined>;
     startDate?: pulumi.Input<string | undefined>;
+    timeIncrement?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions {
+    actionAttributionWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    actionReportTime?: pulumi.Input<string | undefined>;
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    level?: pulumi.Input<string | undefined>;
     timeIncrement?: pulumi.Input<string | undefined>;
 }
 
@@ -21242,6 +21355,7 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartshe
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions {
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptions | undefined>;
     dataLevel?: pulumi.Input<string | undefined>;
     dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     lookbackWindowDays?: pulumi.Input<number | undefined>;
@@ -21249,6 +21363,14 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAd
     queryLifetime?: pulumi.Input<boolean | undefined>;
     reportType?: pulumi.Input<string | undefined>;
     syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptions {
+    dataLevel?: pulumi.Input<string | undefined>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    queryLifetime?: pulumi.Input<boolean | undefined>;
+    reportType?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions {
@@ -21267,6 +21389,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
     scdType?: pulumi.Input<string | undefined>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sourceMetadataColumn?: pulumi.Input<string | undefined>;
     tableProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters | undefined>;
 }
@@ -21352,9 +21475,17 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOpt
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions {
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions | undefined>;
     lookbackWindowDays?: pulumi.Input<number | undefined>;
     managerAccountId: pulumi.Input<string>;
     syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsCustomReportOptions {
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    resource: pulumi.Input<string>;
+    resourceFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions {
@@ -21409,8 +21540,18 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOp
     actionReportTime?: pulumi.Input<string | undefined>;
     breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     customInsightsLookbackWindow?: pulumi.Input<number | undefined>;
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptions | undefined>;
     level?: pulumi.Input<string | undefined>;
     startDate?: pulumi.Input<string | undefined>;
+    timeIncrement?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptions {
+    actionAttributionWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    actionReportTime?: pulumi.Input<string | undefined>;
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    level?: pulumi.Input<string | undefined>;
     timeIncrement?: pulumi.Input<string | undefined>;
 }
 
@@ -21461,6 +21602,7 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSmartshee
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions {
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions | undefined>;
     dataLevel?: pulumi.Input<string | undefined>;
     dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     lookbackWindowDays?: pulumi.Input<number | undefined>;
@@ -21468,6 +21610,14 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAds
     queryLifetime?: pulumi.Input<boolean | undefined>;
     reportType?: pulumi.Input<string | undefined>;
     syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions {
+    dataLevel?: pulumi.Input<string | undefined>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    queryLifetime?: pulumi.Input<boolean | undefined>;
+    reportType?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions {
@@ -21486,6 +21636,7 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
     scdType?: pulumi.Input<string | undefined>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sourceMetadataColumn?: pulumi.Input<string | undefined>;
     tableProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters | undefined>;
 }
@@ -21550,6 +21701,7 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
     scdType?: pulumi.Input<string | undefined>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sourceMetadataColumn?: pulumi.Input<string | undefined>;
     tableProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters | undefined>;
 }
@@ -21872,6 +22024,13 @@ export interface PostgresCatalogStatus {
     project?: pulumi.Input<string | undefined>;
 }
 
+export interface PostgresCdfConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
 export interface PostgresDataApiProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -21974,7 +22133,7 @@ export interface PostgresDatabaseProviderConfig {
 
 export interface PostgresDatabaseSpec {
     postgresDatabase?: pulumi.Input<string | undefined>;
-    role?: pulumi.Input<string | undefined>;
+    role: pulumi.Input<string>;
 }
 
 export interface PostgresDatabaseStatus {

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptionsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -52,6 +53,13 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAds
         return Optional.ofNullable(this.customInsightsLookbackWindow);
     }
 
+    @Import(name="customReportOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptionsArgs> customReportOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptionsArgs>> customReportOptions() {
+        return Optional.ofNullable(this.customReportOptions);
+    }
+
     @Import(name="level")
     private @Nullable Output<String> level;
 
@@ -81,6 +89,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAds
         this.actionReportTime = $.actionReportTime;
         this.breakdowns = $.breakdowns;
         this.customInsightsLookbackWindow = $.customInsightsLookbackWindow;
+        this.customReportOptions = $.customReportOptions;
         this.level = $.level;
         this.startDate = $.startDate;
         this.timeIncrement = $.timeIncrement;
@@ -159,6 +168,15 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAds
 
         public Builder customInsightsLookbackWindow(Integer customInsightsLookbackWindow) {
             return customInsightsLookbackWindow(Output.of(customInsightsLookbackWindow));
+        }
+
+        public Builder customReportOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptionsArgs> customReportOptions) {
+            $.customReportOptions = customReportOptions;
+            return this;
+        }
+
+        public Builder customReportOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptionsArgs customReportOptions) {
+            return customReportOptions(Output.of(customReportOptions));
         }
 
         public Builder level(@Nullable Output<String> level) {

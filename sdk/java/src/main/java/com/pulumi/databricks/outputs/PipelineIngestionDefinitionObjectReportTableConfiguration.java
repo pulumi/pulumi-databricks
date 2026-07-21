@@ -28,6 +28,7 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
     private @Nullable Boolean salesforceIncludeFormulaFields;
     private @Nullable String scdType;
     private @Nullable List<String> sequenceBies;
+    private @Nullable String sourceMetadataColumn;
     private @Nullable Map<String,String> tableProperties;
     private @Nullable PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters workdayReportParameters;
 
@@ -65,6 +66,9 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
     public List<String> sequenceBies() {
         return this.sequenceBies == null ? List.of() : this.sequenceBies;
     }
+    public Optional<String> sourceMetadataColumn() {
+        return Optional.ofNullable(this.sourceMetadataColumn);
+    }
     public Map<String,String> tableProperties() {
         return this.tableProperties == null ? Map.of() : this.tableProperties;
     }
@@ -92,6 +96,7 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
         private @Nullable Boolean salesforceIncludeFormulaFields;
         private @Nullable String scdType;
         private @Nullable List<String> sequenceBies;
+        private @Nullable String sourceMetadataColumn;
         private @Nullable Map<String,String> tableProperties;
         private @Nullable PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters workdayReportParameters;
         public Builder() {}
@@ -108,6 +113,7 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
     	      this.salesforceIncludeFormulaFields = defaults.salesforceIncludeFormulaFields;
     	      this.scdType = defaults.scdType;
     	      this.sequenceBies = defaults.sequenceBies;
+    	      this.sourceMetadataColumn = defaults.sourceMetadataColumn;
     	      this.tableProperties = defaults.tableProperties;
     	      this.workdayReportParameters = defaults.workdayReportParameters;
         }
@@ -194,6 +200,12 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
             return sequenceBies(List.of(sequenceBies));
         }
         @CustomType.Setter
+        public Builder sourceMetadataColumn(@Nullable String sourceMetadataColumn) {
+
+            this.sourceMetadataColumn = sourceMetadataColumn;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableProperties(@Nullable Map<String,String> tableProperties) {
 
             this.tableProperties = tableProperties;
@@ -218,6 +230,7 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
             _resultValue.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             _resultValue.scdType = scdType;
             _resultValue.sequenceBies = sequenceBies;
+            _resultValue.sourceMetadataColumn = sourceMetadataColumn;
             _resultValue.tableProperties = tableProperties;
             _resultValue.workdayReportParameters = workdayReportParameters;
             return _resultValue;

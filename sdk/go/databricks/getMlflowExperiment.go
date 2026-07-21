@@ -43,7 +43,8 @@ type LookupMlflowExperimentArgs struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *GetMlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Additional metadata key-value pairs.
-	Tags []GetMlflowExperimentTag `pulumi:"tags"`
+	Tags          []GetMlflowExperimentTag          `pulumi:"tags"`
+	TraceLocation *GetMlflowExperimentTraceLocation `pulumi:"traceLocation"`
 }
 
 // A collection of values returned by getMlflowExperiment.
@@ -64,7 +65,8 @@ type LookupMlflowExperimentResult struct {
 	Name           string                            `pulumi:"name"`
 	ProviderConfig GetMlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Additional metadata key-value pairs.
-	Tags []GetMlflowExperimentTag `pulumi:"tags"`
+	Tags          []GetMlflowExperimentTag         `pulumi:"tags"`
+	TraceLocation GetMlflowExperimentTraceLocation `pulumi:"traceLocation"`
 }
 
 func LookupMlflowExperimentOutput(ctx *pulumi.Context, args LookupMlflowExperimentOutputArgs, opts ...pulumi.InvokeOption) LookupMlflowExperimentResultOutput {
@@ -95,7 +97,8 @@ type LookupMlflowExperimentOutputArgs struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig GetMlflowExperimentProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Additional metadata key-value pairs.
-	Tags GetMlflowExperimentTagArrayInput `pulumi:"tags"`
+	Tags          GetMlflowExperimentTagArrayInput         `pulumi:"tags"`
+	TraceLocation GetMlflowExperimentTraceLocationPtrInput `pulumi:"traceLocation"`
 }
 
 func (LookupMlflowExperimentOutputArgs) ElementType() reflect.Type {
@@ -159,6 +162,10 @@ func (o LookupMlflowExperimentResultOutput) ProviderConfig() GetMlflowExperiment
 // Additional metadata key-value pairs.
 func (o LookupMlflowExperimentResultOutput) Tags() GetMlflowExperimentTagArrayOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) []GetMlflowExperimentTag { return v.Tags }).(GetMlflowExperimentTagArrayOutput)
+}
+
+func (o LookupMlflowExperimentResultOutput) TraceLocation() GetMlflowExperimentTraceLocationOutput {
+	return o.ApplyT(func(v LookupMlflowExperimentResult) GetMlflowExperimentTraceLocation { return v.TraceLocation }).(GetMlflowExperimentTraceLocationOutput)
 }
 
 func init() {

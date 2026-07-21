@@ -17,7 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// the list of aliases associated with this model. Each item is object consisting of following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelModelInfoAliasResult> Aliases;
-        public readonly bool? BrowseOnly;
+        public readonly bool BrowseOnly;
         /// <summary>
         /// The name of the catalog where the schema and the registered model reside.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Pulumi.Databricks.Outputs
         private GetRegisteredModelModelInfoResult(
             ImmutableArray<Outputs.GetRegisteredModelModelInfoAliasResult> aliases,
 
-            bool? browseOnly,
+            bool browseOnly,
 
             string? catalogName,
 

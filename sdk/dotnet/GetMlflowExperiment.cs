@@ -99,6 +99,9 @@ namespace Pulumi.Databricks
             set => _tags = value;
         }
 
+        [Input("traceLocation")]
+        public Inputs.GetMlflowExperimentTraceLocationArgs? TraceLocation { get; set; }
+
         public GetMlflowExperimentArgs()
         {
         }
@@ -167,6 +170,9 @@ namespace Pulumi.Databricks
             set => _tags = value;
         }
 
+        [Input("traceLocation")]
+        public Input<Inputs.GetMlflowExperimentTraceLocationInputArgs>? TraceLocation { get; set; }
+
         public GetMlflowExperimentInvokeArgs()
         {
         }
@@ -210,6 +216,7 @@ namespace Pulumi.Databricks
         /// Additional metadata key-value pairs.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMlflowExperimentTagResult> Tags;
+        public readonly Outputs.GetMlflowExperimentTraceLocationResult TraceLocation;
 
         [OutputConstructor]
         private GetMlflowExperimentResult(
@@ -229,7 +236,9 @@ namespace Pulumi.Databricks
 
             Outputs.GetMlflowExperimentProviderConfigResult providerConfig,
 
-            ImmutableArray<Outputs.GetMlflowExperimentTagResult> tags)
+            ImmutableArray<Outputs.GetMlflowExperimentTagResult> tags,
+
+            Outputs.GetMlflowExperimentTraceLocationResult traceLocation)
         {
             ArtifactLocation = artifactLocation;
             CreationTime = creationTime;
@@ -240,6 +249,7 @@ namespace Pulumi.Databricks
             Name = name;
             ProviderConfig = providerConfig;
             Tags = tags;
+            TraceLocation = traceLocation;
         }
     }
 }

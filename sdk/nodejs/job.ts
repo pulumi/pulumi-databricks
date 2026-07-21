@@ -195,6 +195,7 @@ export class Job extends pulumi.CustomResource {
      * Specifies job parameter for the job. See parameter Configuration Block
      */
     declare public readonly parameters: pulumi.Output<outputs.JobParameter[] | undefined>;
+    declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
      * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
      * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -308,6 +309,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["notebookTask"] = state?.notebookTask;
             resourceInputs["notificationSettings"] = state?.notificationSettings;
             resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["parentPath"] = state?.parentPath;
             resourceInputs["performanceTarget"] = state?.performanceTarget;
             resourceInputs["pipelineTask"] = state?.pipelineTask;
             resourceInputs["providerConfig"] = state?.providerConfig;
@@ -353,6 +355,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["notebookTask"] = args?.notebookTask;
             resourceInputs["notificationSettings"] = args?.notificationSettings;
             resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["parentPath"] = args?.parentPath;
             resourceInputs["performanceTarget"] = args?.performanceTarget;
             resourceInputs["pipelineTask"] = args?.pipelineTask;
             resourceInputs["providerConfig"] = args?.providerConfig;
@@ -469,6 +472,7 @@ export interface JobState {
      * Specifies job parameter for the job. See parameter Configuration Block
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[] | undefined>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
      * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -637,6 +641,7 @@ export interface JobArgs {
      * Specifies job parameter for the job. See parameter Configuration Block
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[] | undefined>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
      * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.

@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MlflowExperimentState;
 import com.pulumi.databricks.outputs.MlflowExperimentProviderConfig;
 import com.pulumi.databricks.outputs.MlflowExperimentTag;
+import com.pulumi.databricks.outputs.MlflowExperimentTraceLocation;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -184,6 +185,12 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
      */
     public Output<List<MlflowExperimentTag>> tags() {
         return this.tags;
+    }
+    @Export(name="traceLocation", refs={MlflowExperimentTraceLocation.class}, tree="[0]")
+    private Output</* @Nullable */ MlflowExperimentTraceLocation> traceLocation;
+
+    public Output<Optional<MlflowExperimentTraceLocation>> traceLocation() {
+        return Codegen.optional(this.traceLocation);
     }
 
     /**

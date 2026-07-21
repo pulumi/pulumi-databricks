@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAlertsV2
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", args ?? new GetAlertsV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", args ?? new GetAlertsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
         /// 

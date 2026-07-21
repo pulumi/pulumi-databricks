@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskAiRuntimeTaskGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("codeSourcePath")]
-        public Input<string>? CodeSourcePath { get; set; }
-
         [Input("deployments", required: true)]
         private InputList<Inputs.JobTaskForEachTaskTaskAiRuntimeTaskDeploymentGetArgs>? _deployments;
         public InputList<Inputs.JobTaskForEachTaskTaskAiRuntimeTaskDeploymentGetArgs> Deployments

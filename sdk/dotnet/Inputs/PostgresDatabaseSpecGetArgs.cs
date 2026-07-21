@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("postgresDatabase")]
         public Input<string>? PostgresDatabase { get; set; }
 
-        [Input("role")]
-        public Input<string>? Role { get; set; }
+        [Input("role", required: true)]
+        public Input<string> Role { get; set; } = null!;
 
         public PostgresDatabaseSpecGetArgs()
         {

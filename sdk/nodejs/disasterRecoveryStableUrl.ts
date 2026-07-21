@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
  *
@@ -58,6 +58,15 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
     }
 
     /**
+     * (string) - The workspace this stable URL currently routes to. Set to
+     * `initialWorkspaceId` at creation, advanced to the failover group's primary
+     * while attached (including across a failover), and preserved when the stable
+     * URL is detached from its failover group. Read this to see where an unattached
+     * stable URL points: after a failover followed by a detach it reflects the
+     * post-failover primary, not `initialWorkspaceId`
+     */
+    declare public /*out*/ readonly effectiveWorkspaceId: pulumi.Output<string>;
+    /**
      * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
      * currently linked to, in the format
      * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -85,6 +94,13 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
      */
     declare public readonly stableUrlId: pulumi.Output<string>;
     /**
+     * (string) - The stable workspace ID for this stable URL. Generated on creation and
+     * immutable thereafter; identifies the URL across failovers and is the same
+     * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+     * or in the `conn-<id>` hostname for Private-Link URLs)
+     */
+    declare public /*out*/ readonly stableWorkspaceId: pulumi.Output<string>;
+    /**
      * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
      * `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
@@ -105,11 +121,13 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DisasterRecoveryStableUrlState | undefined;
+            resourceInputs["effectiveWorkspaceId"] = state?.effectiveWorkspaceId;
             resourceInputs["failoverGroupName"] = state?.failoverGroupName;
             resourceInputs["initialWorkspaceId"] = state?.initialWorkspaceId;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["stableUrlId"] = state?.stableUrlId;
+            resourceInputs["stableWorkspaceId"] = state?.stableWorkspaceId;
             resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as DisasterRecoveryStableUrlArgs | undefined;
@@ -125,8 +143,10 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
             resourceInputs["initialWorkspaceId"] = args?.initialWorkspaceId;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["stableUrlId"] = args?.stableUrlId;
+            resourceInputs["effectiveWorkspaceId"] = undefined /*out*/;
             resourceInputs["failoverGroupName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["stableWorkspaceId"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -138,6 +158,15 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DisasterRecoveryStableUrl resources.
  */
 export interface DisasterRecoveryStableUrlState {
+    /**
+     * (string) - The workspace this stable URL currently routes to. Set to
+     * `initialWorkspaceId` at creation, advanced to the failover group's primary
+     * while attached (including across a failover), and preserved when the stable
+     * URL is detached from its failover group. Read this to see where an unattached
+     * stable URL points: after a failover followed by a detach it reflects the
+     * post-failover primary, not `initialWorkspaceId`
+     */
+    effectiveWorkspaceId?: pulumi.Input<string | undefined>;
     /**
      * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
      * currently linked to, in the format
@@ -165,6 +194,13 @@ export interface DisasterRecoveryStableUrlState {
      * resource name as {parent}/stable-urls/{stable_url_id}
      */
     stableUrlId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The stable workspace ID for this stable URL. Generated on creation and
+     * immutable thereafter; identifies the URL across failovers and is the same
+     * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+     * or in the `conn-<id>` hostname for Private-Link URLs)
+     */
+    stableWorkspaceId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is

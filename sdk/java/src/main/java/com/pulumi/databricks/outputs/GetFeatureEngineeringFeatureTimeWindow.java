@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowLifetime;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowLongRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowSliding;
@@ -20,6 +21,11 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
      * 
      */
     private @Nullable GetFeatureEngineeringFeatureTimeWindowContinuous continuous;
+    /**
+     * @return (LifetimeWindow) - A window that spans the entire lifetime of the data source
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureTimeWindowLifetime lifetime;
     /**
      * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
      * 
@@ -48,6 +54,13 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
      */
     public Optional<GetFeatureEngineeringFeatureTimeWindowContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+    /**
+     * @return (LifetimeWindow) - A window that spans the entire lifetime of the data source
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureTimeWindowLifetime> lifetime() {
+        return Optional.ofNullable(this.lifetime);
     }
     /**
      * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
@@ -88,6 +101,7 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeatureTimeWindowContinuous continuous;
+        private @Nullable GetFeatureEngineeringFeatureTimeWindowLifetime lifetime;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowLongRolling longRolling;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowRolling rolling;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowSliding sliding;
@@ -96,6 +110,7 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
         public Builder(GetFeatureEngineeringFeatureTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
+    	      this.lifetime = defaults.lifetime;
     	      this.longRolling = defaults.longRolling;
     	      this.rolling = defaults.rolling;
     	      this.sliding = defaults.sliding;
@@ -106,6 +121,12 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
         public Builder continuous(@Nullable GetFeatureEngineeringFeatureTimeWindowContinuous continuous) {
 
             this.continuous = continuous;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lifetime(@Nullable GetFeatureEngineeringFeatureTimeWindowLifetime lifetime) {
+
+            this.lifetime = lifetime;
             return this;
         }
         @CustomType.Setter
@@ -135,6 +156,7 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
         public GetFeatureEngineeringFeatureTimeWindow build() {
             final var _resultValue = new GetFeatureEngineeringFeatureTimeWindow();
             _resultValue.continuous = continuous;
+            _resultValue.lifetime = lifetime;
             _resultValue.longRolling = longRolling;
             _resultValue.rolling = rolling;
             _resultValue.sliding = sliding;

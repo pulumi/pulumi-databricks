@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptionsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs Empty = new PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs();
+
+    @Import(name="customReportOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptionsArgs> customReportOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptionsArgs>> customReportOptions() {
+        return Optional.ofNullable(this.customReportOptions);
+    }
 
     @Import(name="dataLevel")
     private @Nullable Output<String> dataLevel;
@@ -70,6 +78,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktok
     private PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs() {}
 
     private PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs(PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs $) {
+        this.customReportOptions = $.customReportOptions;
         this.dataLevel = $.dataLevel;
         this.dimensions = $.dimensions;
         this.lookbackWindowDays = $.lookbackWindowDays;
@@ -95,6 +104,15 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktok
 
         public Builder(PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder customReportOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptionsArgs> customReportOptions) {
+            $.customReportOptions = customReportOptions;
+            return this;
+        }
+
+        public Builder customReportOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsCustomReportOptionsArgs customReportOptions) {
+            return customReportOptions(Output.of(customReportOptions));
         }
 
         public Builder dataLevel(@Nullable Output<String> dataLevel) {

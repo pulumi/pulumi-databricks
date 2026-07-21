@@ -73,6 +73,48 @@ import (
 //	}
 //
 // ```
+//
+// Restrict ingress to private connectivity by only allowing requests from registered private endpoints:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAccountNetworkPolicy(ctx, "example_private_access_policy", &databricks.AccountNetworkPolicyArgs{
+//				NetworkPolicyId: pulumi.String("example-private-access-policy"),
+//				Ingress: &databricks.AccountNetworkPolicyIngressArgs{
+//					PrivateAccess: &databricks.AccountNetworkPolicyIngressPrivateAccessArgs{
+//						RestrictionMode: pulumi.String("RESTRICTED_ACCESS"),
+//						AllowRules: databricks.AccountNetworkPolicyIngressPrivateAccessAllowRuleArray{
+//							&databricks.AccountNetworkPolicyIngressPrivateAccessAllowRuleArgs{
+//								Origin: &databricks.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginArgs{
+//									Endpoints: &databricks.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpointsArgs{
+//										EndpointIds: pulumi.StringArray{
+//											pulumi.String("example-private-endpoint-id"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AccountNetworkPolicy struct {
 	pulumi.CustomResourceState
 

@@ -780,6 +780,26 @@ export const getPostgresCatalog: typeof import("./getPostgresCatalog").getPostgr
 export const getPostgresCatalogOutput: typeof import("./getPostgresCatalog").getPostgresCatalogOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresCatalog","getPostgresCatalogOutput"], () => require("./getPostgresCatalog"));
 
+export { GetPostgresCdfConfigArgs, GetPostgresCdfConfigResult, GetPostgresCdfConfigOutputArgs } from "./getPostgresCdfConfig";
+export const getPostgresCdfConfig: typeof import("./getPostgresCdfConfig").getPostgresCdfConfig = null as any;
+export const getPostgresCdfConfigOutput: typeof import("./getPostgresCdfConfig").getPostgresCdfConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresCdfConfig","getPostgresCdfConfigOutput"], () => require("./getPostgresCdfConfig"));
+
+export { GetPostgresCdfConfigsArgs, GetPostgresCdfConfigsResult, GetPostgresCdfConfigsOutputArgs } from "./getPostgresCdfConfigs";
+export const getPostgresCdfConfigs: typeof import("./getPostgresCdfConfigs").getPostgresCdfConfigs = null as any;
+export const getPostgresCdfConfigsOutput: typeof import("./getPostgresCdfConfigs").getPostgresCdfConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresCdfConfigs","getPostgresCdfConfigsOutput"], () => require("./getPostgresCdfConfigs"));
+
+export { GetPostgresCdfStatusArgs, GetPostgresCdfStatusResult, GetPostgresCdfStatusOutputArgs } from "./getPostgresCdfStatus";
+export const getPostgresCdfStatus: typeof import("./getPostgresCdfStatus").getPostgresCdfStatus = null as any;
+export const getPostgresCdfStatusOutput: typeof import("./getPostgresCdfStatus").getPostgresCdfStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresCdfStatus","getPostgresCdfStatusOutput"], () => require("./getPostgresCdfStatus"));
+
+export { GetPostgresCdfStatusesArgs, GetPostgresCdfStatusesResult, GetPostgresCdfStatusesOutputArgs } from "./getPostgresCdfStatuses";
+export const getPostgresCdfStatuses: typeof import("./getPostgresCdfStatuses").getPostgresCdfStatuses = null as any;
+export const getPostgresCdfStatusesOutput: typeof import("./getPostgresCdfStatuses").getPostgresCdfStatusesOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresCdfStatuses","getPostgresCdfStatusesOutput"], () => require("./getPostgresCdfStatuses"));
+
 export { GetPostgresDataApiArgs, GetPostgresDataApiResult, GetPostgresDataApiOutputArgs } from "./getPostgresDataApi";
 export const getPostgresDataApi: typeof import("./getPostgresDataApi").getPostgresDataApi = null as any;
 export const getPostgresDataApiOutput: typeof import("./getPostgresDataApi").getPostgresDataApiOutput = null as any;
@@ -1285,6 +1305,11 @@ export type PostgresCatalog = import("./postgresCatalog").PostgresCatalog;
 export const PostgresCatalog: typeof import("./postgresCatalog").PostgresCatalog = null as any;
 utilities.lazyLoad(exports, ["PostgresCatalog"], () => require("./postgresCatalog"));
 
+export { PostgresCdfConfigArgs, PostgresCdfConfigState } from "./postgresCdfConfig";
+export type PostgresCdfConfig = import("./postgresCdfConfig").PostgresCdfConfig;
+export const PostgresCdfConfig: typeof import("./postgresCdfConfig").PostgresCdfConfig = null as any;
+utilities.lazyLoad(exports, ["PostgresCdfConfig"], () => require("./postgresCdfConfig"));
+
 export { PostgresDataApiArgs, PostgresDataApiState } from "./postgresDataApi";
 export type PostgresDataApi = import("./postgresDataApi").PostgresDataApi;
 export const PostgresDataApi: typeof import("./postgresDataApi").PostgresDataApi = null as any;
@@ -1773,6 +1798,8 @@ const _module = {
                 return new PostgresBranch(name, <any>undefined, { urn })
             case "databricks:index/postgresCatalog:PostgresCatalog":
                 return new PostgresCatalog(name, <any>undefined, { urn })
+            case "databricks:index/postgresCdfConfig:PostgresCdfConfig":
+                return new PostgresCdfConfig(name, <any>undefined, { urn })
             case "databricks:index/postgresDataApi:PostgresDataApi":
                 return new PostgresDataApi(name, <any>undefined, { urn })
             case "databricks:index/postgresDatabase:PostgresDatabase":
@@ -1987,6 +2014,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/policyInfo", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresBranch", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresCatalog", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresCdfConfig", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresDataApi", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresDatabase", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresEndpoint", _module)

@@ -98,6 +98,13 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
         return Optional.ofNullable(this.sequenceBies);
     }
 
+    @Import(name="sourceMetadataColumn")
+    private @Nullable Output<String> sourceMetadataColumn;
+
+    public Optional<Output<String>> sourceMetadataColumn() {
+        return Optional.ofNullable(this.sourceMetadataColumn);
+    }
+
     @Import(name="tableProperties")
     private @Nullable Output<Map<String,String>> tableProperties;
 
@@ -126,6 +133,7 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
         this.salesforceIncludeFormulaFields = $.salesforceIncludeFormulaFields;
         this.scdType = $.scdType;
         this.sequenceBies = $.sequenceBies;
+        this.sourceMetadataColumn = $.sourceMetadataColumn;
         this.tableProperties = $.tableProperties;
         this.workdayReportParameters = $.workdayReportParameters;
     }
@@ -265,6 +273,15 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
         public Builder sequenceBies(String... sequenceBies) {
             return sequenceBies(List.of(sequenceBies));
+        }
+
+        public Builder sourceMetadataColumn(@Nullable Output<String> sourceMetadataColumn) {
+            $.sourceMetadataColumn = sourceMetadataColumn;
+            return this;
+        }
+
+        public Builder sourceMetadataColumn(String sourceMetadataColumn) {
+            return sourceMetadataColumn(Output.of(sourceMetadataColumn));
         }
 
         public Builder tableProperties(@Nullable Output<Map<String,String>> tableProperties) {

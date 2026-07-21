@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs;
@@ -24,6 +25,21 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
     public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs>> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+
+    /**
+     * A window that spans the entire lifetime of the data source
+     * 
+     */
+    @Import(name="lifetime")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs> lifetime;
+
+    /**
+     * @return A window that spans the entire lifetime of the data source
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs>> lifetime() {
+        return Optional.ofNullable(this.lifetime);
     }
 
     /**
@@ -66,6 +82,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs $) {
         this.continuous = $.continuous;
+        this.lifetime = $.lifetime;
         this.longRolling = $.longRolling;
         this.rolling = $.rolling;
         this.sliding = $.sliding;
@@ -97,6 +114,27 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
         public Builder continuous(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs continuous) {
             return continuous(Output.of(continuous));
+        }
+
+        /**
+         * @param lifetime A window that spans the entire lifetime of the data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifetime(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs> lifetime) {
+            $.lifetime = lifetime;
+            return this;
+        }
+
+        /**
+         * @param lifetime A window that spans the entire lifetime of the data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifetime(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs lifetime) {
+            return lifetime(Output.of(lifetime));
         }
 
         /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
     /// 
@@ -44,6 +44,17 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl")]
     public partial class DisasterRecoveryStableUrl : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (string) - The workspace this stable URL currently routes to. Set to
+        /// `InitialWorkspaceId` at creation, advanced to the failover group's primary
+        /// while attached (including across a failover), and preserved when the stable
+        /// URL is detached from its failover group. Read this to see where an unattached
+        /// stable URL points: after a failover followed by a detach it reflects the
+        /// post-failover primary, not `InitialWorkspaceId`
+        /// </summary>
+        [Output("effectiveWorkspaceId")]
+        public Output<string> EffectiveWorkspaceId { get; private set; } = null!;
+
         /// <summary>
         /// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
         /// currently linked to, in the format
@@ -80,6 +91,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("stableUrlId")]
         public Output<string> StableUrlId { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The stable workspace ID for this stable URL. Generated on creation and
+        /// immutable thereafter; identifies the URL across failovers and is the same
+        /// value embedded in the `Url` (as the `w=` query parameter for SPOG URLs,
+        /// or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+        /// </summary>
+        [Output("stableWorkspaceId")]
+        public Output<string> StableWorkspaceId { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The stable URL endpoint. Generated on creation and
@@ -166,6 +186,17 @@ namespace Pulumi.Databricks
     public sealed class DisasterRecoveryStableUrlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (string) - The workspace this stable URL currently routes to. Set to
+        /// `InitialWorkspaceId` at creation, advanced to the failover group's primary
+        /// while attached (including across a failover), and preserved when the stable
+        /// URL is detached from its failover group. Read this to see where an unattached
+        /// stable URL points: after a failover followed by a detach it reflects the
+        /// post-failover primary, not `InitialWorkspaceId`
+        /// </summary>
+        [Input("effectiveWorkspaceId")]
+        public Input<string>? EffectiveWorkspaceId { get; set; }
+
+        /// <summary>
         /// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
         /// currently linked to, in the format
         /// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -201,6 +232,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("stableUrlId")]
         public Input<string>? StableUrlId { get; set; }
+
+        /// <summary>
+        /// (string) - The stable workspace ID for this stable URL. Generated on creation and
+        /// immutable thereafter; identifies the URL across failovers and is the same
+        /// value embedded in the `Url` (as the `w=` query parameter for SPOG URLs,
+        /// or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+        /// </summary>
+        [Input("stableWorkspaceId")]
+        public Input<string>? StableWorkspaceId { get; set; }
 
         /// <summary>
         /// (string) - The stable URL endpoint. Generated on creation and

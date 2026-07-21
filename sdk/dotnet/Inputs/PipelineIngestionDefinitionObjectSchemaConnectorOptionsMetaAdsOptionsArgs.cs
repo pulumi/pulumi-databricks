@@ -42,6 +42,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("customInsightsLookbackWindow")]
         public Input<int>? CustomInsightsLookbackWindow { get; set; }
 
+        [Input("customReportOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptionsArgs>? CustomReportOptions { get; set; }
+
         [Input("level")]
         public Input<string>? Level { get; set; }
 

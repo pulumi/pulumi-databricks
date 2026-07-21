@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetDisasterRecoveryStableUrl
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDisasterRecoveryStableUrlResult>("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", args ?? new GetDisasterRecoveryStableUrlArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryStableUrlResult>("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", args ?? new GetDisasterRecoveryStableUrlInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
         /// 
@@ -147,6 +147,15 @@ namespace Pulumi.Databricks
     public sealed class GetDisasterRecoveryStableUrlResult
     {
         /// <summary>
+        /// (string) - The workspace this stable URL currently routes to. Set to
+        /// `InitialWorkspaceId` at creation, advanced to the failover group's primary
+        /// while attached (including across a failover), and preserved when the stable
+        /// URL is detached from its failover group. Read this to see where an unattached
+        /// stable URL points: after a failover followed by a detach it reflects the
+        /// post-failover primary, not `InitialWorkspaceId`
+        /// </summary>
+        public readonly string EffectiveWorkspaceId;
+        /// <summary>
         /// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
         /// currently linked to, in the format
         /// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -169,6 +178,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// (string) - The stable workspace ID for this stable URL. Generated on creation and
+        /// immutable thereafter; identifies the URL across failovers and is the same
+        /// value embedded in the `Url` (as the `w=` query parameter for SPOG URLs,
+        /// or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+        /// </summary>
+        public readonly string StableWorkspaceId;
+        /// <summary>
         /// (string) - The stable URL endpoint. Generated on creation and
         /// immutable thereafter. For non-Private-Link workspaces this is
         /// `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
@@ -178,6 +194,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetDisasterRecoveryStableUrlResult(
+            string effectiveWorkspaceId,
+
             string failoverGroupName,
 
             string id,
@@ -186,12 +204,16 @@ namespace Pulumi.Databricks
 
             string name,
 
+            string stableWorkspaceId,
+
             string url)
         {
+            EffectiveWorkspaceId = effectiveWorkspaceId;
             FailoverGroupName = failoverGroupName;
             Id = id;
             InitialWorkspaceId = initialWorkspaceId;
             Name = name;
+            StableWorkspaceId = stableWorkspaceId;
             Url = url;
         }
     }

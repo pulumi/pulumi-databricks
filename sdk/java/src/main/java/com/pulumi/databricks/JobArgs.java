@@ -397,6 +397,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parameters);
     }
 
+    @Import(name="parentPath")
+    private @Nullable Output<String> parentPath;
+
+    public Optional<Output<String>> parentPath() {
+        return Optional.ofNullable(this.parentPath);
+    }
+
     /**
      * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
      * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -718,6 +725,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.notebookTask = $.notebookTask;
         this.notificationSettings = $.notificationSettings;
         this.parameters = $.parameters;
+        this.parentPath = $.parentPath;
         this.performanceTarget = $.performanceTarget;
         this.pipelineTask = $.pipelineTask;
         this.providerConfig = $.providerConfig;
@@ -1264,6 +1272,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parameters(JobParameterArgs... parameters) {
             return parameters(List.of(parameters));
+        }
+
+        public Builder parentPath(@Nullable Output<String> parentPath) {
+            $.parentPath = parentPath;
+            return this;
+        }
+
+        public Builder parentPath(String parentPath) {
+            return parentPath(Output.of(parentPath));
         }
 
         /**

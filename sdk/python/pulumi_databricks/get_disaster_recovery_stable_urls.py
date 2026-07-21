@@ -81,7 +81,7 @@ def get_disaster_recovery_stable_urls(page_size: Optional[_builtins.int] = None,
                                       parent: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDisasterRecoveryStableUrlsResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 
@@ -124,7 +124,7 @@ def get_disaster_recovery_stable_urls_output(page_size: pulumi.Input[Optional[Op
                                              parent: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDisasterRecoveryStableUrlsResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
 

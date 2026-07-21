@@ -14,17 +14,9 @@ public final class FeatureEngineeringFeatureTimeWindowSlidingArgs extends com.pu
 
     public static final FeatureEngineeringFeatureTimeWindowSlidingArgs Empty = new FeatureEngineeringFeatureTimeWindowSlidingArgs();
 
-    /**
-     * The slide duration (interval by which windows advance, must be positive and less than duration)
-     * 
-     */
     @Import(name="slideDuration", required=true)
     private Output<String> slideDuration;
 
-    /**
-     * @return The slide duration (interval by which windows advance, must be positive and less than duration)
-     * 
-     */
     public Output<String> slideDuration() {
         return this.slideDuration;
     }
@@ -61,23 +53,11 @@ public final class FeatureEngineeringFeatureTimeWindowSlidingArgs extends com.pu
             $ = new FeatureEngineeringFeatureTimeWindowSlidingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param slideDuration The slide duration (interval by which windows advance, must be positive and less than duration)
-         * 
-         * @return builder
-         * 
-         */
         public Builder slideDuration(Output<String> slideDuration) {
             $.slideDuration = slideDuration;
             return this;
         }
 
-        /**
-         * @param slideDuration The slide duration (interval by which windows advance, must be positive and less than duration)
-         * 
-         * @return builder
-         * 
-         */
         public Builder slideDuration(String slideDuration) {
             return slideDuration(Output.of(slideDuration));
         }

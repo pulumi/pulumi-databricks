@@ -13,18 +13,22 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptions? CustomReportOptions;
         public readonly int? LookbackWindowDays;
         public readonly string ManagerAccountId;
         public readonly string? SyncStartDate;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions(
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptions? customReportOptions,
+
             int? lookbackWindowDays,
 
             string managerAccountId,
 
             string? syncStartDate)
         {
+            CustomReportOptions = customReportOptions;
             LookbackWindowDays = lookbackWindowDays;
             ManagerAccountId = managerAccountId;
             SyncStartDate = syncStartDate;

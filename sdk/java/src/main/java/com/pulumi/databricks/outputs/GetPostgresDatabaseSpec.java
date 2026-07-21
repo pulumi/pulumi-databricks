@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public final class GetPostgresDatabaseSpec {
      * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
      * 
      */
-    private @Nullable String role;
+    private String role;
 
     private GetPostgresDatabaseSpec() {}
     /**
@@ -36,8 +37,8 @@ public final class GetPostgresDatabaseSpec {
      * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
      * 
      */
-    public Optional<String> role() {
-        return Optional.ofNullable(this.role);
+    public String role() {
+        return this.role;
     }
 
     public static Builder builder() {
@@ -50,7 +51,7 @@ public final class GetPostgresDatabaseSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String postgresDatabase;
-        private @Nullable String role;
+        private String role;
         public Builder() {}
         public Builder(GetPostgresDatabaseSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,8 +66,10 @@ public final class GetPostgresDatabaseSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder role(@Nullable String role) {
-
+        public Builder role(String role) {
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetPostgresDatabaseSpec", "role");
+            }
             this.role = role;
             return this;
         }

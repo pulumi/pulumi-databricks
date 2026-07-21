@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptionsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs Empty = new PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs();
+
+    @Import(name="customReportOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptionsArgs> customReportOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptionsArgs>> customReportOptions() {
+        return Optional.ofNullable(this.customReportOptions);
+    }
 
     @Import(name="lookbackWindowDays")
     private @Nullable Output<Integer> lookbackWindowDays;
@@ -41,6 +49,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogle
     private PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs() {}
 
     private PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs(PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs $) {
+        this.customReportOptions = $.customReportOptions;
         this.lookbackWindowDays = $.lookbackWindowDays;
         this.managerAccountId = $.managerAccountId;
         this.syncStartDate = $.syncStartDate;
@@ -62,6 +71,15 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogle
 
         public Builder(PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder customReportOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptionsArgs> customReportOptions) {
+            $.customReportOptions = customReportOptions;
+            return this;
+        }
+
+        public Builder customReportOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsCustomReportOptionsArgs customReportOptions) {
+            return customReportOptions(Output.of(customReportOptions));
         }
 
         public Builder lookbackWindowDays(@Nullable Output<Integer> lookbackWindowDays) {

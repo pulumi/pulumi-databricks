@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetRegisteredModelModelInfoAlias;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -33,11 +34,11 @@ public final class GetRegisteredModelModelInfo extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.aliases);
     }
 
-    @Import(name="browseOnly")
-    private @Nullable Boolean browseOnly;
+    @Import(name="browseOnly", required=true)
+    private Boolean browseOnly;
 
-    public Optional<Boolean> browseOnly() {
-        return Optional.ofNullable(this.browseOnly);
+    public Boolean browseOnly() {
+        return this.browseOnly;
     }
 
     /**
@@ -278,7 +279,7 @@ public final class GetRegisteredModelModelInfo extends com.pulumi.resources.Invo
             return aliases(List.of(aliases));
         }
 
-        public Builder browseOnly(@Nullable Boolean browseOnly) {
+        public Builder browseOnly(Boolean browseOnly) {
             $.browseOnly = browseOnly;
             return this;
         }
@@ -416,6 +417,9 @@ public final class GetRegisteredModelModelInfo extends com.pulumi.resources.Invo
         }
 
         public GetRegisteredModelModelInfo build() {
+            if ($.browseOnly == null) {
+                throw new MissingRequiredPropertyException("GetRegisteredModelModelInfo", "browseOnly");
+            }
             return $;
         }
     }

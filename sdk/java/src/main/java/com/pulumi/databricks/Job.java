@@ -452,6 +452,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<JobParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
+    @Export(name="parentPath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parentPath;
+
+    public Output<Optional<String>> parentPath() {
+        return Codegen.optional(this.parentPath);
+    }
     /**
      * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
      * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.

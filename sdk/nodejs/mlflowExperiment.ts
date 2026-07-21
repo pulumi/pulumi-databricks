@@ -104,6 +104,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
      * Tags for the MLflow experiment.
      */
     declare public readonly tags: pulumi.Output<outputs.MlflowExperimentTag[]>;
+    declare public readonly traceLocation: pulumi.Output<outputs.MlflowExperimentTraceLocation | undefined>;
 
     /**
      * Create a MlflowExperiment resource with the given unique name, arguments, and options.
@@ -127,6 +128,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["traceLocation"] = state?.traceLocation;
         } else {
             const args = argsOrState as MlflowExperimentArgs | undefined;
             resourceInputs["artifactLocation"] = args?.artifactLocation;
@@ -138,6 +140,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["traceLocation"] = args?.traceLocation;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MlflowExperiment.__pulumiType, name, resourceInputs, opts);
@@ -172,6 +175,7 @@ export interface MlflowExperimentState {
      * Tags for the MLflow experiment.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[] | undefined>;
+    traceLocation?: pulumi.Input<inputs.MlflowExperimentTraceLocation | undefined>;
 }
 
 /**
@@ -202,4 +206,5 @@ export interface MlflowExperimentArgs {
      * Tags for the MLflow experiment.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[] | undefined>;
+    traceLocation?: pulumi.Input<inputs.MlflowExperimentTraceLocation | undefined>;
 }

@@ -16,6 +16,31 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
     public static final DisasterRecoveryStableUrlState Empty = new DisasterRecoveryStableUrlState();
 
     /**
+     * (string) - The workspace this stable URL currently routes to. Set to
+     * `initialWorkspaceId` at creation, advanced to the failover group&#39;s primary
+     * while attached (including across a failover), and preserved when the stable
+     * URL is detached from its failover group. Read this to see where an unattached
+     * stable URL points: after a failover followed by a detach it reflects the
+     * post-failover primary, not `initialWorkspaceId`
+     * 
+     */
+    @Import(name="effectiveWorkspaceId")
+    private @Nullable Output<String> effectiveWorkspaceId;
+
+    /**
+     * @return (string) - The workspace this stable URL currently routes to. Set to
+     * `initialWorkspaceId` at creation, advanced to the failover group&#39;s primary
+     * while attached (including across a failover), and preserved when the stable
+     * URL is detached from its failover group. Read this to see where an unattached
+     * stable URL points: after a failover followed by a detach it reflects the
+     * post-failover primary, not `initialWorkspaceId`
+     * 
+     */
+    public Optional<Output<String>> effectiveWorkspaceId() {
+        return Optional.ofNullable(this.effectiveWorkspaceId);
+    }
+
+    /**
      * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
      * currently linked to, in the format
      * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -105,6 +130,27 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
     }
 
     /**
+     * (string) - The stable workspace ID for this stable URL. Generated on creation and
+     * immutable thereafter; identifies the URL across failovers and is the same
+     * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+     * or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+     * 
+     */
+    @Import(name="stableWorkspaceId")
+    private @Nullable Output<String> stableWorkspaceId;
+
+    /**
+     * @return (string) - The stable workspace ID for this stable URL. Generated on creation and
+     * immutable thereafter; identifies the URL across failovers and is the same
+     * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+     * or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+     * 
+     */
+    public Optional<Output<String>> stableWorkspaceId() {
+        return Optional.ofNullable(this.stableWorkspaceId);
+    }
+
+    /**
      * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
      * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
@@ -128,11 +174,13 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
     private DisasterRecoveryStableUrlState() {}
 
     private DisasterRecoveryStableUrlState(DisasterRecoveryStableUrlState $) {
+        this.effectiveWorkspaceId = $.effectiveWorkspaceId;
         this.failoverGroupName = $.failoverGroupName;
         this.initialWorkspaceId = $.initialWorkspaceId;
         this.name = $.name;
         this.parent = $.parent;
         this.stableUrlId = $.stableUrlId;
+        this.stableWorkspaceId = $.stableWorkspaceId;
         this.url = $.url;
     }
 
@@ -152,6 +200,37 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
 
         public Builder(DisasterRecoveryStableUrlState defaults) {
             $ = new DisasterRecoveryStableUrlState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param effectiveWorkspaceId (string) - The workspace this stable URL currently routes to. Set to
+         * `initialWorkspaceId` at creation, advanced to the failover group&#39;s primary
+         * while attached (including across a failover), and preserved when the stable
+         * URL is detached from its failover group. Read this to see where an unattached
+         * stable URL points: after a failover followed by a detach it reflects the
+         * post-failover primary, not `initialWorkspaceId`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveWorkspaceId(@Nullable Output<String> effectiveWorkspaceId) {
+            $.effectiveWorkspaceId = effectiveWorkspaceId;
+            return this;
+        }
+
+        /**
+         * @param effectiveWorkspaceId (string) - The workspace this stable URL currently routes to. Set to
+         * `initialWorkspaceId` at creation, advanced to the failover group&#39;s primary
+         * while attached (including across a failover), and preserved when the stable
+         * URL is detached from its failover group. Read this to see where an unattached
+         * stable URL points: after a failover followed by a detach it reflects the
+         * post-failover primary, not `initialWorkspaceId`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveWorkspaceId(String effectiveWorkspaceId) {
+            return effectiveWorkspaceId(Output.of(effectiveWorkspaceId));
         }
 
         /**
@@ -271,6 +350,33 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
          */
         public Builder stableUrlId(String stableUrlId) {
             return stableUrlId(Output.of(stableUrlId));
+        }
+
+        /**
+         * @param stableWorkspaceId (string) - The stable workspace ID for this stable URL. Generated on creation and
+         * immutable thereafter; identifies the URL across failovers and is the same
+         * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+         * or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stableWorkspaceId(@Nullable Output<String> stableWorkspaceId) {
+            $.stableWorkspaceId = stableWorkspaceId;
+            return this;
+        }
+
+        /**
+         * @param stableWorkspaceId (string) - The stable workspace ID for this stable URL. Generated on creation and
+         * immutable thereafter; identifies the URL across failovers and is the same
+         * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+         * or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stableWorkspaceId(String stableWorkspaceId) {
+            return stableWorkspaceId(Output.of(stableWorkspaceId));
         }
 
         /**

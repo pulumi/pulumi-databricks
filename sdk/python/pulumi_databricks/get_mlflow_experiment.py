@@ -28,7 +28,7 @@ class GetMlflowExperimentResult:
     """
     A collection of values returned by getMlflowExperiment.
     """
-    def __init__(__self__, artifact_location=None, creation_time=None, experiment_id=None, id=None, last_update_time=None, lifecycle_stage=None, name=None, provider_config=None, tags=None):
+    def __init__(__self__, artifact_location=None, creation_time=None, experiment_id=None, id=None, last_update_time=None, lifecycle_stage=None, name=None, provider_config=None, tags=None, trace_location=None):
         if artifact_location and not isinstance(artifact_location, str):
             raise TypeError("Expected argument 'artifact_location' to be a str")
         pulumi.set(__self__, "artifact_location", artifact_location)
@@ -56,6 +56,9 @@ class GetMlflowExperimentResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if trace_location and not isinstance(trace_location, dict):
+            raise TypeError("Expected argument 'trace_location' to be a dict")
+        pulumi.set(__self__, "trace_location", trace_location)
 
     @_builtins.property
     @pulumi.getter(name="artifactLocation")
@@ -126,6 +129,11 @@ class GetMlflowExperimentResult:
         """
         return pulumi.get(self, "tags")
 
+    @_builtins.property
+    @pulumi.getter(name="traceLocation")
+    def trace_location(self) -> 'outputs.GetMlflowExperimentTraceLocationResult':
+        return pulumi.get(self, "trace_location")
+
 
 class AwaitableGetMlflowExperimentResult(GetMlflowExperimentResult):
     # pylint: disable=using-constant-test
@@ -141,7 +149,8 @@ class AwaitableGetMlflowExperimentResult(GetMlflowExperimentResult):
             lifecycle_stage=self.lifecycle_stage,
             name=self.name,
             provider_config=self.provider_config,
-            tags=self.tags)
+            tags=self.tags,
+            trace_location=self.trace_location)
 
 
 def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
@@ -153,6 +162,7 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
                           provider_config: Optional[Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict']] = None,
                           tags: Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]] = None,
+                          trace_location: Optional[Union['GetMlflowExperimentTraceLocationArgs', 'GetMlflowExperimentTraceLocationArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowExperimentResult:
     """
     Retrieves the settings of MlflowExperiment by id or name.
@@ -180,6 +190,7 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['providerConfig'] = provider_config
     __args__['tags'] = tags
+    __args__['traceLocation'] = trace_location
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getMlflowExperiment:getMlflowExperiment', __args__, opts=opts, typ=GetMlflowExperimentResult).value
 
@@ -192,7 +203,8 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
         lifecycle_stage=pulumi.get(__ret__, 'lifecycle_stage'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        trace_location=pulumi.get(__ret__, 'trace_location'))
 def get_mlflow_experiment_output(artifact_location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  creation_time: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                  experiment_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -202,6 +214,7 @@ def get_mlflow_experiment_output(artifact_location: pulumi.Input[Optional[Option
                                  name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict']]]] = None,
                                  tags: pulumi.Input[Optional[Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]]]] = None,
+                                 trace_location: pulumi.Input[Optional[Optional[Union['GetMlflowExperimentTraceLocationArgs', 'GetMlflowExperimentTraceLocationArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowExperimentResult]:
     """
     Retrieves the settings of MlflowExperiment by id or name.
@@ -229,6 +242,7 @@ def get_mlflow_experiment_output(artifact_location: pulumi.Input[Optional[Option
     __args__['name'] = name
     __args__['providerConfig'] = provider_config
     __args__['tags'] = tags
+    __args__['traceLocation'] = trace_location
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMlflowExperiment:getMlflowExperiment', __args__, opts=opts, typ=GetMlflowExperimentResult)
     return __ret__.apply(lambda __response__: GetMlflowExperimentResult(
@@ -240,4 +254,5 @@ def get_mlflow_experiment_output(artifact_location: pulumi.Input[Optional[Option
         lifecycle_stage=pulumi.get(__response__, 'lifecycle_stage'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
-        tags=pulumi.get(__response__, 'tags')))
+        tags=pulumi.get(__response__, 'tags'),
+        trace_location=pulumi.get(__response__, 'trace_location')))

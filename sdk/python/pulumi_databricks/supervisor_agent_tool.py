@@ -38,7 +38,7 @@ class SupervisorAgentToolArgs:
         :param pulumi.Input[_builtins.str] parent: Parent resource where this tool will be created.
                Format: supervisor-agents/{supervisor_agent_id}
         :param pulumi.Input[_builtins.str] tool_id: User specified id of the Tool
-        :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search", "skill". The legacy values "lakeview_dashboard" and "uc_table" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         :param pulumi.Input[_builtins.str] description: Description of what this tool does (user-facing)
         :param pulumi.Input['SupervisorAgentToolProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
@@ -91,7 +91,7 @@ class SupervisorAgentToolArgs:
     @pulumi.getter(name="toolType")
     def tool_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search", "skill". The legacy values "lakeview_dashboard" and "uc_table" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         """
         return pulumi.get(self, "tool_type")
 
@@ -203,7 +203,7 @@ class _SupervisorAgentToolState:
                Format: supervisor-agents/{supervisor_agent_id}
         :param pulumi.Input['SupervisorAgentToolProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tool_id: User specified id of the Tool
-        :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search", "skill". The legacy values "lakeview_dashboard" and "uc_table" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         """
         if app is not None:
             pulumi.set(__self__, "app", app)
@@ -323,7 +323,7 @@ class _SupervisorAgentToolState:
     @pulumi.getter(name="toolType")
     def tool_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search", "skill". The legacy values "lakeview_dashboard" and "uc_table" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         """
         return pulumi.get(self, "tool_type")
 
@@ -390,7 +390,7 @@ class SupervisorAgentTool(pulumi.CustomResource):
                Format: supervisor-agents/{supervisor_agent_id}
         :param pulumi.Input[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tool_id: User specified id of the Tool
-        :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search", "skill". The legacy values "lakeview_dashboard" and "uc_table" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         """
         ...
     @overload
@@ -493,7 +493,7 @@ class SupervisorAgentTool(pulumi.CustomResource):
                Format: supervisor-agents/{supervisor_agent_id}
         :param pulumi.Input[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tool_id: User specified id of the Tool
-        :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search", "skill". The legacy values "lakeview_dashboard" and "uc_table" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -574,7 +574,7 @@ class SupervisorAgentTool(pulumi.CustomResource):
     @pulumi.getter(name="toolType")
     def tool_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search", "skill". The legacy values "lakeview_dashboard" and "uc_table" are also accepted and remain equivalent to "dashboard" and "table" respectively
+        Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         """
         return pulumi.get(self, "tool_type")
 

@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions? CustomReportOptions;
         public readonly string? DataLevel;
         public readonly ImmutableArray<string> Dimensions;
         public readonly int? LookbackWindowDays;
@@ -23,6 +24,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions(
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsCustomReportOptions? customReportOptions,
+
             string? dataLevel,
 
             ImmutableArray<string> dimensions,
@@ -37,6 +40,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? syncStartDate)
         {
+            CustomReportOptions = customReportOptions;
             DataLevel = dataLevel;
             Dimensions = dimensions;
             LookbackWindowDays = lookbackWindowDays;

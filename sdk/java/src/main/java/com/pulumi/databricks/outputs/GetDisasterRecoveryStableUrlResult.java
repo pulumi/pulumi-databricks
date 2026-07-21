@@ -11,6 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class GetDisasterRecoveryStableUrlResult {
     /**
+     * @return (string) - The workspace this stable URL currently routes to. Set to
+     * `initialWorkspaceId` at creation, advanced to the failover group&#39;s primary
+     * while attached (including across a failover), and preserved when the stable
+     * URL is detached from its failover group. Read this to see where an unattached
+     * stable URL points: after a failover followed by a detach it reflects the
+     * post-failover primary, not `initialWorkspaceId`
+     * 
+     */
+    private String effectiveWorkspaceId;
+    /**
      * @return (string) - Fully qualified resource name of the FailoverGroup this stable URL is
      * currently linked to, in the format
      * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
@@ -37,6 +47,14 @@ public final class GetDisasterRecoveryStableUrlResult {
      */
     private String name;
     /**
+     * @return (string) - The stable workspace ID for this stable URL. Generated on creation and
+     * immutable thereafter; identifies the URL across failovers and is the same
+     * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+     * or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+     * 
+     */
+    private String stableWorkspaceId;
+    /**
      * @return (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
      * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
@@ -46,6 +64,18 @@ public final class GetDisasterRecoveryStableUrlResult {
     private String url;
 
     private GetDisasterRecoveryStableUrlResult() {}
+    /**
+     * @return (string) - The workspace this stable URL currently routes to. Set to
+     * `initialWorkspaceId` at creation, advanced to the failover group&#39;s primary
+     * while attached (including across a failover), and preserved when the stable
+     * URL is detached from its failover group. Read this to see where an unattached
+     * stable URL points: after a failover followed by a detach it reflects the
+     * post-failover primary, not `initialWorkspaceId`
+     * 
+     */
+    public String effectiveWorkspaceId() {
+        return this.effectiveWorkspaceId;
+    }
     /**
      * @return (string) - Fully qualified resource name of the FailoverGroup this stable URL is
      * currently linked to, in the format
@@ -81,6 +111,16 @@ public final class GetDisasterRecoveryStableUrlResult {
         return this.name;
     }
     /**
+     * @return (string) - The stable workspace ID for this stable URL. Generated on creation and
+     * immutable thereafter; identifies the URL across failovers and is the same
+     * value embedded in the `url` (as the `w=` query parameter for SPOG URLs,
+     * or in the `conn-&lt;id&gt;` hostname for Private-Link URLs)
+     * 
+     */
+    public String stableWorkspaceId() {
+        return this.stableWorkspaceId;
+    }
+    /**
      * @return (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
      * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
@@ -100,21 +140,33 @@ public final class GetDisasterRecoveryStableUrlResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String effectiveWorkspaceId;
         private String failoverGroupName;
         private String id;
         private String initialWorkspaceId;
         private String name;
+        private String stableWorkspaceId;
         private String url;
         public Builder() {}
         public Builder(GetDisasterRecoveryStableUrlResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.effectiveWorkspaceId = defaults.effectiveWorkspaceId;
     	      this.failoverGroupName = defaults.failoverGroupName;
     	      this.id = defaults.id;
     	      this.initialWorkspaceId = defaults.initialWorkspaceId;
     	      this.name = defaults.name;
+    	      this.stableWorkspaceId = defaults.stableWorkspaceId;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
+        public Builder effectiveWorkspaceId(String effectiveWorkspaceId) {
+            if (effectiveWorkspaceId == null) {
+              throw new MissingRequiredPropertyException("GetDisasterRecoveryStableUrlResult", "effectiveWorkspaceId");
+            }
+            this.effectiveWorkspaceId = effectiveWorkspaceId;
+            return this;
+        }
         @CustomType.Setter
         public Builder failoverGroupName(String failoverGroupName) {
             if (failoverGroupName == null) {
@@ -148,6 +200,14 @@ public final class GetDisasterRecoveryStableUrlResult {
             return this;
         }
         @CustomType.Setter
+        public Builder stableWorkspaceId(String stableWorkspaceId) {
+            if (stableWorkspaceId == null) {
+              throw new MissingRequiredPropertyException("GetDisasterRecoveryStableUrlResult", "stableWorkspaceId");
+            }
+            this.stableWorkspaceId = stableWorkspaceId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder url(String url) {
             if (url == null) {
               throw new MissingRequiredPropertyException("GetDisasterRecoveryStableUrlResult", "url");
@@ -157,10 +217,12 @@ public final class GetDisasterRecoveryStableUrlResult {
         }
         public GetDisasterRecoveryStableUrlResult build() {
             final var _resultValue = new GetDisasterRecoveryStableUrlResult();
+            _resultValue.effectiveWorkspaceId = effectiveWorkspaceId;
             _resultValue.failoverGroupName = failoverGroupName;
             _resultValue.id = id;
             _resultValue.initialWorkspaceId = initialWorkspaceId;
             _resultValue.name = name;
+            _resultValue.stableWorkspaceId = stableWorkspaceId;
             _resultValue.url = url;
             return _resultValue;
         }
