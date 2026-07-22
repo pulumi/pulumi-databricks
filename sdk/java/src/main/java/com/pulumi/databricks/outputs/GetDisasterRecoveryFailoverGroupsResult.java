@@ -16,24 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDisasterRecoveryFailoverGroupsResult {
     private List<GetDisasterRecoveryFailoverGroupsFailoverGroup> failoverGroups;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private String parent;
 
     private GetDisasterRecoveryFailoverGroupsResult() {}
     public List<GetDisasterRecoveryFailoverGroupsFailoverGroup> failoverGroups() {
         return this.failoverGroups;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -52,14 +40,12 @@ public final class GetDisasterRecoveryFailoverGroupsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetDisasterRecoveryFailoverGroupsFailoverGroup> failoverGroups;
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         public Builder() {}
         public Builder(GetDisasterRecoveryFailoverGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.failoverGroups = defaults.failoverGroups;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
         }
@@ -74,14 +60,6 @@ public final class GetDisasterRecoveryFailoverGroupsResult {
         }
         public Builder failoverGroups(GetDisasterRecoveryFailoverGroupsFailoverGroup... failoverGroups) {
             return failoverGroups(List.of(failoverGroups));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDisasterRecoveryFailoverGroupsResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
@@ -100,7 +78,6 @@ public final class GetDisasterRecoveryFailoverGroupsResult {
         public GetDisasterRecoveryFailoverGroupsResult build() {
             final var _resultValue = new GetDisasterRecoveryFailoverGroupsResult();
             _resultValue.failoverGroups = failoverGroups;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             return _resultValue;

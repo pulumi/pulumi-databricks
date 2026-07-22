@@ -11,11 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkspaceNetworkOptionResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The network policy ID to apply to the workspace. This controls the network access rules
      * for all serverless compute resources in the workspace. Each workspace can only be
      * linked to one policy at a time. If no policy is explicitly assigned,
@@ -30,13 +25,6 @@ public final class GetWorkspaceNetworkOptionResult {
     private String workspaceId;
 
     private GetWorkspaceNetworkOptionResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return (string) - The network policy ID to apply to the workspace. This controls the network access rules
      * for all serverless compute resources in the workspace. Each workspace can only be
@@ -64,25 +52,15 @@ public final class GetWorkspaceNetworkOptionResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String networkPolicyId;
         private String workspaceId;
         public Builder() {}
         public Builder(GetWorkspaceNetworkOptionResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.networkPolicyId = defaults.networkPolicyId;
     	      this.workspaceId = defaults.workspaceId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWorkspaceNetworkOptionResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder networkPolicyId(String networkPolicyId) {
             if (networkPolicyId == null) {
@@ -101,7 +79,6 @@ public final class GetWorkspaceNetworkOptionResult {
         }
         public GetWorkspaceNetworkOptionResult build() {
             final var _resultValue = new GetWorkspaceNetworkOptionResult();
-            _resultValue.id = id;
             _resultValue.networkPolicyId = networkPolicyId;
             _resultValue.workspaceId = workspaceId;
             return _resultValue;

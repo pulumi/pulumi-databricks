@@ -62,8 +62,6 @@ type GetAppsSettingsCustomTemplatesArgs struct {
 
 // A collection of values returned by getAppsSettingsCustomTemplates.
 type GetAppsSettingsCustomTemplatesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                        `pulumi:"id"`
 	PageSize       *int                                          `pulumi:"pageSize"`
 	ProviderConfig *GetAppsSettingsCustomTemplatesProviderConfig `pulumi:"providerConfig"`
 	Templates      []GetAppsSettingsCustomTemplatesTemplate      `pulumi:"templates"`
@@ -103,11 +101,6 @@ func (o GetAppsSettingsCustomTemplatesResultOutput) ToGetAppsSettingsCustomTempl
 
 func (o GetAppsSettingsCustomTemplatesResultOutput) ToGetAppsSettingsCustomTemplatesResultOutputWithContext(ctx context.Context) GetAppsSettingsCustomTemplatesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAppsSettingsCustomTemplatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsSettingsCustomTemplatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAppsSettingsCustomTemplatesResultOutput) PageSize() pulumi.IntPtrOutput {

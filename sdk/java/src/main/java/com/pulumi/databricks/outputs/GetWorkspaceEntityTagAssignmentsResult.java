@@ -26,11 +26,6 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
      * 
      */
     private String entityType;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetWorkspaceEntityTagAssignmentsProviderConfig providerConfig;
     private List<GetWorkspaceEntityTagAssignmentsTagAssignment> tagAssignments;
@@ -49,13 +44,6 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
      */
     public String entityType() {
         return this.entityType;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -78,7 +66,6 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
     public static final class Builder {
         private String entityId;
         private String entityType;
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetWorkspaceEntityTagAssignmentsProviderConfig providerConfig;
         private List<GetWorkspaceEntityTagAssignmentsTagAssignment> tagAssignments;
@@ -87,7 +74,6 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
     	      Objects.requireNonNull(defaults);
     	      this.entityId = defaults.entityId;
     	      this.entityType = defaults.entityType;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.tagAssignments = defaults.tagAssignments;
@@ -107,14 +93,6 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
               throw new MissingRequiredPropertyException("GetWorkspaceEntityTagAssignmentsResult", "entityType");
             }
             this.entityType = entityType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWorkspaceEntityTagAssignmentsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -144,7 +122,6 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
             final var _resultValue = new GetWorkspaceEntityTagAssignmentsResult();
             _resultValue.entityId = entityId;
             _resultValue.entityType = entityType;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.tagAssignments = tagAssignments;

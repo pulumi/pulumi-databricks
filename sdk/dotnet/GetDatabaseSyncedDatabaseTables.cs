@@ -93,10 +93,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetDatabaseSyncedDatabaseTablesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string InstanceName;
         public readonly int? PageSize;
         public readonly Outputs.GetDatabaseSyncedDatabaseTablesProviderConfigResult? ProviderConfig;
@@ -104,8 +100,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetDatabaseSyncedDatabaseTablesResult(
-            string id,
-
             string instanceName,
 
             int? pageSize,
@@ -114,7 +108,6 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> syncedTables)
         {
-            Id = id;
             InstanceName = instanceName;
             PageSize = pageSize;
             ProviderConfig = providerConfig;

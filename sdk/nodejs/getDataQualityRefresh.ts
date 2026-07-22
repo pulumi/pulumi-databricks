@@ -89,10 +89,6 @@ export interface GetDataQualityRefreshResult {
      */
     readonly endTimeMs: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
      */
     readonly message: string;

@@ -27,11 +27,6 @@ public final class GetDataQualityMonitorResult {
      */
     private GetDataQualityMonitorDataProfilingConfig dataProfilingConfig;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
      * 
      */
@@ -58,13 +53,6 @@ public final class GetDataQualityMonitorResult {
      */
     public GetDataQualityMonitorDataProfilingConfig dataProfilingConfig() {
         return this.dataProfilingConfig;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
@@ -95,7 +83,6 @@ public final class GetDataQualityMonitorResult {
     public static final class Builder {
         private GetDataQualityMonitorAnomalyDetectionConfig anomalyDetectionConfig;
         private GetDataQualityMonitorDataProfilingConfig dataProfilingConfig;
-        private String id;
         private String objectId;
         private String objectType;
         private @Nullable GetDataQualityMonitorProviderConfig providerConfig;
@@ -104,7 +91,6 @@ public final class GetDataQualityMonitorResult {
     	      Objects.requireNonNull(defaults);
     	      this.anomalyDetectionConfig = defaults.anomalyDetectionConfig;
     	      this.dataProfilingConfig = defaults.dataProfilingConfig;
-    	      this.id = defaults.id;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
     	      this.providerConfig = defaults.providerConfig;
@@ -124,14 +110,6 @@ public final class GetDataQualityMonitorResult {
               throw new MissingRequiredPropertyException("GetDataQualityMonitorResult", "dataProfilingConfig");
             }
             this.dataProfilingConfig = dataProfilingConfig;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDataQualityMonitorResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -160,7 +138,6 @@ public final class GetDataQualityMonitorResult {
             final var _resultValue = new GetDataQualityMonitorResult();
             _resultValue.anomalyDetectionConfig = anomalyDetectionConfig;
             _resultValue.dataProfilingConfig = dataProfilingConfig;
-            _resultValue.id = id;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
             _resultValue.providerConfig = providerConfig;

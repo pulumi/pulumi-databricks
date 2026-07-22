@@ -61,10 +61,6 @@ export interface GetPostgresEndpointsArgs {
  */
 export interface GetPostgresEndpointsResult {
     readonly endpoints: outputs.GetPostgresEndpointsEndpoint[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     /**
      * (string) - The branch containing this endpoint (API resource hierarchy).

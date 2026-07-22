@@ -65,10 +65,6 @@ export interface GetAiSearchIndexResult {
      */
     readonly endpoint: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      */
     readonly indexSubtype: string;

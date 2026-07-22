@@ -28,10 +28,7 @@ class GetOnlineStoresResult:
     """
     A collection of values returned by getOnlineStores.
     """
-    def __init__(__self__, id=None, online_stores=None, page_size=None, provider_config=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, online_stores=None, page_size=None, provider_config=None):
         if online_stores and not isinstance(online_stores, list):
             raise TypeError("Expected argument 'online_stores' to be a list")
         pulumi.set(__self__, "online_stores", online_stores)
@@ -41,14 +38,6 @@ class GetOnlineStoresResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="onlineStores")
@@ -72,7 +61,6 @@ class AwaitableGetOnlineStoresResult(GetOnlineStoresResult):
         if False:
             yield self
         return GetOnlineStoresResult(
-            id=self.id,
             online_stores=self.online_stores,
             page_size=self.page_size,
             provider_config=self.provider_config)
@@ -95,7 +83,6 @@ def get_online_stores(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getOnlineStores:getOnlineStores', __args__, opts=opts, typ=GetOnlineStoresResult).value
 
     return AwaitableGetOnlineStoresResult(
-        id=pulumi.get(__ret__, 'id'),
         online_stores=pulumi.get(__ret__, 'online_stores'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -115,7 +102,6 @@ def get_online_stores_output(page_size: pulumi.Input[Optional[Optional[_builtins
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getOnlineStores:getOnlineStores', __args__, opts=opts, typ=GetOnlineStoresResult)
     return __ret__.apply(lambda __response__: GetOnlineStoresResult(
-        id=pulumi.get(__response__, 'id'),
         online_stores=pulumi.get(__response__, 'online_stores'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

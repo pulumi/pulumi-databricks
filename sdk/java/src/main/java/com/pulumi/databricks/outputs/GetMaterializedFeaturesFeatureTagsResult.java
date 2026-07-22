@@ -18,11 +18,6 @@ import javax.annotation.Nullable;
 public final class GetMaterializedFeaturesFeatureTagsResult {
     private String featureName;
     private List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetMaterializedFeaturesFeatureTagsProviderConfig providerConfig;
     private String tableName;
@@ -33,13 +28,6 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
     }
     public List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags() {
         return this.featureTags;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -62,7 +50,6 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
     public static final class Builder {
         private String featureName;
         private List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags;
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetMaterializedFeaturesFeatureTagsProviderConfig providerConfig;
         private String tableName;
@@ -71,7 +58,6 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
     	      Objects.requireNonNull(defaults);
     	      this.featureName = defaults.featureName;
     	      this.featureTags = defaults.featureTags;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.tableName = defaults.tableName;
@@ -97,14 +83,6 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
             return featureTags(List.of(featureTags));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
@@ -128,7 +106,6 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
             final var _resultValue = new GetMaterializedFeaturesFeatureTagsResult();
             _resultValue.featureName = featureName;
             _resultValue.featureTags = featureTags;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.tableName = tableName;

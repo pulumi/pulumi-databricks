@@ -188,10 +188,6 @@ namespace Pulumi.Databricks
         /// A list of dashboards matching the specified criteria. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDashboardsDashboardResult> Dashboards;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetDashboardsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
@@ -200,13 +196,10 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetDashboardsDashboardResult> dashboards,
 
-            string id,
-
             Outputs.GetDashboardsProviderConfigResult? providerConfig)
         {
             DashboardNameContains = dashboardNameContains;
             Dashboards = dashboards;
-            Id = id;
             ProviderConfig = providerConfig;
         }
     }

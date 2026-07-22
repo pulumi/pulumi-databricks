@@ -230,10 +230,6 @@ namespace Pulumi.Databricks
         /// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         /// </summary>
         public readonly string EntityType;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetWorkspaceEntityTagAssignmentsProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentResult> TagAssignments;
@@ -244,8 +240,6 @@ namespace Pulumi.Databricks
 
             string entityType,
 
-            string id,
-
             int? pageSize,
 
             Outputs.GetWorkspaceEntityTagAssignmentsProviderConfigResult? providerConfig,
@@ -254,7 +248,6 @@ namespace Pulumi.Databricks
         {
             EntityId = entityId;
             EntityType = entityType;
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             TagAssignments = tagAssignments;

@@ -58,10 +58,6 @@ export interface GetDataQualityMonitorsArgs {
  * A collection of values returned by getDataQualityMonitors.
  */
 export interface GetDataQualityMonitorsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly monitors: outputs.GetDataQualityMonitorsMonitor[];
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetDataQualityMonitorsProviderConfig;

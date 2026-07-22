@@ -78,8 +78,6 @@ type LookupWarehousesDefaultWarehouseOverrideArgs struct {
 type LookupWarehousesDefaultWarehouseOverrideResult struct {
 	// (string) - The ID component of the resource name (user ID)
 	DefaultWarehouseOverrideId string `pulumi:"defaultWarehouseOverrideId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The resource name of the default warehouse override.
 	// Format: default-warehouse-overrides/{default_warehouse_override_id}
 	Name           string                                               `pulumi:"name"`
@@ -131,11 +129,6 @@ func (o LookupWarehousesDefaultWarehouseOverrideResultOutput) ToLookupWarehouses
 // (string) - The ID component of the resource name (user ID)
 func (o LookupWarehousesDefaultWarehouseOverrideResultOutput) DefaultWarehouseOverrideId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWarehousesDefaultWarehouseOverrideResult) string { return v.DefaultWarehouseOverrideId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWarehousesDefaultWarehouseOverrideResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWarehousesDefaultWarehouseOverrideResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The resource name of the default warehouse override.

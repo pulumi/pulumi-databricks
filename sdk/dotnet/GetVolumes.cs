@@ -236,10 +236,6 @@ namespace Pulumi.Databricks
     {
         public readonly string CatalogName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// a list of databricks.Volume full names: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         public readonly ImmutableArray<string> Ids;
@@ -250,8 +246,6 @@ namespace Pulumi.Databricks
         private GetVolumesResult(
             string catalogName,
 
-            string id,
-
             ImmutableArray<string> ids,
 
             Outputs.GetVolumesProviderConfigResult? providerConfig,
@@ -259,7 +253,6 @@ namespace Pulumi.Databricks
             string schemaName)
         {
             CatalogName = catalogName;
-            Id = id;
             Ids = ids;
             ProviderConfig = providerConfig;
             SchemaName = schemaName;

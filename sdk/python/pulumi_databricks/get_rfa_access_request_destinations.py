@@ -28,7 +28,7 @@ class GetRfaAccessRequestDestinationsResult:
     """
     A collection of values returned by getRfaAccessRequestDestinations.
     """
-    def __init__(__self__, are_any_destinations_hidden=None, destination_source_securable=None, destinations=None, full_name=None, id=None, provider_config=None, securable=None, securable_type=None):
+    def __init__(__self__, are_any_destinations_hidden=None, destination_source_securable=None, destinations=None, full_name=None, provider_config=None, securable=None, securable_type=None):
         if are_any_destinations_hidden and not isinstance(are_any_destinations_hidden, bool):
             raise TypeError("Expected argument 'are_any_destinations_hidden' to be a bool")
         pulumi.set(__self__, "are_any_destinations_hidden", are_any_destinations_hidden)
@@ -41,9 +41,6 @@ class GetRfaAccessRequestDestinationsResult:
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -90,14 +87,6 @@ class GetRfaAccessRequestDestinationsResult:
         return pulumi.get(self, "full_name")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetRfaAccessRequestDestinationsProviderConfigResult']:
         return pulumi.get(self, "provider_config")
@@ -129,7 +118,6 @@ class AwaitableGetRfaAccessRequestDestinationsResult(GetRfaAccessRequestDestinat
             destination_source_securable=self.destination_source_securable,
             destinations=self.destinations,
             full_name=self.full_name,
-            id=self.id,
             provider_config=self.provider_config,
             securable=self.securable,
             securable_type=self.securable_type)
@@ -175,7 +163,6 @@ def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = Non
         destination_source_securable=pulumi.get(__ret__, 'destination_source_securable'),
         destinations=pulumi.get(__ret__, 'destinations'),
         full_name=pulumi.get(__ret__, 'full_name'),
-        id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         securable=pulumi.get(__ret__, 'securable'),
         securable_type=pulumi.get(__ret__, 'securable_type'))
@@ -218,7 +205,6 @@ def get_rfa_access_request_destinations_output(full_name: pulumi.Input[Optional[
         destination_source_securable=pulumi.get(__response__, 'destination_source_securable'),
         destinations=pulumi.get(__response__, 'destinations'),
         full_name=pulumi.get(__response__, 'full_name'),
-        id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         securable=pulumi.get(__response__, 'securable'),
         securable_type=pulumi.get(__response__, 'securable_type')))

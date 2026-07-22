@@ -41,10 +41,6 @@ export interface GetMaterializedFeaturesFeatureTagsArgs {
 export interface GetMaterializedFeaturesFeatureTagsResult {
     readonly featureName: string;
     readonly featureTags: outputs.GetMaterializedFeaturesFeatureTagsFeatureTag[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetMaterializedFeaturesFeatureTagsProviderConfig;
     readonly tableName: string;

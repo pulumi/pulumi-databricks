@@ -92,8 +92,6 @@ type GetDataQualityRefreshesArgs struct {
 
 // A collection of values returned by getDataQualityRefreshes.
 type GetDataQualityRefreshesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
@@ -148,11 +146,6 @@ func (o GetDataQualityRefreshesResultOutput) ToGetDataQualityRefreshesResultOutp
 
 func (o GetDataQualityRefreshesResultOutput) ToGetDataQualityRefreshesResultOutputWithContext(ctx context.Context) GetDataQualityRefreshesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDataQualityRefreshesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDataQualityRefreshesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.

@@ -51,10 +51,6 @@ export interface GetServicePrincipalFederationPoliciesArgs {
  * A collection of values returned by getServicePrincipalFederationPolicies.
  */
 export interface GetServicePrincipalFederationPoliciesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly policies: outputs.GetServicePrincipalFederationPoliciesPolicy[];
     /**

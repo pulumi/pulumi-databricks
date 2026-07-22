@@ -28,7 +28,7 @@ class GetAppsSettingsCustomTemplateResult:
     """
     A collection of values returned by getAppsSettingsCustomTemplate.
     """
-    def __init__(__self__, creator=None, description=None, git_provider=None, git_repo=None, id=None, manifest=None, name=None, path=None, provider_config=None):
+    def __init__(__self__, creator=None, description=None, git_provider=None, git_repo=None, manifest=None, name=None, path=None, provider_config=None):
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
@@ -41,9 +41,6 @@ class GetAppsSettingsCustomTemplateResult:
         if git_repo and not isinstance(git_repo, str):
             raise TypeError("Expected argument 'git_repo' to be a str")
         pulumi.set(__self__, "git_repo", git_repo)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if manifest and not isinstance(manifest, dict):
             raise TypeError("Expected argument 'manifest' to be a dict")
         pulumi.set(__self__, "manifest", manifest)
@@ -91,14 +88,6 @@ class GetAppsSettingsCustomTemplateResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def manifest(self) -> 'outputs.GetAppsSettingsCustomTemplateManifestResult':
         """
         (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
@@ -137,7 +126,6 @@ class AwaitableGetAppsSettingsCustomTemplateResult(GetAppsSettingsCustomTemplate
             description=self.description,
             git_provider=self.git_provider,
             git_repo=self.git_repo,
-            id=self.id,
             manifest=self.manifest,
             name=self.name,
             path=self.path,
@@ -179,7 +167,6 @@ def get_apps_settings_custom_template(name: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         git_provider=pulumi.get(__ret__, 'git_provider'),
         git_repo=pulumi.get(__ret__, 'git_repo'),
-        id=pulumi.get(__ret__, 'id'),
         manifest=pulumi.get(__ret__, 'manifest'),
         name=pulumi.get(__ret__, 'name'),
         path=pulumi.get(__ret__, 'path'),
@@ -218,7 +205,6 @@ def get_apps_settings_custom_template_output(name: pulumi.Input[Optional[_builti
         description=pulumi.get(__response__, 'description'),
         git_provider=pulumi.get(__response__, 'git_provider'),
         git_repo=pulumi.get(__response__, 'git_repo'),
-        id=pulumi.get(__response__, 'id'),
         manifest=pulumi.get(__response__, 'manifest'),
         name=pulumi.get(__response__, 'name'),
         path=pulumi.get(__response__, 'path'),

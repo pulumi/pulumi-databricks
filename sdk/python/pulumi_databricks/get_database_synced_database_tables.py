@@ -28,10 +28,7 @@ class GetDatabaseSyncedDatabaseTablesResult:
     """
     A collection of values returned by getDatabaseSyncedDatabaseTables.
     """
-    def __init__(__self__, id=None, instance_name=None, page_size=None, provider_config=None, synced_tables=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, instance_name=None, page_size=None, provider_config=None, synced_tables=None):
         if instance_name and not isinstance(instance_name, str):
             raise TypeError("Expected argument 'instance_name' to be a str")
         pulumi.set(__self__, "instance_name", instance_name)
@@ -44,14 +41,6 @@ class GetDatabaseSyncedDatabaseTablesResult:
         if synced_tables and not isinstance(synced_tables, list):
             raise TypeError("Expected argument 'synced_tables' to be a list")
         pulumi.set(__self__, "synced_tables", synced_tables)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -80,7 +69,6 @@ class AwaitableGetDatabaseSyncedDatabaseTablesResult(GetDatabaseSyncedDatabaseTa
         if False:
             yield self
         return GetDatabaseSyncedDatabaseTablesResult(
-            id=self.id,
             instance_name=self.instance_name,
             page_size=self.page_size,
             provider_config=self.provider_config,
@@ -109,7 +97,6 @@ def get_database_synced_database_tables(instance_name: Optional[_builtins.str] =
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTablesResult).value
 
     return AwaitableGetDatabaseSyncedDatabaseTablesResult(
-        id=pulumi.get(__ret__, 'id'),
         instance_name=pulumi.get(__ret__, 'instance_name'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
@@ -135,7 +122,6 @@ def get_database_synced_database_tables_output(instance_name: pulumi.Input[Optio
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTablesResult)
     return __ret__.apply(lambda __response__: GetDatabaseSyncedDatabaseTablesResult(
-        id=pulumi.get(__response__, 'id'),
         instance_name=pulumi.get(__response__, 'instance_name'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),

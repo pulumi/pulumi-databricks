@@ -105,9 +105,7 @@ type LookupEntityTagAssignmentResult struct {
 	// (string) - The fully qualified name of the entity to which the tag is assigned
 	EntityName string `pulumi:"entityName"`
 	// (string) - The type of the entity to which the tag is assigned
-	EntityType string `pulumi:"entityType"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                `pulumi:"id"`
+	EntityType     string                                `pulumi:"entityType"`
 	ProviderConfig *GetEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
 	SourceType string `pulumi:"sourceType"`
@@ -169,11 +167,6 @@ func (o LookupEntityTagAssignmentResultOutput) EntityName() pulumi.StringOutput 
 // (string) - The type of the entity to which the tag is assigned
 func (o LookupEntityTagAssignmentResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.EntityType }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupEntityTagAssignmentResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupEntityTagAssignmentResultOutput) ProviderConfig() GetEntityTagAssignmentProviderConfigPtrOutput {

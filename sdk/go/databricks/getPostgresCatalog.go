@@ -71,8 +71,6 @@ type LookupPostgresCatalogResult struct {
 	CatalogId string `pulumi:"catalogId"`
 	// (string) - A timestamp indicating when the catalog was created
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Output only. The full resource path of the catalog.
 	Name           string                            `pulumi:"name"`
 	ProviderConfig *GetPostgresCatalogProviderConfig `pulumi:"providerConfig"`
@@ -132,11 +130,6 @@ func (o LookupPostgresCatalogResultOutput) CatalogId() pulumi.StringOutput {
 // (string) - A timestamp indicating when the catalog was created
 func (o LookupPostgresCatalogResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresCatalogResult) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresCatalogResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresCatalogResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Output only. The full resource path of the catalog.

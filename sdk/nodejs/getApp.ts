@@ -62,10 +62,6 @@ export interface GetAppResult {
      */
     readonly app: outputs.GetAppApp;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The name of the app to grant permission on.
      */
     readonly name: string;

@@ -173,10 +173,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string EndpointId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Output only. The full resource path of the endpoint.
         /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         /// </summary>
@@ -210,8 +206,6 @@ namespace Pulumi.Databricks
 
             string endpointId,
 
-            string id,
-
             string name,
 
             string parent,
@@ -228,7 +222,6 @@ namespace Pulumi.Databricks
         {
             CreateTime = createTime;
             EndpointId = endpointId;
-            Id = id;
             Name = name;
             Parent = parent;
             ProviderConfig = providerConfig;

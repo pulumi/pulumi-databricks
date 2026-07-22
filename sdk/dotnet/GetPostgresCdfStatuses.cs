@@ -195,10 +195,6 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresCdfStatusesResult
     {
         public readonly ImmutableArray<Outputs.GetPostgresCdfStatusesCdfStatusResult> CdfStatuses;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly string Parent;
         public readonly Outputs.GetPostgresCdfStatusesProviderConfigResult? ProviderConfig;
@@ -207,8 +203,6 @@ namespace Pulumi.Databricks
         private GetPostgresCdfStatusesResult(
             ImmutableArray<Outputs.GetPostgresCdfStatusesCdfStatusResult> cdfStatuses,
 
-            string id,
-
             int? pageSize,
 
             string parent,
@@ -216,7 +210,6 @@ namespace Pulumi.Databricks
             Outputs.GetPostgresCdfStatusesProviderConfigResult? providerConfig)
         {
             CdfStatuses = cdfStatuses;
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
             ProviderConfig = providerConfig;

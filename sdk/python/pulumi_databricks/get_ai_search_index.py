@@ -28,7 +28,7 @@ class GetAiSearchIndexResult:
     """
     A collection of values returned by getAiSearchIndex.
     """
-    def __init__(__self__, creator=None, delta_sync_index_spec=None, direct_access_index_spec=None, endpoint=None, id=None, index_subtype=None, index_type=None, name=None, primary_key=None, provider_config=None, status=None):
+    def __init__(__self__, creator=None, delta_sync_index_spec=None, direct_access_index_spec=None, endpoint=None, index_subtype=None, index_type=None, name=None, primary_key=None, provider_config=None, status=None):
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
@@ -41,9 +41,6 @@ class GetAiSearchIndexResult:
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         pulumi.set(__self__, "endpoint", endpoint)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if index_subtype and not isinstance(index_subtype, str):
             raise TypeError("Expected argument 'index_subtype' to be a str")
         pulumi.set(__self__, "index_subtype", index_subtype)
@@ -95,14 +92,6 @@ class GetAiSearchIndexResult:
         taken from `CreateIndexRequest.parent`; populated only on output
         """
         return pulumi.get(self, "endpoint")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="indexSubtype")
@@ -160,7 +149,6 @@ class AwaitableGetAiSearchIndexResult(GetAiSearchIndexResult):
             delta_sync_index_spec=self.delta_sync_index_spec,
             direct_access_index_spec=self.direct_access_index_spec,
             endpoint=self.endpoint,
-            id=self.id,
             index_subtype=self.index_subtype,
             index_type=self.index_type,
             name=self.name,
@@ -202,7 +190,6 @@ def get_ai_search_index(name: Optional[_builtins.str] = None,
         delta_sync_index_spec=pulumi.get(__ret__, 'delta_sync_index_spec'),
         direct_access_index_spec=pulumi.get(__ret__, 'direct_access_index_spec'),
         endpoint=pulumi.get(__ret__, 'endpoint'),
-        id=pulumi.get(__ret__, 'id'),
         index_subtype=pulumi.get(__ret__, 'index_subtype'),
         index_type=pulumi.get(__ret__, 'index_type'),
         name=pulumi.get(__ret__, 'name'),
@@ -241,7 +228,6 @@ def get_ai_search_index_output(name: pulumi.Input[Optional[_builtins.str]] = Non
         delta_sync_index_spec=pulumi.get(__response__, 'delta_sync_index_spec'),
         direct_access_index_spec=pulumi.get(__response__, 'direct_access_index_spec'),
         endpoint=pulumi.get(__response__, 'endpoint'),
-        id=pulumi.get(__response__, 'id'),
         index_subtype=pulumi.get(__response__, 'index_subtype'),
         index_type=pulumi.get(__response__, 'index_type'),
         name=pulumi.get(__response__, 'name'),

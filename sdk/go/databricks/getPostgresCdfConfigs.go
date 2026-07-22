@@ -43,9 +43,7 @@ type GetPostgresCdfConfigsArgs struct {
 
 // A collection of values returned by getPostgresCdfConfigs.
 type GetPostgresCdfConfigsResult struct {
-	CdfConfigs []GetPostgresCdfConfigsCdfConfig `pulumi:"cdfConfigs"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                               `pulumi:"id"`
+	CdfConfigs     []GetPostgresCdfConfigsCdfConfig     `pulumi:"cdfConfigs"`
 	PageSize       *int                                 `pulumi:"pageSize"`
 	Parent         string                               `pulumi:"parent"`
 	ProviderConfig *GetPostgresCdfConfigsProviderConfig `pulumi:"providerConfig"`
@@ -92,11 +90,6 @@ func (o GetPostgresCdfConfigsResultOutput) ToGetPostgresCdfConfigsResultOutputWi
 
 func (o GetPostgresCdfConfigsResultOutput) CdfConfigs() GetPostgresCdfConfigsCdfConfigArrayOutput {
 	return o.ApplyT(func(v GetPostgresCdfConfigsResult) []GetPostgresCdfConfigsCdfConfig { return v.CdfConfigs }).(GetPostgresCdfConfigsCdfConfigArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPostgresCdfConfigsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostgresCdfConfigsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPostgresCdfConfigsResultOutput) PageSize() pulumi.IntPtrOutput {

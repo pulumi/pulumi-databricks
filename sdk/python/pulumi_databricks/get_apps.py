@@ -28,13 +28,10 @@ class GetAppsResult:
     """
     A collection of values returned by getApps.
     """
-    def __init__(__self__, apps=None, id=None, provider_config=None):
+    def __init__(__self__, apps=None, provider_config=None):
         if apps and not isinstance(apps, list):
             raise TypeError("Expected argument 'apps' to be a list")
         pulumi.set(__self__, "apps", apps)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -46,14 +43,6 @@ class GetAppsResult:
         attribute - reference to another Databricks App.
         """
         return pulumi.get(self, "apps")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -68,7 +57,6 @@ class AwaitableGetAppsResult(GetAppsResult):
             yield self
         return GetAppsResult(
             apps=self.apps,
-            id=self.id,
             provider_config=self.provider_config)
 
 
@@ -107,7 +95,6 @@ def get_apps(provider_config: Optional[Union['GetAppsProviderConfigArgs', 'GetAp
 
     return AwaitableGetAppsResult(
         apps=pulumi.get(__ret__, 'apps'),
-        id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_apps_output(provider_config: pulumi.Input[Optional[Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict']]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
@@ -143,5 +130,4 @@ def get_apps_output(provider_config: pulumi.Input[Optional[Optional[Union['GetAp
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getApps:getApps', __args__, opts=opts, typ=GetAppsResult)
     return __ret__.apply(lambda __response__: GetAppsResult(
         apps=pulumi.get(__response__, 'apps'),
-        id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config')))

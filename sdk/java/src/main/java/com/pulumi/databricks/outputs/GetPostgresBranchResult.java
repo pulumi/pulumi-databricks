@@ -26,11 +26,6 @@ public final class GetPostgresBranchResult {
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Output only. The full resource path of the branch.
      * Format: projects/{project_id}/branches/{branch_id}
      * 
@@ -78,13 +73,6 @@ public final class GetPostgresBranchResult {
      */
     public String createTime() {
         return this.createTime;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - Output only. The full resource path of the branch.
@@ -145,7 +133,6 @@ public final class GetPostgresBranchResult {
     public static final class Builder {
         private String branchId;
         private String createTime;
-        private String id;
         private String name;
         private String parent;
         private @Nullable GetPostgresBranchProviderConfig providerConfig;
@@ -158,7 +145,6 @@ public final class GetPostgresBranchResult {
     	      Objects.requireNonNull(defaults);
     	      this.branchId = defaults.branchId;
     	      this.createTime = defaults.createTime;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -182,14 +168,6 @@ public final class GetPostgresBranchResult {
               throw new MissingRequiredPropertyException("GetPostgresBranchResult", "createTime");
             }
             this.createTime = createTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresBranchResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -250,7 +228,6 @@ public final class GetPostgresBranchResult {
             final var _resultValue = new GetPostgresBranchResult();
             _resultValue.branchId = branchId;
             _resultValue.createTime = createTime;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

@@ -75,8 +75,6 @@ type GetSharesArgs struct {
 
 // A collection of values returned by getShares.
 type GetSharesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                   `pulumi:"id"`
 	ProviderConfig *GetSharesProviderConfig `pulumi:"providerConfig"`
 	// list of Share names.
 	Shares []string `pulumi:"shares"`
@@ -116,11 +114,6 @@ func (o GetSharesResultOutput) ToGetSharesResultOutput() GetSharesResultOutput {
 
 func (o GetSharesResultOutput) ToGetSharesResultOutputWithContext(ctx context.Context) GetSharesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetSharesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSharesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetSharesResultOutput) ProviderConfig() GetSharesProviderConfigPtrOutput {

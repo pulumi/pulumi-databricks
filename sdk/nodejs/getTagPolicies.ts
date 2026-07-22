@@ -63,10 +63,6 @@ export interface GetTagPoliciesArgs {
  * A collection of values returned by getTagPolicies.
  */
 export interface GetTagPoliciesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetTagPoliciesProviderConfig;
     readonly tagPolicies: outputs.GetTagPoliciesTagPolicy[];

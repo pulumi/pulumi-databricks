@@ -152,25 +152,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetEndpointsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetEndpointsItemResult> Items;
         public readonly int? PageSize;
         public readonly string Parent;
 
         [OutputConstructor]
         private GetEndpointsResult(
-            string id,
-
             ImmutableArray<Outputs.GetEndpointsItemResult> items,
 
             int? pageSize,
 
             string parent)
         {
-            Id = id;
             Items = items;
             PageSize = pageSize;
             Parent = parent;

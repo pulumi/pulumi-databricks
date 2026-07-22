@@ -37,11 +37,9 @@ type GetDatabaseDatabaseCatalogsArgs struct {
 // A collection of values returned by getDatabaseDatabaseCatalogs.
 type GetDatabaseDatabaseCatalogsResult struct {
 	DatabaseCatalogs []GetDatabaseDatabaseCatalogsDatabaseCatalog `pulumi:"databaseCatalogs"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                     `pulumi:"id"`
-	InstanceName   string                                     `pulumi:"instanceName"`
-	PageSize       *int                                       `pulumi:"pageSize"`
-	ProviderConfig *GetDatabaseDatabaseCatalogsProviderConfig `pulumi:"providerConfig"`
+	InstanceName     string                                       `pulumi:"instanceName"`
+	PageSize         *int                                         `pulumi:"pageSize"`
+	ProviderConfig   *GetDatabaseDatabaseCatalogsProviderConfig   `pulumi:"providerConfig"`
 }
 
 func GetDatabaseDatabaseCatalogsOutput(ctx *pulumi.Context, args GetDatabaseDatabaseCatalogsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseDatabaseCatalogsResultOutput {
@@ -86,11 +84,6 @@ func (o GetDatabaseDatabaseCatalogsResultOutput) DatabaseCatalogs() GetDatabaseD
 	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) []GetDatabaseDatabaseCatalogsDatabaseCatalog {
 		return v.DatabaseCatalogs
 	}).(GetDatabaseDatabaseCatalogsDatabaseCatalogArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDatabaseDatabaseCatalogsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseDatabaseCatalogsResultOutput) InstanceName() pulumi.StringOutput {

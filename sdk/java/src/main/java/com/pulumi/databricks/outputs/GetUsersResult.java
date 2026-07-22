@@ -18,11 +18,6 @@ public final class GetUsersResult {
     private @Nullable String api;
     private @Nullable String extraAttributes;
     private @Nullable String filter;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable GetUsersProviderConfig providerConfig;
     /**
      * @return A list of users matching the specified criteria. Each user has the following attributes:
@@ -39,13 +34,6 @@ public final class GetUsersResult {
     }
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<GetUsersProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -70,7 +58,6 @@ public final class GetUsersResult {
         private @Nullable String api;
         private @Nullable String extraAttributes;
         private @Nullable String filter;
-        private String id;
         private @Nullable GetUsersProviderConfig providerConfig;
         private List<GetUsersUser> users;
         public Builder() {}
@@ -79,7 +66,6 @@ public final class GetUsersResult {
     	      this.api = defaults.api;
     	      this.extraAttributes = defaults.extraAttributes;
     	      this.filter = defaults.filter;
-    	      this.id = defaults.id;
     	      this.providerConfig = defaults.providerConfig;
     	      this.users = defaults.users;
         }
@@ -100,14 +86,6 @@ public final class GetUsersResult {
         public Builder filter(@Nullable String filter) {
 
             this.filter = filter;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetUsersResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -132,7 +110,6 @@ public final class GetUsersResult {
             _resultValue.api = api;
             _resultValue.extraAttributes = extraAttributes;
             _resultValue.filter = filter;
-            _resultValue.id = id;
             _resultValue.providerConfig = providerConfig;
             _resultValue.users = users;
             return _resultValue;

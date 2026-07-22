@@ -28,10 +28,7 @@ class GetKnowledgeAssistantKnowledgeSourcesResult:
     """
     A collection of values returned by getKnowledgeAssistantKnowledgeSources.
     """
-    def __init__(__self__, id=None, knowledge_sources=None, page_size=None, parent=None, provider_config=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, knowledge_sources=None, page_size=None, parent=None, provider_config=None):
         if knowledge_sources and not isinstance(knowledge_sources, list):
             raise TypeError("Expected argument 'knowledge_sources' to be a list")
         pulumi.set(__self__, "knowledge_sources", knowledge_sources)
@@ -44,14 +41,6 @@ class GetKnowledgeAssistantKnowledgeSourcesResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="knowledgeSources")
@@ -80,7 +69,6 @@ class AwaitableGetKnowledgeAssistantKnowledgeSourcesResult(GetKnowledgeAssistant
         if False:
             yield self
         return GetKnowledgeAssistantKnowledgeSourcesResult(
-            id=self.id,
             knowledge_sources=self.knowledge_sources,
             page_size=self.page_size,
             parent=self.parent,
@@ -109,7 +97,6 @@ def get_knowledge_assistant_knowledge_sources(page_size: Optional[_builtins.int]
     __ret__ = pulumi.runtime.invoke('databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources', __args__, opts=opts, typ=GetKnowledgeAssistantKnowledgeSourcesResult).value
 
     return AwaitableGetKnowledgeAssistantKnowledgeSourcesResult(
-        id=pulumi.get(__ret__, 'id'),
         knowledge_sources=pulumi.get(__ret__, 'knowledge_sources'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
@@ -135,7 +122,6 @@ def get_knowledge_assistant_knowledge_sources_output(page_size: pulumi.Input[Opt
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources', __args__, opts=opts, typ=GetKnowledgeAssistantKnowledgeSourcesResult)
     return __ret__.apply(lambda __response__: GetKnowledgeAssistantKnowledgeSourcesResult(
-        id=pulumi.get(__response__, 'id'),
         knowledge_sources=pulumi.get(__response__, 'knowledge_sources'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent'),

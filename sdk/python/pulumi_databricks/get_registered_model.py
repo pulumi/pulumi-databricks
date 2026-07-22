@@ -28,13 +28,10 @@ class GetRegisteredModelResult:
     """
     A collection of values returned by getRegisteredModel.
     """
-    def __init__(__self__, full_name=None, id=None, include_aliases=None, include_browse=None, model_infos=None, provider_config=None):
+    def __init__(__self__, full_name=None, include_aliases=None, include_browse=None, model_infos=None, provider_config=None):
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if include_aliases and not isinstance(include_aliases, bool):
             raise TypeError("Expected argument 'include_aliases' to be a bool")
         pulumi.set(__self__, "include_aliases", include_aliases)
@@ -55,14 +52,6 @@ class GetRegisteredModelResult:
         The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
         """
         return pulumi.get(self, "full_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="includeAliases")
@@ -95,7 +84,6 @@ class AwaitableGetRegisteredModelResult(GetRegisteredModelResult):
             yield self
         return GetRegisteredModelResult(
             full_name=self.full_name,
-            id=self.id,
             include_aliases=self.include_aliases,
             include_browse=self.include_browse,
             model_infos=self.model_infos,
@@ -147,7 +135,6 @@ def get_registered_model(full_name: Optional[_builtins.str] = None,
 
     return AwaitableGetRegisteredModelResult(
         full_name=pulumi.get(__ret__, 'full_name'),
-        id=pulumi.get(__ret__, 'id'),
         include_aliases=pulumi.get(__ret__, 'include_aliases'),
         include_browse=pulumi.get(__ret__, 'include_browse'),
         model_infos=pulumi.get(__ret__, 'model_infos'),
@@ -196,7 +183,6 @@ def get_registered_model_output(full_name: pulumi.Input[Optional[_builtins.str]]
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRegisteredModel:getRegisteredModel', __args__, opts=opts, typ=GetRegisteredModelResult)
     return __ret__.apply(lambda __response__: GetRegisteredModelResult(
         full_name=pulumi.get(__response__, 'full_name'),
-        id=pulumi.get(__response__, 'id'),
         include_aliases=pulumi.get(__response__, 'include_aliases'),
         include_browse=pulumi.get(__response__, 'include_browse'),
         model_infos=pulumi.get(__response__, 'model_infos'),

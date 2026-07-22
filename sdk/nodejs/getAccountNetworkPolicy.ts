@@ -49,10 +49,6 @@ export interface GetAccountNetworkPolicyResult {
      */
     readonly egress: outputs.GetAccountNetworkPolicyEgress;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
      */
     readonly ingress: outputs.GetAccountNetworkPolicyIngress;

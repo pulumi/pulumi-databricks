@@ -77,10 +77,6 @@ export interface GetDatabaseSyncedDatabaseTableResult {
      */
     readonly effectiveLogicalDatabaseName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Target Postgres database object (logical database) name for this table.
      */
     readonly logicalDatabaseName: string;

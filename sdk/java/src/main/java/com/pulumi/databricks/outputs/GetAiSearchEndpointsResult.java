@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiSearchEndpointsResult {
     private List<GetAiSearchEndpointsEndpoint> endpoints;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private String parent;
     private @Nullable GetAiSearchEndpointsProviderConfig providerConfig;
@@ -29,13 +24,6 @@ public final class GetAiSearchEndpointsResult {
     private GetAiSearchEndpointsResult() {}
     public List<GetAiSearchEndpointsEndpoint> endpoints() {
         return this.endpoints;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -57,7 +45,6 @@ public final class GetAiSearchEndpointsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetAiSearchEndpointsEndpoint> endpoints;
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         private @Nullable GetAiSearchEndpointsProviderConfig providerConfig;
@@ -65,7 +52,6 @@ public final class GetAiSearchEndpointsResult {
         public Builder(GetAiSearchEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoints = defaults.endpoints;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -81,14 +67,6 @@ public final class GetAiSearchEndpointsResult {
         }
         public Builder endpoints(GetAiSearchEndpointsEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchEndpointsResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
@@ -113,7 +91,6 @@ public final class GetAiSearchEndpointsResult {
         public GetAiSearchEndpointsResult build() {
             final var _resultValue = new GetAiSearchEndpointsResult();
             _resultValue.endpoints = endpoints;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

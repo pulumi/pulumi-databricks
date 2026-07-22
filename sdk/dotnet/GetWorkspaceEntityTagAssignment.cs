@@ -242,10 +242,6 @@ namespace Pulumi.Databricks
         /// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         /// </summary>
         public readonly string EntityType;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
@@ -262,8 +258,6 @@ namespace Pulumi.Databricks
 
             string entityType,
 
-            string id,
-
             Outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult? providerConfig,
 
             string tagKey,
@@ -272,7 +266,6 @@ namespace Pulumi.Databricks
         {
             EntityId = entityId;
             EntityType = entityType;
-            Id = id;
             ProviderConfig = providerConfig;
             TagKey = tagKey;
             TagValue = tagValue;

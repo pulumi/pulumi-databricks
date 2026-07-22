@@ -98,8 +98,6 @@ type GetNotificationDestinationsArgs struct {
 // A collection of values returned by getNotificationDestinations.
 type GetNotificationDestinationsResult struct {
 	DisplayNameContains *string `pulumi:"displayNameContains"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
 	NotificationDestinations []GetNotificationDestinationsNotificationDestination `pulumi:"notificationDestinations"`
 	ProviderConfig           *GetNotificationDestinationsProviderConfig           `pulumi:"providerConfig"`
@@ -150,11 +148,6 @@ func (o GetNotificationDestinationsResultOutput) ToGetNotificationDestinationsRe
 
 func (o GetNotificationDestinationsResultOutput) DisplayNameContains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationDestinationsResult) *string { return v.DisplayNameContains }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetNotificationDestinationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNotificationDestinationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:

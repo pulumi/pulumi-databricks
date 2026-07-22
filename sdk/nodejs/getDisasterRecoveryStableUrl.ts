@@ -65,10 +65,6 @@ export interface GetDisasterRecoveryStableUrlResult {
      */
     readonly failoverGroupName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
      * responses

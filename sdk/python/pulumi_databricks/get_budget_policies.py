@@ -28,13 +28,10 @@ class GetBudgetPoliciesResult:
     """
     A collection of values returned by getBudgetPolicies.
     """
-    def __init__(__self__, filter_by=None, id=None, page_size=None, policies=None, sort_spec=None):
+    def __init__(__self__, filter_by=None, page_size=None, policies=None, sort_spec=None):
         if filter_by and not isinstance(filter_by, dict):
             raise TypeError("Expected argument 'filter_by' to be a dict")
         pulumi.set(__self__, "filter_by", filter_by)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -49,14 +46,6 @@ class GetBudgetPoliciesResult:
     @pulumi.getter(name="filterBy")
     def filter_by(self) -> Optional['outputs.GetBudgetPoliciesFilterByResult']:
         return pulumi.get(self, "filter_by")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -81,7 +70,6 @@ class AwaitableGetBudgetPoliciesResult(GetBudgetPoliciesResult):
             yield self
         return GetBudgetPoliciesResult(
             filter_by=self.filter_by,
-            id=self.id,
             page_size=self.page_size,
             policies=self.policies,
             sort_spec=self.sort_spec)
@@ -127,7 +115,6 @@ def get_budget_policies(filter_by: Optional[Union['GetBudgetPoliciesFilterByArgs
 
     return AwaitableGetBudgetPoliciesResult(
         filter_by=pulumi.get(__ret__, 'filter_by'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'),
         sort_spec=pulumi.get(__ret__, 'sort_spec'))
@@ -170,7 +157,6 @@ def get_budget_policies_output(filter_by: pulumi.Input[Optional[Optional[Union['
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getBudgetPolicies:getBudgetPolicies', __args__, opts=opts, typ=GetBudgetPoliciesResult)
     return __ret__.apply(lambda __response__: GetBudgetPoliciesResult(
         filter_by=pulumi.get(__response__, 'filter_by'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         policies=pulumi.get(__response__, 'policies'),
         sort_spec=pulumi.get(__response__, 'sort_spec')))

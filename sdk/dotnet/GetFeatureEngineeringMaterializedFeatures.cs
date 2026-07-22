@@ -91,10 +91,6 @@ namespace Pulumi.Databricks
         /// (string) - The full name of the feature in Unity Catalog
         /// </summary>
         public readonly string? FeatureName;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult> MaterializedFeatures;
         public readonly int? PageSize;
         public readonly Outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigResult? ProviderConfig;
@@ -103,8 +99,6 @@ namespace Pulumi.Databricks
         private GetFeatureEngineeringMaterializedFeaturesResult(
             string? featureName,
 
-            string id,
-
             ImmutableArray<Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult> materializedFeatures,
 
             int? pageSize,
@@ -112,7 +106,6 @@ namespace Pulumi.Databricks
             Outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigResult? providerConfig)
         {
             FeatureName = featureName;
-            Id = id;
             MaterializedFeatures = materializedFeatures;
             PageSize = pageSize;
             ProviderConfig = providerConfig;

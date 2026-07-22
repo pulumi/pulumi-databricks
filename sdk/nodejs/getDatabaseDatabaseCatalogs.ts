@@ -43,10 +43,6 @@ export interface GetDatabaseDatabaseCatalogsArgs {
  */
 export interface GetDatabaseDatabaseCatalogsResult {
     readonly databaseCatalogs: outputs.GetDatabaseDatabaseCatalogsDatabaseCatalog[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly instanceName: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetDatabaseDatabaseCatalogsProviderConfig;

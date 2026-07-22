@@ -68,10 +68,6 @@ export interface GetAppsSettingsCustomTemplateResult {
      */
     readonly gitRepo: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
      */
     readonly manifest: outputs.GetAppsSettingsCustomTemplateManifest;

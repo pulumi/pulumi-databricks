@@ -257,10 +257,6 @@ namespace Pulumi.Databricks
         public readonly string CreatedBy;
         public readonly string EffectiveOwner;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Full name of the object being shared.
         /// </summary>
         public readonly string? Name;
@@ -285,8 +281,6 @@ namespace Pulumi.Databricks
 
             string effectiveOwner,
 
-            string id,
-
             string? name,
 
             ImmutableArray<Outputs.GetShareObjectResult> objects,
@@ -307,7 +301,6 @@ namespace Pulumi.Databricks
             CreatedAt = createdAt;
             CreatedBy = createdBy;
             EffectiveOwner = effectiveOwner;
-            Id = id;
             Name = name;
             Objects = objects;
             Owner = owner;

@@ -61,8 +61,6 @@ type GetAccountFederationPoliciesArgs struct {
 
 // A collection of values returned by getAccountFederationPolicies.
 type GetAccountFederationPoliciesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                               `pulumi:"id"`
 	PageSize *int                                 `pulumi:"pageSize"`
 	Policies []GetAccountFederationPoliciesPolicy `pulumi:"policies"`
 }
@@ -98,11 +96,6 @@ func (o GetAccountFederationPoliciesResultOutput) ToGetAccountFederationPolicies
 
 func (o GetAccountFederationPoliciesResultOutput) ToGetAccountFederationPoliciesResultOutputWithContext(ctx context.Context) GetAccountFederationPoliciesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAccountFederationPoliciesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountFederationPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAccountFederationPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {

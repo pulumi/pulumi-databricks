@@ -28,16 +28,13 @@ class GetFunctionsResult:
     """
     A collection of values returned by getFunctions.
     """
-    def __init__(__self__, catalog_name=None, functions=None, id=None, include_browse=None, provider_config=None, schema_name=None):
+    def __init__(__self__, catalog_name=None, functions=None, include_browse=None, provider_config=None, schema_name=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
         if functions and not isinstance(functions, list):
             raise TypeError("Expected argument 'functions' to be a list")
         pulumi.set(__self__, "functions", functions)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if include_browse and not isinstance(include_browse, bool):
             raise TypeError("Expected argument 'include_browse' to be a bool")
         pulumi.set(__self__, "include_browse", include_browse)
@@ -63,14 +60,6 @@ class GetFunctionsResult:
         list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
         """
         return pulumi.get(self, "functions")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="includeBrowse")
@@ -99,7 +88,6 @@ class AwaitableGetFunctionsResult(GetFunctionsResult):
         return GetFunctionsResult(
             catalog_name=self.catalog_name,
             functions=self.functions,
-            id=self.id,
             include_browse=self.include_browse,
             provider_config=self.provider_config,
             schema_name=self.schema_name)
@@ -153,7 +141,6 @@ def get_functions(catalog_name: Optional[_builtins.str] = None,
     return AwaitableGetFunctionsResult(
         catalog_name=pulumi.get(__ret__, 'catalog_name'),
         functions=pulumi.get(__ret__, 'functions'),
-        id=pulumi.get(__ret__, 'id'),
         include_browse=pulumi.get(__ret__, 'include_browse'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
@@ -204,7 +191,6 @@ def get_functions_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = N
     return __ret__.apply(lambda __response__: GetFunctionsResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),
         functions=pulumi.get(__response__, 'functions'),
-        id=pulumi.get(__response__, 'id'),
         include_browse=pulumi.get(__response__, 'include_browse'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         schema_name=pulumi.get(__response__, 'schema_name')))

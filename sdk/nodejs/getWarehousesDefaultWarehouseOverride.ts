@@ -67,10 +67,6 @@ export interface GetWarehousesDefaultWarehouseOverrideResult {
      */
     readonly defaultWarehouseOverrideId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The resource name of the default warehouse override.
      * Format: default-warehouse-overrides/{default_warehouse_override_id}
      */

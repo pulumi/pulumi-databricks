@@ -92,10 +92,6 @@ export interface GetSecretUcResult {
      */
     readonly fullName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Unique identifier of the metastore hosting the secret
      */
     readonly metastoreId: string;

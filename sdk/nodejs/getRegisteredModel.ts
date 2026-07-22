@@ -72,10 +72,6 @@ export interface GetRegisteredModelResult {
      * The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
      */
     readonly fullName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly includeAliases?: boolean;
     readonly includeBrowse?: boolean;
     /**

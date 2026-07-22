@@ -28,10 +28,7 @@ class GetAppSpacesResult:
     """
     A collection of values returned by getAppSpaces.
     """
-    def __init__(__self__, id=None, page_size=None, provider_config=None, spaces=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, provider_config=None, spaces=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -41,14 +38,6 @@ class GetAppSpacesResult:
         if spaces and not isinstance(spaces, list):
             raise TypeError("Expected argument 'spaces' to be a list")
         pulumi.set(__self__, "spaces", spaces)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -72,7 +61,6 @@ class AwaitableGetAppSpacesResult(GetAppSpacesResult):
         if False:
             yield self
         return GetAppSpacesResult(
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             spaces=self.spaces)
@@ -97,7 +85,6 @@ def get_app_spaces(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAppSpaces:getAppSpaces', __args__, opts=opts, typ=GetAppSpacesResult).value
 
     return AwaitableGetAppSpacesResult(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         spaces=pulumi.get(__ret__, 'spaces'))
@@ -119,7 +106,6 @@ def get_app_spaces_output(page_size: pulumi.Input[Optional[Optional[_builtins.in
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAppSpaces:getAppSpaces', __args__, opts=opts, typ=GetAppSpacesResult)
     return __ret__.apply(lambda __response__: GetAppSpacesResult(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         spaces=pulumi.get(__response__, 'spaces')))

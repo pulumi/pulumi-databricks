@@ -28,16 +28,13 @@ class GetFeatureEngineeringFeaturesResult:
     """
     A collection of values returned by getFeatureEngineeringFeatures.
     """
-    def __init__(__self__, catalog_name=None, features=None, id=None, page_size=None, provider_config=None, schema_name=None):
+    def __init__(__self__, catalog_name=None, features=None, page_size=None, provider_config=None, schema_name=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
         if features and not isinstance(features, list):
             raise TypeError("Expected argument 'features' to be a list")
         pulumi.set(__self__, "features", features)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -60,14 +57,6 @@ class GetFeatureEngineeringFeaturesResult:
     @pulumi.getter
     def features(self) -> Sequence['outputs.GetFeatureEngineeringFeaturesFeatureResult']:
         return pulumi.get(self, "features")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -96,7 +85,6 @@ class AwaitableGetFeatureEngineeringFeaturesResult(GetFeatureEngineeringFeatures
         return GetFeatureEngineeringFeaturesResult(
             catalog_name=self.catalog_name,
             features=self.features,
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             schema_name=self.schema_name)
@@ -127,7 +115,6 @@ def get_feature_engineering_features(catalog_name: Optional[_builtins.str] = Non
     return AwaitableGetFeatureEngineeringFeaturesResult(
         catalog_name=pulumi.get(__ret__, 'catalog_name'),
         features=pulumi.get(__ret__, 'features'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
@@ -155,7 +142,6 @@ def get_feature_engineering_features_output(catalog_name: pulumi.Input[Optional[
     return __ret__.apply(lambda __response__: GetFeatureEngineeringFeaturesResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),
         features=pulumi.get(__response__, 'features'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         schema_name=pulumi.get(__response__, 'schema_name')))

@@ -21,11 +21,6 @@ public final class GetPostgresRoleResult {
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Output only. The full resource path of the role.
      * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
      * 
@@ -66,13 +61,6 @@ public final class GetPostgresRoleResult {
      */
     public String createTime() {
         return this.createTime;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - Output only. The full resource path of the role.
@@ -132,7 +120,6 @@ public final class GetPostgresRoleResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private String id;
         private String name;
         private String parent;
         private @Nullable GetPostgresRoleProviderConfig providerConfig;
@@ -144,7 +131,6 @@ public final class GetPostgresRoleResult {
         public Builder(GetPostgresRoleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -160,14 +146,6 @@ public final class GetPostgresRoleResult {
               throw new MissingRequiredPropertyException("GetPostgresRoleResult", "createTime");
             }
             this.createTime = createTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresRoleResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -227,7 +205,6 @@ public final class GetPostgresRoleResult {
         public GetPostgresRoleResult build() {
             final var _resultValue = new GetPostgresRoleResult();
             _resultValue.createTime = createTime;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

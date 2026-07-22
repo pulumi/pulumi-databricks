@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDataQualityRefreshesResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
      * 
      */
@@ -36,13 +31,6 @@ public final class GetDataQualityRefreshesResult {
     private List<GetDataQualityRefreshesRefresh> refreshes;
 
     private GetDataQualityRefreshesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
      * 
@@ -76,7 +64,6 @@ public final class GetDataQualityRefreshesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String objectId;
         private String objectType;
         private @Nullable Integer pageSize;
@@ -85,7 +72,6 @@ public final class GetDataQualityRefreshesResult {
         public Builder() {}
         public Builder(GetDataQualityRefreshesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
     	      this.pageSize = defaults.pageSize;
@@ -93,14 +79,6 @@ public final class GetDataQualityRefreshesResult {
     	      this.refreshes = defaults.refreshes;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDataQualityRefreshesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder objectId(String objectId) {
             if (objectId == null) {
@@ -142,7 +120,6 @@ public final class GetDataQualityRefreshesResult {
         }
         public GetDataQualityRefreshesResult build() {
             final var _resultValue = new GetDataQualityRefreshesResult();
-            _resultValue.id = id;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
             _resultValue.pageSize = pageSize;

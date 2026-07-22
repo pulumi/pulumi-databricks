@@ -157,10 +157,6 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseInstancesResult
     {
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceResult> DatabaseInstances;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetDatabaseInstancesProviderConfigResult? ProviderConfig;
 
@@ -168,14 +164,11 @@ namespace Pulumi.Databricks
         private GetDatabaseInstancesResult(
             ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceResult> databaseInstances,
 
-            string id,
-
             int? pageSize,
 
             Outputs.GetDatabaseInstancesProviderConfigResult? providerConfig)
         {
             DatabaseInstances = databaseInstances;
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
         }

@@ -28,10 +28,7 @@ class GetMaterializedFeaturesFeatureTagResult:
     """
     A collection of values returned by getMaterializedFeaturesFeatureTag.
     """
-    def __init__(__self__, id=None, key=None, provider_config=None, value=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, key=None, provider_config=None, value=None):
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
         pulumi.set(__self__, "key", key)
@@ -41,14 +38,6 @@ class GetMaterializedFeaturesFeatureTagResult:
         if value and not isinstance(value, str):
             raise TypeError("Expected argument 'value' to be a str")
         pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -78,7 +67,6 @@ class AwaitableGetMaterializedFeaturesFeatureTagResult(GetMaterializedFeaturesFe
         if False:
             yield self
         return GetMaterializedFeaturesFeatureTagResult(
-            id=self.id,
             key=self.key,
             provider_config=self.provider_config,
             value=self.value)
@@ -100,7 +88,6 @@ def get_materialized_features_feature_tag(key: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag', __args__, opts=opts, typ=GetMaterializedFeaturesFeatureTagResult).value
 
     return AwaitableGetMaterializedFeaturesFeatureTagResult(
-        id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         value=pulumi.get(__ret__, 'value'))
@@ -119,7 +106,6 @@ def get_materialized_features_feature_tag_output(key: pulumi.Input[Optional[_bui
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag', __args__, opts=opts, typ=GetMaterializedFeaturesFeatureTagResult)
     return __ret__.apply(lambda __response__: GetMaterializedFeaturesFeatureTagResult(
-        id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         value=pulumi.get(__response__, 'value')))

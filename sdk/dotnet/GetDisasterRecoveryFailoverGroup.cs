@@ -160,10 +160,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Initial primary region. Used only in Create requests to set the starting
         /// primary region. Not returned in responses
         /// </summary>
@@ -205,8 +201,6 @@ namespace Pulumi.Databricks
 
             string etag,
 
-            string id,
-
             string initialPrimaryRegion,
 
             string name,
@@ -226,7 +220,6 @@ namespace Pulumi.Databricks
             CreateTime = createTime;
             EffectivePrimaryRegion = effectivePrimaryRegion;
             Etag = etag;
-            Id = id;
             InitialPrimaryRegion = initialPrimaryRegion;
             Name = name;
             Regions = regions;

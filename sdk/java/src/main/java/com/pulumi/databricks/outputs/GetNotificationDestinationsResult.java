@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 public final class GetNotificationDestinationsResult {
     private @Nullable String displayNameContains;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
      * 
      */
@@ -32,13 +27,6 @@ public final class GetNotificationDestinationsResult {
     private GetNotificationDestinationsResult() {}
     public Optional<String> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
@@ -64,7 +52,6 @@ public final class GetNotificationDestinationsResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String displayNameContains;
-        private String id;
         private List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
         private @Nullable GetNotificationDestinationsProviderConfig providerConfig;
         private @Nullable String type;
@@ -72,7 +59,6 @@ public final class GetNotificationDestinationsResult {
         public Builder(GetNotificationDestinationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayNameContains = defaults.displayNameContains;
-    	      this.id = defaults.id;
     	      this.notificationDestinations = defaults.notificationDestinations;
     	      this.providerConfig = defaults.providerConfig;
     	      this.type = defaults.type;
@@ -82,14 +68,6 @@ public final class GetNotificationDestinationsResult {
         public Builder displayNameContains(@Nullable String displayNameContains) {
 
             this.displayNameContains = displayNameContains;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetNotificationDestinationsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -118,7 +96,6 @@ public final class GetNotificationDestinationsResult {
         public GetNotificationDestinationsResult build() {
             final var _resultValue = new GetNotificationDestinationsResult();
             _resultValue.displayNameContains = displayNameContains;
-            _resultValue.id = id;
             _resultValue.notificationDestinations = notificationDestinations;
             _resultValue.providerConfig = providerConfig;
             _resultValue.type = type;

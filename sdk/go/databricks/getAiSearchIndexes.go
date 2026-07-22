@@ -45,8 +45,6 @@ type GetAiSearchIndexesArgs struct {
 
 // A collection of values returned by getAiSearchIndexes.
 type GetAiSearchIndexesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                            `pulumi:"id"`
 	Indexes        []GetAiSearchIndexesIndex         `pulumi:"indexes"`
 	PageSize       *int                              `pulumi:"pageSize"`
 	Parent         string                            `pulumi:"parent"`
@@ -92,11 +90,6 @@ func (o GetAiSearchIndexesResultOutput) ToGetAiSearchIndexesResultOutput() GetAi
 
 func (o GetAiSearchIndexesResultOutput) ToGetAiSearchIndexesResultOutputWithContext(ctx context.Context) GetAiSearchIndexesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAiSearchIndexesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchIndexesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAiSearchIndexesResultOutput) Indexes() GetAiSearchIndexesIndexArrayOutput {

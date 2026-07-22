@@ -26,11 +26,6 @@ public final class GetPostgresDatabaseResult {
      */
     private String databaseId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The resource name of the database.
      * Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
      * 
@@ -73,13 +68,6 @@ public final class GetPostgresDatabaseResult {
      */
     public String databaseId() {
         return this.databaseId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - The resource name of the database.
@@ -133,7 +121,6 @@ public final class GetPostgresDatabaseResult {
     public static final class Builder {
         private String createTime;
         private String databaseId;
-        private String id;
         private String name;
         private String parent;
         private @Nullable GetPostgresDatabaseProviderConfig providerConfig;
@@ -145,7 +132,6 @@ public final class GetPostgresDatabaseResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.databaseId = defaults.databaseId;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -168,14 +154,6 @@ public final class GetPostgresDatabaseResult {
               throw new MissingRequiredPropertyException("GetPostgresDatabaseResult", "databaseId");
             }
             this.databaseId = databaseId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresDatabaseResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -228,7 +206,6 @@ public final class GetPostgresDatabaseResult {
             final var _resultValue = new GetPostgresDatabaseResult();
             _resultValue.createTime = createTime;
             _resultValue.databaseId = databaseId;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

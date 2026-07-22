@@ -74,8 +74,6 @@ type LookupWorkspaceSettingV2Result struct {
 	EffectiveRestrictWorkspaceAdmins GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal GetWorkspaceSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal GetWorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
 	// (string) - Name of the setting
@@ -242,11 +240,6 @@ func (o LookupWorkspaceSettingV2ResultOutput) EffectiveStringVal() GetWorkspaceS
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveStringVal {
 		return v.EffectiveStringVal
 	}).(GetWorkspaceSettingV2EffectiveStringValOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWorkspaceSettingV2ResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value

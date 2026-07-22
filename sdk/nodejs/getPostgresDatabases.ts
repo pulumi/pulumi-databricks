@@ -61,10 +61,6 @@ export interface GetPostgresDatabasesArgs {
  */
 export interface GetPostgresDatabasesResult {
     readonly databases: outputs.GetPostgresDatabasesDatabase[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     /**
      * (string) - The branch containing this database.

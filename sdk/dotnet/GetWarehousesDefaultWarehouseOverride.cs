@@ -184,10 +184,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string DefaultWarehouseOverrideId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The resource name of the default warehouse override.
         /// Format: default-warehouse-overrides/{default_warehouse_override_id}
         /// </summary>
@@ -207,8 +203,6 @@ namespace Pulumi.Databricks
         private GetWarehousesDefaultWarehouseOverrideResult(
             string defaultWarehouseOverrideId,
 
-            string id,
-
             string name,
 
             Outputs.GetWarehousesDefaultWarehouseOverrideProviderConfigResult? providerConfig,
@@ -218,7 +212,6 @@ namespace Pulumi.Databricks
             string warehouseId)
         {
             DefaultWarehouseOverrideId = defaultWarehouseOverrideId;
-            Id = id;
             Name = name;
             ProviderConfig = providerConfig;
             Type = type;

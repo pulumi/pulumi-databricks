@@ -29,11 +29,6 @@ public final class GetDisasterRecoveryStableUrlResult {
      */
     private String failoverGroupName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
      * responses
@@ -87,13 +82,6 @@ public final class GetDisasterRecoveryStableUrlResult {
         return this.failoverGroupName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
      * responses
@@ -142,7 +130,6 @@ public final class GetDisasterRecoveryStableUrlResult {
     public static final class Builder {
         private String effectiveWorkspaceId;
         private String failoverGroupName;
-        private String id;
         private String initialWorkspaceId;
         private String name;
         private String stableWorkspaceId;
@@ -152,7 +139,6 @@ public final class GetDisasterRecoveryStableUrlResult {
     	      Objects.requireNonNull(defaults);
     	      this.effectiveWorkspaceId = defaults.effectiveWorkspaceId;
     	      this.failoverGroupName = defaults.failoverGroupName;
-    	      this.id = defaults.id;
     	      this.initialWorkspaceId = defaults.initialWorkspaceId;
     	      this.name = defaults.name;
     	      this.stableWorkspaceId = defaults.stableWorkspaceId;
@@ -173,14 +159,6 @@ public final class GetDisasterRecoveryStableUrlResult {
               throw new MissingRequiredPropertyException("GetDisasterRecoveryStableUrlResult", "failoverGroupName");
             }
             this.failoverGroupName = failoverGroupName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDisasterRecoveryStableUrlResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -219,7 +197,6 @@ public final class GetDisasterRecoveryStableUrlResult {
             final var _resultValue = new GetDisasterRecoveryStableUrlResult();
             _resultValue.effectiveWorkspaceId = effectiveWorkspaceId;
             _resultValue.failoverGroupName = failoverGroupName;
-            _resultValue.id = id;
             _resultValue.initialWorkspaceId = initialWorkspaceId;
             _resultValue.name = name;
             _resultValue.stableWorkspaceId = stableWorkspaceId;

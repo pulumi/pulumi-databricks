@@ -198,10 +198,6 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointsResult
     {
         public readonly ImmutableArray<Outputs.GetPostgresEndpointsEndpointResult> Endpoints;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         /// <summary>
         /// (string) - The branch containing this endpoint (API resource hierarchy).
@@ -214,8 +210,6 @@ namespace Pulumi.Databricks
         private GetPostgresEndpointsResult(
             ImmutableArray<Outputs.GetPostgresEndpointsEndpointResult> endpoints,
 
-            string id,
-
             int? pageSize,
 
             string parent,
@@ -223,7 +217,6 @@ namespace Pulumi.Databricks
             Outputs.GetPostgresEndpointsProviderConfigResult? providerConfig)
         {
             Endpoints = endpoints;
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
             ProviderConfig = providerConfig;

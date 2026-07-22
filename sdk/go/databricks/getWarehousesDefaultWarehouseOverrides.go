@@ -69,10 +69,8 @@ type GetWarehousesDefaultWarehouseOverridesArgs struct {
 // A collection of values returned by getWarehousesDefaultWarehouseOverrides.
 type GetWarehousesDefaultWarehouseOverridesResult struct {
 	DefaultWarehouseOverrides []GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride `pulumi:"defaultWarehouseOverrides"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                                `pulumi:"id"`
-	PageSize       *int                                                  `pulumi:"pageSize"`
-	ProviderConfig *GetWarehousesDefaultWarehouseOverridesProviderConfig `pulumi:"providerConfig"`
+	PageSize                  *int                                                             `pulumi:"pageSize"`
+	ProviderConfig            *GetWarehousesDefaultWarehouseOverridesProviderConfig            `pulumi:"providerConfig"`
 }
 
 func GetWarehousesDefaultWarehouseOverridesOutput(ctx *pulumi.Context, args GetWarehousesDefaultWarehouseOverridesOutputArgs, opts ...pulumi.InvokeOption) GetWarehousesDefaultWarehouseOverridesResultOutput {
@@ -118,11 +116,6 @@ func (o GetWarehousesDefaultWarehouseOverridesResultOutput) DefaultWarehouseOver
 	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesResult) []GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride {
 		return v.DefaultWarehouseOverrides
 	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetWarehousesDefaultWarehouseOverridesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetWarehousesDefaultWarehouseOverridesResultOutput) PageSize() pulumi.IntPtrOutput {

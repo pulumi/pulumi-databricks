@@ -89,10 +89,6 @@ namespace Pulumi.Databricks
     {
         public readonly string FeatureName;
         public readonly ImmutableArray<Outputs.GetMaterializedFeaturesFeatureTagsFeatureTagResult> FeatureTags;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult? ProviderConfig;
         public readonly string TableName;
@@ -103,8 +99,6 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetMaterializedFeaturesFeatureTagsFeatureTagResult> featureTags,
 
-            string id,
-
             int? pageSize,
 
             Outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult? providerConfig,
@@ -113,7 +107,6 @@ namespace Pulumi.Databricks
         {
             FeatureName = featureName;
             FeatureTags = featureTags;
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             TableName = tableName;

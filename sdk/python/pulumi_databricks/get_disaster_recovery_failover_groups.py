@@ -27,13 +27,10 @@ class GetDisasterRecoveryFailoverGroupsResult:
     """
     A collection of values returned by getDisasterRecoveryFailoverGroups.
     """
-    def __init__(__self__, failover_groups=None, id=None, page_size=None, parent=None):
+    def __init__(__self__, failover_groups=None, page_size=None, parent=None):
         if failover_groups and not isinstance(failover_groups, list):
             raise TypeError("Expected argument 'failover_groups' to be a list")
         pulumi.set(__self__, "failover_groups", failover_groups)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -45,14 +42,6 @@ class GetDisasterRecoveryFailoverGroupsResult:
     @pulumi.getter(name="failoverGroups")
     def failover_groups(self) -> Sequence['outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupResult']:
         return pulumi.get(self, "failover_groups")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -72,7 +61,6 @@ class AwaitableGetDisasterRecoveryFailoverGroupsResult(GetDisasterRecoveryFailov
             yield self
         return GetDisasterRecoveryFailoverGroupsResult(
             failover_groups=self.failover_groups,
-            id=self.id,
             page_size=self.page_size,
             parent=self.parent)
 
@@ -117,7 +105,6 @@ def get_disaster_recovery_failover_groups(page_size: Optional[_builtins.int] = N
 
     return AwaitableGetDisasterRecoveryFailoverGroupsResult(
         failover_groups=pulumi.get(__ret__, 'failover_groups'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'))
 def get_disaster_recovery_failover_groups_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -159,6 +146,5 @@ def get_disaster_recovery_failover_groups_output(page_size: pulumi.Input[Optiona
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups', __args__, opts=opts, typ=GetDisasterRecoveryFailoverGroupsResult)
     return __ret__.apply(lambda __response__: GetDisasterRecoveryFailoverGroupsResult(
         failover_groups=pulumi.get(__response__, 'failover_groups'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent')))

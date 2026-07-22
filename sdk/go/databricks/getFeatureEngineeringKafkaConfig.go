@@ -43,8 +43,6 @@ type LookupFeatureEngineeringKafkaConfigResult struct {
 	BootstrapServers string `pulumi:"bootstrapServers"`
 	// (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
 	ExtraOptions map[string]string `pulumi:"extraOptions"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
 	// Delta table
 	IngestionConfig GetFeatureEngineeringKafkaConfigIngestionConfig `pulumi:"ingestionConfig"`
@@ -121,11 +119,6 @@ func (o LookupFeatureEngineeringKafkaConfigResultOutput) BootstrapServers() pulu
 // (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
 func (o LookupFeatureEngineeringKafkaConfigResultOutput) ExtraOptions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) map[string]string { return v.ExtraOptions }).(pulumi.StringMapOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupFeatureEngineeringKafkaConfigResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed

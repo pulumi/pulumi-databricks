@@ -87,10 +87,6 @@ export interface GetEntityTagAssignmentsResult {
      * (string) - The type of the entity to which the tag is assigned
      */
     readonly entityType: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly maxResults?: number;
     readonly providerConfig?: outputs.GetEntityTagAssignmentsProviderConfig;
     readonly tagAssignments: outputs.GetEntityTagAssignmentsTagAssignment[];

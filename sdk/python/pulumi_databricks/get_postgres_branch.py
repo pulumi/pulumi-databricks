@@ -28,16 +28,13 @@ class GetPostgresBranchResult:
     """
     A collection of values returned by getPostgresBranch.
     """
-    def __init__(__self__, branch_id=None, create_time=None, id=None, name=None, parent=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, branch_id=None, create_time=None, name=None, parent=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
         if branch_id and not isinstance(branch_id, str):
             raise TypeError("Expected argument 'branch_id' to be a str")
         pulumi.set(__self__, "branch_id", branch_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -75,14 +72,6 @@ class GetPostgresBranchResult:
         (string) - A timestamp indicating when the branch was created
         """
         return pulumi.get(self, "create_time")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -148,7 +137,6 @@ class AwaitableGetPostgresBranchResult(GetPostgresBranchResult):
         return GetPostgresBranchResult(
             branch_id=self.branch_id,
             create_time=self.create_time,
-            id=self.id,
             name=self.name,
             parent=self.parent,
             provider_config=self.provider_config,
@@ -194,7 +182,6 @@ def get_postgres_branch(name: Optional[_builtins.str] = None,
     return AwaitableGetPostgresBranchResult(
         branch_id=pulumi.get(__ret__, 'branch_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
@@ -237,7 +224,6 @@ def get_postgres_branch_output(name: pulumi.Input[Optional[_builtins.str]] = Non
     return __ret__.apply(lambda __response__: GetPostgresBranchResult(
         branch_id=pulumi.get(__response__, 'branch_id'),
         create_time=pulumi.get(__response__, 'create_time'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config'),

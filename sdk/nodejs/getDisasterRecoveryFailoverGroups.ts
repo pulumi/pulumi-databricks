@@ -58,10 +58,6 @@ export interface GetDisasterRecoveryFailoverGroupsArgs {
  */
 export interface GetDisasterRecoveryFailoverGroupsResult {
     readonly failoverGroups: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroup[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly parent: string;
 }

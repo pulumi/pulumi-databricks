@@ -28,16 +28,13 @@ class GetEntityTagAssignmentResult:
     """
     A collection of values returned by getEntityTagAssignment.
     """
-    def __init__(__self__, entity_name=None, entity_type=None, id=None, provider_config=None, source_type=None, tag_key=None, tag_value=None, update_time=None, updated_by=None):
+    def __init__(__self__, entity_name=None, entity_type=None, provider_config=None, source_type=None, tag_key=None, tag_value=None, update_time=None, updated_by=None):
         if entity_name and not isinstance(entity_name, str):
             raise TypeError("Expected argument 'entity_name' to be a str")
         pulumi.set(__self__, "entity_name", entity_name)
         if entity_type and not isinstance(entity_type, str):
             raise TypeError("Expected argument 'entity_type' to be a str")
         pulumi.set(__self__, "entity_type", entity_type)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -72,14 +69,6 @@ class GetEntityTagAssignmentResult:
         (string) - The type of the entity to which the tag is assigned
         """
         return pulumi.get(self, "entity_type")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -135,7 +124,6 @@ class AwaitableGetEntityTagAssignmentResult(GetEntityTagAssignmentResult):
         return GetEntityTagAssignmentResult(
             entity_name=self.entity_name,
             entity_type=self.entity_type,
-            id=self.id,
             provider_config=self.provider_config,
             source_type=self.source_type,
             tag_key=self.tag_key,
@@ -198,7 +186,6 @@ def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
     return AwaitableGetEntityTagAssignmentResult(
         entity_name=pulumi.get(__ret__, 'entity_name'),
         entity_type=pulumi.get(__ret__, 'entity_type'),
-        id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         source_type=pulumi.get(__ret__, 'source_type'),
         tag_key=pulumi.get(__ret__, 'tag_key'),
@@ -258,7 +245,6 @@ def get_entity_tag_assignment_output(entity_name: pulumi.Input[Optional[_builtin
     return __ret__.apply(lambda __response__: GetEntityTagAssignmentResult(
         entity_name=pulumi.get(__response__, 'entity_name'),
         entity_type=pulumi.get(__response__, 'entity_type'),
-        id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         source_type=pulumi.get(__response__, 'source_type'),
         tag_key=pulumi.get(__response__, 'tag_key'),

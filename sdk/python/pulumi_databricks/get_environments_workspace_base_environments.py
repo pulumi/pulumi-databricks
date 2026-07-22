@@ -28,10 +28,7 @@ class GetEnvironmentsWorkspaceBaseEnvironmentsResult:
     """
     A collection of values returned by getEnvironmentsWorkspaceBaseEnvironments.
     """
-    def __init__(__self__, id=None, page_size=None, provider_config=None, workspace_base_environments=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, provider_config=None, workspace_base_environments=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -41,14 +38,6 @@ class GetEnvironmentsWorkspaceBaseEnvironmentsResult:
         if workspace_base_environments and not isinstance(workspace_base_environments, list):
             raise TypeError("Expected argument 'workspace_base_environments' to be a list")
         pulumi.set(__self__, "workspace_base_environments", workspace_base_environments)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -72,7 +61,6 @@ class AwaitableGetEnvironmentsWorkspaceBaseEnvironmentsResult(GetEnvironmentsWor
         if False:
             yield self
         return GetEnvironmentsWorkspaceBaseEnvironmentsResult(
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             workspace_base_environments=self.workspace_base_environments)
@@ -111,7 +99,6 @@ def get_environments_workspace_base_environments(page_size: Optional[_builtins.i
     __ret__ = pulumi.runtime.invoke('databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments', __args__, opts=opts, typ=GetEnvironmentsWorkspaceBaseEnvironmentsResult).value
 
     return AwaitableGetEnvironmentsWorkspaceBaseEnvironmentsResult(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         workspace_base_environments=pulumi.get(__ret__, 'workspace_base_environments'))
@@ -147,7 +134,6 @@ def get_environments_workspace_base_environments_output(page_size: pulumi.Input[
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments', __args__, opts=opts, typ=GetEnvironmentsWorkspaceBaseEnvironmentsResult)
     return __ret__.apply(lambda __response__: GetEnvironmentsWorkspaceBaseEnvironmentsResult(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         workspace_base_environments=pulumi.get(__response__, 'workspace_base_environments')))

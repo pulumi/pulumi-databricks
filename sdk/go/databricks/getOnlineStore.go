@@ -38,8 +38,6 @@ type LookupOnlineStoreResult struct {
 	CreationTime string `pulumi:"creationTime"`
 	// (string) - The email of the creator of the online store
 	Creator string `pulumi:"creator"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The name of the online store. This is the unique identifier for the online store
 	Name           string                        `pulumi:"name"`
 	ProviderConfig *GetOnlineStoreProviderConfig `pulumi:"providerConfig"`
@@ -100,11 +98,6 @@ func (o LookupOnlineStoreResultOutput) CreationTime() pulumi.StringOutput {
 // (string) - The email of the creator of the online store
 func (o LookupOnlineStoreResultOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnlineStoreResult) string { return v.Creator }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupOnlineStoreResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOnlineStoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The name of the online store. This is the unique identifier for the online store

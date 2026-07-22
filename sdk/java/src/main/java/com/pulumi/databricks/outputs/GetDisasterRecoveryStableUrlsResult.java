@@ -15,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDisasterRecoveryStableUrlsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private String parent;
     private List<GetDisasterRecoveryStableUrlsStableUrl> stableUrls;
 
     private GetDisasterRecoveryStableUrlsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -51,27 +39,17 @@ public final class GetDisasterRecoveryStableUrlsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         private List<GetDisasterRecoveryStableUrlsStableUrl> stableUrls;
         public Builder() {}
         public Builder(GetDisasterRecoveryStableUrlsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.stableUrls = defaults.stableUrls;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDisasterRecoveryStableUrlsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -99,7 +77,6 @@ public final class GetDisasterRecoveryStableUrlsResult {
         }
         public GetDisasterRecoveryStableUrlsResult build() {
             final var _resultValue = new GetDisasterRecoveryStableUrlsResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.stableUrls = stableUrls;

@@ -89,10 +89,6 @@ export interface GetDataQualityMonitorResult {
      */
     readonly dataProfilingConfig: outputs.GetDataQualityMonitorDataProfilingConfig;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
      */
     readonly objectId: string;

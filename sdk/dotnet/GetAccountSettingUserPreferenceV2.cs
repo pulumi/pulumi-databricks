@@ -100,10 +100,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAccountSettingUserPreferenceV2EffectiveStringValResult EffectiveStringVal;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Name of the setting
         /// </summary>
         public readonly string Name;
@@ -124,8 +120,6 @@ namespace Pulumi.Databricks
 
             Outputs.GetAccountSettingUserPreferenceV2EffectiveStringValResult effectiveStringVal,
 
-            string id,
-
             string name,
 
             Outputs.GetAccountSettingUserPreferenceV2StringValResult stringVal,
@@ -135,7 +129,6 @@ namespace Pulumi.Databricks
             BooleanVal = booleanVal;
             EffectiveBooleanVal = effectiveBooleanVal;
             EffectiveStringVal = effectiveStringVal;
-            Id = id;
             Name = name;
             StringVal = stringVal;
             UserId = userId;

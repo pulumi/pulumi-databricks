@@ -28,13 +28,10 @@ class GetPostgresCdfStatusesResult:
     """
     A collection of values returned by getPostgresCdfStatuses.
     """
-    def __init__(__self__, cdf_statuses=None, id=None, page_size=None, parent=None, provider_config=None):
+    def __init__(__self__, cdf_statuses=None, page_size=None, parent=None, provider_config=None):
         if cdf_statuses and not isinstance(cdf_statuses, list):
             raise TypeError("Expected argument 'cdf_statuses' to be a list")
         pulumi.set(__self__, "cdf_statuses", cdf_statuses)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -49,14 +46,6 @@ class GetPostgresCdfStatusesResult:
     @pulumi.getter(name="cdfStatuses")
     def cdf_statuses(self) -> Sequence['outputs.GetPostgresCdfStatusesCdfStatusResult']:
         return pulumi.get(self, "cdf_statuses")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -81,7 +70,6 @@ class AwaitableGetPostgresCdfStatusesResult(GetPostgresCdfStatusesResult):
             yield self
         return GetPostgresCdfStatusesResult(
             cdf_statuses=self.cdf_statuses,
-            id=self.id,
             page_size=self.page_size,
             parent=self.parent,
             provider_config=self.provider_config)
@@ -125,7 +113,6 @@ def get_postgres_cdf_statuses(page_size: Optional[_builtins.int] = None,
 
     return AwaitableGetPostgresCdfStatusesResult(
         cdf_statuses=pulumi.get(__ret__, 'cdf_statuses'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -166,7 +153,6 @@ def get_postgres_cdf_statuses_output(page_size: pulumi.Input[Optional[Optional[_
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresCdfStatuses:getPostgresCdfStatuses', __args__, opts=opts, typ=GetPostgresCdfStatusesResult)
     return __ret__.apply(lambda __response__: GetPostgresCdfStatusesResult(
         cdf_statuses=pulumi.get(__response__, 'cdf_statuses'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config')))

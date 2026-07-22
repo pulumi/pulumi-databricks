@@ -40,10 +40,6 @@ export interface GetKnowledgeAssistantsArgs {
  * A collection of values returned by getKnowledgeAssistants.
  */
 export interface GetKnowledgeAssistantsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly knowledgeAssistants: outputs.GetKnowledgeAssistantsKnowledgeAssistant[];
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetKnowledgeAssistantsProviderConfig;

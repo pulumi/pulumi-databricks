@@ -65,10 +65,8 @@ type GetDatabaseInstancesArgs struct {
 // A collection of values returned by getDatabaseInstances.
 type GetDatabaseInstancesResult struct {
 	DatabaseInstances []GetDatabaseInstancesDatabaseInstance `pulumi:"databaseInstances"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                              `pulumi:"id"`
-	PageSize       *int                                `pulumi:"pageSize"`
-	ProviderConfig *GetDatabaseInstancesProviderConfig `pulumi:"providerConfig"`
+	PageSize          *int                                   `pulumi:"pageSize"`
+	ProviderConfig    *GetDatabaseInstancesProviderConfig    `pulumi:"providerConfig"`
 }
 
 func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstancesResultOutput {
@@ -109,11 +107,6 @@ func (o GetDatabaseInstancesResultOutput) ToGetDatabaseInstancesResultOutputWith
 
 func (o GetDatabaseInstancesResultOutput) DatabaseInstances() GetDatabaseInstancesDatabaseInstanceArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) []GetDatabaseInstancesDatabaseInstance { return v.DatabaseInstances }).(GetDatabaseInstancesDatabaseInstanceArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDatabaseInstancesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstancesResultOutput) PageSize() pulumi.IntPtrOutput {

@@ -21,11 +21,6 @@ public final class GetPostgresSyncedTableResult {
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Output only. The Full resource name of the synced table in Postgres
      * where (catalog, schema, table) are the UC entity names.
      * 
@@ -61,13 +56,6 @@ public final class GetPostgresSyncedTableResult {
      */
     public String createTime() {
         return this.createTime;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - Output only. The Full resource name of the synced table in Postgres
@@ -120,7 +108,6 @@ public final class GetPostgresSyncedTableResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private String id;
         private String name;
         private @Nullable GetPostgresSyncedTableProviderConfig providerConfig;
         private GetPostgresSyncedTableSpec spec;
@@ -131,7 +118,6 @@ public final class GetPostgresSyncedTableResult {
         public Builder(GetPostgresSyncedTableResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
@@ -146,14 +132,6 @@ public final class GetPostgresSyncedTableResult {
               throw new MissingRequiredPropertyException("GetPostgresSyncedTableResult", "createTime");
             }
             this.createTime = createTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresSyncedTableResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -205,7 +183,6 @@ public final class GetPostgresSyncedTableResult {
         public GetPostgresSyncedTableResult build() {
             final var _resultValue = new GetPostgresSyncedTableResult();
             _resultValue.createTime = createTime;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;

@@ -83,8 +83,6 @@ type GetVolumesArgs struct {
 // A collection of values returned by getVolumes.
 type GetVolumesResult struct {
 	CatalogName string `pulumi:"catalogName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// a list of Volume full names: *`catalog`.`schema`.`volume`*
 	Ids            []string                  `pulumi:"ids"`
 	ProviderConfig *GetVolumesProviderConfig `pulumi:"providerConfig"`
@@ -133,11 +131,6 @@ func (o GetVolumesResultOutput) ToGetVolumesResultOutputWithContext(ctx context.
 
 func (o GetVolumesResultOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesResult) string { return v.CatalogName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetVolumesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVolumesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // a list of Volume full names: *`catalog`.`schema`.`volume`*

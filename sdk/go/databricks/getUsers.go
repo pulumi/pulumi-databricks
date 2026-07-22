@@ -57,12 +57,10 @@ type GetUsersArgs struct {
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
-	Api             *string `pulumi:"api"`
-	ExtraAttributes *string `pulumi:"extraAttributes"`
-	Filter          *string `pulumi:"filter"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                  `pulumi:"id"`
-	ProviderConfig *GetUsersProviderConfig `pulumi:"providerConfig"`
+	Api             *string                 `pulumi:"api"`
+	ExtraAttributes *string                 `pulumi:"extraAttributes"`
+	Filter          *string                 `pulumi:"filter"`
+	ProviderConfig  *GetUsersProviderConfig `pulumi:"providerConfig"`
 	// A list of users matching the specified criteria. Each user has the following attributes:
 	Users []GetUsersUser `pulumi:"users"`
 }
@@ -122,11 +120,6 @@ func (o GetUsersResultOutput) ExtraAttributes() pulumi.StringPtrOutput {
 
 func (o GetUsersResultOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetUsersResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetUsersResultOutput) ProviderConfig() GetUsersProviderConfigPtrOutput {

@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetAppSpacesProviderConfig;
 import com.pulumi.databricks.outputs.GetAppSpacesSpace;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpacesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetAppSpacesProviderConfig providerConfig;
     private List<GetAppSpacesSpace> spaces;
 
     private GetAppSpacesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -52,27 +39,17 @@ public final class GetAppSpacesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetAppSpacesProviderConfig providerConfig;
         private List<GetAppSpacesSpace> spaces;
         public Builder() {}
         public Builder(GetAppSpacesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.spaces = defaults.spaces;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAppSpacesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -98,7 +75,6 @@ public final class GetAppSpacesResult {
         }
         public GetAppSpacesResult build() {
             final var _resultValue = new GetAppSpacesResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.spaces = spaces;

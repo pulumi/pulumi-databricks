@@ -24,11 +24,6 @@ public final class GetPostgresCdfStatusResult {
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The last time changes for this table were written to Delta Lake
      * 
      */
@@ -77,13 +72,6 @@ public final class GetPostgresCdfStatusResult {
      */
     public String createTime() {
         return this.createTime;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - The last time changes for this table were written to Delta Lake
@@ -145,7 +133,6 @@ public final class GetPostgresCdfStatusResult {
     public static final class Builder {
         private String committedLsn;
         private String createTime;
-        private String id;
         private String lastSyncTime;
         private String name;
         private String postgresTable;
@@ -158,7 +145,6 @@ public final class GetPostgresCdfStatusResult {
     	      Objects.requireNonNull(defaults);
     	      this.committedLsn = defaults.committedLsn;
     	      this.createTime = defaults.createTime;
-    	      this.id = defaults.id;
     	      this.lastSyncTime = defaults.lastSyncTime;
     	      this.name = defaults.name;
     	      this.postgresTable = defaults.postgresTable;
@@ -182,14 +168,6 @@ public final class GetPostgresCdfStatusResult {
               throw new MissingRequiredPropertyException("GetPostgresCdfStatusResult", "createTime");
             }
             this.createTime = createTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresCdfStatusResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -250,7 +228,6 @@ public final class GetPostgresCdfStatusResult {
             final var _resultValue = new GetPostgresCdfStatusResult();
             _resultValue.committedLsn = committedLsn;
             _resultValue.createTime = createTime;
-            _resultValue.id = id;
             _resultValue.lastSyncTime = lastSyncTime;
             _resultValue.name = name;
             _resultValue.postgresTable = postgresTable;

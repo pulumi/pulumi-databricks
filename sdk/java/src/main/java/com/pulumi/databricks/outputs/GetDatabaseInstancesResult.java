@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstance;
 import com.pulumi.databricks.outputs.GetDatabaseInstancesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,24 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseInstancesResult {
     private List<GetDatabaseInstancesDatabaseInstance> databaseInstances;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetDatabaseInstancesProviderConfig providerConfig;
 
     private GetDatabaseInstancesResult() {}
     public List<GetDatabaseInstancesDatabaseInstance> databaseInstances() {
         return this.databaseInstances;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -53,14 +40,12 @@ public final class GetDatabaseInstancesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetDatabaseInstancesDatabaseInstance> databaseInstances;
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetDatabaseInstancesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDatabaseInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseInstances = defaults.databaseInstances;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
         }
@@ -77,14 +62,6 @@ public final class GetDatabaseInstancesResult {
             return databaseInstances(List.of(databaseInstances));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDatabaseInstancesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
@@ -99,7 +76,6 @@ public final class GetDatabaseInstancesResult {
         public GetDatabaseInstancesResult build() {
             final var _resultValue = new GetDatabaseInstancesResult();
             _resultValue.databaseInstances = databaseInstances;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;

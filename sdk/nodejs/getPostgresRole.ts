@@ -61,10 +61,6 @@ export interface GetPostgresRoleResult {
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Output only. The full resource path of the role.
      * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
      */

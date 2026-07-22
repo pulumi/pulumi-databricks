@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPolicyInfosResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Boolean includeInherited;
     private @Nullable Integer maxResults;
     /**
@@ -41,13 +36,6 @@ public final class GetPolicyInfosResult {
     private @Nullable GetPolicyInfosProviderConfig providerConfig;
 
     private GetPolicyInfosResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Boolean> includeInherited() {
         return Optional.ofNullable(this.includeInherited);
     }
@@ -87,7 +75,6 @@ public final class GetPolicyInfosResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Boolean includeInherited;
         private @Nullable Integer maxResults;
         private String onSecurableFullname;
@@ -97,7 +84,6 @@ public final class GetPolicyInfosResult {
         public Builder() {}
         public Builder(GetPolicyInfosResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.includeInherited = defaults.includeInherited;
     	      this.maxResults = defaults.maxResults;
     	      this.onSecurableFullname = defaults.onSecurableFullname;
@@ -106,14 +92,6 @@ public final class GetPolicyInfosResult {
     	      this.providerConfig = defaults.providerConfig;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPolicyInfosResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder includeInherited(@Nullable Boolean includeInherited) {
 
@@ -161,7 +139,6 @@ public final class GetPolicyInfosResult {
         }
         public GetPolicyInfosResult build() {
             final var _resultValue = new GetPolicyInfosResult();
-            _resultValue.id = id;
             _resultValue.includeInherited = includeInherited;
             _resultValue.maxResults = maxResults;
             _resultValue.onSecurableFullname = onSecurableFullname;

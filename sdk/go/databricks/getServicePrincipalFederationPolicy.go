@@ -46,8 +46,6 @@ type LookupServicePrincipalFederationPolicyResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Description of the federation policy
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Resource name for the federation policy. Example values include
 	// `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
 	// `accounts/<account-id>/servicePrincipals/<service-principal-id>/federationPolicies/my-federation-policy`
@@ -111,11 +109,6 @@ func (o LookupServicePrincipalFederationPolicyResultOutput) CreateTime() pulumi.
 // (string) - Description of the federation policy
 func (o LookupServicePrincipalFederationPolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupServicePrincipalFederationPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Resource name for the federation policy. Example values include

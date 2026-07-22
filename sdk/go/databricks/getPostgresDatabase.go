@@ -71,8 +71,6 @@ type LookupPostgresDatabaseResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Part of the resource name
 	DatabaseId string `pulumi:"databaseId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The resource name of the database.
 	// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
 	Name string `pulumi:"name"`
@@ -133,11 +131,6 @@ func (o LookupPostgresDatabaseResultOutput) CreateTime() pulumi.StringOutput {
 // (string) - Part of the resource name
 func (o LookupPostgresDatabaseResultOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresDatabaseResult) string { return v.DatabaseId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresDatabaseResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The resource name of the database.

@@ -27,7 +27,7 @@ class GetDisasterRecoveryFailoverGroupResult:
     """
     A collection of values returned by getDisasterRecoveryFailoverGroup.
     """
-    def __init__(__self__, create_time=None, effective_primary_region=None, etag=None, id=None, initial_primary_region=None, name=None, regions=None, replication_point=None, state=None, unity_catalog_assets=None, update_time=None, workspace_sets=None):
+    def __init__(__self__, create_time=None, effective_primary_region=None, etag=None, initial_primary_region=None, name=None, regions=None, replication_point=None, state=None, unity_catalog_assets=None, update_time=None, workspace_sets=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,9 +37,6 @@ class GetDisasterRecoveryFailoverGroupResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if initial_primary_region and not isinstance(initial_primary_region, str):
             raise TypeError("Expected argument 'initial_primary_region' to be a str")
         pulumi.set(__self__, "initial_primary_region", initial_primary_region)
@@ -89,14 +86,6 @@ class GetDisasterRecoveryFailoverGroupResult:
         (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         """
         return pulumi.get(self, "etag")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="initialPrimaryRegion")
@@ -173,7 +162,6 @@ class AwaitableGetDisasterRecoveryFailoverGroupResult(GetDisasterRecoveryFailove
             create_time=self.create_time,
             effective_primary_region=self.effective_primary_region,
             etag=self.etag,
-            id=self.id,
             initial_primary_region=self.initial_primary_region,
             name=self.name,
             regions=self.regions,
@@ -219,7 +207,6 @@ def get_disaster_recovery_failover_group(name: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         effective_primary_region=pulumi.get(__ret__, 'effective_primary_region'),
         etag=pulumi.get(__ret__, 'etag'),
-        id=pulumi.get(__ret__, 'id'),
         initial_primary_region=pulumi.get(__ret__, 'initial_primary_region'),
         name=pulumi.get(__ret__, 'name'),
         regions=pulumi.get(__ret__, 'regions'),
@@ -262,7 +249,6 @@ def get_disaster_recovery_failover_group_output(name: pulumi.Input[Optional[_bui
         create_time=pulumi.get(__response__, 'create_time'),
         effective_primary_region=pulumi.get(__response__, 'effective_primary_region'),
         etag=pulumi.get(__response__, 'etag'),
-        id=pulumi.get(__response__, 'id'),
         initial_primary_region=pulumi.get(__response__, 'initial_primary_region'),
         name=pulumi.get(__response__, 'name'),
         regions=pulumi.get(__response__, 'regions'),

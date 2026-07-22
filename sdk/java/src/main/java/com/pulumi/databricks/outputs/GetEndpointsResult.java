@@ -15,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEndpointsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetEndpointsItem> items;
     private @Nullable Integer pageSize;
     private String parent;
 
     private GetEndpointsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetEndpointsItem> items() {
         return this.items;
     }
@@ -51,27 +39,17 @@ public final class GetEndpointsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetEndpointsItem> items;
         private @Nullable Integer pageSize;
         private String parent;
         public Builder() {}
         public Builder(GetEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.items = defaults.items;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEndpointsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder items(List<GetEndpointsItem> items) {
             if (items == null) {
@@ -99,7 +77,6 @@ public final class GetEndpointsResult {
         }
         public GetEndpointsResult build() {
             final var _resultValue = new GetEndpointsResult();
-            _resultValue.id = id;
             _resultValue.items = items;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;

@@ -235,22 +235,15 @@ namespace Pulumi.Databricks
         /// List of objects describing the serving endpoints. Each object consists of following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointResult> Endpoints;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetServingEndpointsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetServingEndpointsResult(
             ImmutableArray<Outputs.GetServingEndpointsEndpointResult> endpoints,
 
-            string id,
-
             Outputs.GetServingEndpointsProviderConfigResult? providerConfig)
         {
             Endpoints = endpoints;
-            Id = id;
             ProviderConfig = providerConfig;
         }
     }

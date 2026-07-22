@@ -27,10 +27,7 @@ class GetServicePrincipalFederationPoliciesResult:
     """
     A collection of values returned by getServicePrincipalFederationPolicies.
     """
-    def __init__(__self__, id=None, page_size=None, policies=None, service_principal_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, policies=None, service_principal_id=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -40,14 +37,6 @@ class GetServicePrincipalFederationPoliciesResult:
         if service_principal_id and not isinstance(service_principal_id, int):
             raise TypeError("Expected argument 'service_principal_id' to be a int")
         pulumi.set(__self__, "service_principal_id", service_principal_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -74,7 +63,6 @@ class AwaitableGetServicePrincipalFederationPoliciesResult(GetServicePrincipalFe
         if False:
             yield self
         return GetServicePrincipalFederationPoliciesResult(
-            id=self.id,
             page_size=self.page_size,
             policies=self.policies,
             service_principal_id=self.service_principal_id)
@@ -113,7 +101,6 @@ def get_service_principal_federation_policies(page_size: Optional[_builtins.int]
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies', __args__, opts=opts, typ=GetServicePrincipalFederationPoliciesResult).value
 
     return AwaitableGetServicePrincipalFederationPoliciesResult(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'),
         service_principal_id=pulumi.get(__ret__, 'service_principal_id'))
@@ -149,7 +136,6 @@ def get_service_principal_federation_policies_output(page_size: pulumi.Input[Opt
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies', __args__, opts=opts, typ=GetServicePrincipalFederationPoliciesResult)
     return __ret__.apply(lambda __response__: GetServicePrincipalFederationPoliciesResult(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         policies=pulumi.get(__response__, 'policies'),
         service_principal_id=pulumi.get(__response__, 'service_principal_id')))

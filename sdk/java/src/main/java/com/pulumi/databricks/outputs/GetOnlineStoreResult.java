@@ -30,11 +30,6 @@ public final class GetOnlineStoreResult {
      */
     private String creator;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The name of the online store. This is the unique identifier for the online store
      * 
      */
@@ -77,13 +72,6 @@ public final class GetOnlineStoreResult {
      */
     public String creator() {
         return this.creator;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - The name of the online store. This is the unique identifier for the online store
@@ -129,7 +117,6 @@ public final class GetOnlineStoreResult {
         private String capacity;
         private String creationTime;
         private String creator;
-        private String id;
         private String name;
         private @Nullable GetOnlineStoreProviderConfig providerConfig;
         private Integer readReplicaCount;
@@ -141,7 +128,6 @@ public final class GetOnlineStoreResult {
     	      this.capacity = defaults.capacity;
     	      this.creationTime = defaults.creationTime;
     	      this.creator = defaults.creator;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.readReplicaCount = defaults.readReplicaCount;
@@ -171,14 +157,6 @@ public final class GetOnlineStoreResult {
               throw new MissingRequiredPropertyException("GetOnlineStoreResult", "creator");
             }
             this.creator = creator;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetOnlineStoreResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -224,7 +202,6 @@ public final class GetOnlineStoreResult {
             _resultValue.capacity = capacity;
             _resultValue.creationTime = creationTime;
             _resultValue.creator = creator;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.readReplicaCount = readReplicaCount;

@@ -89,10 +89,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetKnowledgeAssistantKnowledgeSourcesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceResult> KnowledgeSources;
         public readonly int? PageSize;
         public readonly string Parent;
@@ -100,8 +96,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetKnowledgeAssistantKnowledgeSourcesResult(
-            string id,
-
             ImmutableArray<Outputs.GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceResult> knowledgeSources,
 
             int? pageSize,
@@ -110,7 +104,6 @@ namespace Pulumi.Databricks
 
             Outputs.GetKnowledgeAssistantKnowledgeSourcesProviderConfigResult? providerConfig)
         {
-            Id = id;
             KnowledgeSources = knowledgeSources;
             PageSize = pageSize;
             Parent = parent;

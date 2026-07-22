@@ -73,10 +73,6 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentResult {
      */
     readonly filepath: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (boolean) - Whether this is the default environment for the workspace
      */
     readonly isDefault: boolean;

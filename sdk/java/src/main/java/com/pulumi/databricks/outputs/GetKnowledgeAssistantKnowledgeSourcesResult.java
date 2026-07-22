@@ -16,24 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKnowledgeAssistantKnowledgeSourcesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetKnowledgeAssistantKnowledgeSourcesKnowledgeSource> knowledgeSources;
     private @Nullable Integer pageSize;
     private String parent;
     private @Nullable GetKnowledgeAssistantKnowledgeSourcesProviderConfig providerConfig;
 
     private GetKnowledgeAssistantKnowledgeSourcesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetKnowledgeAssistantKnowledgeSourcesKnowledgeSource> knowledgeSources() {
         return this.knowledgeSources;
     }
@@ -56,7 +44,6 @@ public final class GetKnowledgeAssistantKnowledgeSourcesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetKnowledgeAssistantKnowledgeSourcesKnowledgeSource> knowledgeSources;
         private @Nullable Integer pageSize;
         private String parent;
@@ -64,21 +51,12 @@ public final class GetKnowledgeAssistantKnowledgeSourcesResult {
         public Builder() {}
         public Builder(GetKnowledgeAssistantKnowledgeSourcesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.knowledgeSources = defaults.knowledgeSources;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetKnowledgeAssistantKnowledgeSourcesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder knowledgeSources(List<GetKnowledgeAssistantKnowledgeSourcesKnowledgeSource> knowledgeSources) {
             if (knowledgeSources == null) {
@@ -112,7 +90,6 @@ public final class GetKnowledgeAssistantKnowledgeSourcesResult {
         }
         public GetKnowledgeAssistantKnowledgeSourcesResult build() {
             final var _resultValue = new GetKnowledgeAssistantKnowledgeSourcesResult();
-            _resultValue.id = id;
             _resultValue.knowledgeSources = knowledgeSources;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;

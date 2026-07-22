@@ -55,10 +55,6 @@ export interface GetAppsResult {
      * attribute - reference to another Databricks App.
      */
     readonly apps: outputs.GetAppsApp[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly providerConfig?: outputs.GetAppsProviderConfig;
 }
 /**

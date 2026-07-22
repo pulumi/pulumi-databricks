@@ -132,10 +132,6 @@ export interface GetDatabaseInstanceResult {
      */
     readonly enableReadableSecondaries: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Name of the ref database instance
      */
     readonly name: string;

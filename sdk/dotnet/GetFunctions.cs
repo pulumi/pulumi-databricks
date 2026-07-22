@@ -224,10 +224,6 @@ namespace Pulumi.Databricks
         /// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionsFunctionResult> Functions;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly bool? IncludeBrowse;
         public readonly Outputs.GetFunctionsProviderConfigResult? ProviderConfig;
         /// <summary>
@@ -241,8 +237,6 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetFunctionsFunctionResult> functions,
 
-            string id,
-
             bool? includeBrowse,
 
             Outputs.GetFunctionsProviderConfigResult? providerConfig,
@@ -251,7 +245,6 @@ namespace Pulumi.Databricks
         {
             CatalogName = catalogName;
             Functions = functions;
-            Id = id;
             IncludeBrowse = includeBrowse;
             ProviderConfig = providerConfig;
             SchemaName = schemaName;

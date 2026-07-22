@@ -147,10 +147,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetServicePrincipalFederationPoliciesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetServicePrincipalFederationPoliciesPolicyResult> Policies;
         /// <summary>
@@ -160,15 +156,12 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetServicePrincipalFederationPoliciesResult(
-            string id,
-
             int? pageSize,
 
             ImmutableArray<Outputs.GetServicePrincipalFederationPoliciesPolicyResult> policies,
 
             int servicePrincipalId)
         {
-            Id = id;
             PageSize = pageSize;
             Policies = policies;
             ServicePrincipalId = servicePrincipalId;

@@ -28,13 +28,10 @@ class GetVolumesResult:
     """
     A collection of values returned by getVolumes.
     """
-    def __init__(__self__, catalog_name=None, id=None, ids=None, provider_config=None, schema_name=None):
+    def __init__(__self__, catalog_name=None, ids=None, provider_config=None, schema_name=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
@@ -49,14 +46,6 @@ class GetVolumesResult:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> _builtins.str:
         return pulumi.get(self, "catalog_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -84,7 +73,6 @@ class AwaitableGetVolumesResult(GetVolumesResult):
             yield self
         return GetVolumesResult(
             catalog_name=self.catalog_name,
-            id=self.id,
             ids=self.ids,
             provider_config=self.provider_config,
             schema_name=self.schema_name)
@@ -143,7 +131,6 @@ def get_volumes(catalog_name: Optional[_builtins.str] = None,
 
     return AwaitableGetVolumesResult(
         catalog_name=pulumi.get(__ret__, 'catalog_name'),
-        id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
@@ -199,7 +186,6 @@ def get_volumes_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = Non
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getVolumes:getVolumes', __args__, opts=opts, typ=GetVolumesResult)
     return __ret__.apply(lambda __response__: GetVolumesResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),
-        id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         schema_name=pulumi.get(__response__, 'schema_name')))

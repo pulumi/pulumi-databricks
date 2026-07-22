@@ -72,8 +72,6 @@ type GetRegisteredModelVersionsArgs struct {
 type GetRegisteredModelVersionsResult struct {
 	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 	FullName string `pulumi:"fullName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// list of objects describing the model versions. Each object consists of following attributes:
 	ModelVersions  []GetRegisteredModelVersionsModelVersion  `pulumi:"modelVersions"`
 	ProviderConfig *GetRegisteredModelVersionsProviderConfig `pulumi:"providerConfig"`
@@ -119,11 +117,6 @@ func (o GetRegisteredModelVersionsResultOutput) ToGetRegisteredModelVersionsResu
 // The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 func (o GetRegisteredModelVersionsResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsResult) string { return v.FullName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetRegisteredModelVersionsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegisteredModelVersionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // list of objects describing the model versions. Each object consists of following attributes:

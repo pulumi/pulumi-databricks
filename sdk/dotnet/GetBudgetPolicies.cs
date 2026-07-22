@@ -161,10 +161,6 @@ namespace Pulumi.Databricks
     public sealed class GetBudgetPoliciesResult
     {
         public readonly Outputs.GetBudgetPoliciesFilterByResult? FilterBy;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetBudgetPoliciesPolicyResult> Policies;
         public readonly Outputs.GetBudgetPoliciesSortSpecResult? SortSpec;
@@ -173,8 +169,6 @@ namespace Pulumi.Databricks
         private GetBudgetPoliciesResult(
             Outputs.GetBudgetPoliciesFilterByResult? filterBy,
 
-            string id,
-
             int? pageSize,
 
             ImmutableArray<Outputs.GetBudgetPoliciesPolicyResult> policies,
@@ -182,7 +176,6 @@ namespace Pulumi.Databricks
             Outputs.GetBudgetPoliciesSortSpecResult? sortSpec)
         {
             FilterBy = filterBy;
-            Id = id;
             PageSize = pageSize;
             Policies = policies;
             SortSpec = sortSpec;

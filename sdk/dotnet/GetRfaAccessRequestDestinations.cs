@@ -184,10 +184,6 @@ namespace Pulumi.Databricks
         /// Optional if ResourceName is present
         /// </summary>
         public readonly string FullName;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetRfaAccessRequestDestinationsProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (Securable) - The securable for which the access request destinations are being modified or read
@@ -208,8 +204,6 @@ namespace Pulumi.Databricks
 
             string fullName,
 
-            string id,
-
             Outputs.GetRfaAccessRequestDestinationsProviderConfigResult? providerConfig,
 
             Outputs.GetRfaAccessRequestDestinationsSecurableResult securable,
@@ -220,7 +214,6 @@ namespace Pulumi.Databricks
             DestinationSourceSecurable = destinationSourceSecurable;
             Destinations = destinations;
             FullName = fullName;
-            Id = id;
             ProviderConfig = providerConfig;
             Securable = securable;
             SecurableType = securableType;

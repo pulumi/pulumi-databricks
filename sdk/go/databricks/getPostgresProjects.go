@@ -44,8 +44,6 @@ type GetPostgresProjectsArgs struct {
 
 // A collection of values returned by getPostgresProjects.
 type GetPostgresProjectsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                             `pulumi:"id"`
 	PageSize       *int                               `pulumi:"pageSize"`
 	Projects       []GetPostgresProjectsProject       `pulumi:"projects"`
 	ProviderConfig *GetPostgresProjectsProviderConfig `pulumi:"providerConfig"`
@@ -90,11 +88,6 @@ func (o GetPostgresProjectsResultOutput) ToGetPostgresProjectsResultOutput() Get
 
 func (o GetPostgresProjectsResultOutput) ToGetPostgresProjectsResultOutputWithContext(ctx context.Context) GetPostgresProjectsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPostgresProjectsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostgresProjectsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPostgresProjectsResultOutput) PageSize() pulumi.IntPtrOutput {

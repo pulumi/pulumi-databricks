@@ -152,25 +152,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetEnvironmentsWorkspaceBaseEnvironmentsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentResult> WorkspaceBaseEnvironments;
 
         [OutputConstructor]
         private GetEnvironmentsWorkspaceBaseEnvironmentsResult(
-            string id,
-
             int? pageSize,
 
             Outputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigResult? providerConfig,
 
             ImmutableArray<Outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentResult> workspaceBaseEnvironments)
         {
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             WorkspaceBaseEnvironments = workspaceBaseEnvironments;

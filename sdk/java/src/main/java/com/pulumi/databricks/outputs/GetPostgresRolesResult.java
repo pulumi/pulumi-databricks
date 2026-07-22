@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPostgresRolesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     /**
      * @return (string) - The Branch where this Role exists.
@@ -32,13 +27,6 @@ public final class GetPostgresRolesResult {
     private List<GetPostgresRolesRole> roles;
 
     private GetPostgresRolesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -66,7 +54,6 @@ public final class GetPostgresRolesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         private @Nullable GetPostgresRolesProviderConfig providerConfig;
@@ -74,21 +61,12 @@ public final class GetPostgresRolesResult {
         public Builder() {}
         public Builder(GetPostgresRolesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
     	      this.roles = defaults.roles;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresRolesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -122,7 +100,6 @@ public final class GetPostgresRolesResult {
         }
         public GetPostgresRolesResult build() {
             final var _resultValue = new GetPostgresRolesResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

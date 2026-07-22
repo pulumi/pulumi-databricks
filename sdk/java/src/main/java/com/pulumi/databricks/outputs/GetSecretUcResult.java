@@ -58,11 +58,6 @@ public final class GetSecretUcResult {
      */
     private String fullName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Unique identifier of the metastore hosting the secret
      * 
      */
@@ -165,13 +160,6 @@ public final class GetSecretUcResult {
         return this.fullName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - Unique identifier of the metastore hosting the secret
      * 
      */
@@ -245,7 +233,6 @@ public final class GetSecretUcResult {
         private String effectiveValue;
         private String expireTime;
         private String fullName;
-        private String id;
         private String metastoreId;
         private String name;
         private String owner;
@@ -265,7 +252,6 @@ public final class GetSecretUcResult {
     	      this.effectiveValue = defaults.effectiveValue;
     	      this.expireTime = defaults.expireTime;
     	      this.fullName = defaults.fullName;
-    	      this.id = defaults.id;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
     	      this.owner = defaults.owner;
@@ -341,14 +327,6 @@ public final class GetSecretUcResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSecretUcResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder metastoreId(String metastoreId) {
             if (metastoreId == null) {
               throw new MissingRequiredPropertyException("GetSecretUcResult", "metastoreId");
@@ -420,7 +398,6 @@ public final class GetSecretUcResult {
             _resultValue.effectiveValue = effectiveValue;
             _resultValue.expireTime = expireTime;
             _resultValue.fullName = fullName;
-            _resultValue.id = id;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;
             _resultValue.owner = owner;

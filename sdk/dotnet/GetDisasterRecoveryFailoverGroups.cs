@@ -158,10 +158,6 @@ namespace Pulumi.Databricks
     public sealed class GetDisasterRecoveryFailoverGroupsResult
     {
         public readonly ImmutableArray<Outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupResult> FailoverGroups;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly string Parent;
 
@@ -169,14 +165,11 @@ namespace Pulumi.Databricks
         private GetDisasterRecoveryFailoverGroupsResult(
             ImmutableArray<Outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupResult> failoverGroups,
 
-            string id,
-
             int? pageSize,
 
             string parent)
         {
             FailoverGroups = failoverGroups;
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
         }

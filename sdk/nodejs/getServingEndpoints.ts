@@ -74,10 +74,6 @@ export interface GetServingEndpointsResult {
      * List of objects describing the serving endpoints. Each object consists of following attributes:
      */
     readonly endpoints: outputs.GetServingEndpointsEndpoint[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly providerConfig?: outputs.GetServingEndpointsProviderConfig;
 }
 /**

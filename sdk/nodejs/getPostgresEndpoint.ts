@@ -63,10 +63,6 @@ export interface GetPostgresEndpointResult {
      */
     readonly endpointId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Output only. The full resource path of the endpoint.
      * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      */

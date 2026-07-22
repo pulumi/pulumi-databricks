@@ -64,10 +64,6 @@ export interface GetPostgresCatalogResult {
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Output only. The full resource path of the catalog.
      */
     readonly name: string;

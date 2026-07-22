@@ -27,16 +27,13 @@ class GetAccountNetworkPolicyResult:
     """
     A collection of values returned by getAccountNetworkPolicy.
     """
-    def __init__(__self__, account_id=None, egress=None, id=None, ingress=None, ingress_dry_run=None, network_policy_id=None):
+    def __init__(__self__, account_id=None, egress=None, ingress=None, ingress_dry_run=None, network_policy_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if egress and not isinstance(egress, dict):
             raise TypeError("Expected argument 'egress' to be a dict")
         pulumi.set(__self__, "egress", egress)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if ingress and not isinstance(ingress, dict):
             raise TypeError("Expected argument 'ingress' to be a dict")
         pulumi.set(__self__, "ingress", ingress)
@@ -62,14 +59,6 @@ class GetAccountNetworkPolicyResult:
         (NetworkPolicyEgress) - The network policies applying for egress traffic
         """
         return pulumi.get(self, "egress")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -106,7 +95,6 @@ class AwaitableGetAccountNetworkPolicyResult(GetAccountNetworkPolicyResult):
         return GetAccountNetworkPolicyResult(
             account_id=self.account_id,
             egress=self.egress,
-            id=self.id,
             ingress=self.ingress,
             ingress_dry_run=self.ingress_dry_run,
             network_policy_id=self.network_policy_id)
@@ -138,7 +126,6 @@ def get_account_network_policy(network_policy_id: Optional[_builtins.str] = None
     return AwaitableGetAccountNetworkPolicyResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         egress=pulumi.get(__ret__, 'egress'),
-        id=pulumi.get(__ret__, 'id'),
         ingress=pulumi.get(__ret__, 'ingress'),
         ingress_dry_run=pulumi.get(__ret__, 'ingress_dry_run'),
         network_policy_id=pulumi.get(__ret__, 'network_policy_id'))
@@ -167,7 +154,6 @@ def get_account_network_policy_output(network_policy_id: pulumi.Input[Optional[_
     return __ret__.apply(lambda __response__: GetAccountNetworkPolicyResult(
         account_id=pulumi.get(__response__, 'account_id'),
         egress=pulumi.get(__response__, 'egress'),
-        id=pulumi.get(__response__, 'id'),
         ingress=pulumi.get(__response__, 'ingress'),
         ingress_dry_run=pulumi.get(__response__, 'ingress_dry_run'),
         network_policy_id=pulumi.get(__response__, 'network_policy_id')))

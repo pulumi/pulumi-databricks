@@ -26,11 +26,6 @@ public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
      */
     private String gpuWorkspaceBaseEnvironment;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The resource name of this singleton resource.
      * Format: default-workspace-base-environment
      * 
@@ -56,13 +51,6 @@ public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
         return this.gpuWorkspaceBaseEnvironment;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - The resource name of this singleton resource.
      * Format: default-workspace-base-environment
      * 
@@ -85,7 +73,6 @@ public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
     public static final class Builder {
         private String cpuWorkspaceBaseEnvironment;
         private String gpuWorkspaceBaseEnvironment;
-        private String id;
         private String name;
         private @Nullable GetEnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig providerConfig;
         public Builder() {}
@@ -93,7 +80,6 @@ public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
     	      Objects.requireNonNull(defaults);
     	      this.cpuWorkspaceBaseEnvironment = defaults.cpuWorkspaceBaseEnvironment;
     	      this.gpuWorkspaceBaseEnvironment = defaults.gpuWorkspaceBaseEnvironment;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
         }
@@ -115,14 +101,6 @@ public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult", "name");
@@ -140,7 +118,6 @@ public final class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
             final var _resultValue = new GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult();
             _resultValue.cpuWorkspaceBaseEnvironment = cpuWorkspaceBaseEnvironment;
             _resultValue.gpuWorkspaceBaseEnvironment = gpuWorkspaceBaseEnvironment;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;

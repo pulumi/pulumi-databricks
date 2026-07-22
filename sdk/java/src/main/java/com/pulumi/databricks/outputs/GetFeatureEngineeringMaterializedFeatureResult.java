@@ -36,11 +36,6 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     private String featureName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
      * 
      */
@@ -113,13 +108,6 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     public String featureName() {
         return this.featureName;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -204,7 +192,6 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         private String cronSchedule;
         private GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger cronScheduleTrigger;
         private String featureName;
-        private String id;
         private Boolean isOnline;
         private String lastMaterializationTime;
         private String materializedFeatureId;
@@ -221,7 +208,6 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     	      this.cronSchedule = defaults.cronSchedule;
     	      this.cronScheduleTrigger = defaults.cronScheduleTrigger;
     	      this.featureName = defaults.featureName;
-    	      this.id = defaults.id;
     	      this.isOnline = defaults.isOnline;
     	      this.lastMaterializationTime = defaults.lastMaterializationTime;
     	      this.materializedFeatureId = defaults.materializedFeatureId;
@@ -256,14 +242,6 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "featureName");
             }
             this.featureName = featureName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -349,7 +327,6 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             _resultValue.cronSchedule = cronSchedule;
             _resultValue.cronScheduleTrigger = cronScheduleTrigger;
             _resultValue.featureName = featureName;
-            _resultValue.id = id;
             _resultValue.isOnline = isOnline;
             _resultValue.lastMaterializationTime = lastMaterializationTime;
             _resultValue.materializedFeatureId = materializedFeatureId;

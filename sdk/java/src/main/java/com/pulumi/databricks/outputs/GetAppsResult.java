@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppsApp;
 import com.pulumi.databricks.outputs.GetAppsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,11 +19,6 @@ public final class GetAppsResult {
      * 
      */
     private List<GetAppsApp> apps;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable GetAppsProviderConfig providerConfig;
 
     private GetAppsResult() {}
@@ -34,13 +28,6 @@ public final class GetAppsResult {
      */
     public List<GetAppsApp> apps() {
         return this.apps;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<GetAppsProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -56,13 +43,11 @@ public final class GetAppsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetAppsApp> apps;
-        private String id;
         private @Nullable GetAppsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetAppsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apps = defaults.apps;
-    	      this.id = defaults.id;
     	      this.providerConfig = defaults.providerConfig;
         }
 
@@ -78,14 +63,6 @@ public final class GetAppsResult {
             return apps(List.of(apps));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAppsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder providerConfig(@Nullable GetAppsProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -94,7 +71,6 @@ public final class GetAppsResult {
         public GetAppsResult build() {
             final var _resultValue = new GetAppsResult();
             _resultValue.apps = apps;
-            _resultValue.id = id;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }

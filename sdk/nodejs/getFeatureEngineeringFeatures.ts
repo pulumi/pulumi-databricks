@@ -50,10 +50,6 @@ export interface GetFeatureEngineeringFeaturesResult {
      */
     readonly catalogName: string;
     readonly features: outputs.GetFeatureEngineeringFeaturesFeature[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetFeatureEngineeringFeaturesProviderConfig;
     /**

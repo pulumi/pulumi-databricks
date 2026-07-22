@@ -32,8 +32,6 @@ type GetFeatureEngineeringKafkaConfigsArgs struct {
 
 // A collection of values returned by getFeatureEngineeringKafkaConfigs.
 type GetFeatureEngineeringKafkaConfigsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                           `pulumi:"id"`
 	KafkaConfigs   []GetFeatureEngineeringKafkaConfigsKafkaConfig   `pulumi:"kafkaConfigs"`
 	PageSize       *int                                             `pulumi:"pageSize"`
 	ProviderConfig *GetFeatureEngineeringKafkaConfigsProviderConfig `pulumi:"providerConfig"`
@@ -73,11 +71,6 @@ func (o GetFeatureEngineeringKafkaConfigsResultOutput) ToGetFeatureEngineeringKa
 
 func (o GetFeatureEngineeringKafkaConfigsResultOutput) ToGetFeatureEngineeringKafkaConfigsResultOutputWithContext(ctx context.Context) GetFeatureEngineeringKafkaConfigsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetFeatureEngineeringKafkaConfigsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFeatureEngineeringKafkaConfigsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetFeatureEngineeringKafkaConfigsResultOutput) KafkaConfigs() GetFeatureEngineeringKafkaConfigsKafkaConfigArrayOutput {

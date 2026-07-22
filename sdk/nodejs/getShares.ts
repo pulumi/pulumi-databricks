@@ -64,10 +64,6 @@ export interface GetSharesArgs {
  * A collection of values returned by getShares.
  */
 export interface GetSharesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly providerConfig?: outputs.GetSharesProviderConfig;
     /**
      * list of databricks.Share names.

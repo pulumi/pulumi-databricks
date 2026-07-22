@@ -169,10 +169,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string GpuWorkspaceBaseEnvironment;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The resource name of this singleton resource.
         /// Format: default-workspace-base-environment
         /// </summary>
@@ -185,15 +181,12 @@ namespace Pulumi.Databricks
 
             string gpuWorkspaceBaseEnvironment,
 
-            string id,
-
             string name,
 
             Outputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigResult? providerConfig)
         {
             CpuWorkspaceBaseEnvironment = cpuWorkspaceBaseEnvironment;
             GpuWorkspaceBaseEnvironment = gpuWorkspaceBaseEnvironment;
-            Id = id;
             Name = name;
             ProviderConfig = providerConfig;
         }

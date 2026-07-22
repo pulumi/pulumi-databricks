@@ -26,24 +26,13 @@ class GetWorkspaceNetworkOptionResult:
     """
     A collection of values returned by getWorkspaceNetworkOption.
     """
-    def __init__(__self__, id=None, network_policy_id=None, workspace_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, network_policy_id=None, workspace_id=None):
         if network_policy_id and not isinstance(network_policy_id, str):
             raise TypeError("Expected argument 'network_policy_id' to be a str")
         pulumi.set(__self__, "network_policy_id", network_policy_id)
         if workspace_id and not isinstance(workspace_id, str):
             raise TypeError("Expected argument 'workspace_id' to be a str")
         pulumi.set(__self__, "workspace_id", workspace_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyId")
@@ -71,7 +60,6 @@ class AwaitableGetWorkspaceNetworkOptionResult(GetWorkspaceNetworkOptionResult):
         if False:
             yield self
         return GetWorkspaceNetworkOptionResult(
-            id=self.id,
             network_policy_id=self.network_policy_id,
             workspace_id=self.workspace_id)
 
@@ -107,7 +95,6 @@ def get_workspace_network_option(workspace_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption', __args__, opts=opts, typ=GetWorkspaceNetworkOptionResult).value
 
     return AwaitableGetWorkspaceNetworkOptionResult(
-        id=pulumi.get(__ret__, 'id'),
         network_policy_id=pulumi.get(__ret__, 'network_policy_id'),
         workspace_id=pulumi.get(__ret__, 'workspace_id'))
 def get_workspace_network_option_output(workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -140,6 +127,5 @@ def get_workspace_network_option_output(workspace_id: pulumi.Input[Optional[_bui
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption', __args__, opts=opts, typ=GetWorkspaceNetworkOptionResult)
     return __ret__.apply(lambda __response__: GetWorkspaceNetworkOptionResult(
-        id=pulumi.get(__response__, 'id'),
         network_policy_id=pulumi.get(__response__, 'network_policy_id'),
         workspace_id=pulumi.get(__response__, 'workspace_id')))

@@ -95,8 +95,6 @@ type LookupDataQualityRefreshArgs struct {
 type LookupDataQualityRefreshResult struct {
 	// (integer) - Time when the refresh ended (milliseconds since 1/1/1970 UTC)
 	EndTimeMs int `pulumi:"endTimeMs"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
 	Message string `pulumi:"message"`
 	// (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
@@ -165,11 +163,6 @@ func (o LookupDataQualityRefreshResultOutput) ToLookupDataQualityRefreshResultOu
 // (integer) - Time when the refresh ended (milliseconds since 1/1/1970 UTC)
 func (o LookupDataQualityRefreshResultOutput) EndTimeMs() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDataQualityRefreshResult) int { return v.EndTimeMs }).(pulumi.IntOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDataQualityRefreshResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDataQualityRefreshResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)

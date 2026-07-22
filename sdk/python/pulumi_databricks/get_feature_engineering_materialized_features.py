@@ -28,13 +28,10 @@ class GetFeatureEngineeringMaterializedFeaturesResult:
     """
     A collection of values returned by getFeatureEngineeringMaterializedFeatures.
     """
-    def __init__(__self__, feature_name=None, id=None, materialized_features=None, page_size=None, provider_config=None):
+    def __init__(__self__, feature_name=None, materialized_features=None, page_size=None, provider_config=None):
         if feature_name and not isinstance(feature_name, str):
             raise TypeError("Expected argument 'feature_name' to be a str")
         pulumi.set(__self__, "feature_name", feature_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if materialized_features and not isinstance(materialized_features, list):
             raise TypeError("Expected argument 'materialized_features' to be a list")
         pulumi.set(__self__, "materialized_features", materialized_features)
@@ -52,14 +49,6 @@ class GetFeatureEngineeringMaterializedFeaturesResult:
         (string) - The full name of the feature in Unity Catalog
         """
         return pulumi.get(self, "feature_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="materializedFeatures")
@@ -84,7 +73,6 @@ class AwaitableGetFeatureEngineeringMaterializedFeaturesResult(GetFeatureEnginee
             yield self
         return GetFeatureEngineeringMaterializedFeaturesResult(
             feature_name=self.feature_name,
-            id=self.id,
             materialized_features=self.materialized_features,
             page_size=self.page_size,
             provider_config=self.provider_config)
@@ -111,7 +99,6 @@ def get_feature_engineering_materialized_features(feature_name: Optional[_builti
 
     return AwaitableGetFeatureEngineeringMaterializedFeaturesResult(
         feature_name=pulumi.get(__ret__, 'feature_name'),
-        id=pulumi.get(__ret__, 'id'),
         materialized_features=pulumi.get(__ret__, 'materialized_features'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -135,7 +122,6 @@ def get_feature_engineering_materialized_features_output(feature_name: pulumi.In
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures', __args__, opts=opts, typ=GetFeatureEngineeringMaterializedFeaturesResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringMaterializedFeaturesResult(
         feature_name=pulumi.get(__response__, 'feature_name'),
-        id=pulumi.get(__response__, 'id'),
         materialized_features=pulumi.get(__response__, 'materialized_features'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

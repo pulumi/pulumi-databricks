@@ -102,10 +102,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyEgressResult Egress;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyIngressResult Ingress;
@@ -126,8 +122,6 @@ namespace Pulumi.Databricks
 
             Outputs.GetAccountNetworkPolicyEgressResult egress,
 
-            string id,
-
             Outputs.GetAccountNetworkPolicyIngressResult ingress,
 
             Outputs.GetAccountNetworkPolicyIngressDryRunResult ingressDryRun,
@@ -136,7 +130,6 @@ namespace Pulumi.Databricks
         {
             AccountId = accountId;
             Egress = egress;
-            Id = id;
             Ingress = ingress;
             IngressDryRun = ingressDryRun;
             NetworkPolicyId = networkPolicyId;

@@ -142,10 +142,6 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceNetworkOptionResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The network policy ID to apply to the workspace. This controls the network access rules
         /// for all serverless compute resources in the workspace. Each workspace can only be
         /// linked to one policy at a time. If no policy is explicitly assigned,
@@ -159,13 +155,10 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetWorkspaceNetworkOptionResult(
-            string id,
-
             string networkPolicyId,
 
             string workspaceId)
         {
-            Id = id;
             NetworkPolicyId = networkPolicyId;
             WorkspaceId = workspaceId;
         }

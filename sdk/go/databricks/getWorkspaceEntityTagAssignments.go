@@ -91,9 +91,7 @@ type GetWorkspaceEntityTagAssignmentsResult struct {
 	// (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
 	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
-	EntityType string `pulumi:"entityType"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                          `pulumi:"id"`
+	EntityType     string                                          `pulumi:"entityType"`
 	PageSize       *int                                            `pulumi:"pageSize"`
 	ProviderConfig *GetWorkspaceEntityTagAssignmentsProviderConfig `pulumi:"providerConfig"`
 	TagAssignments []GetWorkspaceEntityTagAssignmentsTagAssignment `pulumi:"tagAssignments"`
@@ -147,11 +145,6 @@ func (o GetWorkspaceEntityTagAssignmentsResultOutput) EntityId() pulumi.StringOu
 // (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 func (o GetWorkspaceEntityTagAssignmentsResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) string { return v.EntityType }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetWorkspaceEntityTagAssignmentsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetWorkspaceEntityTagAssignmentsResultOutput) PageSize() pulumi.IntPtrOutput {

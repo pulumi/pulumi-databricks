@@ -72,8 +72,6 @@ type LookupPostgresSyncedTableArgs struct {
 type LookupPostgresSyncedTableResult struct {
 	// (string)
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Output only. The Full resource name of the synced table in Postgres
 	// where (catalog, schema, table) are the UC entity names.
 	Name           string                                `pulumi:"name"`
@@ -133,11 +131,6 @@ func (o LookupPostgresSyncedTableResultOutput) ToLookupPostgresSyncedTableResult
 // (string)
 func (o LookupPostgresSyncedTableResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSyncedTableResult) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresSyncedTableResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresSyncedTableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Output only. The Full resource name of the synced table in Postgres

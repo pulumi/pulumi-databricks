@@ -84,9 +84,7 @@ type GetDashboardsArgs struct {
 type GetDashboardsResult struct {
 	DashboardNameContains *string `pulumi:"dashboardNameContains"`
 	// A list of dashboards matching the specified criteria. Each element contains the following attributes:
-	Dashboards []GetDashboardsDashboard `pulumi:"dashboards"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                       `pulumi:"id"`
+	Dashboards     []GetDashboardsDashboard     `pulumi:"dashboards"`
 	ProviderConfig *GetDashboardsProviderConfig `pulumi:"providerConfig"`
 }
 
@@ -132,11 +130,6 @@ func (o GetDashboardsResultOutput) DashboardNameContains() pulumi.StringPtrOutpu
 // A list of dashboards matching the specified criteria. Each element contains the following attributes:
 func (o GetDashboardsResultOutput) Dashboards() GetDashboardsDashboardArrayOutput {
 	return o.ApplyT(func(v GetDashboardsResult) []GetDashboardsDashboard { return v.Dashboards }).(GetDashboardsDashboardArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDashboardsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDashboardsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDashboardsResultOutput) ProviderConfig() GetDashboardsProviderConfigPtrOutput {

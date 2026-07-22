@@ -79,8 +79,6 @@ type LookupDisasterRecoveryStableUrlResult struct {
 	// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
 	// the stable URL is not attached to any failover group
 	FailoverGroupName string `pulumi:"failoverGroupName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The workspace this stable URL is initially bound to. Used only in Create
 	// requests to associate the stable URL with a workspace. Not returned in
 	// responses
@@ -151,11 +149,6 @@ func (o LookupDisasterRecoveryStableUrlResultOutput) EffectiveWorkspaceId() pulu
 // the stable URL is not attached to any failover group
 func (o LookupDisasterRecoveryStableUrlResultOutput) FailoverGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryStableUrlResult) string { return v.FailoverGroupName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDisasterRecoveryStableUrlResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDisasterRecoveryStableUrlResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The workspace this stable URL is initially bound to. Used only in Create

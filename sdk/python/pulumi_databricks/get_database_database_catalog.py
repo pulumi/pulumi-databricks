@@ -28,7 +28,7 @@ class GetDatabaseDatabaseCatalogResult:
     """
     A collection of values returned by getDatabaseDatabaseCatalog.
     """
-    def __init__(__self__, create_database_if_not_exists=None, database_instance_name=None, database_name=None, id=None, name=None, provider_config=None, uid=None):
+    def __init__(__self__, create_database_if_not_exists=None, database_instance_name=None, database_name=None, name=None, provider_config=None, uid=None):
         if create_database_if_not_exists and not isinstance(create_database_if_not_exists, bool):
             raise TypeError("Expected argument 'create_database_if_not_exists' to be a bool")
         pulumi.set(__self__, "create_database_if_not_exists", create_database_if_not_exists)
@@ -38,9 +38,6 @@ class GetDatabaseDatabaseCatalogResult:
         if database_name and not isinstance(database_name, str):
             raise TypeError("Expected argument 'database_name' to be a str")
         pulumi.set(__self__, "database_name", database_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -77,14 +74,6 @@ class GetDatabaseDatabaseCatalogResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> _builtins.str:
         """
         (string) - The name of the catalog in UC
@@ -114,7 +103,6 @@ class AwaitableGetDatabaseDatabaseCatalogResult(GetDatabaseDatabaseCatalogResult
             create_database_if_not_exists=self.create_database_if_not_exists,
             database_instance_name=self.database_instance_name,
             database_name=self.database_name,
-            id=self.id,
             name=self.name,
             provider_config=self.provider_config,
             uid=self.uid)
@@ -155,7 +143,6 @@ def get_database_database_catalog(name: Optional[_builtins.str] = None,
         create_database_if_not_exists=pulumi.get(__ret__, 'create_database_if_not_exists'),
         database_instance_name=pulumi.get(__ret__, 'database_instance_name'),
         database_name=pulumi.get(__ret__, 'database_name'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         uid=pulumi.get(__ret__, 'uid'))
@@ -193,7 +180,6 @@ def get_database_database_catalog_output(name: pulumi.Input[Optional[_builtins.s
         create_database_if_not_exists=pulumi.get(__response__, 'create_database_if_not_exists'),
         database_instance_name=pulumi.get(__response__, 'database_instance_name'),
         database_name=pulumi.get(__response__, 'database_name'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         uid=pulumi.get(__response__, 'uid')))

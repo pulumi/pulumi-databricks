@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetWarehousesDefaultWarehouseOverridesDefau
 import com.pulumi.databricks.outputs.GetWarehousesDefaultWarehouseOverridesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,24 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWarehousesDefaultWarehouseOverridesResult {
     private List<GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride> defaultWarehouseOverrides;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetWarehousesDefaultWarehouseOverridesProviderConfig providerConfig;
 
     private GetWarehousesDefaultWarehouseOverridesResult() {}
     public List<GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride> defaultWarehouseOverrides() {
         return this.defaultWarehouseOverrides;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -53,14 +40,12 @@ public final class GetWarehousesDefaultWarehouseOverridesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride> defaultWarehouseOverrides;
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetWarehousesDefaultWarehouseOverridesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetWarehousesDefaultWarehouseOverridesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultWarehouseOverrides = defaults.defaultWarehouseOverrides;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
         }
@@ -77,14 +62,6 @@ public final class GetWarehousesDefaultWarehouseOverridesResult {
             return defaultWarehouseOverrides(List.of(defaultWarehouseOverrides));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWarehousesDefaultWarehouseOverridesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
@@ -99,7 +76,6 @@ public final class GetWarehousesDefaultWarehouseOverridesResult {
         public GetWarehousesDefaultWarehouseOverridesResult build() {
             final var _resultValue = new GetWarehousesDefaultWarehouseOverridesResult();
             _resultValue.defaultWarehouseOverrides = defaultWarehouseOverrides;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;

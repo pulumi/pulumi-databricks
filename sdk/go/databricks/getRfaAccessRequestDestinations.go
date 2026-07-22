@@ -77,9 +77,7 @@ type LookupRfaAccessRequestDestinationsResult struct {
 	Destinations []GetRfaAccessRequestDestinationsDestination `pulumi:"destinations"`
 	// (string) - Required. The full name of the catalog/schema/table.
 	// Optional if resourceName is present
-	FullName string `pulumi:"fullName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                         `pulumi:"id"`
+	FullName       string                                         `pulumi:"fullName"`
 	ProviderConfig *GetRfaAccessRequestDestinationsProviderConfig `pulumi:"providerConfig"`
 	// (Securable) - The securable for which the access request destinations are being modified or read
 	Securable GetRfaAccessRequestDestinationsSecurable `pulumi:"securable"`
@@ -150,11 +148,6 @@ func (o LookupRfaAccessRequestDestinationsResultOutput) Destinations() GetRfaAcc
 // Optional if resourceName is present
 func (o LookupRfaAccessRequestDestinationsResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) string { return v.FullName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupRfaAccessRequestDestinationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupRfaAccessRequestDestinationsResultOutput) ProviderConfig() GetRfaAccessRequestDestinationsProviderConfigPtrOutput {

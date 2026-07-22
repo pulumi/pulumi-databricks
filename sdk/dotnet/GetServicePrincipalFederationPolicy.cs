@@ -114,10 +114,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Resource name for the federation policy. Example values include
         /// `accounts/&lt;account-id&gt;/federationPolicies/my-federation-policy` for Account Federation Policies, and
         /// `accounts/&lt;account-id&gt;/servicePrincipals/&lt;service-principal-id&gt;/federationPolicies/my-federation-policy`
@@ -153,8 +149,6 @@ namespace Pulumi.Databricks
 
             string description,
 
-            string id,
-
             string name,
 
             Outputs.GetServicePrincipalFederationPolicyOidcPolicyResult oidcPolicy,
@@ -169,7 +163,6 @@ namespace Pulumi.Databricks
         {
             CreateTime = createTime;
             Description = description;
-            Id = id;
             Name = name;
             OidcPolicy = oidcPolicy;
             PolicyId = policyId;

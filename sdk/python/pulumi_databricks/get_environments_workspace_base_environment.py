@@ -28,7 +28,7 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
     """
     A collection of values returned by getEnvironmentsWorkspaceBaseEnvironment.
     """
-    def __init__(__self__, base_environment_type=None, create_time=None, creator_user_id=None, display_name=None, effective_base_environment_type=None, filepath=None, id=None, is_default=None, last_updated_user_id=None, message=None, name=None, provider_config=None, spec=None, status=None, update_time=None):
+    def __init__(__self__, base_environment_type=None, create_time=None, creator_user_id=None, display_name=None, effective_base_environment_type=None, filepath=None, is_default=None, last_updated_user_id=None, message=None, name=None, provider_config=None, spec=None, status=None, update_time=None):
         if base_environment_type and not isinstance(base_environment_type, str):
             raise TypeError("Expected argument 'base_environment_type' to be a str")
         pulumi.set(__self__, "base_environment_type", base_environment_type)
@@ -47,9 +47,6 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
         if filepath and not isinstance(filepath, str):
             raise TypeError("Expected argument 'filepath' to be a str")
         pulumi.set(__self__, "filepath", filepath)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if is_default and not isinstance(is_default, bool):
             raise TypeError("Expected argument 'is_default' to be a bool")
         pulumi.set(__self__, "is_default", is_default)
@@ -119,14 +116,6 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
         (string) - The WSFS or UC Volumes path to the environment YAML file
         """
         return pulumi.get(self, "filepath")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
@@ -203,7 +192,6 @@ class AwaitableGetEnvironmentsWorkspaceBaseEnvironmentResult(GetEnvironmentsWork
             display_name=self.display_name,
             effective_base_environment_type=self.effective_base_environment_type,
             filepath=self.filepath,
-            id=self.id,
             is_default=self.is_default,
             last_updated_user_id=self.last_updated_user_id,
             message=self.message,
@@ -251,7 +239,6 @@ def get_environments_workspace_base_environment(name: Optional[_builtins.str] = 
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_base_environment_type=pulumi.get(__ret__, 'effective_base_environment_type'),
         filepath=pulumi.get(__ret__, 'filepath'),
-        id=pulumi.get(__ret__, 'id'),
         is_default=pulumi.get(__ret__, 'is_default'),
         last_updated_user_id=pulumi.get(__ret__, 'last_updated_user_id'),
         message=pulumi.get(__ret__, 'message'),
@@ -296,7 +283,6 @@ def get_environments_workspace_base_environment_output(name: pulumi.Input[Option
         display_name=pulumi.get(__response__, 'display_name'),
         effective_base_environment_type=pulumi.get(__response__, 'effective_base_environment_type'),
         filepath=pulumi.get(__response__, 'filepath'),
-        id=pulumi.get(__response__, 'id'),
         is_default=pulumi.get(__response__, 'is_default'),
         last_updated_user_id=pulumi.get(__response__, 'last_updated_user_id'),
         message=pulumi.get(__response__, 'message'),

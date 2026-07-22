@@ -32,11 +32,6 @@ public final class GetDataClassificationCatalogConfigResult {
      */
     private GetDataClassificationCatalogConfigExcludedSchemas excludedSchemas;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
      * If specified, only listed schemas will be scanned.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -71,13 +66,6 @@ public final class GetDataClassificationCatalogConfigResult {
         return this.excludedSchemas;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
      * If specified, only listed schemas will be scanned.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -109,7 +97,6 @@ public final class GetDataClassificationCatalogConfigResult {
     public static final class Builder {
         private List<GetDataClassificationCatalogConfigAutoTagConfig> autoTagConfigs;
         private GetDataClassificationCatalogConfigExcludedSchemas excludedSchemas;
-        private String id;
         private GetDataClassificationCatalogConfigIncludedSchemas includedSchemas;
         private String name;
         private @Nullable GetDataClassificationCatalogConfigProviderConfig providerConfig;
@@ -118,7 +105,6 @@ public final class GetDataClassificationCatalogConfigResult {
     	      Objects.requireNonNull(defaults);
     	      this.autoTagConfigs = defaults.autoTagConfigs;
     	      this.excludedSchemas = defaults.excludedSchemas;
-    	      this.id = defaults.id;
     	      this.includedSchemas = defaults.includedSchemas;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
@@ -141,14 +127,6 @@ public final class GetDataClassificationCatalogConfigResult {
               throw new MissingRequiredPropertyException("GetDataClassificationCatalogConfigResult", "excludedSchemas");
             }
             this.excludedSchemas = excludedSchemas;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDataClassificationCatalogConfigResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -177,7 +155,6 @@ public final class GetDataClassificationCatalogConfigResult {
             final var _resultValue = new GetDataClassificationCatalogConfigResult();
             _resultValue.autoTagConfigs = autoTagConfigs;
             _resultValue.excludedSchemas = excludedSchemas;
-            _resultValue.id = id;
             _resultValue.includedSchemas = includedSchemas;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;

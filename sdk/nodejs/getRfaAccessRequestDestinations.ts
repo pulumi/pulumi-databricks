@@ -77,10 +77,6 @@ export interface GetRfaAccessRequestDestinationsResult {
      * Optional if resourceName is present
      */
     readonly fullName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly providerConfig?: outputs.GetRfaAccessRequestDestinationsProviderConfig;
     /**
      * (Securable) - The securable for which the access request destinations are being modified or read

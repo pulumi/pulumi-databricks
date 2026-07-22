@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetTagPoliciesProviderConfig;
 import com.pulumi.databricks.outputs.GetTagPoliciesTagPolicy;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTagPoliciesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetTagPoliciesProviderConfig providerConfig;
     private List<GetTagPoliciesTagPolicy> tagPolicies;
 
     private GetTagPoliciesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -52,27 +39,17 @@ public final class GetTagPoliciesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetTagPoliciesProviderConfig providerConfig;
         private List<GetTagPoliciesTagPolicy> tagPolicies;
         public Builder() {}
         public Builder(GetTagPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.tagPolicies = defaults.tagPolicies;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetTagPoliciesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -98,7 +75,6 @@ public final class GetTagPoliciesResult {
         }
         public GetTagPoliciesResult build() {
             final var _resultValue = new GetTagPoliciesResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.tagPolicies = tagPolicies;

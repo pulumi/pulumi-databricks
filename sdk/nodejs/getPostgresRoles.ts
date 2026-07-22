@@ -60,10 +60,6 @@ export interface GetPostgresRolesArgs {
  * A collection of values returned by getPostgresRoles.
  */
 export interface GetPostgresRolesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     /**
      * (string) - The Branch where this Role exists.

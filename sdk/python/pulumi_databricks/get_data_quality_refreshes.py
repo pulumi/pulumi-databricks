@@ -28,10 +28,7 @@ class GetDataQualityRefreshesResult:
     """
     A collection of values returned by getDataQualityRefreshes.
     """
-    def __init__(__self__, id=None, object_id=None, object_type=None, page_size=None, provider_config=None, refreshes=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, object_id=None, object_type=None, page_size=None, provider_config=None, refreshes=None):
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         pulumi.set(__self__, "object_id", object_id)
@@ -47,14 +44,6 @@ class GetDataQualityRefreshesResult:
         if refreshes and not isinstance(refreshes, list):
             raise TypeError("Expected argument 'refreshes' to be a list")
         pulumi.set(__self__, "refreshes", refreshes)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="objectId")
@@ -94,7 +83,6 @@ class AwaitableGetDataQualityRefreshesResult(GetDataQualityRefreshesResult):
         if False:
             yield self
         return GetDataQualityRefreshesResult(
-            id=self.id,
             object_id=self.object_id,
             object_type=self.object_type,
             page_size=self.page_size,
@@ -159,7 +147,6 @@ def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getDataQualityRefreshes:getDataQualityRefreshes', __args__, opts=opts, typ=GetDataQualityRefreshesResult).value
 
     return AwaitableGetDataQualityRefreshesResult(
-        id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         object_type=pulumi.get(__ret__, 'object_type'),
         page_size=pulumi.get(__ret__, 'page_size'),
@@ -221,7 +208,6 @@ def get_data_quality_refreshes_output(object_id: pulumi.Input[Optional[_builtins
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDataQualityRefreshes:getDataQualityRefreshes', __args__, opts=opts, typ=GetDataQualityRefreshesResult)
     return __ret__.apply(lambda __response__: GetDataQualityRefreshesResult(
-        id=pulumi.get(__response__, 'id'),
         object_id=pulumi.get(__response__, 'object_id'),
         object_type=pulumi.get(__response__, 'object_type'),
         page_size=pulumi.get(__response__, 'page_size'),

@@ -38,11 +38,6 @@ public final class GetAiSearchIndexResult {
      */
     private String endpoint;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      * 
      */
@@ -100,13 +95,6 @@ public final class GetAiSearchIndexResult {
         return this.endpoint;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      * 
      */
@@ -158,7 +146,6 @@ public final class GetAiSearchIndexResult {
         private GetAiSearchIndexDeltaSyncIndexSpec deltaSyncIndexSpec;
         private GetAiSearchIndexDirectAccessIndexSpec directAccessIndexSpec;
         private String endpoint;
-        private String id;
         private String indexSubtype;
         private String indexType;
         private String name;
@@ -172,7 +159,6 @@ public final class GetAiSearchIndexResult {
     	      this.deltaSyncIndexSpec = defaults.deltaSyncIndexSpec;
     	      this.directAccessIndexSpec = defaults.directAccessIndexSpec;
     	      this.endpoint = defaults.endpoint;
-    	      this.id = defaults.id;
     	      this.indexSubtype = defaults.indexSubtype;
     	      this.indexType = defaults.indexType;
     	      this.name = defaults.name;
@@ -211,14 +197,6 @@ public final class GetAiSearchIndexResult {
               throw new MissingRequiredPropertyException("GetAiSearchIndexResult", "endpoint");
             }
             this.endpoint = endpoint;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchIndexResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -273,7 +251,6 @@ public final class GetAiSearchIndexResult {
             _resultValue.deltaSyncIndexSpec = deltaSyncIndexSpec;
             _resultValue.directAccessIndexSpec = directAccessIndexSpec;
             _resultValue.endpoint = endpoint;
-            _resultValue.id = id;
             _resultValue.indexSubtype = indexSubtype;
             _resultValue.indexType = indexType;
             _resultValue.name = name;

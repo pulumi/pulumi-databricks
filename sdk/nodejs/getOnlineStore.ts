@@ -48,10 +48,6 @@ export interface GetOnlineStoreResult {
      */
     readonly creator: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The name of the online store. This is the unique identifier for the online store
      */
     readonly name: string;

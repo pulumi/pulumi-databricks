@@ -92,9 +92,7 @@ type GetServingEndpointsArgs struct {
 // A collection of values returned by getServingEndpoints.
 type GetServingEndpointsResult struct {
 	// List of objects describing the serving endpoints. Each object consists of following attributes:
-	Endpoints []GetServingEndpointsEndpoint `pulumi:"endpoints"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                             `pulumi:"id"`
+	Endpoints      []GetServingEndpointsEndpoint      `pulumi:"endpoints"`
 	ProviderConfig *GetServingEndpointsProviderConfig `pulumi:"providerConfig"`
 }
 
@@ -136,11 +134,6 @@ func (o GetServingEndpointsResultOutput) ToGetServingEndpointsResultOutputWithCo
 // List of objects describing the serving endpoints. Each object consists of following attributes:
 func (o GetServingEndpointsResultOutput) Endpoints() GetServingEndpointsEndpointArrayOutput {
 	return o.ApplyT(func(v GetServingEndpointsResult) []GetServingEndpointsEndpoint { return v.Endpoints }).(GetServingEndpointsEndpointArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetServingEndpointsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServingEndpointsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetServingEndpointsResultOutput) ProviderConfig() GetServingEndpointsProviderConfigPtrOutput {

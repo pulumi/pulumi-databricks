@@ -64,10 +64,6 @@ export interface GetEndpointResult {
      */
     readonly endpointId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The resource name of the endpoint, which uniquely identifies the endpoint
      */
     readonly name: string;

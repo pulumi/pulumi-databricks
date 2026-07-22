@@ -157,25 +157,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetDisasterRecoveryStableUrlsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly string Parent;
         public readonly ImmutableArray<Outputs.GetDisasterRecoveryStableUrlsStableUrlResult> StableUrls;
 
         [OutputConstructor]
         private GetDisasterRecoveryStableUrlsResult(
-            string id,
-
             int? pageSize,
 
             string parent,
 
             ImmutableArray<Outputs.GetDisasterRecoveryStableUrlsStableUrlResult> stableUrls)
         {
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
             StableUrls = stableUrls;

@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 public final class GetVolumesResult {
     private String catalogName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
      * 
      */
@@ -31,13 +26,6 @@ public final class GetVolumesResult {
     private GetVolumesResult() {}
     public String catalogName() {
         return this.catalogName;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
@@ -63,7 +51,6 @@ public final class GetVolumesResult {
     @CustomType.Builder
     public static final class Builder {
         private String catalogName;
-        private String id;
         private List<String> ids;
         private @Nullable GetVolumesProviderConfig providerConfig;
         private String schemaName;
@@ -71,7 +58,6 @@ public final class GetVolumesResult {
         public Builder(GetVolumesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalogName = defaults.catalogName;
-    	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
@@ -83,14 +69,6 @@ public final class GetVolumesResult {
               throw new MissingRequiredPropertyException("GetVolumesResult", "catalogName");
             }
             this.catalogName = catalogName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetVolumesResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -121,7 +99,6 @@ public final class GetVolumesResult {
         public GetVolumesResult build() {
             final var _resultValue = new GetVolumesResult();
             _resultValue.catalogName = catalogName;
-            _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;

@@ -66,10 +66,6 @@ export interface GetPostgresProjectResult {
      */
     readonly deleteTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
      * Allows overriding branch protection. These settings only apply at creation time
      * and do not affect resources created after project creation

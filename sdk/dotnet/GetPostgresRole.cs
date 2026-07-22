@@ -175,10 +175,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Output only. The full resource path of the role.
         /// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
         /// </summary>
@@ -210,8 +206,6 @@ namespace Pulumi.Databricks
         private GetPostgresRoleResult(
             string createTime,
 
-            string id,
-
             string name,
 
             string parent,
@@ -227,7 +221,6 @@ namespace Pulumi.Databricks
             string updateTime)
         {
             CreateTime = createTime;
-            Id = id;
             Name = name;
             Parent = parent;
             ProviderConfig = providerConfig;

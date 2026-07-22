@@ -203,10 +203,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetQualityMonitorV2AnomalyDetectionConfigResult AnomalyDetectionConfig;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The uuid of the request object. For example, schema id
         /// </summary>
         public readonly string ObjectId;
@@ -224,8 +220,6 @@ namespace Pulumi.Databricks
         private GetQualityMonitorV2Result(
             Outputs.GetQualityMonitorV2AnomalyDetectionConfigResult anomalyDetectionConfig,
 
-            string id,
-
             string objectId,
 
             string objectType,
@@ -235,7 +229,6 @@ namespace Pulumi.Databricks
             ImmutableArray<Outputs.GetQualityMonitorV2ValidityCheckConfigurationResult> validityCheckConfigurations)
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
-            Id = id;
             ObjectId = objectId;
             ObjectType = objectType;
             ProviderConfig = providerConfig;

@@ -30,11 +30,6 @@ public final class GetAccountSettingUserPreferenceV2Result {
      */
     private GetAccountSettingUserPreferenceV2EffectiveStringVal effectiveStringVal;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Name of the setting
      * 
      */
@@ -73,13 +68,6 @@ public final class GetAccountSettingUserPreferenceV2Result {
         return this.effectiveStringVal;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - Name of the setting
      * 
      */
@@ -113,7 +101,6 @@ public final class GetAccountSettingUserPreferenceV2Result {
         private GetAccountSettingUserPreferenceV2BooleanVal booleanVal;
         private GetAccountSettingUserPreferenceV2EffectiveBooleanVal effectiveBooleanVal;
         private GetAccountSettingUserPreferenceV2EffectiveStringVal effectiveStringVal;
-        private String id;
         private String name;
         private GetAccountSettingUserPreferenceV2StringVal stringVal;
         private String userId;
@@ -123,7 +110,6 @@ public final class GetAccountSettingUserPreferenceV2Result {
     	      this.booleanVal = defaults.booleanVal;
     	      this.effectiveBooleanVal = defaults.effectiveBooleanVal;
     	      this.effectiveStringVal = defaults.effectiveStringVal;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.stringVal = defaults.stringVal;
     	      this.userId = defaults.userId;
@@ -151,14 +137,6 @@ public final class GetAccountSettingUserPreferenceV2Result {
               throw new MissingRequiredPropertyException("GetAccountSettingUserPreferenceV2Result", "effectiveStringVal");
             }
             this.effectiveStringVal = effectiveStringVal;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountSettingUserPreferenceV2Result", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -190,7 +168,6 @@ public final class GetAccountSettingUserPreferenceV2Result {
             _resultValue.booleanVal = booleanVal;
             _resultValue.effectiveBooleanVal = effectiveBooleanVal;
             _resultValue.effectiveStringVal = effectiveStringVal;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.stringVal = stringVal;
             _resultValue.userId = userId;

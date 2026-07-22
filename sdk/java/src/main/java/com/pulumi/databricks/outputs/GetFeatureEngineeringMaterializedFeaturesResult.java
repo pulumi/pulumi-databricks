@@ -21,11 +21,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
      * 
      */
     private @Nullable String featureName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetFeatureEngineeringMaterializedFeaturesMaterializedFeature> materializedFeatures;
     private @Nullable Integer pageSize;
     private @Nullable GetFeatureEngineeringMaterializedFeaturesProviderConfig providerConfig;
@@ -37,13 +32,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
      */
     public Optional<String> featureName() {
         return Optional.ofNullable(this.featureName);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public List<GetFeatureEngineeringMaterializedFeaturesMaterializedFeature> materializedFeatures() {
         return this.materializedFeatures;
@@ -65,7 +53,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String featureName;
-        private String id;
         private List<GetFeatureEngineeringMaterializedFeaturesMaterializedFeature> materializedFeatures;
         private @Nullable Integer pageSize;
         private @Nullable GetFeatureEngineeringMaterializedFeaturesProviderConfig providerConfig;
@@ -73,7 +60,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
         public Builder(GetFeatureEngineeringMaterializedFeaturesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.featureName = defaults.featureName;
-    	      this.id = defaults.id;
     	      this.materializedFeatures = defaults.materializedFeatures;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
@@ -83,14 +69,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
         public Builder featureName(@Nullable String featureName) {
 
             this.featureName = featureName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeaturesResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -119,7 +97,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
         public GetFeatureEngineeringMaterializedFeaturesResult build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeaturesResult();
             _resultValue.featureName = featureName;
-            _resultValue.id = id;
             _resultValue.materializedFeatures = materializedFeatures;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;

@@ -112,10 +112,6 @@ export interface GetWorkspaceSettingV2Result {
      */
     readonly effectiveStringVal: outputs.GetWorkspaceSettingV2EffectiveStringVal;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      */
     readonly integerVal: outputs.GetWorkspaceSettingV2IntegerVal;

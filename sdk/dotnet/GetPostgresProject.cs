@@ -180,10 +180,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
         /// Allows overriding branch protection. These settings only apply at creation time
         /// and do not affect resources created after project creation
@@ -234,8 +230,6 @@ namespace Pulumi.Databricks
 
             string deleteTime,
 
-            string id,
-
             Outputs.GetPostgresProjectInitialBranchSpecResult initialBranchSpec,
 
             Outputs.GetPostgresProjectInitialEndpointSpecResult initialEndpointSpec,
@@ -258,7 +252,6 @@ namespace Pulumi.Databricks
         {
             CreateTime = createTime;
             DeleteTime = deleteTime;
-            Id = id;
             InitialBranchSpec = initialBranchSpec;
             InitialEndpointSpec = initialEndpointSpec;
             Name = name;

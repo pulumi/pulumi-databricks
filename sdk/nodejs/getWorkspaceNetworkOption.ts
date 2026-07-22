@@ -48,10 +48,6 @@ export interface GetWorkspaceNetworkOptionArgs {
  */
 export interface GetWorkspaceNetworkOptionResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The network policy ID to apply to the workspace. This controls the network access rules
      * for all serverless compute resources in the workspace. Each workspace can only be
      * linked to one policy at a time. If no policy is explicitly assigned,

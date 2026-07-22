@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetServicePrincipalFederationPoliciesPolicy;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,11 +14,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServicePrincipalFederationPoliciesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private List<GetServicePrincipalFederationPoliciesPolicy> policies;
     /**
@@ -29,13 +23,6 @@ public final class GetServicePrincipalFederationPoliciesResult {
     private Integer servicePrincipalId;
 
     private GetServicePrincipalFederationPoliciesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -59,27 +46,17 @@ public final class GetServicePrincipalFederationPoliciesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private List<GetServicePrincipalFederationPoliciesPolicy> policies;
         private Integer servicePrincipalId;
         public Builder() {}
         public Builder(GetServicePrincipalFederationPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.policies = defaults.policies;
     	      this.servicePrincipalId = defaults.servicePrincipalId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetServicePrincipalFederationPoliciesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -107,7 +84,6 @@ public final class GetServicePrincipalFederationPoliciesResult {
         }
         public GetServicePrincipalFederationPoliciesResult build() {
             final var _resultValue = new GetServicePrincipalFederationPoliciesResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.policies = policies;
             _resultValue.servicePrincipalId = servicePrincipalId;

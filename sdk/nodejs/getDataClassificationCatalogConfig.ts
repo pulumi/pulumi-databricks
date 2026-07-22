@@ -73,10 +73,6 @@ export interface GetDataClassificationCatalogConfigResult {
      */
     readonly excludedSchemas: outputs.GetDataClassificationCatalogConfigExcludedSchemas;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
      * If specified, only listed schemas will be scanned.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.

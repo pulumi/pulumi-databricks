@@ -28,10 +28,7 @@ class GetPostgresProjectsResult:
     """
     A collection of values returned by getPostgresProjects.
     """
-    def __init__(__self__, id=None, page_size=None, projects=None, provider_config=None, show_deleted=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, projects=None, provider_config=None, show_deleted=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -44,14 +41,6 @@ class GetPostgresProjectsResult:
         if show_deleted and not isinstance(show_deleted, bool):
             raise TypeError("Expected argument 'show_deleted' to be a bool")
         pulumi.set(__self__, "show_deleted", show_deleted)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -80,7 +69,6 @@ class AwaitableGetPostgresProjectsResult(GetPostgresProjectsResult):
         if False:
             yield self
         return GetPostgresProjectsResult(
-            id=self.id,
             page_size=self.page_size,
             projects=self.projects,
             provider_config=self.provider_config,
@@ -125,7 +113,6 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresProjects:getPostgresProjects', __args__, opts=opts, typ=GetPostgresProjectsResult).value
 
     return AwaitableGetPostgresProjectsResult(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         projects=pulumi.get(__ret__, 'projects'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
@@ -167,7 +154,6 @@ def get_postgres_projects_output(page_size: pulumi.Input[Optional[Optional[_buil
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresProjects:getPostgresProjects', __args__, opts=opts, typ=GetPostgresProjectsResult)
     return __ret__.apply(lambda __response__: GetPostgresProjectsResult(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         projects=pulumi.get(__response__, 'projects'),
         provider_config=pulumi.get(__response__, 'provider_config'),

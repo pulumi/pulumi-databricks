@@ -38,10 +38,6 @@ export interface GetAppSpacesArgs {
  * A collection of values returned by getAppSpaces.
  */
 export interface GetAppSpacesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetAppSpacesProviderConfig;
     readonly spaces: outputs.GetAppSpacesSpace[];

@@ -104,10 +104,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CatalogName;
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeaturesFeatureResult> Features;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetFeatureEngineeringFeaturesProviderConfigResult? ProviderConfig;
         /// <summary>
@@ -121,8 +117,6 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetFeatureEngineeringFeaturesFeatureResult> features,
 
-            string id,
-
             int? pageSize,
 
             Outputs.GetFeatureEngineeringFeaturesProviderConfigResult? providerConfig,
@@ -131,7 +125,6 @@ namespace Pulumi.Databricks
         {
             CatalogName = catalogName;
             Features = features;
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             SchemaName = schemaName;

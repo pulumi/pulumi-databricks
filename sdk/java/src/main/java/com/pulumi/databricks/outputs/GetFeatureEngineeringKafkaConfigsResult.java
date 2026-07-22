@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigsKafkaConfi
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringKafkaConfigsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetFeatureEngineeringKafkaConfigsKafkaConfig> kafkaConfigs;
     private @Nullable Integer pageSize;
     private @Nullable GetFeatureEngineeringKafkaConfigsProviderConfig providerConfig;
 
     private GetFeatureEngineeringKafkaConfigsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetFeatureEngineeringKafkaConfigsKafkaConfig> kafkaConfigs() {
         return this.kafkaConfigs;
     }
@@ -52,27 +39,17 @@ public final class GetFeatureEngineeringKafkaConfigsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetFeatureEngineeringKafkaConfigsKafkaConfig> kafkaConfigs;
         private @Nullable Integer pageSize;
         private @Nullable GetFeatureEngineeringKafkaConfigsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetFeatureEngineeringKafkaConfigsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.kafkaConfigs = defaults.kafkaConfigs;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder kafkaConfigs(List<GetFeatureEngineeringKafkaConfigsKafkaConfig> kafkaConfigs) {
             if (kafkaConfigs == null) {
@@ -98,7 +75,6 @@ public final class GetFeatureEngineeringKafkaConfigsResult {
         }
         public GetFeatureEngineeringKafkaConfigsResult build() {
             final var _resultValue = new GetFeatureEngineeringKafkaConfigsResult();
-            _resultValue.id = id;
             _resultValue.kafkaConfigs = kafkaConfigs;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;

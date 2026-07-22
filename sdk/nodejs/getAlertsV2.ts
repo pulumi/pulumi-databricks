@@ -54,10 +54,6 @@ export interface GetAlertsV2Args {
  */
 export interface GetAlertsV2Result {
     readonly alerts: outputs.GetAlertsV2Alert[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetAlertsV2ProviderConfig;
 }

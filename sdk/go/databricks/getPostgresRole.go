@@ -70,8 +70,6 @@ type LookupPostgresRoleArgs struct {
 type LookupPostgresRoleResult struct {
 	// (string)
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Output only. The full resource path of the role.
 	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
 	Name string `pulumi:"name"`
@@ -129,11 +127,6 @@ func (o LookupPostgresRoleResultOutput) ToLookupPostgresRoleResultOutputWithCont
 // (string)
 func (o LookupPostgresRoleResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresRoleResult) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresRoleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Output only. The full resource path of the role.

@@ -74,8 +74,6 @@ type LookupEnvironmentsWorkspaceBaseEnvironmentResult struct {
 	EffectiveBaseEnvironmentType string `pulumi:"effectiveBaseEnvironmentType"`
 	// (string) - The WSFS or UC Volumes path to the environment YAML file
 	Filepath string `pulumi:"filepath"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (boolean) - Whether this is the default environment for the workspace
 	IsDefault bool `pulumi:"isDefault"`
 	// (string) - User ID of the last user who updated the environment
@@ -158,11 +156,6 @@ func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) EffectiveBaseEnv
 // (string) - The WSFS or UC Volumes path to the environment YAML file
 func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) Filepath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.Filepath }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (boolean) - Whether this is the default environment for the workspace

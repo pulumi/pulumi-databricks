@@ -61,10 +61,6 @@ export interface GetBudgetPoliciesArgs {
  */
 export interface GetBudgetPoliciesResult {
     readonly filterBy?: outputs.GetBudgetPoliciesFilterBy;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly policies: outputs.GetBudgetPoliciesPolicy[];
     readonly sortSpec?: outputs.GetBudgetPoliciesSortSpec;

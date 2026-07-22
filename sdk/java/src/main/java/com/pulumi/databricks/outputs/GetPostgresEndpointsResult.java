@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresEndpointsResult {
     private List<GetPostgresEndpointsEndpoint> endpoints;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     /**
      * @return (string) - The branch containing this endpoint (API resource hierarchy).
@@ -34,13 +29,6 @@ public final class GetPostgresEndpointsResult {
     private GetPostgresEndpointsResult() {}
     public List<GetPostgresEndpointsEndpoint> endpoints() {
         return this.endpoints;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -67,7 +55,6 @@ public final class GetPostgresEndpointsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPostgresEndpointsEndpoint> endpoints;
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         private @Nullable GetPostgresEndpointsProviderConfig providerConfig;
@@ -75,7 +62,6 @@ public final class GetPostgresEndpointsResult {
         public Builder(GetPostgresEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoints = defaults.endpoints;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -91,14 +77,6 @@ public final class GetPostgresEndpointsResult {
         }
         public Builder endpoints(GetPostgresEndpointsEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresEndpointsResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
@@ -123,7 +101,6 @@ public final class GetPostgresEndpointsResult {
         public GetPostgresEndpointsResult build() {
             final var _resultValue = new GetPostgresEndpointsResult();
             _resultValue.endpoints = endpoints;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

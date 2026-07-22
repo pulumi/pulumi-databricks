@@ -163,10 +163,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string GitRepo;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
         /// </summary>
         public readonly Outputs.GetAppsSettingsCustomTemplateManifestResult Manifest;
@@ -190,8 +186,6 @@ namespace Pulumi.Databricks
 
             string gitRepo,
 
-            string id,
-
             Outputs.GetAppsSettingsCustomTemplateManifestResult manifest,
 
             string name,
@@ -204,7 +198,6 @@ namespace Pulumi.Databricks
             Description = description;
             GitProvider = gitProvider;
             GitRepo = gitRepo;
-            Id = id;
             Manifest = manifest;
             Name = name;
             Path = path;

@@ -20,11 +20,6 @@ public final class GetDataQualityRefreshResult {
      */
     private Integer endTimeMs;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
      * 
      */
@@ -68,13 +63,6 @@ public final class GetDataQualityRefreshResult {
      */
     public Integer endTimeMs() {
         return this.endTimeMs;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
@@ -139,7 +127,6 @@ public final class GetDataQualityRefreshResult {
     @CustomType.Builder
     public static final class Builder {
         private Integer endTimeMs;
-        private String id;
         private String message;
         private String objectId;
         private String objectType;
@@ -152,7 +139,6 @@ public final class GetDataQualityRefreshResult {
         public Builder(GetDataQualityRefreshResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTimeMs = defaults.endTimeMs;
-    	      this.id = defaults.id;
     	      this.message = defaults.message;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
@@ -169,14 +155,6 @@ public final class GetDataQualityRefreshResult {
               throw new MissingRequiredPropertyException("GetDataQualityRefreshResult", "endTimeMs");
             }
             this.endTimeMs = endTimeMs;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDataQualityRefreshResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -244,7 +222,6 @@ public final class GetDataQualityRefreshResult {
         public GetDataQualityRefreshResult build() {
             final var _resultValue = new GetDataQualityRefreshResult();
             _resultValue.endTimeMs = endTimeMs;
-            _resultValue.id = id;
             _resultValue.message = message;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;

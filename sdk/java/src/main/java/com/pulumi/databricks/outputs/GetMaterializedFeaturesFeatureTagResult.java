@@ -14,11 +14,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetMaterializedFeaturesFeatureTagResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string)
      * 
      */
@@ -31,13 +26,6 @@ public final class GetMaterializedFeaturesFeatureTagResult {
     private String value;
 
     private GetMaterializedFeaturesFeatureTagResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return (string)
      * 
@@ -65,27 +53,17 @@ public final class GetMaterializedFeaturesFeatureTagResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String key;
         private @Nullable GetMaterializedFeaturesFeatureTagProviderConfig providerConfig;
         private String value;
         public Builder() {}
         public Builder(GetMaterializedFeaturesFeatureTagResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.key = defaults.key;
     	      this.providerConfig = defaults.providerConfig;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder key(String key) {
             if (key == null) {
@@ -110,7 +88,6 @@ public final class GetMaterializedFeaturesFeatureTagResult {
         }
         public GetMaterializedFeaturesFeatureTagResult build() {
             final var _resultValue = new GetMaterializedFeaturesFeatureTagResult();
-            _resultValue.id = id;
             _resultValue.key = key;
             _resultValue.providerConfig = providerConfig;
             _resultValue.value = value;

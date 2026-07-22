@@ -55,10 +55,6 @@ export interface GetExternalMetadatasArgs {
  */
 export interface GetExternalMetadatasResult {
     readonly externalMetadatas: outputs.GetExternalMetadatasExternalMetadata[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetExternalMetadatasProviderConfig;
 }

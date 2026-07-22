@@ -21,11 +21,6 @@ public final class GetDashboardsResult {
      * 
      */
     private List<GetDashboardsDashboard> dashboards;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable GetDashboardsProviderConfig providerConfig;
 
     private GetDashboardsResult() {}
@@ -38,13 +33,6 @@ public final class GetDashboardsResult {
      */
     public List<GetDashboardsDashboard> dashboards() {
         return this.dashboards;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<GetDashboardsProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -61,14 +49,12 @@ public final class GetDashboardsResult {
     public static final class Builder {
         private @Nullable String dashboardNameContains;
         private List<GetDashboardsDashboard> dashboards;
-        private String id;
         private @Nullable GetDashboardsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDashboardsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dashboardNameContains = defaults.dashboardNameContains;
     	      this.dashboards = defaults.dashboards;
-    	      this.id = defaults.id;
     	      this.providerConfig = defaults.providerConfig;
         }
 
@@ -90,14 +76,6 @@ public final class GetDashboardsResult {
             return dashboards(List.of(dashboards));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDashboardsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder providerConfig(@Nullable GetDashboardsProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -107,7 +85,6 @@ public final class GetDashboardsResult {
             final var _resultValue = new GetDashboardsResult();
             _resultValue.dashboardNameContains = dashboardNameContains;
             _resultValue.dashboards = dashboards;
-            _resultValue.id = id;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }

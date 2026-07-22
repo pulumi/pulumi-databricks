@@ -120,10 +120,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAiSearchIndexesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetAiSearchIndexesIndexResult> Indexes;
         public readonly int? PageSize;
         public readonly string Parent;
@@ -131,8 +127,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetAiSearchIndexesResult(
-            string id,
-
             ImmutableArray<Outputs.GetAiSearchIndexesIndexResult> indexes,
 
             int? pageSize,
@@ -141,7 +135,6 @@ namespace Pulumi.Databricks
 
             Outputs.GetAiSearchIndexesProviderConfigResult? providerConfig)
         {
-            Id = id;
             Indexes = indexes;
             PageSize = pageSize;
             Parent = parent;

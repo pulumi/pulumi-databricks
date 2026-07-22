@@ -52,10 +52,6 @@ export interface GetAccountSettingUserPreferenceV2Result {
      */
     readonly effectiveStringVal: outputs.GetAccountSettingUserPreferenceV2EffectiveStringVal;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Name of the setting
      */
     readonly name: string;

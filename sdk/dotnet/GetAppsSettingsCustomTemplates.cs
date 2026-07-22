@@ -150,25 +150,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAppsSettingsCustomTemplatesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetAppsSettingsCustomTemplatesProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetAppsSettingsCustomTemplatesTemplateResult> Templates;
 
         [OutputConstructor]
         private GetAppsSettingsCustomTemplatesResult(
-            string id,
-
             int? pageSize,
 
             Outputs.GetAppsSettingsCustomTemplatesProviderConfigResult? providerConfig,
 
             ImmutableArray<Outputs.GetAppsSettingsCustomTemplatesTemplateResult> templates)
         {
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             Templates = templates;

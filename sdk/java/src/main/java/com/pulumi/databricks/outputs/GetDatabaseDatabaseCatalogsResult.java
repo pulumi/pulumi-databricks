@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseDatabaseCatalogsResult {
     private List<GetDatabaseDatabaseCatalogsDatabaseCatalog> databaseCatalogs;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String instanceName;
     private @Nullable Integer pageSize;
     private @Nullable GetDatabaseDatabaseCatalogsProviderConfig providerConfig;
@@ -29,13 +24,6 @@ public final class GetDatabaseDatabaseCatalogsResult {
     private GetDatabaseDatabaseCatalogsResult() {}
     public List<GetDatabaseDatabaseCatalogsDatabaseCatalog> databaseCatalogs() {
         return this.databaseCatalogs;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public String instanceName() {
         return this.instanceName;
@@ -57,7 +45,6 @@ public final class GetDatabaseDatabaseCatalogsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetDatabaseDatabaseCatalogsDatabaseCatalog> databaseCatalogs;
-        private String id;
         private String instanceName;
         private @Nullable Integer pageSize;
         private @Nullable GetDatabaseDatabaseCatalogsProviderConfig providerConfig;
@@ -65,7 +52,6 @@ public final class GetDatabaseDatabaseCatalogsResult {
         public Builder(GetDatabaseDatabaseCatalogsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseCatalogs = defaults.databaseCatalogs;
-    	      this.id = defaults.id;
     	      this.instanceName = defaults.instanceName;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
@@ -81,14 +67,6 @@ public final class GetDatabaseDatabaseCatalogsResult {
         }
         public Builder databaseCatalogs(GetDatabaseDatabaseCatalogsDatabaseCatalog... databaseCatalogs) {
             return databaseCatalogs(List.of(databaseCatalogs));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogsResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
@@ -113,7 +91,6 @@ public final class GetDatabaseDatabaseCatalogsResult {
         public GetDatabaseDatabaseCatalogsResult build() {
             final var _resultValue = new GetDatabaseDatabaseCatalogsResult();
             _resultValue.databaseCatalogs = databaseCatalogs;
-            _resultValue.id = id;
             _resultValue.instanceName = instanceName;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;

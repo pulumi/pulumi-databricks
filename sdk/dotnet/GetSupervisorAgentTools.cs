@@ -89,10 +89,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetSupervisorAgentToolsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly string Parent;
         public readonly Outputs.GetSupervisorAgentToolsProviderConfigResult? ProviderConfig;
@@ -100,8 +96,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetSupervisorAgentToolsResult(
-            string id,
-
             int? pageSize,
 
             string parent,
@@ -110,7 +104,6 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetSupervisorAgentToolsToolResult> tools)
         {
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
             ProviderConfig = providerConfig;

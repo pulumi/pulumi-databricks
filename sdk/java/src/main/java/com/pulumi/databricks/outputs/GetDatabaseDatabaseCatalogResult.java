@@ -30,11 +30,6 @@ public final class GetDatabaseDatabaseCatalogResult {
      */
     private String databaseName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The name of the catalog in UC
      * 
      */
@@ -69,13 +64,6 @@ public final class GetDatabaseDatabaseCatalogResult {
         return this.databaseName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - The name of the catalog in UC
      * 
      */
@@ -105,7 +93,6 @@ public final class GetDatabaseDatabaseCatalogResult {
         private Boolean createDatabaseIfNotExists;
         private String databaseInstanceName;
         private String databaseName;
-        private String id;
         private String name;
         private @Nullable GetDatabaseDatabaseCatalogProviderConfig providerConfig;
         private String uid;
@@ -115,7 +102,6 @@ public final class GetDatabaseDatabaseCatalogResult {
     	      this.createDatabaseIfNotExists = defaults.createDatabaseIfNotExists;
     	      this.databaseInstanceName = defaults.databaseInstanceName;
     	      this.databaseName = defaults.databaseName;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.uid = defaults.uid;
@@ -146,14 +132,6 @@ public final class GetDatabaseDatabaseCatalogResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogResult", "name");
@@ -180,7 +158,6 @@ public final class GetDatabaseDatabaseCatalogResult {
             _resultValue.createDatabaseIfNotExists = createDatabaseIfNotExists;
             _resultValue.databaseInstanceName = databaseInstanceName;
             _resultValue.databaseName = databaseName;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.uid = uid;

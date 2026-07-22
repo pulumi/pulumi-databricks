@@ -33,11 +33,6 @@ public final class GetShareResult {
     private String createdBy;
     private String effectiveOwner;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Full name of the object being shared.
      * 
      */
@@ -78,13 +73,6 @@ public final class GetShareResult {
     }
     public String effectiveOwner() {
         return this.effectiveOwner;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Full name of the object being shared.
@@ -132,7 +120,6 @@ public final class GetShareResult {
         private Integer createdAt;
         private String createdBy;
         private String effectiveOwner;
-        private String id;
         private @Nullable String name;
         private @Nullable List<GetShareObject> objects;
         private @Nullable String owner;
@@ -148,7 +135,6 @@ public final class GetShareResult {
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.effectiveOwner = defaults.effectiveOwner;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.objects = defaults.objects;
     	      this.owner = defaults.owner;
@@ -187,14 +173,6 @@ public final class GetShareResult {
               throw new MissingRequiredPropertyException("GetShareResult", "effectiveOwner");
             }
             this.effectiveOwner = effectiveOwner;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetShareResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -260,7 +238,6 @@ public final class GetShareResult {
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.effectiveOwner = effectiveOwner;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.objects = objects;
             _resultValue.owner = owner;

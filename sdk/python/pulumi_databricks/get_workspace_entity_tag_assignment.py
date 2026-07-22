@@ -28,16 +28,13 @@ class GetWorkspaceEntityTagAssignmentResult:
     """
     A collection of values returned by getWorkspaceEntityTagAssignment.
     """
-    def __init__(__self__, entity_id=None, entity_type=None, id=None, provider_config=None, tag_key=None, tag_value=None):
+    def __init__(__self__, entity_id=None, entity_type=None, provider_config=None, tag_key=None, tag_value=None):
         if entity_id and not isinstance(entity_id, str):
             raise TypeError("Expected argument 'entity_id' to be a str")
         pulumi.set(__self__, "entity_id", entity_id)
         if entity_type and not isinstance(entity_type, str):
             raise TypeError("Expected argument 'entity_type' to be a str")
         pulumi.set(__self__, "entity_type", entity_type)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -63,14 +60,6 @@ class GetWorkspaceEntityTagAssignmentResult:
         (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -102,7 +91,6 @@ class AwaitableGetWorkspaceEntityTagAssignmentResult(GetWorkspaceEntityTagAssign
         return GetWorkspaceEntityTagAssignmentResult(
             entity_id=self.entity_id,
             entity_type=self.entity_type,
-            id=self.id,
             provider_config=self.provider_config,
             tag_key=self.tag_key,
             tag_value=self.tag_value)
@@ -157,7 +145,6 @@ def get_workspace_entity_tag_assignment(entity_id: Optional[_builtins.str] = Non
     return AwaitableGetWorkspaceEntityTagAssignmentResult(
         entity_id=pulumi.get(__ret__, 'entity_id'),
         entity_type=pulumi.get(__ret__, 'entity_type'),
-        id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         tag_key=pulumi.get(__ret__, 'tag_key'),
         tag_value=pulumi.get(__ret__, 'tag_value'))
@@ -209,7 +196,6 @@ def get_workspace_entity_tag_assignment_output(entity_id: pulumi.Input[Optional[
     return __ret__.apply(lambda __response__: GetWorkspaceEntityTagAssignmentResult(
         entity_id=pulumi.get(__response__, 'entity_id'),
         entity_type=pulumi.get(__response__, 'entity_type'),
-        id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         tag_key=pulumi.get(__response__, 'tag_key'),
         tag_value=pulumi.get(__response__, 'tag_value')))

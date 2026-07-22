@@ -28,10 +28,7 @@ class GetQualityMonitorsV2Result:
     """
     A collection of values returned by getQualityMonitorsV2.
     """
-    def __init__(__self__, id=None, page_size=None, provider_config=None, quality_monitors=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, provider_config=None, quality_monitors=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -41,14 +38,6 @@ class GetQualityMonitorsV2Result:
         if quality_monitors and not isinstance(quality_monitors, list):
             raise TypeError("Expected argument 'quality_monitors' to be a list")
         pulumi.set(__self__, "quality_monitors", quality_monitors)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -72,7 +61,6 @@ class AwaitableGetQualityMonitorsV2Result(GetQualityMonitorsV2Result):
         if False:
             yield self
         return GetQualityMonitorsV2Result(
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             quality_monitors=self.quality_monitors)
@@ -115,7 +103,6 @@ def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getQualityMonitorsV2:getQualityMonitorsV2', __args__, opts=opts, typ=GetQualityMonitorsV2Result).value
 
     return AwaitableGetQualityMonitorsV2Result(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         quality_monitors=pulumi.get(__ret__, 'quality_monitors'))
@@ -155,7 +142,6 @@ def get_quality_monitors_v2_output(page_size: pulumi.Input[Optional[Optional[_bu
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getQualityMonitorsV2:getQualityMonitorsV2', __args__, opts=opts, typ=GetQualityMonitorsV2Result)
     return __ret__.apply(lambda __response__: GetQualityMonitorsV2Result(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         quality_monitors=pulumi.get(__response__, 'quality_monitors')))

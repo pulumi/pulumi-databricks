@@ -73,8 +73,6 @@ type LookupAppArgs struct {
 type LookupAppResult struct {
 	// attribute - reference to another Databricks App.
 	App GetAppApp `pulumi:"app"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The name of the app to grant permission on.
 	Name           string                `pulumi:"name"`
 	ProviderConfig *GetAppProviderConfig `pulumi:"providerConfig"`
@@ -118,11 +116,6 @@ func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Co
 // attribute - reference to another Databricks App.
 func (o LookupAppResultOutput) App() GetAppAppOutput {
 	return o.ApplyT(func(v LookupAppResult) GetAppApp { return v.App }).(GetAppAppOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAppResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the app to grant permission on.

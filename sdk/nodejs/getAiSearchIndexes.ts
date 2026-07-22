@@ -51,10 +51,6 @@ export interface GetAiSearchIndexesArgs {
  * A collection of values returned by getAiSearchIndexes.
  */
 export interface GetAiSearchIndexesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly indexes: outputs.GetAiSearchIndexesIndex[];
     readonly pageSize?: number;
     readonly parent: string;

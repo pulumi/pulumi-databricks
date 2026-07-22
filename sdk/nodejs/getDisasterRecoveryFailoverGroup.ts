@@ -64,10 +64,6 @@ export interface GetDisasterRecoveryFailoverGroupResult {
      */
     readonly etag: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      */

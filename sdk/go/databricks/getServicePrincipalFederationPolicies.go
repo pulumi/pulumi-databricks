@@ -65,8 +65,6 @@ type GetServicePrincipalFederationPoliciesArgs struct {
 
 // A collection of values returned by getServicePrincipalFederationPolicies.
 type GetServicePrincipalFederationPoliciesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                                        `pulumi:"id"`
 	PageSize *int                                          `pulumi:"pageSize"`
 	Policies []GetServicePrincipalFederationPoliciesPolicy `pulumi:"policies"`
 	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
@@ -106,11 +104,6 @@ func (o GetServicePrincipalFederationPoliciesResultOutput) ToGetServicePrincipal
 
 func (o GetServicePrincipalFederationPoliciesResultOutput) ToGetServicePrincipalFederationPoliciesResultOutputWithContext(ctx context.Context) GetServicePrincipalFederationPoliciesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetServicePrincipalFederationPoliciesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetServicePrincipalFederationPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {

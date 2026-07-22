@@ -128,10 +128,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         /// </summary>
         public readonly string IndexSubtype;
@@ -163,8 +159,6 @@ namespace Pulumi.Databricks
 
             string endpoint,
 
-            string id,
-
             string indexSubtype,
 
             string indexType,
@@ -181,7 +175,6 @@ namespace Pulumi.Databricks
             DeltaSyncIndexSpec = deltaSyncIndexSpec;
             DirectAccessIndexSpec = directAccessIndexSpec;
             Endpoint = endpoint;
-            Id = id;
             IndexSubtype = indexSubtype;
             IndexType = indexType;
             Name = name;

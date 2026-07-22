@@ -54,10 +54,6 @@ export interface GetQualityMonitorsV2Args {
  * A collection of values returned by getQualityMonitorsV2.
  */
 export interface GetQualityMonitorsV2Result {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetQualityMonitorsV2ProviderConfig;
     readonly qualityMonitors: outputs.GetQualityMonitorsV2QualityMonitor[];

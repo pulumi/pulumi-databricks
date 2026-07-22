@@ -74,9 +74,7 @@ type LookupRegisteredModelArgs struct {
 // A collection of values returned by getRegisteredModel.
 type LookupRegisteredModelResult struct {
 	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-	FullName string `pulumi:"fullName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string `pulumi:"id"`
+	FullName       string `pulumi:"fullName"`
 	IncludeAliases *bool  `pulumi:"includeAliases"`
 	IncludeBrowse  *bool  `pulumi:"includeBrowse"`
 	// block with information about the model in Unity Catalog:
@@ -128,11 +126,6 @@ func (o LookupRegisteredModelResultOutput) ToLookupRegisteredModelResultOutputWi
 // The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 func (o LookupRegisteredModelResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredModelResult) string { return v.FullName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupRegisteredModelResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegisteredModelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupRegisteredModelResultOutput) IncludeAliases() pulumi.BoolPtrOutput {

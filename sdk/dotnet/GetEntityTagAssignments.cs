@@ -254,10 +254,6 @@ namespace Pulumi.Databricks
         /// (string) - The type of the entity to which the tag is assigned
         /// </summary>
         public readonly string EntityType;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? MaxResults;
         public readonly Outputs.GetEntityTagAssignmentsProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetEntityTagAssignmentsTagAssignmentResult> TagAssignments;
@@ -268,8 +264,6 @@ namespace Pulumi.Databricks
 
             string entityType,
 
-            string id,
-
             int? maxResults,
 
             Outputs.GetEntityTagAssignmentsProviderConfigResult? providerConfig,
@@ -278,7 +272,6 @@ namespace Pulumi.Databricks
         {
             EntityName = entityName;
             EntityType = entityType;
-            Id = id;
             MaxResults = maxResults;
             ProviderConfig = providerConfig;
             TagAssignments = tagAssignments;

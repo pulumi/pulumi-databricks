@@ -28,10 +28,7 @@ class GetAiSearchIndexesResult:
     """
     A collection of values returned by getAiSearchIndexes.
     """
-    def __init__(__self__, id=None, indexes=None, page_size=None, parent=None, provider_config=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, indexes=None, page_size=None, parent=None, provider_config=None):
         if indexes and not isinstance(indexes, list):
             raise TypeError("Expected argument 'indexes' to be a list")
         pulumi.set(__self__, "indexes", indexes)
@@ -44,14 +41,6 @@ class GetAiSearchIndexesResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -80,7 +69,6 @@ class AwaitableGetAiSearchIndexesResult(GetAiSearchIndexesResult):
         if False:
             yield self
         return GetAiSearchIndexesResult(
-            id=self.id,
             indexes=self.indexes,
             page_size=self.page_size,
             parent=self.parent,
@@ -118,7 +106,6 @@ def get_ai_search_indexes(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAiSearchIndexes:getAiSearchIndexes', __args__, opts=opts, typ=GetAiSearchIndexesResult).value
 
     return AwaitableGetAiSearchIndexesResult(
-        id=pulumi.get(__ret__, 'id'),
         indexes=pulumi.get(__ret__, 'indexes'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
@@ -153,7 +140,6 @@ def get_ai_search_indexes_output(page_size: pulumi.Input[Optional[Optional[_buil
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAiSearchIndexes:getAiSearchIndexes', __args__, opts=opts, typ=GetAiSearchIndexesResult)
     return __ret__.apply(lambda __response__: GetAiSearchIndexesResult(
-        id=pulumi.get(__response__, 'id'),
         indexes=pulumi.get(__response__, 'indexes'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent'),

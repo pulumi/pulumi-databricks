@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetKnowledgeAssistantsKnowledgeAssistant;
 import com.pulumi.databricks.outputs.GetKnowledgeAssistantsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKnowledgeAssistantsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetKnowledgeAssistantsKnowledgeAssistant> knowledgeAssistants;
     private @Nullable Integer pageSize;
     private @Nullable GetKnowledgeAssistantsProviderConfig providerConfig;
 
     private GetKnowledgeAssistantsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetKnowledgeAssistantsKnowledgeAssistant> knowledgeAssistants() {
         return this.knowledgeAssistants;
     }
@@ -52,27 +39,17 @@ public final class GetKnowledgeAssistantsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetKnowledgeAssistantsKnowledgeAssistant> knowledgeAssistants;
         private @Nullable Integer pageSize;
         private @Nullable GetKnowledgeAssistantsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetKnowledgeAssistantsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.knowledgeAssistants = defaults.knowledgeAssistants;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetKnowledgeAssistantsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder knowledgeAssistants(List<GetKnowledgeAssistantsKnowledgeAssistant> knowledgeAssistants) {
             if (knowledgeAssistants == null) {
@@ -98,7 +75,6 @@ public final class GetKnowledgeAssistantsResult {
         }
         public GetKnowledgeAssistantsResult build() {
             final var _resultValue = new GetKnowledgeAssistantsResult();
-            _resultValue.id = id;
             _resultValue.knowledgeAssistants = knowledgeAssistants;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;

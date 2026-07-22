@@ -63,10 +63,6 @@ export interface GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
      */
     readonly gpuWorkspaceBaseEnvironment: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The resource name of this singleton resource.
      * Format: default-workspace-base-environment
      */

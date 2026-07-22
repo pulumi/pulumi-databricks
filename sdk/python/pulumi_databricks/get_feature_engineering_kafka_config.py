@@ -28,7 +28,7 @@ class GetFeatureEngineeringKafkaConfigResult:
     """
     A collection of values returned by getFeatureEngineeringKafkaConfig.
     """
-    def __init__(__self__, auth_config=None, backfill_source=None, bootstrap_servers=None, extra_options=None, id=None, ingestion_config=None, key_schema=None, name=None, provider_config=None, subscription_mode=None, value_schema=None):
+    def __init__(__self__, auth_config=None, backfill_source=None, bootstrap_servers=None, extra_options=None, ingestion_config=None, key_schema=None, name=None, provider_config=None, subscription_mode=None, value_schema=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -41,9 +41,6 @@ class GetFeatureEngineeringKafkaConfigResult:
         if extra_options and not isinstance(extra_options, dict):
             raise TypeError("Expected argument 'extra_options' to be a dict")
         pulumi.set(__self__, "extra_options", extra_options)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if ingestion_config and not isinstance(ingestion_config, dict):
             raise TypeError("Expected argument 'ingestion_config' to be a dict")
         pulumi.set(__self__, "ingestion_config", ingestion_config)
@@ -96,14 +93,6 @@ class GetFeatureEngineeringKafkaConfigResult:
         (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         """
         return pulumi.get(self, "extra_options")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="ingestionConfig")
@@ -163,7 +152,6 @@ class AwaitableGetFeatureEngineeringKafkaConfigResult(GetFeatureEngineeringKafka
             backfill_source=self.backfill_source,
             bootstrap_servers=self.bootstrap_servers,
             extra_options=self.extra_options,
-            id=self.id,
             ingestion_config=self.ingestion_config,
             key_schema=self.key_schema,
             name=self.name,
@@ -194,7 +182,6 @@ def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
         backfill_source=pulumi.get(__ret__, 'backfill_source'),
         bootstrap_servers=pulumi.get(__ret__, 'bootstrap_servers'),
         extra_options=pulumi.get(__ret__, 'extra_options'),
-        id=pulumi.get(__ret__, 'id'),
         ingestion_config=pulumi.get(__ret__, 'ingestion_config'),
         key_schema=pulumi.get(__ret__, 'key_schema'),
         name=pulumi.get(__ret__, 'name'),
@@ -222,7 +209,6 @@ def get_feature_engineering_kafka_config_output(name: pulumi.Input[Optional[_bui
         backfill_source=pulumi.get(__response__, 'backfill_source'),
         bootstrap_servers=pulumi.get(__response__, 'bootstrap_servers'),
         extra_options=pulumi.get(__response__, 'extra_options'),
-        id=pulumi.get(__response__, 'id'),
         ingestion_config=pulumi.get(__response__, 'ingestion_config'),
         key_schema=pulumi.get(__response__, 'key_schema'),
         name=pulumi.get(__response__, 'name'),

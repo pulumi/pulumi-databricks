@@ -21,11 +21,6 @@ public final class GetSecretUcsResult {
      * 
      */
     private @Nullable String catalogName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetSecretUcsProviderConfig providerConfig;
     /**
@@ -42,13 +37,6 @@ public final class GetSecretUcsResult {
      */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -77,7 +65,6 @@ public final class GetSecretUcsResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String catalogName;
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetSecretUcsProviderConfig providerConfig;
         private @Nullable String schemaName;
@@ -86,7 +73,6 @@ public final class GetSecretUcsResult {
         public Builder(GetSecretUcsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalogName = defaults.catalogName;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
@@ -97,14 +83,6 @@ public final class GetSecretUcsResult {
         public Builder catalogName(@Nullable String catalogName) {
 
             this.catalogName = catalogName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSecretUcsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -139,7 +117,6 @@ public final class GetSecretUcsResult {
         public GetSecretUcsResult build() {
             final var _resultValue = new GetSecretUcsResult();
             _resultValue.catalogName = catalogName;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;

@@ -28,13 +28,10 @@ class GetWarehousesDefaultWarehouseOverrideResult:
     """
     A collection of values returned by getWarehousesDefaultWarehouseOverride.
     """
-    def __init__(__self__, default_warehouse_override_id=None, id=None, name=None, provider_config=None, type=None, warehouse_id=None):
+    def __init__(__self__, default_warehouse_override_id=None, name=None, provider_config=None, type=None, warehouse_id=None):
         if default_warehouse_override_id and not isinstance(default_warehouse_override_id, str):
             raise TypeError("Expected argument 'default_warehouse_override_id' to be a str")
         pulumi.set(__self__, "default_warehouse_override_id", default_warehouse_override_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -55,14 +52,6 @@ class GetWarehousesDefaultWarehouseOverrideResult:
         (string) - The ID component of the resource name (user ID)
         """
         return pulumi.get(self, "default_warehouse_override_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -103,7 +92,6 @@ class AwaitableGetWarehousesDefaultWarehouseOverrideResult(GetWarehousesDefaultW
             yield self
         return GetWarehousesDefaultWarehouseOverrideResult(
             default_warehouse_override_id=self.default_warehouse_override_id,
-            id=self.id,
             name=self.name,
             provider_config=self.provider_config,
             type=self.type,
@@ -153,7 +141,6 @@ def get_warehouses_default_warehouse_override(name: Optional[_builtins.str] = No
 
     return AwaitableGetWarehousesDefaultWarehouseOverrideResult(
         default_warehouse_override_id=pulumi.get(__ret__, 'default_warehouse_override_id'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         type=pulumi.get(__ret__, 'type'),
@@ -200,7 +187,6 @@ def get_warehouses_default_warehouse_override_output(name: pulumi.Input[Optional
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride', __args__, opts=opts, typ=GetWarehousesDefaultWarehouseOverrideResult)
     return __ret__.apply(lambda __response__: GetWarehousesDefaultWarehouseOverrideResult(
         default_warehouse_override_id=pulumi.get(__response__, 'default_warehouse_override_id'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         type=pulumi.get(__response__, 'type'),

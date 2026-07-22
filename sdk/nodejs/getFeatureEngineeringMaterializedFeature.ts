@@ -49,10 +49,6 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      */
     readonly featureName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
      */
     readonly isOnline: boolean;

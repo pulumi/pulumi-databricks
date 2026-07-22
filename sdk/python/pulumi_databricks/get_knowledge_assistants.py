@@ -28,10 +28,7 @@ class GetKnowledgeAssistantsResult:
     """
     A collection of values returned by getKnowledgeAssistants.
     """
-    def __init__(__self__, id=None, knowledge_assistants=None, page_size=None, provider_config=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, knowledge_assistants=None, page_size=None, provider_config=None):
         if knowledge_assistants and not isinstance(knowledge_assistants, list):
             raise TypeError("Expected argument 'knowledge_assistants' to be a list")
         pulumi.set(__self__, "knowledge_assistants", knowledge_assistants)
@@ -41,14 +38,6 @@ class GetKnowledgeAssistantsResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="knowledgeAssistants")
@@ -72,7 +61,6 @@ class AwaitableGetKnowledgeAssistantsResult(GetKnowledgeAssistantsResult):
         if False:
             yield self
         return GetKnowledgeAssistantsResult(
-            id=self.id,
             knowledge_assistants=self.knowledge_assistants,
             page_size=self.page_size,
             provider_config=self.provider_config)
@@ -99,7 +87,6 @@ def get_knowledge_assistants(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getKnowledgeAssistants:getKnowledgeAssistants', __args__, opts=opts, typ=GetKnowledgeAssistantsResult).value
 
     return AwaitableGetKnowledgeAssistantsResult(
-        id=pulumi.get(__ret__, 'id'),
         knowledge_assistants=pulumi.get(__ret__, 'knowledge_assistants'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -123,7 +110,6 @@ def get_knowledge_assistants_output(page_size: pulumi.Input[Optional[Optional[_b
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getKnowledgeAssistants:getKnowledgeAssistants', __args__, opts=opts, typ=GetKnowledgeAssistantsResult)
     return __ret__.apply(lambda __response__: GetKnowledgeAssistantsResult(
-        id=pulumi.get(__response__, 'id'),
         knowledge_assistants=pulumi.get(__response__, 'knowledge_assistants'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

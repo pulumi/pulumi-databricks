@@ -201,10 +201,6 @@ namespace Pulumi.Databricks
         /// (string) - The name of the catalog where the schema and the secret reside
         /// </summary>
         public readonly string? CatalogName;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetSecretUcsProviderConfigResult? ProviderConfig;
         /// <summary>
@@ -217,8 +213,6 @@ namespace Pulumi.Databricks
         private GetSecretUcsResult(
             string? catalogName,
 
-            string id,
-
             int? pageSize,
 
             Outputs.GetSecretUcsProviderConfigResult? providerConfig,
@@ -228,7 +222,6 @@ namespace Pulumi.Databricks
             ImmutableArray<Outputs.GetSecretUcsSecretResult> secrets)
         {
             CatalogName = catalogName;
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             SchemaName = schemaName;
