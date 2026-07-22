@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetAlertsV2Alert;
 import com.pulumi.databricks.outputs.GetAlertsV2ProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,24 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertsV2Result {
     private List<GetAlertsV2Alert> alerts;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetAlertsV2ProviderConfig providerConfig;
 
     private GetAlertsV2Result() {}
     public List<GetAlertsV2Alert> alerts() {
         return this.alerts;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -53,14 +40,12 @@ public final class GetAlertsV2Result {
     @CustomType.Builder
     public static final class Builder {
         private List<GetAlertsV2Alert> alerts;
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetAlertsV2ProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetAlertsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
         }
@@ -77,14 +62,6 @@ public final class GetAlertsV2Result {
             return alerts(List.of(alerts));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAlertsV2Result", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
@@ -99,7 +76,6 @@ public final class GetAlertsV2Result {
         public GetAlertsV2Result build() {
             final var _resultValue = new GetAlertsV2Result();
             _resultValue.alerts = alerts;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;

@@ -59,10 +59,6 @@ export interface GetPostgresProjectsArgs {
  * A collection of values returned by getPostgresProjects.
  */
 export interface GetPostgresProjectsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly projects: outputs.GetPostgresProjectsProject[];
     readonly providerConfig?: outputs.GetPostgresProjectsProviderConfig;

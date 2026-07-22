@@ -42,11 +42,6 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
      */
     private String filepath;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (boolean) - Whether this is the default environment for the workspace
      * 
      */
@@ -124,13 +119,6 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
         return this.filepath;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (boolean) - Whether this is the default environment for the workspace
      * 
      */
@@ -199,7 +187,6 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
         private String displayName;
         private String effectiveBaseEnvironmentType;
         private String filepath;
-        private String id;
         private Boolean isDefault;
         private String lastUpdatedUserId;
         private String message;
@@ -217,7 +204,6 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
     	      this.displayName = defaults.displayName;
     	      this.effectiveBaseEnvironmentType = defaults.effectiveBaseEnvironmentType;
     	      this.filepath = defaults.filepath;
-    	      this.id = defaults.id;
     	      this.isDefault = defaults.isDefault;
     	      this.lastUpdatedUserId = defaults.lastUpdatedUserId;
     	      this.message = defaults.message;
@@ -274,14 +260,6 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
               throw new MissingRequiredPropertyException("GetEnvironmentsWorkspaceBaseEnvironmentResult", "filepath");
             }
             this.filepath = filepath;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEnvironmentsWorkspaceBaseEnvironmentResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -354,7 +332,6 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
             _resultValue.displayName = displayName;
             _resultValue.effectiveBaseEnvironmentType = effectiveBaseEnvironmentType;
             _resultValue.filepath = filepath;
-            _resultValue.id = id;
             _resultValue.isDefault = isDefault;
             _resultValue.lastUpdatedUserId = lastUpdatedUserId;
             _resultValue.message = message;

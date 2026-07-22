@@ -49,10 +49,6 @@ export interface GetAccountFederationPolicyResult {
      */
     readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Resource name for the federation policy. Example values include
      * `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
      * `accounts/<account-id>/servicePrincipals/<service-principal-id>/federationPolicies/my-federation-policy`

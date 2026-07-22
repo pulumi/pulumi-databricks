@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresCdfConfigsResult {
     private List<GetPostgresCdfConfigsCdfConfig> cdfConfigs;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private String parent;
     private @Nullable GetPostgresCdfConfigsProviderConfig providerConfig;
@@ -29,13 +24,6 @@ public final class GetPostgresCdfConfigsResult {
     private GetPostgresCdfConfigsResult() {}
     public List<GetPostgresCdfConfigsCdfConfig> cdfConfigs() {
         return this.cdfConfigs;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -57,7 +45,6 @@ public final class GetPostgresCdfConfigsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPostgresCdfConfigsCdfConfig> cdfConfigs;
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         private @Nullable GetPostgresCdfConfigsProviderConfig providerConfig;
@@ -65,7 +52,6 @@ public final class GetPostgresCdfConfigsResult {
         public Builder(GetPostgresCdfConfigsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cdfConfigs = defaults.cdfConfigs;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -81,14 +67,6 @@ public final class GetPostgresCdfConfigsResult {
         }
         public Builder cdfConfigs(GetPostgresCdfConfigsCdfConfig... cdfConfigs) {
             return cdfConfigs(List.of(cdfConfigs));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresCdfConfigsResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
@@ -113,7 +91,6 @@ public final class GetPostgresCdfConfigsResult {
         public GetPostgresCdfConfigsResult build() {
             final var _resultValue = new GetPostgresCdfConfigsResult();
             _resultValue.cdfConfigs = cdfConfigs;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

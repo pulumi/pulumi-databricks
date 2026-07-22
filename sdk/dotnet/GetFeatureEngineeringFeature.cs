@@ -112,10 +112,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureFunctionResult Function;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         /// The input columns from which the feature is computed
         /// </summary>
@@ -174,8 +170,6 @@ namespace Pulumi.Databricks
 
             Outputs.GetFeatureEngineeringFeatureFunctionResult function,
 
-            string id,
-
             ImmutableArray<string> inputs,
 
             Outputs.GetFeatureEngineeringFeatureLineageContextResult lineageContext,
@@ -200,7 +194,6 @@ namespace Pulumi.Databricks
             FilterCondition = filterCondition;
             FullName = fullName;
             Function = function;
-            Id = id;
             Inputs = inputs;
             LineageContext = lineageContext;
             Name = name;

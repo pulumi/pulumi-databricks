@@ -43,9 +43,7 @@ type GetPostgresRolesArgs struct {
 
 // A collection of values returned by getPostgresRoles.
 type GetPostgresRolesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
+	PageSize *int `pulumi:"pageSize"`
 	// (string) - The Branch where this Role exists.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent         string                          `pulumi:"parent"`
@@ -90,11 +88,6 @@ func (o GetPostgresRolesResultOutput) ToGetPostgresRolesResultOutput() GetPostgr
 
 func (o GetPostgresRolesResultOutput) ToGetPostgresRolesResultOutputWithContext(ctx context.Context) GetPostgresRolesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPostgresRolesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostgresRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPostgresRolesResultOutput) PageSize() pulumi.IntPtrOutput {

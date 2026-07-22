@@ -26,11 +26,6 @@ public final class GetPostgresEndpointResult {
      */
     private String endpointId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Output only. The full resource path of the endpoint.
      * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      * 
@@ -78,13 +73,6 @@ public final class GetPostgresEndpointResult {
      */
     public String endpointId() {
         return this.endpointId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - Output only. The full resource path of the endpoint.
@@ -145,7 +133,6 @@ public final class GetPostgresEndpointResult {
     public static final class Builder {
         private String createTime;
         private String endpointId;
-        private String id;
         private String name;
         private String parent;
         private @Nullable GetPostgresEndpointProviderConfig providerConfig;
@@ -158,7 +145,6 @@ public final class GetPostgresEndpointResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.endpointId = defaults.endpointId;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -182,14 +168,6 @@ public final class GetPostgresEndpointResult {
               throw new MissingRequiredPropertyException("GetPostgresEndpointResult", "endpointId");
             }
             this.endpointId = endpointId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresEndpointResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -250,7 +228,6 @@ public final class GetPostgresEndpointResult {
             final var _resultValue = new GetPostgresEndpointResult();
             _resultValue.createTime = createTime;
             _resultValue.endpointId = endpointId;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

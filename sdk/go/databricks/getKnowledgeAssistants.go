@@ -36,8 +36,6 @@ type GetKnowledgeAssistantsArgs struct {
 
 // A collection of values returned by getKnowledgeAssistants.
 type GetKnowledgeAssistantsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id                  string                                     `pulumi:"id"`
 	KnowledgeAssistants []GetKnowledgeAssistantsKnowledgeAssistant `pulumi:"knowledgeAssistants"`
 	PageSize            *int                                       `pulumi:"pageSize"`
 	ProviderConfig      *GetKnowledgeAssistantsProviderConfig      `pulumi:"providerConfig"`
@@ -79,11 +77,6 @@ func (o GetKnowledgeAssistantsResultOutput) ToGetKnowledgeAssistantsResultOutput
 
 func (o GetKnowledgeAssistantsResultOutput) ToGetKnowledgeAssistantsResultOutputWithContext(ctx context.Context) GetKnowledgeAssistantsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetKnowledgeAssistantsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKnowledgeAssistantsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetKnowledgeAssistantsResultOutput) KnowledgeAssistants() GetKnowledgeAssistantsKnowledgeAssistantArrayOutput {

@@ -249,10 +249,6 @@ namespace Pulumi.Databricks
     {
         public readonly string? DisplayNameContains;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNotificationDestinationsNotificationDestinationResult> NotificationDestinations;
@@ -263,8 +259,6 @@ namespace Pulumi.Databricks
         private GetNotificationDestinationsResult(
             string? displayNameContains,
 
-            string id,
-
             ImmutableArray<Outputs.GetNotificationDestinationsNotificationDestinationResult> notificationDestinations,
 
             Outputs.GetNotificationDestinationsProviderConfigResult? providerConfig,
@@ -272,7 +266,6 @@ namespace Pulumi.Databricks
             string? type)
         {
             DisplayNameContains = displayNameContains;
-            Id = id;
             NotificationDestinations = notificationDestinations;
             ProviderConfig = providerConfig;
             Type = type;

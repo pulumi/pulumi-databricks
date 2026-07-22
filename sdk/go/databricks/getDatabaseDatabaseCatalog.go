@@ -70,8 +70,6 @@ type LookupDatabaseDatabaseCatalogResult struct {
 	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
 	// (string) - The name of the database (in an instance) associated with the catalog
 	DatabaseName string `pulumi:"databaseName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The name of the catalog in UC
 	Name           string                                    `pulumi:"name"`
 	ProviderConfig *GetDatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
@@ -128,11 +126,6 @@ func (o LookupDatabaseDatabaseCatalogResultOutput) DatabaseInstanceName() pulumi
 // (string) - The name of the database (in an instance) associated with the catalog
 func (o LookupDatabaseDatabaseCatalogResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.DatabaseName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDatabaseDatabaseCatalogResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The name of the catalog in UC

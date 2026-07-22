@@ -71,8 +71,6 @@ type LookupAppsSettingsCustomTemplateResult struct {
 	GitProvider string `pulumi:"gitProvider"`
 	// (string) - The Git repository URL that the template resides in
 	GitRepo string `pulumi:"gitRepo"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
 	Manifest GetAppsSettingsCustomTemplateManifest `pulumi:"manifest"`
 	// (string) - Name of the App Resource
@@ -137,11 +135,6 @@ func (o LookupAppsSettingsCustomTemplateResultOutput) GitProvider() pulumi.Strin
 // (string) - The Git repository URL that the template resides in
 func (o LookupAppsSettingsCustomTemplateResultOutput) GitRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppsSettingsCustomTemplateResult) string { return v.GitRepo }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAppsSettingsCustomTemplateResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAppsSettingsCustomTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (AppManifest) - The manifest of the template. It defines fields and default values when installing the template

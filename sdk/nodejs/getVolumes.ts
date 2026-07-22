@@ -78,10 +78,6 @@ export interface GetVolumesArgs {
 export interface GetVolumesResult {
     readonly catalogName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
      */
     readonly ids: string[];

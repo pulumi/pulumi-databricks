@@ -32,8 +32,6 @@ type GetOnlineStoresArgs struct {
 
 // A collection of values returned by getOnlineStores.
 type GetOnlineStoresResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                         `pulumi:"id"`
 	OnlineStores   []GetOnlineStoresOnlineStore   `pulumi:"onlineStores"`
 	PageSize       *int                           `pulumi:"pageSize"`
 	ProviderConfig *GetOnlineStoresProviderConfig `pulumi:"providerConfig"`
@@ -73,11 +71,6 @@ func (o GetOnlineStoresResultOutput) ToGetOnlineStoresResultOutput() GetOnlineSt
 
 func (o GetOnlineStoresResultOutput) ToGetOnlineStoresResultOutputWithContext(ctx context.Context) GetOnlineStoresResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetOnlineStoresResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOnlineStoresResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetOnlineStoresResultOutput) OnlineStores() GetOnlineStoresOnlineStoreArrayOutput {

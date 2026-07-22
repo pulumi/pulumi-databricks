@@ -230,10 +230,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly bool EnableReadableSecondaries;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Name of the ref database instance
         /// </summary>
         public readonly string Name;
@@ -318,8 +314,6 @@ namespace Pulumi.Databricks
 
             bool enableReadableSecondaries,
 
-            string id,
-
             string name,
 
             int nodeCount,
@@ -359,7 +353,6 @@ namespace Pulumi.Databricks
             EffectiveUsagePolicyId = effectiveUsagePolicyId;
             EnablePgNativeLogin = enablePgNativeLogin;
             EnableReadableSecondaries = enableReadableSecondaries;
-            Id = id;
             Name = name;
             NodeCount = nodeCount;
             ParentInstanceRef = parentInstanceRef;

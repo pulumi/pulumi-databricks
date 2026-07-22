@@ -67,9 +67,7 @@ type GetAiSearchEndpointsArgs struct {
 
 // A collection of values returned by getAiSearchEndpoints.
 type GetAiSearchEndpointsResult struct {
-	Endpoints []GetAiSearchEndpointsEndpoint `pulumi:"endpoints"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                              `pulumi:"id"`
+	Endpoints      []GetAiSearchEndpointsEndpoint      `pulumi:"endpoints"`
 	PageSize       *int                                `pulumi:"pageSize"`
 	Parent         string                              `pulumi:"parent"`
 	ProviderConfig *GetAiSearchEndpointsProviderConfig `pulumi:"providerConfig"`
@@ -118,11 +116,6 @@ func (o GetAiSearchEndpointsResultOutput) ToGetAiSearchEndpointsResultOutputWith
 
 func (o GetAiSearchEndpointsResultOutput) Endpoints() GetAiSearchEndpointsEndpointArrayOutput {
 	return o.ApplyT(func(v GetAiSearchEndpointsResult) []GetAiSearchEndpointsEndpoint { return v.Endpoints }).(GetAiSearchEndpointsEndpointArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAiSearchEndpointsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchEndpointsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAiSearchEndpointsResultOutput) PageSize() pulumi.IntPtrOutput {

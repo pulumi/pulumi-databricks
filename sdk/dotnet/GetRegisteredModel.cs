@@ -205,10 +205,6 @@ namespace Pulumi.Databricks
         /// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
         /// </summary>
         public readonly string FullName;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly bool? IncludeAliases;
         public readonly bool? IncludeBrowse;
         /// <summary>
@@ -221,8 +217,6 @@ namespace Pulumi.Databricks
         private GetRegisteredModelResult(
             string fullName,
 
-            string id,
-
             bool? includeAliases,
 
             bool? includeBrowse,
@@ -232,7 +226,6 @@ namespace Pulumi.Databricks
             Outputs.GetRegisteredModelProviderConfigResult? providerConfig)
         {
             FullName = fullName;
-            Id = id;
             IncludeAliases = includeAliases;
             IncludeBrowse = includeBrowse;
             ModelInfos = modelInfos;

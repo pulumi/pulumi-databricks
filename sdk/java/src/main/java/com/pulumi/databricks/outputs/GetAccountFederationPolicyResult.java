@@ -23,11 +23,6 @@ public final class GetAccountFederationPolicyResult {
      */
     private String description;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Resource name for the federation policy. Example values include
      * `accounts/&lt;account-id&gt;/federationPolicies/my-federation-policy` for Account Federation Policies, and
      * `accounts/&lt;account-id&gt;/servicePrincipals/&lt;service-principal-id&gt;/federationPolicies/my-federation-policy`
@@ -77,13 +72,6 @@ public final class GetAccountFederationPolicyResult {
      */
     public String description() {
         return this.description;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - Resource name for the federation policy. Example values include
@@ -144,7 +132,6 @@ public final class GetAccountFederationPolicyResult {
     public static final class Builder {
         private String createTime;
         private String description;
-        private String id;
         private String name;
         private GetAccountFederationPolicyOidcPolicy oidcPolicy;
         private String policyId;
@@ -156,7 +143,6 @@ public final class GetAccountFederationPolicyResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.oidcPolicy = defaults.oidcPolicy;
     	      this.policyId = defaults.policyId;
@@ -179,14 +165,6 @@ public final class GetAccountFederationPolicyResult {
               throw new MissingRequiredPropertyException("GetAccountFederationPolicyResult", "description");
             }
             this.description = description;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountFederationPolicyResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -241,7 +219,6 @@ public final class GetAccountFederationPolicyResult {
             final var _resultValue = new GetAccountFederationPolicyResult();
             _resultValue.createTime = createTime;
             _resultValue.description = description;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.oidcPolicy = oidcPolicy;
             _resultValue.policyId = policyId;

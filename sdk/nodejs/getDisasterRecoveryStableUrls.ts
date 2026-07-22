@@ -57,10 +57,6 @@ export interface GetDisasterRecoveryStableUrlsArgs {
  * A collection of values returned by getDisasterRecoveryStableUrls.
  */
 export interface GetDisasterRecoveryStableUrlsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly parent: string;
     readonly stableUrls: outputs.GetDisasterRecoveryStableUrlsStableUrl[];

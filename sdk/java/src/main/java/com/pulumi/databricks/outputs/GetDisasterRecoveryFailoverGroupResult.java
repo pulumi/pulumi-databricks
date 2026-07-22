@@ -30,11 +30,6 @@ public final class GetDisasterRecoveryFailoverGroupResult {
      */
     private String etag;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Initial primary region. Used only in Create requests to set the starting
      * primary region. Not returned in responses
      * 
@@ -98,13 +93,6 @@ public final class GetDisasterRecoveryFailoverGroupResult {
      */
     public String etag() {
         return this.etag;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - Initial primary region. Used only in Create requests to set the starting
@@ -176,7 +164,6 @@ public final class GetDisasterRecoveryFailoverGroupResult {
         private String createTime;
         private String effectivePrimaryRegion;
         private String etag;
-        private String id;
         private String initialPrimaryRegion;
         private String name;
         private List<String> regions;
@@ -191,7 +178,6 @@ public final class GetDisasterRecoveryFailoverGroupResult {
     	      this.createTime = defaults.createTime;
     	      this.effectivePrimaryRegion = defaults.effectivePrimaryRegion;
     	      this.etag = defaults.etag;
-    	      this.id = defaults.id;
     	      this.initialPrimaryRegion = defaults.initialPrimaryRegion;
     	      this.name = defaults.name;
     	      this.regions = defaults.regions;
@@ -224,14 +210,6 @@ public final class GetDisasterRecoveryFailoverGroupResult {
               throw new MissingRequiredPropertyException("GetDisasterRecoveryFailoverGroupResult", "etag");
             }
             this.etag = etag;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDisasterRecoveryFailoverGroupResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -309,7 +287,6 @@ public final class GetDisasterRecoveryFailoverGroupResult {
             _resultValue.createTime = createTime;
             _resultValue.effectivePrimaryRegion = effectivePrimaryRegion;
             _resultValue.etag = etag;
-            _resultValue.id = id;
             _resultValue.initialPrimaryRegion = initialPrimaryRegion;
             _resultValue.name = name;
             _resultValue.regions = regions;

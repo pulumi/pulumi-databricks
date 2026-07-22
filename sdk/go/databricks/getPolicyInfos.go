@@ -76,10 +76,8 @@ type GetPolicyInfosArgs struct {
 
 // A collection of values returned by getPolicyInfos.
 type GetPolicyInfosResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id               string `pulumi:"id"`
-	IncludeInherited *bool  `pulumi:"includeInherited"`
-	MaxResults       *int   `pulumi:"maxResults"`
+	IncludeInherited *bool `pulumi:"includeInherited"`
+	MaxResults       *int  `pulumi:"maxResults"`
 	// (string) - Full name of the securable on which the policy is defined.
 	// Required on create
 	OnSecurableFullname string `pulumi:"onSecurableFullname"`
@@ -134,11 +132,6 @@ func (o GetPolicyInfosResultOutput) ToGetPolicyInfosResultOutput() GetPolicyInfo
 
 func (o GetPolicyInfosResultOutput) ToGetPolicyInfosResultOutputWithContext(ctx context.Context) GetPolicyInfosResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPolicyInfosResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPolicyInfosResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPolicyInfosResultOutput) IncludeInherited() pulumi.BoolPtrOutput {

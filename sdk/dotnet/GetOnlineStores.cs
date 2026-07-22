@@ -75,25 +75,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetOnlineStoresResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetOnlineStoresOnlineStoreResult> OnlineStores;
         public readonly int? PageSize;
         public readonly Outputs.GetOnlineStoresProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetOnlineStoresResult(
-            string id,
-
             ImmutableArray<Outputs.GetOnlineStoresOnlineStoreResult> onlineStores,
 
             int? pageSize,
 
             Outputs.GetOnlineStoresProviderConfigResult? providerConfig)
         {
-            Id = id;
             OnlineStores = onlineStores;
             PageSize = pageSize;
             ProviderConfig = providerConfig;

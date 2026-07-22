@@ -22,11 +22,6 @@ public final class GetFeatureEngineeringFeaturesResult {
      */
     private String catalogName;
     private List<GetFeatureEngineeringFeaturesFeature> features;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetFeatureEngineeringFeaturesProviderConfig providerConfig;
     /**
@@ -45,13 +40,6 @@ public final class GetFeatureEngineeringFeaturesResult {
     }
     public List<GetFeatureEngineeringFeaturesFeature> features() {
         return this.features;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -78,7 +66,6 @@ public final class GetFeatureEngineeringFeaturesResult {
     public static final class Builder {
         private String catalogName;
         private List<GetFeatureEngineeringFeaturesFeature> features;
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetFeatureEngineeringFeaturesProviderConfig providerConfig;
         private String schemaName;
@@ -87,7 +74,6 @@ public final class GetFeatureEngineeringFeaturesResult {
     	      Objects.requireNonNull(defaults);
     	      this.catalogName = defaults.catalogName;
     	      this.features = defaults.features;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
@@ -113,14 +99,6 @@ public final class GetFeatureEngineeringFeaturesResult {
             return features(List.of(features));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
@@ -144,7 +122,6 @@ public final class GetFeatureEngineeringFeaturesResult {
             final var _resultValue = new GetFeatureEngineeringFeaturesResult();
             _resultValue.catalogName = catalogName;
             _resultValue.features = features;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;

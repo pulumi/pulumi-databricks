@@ -75,25 +75,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetFeatureEngineeringKafkaConfigsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigResult> KafkaConfigs;
         public readonly int? PageSize;
         public readonly Outputs.GetFeatureEngineeringKafkaConfigsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetFeatureEngineeringKafkaConfigsResult(
-            string id,
-
             ImmutableArray<Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigResult> kafkaConfigs,
 
             int? pageSize,
 
             Outputs.GetFeatureEngineeringKafkaConfigsProviderConfigResult? providerConfig)
         {
-            Id = id;
             KafkaConfigs = kafkaConfigs;
             PageSize = pageSize;
             ProviderConfig = providerConfig;

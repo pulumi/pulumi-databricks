@@ -28,16 +28,13 @@ class GetPostgresCdfStatusResult:
     """
     A collection of values returned by getPostgresCdfStatus.
     """
-    def __init__(__self__, committed_lsn=None, create_time=None, id=None, last_sync_time=None, name=None, postgres_table=None, provider_config=None, state=None, status_detail=None, uc_table=None):
+    def __init__(__self__, committed_lsn=None, create_time=None, last_sync_time=None, name=None, postgres_table=None, provider_config=None, state=None, status_detail=None, uc_table=None):
         if committed_lsn and not isinstance(committed_lsn, str):
             raise TypeError("Expected argument 'committed_lsn' to be a str")
         pulumi.set(__self__, "committed_lsn", committed_lsn)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if last_sync_time and not isinstance(last_sync_time, str):
             raise TypeError("Expected argument 'last_sync_time' to be a str")
         pulumi.set(__self__, "last_sync_time", last_sync_time)
@@ -75,14 +72,6 @@ class GetPostgresCdfStatusResult:
         (string) - When replication for this table was first established
         """
         return pulumi.get(self, "create_time")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="lastSyncTime")
@@ -149,7 +138,6 @@ class AwaitableGetPostgresCdfStatusResult(GetPostgresCdfStatusResult):
         return GetPostgresCdfStatusResult(
             committed_lsn=self.committed_lsn,
             create_time=self.create_time,
-            id=self.id,
             last_sync_time=self.last_sync_time,
             name=self.name,
             postgres_table=self.postgres_table,
@@ -196,7 +184,6 @@ def get_postgres_cdf_status(name: Optional[_builtins.str] = None,
     return AwaitableGetPostgresCdfStatusResult(
         committed_lsn=pulumi.get(__ret__, 'committed_lsn'),
         create_time=pulumi.get(__ret__, 'create_time'),
-        id=pulumi.get(__ret__, 'id'),
         last_sync_time=pulumi.get(__ret__, 'last_sync_time'),
         name=pulumi.get(__ret__, 'name'),
         postgres_table=pulumi.get(__ret__, 'postgres_table'),
@@ -240,7 +227,6 @@ def get_postgres_cdf_status_output(name: pulumi.Input[Optional[_builtins.str]] =
     return __ret__.apply(lambda __response__: GetPostgresCdfStatusResult(
         committed_lsn=pulumi.get(__response__, 'committed_lsn'),
         create_time=pulumi.get(__response__, 'create_time'),
-        id=pulumi.get(__response__, 'id'),
         last_sync_time=pulumi.get(__response__, 'last_sync_time'),
         name=pulumi.get(__response__, 'name'),
         postgres_table=pulumi.get(__response__, 'postgres_table'),

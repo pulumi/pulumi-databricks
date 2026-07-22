@@ -40,10 +40,6 @@ export interface GetKnowledgeAssistantKnowledgeSourcesArgs {
  * A collection of values returned by getKnowledgeAssistantKnowledgeSources.
  */
 export interface GetKnowledgeAssistantKnowledgeSourcesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly knowledgeSources: outputs.GetKnowledgeAssistantKnowledgeSourcesKnowledgeSource[];
     readonly pageSize?: number;
     readonly parent: string;

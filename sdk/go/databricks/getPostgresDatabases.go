@@ -44,9 +44,7 @@ type GetPostgresDatabasesArgs struct {
 // A collection of values returned by getPostgresDatabases.
 type GetPostgresDatabasesResult struct {
 	Databases []GetPostgresDatabasesDatabase `pulumi:"databases"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
+	PageSize  *int                           `pulumi:"pageSize"`
 	// (string) - The branch containing this database.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent         string                              `pulumi:"parent"`
@@ -94,11 +92,6 @@ func (o GetPostgresDatabasesResultOutput) ToGetPostgresDatabasesResultOutputWith
 
 func (o GetPostgresDatabasesResultOutput) Databases() GetPostgresDatabasesDatabaseArrayOutput {
 	return o.ApplyT(func(v GetPostgresDatabasesResult) []GetPostgresDatabasesDatabase { return v.Databases }).(GetPostgresDatabasesDatabaseArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPostgresDatabasesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostgresDatabasesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPostgresDatabasesResultOutput) PageSize() pulumi.IntPtrOutput {

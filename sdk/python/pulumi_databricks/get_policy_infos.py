@@ -28,10 +28,7 @@ class GetPolicyInfosResult:
     """
     A collection of values returned by getPolicyInfos.
     """
-    def __init__(__self__, id=None, include_inherited=None, max_results=None, on_securable_fullname=None, on_securable_type=None, policies=None, provider_config=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, include_inherited=None, max_results=None, on_securable_fullname=None, on_securable_type=None, policies=None, provider_config=None):
         if include_inherited and not isinstance(include_inherited, bool):
             raise TypeError("Expected argument 'include_inherited' to be a bool")
         pulumi.set(__self__, "include_inherited", include_inherited)
@@ -50,14 +47,6 @@ class GetPolicyInfosResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="includeInherited")
@@ -105,7 +94,6 @@ class AwaitableGetPolicyInfosResult(GetPolicyInfosResult):
         if False:
             yield self
         return GetPolicyInfosResult(
-            id=self.id,
             include_inherited=self.include_inherited,
             max_results=self.max_results,
             on_securable_fullname=self.on_securable_fullname,
@@ -161,7 +149,6 @@ def get_policy_infos(include_inherited: Optional[_builtins.bool] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getPolicyInfos:getPolicyInfos', __args__, opts=opts, typ=GetPolicyInfosResult).value
 
     return AwaitableGetPolicyInfosResult(
-        id=pulumi.get(__ret__, 'id'),
         include_inherited=pulumi.get(__ret__, 'include_inherited'),
         max_results=pulumi.get(__ret__, 'max_results'),
         on_securable_fullname=pulumi.get(__ret__, 'on_securable_fullname'),
@@ -214,7 +201,6 @@ def get_policy_infos_output(include_inherited: pulumi.Input[Optional[Optional[_b
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPolicyInfos:getPolicyInfos', __args__, opts=opts, typ=GetPolicyInfosResult)
     return __ret__.apply(lambda __response__: GetPolicyInfosResult(
-        id=pulumi.get(__response__, 'id'),
         include_inherited=pulumi.get(__response__, 'include_inherited'),
         max_results=pulumi.get(__response__, 'max_results'),
         on_securable_fullname=pulumi.get(__response__, 'on_securable_fullname'),

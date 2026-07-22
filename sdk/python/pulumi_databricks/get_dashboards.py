@@ -28,16 +28,13 @@ class GetDashboardsResult:
     """
     A collection of values returned by getDashboards.
     """
-    def __init__(__self__, dashboard_name_contains=None, dashboards=None, id=None, provider_config=None):
+    def __init__(__self__, dashboard_name_contains=None, dashboards=None, provider_config=None):
         if dashboard_name_contains and not isinstance(dashboard_name_contains, str):
             raise TypeError("Expected argument 'dashboard_name_contains' to be a str")
         pulumi.set(__self__, "dashboard_name_contains", dashboard_name_contains)
         if dashboards and not isinstance(dashboards, list):
             raise TypeError("Expected argument 'dashboards' to be a list")
         pulumi.set(__self__, "dashboards", dashboards)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -56,14 +53,6 @@ class GetDashboardsResult:
         return pulumi.get(self, "dashboards")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetDashboardsProviderConfigResult']:
         return pulumi.get(self, "provider_config")
@@ -77,7 +66,6 @@ class AwaitableGetDashboardsResult(GetDashboardsResult):
         return GetDashboardsResult(
             dashboard_name_contains=self.dashboard_name_contains,
             dashboards=self.dashboards,
-            id=self.id,
             provider_config=self.provider_config)
 
 
@@ -120,7 +108,6 @@ def get_dashboards(dashboard_name_contains: Optional[_builtins.str] = None,
     return AwaitableGetDashboardsResult(
         dashboard_name_contains=pulumi.get(__ret__, 'dashboard_name_contains'),
         dashboards=pulumi.get(__ret__, 'dashboards'),
-        id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_dashboards_output(dashboard_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           provider_config: pulumi.Input[Optional[Optional[Union['GetDashboardsProviderConfigArgs', 'GetDashboardsProviderConfigArgsDict']]]] = None,
@@ -160,5 +147,4 @@ def get_dashboards_output(dashboard_name_contains: pulumi.Input[Optional[Optiona
     return __ret__.apply(lambda __response__: GetDashboardsResult(
         dashboard_name_contains=pulumi.get(__response__, 'dashboard_name_contains'),
         dashboards=pulumi.get(__response__, 'dashboards'),
-        id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config')))

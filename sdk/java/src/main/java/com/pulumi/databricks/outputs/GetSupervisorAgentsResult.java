@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetSupervisorAgentsProviderConfig;
 import com.pulumi.databricks.outputs.GetSupervisorAgentsSupervisorAgent;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSupervisorAgentsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetSupervisorAgentsProviderConfig providerConfig;
     private List<GetSupervisorAgentsSupervisorAgent> supervisorAgents;
 
     private GetSupervisorAgentsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -52,27 +39,17 @@ public final class GetSupervisorAgentsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetSupervisorAgentsProviderConfig providerConfig;
         private List<GetSupervisorAgentsSupervisorAgent> supervisorAgents;
         public Builder() {}
         public Builder(GetSupervisorAgentsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.supervisorAgents = defaults.supervisorAgents;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSupervisorAgentsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -98,7 +75,6 @@ public final class GetSupervisorAgentsResult {
         }
         public GetSupervisorAgentsResult build() {
             final var _resultValue = new GetSupervisorAgentsResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.supervisorAgents = supervisorAgents;

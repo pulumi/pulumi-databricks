@@ -36,8 +36,6 @@ type GetSupervisorAgentsArgs struct {
 
 // A collection of values returned by getSupervisorAgents.
 type GetSupervisorAgentsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id               string                               `pulumi:"id"`
 	PageSize         *int                                 `pulumi:"pageSize"`
 	ProviderConfig   *GetSupervisorAgentsProviderConfig   `pulumi:"providerConfig"`
 	SupervisorAgents []GetSupervisorAgentsSupervisorAgent `pulumi:"supervisorAgents"`
@@ -79,11 +77,6 @@ func (o GetSupervisorAgentsResultOutput) ToGetSupervisorAgentsResultOutput() Get
 
 func (o GetSupervisorAgentsResultOutput) ToGetSupervisorAgentsResultOutputWithContext(ctx context.Context) GetSupervisorAgentsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetSupervisorAgentsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSupervisorAgentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetSupervisorAgentsResultOutput) PageSize() pulumi.IntPtrOutput {

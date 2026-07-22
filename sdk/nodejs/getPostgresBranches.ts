@@ -67,10 +67,6 @@ export interface GetPostgresBranchesArgs {
  */
 export interface GetPostgresBranchesResult {
     readonly branches: outputs.GetPostgresBranchesBranch[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     /**
      * (string) - The project containing this branch (API resource hierarchy).

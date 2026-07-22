@@ -173,10 +173,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Output only. The full resource path of the branch.
         /// Format: projects/{project_id}/branches/{branch_id}
         /// </summary>
@@ -210,8 +206,6 @@ namespace Pulumi.Databricks
 
             string createTime,
 
-            string id,
-
             string name,
 
             string parent,
@@ -228,7 +222,6 @@ namespace Pulumi.Databricks
         {
             BranchId = branchId;
             CreateTime = createTime;
-            Id = id;
             Name = name;
             Parent = parent;
             ProviderConfig = providerConfig;

@@ -64,10 +64,6 @@ export interface GetRegisteredModelVersionsResult {
      */
     readonly fullName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * list of objects describing the model versions. Each object consists of following attributes:
      */
     readonly modelVersions: outputs.GetRegisteredModelVersionsModelVersion[];

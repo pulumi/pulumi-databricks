@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresDatabasesResult {
     private List<GetPostgresDatabasesDatabase> databases;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     /**
      * @return (string) - The branch containing this database.
@@ -34,13 +29,6 @@ public final class GetPostgresDatabasesResult {
     private GetPostgresDatabasesResult() {}
     public List<GetPostgresDatabasesDatabase> databases() {
         return this.databases;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -67,7 +55,6 @@ public final class GetPostgresDatabasesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPostgresDatabasesDatabase> databases;
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         private @Nullable GetPostgresDatabasesProviderConfig providerConfig;
@@ -75,7 +62,6 @@ public final class GetPostgresDatabasesResult {
         public Builder(GetPostgresDatabasesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databases = defaults.databases;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -91,14 +77,6 @@ public final class GetPostgresDatabasesResult {
         }
         public Builder databases(GetPostgresDatabasesDatabase... databases) {
             return databases(List.of(databases));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresDatabasesResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
@@ -123,7 +101,6 @@ public final class GetPostgresDatabasesResult {
         public GetPostgresDatabasesResult build() {
             final var _resultValue = new GetPostgresDatabasesResult();
             _resultValue.databases = databases;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

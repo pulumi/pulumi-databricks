@@ -20,11 +20,6 @@ public final class GetAppResult {
      */
     private GetAppApp app;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The name of the app to grant permission on.
      * 
      */
@@ -38,13 +33,6 @@ public final class GetAppResult {
      */
     public GetAppApp app() {
         return this.app;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The name of the app to grant permission on.
@@ -67,14 +55,12 @@ public final class GetAppResult {
     @CustomType.Builder
     public static final class Builder {
         private GetAppApp app;
-        private String id;
         private String name;
         private @Nullable GetAppProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetAppResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.app = defaults.app;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
         }
@@ -85,14 +71,6 @@ public final class GetAppResult {
               throw new MissingRequiredPropertyException("GetAppResult", "app");
             }
             this.app = app;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAppResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -112,7 +90,6 @@ public final class GetAppResult {
         public GetAppResult build() {
             final var _resultValue = new GetAppResult();
             _resultValue.app = app;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;

@@ -94,10 +94,6 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseDatabaseCatalogsResult
     {
         public readonly ImmutableArray<Outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogResult> DatabaseCatalogs;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string InstanceName;
         public readonly int? PageSize;
         public readonly Outputs.GetDatabaseDatabaseCatalogsProviderConfigResult? ProviderConfig;
@@ -106,8 +102,6 @@ namespace Pulumi.Databricks
         private GetDatabaseDatabaseCatalogsResult(
             ImmutableArray<Outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogResult> databaseCatalogs,
 
-            string id,
-
             string instanceName,
 
             int? pageSize,
@@ -115,7 +109,6 @@ namespace Pulumi.Databricks
             Outputs.GetDatabaseDatabaseCatalogsProviderConfigResult? providerConfig)
         {
             DatabaseCatalogs = databaseCatalogs;
-            Id = id;
             InstanceName = instanceName;
             PageSize = pageSize;
             ProviderConfig = providerConfig;

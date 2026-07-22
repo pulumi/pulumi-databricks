@@ -28,7 +28,7 @@ class GetDatabaseSyncedDatabaseTableResult:
     """
     A collection of values returned by getDatabaseSyncedDatabaseTable.
     """
-    def __init__(__self__, data_synchronization_status=None, database_instance_name=None, effective_database_instance_name=None, effective_logical_database_name=None, id=None, logical_database_name=None, name=None, provider_config=None, spec=None, unity_catalog_provisioning_state=None):
+    def __init__(__self__, data_synchronization_status=None, database_instance_name=None, effective_database_instance_name=None, effective_logical_database_name=None, logical_database_name=None, name=None, provider_config=None, spec=None, unity_catalog_provisioning_state=None):
         if data_synchronization_status and not isinstance(data_synchronization_status, dict):
             raise TypeError("Expected argument 'data_synchronization_status' to be a dict")
         pulumi.set(__self__, "data_synchronization_status", data_synchronization_status)
@@ -41,9 +41,6 @@ class GetDatabaseSyncedDatabaseTableResult:
         if effective_logical_database_name and not isinstance(effective_logical_database_name, str):
             raise TypeError("Expected argument 'effective_logical_database_name' to be a str")
         pulumi.set(__self__, "effective_logical_database_name", effective_logical_database_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if logical_database_name and not isinstance(logical_database_name, str):
             raise TypeError("Expected argument 'logical_database_name' to be a str")
         pulumi.set(__self__, "logical_database_name", logical_database_name)
@@ -101,14 +98,6 @@ class GetDatabaseSyncedDatabaseTableResult:
         return pulumi.get(self, "effective_logical_database_name")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="logicalDatabaseName")
     def logical_database_name(self) -> _builtins.str:
         """
@@ -158,7 +147,6 @@ class AwaitableGetDatabaseSyncedDatabaseTableResult(GetDatabaseSyncedDatabaseTab
             database_instance_name=self.database_instance_name,
             effective_database_instance_name=self.effective_database_instance_name,
             effective_logical_database_name=self.effective_logical_database_name,
-            id=self.id,
             logical_database_name=self.logical_database_name,
             name=self.name,
             provider_config=self.provider_config,
@@ -202,7 +190,6 @@ def get_database_synced_database_table(name: Optional[_builtins.str] = None,
         database_instance_name=pulumi.get(__ret__, 'database_instance_name'),
         effective_database_instance_name=pulumi.get(__ret__, 'effective_database_instance_name'),
         effective_logical_database_name=pulumi.get(__ret__, 'effective_logical_database_name'),
-        id=pulumi.get(__ret__, 'id'),
         logical_database_name=pulumi.get(__ret__, 'logical_database_name'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
@@ -243,7 +230,6 @@ def get_database_synced_database_table_output(name: pulumi.Input[Optional[_built
         database_instance_name=pulumi.get(__response__, 'database_instance_name'),
         effective_database_instance_name=pulumi.get(__response__, 'effective_database_instance_name'),
         effective_logical_database_name=pulumi.get(__response__, 'effective_logical_database_name'),
-        id=pulumi.get(__response__, 'id'),
         logical_database_name=pulumi.get(__response__, 'logical_database_name'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),

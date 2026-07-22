@@ -78,9 +78,7 @@ type GetFunctionsResult struct {
 	// Name of parent catalog.
 	CatalogName string `pulumi:"catalogName"`
 	// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
-	Functions []GetFunctionsFunction `pulumi:"functions"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                      `pulumi:"id"`
+	Functions      []GetFunctionsFunction      `pulumi:"functions"`
 	IncludeBrowse  *bool                       `pulumi:"includeBrowse"`
 	ProviderConfig *GetFunctionsProviderConfig `pulumi:"providerConfig"`
 	// Name of parent schema relative to its parent catalog.
@@ -136,11 +134,6 @@ func (o GetFunctionsResultOutput) CatalogName() pulumi.StringOutput {
 // list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
 func (o GetFunctionsResultOutput) Functions() GetFunctionsFunctionArrayOutput {
 	return o.ApplyT(func(v GetFunctionsResult) []GetFunctionsFunction { return v.Functions }).(GetFunctionsFunctionArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetFunctionsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFunctionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetFunctionsResultOutput) IncludeBrowse() pulumi.BoolPtrOutput {

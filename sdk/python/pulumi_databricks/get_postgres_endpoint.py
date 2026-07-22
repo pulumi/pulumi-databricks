@@ -28,16 +28,13 @@ class GetPostgresEndpointResult:
     """
     A collection of values returned by getPostgresEndpoint.
     """
-    def __init__(__self__, create_time=None, endpoint_id=None, id=None, name=None, parent=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, endpoint_id=None, name=None, parent=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if endpoint_id and not isinstance(endpoint_id, str):
             raise TypeError("Expected argument 'endpoint_id' to be a str")
         pulumi.set(__self__, "endpoint_id", endpoint_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -75,14 +72,6 @@ class GetPostgresEndpointResult:
         (string) - Part of the resource name
         """
         return pulumi.get(self, "endpoint_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -148,7 +137,6 @@ class AwaitableGetPostgresEndpointResult(GetPostgresEndpointResult):
         return GetPostgresEndpointResult(
             create_time=self.create_time,
             endpoint_id=self.endpoint_id,
-            id=self.id,
             name=self.name,
             parent=self.parent,
             provider_config=self.provider_config,
@@ -194,7 +182,6 @@ def get_postgres_endpoint(name: Optional[_builtins.str] = None,
     return AwaitableGetPostgresEndpointResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         endpoint_id=pulumi.get(__ret__, 'endpoint_id'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
@@ -237,7 +224,6 @@ def get_postgres_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = N
     return __ret__.apply(lambda __response__: GetPostgresEndpointResult(
         create_time=pulumi.get(__response__, 'create_time'),
         endpoint_id=pulumi.get(__response__, 'endpoint_id'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config'),

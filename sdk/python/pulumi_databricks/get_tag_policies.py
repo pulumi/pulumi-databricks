@@ -28,10 +28,7 @@ class GetTagPoliciesResult:
     """
     A collection of values returned by getTagPolicies.
     """
-    def __init__(__self__, id=None, page_size=None, provider_config=None, tag_policies=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, provider_config=None, tag_policies=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -41,14 +38,6 @@ class GetTagPoliciesResult:
         if tag_policies and not isinstance(tag_policies, list):
             raise TypeError("Expected argument 'tag_policies' to be a list")
         pulumi.set(__self__, "tag_policies", tag_policies)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -72,7 +61,6 @@ class AwaitableGetTagPoliciesResult(GetTagPoliciesResult):
         if False:
             yield self
         return GetTagPoliciesResult(
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             tag_policies=self.tag_policies)
@@ -122,7 +110,6 @@ def get_tag_policies(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getTagPolicies:getTagPolicies', __args__, opts=opts, typ=GetTagPoliciesResult).value
 
     return AwaitableGetTagPoliciesResult(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         tag_policies=pulumi.get(__ret__, 'tag_policies'))
@@ -169,7 +156,6 @@ def get_tag_policies_output(page_size: pulumi.Input[Optional[Optional[_builtins.
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getTagPolicies:getTagPolicies', __args__, opts=opts, typ=GetTagPoliciesResult)
     return __ret__.apply(lambda __response__: GetTagPoliciesResult(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         tag_policies=pulumi.get(__response__, 'tag_policies')))

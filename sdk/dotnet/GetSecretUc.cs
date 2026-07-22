@@ -193,10 +193,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string FullName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Unique identifier of the metastore hosting the secret
         /// </summary>
         public readonly string MetastoreId;
@@ -248,8 +244,6 @@ namespace Pulumi.Databricks
 
             string fullName,
 
-            string id,
-
             string metastoreId,
 
             string name,
@@ -274,7 +268,6 @@ namespace Pulumi.Databricks
             EffectiveValue = effectiveValue;
             ExpireTime = expireTime;
             FullName = fullName;
-            Id = id;
             MetastoreId = metastoreId;
             Name = name;
             Owner = owner;

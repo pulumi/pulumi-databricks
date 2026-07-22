@@ -39,8 +39,6 @@ type LookupFeatureEngineeringMaterializedFeatureResult struct {
 	CronScheduleTrigger GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
 	// (string) - The full name of the feature in Unity Catalog
 	FeatureName string `pulumi:"featureName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
 	IsOnline bool `pulumi:"isOnline"`
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
@@ -118,11 +116,6 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) CronScheduleTri
 // (string) - The full name of the feature in Unity Catalog
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) FeatureName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.FeatureName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature

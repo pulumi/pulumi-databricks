@@ -34,10 +34,8 @@ type GetMaterializedFeaturesFeatureTagsArgs struct {
 
 // A collection of values returned by getMaterializedFeaturesFeatureTags.
 type GetMaterializedFeaturesFeatureTagsResult struct {
-	FeatureName string                                         `pulumi:"featureName"`
-	FeatureTags []GetMaterializedFeaturesFeatureTagsFeatureTag `pulumi:"featureTags"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                            `pulumi:"id"`
+	FeatureName    string                                            `pulumi:"featureName"`
+	FeatureTags    []GetMaterializedFeaturesFeatureTagsFeatureTag    `pulumi:"featureTags"`
 	PageSize       *int                                              `pulumi:"pageSize"`
 	ProviderConfig *GetMaterializedFeaturesFeatureTagsProviderConfig `pulumi:"providerConfig"`
 	TableName      string                                            `pulumi:"tableName"`
@@ -89,11 +87,6 @@ func (o GetMaterializedFeaturesFeatureTagsResultOutput) FeatureTags() GetMateria
 	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) []GetMaterializedFeaturesFeatureTagsFeatureTag {
 		return v.FeatureTags
 	}).(GetMaterializedFeaturesFeatureTagsFeatureTagArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetMaterializedFeaturesFeatureTagsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetMaterializedFeaturesFeatureTagsResultOutput) PageSize() pulumi.IntPtrOutput {

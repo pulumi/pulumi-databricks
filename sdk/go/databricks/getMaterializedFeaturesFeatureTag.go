@@ -31,8 +31,6 @@ type LookupMaterializedFeaturesFeatureTagArgs struct {
 
 // A collection of values returned by getMaterializedFeaturesFeatureTag.
 type LookupMaterializedFeaturesFeatureTagResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string)
 	Key            string                                           `pulumi:"key"`
 	ProviderConfig *GetMaterializedFeaturesFeatureTagProviderConfig `pulumi:"providerConfig"`
@@ -73,11 +71,6 @@ func (o LookupMaterializedFeaturesFeatureTagResultOutput) ToLookupMaterializedFe
 
 func (o LookupMaterializedFeaturesFeatureTagResultOutput) ToLookupMaterializedFeaturesFeatureTagResultOutputWithContext(ctx context.Context) LookupMaterializedFeaturesFeatureTagResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupMaterializedFeaturesFeatureTagResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMaterializedFeaturesFeatureTagResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string)

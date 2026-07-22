@@ -28,13 +28,10 @@ class GetDatabaseInstancesResult:
     """
     A collection of values returned by getDatabaseInstances.
     """
-    def __init__(__self__, database_instances=None, id=None, page_size=None, provider_config=None):
+    def __init__(__self__, database_instances=None, page_size=None, provider_config=None):
         if database_instances and not isinstance(database_instances, list):
             raise TypeError("Expected argument 'database_instances' to be a list")
         pulumi.set(__self__, "database_instances", database_instances)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -46,14 +43,6 @@ class GetDatabaseInstancesResult:
     @pulumi.getter(name="databaseInstances")
     def database_instances(self) -> Sequence['outputs.GetDatabaseInstancesDatabaseInstanceResult']:
         return pulumi.get(self, "database_instances")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -73,7 +62,6 @@ class AwaitableGetDatabaseInstancesResult(GetDatabaseInstancesResult):
             yield self
         return GetDatabaseInstancesResult(
             database_instances=self.database_instances,
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config)
 
@@ -113,7 +101,6 @@ def get_database_instances(page_size: Optional[_builtins.int] = None,
 
     return AwaitableGetDatabaseInstancesResult(
         database_instances=pulumi.get(__ret__, 'database_instances'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_database_instances_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -150,6 +137,5 @@ def get_database_instances_output(page_size: pulumi.Input[Optional[Optional[_bui
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstancesResult(
         database_instances=pulumi.get(__response__, 'database_instances'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

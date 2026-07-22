@@ -66,9 +66,7 @@ type GetAlertsV2Args struct {
 
 // A collection of values returned by getAlertsV2.
 type GetAlertsV2Result struct {
-	Alerts []GetAlertsV2Alert `pulumi:"alerts"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                     `pulumi:"id"`
+	Alerts         []GetAlertsV2Alert         `pulumi:"alerts"`
 	PageSize       *int                       `pulumi:"pageSize"`
 	ProviderConfig *GetAlertsV2ProviderConfig `pulumi:"providerConfig"`
 }
@@ -110,11 +108,6 @@ func (o GetAlertsV2ResultOutput) ToGetAlertsV2ResultOutputWithContext(ctx contex
 
 func (o GetAlertsV2ResultOutput) Alerts() GetAlertsV2AlertArrayOutput {
 	return o.ApplyT(func(v GetAlertsV2Result) []GetAlertsV2Alert { return v.Alerts }).(GetAlertsV2AlertArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAlertsV2ResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAlertsV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAlertsV2ResultOutput) PageSize() pulumi.IntPtrOutput {

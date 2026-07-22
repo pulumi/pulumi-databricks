@@ -44,8 +44,6 @@ type LookupAccountNetworkPolicyResult struct {
 	AccountId string `pulumi:"accountId"`
 	// (NetworkPolicyEgress) - The network policies applying for egress traffic
 	Egress GetAccountNetworkPolicyEgress `pulumi:"egress"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
 	Ingress GetAccountNetworkPolicyIngress `pulumi:"ingress"`
 	// (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
@@ -98,11 +96,6 @@ func (o LookupAccountNetworkPolicyResultOutput) AccountId() pulumi.StringOutput 
 // (NetworkPolicyEgress) - The network policies applying for egress traffic
 func (o LookupAccountNetworkPolicyResultOutput) Egress() GetAccountNetworkPolicyEgressOutput {
 	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) GetAccountNetworkPolicyEgress { return v.Egress }).(GetAccountNetworkPolicyEgressOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccountNetworkPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic

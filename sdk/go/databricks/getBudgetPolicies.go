@@ -69,8 +69,6 @@ type GetBudgetPoliciesArgs struct {
 // A collection of values returned by getBudgetPolicies.
 type GetBudgetPoliciesResult struct {
 	FilterBy *GetBudgetPoliciesFilterBy `pulumi:"filterBy"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                     `pulumi:"id"`
 	PageSize *int                       `pulumi:"pageSize"`
 	Policies []GetBudgetPoliciesPolicy  `pulumi:"policies"`
 	SortSpec *GetBudgetPoliciesSortSpec `pulumi:"sortSpec"`
@@ -118,11 +116,6 @@ func (o GetBudgetPoliciesResultOutput) ToGetBudgetPoliciesResultOutputWithContex
 
 func (o GetBudgetPoliciesResultOutput) FilterBy() GetBudgetPoliciesFilterByPtrOutput {
 	return o.ApplyT(func(v GetBudgetPoliciesResult) *GetBudgetPoliciesFilterBy { return v.FilterBy }).(GetBudgetPoliciesFilterByPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetBudgetPoliciesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBudgetPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetBudgetPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {

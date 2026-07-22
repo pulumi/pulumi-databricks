@@ -178,10 +178,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetPostgresProjectsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetPostgresProjectsProjectResult> Projects;
         public readonly Outputs.GetPostgresProjectsProviderConfigResult? ProviderConfig;
@@ -189,8 +185,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetPostgresProjectsResult(
-            string id,
-
             int? pageSize,
 
             ImmutableArray<Outputs.GetPostgresProjectsProjectResult> projects,
@@ -199,7 +193,6 @@ namespace Pulumi.Databricks
 
             bool? showDeleted)
         {
-            Id = id;
             PageSize = pageSize;
             Projects = projects;
             ProviderConfig = providerConfig;

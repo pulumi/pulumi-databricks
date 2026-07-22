@@ -95,9 +95,7 @@ type LookupWorkspaceEntityTagAssignmentResult struct {
 	// (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
 	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
-	EntityType string `pulumi:"entityType"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                         `pulumi:"id"`
+	EntityType     string                                         `pulumi:"entityType"`
 	ProviderConfig *GetWorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey string `pulumi:"tagKey"`
@@ -153,11 +151,6 @@ func (o LookupWorkspaceEntityTagAssignmentResultOutput) EntityId() pulumi.String
 // (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 func (o LookupWorkspaceEntityTagAssignmentResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.EntityType }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWorkspaceEntityTagAssignmentResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkspaceEntityTagAssignmentResultOutput) ProviderConfig() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {

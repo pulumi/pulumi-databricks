@@ -28,16 +28,13 @@ class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult:
     """
     A collection of values returned by getEnvironmentsDefaultWorkspaceBaseEnvironment.
     """
-    def __init__(__self__, cpu_workspace_base_environment=None, gpu_workspace_base_environment=None, id=None, name=None, provider_config=None):
+    def __init__(__self__, cpu_workspace_base_environment=None, gpu_workspace_base_environment=None, name=None, provider_config=None):
         if cpu_workspace_base_environment and not isinstance(cpu_workspace_base_environment, str):
             raise TypeError("Expected argument 'cpu_workspace_base_environment' to be a str")
         pulumi.set(__self__, "cpu_workspace_base_environment", cpu_workspace_base_environment)
         if gpu_workspace_base_environment and not isinstance(gpu_workspace_base_environment, str):
             raise TypeError("Expected argument 'gpu_workspace_base_environment' to be a str")
         pulumi.set(__self__, "gpu_workspace_base_environment", gpu_workspace_base_environment)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -65,14 +62,6 @@ class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> _builtins.str:
         """
         (string) - The resource name of this singleton resource.
@@ -94,7 +83,6 @@ class AwaitableGetEnvironmentsDefaultWorkspaceBaseEnvironmentResult(GetEnvironme
         return GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult(
             cpu_workspace_base_environment=self.cpu_workspace_base_environment,
             gpu_workspace_base_environment=self.gpu_workspace_base_environment,
-            id=self.id,
             name=self.name,
             provider_config=self.provider_config)
 
@@ -133,7 +121,6 @@ def get_environments_default_workspace_base_environment(name: Optional[_builtins
     return AwaitableGetEnvironmentsDefaultWorkspaceBaseEnvironmentResult(
         cpu_workspace_base_environment=pulumi.get(__ret__, 'cpu_workspace_base_environment'),
         gpu_workspace_base_environment=pulumi.get(__ret__, 'gpu_workspace_base_environment'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_environments_default_workspace_base_environment_output(name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -169,6 +156,5 @@ def get_environments_default_workspace_base_environment_output(name: pulumi.Inpu
     return __ret__.apply(lambda __response__: GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult(
         cpu_workspace_base_environment=pulumi.get(__response__, 'cpu_workspace_base_environment'),
         gpu_workspace_base_environment=pulumi.get(__response__, 'gpu_workspace_base_environment'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config')))

@@ -63,10 +63,6 @@ export interface GetPostgresSyncedTableResult {
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Output only. The Full resource name of the synced table in Postgres
      * where (catalog, schema, table) are the UC entity names.
      */

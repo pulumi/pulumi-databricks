@@ -70,8 +70,6 @@ type LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult struct {
 	// (string) - The default workspace base environment for GPU compute.
 	// Format: workspace-base-environments/{workspace_base_environment}
 	GpuWorkspaceBaseEnvironment string `pulumi:"gpuWorkspaceBaseEnvironment"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The resource name of this singleton resource.
 	// Format: default-workspace-base-environment
 	Name           string                                                        `pulumi:"name"`
@@ -129,11 +127,6 @@ func (o LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput) GpuWorksp
 	return o.ApplyT(func(v LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult) string {
 		return v.GpuWorkspaceBaseEnvironment
 	}).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The resource name of this singleton resource.

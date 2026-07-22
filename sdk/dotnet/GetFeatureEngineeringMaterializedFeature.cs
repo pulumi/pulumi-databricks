@@ -89,10 +89,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string FeatureName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
         /// </summary>
         public readonly bool IsOnline;
@@ -142,8 +138,6 @@ namespace Pulumi.Databricks
 
             string featureName,
 
-            string id,
-
             bool isOnline,
 
             string lastMaterializationTime,
@@ -167,7 +161,6 @@ namespace Pulumi.Databricks
             CronSchedule = cronSchedule;
             CronScheduleTrigger = cronScheduleTrigger;
             FeatureName = featureName;
-            Id = id;
             IsOnline = isOnline;
             LastMaterializationTime = lastMaterializationTime;
             MaterializedFeatureId = materializedFeatureId;

@@ -22,11 +22,6 @@ public final class GetQualityMonitorV2Result {
      */
     private GetQualityMonitorV2AnomalyDetectionConfig anomalyDetectionConfig;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The uuid of the request object. For example, schema id
      * 
      */
@@ -50,13 +45,6 @@ public final class GetQualityMonitorV2Result {
      */
     public GetQualityMonitorV2AnomalyDetectionConfig anomalyDetectionConfig() {
         return this.anomalyDetectionConfig;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - The uuid of the request object. For example, schema id
@@ -93,7 +81,6 @@ public final class GetQualityMonitorV2Result {
     @CustomType.Builder
     public static final class Builder {
         private GetQualityMonitorV2AnomalyDetectionConfig anomalyDetectionConfig;
-        private String id;
         private String objectId;
         private String objectType;
         private @Nullable GetQualityMonitorV2ProviderConfig providerConfig;
@@ -102,7 +89,6 @@ public final class GetQualityMonitorV2Result {
         public Builder(GetQualityMonitorV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.anomalyDetectionConfig = defaults.anomalyDetectionConfig;
-    	      this.id = defaults.id;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
     	      this.providerConfig = defaults.providerConfig;
@@ -115,14 +101,6 @@ public final class GetQualityMonitorV2Result {
               throw new MissingRequiredPropertyException("GetQualityMonitorV2Result", "anomalyDetectionConfig");
             }
             this.anomalyDetectionConfig = anomalyDetectionConfig;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetQualityMonitorV2Result", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -161,7 +139,6 @@ public final class GetQualityMonitorV2Result {
         public GetQualityMonitorV2Result build() {
             final var _resultValue = new GetQualityMonitorV2Result();
             _resultValue.anomalyDetectionConfig = anomalyDetectionConfig;
-            _resultValue.id = id;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
             _resultValue.providerConfig = providerConfig;

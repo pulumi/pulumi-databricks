@@ -27,7 +27,7 @@ class GetAccountSettingUserPreferenceV2Result:
     """
     A collection of values returned by getAccountSettingUserPreferenceV2.
     """
-    def __init__(__self__, boolean_val=None, effective_boolean_val=None, effective_string_val=None, id=None, name=None, string_val=None, user_id=None):
+    def __init__(__self__, boolean_val=None, effective_boolean_val=None, effective_string_val=None, name=None, string_val=None, user_id=None):
         if boolean_val and not isinstance(boolean_val, dict):
             raise TypeError("Expected argument 'boolean_val' to be a dict")
         pulumi.set(__self__, "boolean_val", boolean_val)
@@ -37,9 +37,6 @@ class GetAccountSettingUserPreferenceV2Result:
         if effective_string_val and not isinstance(effective_string_val, dict):
             raise TypeError("Expected argument 'effective_string_val' to be a dict")
         pulumi.set(__self__, "effective_string_val", effective_string_val)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -76,14 +73,6 @@ class GetAccountSettingUserPreferenceV2Result:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> _builtins.str:
         """
         (string) - Name of the setting
@@ -116,7 +105,6 @@ class AwaitableGetAccountSettingUserPreferenceV2Result(GetAccountSettingUserPref
             boolean_val=self.boolean_val,
             effective_boolean_val=self.effective_boolean_val,
             effective_string_val=self.effective_string_val,
-            id=self.id,
             name=self.name,
             string_val=self.string_val,
             user_id=self.user_id)
@@ -146,7 +134,6 @@ def get_account_setting_user_preference_v2(name: Optional[_builtins.str] = None,
         boolean_val=pulumi.get(__ret__, 'boolean_val'),
         effective_boolean_val=pulumi.get(__ret__, 'effective_boolean_val'),
         effective_string_val=pulumi.get(__ret__, 'effective_string_val'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         string_val=pulumi.get(__ret__, 'string_val'),
         user_id=pulumi.get(__ret__, 'user_id'))
@@ -173,7 +160,6 @@ def get_account_setting_user_preference_v2_output(name: pulumi.Input[Optional[_b
         boolean_val=pulumi.get(__response__, 'boolean_val'),
         effective_boolean_val=pulumi.get(__response__, 'effective_boolean_val'),
         effective_string_val=pulumi.get(__response__, 'effective_string_val'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         string_val=pulumi.get(__response__, 'string_val'),
         user_id=pulumi.get(__response__, 'user_id')))

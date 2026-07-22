@@ -19,11 +19,6 @@ public final class GetWarehousesDefaultWarehouseOverrideResult {
      */
     private String defaultWarehouseOverrideId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The resource name of the default warehouse override.
      * Format: default-warehouse-overrides/{default_warehouse_override_id}
      * 
@@ -49,13 +44,6 @@ public final class GetWarehousesDefaultWarehouseOverrideResult {
      */
     public String defaultWarehouseOverrideId() {
         return this.defaultWarehouseOverrideId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - The resource name of the default warehouse override.
@@ -94,7 +82,6 @@ public final class GetWarehousesDefaultWarehouseOverrideResult {
     @CustomType.Builder
     public static final class Builder {
         private String defaultWarehouseOverrideId;
-        private String id;
         private String name;
         private @Nullable GetWarehousesDefaultWarehouseOverrideProviderConfig providerConfig;
         private String type;
@@ -103,7 +90,6 @@ public final class GetWarehousesDefaultWarehouseOverrideResult {
         public Builder(GetWarehousesDefaultWarehouseOverrideResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultWarehouseOverrideId = defaults.defaultWarehouseOverrideId;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.type = defaults.type;
@@ -116,14 +102,6 @@ public final class GetWarehousesDefaultWarehouseOverrideResult {
               throw new MissingRequiredPropertyException("GetWarehousesDefaultWarehouseOverrideResult", "defaultWarehouseOverrideId");
             }
             this.defaultWarehouseOverrideId = defaultWarehouseOverrideId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWarehousesDefaultWarehouseOverrideResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -159,7 +137,6 @@ public final class GetWarehousesDefaultWarehouseOverrideResult {
         public GetWarehousesDefaultWarehouseOverrideResult build() {
             final var _resultValue = new GetWarehousesDefaultWarehouseOverrideResult();
             _resultValue.defaultWarehouseOverrideId = defaultWarehouseOverrideId;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.type = type;

@@ -78,10 +78,6 @@ export interface GetSecretUcsResult {
      * (string) - The name of the catalog where the schema and the secret reside
      */
     readonly catalogName?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetSecretUcsProviderConfig;
     /**

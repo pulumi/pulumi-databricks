@@ -70,10 +70,6 @@ namespace Pulumi.Databricks
     public sealed class GetMaterializedFeaturesFeatureTagResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string)
         /// </summary>
         public readonly string Key;
@@ -85,15 +81,12 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetMaterializedFeaturesFeatureTagResult(
-            string id,
-
             string key,
 
             Outputs.GetMaterializedFeaturesFeatureTagProviderConfigResult? providerConfig,
 
             string value)
         {
-            Id = id;
             Key = key;
             ProviderConfig = providerConfig;
             Value = value;

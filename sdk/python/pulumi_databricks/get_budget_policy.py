@@ -27,16 +27,13 @@ class GetBudgetPolicyResult:
     """
     A collection of values returned by getBudgetPolicy.
     """
-    def __init__(__self__, binding_workspace_ids=None, custom_tags=None, id=None, policy_id=None, policy_name=None):
+    def __init__(__self__, binding_workspace_ids=None, custom_tags=None, policy_id=None, policy_name=None):
         if binding_workspace_ids and not isinstance(binding_workspace_ids, list):
             raise TypeError("Expected argument 'binding_workspace_ids' to be a list")
         pulumi.set(__self__, "binding_workspace_ids", binding_workspace_ids)
         if custom_tags and not isinstance(custom_tags, list):
             raise TypeError("Expected argument 'custom_tags' to be a list")
         pulumi.set(__self__, "custom_tags", custom_tags)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if policy_id and not isinstance(policy_id, str):
             raise TypeError("Expected argument 'policy_id' to be a str")
         pulumi.set(__self__, "policy_id", policy_id)
@@ -60,14 +57,6 @@ class GetBudgetPolicyResult:
         (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
         """
         return pulumi.get(self, "custom_tags")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="policyId")
@@ -97,7 +86,6 @@ class AwaitableGetBudgetPolicyResult(GetBudgetPolicyResult):
         return GetBudgetPolicyResult(
             binding_workspace_ids=self.binding_workspace_ids,
             custom_tags=self.custom_tags,
-            id=self.id,
             policy_id=self.policy_id,
             policy_name=self.policy_name)
 
@@ -135,7 +123,6 @@ def get_budget_policy(policy_id: Optional[_builtins.str] = None,
     return AwaitableGetBudgetPolicyResult(
         binding_workspace_ids=pulumi.get(__ret__, 'binding_workspace_ids'),
         custom_tags=pulumi.get(__ret__, 'custom_tags'),
-        id=pulumi.get(__ret__, 'id'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         policy_name=pulumi.get(__ret__, 'policy_name'))
 def get_budget_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -170,6 +157,5 @@ def get_budget_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]] = 
     return __ret__.apply(lambda __response__: GetBudgetPolicyResult(
         binding_workspace_ids=pulumi.get(__response__, 'binding_workspace_ids'),
         custom_tags=pulumi.get(__response__, 'custom_tags'),
-        id=pulumi.get(__response__, 'id'),
         policy_id=pulumi.get(__response__, 'policy_id'),
         policy_name=pulumi.get(__response__, 'policy_name')))

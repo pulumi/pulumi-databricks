@@ -28,13 +28,10 @@ class GetQualityMonitorV2Result:
     """
     A collection of values returned by getQualityMonitorV2.
     """
-    def __init__(__self__, anomaly_detection_config=None, id=None, object_id=None, object_type=None, provider_config=None, validity_check_configurations=None):
+    def __init__(__self__, anomaly_detection_config=None, object_id=None, object_type=None, provider_config=None, validity_check_configurations=None):
         if anomaly_detection_config and not isinstance(anomaly_detection_config, dict):
             raise TypeError("Expected argument 'anomaly_detection_config' to be a dict")
         pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         pulumi.set(__self__, "object_id", object_id)
@@ -55,14 +52,6 @@ class GetQualityMonitorV2Result:
         (AnomalyDetectionConfig)
         """
         return pulumi.get(self, "anomaly_detection_config")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="objectId")
@@ -101,7 +90,6 @@ class AwaitableGetQualityMonitorV2Result(GetQualityMonitorV2Result):
             yield self
         return GetQualityMonitorV2Result(
             anomaly_detection_config=self.anomaly_detection_config,
-            id=self.id,
             object_id=self.object_id,
             object_type=self.object_type,
             provider_config=self.provider_config,
@@ -152,7 +140,6 @@ def get_quality_monitor_v2(object_id: Optional[_builtins.str] = None,
 
     return AwaitableGetQualityMonitorV2Result(
         anomaly_detection_config=pulumi.get(__ret__, 'anomaly_detection_config'),
-        id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         object_type=pulumi.get(__ret__, 'object_type'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
@@ -200,7 +187,6 @@ def get_quality_monitor_v2_output(object_id: pulumi.Input[Optional[_builtins.str
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getQualityMonitorV2:getQualityMonitorV2', __args__, opts=opts, typ=GetQualityMonitorV2Result)
     return __ret__.apply(lambda __response__: GetQualityMonitorV2Result(
         anomaly_detection_config=pulumi.get(__response__, 'anomaly_detection_config'),
-        id=pulumi.get(__response__, 'id'),
         object_id=pulumi.get(__response__, 'object_id'),
         object_type=pulumi.get(__response__, 'object_type'),
         provider_config=pulumi.get(__response__, 'provider_config'),

@@ -87,8 +87,6 @@ type LookupSecretUcResult struct {
 	ExpireTime string `pulumi:"expireTime"`
 	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
 	FullName string `pulumi:"fullName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Unique identifier of the metastore hosting the secret
 	MetastoreId string `pulumi:"metastoreId"`
 	// (string) - The name of the secret, relative to its parent schema
@@ -188,11 +186,6 @@ func (o LookupSecretUcResultOutput) ExpireTime() pulumi.StringOutput {
 // (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
 func (o LookupSecretUcResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretUcResult) string { return v.FullName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSecretUcResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSecretUcResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Unique identifier of the metastore hosting the secret

@@ -16,24 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseSyncedDatabaseTablesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String instanceName;
     private @Nullable Integer pageSize;
     private @Nullable GetDatabaseSyncedDatabaseTablesProviderConfig providerConfig;
     private List<GetDatabaseSyncedDatabaseTablesSyncedTable> syncedTables;
 
     private GetDatabaseSyncedDatabaseTablesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String instanceName() {
         return this.instanceName;
     }
@@ -56,7 +44,6 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String instanceName;
         private @Nullable Integer pageSize;
         private @Nullable GetDatabaseSyncedDatabaseTablesProviderConfig providerConfig;
@@ -64,21 +51,12 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
         public Builder() {}
         public Builder(GetDatabaseSyncedDatabaseTablesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.instanceName = defaults.instanceName;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.syncedTables = defaults.syncedTables;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTablesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
             if (instanceName == null) {
@@ -112,7 +90,6 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
         }
         public GetDatabaseSyncedDatabaseTablesResult build() {
             final var _resultValue = new GetDatabaseSyncedDatabaseTablesResult();
-            _resultValue.id = id;
             _resultValue.instanceName = instanceName;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;

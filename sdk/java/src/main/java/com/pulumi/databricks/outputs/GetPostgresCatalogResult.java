@@ -26,11 +26,6 @@ public final class GetPostgresCatalogResult {
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Output only. The full resource path of the catalog.
      * 
      */
@@ -71,13 +66,6 @@ public final class GetPostgresCatalogResult {
      */
     public String createTime() {
         return this.createTime;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (string) - Output only. The full resource path of the catalog.
@@ -129,7 +117,6 @@ public final class GetPostgresCatalogResult {
     public static final class Builder {
         private String catalogId;
         private String createTime;
-        private String id;
         private String name;
         private @Nullable GetPostgresCatalogProviderConfig providerConfig;
         private GetPostgresCatalogSpec spec;
@@ -141,7 +128,6 @@ public final class GetPostgresCatalogResult {
     	      Objects.requireNonNull(defaults);
     	      this.catalogId = defaults.catalogId;
     	      this.createTime = defaults.createTime;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
@@ -164,14 +150,6 @@ public final class GetPostgresCatalogResult {
               throw new MissingRequiredPropertyException("GetPostgresCatalogResult", "createTime");
             }
             this.createTime = createTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresCatalogResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -224,7 +202,6 @@ public final class GetPostgresCatalogResult {
             final var _resultValue = new GetPostgresCatalogResult();
             _resultValue.catalogId = catalogId;
             _resultValue.createTime = createTime;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;

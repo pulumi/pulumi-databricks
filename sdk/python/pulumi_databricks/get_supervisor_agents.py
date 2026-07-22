@@ -28,10 +28,7 @@ class GetSupervisorAgentsResult:
     """
     A collection of values returned by getSupervisorAgents.
     """
-    def __init__(__self__, id=None, page_size=None, provider_config=None, supervisor_agents=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, provider_config=None, supervisor_agents=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -41,14 +38,6 @@ class GetSupervisorAgentsResult:
         if supervisor_agents and not isinstance(supervisor_agents, list):
             raise TypeError("Expected argument 'supervisor_agents' to be a list")
         pulumi.set(__self__, "supervisor_agents", supervisor_agents)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -72,7 +61,6 @@ class AwaitableGetSupervisorAgentsResult(GetSupervisorAgentsResult):
         if False:
             yield self
         return GetSupervisorAgentsResult(
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             supervisor_agents=self.supervisor_agents)
@@ -99,7 +87,6 @@ def get_supervisor_agents(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getSupervisorAgents:getSupervisorAgents', __args__, opts=opts, typ=GetSupervisorAgentsResult).value
 
     return AwaitableGetSupervisorAgentsResult(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         supervisor_agents=pulumi.get(__ret__, 'supervisor_agents'))
@@ -123,7 +110,6 @@ def get_supervisor_agents_output(page_size: pulumi.Input[Optional[Optional[_buil
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getSupervisorAgents:getSupervisorAgents', __args__, opts=opts, typ=GetSupervisorAgentsResult)
     return __ret__.apply(lambda __response__: GetSupervisorAgentsResult(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         supervisor_agents=pulumi.get(__response__, 'supervisor_agents')))

@@ -28,24 +28,13 @@ class GetSharesResult:
     """
     A collection of values returned by getShares.
     """
-    def __init__(__self__, id=None, provider_config=None, shares=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, provider_config=None, shares=None):
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
         if shares and not isinstance(shares, list):
             raise TypeError("Expected argument 'shares' to be a list")
         pulumi.set(__self__, "shares", shares)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -67,7 +56,6 @@ class AwaitableGetSharesResult(GetSharesResult):
         if False:
             yield self
         return GetSharesResult(
-            id=self.id,
             provider_config=self.provider_config,
             shares=self.shares)
 
@@ -117,7 +105,6 @@ def get_shares(provider_config: Optional[Union['GetSharesProviderConfigArgs', 'G
     __ret__ = pulumi.runtime.invoke('databricks:index/getShares:getShares', __args__, opts=opts, typ=GetSharesResult).value
 
     return AwaitableGetSharesResult(
-        id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         shares=pulumi.get(__ret__, 'shares'))
 def get_shares_output(provider_config: pulumi.Input[Optional[Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict']]]] = None,
@@ -164,6 +151,5 @@ def get_shares_output(provider_config: pulumi.Input[Optional[Optional[Union['Get
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getShares:getShares', __args__, opts=opts, typ=GetSharesResult)
     return __ret__.apply(lambda __response__: GetSharesResult(
-        id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         shares=pulumi.get(__response__, 'shares')))

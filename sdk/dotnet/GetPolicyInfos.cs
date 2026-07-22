@@ -204,10 +204,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetPolicyInfosResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly bool? IncludeInherited;
         public readonly int? MaxResults;
         /// <summary>
@@ -226,8 +222,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetPolicyInfosResult(
-            string id,
-
             bool? includeInherited,
 
             int? maxResults,
@@ -240,7 +234,6 @@ namespace Pulumi.Databricks
 
             Outputs.GetPolicyInfosProviderConfigResult? providerConfig)
         {
-            Id = id;
             IncludeInherited = includeInherited;
             MaxResults = maxResults;
             OnSecurableFullname = onSecurableFullname;

@@ -68,8 +68,6 @@ type LookupPostgresDataApiArgs struct {
 type LookupPostgresDataApiResult struct {
 	// (string) - A timestamp indicating when the Data API was first enabled
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Resource name: projects/{project_id}/branches/{branch_id}/databases/{database_id}/data-api
 	Name string `pulumi:"name"`
 	// (string) - The database containing this Data API configuration.
@@ -123,11 +121,6 @@ func (o LookupPostgresDataApiResultOutput) ToLookupPostgresDataApiResultOutputWi
 // (string) - A timestamp indicating when the Data API was first enabled
 func (o LookupPostgresDataApiResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresDataApiResult) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresDataApiResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresDataApiResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Resource name: projects/{project_id}/branches/{branch_id}/databases/{database_id}/data-api

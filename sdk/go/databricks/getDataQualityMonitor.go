@@ -96,8 +96,6 @@ type LookupDataQualityMonitorResult struct {
 	// (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
 	// must be present
 	DataProfilingConfig GetDataQualityMonitorDataProfilingConfig `pulumi:"dataProfilingConfig"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
@@ -164,11 +162,6 @@ func (o LookupDataQualityMonitorResultOutput) DataProfilingConfig() GetDataQuali
 	return o.ApplyT(func(v LookupDataQualityMonitorResult) GetDataQualityMonitorDataProfilingConfig {
 		return v.DataProfilingConfig
 	}).(GetDataQualityMonitorDataProfilingConfigOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDataQualityMonitorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDataQualityMonitorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.

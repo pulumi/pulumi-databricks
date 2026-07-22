@@ -184,25 +184,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetTagPoliciesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetTagPoliciesProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetTagPoliciesTagPolicyResult> TagPolicies;
 
         [OutputConstructor]
         private GetTagPoliciesResult(
-            string id,
-
             int? pageSize,
 
             Outputs.GetTagPoliciesProviderConfigResult? providerConfig,
 
             ImmutableArray<Outputs.GetTagPoliciesTagPolicyResult> tagPolicies)
         {
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             TagPolicies = tagPolicies;

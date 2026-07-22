@@ -44,11 +44,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
      */
     private String effectiveLogicalDatabaseName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Target Postgres database object (logical database) name for this table.
      * 
      */
@@ -110,13 +105,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
         return this.effectiveLogicalDatabaseName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - Target Postgres database object (logical database) name for this table.
      * 
      */
@@ -163,7 +151,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
         private String databaseInstanceName;
         private String effectiveDatabaseInstanceName;
         private String effectiveLogicalDatabaseName;
-        private String id;
         private String logicalDatabaseName;
         private String name;
         private @Nullable GetDatabaseSyncedDatabaseTableProviderConfig providerConfig;
@@ -176,7 +163,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
     	      this.databaseInstanceName = defaults.databaseInstanceName;
     	      this.effectiveDatabaseInstanceName = defaults.effectiveDatabaseInstanceName;
     	      this.effectiveLogicalDatabaseName = defaults.effectiveLogicalDatabaseName;
-    	      this.id = defaults.id;
     	      this.logicalDatabaseName = defaults.logicalDatabaseName;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
@@ -214,14 +200,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
               throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTableResult", "effectiveLogicalDatabaseName");
             }
             this.effectiveLogicalDatabaseName = effectiveLogicalDatabaseName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTableResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -268,7 +246,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
             _resultValue.databaseInstanceName = databaseInstanceName;
             _resultValue.effectiveDatabaseInstanceName = effectiveDatabaseInstanceName;
             _resultValue.effectiveLogicalDatabaseName = effectiveLogicalDatabaseName;
-            _resultValue.id = id;
             _resultValue.logicalDatabaseName = logicalDatabaseName;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;

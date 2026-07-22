@@ -28,7 +28,7 @@ class GetUsersResult:
     """
     A collection of values returned by getUsers.
     """
-    def __init__(__self__, api=None, extra_attributes=None, filter=None, id=None, provider_config=None, users=None):
+    def __init__(__self__, api=None, extra_attributes=None, filter=None, provider_config=None, users=None):
         if api and not isinstance(api, str):
             raise TypeError("Expected argument 'api' to be a str")
         pulumi.set(__self__, "api", api)
@@ -38,9 +38,6 @@ class GetUsersResult:
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -62,14 +59,6 @@ class GetUsersResult:
     @pulumi.getter
     def filter(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "filter")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -94,7 +83,6 @@ class AwaitableGetUsersResult(GetUsersResult):
             api=self.api,
             extra_attributes=self.extra_attributes,
             filter=self.filter,
-            id=self.id,
             provider_config=self.provider_config,
             users=self.users)
 
@@ -161,7 +149,6 @@ def get_users(api: Optional[_builtins.str] = None,
         api=pulumi.get(__ret__, 'api'),
         extra_attributes=pulumi.get(__ret__, 'extra_attributes'),
         filter=pulumi.get(__ret__, 'filter'),
-        id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         users=pulumi.get(__ret__, 'users'))
 def get_users_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -225,6 +212,5 @@ def get_users_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None
         api=pulumi.get(__response__, 'api'),
         extra_attributes=pulumi.get(__response__, 'extra_attributes'),
         filter=pulumi.get(__response__, 'filter'),
-        id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         users=pulumi.get(__response__, 'users')))

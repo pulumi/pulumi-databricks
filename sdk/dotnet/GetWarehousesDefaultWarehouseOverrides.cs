@@ -175,10 +175,6 @@ namespace Pulumi.Databricks
     public sealed class GetWarehousesDefaultWarehouseOverridesResult
     {
         public readonly ImmutableArray<Outputs.GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideResult> DefaultWarehouseOverrides;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult? ProviderConfig;
 
@@ -186,14 +182,11 @@ namespace Pulumi.Databricks
         private GetWarehousesDefaultWarehouseOverridesResult(
             ImmutableArray<Outputs.GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideResult> defaultWarehouseOverrides,
 
-            string id,
-
             int? pageSize,
 
             Outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult? providerConfig)
         {
             DefaultWarehouseOverrides = defaultWarehouseOverrides;
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
         }

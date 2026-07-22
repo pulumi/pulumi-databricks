@@ -41,11 +41,6 @@ public final class GetRfaAccessRequestDestinationsResult {
      * 
      */
     private String fullName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable GetRfaAccessRequestDestinationsProviderConfig providerConfig;
     /**
      * @return (Securable) - The securable for which the access request destinations are being modified or read
@@ -90,13 +85,6 @@ public final class GetRfaAccessRequestDestinationsResult {
     public String fullName() {
         return this.fullName;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<GetRfaAccessRequestDestinationsProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -128,7 +116,6 @@ public final class GetRfaAccessRequestDestinationsResult {
         private GetRfaAccessRequestDestinationsDestinationSourceSecurable destinationSourceSecurable;
         private List<GetRfaAccessRequestDestinationsDestination> destinations;
         private String fullName;
-        private String id;
         private @Nullable GetRfaAccessRequestDestinationsProviderConfig providerConfig;
         private GetRfaAccessRequestDestinationsSecurable securable;
         private String securableType;
@@ -139,7 +126,6 @@ public final class GetRfaAccessRequestDestinationsResult {
     	      this.destinationSourceSecurable = defaults.destinationSourceSecurable;
     	      this.destinations = defaults.destinations;
     	      this.fullName = defaults.fullName;
-    	      this.id = defaults.id;
     	      this.providerConfig = defaults.providerConfig;
     	      this.securable = defaults.securable;
     	      this.securableType = defaults.securableType;
@@ -181,14 +167,6 @@ public final class GetRfaAccessRequestDestinationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetRfaAccessRequestDestinationsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder providerConfig(@Nullable GetRfaAccessRequestDestinationsProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -216,7 +194,6 @@ public final class GetRfaAccessRequestDestinationsResult {
             _resultValue.destinationSourceSecurable = destinationSourceSecurable;
             _resultValue.destinations = destinations;
             _resultValue.fullName = fullName;
-            _resultValue.id = id;
             _resultValue.providerConfig = providerConfig;
             _resultValue.securable = securable;
             _resultValue.securableType = securableType;

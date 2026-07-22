@@ -81,10 +81,6 @@ export interface GetWorkspaceEntityTagAssignmentsResult {
      * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     readonly entityType: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetWorkspaceEntityTagAssignmentsProviderConfig;
     readonly tagAssignments: outputs.GetWorkspaceEntityTagAssignmentsTagAssignment[];

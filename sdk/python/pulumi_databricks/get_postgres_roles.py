@@ -28,10 +28,7 @@ class GetPostgresRolesResult:
     """
     A collection of values returned by getPostgresRoles.
     """
-    def __init__(__self__, id=None, page_size=None, parent=None, provider_config=None, roles=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, parent=None, provider_config=None, roles=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -44,14 +41,6 @@ class GetPostgresRolesResult:
         if roles and not isinstance(roles, list):
             raise TypeError("Expected argument 'roles' to be a list")
         pulumi.set(__self__, "roles", roles)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -84,7 +73,6 @@ class AwaitableGetPostgresRolesResult(GetPostgresRolesResult):
         if False:
             yield self
         return GetPostgresRolesResult(
-            id=self.id,
             page_size=self.page_size,
             parent=self.parent,
             provider_config=self.provider_config,
@@ -129,7 +117,6 @@ def get_postgres_roles(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresRoles:getPostgresRoles', __args__, opts=opts, typ=GetPostgresRolesResult).value
 
     return AwaitableGetPostgresRolesResult(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
@@ -171,7 +158,6 @@ def get_postgres_roles_output(page_size: pulumi.Input[Optional[Optional[_builtin
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresRoles:getPostgresRoles', __args__, opts=opts, typ=GetPostgresRolesResult)
     return __ret__.apply(lambda __response__: GetPostgresRolesResult(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config'),

@@ -28,16 +28,13 @@ class GetDataQualityMonitorResult:
     """
     A collection of values returned by getDataQualityMonitor.
     """
-    def __init__(__self__, anomaly_detection_config=None, data_profiling_config=None, id=None, object_id=None, object_type=None, provider_config=None):
+    def __init__(__self__, anomaly_detection_config=None, data_profiling_config=None, object_id=None, object_type=None, provider_config=None):
         if anomaly_detection_config and not isinstance(anomaly_detection_config, dict):
             raise TypeError("Expected argument 'anomaly_detection_config' to be a dict")
         pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
         if data_profiling_config and not isinstance(data_profiling_config, dict):
             raise TypeError("Expected argument 'data_profiling_config' to be a dict")
         pulumi.set(__self__, "data_profiling_config", data_profiling_config)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         pulumi.set(__self__, "object_id", object_id)
@@ -64,14 +61,6 @@ class GetDataQualityMonitorResult:
         must be present
         """
         return pulumi.get(self, "data_profiling_config")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="objectId")
@@ -103,7 +92,6 @@ class AwaitableGetDataQualityMonitorResult(GetDataQualityMonitorResult):
         return GetDataQualityMonitorResult(
             anomaly_detection_config=self.anomaly_detection_config,
             data_profiling_config=self.data_profiling_config,
-            id=self.id,
             object_id=self.object_id,
             object_type=self.object_type,
             provider_config=self.provider_config)
@@ -166,7 +154,6 @@ def get_data_quality_monitor(object_id: Optional[_builtins.str] = None,
     return AwaitableGetDataQualityMonitorResult(
         anomaly_detection_config=pulumi.get(__ret__, 'anomaly_detection_config'),
         data_profiling_config=pulumi.get(__ret__, 'data_profiling_config'),
-        id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         object_type=pulumi.get(__ret__, 'object_type'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -226,7 +213,6 @@ def get_data_quality_monitor_output(object_id: pulumi.Input[Optional[_builtins.s
     return __ret__.apply(lambda __response__: GetDataQualityMonitorResult(
         anomaly_detection_config=pulumi.get(__response__, 'anomaly_detection_config'),
         data_profiling_config=pulumi.get(__response__, 'data_profiling_config'),
-        id=pulumi.get(__response__, 'id'),
         object_id=pulumi.get(__response__, 'object_id'),
         object_type=pulumi.get(__response__, 'object_type'),
         provider_config=pulumi.get(__response__, 'provider_config')))

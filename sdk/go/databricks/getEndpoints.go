@@ -66,8 +66,6 @@ type GetEndpointsArgs struct {
 
 // A collection of values returned by getEndpoints.
 type GetEndpointsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string             `pulumi:"id"`
 	Items    []GetEndpointsItem `pulumi:"items"`
 	PageSize *int               `pulumi:"pageSize"`
 	Parent   string             `pulumi:"parent"`
@@ -107,11 +105,6 @@ func (o GetEndpointsResultOutput) ToGetEndpointsResultOutput() GetEndpointsResul
 
 func (o GetEndpointsResultOutput) ToGetEndpointsResultOutputWithContext(ctx context.Context) GetEndpointsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetEndpointsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEndpointsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetEndpointsResultOutput) Items() GetEndpointsItemArrayOutput {

@@ -28,16 +28,13 @@ class GetWorkspaceEntityTagAssignmentsResult:
     """
     A collection of values returned by getWorkspaceEntityTagAssignments.
     """
-    def __init__(__self__, entity_id=None, entity_type=None, id=None, page_size=None, provider_config=None, tag_assignments=None):
+    def __init__(__self__, entity_id=None, entity_type=None, page_size=None, provider_config=None, tag_assignments=None):
         if entity_id and not isinstance(entity_id, str):
             raise TypeError("Expected argument 'entity_id' to be a str")
         pulumi.set(__self__, "entity_id", entity_id)
         if entity_type and not isinstance(entity_type, str):
             raise TypeError("Expected argument 'entity_type' to be a str")
         pulumi.set(__self__, "entity_type", entity_type)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -65,14 +62,6 @@ class GetWorkspaceEntityTagAssignmentsResult:
         return pulumi.get(self, "entity_type")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="pageSize")
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
@@ -96,7 +85,6 @@ class AwaitableGetWorkspaceEntityTagAssignmentsResult(GetWorkspaceEntityTagAssig
         return GetWorkspaceEntityTagAssignmentsResult(
             entity_id=self.entity_id,
             entity_type=self.entity_type,
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             tag_assignments=self.tag_assignments)
@@ -147,7 +135,6 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
     return AwaitableGetWorkspaceEntityTagAssignmentsResult(
         entity_id=pulumi.get(__ret__, 'entity_id'),
         entity_type=pulumi.get(__ret__, 'entity_type'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         tag_assignments=pulumi.get(__ret__, 'tag_assignments'))
@@ -195,7 +182,6 @@ def get_workspace_entity_tag_assignments_output(entity_id: pulumi.Input[Optional
     return __ret__.apply(lambda __response__: GetWorkspaceEntityTagAssignmentsResult(
         entity_id=pulumi.get(__response__, 'entity_id'),
         entity_type=pulumi.get(__response__, 'entity_type'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         tag_assignments=pulumi.get(__response__, 'tag_assignments')))

@@ -42,10 +42,6 @@ export interface GetDatabaseSyncedDatabaseTablesArgs {
  * A collection of values returned by getDatabaseSyncedDatabaseTables.
  */
 export interface GetDatabaseSyncedDatabaseTablesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly instanceName: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetDatabaseSyncedDatabaseTablesProviderConfig;

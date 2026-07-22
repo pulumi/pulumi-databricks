@@ -9,7 +9,6 @@ import com.pulumi.databricks.outputs.GetPostgresProjectsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,24 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPostgresProjectsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private List<GetPostgresProjectsProject> projects;
     private @Nullable GetPostgresProjectsProviderConfig providerConfig;
     private @Nullable Boolean showDeleted;
 
     private GetPostgresProjectsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -57,7 +44,6 @@ public final class GetPostgresProjectsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private List<GetPostgresProjectsProject> projects;
         private @Nullable GetPostgresProjectsProviderConfig providerConfig;
@@ -65,21 +51,12 @@ public final class GetPostgresProjectsResult {
         public Builder() {}
         public Builder(GetPostgresProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.projects = defaults.projects;
     	      this.providerConfig = defaults.providerConfig;
     	      this.showDeleted = defaults.showDeleted;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresProjectsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -111,7 +88,6 @@ public final class GetPostgresProjectsResult {
         }
         public GetPostgresProjectsResult build() {
             final var _resultValue = new GetPostgresProjectsResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.projects = projects;
             _resultValue.providerConfig = providerConfig;

@@ -64,8 +64,6 @@ type LookupWorkspaceNetworkOptionArgs struct {
 
 // A collection of values returned by getWorkspaceNetworkOption.
 type LookupWorkspaceNetworkOptionResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The network policy ID to apply to the workspace. This controls the network access rules
 	// for all serverless compute resources in the workspace. Each workspace can only be
 	// linked to one policy at a time. If no policy is explicitly assigned,
@@ -107,11 +105,6 @@ func (o LookupWorkspaceNetworkOptionResultOutput) ToLookupWorkspaceNetworkOption
 
 func (o LookupWorkspaceNetworkOptionResultOutput) ToLookupWorkspaceNetworkOptionResultOutputWithContext(ctx context.Context) LookupWorkspaceNetworkOptionResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWorkspaceNetworkOptionResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceNetworkOptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The network policy ID to apply to the workspace. This controls the network access rules

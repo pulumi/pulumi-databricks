@@ -28,13 +28,10 @@ class GetAiSearchEndpointsResult:
     """
     A collection of values returned by getAiSearchEndpoints.
     """
-    def __init__(__self__, endpoints=None, id=None, page_size=None, parent=None, provider_config=None):
+    def __init__(__self__, endpoints=None, page_size=None, parent=None, provider_config=None):
         if endpoints and not isinstance(endpoints, list):
             raise TypeError("Expected argument 'endpoints' to be a list")
         pulumi.set(__self__, "endpoints", endpoints)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -49,14 +46,6 @@ class GetAiSearchEndpointsResult:
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetAiSearchEndpointsEndpointResult']:
         return pulumi.get(self, "endpoints")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -81,7 +70,6 @@ class AwaitableGetAiSearchEndpointsResult(GetAiSearchEndpointsResult):
             yield self
         return GetAiSearchEndpointsResult(
             endpoints=self.endpoints,
-            id=self.id,
             page_size=self.page_size,
             parent=self.parent,
             provider_config=self.provider_config)
@@ -126,7 +114,6 @@ def get_ai_search_endpoints(page_size: Optional[_builtins.int] = None,
 
     return AwaitableGetAiSearchEndpointsResult(
         endpoints=pulumi.get(__ret__, 'endpoints'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -168,7 +155,6 @@ def get_ai_search_endpoints_output(page_size: pulumi.Input[Optional[Optional[_bu
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAiSearchEndpoints:getAiSearchEndpoints', __args__, opts=opts, typ=GetAiSearchEndpointsResult)
     return __ret__.apply(lambda __response__: GetAiSearchEndpointsResult(
         endpoints=pulumi.get(__response__, 'endpoints'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config')))

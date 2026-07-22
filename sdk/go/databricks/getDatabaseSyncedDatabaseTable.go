@@ -80,8 +80,6 @@ type LookupDatabaseSyncedDatabaseTableResult struct {
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveLogicalDatabaseName string `pulumi:"effectiveLogicalDatabaseName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Target Postgres database object (logical database) name for this table.
 	LogicalDatabaseName string `pulumi:"logicalDatabaseName"`
 	// (string) - Full three-part (catalog, schema, table) name of the table
@@ -159,11 +157,6 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) EffectiveDatabaseInstance
 // server side defaults. Use the field without the effective_ prefix to set the value
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) EffectiveLogicalDatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) string { return v.EffectiveLogicalDatabaseName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDatabaseSyncedDatabaseTableResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Target Postgres database object (logical database) name for this table.

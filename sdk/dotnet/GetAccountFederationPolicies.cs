@@ -126,22 +126,15 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAccountFederationPoliciesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetAccountFederationPoliciesPolicyResult> Policies;
 
         [OutputConstructor]
         private GetAccountFederationPoliciesResult(
-            string id,
-
             int? pageSize,
 
             ImmutableArray<Outputs.GetAccountFederationPoliciesPolicyResult> policies)
         {
-            Id = id;
             PageSize = pageSize;
             Policies = policies;
         }

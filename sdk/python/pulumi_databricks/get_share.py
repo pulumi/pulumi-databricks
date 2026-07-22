@@ -28,7 +28,7 @@ class GetShareResult:
     """
     A collection of values returned by getShare.
     """
-    def __init__(__self__, comment=None, created_at=None, created_by=None, effective_owner=None, id=None, name=None, objects=None, owner=None, provider_config=None, storage_location=None, storage_root=None, updated_at=None, updated_by=None):
+    def __init__(__self__, comment=None, created_at=None, created_by=None, effective_owner=None, name=None, objects=None, owner=None, provider_config=None, storage_location=None, storage_root=None, updated_at=None, updated_by=None):
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
@@ -41,9 +41,6 @@ class GetShareResult:
         if effective_owner and not isinstance(effective_owner, str):
             raise TypeError("Expected argument 'effective_owner' to be a str")
         pulumi.set(__self__, "effective_owner", effective_owner)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -97,14 +94,6 @@ class GetShareResult:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> _builtins.str:
         return pulumi.get(self, "effective_owner")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -163,7 +152,6 @@ class AwaitableGetShareResult(GetShareResult):
             created_at=self.created_at,
             created_by=self.created_by,
             effective_owner=self.effective_owner,
-            id=self.id,
             name=self.name,
             objects=self.objects,
             owner=self.owner,
@@ -233,7 +221,6 @@ def get_share(comment: Optional[_builtins.str] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
         effective_owner=pulumi.get(__ret__, 'effective_owner'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         objects=pulumi.get(__ret__, 'objects'),
         owner=pulumi.get(__ret__, 'owner'),
@@ -300,7 +287,6 @@ def get_share_output(comment: pulumi.Input[Optional[Optional[_builtins.str]]] = 
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),
         effective_owner=pulumi.get(__response__, 'effective_owner'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         objects=pulumi.get(__response__, 'objects'),
         owner=pulumi.get(__response__, 'owner'),

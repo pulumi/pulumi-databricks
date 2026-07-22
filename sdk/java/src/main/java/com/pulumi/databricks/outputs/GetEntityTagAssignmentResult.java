@@ -23,11 +23,6 @@ public final class GetEntityTagAssignmentResult {
      * 
      */
     private String entityType;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable GetEntityTagAssignmentProviderConfig providerConfig;
     /**
      * @return (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
@@ -69,13 +64,6 @@ public final class GetEntityTagAssignmentResult {
      */
     public String entityType() {
         return this.entityType;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<GetEntityTagAssignmentProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -127,7 +115,6 @@ public final class GetEntityTagAssignmentResult {
     public static final class Builder {
         private String entityName;
         private String entityType;
-        private String id;
         private @Nullable GetEntityTagAssignmentProviderConfig providerConfig;
         private String sourceType;
         private String tagKey;
@@ -139,7 +126,6 @@ public final class GetEntityTagAssignmentResult {
     	      Objects.requireNonNull(defaults);
     	      this.entityName = defaults.entityName;
     	      this.entityType = defaults.entityType;
-    	      this.id = defaults.id;
     	      this.providerConfig = defaults.providerConfig;
     	      this.sourceType = defaults.sourceType;
     	      this.tagKey = defaults.tagKey;
@@ -162,14 +148,6 @@ public final class GetEntityTagAssignmentResult {
               throw new MissingRequiredPropertyException("GetEntityTagAssignmentResult", "entityType");
             }
             this.entityType = entityType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEntityTagAssignmentResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -222,7 +200,6 @@ public final class GetEntityTagAssignmentResult {
             final var _resultValue = new GetEntityTagAssignmentResult();
             _resultValue.entityName = entityName;
             _resultValue.entityType = entityType;
-            _resultValue.id = id;
             _resultValue.providerConfig = providerConfig;
             _resultValue.sourceType = sourceType;
             _resultValue.tagKey = tagKey;

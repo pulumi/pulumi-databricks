@@ -148,22 +148,15 @@ namespace Pulumi.Databricks
         /// attribute - reference to another Databricks App.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppsAppResult> Apps;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetAppsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetAppsResult(
             ImmutableArray<Outputs.GetAppsAppResult> apps,
 
-            string id,
-
             Outputs.GetAppsProviderConfigResult? providerConfig)
         {
             Apps = apps;
-            Id = id;
             ProviderConfig = providerConfig;
         }
     }

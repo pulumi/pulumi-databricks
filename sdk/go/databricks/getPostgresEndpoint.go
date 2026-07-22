@@ -70,8 +70,6 @@ type LookupPostgresEndpointResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Part of the resource name
 	EndpointId string `pulumi:"endpointId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name string `pulumi:"name"`
@@ -134,11 +132,6 @@ func (o LookupPostgresEndpointResultOutput) CreateTime() pulumi.StringOutput {
 // (string) - Part of the resource name
 func (o LookupPostgresEndpointResultOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.EndpointId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresEndpointResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Output only. The full resource path of the endpoint.

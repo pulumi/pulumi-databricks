@@ -70,10 +70,8 @@ type GetDisasterRecoveryFailoverGroupsArgs struct {
 // A collection of values returned by getDisasterRecoveryFailoverGroups.
 type GetDisasterRecoveryFailoverGroupsResult struct {
 	FailoverGroups []GetDisasterRecoveryFailoverGroupsFailoverGroup `pulumi:"failoverGroups"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
-	Parent   string `pulumi:"parent"`
+	PageSize       *int                                             `pulumi:"pageSize"`
+	Parent         string                                           `pulumi:"parent"`
 }
 
 func GetDisasterRecoveryFailoverGroupsOutput(ctx *pulumi.Context, args GetDisasterRecoveryFailoverGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDisasterRecoveryFailoverGroupsResultOutput {
@@ -121,11 +119,6 @@ func (o GetDisasterRecoveryFailoverGroupsResultOutput) FailoverGroups() GetDisas
 	return o.ApplyT(func(v GetDisasterRecoveryFailoverGroupsResult) []GetDisasterRecoveryFailoverGroupsFailoverGroup {
 		return v.FailoverGroups
 	}).(GetDisasterRecoveryFailoverGroupsFailoverGroupArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDisasterRecoveryFailoverGroupsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDisasterRecoveryFailoverGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDisasterRecoveryFailoverGroupsResultOutput) PageSize() pulumi.IntPtrOutput {

@@ -94,10 +94,6 @@ export interface GetShareResult {
     readonly createdBy: string;
     readonly effectiveOwner: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Full name of the object being shared.
      */
     readonly name?: string;

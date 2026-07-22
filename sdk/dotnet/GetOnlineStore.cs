@@ -88,10 +88,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Creator;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The name of the online store. This is the unique identifier for the online store
         /// </summary>
         public readonly string Name;
@@ -117,8 +113,6 @@ namespace Pulumi.Databricks
 
             string creator,
 
-            string id,
-
             string name,
 
             Outputs.GetOnlineStoreProviderConfigResult? providerConfig,
@@ -132,7 +126,6 @@ namespace Pulumi.Databricks
             Capacity = capacity;
             CreationTime = creationTime;
             Creator = creator;
-            Id = id;
             Name = name;
             ProviderConfig = providerConfig;
             ReadReplicaCount = readReplicaCount;

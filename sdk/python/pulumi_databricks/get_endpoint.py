@@ -27,7 +27,7 @@ class GetEndpointResult:
     """
     A collection of values returned by getEndpoint.
     """
-    def __init__(__self__, account_id=None, azure_private_endpoint_info=None, create_time=None, display_name=None, endpoint_id=None, id=None, name=None, region=None, state=None, use_case=None):
+    def __init__(__self__, account_id=None, azure_private_endpoint_info=None, create_time=None, display_name=None, endpoint_id=None, name=None, region=None, state=None, use_case=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,9 +43,6 @@ class GetEndpointResult:
         if endpoint_id and not isinstance(endpoint_id, str):
             raise TypeError("Expected argument 'endpoint_id' to be a str")
         pulumi.set(__self__, "endpoint_id", endpoint_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -103,14 +100,6 @@ class GetEndpointResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> _builtins.str:
         """
         (string) - The resource name of the endpoint, which uniquely identifies the endpoint
@@ -154,7 +143,6 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             create_time=self.create_time,
             display_name=self.display_name,
             endpoint_id=self.endpoint_id,
-            id=self.id,
             name=self.name,
             region=self.region,
             state=self.state,
@@ -191,7 +179,6 @@ def get_endpoint(name: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         display_name=pulumi.get(__ret__, 'display_name'),
         endpoint_id=pulumi.get(__ret__, 'endpoint_id'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'),
@@ -225,7 +212,6 @@ def get_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         create_time=pulumi.get(__response__, 'create_time'),
         display_name=pulumi.get(__response__, 'display_name'),
         endpoint_id=pulumi.get(__response__, 'endpoint_id'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         region=pulumi.get(__response__, 'region'),
         state=pulumi.get(__response__, 'state'),

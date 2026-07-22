@@ -51,10 +51,6 @@ export interface GetAppsSettingsCustomTemplatesArgs {
  * A collection of values returned by getAppsSettingsCustomTemplates.
  */
 export interface GetAppsSettingsCustomTemplatesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetAppsSettingsCustomTemplatesProviderConfig;
     readonly templates: outputs.GetAppsSettingsCustomTemplatesTemplate[];

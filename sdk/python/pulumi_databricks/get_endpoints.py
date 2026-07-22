@@ -27,10 +27,7 @@ class GetEndpointsResult:
     """
     A collection of values returned by getEndpoints.
     """
-    def __init__(__self__, id=None, items=None, page_size=None, parent=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, items=None, page_size=None, parent=None):
         if items and not isinstance(items, list):
             raise TypeError("Expected argument 'items' to be a list")
         pulumi.set(__self__, "items", items)
@@ -40,14 +37,6 @@ class GetEndpointsResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -71,7 +60,6 @@ class AwaitableGetEndpointsResult(GetEndpointsResult):
         if False:
             yield self
         return GetEndpointsResult(
-            id=self.id,
             items=self.items,
             page_size=self.page_size,
             parent=self.parent)
@@ -111,7 +99,6 @@ def get_endpoints(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getEndpoints:getEndpoints', __args__, opts=opts, typ=GetEndpointsResult).value
 
     return AwaitableGetEndpointsResult(
-        id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'))
@@ -148,7 +135,6 @@ def get_endpoints_output(page_size: pulumi.Input[Optional[Optional[_builtins.int
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getEndpoints:getEndpoints', __args__, opts=opts, typ=GetEndpointsResult)
     return __ret__.apply(lambda __response__: GetEndpointsResult(
-        id=pulumi.get(__response__, 'id'),
         items=pulumi.get(__response__, 'items'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent')))

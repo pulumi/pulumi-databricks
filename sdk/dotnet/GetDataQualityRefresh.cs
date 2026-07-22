@@ -240,10 +240,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly int EndTimeMs;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
         /// </summary>
         public readonly string Message;
@@ -277,8 +273,6 @@ namespace Pulumi.Databricks
         private GetDataQualityRefreshResult(
             int endTimeMs,
 
-            string id,
-
             string message,
 
             string objectId,
@@ -296,7 +290,6 @@ namespace Pulumi.Databricks
             string trigger)
         {
             EndTimeMs = endTimeMs;
-            Id = id;
             Message = message;
             ObjectId = objectId;
             ObjectType = objectType;

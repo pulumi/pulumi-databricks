@@ -26,16 +26,13 @@ class GetDisasterRecoveryStableUrlResult:
     """
     A collection of values returned by getDisasterRecoveryStableUrl.
     """
-    def __init__(__self__, effective_workspace_id=None, failover_group_name=None, id=None, initial_workspace_id=None, name=None, stable_workspace_id=None, url=None):
+    def __init__(__self__, effective_workspace_id=None, failover_group_name=None, initial_workspace_id=None, name=None, stable_workspace_id=None, url=None):
         if effective_workspace_id and not isinstance(effective_workspace_id, str):
             raise TypeError("Expected argument 'effective_workspace_id' to be a str")
         pulumi.set(__self__, "effective_workspace_id", effective_workspace_id)
         if failover_group_name and not isinstance(failover_group_name, str):
             raise TypeError("Expected argument 'failover_group_name' to be a str")
         pulumi.set(__self__, "failover_group_name", failover_group_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if initial_workspace_id and not isinstance(initial_workspace_id, str):
             raise TypeError("Expected argument 'initial_workspace_id' to be a str")
         pulumi.set(__self__, "initial_workspace_id", initial_workspace_id)
@@ -72,14 +69,6 @@ class GetDisasterRecoveryStableUrlResult:
         the stable URL is not attached to any failover group
         """
         return pulumi.get(self, "failover_group_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="initialWorkspaceId")
@@ -131,7 +120,6 @@ class AwaitableGetDisasterRecoveryStableUrlResult(GetDisasterRecoveryStableUrlRe
         return GetDisasterRecoveryStableUrlResult(
             effective_workspace_id=self.effective_workspace_id,
             failover_group_name=self.failover_group_name,
-            id=self.id,
             initial_workspace_id=self.initial_workspace_id,
             name=self.name,
             stable_workspace_id=self.stable_workspace_id,
@@ -172,7 +160,6 @@ def get_disaster_recovery_stable_url(name: Optional[_builtins.str] = None,
     return AwaitableGetDisasterRecoveryStableUrlResult(
         effective_workspace_id=pulumi.get(__ret__, 'effective_workspace_id'),
         failover_group_name=pulumi.get(__ret__, 'failover_group_name'),
-        id=pulumi.get(__ret__, 'id'),
         initial_workspace_id=pulumi.get(__ret__, 'initial_workspace_id'),
         name=pulumi.get(__ret__, 'name'),
         stable_workspace_id=pulumi.get(__ret__, 'stable_workspace_id'),
@@ -210,7 +197,6 @@ def get_disaster_recovery_stable_url_output(name: pulumi.Input[Optional[_builtin
     return __ret__.apply(lambda __response__: GetDisasterRecoveryStableUrlResult(
         effective_workspace_id=pulumi.get(__response__, 'effective_workspace_id'),
         failover_group_name=pulumi.get(__response__, 'failover_group_name'),
-        id=pulumi.get(__response__, 'id'),
         initial_workspace_id=pulumi.get(__response__, 'initial_workspace_id'),
         name=pulumi.get(__response__, 'name'),
         stable_workspace_id=pulumi.get(__response__, 'stable_workspace_id'),

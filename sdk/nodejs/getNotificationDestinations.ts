@@ -78,10 +78,6 @@ export interface GetNotificationDestinationsArgs {
 export interface GetNotificationDestinationsResult {
     readonly displayNameContains?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
      */
     readonly notificationDestinations: outputs.GetNotificationDestinationsNotificationDestination[];

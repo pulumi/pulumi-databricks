@@ -28,13 +28,10 @@ class GetAlertsV2Result:
     """
     A collection of values returned by getAlertsV2.
     """
-    def __init__(__self__, alerts=None, id=None, page_size=None, provider_config=None):
+    def __init__(__self__, alerts=None, page_size=None, provider_config=None):
         if alerts and not isinstance(alerts, list):
             raise TypeError("Expected argument 'alerts' to be a list")
         pulumi.set(__self__, "alerts", alerts)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -46,14 +43,6 @@ class GetAlertsV2Result:
     @pulumi.getter
     def alerts(self) -> Sequence['outputs.GetAlertsV2AlertResult']:
         return pulumi.get(self, "alerts")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -73,7 +62,6 @@ class AwaitableGetAlertsV2Result(GetAlertsV2Result):
             yield self
         return GetAlertsV2Result(
             alerts=self.alerts,
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config)
 
@@ -115,7 +103,6 @@ def get_alerts_v2(page_size: Optional[_builtins.int] = None,
 
     return AwaitableGetAlertsV2Result(
         alerts=pulumi.get(__ret__, 'alerts'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_alerts_v2_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -154,6 +141,5 @@ def get_alerts_v2_output(page_size: pulumi.Input[Optional[Optional[_builtins.int
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAlertsV2:getAlertsV2', __args__, opts=opts, typ=GetAlertsV2Result)
     return __ret__.apply(lambda __response__: GetAlertsV2Result(
         alerts=pulumi.get(__response__, 'alerts'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

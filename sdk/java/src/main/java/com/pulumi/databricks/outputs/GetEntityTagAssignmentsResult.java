@@ -26,11 +26,6 @@ public final class GetEntityTagAssignmentsResult {
      * 
      */
     private String entityType;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer maxResults;
     private @Nullable GetEntityTagAssignmentsProviderConfig providerConfig;
     private List<GetEntityTagAssignmentsTagAssignment> tagAssignments;
@@ -49,13 +44,6 @@ public final class GetEntityTagAssignmentsResult {
      */
     public String entityType() {
         return this.entityType;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> maxResults() {
         return Optional.ofNullable(this.maxResults);
@@ -78,7 +66,6 @@ public final class GetEntityTagAssignmentsResult {
     public static final class Builder {
         private String entityName;
         private String entityType;
-        private String id;
         private @Nullable Integer maxResults;
         private @Nullable GetEntityTagAssignmentsProviderConfig providerConfig;
         private List<GetEntityTagAssignmentsTagAssignment> tagAssignments;
@@ -87,7 +74,6 @@ public final class GetEntityTagAssignmentsResult {
     	      Objects.requireNonNull(defaults);
     	      this.entityName = defaults.entityName;
     	      this.entityType = defaults.entityType;
-    	      this.id = defaults.id;
     	      this.maxResults = defaults.maxResults;
     	      this.providerConfig = defaults.providerConfig;
     	      this.tagAssignments = defaults.tagAssignments;
@@ -107,14 +93,6 @@ public final class GetEntityTagAssignmentsResult {
               throw new MissingRequiredPropertyException("GetEntityTagAssignmentsResult", "entityType");
             }
             this.entityType = entityType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEntityTagAssignmentsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -144,7 +122,6 @@ public final class GetEntityTagAssignmentsResult {
             final var _resultValue = new GetEntityTagAssignmentsResult();
             _resultValue.entityName = entityName;
             _resultValue.entityType = entityType;
-            _resultValue.id = id;
             _resultValue.maxResults = maxResults;
             _resultValue.providerConfig = providerConfig;
             _resultValue.tagAssignments = tagAssignments;

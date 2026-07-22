@@ -85,8 +85,6 @@ type LookupDataClassificationCatalogConfigResult struct {
 	// Mutually exclusive with `includedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	ExcludedSchemas GetDataClassificationCatalogConfigExcludedSchemas `pulumi:"excludedSchemas"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
 	// If specified, only listed schemas will be scanned.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
@@ -149,11 +147,6 @@ func (o LookupDataClassificationCatalogConfigResultOutput) ExcludedSchemas() Get
 	return o.ApplyT(func(v LookupDataClassificationCatalogConfigResult) GetDataClassificationCatalogConfigExcludedSchemas {
 		return v.ExcludedSchemas
 	}).(GetDataClassificationCatalogConfigExcludedSchemasOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDataClassificationCatalogConfigResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDataClassificationCatalogConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.

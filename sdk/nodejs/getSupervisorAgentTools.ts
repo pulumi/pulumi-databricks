@@ -40,10 +40,6 @@ export interface GetSupervisorAgentToolsArgs {
  * A collection of values returned by getSupervisorAgentTools.
  */
 export interface GetSupervisorAgentToolsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly parent: string;
     readonly providerConfig?: outputs.GetSupervisorAgentToolsProviderConfig;

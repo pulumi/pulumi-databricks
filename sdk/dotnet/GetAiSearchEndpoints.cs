@@ -160,10 +160,6 @@ namespace Pulumi.Databricks
     public sealed class GetAiSearchEndpointsResult
     {
         public readonly ImmutableArray<Outputs.GetAiSearchEndpointsEndpointResult> Endpoints;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly string Parent;
         public readonly Outputs.GetAiSearchEndpointsProviderConfigResult? ProviderConfig;
@@ -172,8 +168,6 @@ namespace Pulumi.Databricks
         private GetAiSearchEndpointsResult(
             ImmutableArray<Outputs.GetAiSearchEndpointsEndpointResult> endpoints,
 
-            string id,
-
             int? pageSize,
 
             string parent,
@@ -181,7 +175,6 @@ namespace Pulumi.Databricks
             Outputs.GetAiSearchEndpointsProviderConfigResult? providerConfig)
         {
             Endpoints = endpoints;
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
             ProviderConfig = providerConfig;

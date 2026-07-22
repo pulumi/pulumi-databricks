@@ -64,10 +64,6 @@ export interface GetPostgresCdfStatusResult {
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The last time changes for this table were written to Delta Lake
      */
     readonly lastSyncTime: string;

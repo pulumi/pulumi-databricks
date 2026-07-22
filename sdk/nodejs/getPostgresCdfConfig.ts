@@ -69,10 +69,6 @@ export interface GetPostgresCdfConfigResult {
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Output only. The full resource name of the CdfConfig.
      * Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
      */

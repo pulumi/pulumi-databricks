@@ -122,10 +122,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string EndpointId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The resource name of the endpoint, which uniquely identifies the endpoint
         /// </summary>
         public readonly string Name;
@@ -155,8 +151,6 @@ namespace Pulumi.Databricks
 
             string endpointId,
 
-            string id,
-
             string name,
 
             string region,
@@ -170,7 +164,6 @@ namespace Pulumi.Databricks
             CreateTime = createTime;
             DisplayName = displayName;
             EndpointId = endpointId;
-            Id = id;
             Name = name;
             Region = region;
             State = state;

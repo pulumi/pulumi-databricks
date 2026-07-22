@@ -52,10 +52,6 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsArgs {
  * A collection of values returned by getEnvironmentsWorkspaceBaseEnvironments.
  */
 export interface GetEnvironmentsWorkspaceBaseEnvironmentsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig;
     readonly workspaceBaseEnvironments: outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment[];

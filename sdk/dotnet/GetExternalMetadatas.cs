@@ -147,10 +147,6 @@ namespace Pulumi.Databricks
     public sealed class GetExternalMetadatasResult
     {
         public readonly ImmutableArray<Outputs.GetExternalMetadatasExternalMetadataResult> ExternalMetadatas;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetExternalMetadatasProviderConfigResult? ProviderConfig;
 
@@ -158,14 +154,11 @@ namespace Pulumi.Databricks
         private GetExternalMetadatasResult(
             ImmutableArray<Outputs.GetExternalMetadatasExternalMetadataResult> externalMetadatas,
 
-            string id,
-
             int? pageSize,
 
             Outputs.GetExternalMetadatasProviderConfigResult? providerConfig)
         {
             ExternalMetadatas = externalMetadatas;
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
         }

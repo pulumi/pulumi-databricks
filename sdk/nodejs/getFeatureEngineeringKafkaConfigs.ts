@@ -36,10 +36,6 @@ export interface GetFeatureEngineeringKafkaConfigsArgs {
  * A collection of values returned by getFeatureEngineeringKafkaConfigs.
  */
 export interface GetFeatureEngineeringKafkaConfigsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly kafkaConfigs: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfig[];
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetFeatureEngineeringKafkaConfigsProviderConfig;

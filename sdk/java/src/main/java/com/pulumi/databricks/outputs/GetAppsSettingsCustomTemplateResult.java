@@ -35,11 +35,6 @@ public final class GetAppsSettingsCustomTemplateResult {
      */
     private String gitRepo;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
      * 
      */
@@ -86,13 +81,6 @@ public final class GetAppsSettingsCustomTemplateResult {
         return this.gitRepo;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
      * 
      */
@@ -130,7 +118,6 @@ public final class GetAppsSettingsCustomTemplateResult {
         private String description;
         private String gitProvider;
         private String gitRepo;
-        private String id;
         private GetAppsSettingsCustomTemplateManifest manifest;
         private String name;
         private String path;
@@ -142,7 +129,6 @@ public final class GetAppsSettingsCustomTemplateResult {
     	      this.description = defaults.description;
     	      this.gitProvider = defaults.gitProvider;
     	      this.gitRepo = defaults.gitRepo;
-    	      this.id = defaults.id;
     	      this.manifest = defaults.manifest;
     	      this.name = defaults.name;
     	      this.path = defaults.path;
@@ -182,14 +168,6 @@ public final class GetAppsSettingsCustomTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplateResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder manifest(GetAppsSettingsCustomTemplateManifest manifest) {
             if (manifest == null) {
               throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplateResult", "manifest");
@@ -225,7 +203,6 @@ public final class GetAppsSettingsCustomTemplateResult {
             _resultValue.description = description;
             _resultValue.gitProvider = gitProvider;
             _resultValue.gitRepo = gitRepo;
-            _resultValue.id = id;
             _resultValue.manifest = manifest;
             _resultValue.name = name;
             _resultValue.path = path;

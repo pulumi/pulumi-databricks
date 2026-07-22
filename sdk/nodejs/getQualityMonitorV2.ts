@@ -72,10 +72,6 @@ export interface GetQualityMonitorV2Result {
      */
     readonly anomalyDetectionConfig: outputs.GetQualityMonitorV2AnomalyDetectionConfig;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - The uuid of the request object. For example, schema id
      */
     readonly objectId: string;

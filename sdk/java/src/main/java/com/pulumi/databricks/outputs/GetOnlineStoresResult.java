@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetOnlineStoresOnlineStore;
 import com.pulumi.databricks.outputs.GetOnlineStoresProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOnlineStoresResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetOnlineStoresOnlineStore> onlineStores;
     private @Nullable Integer pageSize;
     private @Nullable GetOnlineStoresProviderConfig providerConfig;
 
     private GetOnlineStoresResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetOnlineStoresOnlineStore> onlineStores() {
         return this.onlineStores;
     }
@@ -52,27 +39,17 @@ public final class GetOnlineStoresResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetOnlineStoresOnlineStore> onlineStores;
         private @Nullable Integer pageSize;
         private @Nullable GetOnlineStoresProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetOnlineStoresResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.onlineStores = defaults.onlineStores;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetOnlineStoresResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder onlineStores(List<GetOnlineStoresOnlineStore> onlineStores) {
             if (onlineStores == null) {
@@ -98,7 +75,6 @@ public final class GetOnlineStoresResult {
         }
         public GetOnlineStoresResult build() {
             final var _resultValue = new GetOnlineStoresResult();
-            _resultValue.id = id;
             _resultValue.onlineStores = onlineStores;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;

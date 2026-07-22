@@ -45,10 +45,6 @@ export interface GetFeatureEngineeringMaterializedFeaturesResult {
      * (string) - The full name of the feature in Unity Catalog
      */
     readonly featureName?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly materializedFeatures: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeature[];
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfig;

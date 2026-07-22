@@ -28,7 +28,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, capacity=None, child_instance_refs=None, creation_time=None, creator=None, custom_tags=None, effective_capacity=None, effective_custom_tags=None, effective_enable_pg_native_login=None, effective_enable_readable_secondaries=None, effective_node_count=None, effective_retention_window_in_days=None, effective_stopped=None, effective_usage_policy_id=None, enable_pg_native_login=None, enable_readable_secondaries=None, id=None, name=None, node_count=None, parent_instance_ref=None, pg_version=None, provider_config=None, read_only_dns=None, read_write_dns=None, retention_window_in_days=None, state=None, stopped=None, uid=None, usage_policy_id=None):
+    def __init__(__self__, capacity=None, child_instance_refs=None, creation_time=None, creator=None, custom_tags=None, effective_capacity=None, effective_custom_tags=None, effective_enable_pg_native_login=None, effective_enable_readable_secondaries=None, effective_node_count=None, effective_retention_window_in_days=None, effective_stopped=None, effective_usage_policy_id=None, enable_pg_native_login=None, enable_readable_secondaries=None, name=None, node_count=None, parent_instance_ref=None, pg_version=None, provider_config=None, read_only_dns=None, read_write_dns=None, retention_window_in_days=None, state=None, stopped=None, uid=None, usage_policy_id=None):
         if capacity and not isinstance(capacity, str):
             raise TypeError("Expected argument 'capacity' to be a str")
         pulumi.set(__self__, "capacity", capacity)
@@ -74,9 +74,6 @@ class GetDatabaseInstanceResult:
         if enable_readable_secondaries and not isinstance(enable_readable_secondaries, bool):
             raise TypeError("Expected argument 'enable_readable_secondaries' to be a bool")
         pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -255,14 +252,6 @@ class GetDatabaseInstanceResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> _builtins.str:
         """
         (string) - Name of the ref database instance
@@ -383,7 +372,6 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             effective_usage_policy_id=self.effective_usage_policy_id,
             enable_pg_native_login=self.enable_pg_native_login,
             enable_readable_secondaries=self.enable_readable_secondaries,
-            id=self.id,
             name=self.name,
             node_count=self.node_count,
             parent_instance_ref=self.parent_instance_ref,
@@ -445,7 +433,6 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         effective_usage_policy_id=pulumi.get(__ret__, 'effective_usage_policy_id'),
         enable_pg_native_login=pulumi.get(__ret__, 'enable_pg_native_login'),
         enable_readable_secondaries=pulumi.get(__ret__, 'enable_readable_secondaries'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         node_count=pulumi.get(__ret__, 'node_count'),
         parent_instance_ref=pulumi.get(__ret__, 'parent_instance_ref'),
@@ -504,7 +491,6 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
         effective_usage_policy_id=pulumi.get(__response__, 'effective_usage_policy_id'),
         enable_pg_native_login=pulumi.get(__response__, 'enable_pg_native_login'),
         enable_readable_secondaries=pulumi.get(__response__, 'enable_readable_secondaries'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         node_count=pulumi.get(__response__, 'node_count'),
         parent_instance_ref=pulumi.get(__response__, 'parent_instance_ref'),

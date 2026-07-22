@@ -92,10 +92,6 @@ export interface GetUsersResult {
     readonly api?: string;
     readonly extraAttributes?: string;
     readonly filter?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly providerConfig?: outputs.GetUsersProviderConfig;
     /**
      * A list of users matching the specified criteria. Each user has the following attributes:

@@ -21,11 +21,6 @@ public final class GetRegisteredModelVersionsResult {
      */
     private String fullName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return list of objects describing the model versions. Each object consists of following attributes:
      * 
      */
@@ -39,13 +34,6 @@ public final class GetRegisteredModelVersionsResult {
      */
     public String fullName() {
         return this.fullName;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return list of objects describing the model versions. Each object consists of following attributes:
@@ -68,14 +56,12 @@ public final class GetRegisteredModelVersionsResult {
     @CustomType.Builder
     public static final class Builder {
         private String fullName;
-        private String id;
         private List<GetRegisteredModelVersionsModelVersion> modelVersions;
         private @Nullable GetRegisteredModelVersionsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetRegisteredModelVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fullName = defaults.fullName;
-    	      this.id = defaults.id;
     	      this.modelVersions = defaults.modelVersions;
     	      this.providerConfig = defaults.providerConfig;
         }
@@ -86,14 +72,6 @@ public final class GetRegisteredModelVersionsResult {
               throw new MissingRequiredPropertyException("GetRegisteredModelVersionsResult", "fullName");
             }
             this.fullName = fullName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetRegisteredModelVersionsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -116,7 +94,6 @@ public final class GetRegisteredModelVersionsResult {
         public GetRegisteredModelVersionsResult build() {
             final var _resultValue = new GetRegisteredModelVersionsResult();
             _resultValue.fullName = fullName;
-            _resultValue.id = id;
             _resultValue.modelVersions = modelVersions;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;

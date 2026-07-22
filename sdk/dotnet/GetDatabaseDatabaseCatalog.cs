@@ -163,10 +163,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The name of the catalog in UC
         /// </summary>
         public readonly string Name;
@@ -184,8 +180,6 @@ namespace Pulumi.Databricks
 
             string databaseName,
 
-            string id,
-
             string name,
 
             Outputs.GetDatabaseDatabaseCatalogProviderConfigResult? providerConfig,
@@ -195,7 +189,6 @@ namespace Pulumi.Databricks
             CreateDatabaseIfNotExists = createDatabaseIfNotExists;
             DatabaseInstanceName = databaseInstanceName;
             DatabaseName = databaseName;
-            Id = id;
             Name = name;
             ProviderConfig = providerConfig;
             Uid = uid;

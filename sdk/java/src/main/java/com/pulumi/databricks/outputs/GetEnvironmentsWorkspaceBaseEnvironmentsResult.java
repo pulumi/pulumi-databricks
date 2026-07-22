@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetEnvironmentsWorkspaceBaseEnvironmentsPro
 import com.pulumi.databricks.outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEnvironmentsWorkspaceBaseEnvironmentsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig providerConfig;
     private List<GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment> workspaceBaseEnvironments;
 
     private GetEnvironmentsWorkspaceBaseEnvironmentsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -52,27 +39,17 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig providerConfig;
         private List<GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment> workspaceBaseEnvironments;
         public Builder() {}
         public Builder(GetEnvironmentsWorkspaceBaseEnvironmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
     	      this.workspaceBaseEnvironments = defaults.workspaceBaseEnvironments;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEnvironmentsWorkspaceBaseEnvironmentsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -98,7 +75,6 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentsResult {
         }
         public GetEnvironmentsWorkspaceBaseEnvironmentsResult build() {
             final var _resultValue = new GetEnvironmentsWorkspaceBaseEnvironmentsResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             _resultValue.workspaceBaseEnvironments = workspaceBaseEnvironments;

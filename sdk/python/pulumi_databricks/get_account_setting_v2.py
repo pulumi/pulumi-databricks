@@ -27,7 +27,7 @@ class GetAccountSettingV2Result:
     """
     A collection of values returned by getAccountSettingV2.
     """
-    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, allowed_apps_user_api_scopes=None, automatic_cluster_update_workspace=None, boolean_val=None, collaboration_platform_connectivity=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_allowed_apps_user_api_scopes=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_collaboration_platform_connectivity=None, effective_integer_val=None, effective_operational_email_custom_recipient=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, operational_email_custom_recipient=None, personal_compute=None, restrict_workspace_admins=None, string_val=None):
+    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, allowed_apps_user_api_scopes=None, automatic_cluster_update_workspace=None, boolean_val=None, collaboration_platform_connectivity=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_allowed_apps_user_api_scopes=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_collaboration_platform_connectivity=None, effective_integer_val=None, effective_operational_email_custom_recipient=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, integer_val=None, name=None, operational_email_custom_recipient=None, personal_compute=None, restrict_workspace_admins=None, string_val=None):
         if aibi_dashboard_embedding_access_policy and not isinstance(aibi_dashboard_embedding_access_policy, dict):
             raise TypeError("Expected argument 'aibi_dashboard_embedding_access_policy' to be a dict")
         pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
@@ -79,9 +79,6 @@ class GetAccountSettingV2Result:
         if effective_string_val and not isinstance(effective_string_val, dict):
             raise TypeError("Expected argument 'effective_string_val' to be a dict")
         pulumi.set(__self__, "effective_string_val", effective_string_val)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if integer_val and not isinstance(integer_val, dict):
             raise TypeError("Expected argument 'integer_val' to be a dict")
         pulumi.set(__self__, "integer_val", integer_val)
@@ -238,14 +235,6 @@ class GetAccountSettingV2Result:
         return pulumi.get(self, "effective_string_val")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="integerVal")
     def integer_val(self) -> 'outputs.GetAccountSettingV2IntegerValResult':
         """
@@ -317,7 +306,6 @@ class AwaitableGetAccountSettingV2Result(GetAccountSettingV2Result):
             effective_personal_compute=self.effective_personal_compute,
             effective_restrict_workspace_admins=self.effective_restrict_workspace_admins,
             effective_string_val=self.effective_string_val,
-            id=self.id,
             integer_val=self.integer_val,
             name=self.name,
             operational_email_custom_recipient=self.operational_email_custom_recipient,
@@ -365,7 +353,6 @@ def get_account_setting_v2(name: Optional[_builtins.str] = None,
         effective_personal_compute=pulumi.get(__ret__, 'effective_personal_compute'),
         effective_restrict_workspace_admins=pulumi.get(__ret__, 'effective_restrict_workspace_admins'),
         effective_string_val=pulumi.get(__ret__, 'effective_string_val'),
-        id=pulumi.get(__ret__, 'id'),
         integer_val=pulumi.get(__ret__, 'integer_val'),
         name=pulumi.get(__ret__, 'name'),
         operational_email_custom_recipient=pulumi.get(__ret__, 'operational_email_custom_recipient'),
@@ -410,7 +397,6 @@ def get_account_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] = 
         effective_personal_compute=pulumi.get(__response__, 'effective_personal_compute'),
         effective_restrict_workspace_admins=pulumi.get(__response__, 'effective_restrict_workspace_admins'),
         effective_string_val=pulumi.get(__response__, 'effective_string_val'),
-        id=pulumi.get(__response__, 'id'),
         integer_val=pulumi.get(__response__, 'integer_val'),
         name=pulumi.get(__response__, 'name'),
         operational_email_custom_recipient=pulumi.get(__response__, 'operational_email_custom_recipient'),

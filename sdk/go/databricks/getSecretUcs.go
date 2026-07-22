@@ -80,9 +80,7 @@ type GetSecretUcsArgs struct {
 // A collection of values returned by getSecretUcs.
 type GetSecretUcsResult struct {
 	// (string) - The name of the catalog where the schema and the secret reside
-	CatalogName *string `pulumi:"catalogName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                      `pulumi:"id"`
+	CatalogName    *string                     `pulumi:"catalogName"`
 	PageSize       *int                        `pulumi:"pageSize"`
 	ProviderConfig *GetSecretUcsProviderConfig `pulumi:"providerConfig"`
 	// (string) - The name of the schema where the secret resides
@@ -140,11 +138,6 @@ func (o GetSecretUcsResultOutput) ToGetSecretUcsResultOutputWithContext(ctx cont
 // (string) - The name of the catalog where the schema and the secret reside
 func (o GetSecretUcsResultOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretUcsResult) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetSecretUcsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSecretUcsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetSecretUcsResultOutput) PageSize() pulumi.IntPtrOutput {

@@ -113,8 +113,6 @@ type LookupDatabaseInstanceResult struct {
 	EnablePgNativeLogin bool `pulumi:"enablePgNativeLogin"`
 	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
 	EnableReadableSecondaries bool `pulumi:"enableReadableSecondaries"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Name of the ref database instance
 	Name string `pulumi:"name"`
 	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
@@ -277,11 +275,6 @@ func (o LookupDatabaseInstanceResultOutput) EnablePgNativeLogin() pulumi.BoolOut
 // (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
 func (o LookupDatabaseInstanceResultOutput) EnableReadableSecondaries() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EnableReadableSecondaries }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDatabaseInstanceResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Name of the ref database instance

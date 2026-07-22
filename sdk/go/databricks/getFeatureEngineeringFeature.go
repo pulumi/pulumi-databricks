@@ -50,8 +50,6 @@ type LookupFeatureEngineeringFeatureResult struct {
 	FullName string `pulumi:"fullName"`
 	// (Function) - The function by which the feature is computed
 	Function GetFeatureEngineeringFeatureFunction `pulumi:"function"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
 	// The input columns from which the feature is computed
 	Inputs []string `pulumi:"inputs"`
@@ -156,11 +154,6 @@ func (o LookupFeatureEngineeringFeatureResultOutput) FullName() pulumi.StringOut
 // (Function) - The function by which the feature is computed
 func (o LookupFeatureEngineeringFeatureResultOutput) Function() GetFeatureEngineeringFeatureFunctionOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureFunction { return v.Function }).(GetFeatureEngineeringFeatureFunctionOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupFeatureEngineeringFeatureResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.

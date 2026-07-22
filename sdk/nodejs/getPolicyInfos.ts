@@ -73,10 +73,6 @@ export interface GetPolicyInfosArgs {
  * A collection of values returned by getPolicyInfos.
  */
 export interface GetPolicyInfosResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly includeInherited?: boolean;
     readonly maxResults?: number;
     /**

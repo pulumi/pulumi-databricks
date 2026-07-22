@@ -103,19 +103,11 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAccountNetworkPoliciesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetAccountNetworkPoliciesItemResult> Items;
 
         [OutputConstructor]
-        private GetAccountNetworkPoliciesResult(
-            string id,
-
-            ImmutableArray<Outputs.GetAccountNetworkPoliciesItemResult> items)
+        private GetAccountNetworkPoliciesResult(ImmutableArray<Outputs.GetAccountNetworkPoliciesItemResult> items)
         {
-            Id = id;
             Items = items;
         }
     }

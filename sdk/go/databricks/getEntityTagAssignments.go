@@ -100,9 +100,7 @@ type GetEntityTagAssignmentsResult struct {
 	// (string) - The fully qualified name of the entity to which the tag is assigned
 	EntityName string `pulumi:"entityName"`
 	// (string) - The type of the entity to which the tag is assigned
-	EntityType string `pulumi:"entityType"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                 `pulumi:"id"`
+	EntityType     string                                 `pulumi:"entityType"`
 	MaxResults     *int                                   `pulumi:"maxResults"`
 	ProviderConfig *GetEntityTagAssignmentsProviderConfig `pulumi:"providerConfig"`
 	TagAssignments []GetEntityTagAssignmentsTagAssignment `pulumi:"tagAssignments"`
@@ -156,11 +154,6 @@ func (o GetEntityTagAssignmentsResultOutput) EntityName() pulumi.StringOutput {
 // (string) - The type of the entity to which the tag is assigned
 func (o GetEntityTagAssignmentsResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEntityTagAssignmentsResult) string { return v.EntityType }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetEntityTagAssignmentsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEntityTagAssignmentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetEntityTagAssignmentsResultOutput) MaxResults() pulumi.IntPtrOutput {

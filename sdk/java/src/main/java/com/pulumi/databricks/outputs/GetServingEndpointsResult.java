@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpoint;
 import com.pulumi.databricks.outputs.GetServingEndpointsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,11 +19,6 @@ public final class GetServingEndpointsResult {
      * 
      */
     private List<GetServingEndpointsEndpoint> endpoints;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable GetServingEndpointsProviderConfig providerConfig;
 
     private GetServingEndpointsResult() {}
@@ -34,13 +28,6 @@ public final class GetServingEndpointsResult {
      */
     public List<GetServingEndpointsEndpoint> endpoints() {
         return this.endpoints;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<GetServingEndpointsProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
@@ -56,13 +43,11 @@ public final class GetServingEndpointsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetServingEndpointsEndpoint> endpoints;
-        private String id;
         private @Nullable GetServingEndpointsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetServingEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoints = defaults.endpoints;
-    	      this.id = defaults.id;
     	      this.providerConfig = defaults.providerConfig;
         }
 
@@ -78,14 +63,6 @@ public final class GetServingEndpointsResult {
             return endpoints(List.of(endpoints));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetServingEndpointsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder providerConfig(@Nullable GetServingEndpointsProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -94,7 +71,6 @@ public final class GetServingEndpointsResult {
         public GetServingEndpointsResult build() {
             final var _resultValue = new GetServingEndpointsResult();
             _resultValue.endpoints = endpoints;
-            _resultValue.id = id;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }

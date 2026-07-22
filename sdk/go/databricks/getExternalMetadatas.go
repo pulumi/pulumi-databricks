@@ -66,10 +66,8 @@ type GetExternalMetadatasArgs struct {
 // A collection of values returned by getExternalMetadatas.
 type GetExternalMetadatasResult struct {
 	ExternalMetadatas []GetExternalMetadatasExternalMetadata `pulumi:"externalMetadatas"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                              `pulumi:"id"`
-	PageSize       *int                                `pulumi:"pageSize"`
-	ProviderConfig *GetExternalMetadatasProviderConfig `pulumi:"providerConfig"`
+	PageSize          *int                                   `pulumi:"pageSize"`
+	ProviderConfig    *GetExternalMetadatasProviderConfig    `pulumi:"providerConfig"`
 }
 
 func GetExternalMetadatasOutput(ctx *pulumi.Context, args GetExternalMetadatasOutputArgs, opts ...pulumi.InvokeOption) GetExternalMetadatasResultOutput {
@@ -111,11 +109,6 @@ func (o GetExternalMetadatasResultOutput) ToGetExternalMetadatasResultOutputWith
 
 func (o GetExternalMetadatasResultOutput) ExternalMetadatas() GetExternalMetadatasExternalMetadataArrayOutput {
 	return o.ApplyT(func(v GetExternalMetadatasResult) []GetExternalMetadatasExternalMetadata { return v.ExternalMetadatas }).(GetExternalMetadatasExternalMetadataArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetExternalMetadatasResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetExternalMetadatasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetExternalMetadatasResultOutput) PageSize() pulumi.IntPtrOutput {

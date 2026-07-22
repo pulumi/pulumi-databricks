@@ -163,10 +163,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string FailoverGroupName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The workspace this stable URL is initially bound to. Used only in Create
         /// requests to associate the stable URL with a workspace. Not returned in
         /// responses
@@ -198,8 +194,6 @@ namespace Pulumi.Databricks
 
             string failoverGroupName,
 
-            string id,
-
             string initialWorkspaceId,
 
             string name,
@@ -210,7 +204,6 @@ namespace Pulumi.Databricks
         {
             EffectiveWorkspaceId = effectiveWorkspaceId;
             FailoverGroupName = failoverGroupName;
-            Id = id;
             InitialWorkspaceId = initialWorkspaceId;
             Name = name;
             StableWorkspaceId = stableWorkspaceId;

@@ -168,10 +168,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Filepath;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (boolean) - Whether this is the default environment for the workspace
         /// </summary>
         public readonly bool IsDefault;
@@ -216,8 +212,6 @@ namespace Pulumi.Databricks
 
             string filepath,
 
-            string id,
-
             bool isDefault,
 
             string lastUpdatedUserId,
@@ -240,7 +234,6 @@ namespace Pulumi.Databricks
             DisplayName = displayName;
             EffectiveBaseEnvironmentType = effectiveBaseEnvironmentType;
             Filepath = filepath;
-            Id = id;
             IsDefault = isDefault;
             LastUpdatedUserId = lastUpdatedUserId;
             Message = message;

@@ -53,8 +53,6 @@ type LookupAiSearchIndexResult struct {
 	// (string) - Name of the endpoint associated with the index. Ignored on create — the endpoint is
 	// taken from `CreateIndexRequest.parent`; populated only on output
 	Endpoint string `pulumi:"endpoint"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
 	IndexSubtype string `pulumi:"indexSubtype"`
 	// (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
@@ -129,11 +127,6 @@ func (o LookupAiSearchIndexResultOutput) DirectAccessIndexSpec() GetAiSearchInde
 // taken from `CreateIndexRequest.parent`; populated only on output
 func (o LookupAiSearchIndexResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchIndexResult) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAiSearchIndexResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiSearchIndexResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`

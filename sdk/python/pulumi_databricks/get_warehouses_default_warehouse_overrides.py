@@ -28,13 +28,10 @@ class GetWarehousesDefaultWarehouseOverridesResult:
     """
     A collection of values returned by getWarehousesDefaultWarehouseOverrides.
     """
-    def __init__(__self__, default_warehouse_overrides=None, id=None, page_size=None, provider_config=None):
+    def __init__(__self__, default_warehouse_overrides=None, page_size=None, provider_config=None):
         if default_warehouse_overrides and not isinstance(default_warehouse_overrides, list):
             raise TypeError("Expected argument 'default_warehouse_overrides' to be a list")
         pulumi.set(__self__, "default_warehouse_overrides", default_warehouse_overrides)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -46,14 +43,6 @@ class GetWarehousesDefaultWarehouseOverridesResult:
     @pulumi.getter(name="defaultWarehouseOverrides")
     def default_warehouse_overrides(self) -> Sequence['outputs.GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideResult']:
         return pulumi.get(self, "default_warehouse_overrides")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -73,7 +62,6 @@ class AwaitableGetWarehousesDefaultWarehouseOverridesResult(GetWarehousesDefault
             yield self
         return GetWarehousesDefaultWarehouseOverridesResult(
             default_warehouse_overrides=self.default_warehouse_overrides,
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config)
 
@@ -117,7 +105,6 @@ def get_warehouses_default_warehouse_overrides(page_size: Optional[_builtins.int
 
     return AwaitableGetWarehousesDefaultWarehouseOverridesResult(
         default_warehouse_overrides=pulumi.get(__ret__, 'default_warehouse_overrides'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_warehouses_default_warehouse_overrides_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -158,6 +145,5 @@ def get_warehouses_default_warehouse_overrides_output(page_size: pulumi.Input[Op
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides', __args__, opts=opts, typ=GetWarehousesDefaultWarehouseOverridesResult)
     return __ret__.apply(lambda __response__: GetWarehousesDefaultWarehouseOverridesResult(
         default_warehouse_overrides=pulumi.get(__response__, 'default_warehouse_overrides'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

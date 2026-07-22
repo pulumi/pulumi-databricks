@@ -36,10 +36,6 @@ export interface GetOnlineStoresArgs {
  * A collection of values returned by getOnlineStores.
  */
 export interface GetOnlineStoresResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly onlineStores: outputs.GetOnlineStoresOnlineStore[];
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetOnlineStoresProviderConfig;

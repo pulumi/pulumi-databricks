@@ -115,11 +115,6 @@ public final class GetDatabaseInstanceResult {
      */
     private Boolean enableReadableSecondaries;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Name of the ref database instance
      * 
      */
@@ -309,13 +304,6 @@ public final class GetDatabaseInstanceResult {
         return this.enableReadableSecondaries;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - Name of the ref database instance
      * 
      */
@@ -427,7 +415,6 @@ public final class GetDatabaseInstanceResult {
         private String effectiveUsagePolicyId;
         private Boolean enablePgNativeLogin;
         private Boolean enableReadableSecondaries;
-        private String id;
         private String name;
         private Integer nodeCount;
         private GetDatabaseInstanceParentInstanceRef parentInstanceRef;
@@ -458,7 +445,6 @@ public final class GetDatabaseInstanceResult {
     	      this.effectiveUsagePolicyId = defaults.effectiveUsagePolicyId;
     	      this.enablePgNativeLogin = defaults.enablePgNativeLogin;
     	      this.enableReadableSecondaries = defaults.enableReadableSecondaries;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.nodeCount = defaults.nodeCount;
     	      this.parentInstanceRef = defaults.parentInstanceRef;
@@ -603,14 +589,6 @@ public final class GetDatabaseInstanceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "name");
@@ -721,7 +699,6 @@ public final class GetDatabaseInstanceResult {
             _resultValue.effectiveUsagePolicyId = effectiveUsagePolicyId;
             _resultValue.enablePgNativeLogin = enablePgNativeLogin;
             _resultValue.enableReadableSecondaries = enableReadableSecondaries;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.nodeCount = nodeCount;
             _resultValue.parentInstanceRef = parentInstanceRef;

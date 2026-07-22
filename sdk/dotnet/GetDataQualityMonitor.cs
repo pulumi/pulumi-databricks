@@ -236,10 +236,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorDataProfilingConfigResult DataProfilingConfig;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The UUID of the request object. It is `SchemaId` for `Schema`, and `TableId` for `Table`.
         /// </summary>
         public readonly string ObjectId;
@@ -255,8 +251,6 @@ namespace Pulumi.Databricks
 
             Outputs.GetDataQualityMonitorDataProfilingConfigResult dataProfilingConfig,
 
-            string id,
-
             string objectId,
 
             string objectType,
@@ -265,7 +259,6 @@ namespace Pulumi.Databricks
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
             DataProfilingConfig = dataProfilingConfig;
-            Id = id;
             ObjectId = objectId;
             ObjectType = objectType;
             ProviderConfig = providerConfig;

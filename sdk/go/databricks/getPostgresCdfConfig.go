@@ -74,8 +74,6 @@ type LookupPostgresCdfConfigResult struct {
 	CdfConfigId string `pulumi:"cdfConfigId"`
 	// (string) - When the CdfConfig was created
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Output only. The full resource name of the CdfConfig.
 	// Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
 	Name string `pulumi:"name"`
@@ -140,11 +138,6 @@ func (o LookupPostgresCdfConfigResultOutput) CdfConfigId() pulumi.StringOutput {
 // (string) - When the CdfConfig was created
 func (o LookupPostgresCdfConfigResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresCdfConfigResult) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresCdfConfigResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresCdfConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Output only. The full resource name of the CdfConfig.

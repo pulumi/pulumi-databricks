@@ -121,11 +121,6 @@ public final class GetWorkspaceSettingV2Result {
      */
     private GetWorkspaceSettingV2EffectiveStringVal effectiveStringVal;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      * 
      */
@@ -278,13 +273,6 @@ public final class GetWorkspaceSettingV2Result {
         return this.effectiveStringVal;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      * 
      */
@@ -356,7 +344,6 @@ public final class GetWorkspaceSettingV2Result {
         private GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute;
         private GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
         private GetWorkspaceSettingV2EffectiveStringVal effectiveStringVal;
-        private String id;
         private GetWorkspaceSettingV2IntegerVal integerVal;
         private String name;
         private GetWorkspaceSettingV2OperationalEmailCustomRecipient operationalEmailCustomRecipient;
@@ -384,7 +371,6 @@ public final class GetWorkspaceSettingV2Result {
     	      this.effectivePersonalCompute = defaults.effectivePersonalCompute;
     	      this.effectiveRestrictWorkspaceAdmins = defaults.effectiveRestrictWorkspaceAdmins;
     	      this.effectiveStringVal = defaults.effectiveStringVal;
-    	      this.id = defaults.id;
     	      this.integerVal = defaults.integerVal;
     	      this.name = defaults.name;
     	      this.operationalEmailCustomRecipient = defaults.operationalEmailCustomRecipient;
@@ -531,14 +517,6 @@ public final class GetWorkspaceSettingV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder integerVal(GetWorkspaceSettingV2IntegerVal integerVal) {
             if (integerVal == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "integerVal");
@@ -611,7 +589,6 @@ public final class GetWorkspaceSettingV2Result {
             _resultValue.effectivePersonalCompute = effectivePersonalCompute;
             _resultValue.effectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             _resultValue.effectiveStringVal = effectiveStringVal;
-            _resultValue.id = id;
             _resultValue.integerVal = integerVal;
             _resultValue.name = name;
             _resultValue.operationalEmailCustomRecipient = operationalEmailCustomRecipient;

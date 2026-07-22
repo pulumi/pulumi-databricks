@@ -56,8 +56,6 @@ func GetAccountNetworkPolicies(ctx *pulumi.Context, opts ...pulumi.InvokeOption)
 
 // A collection of values returned by getAccountNetworkPolicies.
 type GetAccountNetworkPoliciesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id    string                          `pulumi:"id"`
 	Items []GetAccountNetworkPoliciesItem `pulumi:"items"`
 }
 
@@ -81,11 +79,6 @@ func (o GetAccountNetworkPoliciesResultOutput) ToGetAccountNetworkPoliciesResult
 
 func (o GetAccountNetworkPoliciesResultOutput) ToGetAccountNetworkPoliciesResultOutputWithContext(ctx context.Context) GetAccountNetworkPoliciesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAccountNetworkPoliciesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountNetworkPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAccountNetworkPoliciesResultOutput) Items() GetAccountNetworkPoliciesItemArrayOutput {

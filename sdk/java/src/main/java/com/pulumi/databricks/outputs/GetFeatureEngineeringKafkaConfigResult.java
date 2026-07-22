@@ -43,11 +43,6 @@ public final class GetFeatureEngineeringKafkaConfigResult {
      */
     private Map<String,String> extraOptions;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
      * Delta table
      * 
@@ -108,13 +103,6 @@ public final class GetFeatureEngineeringKafkaConfigResult {
         return this.extraOptions;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
      * Delta table
      * 
@@ -168,7 +156,6 @@ public final class GetFeatureEngineeringKafkaConfigResult {
         private GetFeatureEngineeringKafkaConfigBackfillSource backfillSource;
         private String bootstrapServers;
         private Map<String,String> extraOptions;
-        private String id;
         private GetFeatureEngineeringKafkaConfigIngestionConfig ingestionConfig;
         private GetFeatureEngineeringKafkaConfigKeySchema keySchema;
         private String name;
@@ -182,7 +169,6 @@ public final class GetFeatureEngineeringKafkaConfigResult {
     	      this.backfillSource = defaults.backfillSource;
     	      this.bootstrapServers = defaults.bootstrapServers;
     	      this.extraOptions = defaults.extraOptions;
-    	      this.id = defaults.id;
     	      this.ingestionConfig = defaults.ingestionConfig;
     	      this.keySchema = defaults.keySchema;
     	      this.name = defaults.name;
@@ -221,14 +207,6 @@ public final class GetFeatureEngineeringKafkaConfigResult {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigResult", "extraOptions");
             }
             this.extraOptions = extraOptions;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -283,7 +261,6 @@ public final class GetFeatureEngineeringKafkaConfigResult {
             _resultValue.backfillSource = backfillSource;
             _resultValue.bootstrapServers = bootstrapServers;
             _resultValue.extraOptions = extraOptions;
-            _resultValue.id = id;
             _resultValue.ingestionConfig = ingestionConfig;
             _resultValue.keySchema = keySchema;
             _resultValue.name = name;

@@ -71,8 +71,6 @@ type GetDataQualityMonitorsArgs struct {
 
 // A collection of values returned by getDataQualityMonitors.
 type GetDataQualityMonitorsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                `pulumi:"id"`
 	Monitors       []GetDataQualityMonitorsMonitor       `pulumi:"monitors"`
 	PageSize       *int                                  `pulumi:"pageSize"`
 	ProviderConfig *GetDataQualityMonitorsProviderConfig `pulumi:"providerConfig"`
@@ -111,11 +109,6 @@ func (o GetDataQualityMonitorsResultOutput) ToGetDataQualityMonitorsResultOutput
 
 func (o GetDataQualityMonitorsResultOutput) ToGetDataQualityMonitorsResultOutputWithContext(ctx context.Context) GetDataQualityMonitorsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDataQualityMonitorsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDataQualityMonitorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDataQualityMonitorsResultOutput) Monitors() GetDataQualityMonitorsMonitorArrayOutput {

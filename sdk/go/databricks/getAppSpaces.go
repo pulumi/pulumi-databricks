@@ -34,8 +34,6 @@ type GetAppSpacesArgs struct {
 
 // A collection of values returned by getAppSpaces.
 type GetAppSpacesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                      `pulumi:"id"`
 	PageSize       *int                        `pulumi:"pageSize"`
 	ProviderConfig *GetAppSpacesProviderConfig `pulumi:"providerConfig"`
 	Spaces         []GetAppSpacesSpace         `pulumi:"spaces"`
@@ -75,11 +73,6 @@ func (o GetAppSpacesResultOutput) ToGetAppSpacesResultOutput() GetAppSpacesResul
 
 func (o GetAppSpacesResultOutput) ToGetAppSpacesResultOutputWithContext(ctx context.Context) GetAppSpacesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAppSpacesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpacesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAppSpacesResultOutput) PageSize() pulumi.IntPtrOutput {

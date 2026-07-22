@@ -28,13 +28,10 @@ class GetDatabaseDatabaseCatalogsResult:
     """
     A collection of values returned by getDatabaseDatabaseCatalogs.
     """
-    def __init__(__self__, database_catalogs=None, id=None, instance_name=None, page_size=None, provider_config=None):
+    def __init__(__self__, database_catalogs=None, instance_name=None, page_size=None, provider_config=None):
         if database_catalogs and not isinstance(database_catalogs, list):
             raise TypeError("Expected argument 'database_catalogs' to be a list")
         pulumi.set(__self__, "database_catalogs", database_catalogs)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if instance_name and not isinstance(instance_name, str):
             raise TypeError("Expected argument 'instance_name' to be a str")
         pulumi.set(__self__, "instance_name", instance_name)
@@ -49,14 +46,6 @@ class GetDatabaseDatabaseCatalogsResult:
     @pulumi.getter(name="databaseCatalogs")
     def database_catalogs(self) -> Sequence['outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogResult']:
         return pulumi.get(self, "database_catalogs")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -81,7 +70,6 @@ class AwaitableGetDatabaseDatabaseCatalogsResult(GetDatabaseDatabaseCatalogsResu
             yield self
         return GetDatabaseDatabaseCatalogsResult(
             database_catalogs=self.database_catalogs,
-            id=self.id,
             instance_name=self.instance_name,
             page_size=self.page_size,
             provider_config=self.provider_config)
@@ -110,7 +98,6 @@ def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None
 
     return AwaitableGetDatabaseDatabaseCatalogsResult(
         database_catalogs=pulumi.get(__ret__, 'database_catalogs'),
-        id=pulumi.get(__ret__, 'id'),
         instance_name=pulumi.get(__ret__, 'instance_name'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -136,7 +123,6 @@ def get_database_database_catalogs_output(instance_name: pulumi.Input[Optional[_
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs', __args__, opts=opts, typ=GetDatabaseDatabaseCatalogsResult)
     return __ret__.apply(lambda __response__: GetDatabaseDatabaseCatalogsResult(
         database_catalogs=pulumi.get(__response__, 'database_catalogs'),
-        id=pulumi.get(__response__, 'id'),
         instance_name=pulumi.get(__response__, 'instance_name'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

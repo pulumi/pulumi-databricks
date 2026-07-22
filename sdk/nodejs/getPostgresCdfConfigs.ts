@@ -60,10 +60,6 @@ export interface GetPostgresCdfConfigsArgs {
  */
 export interface GetPostgresCdfConfigsResult {
     readonly cdfConfigs: outputs.GetPostgresCdfConfigsCdfConfig[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly parent: string;
     readonly providerConfig?: outputs.GetPostgresCdfConfigsProviderConfig;

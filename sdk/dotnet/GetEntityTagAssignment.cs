@@ -269,10 +269,6 @@ namespace Pulumi.Databricks
         /// (string) - The type of the entity to which the tag is assigned
         /// </summary>
         public readonly string EntityType;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetEntityTagAssignmentProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
@@ -301,8 +297,6 @@ namespace Pulumi.Databricks
 
             string entityType,
 
-            string id,
-
             Outputs.GetEntityTagAssignmentProviderConfigResult? providerConfig,
 
             string sourceType,
@@ -317,7 +311,6 @@ namespace Pulumi.Databricks
         {
             EntityName = entityName;
             EntityType = entityType;
-            Id = id;
             ProviderConfig = providerConfig;
             SourceType = sourceType;
             TagKey = tagKey;

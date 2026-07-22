@@ -36,8 +36,6 @@ type GetKnowledgeAssistantKnowledgeSourcesArgs struct {
 
 // A collection of values returned by getKnowledgeAssistantKnowledgeSources.
 type GetKnowledgeAssistantKnowledgeSourcesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id               string                                                 `pulumi:"id"`
 	KnowledgeSources []GetKnowledgeAssistantKnowledgeSourcesKnowledgeSource `pulumi:"knowledgeSources"`
 	PageSize         *int                                                   `pulumi:"pageSize"`
 	Parent           string                                                 `pulumi:"parent"`
@@ -80,11 +78,6 @@ func (o GetKnowledgeAssistantKnowledgeSourcesResultOutput) ToGetKnowledgeAssista
 
 func (o GetKnowledgeAssistantKnowledgeSourcesResultOutput) ToGetKnowledgeAssistantKnowledgeSourcesResultOutputWithContext(ctx context.Context) GetKnowledgeAssistantKnowledgeSourcesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetKnowledgeAssistantKnowledgeSourcesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKnowledgeAssistantKnowledgeSourcesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetKnowledgeAssistantKnowledgeSourcesResultOutput) KnowledgeSources() GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceArrayOutput {

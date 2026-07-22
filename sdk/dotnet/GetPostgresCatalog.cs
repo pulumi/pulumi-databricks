@@ -175,10 +175,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Output only. The full resource path of the catalog.
         /// </summary>
         public readonly string Name;
@@ -206,8 +202,6 @@ namespace Pulumi.Databricks
 
             string createTime,
 
-            string id,
-
             string name,
 
             Outputs.GetPostgresCatalogProviderConfigResult? providerConfig,
@@ -222,7 +216,6 @@ namespace Pulumi.Databricks
         {
             CatalogId = catalogId;
             CreateTime = createTime;
-            Id = id;
             Name = name;
             ProviderConfig = providerConfig;
             Spec = spec;

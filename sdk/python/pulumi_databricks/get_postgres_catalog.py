@@ -28,16 +28,13 @@ class GetPostgresCatalogResult:
     """
     A collection of values returned by getPostgresCatalog.
     """
-    def __init__(__self__, catalog_id=None, create_time=None, id=None, name=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, catalog_id=None, create_time=None, name=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
         if catalog_id and not isinstance(catalog_id, str):
             raise TypeError("Expected argument 'catalog_id' to be a str")
         pulumi.set(__self__, "catalog_id", catalog_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -72,14 +69,6 @@ class GetPostgresCatalogResult:
         (string) - A timestamp indicating when the catalog was created
         """
         return pulumi.get(self, "create_time")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -135,7 +124,6 @@ class AwaitableGetPostgresCatalogResult(GetPostgresCatalogResult):
         return GetPostgresCatalogResult(
             catalog_id=self.catalog_id,
             create_time=self.create_time,
-            id=self.id,
             name=self.name,
             provider_config=self.provider_config,
             spec=self.spec,
@@ -181,7 +169,6 @@ def get_postgres_catalog(name: Optional[_builtins.str] = None,
     return AwaitableGetPostgresCatalogResult(
         catalog_id=pulumi.get(__ret__, 'catalog_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         spec=pulumi.get(__ret__, 'spec'),
@@ -224,7 +211,6 @@ def get_postgres_catalog_output(name: pulumi.Input[Optional[_builtins.str]] = No
     return __ret__.apply(lambda __response__: GetPostgresCatalogResult(
         catalog_id=pulumi.get(__response__, 'catalog_id'),
         create_time=pulumi.get(__response__, 'create_time'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         spec=pulumi.get(__response__, 'spec'),

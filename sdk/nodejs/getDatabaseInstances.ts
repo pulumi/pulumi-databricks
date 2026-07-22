@@ -54,10 +54,6 @@ export interface GetDatabaseInstancesArgs {
  */
 export interface GetDatabaseInstancesResult {
     readonly databaseInstances: outputs.GetDatabaseInstancesDatabaseInstance[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetDatabaseInstancesProviderConfig;
 }

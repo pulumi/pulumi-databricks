@@ -96,10 +96,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableDictionary<string, string> ExtraOptions;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
         /// Delta table
         /// </summary>
@@ -133,8 +129,6 @@ namespace Pulumi.Databricks
 
             ImmutableDictionary<string, string> extraOptions,
 
-            string id,
-
             Outputs.GetFeatureEngineeringKafkaConfigIngestionConfigResult ingestionConfig,
 
             Outputs.GetFeatureEngineeringKafkaConfigKeySchemaResult keySchema,
@@ -151,7 +145,6 @@ namespace Pulumi.Databricks
             BackfillSource = backfillSource;
             BootstrapServers = bootstrapServers;
             ExtraOptions = extraOptions;
-            Id = id;
             IngestionConfig = ingestionConfig;
             KeySchema = keySchema;
             Name = name;

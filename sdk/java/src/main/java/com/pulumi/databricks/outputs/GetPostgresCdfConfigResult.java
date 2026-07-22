@@ -31,11 +31,6 @@ public final class GetPostgresCdfConfigResult {
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - Output only. The full resource name of the CdfConfig.
      * Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
      * 
@@ -80,13 +75,6 @@ public final class GetPostgresCdfConfigResult {
         return this.createTime;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - Output only. The full resource name of the CdfConfig.
      * Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
      * 
@@ -126,7 +114,6 @@ public final class GetPostgresCdfConfigResult {
         private String catalog;
         private String cdfConfigId;
         private String createTime;
-        private String id;
         private String name;
         private String postgresSchema;
         private @Nullable GetPostgresCdfConfigProviderConfig providerConfig;
@@ -137,7 +124,6 @@ public final class GetPostgresCdfConfigResult {
     	      this.catalog = defaults.catalog;
     	      this.cdfConfigId = defaults.cdfConfigId;
     	      this.createTime = defaults.createTime;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.postgresSchema = defaults.postgresSchema;
     	      this.providerConfig = defaults.providerConfig;
@@ -166,14 +152,6 @@ public final class GetPostgresCdfConfigResult {
               throw new MissingRequiredPropertyException("GetPostgresCdfConfigResult", "createTime");
             }
             this.createTime = createTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresCdfConfigResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -211,7 +189,6 @@ public final class GetPostgresCdfConfigResult {
             _resultValue.catalog = catalog;
             _resultValue.cdfConfigId = cdfConfigId;
             _resultValue.createTime = createTime;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.postgresSchema = postgresSchema;
             _resultValue.providerConfig = providerConfig;

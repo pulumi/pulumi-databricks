@@ -71,8 +71,6 @@ type GetPostgresCdfStatusResult struct {
 	CommittedLsn string `pulumi:"committedLsn"`
 	// (string) - When replication for this table was first established
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The last time changes for this table were written to Delta Lake
 	LastSyncTime string `pulumi:"lastSyncTime"`
 	// (string) - Output only. The full resource name of the CdfStatus.
@@ -137,11 +135,6 @@ func (o GetPostgresCdfStatusResultOutput) CommittedLsn() pulumi.StringOutput {
 // (string) - When replication for this table was first established
 func (o GetPostgresCdfStatusResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresCdfStatusResult) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPostgresCdfStatusResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostgresCdfStatusResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The last time changes for this table were written to Delta Lake

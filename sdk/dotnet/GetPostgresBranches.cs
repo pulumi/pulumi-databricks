@@ -202,10 +202,6 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresBranchesResult
     {
         public readonly ImmutableArray<Outputs.GetPostgresBranchesBranchResult> Branches;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         /// <summary>
         /// (string) - The project containing this branch (API resource hierarchy).
@@ -219,8 +215,6 @@ namespace Pulumi.Databricks
         private GetPostgresBranchesResult(
             ImmutableArray<Outputs.GetPostgresBranchesBranchResult> branches,
 
-            string id,
-
             int? pageSize,
 
             string parent,
@@ -230,7 +224,6 @@ namespace Pulumi.Databricks
             bool? showDeleted)
         {
             Branches = branches;
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
             ProviderConfig = providerConfig;

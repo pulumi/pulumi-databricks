@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetExternalMetadatasExternalMetadata;
 import com.pulumi.databricks.outputs.GetExternalMetadatasProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,24 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetExternalMetadatasResult {
     private List<GetExternalMetadatasExternalMetadata> externalMetadatas;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetExternalMetadatasProviderConfig providerConfig;
 
     private GetExternalMetadatasResult() {}
     public List<GetExternalMetadatasExternalMetadata> externalMetadatas() {
         return this.externalMetadatas;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -53,14 +40,12 @@ public final class GetExternalMetadatasResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetExternalMetadatasExternalMetadata> externalMetadatas;
-        private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetExternalMetadatasProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetExternalMetadatasResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalMetadatas = defaults.externalMetadatas;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
         }
@@ -77,14 +62,6 @@ public final class GetExternalMetadatasResult {
             return externalMetadatas(List.of(externalMetadatas));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetExternalMetadatasResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
             this.pageSize = pageSize;
@@ -99,7 +76,6 @@ public final class GetExternalMetadatasResult {
         public GetExternalMetadatasResult build() {
             final var _resultValue = new GetExternalMetadatasResult();
             _resultValue.externalMetadatas = externalMetadatas;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
             return _resultValue;

@@ -148,10 +148,6 @@ namespace Pulumi.Databricks
     public sealed class GetAlertsV2Result
     {
         public readonly ImmutableArray<Outputs.GetAlertsV2AlertResult> Alerts;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetAlertsV2ProviderConfigResult? ProviderConfig;
 
@@ -159,14 +155,11 @@ namespace Pulumi.Databricks
         private GetAlertsV2Result(
             ImmutableArray<Outputs.GetAlertsV2AlertResult> alerts,
 
-            string id,
-
             int? pageSize,
 
             Outputs.GetAlertsV2ProviderConfigResult? providerConfig)
         {
             Alerts = alerts;
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
         }

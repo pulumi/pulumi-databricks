@@ -29,11 +29,6 @@ public final class GetPostgresProjectResult {
      */
     private String deleteTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
      * Allows overriding branch protection. These settings only apply at creation time
      * and do not affect resources created after project creation
@@ -102,13 +97,6 @@ public final class GetPostgresProjectResult {
      */
     public String deleteTime() {
         return this.deleteTime;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
@@ -195,7 +183,6 @@ public final class GetPostgresProjectResult {
     public static final class Builder {
         private String createTime;
         private String deleteTime;
-        private String id;
         private GetPostgresProjectInitialBranchSpec initialBranchSpec;
         private GetPostgresProjectInitialEndpointSpec initialEndpointSpec;
         private String name;
@@ -211,7 +198,6 @@ public final class GetPostgresProjectResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.deleteTime = defaults.deleteTime;
-    	      this.id = defaults.id;
     	      this.initialBranchSpec = defaults.initialBranchSpec;
     	      this.initialEndpointSpec = defaults.initialEndpointSpec;
     	      this.name = defaults.name;
@@ -238,14 +224,6 @@ public final class GetPostgresProjectResult {
               throw new MissingRequiredPropertyException("GetPostgresProjectResult", "deleteTime");
             }
             this.deleteTime = deleteTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresProjectResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -330,7 +308,6 @@ public final class GetPostgresProjectResult {
             final var _resultValue = new GetPostgresProjectResult();
             _resultValue.createTime = createTime;
             _resultValue.deleteTime = deleteTime;
-            _resultValue.id = id;
             _resultValue.initialBranchSpec = initialBranchSpec;
             _resultValue.initialEndpointSpec = initialEndpointSpec;
             _resultValue.name = name;

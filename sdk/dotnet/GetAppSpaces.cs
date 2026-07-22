@@ -81,25 +81,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAppSpacesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetAppSpacesProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetAppSpacesSpaceResult> Spaces;
 
         [OutputConstructor]
         private GetAppSpacesResult(
-            string id,
-
             int? pageSize,
 
             Outputs.GetAppSpacesProviderConfigResult? providerConfig,
 
             ImmutableArray<Outputs.GetAppSpacesSpaceResult> spaces)
         {
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             Spaces = spaces;

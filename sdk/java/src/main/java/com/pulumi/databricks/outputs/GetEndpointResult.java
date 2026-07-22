@@ -39,11 +39,6 @@ public final class GetEndpointResult {
      */
     private String endpointId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (string) - The resource name of the endpoint, which uniquely identifies the endpoint
      * 
      */
@@ -104,13 +99,6 @@ public final class GetEndpointResult {
         return this.endpointId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (string) - The resource name of the endpoint, which uniquely identifies the endpoint
      * 
      */
@@ -154,7 +142,6 @@ public final class GetEndpointResult {
         private String createTime;
         private String displayName;
         private String endpointId;
-        private String id;
         private String name;
         private String region;
         private String state;
@@ -167,7 +154,6 @@ public final class GetEndpointResult {
     	      this.createTime = defaults.createTime;
     	      this.displayName = defaults.displayName;
     	      this.endpointId = defaults.endpointId;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
     	      this.state = defaults.state;
@@ -215,14 +201,6 @@ public final class GetEndpointResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEndpointResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetEndpointResult", "name");
@@ -261,7 +239,6 @@ public final class GetEndpointResult {
             _resultValue.createTime = createTime;
             _resultValue.displayName = displayName;
             _resultValue.endpointId = endpointId;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.region = region;
             _resultValue.state = state;

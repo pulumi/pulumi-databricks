@@ -73,8 +73,6 @@ type LookupPostgresProjectResult struct {
 	// (string) - A timestamp indicating when the project was soft-deleted.
 	// Empty if the project is not deleted, otherwise set to a timestamp in the past
 	DeleteTime string `pulumi:"deleteTime"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
 	// Allows overriding branch protection. These settings only apply at creation time
 	// and do not affect resources created after project creation
@@ -149,11 +147,6 @@ func (o LookupPostgresProjectResultOutput) CreateTime() pulumi.StringOutput {
 // Empty if the project is not deleted, otherwise set to a timestamp in the past
 func (o LookupPostgresProjectResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.DeleteTime }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresProjectResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.

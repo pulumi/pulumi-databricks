@@ -28,13 +28,10 @@ class GetDataQualityRefreshResult:
     """
     A collection of values returned by getDataQualityRefresh.
     """
-    def __init__(__self__, end_time_ms=None, id=None, message=None, object_id=None, object_type=None, provider_config=None, refresh_id=None, start_time_ms=None, state=None, trigger=None):
+    def __init__(__self__, end_time_ms=None, message=None, object_id=None, object_type=None, provider_config=None, refresh_id=None, start_time_ms=None, state=None, trigger=None):
         if end_time_ms and not isinstance(end_time_ms, int):
             raise TypeError("Expected argument 'end_time_ms' to be a int")
         pulumi.set(__self__, "end_time_ms", end_time_ms)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if message and not isinstance(message, str):
             raise TypeError("Expected argument 'message' to be a str")
         pulumi.set(__self__, "message", message)
@@ -67,14 +64,6 @@ class GetDataQualityRefreshResult:
         (integer) - Time when the refresh ended (milliseconds since 1/1/1970 UTC)
         """
         return pulumi.get(self, "end_time_ms")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -145,7 +134,6 @@ class AwaitableGetDataQualityRefreshResult(GetDataQualityRefreshResult):
             yield self
         return GetDataQualityRefreshResult(
             end_time_ms=self.end_time_ms,
-            id=self.id,
             message=self.message,
             object_id=self.object_id,
             object_type=self.object_type,
@@ -215,7 +203,6 @@ def get_data_quality_refresh(object_id: Optional[_builtins.str] = None,
 
     return AwaitableGetDataQualityRefreshResult(
         end_time_ms=pulumi.get(__ret__, 'end_time_ms'),
-        id=pulumi.get(__ret__, 'id'),
         message=pulumi.get(__ret__, 'message'),
         object_id=pulumi.get(__ret__, 'object_id'),
         object_type=pulumi.get(__ret__, 'object_type'),
@@ -282,7 +269,6 @@ def get_data_quality_refresh_output(object_id: pulumi.Input[Optional[_builtins.s
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDataQualityRefresh:getDataQualityRefresh', __args__, opts=opts, typ=GetDataQualityRefreshResult)
     return __ret__.apply(lambda __response__: GetDataQualityRefreshResult(
         end_time_ms=pulumi.get(__response__, 'end_time_ms'),
-        id=pulumi.get(__response__, 'id'),
         message=pulumi.get(__response__, 'message'),
         object_id=pulumi.get(__response__, 'object_id'),
         object_type=pulumi.get(__response__, 'object_type'),

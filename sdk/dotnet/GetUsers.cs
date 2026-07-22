@@ -273,10 +273,6 @@ namespace Pulumi.Databricks
         public readonly string? Api;
         public readonly string? ExtraAttributes;
         public readonly string? Filter;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetUsersProviderConfigResult? ProviderConfig;
         /// <summary>
         /// A list of users matching the specified criteria. Each user has the following attributes:
@@ -291,8 +287,6 @@ namespace Pulumi.Databricks
 
             string? filter,
 
-            string id,
-
             Outputs.GetUsersProviderConfigResult? providerConfig,
 
             ImmutableArray<Outputs.GetUsersUserResult> users)
@@ -300,7 +294,6 @@ namespace Pulumi.Databricks
             Api = api;
             ExtraAttributes = extraAttributes;
             Filter = filter;
-            Id = id;
             ProviderConfig = providerConfig;
             Users = users;
         }

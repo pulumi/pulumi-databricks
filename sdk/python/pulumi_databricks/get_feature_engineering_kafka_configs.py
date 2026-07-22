@@ -28,10 +28,7 @@ class GetFeatureEngineeringKafkaConfigsResult:
     """
     A collection of values returned by getFeatureEngineeringKafkaConfigs.
     """
-    def __init__(__self__, id=None, kafka_configs=None, page_size=None, provider_config=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, kafka_configs=None, page_size=None, provider_config=None):
         if kafka_configs and not isinstance(kafka_configs, list):
             raise TypeError("Expected argument 'kafka_configs' to be a list")
         pulumi.set(__self__, "kafka_configs", kafka_configs)
@@ -41,14 +38,6 @@ class GetFeatureEngineeringKafkaConfigsResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="kafkaConfigs")
@@ -72,7 +61,6 @@ class AwaitableGetFeatureEngineeringKafkaConfigsResult(GetFeatureEngineeringKafk
         if False:
             yield self
         return GetFeatureEngineeringKafkaConfigsResult(
-            id=self.id,
             kafka_configs=self.kafka_configs,
             page_size=self.page_size,
             provider_config=self.provider_config)
@@ -95,7 +83,6 @@ def get_feature_engineering_kafka_configs(page_size: Optional[_builtins.int] = N
     __ret__ = pulumi.runtime.invoke('databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs', __args__, opts=opts, typ=GetFeatureEngineeringKafkaConfigsResult).value
 
     return AwaitableGetFeatureEngineeringKafkaConfigsResult(
-        id=pulumi.get(__ret__, 'id'),
         kafka_configs=pulumi.get(__ret__, 'kafka_configs'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -115,7 +102,6 @@ def get_feature_engineering_kafka_configs_output(page_size: pulumi.Input[Optiona
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs', __args__, opts=opts, typ=GetFeatureEngineeringKafkaConfigsResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringKafkaConfigsResult(
-        id=pulumi.get(__response__, 'id'),
         kafka_configs=pulumi.get(__response__, 'kafka_configs'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

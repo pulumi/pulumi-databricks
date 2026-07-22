@@ -6,27 +6,14 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItem;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetAccountNetworkPoliciesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetAccountNetworkPoliciesItem> items;
 
     private GetAccountNetworkPoliciesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetAccountNetworkPoliciesItem> items() {
         return this.items;
     }
@@ -40,23 +27,13 @@ public final class GetAccountNetworkPoliciesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetAccountNetworkPoliciesItem> items;
         public Builder() {}
         public Builder(GetAccountNetworkPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.items = defaults.items;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountNetworkPoliciesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder items(List<GetAccountNetworkPoliciesItem> items) {
             if (items == null) {
@@ -70,7 +47,6 @@ public final class GetAccountNetworkPoliciesResult {
         }
         public GetAccountNetworkPoliciesResult build() {
             final var _resultValue = new GetAccountNetworkPoliciesResult();
-            _resultValue.id = id;
             _resultValue.items = items;
             return _resultValue;
         }

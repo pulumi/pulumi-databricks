@@ -28,7 +28,7 @@ class GetFeatureEngineeringFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringFeature.
     """
-    def __init__(__self__, catalog_name=None, created_at=None, created_by=None, description=None, entities=None, filter_condition=None, full_name=None, function=None, id=None, inputs=None, lineage_context=None, name=None, provider_config=None, schema_name=None, source=None, time_window=None, timeseries_column=None):
+    def __init__(__self__, catalog_name=None, created_at=None, created_by=None, description=None, entities=None, filter_condition=None, full_name=None, function=None, inputs=None, lineage_context=None, name=None, provider_config=None, schema_name=None, source=None, time_window=None, timeseries_column=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -53,9 +53,6 @@ class GetFeatureEngineeringFeatureResult:
         if function and not isinstance(function, dict):
             raise TypeError("Expected argument 'function' to be a dict")
         pulumi.set(__self__, "function", function)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if inputs and not isinstance(inputs, list):
             raise TypeError("Expected argument 'inputs' to be a list")
         pulumi.set(__self__, "inputs", inputs)
@@ -147,14 +144,6 @@ class GetFeatureEngineeringFeatureResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def inputs(self) -> Sequence[_builtins.str]:
         """
         (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
@@ -240,7 +229,6 @@ class AwaitableGetFeatureEngineeringFeatureResult(GetFeatureEngineeringFeatureRe
             filter_condition=self.filter_condition,
             full_name=self.full_name,
             function=self.function,
-            id=self.id,
             inputs=self.inputs,
             lineage_context=self.lineage_context,
             name=self.name,
@@ -278,7 +266,6 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
         filter_condition=pulumi.get(__ret__, 'filter_condition'),
         full_name=pulumi.get(__ret__, 'full_name'),
         function=pulumi.get(__ret__, 'function'),
-        id=pulumi.get(__ret__, 'id'),
         inputs=pulumi.get(__ret__, 'inputs'),
         lineage_context=pulumi.get(__ret__, 'lineage_context'),
         name=pulumi.get(__ret__, 'name'),
@@ -313,7 +300,6 @@ def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_bui
         filter_condition=pulumi.get(__response__, 'filter_condition'),
         full_name=pulumi.get(__response__, 'full_name'),
         function=pulumi.get(__response__, 'function'),
-        id=pulumi.get(__response__, 'id'),
         inputs=pulumi.get(__response__, 'inputs'),
         lineage_context=pulumi.get(__response__, 'lineage_context'),
         name=pulumi.get(__response__, 'name'),

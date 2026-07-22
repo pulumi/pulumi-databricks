@@ -42,8 +42,6 @@ type LookupAccountSettingUserPreferenceV2Result struct {
 	EffectiveBooleanVal GetAccountSettingUserPreferenceV2EffectiveBooleanVal `pulumi:"effectiveBooleanVal"`
 	// (StringMessage)
 	EffectiveStringVal GetAccountSettingUserPreferenceV2EffectiveStringVal `pulumi:"effectiveStringVal"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Name of the setting
 	Name string `pulumi:"name"`
 	// (StringMessage)
@@ -107,11 +105,6 @@ func (o LookupAccountSettingUserPreferenceV2ResultOutput) EffectiveStringVal() G
 	return o.ApplyT(func(v LookupAccountSettingUserPreferenceV2Result) GetAccountSettingUserPreferenceV2EffectiveStringVal {
 		return v.EffectiveStringVal
 	}).(GetAccountSettingUserPreferenceV2EffectiveStringValOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccountSettingUserPreferenceV2ResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountSettingUserPreferenceV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Name of the setting

@@ -177,10 +177,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Output only. The Full resource name of the synced table in Postgres
         /// where (catalog, schema, table) are the UC entity names.
         /// </summary>
@@ -208,8 +204,6 @@ namespace Pulumi.Databricks
         private GetPostgresSyncedTableResult(
             string createTime,
 
-            string id,
-
             string name,
 
             Outputs.GetPostgresSyncedTableProviderConfigResult? providerConfig,
@@ -223,7 +217,6 @@ namespace Pulumi.Databricks
             string uid)
         {
             CreateTime = createTime;
-            Id = id;
             Name = name;
             ProviderConfig = providerConfig;
             Spec = spec;

@@ -28,13 +28,10 @@ class GetServingEndpointsResult:
     """
     A collection of values returned by getServingEndpoints.
     """
-    def __init__(__self__, endpoints=None, id=None, provider_config=None):
+    def __init__(__self__, endpoints=None, provider_config=None):
         if endpoints and not isinstance(endpoints, list):
             raise TypeError("Expected argument 'endpoints' to be a list")
         pulumi.set(__self__, "endpoints", endpoints)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -46,14 +43,6 @@ class GetServingEndpointsResult:
         List of objects describing the serving endpoints. Each object consists of following attributes:
         """
         return pulumi.get(self, "endpoints")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -68,7 +57,6 @@ class AwaitableGetServingEndpointsResult(GetServingEndpointsResult):
             yield self
         return GetServingEndpointsResult(
             endpoints=self.endpoints,
-            id=self.id,
             provider_config=self.provider_config)
 
 
@@ -125,7 +113,6 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
 
     return AwaitableGetServingEndpointsResult(
         endpoints=pulumi.get(__ret__, 'endpoints'),
-        id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_serving_endpoints_output(endpoints: pulumi.Input[Optional[Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]]]] = None,
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict']]]] = None,
@@ -179,5 +166,4 @@ def get_serving_endpoints_output(endpoints: pulumi.Input[Optional[Optional[Seque
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServingEndpoints:getServingEndpoints', __args__, opts=opts, typ=GetServingEndpointsResult)
     return __ret__.apply(lambda __response__: GetServingEndpointsResult(
         endpoints=pulumi.get(__response__, 'endpoints'),
-        id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config')))

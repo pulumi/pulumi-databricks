@@ -197,10 +197,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetPostgresRolesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         /// <summary>
         /// (string) - The Branch where this Role exists.
@@ -212,8 +208,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetPostgresRolesResult(
-            string id,
-
             int? pageSize,
 
             string parent,
@@ -222,7 +216,6 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetPostgresRolesRoleResult> roles)
         {
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
             ProviderConfig = providerConfig;

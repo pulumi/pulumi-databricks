@@ -28,13 +28,10 @@ class GetSecretUcsResult:
     """
     A collection of values returned by getSecretUcs.
     """
-    def __init__(__self__, catalog_name=None, id=None, page_size=None, provider_config=None, schema_name=None, secrets=None):
+    def __init__(__self__, catalog_name=None, page_size=None, provider_config=None, schema_name=None, secrets=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -55,14 +52,6 @@ class GetSecretUcsResult:
         (string) - The name of the catalog where the schema and the secret reside
         """
         return pulumi.get(self, "catalog_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -95,7 +84,6 @@ class AwaitableGetSecretUcsResult(GetSecretUcsResult):
             yield self
         return GetSecretUcsResult(
             catalog_name=self.catalog_name,
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             schema_name=self.schema_name,
@@ -152,7 +140,6 @@ def get_secret_ucs(catalog_name: Optional[_builtins.str] = None,
 
     return AwaitableGetSecretUcsResult(
         catalog_name=pulumi.get(__ret__, 'catalog_name'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'),
@@ -206,7 +193,6 @@ def get_secret_ucs_output(catalog_name: pulumi.Input[Optional[Optional[_builtins
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getSecretUcs:getSecretUcs', __args__, opts=opts, typ=GetSecretUcsResult)
     return __ret__.apply(lambda __response__: GetSecretUcsResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         schema_name=pulumi.get(__response__, 'schema_name'),

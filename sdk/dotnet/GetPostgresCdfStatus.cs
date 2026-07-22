@@ -175,10 +175,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The last time changes for this table were written to Delta Lake
         /// </summary>
         public readonly string LastSyncTime;
@@ -213,8 +209,6 @@ namespace Pulumi.Databricks
 
             string createTime,
 
-            string id,
-
             string lastSyncTime,
 
             string name,
@@ -231,7 +225,6 @@ namespace Pulumi.Databricks
         {
             CommittedLsn = committedLsn;
             CreateTime = createTime;
-            Id = id;
             LastSyncTime = lastSyncTime;
             Name = name;
             PostgresTable = postgresTable;

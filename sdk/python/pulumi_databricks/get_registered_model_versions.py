@@ -28,13 +28,10 @@ class GetRegisteredModelVersionsResult:
     """
     A collection of values returned by getRegisteredModelVersions.
     """
-    def __init__(__self__, full_name=None, id=None, model_versions=None, provider_config=None):
+    def __init__(__self__, full_name=None, model_versions=None, provider_config=None):
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if model_versions and not isinstance(model_versions, list):
             raise TypeError("Expected argument 'model_versions' to be a list")
         pulumi.set(__self__, "model_versions", model_versions)
@@ -49,14 +46,6 @@ class GetRegisteredModelVersionsResult:
         The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
         """
         return pulumi.get(self, "full_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="modelVersions")
@@ -79,7 +68,6 @@ class AwaitableGetRegisteredModelVersionsResult(GetRegisteredModelVersionsResult
             yield self
         return GetRegisteredModelVersionsResult(
             full_name=self.full_name,
-            id=self.id,
             model_versions=self.model_versions,
             provider_config=self.provider_config)
 
@@ -124,7 +112,6 @@ def get_registered_model_versions(full_name: Optional[_builtins.str] = None,
 
     return AwaitableGetRegisteredModelVersionsResult(
         full_name=pulumi.get(__ret__, 'full_name'),
-        id=pulumi.get(__ret__, 'id'),
         model_versions=pulumi.get(__ret__, 'model_versions'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_registered_model_versions_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -166,6 +153,5 @@ def get_registered_model_versions_output(full_name: pulumi.Input[Optional[_built
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRegisteredModelVersions:getRegisteredModelVersions', __args__, opts=opts, typ=GetRegisteredModelVersionsResult)
     return __ret__.apply(lambda __response__: GetRegisteredModelVersionsResult(
         full_name=pulumi.get(__response__, 'full_name'),
-        id=pulumi.get(__response__, 'id'),
         model_versions=pulumi.get(__response__, 'model_versions'),
         provider_config=pulumi.get(__response__, 'provider_config')))

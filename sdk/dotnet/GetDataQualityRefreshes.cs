@@ -230,10 +230,6 @@ namespace Pulumi.Databricks
     public sealed class GetDataQualityRefreshesResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - The UUID of the request object. It is `SchemaId` for `Schema`, and `TableId` for `Table`.
         /// </summary>
         public readonly string ObjectId;
@@ -247,8 +243,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetDataQualityRefreshesResult(
-            string id,
-
             string objectId,
 
             string objectType,
@@ -259,7 +253,6 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetDataQualityRefreshesRefreshResult> refreshes)
         {
-            Id = id;
             ObjectId = objectId;
             ObjectType = objectType;
             PageSize = pageSize;

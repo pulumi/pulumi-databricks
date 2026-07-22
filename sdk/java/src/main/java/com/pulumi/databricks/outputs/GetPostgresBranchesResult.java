@@ -18,11 +18,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresBranchesResult {
     private List<GetPostgresBranchesBranch> branches;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     /**
      * @return (string) - The project containing this branch (API resource hierarchy).
@@ -36,13 +31,6 @@ public final class GetPostgresBranchesResult {
     private GetPostgresBranchesResult() {}
     public List<GetPostgresBranchesBranch> branches() {
         return this.branches;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
@@ -72,7 +60,6 @@ public final class GetPostgresBranchesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPostgresBranchesBranch> branches;
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         private @Nullable GetPostgresBranchesProviderConfig providerConfig;
@@ -81,7 +68,6 @@ public final class GetPostgresBranchesResult {
         public Builder(GetPostgresBranchesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branches = defaults.branches;
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -98,14 +84,6 @@ public final class GetPostgresBranchesResult {
         }
         public Builder branches(GetPostgresBranchesBranch... branches) {
             return branches(List.of(branches));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPostgresBranchesResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
@@ -136,7 +114,6 @@ public final class GetPostgresBranchesResult {
         public GetPostgresBranchesResult build() {
             final var _resultValue = new GetPostgresBranchesResult();
             _resultValue.branches = branches;
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

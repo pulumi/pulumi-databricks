@@ -52,10 +52,6 @@ export interface GetEndpointsArgs {
  * A collection of values returned by getEndpoints.
  */
 export interface GetEndpointsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly items: outputs.GetEndpointsItem[];
     readonly pageSize?: number;
     readonly parent: string;

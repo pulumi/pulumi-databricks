@@ -35,9 +35,7 @@ type GetFeatureEngineeringMaterializedFeaturesArgs struct {
 // A collection of values returned by getFeatureEngineeringMaterializedFeatures.
 type GetFeatureEngineeringMaterializedFeaturesResult struct {
 	// (string) - The full name of the feature in Unity Catalog
-	FeatureName *string `pulumi:"featureName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id                   string                                                         `pulumi:"id"`
+	FeatureName          *string                                                        `pulumi:"featureName"`
 	MaterializedFeatures []GetFeatureEngineeringMaterializedFeaturesMaterializedFeature `pulumi:"materializedFeatures"`
 	PageSize             *int                                                           `pulumi:"pageSize"`
 	ProviderConfig       *GetFeatureEngineeringMaterializedFeaturesProviderConfig       `pulumi:"providerConfig"`
@@ -84,11 +82,6 @@ func (o GetFeatureEngineeringMaterializedFeaturesResultOutput) ToGetFeatureEngin
 // (string) - The full name of the feature in Unity Catalog
 func (o GetFeatureEngineeringMaterializedFeaturesResultOutput) FeatureName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesResult) *string { return v.FeatureName }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetFeatureEngineeringMaterializedFeaturesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetFeatureEngineeringMaterializedFeaturesResultOutput) MaterializedFeatures() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput {

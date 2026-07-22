@@ -74,8 +74,6 @@ type LookupDisasterRecoveryFailoverGroupResult struct {
 	EffectivePrimaryRegion string `pulumi:"effectivePrimaryRegion"`
 	// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
 	Etag string `pulumi:"etag"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Initial primary region. Used only in Create requests to set the starting
 	// primary region. Not returned in responses
 	InitialPrimaryRegion string `pulumi:"initialPrimaryRegion"`
@@ -144,11 +142,6 @@ func (o LookupDisasterRecoveryFailoverGroupResultOutput) EffectivePrimaryRegion(
 // (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
 func (o LookupDisasterRecoveryFailoverGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryFailoverGroupResult) string { return v.Etag }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDisasterRecoveryFailoverGroupResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDisasterRecoveryFailoverGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Initial primary region. Used only in Create requests to set the starting

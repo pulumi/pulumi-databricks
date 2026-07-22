@@ -37,10 +37,8 @@ type GetFeatureEngineeringFeaturesArgs struct {
 // A collection of values returned by getFeatureEngineeringFeatures.
 type GetFeatureEngineeringFeaturesResult struct {
 	// (string) - Name of parent catalog
-	CatalogName string                                 `pulumi:"catalogName"`
-	Features    []GetFeatureEngineeringFeaturesFeature `pulumi:"features"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                       `pulumi:"id"`
+	CatalogName    string                                       `pulumi:"catalogName"`
+	Features       []GetFeatureEngineeringFeaturesFeature       `pulumi:"features"`
 	PageSize       *int                                         `pulumi:"pageSize"`
 	ProviderConfig *GetFeatureEngineeringFeaturesProviderConfig `pulumi:"providerConfig"`
 	// (string) - Name of parent schema relative to its parent catalog
@@ -94,11 +92,6 @@ func (o GetFeatureEngineeringFeaturesResultOutput) CatalogName() pulumi.StringOu
 
 func (o GetFeatureEngineeringFeaturesResultOutput) Features() GetFeatureEngineeringFeaturesFeatureArrayOutput {
 	return o.ApplyT(func(v GetFeatureEngineeringFeaturesResult) []GetFeatureEngineeringFeaturesFeature { return v.Features }).(GetFeatureEngineeringFeaturesFeatureArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetFeatureEngineeringFeaturesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFeatureEngineeringFeaturesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetFeatureEngineeringFeaturesResultOutput) PageSize() pulumi.IntPtrOutput {

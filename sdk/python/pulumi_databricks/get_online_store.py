@@ -28,7 +28,7 @@ class GetOnlineStoreResult:
     """
     A collection of values returned by getOnlineStore.
     """
-    def __init__(__self__, capacity=None, creation_time=None, creator=None, id=None, name=None, provider_config=None, read_replica_count=None, state=None, usage_policy_id=None):
+    def __init__(__self__, capacity=None, creation_time=None, creator=None, name=None, provider_config=None, read_replica_count=None, state=None, usage_policy_id=None):
         if capacity and not isinstance(capacity, str):
             raise TypeError("Expected argument 'capacity' to be a str")
         pulumi.set(__self__, "capacity", capacity)
@@ -38,9 +38,6 @@ class GetOnlineStoreResult:
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -80,14 +77,6 @@ class GetOnlineStoreResult:
         (string) - The email of the creator of the online store
         """
         return pulumi.get(self, "creator")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -136,7 +125,6 @@ class AwaitableGetOnlineStoreResult(GetOnlineStoreResult):
             capacity=self.capacity,
             creation_time=self.creation_time,
             creator=self.creator,
-            id=self.id,
             name=self.name,
             provider_config=self.provider_config,
             read_replica_count=self.read_replica_count,
@@ -164,7 +152,6 @@ def get_online_store(name: Optional[_builtins.str] = None,
         capacity=pulumi.get(__ret__, 'capacity'),
         creation_time=pulumi.get(__ret__, 'creation_time'),
         creator=pulumi.get(__ret__, 'creator'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         read_replica_count=pulumi.get(__ret__, 'read_replica_count'),
@@ -189,7 +176,6 @@ def get_online_store_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         capacity=pulumi.get(__response__, 'capacity'),
         creation_time=pulumi.get(__response__, 'creation_time'),
         creator=pulumi.get(__response__, 'creator'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         read_replica_count=pulumi.get(__response__, 'read_replica_count'),

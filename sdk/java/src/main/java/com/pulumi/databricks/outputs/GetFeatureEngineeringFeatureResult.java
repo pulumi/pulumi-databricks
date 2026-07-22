@@ -61,11 +61,6 @@ public final class GetFeatureEngineeringFeatureResult {
      */
     private GetFeatureEngineeringFeatureFunction function;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      * 
@@ -171,13 +166,6 @@ public final class GetFeatureEngineeringFeatureResult {
         return this.function;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      * 
@@ -258,7 +246,6 @@ public final class GetFeatureEngineeringFeatureResult {
         private String filterCondition;
         private String fullName;
         private GetFeatureEngineeringFeatureFunction function;
-        private String id;
         private List<String> inputs;
         private GetFeatureEngineeringFeatureLineageContext lineageContext;
         private String name;
@@ -278,7 +265,6 @@ public final class GetFeatureEngineeringFeatureResult {
     	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
     	      this.function = defaults.function;
-    	      this.id = defaults.id;
     	      this.inputs = defaults.inputs;
     	      this.lineageContext = defaults.lineageContext;
     	      this.name = defaults.name;
@@ -357,14 +343,6 @@ public final class GetFeatureEngineeringFeatureResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder inputs(List<String> inputs) {
             if (inputs == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureResult", "inputs");
@@ -439,7 +417,6 @@ public final class GetFeatureEngineeringFeatureResult {
             _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
             _resultValue.function = function;
-            _resultValue.id = id;
             _resultValue.inputs = inputs;
             _resultValue.lineageContext = lineageContext;
             _resultValue.name = name;

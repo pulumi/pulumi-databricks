@@ -44,9 +44,7 @@ type GetPostgresEndpointsArgs struct {
 // A collection of values returned by getPostgresEndpoints.
 type GetPostgresEndpointsResult struct {
 	Endpoints []GetPostgresEndpointsEndpoint `pulumi:"endpoints"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
+	PageSize  *int                           `pulumi:"pageSize"`
 	// (string) - The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent         string                              `pulumi:"parent"`
@@ -94,11 +92,6 @@ func (o GetPostgresEndpointsResultOutput) ToGetPostgresEndpointsResultOutputWith
 
 func (o GetPostgresEndpointsResultOutput) Endpoints() GetPostgresEndpointsEndpointArrayOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsResult) []GetPostgresEndpointsEndpoint { return v.Endpoints }).(GetPostgresEndpointsEndpointArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPostgresEndpointsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostgresEndpointsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPostgresEndpointsResultOutput) PageSize() pulumi.IntPtrOutput {

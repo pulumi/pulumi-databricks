@@ -48,9 +48,7 @@ type GetPostgresBranchesArgs struct {
 // A collection of values returned by getPostgresBranches.
 type GetPostgresBranchesResult struct {
 	Branches []GetPostgresBranchesBranch `pulumi:"branches"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
+	PageSize *int                        `pulumi:"pageSize"`
 	// (string) - The project containing this branch (API resource hierarchy).
 	// Format: projects/{project_id}
 	Parent         string                             `pulumi:"parent"`
@@ -103,11 +101,6 @@ func (o GetPostgresBranchesResultOutput) ToGetPostgresBranchesResultOutputWithCo
 
 func (o GetPostgresBranchesResultOutput) Branches() GetPostgresBranchesBranchArrayOutput {
 	return o.ApplyT(func(v GetPostgresBranchesResult) []GetPostgresBranchesBranch { return v.Branches }).(GetPostgresBranchesBranchArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPostgresBranchesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostgresBranchesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPostgresBranchesResultOutput) PageSize() pulumi.IntPtrOutput {

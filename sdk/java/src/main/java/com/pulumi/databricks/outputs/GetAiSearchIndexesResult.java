@@ -16,24 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiSearchIndexesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetAiSearchIndexesIndex> indexes;
     private @Nullable Integer pageSize;
     private String parent;
     private @Nullable GetAiSearchIndexesProviderConfig providerConfig;
 
     private GetAiSearchIndexesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetAiSearchIndexesIndex> indexes() {
         return this.indexes;
     }
@@ -56,7 +44,6 @@ public final class GetAiSearchIndexesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetAiSearchIndexesIndex> indexes;
         private @Nullable Integer pageSize;
         private String parent;
@@ -64,21 +51,12 @@ public final class GetAiSearchIndexesResult {
         public Builder() {}
         public Builder(GetAiSearchIndexesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.indexes = defaults.indexes;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchIndexesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder indexes(List<GetAiSearchIndexesIndex> indexes) {
             if (indexes == null) {
@@ -112,7 +90,6 @@ public final class GetAiSearchIndexesResult {
         }
         public GetAiSearchIndexesResult build() {
             final var _resultValue = new GetAiSearchIndexesResult();
-            _resultValue.id = id;
             _resultValue.indexes = indexes;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;

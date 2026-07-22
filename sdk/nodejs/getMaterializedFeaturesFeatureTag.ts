@@ -33,10 +33,6 @@ export interface GetMaterializedFeaturesFeatureTagArgs {
  */
 export interface GetMaterializedFeaturesFeatureTagResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string)
      */
     readonly key: string;

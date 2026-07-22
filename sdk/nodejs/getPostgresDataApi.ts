@@ -59,10 +59,6 @@ export interface GetPostgresDataApiResult {
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (string) - Resource name: projects/{project_id}/branches/{branch_id}/databases/{database_id}/data-api
      */
     readonly name: string;

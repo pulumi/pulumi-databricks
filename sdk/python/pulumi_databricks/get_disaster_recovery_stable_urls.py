@@ -27,10 +27,7 @@ class GetDisasterRecoveryStableUrlsResult:
     """
     A collection of values returned by getDisasterRecoveryStableUrls.
     """
-    def __init__(__self__, id=None, page_size=None, parent=None, stable_urls=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, page_size=None, parent=None, stable_urls=None):
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -40,14 +37,6 @@ class GetDisasterRecoveryStableUrlsResult:
         if stable_urls and not isinstance(stable_urls, list):
             raise TypeError("Expected argument 'stable_urls' to be a list")
         pulumi.set(__self__, "stable_urls", stable_urls)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -71,7 +60,6 @@ class AwaitableGetDisasterRecoveryStableUrlsResult(GetDisasterRecoveryStableUrls
         if False:
             yield self
         return GetDisasterRecoveryStableUrlsResult(
-            id=self.id,
             page_size=self.page_size,
             parent=self.parent,
             stable_urls=self.stable_urls)
@@ -116,7 +104,6 @@ def get_disaster_recovery_stable_urls(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls', __args__, opts=opts, typ=GetDisasterRecoveryStableUrlsResult).value
 
     return AwaitableGetDisasterRecoveryStableUrlsResult(
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
         stable_urls=pulumi.get(__ret__, 'stable_urls'))
@@ -158,7 +145,6 @@ def get_disaster_recovery_stable_urls_output(page_size: pulumi.Input[Optional[Op
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls', __args__, opts=opts, typ=GetDisasterRecoveryStableUrlsResult)
     return __ret__.apply(lambda __response__: GetDisasterRecoveryStableUrlsResult(
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent'),
         stable_urls=pulumi.get(__response__, 'stable_urls')))

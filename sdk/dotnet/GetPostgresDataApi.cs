@@ -170,10 +170,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Resource name: projects/{project_id}/branches/{branch_id}/databases/{database_id}/data-api
         /// </summary>
         public readonly string Name;
@@ -200,8 +196,6 @@ namespace Pulumi.Databricks
         private GetPostgresDataApiResult(
             string createTime,
 
-            string id,
-
             string name,
 
             string parent,
@@ -215,7 +209,6 @@ namespace Pulumi.Databricks
             string updateTime)
         {
             CreateTime = createTime;
-            Id = id;
             Name = name;
             Parent = parent;
             ProviderConfig = providerConfig;

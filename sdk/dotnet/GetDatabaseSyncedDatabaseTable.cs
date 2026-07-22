@@ -175,10 +175,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string EffectiveLogicalDatabaseName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (string) - Target Postgres database object (logical database) name for this table.
         /// </summary>
         public readonly string LogicalDatabaseName;
@@ -208,8 +204,6 @@ namespace Pulumi.Databricks
 
             string effectiveLogicalDatabaseName,
 
-            string id,
-
             string logicalDatabaseName,
 
             string name,
@@ -224,7 +218,6 @@ namespace Pulumi.Databricks
             DatabaseInstanceName = databaseInstanceName;
             EffectiveDatabaseInstanceName = effectiveDatabaseInstanceName;
             EffectiveLogicalDatabaseName = effectiveLogicalDatabaseName;
-            Id = id;
             LogicalDatabaseName = logicalDatabaseName;
             Name = name;
             ProviderConfig = providerConfig;

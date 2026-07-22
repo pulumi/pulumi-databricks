@@ -74,8 +74,6 @@ type GetTagPoliciesArgs struct {
 
 // A collection of values returned by getTagPolicies.
 type GetTagPoliciesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                        `pulumi:"id"`
 	PageSize       *int                          `pulumi:"pageSize"`
 	ProviderConfig *GetTagPoliciesProviderConfig `pulumi:"providerConfig"`
 	TagPolicies    []GetTagPoliciesTagPolicy     `pulumi:"tagPolicies"`
@@ -117,11 +115,6 @@ func (o GetTagPoliciesResultOutput) ToGetTagPoliciesResultOutput() GetTagPolicie
 
 func (o GetTagPoliciesResultOutput) ToGetTagPoliciesResultOutputWithContext(ctx context.Context) GetTagPoliciesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetTagPoliciesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTagPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetTagPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {

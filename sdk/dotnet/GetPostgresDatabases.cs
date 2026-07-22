@@ -198,10 +198,6 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresDatabasesResult
     {
         public readonly ImmutableArray<Outputs.GetPostgresDatabasesDatabaseResult> Databases;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         /// <summary>
         /// (string) - The branch containing this database.
@@ -214,8 +210,6 @@ namespace Pulumi.Databricks
         private GetPostgresDatabasesResult(
             ImmutableArray<Outputs.GetPostgresDatabasesDatabaseResult> databases,
 
-            string id,
-
             int? pageSize,
 
             string parent,
@@ -223,7 +217,6 @@ namespace Pulumi.Databricks
             Outputs.GetPostgresDatabasesProviderConfigResult? providerConfig)
         {
             Databases = databases;
-            Id = id;
             PageSize = pageSize;
             Parent = parent;
             ProviderConfig = providerConfig;

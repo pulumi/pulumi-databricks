@@ -28,16 +28,13 @@ class GetDataClassificationCatalogConfigResult:
     """
     A collection of values returned by getDataClassificationCatalogConfig.
     """
-    def __init__(__self__, auto_tag_configs=None, excluded_schemas=None, id=None, included_schemas=None, name=None, provider_config=None):
+    def __init__(__self__, auto_tag_configs=None, excluded_schemas=None, included_schemas=None, name=None, provider_config=None):
         if auto_tag_configs and not isinstance(auto_tag_configs, list):
             raise TypeError("Expected argument 'auto_tag_configs' to be a list")
         pulumi.set(__self__, "auto_tag_configs", auto_tag_configs)
         if excluded_schemas and not isinstance(excluded_schemas, dict):
             raise TypeError("Expected argument 'excluded_schemas' to be a dict")
         pulumi.set(__self__, "excluded_schemas", excluded_schemas)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if included_schemas and not isinstance(included_schemas, dict):
             raise TypeError("Expected argument 'included_schemas' to be a dict")
         pulumi.set(__self__, "included_schemas", included_schemas)
@@ -67,14 +64,6 @@ class GetDataClassificationCatalogConfigResult:
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
         return pulumi.get(self, "excluded_schemas")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="includedSchemas")
@@ -109,7 +98,6 @@ class AwaitableGetDataClassificationCatalogConfigResult(GetDataClassificationCat
         return GetDataClassificationCatalogConfigResult(
             auto_tag_configs=self.auto_tag_configs,
             excluded_schemas=self.excluded_schemas,
-            id=self.id,
             included_schemas=self.included_schemas,
             name=self.name,
             provider_config=self.provider_config)
@@ -155,7 +143,6 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
     return AwaitableGetDataClassificationCatalogConfigResult(
         auto_tag_configs=pulumi.get(__ret__, 'auto_tag_configs'),
         excluded_schemas=pulumi.get(__ret__, 'excluded_schemas'),
-        id=pulumi.get(__ret__, 'id'),
         included_schemas=pulumi.get(__ret__, 'included_schemas'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -198,7 +185,6 @@ def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_b
     return __ret__.apply(lambda __response__: GetDataClassificationCatalogConfigResult(
         auto_tag_configs=pulumi.get(__response__, 'auto_tag_configs'),
         excluded_schemas=pulumi.get(__response__, 'excluded_schemas'),
-        id=pulumi.get(__response__, 'id'),
         included_schemas=pulumi.get(__response__, 'included_schemas'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config')))

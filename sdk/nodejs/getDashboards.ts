@@ -62,10 +62,6 @@ export interface GetDashboardsResult {
      * A list of dashboards matching the specified criteria. Each element contains the following attributes:
      */
     readonly dashboards: outputs.GetDashboardsDashboard[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly providerConfig?: outputs.GetDashboardsProviderConfig;
 }
 /**

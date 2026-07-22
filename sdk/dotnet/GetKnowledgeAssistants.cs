@@ -85,25 +85,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetKnowledgeAssistantsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetKnowledgeAssistantsKnowledgeAssistantResult> KnowledgeAssistants;
         public readonly int? PageSize;
         public readonly Outputs.GetKnowledgeAssistantsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetKnowledgeAssistantsResult(
-            string id,
-
             ImmutableArray<Outputs.GetKnowledgeAssistantsKnowledgeAssistantResult> knowledgeAssistants,
 
             int? pageSize,
 
             Outputs.GetKnowledgeAssistantsProviderConfigResult? providerConfig)
         {
-            Id = id;
             KnowledgeAssistants = knowledgeAssistants;
             PageSize = pageSize;
             ProviderConfig = providerConfig;

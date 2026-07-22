@@ -24,11 +24,6 @@ public final class GetAccountNetworkPolicyResult {
      */
     private GetAccountNetworkPolicyEgress egress;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
      * 
      */
@@ -60,13 +55,6 @@ public final class GetAccountNetworkPolicyResult {
      */
     public GetAccountNetworkPolicyEgress egress() {
         return this.egress;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
@@ -103,7 +91,6 @@ public final class GetAccountNetworkPolicyResult {
     public static final class Builder {
         private String accountId;
         private GetAccountNetworkPolicyEgress egress;
-        private String id;
         private GetAccountNetworkPolicyIngress ingress;
         private GetAccountNetworkPolicyIngressDryRun ingressDryRun;
         private String networkPolicyId;
@@ -112,7 +99,6 @@ public final class GetAccountNetworkPolicyResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.egress = defaults.egress;
-    	      this.id = defaults.id;
     	      this.ingress = defaults.ingress;
     	      this.ingressDryRun = defaults.ingressDryRun;
     	      this.networkPolicyId = defaults.networkPolicyId;
@@ -132,14 +118,6 @@ public final class GetAccountNetworkPolicyResult {
               throw new MissingRequiredPropertyException("GetAccountNetworkPolicyResult", "egress");
             }
             this.egress = egress;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountNetworkPolicyResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -170,7 +148,6 @@ public final class GetAccountNetworkPolicyResult {
             final var _resultValue = new GetAccountNetworkPolicyResult();
             _resultValue.accountId = accountId;
             _resultValue.egress = egress;
-            _resultValue.id = id;
             _resultValue.ingress = ingress;
             _resultValue.ingressDryRun = ingressDryRun;
             _resultValue.networkPolicyId = networkPolicyId;

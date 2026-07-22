@@ -170,10 +170,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAppAppResult App;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The name of the app to grant permission on.
         /// </summary>
         public readonly string Name;
@@ -183,14 +179,11 @@ namespace Pulumi.Databricks
         private GetAppResult(
             Outputs.GetAppAppResult app,
 
-            string id,
-
             string name,
 
             Outputs.GetAppProviderConfigResult? providerConfig)
         {
             App = app;
-            Id = id;
             Name = name;
             ProviderConfig = providerConfig;
         }

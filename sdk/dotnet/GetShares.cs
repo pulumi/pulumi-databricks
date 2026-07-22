@@ -198,10 +198,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetSharesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetSharesProviderConfigResult? ProviderConfig;
         /// <summary>
         /// list of databricks.Share names.
@@ -210,13 +206,10 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetSharesResult(
-            string id,
-
             Outputs.GetSharesProviderConfigResult? providerConfig,
 
             ImmutableArray<string> shares)
         {
-            Id = id;
             ProviderConfig = providerConfig;
             Shares = shares;
         }

@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetDataQualityMonitorsMonitor;
 import com.pulumi.databricks.outputs.GetDataQualityMonitorsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDataQualityMonitorsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetDataQualityMonitorsMonitor> monitors;
     private @Nullable Integer pageSize;
     private @Nullable GetDataQualityMonitorsProviderConfig providerConfig;
 
     private GetDataQualityMonitorsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetDataQualityMonitorsMonitor> monitors() {
         return this.monitors;
     }
@@ -52,27 +39,17 @@ public final class GetDataQualityMonitorsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetDataQualityMonitorsMonitor> monitors;
         private @Nullable Integer pageSize;
         private @Nullable GetDataQualityMonitorsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDataQualityMonitorsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.monitors = defaults.monitors;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDataQualityMonitorsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder monitors(List<GetDataQualityMonitorsMonitor> monitors) {
             if (monitors == null) {
@@ -98,7 +75,6 @@ public final class GetDataQualityMonitorsResult {
         }
         public GetDataQualityMonitorsResult build() {
             final var _resultValue = new GetDataQualityMonitorsResult();
-            _resultValue.id = id;
             _resultValue.monitors = monitors;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;

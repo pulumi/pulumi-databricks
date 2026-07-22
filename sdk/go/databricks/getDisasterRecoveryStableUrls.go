@@ -69,8 +69,6 @@ type GetDisasterRecoveryStableUrlsArgs struct {
 
 // A collection of values returned by getDisasterRecoveryStableUrls.
 type GetDisasterRecoveryStableUrlsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id         string                                   `pulumi:"id"`
 	PageSize   *int                                     `pulumi:"pageSize"`
 	Parent     string                                   `pulumi:"parent"`
 	StableUrls []GetDisasterRecoveryStableUrlsStableUrl `pulumi:"stableUrls"`
@@ -115,11 +113,6 @@ func (o GetDisasterRecoveryStableUrlsResultOutput) ToGetDisasterRecoveryStableUr
 
 func (o GetDisasterRecoveryStableUrlsResultOutput) ToGetDisasterRecoveryStableUrlsResultOutputWithContext(ctx context.Context) GetDisasterRecoveryStableUrlsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDisasterRecoveryStableUrlsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDisasterRecoveryStableUrlsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDisasterRecoveryStableUrlsResultOutput) PageSize() pulumi.IntPtrOutput {

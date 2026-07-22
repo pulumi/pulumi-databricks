@@ -28,7 +28,7 @@ class GetSecretUcResult:
     """
     A collection of values returned by getSecretUc.
     """
-    def __init__(__self__, catalog_name=None, comment=None, create_time=None, created_by=None, effective_owner=None, effective_value=None, expire_time=None, full_name=None, id=None, metastore_id=None, name=None, owner=None, provider_config=None, schema_name=None, update_time=None, updated_by=None, value=None):
+    def __init__(__self__, catalog_name=None, comment=None, create_time=None, created_by=None, effective_owner=None, effective_value=None, expire_time=None, full_name=None, metastore_id=None, name=None, owner=None, provider_config=None, schema_name=None, update_time=None, updated_by=None, value=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -53,9 +53,6 @@ class GetSecretUcResult:
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if metastore_id and not isinstance(metastore_id, str):
             raise TypeError("Expected argument 'metastore_id' to be a str")
         pulumi.set(__self__, "metastore_id", metastore_id)
@@ -150,14 +147,6 @@ class GetSecretUcResult:
         return pulumi.get(self, "full_name")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> _builtins.str:
         """
@@ -237,7 +226,6 @@ class AwaitableGetSecretUcResult(GetSecretUcResult):
             effective_value=self.effective_value,
             expire_time=self.expire_time,
             full_name=self.full_name,
-            id=self.id,
             metastore_id=self.metastore_id,
             name=self.name,
             owner=self.owner,
@@ -291,7 +279,6 @@ def get_secret_uc(full_name: Optional[_builtins.str] = None,
         effective_value=pulumi.get(__ret__, 'effective_value'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         full_name=pulumi.get(__ret__, 'full_name'),
-        id=pulumi.get(__ret__, 'id'),
         metastore_id=pulumi.get(__ret__, 'metastore_id'),
         name=pulumi.get(__ret__, 'name'),
         owner=pulumi.get(__ret__, 'owner'),
@@ -342,7 +329,6 @@ def get_secret_uc_output(full_name: pulumi.Input[Optional[_builtins.str]] = None
         effective_value=pulumi.get(__response__, 'effective_value'),
         expire_time=pulumi.get(__response__, 'expire_time'),
         full_name=pulumi.get(__response__, 'full_name'),
-        id=pulumi.get(__response__, 'id'),
         metastore_id=pulumi.get(__response__, 'metastore_id'),
         name=pulumi.get(__response__, 'name'),
         owner=pulumi.get(__response__, 'owner'),

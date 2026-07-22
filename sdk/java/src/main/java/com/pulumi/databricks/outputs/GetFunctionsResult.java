@@ -26,11 +26,6 @@ public final class GetFunctionsResult {
      * 
      */
     private List<GetFunctionsFunction> functions;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Boolean includeBrowse;
     private @Nullable GetFunctionsProviderConfig providerConfig;
     /**
@@ -53,13 +48,6 @@ public final class GetFunctionsResult {
      */
     public List<GetFunctionsFunction> functions() {
         return this.functions;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Boolean> includeBrowse() {
         return Optional.ofNullable(this.includeBrowse);
@@ -86,7 +74,6 @@ public final class GetFunctionsResult {
     public static final class Builder {
         private String catalogName;
         private List<GetFunctionsFunction> functions;
-        private String id;
         private @Nullable Boolean includeBrowse;
         private @Nullable GetFunctionsProviderConfig providerConfig;
         private String schemaName;
@@ -95,7 +82,6 @@ public final class GetFunctionsResult {
     	      Objects.requireNonNull(defaults);
     	      this.catalogName = defaults.catalogName;
     	      this.functions = defaults.functions;
-    	      this.id = defaults.id;
     	      this.includeBrowse = defaults.includeBrowse;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
@@ -121,14 +107,6 @@ public final class GetFunctionsResult {
             return functions(List.of(functions));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFunctionsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder includeBrowse(@Nullable Boolean includeBrowse) {
 
             this.includeBrowse = includeBrowse;
@@ -152,7 +130,6 @@ public final class GetFunctionsResult {
             final var _resultValue = new GetFunctionsResult();
             _resultValue.catalogName = catalogName;
             _resultValue.functions = functions;
-            _resultValue.id = id;
             _resultValue.includeBrowse = includeBrowse;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;

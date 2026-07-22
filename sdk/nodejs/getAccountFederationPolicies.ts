@@ -45,10 +45,6 @@ export interface GetAccountFederationPoliciesArgs {
  * A collection of values returned by getAccountFederationPolicies.
  */
 export interface GetAccountFederationPoliciesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly policies: outputs.GetAccountFederationPoliciesPolicy[];
 }

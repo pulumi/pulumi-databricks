@@ -63,8 +63,6 @@ type GetEnvironmentsWorkspaceBaseEnvironmentsArgs struct {
 
 // A collection of values returned by getEnvironmentsWorkspaceBaseEnvironments.
 type GetEnvironmentsWorkspaceBaseEnvironmentsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id                        string                                                             `pulumi:"id"`
 	PageSize                  *int                                                               `pulumi:"pageSize"`
 	ProviderConfig            *GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig            `pulumi:"providerConfig"`
 	WorkspaceBaseEnvironments []GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment `pulumi:"workspaceBaseEnvironments"`
@@ -105,11 +103,6 @@ func (o GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput) ToGetEnvironmentsW
 
 func (o GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput) ToGetEnvironmentsWorkspaceBaseEnvironmentsResultOutputWithContext(ctx context.Context) GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEnvironmentsWorkspaceBaseEnvironmentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput) PageSize() pulumi.IntPtrOutput {

@@ -21,11 +21,6 @@ public final class GetRegisteredModelResult {
      * 
      */
     private String fullName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Boolean includeAliases;
     private @Nullable Boolean includeBrowse;
     /**
@@ -42,13 +37,6 @@ public final class GetRegisteredModelResult {
      */
     public String fullName() {
         return this.fullName;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Boolean> includeAliases() {
         return Optional.ofNullable(this.includeAliases);
@@ -77,7 +65,6 @@ public final class GetRegisteredModelResult {
     @CustomType.Builder
     public static final class Builder {
         private String fullName;
-        private String id;
         private @Nullable Boolean includeAliases;
         private @Nullable Boolean includeBrowse;
         private List<GetRegisteredModelModelInfo> modelInfos;
@@ -86,7 +73,6 @@ public final class GetRegisteredModelResult {
         public Builder(GetRegisteredModelResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fullName = defaults.fullName;
-    	      this.id = defaults.id;
     	      this.includeAliases = defaults.includeAliases;
     	      this.includeBrowse = defaults.includeBrowse;
     	      this.modelInfos = defaults.modelInfos;
@@ -99,14 +85,6 @@ public final class GetRegisteredModelResult {
               throw new MissingRequiredPropertyException("GetRegisteredModelResult", "fullName");
             }
             this.fullName = fullName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetRegisteredModelResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -141,7 +119,6 @@ public final class GetRegisteredModelResult {
         public GetRegisteredModelResult build() {
             final var _resultValue = new GetRegisteredModelResult();
             _resultValue.fullName = fullName;
-            _resultValue.id = id;
             _resultValue.includeAliases = includeAliases;
             _resultValue.includeBrowse = includeBrowse;
             _resultValue.modelInfos = modelInfos;

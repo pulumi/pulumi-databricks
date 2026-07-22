@@ -70,10 +70,6 @@ export interface GetFeatureEngineeringFeatureResult {
      */
     readonly function: outputs.GetFeatureEngineeringFeatureFunction;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      */

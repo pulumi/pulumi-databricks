@@ -36,10 +36,6 @@ export function getAccountNetworkPolicies(opts?: pulumi.InvokeOptions): Promise<
  * A collection of values returned by getAccountNetworkPolicies.
  */
 export interface GetAccountNetworkPoliciesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly items: outputs.GetAccountNetworkPoliciesItem[];
 }
 /**

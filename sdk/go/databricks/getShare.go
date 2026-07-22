@@ -90,8 +90,6 @@ type LookupShareResult struct {
 	// The principal that created the share.
 	CreatedBy      string `pulumi:"createdBy"`
 	EffectiveOwner string `pulumi:"effectiveOwner"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Full name of the object being shared.
 	Name *string `pulumi:"name"`
 	// arrays containing details of each object in the share.
@@ -163,11 +161,6 @@ func (o LookupShareResultOutput) CreatedBy() pulumi.StringOutput {
 
 func (o LookupShareResultOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.EffectiveOwner }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupShareResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupShareResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Full name of the object being shared.

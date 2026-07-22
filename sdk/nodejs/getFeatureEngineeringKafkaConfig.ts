@@ -55,10 +55,6 @@ export interface GetFeatureEngineeringKafkaConfigResult {
      */
     readonly extraOptions: {[key: string]: string};
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
      * Delta table
      */

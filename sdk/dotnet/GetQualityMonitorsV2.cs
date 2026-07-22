@@ -153,25 +153,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetQualityMonitorsV2Result
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetQualityMonitorsV2ProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> QualityMonitors;
 
         [OutputConstructor]
         private GetQualityMonitorsV2Result(
-            string id,
-
             int? pageSize,
 
             Outputs.GetQualityMonitorsV2ProviderConfigResult? providerConfig,
 
             ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> qualityMonitors)
         {
-            Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
             QualityMonitors = qualityMonitors;

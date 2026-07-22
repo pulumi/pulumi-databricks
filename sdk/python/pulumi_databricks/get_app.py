@@ -28,13 +28,10 @@ class GetAppResult:
     """
     A collection of values returned by getApp.
     """
-    def __init__(__self__, app=None, id=None, name=None, provider_config=None):
+    def __init__(__self__, app=None, name=None, provider_config=None):
         if app and not isinstance(app, dict):
             raise TypeError("Expected argument 'app' to be a dict")
         pulumi.set(__self__, "app", app)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -49,14 +46,6 @@ class GetAppResult:
         attribute - reference to another Databricks App.
         """
         return pulumi.get(self, "app")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -79,7 +68,6 @@ class AwaitableGetAppResult(GetAppResult):
             yield self
         return GetAppResult(
             app=self.app,
-            id=self.id,
             name=self.name,
             provider_config=self.provider_config)
 
@@ -124,7 +112,6 @@ def get_app(name: Optional[_builtins.str] = None,
 
     return AwaitableGetAppResult(
         app=pulumi.get(__ret__, 'app'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_app_output(name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -166,6 +153,5 @@ def get_app_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult)
     return __ret__.apply(lambda __response__: GetAppResult(
         app=pulumi.get(__response__, 'app'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config')))

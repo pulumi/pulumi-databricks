@@ -28,16 +28,13 @@ class GetMaterializedFeaturesFeatureTagsResult:
     """
     A collection of values returned by getMaterializedFeaturesFeatureTags.
     """
-    def __init__(__self__, feature_name=None, feature_tags=None, id=None, page_size=None, provider_config=None, table_name=None):
+    def __init__(__self__, feature_name=None, feature_tags=None, page_size=None, provider_config=None, table_name=None):
         if feature_name and not isinstance(feature_name, str):
             raise TypeError("Expected argument 'feature_name' to be a str")
         pulumi.set(__self__, "feature_name", feature_name)
         if feature_tags and not isinstance(feature_tags, list):
             raise TypeError("Expected argument 'feature_tags' to be a list")
         pulumi.set(__self__, "feature_tags", feature_tags)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -57,14 +54,6 @@ class GetMaterializedFeaturesFeatureTagsResult:
     @pulumi.getter(name="featureTags")
     def feature_tags(self) -> Sequence['outputs.GetMaterializedFeaturesFeatureTagsFeatureTagResult']:
         return pulumi.get(self, "feature_tags")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -90,7 +79,6 @@ class AwaitableGetMaterializedFeaturesFeatureTagsResult(GetMaterializedFeaturesF
         return GetMaterializedFeaturesFeatureTagsResult(
             feature_name=self.feature_name,
             feature_tags=self.feature_tags,
-            id=self.id,
             page_size=self.page_size,
             provider_config=self.provider_config,
             table_name=self.table_name)
@@ -119,7 +107,6 @@ def get_materialized_features_feature_tags(feature_name: Optional[_builtins.str]
     return AwaitableGetMaterializedFeaturesFeatureTagsResult(
         feature_name=pulumi.get(__ret__, 'feature_name'),
         feature_tags=pulumi.get(__ret__, 'feature_tags'),
-        id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         table_name=pulumi.get(__ret__, 'table_name'))
@@ -145,7 +132,6 @@ def get_materialized_features_feature_tags_output(feature_name: pulumi.Input[Opt
     return __ret__.apply(lambda __response__: GetMaterializedFeaturesFeatureTagsResult(
         feature_name=pulumi.get(__response__, 'feature_name'),
         feature_tags=pulumi.get(__response__, 'feature_tags'),
-        id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         table_name=pulumi.get(__response__, 'table_name')))

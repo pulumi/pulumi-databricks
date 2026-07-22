@@ -70,8 +70,6 @@ type LookupPostgresBranchResult struct {
 	BranchId string `pulumi:"branchId"`
 	// (string) - A timestamp indicating when the branch was created
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - Output only. The full resource path of the branch.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Name string `pulumi:"name"`
@@ -134,11 +132,6 @@ func (o LookupPostgresBranchResultOutput) BranchId() pulumi.StringOutput {
 // (string) - A timestamp indicating when the branch was created
 func (o LookupPostgresBranchResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPostgresBranchResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - Output only. The full resource path of the branch.

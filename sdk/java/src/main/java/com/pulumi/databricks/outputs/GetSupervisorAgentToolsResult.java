@@ -16,24 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSupervisorAgentToolsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer pageSize;
     private String parent;
     private @Nullable GetSupervisorAgentToolsProviderConfig providerConfig;
     private List<GetSupervisorAgentToolsTool> tools;
 
     private GetSupervisorAgentToolsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -56,7 +44,6 @@ public final class GetSupervisorAgentToolsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer pageSize;
         private String parent;
         private @Nullable GetSupervisorAgentToolsProviderConfig providerConfig;
@@ -64,21 +51,12 @@ public final class GetSupervisorAgentToolsResult {
         public Builder() {}
         public Builder(GetSupervisorAgentToolsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
     	      this.tools = defaults.tools;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSupervisorAgentToolsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
 
@@ -112,7 +90,6 @@ public final class GetSupervisorAgentToolsResult {
         }
         public GetSupervisorAgentToolsResult build() {
             final var _resultValue = new GetSupervisorAgentToolsResult();
-            _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

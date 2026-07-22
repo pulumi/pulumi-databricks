@@ -81,8 +81,6 @@ type LookupQualityMonitorV2Args struct {
 type LookupQualityMonitorV2Result struct {
 	// (AnomalyDetectionConfig)
 	AnomalyDetectionConfig GetQualityMonitorV2AnomalyDetectionConfig `pulumi:"anomalyDetectionConfig"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// (string) - The uuid of the request object. For example, schema id
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: schema
@@ -135,11 +133,6 @@ func (o LookupQualityMonitorV2ResultOutput) AnomalyDetectionConfig() GetQualityM
 	return o.ApplyT(func(v LookupQualityMonitorV2Result) GetQualityMonitorV2AnomalyDetectionConfig {
 		return v.AnomalyDetectionConfig
 	}).(GetQualityMonitorV2AnomalyDetectionConfigOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupQualityMonitorV2ResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupQualityMonitorV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (string) - The uuid of the request object. For example, schema id

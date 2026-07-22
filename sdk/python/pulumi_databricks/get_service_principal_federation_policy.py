@@ -27,16 +27,13 @@ class GetServicePrincipalFederationPolicyResult:
     """
     A collection of values returned by getServicePrincipalFederationPolicy.
     """
-    def __init__(__self__, create_time=None, description=None, id=None, name=None, oidc_policy=None, policy_id=None, service_principal_id=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, name=None, oidc_policy=None, policy_id=None, service_principal_id=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -71,14 +68,6 @@ class GetServicePrincipalFederationPolicyResult:
         (string) - Description of the federation policy
         """
         return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -142,7 +131,6 @@ class AwaitableGetServicePrincipalFederationPolicyResult(GetServicePrincipalFede
         return GetServicePrincipalFederationPolicyResult(
             create_time=self.create_time,
             description=self.description,
-            id=self.id,
             name=self.name,
             oidc_policy=self.oidc_policy,
             policy_id=self.policy_id,
@@ -180,7 +168,6 @@ def get_service_principal_federation_policy(policy_id: Optional[_builtins.str] =
     return AwaitableGetServicePrincipalFederationPolicyResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         oidc_policy=pulumi.get(__ret__, 'oidc_policy'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
@@ -215,7 +202,6 @@ def get_service_principal_federation_policy_output(policy_id: pulumi.Input[Optio
     return __ret__.apply(lambda __response__: GetServicePrincipalFederationPolicyResult(
         create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         oidc_policy=pulumi.get(__response__, 'oidc_policy'),
         policy_id=pulumi.get(__response__, 'policy_id'),

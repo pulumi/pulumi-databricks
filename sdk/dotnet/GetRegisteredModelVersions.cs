@@ -185,10 +185,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string FullName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// list of objects describing the model versions. Each object consists of following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionResult> ModelVersions;
@@ -198,14 +194,11 @@ namespace Pulumi.Databricks
         private GetRegisteredModelVersionsResult(
             string fullName,
 
-            string id,
-
             ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionResult> modelVersions,
 
             Outputs.GetRegisteredModelVersionsProviderConfigResult? providerConfig)
         {
             FullName = fullName;
-            Id = id;
             ModelVersions = modelVersions;
             ProviderConfig = providerConfig;
         }

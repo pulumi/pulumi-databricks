@@ -59,10 +59,6 @@ export interface GetAiSearchEndpointsArgs {
  */
 export interface GetAiSearchEndpointsResult {
     readonly endpoints: outputs.GetAiSearchEndpointsEndpoint[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pageSize?: number;
     readonly parent: string;
     readonly providerConfig?: outputs.GetAiSearchEndpointsProviderConfig;

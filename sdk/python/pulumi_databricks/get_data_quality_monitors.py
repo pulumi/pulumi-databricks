@@ -28,10 +28,7 @@ class GetDataQualityMonitorsResult:
     """
     A collection of values returned by getDataQualityMonitors.
     """
-    def __init__(__self__, id=None, monitors=None, page_size=None, provider_config=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, monitors=None, page_size=None, provider_config=None):
         if monitors and not isinstance(monitors, list):
             raise TypeError("Expected argument 'monitors' to be a list")
         pulumi.set(__self__, "monitors", monitors)
@@ -41,14 +38,6 @@ class GetDataQualityMonitorsResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -72,7 +61,6 @@ class AwaitableGetDataQualityMonitorsResult(GetDataQualityMonitorsResult):
         if False:
             yield self
         return GetDataQualityMonitorsResult(
-            id=self.id,
             monitors=self.monitors,
             page_size=self.page_size,
             provider_config=self.provider_config)
@@ -119,7 +107,6 @@ def get_data_quality_monitors(page_size: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getDataQualityMonitors:getDataQualityMonitors', __args__, opts=opts, typ=GetDataQualityMonitorsResult).value
 
     return AwaitableGetDataQualityMonitorsResult(
-        id=pulumi.get(__ret__, 'id'),
         monitors=pulumi.get(__ret__, 'monitors'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
@@ -163,7 +150,6 @@ def get_data_quality_monitors_output(page_size: pulumi.Input[Optional[Optional[_
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDataQualityMonitors:getDataQualityMonitors', __args__, opts=opts, typ=GetDataQualityMonitorsResult)
     return __ret__.apply(lambda __response__: GetDataQualityMonitorsResult(
-        id=pulumi.get(__response__, 'id'),
         monitors=pulumi.get(__response__, 'monitors'),
         page_size=pulumi.get(__response__, 'page_size'),
         provider_config=pulumi.get(__response__, 'provider_config')))

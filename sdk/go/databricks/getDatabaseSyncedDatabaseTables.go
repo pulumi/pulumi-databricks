@@ -36,8 +36,6 @@ type GetDatabaseSyncedDatabaseTablesArgs struct {
 
 // A collection of values returned by getDatabaseSyncedDatabaseTables.
 type GetDatabaseSyncedDatabaseTablesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                                         `pulumi:"id"`
 	InstanceName   string                                         `pulumi:"instanceName"`
 	PageSize       *int                                           `pulumi:"pageSize"`
 	ProviderConfig *GetDatabaseSyncedDatabaseTablesProviderConfig `pulumi:"providerConfig"`
@@ -80,11 +78,6 @@ func (o GetDatabaseSyncedDatabaseTablesResultOutput) ToGetDatabaseSyncedDatabase
 
 func (o GetDatabaseSyncedDatabaseTablesResultOutput) ToGetDatabaseSyncedDatabaseTablesResultOutputWithContext(ctx context.Context) GetDatabaseSyncedDatabaseTablesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDatabaseSyncedDatabaseTablesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseSyncedDatabaseTablesResultOutput) InstanceName() pulumi.StringOutput {
