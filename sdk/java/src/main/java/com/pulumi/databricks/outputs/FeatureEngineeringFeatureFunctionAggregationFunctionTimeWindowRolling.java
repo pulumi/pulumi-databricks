@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
     private @Nullable String delay;
-    private String windowDuration;
+    private @Nullable String windowDuration;
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling() {}
     public Optional<String> delay() {
         return Optional.ofNullable(this.delay);
     }
-    public String windowDuration() {
-        return this.windowDuration;
+    public Optional<String> windowDuration() {
+        return Optional.ofNullable(this.windowDuration);
     }
 
     public static Builder builder() {
@@ -33,7 +32,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String delay;
-        private String windowDuration;
+        private @Nullable String windowDuration;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling defaults) {
     	      Objects.requireNonNull(defaults);
@@ -48,10 +47,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
             return this;
         }
         @CustomType.Setter
-        public Builder windowDuration(String windowDuration) {
-            if (windowDuration == null) {
-              throw new MissingRequiredPropertyException("FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling", "windowDuration");
-            }
+        public Builder windowDuration(@Nullable String windowDuration) {
+
             this.windowDuration = windowDuration;
             return this;
         }

@@ -14,15 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow
     {
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous? Continuous;
-        /// <summary>
-        /// A window that spans the entire lifetime of the data source
-        /// </summary>
-        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime? Lifetime;
-        /// <summary>
-        /// A long (multi-day) rolling window served via the hybrid batch + streaming path
-        /// </summary>
-        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling? LongRolling;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling? Rolling;
+        /// <summary>
+        /// A sawtooth window served via the hybrid batch + streaming path
+        /// </summary>
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth? Sawtooth;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding? Sliding;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling? Tumbling;
 
@@ -30,20 +26,17 @@ namespace Pulumi.Databricks.Outputs
         private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow(
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous? continuous,
 
-            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime? lifetime,
-
-            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling? longRolling,
-
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling? rolling,
+
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth? sawtooth,
 
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding? sliding,
 
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling? tumbling)
         {
             Continuous = continuous;
-            Lifetime = lifetime;
-            LongRolling = longRolling;
             Rolling = rolling;
+            Sawtooth = sawtooth;
             Sliding = sliding;
             Tumbling = tumbling;
         }

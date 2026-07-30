@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,11 +29,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
         return Optional.ofNullable(this.microsoftEntraClientSecret);
     }
 
-    @Import(name="microsoftEntraClientSecretPlaintext")
-    private @Nullable String microsoftEntraClientSecretPlaintext;
+    @Import(name="microsoftEntraClientSecretPlaintext", required=true)
+    private String microsoftEntraClientSecretPlaintext;
 
-    public Optional<String> microsoftEntraClientSecretPlaintext() {
-        return Optional.ofNullable(this.microsoftEntraClientSecretPlaintext);
+    public String microsoftEntraClientSecretPlaintext() {
+        return this.microsoftEntraClientSecretPlaintext;
     }
 
     @Import(name="microsoftEntraTenantId")
@@ -56,11 +57,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
         return Optional.ofNullable(this.openaiApiKey);
     }
 
-    @Import(name="openaiApiKeyPlaintext")
-    private @Nullable String openaiApiKeyPlaintext;
+    @Import(name="openaiApiKeyPlaintext", required=true)
+    private String openaiApiKeyPlaintext;
 
-    public Optional<String> openaiApiKeyPlaintext() {
-        return Optional.ofNullable(this.openaiApiKeyPlaintext);
+    public String openaiApiKeyPlaintext() {
+        return this.openaiApiKeyPlaintext;
     }
 
     @Import(name="openaiApiType")
@@ -135,7 +136,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
             return this;
         }
 
-        public Builder microsoftEntraClientSecretPlaintext(@Nullable String microsoftEntraClientSecretPlaintext) {
+        public Builder microsoftEntraClientSecretPlaintext(String microsoftEntraClientSecretPlaintext) {
             $.microsoftEntraClientSecretPlaintext = microsoftEntraClientSecretPlaintext;
             return this;
         }
@@ -155,7 +156,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
             return this;
         }
 
-        public Builder openaiApiKeyPlaintext(@Nullable String openaiApiKeyPlaintext) {
+        public Builder openaiApiKeyPlaintext(String openaiApiKeyPlaintext) {
             $.openaiApiKeyPlaintext = openaiApiKeyPlaintext;
             return this;
         }
@@ -181,6 +182,12 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig build() {
+            if ($.microsoftEntraClientSecretPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig", "microsoftEntraClientSecretPlaintext");
+            }
+            if ($.openaiApiKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig", "openaiApiKeyPlaintext");
+            }
             return $;
         }
     }

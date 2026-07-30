@@ -12,12 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MlflowExperimentTraceLocationUcTraceLocationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the Unity Catalog catalog.
+        /// </summary>
         [Input("catalog", required: true)]
         public Input<string> Catalog { get; set; } = null!;
 
+        /// <summary>
+        /// The trace-table prefix actually in effect: `TablePrefix` if it was set on creation, otherwise the server-generated default.
+        /// </summary>
+        [Input("effectiveTablePrefix")]
+        public Input<string>? EffectiveTablePrefix { get; set; }
+
+        /// <summary>
+        /// Name of the Unity Catalog schema within `Catalog`.
+        /// </summary>
         [Input("schema", required: true)]
         public Input<string> Schema { get; set; } = null!;
 
+        /// <summary>
+        /// Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `EffectiveTablePrefix`.
+        /// </summary>
         [Input("tablePrefix")]
         public Input<string>? TablePrefix { get; set; }
 

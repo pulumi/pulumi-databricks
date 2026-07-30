@@ -102,6 +102,13 @@ public final class JobNewClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataSecurityMode);
     }
 
+    @Import(name="dependencyMode")
+    private @Nullable Output<String> dependencyMode;
+
+    public Optional<Output<String>> dependencyMode() {
+        return Optional.ofNullable(this.dependencyMode);
+    }
+
     @Import(name="dockerImage")
     private @Nullable Output<JobNewClusterDockerImageArgs> dockerImage;
 
@@ -335,6 +342,7 @@ public final class JobNewClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterName = $.clusterName;
         this.customTags = $.customTags;
         this.dataSecurityMode = $.dataSecurityMode;
+        this.dependencyMode = $.dependencyMode;
         this.dockerImage = $.dockerImage;
         this.driverInstancePoolId = $.driverInstancePoolId;
         this.driverNodeTypeFlexibility = $.driverNodeTypeFlexibility;
@@ -475,6 +483,15 @@ public final class JobNewClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder dataSecurityMode(String dataSecurityMode) {
             return dataSecurityMode(Output.of(dataSecurityMode));
+        }
+
+        public Builder dependencyMode(@Nullable Output<String> dependencyMode) {
+            $.dependencyMode = dependencyMode;
+            return this;
+        }
+
+        public Builder dependencyMode(String dependencyMode) {
+            return dependencyMode(Output.of(dependencyMode));
         }
 
         public Builder dockerImage(@Nullable Output<JobNewClusterDockerImageArgs> dockerImage) {

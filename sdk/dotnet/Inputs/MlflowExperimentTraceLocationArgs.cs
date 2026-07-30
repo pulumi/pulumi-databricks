@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MlflowExperimentTraceLocationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Unity Catalog storage location. This block consists of the following fields:
+        /// </summary>
         [Input("ucTraceLocation")]
         public Input<Inputs.MlflowExperimentTraceLocationUcTraceLocationArgs>? UcTraceLocation { get; set; }
 

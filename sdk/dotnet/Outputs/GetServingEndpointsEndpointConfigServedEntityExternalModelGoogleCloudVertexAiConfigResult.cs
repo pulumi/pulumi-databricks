@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult
     {
         public readonly string? PrivateKey;
-        public readonly string? PrivateKeyPlaintext;
+        public readonly string PrivateKeyPlaintext;
         public readonly string ProjectId;
         public readonly string Region;
 
@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         private GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult(
             string? privateKey,
 
-            string? privateKeyPlaintext,
+            string privateKeyPlaintext,
 
             string projectId,
 

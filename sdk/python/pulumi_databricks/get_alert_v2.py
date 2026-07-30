@@ -28,7 +28,7 @@ class GetAlertV2Result:
     """
     A collection of values returned by getAlertV2.
     """
-    def __init__(__self__, create_time=None, custom_description=None, custom_summary=None, display_name=None, effective_run_as=None, evaluation=None, id=None, lifecycle_state=None, owner_user_name=None, parent_path=None, provider_config=None, query_text=None, run_as=None, run_as_user_name=None, schedule=None, update_time=None, warehouse_id=None):
+    def __init__(__self__, create_time=None, custom_description=None, custom_summary=None, display_name=None, effective_run_as=None, evaluation=None, id=None, lifecycle_state=None, owner_user_name=None, parameters=None, parent_path=None, provider_config=None, query_text=None, run_as=None, run_as_user_name=None, schedule=None, update_time=None, warehouse_id=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -56,6 +56,9 @@ class GetAlertV2Result:
         if owner_user_name and not isinstance(owner_user_name, str):
             raise TypeError("Expected argument 'owner_user_name' to be a str")
         pulumi.set(__self__, "owner_user_name", owner_user_name)
+        if parameters and not isinstance(parameters, list):
+            raise TypeError("Expected argument 'parameters' to be a list")
+        pulumi.set(__self__, "parameters", parameters)
         if parent_path and not isinstance(parent_path, str):
             raise TypeError("Expected argument 'parent_path' to be a str")
         pulumi.set(__self__, "parent_path", parent_path)
@@ -156,6 +159,15 @@ class GetAlertV2Result:
         return pulumi.get(self, "owner_user_name")
 
     @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Sequence['outputs.GetAlertV2ParameterResult']:
+        """
+        (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
+        query text with `:name` syntax. Static values only
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> _builtins.str:
         """
@@ -238,6 +250,7 @@ class AwaitableGetAlertV2Result(GetAlertV2Result):
             id=self.id,
             lifecycle_state=self.lifecycle_state,
             owner_user_name=self.owner_user_name,
+            parameters=self.parameters,
             parent_path=self.parent_path,
             provider_config=self.provider_config,
             query_text=self.query_text,
@@ -296,6 +309,7 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
         owner_user_name=pulumi.get(__ret__, 'owner_user_name'),
+        parameters=pulumi.get(__ret__, 'parameters'),
         parent_path=pulumi.get(__ret__, 'parent_path'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         query_text=pulumi.get(__ret__, 'query_text'),
@@ -351,6 +365,7 @@ def get_alert_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         lifecycle_state=pulumi.get(__response__, 'lifecycle_state'),
         owner_user_name=pulumi.get(__response__, 'owner_user_name'),
+        parameters=pulumi.get(__response__, 'parameters'),
         parent_path=pulumi.get(__response__, 'parent_path'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         query_text=pulumi.get(__response__, 'query_text'),

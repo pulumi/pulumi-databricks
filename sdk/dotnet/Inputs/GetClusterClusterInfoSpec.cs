@@ -65,6 +65,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataSecurityMode")]
         public string? DataSecurityMode { get; set; }
 
+        [Input("dependencyMode")]
+        public string? DependencyMode { get; set; }
+
         [Input("dockerImage")]
         public Inputs.GetClusterClusterInfoSpecDockerImageArgs? DockerImage { get; set; }
 

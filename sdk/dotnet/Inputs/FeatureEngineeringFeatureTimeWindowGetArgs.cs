@@ -15,20 +15,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("continuous")]
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowContinuousGetArgs>? Continuous { get; set; }
 
-        /// <summary>
-        /// A window that spans the entire lifetime of the data source
-        /// </summary>
-        [Input("lifetime")]
-        public Input<Inputs.FeatureEngineeringFeatureTimeWindowLifetimeGetArgs>? Lifetime { get; set; }
-
-        /// <summary>
-        /// A long (multi-day) rolling window served via the hybrid batch + streaming path
-        /// </summary>
-        [Input("longRolling")]
-        public Input<Inputs.FeatureEngineeringFeatureTimeWindowLongRollingGetArgs>? LongRolling { get; set; }
-
         [Input("rolling")]
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowRollingGetArgs>? Rolling { get; set; }
+
+        /// <summary>
+        /// A sawtooth window served via the hybrid batch + streaming path
+        /// </summary>
+        [Input("sawtooth")]
+        public Input<Inputs.FeatureEngineeringFeatureTimeWindowSawtoothGetArgs>? Sawtooth { get; set; }
 
         [Input("sliding")]
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowSlidingGetArgs>? Sliding { get; set; }

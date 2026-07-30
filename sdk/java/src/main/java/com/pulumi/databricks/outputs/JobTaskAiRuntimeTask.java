@@ -14,12 +14,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskAiRuntimeTask {
+    private @Nullable String codeSourcePath;
     private List<JobTaskAiRuntimeTaskDeployment> deployments;
     private String experiment;
     private @Nullable String mlflowExperimentDirectory;
     private @Nullable String mlflowRun;
 
     private JobTaskAiRuntimeTask() {}
+    public Optional<String> codeSourcePath() {
+        return Optional.ofNullable(this.codeSourcePath);
+    }
     public List<JobTaskAiRuntimeTaskDeployment> deployments() {
         return this.deployments;
     }
@@ -42,6 +46,7 @@ public final class JobTaskAiRuntimeTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String codeSourcePath;
         private List<JobTaskAiRuntimeTaskDeployment> deployments;
         private String experiment;
         private @Nullable String mlflowExperimentDirectory;
@@ -49,12 +54,19 @@ public final class JobTaskAiRuntimeTask {
         public Builder() {}
         public Builder(JobTaskAiRuntimeTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.codeSourcePath = defaults.codeSourcePath;
     	      this.deployments = defaults.deployments;
     	      this.experiment = defaults.experiment;
     	      this.mlflowExperimentDirectory = defaults.mlflowExperimentDirectory;
     	      this.mlflowRun = defaults.mlflowRun;
         }
 
+        @CustomType.Setter
+        public Builder codeSourcePath(@Nullable String codeSourcePath) {
+
+            this.codeSourcePath = codeSourcePath;
+            return this;
+        }
         @CustomType.Setter
         public Builder deployments(List<JobTaskAiRuntimeTaskDeployment> deployments) {
             if (deployments == null) {
@@ -88,6 +100,7 @@ public final class JobTaskAiRuntimeTask {
         }
         public JobTaskAiRuntimeTask build() {
             final var _resultValue = new JobTaskAiRuntimeTask();
+            _resultValue.codeSourcePath = codeSourcePath;
             _resultValue.deployments = deployments;
             _resultValue.experiment = experiment;
             _resultValue.mlflowExperimentDirectory = mlflowExperimentDirectory;

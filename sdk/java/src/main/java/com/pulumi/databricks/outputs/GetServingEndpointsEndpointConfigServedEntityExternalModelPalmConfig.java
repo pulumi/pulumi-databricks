@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,14 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig {
     private @Nullable String palmApiKey;
-    private @Nullable String palmApiKeyPlaintext;
+    private String palmApiKeyPlaintext;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig() {}
     public Optional<String> palmApiKey() {
         return Optional.ofNullable(this.palmApiKey);
     }
-    public Optional<String> palmApiKeyPlaintext() {
-        return Optional.ofNullable(this.palmApiKeyPlaintext);
+    public String palmApiKeyPlaintext() {
+        return this.palmApiKeyPlaintext;
     }
 
     public static Builder builder() {
@@ -32,7 +33,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelPal
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String palmApiKey;
-        private @Nullable String palmApiKeyPlaintext;
+        private String palmApiKeyPlaintext;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,8 +48,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelPal
             return this;
         }
         @CustomType.Setter
-        public Builder palmApiKeyPlaintext(@Nullable String palmApiKeyPlaintext) {
-
+        public Builder palmApiKeyPlaintext(String palmApiKeyPlaintext) {
+            if (palmApiKeyPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig", "palmApiKeyPlaintext");
+            }
             this.palmApiKeyPlaintext = palmApiKeyPlaintext;
             return this;
         }

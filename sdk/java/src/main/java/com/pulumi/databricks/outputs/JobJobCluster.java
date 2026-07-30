@@ -8,6 +8,8 @@ import com.pulumi.databricks.outputs.JobJobClusterNewCluster;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class JobJobCluster {
@@ -21,6 +23,7 @@ public final class JobJobCluster {
      * 
      */
     private JobJobClusterNewCluster newCluster;
+    private @Nullable String serverlessComputeId;
 
     private JobJobCluster() {}
     /**
@@ -37,6 +40,9 @@ public final class JobJobCluster {
     public JobJobClusterNewCluster newCluster() {
         return this.newCluster;
     }
+    public Optional<String> serverlessComputeId() {
+        return Optional.ofNullable(this.serverlessComputeId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +55,13 @@ public final class JobJobCluster {
     public static final class Builder {
         private String jobClusterKey;
         private JobJobClusterNewCluster newCluster;
+        private @Nullable String serverlessComputeId;
         public Builder() {}
         public Builder(JobJobCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.newCluster = defaults.newCluster;
+    	      this.serverlessComputeId = defaults.serverlessComputeId;
         }
 
         @CustomType.Setter
@@ -72,10 +80,17 @@ public final class JobJobCluster {
             this.newCluster = newCluster;
             return this;
         }
+        @CustomType.Setter
+        public Builder serverlessComputeId(@Nullable String serverlessComputeId) {
+
+            this.serverlessComputeId = serverlessComputeId;
+            return this;
+        }
         public JobJobCluster build() {
             final var _resultValue = new JobJobCluster();
             _resultValue.jobClusterKey = jobClusterKey;
             _resultValue.newCluster = newCluster;
+            _resultValue.serverlessComputeId = serverlessComputeId;
             return _resultValue;
         }
     }

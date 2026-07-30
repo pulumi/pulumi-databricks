@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresSyncedTableSpecExtraColumnArgs;
 import com.pulumi.databricks.inputs.PostgresSyncedTableSpecNewPipelineSpecArgs;
 import com.pulumi.databricks.inputs.PostgresSyncedTableSpecTypeOverrideArgs;
 import java.lang.Boolean;
@@ -99,6 +100,21 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> existingPipelineId() {
         return Optional.ofNullable(this.existingPipelineId);
+    }
+
+    /**
+     * Extra PostgreSQL-only columns to add to the synced table
+     * 
+     */
+    @Import(name="extraColumns")
+    private @Nullable Output<List<PostgresSyncedTableSpecExtraColumnArgs>> extraColumns;
+
+    /**
+     * @return Extra PostgreSQL-only columns to add to the synced table
+     * 
+     */
+    public Optional<Output<List<PostgresSyncedTableSpecExtraColumnArgs>>> extraColumns() {
+        return Optional.ofNullable(this.extraColumns);
     }
 
     /**
@@ -241,6 +257,7 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         this.branch = $.branch;
         this.createDatabaseObjectsIfMissing = $.createDatabaseObjectsIfMissing;
         this.existingPipelineId = $.existingPipelineId;
+        this.extraColumns = $.extraColumns;
         this.newPipelineSpec = $.newPipelineSpec;
         this.postgresDatabase = $.postgresDatabase;
         this.primaryKeyColumns = $.primaryKeyColumns;
@@ -372,6 +389,37 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
          */
         public Builder existingPipelineId(String existingPipelineId) {
             return existingPipelineId(Output.of(existingPipelineId));
+        }
+
+        /**
+         * @param extraColumns Extra PostgreSQL-only columns to add to the synced table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraColumns(@Nullable Output<List<PostgresSyncedTableSpecExtraColumnArgs>> extraColumns) {
+            $.extraColumns = extraColumns;
+            return this;
+        }
+
+        /**
+         * @param extraColumns Extra PostgreSQL-only columns to add to the synced table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraColumns(List<PostgresSyncedTableSpecExtraColumnArgs> extraColumns) {
+            return extraColumns(Output.of(extraColumns));
+        }
+
+        /**
+         * @param extraColumns Extra PostgreSQL-only columns to add to the synced table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraColumns(PostgresSyncedTableSpecExtraColumnArgs... extraColumns) {
+            return extraColumns(List.of(extraColumns));
         }
 
         /**

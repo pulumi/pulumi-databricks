@@ -30,11 +30,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
         return Optional.ofNullable(this.value);
     }
 
-    @Import(name="valuePlaintext")
-    private @Nullable Output<String> valuePlaintext;
+    @Import(name="valuePlaintext", required=true)
+    private Output<String> valuePlaintext;
 
-    public Optional<Output<String>> valuePlaintext() {
-        return Optional.ofNullable(this.valuePlaintext);
+    public Output<String> valuePlaintext() {
+        return this.valuePlaintext;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs() {}
@@ -81,7 +81,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
             return value(Output.of(value));
         }
 
-        public Builder valuePlaintext(@Nullable Output<String> valuePlaintext) {
+        public Builder valuePlaintext(Output<String> valuePlaintext) {
             $.valuePlaintext = valuePlaintext;
             return this;
         }
@@ -93,6 +93,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
         public GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs build() {
             if ($.key == null) {
                 throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs", "key");
+            }
+            if ($.valuePlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs", "valuePlaintext");
             }
             return $;
         }

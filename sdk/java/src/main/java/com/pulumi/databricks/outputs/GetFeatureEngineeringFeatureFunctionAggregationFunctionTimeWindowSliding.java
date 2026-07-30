@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
@@ -19,7 +21,7 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
      * @return (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      * 
      */
-    private String windowDuration;
+    private @Nullable String windowDuration;
 
     private GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding() {}
     /**
@@ -33,8 +35,8 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
      * @return (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      * 
      */
-    public String windowDuration() {
-        return this.windowDuration;
+    public Optional<String> windowDuration() {
+        return Optional.ofNullable(this.windowDuration);
     }
 
     public static Builder builder() {
@@ -47,7 +49,7 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
     @CustomType.Builder
     public static final class Builder {
         private String slideDuration;
-        private String windowDuration;
+        private @Nullable String windowDuration;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding defaults) {
     	      Objects.requireNonNull(defaults);
@@ -64,10 +66,8 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
             return this;
         }
         @CustomType.Setter
-        public Builder windowDuration(String windowDuration) {
-            if (windowDuration == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding", "windowDuration");
-            }
+        public Builder windowDuration(@Nullable String windowDuration) {
+
             this.windowDuration = windowDuration;
             return this;
         }

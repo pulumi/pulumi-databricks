@@ -240,6 +240,8 @@ import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2PlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorsV2PlainArgs;
+import com.pulumi.databricks.inputs.GetRecipientsArgs;
+import com.pulumi.databricks.inputs.GetRecipientsPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
@@ -436,6 +438,7 @@ import com.pulumi.databricks.outputs.GetPostgresRolesResult;
 import com.pulumi.databricks.outputs.GetPostgresSyncedTableResult;
 import com.pulumi.databricks.outputs.GetQualityMonitorV2Result;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2Result;
+import com.pulumi.databricks.outputs.GetRecipientsResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsResult;
 import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsResult;
@@ -30254,6 +30257,377 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain(GetQualityMonitorsV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a set of databricks.Recipient names, that were created by Pulumi or manually.
+     * 
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting all existing recipients in the metastore
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRecipientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRecipients(GetRecipientsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("recipientNames", this_.recipients());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.getShares to get a list of Delta Sharing shares.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetRecipientsResult> getRecipients() {
+        return getRecipients(GetRecipientsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a set of databricks.Recipient names, that were created by Pulumi or manually.
+     * 
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting all existing recipients in the metastore
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRecipientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRecipients(GetRecipientsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("recipientNames", this_.recipients());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.getShares to get a list of Delta Sharing shares.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetRecipientsResult> getRecipientsPlain() {
+        return getRecipientsPlain(GetRecipientsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a set of databricks.Recipient names, that were created by Pulumi or manually.
+     * 
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting all existing recipients in the metastore
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRecipientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRecipients(GetRecipientsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("recipientNames", this_.recipients());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.getShares to get a list of Delta Sharing shares.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetRecipientsResult> getRecipients(GetRecipientsArgs args) {
+        return getRecipients(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a set of databricks.Recipient names, that were created by Pulumi or manually.
+     * 
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting all existing recipients in the metastore
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRecipientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRecipients(GetRecipientsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("recipientNames", this_.recipients());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.getShares to get a list of Delta Sharing shares.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetRecipientsResult> getRecipientsPlain(GetRecipientsPlainArgs args) {
+        return getRecipientsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a set of databricks.Recipient names, that were created by Pulumi or manually.
+     * 
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting all existing recipients in the metastore
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRecipientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRecipients(GetRecipientsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("recipientNames", this_.recipients());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.getShares to get a list of Delta Sharing shares.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetRecipientsResult> getRecipients(GetRecipientsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRecipients:getRecipients", TypeShape.of(GetRecipientsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a set of databricks.Recipient names, that were created by Pulumi or manually.
+     * 
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting all existing recipients in the metastore
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRecipientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRecipients(GetRecipientsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("recipientNames", this_.recipients());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.getShares to get a list of Delta Sharing shares.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetRecipientsResult> getRecipients(GetRecipientsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRecipients:getRecipients", TypeShape.of(GetRecipientsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a set of databricks.Recipient names, that were created by Pulumi or manually.
+     * 
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting all existing recipients in the metastore
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRecipientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRecipients(GetRecipientsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("recipientNames", this_.recipients());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.getShares to get a list of Delta Sharing shares.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetRecipientsResult> getRecipientsPlain(GetRecipientsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getRecipients:getRecipients", TypeShape.of(GetRecipientsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.

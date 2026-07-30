@@ -134,6 +134,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.dataSecurityMode);
     }
 
+    @Import(name="dependencyMode")
+    private @Nullable String dependencyMode;
+
+    public Optional<String> dependencyMode() {
+        return Optional.ofNullable(this.dependencyMode);
+    }
+
     @Import(name="dockerImage")
     private @Nullable GetClusterClusterInfoSpecDockerImage dockerImage;
 
@@ -463,6 +470,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         this.clusterName = $.clusterName;
         this.customTags = $.customTags;
         this.dataSecurityMode = $.dataSecurityMode;
+        this.dependencyMode = $.dependencyMode;
         this.dockerImage = $.dockerImage;
         this.driverInstancePoolId = $.driverInstancePoolId;
         this.driverNodeTypeFlexibility = $.driverNodeTypeFlexibility;
@@ -586,6 +594,11 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          */
         public Builder dataSecurityMode(@Nullable String dataSecurityMode) {
             $.dataSecurityMode = dataSecurityMode;
+            return this;
+        }
+
+        public Builder dependencyMode(@Nullable String dependencyMode) {
+            $.dependencyMode = dependencyMode;
             return this;
         }
 

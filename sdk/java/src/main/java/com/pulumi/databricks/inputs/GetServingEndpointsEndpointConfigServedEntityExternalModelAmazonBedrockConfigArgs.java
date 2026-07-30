@@ -23,11 +23,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
         return Optional.ofNullable(this.awsAccessKeyId);
     }
 
-    @Import(name="awsAccessKeyIdPlaintext")
-    private @Nullable Output<String> awsAccessKeyIdPlaintext;
+    @Import(name="awsAccessKeyIdPlaintext", required=true)
+    private Output<String> awsAccessKeyIdPlaintext;
 
-    public Optional<Output<String>> awsAccessKeyIdPlaintext() {
-        return Optional.ofNullable(this.awsAccessKeyIdPlaintext);
+    public Output<String> awsAccessKeyIdPlaintext() {
+        return this.awsAccessKeyIdPlaintext;
     }
 
     @Import(name="awsRegion", required=true)
@@ -44,11 +44,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
         return Optional.ofNullable(this.awsSecretAccessKey);
     }
 
-    @Import(name="awsSecretAccessKeyPlaintext")
-    private @Nullable Output<String> awsSecretAccessKeyPlaintext;
+    @Import(name="awsSecretAccessKeyPlaintext", required=true)
+    private Output<String> awsSecretAccessKeyPlaintext;
 
-    public Optional<Output<String>> awsSecretAccessKeyPlaintext() {
-        return Optional.ofNullable(this.awsSecretAccessKeyPlaintext);
+    public Output<String> awsSecretAccessKeyPlaintext() {
+        return this.awsSecretAccessKeyPlaintext;
     }
 
     @Import(name="bedrockProvider", required=true)
@@ -104,7 +104,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
             return awsAccessKeyId(Output.of(awsAccessKeyId));
         }
 
-        public Builder awsAccessKeyIdPlaintext(@Nullable Output<String> awsAccessKeyIdPlaintext) {
+        public Builder awsAccessKeyIdPlaintext(Output<String> awsAccessKeyIdPlaintext) {
             $.awsAccessKeyIdPlaintext = awsAccessKeyIdPlaintext;
             return this;
         }
@@ -131,7 +131,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
             return awsSecretAccessKey(Output.of(awsSecretAccessKey));
         }
 
-        public Builder awsSecretAccessKeyPlaintext(@Nullable Output<String> awsSecretAccessKeyPlaintext) {
+        public Builder awsSecretAccessKeyPlaintext(Output<String> awsSecretAccessKeyPlaintext) {
             $.awsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             return this;
         }
@@ -159,8 +159,14 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs build() {
+            if ($.awsAccessKeyIdPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs", "awsAccessKeyIdPlaintext");
+            }
             if ($.awsRegion == null) {
                 throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs", "awsRegion");
+            }
+            if ($.awsSecretAccessKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs", "awsSecretAccessKeyPlaintext");
             }
             if ($.bedrockProvider == null) {
                 throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs", "bedrockProvider");

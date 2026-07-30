@@ -14,14 +14,14 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult
     {
         public readonly string? DatabricksApiToken;
-        public readonly string? DatabricksApiTokenPlaintext;
+        public readonly string DatabricksApiTokenPlaintext;
         public readonly string DatabricksWorkspaceUrl;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult(
             string? databricksApiToken,
 
-            string? databricksApiTokenPlaintext,
+            string databricksApiTokenPlaintext,
 
             string databricksWorkspaceUrl)
         {

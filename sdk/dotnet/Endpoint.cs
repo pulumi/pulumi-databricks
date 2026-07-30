@@ -55,6 +55,12 @@ namespace Pulumi.Databricks
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Info for an AWS VPC endpoint
+        /// </summary>
+        [Output("awsVpcEndpointInfo")]
+        public Output<Outputs.EndpointAwsVpcEndpointInfo?> AwsVpcEndpointInfo { get; private set; } = null!;
+
+        /// <summary>
         /// Info for an Azure private endpoint
         /// </summary>
         [Output("azurePrivateEndpointInfo")]
@@ -79,6 +85,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("endpointId")]
         public Output<string> EndpointId { get; private set; } = null!;
+
+        /// <summary>
+        /// Info for a GCP Private Service Connect endpoint
+        /// </summary>
+        [Output("gcpPscEndpointInfo")]
+        public Output<Outputs.EndpointGcpPscEndpointInfo?> GcpPscEndpointInfo { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The resource name of the endpoint, which uniquely identifies the endpoint
@@ -159,6 +171,12 @@ namespace Pulumi.Databricks
     public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Info for an AWS VPC endpoint
+        /// </summary>
+        [Input("awsVpcEndpointInfo")]
+        public Input<Inputs.EndpointAwsVpcEndpointInfoArgs>? AwsVpcEndpointInfo { get; set; }
+
+        /// <summary>
         /// Info for an Azure private endpoint
         /// </summary>
         [Input("azurePrivateEndpointInfo")]
@@ -171,6 +189,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
+
+        /// <summary>
+        /// Info for a GCP Private Service Connect endpoint
+        /// </summary>
+        [Input("gcpPscEndpointInfo")]
+        public Input<Inputs.EndpointGcpPscEndpointInfoArgs>? GcpPscEndpointInfo { get; set; }
 
         /// <summary>
         /// The parent resource name of the account under which the endpoint is created.
@@ -200,6 +224,12 @@ namespace Pulumi.Databricks
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Info for an AWS VPC endpoint
+        /// </summary>
+        [Input("awsVpcEndpointInfo")]
+        public Input<Inputs.EndpointAwsVpcEndpointInfoGetArgs>? AwsVpcEndpointInfo { get; set; }
+
+        /// <summary>
         /// Info for an Azure private endpoint
         /// </summary>
         [Input("azurePrivateEndpointInfo")]
@@ -224,6 +254,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
+
+        /// <summary>
+        /// Info for a GCP Private Service Connect endpoint
+        /// </summary>
+        [Input("gcpPscEndpointInfo")]
+        public Input<Inputs.EndpointGcpPscEndpointInfoGetArgs>? GcpPscEndpointInfo { get; set; }
 
         /// <summary>
         /// (string) - The resource name of the endpoint, which uniquely identifies the endpoint

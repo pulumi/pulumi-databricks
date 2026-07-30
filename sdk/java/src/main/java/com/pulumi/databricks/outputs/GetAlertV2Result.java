@@ -6,11 +6,13 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAlertV2EffectiveRunAs;
 import com.pulumi.databricks.outputs.GetAlertV2Evaluation;
+import com.pulumi.databricks.outputs.GetAlertV2Parameter;
 import com.pulumi.databricks.outputs.GetAlertV2ProviderConfig;
 import com.pulumi.databricks.outputs.GetAlertV2RunAs;
 import com.pulumi.databricks.outputs.GetAlertV2Schedule;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -64,6 +66,12 @@ public final class GetAlertV2Result {
      * 
      */
     private String ownerUserName;
+    /**
+     * @return (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     * 
+     */
+    private List<GetAlertV2Parameter> parameters;
     /**
      * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      * 
@@ -174,6 +182,14 @@ public final class GetAlertV2Result {
         return this.ownerUserName;
     }
     /**
+     * @return (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     * 
+     */
+    public List<GetAlertV2Parameter> parameters() {
+        return this.parameters;
+    }
+    /**
      * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      * 
      */
@@ -250,6 +266,7 @@ public final class GetAlertV2Result {
         private String id;
         private String lifecycleState;
         private String ownerUserName;
+        private List<GetAlertV2Parameter> parameters;
         private String parentPath;
         private @Nullable GetAlertV2ProviderConfig providerConfig;
         private String queryText;
@@ -270,6 +287,7 @@ public final class GetAlertV2Result {
     	      this.id = defaults.id;
     	      this.lifecycleState = defaults.lifecycleState;
     	      this.ownerUserName = defaults.ownerUserName;
+    	      this.parameters = defaults.parameters;
     	      this.parentPath = defaults.parentPath;
     	      this.providerConfig = defaults.providerConfig;
     	      this.queryText = defaults.queryText;
@@ -353,6 +371,17 @@ public final class GetAlertV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder parameters(List<GetAlertV2Parameter> parameters) {
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "parameters");
+            }
+            this.parameters = parameters;
+            return this;
+        }
+        public Builder parameters(GetAlertV2Parameter... parameters) {
+            return parameters(List.of(parameters));
+        }
+        @CustomType.Setter
         public Builder parentPath(String parentPath) {
             if (parentPath == null) {
               throw new MissingRequiredPropertyException("GetAlertV2Result", "parentPath");
@@ -425,6 +454,7 @@ public final class GetAlertV2Result {
             _resultValue.id = id;
             _resultValue.lifecycleState = lifecycleState;
             _resultValue.ownerUserName = ownerUserName;
+            _resultValue.parameters = parameters;
             _resultValue.parentPath = parentPath;
             _resultValue.providerConfig = providerConfig;
             _resultValue.queryText = queryText;

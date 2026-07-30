@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("ai21labsApiKey")]
         public Input<string>? Ai21labsApiKey { get; set; }
 
-        [Input("ai21labsApiKeyPlaintext")]
-        public Input<string>? Ai21labsApiKeyPlaintext { get; set; }
+        [Input("ai21labsApiKeyPlaintext", required: true)]
+        public Input<string> Ai21labsApiKeyPlaintext { get; set; } = null!;
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigInputArgs()
         {

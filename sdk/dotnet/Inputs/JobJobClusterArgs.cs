@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("newCluster", required: true)]
         public Input<Inputs.JobJobClusterNewClusterArgs> NewCluster { get; set; } = null!;
 
+        [Input("serverlessComputeId")]
+        public Input<string>? ServerlessComputeId { get; set; }
+
         public JobJobClusterArgs()
         {
         }

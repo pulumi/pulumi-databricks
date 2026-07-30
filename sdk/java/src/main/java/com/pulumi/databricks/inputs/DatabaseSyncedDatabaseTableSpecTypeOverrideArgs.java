@@ -48,16 +48,16 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
     }
 
     /**
-     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * @return Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -133,8 +133,8 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
         }
 
         /**
-         * @param size Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-         * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+         * @param size Size parameter for the target type, for types that take one (e.g. vector
+         * dimension, varchar length). Required when the chosen pgType needs a size
          * 
          * @return builder
          * 
@@ -145,8 +145,8 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
         }
 
         /**
-         * @param size Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-         * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+         * @param size Size parameter for the target type, for types that take one (e.g. vector
+         * dimension, varchar length). Required when the chosen pgType needs a size
          * 
          * @return builder
          * 

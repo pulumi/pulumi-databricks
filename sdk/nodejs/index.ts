@@ -860,6 +860,11 @@ export const getQualityMonitorsV2: typeof import("./getQualityMonitorsV2").getQu
 export const getQualityMonitorsV2Output: typeof import("./getQualityMonitorsV2").getQualityMonitorsV2Output = null as any;
 utilities.lazyLoad(exports, ["getQualityMonitorsV2","getQualityMonitorsV2Output"], () => require("./getQualityMonitorsV2"));
 
+export { GetRecipientsArgs, GetRecipientsResult, GetRecipientsOutputArgs } from "./getRecipients";
+export const getRecipients: typeof import("./getRecipients").getRecipients = null as any;
+export const getRecipientsOutput: typeof import("./getRecipients").getRecipientsOutput = null as any;
+utilities.lazyLoad(exports, ["getRecipients","getRecipientsOutput"], () => require("./getRecipients"));
+
 export { GetRegisteredModelArgs, GetRegisteredModelResult, GetRegisteredModelOutputArgs } from "./getRegisteredModel";
 export const getRegisteredModel: typeof import("./getRegisteredModel").getRegisteredModel = null as any;
 export const getRegisteredModelOutput: typeof import("./getRegisteredModel").getRegisteredModelOutput = null as any;

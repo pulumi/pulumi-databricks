@@ -13,6 +13,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
     /**
+     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     * 
+     */
+    private @Nullable String dataframeSchema;
+    /**
      * @return (string) - The filter condition applied to the source data before aggregation
      * 
      */
@@ -22,8 +29,23 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
      * 
      */
     private String fullName;
+    /**
+     * @return (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
+     * 
+     */
+    private @Nullable String transformationSql;
 
     private GetFeatureEngineeringFeaturesFeatureSourceStreamSource() {}
+    /**
+     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     * 
+     */
+    public Optional<String> dataframeSchema() {
+        return Optional.ofNullable(this.dataframeSchema);
+    }
     /**
      * @return (string) - The filter condition applied to the source data before aggregation
      * 
@@ -38,6 +60,14 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
     public String fullName() {
         return this.fullName;
     }
+    /**
+     * @return (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
+     * 
+     */
+    public Optional<String> transformationSql() {
+        return Optional.ofNullable(this.transformationSql);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -48,15 +78,25 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String dataframeSchema;
         private @Nullable String filterCondition;
         private String fullName;
+        private @Nullable String transformationSql;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureSourceStreamSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dataframeSchema = defaults.dataframeSchema;
     	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
+    	      this.transformationSql = defaults.transformationSql;
         }
 
+        @CustomType.Setter
+        public Builder dataframeSchema(@Nullable String dataframeSchema) {
+
+            this.dataframeSchema = dataframeSchema;
+            return this;
+        }
         @CustomType.Setter
         public Builder filterCondition(@Nullable String filterCondition) {
 
@@ -71,10 +111,18 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
             this.fullName = fullName;
             return this;
         }
+        @CustomType.Setter
+        public Builder transformationSql(@Nullable String transformationSql) {
+
+            this.transformationSql = transformationSql;
+            return this;
+        }
         public GetFeatureEngineeringFeaturesFeatureSourceStreamSource build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureSourceStreamSource();
+            _resultValue.dataframeSchema = dataframeSchema;
             _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
+            _resultValue.transformationSql = transformationSql;
             return _resultValue;
         }
     }

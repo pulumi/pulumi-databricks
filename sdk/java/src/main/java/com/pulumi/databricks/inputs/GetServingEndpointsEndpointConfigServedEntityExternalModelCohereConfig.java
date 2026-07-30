@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,11 +29,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCoh
         return Optional.ofNullable(this.cohereApiKey);
     }
 
-    @Import(name="cohereApiKeyPlaintext")
-    private @Nullable String cohereApiKeyPlaintext;
+    @Import(name="cohereApiKeyPlaintext", required=true)
+    private String cohereApiKeyPlaintext;
 
-    public Optional<String> cohereApiKeyPlaintext() {
-        return Optional.ofNullable(this.cohereApiKeyPlaintext);
+    public String cohereApiKeyPlaintext() {
+        return this.cohereApiKeyPlaintext;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig() {}
@@ -71,12 +72,15 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCoh
             return this;
         }
 
-        public Builder cohereApiKeyPlaintext(@Nullable String cohereApiKeyPlaintext) {
+        public Builder cohereApiKeyPlaintext(String cohereApiKeyPlaintext) {
             $.cohereApiKeyPlaintext = cohereApiKeyPlaintext;
             return this;
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig build() {
+            if ($.cohereApiKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig", "cohereApiKeyPlaintext");
+            }
             return $;
         }
     }

@@ -15,11 +15,11 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? MicrosoftEntraClientId;
         public readonly string? MicrosoftEntraClientSecret;
-        public readonly string? MicrosoftEntraClientSecretPlaintext;
+        public readonly string MicrosoftEntraClientSecretPlaintext;
         public readonly string? MicrosoftEntraTenantId;
         public readonly string? OpenaiApiBase;
         public readonly string? OpenaiApiKey;
-        public readonly string? OpenaiApiKeyPlaintext;
+        public readonly string OpenaiApiKeyPlaintext;
         public readonly string? OpenaiApiType;
         public readonly string? OpenaiApiVersion;
         public readonly string? OpenaiDeploymentName;
@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? microsoftEntraClientSecret,
 
-            string? microsoftEntraClientSecretPlaintext,
+            string microsoftEntraClientSecretPlaintext,
 
             string? microsoftEntraTenantId,
 
@@ -39,7 +39,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? openaiApiKey,
 
-            string? openaiApiKeyPlaintext,
+            string openaiApiKeyPlaintext,
 
             string? openaiApiType,
 

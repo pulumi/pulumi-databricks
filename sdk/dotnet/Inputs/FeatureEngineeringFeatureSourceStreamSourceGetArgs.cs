@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureSourceStreamSourceGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("dataframeSchema")]
+        public Input<string>? DataframeSchema { get; set; }
+
         /// <summary>
         /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         /// The filter condition applied to the source data before aggregation
@@ -26,6 +29,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
+
+        [Input("transformationSql")]
+        public Input<string>? TransformationSql { get; set; }
 
         public FeatureEngineeringFeatureSourceStreamSourceGetArgs()
         {

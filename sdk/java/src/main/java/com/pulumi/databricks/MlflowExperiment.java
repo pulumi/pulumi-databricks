@@ -75,6 +75,47 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MlflowExperiment;
+ * import com.pulumi.databricks.MlflowExperimentArgs;
+ * import com.pulumi.databricks.inputs.MlflowExperimentTraceLocationArgs;
+ * import com.pulumi.databricks.inputs.MlflowExperimentTraceLocationUcTraceLocationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Store this experiment's traces in a Unity Catalog schema
+ *         var withUcTraces = new MlflowExperiment("withUcTraces", MlflowExperimentArgs.builder()
+ *             .name(String.format("%s/uc-traces-experiment", me.home()))
+ *             .traceLocation(MlflowExperimentTraceLocationArgs.builder()
+ *                 .ucTraceLocation(MlflowExperimentTraceLocationUcTraceLocationArgs.builder()
+ *                     .catalog("my_catalog")
+ *                     .schema("my_schema")
+ *                     .tablePrefix("my_experiment")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Access Control
  * 
  * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -186,9 +227,17 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
     public Output<List<MlflowExperimentTag>> tags() {
         return this.tags;
     }
+    /**
+     * Unity Catalog location where the experiment&#39;s traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+     * 
+     */
     @Export(name="traceLocation", refs={MlflowExperimentTraceLocation.class}, tree="[0]")
     private Output</* @Nullable */ MlflowExperimentTraceLocation> traceLocation;
 
+    /**
+     * @return Unity Catalog location where the experiment&#39;s traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+     * 
+     */
     public Output<Optional<MlflowExperimentTraceLocation>> traceLocation() {
         return Codegen.optional(this.traceLocation);
     }

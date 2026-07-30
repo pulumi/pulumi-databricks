@@ -177,6 +177,7 @@ from .get_postgres_roles import *
 from .get_postgres_synced_table import *
 from .get_quality_monitor_v2 import *
 from .get_quality_monitors_v2 import *
+from .get_recipients import *
 from .get_registered_model import *
 from .get_registered_model_versions import *
 from .get_rfa_access_request_destinations import *

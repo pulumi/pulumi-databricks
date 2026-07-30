@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,11 +23,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
         return Optional.ofNullable(this.token);
     }
 
-    @Import(name="tokenPlaintext")
-    private @Nullable Output<String> tokenPlaintext;
+    @Import(name="tokenPlaintext", required=true)
+    private Output<String> tokenPlaintext;
 
-    public Optional<Output<String>> tokenPlaintext() {
-        return Optional.ofNullable(this.tokenPlaintext);
+    public Output<String> tokenPlaintext() {
+        return this.tokenPlaintext;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs() {}
@@ -63,7 +64,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
             return token(Output.of(token));
         }
 
-        public Builder tokenPlaintext(@Nullable Output<String> tokenPlaintext) {
+        public Builder tokenPlaintext(Output<String> tokenPlaintext) {
             $.tokenPlaintext = tokenPlaintext;
             return this;
         }
@@ -73,6 +74,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs build() {
+            if ($.tokenPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs", "tokenPlaintext");
+            }
             return $;
         }
     }

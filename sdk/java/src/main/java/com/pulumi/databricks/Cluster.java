@@ -350,6 +350,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Map<String,String>> defaultTags() {
         return this.defaultTags;
     }
+    @Export(name="dependencyMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dependencyMode;
+
+    public Output<Optional<String>> dependencyMode() {
+        return Codegen.optional(this.dependencyMode);
+    }
     @Export(name="dockerImage", refs={ClusterDockerImage.class}, tree="[0]")
     private Output</* @Nullable */ ClusterDockerImage> dockerImage;
 

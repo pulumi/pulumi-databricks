@@ -192,6 +192,7 @@
         "getPostgresSyncedTable.ts",
         "getQualityMonitorV2.ts",
         "getQualityMonitorsV2.ts",
+        "getRecipients.ts",
         "getRegisteredModel.ts",
         "getRegisteredModelVersions.ts",
         "getRfaAccessRequestDestinations.ts",

@@ -20,13 +20,13 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         /// </summary>
-        public readonly string WindowDuration;
+        public readonly string? WindowDuration;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSlidingResult(
             string slideDuration,
 
-            string windowDuration)
+            string? windowDuration)
         {
             SlideDuration = slideDuration;
             WindowDuration = windowDuration;

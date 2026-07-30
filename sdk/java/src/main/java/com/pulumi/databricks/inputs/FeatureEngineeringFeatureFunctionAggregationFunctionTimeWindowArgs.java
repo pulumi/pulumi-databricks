@@ -6,9 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs;
-import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs;
-import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs;
 import java.util.Objects;
@@ -27,41 +26,26 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         return Optional.ofNullable(this.continuous);
     }
 
-    /**
-     * A window that spans the entire lifetime of the data source
-     * 
-     */
-    @Import(name="lifetime")
-    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs> lifetime;
-
-    /**
-     * @return A window that spans the entire lifetime of the data source
-     * 
-     */
-    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs>> lifetime() {
-        return Optional.ofNullable(this.lifetime);
-    }
-
-    /**
-     * A long (multi-day) rolling window served via the hybrid batch + streaming path
-     * 
-     */
-    @Import(name="longRolling")
-    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRollingArgs> longRolling;
-
-    /**
-     * @return A long (multi-day) rolling window served via the hybrid batch + streaming path
-     * 
-     */
-    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRollingArgs>> longRolling() {
-        return Optional.ofNullable(this.longRolling);
-    }
-
     @Import(name="rolling")
     private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs> rolling;
 
     public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs>> rolling() {
         return Optional.ofNullable(this.rolling);
+    }
+
+    /**
+     * A sawtooth window served via the hybrid batch + streaming path
+     * 
+     */
+    @Import(name="sawtooth")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs> sawtooth;
+
+    /**
+     * @return A sawtooth window served via the hybrid batch + streaming path
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs>> sawtooth() {
+        return Optional.ofNullable(this.sawtooth);
     }
 
     @Import(name="sliding")
@@ -82,9 +66,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs $) {
         this.continuous = $.continuous;
-        this.lifetime = $.lifetime;
-        this.longRolling = $.longRolling;
         this.rolling = $.rolling;
+        this.sawtooth = $.sawtooth;
         this.sliding = $.sliding;
         this.tumbling = $.tumbling;
     }
@@ -116,48 +99,6 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
             return continuous(Output.of(continuous));
         }
 
-        /**
-         * @param lifetime A window that spans the entire lifetime of the data source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lifetime(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs> lifetime) {
-            $.lifetime = lifetime;
-            return this;
-        }
-
-        /**
-         * @param lifetime A window that spans the entire lifetime of the data source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lifetime(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetimeArgs lifetime) {
-            return lifetime(Output.of(lifetime));
-        }
-
-        /**
-         * @param longRolling A long (multi-day) rolling window served via the hybrid batch + streaming path
-         * 
-         * @return builder
-         * 
-         */
-        public Builder longRolling(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRollingArgs> longRolling) {
-            $.longRolling = longRolling;
-            return this;
-        }
-
-        /**
-         * @param longRolling A long (multi-day) rolling window served via the hybrid batch + streaming path
-         * 
-         * @return builder
-         * 
-         */
-        public Builder longRolling(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRollingArgs longRolling) {
-            return longRolling(Output.of(longRolling));
-        }
-
         public Builder rolling(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs> rolling) {
             $.rolling = rolling;
             return this;
@@ -165,6 +106,27 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
         public Builder rolling(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs rolling) {
             return rolling(Output.of(rolling));
+        }
+
+        /**
+         * @param sawtooth A sawtooth window served via the hybrid batch + streaming path
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sawtooth(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs> sawtooth) {
+            $.sawtooth = sawtooth;
+            return this;
+        }
+
+        /**
+         * @param sawtooth A sawtooth window served via the hybrid batch + streaming path
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sawtooth(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs sawtooth) {
+            return sawtooth(Output.of(sawtooth));
         }
 
         public Builder sliding(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs> sliding) {

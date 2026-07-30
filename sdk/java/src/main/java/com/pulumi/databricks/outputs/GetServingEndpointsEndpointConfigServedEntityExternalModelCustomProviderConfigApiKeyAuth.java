@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
     private String key;
     private @Nullable String value;
-    private @Nullable String valuePlaintext;
+    private String valuePlaintext;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth() {}
     public String key() {
@@ -23,8 +23,8 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
-    public Optional<String> valuePlaintext() {
-        return Optional.ofNullable(this.valuePlaintext);
+    public String valuePlaintext() {
+        return this.valuePlaintext;
     }
 
     public static Builder builder() {
@@ -38,7 +38,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
     public static final class Builder {
         private String key;
         private @Nullable String value;
-        private @Nullable String valuePlaintext;
+        private String valuePlaintext;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth defaults) {
     	      Objects.requireNonNull(defaults);
@@ -62,8 +62,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
             return this;
         }
         @CustomType.Setter
-        public Builder valuePlaintext(@Nullable String valuePlaintext) {
-
+        public Builder valuePlaintext(String valuePlaintext) {
+            if (valuePlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth", "valuePlaintext");
+            }
             this.valuePlaintext = valuePlaintext;
             return this;
         }

@@ -6,9 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowContinuousArgs;
-import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowLifetimeArgs;
-import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowLongRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowRollingArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowSawtoothArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowSlidingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowTumblingArgs;
 import java.util.Objects;
@@ -27,41 +26,26 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
         return Optional.ofNullable(this.continuous);
     }
 
-    /**
-     * A window that spans the entire lifetime of the data source
-     * 
-     */
-    @Import(name="lifetime")
-    private @Nullable Output<FeatureEngineeringFeatureTimeWindowLifetimeArgs> lifetime;
-
-    /**
-     * @return A window that spans the entire lifetime of the data source
-     * 
-     */
-    public Optional<Output<FeatureEngineeringFeatureTimeWindowLifetimeArgs>> lifetime() {
-        return Optional.ofNullable(this.lifetime);
-    }
-
-    /**
-     * A long (multi-day) rolling window served via the hybrid batch + streaming path
-     * 
-     */
-    @Import(name="longRolling")
-    private @Nullable Output<FeatureEngineeringFeatureTimeWindowLongRollingArgs> longRolling;
-
-    /**
-     * @return A long (multi-day) rolling window served via the hybrid batch + streaming path
-     * 
-     */
-    public Optional<Output<FeatureEngineeringFeatureTimeWindowLongRollingArgs>> longRolling() {
-        return Optional.ofNullable(this.longRolling);
-    }
-
     @Import(name="rolling")
     private @Nullable Output<FeatureEngineeringFeatureTimeWindowRollingArgs> rolling;
 
     public Optional<Output<FeatureEngineeringFeatureTimeWindowRollingArgs>> rolling() {
         return Optional.ofNullable(this.rolling);
+    }
+
+    /**
+     * A sawtooth window served via the hybrid batch + streaming path
+     * 
+     */
+    @Import(name="sawtooth")
+    private @Nullable Output<FeatureEngineeringFeatureTimeWindowSawtoothArgs> sawtooth;
+
+    /**
+     * @return A sawtooth window served via the hybrid batch + streaming path
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureTimeWindowSawtoothArgs>> sawtooth() {
+        return Optional.ofNullable(this.sawtooth);
     }
 
     @Import(name="sliding")
@@ -82,9 +66,8 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
     private FeatureEngineeringFeatureTimeWindowArgs(FeatureEngineeringFeatureTimeWindowArgs $) {
         this.continuous = $.continuous;
-        this.lifetime = $.lifetime;
-        this.longRolling = $.longRolling;
         this.rolling = $.rolling;
+        this.sawtooth = $.sawtooth;
         this.sliding = $.sliding;
         this.tumbling = $.tumbling;
     }
@@ -116,48 +99,6 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
             return continuous(Output.of(continuous));
         }
 
-        /**
-         * @param lifetime A window that spans the entire lifetime of the data source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lifetime(@Nullable Output<FeatureEngineeringFeatureTimeWindowLifetimeArgs> lifetime) {
-            $.lifetime = lifetime;
-            return this;
-        }
-
-        /**
-         * @param lifetime A window that spans the entire lifetime of the data source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lifetime(FeatureEngineeringFeatureTimeWindowLifetimeArgs lifetime) {
-            return lifetime(Output.of(lifetime));
-        }
-
-        /**
-         * @param longRolling A long (multi-day) rolling window served via the hybrid batch + streaming path
-         * 
-         * @return builder
-         * 
-         */
-        public Builder longRolling(@Nullable Output<FeatureEngineeringFeatureTimeWindowLongRollingArgs> longRolling) {
-            $.longRolling = longRolling;
-            return this;
-        }
-
-        /**
-         * @param longRolling A long (multi-day) rolling window served via the hybrid batch + streaming path
-         * 
-         * @return builder
-         * 
-         */
-        public Builder longRolling(FeatureEngineeringFeatureTimeWindowLongRollingArgs longRolling) {
-            return longRolling(Output.of(longRolling));
-        }
-
         public Builder rolling(@Nullable Output<FeatureEngineeringFeatureTimeWindowRollingArgs> rolling) {
             $.rolling = rolling;
             return this;
@@ -165,6 +106,27 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
         public Builder rolling(FeatureEngineeringFeatureTimeWindowRollingArgs rolling) {
             return rolling(Output.of(rolling));
+        }
+
+        /**
+         * @param sawtooth A sawtooth window served via the hybrid batch + streaming path
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sawtooth(@Nullable Output<FeatureEngineeringFeatureTimeWindowSawtoothArgs> sawtooth) {
+            $.sawtooth = sawtooth;
+            return this;
+        }
+
+        /**
+         * @param sawtooth A sawtooth window served via the hybrid batch + streaming path
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sawtooth(FeatureEngineeringFeatureTimeWindowSawtoothArgs sawtooth) {
+            return sawtooth(Output.of(sawtooth));
         }
 
         public Builder sliding(@Nullable Output<FeatureEngineeringFeatureTimeWindowSlidingArgs> sliding) {

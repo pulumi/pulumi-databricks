@@ -35,6 +35,7 @@ namespace Pulumi.Databricks.Outputs
         /// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         /// </summary>
         public readonly string? DataSecurityMode;
+        public readonly string? DependencyMode;
         public readonly Outputs.GetClusterClusterInfoSpecDockerImageResult? DockerImage;
         /// <summary>
         /// similar to `InstancePoolId`, but for driver node.
@@ -131,6 +132,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? dataSecurityMode,
 
+            string? dependencyMode,
+
             Outputs.GetClusterClusterInfoSpecDockerImageResult? dockerImage,
 
             string driverInstancePoolId,
@@ -197,6 +200,7 @@ namespace Pulumi.Databricks.Outputs
             ClusterName = clusterName;
             CustomTags = customTags;
             DataSecurityMode = dataSecurityMode;
+            DependencyMode = dependencyMode;
             DockerImage = dockerImage;
             DriverInstancePoolId = driverInstancePoolId;
             DriverNodeTypeFlexibility = driverNodeTypeFlexibility;

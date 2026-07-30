@@ -83,6 +83,9 @@ namespace Pulumi.Databricks.Inputs
             set => _defaultTags = value;
         }
 
+        [Input("dependencyMode")]
+        public string? DependencyMode { get; set; }
+
         [Input("dockerImage")]
         public Inputs.GetClusterClusterInfoDockerImageArgs? DockerImage { get; set; }
 

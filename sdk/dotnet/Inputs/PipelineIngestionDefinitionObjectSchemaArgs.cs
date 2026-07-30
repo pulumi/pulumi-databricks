@@ -21,6 +21,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("destinationSchema", required: true)]
         public Input<string> DestinationSchema { get; set; } = null!;
 
+        [Input("fanoutOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgs>? FanoutOptions { get; set; }
+
         [Input("sourceCatalog")]
         public Input<string>? SourceCatalog { get; set; }
 

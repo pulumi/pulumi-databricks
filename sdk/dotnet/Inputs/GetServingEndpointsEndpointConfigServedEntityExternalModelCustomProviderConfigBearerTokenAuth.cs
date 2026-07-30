@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("token")]
         public string? Token { get; set; }
 
-        [Input("tokenPlaintext")]
-        public string? TokenPlaintext { get; set; }
+        [Input("tokenPlaintext", required: true)]
+        public string TokenPlaintext { get; set; } = null!;
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs()
         {

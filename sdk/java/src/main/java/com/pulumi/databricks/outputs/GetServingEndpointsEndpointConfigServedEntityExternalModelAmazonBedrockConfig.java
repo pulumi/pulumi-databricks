@@ -13,10 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig {
     private @Nullable String awsAccessKeyId;
-    private @Nullable String awsAccessKeyIdPlaintext;
+    private String awsAccessKeyIdPlaintext;
     private String awsRegion;
     private @Nullable String awsSecretAccessKey;
-    private @Nullable String awsSecretAccessKeyPlaintext;
+    private String awsSecretAccessKeyPlaintext;
     private String bedrockProvider;
     private @Nullable String instanceProfileArn;
 
@@ -24,8 +24,8 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
     public Optional<String> awsAccessKeyId() {
         return Optional.ofNullable(this.awsAccessKeyId);
     }
-    public Optional<String> awsAccessKeyIdPlaintext() {
-        return Optional.ofNullable(this.awsAccessKeyIdPlaintext);
+    public String awsAccessKeyIdPlaintext() {
+        return this.awsAccessKeyIdPlaintext;
     }
     public String awsRegion() {
         return this.awsRegion;
@@ -33,8 +33,8 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
     public Optional<String> awsSecretAccessKey() {
         return Optional.ofNullable(this.awsSecretAccessKey);
     }
-    public Optional<String> awsSecretAccessKeyPlaintext() {
-        return Optional.ofNullable(this.awsSecretAccessKeyPlaintext);
+    public String awsSecretAccessKeyPlaintext() {
+        return this.awsSecretAccessKeyPlaintext;
     }
     public String bedrockProvider() {
         return this.bedrockProvider;
@@ -53,10 +53,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String awsAccessKeyId;
-        private @Nullable String awsAccessKeyIdPlaintext;
+        private String awsAccessKeyIdPlaintext;
         private String awsRegion;
         private @Nullable String awsSecretAccessKey;
-        private @Nullable String awsSecretAccessKeyPlaintext;
+        private String awsSecretAccessKeyPlaintext;
         private String bedrockProvider;
         private @Nullable String instanceProfileArn;
         public Builder() {}
@@ -78,8 +78,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
             return this;
         }
         @CustomType.Setter
-        public Builder awsAccessKeyIdPlaintext(@Nullable String awsAccessKeyIdPlaintext) {
-
+        public Builder awsAccessKeyIdPlaintext(String awsAccessKeyIdPlaintext) {
+            if (awsAccessKeyIdPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig", "awsAccessKeyIdPlaintext");
+            }
             this.awsAccessKeyIdPlaintext = awsAccessKeyIdPlaintext;
             return this;
         }
@@ -98,8 +100,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
             return this;
         }
         @CustomType.Setter
-        public Builder awsSecretAccessKeyPlaintext(@Nullable String awsSecretAccessKeyPlaintext) {
-
+        public Builder awsSecretAccessKeyPlaintext(String awsSecretAccessKeyPlaintext) {
+            if (awsSecretAccessKeyPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig", "awsSecretAccessKeyPlaintext");
+            }
             this.awsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             return this;
         }

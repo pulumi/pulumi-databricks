@@ -18,8 +18,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("cohereApiKey")]
         public string? CohereApiKey { get; set; }
 
-        [Input("cohereApiKeyPlaintext")]
-        public string? CohereApiKeyPlaintext { get; set; }
+        [Input("cohereApiKeyPlaintext", required: true)]
+        public string CohereApiKeyPlaintext { get; set; } = null!;
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs()
         {

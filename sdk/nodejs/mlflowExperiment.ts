@@ -36,6 +36,23 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // Store this experiment's traces in a Unity Catalog schema
+ * const withUcTraces = new databricks.MlflowExperiment("with_uc_traces", {
+ *     name: `${me.home}/uc-traces-experiment`,
+ *     traceLocation: {
+ *         ucTraceLocation: {
+ *             catalog: "my_catalog",
+ *             schema: "my_schema",
+ *             tablePrefix: "my_experiment",
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Access Control
  *
  * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -104,6 +121,9 @@ export class MlflowExperiment extends pulumi.CustomResource {
      * Tags for the MLflow experiment.
      */
     declare public readonly tags: pulumi.Output<outputs.MlflowExperimentTag[]>;
+    /**
+     * Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+     */
     declare public readonly traceLocation: pulumi.Output<outputs.MlflowExperimentTraceLocation | undefined>;
 
     /**
@@ -175,6 +195,9 @@ export interface MlflowExperimentState {
      * Tags for the MLflow experiment.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[] | undefined>;
+    /**
+     * Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+     */
     traceLocation?: pulumi.Input<inputs.MlflowExperimentTraceLocation | undefined>;
 }
 
@@ -206,5 +229,8 @@ export interface MlflowExperimentArgs {
      * Tags for the MLflow experiment.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[] | undefined>;
+    /**
+     * Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+     */
     traceLocation?: pulumi.Input<inputs.MlflowExperimentTraceLocation | undefined>;
 }

@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions? KafkaOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions? MetaAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions? OutlookOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions? RedditAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions? SharepointOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions? SmartsheetOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions? TiktokAdsOptions;
@@ -41,6 +42,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions? outlookOptions,
 
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions? redditAdsOptions,
+
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions? sharepointOptions,
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions? smartsheetOptions,
@@ -56,6 +59,7 @@ namespace Pulumi.Databricks.Outputs
             KafkaOptions = kafkaOptions;
             MetaAdsOptions = metaAdsOptions;
             OutlookOptions = outlookOptions;
+            RedditAdsOptions = redditAdsOptions;
             SharepointOptions = sharepointOptions;
             SmartsheetOptions = smartsheetOptions;
             TiktokAdsOptions = tiktokAdsOptions;

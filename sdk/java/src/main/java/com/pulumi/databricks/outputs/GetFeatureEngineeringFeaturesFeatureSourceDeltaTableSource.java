@@ -14,9 +14,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
     /**
-     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-     * Required if transformationSql is specified.
-     * Example: {&#34;type&#34;:&#34;struct&#34;,&#34;fields&#34;:[{&#34;name&#34;:&#34;colA&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}},{&#34;name&#34;:&#34;colC&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}}]}
+     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
      * 
      */
     private @Nullable String dataframeSchema;
@@ -43,18 +43,17 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      */
     private @Nullable String timeseriesColumn;
     /**
-     * @return (string) - A single SQL SELECT expression applied after filter_condition.
-     * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
-     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     * @return (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
      * 
      */
     private @Nullable String transformationSql;
 
     private GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource() {}
     /**
-     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-     * Required if transformationSql is specified.
-     * Example: {&#34;type&#34;:&#34;struct&#34;,&#34;fields&#34;:[{&#34;name&#34;:&#34;colA&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}},{&#34;name&#34;:&#34;colC&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}}]}
+     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
      * 
      */
     public Optional<String> dataframeSchema() {
@@ -91,9 +90,8 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
         return Optional.ofNullable(this.timeseriesColumn);
     }
     /**
-     * @return (string) - A single SQL SELECT expression applied after filter_condition.
-     * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
-     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     * @return (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
      * 
      */
     public Optional<String> transformationSql() {

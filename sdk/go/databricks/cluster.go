@@ -155,8 +155,9 @@ type Cluster struct {
 	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode pulumi.StringPtrOutput `pulumi:"dataSecurityMode"`
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
-	DefaultTags pulumi.StringMapOutput      `pulumi:"defaultTags"`
-	DockerImage ClusterDockerImagePtrOutput `pulumi:"dockerImage"`
+	DefaultTags    pulumi.StringMapOutput      `pulumi:"defaultTags"`
+	DependencyMode pulumi.StringPtrOutput      `pulumi:"dependencyMode"`
+	DockerImage    ClusterDockerImagePtrOutput `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
 	DriverInstancePoolId pulumi.StringOutput `pulumi:"driverInstancePoolId"`
 	// a block describing the alternative driver node types if `driverNodeTypeId` isn't available.
@@ -304,8 +305,9 @@ type clusterState struct {
 	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode *string `pulumi:"dataSecurityMode"`
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
-	DefaultTags map[string]string   `pulumi:"defaultTags"`
-	DockerImage *ClusterDockerImage `pulumi:"dockerImage"`
+	DefaultTags    map[string]string   `pulumi:"defaultTags"`
+	DependencyMode *string             `pulumi:"dependencyMode"`
+	DockerImage    *ClusterDockerImage `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
 	DriverInstancePoolId *string `pulumi:"driverInstancePoolId"`
 	// a block describing the alternative driver node types if `driverNodeTypeId` isn't available.
@@ -421,8 +423,9 @@ type ClusterState struct {
 	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode pulumi.StringPtrInput
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
-	DefaultTags pulumi.StringMapInput
-	DockerImage ClusterDockerImagePtrInput
+	DefaultTags    pulumi.StringMapInput
+	DependencyMode pulumi.StringPtrInput
+	DockerImage    ClusterDockerImagePtrInput
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
 	DriverInstancePoolId pulumi.StringPtrInput
 	// a block describing the alternative driver node types if `driverNodeTypeId` isn't available.
@@ -540,6 +543,7 @@ type clusterArgs struct {
 	// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
 	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode *string             `pulumi:"dataSecurityMode"`
+	DependencyMode   *string             `pulumi:"dependencyMode"`
 	DockerImage      *ClusterDockerImage `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
 	DriverInstancePoolId *string `pulumi:"driverInstancePoolId"`
@@ -652,6 +656,7 @@ type ClusterArgs struct {
 	// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
 	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode pulumi.StringPtrInput
+	DependencyMode   pulumi.StringPtrInput
 	DockerImage      ClusterDockerImagePtrInput
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
 	DriverInstancePoolId pulumi.StringPtrInput
@@ -892,6 +897,10 @@ func (o ClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
 // (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
 func (o ClusterOutput) DefaultTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.DefaultTags }).(pulumi.StringMapOutput)
+}
+
+func (o ClusterOutput) DependencyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DependencyMode }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterOutput) DockerImage() ClusterDockerImagePtrOutput {

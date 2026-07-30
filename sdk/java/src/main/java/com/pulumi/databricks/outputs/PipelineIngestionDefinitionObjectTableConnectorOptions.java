@@ -11,6 +11,7 @@ import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConne
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions;
@@ -28,6 +29,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions kafkaOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions metaAdsOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions outlookOptions;
+    private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions redditAdsOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions sharepointOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions smartsheetOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions tiktokAdsOptions;
@@ -54,6 +56,9 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
     }
     public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions> outlookOptions() {
         return Optional.ofNullable(this.outlookOptions);
+    }
+    public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions> redditAdsOptions() {
+        return Optional.ofNullable(this.redditAdsOptions);
     }
     public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions> sharepointOptions() {
         return Optional.ofNullable(this.sharepointOptions);
@@ -84,6 +89,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions kafkaOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions metaAdsOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions outlookOptions;
+        private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions redditAdsOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions sharepointOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions smartsheetOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions tiktokAdsOptions;
@@ -98,6 +104,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
     	      this.kafkaOptions = defaults.kafkaOptions;
     	      this.metaAdsOptions = defaults.metaAdsOptions;
     	      this.outlookOptions = defaults.outlookOptions;
+    	      this.redditAdsOptions = defaults.redditAdsOptions;
     	      this.sharepointOptions = defaults.sharepointOptions;
     	      this.smartsheetOptions = defaults.smartsheetOptions;
     	      this.tiktokAdsOptions = defaults.tiktokAdsOptions;
@@ -147,6 +154,12 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder redditAdsOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions redditAdsOptions) {
+
+            this.redditAdsOptions = redditAdsOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sharepointOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions sharepointOptions) {
 
             this.sharepointOptions = sharepointOptions;
@@ -179,6 +192,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
             _resultValue.kafkaOptions = kafkaOptions;
             _resultValue.metaAdsOptions = metaAdsOptions;
             _resultValue.outlookOptions = outlookOptions;
+            _resultValue.redditAdsOptions = redditAdsOptions;
             _resultValue.sharepointOptions = sharepointOptions;
             _resultValue.smartsheetOptions = smartsheetOptions;
             _resultValue.tiktokAdsOptions = tiktokAdsOptions;

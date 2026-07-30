@@ -12,17 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MlflowExperimentTraceLocationUcTraceLocation {
+    /**
+     * @return Name of the Unity Catalog catalog.
+     * 
+     */
     private String catalog;
+    /**
+     * @return The trace-table prefix actually in effect: `tablePrefix` if it was set on creation, otherwise the server-generated default.
+     * 
+     */
+    private @Nullable String effectiveTablePrefix;
+    /**
+     * @return Name of the Unity Catalog schema within `catalog`.
+     * 
+     */
     private String schema;
+    /**
+     * @return Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `effectiveTablePrefix`.
+     * 
+     */
     private @Nullable String tablePrefix;
 
     private MlflowExperimentTraceLocationUcTraceLocation() {}
+    /**
+     * @return Name of the Unity Catalog catalog.
+     * 
+     */
     public String catalog() {
         return this.catalog;
     }
+    /**
+     * @return The trace-table prefix actually in effect: `tablePrefix` if it was set on creation, otherwise the server-generated default.
+     * 
+     */
+    public Optional<String> effectiveTablePrefix() {
+        return Optional.ofNullable(this.effectiveTablePrefix);
+    }
+    /**
+     * @return Name of the Unity Catalog schema within `catalog`.
+     * 
+     */
     public String schema() {
         return this.schema;
     }
+    /**
+     * @return Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `effectiveTablePrefix`.
+     * 
+     */
     public Optional<String> tablePrefix() {
         return Optional.ofNullable(this.tablePrefix);
     }
@@ -37,12 +73,14 @@ public final class MlflowExperimentTraceLocationUcTraceLocation {
     @CustomType.Builder
     public static final class Builder {
         private String catalog;
+        private @Nullable String effectiveTablePrefix;
         private String schema;
         private @Nullable String tablePrefix;
         public Builder() {}
         public Builder(MlflowExperimentTraceLocationUcTraceLocation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalog = defaults.catalog;
+    	      this.effectiveTablePrefix = defaults.effectiveTablePrefix;
     	      this.schema = defaults.schema;
     	      this.tablePrefix = defaults.tablePrefix;
         }
@@ -53,6 +91,12 @@ public final class MlflowExperimentTraceLocationUcTraceLocation {
               throw new MissingRequiredPropertyException("MlflowExperimentTraceLocationUcTraceLocation", "catalog");
             }
             this.catalog = catalog;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveTablePrefix(@Nullable String effectiveTablePrefix) {
+
+            this.effectiveTablePrefix = effectiveTablePrefix;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +116,7 @@ public final class MlflowExperimentTraceLocationUcTraceLocation {
         public MlflowExperimentTraceLocationUcTraceLocation build() {
             final var _resultValue = new MlflowExperimentTraceLocationUcTraceLocation();
             _resultValue.catalog = catalog;
+            _resultValue.effectiveTablePrefix = effectiveTablePrefix;
             _resultValue.schema = schema;
             _resultValue.tablePrefix = tablePrefix;
             return _resultValue;

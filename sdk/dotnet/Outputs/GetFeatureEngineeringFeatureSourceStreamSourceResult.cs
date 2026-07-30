@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureSourceStreamSourceResult
     {
         /// <summary>
+        /// (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+        /// JSON format (from df.schema.json()).
+        /// Any subsequent functions operate against this dataframe
+        /// </summary>
+        public readonly string? DataframeSchema;
+        /// <summary>
         /// (string) - The filter condition applied to the source data before aggregation
         /// </summary>
         public readonly string? FilterCondition;
@@ -23,15 +29,26 @@ namespace Pulumi.Databricks.Outputs
         /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         public readonly string FullName;
+        /// <summary>
+        /// (string) - The pipeline runs these SQL statements immediately after conversion into
+        /// the schema specified on the Stream object
+        /// </summary>
+        public readonly string? TransformationSql;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureSourceStreamSourceResult(
+            string? dataframeSchema,
+
             string? filterCondition,
 
-            string fullName)
+            string fullName,
+
+            string? transformationSql)
         {
+            DataframeSchema = dataframeSchema;
             FilterCondition = filterCondition;
             FullName = fullName;
+            TransformationSql = transformationSql;
         }
     }
 }

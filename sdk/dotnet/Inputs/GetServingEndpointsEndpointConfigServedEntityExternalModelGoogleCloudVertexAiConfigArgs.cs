@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
-        [Input("privateKeyPlaintext")]
-        public Input<string>? PrivateKeyPlaintext { get; set; }
+        [Input("privateKeyPlaintext", required: true)]
+        public Input<string> PrivateKeyPlaintext { get; set; } = null!;
 
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;

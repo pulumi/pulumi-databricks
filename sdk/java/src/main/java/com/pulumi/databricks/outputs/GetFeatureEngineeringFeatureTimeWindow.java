@@ -5,9 +5,8 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
-import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowLifetime;
-import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowLongRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowRolling;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowSawtooth;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowSliding;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindowTumbling;
 import java.util.Objects;
@@ -22,20 +21,15 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
      */
     private @Nullable GetFeatureEngineeringFeatureTimeWindowContinuous continuous;
     /**
-     * @return (LifetimeWindow) - A window that spans the entire lifetime of the data source
-     * 
-     */
-    private @Nullable GetFeatureEngineeringFeatureTimeWindowLifetime lifetime;
-    /**
-     * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-     * 
-     */
-    private @Nullable GetFeatureEngineeringFeatureTimeWindowLongRolling longRolling;
-    /**
      * @return (RollingWindow)
      * 
      */
     private @Nullable GetFeatureEngineeringFeatureTimeWindowRolling rolling;
+    /**
+     * @return (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureTimeWindowSawtooth sawtooth;
     /**
      * @return (SlidingWindow)
      * 
@@ -56,25 +50,18 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
         return Optional.ofNullable(this.continuous);
     }
     /**
-     * @return (LifetimeWindow) - A window that spans the entire lifetime of the data source
-     * 
-     */
-    public Optional<GetFeatureEngineeringFeatureTimeWindowLifetime> lifetime() {
-        return Optional.ofNullable(this.lifetime);
-    }
-    /**
-     * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-     * 
-     */
-    public Optional<GetFeatureEngineeringFeatureTimeWindowLongRolling> longRolling() {
-        return Optional.ofNullable(this.longRolling);
-    }
-    /**
      * @return (RollingWindow)
      * 
      */
     public Optional<GetFeatureEngineeringFeatureTimeWindowRolling> rolling() {
         return Optional.ofNullable(this.rolling);
+    }
+    /**
+     * @return (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureTimeWindowSawtooth> sawtooth() {
+        return Optional.ofNullable(this.sawtooth);
     }
     /**
      * @return (SlidingWindow)
@@ -101,18 +88,16 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeatureTimeWindowContinuous continuous;
-        private @Nullable GetFeatureEngineeringFeatureTimeWindowLifetime lifetime;
-        private @Nullable GetFeatureEngineeringFeatureTimeWindowLongRolling longRolling;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowRolling rolling;
+        private @Nullable GetFeatureEngineeringFeatureTimeWindowSawtooth sawtooth;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowSliding sliding;
         private @Nullable GetFeatureEngineeringFeatureTimeWindowTumbling tumbling;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeatureTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
-    	      this.lifetime = defaults.lifetime;
-    	      this.longRolling = defaults.longRolling;
     	      this.rolling = defaults.rolling;
+    	      this.sawtooth = defaults.sawtooth;
     	      this.sliding = defaults.sliding;
     	      this.tumbling = defaults.tumbling;
         }
@@ -124,21 +109,15 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
             return this;
         }
         @CustomType.Setter
-        public Builder lifetime(@Nullable GetFeatureEngineeringFeatureTimeWindowLifetime lifetime) {
-
-            this.lifetime = lifetime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder longRolling(@Nullable GetFeatureEngineeringFeatureTimeWindowLongRolling longRolling) {
-
-            this.longRolling = longRolling;
-            return this;
-        }
-        @CustomType.Setter
         public Builder rolling(@Nullable GetFeatureEngineeringFeatureTimeWindowRolling rolling) {
 
             this.rolling = rolling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sawtooth(@Nullable GetFeatureEngineeringFeatureTimeWindowSawtooth sawtooth) {
+
+            this.sawtooth = sawtooth;
             return this;
         }
         @CustomType.Setter
@@ -156,9 +135,8 @@ public final class GetFeatureEngineeringFeatureTimeWindow {
         public GetFeatureEngineeringFeatureTimeWindow build() {
             final var _resultValue = new GetFeatureEngineeringFeatureTimeWindow();
             _resultValue.continuous = continuous;
-            _resultValue.lifetime = lifetime;
-            _resultValue.longRolling = longRolling;
             _resultValue.rolling = rolling;
+            _resultValue.sawtooth = sawtooth;
             _resultValue.sliding = sliding;
             _resultValue.tumbling = tumbling;
             return _resultValue;

@@ -50,6 +50,32 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Store this experiment's traces in a Unity Catalog schema
+    ///     var withUcTraces = new Databricks.MlflowExperiment("with_uc_traces", new()
+    ///     {
+    ///         Name = $"{me.Home}/uc-traces-experiment",
+    ///         TraceLocation = new Databricks.Inputs.MlflowExperimentTraceLocationArgs
+    ///         {
+    ///             UcTraceLocation = new Databricks.Inputs.MlflowExperimentTraceLocationUcTraceLocationArgs
+    ///             {
+    ///                 Catalog = "my_catalog",
+    ///                 Schema = "my_schema",
+    ///                 TablePrefix = "my_experiment",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Access Control
     /// 
     /// * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -108,6 +134,9 @@ namespace Pulumi.Databricks
         [Output("tags")]
         public Output<ImmutableArray<Outputs.MlflowExperimentTag>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+        /// </summary>
         [Output("traceLocation")]
         public Output<Outputs.MlflowExperimentTraceLocation?> TraceLocation { get; private set; } = null!;
 
@@ -202,6 +231,9 @@ namespace Pulumi.Databricks
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+        /// </summary>
         [Input("traceLocation")]
         public Input<Inputs.MlflowExperimentTraceLocationArgs>? TraceLocation { get; set; }
 
@@ -258,6 +290,9 @@ namespace Pulumi.Databricks
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+        /// </summary>
         [Input("traceLocation")]
         public Input<Inputs.MlflowExperimentTraceLocationGetArgs>? TraceLocation { get; set; }
 

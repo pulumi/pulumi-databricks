@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,11 +23,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAi2
         return Optional.ofNullable(this.ai21labsApiKey);
     }
 
-    @Import(name="ai21labsApiKeyPlaintext")
-    private @Nullable Output<String> ai21labsApiKeyPlaintext;
+    @Import(name="ai21labsApiKeyPlaintext", required=true)
+    private Output<String> ai21labsApiKeyPlaintext;
 
-    public Optional<Output<String>> ai21labsApiKeyPlaintext() {
-        return Optional.ofNullable(this.ai21labsApiKeyPlaintext);
+    public Output<String> ai21labsApiKeyPlaintext() {
+        return this.ai21labsApiKeyPlaintext;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs() {}
@@ -63,7 +64,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAi2
             return ai21labsApiKey(Output.of(ai21labsApiKey));
         }
 
-        public Builder ai21labsApiKeyPlaintext(@Nullable Output<String> ai21labsApiKeyPlaintext) {
+        public Builder ai21labsApiKeyPlaintext(Output<String> ai21labsApiKeyPlaintext) {
             $.ai21labsApiKeyPlaintext = ai21labsApiKeyPlaintext;
             return this;
         }
@@ -73,6 +74,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAi2
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs build() {
+            if ($.ai21labsApiKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs", "ai21labsApiKeyPlaintext");
+            }
             return $;
         }
     }

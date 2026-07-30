@@ -183,6 +183,9 @@ namespace Pulumi.Databricks
         [Output("defaultTags")]
         public Output<ImmutableDictionary<string, string>> DefaultTags { get; private set; } = null!;
 
+        [Output("dependencyMode")]
+        public Output<string?> DependencyMode { get; private set; } = null!;
+
         [Output("dockerImage")]
         public Output<Outputs.ClusterDockerImage?> DockerImage { get; private set; } = null!;
 
@@ -494,6 +497,9 @@ namespace Pulumi.Databricks
         [Input("dataSecurityMode")]
         public Input<string>? DataSecurityMode { get; set; }
 
+        [Input("dependencyMode")]
+        public Input<string>? DependencyMode { get; set; }
+
         [Input("dockerImage")]
         public Input<Inputs.ClusterDockerImageArgs>? DockerImage { get; set; }
 
@@ -800,6 +806,9 @@ namespace Pulumi.Databricks
             get => _defaultTags ?? (_defaultTags = new InputMap<string>());
             set => _defaultTags = value;
         }
+
+        [Input("dependencyMode")]
+        public Input<string>? DependencyMode { get; set; }
 
         [Input("dockerImage")]
         public Input<Inputs.ClusterDockerImageGetArgs>? DockerImage { get; set; }

@@ -47,6 +47,18 @@ namespace Pulumi.Databricks.Inputs
         [Input("existingPipelineId")]
         public Input<string>? ExistingPipelineId { get; set; }
 
+        [Input("extraColumns")]
+        private InputList<Inputs.PostgresSyncedTableSpecExtraColumnArgs>? _extraColumns;
+
+        /// <summary>
+        /// Extra PostgreSQL-only columns to add to the synced table
+        /// </summary>
+        public InputList<Inputs.PostgresSyncedTableSpecExtraColumnArgs> ExtraColumns
+        {
+            get => _extraColumns ?? (_extraColumns = new InputList<Inputs.PostgresSyncedTableSpecExtraColumnArgs>());
+            set => _extraColumns = value;
+        }
+
         /// <summary>
         /// Specification for creating a new pipeline.
         /// At most one of ExistingPipelineId and NewPipelineSpec should be defined.

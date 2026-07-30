@@ -12,6 +12,7 @@ import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnec
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsArgs;
@@ -74,6 +75,13 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs ex
         return Optional.ofNullable(this.outlookOptions);
     }
 
+    @Import(name="redditAdsOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgs> redditAdsOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgs>> redditAdsOptions() {
+        return Optional.ofNullable(this.redditAdsOptions);
+    }
+
     @Import(name="sharepointOptions")
     private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsArgs> sharepointOptions;
 
@@ -112,6 +120,7 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs ex
         this.kafkaOptions = $.kafkaOptions;
         this.metaAdsOptions = $.metaAdsOptions;
         this.outlookOptions = $.outlookOptions;
+        this.redditAdsOptions = $.redditAdsOptions;
         this.sharepointOptions = $.sharepointOptions;
         this.smartsheetOptions = $.smartsheetOptions;
         this.tiktokAdsOptions = $.tiktokAdsOptions;
@@ -197,6 +206,15 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs ex
 
         public Builder outlookOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgs outlookOptions) {
             return outlookOptions(Output.of(outlookOptions));
+        }
+
+        public Builder redditAdsOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgs> redditAdsOptions) {
+            $.redditAdsOptions = redditAdsOptions;
+            return this;
+        }
+
+        public Builder redditAdsOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgs redditAdsOptions) {
+            return redditAdsOptions(Output.of(redditAdsOptions));
         }
 
         public Builder sharepointOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsArgs> sharepointOptions) {

@@ -806,6 +806,9 @@
                                 }
                             }
                         }
+                    },
+                    "parameters": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3825,6 +3828,9 @@
                             "fields": {
                                 "inference_table_config": {
                                     "maxItemsOne": true
+                                },
+                                "table_names": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -4664,6 +4670,26 @@
                                                                             }
                                                                         }
                                                                     },
+                                                                    "reddit_ads_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "breakdowns": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "fields": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
                                                                     "sharepoint_options": {
                                                                         "maxItemsOne": true,
                                                                         "elem": {
@@ -4712,6 +4738,23 @@
                                                                     },
                                                                     "zendesk_support_options": {
                                                                         "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "fanout_options": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "transforms": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "json_options": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -4918,6 +4961,26 @@
                                                                                 },
                                                                                 "subject_filter": {
                                                                                     "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "reddit_ads_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "breakdowns": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "fields": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -5303,6 +5366,9 @@
                 "fields": {
                     "spec": {
                         "fields": {
+                            "extra_columns": {
+                                "maxItemsOne": false
+                            },
                             "primary_key_columns": {
                                 "maxItemsOne": false
                             },
@@ -7594,6 +7660,9 @@
                                 }
                             }
                         }
+                    },
+                    "parameters": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -7615,6 +7684,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "parameters": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -10751,6 +10823,9 @@
                 "fields": {
                     "spec": {
                         "fields": {
+                            "extra_columns": {
+                                "maxItemsOne": false
+                            },
                             "primary_key_columns": {
                                 "maxItemsOne": false
                             },
@@ -10847,6 +10922,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "databricks_recipients": {
+                "current": "databricks:index/getRecipients:getRecipients",
+                "majorVersion": 1,
+                "fields": {
+                    "recipients": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -11159,6 +11243,9 @@
                                     "elem": {
                                         "fields": {
                                             "inference_table_config": {
+                                                "maxItemsOne": false
+                                            },
+                                            "table_names": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -12200,6 +12287,7 @@
             "databricks:index/getPostgresSyncedTable:getPostgresSyncedTable": 1,
             "databricks:index/getQualityMonitorV2:getQualityMonitorV2": 1,
             "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2": 1,
+            "databricks:index/getRecipients:getRecipients": 1,
             "databricks:index/getRegisteredModel:getRegisteredModel": 1,
             "databricks:index/getRegisteredModelVersions:getRegisteredModelVersions": 1,
             "databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations": 1,
@@ -15916,6 +16004,9 @@
             "databricks_quality_monitors_v2": [
                 "provider_config.workspace_id",
                 "quality_monitors.$.provider_config.workspace_id"
+            ],
+            "databricks_recipients": [
+                "provider_config.workspace_id"
             ],
             "databricks_registered_model": [
                 "provider_config.workspace_id"

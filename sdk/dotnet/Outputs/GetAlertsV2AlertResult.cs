@@ -52,6 +52,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string OwnerUserName;
         /// <summary>
+        /// (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
+        /// query text with `:name` syntax. Static values only
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAlertsV2AlertParameterResult> Parameters;
+        /// <summary>
         /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         /// </summary>
         public readonly string ParentPath;
@@ -110,6 +115,8 @@ namespace Pulumi.Databricks.Outputs
 
             string ownerUserName,
 
+            ImmutableArray<Outputs.GetAlertsV2AlertParameterResult> parameters,
+
             string parentPath,
 
             Outputs.GetAlertsV2AlertProviderConfigResult? providerConfig,
@@ -135,6 +142,7 @@ namespace Pulumi.Databricks.Outputs
             Id = id;
             LifecycleState = lifecycleState;
             OwnerUserName = ownerUserName;
+            Parameters = parameters;
             ParentPath = parentPath;
             ProviderConfig = providerConfig;
             QueryText = queryText;

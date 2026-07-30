@@ -2082,6 +2082,17 @@ export interface AlertV2EvaluationThresholdValue {
     stringValue?: string;
 }
 
+export interface AlertV2Parameter {
+    name: string;
+    /**
+     * The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
+     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
+     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     */
+    type?: string;
+    value?: string;
+}
+
 export interface AlertV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -4145,8 +4156,8 @@ export interface DatabaseSyncedDatabaseTableSpecTypeOverride {
      */
     pgType: string;
     /**
-     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      */
     size?: number;
 }
@@ -4292,6 +4303,22 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
     workspaceIds: string[];
 }
 
+export interface EndpointAwsVpcEndpointInfo {
+    /**
+     * (string) - The AWS account ID in which this VPC endpoint lives
+     */
+    awsAccountId: string;
+    /**
+     * (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
+     */
+    awsEndpointServiceId: string;
+    /**
+     * The ID of the underlying VPC endpoint in AWS. Provided by the customer when
+     * registering an existing AWS VPC endpoint
+     */
+    awsVpcEndpointId: string;
+}
+
 export interface EndpointAzurePrivateEndpointInfo {
     /**
      * The name of the Private Endpoint in the Azure subscription
@@ -4310,6 +4337,34 @@ export interface EndpointAzurePrivateEndpointInfo {
      * (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
      */
     privateLinkServiceId: string;
+}
+
+export interface EndpointGcpPscEndpointInfo {
+    /**
+     * The GCP region of the PSC connection endpoint. Provided by the customer when registering an
+     * existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
+     * region
+     */
+    endpointRegion: string;
+    /**
+     * The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
+     * when registering an existing PSC endpoint
+     */
+    projectId: string;
+    /**
+     * (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
+     * assigned by GCP when the PSC connection is created
+     */
+    pscConnectionId: string;
+    /**
+     * The name of this PSC connection in the GCP consumer project. Provided by the customer when
+     * registering an existing PSC endpoint
+     */
+    pscEndpoint: string;
+    /**
+     * (string) - The ID of the Databricks service attachment this PSC endpoint connects to
+     */
+    serviceAttachmentId: string;
 }
 
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
@@ -4699,15 +4754,11 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     continuous?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
-    /**
-     * A window that spans the entire lifetime of the data source
-     */
-    lifetime?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime;
-    /**
-     * A long (multi-day) rolling window served via the hybrid batch + streaming path
-     */
-    longRolling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
     rolling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
+    /**
+     * A sawtooth window served via the hybrid batch + streaming path
+     */
+    sawtooth?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth;
     sliding?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
     tumbling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
 }
@@ -4720,23 +4771,22 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowC
     windowDuration: string;
 }
 
-export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime {
-    slideDuration?: string;
-}
-
-export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
-    delay?: string;
-    windowDuration: string;
-}
-
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
     delay?: string;
-    windowDuration: string;
+    windowDuration?: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth {
+    delay?: string;
+    windowDuration?: string;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
     slideDuration: string;
-    windowDuration: string;
+    windowDuration?: string;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
@@ -4818,11 +4868,6 @@ export interface FeatureEngineeringFeatureSource {
 }
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
-    /**
-     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-     * Required if transformationSql is specified.
-     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
-     */
     dataframeSchema?: string;
     /**
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
@@ -4844,11 +4889,6 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
     timeseriesColumn?: string;
-    /**
-     * A single SQL SELECT expression applied after filter_condition.
-     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
-     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
-     */
     transformationSql?: string;
 }
 
@@ -4916,6 +4956,7 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
 }
 
 export interface FeatureEngineeringFeatureSourceStreamSource {
+    dataframeSchema?: string;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -4927,19 +4968,16 @@ export interface FeatureEngineeringFeatureSourceStreamSource {
      * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: string;
+    transformationSql?: string;
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
     continuous?: outputs.FeatureEngineeringFeatureTimeWindowContinuous;
-    /**
-     * A window that spans the entire lifetime of the data source
-     */
-    lifetime?: outputs.FeatureEngineeringFeatureTimeWindowLifetime;
-    /**
-     * A long (multi-day) rolling window served via the hybrid batch + streaming path
-     */
-    longRolling?: outputs.FeatureEngineeringFeatureTimeWindowLongRolling;
     rolling?: outputs.FeatureEngineeringFeatureTimeWindowRolling;
+    /**
+     * A sawtooth window served via the hybrid batch + streaming path
+     */
+    sawtooth?: outputs.FeatureEngineeringFeatureTimeWindowSawtooth;
     sliding?: outputs.FeatureEngineeringFeatureTimeWindowSliding;
     tumbling?: outputs.FeatureEngineeringFeatureTimeWindowTumbling;
 }
@@ -4952,23 +4990,22 @@ export interface FeatureEngineeringFeatureTimeWindowContinuous {
     windowDuration: string;
 }
 
-export interface FeatureEngineeringFeatureTimeWindowLifetime {
-    slideDuration?: string;
-}
-
-export interface FeatureEngineeringFeatureTimeWindowLongRolling {
-    delay?: string;
-    windowDuration: string;
-}
-
 export interface FeatureEngineeringFeatureTimeWindowRolling {
     delay?: string;
-    windowDuration: string;
+    windowDuration?: string;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowSawtooth {
+    delay?: string;
+    windowDuration?: string;
 }
 
 export interface FeatureEngineeringFeatureTimeWindowSliding {
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
     slideDuration: string;
-    windowDuration: string;
+    windowDuration?: string;
 }
 
 export interface FeatureEngineeringFeatureTimeWindowTumbling {
@@ -10828,6 +10865,23 @@ export interface GetAlertV2EvaluationThresholdValue {
     stringValue?: string;
 }
 
+export interface GetAlertV2Parameter {
+    /**
+     * (string)
+     */
+    name: string;
+    /**
+     * (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
+     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
+     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     */
+    type?: string;
+    /**
+     * (AlertV2OperandValue)
+     */
+    value?: string;
+}
+
 export interface GetAlertV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -10903,6 +10957,11 @@ export interface GetAlertsV2Alert {
      * (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
      */
     ownerUserName: string;
+    /**
+     * (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     */
+    parameters: outputs.GetAlertsV2AlertParameter[];
     /**
      * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
@@ -11069,6 +11128,23 @@ export interface GetAlertsV2AlertEvaluationThresholdValue {
      * (string)
      */
     stringValue?: string;
+}
+
+export interface GetAlertsV2AlertParameter {
+    /**
+     * (string)
+     */
+    name: string;
+    /**
+     * (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
+     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
+     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     */
+    type?: string;
+    /**
+     * (AlertV2OperandValue)
+     */
+    value?: string;
 }
 
 export interface GetAlertsV2AlertProviderConfig {
@@ -12981,6 +13057,8 @@ export interface GetBudgetPoliciesFilterBy {
      */
     creatorUserId?: number;
     /**
+     * Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+     * future version.
      * The policy creator user name to be filtered on.
      * If unspecified, all policies will be returned
      */
@@ -13214,6 +13292,7 @@ export interface GetClusterClusterInfo {
      */
     dataSecurityMode?: string;
     defaultTags?: {[key: string]: string};
+    dependencyMode?: string;
     dockerImage?: outputs.GetClusterClusterInfoDockerImage;
     driver?: outputs.GetClusterClusterInfoDriver;
     /**
@@ -13472,6 +13551,7 @@ export interface GetClusterClusterInfoSpec {
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: string;
+    dependencyMode?: string;
     dockerImage?: outputs.GetClusterClusterInfoSpecDockerImage;
     /**
      * similar to `instancePoolId`, but for driver node.
@@ -15131,8 +15211,8 @@ export interface GetDatabaseSyncedDatabaseTableSpecTypeOverride {
      */
     pgType: string;
     /**
-     * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * (integer) - Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      */
     size?: number;
 }
@@ -15472,8 +15552,8 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride {
      */
     pgType: string;
     /**
-     * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * (integer) - Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      */
     size?: number;
 }
@@ -15739,6 +15819,22 @@ export interface GetDisasterRecoveryStableUrlsStableUrl {
     url: string;
 }
 
+export interface GetEndpointAwsVpcEndpointInfo {
+    /**
+     * (string) - The AWS account ID in which this VPC endpoint lives
+     */
+    awsAccountId: string;
+    /**
+     * (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
+     */
+    awsEndpointServiceId: string;
+    /**
+     * (string) - The ID of the underlying VPC endpoint in AWS. Provided by the customer when
+     * registering an existing AWS VPC endpoint
+     */
+    awsVpcEndpointId: string;
+}
+
 export interface GetEndpointAzurePrivateEndpointInfo {
     /**
      * (string) - The name of the Private Endpoint in the Azure subscription
@@ -15759,11 +15855,43 @@ export interface GetEndpointAzurePrivateEndpointInfo {
     privateLinkServiceId: string;
 }
 
+export interface GetEndpointGcpPscEndpointInfo {
+    /**
+     * (string) - The GCP region of the PSC connection endpoint. Provided by the customer when registering an
+     * existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
+     * region
+     */
+    endpointRegion: string;
+    /**
+     * (string) - The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
+     * when registering an existing PSC endpoint
+     */
+    projectId: string;
+    /**
+     * (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
+     * assigned by GCP when the PSC connection is created
+     */
+    pscConnectionId: string;
+    /**
+     * (string) - The name of this PSC connection in the GCP consumer project. Provided by the customer when
+     * registering an existing PSC endpoint
+     */
+    pscEndpoint: string;
+    /**
+     * (string) - The ID of the Databricks service attachment this PSC endpoint connects to
+     */
+    serviceAttachmentId: string;
+}
+
 export interface GetEndpointsItem {
     /**
      * (string) - The Databricks Account in which the endpoint object exists
      */
     accountId: string;
+    /**
+     * (AwsVpcEndpointInfo) - Info for an AWS VPC endpoint
+     */
+    awsVpcEndpointInfo: outputs.GetEndpointsItemAwsVpcEndpointInfo;
     /**
      * (AzurePrivateEndpointInfo) - Info for an Azure private endpoint
      */
@@ -15783,6 +15911,10 @@ export interface GetEndpointsItem {
      */
     endpointId: string;
     /**
+     * (GcpPscEndpointInfo) - Info for a GCP Private Service Connect endpoint
+     */
+    gcpPscEndpointInfo: outputs.GetEndpointsItemGcpPscEndpointInfo;
+    /**
      * (string) - The resource name of the endpoint, which uniquely identifies the endpoint
      */
     name: string;
@@ -15799,6 +15931,22 @@ export interface GetEndpointsItem {
      * This field is automatically determined based on the endpoint configuration and cloud-specific settings. Possible values are: `SERVICE_DIRECT`
      */
     useCase: string;
+}
+
+export interface GetEndpointsItemAwsVpcEndpointInfo {
+    /**
+     * (string) - The AWS account ID in which this VPC endpoint lives
+     */
+    awsAccountId: string;
+    /**
+     * (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
+     */
+    awsEndpointServiceId: string;
+    /**
+     * (string) - The ID of the underlying VPC endpoint in AWS. Provided by the customer when
+     * registering an existing AWS VPC endpoint
+     */
+    awsVpcEndpointId: string;
 }
 
 export interface GetEndpointsItemAzurePrivateEndpointInfo {
@@ -15819,6 +15967,34 @@ export interface GetEndpointsItemAzurePrivateEndpointInfo {
      * (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
      */
     privateLinkServiceId: string;
+}
+
+export interface GetEndpointsItemGcpPscEndpointInfo {
+    /**
+     * (string) - The GCP region of the PSC connection endpoint. Provided by the customer when registering an
+     * existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
+     * region
+     */
+    endpointRegion: string;
+    /**
+     * (string) - The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
+     * when registering an existing PSC endpoint
+     */
+    projectId: string;
+    /**
+     * (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
+     * assigned by GCP when the PSC connection is created
+     */
+    pscConnectionId: string;
+    /**
+     * (string) - The name of this PSC connection in the GCP consumer project. Provided by the customer when
+     * registering an existing PSC endpoint
+     */
+    pscEndpoint: string;
+    /**
+     * (string) - The ID of the Databricks service attachment this PSC endpoint connects to
+     */
+    serviceAttachmentId: string;
 }
 
 export interface GetEntityTagAssignmentProviderConfig {
@@ -16503,17 +16679,13 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
      */
     continuous?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
     /**
-     * (LifetimeWindow) - A window that spans the entire lifetime of the data source
-     */
-    lifetime?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime;
-    /**
-     * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-     */
-    longRolling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
-    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
+    /**
+     * (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+     */
+    sawtooth?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth;
     /**
      * (SlidingWindow)
      */
@@ -16535,35 +16707,28 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
     windowDuration: string;
 }
 
-export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime {
-    /**
-     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
-    slideDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
-    /**
-     * (string) - The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     */
-    delay?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
     /**
-     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * (string) - The delay applied to the end of the window (must be non-negative).
      * For example, delay=1d shifts the window end 1 day before the evaluation time
      */
     delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
-    windowDuration: string;
+    windowDuration?: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth {
+    /**
+     * (string) - The delay applied to the end of the window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
@@ -16574,7 +16739,7 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
-    windowDuration: string;
+    windowDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
@@ -16666,9 +16831,9 @@ export interface GetFeatureEngineeringFeatureSource {
 
 export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
     /**
-     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-     * Required if transformationSql is specified.
-     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
      */
     dataframeSchema?: string;
     /**
@@ -16692,9 +16857,8 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      */
     timeseriesColumn?: string;
     /**
-     * (string) - A single SQL SELECT expression applied after filter_condition.
-     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
-     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     * (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
      */
     transformationSql?: string;
 }
@@ -16773,6 +16937,12 @@ export interface GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaField 
 
 export interface GetFeatureEngineeringFeatureSourceStreamSource {
     /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     */
+    dataframeSchema?: string;
+    /**
      * (string) - The filter condition applied to the source data before aggregation
      */
     filterCondition?: string;
@@ -16782,6 +16952,11 @@ export interface GetFeatureEngineeringFeatureSourceStreamSource {
      * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: string;
+    /**
+     * (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringFeatureTimeWindow {
@@ -16790,17 +16965,13 @@ export interface GetFeatureEngineeringFeatureTimeWindow {
      */
     continuous?: outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
     /**
-     * (LifetimeWindow) - A window that spans the entire lifetime of the data source
-     */
-    lifetime?: outputs.GetFeatureEngineeringFeatureTimeWindowLifetime;
-    /**
-     * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-     */
-    longRolling?: outputs.GetFeatureEngineeringFeatureTimeWindowLongRolling;
-    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeatureTimeWindowRolling;
+    /**
+     * (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+     */
+    sawtooth?: outputs.GetFeatureEngineeringFeatureTimeWindowSawtooth;
     /**
      * (SlidingWindow)
      */
@@ -16822,35 +16993,28 @@ export interface GetFeatureEngineeringFeatureTimeWindowContinuous {
     windowDuration: string;
 }
 
-export interface GetFeatureEngineeringFeatureTimeWindowLifetime {
-    /**
-     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
-    slideDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeatureTimeWindowLongRolling {
-    /**
-     * (string) - The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     */
-    delay?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
 export interface GetFeatureEngineeringFeatureTimeWindowRolling {
     /**
-     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * (string) - The delay applied to the end of the window (must be non-negative).
      * For example, delay=1d shifts the window end 1 day before the evaluation time
      */
     delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
-    windowDuration: string;
+    windowDuration?: string;
+}
+
+export interface GetFeatureEngineeringFeatureTimeWindowSawtooth {
+    /**
+     * (string) - The delay applied to the end of the window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeatureTimeWindowSliding {
@@ -16861,7 +17025,7 @@ export interface GetFeatureEngineeringFeatureTimeWindowSliding {
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
-    windowDuration: string;
+    windowDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeatureTimeWindowTumbling {
@@ -17208,17 +17372,13 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      */
     continuous?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous;
     /**
-     * (LifetimeWindow) - A window that spans the entire lifetime of the data source
-     */
-    lifetime?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLifetime;
-    /**
-     * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-     */
-    longRolling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRolling;
-    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling;
+    /**
+     * (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+     */
+    sawtooth?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtooth;
     /**
      * (SlidingWindow)
      */
@@ -17240,35 +17400,28 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
     windowDuration: string;
 }
 
-export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLifetime {
-    /**
-     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
-    slideDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRolling {
-    /**
-     * (string) - The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     */
-    delay?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling {
     /**
-     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * (string) - The delay applied to the end of the window (must be non-negative).
      * For example, delay=1d shifts the window end 1 day before the evaluation time
      */
     delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
-    windowDuration: string;
+    windowDuration?: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtooth {
+    /**
+     * (string) - The delay applied to the end of the window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding {
@@ -17279,7 +17432,7 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
-    windowDuration: string;
+    windowDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumbling {
@@ -17371,9 +17524,9 @@ export interface GetFeatureEngineeringFeaturesFeatureSource {
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
     /**
-     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-     * Required if transformationSql is specified.
-     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
      */
     dataframeSchema?: string;
     /**
@@ -17395,9 +17548,8 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      */
     timeseriesColumn?: string;
     /**
-     * (string) - A single SQL SELECT expression applied after filter_condition.
-     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
-     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     * (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
      */
     transformationSql?: string;
 }
@@ -17476,6 +17628,12 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSche
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
     /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     */
+    dataframeSchema?: string;
+    /**
      * (string) - The filter condition applied to the source data before aggregation
      */
     filterCondition?: string;
@@ -17483,6 +17641,11 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
      * (string) - Three-part full name of the Stream (catalog.schema.stream)
      */
     fullName: string;
+    /**
+     * (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
@@ -17491,17 +17654,13 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
      */
     continuous?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous;
     /**
-     * (LifetimeWindow) - A window that spans the entire lifetime of the data source
-     */
-    lifetime?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowLifetime;
-    /**
-     * (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-     */
-    longRolling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowLongRolling;
-    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowRolling;
+    /**
+     * (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+     */
+    sawtooth?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowSawtooth;
     /**
      * (SlidingWindow)
      */
@@ -17523,35 +17682,28 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous {
     windowDuration: string;
 }
 
-export interface GetFeatureEngineeringFeaturesFeatureTimeWindowLifetime {
-    /**
-     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
-    slideDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureTimeWindowLongRolling {
-    /**
-     * (string) - The delay applied to the end of the rolling window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
-     */
-    delay?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindowRolling {
     /**
-     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * (string) - The delay applied to the end of the window (must be non-negative).
      * For example, delay=1d shifts the window end 1 day before the evaluation time
      */
     delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
-    windowDuration: string;
+    windowDuration?: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureTimeWindowSawtooth {
+    /**
+     * (string) - The delay applied to the end of the window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindowSliding {
@@ -17562,7 +17714,7 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowSliding {
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
-    windowDuration: string;
+    windowDuration?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling {
@@ -20727,6 +20879,7 @@ export interface GetMlflowExperimentTraceLocation {
 
 export interface GetMlflowExperimentTraceLocationUcTraceLocation {
     catalog: string;
+    effectiveTablePrefix?: string;
     schema: string;
     tablePrefix?: string;
 }
@@ -23078,6 +23231,10 @@ export interface GetPostgresSyncedTableSpec {
      */
     existingPipelineId?: string;
     /**
+     * (list of SyncedTableSyncedTableSpecExtraColumn) - Extra PostgreSQL-only columns to add to the synced table
+     */
+    extraColumns?: outputs.GetPostgresSyncedTableSpecExtraColumn[];
+    /**
      * (NewPipelineSpec) - Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      */
@@ -23109,6 +23266,26 @@ export interface GetPostgresSyncedTableSpec {
     typeOverrides?: outputs.GetPostgresSyncedTableSpecTypeOverride[];
 }
 
+export interface GetPostgresSyncedTableSpecExtraColumn {
+    /**
+     * (string) - Name of the source column whose target PostgreSQL type should be overridden
+     */
+    columnName: string;
+    /**
+     * (string) - PostgreSQL type of the column, for example "tsvector" or "vector(1024)"
+     */
+    columnType: string;
+    /**
+     * (string) - SQL expression used to compute the column's value, for example
+     * "to_tsvector('english', content)"
+     */
+    compute?: string;
+    /**
+     * (string) - Possible values are: `STORED_GENERATED`
+     */
+    maintenance?: string;
+}
+
 export interface GetPostgresSyncedTableSpecNewPipelineSpec {
     /**
      * (string) - Budget policy to set on the newly created pipeline
@@ -23136,8 +23313,8 @@ export interface GetPostgresSyncedTableSpecTypeOverride {
      */
     pgType: string;
     /**
-     * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * (integer) - Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      */
     size?: number;
 }
@@ -23419,6 +23596,13 @@ export interface GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUni
     columnNames?: string[];
 }
 
+export interface GetRecipientsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetRegisteredModelModelInfo {
     /**
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
@@ -23656,7 +23840,7 @@ export interface GetRfaAccessRequestDestinationsDestination {
      * (string) - This field is used to denote whether the destination is the email of the owner of the securable object.
      * The special destination cannot be assigned to a securable and only represents the default destination of the securable.
      * The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
-     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_FUNCTION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`, `SPECIAL_DESTINATION_REGISTERED_MODEL_OWNER`, `SPECIAL_DESTINATION_SCHEMA_OWNER`, `SPECIAL_DESTINATION_TABLE_OWNER`, `SPECIAL_DESTINATION_VOLUME_OWNER`
      */
     specialDestination?: string;
 }
@@ -24202,28 +24386,28 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModel {
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig {
     ai21labsApiKey?: string;
-    ai21labsApiKeyPlaintext?: string;
+    ai21labsApiKeyPlaintext: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig {
     awsAccessKeyId?: string;
-    awsAccessKeyIdPlaintext?: string;
+    awsAccessKeyIdPlaintext: string;
     awsRegion: string;
     awsSecretAccessKey?: string;
-    awsSecretAccessKeyPlaintext?: string;
+    awsSecretAccessKeyPlaintext: string;
     bedrockProvider: string;
     instanceProfileArn?: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
     anthropicApiKey?: string;
-    anthropicApiKeyPlaintext?: string;
+    anthropicApiKeyPlaintext: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig {
     cohereApiBase?: string;
     cohereApiKey?: string;
-    cohereApiKeyPlaintext?: string;
+    cohereApiKeyPlaintext: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig {
@@ -24235,23 +24419,23 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCusto
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
     key: string;
     value?: string;
-    valuePlaintext?: string;
+    valuePlaintext: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
     token?: string;
-    tokenPlaintext?: string;
+    tokenPlaintext: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig {
     databricksApiToken?: string;
-    databricksApiTokenPlaintext?: string;
+    databricksApiTokenPlaintext: string;
     databricksWorkspaceUrl: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
     privateKey?: string;
-    privateKeyPlaintext?: string;
+    privateKeyPlaintext: string;
     projectId: string;
     region: string;
 }
@@ -24259,11 +24443,11 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogl
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig {
     microsoftEntraClientId?: string;
     microsoftEntraClientSecret?: string;
-    microsoftEntraClientSecretPlaintext?: string;
+    microsoftEntraClientSecretPlaintext: string;
     microsoftEntraTenantId?: string;
     openaiApiBase?: string;
     openaiApiKey?: string;
-    openaiApiKeyPlaintext?: string;
+    openaiApiKeyPlaintext: string;
     openaiApiType?: string;
     openaiApiVersion?: string;
     openaiDeploymentName?: string;
@@ -24272,7 +24456,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpena
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig {
     palmApiKey?: string;
-    palmApiKeyPlaintext?: string;
+    palmApiKeyPlaintext: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityFoundationModel {
@@ -24306,6 +24490,8 @@ export interface GetServingEndpointsEndpointTag {
 
 export interface GetServingEndpointsEndpointTelemetryConfig {
     inferenceTableConfigs?: outputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig[];
+    tableNames?: outputs.GetServingEndpointsEndpointTelemetryConfigTableName[];
+    telemetryProfileId?: string;
 }
 
 export interface GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig {
@@ -24314,6 +24500,13 @@ export interface GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig 
      */
     name: string;
     samplingFraction?: number;
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfigTableName {
+    annotationsTable?: string;
+    logsTable?: string;
+    metricsTable?: string;
+    tracesTable?: string;
 }
 
 export interface GetServingEndpointsProviderConfig {
@@ -26061,6 +26254,7 @@ export interface JobJobCluster {
      * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      */
     newCluster: outputs.JobJobClusterNewCluster;
+    serverlessComputeId?: string;
 }
 
 export interface JobJobClusterNewCluster {
@@ -26075,6 +26269,7 @@ export interface JobJobClusterNewCluster {
     clusterName?: string;
     customTags?: {[key: string]: string};
     dataSecurityMode?: string;
+    dependencyMode?: string;
     dockerImage?: outputs.JobJobClusterNewClusterDockerImage;
     driverInstancePoolId: string;
     driverNodeTypeFlexibility?: outputs.JobJobClusterNewClusterDriverNodeTypeFlexibility;
@@ -26369,6 +26564,7 @@ export interface JobNewCluster {
     clusterName?: string;
     customTags?: {[key: string]: string};
     dataSecurityMode?: string;
+    dependencyMode?: string;
     dockerImage?: outputs.JobNewClusterDockerImage;
     driverInstancePoolId: string;
     driverNodeTypeFlexibility?: outputs.JobNewClusterDriverNodeTypeFlexibility;
@@ -26902,6 +27098,7 @@ export interface JobTask {
 }
 
 export interface JobTaskAiRuntimeTask {
+    codeSourcePath?: string;
     deployments: outputs.JobTaskAiRuntimeTaskDeployment[];
     experiment: string;
     mlflowExperimentDirectory?: string;
@@ -27249,6 +27446,7 @@ export interface JobTaskForEachTaskTask {
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTask {
+    codeSourcePath?: string;
     deployments: outputs.JobTaskForEachTaskTaskAiRuntimeTaskDeployment[];
     experiment: string;
     mlflowExperimentDirectory?: string;
@@ -27570,6 +27768,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     clusterName?: string;
     customTags?: {[key: string]: string};
     dataSecurityMode?: string;
+    dependencyMode?: string;
     dockerImage?: outputs.JobTaskForEachTaskTaskNewClusterDockerImage;
     driverInstancePoolId: string;
     driverNodeTypeFlexibility?: outputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility;
@@ -28332,6 +28531,7 @@ export interface JobTaskNewCluster {
     clusterName?: string;
     customTags?: {[key: string]: string};
     dataSecurityMode?: string;
+    dependencyMode?: string;
     dockerImage?: outputs.JobTaskNewClusterDockerImage;
     driverInstancePoolId: string;
     driverNodeTypeFlexibility?: outputs.JobTaskNewClusterDriverNodeTypeFlexibility;
@@ -29427,12 +29627,28 @@ export interface MlflowExperimentTag {
 }
 
 export interface MlflowExperimentTraceLocation {
+    /**
+     * The Unity Catalog storage location. This block consists of the following fields:
+     */
     ucTraceLocation?: outputs.MlflowExperimentTraceLocationUcTraceLocation;
 }
 
 export interface MlflowExperimentTraceLocationUcTraceLocation {
+    /**
+     * Name of the Unity Catalog catalog.
+     */
     catalog: string;
+    /**
+     * The trace-table prefix actually in effect: `tablePrefix` if it was set on creation, otherwise the server-generated default.
+     */
+    effectiveTablePrefix: string;
+    /**
+     * Name of the Unity Catalog schema within `catalog`.
+     */
     schema: string;
+    /**
+     * Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `effectiveTablePrefix`.
+     */
     tablePrefix?: string;
 }
 
@@ -30291,6 +30507,8 @@ export interface ModelServingTelemetryConfig {
      * Block describing the configuration of usage tracking. Consists of the following attributes:
      */
     inferenceTableConfig?: outputs.ModelServingTelemetryConfigInferenceTableConfig;
+    tableNames?: outputs.ModelServingTelemetryConfigTableNames;
+    telemetryProfileId?: string;
 }
 
 export interface ModelServingTelemetryConfigInferenceTableConfig {
@@ -30299,6 +30517,13 @@ export interface ModelServingTelemetryConfigInferenceTableConfig {
      */
     name?: string;
     samplingFraction?: number;
+}
+
+export interface ModelServingTelemetryConfigTableNames {
+    annotationsTable?: string;
+    logsTable?: string;
+    metricsTable?: string;
+    tracesTable?: string;
 }
 
 export interface MountAbfs {
@@ -30488,11 +30713,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -30559,11 +30784,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -31177,6 +31402,7 @@ export interface PipelineIngestionDefinitionObjectSchema {
     connectorOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions;
     destinationCatalog: string;
     destinationSchema: string;
+    fanoutOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptions;
     sourceCatalog?: string;
     sourceSchema: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration;
@@ -31190,6 +31416,7 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     kafkaOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions;
+    redditAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions;
     sharepointOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions;
     smartsheetOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions;
     tiktokAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions;
@@ -31323,6 +31550,17 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookO
     subjectFilters?: string[];
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions {
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsCustomReportOptions;
+    lookbackWindowDays?: number;
+    syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsCustomReportOptions {
+    breakdowns?: string[];
+    fields?: string[];
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions {
     entityType?: string;
     fileIngestionOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions;
@@ -31377,6 +31615,27 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAd
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions {
     startDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptions {
+    fanoutBy?: string;
+    transforms?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform[];
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform {
+    format?: string;
+    jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions {
+    asVariant?: boolean;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaEvolutionMode?: string;
+    schemaFilePath?: string;
+    schemaHints?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
@@ -31437,6 +31696,7 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
     kafkaOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions;
+    redditAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions;
     sharepointOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions;
     smartsheetOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions;
     tiktokAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions;
@@ -31568,6 +31828,17 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOp
     senderFilters?: string[];
     startDate?: string;
     subjectFilters?: string[];
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions {
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsCustomReportOptions;
+    lookbackWindowDays?: number;
+    syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsCustomReportOptions {
+    breakdowns?: string[];
+    fields?: string[];
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions {
@@ -32560,6 +32831,10 @@ export interface PostgresSyncedTableSpec {
      */
     existingPipelineId?: string;
     /**
+     * Extra PostgreSQL-only columns to add to the synced table
+     */
+    extraColumns?: outputs.PostgresSyncedTableSpecExtraColumn[];
+    /**
      * Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
@@ -32603,6 +32878,23 @@ export interface PostgresSyncedTableSpec {
     typeOverrides?: outputs.PostgresSyncedTableSpecTypeOverride[];
 }
 
+export interface PostgresSyncedTableSpecExtraColumn {
+    columnName: string;
+    /**
+     * PostgreSQL type of the column, for example "tsvector" or "vector(1024)"
+     */
+    columnType: string;
+    /**
+     * SQL expression used to compute the column's value, for example
+     * "to_tsvector('english', content)"
+     */
+    compute?: string;
+    /**
+     * Possible values are: `STORED_GENERATED`
+     */
+    maintenance?: string;
+}
+
 export interface PostgresSyncedTableSpecNewPipelineSpec {
     /**
      * Budget policy to set on the newly created pipeline
@@ -32621,17 +32913,14 @@ export interface PostgresSyncedTableSpecNewPipelineSpec {
 }
 
 export interface PostgresSyncedTableSpecTypeOverride {
-    /**
-     * Name of the source column whose target PostgreSQL type should be overridden
-     */
     columnName: string;
     /**
      * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: string;
     /**
-     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      */
     size?: number;
 }
@@ -33181,7 +33470,7 @@ export interface RfaAccessRequestDestinationsDestination {
      * This field is used to denote whether the destination is the email of the owner of the securable object.
      * The special destination cannot be assigned to a securable and only represents the default destination of the securable.
      * The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
-     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_FUNCTION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`, `SPECIAL_DESTINATION_REGISTERED_MODEL_OWNER`, `SPECIAL_DESTINATION_SCHEMA_OWNER`, `SPECIAL_DESTINATION_TABLE_OWNER`, `SPECIAL_DESTINATION_VOLUME_OWNER`
      */
     specialDestination?: string;
 }

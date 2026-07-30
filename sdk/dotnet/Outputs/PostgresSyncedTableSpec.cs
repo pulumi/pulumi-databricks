@@ -41,6 +41,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? ExistingPipelineId;
         /// <summary>
+        /// Extra PostgreSQL-only columns to add to the synced table
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PostgresSyncedTableSpecExtraColumn> ExtraColumns;
+        /// <summary>
         /// Specification for creating a new pipeline.
         /// At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// 
@@ -93,6 +97,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? existingPipelineId,
 
+            ImmutableArray<Outputs.PostgresSyncedTableSpecExtraColumn> extraColumns,
+
             Outputs.PostgresSyncedTableSpecNewPipelineSpec? newPipelineSpec,
 
             string? postgresDatabase,
@@ -111,6 +117,7 @@ namespace Pulumi.Databricks.Outputs
             Branch = branch;
             CreateDatabaseObjectsIfMissing = createDatabaseObjectsIfMissing;
             ExistingPipelineId = existingPipelineId;
+            ExtraColumns = extraColumns;
             NewPipelineSpec = newPipelineSpec;
             PostgresDatabase = postgresDatabase;
             PrimaryKeyColumns = primaryKeyColumns;

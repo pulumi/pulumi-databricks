@@ -21,15 +21,19 @@ namespace Pulumi.Databricks.Outputs
         /// Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
         /// </summary>
         public readonly Outputs.JobJobClusterNewCluster NewCluster;
+        public readonly string? ServerlessComputeId;
 
         [OutputConstructor]
         private JobJobCluster(
             string jobClusterKey,
 
-            Outputs.JobJobClusterNewCluster newCluster)
+            Outputs.JobJobClusterNewCluster newCluster,
+
+            string? serverlessComputeId)
         {
             JobClusterKey = jobClusterKey;
             NewCluster = newCluster;
+            ServerlessComputeId = serverlessComputeId;
         }
     }
 }

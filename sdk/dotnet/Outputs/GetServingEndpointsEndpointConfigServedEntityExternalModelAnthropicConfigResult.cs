@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigResult
     {
         public readonly string? AnthropicApiKey;
-        public readonly string? AnthropicApiKeyPlaintext;
+        public readonly string AnthropicApiKeyPlaintext;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigResult(
             string? anthropicApiKey,
 
-            string? anthropicApiKeyPlaintext)
+            string anthropicApiKeyPlaintext)
         {
             AnthropicApiKey = anthropicApiKey;
             AnthropicApiKeyPlaintext = anthropicApiKeyPlaintext;

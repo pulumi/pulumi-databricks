@@ -17,21 +17,9 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
 
     public static final FeatureEngineeringFeatureSourceDeltaTableSourceArgs Empty = new FeatureEngineeringFeatureSourceDeltaTableSourceArgs();
 
-    /**
-     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-     * Required if transformationSql is specified.
-     * Example: {&#34;type&#34;:&#34;struct&#34;,&#34;fields&#34;:[{&#34;name&#34;:&#34;colA&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}},{&#34;name&#34;:&#34;colC&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}}]}
-     * 
-     */
     @Import(name="dataframeSchema")
     private @Nullable Output<String> dataframeSchema;
 
-    /**
-     * @return Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-     * Required if transformationSql is specified.
-     * Example: {&#34;type&#34;:&#34;struct&#34;,&#34;fields&#34;:[{&#34;name&#34;:&#34;colA&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}},{&#34;name&#34;:&#34;colC&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}}]}
-     * 
-     */
     public Optional<Output<String>> dataframeSchema() {
         return Optional.ofNullable(this.dataframeSchema);
     }
@@ -104,21 +92,9 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
         return Optional.ofNullable(this.timeseriesColumn);
     }
 
-    /**
-     * A single SQL SELECT expression applied after filter_condition.
-     * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
-     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
-     * 
-     */
     @Import(name="transformationSql")
     private @Nullable Output<String> transformationSql;
 
-    /**
-     * @return A single SQL SELECT expression applied after filter_condition.
-     * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
-     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
-     * 
-     */
     public Optional<Output<String>> transformationSql() {
         return Optional.ofNullable(this.transformationSql);
     }
@@ -152,27 +128,11 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
             $ = new FeatureEngineeringFeatureSourceDeltaTableSourceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param dataframeSchema Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-         * Required if transformationSql is specified.
-         * Example: {&#34;type&#34;:&#34;struct&#34;,&#34;fields&#34;:[{&#34;name&#34;:&#34;colA&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}},{&#34;name&#34;:&#34;colC&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}}]}
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataframeSchema(@Nullable Output<String> dataframeSchema) {
             $.dataframeSchema = dataframeSchema;
             return this;
         }
 
-        /**
-         * @param dataframeSchema Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-         * Required if transformationSql is specified.
-         * Example: {&#34;type&#34;:&#34;struct&#34;,&#34;fields&#34;:[{&#34;name&#34;:&#34;colA&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}},{&#34;name&#34;:&#34;colC&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}}]}
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataframeSchema(String dataframeSchema) {
             return dataframeSchema(Output.of(dataframeSchema));
         }
@@ -280,27 +240,11 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
             return timeseriesColumn(Output.of(timeseriesColumn));
         }
 
-        /**
-         * @param transformationSql A single SQL SELECT expression applied after filter_condition.
-         * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
-         * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
-         * 
-         * @return builder
-         * 
-         */
         public Builder transformationSql(@Nullable Output<String> transformationSql) {
             $.transformationSql = transformationSql;
             return this;
         }
 
-        /**
-         * @param transformationSql A single SQL SELECT expression applied after filter_condition.
-         * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
-         * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
-         * 
-         * @return builder
-         * 
-         */
         public Builder transformationSql(String transformationSql) {
             return transformationSql(Output.of(transformationSql));
         }

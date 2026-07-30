@@ -17,11 +17,20 @@ namespace Pulumi.Databricks.Outputs
         /// Block describing the configuration of usage tracking. Consists of the following attributes:
         /// </summary>
         public readonly Outputs.ModelServingTelemetryConfigInferenceTableConfig? InferenceTableConfig;
+        public readonly Outputs.ModelServingTelemetryConfigTableNames? TableNames;
+        public readonly string? TelemetryProfileId;
 
         [OutputConstructor]
-        private ModelServingTelemetryConfig(Outputs.ModelServingTelemetryConfigInferenceTableConfig? inferenceTableConfig)
+        private ModelServingTelemetryConfig(
+            Outputs.ModelServingTelemetryConfigInferenceTableConfig? inferenceTableConfig,
+
+            Outputs.ModelServingTelemetryConfigTableNames? tableNames,
+
+            string? telemetryProfileId)
         {
             InferenceTableConfig = inferenceTableConfig;
+            TableNames = tableNames;
+            TelemetryProfileId = telemetryProfileId;
         }
     }
 }

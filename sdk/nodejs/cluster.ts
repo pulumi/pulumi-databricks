@@ -158,6 +158,7 @@ export class Cluster extends pulumi.CustomResource {
      * (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
      */
     declare public /*out*/ readonly defaultTags: pulumi.Output<{[key: string]: string}>;
+    declare public readonly dependencyMode: pulumi.Output<string | undefined>;
     declare public readonly dockerImage: pulumi.Output<outputs.ClusterDockerImage | undefined>;
     /**
      * similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
@@ -291,6 +292,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["customTags"] = state?.customTags;
             resourceInputs["dataSecurityMode"] = state?.dataSecurityMode;
             resourceInputs["defaultTags"] = state?.defaultTags;
+            resourceInputs["dependencyMode"] = state?.dependencyMode;
             resourceInputs["dockerImage"] = state?.dockerImage;
             resourceInputs["driverInstancePoolId"] = state?.driverInstancePoolId;
             resourceInputs["driverNodeTypeFlexibility"] = state?.driverNodeTypeFlexibility;
@@ -339,6 +341,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterName"] = args?.clusterName;
             resourceInputs["customTags"] = args?.customTags;
             resourceInputs["dataSecurityMode"] = args?.dataSecurityMode;
+            resourceInputs["dependencyMode"] = args?.dependencyMode;
             resourceInputs["dockerImage"] = args?.dockerImage;
             resourceInputs["driverInstancePoolId"] = args?.driverInstancePoolId;
             resourceInputs["driverNodeTypeFlexibility"] = args?.driverNodeTypeFlexibility;
@@ -441,6 +444,7 @@ export interface ClusterState {
      * (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
      */
     defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dependencyMode?: pulumi.Input<string | undefined>;
     dockerImage?: pulumi.Input<inputs.ClusterDockerImage | undefined>;
     /**
      * similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
@@ -606,6 +610,7 @@ export interface ClusterArgs {
      * * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
      */
     dataSecurityMode?: pulumi.Input<string | undefined>;
+    dependencyMode?: pulumi.Input<string | undefined>;
     dockerImage?: pulumi.Input<inputs.ClusterDockerImage | undefined>;
     /**
      * similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.

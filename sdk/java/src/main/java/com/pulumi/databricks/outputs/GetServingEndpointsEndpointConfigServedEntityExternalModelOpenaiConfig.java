@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,11 +14,11 @@ import javax.annotation.Nullable;
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig {
     private @Nullable String microsoftEntraClientId;
     private @Nullable String microsoftEntraClientSecret;
-    private @Nullable String microsoftEntraClientSecretPlaintext;
+    private String microsoftEntraClientSecretPlaintext;
     private @Nullable String microsoftEntraTenantId;
     private @Nullable String openaiApiBase;
     private @Nullable String openaiApiKey;
-    private @Nullable String openaiApiKeyPlaintext;
+    private String openaiApiKeyPlaintext;
     private @Nullable String openaiApiType;
     private @Nullable String openaiApiVersion;
     private @Nullable String openaiDeploymentName;
@@ -30,8 +31,8 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
     public Optional<String> microsoftEntraClientSecret() {
         return Optional.ofNullable(this.microsoftEntraClientSecret);
     }
-    public Optional<String> microsoftEntraClientSecretPlaintext() {
-        return Optional.ofNullable(this.microsoftEntraClientSecretPlaintext);
+    public String microsoftEntraClientSecretPlaintext() {
+        return this.microsoftEntraClientSecretPlaintext;
     }
     public Optional<String> microsoftEntraTenantId() {
         return Optional.ofNullable(this.microsoftEntraTenantId);
@@ -42,8 +43,8 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
     public Optional<String> openaiApiKey() {
         return Optional.ofNullable(this.openaiApiKey);
     }
-    public Optional<String> openaiApiKeyPlaintext() {
-        return Optional.ofNullable(this.openaiApiKeyPlaintext);
+    public String openaiApiKeyPlaintext() {
+        return this.openaiApiKeyPlaintext;
     }
     public Optional<String> openaiApiType() {
         return Optional.ofNullable(this.openaiApiType);
@@ -69,11 +70,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
     public static final class Builder {
         private @Nullable String microsoftEntraClientId;
         private @Nullable String microsoftEntraClientSecret;
-        private @Nullable String microsoftEntraClientSecretPlaintext;
+        private String microsoftEntraClientSecretPlaintext;
         private @Nullable String microsoftEntraTenantId;
         private @Nullable String openaiApiBase;
         private @Nullable String openaiApiKey;
-        private @Nullable String openaiApiKeyPlaintext;
+        private String openaiApiKeyPlaintext;
         private @Nullable String openaiApiType;
         private @Nullable String openaiApiVersion;
         private @Nullable String openaiDeploymentName;
@@ -107,8 +108,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
             return this;
         }
         @CustomType.Setter
-        public Builder microsoftEntraClientSecretPlaintext(@Nullable String microsoftEntraClientSecretPlaintext) {
-
+        public Builder microsoftEntraClientSecretPlaintext(String microsoftEntraClientSecretPlaintext) {
+            if (microsoftEntraClientSecretPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig", "microsoftEntraClientSecretPlaintext");
+            }
             this.microsoftEntraClientSecretPlaintext = microsoftEntraClientSecretPlaintext;
             return this;
         }
@@ -131,8 +134,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
             return this;
         }
         @CustomType.Setter
-        public Builder openaiApiKeyPlaintext(@Nullable String openaiApiKeyPlaintext) {
-
+        public Builder openaiApiKeyPlaintext(String openaiApiKeyPlaintext) {
+            if (openaiApiKeyPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig", "openaiApiKeyPlaintext");
+            }
             this.openaiApiKeyPlaintext = openaiApiKeyPlaintext;
             return this;
         }

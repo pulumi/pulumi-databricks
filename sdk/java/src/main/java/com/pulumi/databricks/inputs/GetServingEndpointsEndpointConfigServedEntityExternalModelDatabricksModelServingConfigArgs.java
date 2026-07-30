@@ -23,11 +23,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelDat
         return Optional.ofNullable(this.databricksApiToken);
     }
 
-    @Import(name="databricksApiTokenPlaintext")
-    private @Nullable Output<String> databricksApiTokenPlaintext;
+    @Import(name="databricksApiTokenPlaintext", required=true)
+    private Output<String> databricksApiTokenPlaintext;
 
-    public Optional<Output<String>> databricksApiTokenPlaintext() {
-        return Optional.ofNullable(this.databricksApiTokenPlaintext);
+    public Output<String> databricksApiTokenPlaintext() {
+        return this.databricksApiTokenPlaintext;
     }
 
     @Import(name="databricksWorkspaceUrl", required=true)
@@ -72,7 +72,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelDat
             return databricksApiToken(Output.of(databricksApiToken));
         }
 
-        public Builder databricksApiTokenPlaintext(@Nullable Output<String> databricksApiTokenPlaintext) {
+        public Builder databricksApiTokenPlaintext(Output<String> databricksApiTokenPlaintext) {
             $.databricksApiTokenPlaintext = databricksApiTokenPlaintext;
             return this;
         }
@@ -91,6 +91,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelDat
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs build() {
+            if ($.databricksApiTokenPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs", "databricksApiTokenPlaintext");
+            }
             if ($.databricksWorkspaceUrl == null) {
                 throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs", "databricksWorkspaceUrl");
             }

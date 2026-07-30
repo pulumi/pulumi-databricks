@@ -18,6 +18,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("inferenceTableConfig")]
         public Input<Inputs.ModelServingTelemetryConfigInferenceTableConfigGetArgs>? InferenceTableConfig { get; set; }
 
+        [Input("tableNames")]
+        public Input<Inputs.ModelServingTelemetryConfigTableNamesGetArgs>? TableNames { get; set; }
+
+        [Input("telemetryProfileId")]
+        public Input<string>? TelemetryProfileId { get; set; }
+
         public ModelServingTelemetryConfigGetArgs()
         {
         }

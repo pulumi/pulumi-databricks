@@ -19,7 +19,9 @@ public final class GetBudgetPoliciesFilterBy {
      */
     private @Nullable Integer creatorUserId;
     /**
-     * @return The policy creator user name to be filtered on.
+     * @return Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+     * future version.
+     * The policy creator user name to be filtered on.
      * If unspecified, all policies will be returned
      * 
      */
@@ -43,7 +45,9 @@ public final class GetBudgetPoliciesFilterBy {
         return Optional.ofNullable(this.creatorUserId);
     }
     /**
-     * @return The policy creator user name to be filtered on.
+     * @return Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+     * future version.
+     * The policy creator user name to be filtered on.
      * If unspecified, all policies will be returned
      * 
      */

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,11 +23,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAnt
         return Optional.ofNullable(this.anthropicApiKey);
     }
 
-    @Import(name="anthropicApiKeyPlaintext")
-    private @Nullable Output<String> anthropicApiKeyPlaintext;
+    @Import(name="anthropicApiKeyPlaintext", required=true)
+    private Output<String> anthropicApiKeyPlaintext;
 
-    public Optional<Output<String>> anthropicApiKeyPlaintext() {
-        return Optional.ofNullable(this.anthropicApiKeyPlaintext);
+    public Output<String> anthropicApiKeyPlaintext() {
+        return this.anthropicApiKeyPlaintext;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs() {}
@@ -63,7 +64,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAnt
             return anthropicApiKey(Output.of(anthropicApiKey));
         }
 
-        public Builder anthropicApiKeyPlaintext(@Nullable Output<String> anthropicApiKeyPlaintext) {
+        public Builder anthropicApiKeyPlaintext(Output<String> anthropicApiKeyPlaintext) {
             $.anthropicApiKeyPlaintext = anthropicApiKeyPlaintext;
             return this;
         }
@@ -73,6 +74,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAnt
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs build() {
+            if ($.anthropicApiKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs", "anthropicApiKeyPlaintext");
+            }
             return $;
         }
     }

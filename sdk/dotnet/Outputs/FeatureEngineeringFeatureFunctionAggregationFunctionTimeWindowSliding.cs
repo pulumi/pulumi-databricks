@@ -13,14 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding
     {
+        /// <summary>
+        /// The slide duration (interval by which windows advance, must be positive and less than duration)
+        /// </summary>
         public readonly string SlideDuration;
-        public readonly string WindowDuration;
+        public readonly string? WindowDuration;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding(
             string slideDuration,
 
-            string windowDuration)
+            string? windowDuration)
         {
             SlideDuration = slideDuration;
             WindowDuration = windowDuration;

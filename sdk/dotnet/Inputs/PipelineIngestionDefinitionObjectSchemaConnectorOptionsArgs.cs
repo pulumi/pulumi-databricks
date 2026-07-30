@@ -33,6 +33,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("outlookOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs>? OutlookOptions { get; set; }
 
+        [Input("redditAdsOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsArgs>? RedditAdsOptions { get; set; }
+
         [Input("sharepointOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsArgs>? SharepointOptions { get; set; }
 

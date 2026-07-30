@@ -34,6 +34,8 @@ public final class GetBudgetPoliciesFilterByArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+     * future version.
      * The policy creator user name to be filtered on.
      * If unspecified, all policies will be returned
      * 
@@ -42,7 +44,9 @@ public final class GetBudgetPoliciesFilterByArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> creatorUserName;
 
     /**
-     * @return The policy creator user name to be filtered on.
+     * @return Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+     * future version.
+     * The policy creator user name to be filtered on.
      * If unspecified, all policies will be returned
      * 
      */
@@ -121,7 +125,9 @@ public final class GetBudgetPoliciesFilterByArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param creatorUserName The policy creator user name to be filtered on.
+         * @param creatorUserName Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+         * future version.
+         * The policy creator user name to be filtered on.
          * If unspecified, all policies will be returned
          * 
          * @return builder
@@ -133,7 +139,9 @@ public final class GetBudgetPoliciesFilterByArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param creatorUserName The policy creator user name to be filtered on.
+         * @param creatorUserName Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+         * future version.
+         * The policy creator user name to be filtered on.
          * If unspecified, all policies will be returned
          * 
          * @return builder

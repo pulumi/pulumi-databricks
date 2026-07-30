@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string Key;
         public readonly string? Value;
-        public readonly string? ValuePlaintext;
+        public readonly string ValuePlaintext;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthResult(
@@ -23,7 +23,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? value,
 
-            string? valuePlaintext)
+            string valuePlaintext)
         {
             Key = key;
             Value = value;

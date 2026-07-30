@@ -58,6 +58,38 @@ import (
 //
 // ```
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Store this experiment's traces in a Unity Catalog schema
+//			_, err := databricks.NewMlflowExperiment(ctx, "with_uc_traces", &databricks.MlflowExperimentArgs{
+//				Name: pulumi.Sprintf("%v/uc-traces-experiment", me.Home),
+//				TraceLocation: &databricks.MlflowExperimentTraceLocationArgs{
+//					UcTraceLocation: &databricks.MlflowExperimentTraceLocationUcTraceLocationArgs{
+//						Catalog:     pulumi.String("my_catalog"),
+//						Schema:      pulumi.String("my_schema"),
+//						TablePrefix: pulumi.String("my_experiment"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Access Control
 //
 // * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -89,7 +121,8 @@ type MlflowExperiment struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig MlflowExperimentProviderConfigOutput `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
-	Tags          MlflowExperimentTagArrayOutput         `pulumi:"tags"`
+	Tags MlflowExperimentTagArrayOutput `pulumi:"tags"`
+	// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
 	TraceLocation MlflowExperimentTraceLocationPtrOutput `pulumi:"traceLocation"`
 }
 
@@ -136,7 +169,8 @@ type mlflowExperimentState struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *MlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
-	Tags          []MlflowExperimentTag          `pulumi:"tags"`
+	Tags []MlflowExperimentTag `pulumi:"tags"`
+	// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
 	TraceLocation *MlflowExperimentTraceLocation `pulumi:"traceLocation"`
 }
 
@@ -154,7 +188,8 @@ type MlflowExperimentState struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig MlflowExperimentProviderConfigPtrInput
 	// Tags for the MLflow experiment.
-	Tags          MlflowExperimentTagArrayInput
+	Tags MlflowExperimentTagArrayInput
+	// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
 	TraceLocation MlflowExperimentTraceLocationPtrInput
 }
 
@@ -176,7 +211,8 @@ type mlflowExperimentArgs struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *MlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
-	Tags          []MlflowExperimentTag          `pulumi:"tags"`
+	Tags []MlflowExperimentTag `pulumi:"tags"`
+	// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
 	TraceLocation *MlflowExperimentTraceLocation `pulumi:"traceLocation"`
 }
 
@@ -195,7 +231,8 @@ type MlflowExperimentArgs struct {
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig MlflowExperimentProviderConfigPtrInput
 	// Tags for the MLflow experiment.
-	Tags          MlflowExperimentTagArrayInput
+	Tags MlflowExperimentTagArrayInput
+	// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
 	TraceLocation MlflowExperimentTraceLocationPtrInput
 }
 
@@ -327,6 +364,7 @@ func (o MlflowExperimentOutput) Tags() MlflowExperimentTagArrayOutput {
 	return o.ApplyT(func(v *MlflowExperiment) MlflowExperimentTagArrayOutput { return v.Tags }).(MlflowExperimentTagArrayOutput)
 }
 
+// Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
 func (o MlflowExperimentOutput) TraceLocation() MlflowExperimentTraceLocationPtrOutput {
 	return o.ApplyT(func(v *MlflowExperiment) MlflowExperimentTraceLocationPtrOutput { return v.TraceLocation }).(MlflowExperimentTraceLocationPtrOutput)
 }

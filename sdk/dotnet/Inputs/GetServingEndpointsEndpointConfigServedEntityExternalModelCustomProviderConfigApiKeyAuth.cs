@@ -18,8 +18,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("value")]
         public string? Value { get; set; }
 
-        [Input("valuePlaintext")]
-        public string? ValuePlaintext { get; set; }
+        [Input("valuePlaintext", required: true)]
+        public string ValuePlaintext { get; set; } = null!;
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs()
         {

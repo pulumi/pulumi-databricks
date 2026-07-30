@@ -23,6 +23,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? ClusterName;
         public readonly ImmutableDictionary<string, string>? CustomTags;
         public readonly string? DataSecurityMode;
+        public readonly string? DependencyMode;
         public readonly Outputs.JobNewClusterDockerImage? DockerImage;
         public readonly string? DriverInstancePoolId;
         public readonly Outputs.JobNewClusterDriverNodeTypeFlexibility? DriverNodeTypeFlexibility;
@@ -82,6 +83,8 @@ namespace Pulumi.Databricks.Outputs
             ImmutableDictionary<string, string>? customTags,
 
             string? dataSecurityMode,
+
+            string? dependencyMode,
 
             Outputs.JobNewClusterDockerImage? dockerImage,
 
@@ -149,6 +152,7 @@ namespace Pulumi.Databricks.Outputs
             ClusterName = clusterName;
             CustomTags = customTags;
             DataSecurityMode = dataSecurityMode;
+            DependencyMode = dependencyMode;
             DockerImage = dockerImage;
             DriverInstancePoolId = driverInstancePoolId;
             DriverNodeTypeFlexibility = driverNodeTypeFlexibility;

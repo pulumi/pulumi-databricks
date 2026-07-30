@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,14 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig {
     private @Nullable String ai21labsApiKey;
-    private @Nullable String ai21labsApiKeyPlaintext;
+    private String ai21labsApiKeyPlaintext;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig() {}
     public Optional<String> ai21labsApiKey() {
         return Optional.ofNullable(this.ai21labsApiKey);
     }
-    public Optional<String> ai21labsApiKeyPlaintext() {
-        return Optional.ofNullable(this.ai21labsApiKeyPlaintext);
+    public String ai21labsApiKeyPlaintext() {
+        return this.ai21labsApiKeyPlaintext;
     }
 
     public static Builder builder() {
@@ -32,7 +33,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAi2
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String ai21labsApiKey;
-        private @Nullable String ai21labsApiKeyPlaintext;
+        private String ai21labsApiKeyPlaintext;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,8 +48,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAi2
             return this;
         }
         @CustomType.Setter
-        public Builder ai21labsApiKeyPlaintext(@Nullable String ai21labsApiKeyPlaintext) {
-
+        public Builder ai21labsApiKeyPlaintext(String ai21labsApiKeyPlaintext) {
+            if (ai21labsApiKeyPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig", "ai21labsApiKeyPlaintext");
+            }
             this.ai21labsApiKeyPlaintext = ai21labsApiKeyPlaintext;
             return this;
         }

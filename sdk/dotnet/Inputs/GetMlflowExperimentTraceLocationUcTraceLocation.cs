@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("catalog", required: true)]
         public string Catalog { get; set; } = null!;
 
+        [Input("effectiveTablePrefix")]
+        public string? EffectiveTablePrefix { get; set; }
+
         [Input("schema", required: true)]
         public string Schema { get; set; } = null!;
 

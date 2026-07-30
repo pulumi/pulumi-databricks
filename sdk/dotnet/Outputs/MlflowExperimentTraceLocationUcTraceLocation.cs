@@ -13,19 +13,35 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MlflowExperimentTraceLocationUcTraceLocation
     {
+        /// <summary>
+        /// Name of the Unity Catalog catalog.
+        /// </summary>
         public readonly string Catalog;
+        /// <summary>
+        /// The trace-table prefix actually in effect: `TablePrefix` if it was set on creation, otherwise the server-generated default.
+        /// </summary>
+        public readonly string? EffectiveTablePrefix;
+        /// <summary>
+        /// Name of the Unity Catalog schema within `Catalog`.
+        /// </summary>
         public readonly string Schema;
+        /// <summary>
+        /// Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `EffectiveTablePrefix`.
+        /// </summary>
         public readonly string? TablePrefix;
 
         [OutputConstructor]
         private MlflowExperimentTraceLocationUcTraceLocation(
             string catalog,
 
+            string? effectiveTablePrefix,
+
             string schema,
 
             string? tablePrefix)
         {
             Catalog = catalog;
+            EffectiveTablePrefix = effectiveTablePrefix;
             Schema = schema;
             TablePrefix = tablePrefix;
         }

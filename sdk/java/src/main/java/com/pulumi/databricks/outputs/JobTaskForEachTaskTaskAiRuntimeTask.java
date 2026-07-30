@@ -14,12 +14,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskAiRuntimeTask {
+    private @Nullable String codeSourcePath;
     private List<JobTaskForEachTaskTaskAiRuntimeTaskDeployment> deployments;
     private String experiment;
     private @Nullable String mlflowExperimentDirectory;
     private @Nullable String mlflowRun;
 
     private JobTaskForEachTaskTaskAiRuntimeTask() {}
+    public Optional<String> codeSourcePath() {
+        return Optional.ofNullable(this.codeSourcePath);
+    }
     public List<JobTaskForEachTaskTaskAiRuntimeTaskDeployment> deployments() {
         return this.deployments;
     }
@@ -42,6 +46,7 @@ public final class JobTaskForEachTaskTaskAiRuntimeTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String codeSourcePath;
         private List<JobTaskForEachTaskTaskAiRuntimeTaskDeployment> deployments;
         private String experiment;
         private @Nullable String mlflowExperimentDirectory;
@@ -49,12 +54,19 @@ public final class JobTaskForEachTaskTaskAiRuntimeTask {
         public Builder() {}
         public Builder(JobTaskForEachTaskTaskAiRuntimeTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.codeSourcePath = defaults.codeSourcePath;
     	      this.deployments = defaults.deployments;
     	      this.experiment = defaults.experiment;
     	      this.mlflowExperimentDirectory = defaults.mlflowExperimentDirectory;
     	      this.mlflowRun = defaults.mlflowRun;
         }
 
+        @CustomType.Setter
+        public Builder codeSourcePath(@Nullable String codeSourcePath) {
+
+            this.codeSourcePath = codeSourcePath;
+            return this;
+        }
         @CustomType.Setter
         public Builder deployments(List<JobTaskForEachTaskTaskAiRuntimeTaskDeployment> deployments) {
             if (deployments == null) {
@@ -88,6 +100,7 @@ public final class JobTaskForEachTaskTaskAiRuntimeTask {
         }
         public JobTaskForEachTaskTaskAiRuntimeTask build() {
             final var _resultValue = new JobTaskForEachTaskTaskAiRuntimeTask();
+            _resultValue.codeSourcePath = codeSourcePath;
             _resultValue.deployments = deployments;
             _resultValue.experiment = experiment;
             _resultValue.mlflowExperimentDirectory = mlflowExperimentDirectory;

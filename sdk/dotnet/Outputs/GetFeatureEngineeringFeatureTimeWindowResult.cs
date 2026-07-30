@@ -18,17 +18,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowContinuousResult? Continuous;
         /// <summary>
-        /// (LifetimeWindow) - A window that spans the entire lifetime of the data source
-        /// </summary>
-        public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowLifetimeResult? Lifetime;
-        /// <summary>
-        /// (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-        /// </summary>
-        public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowLongRollingResult? LongRolling;
-        /// <summary>
         /// (RollingWindow)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowRollingResult? Rolling;
+        /// <summary>
+        /// (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowSawtoothResult? Sawtooth;
         /// <summary>
         /// (SlidingWindow)
         /// </summary>
@@ -42,20 +38,17 @@ namespace Pulumi.Databricks.Outputs
         private GetFeatureEngineeringFeatureTimeWindowResult(
             Outputs.GetFeatureEngineeringFeatureTimeWindowContinuousResult? continuous,
 
-            Outputs.GetFeatureEngineeringFeatureTimeWindowLifetimeResult? lifetime,
-
-            Outputs.GetFeatureEngineeringFeatureTimeWindowLongRollingResult? longRolling,
-
             Outputs.GetFeatureEngineeringFeatureTimeWindowRollingResult? rolling,
+
+            Outputs.GetFeatureEngineeringFeatureTimeWindowSawtoothResult? sawtooth,
 
             Outputs.GetFeatureEngineeringFeatureTimeWindowSlidingResult? sliding,
 
             Outputs.GetFeatureEngineeringFeatureTimeWindowTumblingResult? tumbling)
         {
             Continuous = continuous;
-            Lifetime = lifetime;
-            LongRolling = longRolling;
             Rolling = rolling;
+            Sawtooth = sawtooth;
             Sliding = sliding;
             Tumbling = tumbling;
         }

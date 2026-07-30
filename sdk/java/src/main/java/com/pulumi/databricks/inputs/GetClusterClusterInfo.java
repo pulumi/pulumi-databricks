@@ -179,6 +179,13 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.defaultTags);
     }
 
+    @Import(name="dependencyMode")
+    private @Nullable String dependencyMode;
+
+    public Optional<String> dependencyMode() {
+        return Optional.ofNullable(this.dependencyMode);
+    }
+
     @Import(name="dockerImage")
     private @Nullable GetClusterClusterInfoDockerImage dockerImage;
 
@@ -560,6 +567,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         this.customTags = $.customTags;
         this.dataSecurityMode = $.dataSecurityMode;
         this.defaultTags = $.defaultTags;
+        this.dependencyMode = $.dependencyMode;
         this.dockerImage = $.dockerImage;
         this.driver = $.driver;
         this.driverInstancePoolId = $.driverInstancePoolId;
@@ -719,6 +727,11 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
 
         public Builder defaultTags(@Nullable Map<String,String> defaultTags) {
             $.defaultTags = defaultTags;
+            return this;
+        }
+
+        public Builder dependencyMode(@Nullable String dependencyMode) {
+            $.dependencyMode = dependencyMode;
             return this;
         }
 

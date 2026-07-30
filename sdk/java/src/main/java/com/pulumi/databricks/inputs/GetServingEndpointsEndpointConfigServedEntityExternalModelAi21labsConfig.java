@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,11 +22,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAi2
         return Optional.ofNullable(this.ai21labsApiKey);
     }
 
-    @Import(name="ai21labsApiKeyPlaintext")
-    private @Nullable String ai21labsApiKeyPlaintext;
+    @Import(name="ai21labsApiKeyPlaintext", required=true)
+    private String ai21labsApiKeyPlaintext;
 
-    public Optional<String> ai21labsApiKeyPlaintext() {
-        return Optional.ofNullable(this.ai21labsApiKeyPlaintext);
+    public String ai21labsApiKeyPlaintext() {
+        return this.ai21labsApiKeyPlaintext;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig() {}
@@ -58,12 +59,15 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAi2
             return this;
         }
 
-        public Builder ai21labsApiKeyPlaintext(@Nullable String ai21labsApiKeyPlaintext) {
+        public Builder ai21labsApiKeyPlaintext(String ai21labsApiKeyPlaintext) {
             $.ai21labsApiKeyPlaintext = ai21labsApiKeyPlaintext;
             return this;
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig build() {
+            if ($.ai21labsApiKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig", "ai21labsApiKeyPlaintext");
+            }
             return $;
         }
     }

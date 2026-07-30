@@ -13,12 +13,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetMlflowExperimentTraceLocationUcTraceLocation {
     private String catalog;
+    private @Nullable String effectiveTablePrefix;
     private String schema;
     private @Nullable String tablePrefix;
 
     private GetMlflowExperimentTraceLocationUcTraceLocation() {}
     public String catalog() {
         return this.catalog;
+    }
+    public Optional<String> effectiveTablePrefix() {
+        return Optional.ofNullable(this.effectiveTablePrefix);
     }
     public String schema() {
         return this.schema;
@@ -37,12 +41,14 @@ public final class GetMlflowExperimentTraceLocationUcTraceLocation {
     @CustomType.Builder
     public static final class Builder {
         private String catalog;
+        private @Nullable String effectiveTablePrefix;
         private String schema;
         private @Nullable String tablePrefix;
         public Builder() {}
         public Builder(GetMlflowExperimentTraceLocationUcTraceLocation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalog = defaults.catalog;
+    	      this.effectiveTablePrefix = defaults.effectiveTablePrefix;
     	      this.schema = defaults.schema;
     	      this.tablePrefix = defaults.tablePrefix;
         }
@@ -53,6 +59,12 @@ public final class GetMlflowExperimentTraceLocationUcTraceLocation {
               throw new MissingRequiredPropertyException("GetMlflowExperimentTraceLocationUcTraceLocation", "catalog");
             }
             this.catalog = catalog;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveTablePrefix(@Nullable String effectiveTablePrefix) {
+
+            this.effectiveTablePrefix = effectiveTablePrefix;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +84,7 @@ public final class GetMlflowExperimentTraceLocationUcTraceLocation {
         public GetMlflowExperimentTraceLocationUcTraceLocation build() {
             final var _resultValue = new GetMlflowExperimentTraceLocationUcTraceLocation();
             _resultValue.catalog = catalog;
+            _resultValue.effectiveTablePrefix = effectiveTablePrefix;
             _resultValue.schema = schema;
             _resultValue.tablePrefix = tablePrefix;
             return _resultValue;

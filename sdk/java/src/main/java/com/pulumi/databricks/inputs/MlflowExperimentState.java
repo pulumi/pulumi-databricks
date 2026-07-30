@@ -127,9 +127,17 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Unity Catalog location where the experiment&#39;s traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+     * 
+     */
     @Import(name="traceLocation")
     private @Nullable Output<MlflowExperimentTraceLocationArgs> traceLocation;
 
+    /**
+     * @return Unity Catalog location where the experiment&#39;s traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+     * 
+     */
     public Optional<Output<MlflowExperimentTraceLocationArgs>> traceLocation() {
         return Optional.ofNullable(this.traceLocation);
     }
@@ -322,11 +330,23 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
             return tags(List.of(tags));
         }
 
+        /**
+         * @param traceLocation Unity Catalog location where the experiment&#39;s traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder traceLocation(@Nullable Output<MlflowExperimentTraceLocationArgs> traceLocation) {
             $.traceLocation = traceLocation;
             return this;
         }
 
+        /**
+         * @param traceLocation Unity Catalog location where the experiment&#39;s traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder traceLocation(MlflowExperimentTraceLocationArgs traceLocation) {
             return traceLocation(Output.of(traceLocation));
         }
