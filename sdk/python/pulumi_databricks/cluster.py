@@ -33,6 +33,7 @@ class ClusterArgs:
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_image: pulumi.Input[Optional['ClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  driver_node_type_flexibility: pulumi.Input[Optional['ClusterDriverNodeTypeFlexibilityArgs']] = None,
@@ -143,6 +144,8 @@ class ClusterArgs:
             pulumi.set(__self__, "custom_tags", custom_tags)
         if data_security_mode is not None:
             pulumi.set(__self__, "data_security_mode", data_security_mode)
+        if dependency_mode is not None:
+            pulumi.set(__self__, "dependency_mode", dependency_mode)
         if docker_image is not None:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
@@ -353,6 +356,15 @@ class ClusterArgs:
     @data_security_mode.setter
     def data_security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_security_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dependencyMode")
+    def dependency_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "dependency_mode")
+
+    @dependency_mode.setter
+    def dependency_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dependency_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerImage")
@@ -700,6 +712,7 @@ class _ClusterState:
                  custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 dependency_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_image: pulumi.Input[Optional['ClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  driver_node_type_flexibility: pulumi.Input[Optional['ClusterDriverNodeTypeFlexibilityArgs']] = None,
@@ -818,6 +831,8 @@ class _ClusterState:
             pulumi.set(__self__, "data_security_mode", data_security_mode)
         if default_tags is not None:
             pulumi.set(__self__, "default_tags", default_tags)
+        if dependency_mode is not None:
+            pulumi.set(__self__, "dependency_mode", dependency_mode)
         if docker_image is not None:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
@@ -1043,6 +1058,15 @@ class _ClusterState:
     @default_tags.setter
     def default_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dependencyMode")
+    def dependency_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "dependency_mode")
+
+    @dependency_mode.setter
+    def dependency_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dependency_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerImage")
@@ -1424,6 +1448,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_image: pulumi.Input[Optional[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
                  driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  driver_node_type_flexibility: pulumi.Input[Optional[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
@@ -1668,6 +1693,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_image: pulumi.Input[Optional[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
                  driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  driver_node_type_flexibility: pulumi.Input[Optional[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
@@ -1718,6 +1744,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["custom_tags"] = custom_tags
             __props__.__dict__["data_security_mode"] = data_security_mode
+            __props__.__dict__["dependency_mode"] = dependency_mode
             __props__.__dict__["docker_image"] = docker_image
             __props__.__dict__["driver_instance_pool_id"] = driver_instance_pool_id
             __props__.__dict__["driver_node_type_flexibility"] = driver_node_type_flexibility
@@ -1777,6 +1804,7 @@ class Cluster(pulumi.CustomResource):
             custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
             default_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            dependency_mode: pulumi.Input[Optional[_builtins.str]] = None,
             docker_image: pulumi.Input[Optional[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
             driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             driver_node_type_flexibility: pulumi.Input[Optional[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
@@ -1890,6 +1918,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["custom_tags"] = custom_tags
         __props__.__dict__["data_security_mode"] = data_security_mode
         __props__.__dict__["default_tags"] = default_tags
+        __props__.__dict__["dependency_mode"] = dependency_mode
         __props__.__dict__["docker_image"] = docker_image
         __props__.__dict__["driver_instance_pool_id"] = driver_instance_pool_id
         __props__.__dict__["driver_node_type_flexibility"] = driver_node_type_flexibility
@@ -2032,6 +2061,11 @@ class Cluster(pulumi.CustomResource):
         (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         """
         return pulumi.get(self, "default_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="dependencyMode")
+    def dependency_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "dependency_mode")
 
     @_builtins.property
     @pulumi.getter(name="dockerImage")

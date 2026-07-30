@@ -18,8 +18,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("microsoftEntraClientSecret")]
         public string? MicrosoftEntraClientSecret { get; set; }
 
-        [Input("microsoftEntraClientSecretPlaintext")]
-        public string? MicrosoftEntraClientSecretPlaintext { get; set; }
+        [Input("microsoftEntraClientSecretPlaintext", required: true)]
+        public string MicrosoftEntraClientSecretPlaintext { get; set; } = null!;
 
         [Input("microsoftEntraTenantId")]
         public string? MicrosoftEntraTenantId { get; set; }
@@ -30,8 +30,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("openaiApiKey")]
         public string? OpenaiApiKey { get; set; }
 
-        [Input("openaiApiKeyPlaintext")]
-        public string? OpenaiApiKeyPlaintext { get; set; }
+        [Input("openaiApiKeyPlaintext", required: true)]
+        public string OpenaiApiKeyPlaintext { get; set; } = null!;
 
         [Input("openaiApiType")]
         public string? OpenaiApiType { get; set; }

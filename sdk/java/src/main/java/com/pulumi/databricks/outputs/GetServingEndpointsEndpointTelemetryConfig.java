@@ -5,17 +5,28 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig;
+import com.pulumi.databricks.outputs.GetServingEndpointsEndpointTelemetryConfigTableName;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServingEndpointsEndpointTelemetryConfig {
     private @Nullable List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs;
+    private @Nullable List<GetServingEndpointsEndpointTelemetryConfigTableName> tableNames;
+    private @Nullable String telemetryProfileId;
 
     private GetServingEndpointsEndpointTelemetryConfig() {}
     public List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs() {
         return this.inferenceTableConfigs == null ? List.of() : this.inferenceTableConfigs;
+    }
+    public List<GetServingEndpointsEndpointTelemetryConfigTableName> tableNames() {
+        return this.tableNames == null ? List.of() : this.tableNames;
+    }
+    public Optional<String> telemetryProfileId() {
+        return Optional.ofNullable(this.telemetryProfileId);
     }
 
     public static Builder builder() {
@@ -28,10 +39,14 @@ public final class GetServingEndpointsEndpointTelemetryConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs;
+        private @Nullable List<GetServingEndpointsEndpointTelemetryConfigTableName> tableNames;
+        private @Nullable String telemetryProfileId;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointTelemetryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.inferenceTableConfigs = defaults.inferenceTableConfigs;
+    	      this.tableNames = defaults.tableNames;
+    	      this.telemetryProfileId = defaults.telemetryProfileId;
         }
 
         @CustomType.Setter
@@ -43,9 +58,26 @@ public final class GetServingEndpointsEndpointTelemetryConfig {
         public Builder inferenceTableConfigs(GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig... inferenceTableConfigs) {
             return inferenceTableConfigs(List.of(inferenceTableConfigs));
         }
+        @CustomType.Setter
+        public Builder tableNames(@Nullable List<GetServingEndpointsEndpointTelemetryConfigTableName> tableNames) {
+
+            this.tableNames = tableNames;
+            return this;
+        }
+        public Builder tableNames(GetServingEndpointsEndpointTelemetryConfigTableName... tableNames) {
+            return tableNames(List.of(tableNames));
+        }
+        @CustomType.Setter
+        public Builder telemetryProfileId(@Nullable String telemetryProfileId) {
+
+            this.telemetryProfileId = telemetryProfileId;
+            return this;
+        }
         public GetServingEndpointsEndpointTelemetryConfig build() {
             final var _resultValue = new GetServingEndpointsEndpointTelemetryConfig();
             _resultValue.inferenceTableConfigs = inferenceTableConfigs;
+            _resultValue.tableNames = tableNames;
+            _resultValue.telemetryProfileId = telemetryProfileId;
             return _resultValue;
         }
     }

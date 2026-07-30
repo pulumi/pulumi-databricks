@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("palmApiKey")]
         public string? PalmApiKey { get; set; }
 
-        [Input("palmApiKeyPlaintext")]
-        public string? PalmApiKeyPlaintext { get; set; }
+        [Input("palmApiKeyPlaintext", required: true)]
+        public string PalmApiKeyPlaintext { get; set; } = null!;
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs()
         {

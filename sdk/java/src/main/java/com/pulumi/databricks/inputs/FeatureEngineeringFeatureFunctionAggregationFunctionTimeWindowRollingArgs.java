@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,11 +22,11 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         return Optional.ofNullable(this.delay);
     }
 
-    @Import(name="windowDuration", required=true)
-    private Output<String> windowDuration;
+    @Import(name="windowDuration")
+    private @Nullable Output<String> windowDuration;
 
-    public Output<String> windowDuration() {
-        return this.windowDuration;
+    public Optional<Output<String>> windowDuration() {
+        return Optional.ofNullable(this.windowDuration);
     }
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs() {}
@@ -64,7 +63,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
             return delay(Output.of(delay));
         }
 
-        public Builder windowDuration(Output<String> windowDuration) {
+        public Builder windowDuration(@Nullable Output<String> windowDuration) {
             $.windowDuration = windowDuration;
             return this;
         }
@@ -74,9 +73,6 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         }
 
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs build() {
-            if ($.windowDuration == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs", "windowDuration");
-            }
             return $;
         }
     }

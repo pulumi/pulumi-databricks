@@ -38,6 +38,7 @@ class MlflowExperimentArgs:
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input['MlflowExperimentProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]] tags: Tags for the MLflow experiment.
+        :param pulumi.Input['MlflowExperimentTraceLocationArgs'] trace_location: Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
         """
         if artifact_location is not None:
             pulumi.set(__self__, "artifact_location", artifact_location)
@@ -160,6 +161,9 @@ class MlflowExperimentArgs:
     @_builtins.property
     @pulumi.getter(name="traceLocation")
     def trace_location(self) -> pulumi.Input[Optional['MlflowExperimentTraceLocationArgs']]:
+        """
+        Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+        """
         return pulumi.get(self, "trace_location")
 
     @trace_location.setter
@@ -187,6 +191,7 @@ class _MlflowExperimentState:
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input['MlflowExperimentProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]] tags: Tags for the MLflow experiment.
+        :param pulumi.Input['MlflowExperimentTraceLocationArgs'] trace_location: Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
         """
         if artifact_location is not None:
             pulumi.set(__self__, "artifact_location", artifact_location)
@@ -309,6 +314,9 @@ class _MlflowExperimentState:
     @_builtins.property
     @pulumi.getter(name="traceLocation")
     def trace_location(self) -> pulumi.Input[Optional['MlflowExperimentTraceLocationArgs']]:
+        """
+        Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+        """
         return pulumi.get(self, "trace_location")
 
     @trace_location.setter
@@ -362,6 +370,22 @@ class MlflowExperiment(pulumi.CustomResource):
             ])
         ```
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Store this experiment's traces in a Unity Catalog schema
+        with_uc_traces = databricks.MlflowExperiment("with_uc_traces",
+            name=f"{me['home']}/uc-traces-experiment",
+            trace_location={
+                "uc_trace_location": {
+                    "catalog": "my_catalog",
+                    "schema": "my_schema",
+                    "table_prefix": "my_experiment",
+                },
+            })
+        ```
+
         ## Access Control
 
         * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -385,6 +409,7 @@ class MlflowExperiment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
+        :param pulumi.Input[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']] trace_location: Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
         """
         ...
     @overload
@@ -419,6 +444,22 @@ class MlflowExperiment(pulumi.CustomResource):
                     "value": "value2",
                 },
             ])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Store this experiment's traces in a Unity Catalog schema
+        with_uc_traces = databricks.MlflowExperiment("with_uc_traces",
+            name=f"{me['home']}/uc-traces-experiment",
+            trace_location={
+                "uc_trace_location": {
+                    "catalog": "my_catalog",
+                    "schema": "my_schema",
+                    "table_prefix": "my_experiment",
+                },
+            })
         ```
 
         ## Access Control
@@ -513,6 +554,7 @@ class MlflowExperiment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
+        :param pulumi.Input[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']] trace_location: Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -591,5 +633,8 @@ class MlflowExperiment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="traceLocation")
     def trace_location(self) -> pulumi.Output[Optional['outputs.MlflowExperimentTraceLocation']]:
+        """
+        Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+        """
         return pulumi.get(self, "trace_location")
 

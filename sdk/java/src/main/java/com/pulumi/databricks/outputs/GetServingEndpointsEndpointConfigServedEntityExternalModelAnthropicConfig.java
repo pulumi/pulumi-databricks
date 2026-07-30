@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,14 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
     private @Nullable String anthropicApiKey;
-    private @Nullable String anthropicApiKeyPlaintext;
+    private String anthropicApiKeyPlaintext;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig() {}
     public Optional<String> anthropicApiKey() {
         return Optional.ofNullable(this.anthropicApiKey);
     }
-    public Optional<String> anthropicApiKeyPlaintext() {
-        return Optional.ofNullable(this.anthropicApiKeyPlaintext);
+    public String anthropicApiKeyPlaintext() {
+        return this.anthropicApiKeyPlaintext;
     }
 
     public static Builder builder() {
@@ -32,7 +33,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAnt
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String anthropicApiKey;
-        private @Nullable String anthropicApiKeyPlaintext;
+        private String anthropicApiKeyPlaintext;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,8 +48,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAnt
             return this;
         }
         @CustomType.Setter
-        public Builder anthropicApiKeyPlaintext(@Nullable String anthropicApiKeyPlaintext) {
-
+        public Builder anthropicApiKeyPlaintext(String anthropicApiKeyPlaintext) {
+            if (anthropicApiKeyPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig", "anthropicApiKeyPlaintext");
+            }
             this.anthropicApiKeyPlaintext = anthropicApiKeyPlaintext;
             return this;
         }

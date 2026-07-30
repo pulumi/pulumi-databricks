@@ -2082,6 +2082,17 @@ export interface AlertV2EvaluationThresholdValue {
     stringValue?: pulumi.Input<string | undefined>;
 }
 
+export interface AlertV2Parameter {
+    name: pulumi.Input<string>;
+    /**
+     * The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
+     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
+     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     */
+    type?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
+}
+
 export interface AlertV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -4145,8 +4156,8 @@ export interface DatabaseSyncedDatabaseTableSpecTypeOverride {
      */
     pgType: pulumi.Input<string>;
     /**
-     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      */
     size?: pulumi.Input<number | undefined>;
 }
@@ -4292,6 +4303,22 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
     workspaceIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface EndpointAwsVpcEndpointInfo {
+    /**
+     * (string) - The AWS account ID in which this VPC endpoint lives
+     */
+    awsAccountId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The ID of the Databricks VPC endpoint service that this endpoint connects to
+     */
+    awsEndpointServiceId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the underlying VPC endpoint in AWS. Provided by the customer when
+     * registering an existing AWS VPC endpoint
+     */
+    awsVpcEndpointId: pulumi.Input<string>;
+}
+
 export interface EndpointAzurePrivateEndpointInfo {
     /**
      * The name of the Private Endpoint in the Azure subscription
@@ -4310,6 +4337,34 @@ export interface EndpointAzurePrivateEndpointInfo {
      * (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
      */
     privateLinkServiceId?: pulumi.Input<string | undefined>;
+}
+
+export interface EndpointGcpPscEndpointInfo {
+    /**
+     * The GCP region of the PSC connection endpoint. Provided by the customer when registering an
+     * existing PSC endpoint. GCP supports only same-region PSC, so this must match the workspace
+     * region
+     */
+    endpointRegion: pulumi.Input<string>;
+    /**
+     * The GCP consumer project ID in which this PSC endpoint is created. Provided by the customer
+     * when registering an existing PSC endpoint
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * (string) - The ID of the underlying Private Service Connect connection in the GCP consumer project,
+     * assigned by GCP when the PSC connection is created
+     */
+    pscConnectionId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of this PSC connection in the GCP consumer project. Provided by the customer when
+     * registering an existing PSC endpoint
+     */
+    pscEndpoint: pulumi.Input<string>;
+    /**
+     * (string) - The ID of the Databricks service attachment this PSC endpoint connects to
+     */
+    serviceAttachmentId?: pulumi.Input<string | undefined>;
 }
 
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
@@ -4699,15 +4754,11 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous | undefined>;
-    /**
-     * A window that spans the entire lifetime of the data source
-     */
-    lifetime?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime | undefined>;
-    /**
-     * A long (multi-day) rolling window served via the hybrid batch + streaming path
-     */
-    longRolling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling | undefined>;
     rolling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling | undefined>;
+    /**
+     * A sawtooth window served via the hybrid batch + streaming path
+     */
+    sawtooth?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth | undefined>;
     sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding | undefined>;
     tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling | undefined>;
 }
@@ -4720,23 +4771,22 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowC
     windowDuration: pulumi.Input<string>;
 }
 
-export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime {
-    slideDuration?: pulumi.Input<string | undefined>;
-}
-
-export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling {
-    delay?: pulumi.Input<string | undefined>;
-    windowDuration: pulumi.Input<string>;
-}
-
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
     delay?: pulumi.Input<string | undefined>;
-    windowDuration: pulumi.Input<string>;
+    windowDuration?: pulumi.Input<string | undefined>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth {
+    delay?: pulumi.Input<string | undefined>;
+    windowDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
     slideDuration: pulumi.Input<string>;
-    windowDuration: pulumi.Input<string>;
+    windowDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
@@ -4818,11 +4868,6 @@ export interface FeatureEngineeringFeatureSource {
 }
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
-    /**
-     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-     * Required if transformationSql is specified.
-     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
-     */
     dataframeSchema?: pulumi.Input<string | undefined>;
     /**
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
@@ -4844,11 +4889,6 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
     timeseriesColumn?: pulumi.Input<string | undefined>;
-    /**
-     * A single SQL SELECT expression applied after filter_condition.
-     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
-     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
-     */
     transformationSql?: pulumi.Input<string | undefined>;
 }
 
@@ -4916,6 +4956,7 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
 }
 
 export interface FeatureEngineeringFeatureSourceStreamSource {
+    dataframeSchema?: pulumi.Input<string | undefined>;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -4927,19 +4968,16 @@ export interface FeatureEngineeringFeatureSourceStreamSource {
      * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: pulumi.Input<string>;
+    transformationSql?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
     continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowContinuous | undefined>;
-    /**
-     * A window that spans the entire lifetime of the data source
-     */
-    lifetime?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowLifetime | undefined>;
-    /**
-     * A long (multi-day) rolling window served via the hybrid batch + streaming path
-     */
-    longRolling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowLongRolling | undefined>;
     rolling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowRolling | undefined>;
+    /**
+     * A sawtooth window served via the hybrid batch + streaming path
+     */
+    sawtooth?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowSawtooth | undefined>;
     sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowSliding | undefined>;
     tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowTumbling | undefined>;
 }
@@ -4952,23 +4990,22 @@ export interface FeatureEngineeringFeatureTimeWindowContinuous {
     windowDuration: pulumi.Input<string>;
 }
 
-export interface FeatureEngineeringFeatureTimeWindowLifetime {
-    slideDuration?: pulumi.Input<string | undefined>;
-}
-
-export interface FeatureEngineeringFeatureTimeWindowLongRolling {
-    delay?: pulumi.Input<string | undefined>;
-    windowDuration: pulumi.Input<string>;
-}
-
 export interface FeatureEngineeringFeatureTimeWindowRolling {
     delay?: pulumi.Input<string | undefined>;
-    windowDuration: pulumi.Input<string>;
+    windowDuration?: pulumi.Input<string | undefined>;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowSawtooth {
+    delay?: pulumi.Input<string | undefined>;
+    windowDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureTimeWindowSliding {
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
     slideDuration: pulumi.Input<string>;
-    windowDuration: pulumi.Input<string>;
+    windowDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureTimeWindowTumbling {
@@ -5488,6 +5525,8 @@ export interface GetBudgetPoliciesFilterBy {
      */
     creatorUserId?: number;
     /**
+     * Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+     * future version.
      * The policy creator user name to be filtered on.
      * If unspecified, all policies will be returned
      */
@@ -5508,6 +5547,8 @@ export interface GetBudgetPoliciesFilterByArgs {
      */
     creatorUserId?: pulumi.Input<number | undefined>;
     /**
+     * Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+     * future version.
      * The policy creator user name to be filtered on.
      * If unspecified, all policies will be returned
      */
@@ -5828,6 +5869,7 @@ export interface GetClusterClusterInfo {
      */
     dataSecurityMode?: string;
     defaultTags?: {[key: string]: string};
+    dependencyMode?: string;
     dockerImage?: inputs.GetClusterClusterInfoDockerImage;
     driver?: inputs.GetClusterClusterInfoDriver;
     /**
@@ -5937,6 +5979,7 @@ export interface GetClusterClusterInfoArgs {
      */
     dataSecurityMode?: pulumi.Input<string | undefined>;
     defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dependencyMode?: pulumi.Input<string | undefined>;
     dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs | undefined>;
     driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs | undefined>;
     /**
@@ -6352,6 +6395,7 @@ export interface GetClusterClusterInfoSpec {
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: string;
+    dependencyMode?: string;
     dockerImage?: inputs.GetClusterClusterInfoSpecDockerImage;
     /**
      * similar to `instancePoolId`, but for driver node.
@@ -6450,6 +6494,7 @@ export interface GetClusterClusterInfoSpecArgs {
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: pulumi.Input<string | undefined>;
+    dependencyMode?: pulumi.Input<string | undefined>;
     dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoSpecDockerImageArgs | undefined>;
     /**
      * similar to `instancePoolId`, but for driver node.
@@ -12095,12 +12140,14 @@ export interface GetMlflowExperimentTraceLocationArgs {
 
 export interface GetMlflowExperimentTraceLocationUcTraceLocation {
     catalog: string;
+    effectiveTablePrefix?: string;
     schema: string;
     tablePrefix?: string;
 }
 
 export interface GetMlflowExperimentTraceLocationUcTraceLocationArgs {
     catalog: pulumi.Input<string>;
+    effectiveTablePrefix?: pulumi.Input<string | undefined>;
     schema: pulumi.Input<string>;
     tablePrefix?: pulumi.Input<string | undefined>;
 }
@@ -12901,6 +12948,20 @@ export interface GetQualityMonitorsV2ProviderConfig {
 }
 
 export interface GetQualityMonitorsV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetRecipientsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetRecipientsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -14153,10 +14214,14 @@ export interface GetServingEndpointsEndpointTagArgs {
 
 export interface GetServingEndpointsEndpointTelemetryConfig {
     inferenceTableConfigs?: inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig[];
+    tableNames?: inputs.GetServingEndpointsEndpointTelemetryConfigTableName[];
+    telemetryProfileId?: string;
 }
 
 export interface GetServingEndpointsEndpointTelemetryConfigArgs {
     inferenceTableConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs>[] | undefined>;
+    tableNames?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTelemetryConfigTableNameArgs>[] | undefined>;
+    telemetryProfileId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig {
@@ -14173,6 +14238,20 @@ export interface GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigA
      */
     name?: pulumi.Input<string | undefined>;
     samplingFraction?: pulumi.Input<number | undefined>;
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfigTableName {
+    annotationsTable?: string;
+    logsTable?: string;
+    metricsTable?: string;
+    tracesTable?: string;
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfigTableNameArgs {
+    annotationsTable?: pulumi.Input<string | undefined>;
+    logsTable?: pulumi.Input<string | undefined>;
+    metricsTable?: pulumi.Input<string | undefined>;
+    tracesTable?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsProviderConfig {
@@ -16059,6 +16138,7 @@ export interface JobJobCluster {
      * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      */
     newCluster: pulumi.Input<inputs.JobJobClusterNewCluster>;
+    serverlessComputeId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewCluster {
@@ -16073,6 +16153,7 @@ export interface JobJobClusterNewCluster {
     clusterName?: pulumi.Input<string | undefined>;
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     dataSecurityMode?: pulumi.Input<string | undefined>;
+    dependencyMode?: pulumi.Input<string | undefined>;
     dockerImage?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImage | undefined>;
     driverInstancePoolId?: pulumi.Input<string | undefined>;
     driverNodeTypeFlexibility?: pulumi.Input<inputs.JobJobClusterNewClusterDriverNodeTypeFlexibility | undefined>;
@@ -16367,6 +16448,7 @@ export interface JobNewCluster {
     clusterName?: pulumi.Input<string | undefined>;
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     dataSecurityMode?: pulumi.Input<string | undefined>;
+    dependencyMode?: pulumi.Input<string | undefined>;
     dockerImage?: pulumi.Input<inputs.JobNewClusterDockerImage | undefined>;
     driverInstancePoolId?: pulumi.Input<string | undefined>;
     driverNodeTypeFlexibility?: pulumi.Input<inputs.JobNewClusterDriverNodeTypeFlexibility | undefined>;
@@ -16900,6 +16982,7 @@ export interface JobTask {
 }
 
 export interface JobTaskAiRuntimeTask {
+    codeSourcePath?: pulumi.Input<string | undefined>;
     deployments: pulumi.Input<pulumi.Input<inputs.JobTaskAiRuntimeTaskDeployment>[]>;
     experiment: pulumi.Input<string>;
     mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
@@ -17247,6 +17330,7 @@ export interface JobTaskForEachTaskTask {
 }
 
 export interface JobTaskForEachTaskTaskAiRuntimeTask {
+    codeSourcePath?: pulumi.Input<string | undefined>;
     deployments: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskAiRuntimeTaskDeployment>[]>;
     experiment: pulumi.Input<string>;
     mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
@@ -17568,6 +17652,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     clusterName?: pulumi.Input<string | undefined>;
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     dataSecurityMode?: pulumi.Input<string | undefined>;
+    dependencyMode?: pulumi.Input<string | undefined>;
     dockerImage?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImage | undefined>;
     driverInstancePoolId?: pulumi.Input<string | undefined>;
     driverNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility | undefined>;
@@ -18330,6 +18415,7 @@ export interface JobTaskNewCluster {
     clusterName?: pulumi.Input<string | undefined>;
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     dataSecurityMode?: pulumi.Input<string | undefined>;
+    dependencyMode?: pulumi.Input<string | undefined>;
     dockerImage?: pulumi.Input<inputs.JobTaskNewClusterDockerImage | undefined>;
     driverInstancePoolId?: pulumi.Input<string | undefined>;
     driverNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskNewClusterDriverNodeTypeFlexibility | undefined>;
@@ -19425,12 +19511,28 @@ export interface MlflowExperimentTag {
 }
 
 export interface MlflowExperimentTraceLocation {
+    /**
+     * The Unity Catalog storage location. This block consists of the following fields:
+     */
     ucTraceLocation?: pulumi.Input<inputs.MlflowExperimentTraceLocationUcTraceLocation | undefined>;
 }
 
 export interface MlflowExperimentTraceLocationUcTraceLocation {
+    /**
+     * Name of the Unity Catalog catalog.
+     */
     catalog: pulumi.Input<string>;
+    /**
+     * The trace-table prefix actually in effect: `tablePrefix` if it was set on creation, otherwise the server-generated default.
+     */
+    effectiveTablePrefix?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Unity Catalog schema within `catalog`.
+     */
     schema: pulumi.Input<string>;
+    /**
+     * Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `effectiveTablePrefix`.
+     */
     tablePrefix?: pulumi.Input<string | undefined>;
 }
 
@@ -20289,6 +20391,8 @@ export interface ModelServingTelemetryConfig {
      * Block describing the configuration of usage tracking. Consists of the following attributes:
      */
     inferenceTableConfig?: pulumi.Input<inputs.ModelServingTelemetryConfigInferenceTableConfig | undefined>;
+    tableNames?: pulumi.Input<inputs.ModelServingTelemetryConfigTableNames | undefined>;
+    telemetryProfileId?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingTelemetryConfigInferenceTableConfig {
@@ -20297,6 +20401,13 @@ export interface ModelServingTelemetryConfigInferenceTableConfig {
      */
     name?: pulumi.Input<string | undefined>;
     samplingFraction?: pulumi.Input<number | undefined>;
+}
+
+export interface ModelServingTelemetryConfigTableNames {
+    annotationsTable?: pulumi.Input<string | undefined>;
+    logsTable?: pulumi.Input<string | undefined>;
+    metricsTable?: pulumi.Input<string | undefined>;
+    tracesTable?: pulumi.Input<string | undefined>;
 }
 
 export interface MountAbfs {
@@ -20486,11 +20597,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -20557,11 +20668,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.122.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -21175,6 +21286,7 @@ export interface PipelineIngestionDefinitionObjectSchema {
     connectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions | undefined>;
     destinationCatalog: pulumi.Input<string>;
     destinationSchema: pulumi.Input<string>;
+    fanoutOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptions | undefined>;
     sourceCatalog?: pulumi.Input<string | undefined>;
     sourceSchema: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration | undefined>;
@@ -21188,6 +21300,7 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     kafkaOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions | undefined>;
     metaAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions | undefined>;
     outlookOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions | undefined>;
+    redditAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions | undefined>;
     sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions | undefined>;
     smartsheetOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions | undefined>;
     tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions | undefined>;
@@ -21321,6 +21434,17 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookO
     subjectFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions {
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsCustomReportOptions | undefined>;
+    lookbackWindowDays?: pulumi.Input<number | undefined>;
+    syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsCustomReportOptions {
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions {
     entityType?: pulumi.Input<string | undefined>;
     fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions | undefined>;
@@ -21375,6 +21499,27 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAd
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions {
     startDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptions {
+    fanoutBy?: pulumi.Input<string | undefined>;
+    transforms?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform>[] | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform {
+    format?: pulumi.Input<string | undefined>;
+    jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions {
+    asVariant?: pulumi.Input<boolean | undefined>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: pulumi.Input<string | undefined>;
+    schemaEvolutionMode?: pulumi.Input<string | undefined>;
+    schemaFilePath?: pulumi.Input<string | undefined>;
+    schemaHints?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
@@ -21435,6 +21580,7 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
     kafkaOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions | undefined>;
     metaAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions | undefined>;
     outlookOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions | undefined>;
+    redditAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions | undefined>;
     sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions | undefined>;
     smartsheetOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions | undefined>;
     tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions | undefined>;
@@ -21566,6 +21712,17 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOp
     senderFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     startDate?: pulumi.Input<string | undefined>;
     subjectFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions {
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsCustomReportOptions | undefined>;
+    lookbackWindowDays?: pulumi.Input<number | undefined>;
+    syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsCustomReportOptions {
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions {
@@ -22558,6 +22715,10 @@ export interface PostgresSyncedTableSpec {
      */
     existingPipelineId?: pulumi.Input<string | undefined>;
     /**
+     * Extra PostgreSQL-only columns to add to the synced table
+     */
+    extraColumns?: pulumi.Input<pulumi.Input<inputs.PostgresSyncedTableSpecExtraColumn>[] | undefined>;
+    /**
      * Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
@@ -22601,6 +22762,23 @@ export interface PostgresSyncedTableSpec {
     typeOverrides?: pulumi.Input<pulumi.Input<inputs.PostgresSyncedTableSpecTypeOverride>[] | undefined>;
 }
 
+export interface PostgresSyncedTableSpecExtraColumn {
+    columnName: pulumi.Input<string>;
+    /**
+     * PostgreSQL type of the column, for example "tsvector" or "vector(1024)"
+     */
+    columnType: pulumi.Input<string>;
+    /**
+     * SQL expression used to compute the column's value, for example
+     * "to_tsvector('english', content)"
+     */
+    compute?: pulumi.Input<string | undefined>;
+    /**
+     * Possible values are: `STORED_GENERATED`
+     */
+    maintenance?: pulumi.Input<string | undefined>;
+}
+
 export interface PostgresSyncedTableSpecNewPipelineSpec {
     /**
      * Budget policy to set on the newly created pipeline
@@ -22619,17 +22797,14 @@ export interface PostgresSyncedTableSpecNewPipelineSpec {
 }
 
 export interface PostgresSyncedTableSpecTypeOverride {
-    /**
-     * Name of the source column whose target PostgreSQL type should be overridden
-     */
     columnName: pulumi.Input<string>;
     /**
      * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: pulumi.Input<string>;
     /**
-     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      */
     size?: pulumi.Input<number | undefined>;
 }
@@ -23179,7 +23354,7 @@ export interface RfaAccessRequestDestinationsDestination {
      * This field is used to denote whether the destination is the email of the owner of the securable object.
      * The special destination cannot be assigned to a securable and only represents the default destination of the securable.
      * The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
-     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_FUNCTION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`, `SPECIAL_DESTINATION_REGISTERED_MODEL_OWNER`, `SPECIAL_DESTINATION_SCHEMA_OWNER`, `SPECIAL_DESTINATION_TABLE_OWNER`, `SPECIAL_DESTINATION_VOLUME_OWNER`
      */
     specialDestination?: pulumi.Input<string | undefined>;
 }

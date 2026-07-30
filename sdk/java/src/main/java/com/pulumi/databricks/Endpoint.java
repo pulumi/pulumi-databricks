@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.EndpointArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.EndpointState;
+import com.pulumi.databricks.outputs.EndpointAwsVpcEndpointInfo;
 import com.pulumi.databricks.outputs.EndpointAzurePrivateEndpointInfo;
+import com.pulumi.databricks.outputs.EndpointGcpPscEndpointInfo;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -84,6 +86,20 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * Info for an AWS VPC endpoint
+     * 
+     */
+    @Export(name="awsVpcEndpointInfo", refs={EndpointAwsVpcEndpointInfo.class}, tree="[0]")
+    private Output</* @Nullable */ EndpointAwsVpcEndpointInfo> awsVpcEndpointInfo;
+
+    /**
+     * @return Info for an AWS VPC endpoint
+     * 
+     */
+    public Output<Optional<EndpointAwsVpcEndpointInfo>> awsVpcEndpointInfo() {
+        return Codegen.optional(this.awsVpcEndpointInfo);
+    }
+    /**
      * Info for an Azure private endpoint
      * 
      */
@@ -142,6 +158,20 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> endpointId() {
         return this.endpointId;
+    }
+    /**
+     * Info for a GCP Private Service Connect endpoint
+     * 
+     */
+    @Export(name="gcpPscEndpointInfo", refs={EndpointGcpPscEndpointInfo.class}, tree="[0]")
+    private Output</* @Nullable */ EndpointGcpPscEndpointInfo> gcpPscEndpointInfo;
+
+    /**
+     * @return Info for a GCP Private Service Connect endpoint
+     * 
+     */
+    public Output<Optional<EndpointGcpPscEndpointInfo>> gcpPscEndpointInfo() {
+        return Codegen.optional(this.gcpPscEndpointInfo);
     }
     /**
      * (string) - The resource name of the endpoint, which uniquely identifies the endpoint

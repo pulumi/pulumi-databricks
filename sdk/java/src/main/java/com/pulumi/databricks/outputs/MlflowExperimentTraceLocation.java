@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MlflowExperimentTraceLocation {
+    /**
+     * @return The Unity Catalog storage location. This block consists of the following fields:
+     * 
+     */
     private @Nullable MlflowExperimentTraceLocationUcTraceLocation ucTraceLocation;
 
     private MlflowExperimentTraceLocation() {}
+    /**
+     * @return The Unity Catalog storage location. This block consists of the following fields:
+     * 
+     */
     public Optional<MlflowExperimentTraceLocationUcTraceLocation> ucTraceLocation() {
         return Optional.ofNullable(this.ucTraceLocation);
     }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,11 +30,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
         return Optional.ofNullable(this.microsoftEntraClientSecret);
     }
 
-    @Import(name="microsoftEntraClientSecretPlaintext")
-    private @Nullable Output<String> microsoftEntraClientSecretPlaintext;
+    @Import(name="microsoftEntraClientSecretPlaintext", required=true)
+    private Output<String> microsoftEntraClientSecretPlaintext;
 
-    public Optional<Output<String>> microsoftEntraClientSecretPlaintext() {
-        return Optional.ofNullable(this.microsoftEntraClientSecretPlaintext);
+    public Output<String> microsoftEntraClientSecretPlaintext() {
+        return this.microsoftEntraClientSecretPlaintext;
     }
 
     @Import(name="microsoftEntraTenantId")
@@ -57,11 +58,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
         return Optional.ofNullable(this.openaiApiKey);
     }
 
-    @Import(name="openaiApiKeyPlaintext")
-    private @Nullable Output<String> openaiApiKeyPlaintext;
+    @Import(name="openaiApiKeyPlaintext", required=true)
+    private Output<String> openaiApiKeyPlaintext;
 
-    public Optional<Output<String>> openaiApiKeyPlaintext() {
-        return Optional.ofNullable(this.openaiApiKeyPlaintext);
+    public Output<String> openaiApiKeyPlaintext() {
+        return this.openaiApiKeyPlaintext;
     }
 
     @Import(name="openaiApiType")
@@ -144,7 +145,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
             return microsoftEntraClientSecret(Output.of(microsoftEntraClientSecret));
         }
 
-        public Builder microsoftEntraClientSecretPlaintext(@Nullable Output<String> microsoftEntraClientSecretPlaintext) {
+        public Builder microsoftEntraClientSecretPlaintext(Output<String> microsoftEntraClientSecretPlaintext) {
             $.microsoftEntraClientSecretPlaintext = microsoftEntraClientSecretPlaintext;
             return this;
         }
@@ -180,7 +181,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
             return openaiApiKey(Output.of(openaiApiKey));
         }
 
-        public Builder openaiApiKeyPlaintext(@Nullable Output<String> openaiApiKeyPlaintext) {
+        public Builder openaiApiKeyPlaintext(Output<String> openaiApiKeyPlaintext) {
             $.openaiApiKeyPlaintext = openaiApiKeyPlaintext;
             return this;
         }
@@ -226,6 +227,12 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelOpe
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs build() {
+            if ($.microsoftEntraClientSecretPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs", "microsoftEntraClientSecretPlaintext");
+            }
+            if ($.openaiApiKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs", "openaiApiKeyPlaintext");
+            }
             return $;
         }
     }

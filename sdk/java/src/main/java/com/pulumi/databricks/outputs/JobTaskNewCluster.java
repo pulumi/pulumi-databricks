@@ -39,6 +39,7 @@ public final class JobTaskNewCluster {
     private @Nullable String clusterName;
     private @Nullable Map<String,String> customTags;
     private @Nullable String dataSecurityMode;
+    private @Nullable String dependencyMode;
     private @Nullable JobTaskNewClusterDockerImage dockerImage;
     private @Nullable String driverInstancePoolId;
     private @Nullable JobTaskNewClusterDriverNodeTypeFlexibility driverNodeTypeFlexibility;
@@ -113,6 +114,9 @@ public final class JobTaskNewCluster {
     }
     public Optional<String> dataSecurityMode() {
         return Optional.ofNullable(this.dataSecurityMode);
+    }
+    public Optional<String> dependencyMode() {
+        return Optional.ofNullable(this.dependencyMode);
     }
     public Optional<JobTaskNewClusterDockerImage> dockerImage() {
         return Optional.ofNullable(this.dockerImage);
@@ -231,6 +235,7 @@ public final class JobTaskNewCluster {
         private @Nullable String clusterName;
         private @Nullable Map<String,String> customTags;
         private @Nullable String dataSecurityMode;
+        private @Nullable String dependencyMode;
         private @Nullable JobTaskNewClusterDockerImage dockerImage;
         private @Nullable String driverInstancePoolId;
         private @Nullable JobTaskNewClusterDriverNodeTypeFlexibility driverNodeTypeFlexibility;
@@ -273,6 +278,7 @@ public final class JobTaskNewCluster {
     	      this.clusterName = defaults.clusterName;
     	      this.customTags = defaults.customTags;
     	      this.dataSecurityMode = defaults.dataSecurityMode;
+    	      this.dependencyMode = defaults.dependencyMode;
     	      this.dockerImage = defaults.dockerImage;
     	      this.driverInstancePoolId = defaults.driverInstancePoolId;
     	      this.driverNodeTypeFlexibility = defaults.driverNodeTypeFlexibility;
@@ -373,6 +379,12 @@ public final class JobTaskNewCluster {
         public Builder dataSecurityMode(@Nullable String dataSecurityMode) {
 
             this.dataSecurityMode = dataSecurityMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dependencyMode(@Nullable String dependencyMode) {
+
+            this.dependencyMode = dependencyMode;
             return this;
         }
         @CustomType.Setter
@@ -565,6 +577,7 @@ public final class JobTaskNewCluster {
             _resultValue.clusterName = clusterName;
             _resultValue.customTags = customTags;
             _resultValue.dataSecurityMode = dataSecurityMode;
+            _resultValue.dependencyMode = dependencyMode;
             _resultValue.dockerImage = dockerImage;
             _resultValue.driverInstancePoolId = driverInstancePoolId;
             _resultValue.driverNodeTypeFlexibility = driverNodeTypeFlexibility;

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
     private @Nullable String privateKey;
-    private @Nullable String privateKeyPlaintext;
+    private String privateKeyPlaintext;
     private String projectId;
     private String region;
 
@@ -21,8 +21,8 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
-    public Optional<String> privateKeyPlaintext() {
-        return Optional.ofNullable(this.privateKeyPlaintext);
+    public String privateKeyPlaintext() {
+        return this.privateKeyPlaintext;
     }
     public String projectId() {
         return this.projectId;
@@ -41,7 +41,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String privateKey;
-        private @Nullable String privateKeyPlaintext;
+        private String privateKeyPlaintext;
         private String projectId;
         private String region;
         public Builder() {}
@@ -60,8 +60,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
             return this;
         }
         @CustomType.Setter
-        public Builder privateKeyPlaintext(@Nullable String privateKeyPlaintext) {
-
+        public Builder privateKeyPlaintext(String privateKeyPlaintext) {
+            if (privateKeyPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig", "privateKeyPlaintext");
+            }
             this.privateKeyPlaintext = privateKeyPlaintext;
             return this;
         }

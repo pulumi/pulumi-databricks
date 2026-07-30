@@ -5,6 +5,8 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ModelServingTelemetryConfigInferenceTableConfig;
+import com.pulumi.databricks.outputs.ModelServingTelemetryConfigTableNames;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +18,8 @@ public final class ModelServingTelemetryConfig {
      * 
      */
     private @Nullable ModelServingTelemetryConfigInferenceTableConfig inferenceTableConfig;
+    private @Nullable ModelServingTelemetryConfigTableNames tableNames;
+    private @Nullable String telemetryProfileId;
 
     private ModelServingTelemetryConfig() {}
     /**
@@ -24,6 +28,12 @@ public final class ModelServingTelemetryConfig {
      */
     public Optional<ModelServingTelemetryConfigInferenceTableConfig> inferenceTableConfig() {
         return Optional.ofNullable(this.inferenceTableConfig);
+    }
+    public Optional<ModelServingTelemetryConfigTableNames> tableNames() {
+        return Optional.ofNullable(this.tableNames);
+    }
+    public Optional<String> telemetryProfileId() {
+        return Optional.ofNullable(this.telemetryProfileId);
     }
 
     public static Builder builder() {
@@ -36,10 +46,14 @@ public final class ModelServingTelemetryConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ModelServingTelemetryConfigInferenceTableConfig inferenceTableConfig;
+        private @Nullable ModelServingTelemetryConfigTableNames tableNames;
+        private @Nullable String telemetryProfileId;
         public Builder() {}
         public Builder(ModelServingTelemetryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.inferenceTableConfig = defaults.inferenceTableConfig;
+    	      this.tableNames = defaults.tableNames;
+    	      this.telemetryProfileId = defaults.telemetryProfileId;
         }
 
         @CustomType.Setter
@@ -48,9 +62,23 @@ public final class ModelServingTelemetryConfig {
             this.inferenceTableConfig = inferenceTableConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder tableNames(@Nullable ModelServingTelemetryConfigTableNames tableNames) {
+
+            this.tableNames = tableNames;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder telemetryProfileId(@Nullable String telemetryProfileId) {
+
+            this.telemetryProfileId = telemetryProfileId;
+            return this;
+        }
         public ModelServingTelemetryConfig build() {
             final var _resultValue = new ModelServingTelemetryConfig();
             _resultValue.inferenceTableConfig = inferenceTableConfig;
+            _resultValue.tableNames = tableNames;
+            _resultValue.telemetryProfileId = telemetryProfileId;
             return _resultValue;
         }
     }

@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions? ConnectorOptions;
         public readonly string DestinationCatalog;
         public readonly string DestinationSchema;
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptions? FanoutOptions;
         public readonly string? SourceCatalog;
         public readonly string SourceSchema;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration? TableConfiguration;
@@ -28,6 +29,8 @@ namespace Pulumi.Databricks.Outputs
 
             string destinationSchema,
 
+            Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptions? fanoutOptions,
+
             string? sourceCatalog,
 
             string sourceSchema,
@@ -37,6 +40,7 @@ namespace Pulumi.Databricks.Outputs
             ConnectorOptions = connectorOptions;
             DestinationCatalog = destinationCatalog;
             DestinationSchema = destinationSchema;
+            FanoutOptions = fanoutOptions;
             SourceCatalog = sourceCatalog;
             SourceSchema = sourceSchema;
             TableConfiguration = tableConfiguration;

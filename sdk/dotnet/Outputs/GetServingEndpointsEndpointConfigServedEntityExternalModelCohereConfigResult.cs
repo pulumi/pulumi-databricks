@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? CohereApiBase;
         public readonly string? CohereApiKey;
-        public readonly string? CohereApiKeyPlaintext;
+        public readonly string CohereApiKeyPlaintext;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigResult(
@@ -23,7 +23,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? cohereApiKey,
 
-            string? cohereApiKeyPlaintext)
+            string cohereApiKeyPlaintext)
         {
             CohereApiBase = cohereApiBase;
             CohereApiKey = cohereApiKey;

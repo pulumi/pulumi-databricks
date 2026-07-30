@@ -29,11 +29,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
         return Optional.ofNullable(this.value);
     }
 
-    @Import(name="valuePlaintext")
-    private @Nullable String valuePlaintext;
+    @Import(name="valuePlaintext", required=true)
+    private String valuePlaintext;
 
-    public Optional<String> valuePlaintext() {
-        return Optional.ofNullable(this.valuePlaintext);
+    public String valuePlaintext() {
+        return this.valuePlaintext;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth() {}
@@ -72,7 +72,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
             return this;
         }
 
-        public Builder valuePlaintext(@Nullable String valuePlaintext) {
+        public Builder valuePlaintext(String valuePlaintext) {
             $.valuePlaintext = valuePlaintext;
             return this;
         }
@@ -80,6 +80,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
         public GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth build() {
             if ($.key == null) {
                 throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth", "key");
+            }
+            if ($.valuePlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth", "valuePlaintext");
             }
             return $;
         }

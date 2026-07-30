@@ -66,6 +66,7 @@ public final class GetClusterClusterInfo {
      */
     private @Nullable String dataSecurityMode;
     private @Nullable Map<String,String> defaultTags;
+    private @Nullable String dependencyMode;
     private @Nullable GetClusterClusterInfoDockerImage dockerImage;
     private @Nullable GetClusterClusterInfoDriver driver;
     /**
@@ -221,6 +222,9 @@ public final class GetClusterClusterInfo {
     }
     public Map<String,String> defaultTags() {
         return this.defaultTags == null ? Map.of() : this.defaultTags;
+    }
+    public Optional<String> dependencyMode() {
+        return Optional.ofNullable(this.dependencyMode);
     }
     public Optional<GetClusterClusterInfoDockerImage> dockerImage() {
         return Optional.ofNullable(this.dockerImage);
@@ -410,6 +414,7 @@ public final class GetClusterClusterInfo {
         private @Nullable Map<String,String> customTags;
         private @Nullable String dataSecurityMode;
         private @Nullable Map<String,String> defaultTags;
+        private @Nullable String dependencyMode;
         private @Nullable GetClusterClusterInfoDockerImage dockerImage;
         private @Nullable GetClusterClusterInfoDriver driver;
         private @Nullable String driverInstancePoolId;
@@ -465,6 +470,7 @@ public final class GetClusterClusterInfo {
     	      this.customTags = defaults.customTags;
     	      this.dataSecurityMode = defaults.dataSecurityMode;
     	      this.defaultTags = defaults.defaultTags;
+    	      this.dependencyMode = defaults.dependencyMode;
     	      this.dockerImage = defaults.dockerImage;
     	      this.driver = defaults.driver;
     	      this.driverInstancePoolId = defaults.driverInstancePoolId;
@@ -592,6 +598,12 @@ public final class GetClusterClusterInfo {
         public Builder defaultTags(@Nullable Map<String,String> defaultTags) {
 
             this.defaultTags = defaultTags;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dependencyMode(@Nullable String dependencyMode) {
+
+            this.dependencyMode = dependencyMode;
             return this;
         }
         @CustomType.Setter
@@ -842,6 +854,7 @@ public final class GetClusterClusterInfo {
             _resultValue.customTags = customTags;
             _resultValue.dataSecurityMode = dataSecurityMode;
             _resultValue.defaultTags = defaultTags;
+            _resultValue.dependencyMode = dependencyMode;
             _resultValue.dockerImage = dockerImage;
             _resultValue.driver = driver;
             _resultValue.driverInstancePoolId = driverInstancePoolId;

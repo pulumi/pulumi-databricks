@@ -91,6 +91,9 @@ type LookupAlertV2Result struct {
 	LifecycleState string `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName string `pulumi:"ownerUserName"`
+	// (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
+	// query text with `:name` syntax. Static values only
+	Parameters []GetAlertV2Parameter `pulumi:"parameters"`
 	// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath     string                    `pulumi:"parentPath"`
 	ProviderConfig *GetAlertV2ProviderConfig `pulumi:"providerConfig"`
@@ -195,6 +198,12 @@ func (o LookupAlertV2ResultOutput) LifecycleState() pulumi.StringOutput {
 // (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 func (o LookupAlertV2ResultOutput) OwnerUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.OwnerUserName }).(pulumi.StringOutput)
+}
+
+// (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
+// query text with `:name` syntax. Static values only
+func (o LookupAlertV2ResultOutput) Parameters() GetAlertV2ParameterArrayOutput {
+	return o.ApplyT(func(v LookupAlertV2Result) []GetAlertV2Parameter { return v.Parameters }).(GetAlertV2ParameterArrayOutput)
 }
 
 // (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated

@@ -18,6 +18,13 @@ public final class JobTaskAiRuntimeTaskArgs extends com.pulumi.resources.Resourc
 
     public static final JobTaskAiRuntimeTaskArgs Empty = new JobTaskAiRuntimeTaskArgs();
 
+    @Import(name="codeSourcePath")
+    private @Nullable Output<String> codeSourcePath;
+
+    public Optional<Output<String>> codeSourcePath() {
+        return Optional.ofNullable(this.codeSourcePath);
+    }
+
     @Import(name="deployments", required=true)
     private Output<List<JobTaskAiRuntimeTaskDeploymentArgs>> deployments;
 
@@ -49,6 +56,7 @@ public final class JobTaskAiRuntimeTaskArgs extends com.pulumi.resources.Resourc
     private JobTaskAiRuntimeTaskArgs() {}
 
     private JobTaskAiRuntimeTaskArgs(JobTaskAiRuntimeTaskArgs $) {
+        this.codeSourcePath = $.codeSourcePath;
         this.deployments = $.deployments;
         this.experiment = $.experiment;
         this.mlflowExperimentDirectory = $.mlflowExperimentDirectory;
@@ -71,6 +79,15 @@ public final class JobTaskAiRuntimeTaskArgs extends com.pulumi.resources.Resourc
 
         public Builder(JobTaskAiRuntimeTaskArgs defaults) {
             $ = new JobTaskAiRuntimeTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder codeSourcePath(@Nullable Output<String> codeSourcePath) {
+            $.codeSourcePath = codeSourcePath;
+            return this;
+        }
+
+        public Builder codeSourcePath(String codeSourcePath) {
+            return codeSourcePath(Output.of(codeSourcePath));
         }
 
         public Builder deployments(Output<List<JobTaskAiRuntimeTaskDeploymentArgs>> deployments) {

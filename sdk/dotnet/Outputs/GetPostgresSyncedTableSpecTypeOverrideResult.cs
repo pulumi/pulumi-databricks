@@ -22,8 +22,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string PgType;
         /// <summary>
-        /// (integer) - Size parameter for the target type. Required when PgType is PG_SPECIFIC_TYPE_VECTOR
-        /// or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+        /// (integer) - Size parameter for the target type, for types that take one (e.g. vector
+        /// dimension, varchar length). Required when the chosen PgType needs a size
         /// </summary>
         public readonly int? Size;
 

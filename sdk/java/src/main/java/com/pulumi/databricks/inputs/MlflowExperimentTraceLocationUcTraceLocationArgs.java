@@ -16,23 +16,62 @@ public final class MlflowExperimentTraceLocationUcTraceLocationArgs extends com.
 
     public static final MlflowExperimentTraceLocationUcTraceLocationArgs Empty = new MlflowExperimentTraceLocationUcTraceLocationArgs();
 
+    /**
+     * Name of the Unity Catalog catalog.
+     * 
+     */
     @Import(name="catalog", required=true)
     private Output<String> catalog;
 
+    /**
+     * @return Name of the Unity Catalog catalog.
+     * 
+     */
     public Output<String> catalog() {
         return this.catalog;
     }
 
+    /**
+     * The trace-table prefix actually in effect: `tablePrefix` if it was set on creation, otherwise the server-generated default.
+     * 
+     */
+    @Import(name="effectiveTablePrefix")
+    private @Nullable Output<String> effectiveTablePrefix;
+
+    /**
+     * @return The trace-table prefix actually in effect: `tablePrefix` if it was set on creation, otherwise the server-generated default.
+     * 
+     */
+    public Optional<Output<String>> effectiveTablePrefix() {
+        return Optional.ofNullable(this.effectiveTablePrefix);
+    }
+
+    /**
+     * Name of the Unity Catalog schema within `catalog`.
+     * 
+     */
     @Import(name="schema", required=true)
     private Output<String> schema;
 
+    /**
+     * @return Name of the Unity Catalog schema within `catalog`.
+     * 
+     */
     public Output<String> schema() {
         return this.schema;
     }
 
+    /**
+     * Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `effectiveTablePrefix`.
+     * 
+     */
     @Import(name="tablePrefix")
     private @Nullable Output<String> tablePrefix;
 
+    /**
+     * @return Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `effectiveTablePrefix`.
+     * 
+     */
     public Optional<Output<String>> tablePrefix() {
         return Optional.ofNullable(this.tablePrefix);
     }
@@ -41,6 +80,7 @@ public final class MlflowExperimentTraceLocationUcTraceLocationArgs extends com.
 
     private MlflowExperimentTraceLocationUcTraceLocationArgs(MlflowExperimentTraceLocationUcTraceLocationArgs $) {
         this.catalog = $.catalog;
+        this.effectiveTablePrefix = $.effectiveTablePrefix;
         this.schema = $.schema;
         this.tablePrefix = $.tablePrefix;
     }
@@ -63,29 +103,86 @@ public final class MlflowExperimentTraceLocationUcTraceLocationArgs extends com.
             $ = new MlflowExperimentTraceLocationUcTraceLocationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param catalog Name of the Unity Catalog catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalog(Output<String> catalog) {
             $.catalog = catalog;
             return this;
         }
 
+        /**
+         * @param catalog Name of the Unity Catalog catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalog(String catalog) {
             return catalog(Output.of(catalog));
         }
 
+        /**
+         * @param effectiveTablePrefix The trace-table prefix actually in effect: `tablePrefix` if it was set on creation, otherwise the server-generated default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTablePrefix(@Nullable Output<String> effectiveTablePrefix) {
+            $.effectiveTablePrefix = effectiveTablePrefix;
+            return this;
+        }
+
+        /**
+         * @param effectiveTablePrefix The trace-table prefix actually in effect: `tablePrefix` if it was set on creation, otherwise the server-generated default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTablePrefix(String effectiveTablePrefix) {
+            return effectiveTablePrefix(Output.of(effectiveTablePrefix));
+        }
+
+        /**
+         * @param schema Name of the Unity Catalog schema within `catalog`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(Output<String> schema) {
             $.schema = schema;
             return this;
         }
 
+        /**
+         * @param schema Name of the Unity Catalog schema within `catalog`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
         }
 
+        /**
+         * @param tablePrefix Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `effectiveTablePrefix`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tablePrefix(@Nullable Output<String> tablePrefix) {
             $.tablePrefix = tablePrefix;
             return this;
         }
 
+        /**
+         * @param tablePrefix Prefix for the generated trace tables (named `{catalog}.{schema}.{table_prefix}_otel_*`). If omitted, the server generates a default prefix derived from the experiment ID; the field then stays empty and the resolved value is available in `effectiveTablePrefix`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tablePrefix(String tablePrefix) {
             return tablePrefix(Output.of(tablePrefix));
         }

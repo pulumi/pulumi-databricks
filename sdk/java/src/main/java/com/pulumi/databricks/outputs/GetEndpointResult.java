@@ -4,7 +4,9 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetEndpointAwsVpcEndpointInfo;
 import com.pulumi.databricks.outputs.GetEndpointAzurePrivateEndpointInfo;
+import com.pulumi.databricks.outputs.GetEndpointGcpPscEndpointInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +18,11 @@ public final class GetEndpointResult {
      * 
      */
     private String accountId;
+    /**
+     * @return (AwsVpcEndpointInfo) - Info for an AWS VPC endpoint
+     * 
+     */
+    private GetEndpointAwsVpcEndpointInfo awsVpcEndpointInfo;
     /**
      * @return (AzurePrivateEndpointInfo) - Info for an Azure private endpoint
      * 
@@ -38,6 +45,11 @@ public final class GetEndpointResult {
      * 
      */
     private String endpointId;
+    /**
+     * @return (GcpPscEndpointInfo) - Info for a GCP Private Service Connect endpoint
+     * 
+     */
+    private GetEndpointGcpPscEndpointInfo gcpPscEndpointInfo;
     /**
      * @return (string) - The resource name of the endpoint, which uniquely identifies the endpoint
      * 
@@ -69,6 +81,13 @@ public final class GetEndpointResult {
         return this.accountId;
     }
     /**
+     * @return (AwsVpcEndpointInfo) - Info for an AWS VPC endpoint
+     * 
+     */
+    public GetEndpointAwsVpcEndpointInfo awsVpcEndpointInfo() {
+        return this.awsVpcEndpointInfo;
+    }
+    /**
      * @return (AzurePrivateEndpointInfo) - Info for an Azure private endpoint
      * 
      */
@@ -97,6 +116,13 @@ public final class GetEndpointResult {
      */
     public String endpointId() {
         return this.endpointId;
+    }
+    /**
+     * @return (GcpPscEndpointInfo) - Info for a GCP Private Service Connect endpoint
+     * 
+     */
+    public GetEndpointGcpPscEndpointInfo gcpPscEndpointInfo() {
+        return this.gcpPscEndpointInfo;
     }
     /**
      * @return (string) - The resource name of the endpoint, which uniquely identifies the endpoint
@@ -138,10 +164,12 @@ public final class GetEndpointResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private GetEndpointAwsVpcEndpointInfo awsVpcEndpointInfo;
         private GetEndpointAzurePrivateEndpointInfo azurePrivateEndpointInfo;
         private String createTime;
         private String displayName;
         private String endpointId;
+        private GetEndpointGcpPscEndpointInfo gcpPscEndpointInfo;
         private String name;
         private String region;
         private String state;
@@ -150,10 +178,12 @@ public final class GetEndpointResult {
         public Builder(GetEndpointResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.awsVpcEndpointInfo = defaults.awsVpcEndpointInfo;
     	      this.azurePrivateEndpointInfo = defaults.azurePrivateEndpointInfo;
     	      this.createTime = defaults.createTime;
     	      this.displayName = defaults.displayName;
     	      this.endpointId = defaults.endpointId;
+    	      this.gcpPscEndpointInfo = defaults.gcpPscEndpointInfo;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
     	      this.state = defaults.state;
@@ -166,6 +196,14 @@ public final class GetEndpointResult {
               throw new MissingRequiredPropertyException("GetEndpointResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder awsVpcEndpointInfo(GetEndpointAwsVpcEndpointInfo awsVpcEndpointInfo) {
+            if (awsVpcEndpointInfo == null) {
+              throw new MissingRequiredPropertyException("GetEndpointResult", "awsVpcEndpointInfo");
+            }
+            this.awsVpcEndpointInfo = awsVpcEndpointInfo;
             return this;
         }
         @CustomType.Setter
@@ -198,6 +236,14 @@ public final class GetEndpointResult {
               throw new MissingRequiredPropertyException("GetEndpointResult", "endpointId");
             }
             this.endpointId = endpointId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gcpPscEndpointInfo(GetEndpointGcpPscEndpointInfo gcpPscEndpointInfo) {
+            if (gcpPscEndpointInfo == null) {
+              throw new MissingRequiredPropertyException("GetEndpointResult", "gcpPscEndpointInfo");
+            }
+            this.gcpPscEndpointInfo = gcpPscEndpointInfo;
             return this;
         }
         @CustomType.Setter
@@ -235,10 +281,12 @@ public final class GetEndpointResult {
         public GetEndpointResult build() {
             final var _resultValue = new GetEndpointResult();
             _resultValue.accountId = accountId;
+            _resultValue.awsVpcEndpointInfo = awsVpcEndpointInfo;
             _resultValue.azurePrivateEndpointInfo = azurePrivateEndpointInfo;
             _resultValue.createTime = createTime;
             _resultValue.displayName = displayName;
             _resultValue.endpointId = endpointId;
+            _resultValue.gcpPscEndpointInfo = gcpPscEndpointInfo;
             _resultValue.name = name;
             _resultValue.region = region;
             _resultValue.state = state;

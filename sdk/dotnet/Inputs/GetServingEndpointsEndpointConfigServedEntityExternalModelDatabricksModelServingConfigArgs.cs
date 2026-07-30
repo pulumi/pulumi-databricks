@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("databricksApiToken")]
         public Input<string>? DatabricksApiToken { get; set; }
 
-        [Input("databricksApiTokenPlaintext")]
-        public Input<string>? DatabricksApiTokenPlaintext { get; set; }
+        [Input("databricksApiTokenPlaintext", required: true)]
+        public Input<string> DatabricksApiTokenPlaintext { get; set; } = null!;
 
         [Input("databricksWorkspaceUrl", required: true)]
         public Input<string> DatabricksWorkspaceUrl { get; set; } = null!;

@@ -20,6 +20,17 @@ namespace Pulumi.Databricks.Inputs
             set => _inferenceTableConfigs = value;
         }
 
+        [Input("tableNames")]
+        private List<Inputs.GetServingEndpointsEndpointTelemetryConfigTableNameArgs>? _tableNames;
+        public List<Inputs.GetServingEndpointsEndpointTelemetryConfigTableNameArgs> TableNames
+        {
+            get => _tableNames ?? (_tableNames = new List<Inputs.GetServingEndpointsEndpointTelemetryConfigTableNameArgs>());
+            set => _tableNames = value;
+        }
+
+        [Input("telemetryProfileId")]
+        public string? TelemetryProfileId { get; set; }
+
         public GetServingEndpointsEndpointTelemetryConfigArgs()
         {
         }

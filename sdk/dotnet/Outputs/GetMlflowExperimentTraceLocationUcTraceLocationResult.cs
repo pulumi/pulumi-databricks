@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetMlflowExperimentTraceLocationUcTraceLocationResult
     {
         public readonly string Catalog;
+        public readonly string? EffectiveTablePrefix;
         public readonly string Schema;
         public readonly string? TablePrefix;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Databricks.Outputs
         private GetMlflowExperimentTraceLocationUcTraceLocationResult(
             string catalog,
 
+            string? effectiveTablePrefix,
+
             string schema,
 
             string? tablePrefix)
         {
             Catalog = catalog;
+            EffectiveTablePrefix = effectiveTablePrefix;
             Schema = schema;
             TablePrefix = tablePrefix;
         }

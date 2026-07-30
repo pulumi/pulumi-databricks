@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling
     {
         public readonly string? Delay;
-        public readonly string WindowDuration;
+        public readonly string? WindowDuration;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling(
             string? delay,
 
-            string windowDuration)
+            string? windowDuration)
         {
             Delay = delay;
             WindowDuration = windowDuration;

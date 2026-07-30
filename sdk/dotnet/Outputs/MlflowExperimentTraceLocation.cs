@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MlflowExperimentTraceLocation
     {
+        /// <summary>
+        /// The Unity Catalog storage location. This block consists of the following fields:
+        /// </summary>
         public readonly Outputs.MlflowExperimentTraceLocationUcTraceLocation? UcTraceLocation;
 
         [OutputConstructor]

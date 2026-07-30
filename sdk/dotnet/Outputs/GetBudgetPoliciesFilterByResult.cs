@@ -19,6 +19,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? CreatorUserId;
         /// <summary>
+        /// Deprecated: Do not use this field in new integrations. Creator filtering will be removed in a
+        /// future version.
         /// The policy creator user name to be filtered on.
         /// If unspecified, all policies will be returned
         /// </summary>

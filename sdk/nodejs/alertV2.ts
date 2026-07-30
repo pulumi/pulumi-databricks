@@ -117,6 +117,11 @@ export class AlertV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ownerUserName: pulumi.Output<string>;
     /**
+     * Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     */
+    declare public readonly parameters: pulumi.Output<outputs.AlertV2Parameter[] | undefined>;
+    /**
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
     declare public readonly parentPath: pulumi.Output<string | undefined>;
@@ -177,6 +182,7 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["evaluation"] = state?.evaluation;
             resourceInputs["lifecycleState"] = state?.lifecycleState;
             resourceInputs["ownerUserName"] = state?.ownerUserName;
+            resourceInputs["parameters"] = state?.parameters;
             resourceInputs["parentPath"] = state?.parentPath;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["purgeOnDelete"] = state?.purgeOnDelete;
@@ -207,6 +213,7 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["customSummary"] = args?.customSummary;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["evaluation"] = args?.evaluation;
+            resourceInputs["parameters"] = args?.parameters;
             resourceInputs["parentPath"] = args?.parentPath;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
@@ -261,6 +268,11 @@ export interface AlertV2State {
      * (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
      */
     ownerUserName?: pulumi.Input<string | undefined>;
+    /**
+     * Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.AlertV2Parameter>[] | undefined>;
     /**
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
@@ -319,6 +331,11 @@ export interface AlertV2Args {
      */
     displayName: pulumi.Input<string>;
     evaluation: pulumi.Input<inputs.AlertV2Evaluation>;
+    /**
+     * Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.AlertV2Parameter>[] | undefined>;
     /**
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */

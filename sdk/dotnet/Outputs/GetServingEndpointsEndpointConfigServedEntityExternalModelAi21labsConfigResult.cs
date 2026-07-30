@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigResult
     {
         public readonly string? Ai21labsApiKey;
-        public readonly string? Ai21labsApiKeyPlaintext;
+        public readonly string Ai21labsApiKeyPlaintext;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigResult(
             string? ai21labsApiKey,
 
-            string? ai21labsApiKeyPlaintext)
+            string ai21labsApiKeyPlaintext)
         {
             Ai21labsApiKey = ai21labsApiKey;
             Ai21labsApiKeyPlaintext = ai21labsApiKeyPlaintext;

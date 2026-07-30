@@ -98,6 +98,11 @@ export interface GetAlertV2Result {
      */
     readonly ownerUserName: string;
     /**
+     * (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     */
+    readonly parameters: outputs.GetAlertV2Parameter[];
+    /**
      * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
     readonly parentPath: string;

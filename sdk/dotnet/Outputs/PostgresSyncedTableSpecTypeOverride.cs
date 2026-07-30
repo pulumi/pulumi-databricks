@@ -13,17 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PostgresSyncedTableSpecTypeOverride
     {
-        /// <summary>
-        /// Name of the source column whose target PostgreSQL type should be overridden
-        /// </summary>
         public readonly string ColumnName;
         /// <summary>
         /// PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
         /// </summary>
         public readonly string PgType;
         /// <summary>
-        /// Size parameter for the target type. Required when PgType is PG_SPECIFIC_TYPE_VECTOR
-        /// or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+        /// Size parameter for the target type, for types that take one (e.g. vector
+        /// dimension, varchar length). Required when the chosen PgType needs a size
         /// </summary>
         public readonly int? Size;
 

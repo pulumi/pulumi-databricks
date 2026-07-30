@@ -7,11 +7,13 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AlertV2EffectiveRunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2EvaluationArgs;
+import com.pulumi.databricks.inputs.AlertV2ParameterArgs;
 import com.pulumi.databricks.inputs.AlertV2ProviderConfigArgs;
 import com.pulumi.databricks.inputs.AlertV2RunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -135,6 +137,23 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> ownerUserName() {
         return Optional.ofNullable(this.ownerUserName);
+    }
+
+    /**
+     * Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<List<AlertV2ParameterArgs>> parameters;
+
+    /**
+     * @return Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     * 
+     */
+    public Optional<Output<List<AlertV2ParameterArgs>>> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     /**
@@ -287,6 +306,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         this.evaluation = $.evaluation;
         this.lifecycleState = $.lifecycleState;
         this.ownerUserName = $.ownerUserName;
+        this.parameters = $.parameters;
         this.parentPath = $.parentPath;
         this.providerConfig = $.providerConfig;
         this.purgeOnDelete = $.purgeOnDelete;
@@ -474,6 +494,40 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ownerUserName(String ownerUserName) {
             return ownerUserName(Output.of(ownerUserName));
+        }
+
+        /**
+         * @param parameters Query parameters bound when executing the alert query, referenced in the
+         * query text with `:name` syntax. Static values only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<List<AlertV2ParameterArgs>> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters Query parameters bound when executing the alert query, referenced in the
+         * query text with `:name` syntax. Static values only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(List<AlertV2ParameterArgs> parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        /**
+         * @param parameters Query parameters bound when executing the alert query, referenced in the
+         * query text with `:name` syntax. Static values only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(AlertV2ParameterArgs... parameters) {
+            return parameters(List.of(parameters));
         }
 
         /**

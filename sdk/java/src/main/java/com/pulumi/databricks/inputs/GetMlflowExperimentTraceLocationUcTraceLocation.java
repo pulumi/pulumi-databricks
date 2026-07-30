@@ -22,6 +22,13 @@ public final class GetMlflowExperimentTraceLocationUcTraceLocation extends com.p
         return this.catalog;
     }
 
+    @Import(name="effectiveTablePrefix")
+    private @Nullable String effectiveTablePrefix;
+
+    public Optional<String> effectiveTablePrefix() {
+        return Optional.ofNullable(this.effectiveTablePrefix);
+    }
+
     @Import(name="schema", required=true)
     private String schema;
 
@@ -40,6 +47,7 @@ public final class GetMlflowExperimentTraceLocationUcTraceLocation extends com.p
 
     private GetMlflowExperimentTraceLocationUcTraceLocation(GetMlflowExperimentTraceLocationUcTraceLocation $) {
         this.catalog = $.catalog;
+        this.effectiveTablePrefix = $.effectiveTablePrefix;
         this.schema = $.schema;
         this.tablePrefix = $.tablePrefix;
     }
@@ -64,6 +72,11 @@ public final class GetMlflowExperimentTraceLocationUcTraceLocation extends com.p
 
         public Builder catalog(String catalog) {
             $.catalog = catalog;
+            return this;
+        }
+
+        public Builder effectiveTablePrefix(@Nullable String effectiveTablePrefix) {
+            $.effectiveTablePrefix = effectiveTablePrefix;
             return this;
         }
 

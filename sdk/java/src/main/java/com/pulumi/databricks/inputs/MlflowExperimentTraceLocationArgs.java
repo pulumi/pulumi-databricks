@@ -15,9 +15,17 @@ public final class MlflowExperimentTraceLocationArgs extends com.pulumi.resource
 
     public static final MlflowExperimentTraceLocationArgs Empty = new MlflowExperimentTraceLocationArgs();
 
+    /**
+     * The Unity Catalog storage location. This block consists of the following fields:
+     * 
+     */
     @Import(name="ucTraceLocation")
     private @Nullable Output<MlflowExperimentTraceLocationUcTraceLocationArgs> ucTraceLocation;
 
+    /**
+     * @return The Unity Catalog storage location. This block consists of the following fields:
+     * 
+     */
     public Optional<Output<MlflowExperimentTraceLocationUcTraceLocationArgs>> ucTraceLocation() {
         return Optional.ofNullable(this.ucTraceLocation);
     }
@@ -46,11 +54,23 @@ public final class MlflowExperimentTraceLocationArgs extends com.pulumi.resource
             $ = new MlflowExperimentTraceLocationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ucTraceLocation The Unity Catalog storage location. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder ucTraceLocation(@Nullable Output<MlflowExperimentTraceLocationUcTraceLocationArgs> ucTraceLocation) {
             $.ucTraceLocation = ucTraceLocation;
             return this;
         }
 
+        /**
+         * @param ucTraceLocation The Unity Catalog storage location. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder ucTraceLocation(MlflowExperimentTraceLocationUcTraceLocationArgs ucTraceLocation) {
             return ucTraceLocation(Output.of(ucTraceLocation));
         }

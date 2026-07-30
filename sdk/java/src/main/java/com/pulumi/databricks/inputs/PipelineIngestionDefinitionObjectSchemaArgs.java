@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -39,6 +40,13 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
         return this.destinationSchema;
     }
 
+    @Import(name="fanoutOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgs> fanoutOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgs>> fanoutOptions() {
+        return Optional.ofNullable(this.fanoutOptions);
+    }
+
     @Import(name="sourceCatalog")
     private @Nullable Output<String> sourceCatalog;
 
@@ -66,6 +74,7 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
         this.connectorOptions = $.connectorOptions;
         this.destinationCatalog = $.destinationCatalog;
         this.destinationSchema = $.destinationSchema;
+        this.fanoutOptions = $.fanoutOptions;
         this.sourceCatalog = $.sourceCatalog;
         this.sourceSchema = $.sourceSchema;
         this.tableConfiguration = $.tableConfiguration;
@@ -114,6 +123,15 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
 
         public Builder destinationSchema(String destinationSchema) {
             return destinationSchema(Output.of(destinationSchema));
+        }
+
+        public Builder fanoutOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgs> fanoutOptions) {
+            $.fanoutOptions = fanoutOptions;
+            return this;
+        }
+
+        public Builder fanoutOptions(PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgs fanoutOptions) {
+            return fanoutOptions(Output.of(fanoutOptions));
         }
 
         public Builder sourceCatalog(@Nullable Output<String> sourceCatalog) {

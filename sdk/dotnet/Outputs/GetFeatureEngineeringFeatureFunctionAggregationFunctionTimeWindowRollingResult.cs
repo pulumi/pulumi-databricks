@@ -14,20 +14,20 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult
     {
         /// <summary>
-        /// (string) - The delay applied to the end of the rolling window (must be non-negative).
+        /// (string) - The delay applied to the end of the window (must be non-negative).
         /// For example, delay=1d shifts the window end 1 day before the evaluation time
         /// </summary>
         public readonly string? Delay;
         /// <summary>
         /// (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         /// </summary>
-        public readonly string WindowDuration;
+        public readonly string? WindowDuration;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult(
             string? delay,
 
-            string windowDuration)
+            string? windowDuration)
         {
             Delay = delay;
             WindowDuration = windowDuration;

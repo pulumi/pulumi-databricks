@@ -5,7 +5,9 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.EndpointAwsVpcEndpointInfoArgs;
 import com.pulumi.databricks.inputs.EndpointAzurePrivateEndpointInfoArgs;
+import com.pulumi.databricks.inputs.EndpointGcpPscEndpointInfoArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +31,21 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Info for an AWS VPC endpoint
+     * 
+     */
+    @Import(name="awsVpcEndpointInfo")
+    private @Nullable Output<EndpointAwsVpcEndpointInfoArgs> awsVpcEndpointInfo;
+
+    /**
+     * @return Info for an AWS VPC endpoint
+     * 
+     */
+    public Optional<Output<EndpointAwsVpcEndpointInfoArgs>> awsVpcEndpointInfo() {
+        return Optional.ofNullable(this.awsVpcEndpointInfo);
     }
 
     /**
@@ -93,6 +110,21 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> endpointId() {
         return Optional.ofNullable(this.endpointId);
+    }
+
+    /**
+     * Info for a GCP Private Service Connect endpoint
+     * 
+     */
+    @Import(name="gcpPscEndpointInfo")
+    private @Nullable Output<EndpointGcpPscEndpointInfoArgs> gcpPscEndpointInfo;
+
+    /**
+     * @return Info for a GCP Private Service Connect endpoint
+     * 
+     */
+    public Optional<Output<EndpointGcpPscEndpointInfoArgs>> gcpPscEndpointInfo() {
+        return Optional.ofNullable(this.gcpPscEndpointInfo);
     }
 
     /**
@@ -178,10 +210,12 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
 
     private EndpointState(EndpointState $) {
         this.accountId = $.accountId;
+        this.awsVpcEndpointInfo = $.awsVpcEndpointInfo;
         this.azurePrivateEndpointInfo = $.azurePrivateEndpointInfo;
         this.createTime = $.createTime;
         this.displayName = $.displayName;
         this.endpointId = $.endpointId;
+        this.gcpPscEndpointInfo = $.gcpPscEndpointInfo;
         this.name = $.name;
         this.parent = $.parent;
         this.region = $.region;
@@ -226,6 +260,27 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param awsVpcEndpointInfo Info for an AWS VPC endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsVpcEndpointInfo(@Nullable Output<EndpointAwsVpcEndpointInfoArgs> awsVpcEndpointInfo) {
+            $.awsVpcEndpointInfo = awsVpcEndpointInfo;
+            return this;
+        }
+
+        /**
+         * @param awsVpcEndpointInfo Info for an AWS VPC endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsVpcEndpointInfo(EndpointAwsVpcEndpointInfoArgs awsVpcEndpointInfo) {
+            return awsVpcEndpointInfo(Output.of(awsVpcEndpointInfo));
         }
 
         /**
@@ -314,6 +369,27 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpointId(String endpointId) {
             return endpointId(Output.of(endpointId));
+        }
+
+        /**
+         * @param gcpPscEndpointInfo Info for a GCP Private Service Connect endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpPscEndpointInfo(@Nullable Output<EndpointGcpPscEndpointInfoArgs> gcpPscEndpointInfo) {
+            $.gcpPscEndpointInfo = gcpPscEndpointInfo;
+            return this;
+        }
+
+        /**
+         * @param gcpPscEndpointInfo Info for a GCP Private Service Connect endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpPscEndpointInfo(EndpointGcpPscEndpointInfoArgs gcpPscEndpointInfo) {
+            return gcpPscEndpointInfo(Output.of(gcpPscEndpointInfo));
         }
 
         /**

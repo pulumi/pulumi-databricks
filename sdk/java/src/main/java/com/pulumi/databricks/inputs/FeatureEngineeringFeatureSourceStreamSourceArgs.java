@@ -16,6 +16,13 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
 
     public static final FeatureEngineeringFeatureSourceStreamSourceArgs Empty = new FeatureEngineeringFeatureSourceStreamSourceArgs();
 
+    @Import(name="dataframeSchema")
+    private @Nullable Output<String> dataframeSchema;
+
+    public Optional<Output<String>> dataframeSchema() {
+        return Optional.ofNullable(this.dataframeSchema);
+    }
+
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -52,11 +59,20 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
         return this.fullName;
     }
 
+    @Import(name="transformationSql")
+    private @Nullable Output<String> transformationSql;
+
+    public Optional<Output<String>> transformationSql() {
+        return Optional.ofNullable(this.transformationSql);
+    }
+
     private FeatureEngineeringFeatureSourceStreamSourceArgs() {}
 
     private FeatureEngineeringFeatureSourceStreamSourceArgs(FeatureEngineeringFeatureSourceStreamSourceArgs $) {
+        this.dataframeSchema = $.dataframeSchema;
         this.filterCondition = $.filterCondition;
         this.fullName = $.fullName;
+        this.transformationSql = $.transformationSql;
     }
 
     public static Builder builder() {
@@ -75,6 +91,15 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
 
         public Builder(FeatureEngineeringFeatureSourceStreamSourceArgs defaults) {
             $ = new FeatureEngineeringFeatureSourceStreamSourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder dataframeSchema(@Nullable Output<String> dataframeSchema) {
+            $.dataframeSchema = dataframeSchema;
+            return this;
+        }
+
+        public Builder dataframeSchema(String dataframeSchema) {
+            return dataframeSchema(Output.of(dataframeSchema));
         }
 
         /**
@@ -123,6 +148,15 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
          */
         public Builder fullName(String fullName) {
             return fullName(Output.of(fullName));
+        }
+
+        public Builder transformationSql(@Nullable Output<String> transformationSql) {
+            $.transformationSql = transformationSql;
+            return this;
+        }
+
+        public Builder transformationSql(String transformationSql) {
+            return transformationSql(Output.of(transformationSql));
         }
 
         public FeatureEngineeringFeatureSourceStreamSourceArgs build() {

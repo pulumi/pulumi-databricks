@@ -8,24 +8,34 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs Empty = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs();
 
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     * 
+     */
     @Import(name="slideDuration", required=true)
     private Output<String> slideDuration;
 
+    /**
+     * @return The slide duration (interval by which windows advance, must be positive and less than duration)
+     * 
+     */
     public Output<String> slideDuration() {
         return this.slideDuration;
     }
 
-    @Import(name="windowDuration", required=true)
-    private Output<String> windowDuration;
+    @Import(name="windowDuration")
+    private @Nullable Output<String> windowDuration;
 
-    public Output<String> windowDuration() {
-        return this.windowDuration;
+    public Optional<Output<String>> windowDuration() {
+        return Optional.ofNullable(this.windowDuration);
     }
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs() {}
@@ -53,16 +63,28 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
             $ = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param slideDuration The slide duration (interval by which windows advance, must be positive and less than duration)
+         * 
+         * @return builder
+         * 
+         */
         public Builder slideDuration(Output<String> slideDuration) {
             $.slideDuration = slideDuration;
             return this;
         }
 
+        /**
+         * @param slideDuration The slide duration (interval by which windows advance, must be positive and less than duration)
+         * 
+         * @return builder
+         * 
+         */
         public Builder slideDuration(String slideDuration) {
             return slideDuration(Output.of(slideDuration));
         }
 
-        public Builder windowDuration(Output<String> windowDuration) {
+        public Builder windowDuration(@Nullable Output<String> windowDuration) {
             $.windowDuration = windowDuration;
             return this;
         }
@@ -74,9 +96,6 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs build() {
             if ($.slideDuration == null) {
                 throw new MissingRequiredPropertyException("FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs", "slideDuration");
-            }
-            if ($.windowDuration == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs", "windowDuration");
             }
             return $;
         }

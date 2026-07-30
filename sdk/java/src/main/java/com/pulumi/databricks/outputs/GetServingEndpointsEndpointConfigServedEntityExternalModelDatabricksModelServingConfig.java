@@ -13,15 +13,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig {
     private @Nullable String databricksApiToken;
-    private @Nullable String databricksApiTokenPlaintext;
+    private String databricksApiTokenPlaintext;
     private String databricksWorkspaceUrl;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig() {}
     public Optional<String> databricksApiToken() {
         return Optional.ofNullable(this.databricksApiToken);
     }
-    public Optional<String> databricksApiTokenPlaintext() {
-        return Optional.ofNullable(this.databricksApiTokenPlaintext);
+    public String databricksApiTokenPlaintext() {
+        return this.databricksApiTokenPlaintext;
     }
     public String databricksWorkspaceUrl() {
         return this.databricksWorkspaceUrl;
@@ -37,7 +37,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelDat
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String databricksApiToken;
-        private @Nullable String databricksApiTokenPlaintext;
+        private String databricksApiTokenPlaintext;
         private String databricksWorkspaceUrl;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig defaults) {
@@ -54,8 +54,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelDat
             return this;
         }
         @CustomType.Setter
-        public Builder databricksApiTokenPlaintext(@Nullable String databricksApiTokenPlaintext) {
-
+        public Builder databricksApiTokenPlaintext(String databricksApiTokenPlaintext) {
+            if (databricksApiTokenPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig", "databricksApiTokenPlaintext");
+            }
             this.databricksApiTokenPlaintext = databricksApiTokenPlaintext;
             return this;
         }

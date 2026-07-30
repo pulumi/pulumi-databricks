@@ -14,9 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult
     {
         /// <summary>
-        /// (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
-        /// Required if TransformationSql is specified.
-        /// Example: {"type":"struct","fields":[{"name":"ColA","type":"integer","nullable":true,"metadata":{}},{"name":"ColC","type":"integer","nullable":true,"metadata":{}}]}
+        /// (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+        /// JSON format (from df.schema.json()).
+        /// Any subsequent functions operate against this dataframe
         /// </summary>
         public readonly string? DataframeSchema;
         /// <summary>
@@ -38,9 +38,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? TimeseriesColumn;
         /// <summary>
-        /// (string) - A single SQL SELECT expression applied after filter_condition.
-        /// Should contains all the columns needed (eg. "SELECT *, ColA + ColB AS ColC FROM x.y.z WHERE ColA &gt; 0" would have `TransformationSql` "*, ColA + ColB AS ColC")
-        /// If TransformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+        /// (string) - The pipeline runs these SQL statements immediately after conversion into
+        /// the schema specified on the Stream object
         /// </summary>
         public readonly string? TransformationSql;
 

@@ -18,17 +18,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousResult? Continuous;
         /// <summary>
-        /// (LifetimeWindow) - A window that spans the entire lifetime of the data source
-        /// </summary>
-        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLifetimeResult? Lifetime;
-        /// <summary>
-        /// (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-        /// </summary>
-        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRollingResult? LongRolling;
-        /// <summary>
         /// (RollingWindow)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRollingResult? Rolling;
+        /// <summary>
+        /// (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtoothResult? Sawtooth;
         /// <summary>
         /// (SlidingWindow)
         /// </summary>
@@ -42,20 +38,17 @@ namespace Pulumi.Databricks.Outputs
         private GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowResult(
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousResult? continuous,
 
-            Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLifetimeResult? lifetime,
-
-            Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowLongRollingResult? longRolling,
-
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRollingResult? rolling,
+
+            Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtoothResult? sawtooth,
 
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSlidingResult? sliding,
 
             Outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumblingResult? tumbling)
         {
             Continuous = continuous;
-            Lifetime = lifetime;
-            LongRolling = longRolling;
             Rolling = rolling;
+            Sawtooth = sawtooth;
             Sliding = sliding;
             Tumbling = tumbling;
         }

@@ -6,6 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs;
+import com.pulumi.databricks.inputs.GetServingEndpointsEndpointTelemetryConfigTableNameArgs;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,10 +25,26 @@ public final class GetServingEndpointsEndpointTelemetryConfigArgs extends com.pu
         return Optional.ofNullable(this.inferenceTableConfigs);
     }
 
+    @Import(name="tableNames")
+    private @Nullable Output<List<GetServingEndpointsEndpointTelemetryConfigTableNameArgs>> tableNames;
+
+    public Optional<Output<List<GetServingEndpointsEndpointTelemetryConfigTableNameArgs>>> tableNames() {
+        return Optional.ofNullable(this.tableNames);
+    }
+
+    @Import(name="telemetryProfileId")
+    private @Nullable Output<String> telemetryProfileId;
+
+    public Optional<Output<String>> telemetryProfileId() {
+        return Optional.ofNullable(this.telemetryProfileId);
+    }
+
     private GetServingEndpointsEndpointTelemetryConfigArgs() {}
 
     private GetServingEndpointsEndpointTelemetryConfigArgs(GetServingEndpointsEndpointTelemetryConfigArgs $) {
         this.inferenceTableConfigs = $.inferenceTableConfigs;
+        this.tableNames = $.tableNames;
+        this.telemetryProfileId = $.telemetryProfileId;
     }
 
     public static Builder builder() {
@@ -58,6 +76,28 @@ public final class GetServingEndpointsEndpointTelemetryConfigArgs extends com.pu
 
         public Builder inferenceTableConfigs(GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs... inferenceTableConfigs) {
             return inferenceTableConfigs(List.of(inferenceTableConfigs));
+        }
+
+        public Builder tableNames(@Nullable Output<List<GetServingEndpointsEndpointTelemetryConfigTableNameArgs>> tableNames) {
+            $.tableNames = tableNames;
+            return this;
+        }
+
+        public Builder tableNames(List<GetServingEndpointsEndpointTelemetryConfigTableNameArgs> tableNames) {
+            return tableNames(Output.of(tableNames));
+        }
+
+        public Builder tableNames(GetServingEndpointsEndpointTelemetryConfigTableNameArgs... tableNames) {
+            return tableNames(List.of(tableNames));
+        }
+
+        public Builder telemetryProfileId(@Nullable Output<String> telemetryProfileId) {
+            $.telemetryProfileId = telemetryProfileId;
+            return this;
+        }
+
+        public Builder telemetryProfileId(String telemetryProfileId) {
+            return telemetryProfileId(Output.of(telemetryProfileId));
         }
 
         public GetServingEndpointsEndpointTelemetryConfigArgs build() {

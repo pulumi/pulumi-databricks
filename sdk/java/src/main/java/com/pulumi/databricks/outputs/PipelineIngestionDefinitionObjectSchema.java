@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -17,6 +18,7 @@ public final class PipelineIngestionDefinitionObjectSchema {
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptions connectorOptions;
     private String destinationCatalog;
     private String destinationSchema;
+    private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptions fanoutOptions;
     private @Nullable String sourceCatalog;
     private String sourceSchema;
     private @Nullable PipelineIngestionDefinitionObjectSchemaTableConfiguration tableConfiguration;
@@ -30,6 +32,9 @@ public final class PipelineIngestionDefinitionObjectSchema {
     }
     public String destinationSchema() {
         return this.destinationSchema;
+    }
+    public Optional<PipelineIngestionDefinitionObjectSchemaFanoutOptions> fanoutOptions() {
+        return Optional.ofNullable(this.fanoutOptions);
     }
     public Optional<String> sourceCatalog() {
         return Optional.ofNullable(this.sourceCatalog);
@@ -53,6 +58,7 @@ public final class PipelineIngestionDefinitionObjectSchema {
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptions connectorOptions;
         private String destinationCatalog;
         private String destinationSchema;
+        private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptions fanoutOptions;
         private @Nullable String sourceCatalog;
         private String sourceSchema;
         private @Nullable PipelineIngestionDefinitionObjectSchemaTableConfiguration tableConfiguration;
@@ -62,6 +68,7 @@ public final class PipelineIngestionDefinitionObjectSchema {
     	      this.connectorOptions = defaults.connectorOptions;
     	      this.destinationCatalog = defaults.destinationCatalog;
     	      this.destinationSchema = defaults.destinationSchema;
+    	      this.fanoutOptions = defaults.fanoutOptions;
     	      this.sourceCatalog = defaults.sourceCatalog;
     	      this.sourceSchema = defaults.sourceSchema;
     	      this.tableConfiguration = defaults.tableConfiguration;
@@ -90,6 +97,12 @@ public final class PipelineIngestionDefinitionObjectSchema {
             return this;
         }
         @CustomType.Setter
+        public Builder fanoutOptions(@Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptions fanoutOptions) {
+
+            this.fanoutOptions = fanoutOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceCatalog(@Nullable String sourceCatalog) {
 
             this.sourceCatalog = sourceCatalog;
@@ -114,6 +127,7 @@ public final class PipelineIngestionDefinitionObjectSchema {
             _resultValue.connectorOptions = connectorOptions;
             _resultValue.destinationCatalog = destinationCatalog;
             _resultValue.destinationSchema = destinationSchema;
+            _resultValue.fanoutOptions = fanoutOptions;
             _resultValue.sourceCatalog = sourceCatalog;
             _resultValue.sourceSchema = sourceSchema;
             _resultValue.tableConfiguration = tableConfiguration;

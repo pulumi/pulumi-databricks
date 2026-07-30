@@ -6,6 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingTelemetryConfigInferenceTableConfigArgs;
+import com.pulumi.databricks.inputs.ModelServingTelemetryConfigTableNamesArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +32,26 @@ public final class ModelServingTelemetryConfigArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.inferenceTableConfig);
     }
 
+    @Import(name="tableNames")
+    private @Nullable Output<ModelServingTelemetryConfigTableNamesArgs> tableNames;
+
+    public Optional<Output<ModelServingTelemetryConfigTableNamesArgs>> tableNames() {
+        return Optional.ofNullable(this.tableNames);
+    }
+
+    @Import(name="telemetryProfileId")
+    private @Nullable Output<String> telemetryProfileId;
+
+    public Optional<Output<String>> telemetryProfileId() {
+        return Optional.ofNullable(this.telemetryProfileId);
+    }
+
     private ModelServingTelemetryConfigArgs() {}
 
     private ModelServingTelemetryConfigArgs(ModelServingTelemetryConfigArgs $) {
         this.inferenceTableConfig = $.inferenceTableConfig;
+        this.tableNames = $.tableNames;
+        this.telemetryProfileId = $.telemetryProfileId;
     }
 
     public static Builder builder() {
@@ -73,6 +91,24 @@ public final class ModelServingTelemetryConfigArgs extends com.pulumi.resources.
          */
         public Builder inferenceTableConfig(ModelServingTelemetryConfigInferenceTableConfigArgs inferenceTableConfig) {
             return inferenceTableConfig(Output.of(inferenceTableConfig));
+        }
+
+        public Builder tableNames(@Nullable Output<ModelServingTelemetryConfigTableNamesArgs> tableNames) {
+            $.tableNames = tableNames;
+            return this;
+        }
+
+        public Builder tableNames(ModelServingTelemetryConfigTableNamesArgs tableNames) {
+            return tableNames(Output.of(tableNames));
+        }
+
+        public Builder telemetryProfileId(@Nullable Output<String> telemetryProfileId) {
+            $.telemetryProfileId = telemetryProfileId;
+            return this;
+        }
+
+        public Builder telemetryProfileId(String telemetryProfileId) {
+            return telemetryProfileId(Output.of(telemetryProfileId));
         }
 
         public ModelServingTelemetryConfigArgs build() {

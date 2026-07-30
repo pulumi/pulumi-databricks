@@ -22,11 +22,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
         return Optional.ofNullable(this.privateKey);
     }
 
-    @Import(name="privateKeyPlaintext")
-    private @Nullable String privateKeyPlaintext;
+    @Import(name="privateKeyPlaintext", required=true)
+    private String privateKeyPlaintext;
 
-    public Optional<String> privateKeyPlaintext() {
-        return Optional.ofNullable(this.privateKeyPlaintext);
+    public String privateKeyPlaintext() {
+        return this.privateKeyPlaintext;
     }
 
     @Import(name="projectId", required=true)
@@ -75,7 +75,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
             return this;
         }
 
-        public Builder privateKeyPlaintext(@Nullable String privateKeyPlaintext) {
+        public Builder privateKeyPlaintext(String privateKeyPlaintext) {
             $.privateKeyPlaintext = privateKeyPlaintext;
             return this;
         }
@@ -91,6 +91,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig build() {
+            if ($.privateKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig", "privateKeyPlaintext");
+            }
             if ($.projectId == null) {
                 throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig", "projectId");
             }

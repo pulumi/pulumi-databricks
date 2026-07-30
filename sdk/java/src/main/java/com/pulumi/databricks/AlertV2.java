@@ -12,11 +12,13 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AlertV2State;
 import com.pulumi.databricks.outputs.AlertV2EffectiveRunAs;
 import com.pulumi.databricks.outputs.AlertV2Evaluation;
+import com.pulumi.databricks.outputs.AlertV2Parameter;
 import com.pulumi.databricks.outputs.AlertV2ProviderConfig;
 import com.pulumi.databricks.outputs.AlertV2RunAs;
 import com.pulumi.databricks.outputs.AlertV2Schedule;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -210,6 +212,22 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ownerUserName() {
         return this.ownerUserName;
+    }
+    /**
+     * Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     * 
+     */
+    @Export(name="parameters", refs={List.class,AlertV2Parameter.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AlertV2Parameter>> parameters;
+
+    /**
+     * @return Query parameters bound when executing the alert query, referenced in the
+     * query text with `:name` syntax. Static values only
+     * 
+     */
+    public Output<Optional<List<AlertV2Parameter>>> parameters() {
+        return Codegen.optional(this.parameters);
     }
     /**
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated

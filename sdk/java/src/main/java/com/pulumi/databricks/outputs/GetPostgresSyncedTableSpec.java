@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresSyncedTableSpecExtraColumn;
 import com.pulumi.databricks.outputs.GetPostgresSyncedTableSpecNewPipelineSpec;
 import com.pulumi.databricks.outputs.GetPostgresSyncedTableSpecTypeOverride;
 import java.lang.Boolean;
@@ -40,6 +41,11 @@ public final class GetPostgresSyncedTableSpec {
      * 
      */
     private @Nullable String existingPipelineId;
+    /**
+     * @return (list of SyncedTableSyncedTableSpecExtraColumn) - Extra PostgreSQL-only columns to add to the synced table
+     * 
+     */
+    private @Nullable List<GetPostgresSyncedTableSpecExtraColumn> extraColumns;
     /**
      * @return (NewPipelineSpec) - Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
@@ -113,6 +119,13 @@ public final class GetPostgresSyncedTableSpec {
         return Optional.ofNullable(this.existingPipelineId);
     }
     /**
+     * @return (list of SyncedTableSyncedTableSpecExtraColumn) - Extra PostgreSQL-only columns to add to the synced table
+     * 
+     */
+    public List<GetPostgresSyncedTableSpecExtraColumn> extraColumns() {
+        return this.extraColumns == null ? List.of() : this.extraColumns;
+    }
+    /**
      * @return (NewPipelineSpec) - Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
@@ -177,6 +190,7 @@ public final class GetPostgresSyncedTableSpec {
         private @Nullable String branch;
         private @Nullable Boolean createDatabaseObjectsIfMissing;
         private @Nullable String existingPipelineId;
+        private @Nullable List<GetPostgresSyncedTableSpecExtraColumn> extraColumns;
         private @Nullable GetPostgresSyncedTableSpecNewPipelineSpec newPipelineSpec;
         private @Nullable String postgresDatabase;
         private @Nullable List<String> primaryKeyColumns;
@@ -191,6 +205,7 @@ public final class GetPostgresSyncedTableSpec {
     	      this.branch = defaults.branch;
     	      this.createDatabaseObjectsIfMissing = defaults.createDatabaseObjectsIfMissing;
     	      this.existingPipelineId = defaults.existingPipelineId;
+    	      this.extraColumns = defaults.extraColumns;
     	      this.newPipelineSpec = defaults.newPipelineSpec;
     	      this.postgresDatabase = defaults.postgresDatabase;
     	      this.primaryKeyColumns = defaults.primaryKeyColumns;
@@ -223,6 +238,15 @@ public final class GetPostgresSyncedTableSpec {
 
             this.existingPipelineId = existingPipelineId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder extraColumns(@Nullable List<GetPostgresSyncedTableSpecExtraColumn> extraColumns) {
+
+            this.extraColumns = extraColumns;
+            return this;
+        }
+        public Builder extraColumns(GetPostgresSyncedTableSpecExtraColumn... extraColumns) {
+            return extraColumns(List.of(extraColumns));
         }
         @CustomType.Setter
         public Builder newPipelineSpec(@Nullable GetPostgresSyncedTableSpecNewPipelineSpec newPipelineSpec) {
@@ -278,6 +302,7 @@ public final class GetPostgresSyncedTableSpec {
             _resultValue.branch = branch;
             _resultValue.createDatabaseObjectsIfMissing = createDatabaseObjectsIfMissing;
             _resultValue.existingPipelineId = existingPipelineId;
+            _resultValue.extraColumns = extraColumns;
             _resultValue.newPipelineSpec = newPipelineSpec;
             _resultValue.postgresDatabase = postgresDatabase;
             _resultValue.primaryKeyColumns = primaryKeyColumns;

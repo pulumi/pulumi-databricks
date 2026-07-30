@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigResult
     {
         public readonly string? PalmApiKey;
-        public readonly string? PalmApiKeyPlaintext;
+        public readonly string PalmApiKeyPlaintext;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigResult(
             string? palmApiKey,
 
-            string? palmApiKeyPlaintext)
+            string palmApiKeyPlaintext)
         {
             PalmApiKey = palmApiKey;
             PalmApiKeyPlaintext = palmApiKeyPlaintext;

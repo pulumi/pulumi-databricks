@@ -28,6 +28,7 @@ class AlertV2Args:
                  warehouse_id: pulumi.Input[_builtins.str],
                  custom_description: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AlertV2ProviderConfigArgs']] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -41,6 +42,8 @@ class AlertV2Args:
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[Sequence[pulumi.Input['AlertV2ParameterArgs']]] parameters: Query parameters bound when executing the alert query, referenced in the
+               query text with `:name` syntax. Static values only
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input['AlertV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
@@ -62,6 +65,8 @@ class AlertV2Args:
             pulumi.set(__self__, "custom_description", custom_description)
         if custom_summary is not None:
             pulumi.set(__self__, "custom_summary", custom_summary)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if parent_path is not None:
             pulumi.set(__self__, "parent_path", parent_path)
         if provider_config is not None:
@@ -152,6 +157,19 @@ class AlertV2Args:
         pulumi.set(self, "custom_summary", value)
 
     @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]]:
+        """
+        Query parameters bound when executing the alert query, referenced in the
+        query text with `:name` syntax. Static values only
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -229,6 +247,7 @@ class _AlertV2State:
                  evaluation: pulumi.Input[Optional['AlertV2EvaluationArgs']] = None,
                  lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AlertV2ProviderConfigArgs']] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -250,6 +269,8 @@ class _AlertV2State:
                permissions and defaults
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        :param pulumi.Input[Sequence[pulumi.Input['AlertV2ParameterArgs']]] parameters: Query parameters bound when executing the alert query, referenced in the
+               query text with `:name` syntax. Static values only
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input['AlertV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
@@ -281,6 +302,8 @@ class _AlertV2State:
             pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         if owner_user_name is not None:
             pulumi.set(__self__, "owner_user_name", owner_user_name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if parent_path is not None:
             pulumi.set(__self__, "parent_path", parent_path)
         if provider_config is not None:
@@ -394,6 +417,19 @@ class _AlertV2State:
     @owner_user_name.setter
     def owner_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]]:
+        """
+        Query parameters bound when executing the alert query, referenced in the
+        query text with `:name` syntax. Static values only
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
@@ -517,6 +553,7 @@ class AlertV2(pulumi.CustomResource):
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -582,6 +619,8 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]] parameters: Query parameters bound when executing the alert query, referenced in the
+               query text with `:name` syntax. Static values only
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
@@ -672,6 +711,7 @@ class AlertV2(pulumi.CustomResource):
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -697,6 +737,7 @@ class AlertV2(pulumi.CustomResource):
             if evaluation is None and not opts.urn:
                 raise TypeError("Missing required property 'evaluation'")
             __props__.__dict__["evaluation"] = evaluation
+            __props__.__dict__["parameters"] = parameters
             __props__.__dict__["parent_path"] = parent_path
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["purge_on_delete"] = purge_on_delete
@@ -734,6 +775,7 @@ class AlertV2(pulumi.CustomResource):
             evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
             lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
             owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]]] = None,
             parent_path: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
             purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -759,6 +801,8 @@ class AlertV2(pulumi.CustomResource):
                permissions and defaults
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]] parameters: Query parameters bound when executing the alert query, referenced in the
+               query text with `:name` syntax. Static values only
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
@@ -786,6 +830,7 @@ class AlertV2(pulumi.CustomResource):
         __props__.__dict__["evaluation"] = evaluation
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["owner_user_name"] = owner_user_name
+        __props__.__dict__["parameters"] = parameters
         __props__.__dict__["parent_path"] = parent_path
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["purge_on_delete"] = purge_on_delete
@@ -859,6 +904,15 @@ class AlertV2(pulumi.CustomResource):
         (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         """
         return pulumi.get(self, "owner_user_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.AlertV2Parameter']]]:
+        """
+        Query parameters bound when executing the alert query, referenced in the
+        query text with `:name` syntax. Static values only
+        """
+        return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter(name="parentPath")

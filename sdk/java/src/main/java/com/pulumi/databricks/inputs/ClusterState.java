@@ -267,6 +267,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.defaultTags);
     }
 
+    @Import(name="dependencyMode")
+    private @Nullable Output<String> dependencyMode;
+
+    public Optional<Output<String>> dependencyMode() {
+        return Optional.ofNullable(this.dependencyMode);
+    }
+
     @Import(name="dockerImage")
     private @Nullable Output<ClusterDockerImageArgs> dockerImage;
 
@@ -703,6 +710,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.customTags = $.customTags;
         this.dataSecurityMode = $.dataSecurityMode;
         this.defaultTags = $.defaultTags;
+        this.dependencyMode = $.dependencyMode;
         this.dockerImage = $.dockerImage;
         this.driverInstancePoolId = $.driverInstancePoolId;
         this.driverNodeTypeFlexibility = $.driverNodeTypeFlexibility;
@@ -1046,6 +1054,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultTags(Map<String,String> defaultTags) {
             return defaultTags(Output.of(defaultTags));
+        }
+
+        public Builder dependencyMode(@Nullable Output<String> dependencyMode) {
+            $.dependencyMode = dependencyMode;
+            return this;
+        }
+
+        public Builder dependencyMode(String dependencyMode) {
+            return dependencyMode(Output.of(dependencyMode));
         }
 
         public Builder dockerImage(@Nullable Output<ClusterDockerImageArgs> dockerImage) {

@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("awsAccessKeyId")]
         public Input<string>? AwsAccessKeyId { get; set; }
 
-        [Input("awsAccessKeyIdPlaintext")]
-        public Input<string>? AwsAccessKeyIdPlaintext { get; set; }
+        [Input("awsAccessKeyIdPlaintext", required: true)]
+        public Input<string> AwsAccessKeyIdPlaintext { get; set; } = null!;
 
         [Input("awsRegion", required: true)]
         public Input<string> AwsRegion { get; set; } = null!;
@@ -24,8 +24,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("awsSecretAccessKey")]
         public Input<string>? AwsSecretAccessKey { get; set; }
 
-        [Input("awsSecretAccessKeyPlaintext")]
-        public Input<string>? AwsSecretAccessKeyPlaintext { get; set; }
+        [Input("awsSecretAccessKeyPlaintext", required: true)]
+        public Input<string> AwsSecretAccessKeyPlaintext { get; set; } = null!;
 
         [Input("bedrockProvider", required: true)]
         public Input<string> BedrockProvider { get; set; } = null!;

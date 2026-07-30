@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,11 +23,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelPal
         return Optional.ofNullable(this.palmApiKey);
     }
 
-    @Import(name="palmApiKeyPlaintext")
-    private @Nullable Output<String> palmApiKeyPlaintext;
+    @Import(name="palmApiKeyPlaintext", required=true)
+    private Output<String> palmApiKeyPlaintext;
 
-    public Optional<Output<String>> palmApiKeyPlaintext() {
-        return Optional.ofNullable(this.palmApiKeyPlaintext);
+    public Output<String> palmApiKeyPlaintext() {
+        return this.palmApiKeyPlaintext;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs() {}
@@ -63,7 +64,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelPal
             return palmApiKey(Output.of(palmApiKey));
         }
 
-        public Builder palmApiKeyPlaintext(@Nullable Output<String> palmApiKeyPlaintext) {
+        public Builder palmApiKeyPlaintext(Output<String> palmApiKeyPlaintext) {
             $.palmApiKeyPlaintext = palmApiKeyPlaintext;
             return this;
         }
@@ -73,6 +74,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelPal
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs build() {
+            if ($.palmApiKeyPlaintext == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs", "palmApiKeyPlaintext");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,7 +14,7 @@ import javax.annotation.Nullable;
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig {
     private @Nullable String cohereApiBase;
     private @Nullable String cohereApiKey;
-    private @Nullable String cohereApiKeyPlaintext;
+    private String cohereApiKeyPlaintext;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig() {}
     public Optional<String> cohereApiBase() {
@@ -22,8 +23,8 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCoh
     public Optional<String> cohereApiKey() {
         return Optional.ofNullable(this.cohereApiKey);
     }
-    public Optional<String> cohereApiKeyPlaintext() {
-        return Optional.ofNullable(this.cohereApiKeyPlaintext);
+    public String cohereApiKeyPlaintext() {
+        return this.cohereApiKeyPlaintext;
     }
 
     public static Builder builder() {
@@ -37,7 +38,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCoh
     public static final class Builder {
         private @Nullable String cohereApiBase;
         private @Nullable String cohereApiKey;
-        private @Nullable String cohereApiKeyPlaintext;
+        private String cohereApiKeyPlaintext;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -59,8 +60,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCoh
             return this;
         }
         @CustomType.Setter
-        public Builder cohereApiKeyPlaintext(@Nullable String cohereApiKeyPlaintext) {
-
+        public Builder cohereApiKeyPlaintext(String cohereApiKeyPlaintext) {
+            if (cohereApiKeyPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig", "cohereApiKeyPlaintext");
+            }
             this.cohereApiKeyPlaintext = cohereApiKeyPlaintext;
             return this;
         }

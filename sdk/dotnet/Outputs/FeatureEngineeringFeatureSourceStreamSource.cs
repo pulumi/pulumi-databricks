@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureSourceStreamSource
     {
+        public readonly string? DataframeSchema;
         /// <summary>
         /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         /// The filter condition applied to the source data before aggregation
@@ -24,15 +25,22 @@ namespace Pulumi.Databricks.Outputs
         /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         public readonly string FullName;
+        public readonly string? TransformationSql;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureSourceStreamSource(
+            string? dataframeSchema,
+
             string? filterCondition,
 
-            string fullName)
+            string fullName,
+
+            string? transformationSql)
         {
+            DataframeSchema = dataframeSchema;
             FilterCondition = filterCondition;
             FullName = fullName;
+            TransformationSql = transformationSql;
         }
     }
 }

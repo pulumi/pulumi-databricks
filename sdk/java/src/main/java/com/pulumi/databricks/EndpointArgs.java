@@ -5,7 +5,9 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.EndpointAwsVpcEndpointInfoArgs;
 import com.pulumi.databricks.inputs.EndpointAzurePrivateEndpointInfoArgs;
+import com.pulumi.databricks.inputs.EndpointGcpPscEndpointInfoArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +18,21 @@ import javax.annotation.Nullable;
 public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EndpointArgs Empty = new EndpointArgs();
+
+    /**
+     * Info for an AWS VPC endpoint
+     * 
+     */
+    @Import(name="awsVpcEndpointInfo")
+    private @Nullable Output<EndpointAwsVpcEndpointInfoArgs> awsVpcEndpointInfo;
+
+    /**
+     * @return Info for an AWS VPC endpoint
+     * 
+     */
+    public Optional<Output<EndpointAwsVpcEndpointInfoArgs>> awsVpcEndpointInfo() {
+        return Optional.ofNullable(this.awsVpcEndpointInfo);
+    }
 
     /**
      * Info for an Azure private endpoint
@@ -49,6 +66,21 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+
+    /**
+     * Info for a GCP Private Service Connect endpoint
+     * 
+     */
+    @Import(name="gcpPscEndpointInfo")
+    private @Nullable Output<EndpointGcpPscEndpointInfoArgs> gcpPscEndpointInfo;
+
+    /**
+     * @return Info for a GCP Private Service Connect endpoint
+     * 
+     */
+    public Optional<Output<EndpointGcpPscEndpointInfoArgs>> gcpPscEndpointInfo() {
+        return Optional.ofNullable(this.gcpPscEndpointInfo);
     }
 
     /**
@@ -86,8 +118,10 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
     private EndpointArgs() {}
 
     private EndpointArgs(EndpointArgs $) {
+        this.awsVpcEndpointInfo = $.awsVpcEndpointInfo;
         this.azurePrivateEndpointInfo = $.azurePrivateEndpointInfo;
         this.displayName = $.displayName;
+        this.gcpPscEndpointInfo = $.gcpPscEndpointInfo;
         this.parent = $.parent;
         this.region = $.region;
     }
@@ -108,6 +142,27 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(EndpointArgs defaults) {
             $ = new EndpointArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param awsVpcEndpointInfo Info for an AWS VPC endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsVpcEndpointInfo(@Nullable Output<EndpointAwsVpcEndpointInfoArgs> awsVpcEndpointInfo) {
+            $.awsVpcEndpointInfo = awsVpcEndpointInfo;
+            return this;
+        }
+
+        /**
+         * @param awsVpcEndpointInfo Info for an AWS VPC endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsVpcEndpointInfo(EndpointAwsVpcEndpointInfoArgs awsVpcEndpointInfo) {
+            return awsVpcEndpointInfo(Output.of(awsVpcEndpointInfo));
         }
 
         /**
@@ -154,6 +209,27 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param gcpPscEndpointInfo Info for a GCP Private Service Connect endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpPscEndpointInfo(@Nullable Output<EndpointGcpPscEndpointInfoArgs> gcpPscEndpointInfo) {
+            $.gcpPscEndpointInfo = gcpPscEndpointInfo;
+            return this;
+        }
+
+        /**
+         * @param gcpPscEndpointInfo Info for a GCP Private Service Connect endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpPscEndpointInfo(EndpointGcpPscEndpointInfoArgs gcpPscEndpointInfo) {
+            return gcpPscEndpointInfo(Output.of(gcpPscEndpointInfo));
         }
 
         /**

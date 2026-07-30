@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("delay")]
         public Input<string>? Delay { get; set; }
 
-        [Input("windowDuration", required: true)]
-        public Input<string> WindowDuration { get; set; } = null!;
+        [Input("windowDuration")]
+        public Input<string>? WindowDuration { get; set; }
 
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs()
         {

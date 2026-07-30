@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringFeatureSourceStreamSource {
+    private @Nullable String dataframeSchema;
     /**
      * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -25,8 +26,12 @@ public final class FeatureEngineeringFeatureSourceStreamSource {
      * 
      */
     private String fullName;
+    private @Nullable String transformationSql;
 
     private FeatureEngineeringFeatureSourceStreamSource() {}
+    public Optional<String> dataframeSchema() {
+        return Optional.ofNullable(this.dataframeSchema);
+    }
     /**
      * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -44,6 +49,9 @@ public final class FeatureEngineeringFeatureSourceStreamSource {
     public String fullName() {
         return this.fullName;
     }
+    public Optional<String> transformationSql() {
+        return Optional.ofNullable(this.transformationSql);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,15 +62,25 @@ public final class FeatureEngineeringFeatureSourceStreamSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String dataframeSchema;
         private @Nullable String filterCondition;
         private String fullName;
+        private @Nullable String transformationSql;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureSourceStreamSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dataframeSchema = defaults.dataframeSchema;
     	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
+    	      this.transformationSql = defaults.transformationSql;
         }
 
+        @CustomType.Setter
+        public Builder dataframeSchema(@Nullable String dataframeSchema) {
+
+            this.dataframeSchema = dataframeSchema;
+            return this;
+        }
         @CustomType.Setter
         public Builder filterCondition(@Nullable String filterCondition) {
 
@@ -77,10 +95,18 @@ public final class FeatureEngineeringFeatureSourceStreamSource {
             this.fullName = fullName;
             return this;
         }
+        @CustomType.Setter
+        public Builder transformationSql(@Nullable String transformationSql) {
+
+            this.transformationSql = transformationSql;
+            return this;
+        }
         public FeatureEngineeringFeatureSourceStreamSource build() {
             final var _resultValue = new FeatureEngineeringFeatureSourceStreamSource();
+            _resultValue.dataframeSchema = dataframeSchema;
             _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
+            _resultValue.transformationSql = transformationSql;
             return _resultValue;
         }
     }

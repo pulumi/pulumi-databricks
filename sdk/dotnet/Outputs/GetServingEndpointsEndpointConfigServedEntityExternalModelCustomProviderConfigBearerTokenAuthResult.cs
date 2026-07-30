@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthResult
     {
         public readonly string? Token;
-        public readonly string? TokenPlaintext;
+        public readonly string TokenPlaintext;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthResult(
             string? token,
 
-            string? tokenPlaintext)
+            string tokenPlaintext)
         {
             Token = token;
             TokenPlaintext = tokenPlaintext;

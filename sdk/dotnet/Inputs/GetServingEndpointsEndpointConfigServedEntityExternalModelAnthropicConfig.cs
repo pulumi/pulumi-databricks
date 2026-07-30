@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("anthropicApiKey")]
         public string? AnthropicApiKey { get; set; }
 
-        [Input("anthropicApiKeyPlaintext")]
-        public string? AnthropicApiKeyPlaintext { get; set; }
+        [Input("anthropicApiKeyPlaintext", required: true)]
+        public string AnthropicApiKeyPlaintext { get; set; } = null!;
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs()
         {

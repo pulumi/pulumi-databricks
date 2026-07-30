@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,14 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
     private @Nullable String token;
-    private @Nullable String tokenPlaintext;
+    private String tokenPlaintext;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth() {}
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
-    public Optional<String> tokenPlaintext() {
-        return Optional.ofNullable(this.tokenPlaintext);
+    public String tokenPlaintext() {
+        return this.tokenPlaintext;
     }
 
     public static Builder builder() {
@@ -32,7 +33,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String token;
-        private @Nullable String tokenPlaintext;
+        private String tokenPlaintext;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,8 +48,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelCus
             return this;
         }
         @CustomType.Setter
-        public Builder tokenPlaintext(@Nullable String tokenPlaintext) {
-
+        public Builder tokenPlaintext(String tokenPlaintext) {
+            if (tokenPlaintext == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth", "tokenPlaintext");
+            }
             this.tokenPlaintext = tokenPlaintext;
             return this;
         }

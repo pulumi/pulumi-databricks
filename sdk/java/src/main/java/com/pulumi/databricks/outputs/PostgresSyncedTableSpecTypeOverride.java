@@ -13,10 +13,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PostgresSyncedTableSpecTypeOverride {
-    /**
-     * @return Name of the source column whose target PostgreSQL type should be overridden
-     * 
-     */
     private String columnName;
     /**
      * @return PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
@@ -24,17 +20,13 @@ public final class PostgresSyncedTableSpecTypeOverride {
      */
     private String pgType;
     /**
-     * @return Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * @return Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      * 
      */
     private @Nullable Integer size;
 
     private PostgresSyncedTableSpecTypeOverride() {}
-    /**
-     * @return Name of the source column whose target PostgreSQL type should be overridden
-     * 
-     */
     public String columnName() {
         return this.columnName;
     }
@@ -46,8 +38,8 @@ public final class PostgresSyncedTableSpecTypeOverride {
         return this.pgType;
     }
     /**
-     * @return Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
-     * or PG_SPECIFIC_TYPE_HALFVEC (specifies the vector dimension, e.g., 1024)
+     * @return Size parameter for the target type, for types that take one (e.g. vector
+     * dimension, varchar length). Required when the chosen pgType needs a size
      * 
      */
     public Optional<Integer> size() {

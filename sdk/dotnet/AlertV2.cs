@@ -128,6 +128,13 @@ namespace Pulumi.Databricks
         public Output<string> OwnerUserName { get; private set; } = null!;
 
         /// <summary>
+        /// Query parameters bound when executing the alert query, referenced in the
+        /// query text with `:name` syntax. Static values only
+        /// </summary>
+        [Output("parameters")]
+        public Output<ImmutableArray<Outputs.AlertV2Parameter>> Parameters { get; private set; } = null!;
+
+        /// <summary>
         /// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         /// </summary>
         [Output("parentPath")]
@@ -251,6 +258,19 @@ namespace Pulumi.Databricks
         [Input("evaluation", required: true)]
         public Input<Inputs.AlertV2EvaluationArgs> Evaluation { get; set; } = null!;
 
+        [Input("parameters")]
+        private InputList<Inputs.AlertV2ParameterArgs>? _parameters;
+
+        /// <summary>
+        /// Query parameters bound when executing the alert query, referenced in the
+        /// query text with `:name` syntax. Static values only
+        /// </summary>
+        public InputList<Inputs.AlertV2ParameterArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.AlertV2ParameterArgs>());
+            set => _parameters = value;
+        }
+
         /// <summary>
         /// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         /// </summary>
@@ -356,6 +376,19 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("ownerUserName")]
         public Input<string>? OwnerUserName { get; set; }
+
+        [Input("parameters")]
+        private InputList<Inputs.AlertV2ParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// Query parameters bound when executing the alert query, referenced in the
+        /// query text with `:name` syntax. Static values only
+        /// </summary>
+        public InputList<Inputs.AlertV2ParameterGetArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.AlertV2ParameterGetArgs>());
+            set => _parameters = value;
+        }
 
         /// <summary>
         /// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated

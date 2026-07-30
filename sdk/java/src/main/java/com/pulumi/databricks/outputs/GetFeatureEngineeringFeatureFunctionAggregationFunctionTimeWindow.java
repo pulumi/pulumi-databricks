@@ -5,9 +5,8 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
-import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime;
-import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
 import java.util.Objects;
@@ -22,20 +21,15 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
      */
     private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
     /**
-     * @return (LifetimeWindow) - A window that spans the entire lifetime of the data source
-     * 
-     */
-    private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime lifetime;
-    /**
-     * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-     * 
-     */
-    private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling;
-    /**
      * @return (RollingWindow)
      * 
      */
     private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
+    /**
+     * @return (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth sawtooth;
     /**
      * @return (SlidingWindow)
      * 
@@ -56,25 +50,18 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
         return Optional.ofNullable(this.continuous);
     }
     /**
-     * @return (LifetimeWindow) - A window that spans the entire lifetime of the data source
-     * 
-     */
-    public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime> lifetime() {
-        return Optional.ofNullable(this.lifetime);
-    }
-    /**
-     * @return (LongRollingWindow) - A long (multi-day) rolling window served via the hybrid batch + streaming path
-     * 
-     */
-    public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling> longRolling() {
-        return Optional.ofNullable(this.longRolling);
-    }
-    /**
      * @return (RollingWindow)
      * 
      */
     public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling> rolling() {
         return Optional.ofNullable(this.rolling);
+    }
+    /**
+     * @return (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth> sawtooth() {
+        return Optional.ofNullable(this.sawtooth);
     }
     /**
      * @return (SlidingWindow)
@@ -101,18 +88,16 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
-        private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime lifetime;
-        private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
+        private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth sawtooth;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling tumbling;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
-    	      this.lifetime = defaults.lifetime;
-    	      this.longRolling = defaults.longRolling;
     	      this.rolling = defaults.rolling;
+    	      this.sawtooth = defaults.sawtooth;
     	      this.sliding = defaults.sliding;
     	      this.tumbling = defaults.tumbling;
         }
@@ -124,21 +109,15 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
             return this;
         }
         @CustomType.Setter
-        public Builder lifetime(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLifetime lifetime) {
-
-            this.lifetime = lifetime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder longRolling(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowLongRolling longRolling) {
-
-            this.longRolling = longRolling;
-            return this;
-        }
-        @CustomType.Setter
         public Builder rolling(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling) {
 
             this.rolling = rolling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sawtooth(@Nullable GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth sawtooth) {
+
+            this.sawtooth = sawtooth;
             return this;
         }
         @CustomType.Setter
@@ -156,9 +135,8 @@ public final class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWi
         public GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow build() {
             final var _resultValue = new GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow();
             _resultValue.continuous = continuous;
-            _resultValue.lifetime = lifetime;
-            _resultValue.longRolling = longRolling;
             _resultValue.rolling = rolling;
+            _resultValue.sawtooth = sawtooth;
             _resultValue.sliding = sliding;
             _resultValue.tumbling = tumbling;
             return _resultValue;
