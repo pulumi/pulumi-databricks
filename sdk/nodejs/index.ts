@@ -30,6 +30,21 @@ export type AccountSettingV2 = import("./accountSettingV2").AccountSettingV2;
 export const AccountSettingV2: typeof import("./accountSettingV2").AccountSettingV2 = null as any;
 utilities.lazyLoad(exports, ["AccountSettingV2"], () => require("./accountSettingV2"));
 
+export { AiGatewayMcpServiceArgs, AiGatewayMcpServiceState } from "./aiGatewayMcpService";
+export type AiGatewayMcpService = import("./aiGatewayMcpService").AiGatewayMcpService;
+export const AiGatewayMcpService: typeof import("./aiGatewayMcpService").AiGatewayMcpService = null as any;
+utilities.lazyLoad(exports, ["AiGatewayMcpService"], () => require("./aiGatewayMcpService"));
+
+export { AiGatewayModelProviderServiceArgs, AiGatewayModelProviderServiceState } from "./aiGatewayModelProviderService";
+export type AiGatewayModelProviderService = import("./aiGatewayModelProviderService").AiGatewayModelProviderService;
+export const AiGatewayModelProviderService: typeof import("./aiGatewayModelProviderService").AiGatewayModelProviderService = null as any;
+utilities.lazyLoad(exports, ["AiGatewayModelProviderService"], () => require("./aiGatewayModelProviderService"));
+
+export { AiGatewayModelServiceArgs, AiGatewayModelServiceState } from "./aiGatewayModelService";
+export type AiGatewayModelService = import("./aiGatewayModelService").AiGatewayModelService;
+export const AiGatewayModelService: typeof import("./aiGatewayModelService").AiGatewayModelService = null as any;
+utilities.lazyLoad(exports, ["AiGatewayModelService"], () => require("./aiGatewayModelService"));
+
 export { AiSearchEndpointArgs, AiSearchEndpointState } from "./aiSearchEndpoint";
 export type AiSearchEndpoint = import("./aiSearchEndpoint").AiSearchEndpoint;
 export const AiSearchEndpoint: typeof import("./aiSearchEndpoint").AiSearchEndpoint = null as any;
@@ -299,6 +314,36 @@ export { GetAccountSettingV2Args, GetAccountSettingV2Result, GetAccountSettingV2
 export const getAccountSettingV2: typeof import("./getAccountSettingV2").getAccountSettingV2 = null as any;
 export const getAccountSettingV2Output: typeof import("./getAccountSettingV2").getAccountSettingV2Output = null as any;
 utilities.lazyLoad(exports, ["getAccountSettingV2","getAccountSettingV2Output"], () => require("./getAccountSettingV2"));
+
+export { GetAiGatewayMcpServiceArgs, GetAiGatewayMcpServiceResult, GetAiGatewayMcpServiceOutputArgs } from "./getAiGatewayMcpService";
+export const getAiGatewayMcpService: typeof import("./getAiGatewayMcpService").getAiGatewayMcpService = null as any;
+export const getAiGatewayMcpServiceOutput: typeof import("./getAiGatewayMcpService").getAiGatewayMcpServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGatewayMcpService","getAiGatewayMcpServiceOutput"], () => require("./getAiGatewayMcpService"));
+
+export { GetAiGatewayMcpServicesArgs, GetAiGatewayMcpServicesResult, GetAiGatewayMcpServicesOutputArgs } from "./getAiGatewayMcpServices";
+export const getAiGatewayMcpServices: typeof import("./getAiGatewayMcpServices").getAiGatewayMcpServices = null as any;
+export const getAiGatewayMcpServicesOutput: typeof import("./getAiGatewayMcpServices").getAiGatewayMcpServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGatewayMcpServices","getAiGatewayMcpServicesOutput"], () => require("./getAiGatewayMcpServices"));
+
+export { GetAiGatewayModelProviderServiceArgs, GetAiGatewayModelProviderServiceResult, GetAiGatewayModelProviderServiceOutputArgs } from "./getAiGatewayModelProviderService";
+export const getAiGatewayModelProviderService: typeof import("./getAiGatewayModelProviderService").getAiGatewayModelProviderService = null as any;
+export const getAiGatewayModelProviderServiceOutput: typeof import("./getAiGatewayModelProviderService").getAiGatewayModelProviderServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGatewayModelProviderService","getAiGatewayModelProviderServiceOutput"], () => require("./getAiGatewayModelProviderService"));
+
+export { GetAiGatewayModelProviderServicesArgs, GetAiGatewayModelProviderServicesResult, GetAiGatewayModelProviderServicesOutputArgs } from "./getAiGatewayModelProviderServices";
+export const getAiGatewayModelProviderServices: typeof import("./getAiGatewayModelProviderServices").getAiGatewayModelProviderServices = null as any;
+export const getAiGatewayModelProviderServicesOutput: typeof import("./getAiGatewayModelProviderServices").getAiGatewayModelProviderServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGatewayModelProviderServices","getAiGatewayModelProviderServicesOutput"], () => require("./getAiGatewayModelProviderServices"));
+
+export { GetAiGatewayModelServiceArgs, GetAiGatewayModelServiceResult, GetAiGatewayModelServiceOutputArgs } from "./getAiGatewayModelService";
+export const getAiGatewayModelService: typeof import("./getAiGatewayModelService").getAiGatewayModelService = null as any;
+export const getAiGatewayModelServiceOutput: typeof import("./getAiGatewayModelService").getAiGatewayModelServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGatewayModelService","getAiGatewayModelServiceOutput"], () => require("./getAiGatewayModelService"));
+
+export { GetAiGatewayModelServicesArgs, GetAiGatewayModelServicesResult, GetAiGatewayModelServicesOutputArgs } from "./getAiGatewayModelServices";
+export const getAiGatewayModelServices: typeof import("./getAiGatewayModelServices").getAiGatewayModelServices = null as any;
+export const getAiGatewayModelServicesOutput: typeof import("./getAiGatewayModelServices").getAiGatewayModelServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGatewayModelServices","getAiGatewayModelServicesOutput"], () => require("./getAiGatewayModelServices"));
 
 export { GetAiSearchEndpointArgs, GetAiSearchEndpointResult, GetAiSearchEndpointOutputArgs } from "./getAiSearchEndpoint";
 export const getAiSearchEndpoint: typeof import("./getAiSearchEndpoint").getAiSearchEndpoint = null as any;
@@ -1607,6 +1652,12 @@ const _module = {
                 return new AccountSettingUserPreferenceV2(name, <any>undefined, { urn })
             case "databricks:index/accountSettingV2:AccountSettingV2":
                 return new AccountSettingV2(name, <any>undefined, { urn })
+            case "databricks:index/aiGatewayMcpService:AiGatewayMcpService":
+                return new AiGatewayMcpService(name, <any>undefined, { urn })
+            case "databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService":
+                return new AiGatewayModelProviderService(name, <any>undefined, { urn })
+            case "databricks:index/aiGatewayModelService:AiGatewayModelService":
+                return new AiGatewayModelService(name, <any>undefined, { urn })
             case "databricks:index/aiSearchEndpoint:AiSearchEndpoint":
                 return new AiSearchEndpoint(name, <any>undefined, { urn })
             case "databricks:index/aiSearchIndex:AiSearchIndex":
@@ -1921,6 +1972,9 @@ pulumi.runtime.registerResourceModule("databricks", "index/accountFederationPoli
 pulumi.runtime.registerResourceModule("databricks", "index/accountNetworkPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingUserPreferenceV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/aiGatewayMcpService", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/aiGatewayModelProviderService", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/aiGatewayModelService", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aiSearchEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aiSearchIndex", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingAccessPolicySetting", _module)

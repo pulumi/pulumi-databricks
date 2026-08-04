@@ -24,34 +24,41 @@ import * as utilities from "./utilities";
  * const _this = new databricks.PostgresProject("this", {
  *     projectId: "my-project",
  *     spec: {
- *         pgVersion: 17,
+ *         pgVersion: 18,
  *         displayName: "My Project",
  *     },
  * });
- * const main = new databricks.PostgresBranch("main", {
- *     branchId: "main",
+ * // "production" is the implicitly-created default branch; adopt it with replace_existing.
+ * const production = new databricks.PostgresBranch("production", {
+ *     branchId: "production",
  *     parent: _this.name,
+ *     replaceExisting: true,
  *     spec: {
  *         noExpiry: true,
  *     },
  * });
  * const appOwner = new databricks.PostgresRole("app_owner", {
  *     roleId: "app-owner",
- *     parent: main.name,
+ *     parent: production.name,
  *     spec: {
  *         postgresRole: "app_owner",
  *     },
  * });
- * const app = new databricks.PostgresDatabase("app", {
- *     databaseId: "app",
- *     parent: main.name,
+ * const appDb = new databricks.PostgresDatabase("app_db", {
+ *     databaseId: "app-db",
+ *     parent: production.name,
  *     spec: {
- *         postgresDatabase: "app",
+ *         postgresDatabase: "app_db",
  *         role: appOwner.name,
  *     },
  * });
- * const appPostgresDataApi = new databricks.PostgresDataApi("app", {parent: app.name});
- * export const dataApiUrl = appPostgresDataApi.status.apply(status => status.url);
+ * const appDbPostgresDataApi = new databricks.PostgresDataApi("app_db", {
+ *     parent: appDb.name,
+ *     spec: {
+ *         dbSchemas: ["public"],
+ *     },
+ * });
+ * export const dataApiUrl = appDbPostgresDataApi.status.apply(status => status.url);
  * ```
  *
  * > [!NOTE]

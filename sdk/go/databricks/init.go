@@ -31,6 +31,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountSettingUserPreferenceV2{}
 	case "databricks:index/accountSettingV2:AccountSettingV2":
 		r = &AccountSettingV2{}
+	case "databricks:index/aiGatewayMcpService:AiGatewayMcpService":
+		r = &AiGatewayMcpService{}
+	case "databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService":
+		r = &AiGatewayModelProviderService{}
+	case "databricks:index/aiGatewayModelService:AiGatewayModelService":
+		r = &AiGatewayModelService{}
 	case "databricks:index/aiSearchEndpoint:AiSearchEndpoint":
 		r = &AiSearchEndpoint{}
 	case "databricks:index/aiSearchIndex:AiSearchIndex":
@@ -389,6 +395,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/accountSettingV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/aiGatewayMcpService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/aiGatewayModelProviderService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/aiGatewayModelService",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

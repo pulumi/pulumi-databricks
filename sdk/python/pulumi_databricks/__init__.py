@@ -11,6 +11,9 @@ from .account_federation_policy import *
 from .account_network_policy import *
 from .account_setting_user_preference_v2 import *
 from .account_setting_v2 import *
+from .ai_gateway_mcp_service import *
+from .ai_gateway_model_provider_service import *
+from .ai_gateway_model_service import *
 from .ai_search_endpoint import *
 from .ai_search_index import *
 from .aibi_dashboard_embedding_access_policy_setting import *
@@ -65,6 +68,12 @@ from .get_account_network_policies import *
 from .get_account_network_policy import *
 from .get_account_setting_user_preference_v2 import *
 from .get_account_setting_v2 import *
+from .get_ai_gateway_mcp_service import *
+from .get_ai_gateway_mcp_services import *
+from .get_ai_gateway_model_provider_service import *
+from .get_ai_gateway_model_provider_services import *
+from .get_ai_gateway_model_service import *
+from .get_ai_gateway_model_services import *
 from .get_ai_search_endpoint import *
 from .get_ai_search_endpoints import *
 from .get_ai_search_index import *
@@ -373,6 +382,30 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accountSettingV2:AccountSettingV2": "AccountSettingV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/aiGatewayMcpService",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/aiGatewayMcpService:AiGatewayMcpService": "AiGatewayMcpService"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/aiGatewayModelProviderService",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService": "AiGatewayModelProviderService"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/aiGatewayModelService",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/aiGatewayModelService:AiGatewayModelService": "AiGatewayModelService"
   }
  },
  {

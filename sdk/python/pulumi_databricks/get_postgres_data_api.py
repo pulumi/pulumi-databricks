@@ -139,9 +139,9 @@ def get_postgres_data_api(name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    app = databricks.get_postgres_data_api(name="projects/my-project/branches/main/databases/app/data-api")
-    pulumi.export("dataApiUrl", app.status.url)
-    pulumi.export("availableSchemas", app.status.available_schemas)
+    app_db = databricks.get_postgres_data_api(name="projects/my-project/branches/production/databases/app-db/data-api")
+    pulumi.export("dataApiUrl", app_db.status.url)
+    pulumi.export("availableSchemas", app_db.status.available_schemas)
     ```
 
 
@@ -180,9 +180,9 @@ def get_postgres_data_api_output(name: pulumi.Input[Optional[_builtins.str]] = N
     import pulumi
     import pulumi_databricks as databricks
 
-    app = databricks.get_postgres_data_api(name="projects/my-project/branches/main/databases/app/data-api")
-    pulumi.export("dataApiUrl", app.status.url)
-    pulumi.export("availableSchemas", app.status.available_schemas)
+    app_db = databricks.get_postgres_data_api(name="projects/my-project/branches/production/databases/app-db/data-api")
+    pulumi.export("dataApiUrl", app_db.status.url)
+    pulumi.export("availableSchemas", app_db.status.available_schemas)
     ```
 
 

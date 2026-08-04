@@ -37,16 +37,18 @@ import (
 //			this, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
 //				ProjectId: pulumi.String("my-project"),
 //				Spec: &databricks.PostgresProjectSpecArgs{
-//					PgVersion:   pulumi.Int(17),
+//					PgVersion:   pulumi.Int(18),
 //					DisplayName: pulumi.String("My Project"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			main, err := databricks.NewPostgresBranch(ctx, "main", &databricks.PostgresBranchArgs{
-//				BranchId: pulumi.String("main"),
-//				Parent:   this.Name,
+//			// "production" is the implicitly-created default branch; adopt it with replace_existing.
+//			production, err := databricks.NewPostgresBranch(ctx, "production", &databricks.PostgresBranchArgs{
+//				BranchId:        pulumi.String("production"),
+//				Parent:          this.Name,
+//				ReplaceExisting: pulumi.Bool(true),
 //				Spec: &databricks.PostgresBranchSpecArgs{
 //					NoExpiry: pulumi.Bool(true),
 //				},
@@ -56,7 +58,7 @@ import (
 //			}
 //			appOwner, err := databricks.NewPostgresRole(ctx, "app_owner", &databricks.PostgresRoleArgs{
 //				RoleId: pulumi.String("app-owner"),
-//				Parent: main.Name,
+//				Parent: production.Name,
 //				Spec: &databricks.PostgresRoleSpecArgs{
 //					PostgresRole: pulumi.String("app_owner"),
 //				},
@@ -64,24 +66,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			app, err := databricks.NewPostgresDatabase(ctx, "app", &databricks.PostgresDatabaseArgs{
-//				DatabaseId: pulumi.String("app"),
-//				Parent:     main.Name,
+//			appDb, err := databricks.NewPostgresDatabase(ctx, "app_db", &databricks.PostgresDatabaseArgs{
+//				DatabaseId: pulumi.String("app-db"),
+//				Parent:     production.Name,
 //				Spec: &databricks.PostgresDatabaseSpecArgs{
-//					PostgresDatabase: pulumi.String("app"),
+//					PostgresDatabase: pulumi.String("app_db"),
 //					Role:             appOwner.Name,
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			appPostgresDataApi, err := databricks.NewPostgresDataApi(ctx, "app", &databricks.PostgresDataApiArgs{
-//				Parent: app.Name,
+//			appDbPostgresDataApi, err := databricks.NewPostgresDataApi(ctx, "app_db", &databricks.PostgresDataApiArgs{
+//				Parent: appDb.Name,
+//				Spec: &databricks.PostgresDataApiSpecArgs{
+//					DbSchemas: pulumi.StringArray{
+//						pulumi.String("public"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("dataApiUrl", appPostgresDataApi.Status.ApplyT(func(status databricks.PostgresDataApiStatus) (*string, error) {
+//			ctx.Export("dataApiUrl", appDbPostgresDataApi.Status.ApplyT(func(status databricks.PostgresDataApiStatus) (*string, error) {
 //				return status.Url, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil

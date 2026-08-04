@@ -33,14 +33,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			app, err := databricks.GetPostgresDataApi(ctx, &databricks.LookupPostgresDataApiArgs{
-//				Name: "projects/my-project/branches/main/databases/app/data-api",
+//			appDb, err := databricks.GetPostgresDataApi(ctx, &databricks.LookupPostgresDataApiArgs{
+//				Name: "projects/my-project/branches/production/databases/app-db/data-api",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("dataApiUrl", app.Status.Url)
-//			ctx.Export("availableSchemas", app.Status.AvailableSchemas)
+//			ctx.Export("dataApiUrl", appDb.Status.Url)
+//			ctx.Export("availableSchemas", appDb.Status.AvailableSchemas)
 //			return nil
 //		})
 //	}

@@ -33,15 +33,17 @@ namespace Pulumi.Databricks
     ///         ProjectId = "my-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
     ///         {
-    ///             PgVersion = 17,
+    ///             PgVersion = 18,
     ///             DisplayName = "My Project",
     ///         },
     ///     });
     /// 
-    ///     var main = new Databricks.PostgresBranch("main", new()
+    ///     // "production" is the implicitly-created default branch; adopt it with replace_existing.
+    ///     var production = new Databricks.PostgresBranch("production", new()
     ///     {
-    ///         BranchId = "main",
+    ///         BranchId = "production",
     ///         Parent = @this.Name,
+    ///         ReplaceExisting = true,
     ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
     ///         {
     ///             NoExpiry = true,
@@ -51,32 +53,39 @@ namespace Pulumi.Databricks
     ///     var appOwner = new Databricks.PostgresRole("app_owner", new()
     ///     {
     ///         RoleId = "app-owner",
-    ///         Parent = main.Name,
+    ///         Parent = production.Name,
     ///         Spec = new Databricks.Inputs.PostgresRoleSpecArgs
     ///         {
     ///             PostgresRole = "app_owner",
     ///         },
     ///     });
     /// 
-    ///     var app = new Databricks.PostgresDatabase("app", new()
+    ///     var appDb = new Databricks.PostgresDatabase("app_db", new()
     ///     {
-    ///         DatabaseId = "app",
-    ///         Parent = main.Name,
+    ///         DatabaseId = "app-db",
+    ///         Parent = production.Name,
     ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
     ///         {
-    ///             PostgresDatabase = "app",
+    ///             PostgresDatabase = "app_db",
     ///             Role = appOwner.Name,
     ///         },
     ///     });
     /// 
-    ///     var appPostgresDataApi = new Databricks.PostgresDataApi("app", new()
+    ///     var appDbPostgresDataApi = new Databricks.PostgresDataApi("app_db", new()
     ///     {
-    ///         Parent = app.Name,
+    ///         Parent = appDb.Name,
+    ///         Spec = new Databricks.Inputs.PostgresDataApiSpecArgs
+    ///         {
+    ///             DbSchemas = new[]
+    ///             {
+    ///                 "public",
+    ///             },
+    ///         },
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["dataApiUrl"] = appPostgresDataApi.Status.Apply(status =&gt; status.Url),
+    ///         ["dataApiUrl"] = appDbPostgresDataApi.Status.Apply(status =&gt; status.Url),
     ///     };
     /// });
     /// ```
