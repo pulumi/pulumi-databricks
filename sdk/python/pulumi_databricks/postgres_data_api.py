@@ -227,30 +227,36 @@ class PostgresDataApi(pulumi.CustomResource):
         this = databricks.PostgresProject("this",
             project_id="my-project",
             spec={
-                "pg_version": 17,
+                "pg_version": 18,
                 "display_name": "My Project",
             })
-        main = databricks.PostgresBranch("main",
-            branch_id="main",
+        # "production" is the implicitly-created default branch; adopt it with replace_existing.
+        production = databricks.PostgresBranch("production",
+            branch_id="production",
             parent=this.name,
+            replace_existing=True,
             spec={
                 "no_expiry": True,
             })
         app_owner = databricks.PostgresRole("app_owner",
             role_id="app-owner",
-            parent=main.name,
+            parent=production.name,
             spec={
                 "postgres_role": "app_owner",
             })
-        app = databricks.PostgresDatabase("app",
-            database_id="app",
-            parent=main.name,
+        app_db = databricks.PostgresDatabase("app_db",
+            database_id="app-db",
+            parent=production.name,
             spec={
-                "postgres_database": "app",
+                "postgres_database": "app_db",
                 "role": app_owner.name,
             })
-        app_postgres_data_api = databricks.PostgresDataApi("app", parent=app.name)
-        pulumi.export("dataApiUrl", app_postgres_data_api.status.url)
+        app_db_postgres_data_api = databricks.PostgresDataApi("app_db",
+            parent=app_db.name,
+            spec={
+                "db_schemas": ["public"],
+            })
+        pulumi.export("dataApiUrl", app_db_postgres_data_api.status.url)
         ```
 
         > [!NOTE]
@@ -325,30 +331,36 @@ class PostgresDataApi(pulumi.CustomResource):
         this = databricks.PostgresProject("this",
             project_id="my-project",
             spec={
-                "pg_version": 17,
+                "pg_version": 18,
                 "display_name": "My Project",
             })
-        main = databricks.PostgresBranch("main",
-            branch_id="main",
+        # "production" is the implicitly-created default branch; adopt it with replace_existing.
+        production = databricks.PostgresBranch("production",
+            branch_id="production",
             parent=this.name,
+            replace_existing=True,
             spec={
                 "no_expiry": True,
             })
         app_owner = databricks.PostgresRole("app_owner",
             role_id="app-owner",
-            parent=main.name,
+            parent=production.name,
             spec={
                 "postgres_role": "app_owner",
             })
-        app = databricks.PostgresDatabase("app",
-            database_id="app",
-            parent=main.name,
+        app_db = databricks.PostgresDatabase("app_db",
+            database_id="app-db",
+            parent=production.name,
             spec={
-                "postgres_database": "app",
+                "postgres_database": "app_db",
                 "role": app_owner.name,
             })
-        app_postgres_data_api = databricks.PostgresDataApi("app", parent=app.name)
-        pulumi.export("dataApiUrl", app_postgres_data_api.status.url)
+        app_db_postgres_data_api = databricks.PostgresDataApi("app_db",
+            parent=app_db.name,
+            spec={
+                "db_schemas": ["public"],
+            })
+        pulumi.export("dataApiUrl", app_db_postgres_data_api.status.url)
         ```
 
         > [!NOTE]

@@ -21,11 +21,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const app = databricks.getPostgresDataApi({
- *     name: "projects/my-project/branches/main/databases/app/data-api",
+ * const appDb = databricks.getPostgresDataApi({
+ *     name: "projects/my-project/branches/production/databases/app-db/data-api",
  * });
- * export const dataApiUrl = app.then(app => app.status?.url);
- * export const availableSchemas = app.then(app => app.status?.availableSchemas);
+ * export const dataApiUrl = appDb.then(appDb => appDb.status?.url);
+ * export const availableSchemas = appDb.then(appDb => appDb.status?.availableSchemas);
  * ```
  */
 export function getPostgresDataApi(args: GetPostgresDataApiArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresDataApiResult> {
@@ -96,11 +96,11 @@ export interface GetPostgresDataApiResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const app = databricks.getPostgresDataApi({
- *     name: "projects/my-project/branches/main/databases/app/data-api",
+ * const appDb = databricks.getPostgresDataApi({
+ *     name: "projects/my-project/branches/production/databases/app-db/data-api",
  * });
- * export const dataApiUrl = app.then(app => app.status?.url);
- * export const availableSchemas = app.then(app => app.status?.availableSchemas);
+ * export const dataApiUrl = appDb.then(appDb => appDb.status?.url);
+ * export const availableSchemas = appDb.then(appDb => appDb.status?.availableSchemas);
  * ```
  */
 export function getPostgresDataApiOutput(args: GetPostgresDataApiOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresDataApiResult> {

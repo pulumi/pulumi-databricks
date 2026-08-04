@@ -31,15 +31,15 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Databricks.GetPostgresDataApi.Invoke(new()
+        ///     var appDb = Databricks.GetPostgresDataApi.Invoke(new()
         ///     {
-        ///         Name = "projects/my-project/branches/main/databases/app/data-api",
+        ///         Name = "projects/my-project/branches/production/databases/app-db/data-api",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataApiUrl"] = app.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.Url),
-        ///         ["availableSchemas"] = app.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.AvailableSchemas),
+        ///         ["dataApiUrl"] = appDb.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.Url),
+        ///         ["availableSchemas"] = appDb.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.AvailableSchemas),
         ///     };
         /// });
         /// ```
@@ -67,15 +67,15 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Databricks.GetPostgresDataApi.Invoke(new()
+        ///     var appDb = Databricks.GetPostgresDataApi.Invoke(new()
         ///     {
-        ///         Name = "projects/my-project/branches/main/databases/app/data-api",
+        ///         Name = "projects/my-project/branches/production/databases/app-db/data-api",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataApiUrl"] = app.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.Url),
-        ///         ["availableSchemas"] = app.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.AvailableSchemas),
+        ///         ["dataApiUrl"] = appDb.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.Url),
+        ///         ["availableSchemas"] = appDb.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.AvailableSchemas),
         ///     };
         /// });
         /// ```
@@ -103,15 +103,15 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Databricks.GetPostgresDataApi.Invoke(new()
+        ///     var appDb = Databricks.GetPostgresDataApi.Invoke(new()
         ///     {
-        ///         Name = "projects/my-project/branches/main/databases/app/data-api",
+        ///         Name = "projects/my-project/branches/production/databases/app-db/data-api",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataApiUrl"] = app.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.Url),
-        ///         ["availableSchemas"] = app.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.AvailableSchemas),
+        ///         ["dataApiUrl"] = appDb.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.Url),
+        ///         ["availableSchemas"] = appDb.Apply(getPostgresDataApiResult =&gt; getPostgresDataApiResult.Status?.AvailableSchemas),
         ///     };
         /// });
         /// ```

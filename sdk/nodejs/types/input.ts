@@ -1684,6 +1684,799 @@ export interface AccountSettingV2StringVal {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface AiGatewayMcpServiceConfig {
+    /**
+     * Glob or exact-match patterns selecting which tools from the MCP server
+     * to expose. Prefix match for patterns with `*`, exact match otherwise.
+     * An empty list means all tools are included. Per-element max 256 chars
+     */
+    includeToolSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Per-principal rate limits applied to tool invocations routed through this
+     * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
+     * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
+     * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
+     * configured
+     */
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.AiGatewayMcpServiceConfigRateLimit>[] | undefined>;
+    /**
+     * UC Connection referencing the MCP server
+     */
+    sourceConnection?: pulumi.Input<inputs.AiGatewayMcpServiceConfigSourceConnection | undefined>;
+}
+
+export interface AiGatewayMcpServiceConfigRateLimit {
+    /**
+     * Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: pulumi.Input<string | undefined>;
+    /**
+     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: pulumi.Input<string>;
+    /**
+     * Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: pulumi.Input<string | undefined>;
+    /**
+     * Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: pulumi.Input<string | undefined>;
+    /**
+     * Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: pulumi.Input<number | undefined>;
+    /**
+     * Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: pulumi.Input<number | undefined>;
+}
+
+export interface AiGatewayMcpServiceConfigSourceConnection {
+    /**
+     * (boolean)
+     */
+    isDeleted?: pulumi.Input<boolean | undefined>;
+    /**
+     * (string) - Resource name of the MCP service.
+     * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AiGatewayMcpServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfig {
+    /**
+     * When true, accepts any model exposed by the upstream provider; `targets`
+     * is not required and does not restrict routability. When false, only
+     * models listed in `targets` are routable
+     */
+    allowAllTargets?: pulumi.Input<boolean | undefined>;
+    amazonBedrock?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrock | undefined>;
+    anthropic?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAnthropic | undefined>;
+    azureOpenai?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenai | undefined>;
+    custom?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustom | undefined>;
+    /**
+     * Whether to forward incoming request headers to the upstream provider.
+     * Applies to managed (multi-model) requests as well as passthrough requests
+     * served by this provider service. Governance-level decision by the provider
+     * service owner; not selectable per inference call
+     */
+    forwardHeaders?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to forward incoming request query parameters to the upstream
+     * provider. Same trust-boundary semantics as `forwardHeaders`
+     */
+    forwardQueryParameters?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to forward request paths that fall outside this service's managed
+     * API set to the upstream provider as opaque passthrough. When true,
+     * requests addressed to subpaths not recognized by the managed API surface
+     * are proxied to the upstream provider over the same provider connection.
+     * When false, only managed-API paths are served. Governance-level decision
+     * by the provider service owner; expanding this expands the trust boundary
+     * that the ModelProviderService exposes
+     */
+    forwardUnmanagedPaths?: pulumi.Input<boolean | undefined>;
+    geminiEnterprise?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigGeminiEnterprise | undefined>;
+    /**
+     * Inference table configuration for payload logging when this provider
+     * service is invoked directly. When it is invoked through a model service,
+     * the model service's own inference table captures the invocation instead.
+     * Mirrors `ModelServiceConfig.inference_table` /
+     * `AgentServiceConfig.inference_table`
+     */
+    inferenceTable?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigInferenceTable | undefined>;
+    microsoftFoundry?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundry | undefined>;
+    openai?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigOpenai | undefined>;
+    /**
+     * Provider type discriminator. Required at create time; immutable after.
+     * Determines which variant of the `provider` oneof must be set. May not be
+     * changed via Update; attempts to include `config.provider_type` in
+     * `UpdateModelProviderServiceRequest.update_mask` are rejected.
+     *
+     * Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     */
+    providerType?: pulumi.Input<string | undefined>;
+    /**
+     * Rate limits applied when this provider service is invoked directly. When
+     * it is invoked through a model service, the model service's own
+     * `rateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
+     * `McpServiceConfig.rate_limits`
+     */
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.AiGatewayModelProviderServiceConfigRateLimit>[] | undefined>;
+    /**
+     * Routing targets this provider service exposes (provider-side model
+     * identifier + unified API types per entry). Required (>=1) when
+     * `allowAllTargets = false`; optional and additive when
+     * `allowAllTargets = true`. References from `ExternalModelConfig.target`
+     * must match an entry here unless `allowAllTargets = true`
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.AiGatewayModelProviderServiceConfigTarget>[] | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrock {
+    direct?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirect | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
+    /**
+     * AWS access key ID for Bedrock authentication. Required on Create when using
+     * access-key auth; must be paired with `awsSecretAccessKey` and is
+     * mutually exclusive with `serviceCredential`. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    awsAccessKeyId?: pulumi.Input<string | undefined>;
+    /**
+     * AWS secret access key paired with `awsAccessKeyId`. Required on Create
+     * when using access-key auth; mutually exclusive with `serviceCredential`.
+     * Supplied as inline plaintext via `ProviderSecret.plaintext`
+     */
+    awsSecretAccessKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    serviceCredential?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropic {
+    direct?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAnthropicDirect | undefined>;
+    /**
+     * Relayed (credential-less) form: no Anthropic credential is stored. Each
+     * inference request instead carries the caller's own OAuth token, which the
+     * platform forwards to Anthropic on outbound requests. Mutually exclusive
+     * with `direct`; no `apiKey` is required or persisted
+     */
+    relayed?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAnthropicRelayed | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropicDirect {
+    apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAnthropicDirectApiKey | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropicRelayed {
+    /**
+     * Which Anthropic subscription tier the relayed token belongs to. Optional;
+     * when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
+     * Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
+     */
+    planType?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenai {
+    direct?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirect | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirect {
+    apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey | undefined>;
+    baseUrl?: pulumi.Input<string | undefined>;
+    clientId?: pulumi.Input<string | undefined>;
+    clientSecret?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret | undefined>;
+    serviceCredential?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustom {
+    direct?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustomDirect | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirect {
+    apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustomDirectApiKey | undefined>;
+    baseUrl?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterprise {
+    direct?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
+    apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey | undefined>;
+    /**
+     * GCP project ID hosting the Gemini Enterprise endpoint. Required on Create
+     */
+    projectId?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigInferenceTable {
+    /**
+     * Indicates whether payload logging is disabled (opt-out). Unset means that
+     * payload logging is active (the on-by-default state coincides with the proto
+     * zero-value, so the server never fills this field for a client that leaves it
+     * unset). Set `disabled = true` to pause runtime logging while keeping the
+     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
+     * later flip back to active). `parent` remains required either way
+     */
+    disabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * (boolean) - True when the bound inference TABLE has been deleted but the parent
+     * service still references it. The dangling reference is surfaced (not
+     * silently dropped) so callers can see the broken dependency. AI Gateway
+     * payload logging fails closed in this state
+     */
+    isDeleted?: pulumi.Input<boolean | undefined>;
+    /**
+     * Resource name of the parent schema.
+     * Format: `schemas/{catalog}.{schema}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    parent: pulumi.Input<string>;
+    /**
+     * (string) - Resolved UC table for payload logs.
+     * Format: `tables/{catalog}.{schema}.{table}`
+     */
+    table?: pulumi.Input<string | undefined>;
+    /**
+     * Prefix for the inference-table's UC-registered name. The actual leaf name UC
+     * stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
+     * automatically. To find the actual UC table after Create, read the `table`
+     * field on the response. Defaults to `<model_service_name>_payload` when unset.
+     * Set at create time and immutable thereafter; changing it on an existing
+     * service is rejected
+     */
+    tableNamePrefix?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundry {
+    direct?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
+    apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey | undefined>;
+    baseUrl?: pulumi.Input<string | undefined>;
+    clientId?: pulumi.Input<string | undefined>;
+    clientSecret?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret | undefined>;
+    serviceCredential?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelProviderServiceConfigOpenai {
+    direct?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigOpenaiDirect | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigOpenaiDirect {
+    apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigOpenaiDirectApiKey | undefined>;
+    baseUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Optional OpenAI organization ID. When set, the platform forwards it as
+     * the `OpenAI-Organization` header
+     */
+    organization?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigRateLimit {
+    /**
+     * Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: pulumi.Input<string | undefined>;
+    /**
+     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: pulumi.Input<string>;
+    /**
+     * Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: pulumi.Input<string | undefined>;
+    /**
+     * Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: pulumi.Input<string | undefined>;
+    /**
+     * Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: pulumi.Input<number | undefined>;
+    /**
+     * Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: pulumi.Input<number | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigTarget {
+    /**
+     * Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
+     * a string on the LLM provider's side, not a UC entity. The UC governance
+     * hook for external destinations is the ModelProviderService referenced by
+     * `ExternalModelConfig.model_provider_service`, not the model itself
+     */
+    model: pulumi.Input<string>;
+    /**
+     * Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelServiceConfig {
+    /**
+     * Inference table config for payload logging
+     */
+    inferenceTable?: pulumi.Input<inputs.AiGatewayModelServiceConfigInferenceTable | undefined>;
+    /**
+     * Rate limits applied to requests routed through this model service
+     */
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.AiGatewayModelServiceConfigRateLimit>[] | undefined>;
+    /**
+     * Routing configuration: destinations, routing strategy, and fallback
+     */
+    routing?: pulumi.Input<inputs.AiGatewayModelServiceConfigRouting | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigInferenceTable {
+    /**
+     * Indicates whether payload logging is disabled (opt-out). Unset means that
+     * payload logging is active (the on-by-default state coincides with the proto
+     * zero-value, so the server never fills this field for a client that leaves it
+     * unset). Set `disabled = true` to pause runtime logging while keeping the
+     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
+     * later flip back to active). `parent` remains required either way
+     */
+    disabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted?: pulumi.Input<boolean | undefined>;
+    /**
+     * Resource name of the parent schema.
+     * Format: `schemas/{catalog}.{schema}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    parent: pulumi.Input<string>;
+    /**
+     * (string) - Resolved UC table for payload logs.
+     * Format: `tables/{catalog}.{schema}.{table}`
+     */
+    table?: pulumi.Input<string | undefined>;
+    /**
+     * Prefix for the inference-table's UC-registered name. The actual leaf name UC
+     * stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
+     * automatically. To find the actual UC table after Create, read the `table`
+     * field on the response. Defaults to `<model_service_name>_payload` when unset.
+     * Set at create time and immutable thereafter; changing it on an existing
+     * service is rejected
+     */
+    tableNamePrefix?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigRateLimit {
+    /**
+     * Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: pulumi.Input<string | undefined>;
+    /**
+     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: pulumi.Input<string>;
+    /**
+     * Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: pulumi.Input<string | undefined>;
+    /**
+     * Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: pulumi.Input<string | undefined>;
+    /**
+     * Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: pulumi.Input<number | undefined>;
+    /**
+     * Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: pulumi.Input<number | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigRouting {
+    destinations?: pulumi.Input<pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingDestination>[] | undefined>;
+    /**
+     * Fallback routing config, applied after primary destinations fail
+     */
+    fallback?: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingFallback | undefined>;
+    /**
+     * Timeout for the first token of a streaming response. If a destination does
+     * not return its first token within this duration, AI Gateway aborts the
+     * attempt and fails over to the next destination. Applies to streaming
+     * requests only. Leave unset for no first-token timeout
+     */
+    firstTokenTimeout?: pulumi.Input<string | undefined>;
+    /**
+     * Marker message selecting request-based traffic splitting. Traffic is
+     * distributed according to each destination's trafficPercentage value;
+     * no configuration lives on this message itself
+     */
+    trafficSplitting?: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingTrafficSplitting | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestination {
+    /**
+     * Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     */
+    destinationType: pulumi.Input<string>;
+    externalModelConfig?: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingDestinationExternalModelConfig | undefined>;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted?: pulumi.Input<boolean | undefined>;
+    /**
+     * (string) - Resource name of the model service.
+     * Format: `model-services/{catalog}.{schema}.{model_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+    payPerTokenConfig?: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig | undefined>;
+    provisionedThroughputConfig?: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig | undefined>;
+    /**
+     * Share of traffic sent to this destination, 0-100. Optional on fallback
+     * destinations; see FallbackConfig
+     */
+    trafficPercentage?: pulumi.Input<number | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfig {
+    /**
+     * Resource name of the governed ModelProviderService that owns provider
+     * auth and provider-specific configuration. The referenced
+     * ModelProviderService also carries the provider type, so this message
+     * does not surface it directly.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    modelProviderService: pulumi.Input<string>;
+    /**
+     * Routing target for the destination: the provider-side model selected from
+     * the referenced ModelProviderService's `targets` catalog, plus the unified
+     * API types the platform should translate to/from at request time
+     */
+    target: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: pulumi.Input<string>;
+    /**
+     * Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the backing Model Serving endpoint serving the provisioned-
+     * throughput foundation model, as the AIP-122 typed resource name
+     * `serving-endpoints/{name}`. The same UC model can be served on multiple
+     * Model Serving endpoints (different throughput / region / config); the
+     * caller picks which one this destination routes to. The endpoint must
+     * exist at create time
+     */
+    modelServingEndpoint: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallback {
+    destinations?: pulumi.Input<pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingFallbackDestination>[] | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestination {
+    /**
+     * Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     */
+    destinationType: pulumi.Input<string>;
+    externalModelConfig?: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig | undefined>;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted?: pulumi.Input<boolean | undefined>;
+    /**
+     * (string) - Resource name of the model service.
+     * Format: `model-services/{catalog}.{schema}.{model_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: pulumi.Input<string>;
+    payPerTokenConfig?: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig | undefined>;
+    provisionedThroughputConfig?: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig | undefined>;
+    /**
+     * Share of traffic sent to this destination, 0-100. Optional on fallback
+     * destinations; see FallbackConfig
+     */
+    trafficPercentage?: pulumi.Input<number | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
+    /**
+     * Resource name of the governed ModelProviderService that owns provider
+     * auth and provider-specific configuration. The referenced
+     * ModelProviderService also carries the provider type, so this message
+     * does not surface it directly.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    modelProviderService: pulumi.Input<string>;
+    /**
+     * Routing target for the destination: the provider-side model selected from
+     * the referenced ModelProviderService's `targets` catalog, plus the unified
+     * API types the platform should translate to/from at request time
+     */
+    target: pulumi.Input<inputs.AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: pulumi.Input<string>;
+    /**
+     * Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the backing Model Serving endpoint serving the provisioned-
+     * throughput foundation model, as the AIP-122 typed resource name
+     * `serving-endpoints/{name}`. The same UC model can be served on multiple
+     * Model Serving endpoints (different throughput / region / config); the
+     * caller picks which one this destination routes to. The endpoint must
+     * exist at create time
+     */
+    modelServingEndpoint: pulumi.Input<string>;
+}
+
+export interface AiGatewayModelServiceConfigRoutingTrafficSplitting {
+}
+
+export interface AiGatewayModelServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
 export interface AiSearchEndpointCustomTag {
     /**
      * Key field for an AI Search endpoint tag
@@ -5356,6 +6149,90 @@ export interface FeatureEngineeringMaterializedFeatureTableTrigger {
 }
 
 export interface FileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiGatewayMcpServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiGatewayMcpServiceProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiGatewayMcpServicesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiGatewayMcpServicesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiGatewayModelProviderServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiGatewayModelProviderServicesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiGatewayModelServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiGatewayModelServiceProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiGatewayModelServicesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiGatewayModelServicesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -20597,11 +21474,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -20668,11 +21545,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;

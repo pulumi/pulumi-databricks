@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.inputs.PostgresDatabaseSpecArgs;
  * import com.pulumi.databricks.PostgresDataApi;
  * import com.pulumi.databricks.PostgresDataApiArgs;
+ * import com.pulumi.databricks.inputs.PostgresDataApiSpecArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -64,14 +65,16 @@ import javax.annotation.Nullable;
  *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
  *             .projectId("my-project")
  *             .spec(PostgresProjectSpecArgs.builder()
- *                 .pgVersion(17)
+ *                 .pgVersion(18)
  *                 .displayName("My Project")
  *                 .build())
  *             .build());
  * 
- *         var main = new PostgresBranch("main", PostgresBranchArgs.builder()
- *             .branchId("main")
+ *         // "production" is the implicitly-created default branch; adopt it with replace_existing.
+ *         var production = new PostgresBranch("production", PostgresBranchArgs.builder()
+ *             .branchId("production")
  *             .parent(this_.name())
+ *             .replaceExisting(true)
  *             .spec(PostgresBranchSpecArgs.builder()
  *                 .noExpiry(true)
  *                 .build())
@@ -79,26 +82,29 @@ import javax.annotation.Nullable;
  * 
  *         var appOwner = new PostgresRole("appOwner", PostgresRoleArgs.builder()
  *             .roleId("app-owner")
- *             .parent(main.name())
+ *             .parent(production.name())
  *             .spec(PostgresRoleSpecArgs.builder()
  *                 .postgresRole("app_owner")
  *                 .build())
  *             .build());
  * 
- *         var app = new PostgresDatabase("app", PostgresDatabaseArgs.builder()
- *             .databaseId("app")
- *             .parent(main.name())
+ *         var appDb = new PostgresDatabase("appDb", PostgresDatabaseArgs.builder()
+ *             .databaseId("app-db")
+ *             .parent(production.name())
  *             .spec(PostgresDatabaseSpecArgs.builder()
- *                 .postgresDatabase("app")
+ *                 .postgresDatabase("app_db")
  *                 .role(appOwner.name())
  *                 .build())
  *             .build());
  * 
- *         var appPostgresDataApi = new PostgresDataApi("appPostgresDataApi", PostgresDataApiArgs.builder()
- *             .parent(app.name())
+ *         var appDbPostgresDataApi = new PostgresDataApi("appDbPostgresDataApi", PostgresDataApiArgs.builder()
+ *             .parent(appDb.name())
+ *             .spec(PostgresDataApiSpecArgs.builder()
+ *                 .dbSchemas("public")
+ *                 .build())
  *             .build());
  * 
- *         ctx.export("dataApiUrl", appPostgresDataApi.status().applyValue(_status -> _status.url()));
+ *         ctx.export("dataApiUrl", appDbPostgresDataApi.status().applyValue(_status -> _status.url()));
  *     }
  * }
  * }

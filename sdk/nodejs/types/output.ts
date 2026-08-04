@@ -1684,6 +1684,799 @@ export interface AccountSettingV2StringVal {
     value?: string;
 }
 
+export interface AiGatewayMcpServiceConfig {
+    /**
+     * Glob or exact-match patterns selecting which tools from the MCP server
+     * to expose. Prefix match for patterns with `*`, exact match otherwise.
+     * An empty list means all tools are included. Per-element max 256 chars
+     */
+    includeToolSelectors?: string[];
+    /**
+     * Per-principal rate limits applied to tool invocations routed through this
+     * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
+     * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
+     * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
+     * configured
+     */
+    rateLimits?: outputs.AiGatewayMcpServiceConfigRateLimit[];
+    /**
+     * UC Connection referencing the MCP server
+     */
+    sourceConnection?: outputs.AiGatewayMcpServiceConfigSourceConnection;
+}
+
+export interface AiGatewayMcpServiceConfigRateLimit {
+    /**
+     * Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface AiGatewayMcpServiceConfigSourceConnection {
+    /**
+     * (boolean)
+     */
+    isDeleted: boolean;
+    /**
+     * (string) - Resource name of the MCP service.
+     * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface AiGatewayMcpServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AiGatewayModelProviderServiceConfig {
+    /**
+     * When true, accepts any model exposed by the upstream provider; `targets`
+     * is not required and does not restrict routability. When false, only
+     * models listed in `targets` are routable
+     */
+    allowAllTargets?: boolean;
+    amazonBedrock?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrock;
+    anthropic?: outputs.AiGatewayModelProviderServiceConfigAnthropic;
+    azureOpenai?: outputs.AiGatewayModelProviderServiceConfigAzureOpenai;
+    custom?: outputs.AiGatewayModelProviderServiceConfigCustom;
+    /**
+     * Whether to forward incoming request headers to the upstream provider.
+     * Applies to managed (multi-model) requests as well as passthrough requests
+     * served by this provider service. Governance-level decision by the provider
+     * service owner; not selectable per inference call
+     */
+    forwardHeaders?: boolean;
+    /**
+     * Whether to forward incoming request query parameters to the upstream
+     * provider. Same trust-boundary semantics as `forwardHeaders`
+     */
+    forwardQueryParameters?: boolean;
+    /**
+     * Whether to forward request paths that fall outside this service's managed
+     * API set to the upstream provider as opaque passthrough. When true,
+     * requests addressed to subpaths not recognized by the managed API surface
+     * are proxied to the upstream provider over the same provider connection.
+     * When false, only managed-API paths are served. Governance-level decision
+     * by the provider service owner; expanding this expands the trust boundary
+     * that the ModelProviderService exposes
+     */
+    forwardUnmanagedPaths?: boolean;
+    geminiEnterprise?: outputs.AiGatewayModelProviderServiceConfigGeminiEnterprise;
+    /**
+     * Inference table configuration for payload logging when this provider
+     * service is invoked directly. When it is invoked through a model service,
+     * the model service's own inference table captures the invocation instead.
+     * Mirrors `ModelServiceConfig.inference_table` /
+     * `AgentServiceConfig.inference_table`
+     */
+    inferenceTable?: outputs.AiGatewayModelProviderServiceConfigInferenceTable;
+    microsoftFoundry?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundry;
+    openai?: outputs.AiGatewayModelProviderServiceConfigOpenai;
+    /**
+     * Provider type discriminator. Required at create time; immutable after.
+     * Determines which variant of the `provider` oneof must be set. May not be
+     * changed via Update; attempts to include `config.provider_type` in
+     * `UpdateModelProviderServiceRequest.update_mask` are rejected.
+     *
+     * Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     */
+    providerType?: string;
+    /**
+     * Rate limits applied when this provider service is invoked directly. When
+     * it is invoked through a model service, the model service's own
+     * `rateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
+     * `McpServiceConfig.rate_limits`
+     */
+    rateLimits?: outputs.AiGatewayModelProviderServiceConfigRateLimit[];
+    /**
+     * Routing targets this provider service exposes (provider-side model
+     * identifier + unified API types per entry). Required (>=1) when
+     * `allowAllTargets = false`; optional and additive when
+     * `allowAllTargets = true`. References from `ExternalModelConfig.target`
+     * must match an entry here unless `allowAllTargets = true`
+     */
+    targets?: outputs.AiGatewayModelProviderServiceConfigTarget[];
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrock {
+    direct?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirect;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
+    /**
+     * AWS access key ID for Bedrock authentication. Required on Create when using
+     * access-key auth; must be paired with `awsSecretAccessKey` and is
+     * mutually exclusive with `serviceCredential`. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    awsAccessKeyId?: string;
+    /**
+     * AWS secret access key paired with `awsAccessKeyId`. Required on Create
+     * when using access-key auth; mutually exclusive with `serviceCredential`.
+     * Supplied as inline plaintext via `ProviderSecret.plaintext`
+     */
+    awsSecretAccessKey?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey;
+    region?: string;
+    serviceCredential?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropic {
+    direct?: outputs.AiGatewayModelProviderServiceConfigAnthropicDirect;
+    /**
+     * Relayed (credential-less) form: no Anthropic credential is stored. Each
+     * inference request instead carries the caller's own OAuth token, which the
+     * platform forwards to Anthropic on outbound requests. Mutually exclusive
+     * with `direct`; no `apiKey` is required or persisted
+     */
+    relayed?: outputs.AiGatewayModelProviderServiceConfigAnthropicRelayed;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropicDirect {
+    apiKey?: outputs.AiGatewayModelProviderServiceConfigAnthropicDirectApiKey;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigAnthropicRelayed {
+    /**
+     * Which Anthropic subscription tier the relayed token belongs to. Optional;
+     * when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
+     * Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
+     */
+    planType?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenai {
+    direct?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirect;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirect {
+    apiKey?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey;
+    baseUrl?: string;
+    clientId?: string;
+    clientSecret?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret;
+    serviceCredential?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential;
+    tenantId?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustom {
+    direct?: outputs.AiGatewayModelProviderServiceConfigCustomDirect;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirect {
+    apiKey?: outputs.AiGatewayModelProviderServiceConfigCustomDirectApiKey;
+    baseUrl?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigCustomDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterprise {
+    direct?: outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
+    apiKey?: outputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey;
+    /**
+     * GCP project ID hosting the Gemini Enterprise endpoint. Required on Create
+     */
+    projectId?: string;
+    region?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigInferenceTable {
+    /**
+     * Indicates whether payload logging is disabled (opt-out). Unset means that
+     * payload logging is active (the on-by-default state coincides with the proto
+     * zero-value, so the server never fills this field for a client that leaves it
+     * unset). Set `disabled = true` to pause runtime logging while keeping the
+     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
+     * later flip back to active). `parent` remains required either way
+     */
+    disabled?: boolean;
+    /**
+     * (boolean) - True when the bound inference TABLE has been deleted but the parent
+     * service still references it. The dangling reference is surfaced (not
+     * silently dropped) so callers can see the broken dependency. AI Gateway
+     * payload logging fails closed in this state
+     */
+    isDeleted: boolean;
+    /**
+     * Resource name of the parent schema.
+     * Format: `schemas/{catalog}.{schema}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    parent: string;
+    /**
+     * (string) - Resolved UC table for payload logs.
+     * Format: `tables/{catalog}.{schema}.{table}`
+     */
+    table: string;
+    /**
+     * Prefix for the inference-table's UC-registered name. The actual leaf name UC
+     * stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
+     * automatically. To find the actual UC table after Create, read the `table`
+     * field on the response. Defaults to `<model_service_name>_payload` when unset.
+     * Set at create time and immutable thereafter; changing it on an existing
+     * service is rejected
+     */
+    tableNamePrefix?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundry {
+    direct?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
+    apiKey?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey;
+    baseUrl?: string;
+    clientId?: string;
+    clientSecret?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret;
+    serviceCredential?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential;
+    tenantId?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential {
+    /**
+     * (string) - Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigOpenai {
+    direct?: outputs.AiGatewayModelProviderServiceConfigOpenaiDirect;
+}
+
+export interface AiGatewayModelProviderServiceConfigOpenaiDirect {
+    apiKey?: outputs.AiGatewayModelProviderServiceConfigOpenaiDirectApiKey;
+    baseUrl?: string;
+    /**
+     * Optional OpenAI organization ID. When set, the platform forwards it as
+     * the `OpenAI-Organization` header
+     */
+    organization?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
+    /**
+     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigRateLimit {
+    /**
+     * Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface AiGatewayModelProviderServiceConfigTarget {
+    /**
+     * Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
+     * a string on the LLM provider's side, not a UC entity. The UC governance
+     * hook for external destinations is the ModelProviderService referenced by
+     * `ExternalModelConfig.model_provider_service`, not the model itself
+     */
+    model: string;
+    /**
+     * Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface AiGatewayModelProviderServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AiGatewayModelServiceConfig {
+    /**
+     * Inference table config for payload logging
+     */
+    inferenceTable?: outputs.AiGatewayModelServiceConfigInferenceTable;
+    /**
+     * Rate limits applied to requests routed through this model service
+     */
+    rateLimits?: outputs.AiGatewayModelServiceConfigRateLimit[];
+    /**
+     * Routing configuration: destinations, routing strategy, and fallback
+     */
+    routing?: outputs.AiGatewayModelServiceConfigRouting;
+}
+
+export interface AiGatewayModelServiceConfigInferenceTable {
+    /**
+     * Indicates whether payload logging is disabled (opt-out). Unset means that
+     * payload logging is active (the on-by-default state coincides with the proto
+     * zero-value, so the server never fills this field for a client that leaves it
+     * unset). Set `disabled = true` to pause runtime logging while keeping the
+     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
+     * later flip back to active). `parent` remains required either way
+     */
+    disabled?: boolean;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * Resource name of the parent schema.
+     * Format: `schemas/{catalog}.{schema}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    parent: string;
+    /**
+     * (string) - Resolved UC table for payload logs.
+     * Format: `tables/{catalog}.{schema}.{table}`
+     */
+    table: string;
+    /**
+     * Prefix for the inference-table's UC-registered name. The actual leaf name UC
+     * stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
+     * automatically. To find the actual UC table after Create, read the `table`
+     * field on the response. Defaults to `<model_service_name>_payload` when unset.
+     * Set at create time and immutable thereafter; changing it on an existing
+     * service is rejected
+     */
+    tableNamePrefix?: string;
+}
+
+export interface AiGatewayModelServiceConfigRateLimit {
+    /**
+     * Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface AiGatewayModelServiceConfigRouting {
+    destinations?: outputs.AiGatewayModelServiceConfigRoutingDestination[];
+    /**
+     * Fallback routing config, applied after primary destinations fail
+     */
+    fallback?: outputs.AiGatewayModelServiceConfigRoutingFallback;
+    /**
+     * Timeout for the first token of a streaming response. If a destination does
+     * not return its first token within this duration, AI Gateway aborts the
+     * attempt and fails over to the next destination. Applies to streaming
+     * requests only. Leave unset for no first-token timeout
+     */
+    firstTokenTimeout?: string;
+    /**
+     * Marker message selecting request-based traffic splitting. Traffic is
+     * distributed according to each destination's trafficPercentage value;
+     * no configuration lives on this message itself
+     */
+    trafficSplitting?: outputs.AiGatewayModelServiceConfigRoutingTrafficSplitting;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestination {
+    /**
+     * Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     */
+    destinationType: string;
+    externalModelConfig?: outputs.AiGatewayModelServiceConfigRoutingDestinationExternalModelConfig;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * (string) - Resource name of the model service.
+     * Format: `model-services/{catalog}.{schema}.{model_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+    payPerTokenConfig?: outputs.AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig;
+    provisionedThroughputConfig?: outputs.AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig;
+    /**
+     * Share of traffic sent to this destination, 0-100. Optional on fallback
+     * destinations; see FallbackConfig
+     */
+    trafficPercentage?: number;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfig {
+    /**
+     * Resource name of the governed ModelProviderService that owns provider
+     * auth and provider-specific configuration. The referenced
+     * ModelProviderService also carries the provider type, so this message
+     * does not surface it directly.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    modelProviderService: string;
+    /**
+     * Routing target for the destination: the provider-side model selected from
+     * the referenced ModelProviderService's `targets` catalog, plus the unified
+     * API types the platform should translate to/from at request time
+     */
+    target: outputs.AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+}
+
+export interface AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * Name of the backing Model Serving endpoint serving the provisioned-
+     * throughput foundation model, as the AIP-122 typed resource name
+     * `serving-endpoints/{name}`. The same UC model can be served on multiple
+     * Model Serving endpoints (different throughput / region / config); the
+     * caller picks which one this destination routes to. The endpoint must
+     * exist at create time
+     */
+    modelServingEndpoint: string;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallback {
+    destinations?: outputs.AiGatewayModelServiceConfigRoutingFallbackDestination[];
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestination {
+    /**
+     * Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     */
+    destinationType: string;
+    externalModelConfig?: outputs.AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * (string) - Resource name of the model service.
+     * Format: `model-services/{catalog}.{schema}.{model_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+    payPerTokenConfig?: outputs.AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig;
+    provisionedThroughputConfig?: outputs.AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig;
+    /**
+     * Share of traffic sent to this destination, 0-100. Optional on fallback
+     * destinations; see FallbackConfig
+     */
+    trafficPercentage?: number;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
+    /**
+     * Resource name of the governed ModelProviderService that owns provider
+     * auth and provider-specific configuration. The referenced
+     * ModelProviderService also carries the provider type, so this message
+     * does not surface it directly.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    modelProviderService: string;
+    /**
+     * Routing target for the destination: the provider-side model selected from
+     * the referenced ModelProviderService's `targets` catalog, plus the unified
+     * API types the platform should translate to/from at request time
+     */
+    target: outputs.AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+}
+
+export interface AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * Name of the backing Model Serving endpoint serving the provisioned-
+     * throughput foundation model, as the AIP-122 typed resource name
+     * `serving-endpoints/{name}`. The same UC model can be served on multiple
+     * Model Serving endpoints (different throughput / region / config); the
+     * caller picks which one this destination routes to. The endpoint must
+     * exist at create time
+     */
+    modelServingEndpoint: string;
+}
+
+export interface AiGatewayModelServiceConfigRoutingTrafficSplitting {
+}
+
+export interface AiGatewayModelServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface AiSearchEndpointCustomTag {
     /**
      * Key field for an AI Search endpoint tag
@@ -10157,6 +10950,2166 @@ export interface GetAccountSettingV2StringVal {
      * (string) - Represents a generic string value
      */
     value?: string;
+}
+
+export interface GetAiGatewayMcpServiceConfig {
+    /**
+     * (list of string) - Glob or exact-match patterns selecting which tools from the MCP server
+     * to expose. Prefix match for patterns with `*`, exact match otherwise.
+     * An empty list means all tools are included. Per-element max 256 chars
+     */
+    includeToolSelectors?: string[];
+    /**
+     * (list of RateLimit) - Per-principal rate limits applied to tool invocations routed through this
+     * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
+     * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
+     * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
+     * configured
+     */
+    rateLimits?: outputs.GetAiGatewayMcpServiceConfigRateLimit[];
+    /**
+     * (McpServiceConfigSourceConnection) - UC Connection referencing the MCP server
+     */
+    sourceConnection?: outputs.GetAiGatewayMcpServiceConfigSourceConnection;
+}
+
+export interface GetAiGatewayMcpServiceConfigRateLimit {
+    /**
+     * (string) - Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * (string) - Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * (string) - Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * (string) - Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface GetAiGatewayMcpServiceConfigSourceConnection {
+    /**
+     * (boolean)
+     */
+    isDeleted: boolean;
+    /**
+     * Resource name of the MCP service.
+     * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface GetAiGatewayMcpServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiGatewayMcpServicesMcpService {
+    /**
+     * (boolean) - Whether the caller sees only metadata available through the BROWSE
+     * privilege
+     */
+    browseOnly: boolean;
+    /**
+     * (string) - User-provided description
+     */
+    comment: string;
+    /**
+     * (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
+     * Required on CreateMcpService; on
+     * UpdateMcpService it is required only when `config` (or a `config.*`
+     * subpath) appears in `updateMask`
+     */
+    config: outputs.GetAiGatewayMcpServicesMcpServiceConfig;
+    /**
+     * (string) - When the MCP service was created
+     */
+    createTime: string;
+    /**
+     * (string) - Creator identity
+     */
+    createdBy: string;
+    /**
+     * (string) - The resolved owner of the MCP service. Falls back to the caller's identity
+     * when `owner` is not explicitly set on creation
+     */
+    effectiveOwner: string;
+    /**
+     * (string) - Optimistic concurrency control token. Server-generated from the
+     * entity's state and returned on every read. To use it as an if-match
+     * precondition on a mutation, echo the last-read value back via the dedicated
+     * `etag` field on the Update / Delete request; the server rejects the mutation
+     * if the stored etag differs
+     */
+    etag: string;
+    /**
+     * (string) - Metastore hosting the MCP service
+     */
+    metastoreId: string;
+    /**
+     * (string)
+     */
+    name: string;
+    /**
+     * (string) - The owner of the MCP service. Write-only; read owner via effective_owner
+     */
+    owner: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAiGatewayMcpServicesMcpServiceProviderConfig;
+    /**
+     * (string) - When the MCP service was last modified
+     */
+    updateTime: string;
+    /**
+     * (string) - Identity of the last updater
+     */
+    updatedBy: string;
+}
+
+export interface GetAiGatewayMcpServicesMcpServiceConfig {
+    /**
+     * (list of string) - Glob or exact-match patterns selecting which tools from the MCP server
+     * to expose. Prefix match for patterns with `*`, exact match otherwise.
+     * An empty list means all tools are included. Per-element max 256 chars
+     */
+    includeToolSelectors?: string[];
+    /**
+     * (list of RateLimit) - Per-principal rate limits applied to tool invocations routed through this
+     * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
+     * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
+     * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
+     * configured
+     */
+    rateLimits?: outputs.GetAiGatewayMcpServicesMcpServiceConfigRateLimit[];
+    /**
+     * (McpServiceConfigSourceConnection) - UC Connection referencing the MCP server
+     */
+    sourceConnection?: outputs.GetAiGatewayMcpServicesMcpServiceConfigSourceConnection;
+}
+
+export interface GetAiGatewayMcpServicesMcpServiceConfigRateLimit {
+    /**
+     * (string) - Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * (string) - Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * (string) - Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * (string) - Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface GetAiGatewayMcpServicesMcpServiceConfigSourceConnection {
+    /**
+     * (boolean)
+     */
+    isDeleted: boolean;
+    /**
+     * (string)
+     */
+    name: string;
+}
+
+export interface GetAiGatewayMcpServicesMcpServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiGatewayMcpServicesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfig {
+    /**
+     * (boolean) - When true, accepts any model exposed by the upstream provider; `targets`
+     * is not required and does not restrict routability. When false, only
+     * models listed in `targets` are routable
+     */
+    allowAllTargets?: boolean;
+    /**
+     * (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     */
+    amazonBedrock?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrock;
+    /**
+     * (ModelProviderServiceConfigAnthropicProviderConfig)
+     */
+    anthropic?: outputs.GetAiGatewayModelProviderServiceConfigAnthropic;
+    /**
+     * (ModelProviderServiceConfigAzureOpenAiProviderConfig)
+     */
+    azureOpenai?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenai;
+    /**
+     * (ModelProviderServiceConfigCustomProviderConfig)
+     */
+    custom?: outputs.GetAiGatewayModelProviderServiceConfigCustom;
+    /**
+     * (boolean) - Whether to forward incoming request headers to the upstream provider.
+     * Applies to managed (multi-model) requests as well as passthrough requests
+     * served by this provider service. Governance-level decision by the provider
+     * service owner; not selectable per inference call
+     */
+    forwardHeaders?: boolean;
+    /**
+     * (boolean) - Whether to forward incoming request query parameters to the upstream
+     * provider. Same trust-boundary semantics as `forwardHeaders`
+     */
+    forwardQueryParameters?: boolean;
+    /**
+     * (boolean) - Whether to forward request paths that fall outside this service's managed
+     * API set to the upstream provider as opaque passthrough. When true,
+     * requests addressed to subpaths not recognized by the managed API surface
+     * are proxied to the upstream provider over the same provider connection.
+     * When false, only managed-API paths are served. Governance-level decision
+     * by the provider service owner; expanding this expands the trust boundary
+     * that the ModelProviderService exposes
+     */
+    forwardUnmanagedPaths?: boolean;
+    /**
+     * (ModelProviderServiceConfigGeminiEnterpriseProviderConfig)
+     */
+    geminiEnterprise?: outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterprise;
+    /**
+     * (InferenceTableConfig) - Inference table configuration for payload logging when this provider
+     * service is invoked directly. When it is invoked through a model service,
+     * the model service's own inference table captures the invocation instead.
+     * Mirrors `ModelServiceConfig.inference_table` /
+     * `AgentServiceConfig.inference_table`
+     */
+    inferenceTable?: outputs.GetAiGatewayModelProviderServiceConfigInferenceTable;
+    /**
+     * (ModelProviderServiceConfigMicrosoftFoundryProviderConfig)
+     */
+    microsoftFoundry?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundry;
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderConfig)
+     */
+    openai?: outputs.GetAiGatewayModelProviderServiceConfigOpenai;
+    /**
+     * (string) - Provider type discriminator. Required at create time; immutable after.
+     * Determines which variant of the `provider` oneof must be set. May not be
+     * changed via Update; attempts to include `config.provider_type` in
+     * `UpdateModelProviderServiceRequest.update_mask` are rejected.
+     */
+    providerType?: string;
+    /**
+     * (list of RateLimit) - Rate limits applied when this provider service is invoked directly. When
+     * it is invoked through a model service, the model service's own
+     * `rateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
+     * `McpServiceConfig.rate_limits`
+     */
+    rateLimits?: outputs.GetAiGatewayModelProviderServiceConfigRateLimit[];
+    /**
+     * (list of ModelProviderServiceConfigModelTargetConfig) - Routing targets this provider service exposes (provider-side model
+     * identifier + unified API types per entry). Required (>=1) when
+     * `allowAllTargets = false`; optional and additive when
+     * `allowAllTargets = true`. References from `ExternalModelConfig.target`
+     * must match an entry here unless `allowAllTargets = true`
+     */
+    targets?: outputs.GetAiGatewayModelProviderServiceConfigTarget[];
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAmazonBedrock {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
+    /**
+     * (string) - AWS access key ID for Bedrock authentication. Required on Create when using
+     * access-key auth; must be paired with `awsSecretAccessKey` and is
+     * mutually exclusive with `serviceCredential`. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    awsAccessKeyId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `awsAccessKeyId`. Required on Create
+     * when using access-key auth; mutually exclusive with `serviceCredential`.
+     * Supplied as inline plaintext via `ProviderSecret.plaintext`
+     */
+    awsSecretAccessKey?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey;
+    /**
+     * (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
+     * Required on Create
+     */
+    region?: string;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
+     * On Create the caller supplies `service_credential.name` in the AIP-122
+     * resource-name form `credentials/{name}`. Required on Create when using
+     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
+     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * referenced by name; its value is not carried here. On read the resolved `id`
+     * and `isDeleted` are also populated. Only supported on Azure-hosted
+     * workspaces; Create requests from other clouds are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAnthropic {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServiceConfigAnthropicDirect;
+    /**
+     * (ModelProviderServiceConfigAnthropicProviderRelayedConfig) - Relayed (credential-less) form: no Anthropic credential is stored. Each
+     * inference request instead carries the caller's own OAuth token, which the
+     * platform forwards to Anthropic on outbound requests. Mutually exclusive
+     * with `direct`; no `apiKey` is required or persisted
+     */
+    relayed?: outputs.GetAiGatewayModelProviderServiceConfigAnthropicRelayed;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAnthropicDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKey;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAnthropicRelayed {
+    /**
+     * (string) - Which Anthropic subscription tier the relayed token belongs to. Optional;
+     * when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
+     * Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
+     */
+    planType?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenai {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirect;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey;
+    /**
+     * (string) - Optional custom base URL. Defaults to `https://api.openai.com/v1`. Use for
+     * OpenAI-API-compatible third-party endpoints or in-network proxies
+     */
+    baseUrl?: string;
+    /**
+     * (string) - Entra ID client (application) ID for service-principal auth. Set together
+     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
+     * and `serviceCredential`
+     */
+    clientId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
+     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supplied as
+     * inline plaintext via `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
+     * On Create the caller supplies `service_credential.name` in the AIP-122
+     * resource-name form `credentials/{name}`. Required on Create when using
+     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
+     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * referenced by name; its value is not carried here. On read the resolved `id`
+     * and `isDeleted` are also populated. Only supported on Azure-hosted
+     * workspaces; Create requests from other clouds are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential;
+    /**
+     * (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
+     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
+     * `serviceCredential`
+     */
+    tenantId?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigCustom {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServiceConfigCustomDirect;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigCustomDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServiceConfigCustomDirectApiKey;
+    /**
+     * (string) - Optional custom base URL. Defaults to `https://api.openai.com/v1`. Use for
+     * OpenAI-API-compatible third-party endpoints or in-network proxies
+     */
+    baseUrl?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigCustomDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigGeminiEnterprise {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey;
+    /**
+     * (string) - GCP project ID hosting the Gemini Enterprise endpoint. Required on Create
+     */
+    projectId?: string;
+    /**
+     * (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
+     * Required on Create
+     */
+    region?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigInferenceTable {
+    /**
+     * (boolean) - Indicates whether payload logging is disabled (opt-out). Unset means that
+     * payload logging is active (the on-by-default state coincides with the proto
+     * zero-value, so the server never fills this field for a client that leaves it
+     * unset). Set `disabled = true` to pause runtime logging while keeping the
+     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
+     * later flip back to active). `parent` remains required either way
+     */
+    disabled?: boolean;
+    /**
+     * (boolean) - True when the bound inference TABLE has been deleted but the parent
+     * service still references it. The dangling reference is surfaced (not
+     * silently dropped) so callers can see the broken dependency. AI Gateway
+     * payload logging fails closed in this state
+     */
+    isDeleted: boolean;
+    /**
+     * (string) - Parent UC schema where the inference table is created.
+     * Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
+     * thereafter; changing it on an existing service is rejected
+     */
+    parent: string;
+    /**
+     * (string) - Resolved UC table for payload logs.
+     * Format: `tables/{catalog}.{schema}.{table}`
+     */
+    table: string;
+    /**
+     * (string) - Prefix for the inference-table's UC-registered name. The actual leaf name UC
+     * stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
+     * automatically. To find the actual UC table after Create, read the `table`
+     * field on the response. Defaults to `<model_service_name>_payload` when unset.
+     * Set at create time and immutable thereafter; changing it on an existing
+     * service is rejected
+     */
+    tableNamePrefix?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundry {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirect;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey;
+    /**
+     * (string) - Optional custom base URL. Defaults to `https://api.openai.com/v1`. Use for
+     * OpenAI-API-compatible third-party endpoints or in-network proxies
+     */
+    baseUrl?: string;
+    /**
+     * (string) - Entra ID client (application) ID for service-principal auth. Set together
+     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
+     * and `serviceCredential`
+     */
+    clientId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
+     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supplied as
+     * inline plaintext via `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
+     * On Create the caller supplies `service_credential.name` in the AIP-122
+     * resource-name form `credentials/{name}`. Required on Create when using
+     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
+     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * referenced by name; its value is not carried here. On read the resolved `id`
+     * and `isDeleted` are also populated. Only supported on Azure-hosted
+     * workspaces; Create requests from other clouds are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential;
+    /**
+     * (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
+     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
+     * `serviceCredential`
+     */
+    tenantId?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential {
+    /**
+     * Resource name of the provider service.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigOpenai {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServiceConfigOpenaiDirect;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigOpenaiDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKey;
+    /**
+     * (string) - Optional custom base URL. Defaults to `https://api.openai.com/v1`. Use for
+     * OpenAI-API-compatible third-party endpoints or in-network proxies
+     */
+    baseUrl?: string;
+    /**
+     * (string) - Optional OpenAI organization ID. When set, the platform forwards it as
+     * the `OpenAI-Organization` header
+     */
+    organization?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigRateLimit {
+    /**
+     * (string) - Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * (string) - Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * (string) - Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * (string) - Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigTarget {
+    /**
+     * (string) - Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
+     * a string on the LLM provider's side, not a UC entity. The UC governance
+     * hook for external destinations is the ModelProviderService referenced by
+     * `ExternalModelConfig.model_provider_service`, not the model itself
+     */
+    model: string;
+    /**
+     * (list of string) - Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface GetAiGatewayModelProviderServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderService {
+    /**
+     * (boolean) - Whether the caller sees only metadata available through the BROWSE
+     * privilege
+     */
+    browseOnly: boolean;
+    /**
+     * (string) - User-provided description
+     */
+    comment: string;
+    /**
+     * (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
+     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
+     * contract. Required on CreateModelProviderService; on Update it is required
+     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     */
+    config: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfig;
+    /**
+     * (string) - When the provider service was created
+     */
+    createTime: string;
+    /**
+     * (string) - Creator identity
+     */
+    createdBy: string;
+    /**
+     * (string) - The resolved owner of the model provider service. Falls back to the
+     * caller's identity when `owner` is not explicitly set on creation
+     */
+    effectiveOwner: string;
+    /**
+     * (string) - Optimistic concurrency control token. Server-generated from the
+     * entity's state and returned on every read. To use it as an if-match
+     * precondition on a mutation, echo the last-read value back via the dedicated
+     * `etag` field on the Update / Delete request; the server rejects the mutation
+     * if the stored etag differs
+     */
+    etag: string;
+    /**
+     * (string) - Metastore hosting the provider service
+     */
+    metastoreId: string;
+    /**
+     * (string) - Resource name of the bound UC service credential, in the AIP-122 form
+     * `credentials/{name}` (a metastore-level single-part credential name). On
+     * create the caller supplies the name here. On read it reflects the
+     * credential's current name at read time
+     */
+    name: string;
+    /**
+     * (string) - The owner of the model provider service. Write-only; read owner via
+     * effective_owner
+     */
+    owner: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceProviderConfig;
+    /**
+     * (string) - When the provider service was last modified
+     */
+    updateTime: string;
+    /**
+     * (string) - Identity of the last updater
+     */
+    updatedBy: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
+    /**
+     * (boolean) - When true, accepts any model exposed by the upstream provider; `targets`
+     * is not required and does not restrict routability. When false, only
+     * models listed in `targets` are routable
+     */
+    allowAllTargets?: boolean;
+    /**
+     * (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     */
+    amazonBedrock?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrock;
+    /**
+     * (ModelProviderServiceConfigAnthropicProviderConfig)
+     */
+    anthropic?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropic;
+    /**
+     * (ModelProviderServiceConfigAzureOpenAiProviderConfig)
+     */
+    azureOpenai?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenai;
+    /**
+     * (ModelProviderServiceConfigCustomProviderConfig)
+     */
+    custom?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustom;
+    /**
+     * (boolean) - Whether to forward incoming request headers to the upstream provider.
+     * Applies to managed (multi-model) requests as well as passthrough requests
+     * served by this provider service. Governance-level decision by the provider
+     * service owner; not selectable per inference call
+     */
+    forwardHeaders?: boolean;
+    /**
+     * (boolean) - Whether to forward incoming request query parameters to the upstream
+     * provider. Same trust-boundary semantics as `forwardHeaders`
+     */
+    forwardQueryParameters?: boolean;
+    /**
+     * (boolean) - Whether to forward request paths that fall outside this service's managed
+     * API set to the upstream provider as opaque passthrough. When true,
+     * requests addressed to subpaths not recognized by the managed API surface
+     * are proxied to the upstream provider over the same provider connection.
+     * When false, only managed-API paths are served. Governance-level decision
+     * by the provider service owner; expanding this expands the trust boundary
+     * that the ModelProviderService exposes
+     */
+    forwardUnmanagedPaths?: boolean;
+    /**
+     * (ModelProviderServiceConfigGeminiEnterpriseProviderConfig)
+     */
+    geminiEnterprise?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterprise;
+    /**
+     * (InferenceTableConfig) - Inference table configuration for payload logging when this provider
+     * service is invoked directly. When it is invoked through a model service,
+     * the model service's own inference table captures the invocation instead.
+     * Mirrors `ModelServiceConfig.inference_table` /
+     * `AgentServiceConfig.inference_table`
+     */
+    inferenceTable?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigInferenceTable;
+    /**
+     * (ModelProviderServiceConfigMicrosoftFoundryProviderConfig)
+     */
+    microsoftFoundry?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundry;
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderConfig)
+     */
+    openai?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenai;
+    /**
+     * (string) - Provider type discriminator. Required at create time; immutable after.
+     * Determines which variant of the `provider` oneof must be set. May not be
+     * changed via Update; attempts to include `config.provider_type` in
+     * `UpdateModelProviderServiceRequest.update_mask` are rejected.
+     */
+    providerType?: string;
+    /**
+     * (list of RateLimit) - Rate limits applied when this provider service is invoked directly. When
+     * it is invoked through a model service, the model service's own
+     * `rateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
+     * `McpServiceConfig.rate_limits`
+     */
+    rateLimits?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigRateLimit[];
+    /**
+     * (list of ModelProviderServiceConfigModelTargetConfig) - Routing targets this provider service exposes (provider-side model
+     * identifier + unified API types per entry). Required (>=1) when
+     * `allowAllTargets = false`; optional and additive when
+     * `allowAllTargets = true`. References from `ExternalModelConfig.target`
+     * must match an entry here unless `allowAllTargets = true`
+     */
+    targets?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigTarget[];
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrock {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect {
+    /**
+     * (string) - AWS access key ID for Bedrock authentication. Required on Create when using
+     * access-key auth; must be paired with `awsSecretAccessKey` and is
+     * mutually exclusive with `serviceCredential`. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    awsAccessKeyId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `awsAccessKeyId`. Required on Create
+     * when using access-key auth; mutually exclusive with `serviceCredential`.
+     * Supplied as inline plaintext via `ProviderSecret.plaintext`
+     */
+    awsSecretAccessKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey;
+    /**
+     * (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
+     * Required on Create
+     */
+    region?: string;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
+     * On Create the caller supplies `service_credential.name` in the AIP-122
+     * resource-name form `credentials/{name}`. Required on Create when using
+     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
+     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * referenced by name; its value is not carried here. On read the resolved `id`
+     * and `isDeleted` are also populated. Only supported on Azure-hosted
+     * workspaces; Create requests from other clouds are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectServiceCredential;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectServiceCredential {
+    /**
+     * (string) - Resource name of the bound UC service credential, in the AIP-122 form
+     * `credentials/{name}` (a metastore-level single-part credential name). On
+     * create the caller supplies the name here. On read it reflects the
+     * credential's current name at read time
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropic {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirect;
+    /**
+     * (ModelProviderServiceConfigAnthropicProviderRelayedConfig) - Relayed (credential-less) form: no Anthropic credential is stored. Each
+     * inference request instead carries the caller's own OAuth token, which the
+     * platform forwards to Anthropic on outbound requests. Mutually exclusive
+     * with `direct`; no `apiKey` is required or persisted
+     */
+    relayed?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicRelayed;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKey;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicRelayed {
+    /**
+     * (string) - Which Anthropic subscription tier the relayed token belongs to. Optional;
+     * when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
+     * Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
+     */
+    planType?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenai {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirect;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKey;
+    /**
+     * (string) - Optional custom base URL. Defaults to `https://api.openai.com/v1`. Use for
+     * OpenAI-API-compatible third-party endpoints or in-network proxies
+     */
+    baseUrl?: string;
+    /**
+     * (string) - Entra ID client (application) ID for service-principal auth. Set together
+     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
+     * and `serviceCredential`
+     */
+    clientId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
+     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supplied as
+     * inline plaintext via `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectClientSecret;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
+     * On Create the caller supplies `service_credential.name` in the AIP-122
+     * resource-name form `credentials/{name}`. Required on Create when using
+     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
+     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * referenced by name; its value is not carried here. On read the resolved `id`
+     * and `isDeleted` are also populated. Only supported on Azure-hosted
+     * workspaces; Create requests from other clouds are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredential;
+    /**
+     * (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
+     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
+     * `serviceCredential`
+     */
+    tenantId?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectClientSecret {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredential {
+    /**
+     * (string) - Resource name of the bound UC service credential, in the AIP-122 form
+     * `credentials/{name}` (a metastore-level single-part credential name). On
+     * create the caller supplies the name here. On read it reflects the
+     * credential's current name at read time
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustom {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirect;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKey;
+    /**
+     * (string) - Optional custom base URL. Defaults to `https://api.openai.com/v1`. Use for
+     * OpenAI-API-compatible third-party endpoints or in-network proxies
+     */
+    baseUrl?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterprise {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirect;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKey;
+    /**
+     * (string) - GCP project ID hosting the Gemini Enterprise endpoint. Required on Create
+     */
+    projectId?: string;
+    /**
+     * (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
+     * Required on Create
+     */
+    region?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigInferenceTable {
+    /**
+     * (boolean) - Indicates whether payload logging is disabled (opt-out). Unset means that
+     * payload logging is active (the on-by-default state coincides with the proto
+     * zero-value, so the server never fills this field for a client that leaves it
+     * unset). Set `disabled = true` to pause runtime logging while keeping the
+     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
+     * later flip back to active). `parent` remains required either way
+     */
+    disabled?: boolean;
+    /**
+     * (boolean) - True when the bound inference TABLE has been deleted but the parent
+     * service still references it. The dangling reference is surfaced (not
+     * silently dropped) so callers can see the broken dependency. AI Gateway
+     * payload logging fails closed in this state
+     */
+    isDeleted: boolean;
+    /**
+     * Resource name of the parent schema to list within, as
+     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
+     * characters individually
+     */
+    parent: string;
+    /**
+     * (string) - Resolved UC table for payload logs.
+     * Format: `tables/{catalog}.{schema}.{table}`
+     */
+    table: string;
+    /**
+     * (string) - Prefix for the inference-table's UC-registered name. The actual leaf name UC
+     * stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
+     * automatically. To find the actual UC table after Create, read the `table`
+     * field on the response. Defaults to `<model_service_name>_payload` when unset.
+     * Set at create time and immutable thereafter; changing it on an existing
+     * service is rejected
+     */
+    tableNamePrefix?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundry {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirect;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKey;
+    /**
+     * (string) - Optional custom base URL. Defaults to `https://api.openai.com/v1`. Use for
+     * OpenAI-API-compatible third-party endpoints or in-network proxies
+     */
+    baseUrl?: string;
+    /**
+     * (string) - Entra ID client (application) ID for service-principal auth. Set together
+     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
+     * and `serviceCredential`
+     */
+    clientId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
+     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supplied as
+     * inline plaintext via `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret;
+    /**
+     * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
+     * On Create the caller supplies `service_credential.name` in the AIP-122
+     * resource-name form `credentials/{name}`. Required on Create when using
+     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
+     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * referenced by name; its value is not carried here. On read the resolved `id`
+     * and `isDeleted` are also populated. Only supported on Azure-hosted
+     * workspaces; Create requests from other clouds are rejected with
+     * INVALID_PARAMETER_VALUE
+     */
+    serviceCredential?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential;
+    /**
+     * (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
+     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
+     * `serviceCredential`
+     */
+    tenantId?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential {
+    /**
+     * (string) - Resource name of the bound UC service credential, in the AIP-122 form
+     * `credentials/{name}` (a metastore-level single-part credential name). On
+     * create the caller supplies the name here. On read it reflects the
+     * credential's current name at read time
+     */
+    name: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenai {
+    /**
+     * (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     */
+    direct?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirect;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirect {
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    apiKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKey;
+    /**
+     * (string) - Optional custom base URL. Defaults to `https://api.openai.com/v1`. Use for
+     * OpenAI-API-compatible third-party endpoints or in-network proxies
+     */
+    baseUrl?: string;
+    /**
+     * (string) - Optional OpenAI organization ID. When set, the platform forwards it as
+     * the `OpenAI-Organization` header
+     */
+    organization?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKey {
+    /**
+     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+     * reads. Get and List responses omit `plaintext`; the field's presence in
+     * the read shape only indicates that a secret is configured
+     */
+    plaintext: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigRateLimit {
+    /**
+     * (string) - Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * (string) - Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * (string) - Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * (string) - Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigTarget {
+    /**
+     * (string) - Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
+     * a string on the LLM provider's side, not a UC entity. The UC governance
+     * hook for external destinations is the ModelProviderService referenced by
+     * `ExternalModelConfig.model_provider_service`, not the model itself
+     */
+    model: string;
+    /**
+     * (list of string) - Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiGatewayModelProviderServicesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiGatewayModelServiceConfig {
+    /**
+     * (InferenceTableConfig) - Inference table config for payload logging
+     */
+    inferenceTable?: outputs.GetAiGatewayModelServiceConfigInferenceTable;
+    /**
+     * (list of RateLimit) - Rate limits applied to requests routed through this model service
+     */
+    rateLimits?: outputs.GetAiGatewayModelServiceConfigRateLimit[];
+    /**
+     * (ModelServiceConfigRoutingConfig) - Routing configuration: destinations, routing strategy, and fallback
+     */
+    routing?: outputs.GetAiGatewayModelServiceConfigRouting;
+}
+
+export interface GetAiGatewayModelServiceConfigInferenceTable {
+    /**
+     * (boolean) - Indicates whether payload logging is disabled (opt-out). Unset means that
+     * payload logging is active (the on-by-default state coincides with the proto
+     * zero-value, so the server never fills this field for a client that leaves it
+     * unset). Set `disabled = true` to pause runtime logging while keeping the
+     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
+     * later flip back to active). `parent` remains required either way
+     */
+    disabled?: boolean;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * (string) - Parent UC schema where the inference table is created.
+     * Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
+     * thereafter; changing it on an existing service is rejected
+     */
+    parent: string;
+    /**
+     * (string) - Resolved UC table for payload logs.
+     * Format: `tables/{catalog}.{schema}.{table}`
+     */
+    table: string;
+    /**
+     * (string) - Prefix for the inference-table's UC-registered name. The actual leaf name UC
+     * stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
+     * automatically. To find the actual UC table after Create, read the `table`
+     * field on the response. Defaults to `<model_service_name>_payload` when unset.
+     * Set at create time and immutable thereafter; changing it on an existing
+     * service is rejected
+     */
+    tableNamePrefix?: string;
+}
+
+export interface GetAiGatewayModelServiceConfigRateLimit {
+    /**
+     * (string) - Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * (string) - Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * (string) - Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * (string) - Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface GetAiGatewayModelServiceConfigRouting {
+    /**
+     * (list of ModelServiceConfigDestinationConfig) - Primary routing destinations. At most 10 are allowed. At least one is
+     * required on CreateModelService; on UpdateModelService it is required only
+     * when `config.routing` (or a `config.routing.*` subpath) appears in
+     * `updateMask`
+     */
+    destinations?: outputs.GetAiGatewayModelServiceConfigRoutingDestination[];
+    /**
+     * (ModelServiceConfigFallbackConfig) - Fallback routing config, applied after primary destinations fail
+     */
+    fallback?: outputs.GetAiGatewayModelServiceConfigRoutingFallback;
+    /**
+     * (string) - Timeout for the first token of a streaming response. If a destination does
+     * not return its first token within this duration, AI Gateway aborts the
+     * attempt and fails over to the next destination. Applies to streaming
+     * requests only. Leave unset for no first-token timeout
+     */
+    firstTokenTimeout?: string;
+    /**
+     * (ModelServiceConfigRoutingConfigTrafficSplitting) - Marker message selecting request-based traffic splitting. Traffic is
+     * distributed according to each destination's trafficPercentage value;
+     * no configuration lives on this message itself
+     */
+    trafficSplitting?: outputs.GetAiGatewayModelServiceConfigRoutingTrafficSplitting;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingDestination {
+    /**
+     * (string) - Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     */
+    destinationType: string;
+    /**
+     * (ModelServiceConfigExternalModelConfig)
+     */
+    externalModelConfig?: outputs.GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfig;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * Resource name of the model service.
+     * Format: `model-services/{catalog}.{schema}.{model_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+    /**
+     * (ModelServiceConfigPayPerTokenConfig)
+     */
+    payPerTokenConfig?: outputs.GetAiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig;
+    /**
+     * (ModelServiceConfigProvisionedThroughputConfig)
+     */
+    provisionedThroughputConfig?: outputs.GetAiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig;
+    /**
+     * (integer) - Share of traffic sent to this destination, 0-100. Optional on fallback
+     * destinations; see FallbackConfig
+     */
+    trafficPercentage?: number;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfig {
+    /**
+     * (string) - Resource name of the governed ModelProviderService that owns provider
+     * auth and provider-specific configuration. The referenced
+     * ModelProviderService also carries the provider type, so this message
+     * does not surface it directly.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    modelProviderService: string;
+    /**
+     * (ModelProviderServiceConfigModelTargetConfig) - Routing target for the destination: the provider-side model selected from
+     * the referenced ModelProviderService's `targets` catalog, plus the unified
+     * API types the platform should translate to/from at request time
+     */
+    target: outputs.GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * (list of string) - Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * (string) - Name of the backing Model Serving endpoint serving the provisioned-
+     * throughput foundation model, as the AIP-122 typed resource name
+     * `serving-endpoints/{name}`. The same UC model can be served on multiple
+     * Model Serving endpoints (different throughput / region / config); the
+     * caller picks which one this destination routes to. The endpoint must
+     * exist at create time
+     */
+    modelServingEndpoint: string;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingFallback {
+    /**
+     * (list of ModelServiceConfigDestinationConfig) - Primary routing destinations. At most 10 are allowed. At least one is
+     * required on CreateModelService; on UpdateModelService it is required only
+     * when `config.routing` (or a `config.routing.*` subpath) appears in
+     * `updateMask`
+     */
+    destinations?: outputs.GetAiGatewayModelServiceConfigRoutingFallbackDestination[];
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingFallbackDestination {
+    /**
+     * (string) - Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     */
+    destinationType: string;
+    /**
+     * (ModelServiceConfigExternalModelConfig)
+     */
+    externalModelConfig?: outputs.GetAiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * Resource name of the model service.
+     * Format: `model-services/{catalog}.{schema}.{model_service}`.
+     * Each `{...}` component is capped at 255 characters individually.
+     * Server-derived on Create from `parent` +
+     * `modelServiceId`; required and immutable on Update/Get/Delete
+     */
+    name: string;
+    /**
+     * (ModelServiceConfigPayPerTokenConfig)
+     */
+    payPerTokenConfig?: outputs.GetAiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig;
+    /**
+     * (ModelServiceConfigProvisionedThroughputConfig)
+     */
+    provisionedThroughputConfig?: outputs.GetAiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig;
+    /**
+     * (integer) - Share of traffic sent to this destination, 0-100. Optional on fallback
+     * destinations; see FallbackConfig
+     */
+    trafficPercentage?: number;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
+    /**
+     * (string) - Resource name of the governed ModelProviderService that owns provider
+     * auth and provider-specific configuration. The referenced
+     * ModelProviderService also carries the provider type, so this message
+     * does not surface it directly.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    modelProviderService: string;
+    /**
+     * (ModelProviderServiceConfigModelTargetConfig) - Routing target for the destination: the provider-side model selected from
+     * the referenced ModelProviderService's `targets` catalog, plus the unified
+     * API types the platform should translate to/from at request time
+     */
+    target: outputs.GetAiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * (list of string) - Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * (string) - Name of the backing Model Serving endpoint serving the provisioned-
+     * throughput foundation model, as the AIP-122 typed resource name
+     * `serving-endpoints/{name}`. The same UC model can be served on multiple
+     * Model Serving endpoints (different throughput / region / config); the
+     * caller picks which one this destination routes to. The endpoint must
+     * exist at create time
+     */
+    modelServingEndpoint: string;
+}
+
+export interface GetAiGatewayModelServiceConfigRoutingTrafficSplitting {
+}
+
+export interface GetAiGatewayModelServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiGatewayModelServicesModelService {
+    /**
+     * (boolean) - Whether the caller sees only metadata available through the BROWSE
+     * privilege
+     */
+    browseOnly: boolean;
+    /**
+     * (string) - User-provided description
+     */
+    comment: string;
+    /**
+     * (ModelServiceConfig) - Operational configuration: destinations, routing, rate limits, inference
+     * table. Required on CreateModelService; on UpdateModelService it is
+     * required only when `config` (or a `config.*` subpath) appears in
+     * `updateMask`
+     */
+    config: outputs.GetAiGatewayModelServicesModelServiceConfig;
+    /**
+     * (string) - When the model service was created
+     */
+    createTime: string;
+    /**
+     * (string) - Creator identity
+     */
+    createdBy: string;
+    /**
+     * (string) - The resolved owner of the ModelService. Falls back to the caller's identity
+     * when `owner` is not explicitly set on creation
+     */
+    effectiveOwner: string;
+    /**
+     * (string) - Optimistic concurrency control token. Server-generated from the
+     * entity's state and returned on every read. To use it as an if-match
+     * precondition on a mutation, echo the last-read value back via the dedicated
+     * `etag` field on the Update / Delete request; the server rejects the mutation
+     * if the stored etag differs
+     */
+    etag: string;
+    /**
+     * (string) - Metastore hosting the model service
+     */
+    metastoreId: string;
+    /**
+     * (string) - User-facing label for this destination, used in routing references
+     */
+    name: string;
+    /**
+     * (string) - The owner of the model service. Write-only; read owner via effective_owner
+     */
+    owner: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAiGatewayModelServicesModelServiceProviderConfig;
+    /**
+     * (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
+     * "completions"). Derived from the destinations' backing models / providers
+     * at read time
+     */
+    supportedApiTypes: string[];
+    /**
+     * (string) - When the model service was last modified
+     */
+    updateTime: string;
+    /**
+     * (string) - Identity of the last updater
+     */
+    updatedBy: string;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfig {
+    /**
+     * (InferenceTableConfig) - Inference table config for payload logging
+     */
+    inferenceTable?: outputs.GetAiGatewayModelServicesModelServiceConfigInferenceTable;
+    /**
+     * (list of RateLimit) - Rate limits applied to requests routed through this model service
+     */
+    rateLimits?: outputs.GetAiGatewayModelServicesModelServiceConfigRateLimit[];
+    /**
+     * (ModelServiceConfigRoutingConfig) - Routing configuration: destinations, routing strategy, and fallback
+     */
+    routing?: outputs.GetAiGatewayModelServicesModelServiceConfigRouting;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigInferenceTable {
+    /**
+     * (boolean) - Indicates whether payload logging is disabled (opt-out). Unset means that
+     * payload logging is active (the on-by-default state coincides with the proto
+     * zero-value, so the server never fills this field for a client that leaves it
+     * unset). Set `disabled = true` to pause runtime logging while keeping the
+     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
+     * later flip back to active). `parent` remains required either way
+     */
+    disabled?: boolean;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * Resource name of the parent schema to list within, as
+     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
+     * characters individually
+     */
+    parent: string;
+    /**
+     * (string) - Resolved UC table for payload logs.
+     * Format: `tables/{catalog}.{schema}.{table}`
+     */
+    table: string;
+    /**
+     * (string) - Prefix for the inference-table's UC-registered name. The actual leaf name UC
+     * stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
+     * automatically. To find the actual UC table after Create, read the `table`
+     * field on the response. Defaults to `<model_service_name>_payload` when unset.
+     * Set at create time and immutable thereafter; changing it on an existing
+     * service is rejected
+     */
+    tableNamePrefix?: string;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRateLimit {
+    /**
+     * (string) - Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     */
+    key: string;
+    /**
+     * (string) - Principal this limit applies to: user email, group name, or service
+     * principal application ID. Required unless `key` is
+     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
+     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     */
+    principal?: string;
+    /**
+     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     */
+    renewalPeriod: string;
+    /**
+     * (string) - Request tag key this limit applies to. Required when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
+     */
+    requestTagKey?: string;
+    /**
+     * (string) - Request tag value this limit applies to. Only valid when `key` is
+     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
+     * value of `requestTagKey` (an any-value default); a set value is a
+     * specific override for that value
+     */
+    requestTagValue?: string;
+    /**
+     * (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+     */
+    requests?: number;
+    /**
+     * (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+     */
+    tokens?: number;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRouting {
+    /**
+     * (list of ModelServiceConfigDestinationConfig) - Primary routing destinations. At most 10 are allowed. At least one is
+     * required on CreateModelService; on UpdateModelService it is required only
+     * when `config.routing` (or a `config.routing.*` subpath) appears in
+     * `updateMask`
+     */
+    destinations?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingDestination[];
+    /**
+     * (ModelServiceConfigFallbackConfig) - Fallback routing config, applied after primary destinations fail
+     */
+    fallback?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallback;
+    /**
+     * (string) - Timeout for the first token of a streaming response. If a destination does
+     * not return its first token within this duration, AI Gateway aborts the
+     * attempt and fails over to the next destination. Applies to streaming
+     * requests only. Leave unset for no first-token timeout
+     */
+    firstTokenTimeout?: string;
+    /**
+     * (ModelServiceConfigRoutingConfigTrafficSplitting) - Marker message selecting request-based traffic splitting. Traffic is
+     * distributed according to each destination's trafficPercentage value;
+     * no configuration lives on this message itself
+     */
+    trafficSplitting?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingTrafficSplitting;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestination {
+    /**
+     * (string) - Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     */
+    destinationType: string;
+    /**
+     * (ModelServiceConfigExternalModelConfig)
+     */
+    externalModelConfig?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingDestinationExternalModelConfig;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * (string) - User-facing label for this destination, used in routing references
+     */
+    name: string;
+    /**
+     * (ModelServiceConfigPayPerTokenConfig)
+     */
+    payPerTokenConfig?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingDestinationPayPerTokenConfig;
+    /**
+     * (ModelServiceConfigProvisionedThroughputConfig)
+     */
+    provisionedThroughputConfig?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingDestinationProvisionedThroughputConfig;
+    /**
+     * (integer) - Share of traffic sent to this destination, 0-100. Optional on fallback
+     * destinations; see FallbackConfig
+     */
+    trafficPercentage?: number;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationExternalModelConfig {
+    /**
+     * (string) - Resource name of the governed ModelProviderService that owns provider
+     * auth and provider-specific configuration. The referenced
+     * ModelProviderService also carries the provider type, so this message
+     * does not surface it directly.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    modelProviderService: string;
+    /**
+     * (ModelProviderServiceConfigModelTargetConfig) - Routing target for the destination: the provider-side model selected from
+     * the referenced ModelProviderService's `targets` catalog, plus the unified
+     * API types the platform should translate to/from at request time
+     */
+    target: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingDestinationExternalModelConfigTarget;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationExternalModelConfigTarget {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * (list of string) - Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationPayPerTokenConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * (string) - Name of the backing Model Serving endpoint serving the provisioned-
+     * throughput foundation model, as the AIP-122 typed resource name
+     * `serving-endpoints/{name}`. The same UC model can be served on multiple
+     * Model Serving endpoints (different throughput / region / config); the
+     * caller picks which one this destination routes to. The endpoint must
+     * exist at create time
+     */
+    modelServingEndpoint: string;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallback {
+    /**
+     * (list of ModelServiceConfigDestinationConfig) - Primary routing destinations. At most 10 are allowed. At least one is
+     * required on CreateModelService; on UpdateModelService it is required only
+     * when `config.routing` (or a `config.routing.*` subpath) appears in
+     * `updateMask`
+     */
+    destinations?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestination[];
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestination {
+    /**
+     * (string) - Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     */
+    destinationType: string;
+    /**
+     * (ModelServiceConfigExternalModelConfig)
+     */
+    externalModelConfig?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfig;
+    /**
+     * (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
+     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
+     * deleted but the destination row still references it. The dangling
+     * destination is surfaced (not silently dropped) so callers can see the
+     * broken routing. Inference traffic through this destination fails closed
+     * (BAD_REQUEST / FAILED_PRECONDITION)
+     */
+    isDeleted: boolean;
+    /**
+     * (string) - User-facing label for this destination, used in routing references
+     */
+    name: string;
+    /**
+     * (ModelServiceConfigPayPerTokenConfig)
+     */
+    payPerTokenConfig?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig;
+    /**
+     * (ModelServiceConfigProvisionedThroughputConfig)
+     */
+    provisionedThroughputConfig?: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig;
+    /**
+     * (integer) - Share of traffic sent to this destination, 0-100. Optional on fallback
+     * destinations; see FallbackConfig
+     */
+    trafficPercentage?: number;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
+    /**
+     * (string) - Resource name of the governed ModelProviderService that owns provider
+     * auth and provider-specific configuration. The referenced
+     * ModelProviderService also carries the provider type, so this message
+     * does not surface it directly.
+     * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
+     * Each `{...}` component is capped at 255 characters individually
+     */
+    modelProviderService: string;
+    /**
+     * (ModelProviderServiceConfigModelTargetConfig) - Routing target for the destination: the provider-side model selected from
+     * the referenced ModelProviderService's `targets` catalog, plus the unified
+     * API types the platform should translate to/from at request time
+     */
+    target: outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * (list of string) - Provider-native API types the model supports (e.g.
+     * "openai/v1/chat/completions"). Used by the platform for request/response
+     * translation from the unified API type. At most 64 entries of at most 256
+     * characters each; the list is persisted into the destination binding's
+     * bounded storage envelope
+     */
+    nativeApiTypes?: string[];
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
+    /**
+     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
+     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
+     * Create/Update time
+     */
+    model: string;
+    /**
+     * (string) - Name of the backing Model Serving endpoint serving the provisioned-
+     * throughput foundation model, as the AIP-122 typed resource name
+     * `serving-endpoints/{name}`. The same UC model can be served on multiple
+     * Model Serving endpoints (different throughput / region / config); the
+     * caller picks which one this destination routes to. The endpoint must
+     * exist at create time
+     */
+    modelServingEndpoint: string;
+}
+
+export interface GetAiGatewayModelServicesModelServiceConfigRoutingTrafficSplitting {
+}
+
+export interface GetAiGatewayModelServicesModelServiceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiGatewayModelServicesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetAiSearchEndpointCustomTag {
@@ -30713,11 +33666,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -30784,11 +33737,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.123.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;

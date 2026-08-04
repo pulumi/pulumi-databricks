@@ -16,6 +16,18 @@ import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2Args;
 import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
 import com.pulumi.databricks.inputs.GetAccountSettingV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayMcpServiceArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayMcpServicePlainArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesPlainArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServiceArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicePlainArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesPlainArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayModelServiceArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayModelServicePlainArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayModelServicesArgs;
+import com.pulumi.databricks.inputs.GetAiGatewayModelServicesPlainArgs;
 import com.pulumi.databricks.inputs.GetAiSearchEndpointArgs;
 import com.pulumi.databricks.inputs.GetAiSearchEndpointPlainArgs;
 import com.pulumi.databricks.inputs.GetAiSearchEndpointsArgs;
@@ -326,6 +338,12 @@ import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyResult;
 import com.pulumi.databricks.outputs.GetAccountSettingUserPreferenceV2Result;
 import com.pulumi.databricks.outputs.GetAccountSettingV2Result;
+import com.pulumi.databricks.outputs.GetAiGatewayMcpServiceResult;
+import com.pulumi.databricks.outputs.GetAiGatewayMcpServicesResult;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServiceResult;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesResult;
+import com.pulumi.databricks.outputs.GetAiGatewayModelServiceResult;
+import com.pulumi.databricks.outputs.GetAiGatewayModelServicesResult;
 import com.pulumi.databricks.outputs.GetAiSearchEndpointResult;
 import com.pulumi.databricks.outputs.GetAiSearchEndpointsResult;
 import com.pulumi.databricks.outputs.GetAiSearchIndexResult;
@@ -1428,6 +1446,330 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayMcpServiceResult> getAiGatewayMcpService(GetAiGatewayMcpServiceArgs args) {
+        return getAiGatewayMcpService(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayMcpServiceResult> getAiGatewayMcpServicePlain(GetAiGatewayMcpServicePlainArgs args) {
+        return getAiGatewayMcpServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayMcpServiceResult> getAiGatewayMcpService(GetAiGatewayMcpServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", TypeShape.of(GetAiGatewayMcpServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayMcpServiceResult> getAiGatewayMcpService(GetAiGatewayMcpServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", TypeShape.of(GetAiGatewayMcpServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayMcpServiceResult> getAiGatewayMcpServicePlain(GetAiGatewayMcpServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", TypeShape.of(GetAiGatewayMcpServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayMcpServicesResult> getAiGatewayMcpServices() {
+        return getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayMcpServicesResult> getAiGatewayMcpServicesPlain() {
+        return getAiGatewayMcpServicesPlain(GetAiGatewayMcpServicesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayMcpServicesResult> getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs args) {
+        return getAiGatewayMcpServices(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayMcpServicesResult> getAiGatewayMcpServicesPlain(GetAiGatewayMcpServicesPlainArgs args) {
+        return getAiGatewayMcpServicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayMcpServicesResult> getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayMcpServices:getAiGatewayMcpServices", TypeShape.of(GetAiGatewayMcpServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayMcpServicesResult> getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayMcpServices:getAiGatewayMcpServices", TypeShape.of(GetAiGatewayMcpServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayMcpServicesResult> getAiGatewayMcpServicesPlain(GetAiGatewayMcpServicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayMcpServices:getAiGatewayMcpServices", TypeShape.of(GetAiGatewayMcpServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs args) {
+        return getAiGatewayModelProviderService(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderServicePlain(GetAiGatewayModelProviderServicePlainArgs args) {
+        return getAiGatewayModelProviderServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", TypeShape.of(GetAiGatewayModelProviderServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", TypeShape.of(GetAiGatewayModelProviderServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderServicePlain(GetAiGatewayModelProviderServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", TypeShape.of(GetAiGatewayModelProviderServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServices() {
+        return getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServicesPlain() {
+        return getAiGatewayModelProviderServicesPlain(GetAiGatewayModelProviderServicesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs args) {
+        return getAiGatewayModelProviderServices(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServicesPlain(GetAiGatewayModelProviderServicesPlainArgs args) {
+        return getAiGatewayModelProviderServicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelProviderServices:getAiGatewayModelProviderServices", TypeShape.of(GetAiGatewayModelProviderServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelProviderServices:getAiGatewayModelProviderServices", TypeShape.of(GetAiGatewayModelProviderServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServicesPlain(GetAiGatewayModelProviderServicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayModelProviderServices:getAiGatewayModelProviderServices", TypeShape.of(GetAiGatewayModelProviderServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelServiceResult> getAiGatewayModelService(GetAiGatewayModelServiceArgs args) {
+        return getAiGatewayModelService(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelServiceResult> getAiGatewayModelServicePlain(GetAiGatewayModelServicePlainArgs args) {
+        return getAiGatewayModelServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelServiceResult> getAiGatewayModelService(GetAiGatewayModelServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelService:getAiGatewayModelService", TypeShape.of(GetAiGatewayModelServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelServiceResult> getAiGatewayModelService(GetAiGatewayModelServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelService:getAiGatewayModelService", TypeShape.of(GetAiGatewayModelServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelServiceResult> getAiGatewayModelServicePlain(GetAiGatewayModelServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayModelService:getAiGatewayModelService", TypeShape.of(GetAiGatewayModelServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelServicesResult> getAiGatewayModelServices() {
+        return getAiGatewayModelServices(GetAiGatewayModelServicesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelServicesResult> getAiGatewayModelServicesPlain() {
+        return getAiGatewayModelServicesPlain(GetAiGatewayModelServicesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelServicesResult> getAiGatewayModelServices(GetAiGatewayModelServicesArgs args) {
+        return getAiGatewayModelServices(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelServicesResult> getAiGatewayModelServicesPlain(GetAiGatewayModelServicesPlainArgs args) {
+        return getAiGatewayModelServicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelServicesResult> getAiGatewayModelServices(GetAiGatewayModelServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", TypeShape.of(GetAiGatewayModelServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static Output<GetAiGatewayModelServicesResult> getAiGatewayModelServices(GetAiGatewayModelServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", TypeShape.of(GetAiGatewayModelServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     */
+    public static CompletableFuture<GetAiGatewayModelServicesResult> getAiGatewayModelServicesPlain(GetAiGatewayModelServicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", TypeShape.of(GetAiGatewayModelServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -27874,12 +28216,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
-     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *         final var appDb = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/production/databases/app-db/data-api")
      *             .build());
      * 
-     *         ctx.export("dataApiUrl", app.status().url());
-     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *         ctx.export("dataApiUrl", appDb.status().url());
+     *         ctx.export("availableSchemas", appDb.status().availableSchemas());
      *     }
      * }
      * }
@@ -27922,12 +28264,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
-     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *         final var appDb = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/production/databases/app-db/data-api")
      *             .build());
      * 
-     *         ctx.export("dataApiUrl", app.status().url());
-     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *         ctx.export("dataApiUrl", appDb.status().url());
+     *         ctx.export("availableSchemas", appDb.status().availableSchemas());
      *     }
      * }
      * }
@@ -27970,12 +28312,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
-     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *         final var appDb = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/production/databases/app-db/data-api")
      *             .build());
      * 
-     *         ctx.export("dataApiUrl", app.status().url());
-     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *         ctx.export("dataApiUrl", appDb.status().url());
+     *         ctx.export("availableSchemas", appDb.status().availableSchemas());
      *     }
      * }
      * }
@@ -28018,12 +28360,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
-     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *         final var appDb = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/production/databases/app-db/data-api")
      *             .build());
      * 
-     *         ctx.export("dataApiUrl", app.status().url());
-     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *         ctx.export("dataApiUrl", appDb.status().url());
+     *         ctx.export("availableSchemas", appDb.status().availableSchemas());
      *     }
      * }
      * }
@@ -28066,12 +28408,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
-     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *         final var appDb = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/production/databases/app-db/data-api")
      *             .build());
      * 
-     *         ctx.export("dataApiUrl", app.status().url());
-     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *         ctx.export("dataApiUrl", appDb.status().url());
+     *         ctx.export("availableSchemas", appDb.status().availableSchemas());
      *     }
      * }
      * }
