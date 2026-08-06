@@ -84,7 +84,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "cluster_usage", &databricks.PermissionsArgs{
-//				ClusterId: sharedAutoscaling.ID(),
+//				ClusterId: sharedAutoscaling.ID().ToIDOutput().ToStringOutput(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       auto.DisplayName,
@@ -139,11 +139,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"spark_conf.spark.hadoop.javax.jdo.option.ConnectionURL": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"spark_conf.spark.hadoop.javax.jdo.option.ConnectionURL": map[string]string{
 //					"type": "forbidden",
 //				},
-//				"spark_conf.spark.secondkey": map[string]interface{}{
+//				"spark_conf.spark.secondkey": map[string]string{
 //					"type": "forbidden",
 //				},
 //			})
@@ -159,7 +159,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "policy_usage", &databricks.PermissionsArgs{
-//				ClusterPolicyId: somethingSimple.ID(),
+//				ClusterPolicyId: somethingSimple.ID().ToIDOutput().ToStringOutput(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       ds.DisplayName,
@@ -225,7 +225,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "pool_usage", &databricks.PermissionsArgs{
-//				InstancePoolId: this.ID(),
+//				InstancePoolId: this.ID().ToIDOutput().ToStringOutput(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       auto.DisplayName,
@@ -317,7 +317,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "job_usage", &databricks.PermissionsArgs{
-//				JobId: this.ID(),
+//				JobId: this.ID().ToIDOutput().ToStringOutput(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -416,7 +416,7 @@ import (
 //				Libraries: databricks.PipelineLibraryArray{
 //					&databricks.PipelineLibraryArgs{
 //						Notebook: &databricks.PipelineLibraryNotebookArgs{
-//							Path: ldpDemo.ID(),
+//							Path: ldpDemo.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -764,7 +764,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "repo_usage", &databricks.PermissionsArgs{
-//				RepoId: this.ID(),
+//				RepoId: this.ID().ToIDOutput().ToStringOutput(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -830,7 +830,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "experiment_usage", &databricks.PermissionsArgs{
-//				ExperimentId: this.ID(),
+//				ExperimentId: this.ID().ToIDOutput().ToStringOutput(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -1242,7 +1242,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "dashboard_usage", &databricks.PermissionsArgs{
-//				DashboardId: dashboard.ID(),
+//				DashboardId: dashboard.ID().ToIDOutput().ToStringOutput(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       auto.DisplayName,

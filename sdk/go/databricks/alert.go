@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewAlert(ctx, "alert", &databricks.AlertArgs{
-//				QueryId:     this.ID(),
+//				QueryId:     this.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("TF new alert"),
 //				ParentPath:  sharedDir.Path,
 //				Condition: &databricks.AlertConditionArgs{

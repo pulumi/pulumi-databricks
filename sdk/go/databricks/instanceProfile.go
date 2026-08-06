@@ -38,7 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]interface{}{
 //				"aws_attributes.instance_profile_arn": map[string]interface{}{
 //					"type":  "fixed",
 //					"value": shared.Id,
@@ -91,7 +91,7 @@ import (
 //			}
 //			_, err = databricks.NewGroupInstanceProfile(ctx, "all", &databricks.GroupInstanceProfileArgs{
 //				GroupId:           pulumi.String(users.Id),
-//				InstanceProfileId: this.ID(),
+//				InstanceProfileId: this.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

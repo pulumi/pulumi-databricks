@@ -236,7 +236,7 @@ func main() {
 			return err
 		}
 		invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-			Input: fmt.Sprintf("# created from %v\ndisplay(spark.range(10))\n", std.Abspath(ctx, &std.AbspathArgs{
+			Input: fmt.Sprintf("# created from %v\ndisplay(spark.range(10))\n", std.Abspath(ctx, std.AbspathArgs{
 				Input: notImplemented("path.module"),
 			}, nil).Result),
 		}, nil)

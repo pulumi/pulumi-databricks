@@ -45,8 +45,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewUserInstanceProfile(ctx, "my_user_instance_profile", &databricks.UserInstanceProfileArgs{
-//				UserId:            myUser.ID(),
-//				InstanceProfileId: instanceProfile.ID(),
+//				UserId:            myUser.ID().ToIDOutput().ToStringOutput(),
+//				InstanceProfileId: instanceProfile.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

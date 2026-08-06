@@ -88,8 +88,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupMember(ctx, "vip_member", &databricks.GroupMemberArgs{
-//				GroupId:  this.ID(),
-//				MemberId: thisUser.ID(),
+//				GroupId:  this.ID().ToIDOutput().ToStringOutput(),
+//				MemberId: thisUser.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

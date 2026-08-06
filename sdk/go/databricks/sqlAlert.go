@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewSqlAlert(ctx, "alert", &databricks.SqlAlertArgs{
-//				QueryId: this.ID(),
+//				QueryId: this.ID().ToIDOutput().ToStringOutput(),
 //				Name:    pulumi.String("My Alert"),
 //				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
 //					return fmt.Sprintf("folders/%v", objectId), nil

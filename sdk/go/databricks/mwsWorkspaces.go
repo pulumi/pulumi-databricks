@@ -246,8 +246,8 @@ import (
 //			}
 //			_, err = aws.NewS3BucketVersioning(ctx, "root_versioning", &aws.S3BucketVersioningArgs{
 //				Bucket: rootStorageBucket.Id,
-//				VersioningConfiguration: []map[string]interface{}{
-//					map[string]interface{}{
+//				VersioningConfiguration: []map[string]string{
+//					{
 //						"status": "Disabled",
 //					},
 //				},
@@ -257,10 +257,10 @@ import (
 //			}
 //			_, err = aws.NewS3BucketServerSideEncryptionConfiguration(ctx, "root_storage_bucket", &aws.S3BucketServerSideEncryptionConfigurationArgs{
 //				Bucket: rootStorageBucket.Bucket,
-//				Rule: []map[string]interface{}{
-//					map[string]interface{}{
-//						"applyServerSideEncryptionByDefault": []map[string]interface{}{
-//							map[string]interface{}{
+//				Rule: []map[string][]map[string]string{
+//					{
+//						"applyServerSideEncryptionByDefault": []map[string]string{
+//							{
 //								"sseAlgorithm": "AES256",
 //							},
 //						},

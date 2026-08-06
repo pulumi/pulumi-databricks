@@ -473,7 +473,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewAccessControlRuleSet(ctx, "tag_policy_usage", &databricks.AccessControlRuleSetArgs{
-//				Name: this.ID().ApplyT(func(id string) (string, error) {
+//				Name: this.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("accounts/%v/tagPolicies/%v/ruleSets/default", accountId, id), nil
 //				}).(pulumi.StringOutput),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{

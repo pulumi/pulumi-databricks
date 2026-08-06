@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewMetastoreAssignment(ctx, "this", &databricks.MetastoreAssignmentArgs{
-//				MetastoreId: this.ID(),
+//				MetastoreId: this.ID().ToIDOutput().ToStringOutput(),
 //				WorkspaceId: pulumi.Any(workspaceId),
 //			})
 //			if err != nil {

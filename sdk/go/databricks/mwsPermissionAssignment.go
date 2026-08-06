@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = databricks.NewMwsPermissionAssignment(ctx, "add_admin_group", &databricks.MwsPermissionAssignmentArgs{
 //				WorkspaceId: pulumi.Any(this.WorkspaceId),
-//				PrincipalId: dataEng.ID(),
+//				PrincipalId: dataEng.ID().ToIDOutput().ToStringOutput(),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("ADMIN"),
 //				},
@@ -78,7 +78,7 @@ import (
 //			}
 //			_, err = databricks.NewMwsPermissionAssignment(ctx, "add_user", &databricks.MwsPermissionAssignmentArgs{
 //				WorkspaceId: pulumi.Any(this.WorkspaceId),
-//				PrincipalId: me.ID(),
+//				PrincipalId: me.ID().ToIDOutput().ToStringOutput(),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("USER"),
 //				},
@@ -114,7 +114,7 @@ import (
 //			}
 //			_, err = databricks.NewMwsPermissionAssignment(ctx, "add_admin_spn", &databricks.MwsPermissionAssignmentArgs{
 //				WorkspaceId: pulumi.Any(this.WorkspaceId),
-//				PrincipalId: sp.ID(),
+//				PrincipalId: sp.ID().ToIDOutput().ToStringOutput(),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("ADMIN"),
 //				},

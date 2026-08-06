@@ -107,7 +107,7 @@ import (
 //			}
 //			thisGroupMember, err := databricks.NewGroupMember(ctx, "this", &databricks.GroupMemberArgs{
 //				GroupId:  pulumi.String(admins.Id),
-//				MemberId: this.ID(),
+//				MemberId: this.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
