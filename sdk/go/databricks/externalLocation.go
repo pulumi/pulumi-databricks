@@ -50,14 +50,14 @@ import (
 //			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
 //				Name:           pulumi.String("external"),
 //				Url:            pulumi.Sprintf("s3://%v/some", externalAwsS3Bucket.Id),
-//				CredentialName: external.ID(),
+//				CredentialName: external.ID().ToIDOutput().ToStringOutput(),
 //				Comment:        pulumi.String("Managed by TF"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
-//				ExternalLocation: some.ID(),
+//				ExternalLocation: some.ID().ToIDOutput().ToStringOutput(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -119,7 +119,7 @@ import (
 //			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
 //				Name:           pulumi.String("external"),
 //				Url:            pulumi.String(invokeFormat.Result),
-//				CredentialName: external.ID(),
+//				CredentialName: external.ID().ToIDOutput().ToStringOutput(),
 //				Comment:        pulumi.String("Managed by TF"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				this,
@@ -128,7 +128,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
-//				ExternalLocation: some.ID(),
+//				ExternalLocation: some.ID().ToIDOutput().ToStringOutput(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -172,14 +172,14 @@ import (
 //			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
 //				Name:           pulumi.String("the-ext-location"),
 //				Url:            pulumi.Sprintf("gs://%v", extBucket.Name),
-//				CredentialName: ext.ID(),
+//				CredentialName: ext.ID().ToIDOutput().ToStringOutput(),
 //				Comment:        pulumi.String("Managed by TF"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
-//				ExternalLocation: some.ID(),
+//				ExternalLocation: some.ID().ToIDOutput().ToStringOutput(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),

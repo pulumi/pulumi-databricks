@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewMetastoreDataAccess(ctx, "this", &databricks.MetastoreDataAccessArgs{
-//				MetastoreId: this.ID(),
+//				MetastoreId: this.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.Any(metastoreDataAccess.Name),
 //				AwsIamRole: &databricks.MetastoreDataAccessAwsIamRoleArgs{
 //					RoleArn: pulumi.Any(metastoreDataAccess.Arn),
@@ -96,7 +96,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewMetastoreDataAccess(ctx, "this", &databricks.MetastoreDataAccessArgs{
-//				MetastoreId: this.ID(),
+//				MetastoreId: this.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("mi_dac"),
 //				AzureManagedIdentity: &databricks.MetastoreDataAccessAzureManagedIdentityArgs{
 //					AccessConnectorId: pulumi.Any(accessConnectorId),

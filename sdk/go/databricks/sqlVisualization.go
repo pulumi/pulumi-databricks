@@ -42,14 +42,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"itemsPerPage": 25,
-//				"columns": []map[string]interface{}{
-//					map[string]interface{}{
+//				"columns": []map[string]string{
+//					{
 //						"name":      "p1",
 //						"type":      "string",
 //						"title":     "Parameter 1",
 //						"displayAs": "string",
 //					},
-//					map[string]interface{}{
+//					{
 //						"name":           "p2",
 //						"type":           "string",
 //						"title":          "Parameter 2",

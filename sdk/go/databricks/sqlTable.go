@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-//				CatalogName: sandbox.ID(),
+//				CatalogName: sandbox.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this database is managed by terraform"),
 //				Properties: pulumi.StringMap{
@@ -83,7 +83,7 @@ import (
 //			}
 //			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
 //				Input: "SELECT name FROM %s WHERE id == 1",
-//				Args: pulumi.StringArray{
+//				Args: pulumi.IDArray{
 //					thing.ID(),
 //				},
 //			}, nil)
@@ -155,7 +155,7 @@ import (
 //			}
 //			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
 //				Input: "SELECT name FROM %s WHERE id == 1",
-//				Args: pulumi.StringArray{
+//				Args: pulumi.IDArray{
 //					thing.ID(),
 //				},
 //			}, nil)
@@ -205,7 +205,7 @@ import (
 //				return err
 //			}
 //			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-//				CatalogName: sandbox.ID(),
+//				CatalogName: sandbox.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this database is managed by terraform"),
 //				Properties: pulumi.StringMap{

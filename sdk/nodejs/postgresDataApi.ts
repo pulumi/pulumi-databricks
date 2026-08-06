@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  *         dbSchemas: ["public"],
  *     },
  * });
- * export const dataApiUrl = appDbPostgresDataApi.status.apply(status => status.url);
+ * export const dataApiUrl = appDbPostgresDataApi.status.url;
  * ```
  *
  * > [!NOTE]

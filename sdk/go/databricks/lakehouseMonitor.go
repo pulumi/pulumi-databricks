@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-//				CatalogName: sandbox.ID(),
+//				CatalogName: sandbox.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this database is managed by terraform"),
 //				Properties: pulumi.StringMap{

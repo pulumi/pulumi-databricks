@@ -105,7 +105,7 @@ import * as utilities from "./utilities";
  *         sourceTableFullName: "source_delta.tpch.customer",
  *         primaryKeyColumns: ["c_custkey"],
  *         createDatabaseObjectsIfMissing: true,
- *         existingPipelineId: syncedTable1.dataSynchronizationStatus.apply(dataSynchronizationStatus => dataSynchronizationStatus.pipelineId),
+ *         existingPipelineId: syncedTable1.dataSynchronizationStatus.pipelineId,
  *     },
  * });
  * ```
@@ -144,7 +144,7 @@ import * as utilities from "./utilities";
  *     tasks: [{
  *         taskKey: "synced-table-pipeline",
  *         pipelineTask: {
- *             pipelineId: syncedTable.dataSynchronizationStatus.apply(dataSynchronizationStatus => dataSynchronizationStatus.pipelineId),
+ *             pipelineId: syncedTable.dataSynchronizationStatus.pipelineId,
  *         },
  *     }],
  *     schedule: {

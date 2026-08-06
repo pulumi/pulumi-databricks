@@ -38,7 +38,7 @@ import (
 //			_, err := databricks.NewAccountUserSettingV2(ctx, "theme_setting", &databricks.AccountUserSettingV2Args{
 //				UserId: "<user-id>",
 //				Name:   "enableDarkMode",
-//				StringVal: map[string]interface{}{
+//				StringVal: map[string]string{
 //					"value": "dark",
 //				},
 //			})
@@ -68,7 +68,7 @@ import (
 //			_, err := databricks.NewAccountUserSettingV2(ctx, "enable_line_numbers", &databricks.AccountUserSettingV2Args{
 //				UserId: "<user-id>",
 //				Name:   "enableLineNumbers",
-//				BooleanVal: map[string]interface{}{
+//				BooleanVal: map[string]bool{
 //					"value": true,
 //				},
 //			})

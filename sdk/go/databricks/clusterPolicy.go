@@ -59,7 +59,7 @@ import (
 //			// Cluster policy overrides
 //			var policyOverrides interface{}
 //			cfg.RequireObject("policyOverrides", &policyOverrides)
-//			defaultPolicy := map[string]interface{}{
+//			defaultPolicy := map[string]map[string]interface{}{
 //				"dbus_per_hour": map[string]interface{}{
 //					"type":     "range",
 //					"maxValue": 10,
@@ -104,7 +104,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "can_use_cluster_policyinstance_profile", &databricks.PermissionsArgs{
-//				ClusterPolicyId: fairUse.ID(),
+//				ClusterPolicyId: fairUse.ID().ToIDOutput().ToStringOutput(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.Any(team),
@@ -147,7 +147,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			personalVmOverride := map[string]interface{}{
+//			personalVmOverride := map[string]map[string]interface{}{
 //				"autotermination_minutes": map[string]interface{}{
 //					"type":   "fixed",
 //					"value":  220,

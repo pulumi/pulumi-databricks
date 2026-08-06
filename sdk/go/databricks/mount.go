@@ -116,7 +116,7 @@ import (
 //			resourceGroup := cfg.Require("resourceGroup")
 //			// Name of the Databricks Workspace
 //			workspaceName := cfg.Require("workspaceName")
-//			_, err := azurerm.DatabricksWorkspace(ctx, map[string]interface{}{
+//			_, err := azurerm.DatabricksWorkspace(ctx, map[string]string{
 //				"name":              workspaceName,
 //				"resourceGroupName": resourceGroup,
 //			}, nil)
@@ -158,7 +158,7 @@ import (
 //			container := cfg.Require("container")
 //			_, err = databricks.NewMount(ctx, "passthrough", &databricks.MountArgs{
 //				Name:      pulumi.String("passthrough-test"),
-//				ClusterId: sharedPassthrough.ID(),
+//				ClusterId: sharedPassthrough.ID().ToIDOutput().ToStringOutput(),
 //				Uri:       pulumi.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc),
 //				ExtraConfigs: pulumi.StringMap{
 //					"fs.azure.account.auth.type":                   pulumi.String("CustomAccessToken"),

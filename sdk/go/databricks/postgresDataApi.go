@@ -88,9 +88,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("dataApiUrl", appDbPostgresDataApi.Status.ApplyT(func(status databricks.PostgresDataApiStatus) (*string, error) {
-//				return status.Url, nil
-//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("dataApiUrl", appDbPostgresDataApi.Status.Url())
 //			return nil
 //		})
 //	}

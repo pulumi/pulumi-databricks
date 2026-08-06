@@ -161,9 +161,7 @@ import (
 //						pulumi.String("c_custkey"),
 //					},
 //					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
-//					ExistingPipelineId: syncedTable1.DataSynchronizationStatus.ApplyT(func(dataSynchronizationStatus databricks.DatabaseSyncedDatabaseTableDataSynchronizationStatus) (*string, error) {
-//						return dataSynchronizationStatus.PipelineId, nil
-//					}).(pulumi.StringPtrOutput),
+//					ExistingPipelineId:             syncedTable1.DataSynchronizationStatus.PipelineId(),
 //				},
 //			})
 //			if err != nil {
@@ -223,9 +221,7 @@ import (
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("synced-table-pipeline"),
 //						PipelineTask: &databricks.JobTaskPipelineTaskArgs{
-//							PipelineId: syncedTable.DataSynchronizationStatus.ApplyT(func(dataSynchronizationStatus databricks.DatabaseSyncedDatabaseTableDataSynchronizationStatus) (*string, error) {
-//								return dataSynchronizationStatus.PipelineId, nil
-//							}).(pulumi.StringPtrOutput),
+//							PipelineId: syncedTable.DataSynchronizationStatus.PipelineId(),
 //						},
 //					},
 //				},

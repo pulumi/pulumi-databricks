@@ -47,8 +47,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewServicePrincipalRole(ctx, "my_service_principal_instance_profile", &databricks.ServicePrincipalRoleArgs{
-//				ServicePrincipalId: this.ID(),
-//				Role:               instanceProfile.ID(),
+//				ServicePrincipalId: this.ID().ToIDOutput().ToStringOutput(),
+//				Role:               instanceProfile.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -82,7 +82,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewServicePrincipalRole(ctx, "tf_admin_account", &databricks.ServicePrincipalRoleArgs{
-//				ServicePrincipalId: tfAdmin.ID(),
+//				ServicePrincipalId: tfAdmin.ID().ToIDOutput().ToStringOutput(),
 //				Role:               pulumi.String("account_admin"),
 //			})
 //			if err != nil {

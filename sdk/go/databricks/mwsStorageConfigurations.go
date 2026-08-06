@@ -53,8 +53,8 @@ import (
 //			}
 //			_, err = aws.NewS3BucketVersioning(ctx, "root_versioning", &aws.S3BucketVersioningArgs{
 //				Bucket: rootStorageBucket.Id,
-//				VersioningConfiguration: []map[string]interface{}{
-//					map[string]interface{}{
+//				VersioningConfiguration: []map[string]string{
+//					{
 //						"status": "Disabled",
 //					},
 //				},

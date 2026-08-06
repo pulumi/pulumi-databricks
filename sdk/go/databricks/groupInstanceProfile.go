@@ -45,8 +45,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupInstanceProfile(ctx, "my_group_instance_profile", &databricks.GroupInstanceProfileArgs{
-//				GroupId:           myGroup.ID(),
-//				InstanceProfileId: instanceProfile.ID(),
+//				GroupId:           myGroup.ID().ToIDOutput().ToStringOutput(),
+//				InstanceProfileId: instanceProfile.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

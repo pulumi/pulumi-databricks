@@ -53,7 +53,7 @@ import (
 //				Tags: std.Merge(ctx, &std.MergeArgs{
 //					Input: []interface{}{
 //						tags,
-//						map[string]interface{}{
+//						map[string]string{
 //							"name": fmt.Sprintf("%v-logdelivery", prefix),
 //						},
 //					},
@@ -78,8 +78,8 @@ import (
 //			}
 //			_, err = aws.NewS3BucketVersioning(ctx, "logdelivery_versioning", &aws.S3BucketVersioningArgs{
 //				Bucket: logdeliveryS3Bucket.Id,
-//				VersioningConfiguration: []map[string]interface{}{
-//					map[string]interface{}{
+//				VersioningConfiguration: []map[string]string{
+//					{
 //						"status": "Disabled",
 //					},
 //				},
