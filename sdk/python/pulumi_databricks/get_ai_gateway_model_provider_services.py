@@ -113,7 +113,7 @@ def get_ai_gateway_model_provider_services(include_browse: Optional[_builtins.bo
     :param _builtins.bool include_browse: Whether to include provider services for which the principal can only
            access selective metadata
     :param _builtins.int page_size: Maximum number of provider services to return. Defaults to 100 when unset or
-           0; the maximum is 1000. Use `next_page_token` to retrieve additional pages
+           0; the maximum is 100. Use `next_page_token` to retrieve additional pages
     :param _builtins.str parent: Resource name of the parent schema to list within, as
            `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
            characters individually
@@ -151,7 +151,7 @@ def get_ai_gateway_model_provider_services_output(include_browse: pulumi.Input[O
     :param _builtins.bool include_browse: Whether to include provider services for which the principal can only
            access selective metadata
     :param _builtins.int page_size: Maximum number of provider services to return. Defaults to 100 when unset or
-           0; the maximum is 1000. Use `next_page_token` to retrieve additional pages
+           0; the maximum is 100. Use `next_page_token` to retrieve additional pages
     :param _builtins.str parent: Resource name of the parent schema to list within, as
            `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
            characters individually

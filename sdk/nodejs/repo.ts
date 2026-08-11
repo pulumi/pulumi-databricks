@@ -80,6 +80,10 @@ export class Repo extends pulumi.CustomResource {
      */
     declare public readonly commitHash: pulumi.Output<string>;
     /**
+     * The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+     */
+    declare public readonly gitCredentialId: pulumi.Output<number | undefined>;
+    /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
     declare public readonly gitProvider: pulumi.Output<string>;
@@ -117,6 +121,7 @@ export class Repo extends pulumi.CustomResource {
             const state = argsOrState as RepoState | undefined;
             resourceInputs["branch"] = state?.branch;
             resourceInputs["commitHash"] = state?.commitHash;
+            resourceInputs["gitCredentialId"] = state?.gitCredentialId;
             resourceInputs["gitProvider"] = state?.gitProvider;
             resourceInputs["path"] = state?.path;
             resourceInputs["providerConfig"] = state?.providerConfig;
@@ -131,6 +136,7 @@ export class Repo extends pulumi.CustomResource {
             }
             resourceInputs["branch"] = args?.branch;
             resourceInputs["commitHash"] = args?.commitHash;
+            resourceInputs["gitCredentialId"] = args?.gitCredentialId;
             resourceInputs["gitProvider"] = args?.gitProvider;
             resourceInputs["path"] = args?.path;
             resourceInputs["providerConfig"] = args?.providerConfig;
@@ -156,6 +162,10 @@ export interface RepoState {
      * Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
      */
     commitHash?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+     */
+    gitCredentialId?: pulumi.Input<number | undefined>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -192,6 +202,10 @@ export interface RepoArgs {
      * Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
      */
     commitHash?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+     */
+    gitCredentialId?: pulumi.Input<number | undefined>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */

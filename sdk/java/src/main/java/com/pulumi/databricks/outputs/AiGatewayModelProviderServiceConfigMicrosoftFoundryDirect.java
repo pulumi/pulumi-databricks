@@ -5,7 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey;
-import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret;
+import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal;
 import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential;
 import java.lang.String;
 import java.util.Objects;
@@ -16,10 +16,8 @@ import javax.annotation.Nullable;
 public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
     private @Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey apiKey;
     private @Nullable String baseUrl;
-    private @Nullable String clientId;
-    private @Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret clientSecret;
+    private @Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal entraServicePrincipal;
     private @Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential serviceCredential;
-    private @Nullable String tenantId;
 
     private AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect() {}
     public Optional<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey> apiKey() {
@@ -28,17 +26,11 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
     public Optional<String> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
-    public Optional<String> clientId() {
-        return Optional.ofNullable(this.clientId);
-    }
-    public Optional<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public Optional<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal> entraServicePrincipal() {
+        return Optional.ofNullable(this.entraServicePrincipal);
     }
     public Optional<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential> serviceCredential() {
         return Optional.ofNullable(this.serviceCredential);
-    }
-    public Optional<String> tenantId() {
-        return Optional.ofNullable(this.tenantId);
     }
 
     public static Builder builder() {
@@ -52,19 +44,15 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
     public static final class Builder {
         private @Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey apiKey;
         private @Nullable String baseUrl;
-        private @Nullable String clientId;
-        private @Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret clientSecret;
+        private @Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal entraServicePrincipal;
         private @Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential serviceCredential;
-        private @Nullable String tenantId;
         public Builder() {}
         public Builder(AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
     	      this.baseUrl = defaults.baseUrl;
-    	      this.clientId = defaults.clientId;
-    	      this.clientSecret = defaults.clientSecret;
+    	      this.entraServicePrincipal = defaults.entraServicePrincipal;
     	      this.serviceCredential = defaults.serviceCredential;
-    	      this.tenantId = defaults.tenantId;
         }
 
         @CustomType.Setter
@@ -80,15 +68,9 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
             return this;
         }
         @CustomType.Setter
-        public Builder clientId(@Nullable String clientId) {
+        public Builder entraServicePrincipal(@Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal entraServicePrincipal) {
 
-            this.clientId = clientId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder clientSecret(@Nullable AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret clientSecret) {
-
-            this.clientSecret = clientSecret;
+            this.entraServicePrincipal = entraServicePrincipal;
             return this;
         }
         @CustomType.Setter
@@ -97,20 +79,12 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
             this.serviceCredential = serviceCredential;
             return this;
         }
-        @CustomType.Setter
-        public Builder tenantId(@Nullable String tenantId) {
-
-            this.tenantId = tenantId;
-            return this;
-        }
         public AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect build() {
             final var _resultValue = new AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect();
             _resultValue.apiKey = apiKey;
             _resultValue.baseUrl = baseUrl;
-            _resultValue.clientId = clientId;
-            _resultValue.clientSecret = clientSecret;
+            _resultValue.entraServicePrincipal = entraServicePrincipal;
             _resultValue.serviceCredential = serviceCredential;
-            _resultValue.tenantId = tenantId;
             return _resultValue;
         }
     }

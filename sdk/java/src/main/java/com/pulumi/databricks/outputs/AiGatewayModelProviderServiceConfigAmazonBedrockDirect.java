@@ -4,7 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey;
+import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey;
 import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential;
 import java.lang.String;
 import java.util.Objects;
@@ -14,44 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * @return AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * @return AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      * 
      */
-    private @Nullable String awsAccessKeyId;
-    /**
-     * @return AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     * 
-     */
-    private @Nullable AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey awsSecretAccessKey;
+    private @Nullable AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey awsAccessKey;
     private @Nullable String region;
     private @Nullable AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential serviceCredential;
 
     private AiGatewayModelProviderServiceConfigAmazonBedrockDirect() {}
     /**
-     * @return AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * @return AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      * 
      */
-    public Optional<String> awsAccessKeyId() {
-        return Optional.ofNullable(this.awsAccessKeyId);
-    }
-    /**
-     * @return AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     * 
-     */
-    public Optional<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey> awsSecretAccessKey() {
-        return Optional.ofNullable(this.awsSecretAccessKey);
+    public Optional<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey> awsAccessKey() {
+        return Optional.ofNullable(this.awsAccessKey);
     }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
@@ -69,29 +47,21 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String awsAccessKeyId;
-        private @Nullable AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey awsSecretAccessKey;
+        private @Nullable AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey awsAccessKey;
         private @Nullable String region;
         private @Nullable AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential serviceCredential;
         public Builder() {}
         public Builder(AiGatewayModelProviderServiceConfigAmazonBedrockDirect defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.awsAccessKeyId = defaults.awsAccessKeyId;
-    	      this.awsSecretAccessKey = defaults.awsSecretAccessKey;
+    	      this.awsAccessKey = defaults.awsAccessKey;
     	      this.region = defaults.region;
     	      this.serviceCredential = defaults.serviceCredential;
         }
 
         @CustomType.Setter
-        public Builder awsAccessKeyId(@Nullable String awsAccessKeyId) {
+        public Builder awsAccessKey(@Nullable AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey awsAccessKey) {
 
-            this.awsAccessKeyId = awsAccessKeyId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder awsSecretAccessKey(@Nullable AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey awsSecretAccessKey) {
-
-            this.awsSecretAccessKey = awsSecretAccessKey;
+            this.awsAccessKey = awsAccessKey;
             return this;
         }
         @CustomType.Setter
@@ -108,8 +78,7 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
         }
         public AiGatewayModelProviderServiceConfigAmazonBedrockDirect build() {
             final var _resultValue = new AiGatewayModelProviderServiceConfigAmazonBedrockDirect();
-            _resultValue.awsAccessKeyId = awsAccessKeyId;
-            _resultValue.awsSecretAccessKey = awsSecretAccessKey;
+            _resultValue.awsAccessKey = awsAccessKey;
             _resultValue.region = region;
             _resultValue.serviceCredential = serviceCredential;
             return _resultValue;

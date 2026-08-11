@@ -32242,7 +32242,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32291,7 +32291,7 @@ public final class DatabricksFunctions {
         return getSecretUc(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32340,7 +32340,7 @@ public final class DatabricksFunctions {
         return getSecretUcPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32389,7 +32389,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32438,7 +32438,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32487,7 +32487,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32537,7 +32537,7 @@ public final class DatabricksFunctions {
         return getSecretUcs(GetSecretUcsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32587,7 +32587,7 @@ public final class DatabricksFunctions {
         return getSecretUcsPlain(GetSecretUcsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32637,7 +32637,7 @@ public final class DatabricksFunctions {
         return getSecretUcs(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32687,7 +32687,7 @@ public final class DatabricksFunctions {
         return getSecretUcsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32737,7 +32737,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSecretUcs:getSecretUcs", TypeShape.of(GetSecretUcsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 
@@ -32787,7 +32787,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSecretUcs:getSecretUcs", TypeShape.of(GetSecretUcsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
      * 

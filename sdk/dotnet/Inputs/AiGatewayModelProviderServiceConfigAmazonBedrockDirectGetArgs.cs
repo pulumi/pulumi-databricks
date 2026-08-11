@@ -13,22 +13,11 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiGatewayModelProviderServiceConfigAmazonBedrockDirectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS access key ID for Bedrock authentication. Required on Create when using
-        /// access-key auth; must be paired with `AwsSecretAccessKey` and is
-        /// mutually exclusive with `ServiceCredential`. Treated as
-        /// username-equivalent (not a secret value): round-trips on reads and is
-        /// scrubbed from audit logs
+        /// AWS access-key-pair auth. Mutually exclusive with `ServiceCredential`.
+        /// Supersedes the flat `AwsAccessKeyId` / `AwsSecretAccessKey` fields
         /// </summary>
-        [Input("awsAccessKeyId")]
-        public Input<string>? AwsAccessKeyId { get; set; }
-
-        /// <summary>
-        /// AWS secret access key paired with `AwsAccessKeyId`. Required on Create
-        /// when using access-key auth; mutually exclusive with `ServiceCredential`.
-        /// Supplied as inline plaintext via `ProviderSecret.plaintext`
-        /// </summary>
-        [Input("awsSecretAccessKey")]
-        public Input<Inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKeyGetArgs>? AwsSecretAccessKey { get; set; }
+        [Input("awsAccessKey")]
+        public Input<Inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyGetArgs>? AwsAccessKey { get; set; }
 
         [Input("region")]
         public Input<string>? Region { get; set; }

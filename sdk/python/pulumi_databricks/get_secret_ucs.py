@@ -96,7 +96,7 @@ def get_secret_ucs(catalog_name: Optional[_builtins.str] = None,
                    schema_name: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretUcsResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
 
@@ -150,7 +150,7 @@ def get_secret_ucs_output(catalog_name: pulumi.Input[Optional[Optional[_builtins
                           schema_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretUcsResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
 

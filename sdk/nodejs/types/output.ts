@@ -1841,24 +1841,30 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrock {
 
 export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      */
-    awsAccessKeyId?: string;
-    /**
-     * AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     */
-    awsSecretAccessKey?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey;
+    awsAccessKey?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey;
     region?: string;
     serviceCredential?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential;
 }
 
-export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey {
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey {
+    /**
+     * AWS access key ID. Required on Create when using access-key auth. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    accessKeyId?: string;
+    /**
+     * AWS secret access key paired with `accessKeyId`. Required on Create when
+     * using access-key auth. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    secretAccessKey?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -1918,10 +1924,8 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenai {
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirect {
     apiKey?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey;
     baseUrl?: string;
-    clientId?: string;
-    clientSecret?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret;
+    entraServicePrincipal?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal;
     serviceCredential?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential;
-    tenantId?: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
@@ -1933,7 +1937,23 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
     plaintext: string;
 }
 
-export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret {
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal {
+    /**
+     * Entra ID client (application) ID. Required on Create
+     */
+    clientId?: string;
+    /**
+     * Entra ID client secret. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret;
+    /**
+     * Entra ID (Azure AD) tenant ID. Required on Create
+     */
+    tenantId?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -2039,10 +2059,8 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundry {
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
     apiKey?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey;
     baseUrl?: string;
-    clientId?: string;
-    clientSecret?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret;
+    entraServicePrincipal?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal;
     serviceCredential?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential;
-    tenantId?: string;
 }
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
@@ -2054,7 +2072,23 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey
     plaintext: string;
 }
 
-export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret {
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal {
+    /**
+     * Entra ID client (application) ID. Required on Create
+     */
+    clientId?: string;
+    /**
+     * Entra ID client secret. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret;
+    /**
+     * Entra ID (Azure AD) tenant ID. Required on Create
+     */
+    tenantId?: string;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -11279,19 +11313,10 @@ export interface GetAiGatewayModelProviderServiceConfigAmazonBedrock {
 
 export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * (string) - AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      */
-    awsAccessKeyId?: string;
-    /**
-     * (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     */
-    awsSecretAccessKey?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey;
+    awsAccessKey?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey;
     /**
      * (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
      * Required on Create
@@ -11301,8 +11326,8 @@ export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
      * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
@@ -11311,7 +11336,22 @@ export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     serviceCredential?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential;
 }
 
-export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey {
+export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey {
+    /**
+     * (string) - AWS access key ID. Required on Create when using access-key auth. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    accessKeyId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `accessKeyId`. Required on Create when
+     * using access-key auth. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    secretAccessKey?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
     /**
      * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -11390,36 +11430,23 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirect {
      */
     baseUrl?: string;
     /**
-     * (string) - Entra ID client (application) ID for service-principal auth. Set together
-     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
-     * and `serviceCredential`
+     * (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
+     * `clientSecret` fields
      */
-    clientId?: string;
-    /**
-     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
-     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supplied as
-     * inline plaintext via `ProviderSecret.plaintext`
-     */
-    clientSecret?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret;
+    entraServicePrincipal?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal;
     /**
      * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
      * INVALID_PARAMETER_VALUE
      */
     serviceCredential?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential;
-    /**
-     * (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
-     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
-     * `serviceCredential`
-     */
-    tenantId?: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
@@ -11431,7 +11458,23 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
     plaintext: string;
 }
 
-export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret {
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal {
+    /**
+     * (string) - Entra ID client (application) ID. Required on Create
+     */
+    clientId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret;
+    /**
+     * (string) - Entra ID (Azure AD) tenant ID. Required on Create
+     */
+    tenantId?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
     /**
      * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -11571,36 +11614,23 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
      */
     baseUrl?: string;
     /**
-     * (string) - Entra ID client (application) ID for service-principal auth. Set together
-     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
-     * and `serviceCredential`
+     * (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
+     * `clientSecret` fields
      */
-    clientId?: string;
-    /**
-     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
-     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supplied as
-     * inline plaintext via `ProviderSecret.plaintext`
-     */
-    clientSecret?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret;
+    entraServicePrincipal?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal;
     /**
      * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
      * INVALID_PARAMETER_VALUE
      */
     serviceCredential?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential;
-    /**
-     * (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
-     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
-     * `serviceCredential`
-     */
-    tenantId?: string;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
@@ -11612,7 +11642,23 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApi
     plaintext: string;
 }
 
-export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret {
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal {
+    /**
+     * (string) - Entra ID client (application) ID. Required on Create
+     */
+    clientId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret;
+    /**
+     * (string) - Entra ID (Azure AD) tenant ID. Required on Create
+     */
+    tenantId?: string;
+}
+
+export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
     /**
      * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -11895,19 +11941,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmaz
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * (string) - AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      */
-    awsAccessKeyId?: string;
-    /**
-     * (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     */
-    awsSecretAccessKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey;
+    awsAccessKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey;
     /**
      * (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
      * Required on Create
@@ -11917,8 +11954,8 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmaz
      * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
@@ -11927,7 +11964,22 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmaz
     serviceCredential?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectServiceCredential;
 }
 
-export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey {
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey {
+    /**
+     * (string) - AWS access key ID. Required on Create when using access-key auth. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    accessKeyId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `accessKeyId`. Required on Create when
+     * using access-key auth. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    secretAccessKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
     /**
      * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -12005,36 +12057,23 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzur
      */
     baseUrl?: string;
     /**
-     * (string) - Entra ID client (application) ID for service-principal auth. Set together
-     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
-     * and `serviceCredential`
+     * (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
+     * `clientSecret` fields
      */
-    clientId?: string;
-    /**
-     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
-     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supplied as
-     * inline plaintext via `ProviderSecret.plaintext`
-     */
-    clientSecret?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectClientSecret;
+    entraServicePrincipal?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal;
     /**
      * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
      * INVALID_PARAMETER_VALUE
      */
     serviceCredential?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredential;
-    /**
-     * (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
-     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
-     * `serviceCredential`
-     */
-    tenantId?: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKey {
@@ -12046,7 +12085,23 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzur
     plaintext: string;
 }
 
-export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectClientSecret {
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal {
+    /**
+     * (string) - Entra ID client (application) ID. Required on Create
+     */
+    clientId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret;
+    /**
+     * (string) - Entra ID (Azure AD) tenant ID. Required on Create
+     */
+    tenantId?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
     /**
      * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -12185,36 +12240,23 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicr
      */
     baseUrl?: string;
     /**
-     * (string) - Entra ID client (application) ID for service-principal auth. Set together
-     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
-     * and `serviceCredential`
+     * (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
+     * `clientSecret` fields
      */
-    clientId?: string;
-    /**
-     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
-     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supplied as
-     * inline plaintext via `ProviderSecret.plaintext`
-     */
-    clientSecret?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret;
+    entraServicePrincipal?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal;
     /**
      * (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
      * INVALID_PARAMETER_VALUE
      */
     serviceCredential?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential;
-    /**
-     * (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
-     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
-     * `serviceCredential`
-     */
-    tenantId?: string;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
@@ -12226,7 +12268,23 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicr
     plaintext: string;
 }
 
-export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret {
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal {
+    /**
+     * (string) - Entra ID client (application) ID. Required on Create
+     */
+    clientId?: string;
+    /**
+     * (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    clientSecret?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret;
+    /**
+     * (string) - Entra ID (Azure AD) tenant ID. Required on Create
+     */
+    tenantId?: string;
+}
+
+export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
     /**
      * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -33666,11 +33724,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -33737,11 +33795,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;

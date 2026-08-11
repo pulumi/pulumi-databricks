@@ -5,7 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKeyArgs;
+import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredentialArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -18,45 +18,20 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs ex
     public static final AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs Empty = new AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs();
 
     /**
-     * AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      * 
      */
-    @Import(name="awsAccessKeyId")
-    private @Nullable Output<String> awsAccessKeyId;
+    @Import(name="awsAccessKey")
+    private @Nullable Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs> awsAccessKey;
 
     /**
-     * @return AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * @return AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      * 
      */
-    public Optional<Output<String>> awsAccessKeyId() {
-        return Optional.ofNullable(this.awsAccessKeyId);
-    }
-
-    /**
-     * AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     * 
-     */
-    @Import(name="awsSecretAccessKey")
-    private @Nullable Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKeyArgs> awsSecretAccessKey;
-
-    /**
-     * @return AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     * 
-     */
-    public Optional<Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKeyArgs>> awsSecretAccessKey() {
-        return Optional.ofNullable(this.awsSecretAccessKey);
+    public Optional<Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs>> awsAccessKey() {
+        return Optional.ofNullable(this.awsAccessKey);
     }
 
     @Import(name="region")
@@ -76,8 +51,7 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs ex
     private AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs() {}
 
     private AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs(AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs $) {
-        this.awsAccessKeyId = $.awsAccessKeyId;
-        this.awsSecretAccessKey = $.awsSecretAccessKey;
+        this.awsAccessKey = $.awsAccessKey;
         this.region = $.region;
         this.serviceCredential = $.serviceCredential;
     }
@@ -101,57 +75,26 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs ex
         }
 
         /**
-         * @param awsAccessKeyId AWS access key ID for Bedrock authentication. Required on Create when using
-         * access-key auth; must be paired with `awsSecretAccessKey` and is
-         * mutually exclusive with `serviceCredential`. Treated as
-         * username-equivalent (not a secret value): round-trips on reads and is
-         * scrubbed from audit logs
+         * @param awsAccessKey AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+         * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
          * 
          * @return builder
          * 
          */
-        public Builder awsAccessKeyId(@Nullable Output<String> awsAccessKeyId) {
-            $.awsAccessKeyId = awsAccessKeyId;
+        public Builder awsAccessKey(@Nullable Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs> awsAccessKey) {
+            $.awsAccessKey = awsAccessKey;
             return this;
         }
 
         /**
-         * @param awsAccessKeyId AWS access key ID for Bedrock authentication. Required on Create when using
-         * access-key auth; must be paired with `awsSecretAccessKey` and is
-         * mutually exclusive with `serviceCredential`. Treated as
-         * username-equivalent (not a secret value): round-trips on reads and is
-         * scrubbed from audit logs
+         * @param awsAccessKey AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+         * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
          * 
          * @return builder
          * 
          */
-        public Builder awsAccessKeyId(String awsAccessKeyId) {
-            return awsAccessKeyId(Output.of(awsAccessKeyId));
-        }
-
-        /**
-         * @param awsSecretAccessKey AWS secret access key paired with `awsAccessKeyId`. Required on Create
-         * when using access-key auth; mutually exclusive with `serviceCredential`.
-         * Supplied as inline plaintext via `ProviderSecret.plaintext`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder awsSecretAccessKey(@Nullable Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKeyArgs> awsSecretAccessKey) {
-            $.awsSecretAccessKey = awsSecretAccessKey;
-            return this;
-        }
-
-        /**
-         * @param awsSecretAccessKey AWS secret access key paired with `awsAccessKeyId`. Required on Create
-         * when using access-key auth; mutually exclusive with `serviceCredential`.
-         * Supplied as inline plaintext via `ProviderSecret.plaintext`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder awsSecretAccessKey(AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKeyArgs awsSecretAccessKey) {
-            return awsSecretAccessKey(Output.of(awsSecretAccessKey));
+        public Builder awsAccessKey(AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs awsAccessKey) {
+            return awsAccessKey(Output.of(awsAccessKey));
         }
 
         public Builder region(@Nullable Output<String> region) {

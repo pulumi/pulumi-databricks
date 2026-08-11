@@ -18,17 +18,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
-
-        [Input("clientSecret")]
-        public Input<Inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecretGetArgs>? ClientSecret { get; set; }
+        [Input("entraServicePrincipal")]
+        public Input<Inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalGetArgs>? EntraServicePrincipal { get; set; }
 
         [Input("serviceCredential")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredentialGetArgs>? ServiceCredential { get; set; }
-
-        [Input("tenantId")]
-        public Input<string>? TenantId { get; set; }
 
         public AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectGetArgs()
         {

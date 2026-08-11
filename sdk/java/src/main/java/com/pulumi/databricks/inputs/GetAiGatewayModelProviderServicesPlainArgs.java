@@ -36,7 +36,7 @@ public final class GetAiGatewayModelProviderServicesPlainArgs extends com.pulumi
 
     /**
      * Maximum number of provider services to return. Defaults to 100 when unset or
-     * 0; the maximum is 1000. Use `nextPageToken` to retrieve additional pages
+     * 0; the maximum is 100. Use `nextPageToken` to retrieve additional pages
      * 
      */
     @Import(name="pageSize")
@@ -44,7 +44,7 @@ public final class GetAiGatewayModelProviderServicesPlainArgs extends com.pulumi
 
     /**
      * @return Maximum number of provider services to return. Defaults to 100 when unset or
-     * 0; the maximum is 1000. Use `nextPageToken` to retrieve additional pages
+     * 0; the maximum is 100. Use `nextPageToken` to retrieve additional pages
      * 
      */
     public Optional<Integer> pageSize() {
@@ -142,7 +142,7 @@ public final class GetAiGatewayModelProviderServicesPlainArgs extends com.pulumi
 
         /**
          * @param pageSize Maximum number of provider services to return. Defaults to 100 when unset or
-         * 0; the maximum is 1000. Use `nextPageToken` to retrieve additional pages
+         * 0; the maximum is 100. Use `nextPageToken` to retrieve additional pages
          * 
          * @return builder
          * 

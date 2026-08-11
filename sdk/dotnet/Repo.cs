@@ -71,6 +71,12 @@ namespace Pulumi.Databricks
         public Output<string> CommitHash { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+        /// </summary>
+        [Output("gitCredentialId")]
+        public Output<int?> GitCredentialId { get; private set; } = null!;
+
+        /// <summary>
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         /// </summary>
         [Output("gitProvider")]
@@ -165,6 +171,12 @@ namespace Pulumi.Databricks
         public Input<string>? CommitHash { get; set; }
 
         /// <summary>
+        /// The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+        /// </summary>
+        [Input("gitCredentialId")]
+        public Input<int>? GitCredentialId { get; set; }
+
+        /// <summary>
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         /// </summary>
         [Input("gitProvider")]
@@ -213,6 +225,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("commitHash")]
         public Input<string>? CommitHash { get; set; }
+
+        /// <summary>
+        /// The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+        /// </summary>
+        [Input("gitCredentialId")]
+        public Input<int>? GitCredentialId { get; set; }
 
         /// <summary>
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.

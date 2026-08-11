@@ -14,34 +14,22 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AiGatewayModelProviderServiceConfigAmazonBedrockDirect
     {
         /// <summary>
-        /// AWS access key ID for Bedrock authentication. Required on Create when using
-        /// access-key auth; must be paired with `AwsSecretAccessKey` and is
-        /// mutually exclusive with `ServiceCredential`. Treated as
-        /// username-equivalent (not a secret value): round-trips on reads and is
-        /// scrubbed from audit logs
+        /// AWS access-key-pair auth. Mutually exclusive with `ServiceCredential`.
+        /// Supersedes the flat `AwsAccessKeyId` / `AwsSecretAccessKey` fields
         /// </summary>
-        public readonly string? AwsAccessKeyId;
-        /// <summary>
-        /// AWS secret access key paired with `AwsAccessKeyId`. Required on Create
-        /// when using access-key auth; mutually exclusive with `ServiceCredential`.
-        /// Supplied as inline plaintext via `ProviderSecret.plaintext`
-        /// </summary>
-        public readonly Outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey? AwsSecretAccessKey;
+        public readonly Outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey? AwsAccessKey;
         public readonly string? Region;
         public readonly Outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential? ServiceCredential;
 
         [OutputConstructor]
         private AiGatewayModelProviderServiceConfigAmazonBedrockDirect(
-            string? awsAccessKeyId,
-
-            Outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey? awsSecretAccessKey,
+            Outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey? awsAccessKey,
 
             string? region,
 
             Outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential? serviceCredential)
         {
-            AwsAccessKeyId = awsAccessKeyId;
-            AwsSecretAccessKey = awsSecretAccessKey;
+            AwsAccessKey = awsAccessKey;
             Region = region;
             ServiceCredential = serviceCredential;
         }

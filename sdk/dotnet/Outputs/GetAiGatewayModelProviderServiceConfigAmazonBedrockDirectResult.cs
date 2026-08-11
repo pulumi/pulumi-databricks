@@ -14,19 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectResult
     {
         /// <summary>
-        /// (string) - AWS access key ID for Bedrock authentication. Required on Create when using
-        /// access-key auth; must be paired with `AwsSecretAccessKey` and is
-        /// mutually exclusive with `ServiceCredential`. Treated as
-        /// username-equivalent (not a secret value): round-trips on reads and is
-        /// scrubbed from audit logs
+        /// (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `ServiceCredential`.
+        /// Supersedes the flat `AwsAccessKeyId` / `AwsSecretAccessKey` fields
         /// </summary>
-        public readonly string? AwsAccessKeyId;
-        /// <summary>
-        /// (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `AwsAccessKeyId`. Required on Create
-        /// when using access-key auth; mutually exclusive with `ServiceCredential`.
-        /// Supplied as inline plaintext via `ProviderSecret.plaintext`
-        /// </summary>
-        public readonly Outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKeyResult? AwsSecretAccessKey;
+        public readonly Outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyResult? AwsAccessKey;
         /// <summary>
         /// (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
         /// Required on Create
@@ -36,8 +27,8 @@ namespace Pulumi.Databricks.Outputs
         /// (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
         /// On Create the caller supplies `service_credential.name` in the AIP-122
         /// resource-name form `credentials/{name}`. Required on Create when using
-        /// UC-service-credential auth; mutually exclusive with `ApiKey` and with the
-        /// Entra triple (tenant_id + ClientId + client_secret). The credential is
+        /// UC-service-credential auth; mutually exclusive with `ApiKey` and
+        /// `EntraServicePrincipal`. The credential is
         /// referenced by name; its value is not carried here. On read the resolved `Id`
         /// and `IsDeleted` are also populated. Only supported on Azure-hosted
         /// workspaces; Create requests from other clouds are rejected with
@@ -47,16 +38,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectResult(
-            string? awsAccessKeyId,
-
-            Outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKeyResult? awsSecretAccessKey,
+            Outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyResult? awsAccessKey,
 
             string? region,
 
             Outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredentialResult? serviceCredential)
         {
-            AwsAccessKeyId = awsAccessKeyId;
-            AwsSecretAccessKey = awsSecretAccessKey;
+            AwsAccessKey = awsAccessKey;
             Region = region;
             ServiceCredential = serviceCredential;
         }

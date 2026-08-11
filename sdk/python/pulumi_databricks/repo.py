@@ -24,6 +24,7 @@ class RepoArgs:
                  url: pulumi.Input[_builtins.str],
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
                  commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
                  git_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['RepoProviderConfigArgs']] = None,
@@ -35,6 +36,7 @@ class RepoArgs:
         :param pulumi.Input[_builtins.str] url: The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
         :param pulumi.Input[_builtins.str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[_builtins.str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
+        :param pulumi.Input[_builtins.int] git_credential_id: The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] path: path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         :param pulumi.Input[_builtins.str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
@@ -44,6 +46,8 @@ class RepoArgs:
             pulumi.set(__self__, "branch", branch)
         if commit_hash is not None:
             pulumi.set(__self__, "commit_hash", commit_hash)
+        if git_credential_id is not None:
+            pulumi.set(__self__, "git_credential_id", git_credential_id)
         if git_provider is not None:
             pulumi.set(__self__, "git_provider", git_provider)
         if path is not None:
@@ -90,6 +94,18 @@ class RepoArgs:
     @commit_hash.setter
     def commit_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_hash", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitCredentialId")
+    def git_credential_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+        """
+        return pulumi.get(self, "git_credential_id")
+
+    @git_credential_id.setter
+    def git_credential_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "git_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gitProvider")
@@ -151,6 +167,7 @@ class _RepoState:
     def __init__(__self__, *,
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
                  commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
                  git_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['RepoProviderConfigArgs']] = None,
@@ -163,6 +180,7 @@ class _RepoState:
 
         :param pulumi.Input[_builtins.str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[_builtins.str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
+        :param pulumi.Input[_builtins.int] git_credential_id: The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] path: path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         :param pulumi.Input[_builtins.str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
@@ -173,6 +191,8 @@ class _RepoState:
             pulumi.set(__self__, "branch", branch)
         if commit_hash is not None:
             pulumi.set(__self__, "commit_hash", commit_hash)
+        if git_credential_id is not None:
+            pulumi.set(__self__, "git_credential_id", git_credential_id)
         if git_provider is not None:
             pulumi.set(__self__, "git_provider", git_provider)
         if path is not None:
@@ -211,6 +231,18 @@ class _RepoState:
     @commit_hash.setter
     def commit_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_hash", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitCredentialId")
+    def git_credential_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+        """
+        return pulumi.get(self, "git_credential_id")
+
+    @git_credential_id.setter
+    def git_credential_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "git_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gitProvider")
@@ -299,6 +331,7 @@ class Repo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
                  commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
                  git_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
@@ -348,6 +381,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[_builtins.str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
+        :param pulumi.Input[_builtins.int] git_credential_id: The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] path: path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         :param pulumi.Input[_builtins.str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
@@ -414,6 +448,7 @@ class Repo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
                  commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
                  git_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
@@ -431,6 +466,7 @@ class Repo(pulumi.CustomResource):
 
             __props__.__dict__["branch"] = branch
             __props__.__dict__["commit_hash"] = commit_hash
+            __props__.__dict__["git_credential_id"] = git_credential_id
             __props__.__dict__["git_provider"] = git_provider
             __props__.__dict__["path"] = path
             __props__.__dict__["provider_config"] = provider_config
@@ -452,6 +488,7 @@ class Repo(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             branch: pulumi.Input[Optional[_builtins.str]] = None,
             commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
             git_provider: pulumi.Input[Optional[_builtins.str]] = None,
             path: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
@@ -468,6 +505,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[_builtins.str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
+        :param pulumi.Input[_builtins.int] git_credential_id: The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] path: path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         :param pulumi.Input[_builtins.str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
@@ -480,6 +518,7 @@ class Repo(pulumi.CustomResource):
 
         __props__.__dict__["branch"] = branch
         __props__.__dict__["commit_hash"] = commit_hash
+        __props__.__dict__["git_credential_id"] = git_credential_id
         __props__.__dict__["git_provider"] = git_provider
         __props__.__dict__["path"] = path
         __props__.__dict__["provider_config"] = provider_config
@@ -504,6 +543,14 @@ class Repo(pulumi.CustomResource):
         Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
         """
         return pulumi.get(self, "commit_hash")
+
+    @_builtins.property
+    @pulumi.getter(name="gitCredentialId")
+    def git_credential_id(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+        """
+        return pulumi.get(self, "git_credential_id")
 
     @_builtins.property
     @pulumi.getter(name="gitProvider")

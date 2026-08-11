@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RepoState;
 import com.pulumi.databricks.outputs.RepoProviderConfig;
 import com.pulumi.databricks.outputs.RepoSparseCheckout;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -107,6 +108,20 @@ public class Repo extends com.pulumi.resources.CustomResource {
      */
     public Output<String> commitHash() {
         return this.commitHash;
+    }
+    /**
+     * The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+     * 
+     */
+    @Export(name="gitCredentialId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> gitCredentialId;
+
+    /**
+     * @return The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+     * 
+     */
+    public Output<Optional<Integer>> gitCredentialId() {
+        return Codegen.optional(this.gitCredentialId);
     }
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.

@@ -15,10 +15,8 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey? ApiKey;
         public readonly string? BaseUrl;
-        public readonly string? ClientId;
-        public readonly Outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret? ClientSecret;
+        public readonly Outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal? EntraServicePrincipal;
         public readonly Outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential? ServiceCredential;
-        public readonly string? TenantId;
 
         [OutputConstructor]
         private AiGatewayModelProviderServiceConfigAzureOpenaiDirect(
@@ -26,20 +24,14 @@ namespace Pulumi.Databricks.Outputs
 
             string? baseUrl,
 
-            string? clientId,
+            Outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal? entraServicePrincipal,
 
-            Outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret? clientSecret,
-
-            Outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential? serviceCredential,
-
-            string? tenantId)
+            Outputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential? serviceCredential)
         {
             ApiKey = apiKey;
             BaseUrl = baseUrl;
-            ClientId = clientId;
-            ClientSecret = clientSecret;
+            EntraServicePrincipal = entraServicePrincipal;
             ServiceCredential = serviceCredential;
-            TenantId = tenantId;
         }
     }
 }
