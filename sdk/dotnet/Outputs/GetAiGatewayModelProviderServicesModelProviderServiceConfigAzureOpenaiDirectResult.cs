@@ -24,36 +24,23 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? BaseUrl;
         /// <summary>
-        /// (string) - Entra ID client (application) ID for service-principal auth. Set together
-        /// with `TenantId` and `ClientSecret`; mutually exclusive with `ApiKey`
-        /// and `ServiceCredential`
+        /// (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `ApiKey` and
+        /// `ServiceCredential`. Supersedes the flat `TenantId` / `ClientId` /
+        /// `ClientSecret` fields
         /// </summary>
-        public readonly string? ClientId;
-        /// <summary>
-        /// (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
-        /// `TenantId` and `ClientId`; mutually exclusive with `ApiKey` and
-        /// `ServiceCredential`. Supplied as
-        /// inline plaintext via `ProviderSecret.plaintext`
-        /// </summary>
-        public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectClientSecretResult? ClientSecret;
+        public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalResult? EntraServicePrincipal;
         /// <summary>
         /// (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
         /// On Create the caller supplies `service_credential.name` in the AIP-122
         /// resource-name form `credentials/{name}`. Required on Create when using
-        /// UC-service-credential auth; mutually exclusive with `ApiKey` and with the
-        /// Entra triple (tenant_id + ClientId + client_secret). The credential is
+        /// UC-service-credential auth; mutually exclusive with `ApiKey` and
+        /// `EntraServicePrincipal`. The credential is
         /// referenced by name; its value is not carried here. On read the resolved `Id`
         /// and `IsDeleted` are also populated. Only supported on Azure-hosted
         /// workspaces; Create requests from other clouds are rejected with
         /// INVALID_PARAMETER_VALUE
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredentialResult? ServiceCredential;
-        /// <summary>
-        /// (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
-        /// `ClientId` and `ClientSecret`; mutually exclusive with `ApiKey` and
-        /// `ServiceCredential`
-        /// </summary>
-        public readonly string? TenantId;
 
         [OutputConstructor]
         private GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectResult(
@@ -61,20 +48,14 @@ namespace Pulumi.Databricks.Outputs
 
             string? baseUrl,
 
-            string? clientId,
+            Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalResult? entraServicePrincipal,
 
-            Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectClientSecretResult? clientSecret,
-
-            Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredentialResult? serviceCredential,
-
-            string? tenantId)
+            Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectServiceCredentialResult? serviceCredential)
         {
             ApiKey = apiKey;
             BaseUrl = baseUrl;
-            ClientId = clientId;
-            ClientSecret = clientSecret;
+            EntraServicePrincipal = entraServicePrincipal;
             ServiceCredential = serviceCredential;
-            TenantId = tenantId;
         }
     }
 }

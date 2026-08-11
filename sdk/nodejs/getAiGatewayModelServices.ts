@@ -34,7 +34,7 @@ export interface GetAiGatewayModelServicesArgs {
     includeBrowse?: boolean;
     /**
      * Maximum number of model services to return. Defaults to 100 when unset or 0;
-     * the maximum is 1000. Use `nextPageToken` to retrieve additional pages
+     * the maximum is 100. Use `nextPageToken` to retrieve additional pages
      */
     pageSize?: number;
     /**
@@ -97,7 +97,7 @@ export interface GetAiGatewayModelServicesOutputArgs {
     includeBrowse?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of model services to return. Defaults to 100 when unset or 0;
-     * the maximum is 1000. Use `nextPageToken` to retrieve additional pages
+     * the maximum is 100. Use `nextPageToken` to retrieve additional pages
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

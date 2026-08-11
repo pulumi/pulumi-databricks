@@ -18,17 +18,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
-
-        [Input("clientSecret")]
-        public Input<Inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecretArgs>? ClientSecret { get; set; }
+        [Input("entraServicePrincipal")]
+        public Input<Inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalArgs>? EntraServicePrincipal { get; set; }
 
         [Input("serviceCredential")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgs>? ServiceCredential { get; set; }
-
-        [Input("tenantId")]
-        public Input<string>? TenantId { get; set; }
 
         public AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs()
         {

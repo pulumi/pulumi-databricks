@@ -71,6 +71,8 @@ type Repo struct {
 	Branch pulumi.StringOutput `pulumi:"branch"`
 	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
 	CommitHash pulumi.StringOutput `pulumi:"commitHash"`
+	// The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+	GitCredentialId pulumi.IntPtrOutput `pulumi:"gitCredentialId"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
@@ -122,6 +124,8 @@ type repoState struct {
 	Branch *string `pulumi:"branch"`
 	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
 	CommitHash *string `pulumi:"commitHash"`
+	// The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+	GitCredentialId *int `pulumi:"gitCredentialId"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider *string `pulumi:"gitProvider"`
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
@@ -141,6 +145,8 @@ type RepoState struct {
 	Branch pulumi.StringPtrInput
 	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
 	CommitHash pulumi.StringPtrInput
+	// The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+	GitCredentialId pulumi.IntPtrInput
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringPtrInput
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
@@ -164,6 +170,8 @@ type repoArgs struct {
 	Branch *string `pulumi:"branch"`
 	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
 	CommitHash *string `pulumi:"commitHash"`
+	// The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+	GitCredentialId *int `pulumi:"gitCredentialId"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider *string `pulumi:"gitProvider"`
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
@@ -182,6 +190,8 @@ type RepoArgs struct {
 	Branch pulumi.StringPtrInput
 	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
 	CommitHash pulumi.StringPtrInput
+	// The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+	GitCredentialId pulumi.IntPtrInput
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringPtrInput
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
@@ -289,6 +299,11 @@ func (o RepoOutput) Branch() pulumi.StringOutput {
 // Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
 func (o RepoOutput) CommitHash() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.CommitHash }).(pulumi.StringOutput)
+}
+
+// The ID of the Git credential (`GitCredential`) to use for authentication with the Git provider remote.
+func (o RepoOutput) GitCredentialId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Repo) pulumi.IntPtrOutput { return v.GitCredentialId }).(pulumi.IntPtrOutput)
 }
 
 // case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.

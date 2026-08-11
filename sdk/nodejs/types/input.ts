@@ -1841,24 +1841,30 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrock {
 
 export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      */
-    awsAccessKeyId?: pulumi.Input<string | undefined>;
-    /**
-     * AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     */
-    awsSecretAccessKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey | undefined>;
+    awsAccessKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey | undefined>;
     region?: pulumi.Input<string | undefined>;
     serviceCredential?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential | undefined>;
 }
 
-export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey {
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey {
+    /**
+     * AWS access key ID. Required on Create when using access-key auth. Treated as
+     * username-equivalent (not a secret value): round-trips on reads and is
+     * scrubbed from audit logs
+     */
+    accessKeyId?: pulumi.Input<string | undefined>;
+    /**
+     * AWS secret access key paired with `accessKeyId`. Required on Create when
+     * using access-key auth. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    secretAccessKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -1918,10 +1924,8 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenai {
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirect {
     apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey | undefined>;
     baseUrl?: pulumi.Input<string | undefined>;
-    clientId?: pulumi.Input<string | undefined>;
-    clientSecret?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret | undefined>;
+    entraServicePrincipal?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal | undefined>;
     serviceCredential?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredential | undefined>;
-    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
@@ -1933,7 +1937,23 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
     plaintext?: pulumi.Input<string | undefined>;
 }
 
-export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecret {
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal {
+    /**
+     * Entra ID client (application) ID. Required on Create
+     */
+    clientId?: pulumi.Input<string | undefined>;
+    /**
+     * Entra ID client secret. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    clientSecret?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret | undefined>;
+    /**
+     * Entra ID (Azure AD) tenant ID. Required on Create
+     */
+    tenantId?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -2039,10 +2059,8 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundry {
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
     apiKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey | undefined>;
     baseUrl?: pulumi.Input<string | undefined>;
-    clientId?: pulumi.Input<string | undefined>;
-    clientSecret?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret | undefined>;
+    entraServicePrincipal?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal | undefined>;
     serviceCredential?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential | undefined>;
-    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
@@ -2054,7 +2072,23 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey
     plaintext?: pulumi.Input<string | undefined>;
 }
 
-export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret {
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal {
+    /**
+     * Entra ID client (application) ID. Required on Create
+     */
+    clientId?: pulumi.Input<string | undefined>;
+    /**
+     * Entra ID client secret. Supplied as inline plaintext via
+     * `ProviderSecret.plaintext`
+     */
+    clientSecret?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret | undefined>;
+    /**
+     * Entra ID (Azure AD) tenant ID. Required on Create
+     */
+    tenantId?: pulumi.Input<string | undefined>;
+}
+
+export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
      * reads. Get and List responses omit `plaintext`; the field's presence in
@@ -21474,11 +21508,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -21545,11 +21579,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.124.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;

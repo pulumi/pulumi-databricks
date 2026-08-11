@@ -5,7 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKey;
-import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential;
 import java.lang.String;
 import java.util.Objects;
@@ -27,26 +27,18 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMi
      */
     private @Nullable String baseUrl;
     /**
-     * @return (string) - Entra ID client (application) ID for service-principal auth. Set together
-     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
-     * and `serviceCredential`
+     * @return (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
+     * `clientSecret` fields
      * 
      */
-    private @Nullable String clientId;
-    /**
-     * @return (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
-     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supplied as
-     * inline plaintext via `ProviderSecret.plaintext`
-     * 
-     */
-    private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret clientSecret;
+    private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal entraServicePrincipal;
     /**
      * @return (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
@@ -54,13 +46,6 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMi
      * 
      */
     private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential serviceCredential;
-    /**
-     * @return (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
-     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
-     * `serviceCredential`
-     * 
-     */
-    private @Nullable String tenantId;
 
     private GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirect() {}
     /**
@@ -80,30 +65,20 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMi
         return Optional.ofNullable(this.baseUrl);
     }
     /**
-     * @return (string) - Entra ID client (application) ID for service-principal auth. Set together
-     * with `tenantId` and `clientSecret`; mutually exclusive with `apiKey`
-     * and `serviceCredential`
+     * @return (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
+     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
+     * `clientSecret` fields
      * 
      */
-    public Optional<String> clientId() {
-        return Optional.ofNullable(this.clientId);
-    }
-    /**
-     * @return (ModelProviderServiceConfigProviderSecret) - Entra ID client secret for service-principal auth. Set together with
-     * `tenantId` and `clientId`; mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supplied as
-     * inline plaintext via `ProviderSecret.plaintext`
-     * 
-     */
-    public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal> entraServicePrincipal() {
+        return Optional.ofNullable(this.entraServicePrincipal);
     }
     /**
      * @return (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
@@ -112,15 +87,6 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMi
      */
     public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential> serviceCredential() {
         return Optional.ofNullable(this.serviceCredential);
-    }
-    /**
-     * @return (string) - Entra ID (Azure AD) tenant ID for service-principal auth. Set together with
-     * `clientId` and `clientSecret`; mutually exclusive with `apiKey` and
-     * `serviceCredential`
-     * 
-     */
-    public Optional<String> tenantId() {
-        return Optional.ofNullable(this.tenantId);
     }
 
     public static Builder builder() {
@@ -134,19 +100,15 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMi
     public static final class Builder {
         private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKey apiKey;
         private @Nullable String baseUrl;
-        private @Nullable String clientId;
-        private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret clientSecret;
+        private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal entraServicePrincipal;
         private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential serviceCredential;
-        private @Nullable String tenantId;
         public Builder() {}
         public Builder(GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
     	      this.baseUrl = defaults.baseUrl;
-    	      this.clientId = defaults.clientId;
-    	      this.clientSecret = defaults.clientSecret;
+    	      this.entraServicePrincipal = defaults.entraServicePrincipal;
     	      this.serviceCredential = defaults.serviceCredential;
-    	      this.tenantId = defaults.tenantId;
         }
 
         @CustomType.Setter
@@ -162,15 +124,9 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMi
             return this;
         }
         @CustomType.Setter
-        public Builder clientId(@Nullable String clientId) {
+        public Builder entraServicePrincipal(@Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal entraServicePrincipal) {
 
-            this.clientId = clientId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder clientSecret(@Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectClientSecret clientSecret) {
-
-            this.clientSecret = clientSecret;
+            this.entraServicePrincipal = entraServicePrincipal;
             return this;
         }
         @CustomType.Setter
@@ -179,20 +135,12 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigMi
             this.serviceCredential = serviceCredential;
             return this;
         }
-        @CustomType.Setter
-        public Builder tenantId(@Nullable String tenantId) {
-
-            this.tenantId = tenantId;
-            return this;
-        }
         public GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirect build() {
             final var _resultValue = new GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirect();
             _resultValue.apiKey = apiKey;
             _resultValue.baseUrl = baseUrl;
-            _resultValue.clientId = clientId;
-            _resultValue.clientSecret = clientSecret;
+            _resultValue.entraServicePrincipal = entraServicePrincipal;
             _resultValue.serviceCredential = serviceCredential;
-            _resultValue.tenantId = tenantId;
             return _resultValue;
         }
     }

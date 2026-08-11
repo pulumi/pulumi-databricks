@@ -30,7 +30,7 @@ type GetAiGatewayModelProviderServicesArgs struct {
 	// access selective metadata
 	IncludeBrowse *bool `pulumi:"includeBrowse"`
 	// Maximum number of provider services to return. Defaults to 100 when unset or
-	// 0; the maximum is 1000. Use `nextPageToken` to retrieve additional pages
+	// 0; the maximum is 100. Use `nextPageToken` to retrieve additional pages
 	PageSize *int `pulumi:"pageSize"`
 	// Resource name of the parent schema to list within, as
 	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
@@ -70,7 +70,7 @@ type GetAiGatewayModelProviderServicesOutputArgs struct {
 	// access selective metadata
 	IncludeBrowse pulumi.BoolPtrInput `pulumi:"includeBrowse"`
 	// Maximum number of provider services to return. Defaults to 100 when unset or
-	// 0; the maximum is 1000. Use `nextPageToken` to retrieve additional pages
+	// 0; the maximum is 100. Use `nextPageToken` to retrieve additional pages
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Resource name of the parent schema to list within, as
 	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255

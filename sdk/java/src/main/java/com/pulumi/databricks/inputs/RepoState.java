@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.RepoProviderConfigArgs;
 import com.pulumi.databricks.inputs.RepoSparseCheckoutArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,6 +46,21 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> commitHash() {
         return Optional.ofNullable(this.commitHash);
+    }
+
+    /**
+     * The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+     * 
+     */
+    @Import(name="gitCredentialId")
+    private @Nullable Output<Integer> gitCredentialId;
+
+    /**
+     * @return The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+     * 
+     */
+    public Optional<Output<Integer>> gitCredentialId() {
+        return Optional.ofNullable(this.gitCredentialId);
     }
 
     /**
@@ -141,6 +157,7 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
     private RepoState(RepoState $) {
         this.branch = $.branch;
         this.commitHash = $.commitHash;
+        this.gitCredentialId = $.gitCredentialId;
         this.gitProvider = $.gitProvider;
         this.path = $.path;
         this.providerConfig = $.providerConfig;
@@ -208,6 +225,27 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder commitHash(String commitHash) {
             return commitHash(Output.of(commitHash));
+        }
+
+        /**
+         * @param gitCredentialId The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitCredentialId(@Nullable Output<Integer> gitCredentialId) {
+            $.gitCredentialId = gitCredentialId;
+            return this;
+        }
+
+        /**
+         * @param gitCredentialId The ID of the Git credential (`databricks.GitCredential`) to use for authentication with the Git provider remote.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitCredentialId(Integer gitCredentialId) {
+            return gitCredentialId(Output.of(gitCredentialId));
         }
 
         /**

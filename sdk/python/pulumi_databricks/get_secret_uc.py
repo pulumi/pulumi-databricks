@@ -240,7 +240,7 @@ def get_secret_uc(full_name: Optional[_builtins.str] = None,
                   provider_config: Optional[Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretUcResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
 
@@ -291,7 +291,7 @@ def get_secret_uc_output(full_name: pulumi.Input[Optional[_builtins.str]] = None
                          provider_config: pulumi.Input[Optional[Optional[Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretUcResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/secretsuc)
 

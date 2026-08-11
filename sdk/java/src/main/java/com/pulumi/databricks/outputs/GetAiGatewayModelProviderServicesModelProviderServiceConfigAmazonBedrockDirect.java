@@ -4,7 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey;
+import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectServiceCredential;
 import java.lang.String;
 import java.util.Objects;
@@ -14,21 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * @return (string) - AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      * 
      */
-    private @Nullable String awsAccessKeyId;
-    /**
-     * @return (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     * 
-     */
-    private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey awsSecretAccessKey;
+    private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey awsAccessKey;
     /**
      * @return (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
      * Required on Create
@@ -39,8 +29,8 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAm
      * @return (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
@@ -51,24 +41,12 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAm
 
     private GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect() {}
     /**
-     * @return (string) - AWS access key ID for Bedrock authentication. Required on Create when using
-     * access-key auth; must be paired with `awsSecretAccessKey` and is
-     * mutually exclusive with `serviceCredential`. Treated as
-     * username-equivalent (not a secret value): round-trips on reads and is
-     * scrubbed from audit logs
+     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
+     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
      * 
      */
-    public Optional<String> awsAccessKeyId() {
-        return Optional.ofNullable(this.awsAccessKeyId);
-    }
-    /**
-     * @return (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `awsAccessKeyId`. Required on Create
-     * when using access-key auth; mutually exclusive with `serviceCredential`.
-     * Supplied as inline plaintext via `ProviderSecret.plaintext`
-     * 
-     */
-    public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey> awsSecretAccessKey() {
-        return Optional.ofNullable(this.awsSecretAccessKey);
+    public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey> awsAccessKey() {
+        return Optional.ofNullable(this.awsAccessKey);
     }
     /**
      * @return (string) - GCP region of the Gemini Enterprise endpoint (e.g., `us-central1`).
@@ -82,8 +60,8 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAm
      * @return (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
      * On Create the caller supplies `service_credential.name` in the AIP-122
      * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and with the
-     * Entra triple (tenant_id + clientId + client_secret). The credential is
+     * UC-service-credential auth; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is
      * referenced by name; its value is not carried here. On read the resolved `id`
      * and `isDeleted` are also populated. Only supported on Azure-hosted
      * workspaces; Create requests from other clouds are rejected with
@@ -103,29 +81,21 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAm
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String awsAccessKeyId;
-        private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey awsSecretAccessKey;
+        private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey awsAccessKey;
         private @Nullable String region;
         private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectServiceCredential serviceCredential;
         public Builder() {}
         public Builder(GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.awsAccessKeyId = defaults.awsAccessKeyId;
-    	      this.awsSecretAccessKey = defaults.awsSecretAccessKey;
+    	      this.awsAccessKey = defaults.awsAccessKey;
     	      this.region = defaults.region;
     	      this.serviceCredential = defaults.serviceCredential;
         }
 
         @CustomType.Setter
-        public Builder awsAccessKeyId(@Nullable String awsAccessKeyId) {
+        public Builder awsAccessKey(@Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey awsAccessKey) {
 
-            this.awsAccessKeyId = awsAccessKeyId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder awsSecretAccessKey(@Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsSecretAccessKey awsSecretAccessKey) {
-
-            this.awsSecretAccessKey = awsSecretAccessKey;
+            this.awsAccessKey = awsAccessKey;
             return this;
         }
         @CustomType.Setter
@@ -142,8 +112,7 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAm
         }
         public GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect build() {
             final var _resultValue = new GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect();
-            _resultValue.awsAccessKeyId = awsAccessKeyId;
-            _resultValue.awsSecretAccessKey = awsSecretAccessKey;
+            _resultValue.awsAccessKey = awsAccessKey;
             _resultValue.region = region;
             _resultValue.serviceCredential = serviceCredential;
             return _resultValue;

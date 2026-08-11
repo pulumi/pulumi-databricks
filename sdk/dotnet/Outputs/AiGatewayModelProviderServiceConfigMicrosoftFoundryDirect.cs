@@ -15,10 +15,8 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey? ApiKey;
         public readonly string? BaseUrl;
-        public readonly string? ClientId;
-        public readonly Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret? ClientSecret;
+        public readonly Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal? EntraServicePrincipal;
         public readonly Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential? ServiceCredential;
-        public readonly string? TenantId;
 
         [OutputConstructor]
         private AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect(
@@ -26,20 +24,14 @@ namespace Pulumi.Databricks.Outputs
 
             string? baseUrl,
 
-            string? clientId,
+            Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal? entraServicePrincipal,
 
-            Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectClientSecret? clientSecret,
-
-            Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential? serviceCredential,
-
-            string? tenantId)
+            Outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServiceCredential? serviceCredential)
         {
             ApiKey = apiKey;
             BaseUrl = baseUrl;
-            ClientId = clientId;
-            ClientSecret = clientSecret;
+            EntraServicePrincipal = entraServicePrincipal;
             ServiceCredential = serviceCredential;
-            TenantId = tenantId;
         }
     }
 }

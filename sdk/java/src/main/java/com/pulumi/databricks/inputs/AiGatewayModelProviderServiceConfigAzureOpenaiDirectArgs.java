@@ -6,7 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyArgs;
-import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecretArgs;
+import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -32,18 +32,11 @@ public final class AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs exte
         return Optional.ofNullable(this.baseUrl);
     }
 
-    @Import(name="clientId")
-    private @Nullable Output<String> clientId;
+    @Import(name="entraServicePrincipal")
+    private @Nullable Output<AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalArgs> entraServicePrincipal;
 
-    public Optional<Output<String>> clientId() {
-        return Optional.ofNullable(this.clientId);
-    }
-
-    @Import(name="clientSecret")
-    private @Nullable Output<AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecretArgs> clientSecret;
-
-    public Optional<Output<AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecretArgs>> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public Optional<Output<AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalArgs>> entraServicePrincipal() {
+        return Optional.ofNullable(this.entraServicePrincipal);
     }
 
     @Import(name="serviceCredential")
@@ -53,22 +46,13 @@ public final class AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs exte
         return Optional.ofNullable(this.serviceCredential);
     }
 
-    @Import(name="tenantId")
-    private @Nullable Output<String> tenantId;
-
-    public Optional<Output<String>> tenantId() {
-        return Optional.ofNullable(this.tenantId);
-    }
-
     private AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs() {}
 
     private AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs(AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs $) {
         this.apiKey = $.apiKey;
         this.baseUrl = $.baseUrl;
-        this.clientId = $.clientId;
-        this.clientSecret = $.clientSecret;
+        this.entraServicePrincipal = $.entraServicePrincipal;
         this.serviceCredential = $.serviceCredential;
-        this.tenantId = $.tenantId;
     }
 
     public static Builder builder() {
@@ -107,22 +91,13 @@ public final class AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs exte
             return baseUrl(Output.of(baseUrl));
         }
 
-        public Builder clientId(@Nullable Output<String> clientId) {
-            $.clientId = clientId;
+        public Builder entraServicePrincipal(@Nullable Output<AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalArgs> entraServicePrincipal) {
+            $.entraServicePrincipal = entraServicePrincipal;
             return this;
         }
 
-        public Builder clientId(String clientId) {
-            return clientId(Output.of(clientId));
-        }
-
-        public Builder clientSecret(@Nullable Output<AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecretArgs> clientSecret) {
-            $.clientSecret = clientSecret;
-            return this;
-        }
-
-        public Builder clientSecret(AiGatewayModelProviderServiceConfigAzureOpenaiDirectClientSecretArgs clientSecret) {
-            return clientSecret(Output.of(clientSecret));
+        public Builder entraServicePrincipal(AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalArgs entraServicePrincipal) {
+            return entraServicePrincipal(Output.of(entraServicePrincipal));
         }
 
         public Builder serviceCredential(@Nullable Output<AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgs> serviceCredential) {
@@ -132,15 +107,6 @@ public final class AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs exte
 
         public Builder serviceCredential(AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCredentialArgs serviceCredential) {
             return serviceCredential(Output.of(serviceCredential));
-        }
-
-        public Builder tenantId(@Nullable Output<String> tenantId) {
-            $.tenantId = tenantId;
-            return this;
-        }
-
-        public Builder tenantId(String tenantId) {
-            return tenantId(Output.of(tenantId));
         }
 
         public AiGatewayModelProviderServiceConfigAzureOpenaiDirectArgs build() {
