@@ -160,9 +160,10 @@ type Budget struct {
 	BudgetConfigurationId pulumi.StringOutput `pulumi:"budgetConfigurationId"`
 	CreateTime            pulumi.IntOutput    `pulumi:"createTime"`
 	// Name of the budget in Databricks Account.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	Filter      BudgetFilterPtrOutput  `pulumi:"filter"`
-	UpdateTime  pulumi.IntOutput       `pulumi:"updateTime"`
+	DisplayName  pulumi.StringPtrOutput `pulumi:"displayName"`
+	Filter       BudgetFilterPtrOutput  `pulumi:"filter"`
+	ResourceType pulumi.StringOutput    `pulumi:"resourceType"`
+	UpdateTime   pulumi.IntOutput       `pulumi:"updateTime"`
 }
 
 // NewBudget registers a new resource with the given unique name, arguments, and options.
@@ -202,9 +203,10 @@ type budgetState struct {
 	BudgetConfigurationId *string `pulumi:"budgetConfigurationId"`
 	CreateTime            *int    `pulumi:"createTime"`
 	// Name of the budget in Databricks Account.
-	DisplayName *string       `pulumi:"displayName"`
-	Filter      *BudgetFilter `pulumi:"filter"`
-	UpdateTime  *int          `pulumi:"updateTime"`
+	DisplayName  *string       `pulumi:"displayName"`
+	Filter       *BudgetFilter `pulumi:"filter"`
+	ResourceType *string       `pulumi:"resourceType"`
+	UpdateTime   *int          `pulumi:"updateTime"`
 }
 
 type BudgetState struct {
@@ -215,9 +217,10 @@ type BudgetState struct {
 	BudgetConfigurationId pulumi.StringPtrInput
 	CreateTime            pulumi.IntPtrInput
 	// Name of the budget in Databricks Account.
-	DisplayName pulumi.StringPtrInput
-	Filter      BudgetFilterPtrInput
-	UpdateTime  pulumi.IntPtrInput
+	DisplayName  pulumi.StringPtrInput
+	Filter       BudgetFilterPtrInput
+	ResourceType pulumi.StringPtrInput
+	UpdateTime   pulumi.IntPtrInput
 }
 
 func (BudgetState) ElementType() reflect.Type {
@@ -232,9 +235,10 @@ type budgetArgs struct {
 	BudgetConfigurationId *string `pulumi:"budgetConfigurationId"`
 	CreateTime            *int    `pulumi:"createTime"`
 	// Name of the budget in Databricks Account.
-	DisplayName *string       `pulumi:"displayName"`
-	Filter      *BudgetFilter `pulumi:"filter"`
-	UpdateTime  *int          `pulumi:"updateTime"`
+	DisplayName  *string       `pulumi:"displayName"`
+	Filter       *BudgetFilter `pulumi:"filter"`
+	ResourceType *string       `pulumi:"resourceType"`
+	UpdateTime   *int          `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Budget resource.
@@ -246,9 +250,10 @@ type BudgetArgs struct {
 	BudgetConfigurationId pulumi.StringPtrInput
 	CreateTime            pulumi.IntPtrInput
 	// Name of the budget in Databricks Account.
-	DisplayName pulumi.StringPtrInput
-	Filter      BudgetFilterPtrInput
-	UpdateTime  pulumi.IntPtrInput
+	DisplayName  pulumi.StringPtrInput
+	Filter       BudgetFilterPtrInput
+	ResourceType pulumi.StringPtrInput
+	UpdateTime   pulumi.IntPtrInput
 }
 
 func (BudgetArgs) ElementType() reflect.Type {
@@ -363,6 +368,10 @@ func (o BudgetOutput) DisplayName() pulumi.StringPtrOutput {
 
 func (o BudgetOutput) Filter() BudgetFilterPtrOutput {
 	return o.ApplyT(func(v *Budget) BudgetFilterPtrOutput { return v.Filter }).(BudgetFilterPtrOutput)
+}
+
+func (o BudgetOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
 func (o BudgetOutput) UpdateTime() pulumi.IntOutput {

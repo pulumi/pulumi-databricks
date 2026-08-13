@@ -125,7 +125,7 @@ def get_postgres_data_api(name: Optional[_builtins.str] = None,
                           provider_config: Optional[Union['GetPostgresDataApiProviderConfigArgs', 'GetPostgresDataApiProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresDataApiResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -166,7 +166,7 @@ def get_postgres_data_api_output(name: pulumi.Input[Optional[_builtins.str]] = N
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresDataApiProviderConfigArgs', 'GetPostgresDataApiProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresDataApiResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 

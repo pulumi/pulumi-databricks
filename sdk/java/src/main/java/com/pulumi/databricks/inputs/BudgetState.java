@@ -85,6 +85,13 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filter);
     }
 
+    @Import(name="resourceType")
+    private @Nullable Output<String> resourceType;
+
+    public Optional<Output<String>> resourceType() {
+        return Optional.ofNullable(this.resourceType);
+    }
+
     @Import(name="updateTime")
     private @Nullable Output<Integer> updateTime;
 
@@ -101,6 +108,7 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.displayName = $.displayName;
         this.filter = $.filter;
+        this.resourceType = $.resourceType;
         this.updateTime = $.updateTime;
     }
 
@@ -214,6 +222,15 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
 
         public Builder filter(BudgetFilterArgs filter) {
             return filter(Output.of(filter));
+        }
+
+        public Builder resourceType(@Nullable Output<String> resourceType) {
+            $.resourceType = resourceType;
+            return this;
+        }
+
+        public Builder resourceType(String resourceType) {
+            return resourceType(Output.of(resourceType));
         }
 
         public Builder updateTime(@Nullable Output<Integer> updateTime) {

@@ -13,6 +13,331 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber struct {
+	DestinationId *string `pulumi:"destinationId"`
+	UserName      *string `pulumi:"userName"`
+}
+
+// GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberInput is an input type that accepts GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs and GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberInput` via:
+//
+//	GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs{...}
+type GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput() GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput
+	ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput
+}
+
+type GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs) ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput() GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput {
+	return i.ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs) ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput)
+}
+
+// GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArray and GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArray{ GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs{...} }
+type GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput() GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput
+	ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArray []GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberInput
+
+func (GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArray) ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput() GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArray) ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput) ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput() GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput) ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber) *string {
+		return v.DestinationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput) ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput() GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput) ToGetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber {
+		return vs[0].([]GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput)
+}
+
+type GetJobJobSettingsSettingsTaskDbtTask struct {
+	Catalog           *string  `pulumi:"catalog"`
+	Commands          []string `pulumi:"commands"`
+	ProfilesDirectory *string  `pulumi:"profilesDirectory"`
+	ProjectDirectory  *string  `pulumi:"projectDirectory"`
+	Schema            *string  `pulumi:"schema"`
+	Source            *string  `pulumi:"source"`
+	WarehouseId       *string  `pulumi:"warehouseId"`
+}
+
+// GetJobJobSettingsSettingsTaskDbtTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskDbtTaskArgs and GetJobJobSettingsSettingsTaskDbtTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskDbtTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskDbtTaskArgs{...}
+type GetJobJobSettingsSettingsTaskDbtTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskDbtTaskOutput() GetJobJobSettingsSettingsTaskDbtTaskOutput
+	ToGetJobJobSettingsSettingsTaskDbtTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskDbtTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskDbtTaskArgs struct {
+	Catalog           pulumi.StringPtrInput   `pulumi:"catalog"`
+	Commands          pulumi.StringArrayInput `pulumi:"commands"`
+	ProfilesDirectory pulumi.StringPtrInput   `pulumi:"profilesDirectory"`
+	ProjectDirectory  pulumi.StringPtrInput   `pulumi:"projectDirectory"`
+	Schema            pulumi.StringPtrInput   `pulumi:"schema"`
+	Source            pulumi.StringPtrInput   `pulumi:"source"`
+	WarehouseId       pulumi.StringPtrInput   `pulumi:"warehouseId"`
+}
+
+func (GetJobJobSettingsSettingsTaskDbtTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskDbtTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskDbtTaskArgs) ToGetJobJobSettingsSettingsTaskDbtTaskOutput() GetJobJobSettingsSettingsTaskDbtTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskDbtTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskDbtTaskArgs) ToGetJobJobSettingsSettingsTaskDbtTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDbtTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskDbtTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskDbtTaskArgs) ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskDbtTaskArgs) ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskDbtTaskOutput).ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskDbtTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskDbtTaskArgs, GetJobJobSettingsSettingsTaskDbtTaskPtr and GetJobJobSettingsSettingsTaskDbtTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskDbtTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskDbtTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskDbtTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskDbtTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskDbtTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskDbtTaskPtrType GetJobJobSettingsSettingsTaskDbtTaskArgs
+
+func GetJobJobSettingsSettingsTaskDbtTaskPtr(v *GetJobJobSettingsSettingsTaskDbtTaskArgs) GetJobJobSettingsSettingsTaskDbtTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskDbtTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskDbtTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskDbtTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskDbtTaskPtrType) ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskDbtTaskPtrType) ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskDbtTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskDbtTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskDbtTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskDbtTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) ToGetJobJobSettingsSettingsTaskDbtTaskOutput() GetJobJobSettingsSettingsTaskDbtTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) ToGetJobJobSettingsSettingsTaskDbtTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDbtTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskDbtTask) *GetJobJobSettingsSettingsTaskDbtTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskDbtTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDbtTask) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDbtTask) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) ProfilesDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDbtTask) *string { return v.ProfilesDirectory }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) ProjectDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDbtTask) *string { return v.ProjectDirectory }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDbtTask) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDbtTask) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDbtTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskDbtTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskDbtTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) ToGetJobJobSettingsSettingsTaskDbtTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskDbtTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskDbtTask) GetJobJobSettingsSettingsTaskDbtTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskDbtTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskDbtTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Catalog
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskDbtTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) ProfilesDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProfilesDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) ProjectDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetJobJobSettingsSettingsTaskDependsOn struct {
 	Outcome *string `pulumi:"outcome"`
 	TaskKey string  `pulumi:"taskKey"`
@@ -27369,6 +27694,67 @@ func (o GetPolicyInfoColumnMaskUsingArrayOutput) Index(i pulumi.IntInput) GetPol
 	}).(GetPolicyInfoColumnMaskUsingOutput)
 }
 
+type GetPolicyInfoGrant struct {
+	// (list of string) - List of privileges to grant.
+	// When any of these privileges are requested, the policy will grant access
+	// if the principal and condition match.
+	// Required on create and update
+	Privileges []string `pulumi:"privileges"`
+}
+
+// GetPolicyInfoGrantInput is an input type that accepts GetPolicyInfoGrantArgs and GetPolicyInfoGrantOutput values.
+// You can construct a concrete instance of `GetPolicyInfoGrantInput` via:
+//
+//	GetPolicyInfoGrantArgs{...}
+type GetPolicyInfoGrantInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoGrantOutput() GetPolicyInfoGrantOutput
+	ToGetPolicyInfoGrantOutputWithContext(context.Context) GetPolicyInfoGrantOutput
+}
+
+type GetPolicyInfoGrantArgs struct {
+	// (list of string) - List of privileges to grant.
+	// When any of these privileges are requested, the policy will grant access
+	// if the principal and condition match.
+	// Required on create and update
+	Privileges pulumi.StringArrayInput `pulumi:"privileges"`
+}
+
+func (GetPolicyInfoGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoGrant)(nil)).Elem()
+}
+
+func (i GetPolicyInfoGrantArgs) ToGetPolicyInfoGrantOutput() GetPolicyInfoGrantOutput {
+	return i.ToGetPolicyInfoGrantOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoGrantArgs) ToGetPolicyInfoGrantOutputWithContext(ctx context.Context) GetPolicyInfoGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoGrantOutput)
+}
+
+type GetPolicyInfoGrantOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoGrant)(nil)).Elem()
+}
+
+func (o GetPolicyInfoGrantOutput) ToGetPolicyInfoGrantOutput() GetPolicyInfoGrantOutput {
+	return o
+}
+
+func (o GetPolicyInfoGrantOutput) ToGetPolicyInfoGrantOutputWithContext(ctx context.Context) GetPolicyInfoGrantOutput {
+	return o
+}
+
+// (list of string) - List of privileges to grant.
+// When any of these privileges are requested, the policy will grant access
+// if the principal and condition match.
+// Required on create and update
+func (o GetPolicyInfoGrantOutput) Privileges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyInfoGrant) []string { return v.Privileges }).(pulumi.StringArrayOutput)
+}
+
 type GetPolicyInfoMatchColumn struct {
 	// (string) - Optional alias of the matched column
 	Alias *string `pulumi:"alias"`
@@ -27808,6 +28194,10 @@ type GetPolicyInfosPolicy struct {
 	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType string `pulumi:"forSecurableType"`
+	// (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Grant GetPolicyInfosPolicyGrant `pulumi:"grant"`
 	// (string) - Unique identifier of the policy. This field is output only and is generated by the system
 	Id string `pulumi:"id"`
 	// (list of MatchColumn) - Optional list of condition expressions used to match table columns.
@@ -27821,7 +28211,7 @@ type GetPolicyInfosPolicy struct {
 	OnSecurableFullname string `pulumi:"onSecurableFullname"`
 	// Required. The type of the securable to list policies for
 	OnSecurableType string `pulumi:"onSecurableType"`
-	// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType string `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetPolicyInfosPolicyProviderConfig `pulumi:"providerConfig"`
@@ -27868,6 +28258,10 @@ type GetPolicyInfosPolicyArgs struct {
 	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType pulumi.StringInput `pulumi:"forSecurableType"`
+	// (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Grant GetPolicyInfosPolicyGrantInput `pulumi:"grant"`
 	// (string) - Unique identifier of the policy. This field is output only and is generated by the system
 	Id pulumi.StringInput `pulumi:"id"`
 	// (list of MatchColumn) - Optional list of condition expressions used to match table columns.
@@ -27881,7 +28275,7 @@ type GetPolicyInfosPolicyArgs struct {
 	OnSecurableFullname pulumi.StringInput `pulumi:"onSecurableFullname"`
 	// Required. The type of the securable to list policies for
 	OnSecurableType pulumi.StringInput `pulumi:"onSecurableType"`
-	// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringInput `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetPolicyInfosPolicyProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -27985,6 +28379,13 @@ func (o GetPolicyInfosPolicyOutput) ForSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyInfosPolicy) string { return v.ForSecurableType }).(pulumi.StringOutput)
 }
 
+// (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+// Required on create and optional on update. When specified on update,
+// the new options will replace the existing options as a whole
+func (o GetPolicyInfosPolicyOutput) Grant() GetPolicyInfosPolicyGrantOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicy) GetPolicyInfosPolicyGrant { return v.Grant }).(GetPolicyInfosPolicyGrantOutput)
+}
+
 // (string) - Unique identifier of the policy. This field is output only and is generated by the system
 func (o GetPolicyInfosPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyInfosPolicy) string { return v.Id }).(pulumi.StringOutput)
@@ -28013,7 +28414,7 @@ func (o GetPolicyInfosPolicyOutput) OnSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyInfosPolicy) string { return v.OnSecurableType }).(pulumi.StringOutput)
 }
 
-// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 func (o GetPolicyInfosPolicyOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyInfosPolicy) string { return v.PolicyType }).(pulumi.StringOutput)
 }
@@ -28263,6 +28664,67 @@ func (o GetPolicyInfosPolicyColumnMaskUsingArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyInfosPolicyColumnMaskUsing {
 		return vs[0].([]GetPolicyInfosPolicyColumnMaskUsing)[vs[1].(int)]
 	}).(GetPolicyInfosPolicyColumnMaskUsingOutput)
+}
+
+type GetPolicyInfosPolicyGrant struct {
+	// (list of string) - List of privileges to grant.
+	// When any of these privileges are requested, the policy will grant access
+	// if the principal and condition match.
+	// Required on create and update
+	Privileges []string `pulumi:"privileges"`
+}
+
+// GetPolicyInfosPolicyGrantInput is an input type that accepts GetPolicyInfosPolicyGrantArgs and GetPolicyInfosPolicyGrantOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyGrantInput` via:
+//
+//	GetPolicyInfosPolicyGrantArgs{...}
+type GetPolicyInfosPolicyGrantInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyGrantOutput() GetPolicyInfosPolicyGrantOutput
+	ToGetPolicyInfosPolicyGrantOutputWithContext(context.Context) GetPolicyInfosPolicyGrantOutput
+}
+
+type GetPolicyInfosPolicyGrantArgs struct {
+	// (list of string) - List of privileges to grant.
+	// When any of these privileges are requested, the policy will grant access
+	// if the principal and condition match.
+	// Required on create and update
+	Privileges pulumi.StringArrayInput `pulumi:"privileges"`
+}
+
+func (GetPolicyInfosPolicyGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyGrant)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyGrantArgs) ToGetPolicyInfosPolicyGrantOutput() GetPolicyInfosPolicyGrantOutput {
+	return i.ToGetPolicyInfosPolicyGrantOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyGrantArgs) ToGetPolicyInfosPolicyGrantOutputWithContext(ctx context.Context) GetPolicyInfosPolicyGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyGrantOutput)
+}
+
+type GetPolicyInfosPolicyGrantOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyGrant)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyGrantOutput) ToGetPolicyInfosPolicyGrantOutput() GetPolicyInfosPolicyGrantOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyGrantOutput) ToGetPolicyInfosPolicyGrantOutputWithContext(ctx context.Context) GetPolicyInfosPolicyGrantOutput {
+	return o
+}
+
+// (list of string) - List of privileges to grant.
+// When any of these privileges are requested, the policy will grant access
+// if the principal and condition match.
+// Required on create and update
+func (o GetPolicyInfosPolicyGrantOutput) Privileges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyGrant) []string { return v.Privileges }).(pulumi.StringArrayOutput)
 }
 
 type GetPolicyInfosPolicyMatchColumn struct {
@@ -67530,6 +67992,10 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDbtTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDbtTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDbtTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDependsOnInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDependsOnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDependsOnArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDependsOnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskEmailNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskEmailNotificationsArgs{})
@@ -67877,6 +68343,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskInput)(nil)).Elem(), GetPolicyInfoColumnMaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingArrayInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoGrantInput)(nil)).Elem(), GetPolicyInfoGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoMatchColumnInput)(nil)).Elem(), GetPolicyInfoMatchColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoMatchColumnArrayInput)(nil)).Elem(), GetPolicyInfoMatchColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoProviderConfigInput)(nil)).Elem(), GetPolicyInfoProviderConfigArgs{})
@@ -67889,6 +68356,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingArrayInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyGrantInput)(nil)).Elem(), GetPolicyInfosPolicyGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyMatchColumnInput)(nil)).Elem(), GetPolicyInfosPolicyMatchColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyMatchColumnArrayInput)(nil)).Elem(), GetPolicyInfosPolicyMatchColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyProviderConfigInput)(nil)).Elem(), GetPolicyInfosPolicyProviderConfigArgs{})
@@ -68407,6 +68875,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDbtTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDependsOnOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDependsOnArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskEmailNotificationsOutput{})
@@ -68754,6 +69226,7 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoGrantOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoMatchColumnOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoMatchColumnArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoProviderConfigOutput{})
@@ -68766,6 +69239,7 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyGrantOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyMatchColumnOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyMatchColumnArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyProviderConfigOutput{})

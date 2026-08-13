@@ -27,6 +27,7 @@ class BudgetArgs:
                  create_time: pulumi.Input[Optional[_builtins.int]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional['BudgetFilterArgs']] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Budget resource.
@@ -47,6 +48,8 @@ class BudgetArgs:
             pulumi.set(__self__, "display_name", display_name)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -112,6 +115,15 @@ class BudgetArgs:
     @filter.setter
     def filter(self, value: pulumi.Input[Optional['BudgetFilterArgs']]):
         pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
@@ -132,6 +144,7 @@ class _BudgetState:
                  create_time: pulumi.Input[Optional[_builtins.int]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional['BudgetFilterArgs']] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Budget resources.
@@ -152,6 +165,8 @@ class _BudgetState:
             pulumi.set(__self__, "display_name", display_name)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -217,6 +232,15 @@ class _BudgetState:
     @filter.setter
     def filter(self, value: pulumi.Input[Optional['BudgetFilterArgs']]):
         pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
@@ -240,6 +264,7 @@ class Budget(pulumi.CustomResource):
                  create_time: pulumi.Input[Optional[_builtins.int]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -459,6 +484,7 @@ class Budget(pulumi.CustomResource):
                  create_time: pulumi.Input[Optional[_builtins.int]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -475,6 +501,7 @@ class Budget(pulumi.CustomResource):
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["filter"] = filter
+            __props__.__dict__["resource_type"] = resource_type
             __props__.__dict__["update_time"] = update_time
         super(Budget, __self__).__init__(
             'databricks:index/budget:Budget',
@@ -492,6 +519,7 @@ class Budget(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             filter: pulumi.Input[Optional[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.int]] = None) -> 'Budget':
         """
         Get an existing Budget resource's state with the given name, id, and optional extra
@@ -514,6 +542,7 @@ class Budget(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["filter"] = filter
+        __props__.__dict__["resource_type"] = resource_type
         __props__.__dict__["update_time"] = update_time
         return Budget(resource_name, opts=opts, __props__=__props__)
 
@@ -555,6 +584,11 @@ class Budget(pulumi.CustomResource):
     @pulumi.getter
     def filter(self) -> pulumi.Output[Optional['outputs.BudgetFilter']]:
         return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "resource_type")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

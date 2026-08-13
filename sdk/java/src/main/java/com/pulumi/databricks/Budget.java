@@ -228,6 +228,12 @@ public class Budget extends com.pulumi.resources.CustomResource {
     public Output<Optional<BudgetFilter>> filter() {
         return Codegen.optional(this.filter);
     }
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
+    private Output<String> resourceType;
+
+    public Output<String> resourceType() {
+        return this.resourceType;
+    }
     @Export(name="updateTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> updateTime;
 

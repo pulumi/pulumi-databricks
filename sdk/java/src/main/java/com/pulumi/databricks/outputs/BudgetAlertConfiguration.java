@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.BudgetAlertConfigurationActionConfiguration;
+import com.pulumi.databricks.outputs.BudgetAlertConfigurationPrincipalOverride;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,7 @@ public final class BudgetAlertConfiguration {
      */
     private @Nullable List<BudgetAlertConfigurationActionConfiguration> actionConfigurations;
     private @Nullable String alertConfigurationId;
+    private @Nullable List<BudgetAlertConfigurationPrincipalOverride> principalOverrides;
     /**
      * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      * 
@@ -29,6 +31,7 @@ public final class BudgetAlertConfiguration {
      * 
      */
     private @Nullable String quantityType;
+    private @Nullable String scopeType;
     /**
      * @return The time window of usage data for the budget. (Enum: `MONTH`)
      * 
@@ -51,6 +54,9 @@ public final class BudgetAlertConfiguration {
     public Optional<String> alertConfigurationId() {
         return Optional.ofNullable(this.alertConfigurationId);
     }
+    public List<BudgetAlertConfigurationPrincipalOverride> principalOverrides() {
+        return this.principalOverrides == null ? List.of() : this.principalOverrides;
+    }
     /**
      * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      * 
@@ -64,6 +70,9 @@ public final class BudgetAlertConfiguration {
      */
     public Optional<String> quantityType() {
         return Optional.ofNullable(this.quantityType);
+    }
+    public Optional<String> scopeType() {
+        return Optional.ofNullable(this.scopeType);
     }
     /**
      * @return The time window of usage data for the budget. (Enum: `MONTH`)
@@ -91,8 +100,10 @@ public final class BudgetAlertConfiguration {
     public static final class Builder {
         private @Nullable List<BudgetAlertConfigurationActionConfiguration> actionConfigurations;
         private @Nullable String alertConfigurationId;
+        private @Nullable List<BudgetAlertConfigurationPrincipalOverride> principalOverrides;
         private @Nullable String quantityThreshold;
         private @Nullable String quantityType;
+        private @Nullable String scopeType;
         private @Nullable String timePeriod;
         private @Nullable String triggerType;
         public Builder() {}
@@ -100,8 +111,10 @@ public final class BudgetAlertConfiguration {
     	      Objects.requireNonNull(defaults);
     	      this.actionConfigurations = defaults.actionConfigurations;
     	      this.alertConfigurationId = defaults.alertConfigurationId;
+    	      this.principalOverrides = defaults.principalOverrides;
     	      this.quantityThreshold = defaults.quantityThreshold;
     	      this.quantityType = defaults.quantityType;
+    	      this.scopeType = defaults.scopeType;
     	      this.timePeriod = defaults.timePeriod;
     	      this.triggerType = defaults.triggerType;
         }
@@ -122,6 +135,15 @@ public final class BudgetAlertConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder principalOverrides(@Nullable List<BudgetAlertConfigurationPrincipalOverride> principalOverrides) {
+
+            this.principalOverrides = principalOverrides;
+            return this;
+        }
+        public Builder principalOverrides(BudgetAlertConfigurationPrincipalOverride... principalOverrides) {
+            return principalOverrides(List.of(principalOverrides));
+        }
+        @CustomType.Setter
         public Builder quantityThreshold(@Nullable String quantityThreshold) {
 
             this.quantityThreshold = quantityThreshold;
@@ -131,6 +153,12 @@ public final class BudgetAlertConfiguration {
         public Builder quantityType(@Nullable String quantityType) {
 
             this.quantityType = quantityType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scopeType(@Nullable String scopeType) {
+
+            this.scopeType = scopeType;
             return this;
         }
         @CustomType.Setter
@@ -149,8 +177,10 @@ public final class BudgetAlertConfiguration {
             final var _resultValue = new BudgetAlertConfiguration();
             _resultValue.actionConfigurations = actionConfigurations;
             _resultValue.alertConfigurationId = alertConfigurationId;
+            _resultValue.principalOverrides = principalOverrides;
             _resultValue.quantityThreshold = quantityThreshold;
             _resultValue.quantityType = quantityType;
+            _resultValue.scopeType = scopeType;
             _resultValue.timePeriod = timePeriod;
             _resultValue.triggerType = triggerType;
             return _resultValue;

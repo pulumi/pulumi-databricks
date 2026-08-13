@@ -161,6 +161,14 @@ namespace Pulumi.Databricks
         public Output<string> ForSecurableType { get; private set; } = null!;
 
         /// <summary>
+        /// Options for grant policies. Valid only if `PolicyType` is `POLICY_TYPE_GRANT`.
+        /// Required on create and optional on update. When specified on update,
+        /// the new options will replace the existing options as a whole
+        /// </summary>
+        [Output("grant")]
+        public Output<Outputs.PolicyInfoGrant?> Grant { get; private set; } = null!;
+
+        /// <summary>
         /// Optional list of condition expressions used to match table columns.
         /// Only valid when `ForSecurableType` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -191,7 +199,7 @@ namespace Pulumi.Databricks
         public Output<string?> OnSecurableType { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
@@ -315,6 +323,14 @@ namespace Pulumi.Databricks
         [Input("forSecurableType", required: true)]
         public Input<string> ForSecurableType { get; set; } = null!;
 
+        /// <summary>
+        /// Options for grant policies. Valid only if `PolicyType` is `POLICY_TYPE_GRANT`.
+        /// Required on create and optional on update. When specified on update,
+        /// the new options will replace the existing options as a whole
+        /// </summary>
+        [Input("grant")]
+        public Input<Inputs.PolicyInfoGrantArgs>? Grant { get; set; }
+
         [Input("matchColumns")]
         private InputList<Inputs.PolicyInfoMatchColumnArgs>? _matchColumns;
 
@@ -352,7 +368,7 @@ namespace Pulumi.Databricks
         public Input<string>? OnSecurableType { get; set; }
 
         /// <summary>
-        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         [Input("policyType", required: true)]
         public Input<string> PolicyType { get; set; } = null!;
@@ -444,6 +460,14 @@ namespace Pulumi.Databricks
         [Input("forSecurableType")]
         public Input<string>? ForSecurableType { get; set; }
 
+        /// <summary>
+        /// Options for grant policies. Valid only if `PolicyType` is `POLICY_TYPE_GRANT`.
+        /// Required on create and optional on update. When specified on update,
+        /// the new options will replace the existing options as a whole
+        /// </summary>
+        [Input("grant")]
+        public Input<Inputs.PolicyInfoGrantGetArgs>? Grant { get; set; }
+
         [Input("matchColumns")]
         private InputList<Inputs.PolicyInfoMatchColumnGetArgs>? _matchColumns;
 
@@ -481,7 +505,7 @@ namespace Pulumi.Databricks
         public Input<string>? OnSecurableType { get; set; }
 
         /// <summary>
-        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }

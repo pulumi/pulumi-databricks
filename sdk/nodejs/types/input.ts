@@ -3643,6 +3643,7 @@ export interface BudgetAlertConfiguration {
      */
     actionConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfigurationActionConfiguration>[] | undefined>;
     alertConfigurationId?: pulumi.Input<string | undefined>;
+    principalOverrides?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfigurationPrincipalOverride>[] | undefined>;
     /**
      * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      */
@@ -3651,6 +3652,7 @@ export interface BudgetAlertConfiguration {
      * The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
      */
     quantityType?: pulumi.Input<string | undefined>;
+    scopeType?: pulumi.Input<string | undefined>;
     /**
      * The time window of usage data for the budget. (Enum: `MONTH`)
      */
@@ -3671,6 +3673,11 @@ export interface BudgetAlertConfigurationActionConfiguration {
      * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
      */
     target?: pulumi.Input<string | undefined>;
+}
+
+export interface BudgetAlertConfigurationPrincipalOverride {
+    overrideThreshold?: pulumi.Input<string | undefined>;
+    principalId?: pulumi.Input<string | undefined>;
 }
 
 export interface BudgetFilter {
@@ -21508,11 +21515,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.126.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.126.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -21579,11 +21586,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.126.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.125.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.126.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -22921,6 +22928,16 @@ export interface PolicyInfoColumnMaskUsing {
      * A constant literal
      */
     constant?: pulumi.Input<string | undefined>;
+}
+
+export interface PolicyInfoGrant {
+    /**
+     * List of privileges to grant.
+     * When any of these privileges are requested, the policy will grant access
+     * if the principal and condition match.
+     * Required on create and update
+     */
+    privileges: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface PolicyInfoMatchColumn {
