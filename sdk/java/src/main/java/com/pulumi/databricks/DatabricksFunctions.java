@@ -28184,7 +28184,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCdfStatuses:getPostgresCdfStatuses", TypeShape.of(GetPostgresCdfStatusesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -28232,7 +28232,7 @@ public final class DatabricksFunctions {
         return getPostgresDataApi(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -28280,7 +28280,7 @@ public final class DatabricksFunctions {
         return getPostgresDataApiPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -28328,7 +28328,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDataApi:getPostgresDataApi", TypeShape.of(GetPostgresDataApiResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -28376,7 +28376,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDataApi:getPostgresDataApi", TypeShape.of(GetPostgresDataApiResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 

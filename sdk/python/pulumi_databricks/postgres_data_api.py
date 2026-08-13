@@ -210,7 +210,7 @@ class PostgresDataApi(pulumi.CustomResource):
                  spec: pulumi.Input[Optional[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict']]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -314,7 +314,7 @@ class PostgresDataApi(pulumi.CustomResource):
                  args: PostgresDataApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 

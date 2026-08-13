@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.BudgetAlertConfigurationActionConfigurationArgs;
+import com.pulumi.databricks.inputs.BudgetAlertConfigurationPrincipalOverrideArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +40,13 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.alertConfigurationId);
     }
 
+    @Import(name="principalOverrides")
+    private @Nullable Output<List<BudgetAlertConfigurationPrincipalOverrideArgs>> principalOverrides;
+
+    public Optional<Output<List<BudgetAlertConfigurationPrincipalOverrideArgs>>> principalOverrides() {
+        return Optional.ofNullable(this.principalOverrides);
+    }
+
     /**
      * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      * 
@@ -67,6 +75,13 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> quantityType() {
         return Optional.ofNullable(this.quantityType);
+    }
+
+    @Import(name="scopeType")
+    private @Nullable Output<String> scopeType;
+
+    public Optional<Output<String>> scopeType() {
+        return Optional.ofNullable(this.scopeType);
     }
 
     /**
@@ -104,8 +119,10 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
     private BudgetAlertConfigurationArgs(BudgetAlertConfigurationArgs $) {
         this.actionConfigurations = $.actionConfigurations;
         this.alertConfigurationId = $.alertConfigurationId;
+        this.principalOverrides = $.principalOverrides;
         this.quantityThreshold = $.quantityThreshold;
         this.quantityType = $.quantityType;
+        this.scopeType = $.scopeType;
         this.timePeriod = $.timePeriod;
         this.triggerType = $.triggerType;
     }
@@ -168,6 +185,19 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
             return alertConfigurationId(Output.of(alertConfigurationId));
         }
 
+        public Builder principalOverrides(@Nullable Output<List<BudgetAlertConfigurationPrincipalOverrideArgs>> principalOverrides) {
+            $.principalOverrides = principalOverrides;
+            return this;
+        }
+
+        public Builder principalOverrides(List<BudgetAlertConfigurationPrincipalOverrideArgs> principalOverrides) {
+            return principalOverrides(Output.of(principalOverrides));
+        }
+
+        public Builder principalOverrides(BudgetAlertConfigurationPrincipalOverrideArgs... principalOverrides) {
+            return principalOverrides(List.of(principalOverrides));
+        }
+
         /**
          * @param quantityThreshold The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
          * 
@@ -208,6 +238,15 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
          */
         public Builder quantityType(String quantityType) {
             return quantityType(Output.of(quantityType));
+        }
+
+        public Builder scopeType(@Nullable Output<String> scopeType) {
+            $.scopeType = scopeType;
+            return this;
+        }
+
+        public Builder scopeType(String scopeType) {
+            return scopeType(Output.of(scopeType));
         }
 
         /**

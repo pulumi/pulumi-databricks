@@ -140,6 +140,10 @@ type PolicyInfo struct {
 	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType pulumi.StringOutput `pulumi:"forSecurableType"`
+	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Grant PolicyInfoGrantPtrOutput `pulumi:"grant"`
 	// Optional list of condition expressions used to match table columns.
 	// Only valid when `forSecurableType` is `TABLE`.
 	// When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -154,7 +158,7 @@ type PolicyInfo struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrOutput `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PolicyInfoProviderConfigOutput `pulumi:"providerConfig"`
@@ -228,6 +232,10 @@ type policyInfoState struct {
 	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType *string `pulumi:"forSecurableType"`
+	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Grant *PolicyInfoGrant `pulumi:"grant"`
 	// Optional list of condition expressions used to match table columns.
 	// Only valid when `forSecurableType` is `TABLE`.
 	// When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -242,7 +250,7 @@ type policyInfoState struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType *string `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType *string `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PolicyInfoProviderConfig `pulumi:"providerConfig"`
@@ -278,6 +286,10 @@ type PolicyInfoState struct {
 	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType pulumi.StringPtrInput
+	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Grant PolicyInfoGrantPtrInput
 	// Optional list of condition expressions used to match table columns.
 	// Only valid when `forSecurableType` is `TABLE`.
 	// When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -292,7 +304,7 @@ type PolicyInfoState struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrInput
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PolicyInfoProviderConfigPtrInput
@@ -328,6 +340,10 @@ type policyInfoArgs struct {
 	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType string `pulumi:"forSecurableType"`
+	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Grant *PolicyInfoGrant `pulumi:"grant"`
 	// Optional list of condition expressions used to match table columns.
 	// Only valid when `forSecurableType` is `TABLE`.
 	// When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -342,7 +358,7 @@ type policyInfoArgs struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType *string `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType string `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PolicyInfoProviderConfig `pulumi:"providerConfig"`
@@ -371,6 +387,10 @@ type PolicyInfoArgs struct {
 	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType pulumi.StringInput
+	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Grant PolicyInfoGrantPtrInput
 	// Optional list of condition expressions used to match table columns.
 	// Only valid when `forSecurableType` is `TABLE`.
 	// When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -385,7 +405,7 @@ type PolicyInfoArgs struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrInput
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PolicyInfoProviderConfigPtrInput
@@ -521,6 +541,13 @@ func (o PolicyInfoOutput) ForSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringOutput { return v.ForSecurableType }).(pulumi.StringOutput)
 }
 
+// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+// Required on create and optional on update. When specified on update,
+// the new options will replace the existing options as a whole
+func (o PolicyInfoOutput) Grant() PolicyInfoGrantPtrOutput {
+	return o.ApplyT(func(v *PolicyInfo) PolicyInfoGrantPtrOutput { return v.Grant }).(PolicyInfoGrantPtrOutput)
+}
+
 // Optional list of condition expressions used to match table columns.
 // Only valid when `forSecurableType` is `TABLE`.
 // When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -547,7 +574,7 @@ func (o PolicyInfoOutput) OnSecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringPtrOutput { return v.OnSecurableType }).(pulumi.StringPtrOutput)
 }
 
-// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 func (o PolicyInfoOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }

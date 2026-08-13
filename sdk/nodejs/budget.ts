@@ -142,6 +142,7 @@ export class Budget extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     declare public readonly filter: pulumi.Output<outputs.BudgetFilter | undefined>;
+    declare public readonly resourceType: pulumi.Output<string>;
     declare public readonly updateTime: pulumi.Output<number>;
 
     /**
@@ -163,6 +164,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["filter"] = state?.filter;
+            resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BudgetArgs | undefined;
@@ -172,6 +174,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["createTime"] = args?.createTime;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["filter"] = args?.filter;
+            resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["updateTime"] = args?.updateTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -198,6 +201,7 @@ export interface BudgetState {
      */
     displayName?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.BudgetFilter | undefined>;
+    resourceType?: pulumi.Input<string | undefined>;
     updateTime?: pulumi.Input<number | undefined>;
 }
 
@@ -220,5 +224,6 @@ export interface BudgetArgs {
      */
     displayName?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.BudgetFilter | undefined>;
+    resourceType?: pulumi.Input<string | undefined>;
     updateTime?: pulumi.Input<number | undefined>;
 }

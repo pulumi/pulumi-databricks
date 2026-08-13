@@ -27,6 +27,7 @@ class PolicyInfoArgs:
                  column_mask: pulumi.Input[Optional['PolicyInfoColumnMaskArgs']] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 grant: pulumi.Input[Optional['PolicyInfoGrantArgs']] = None,
                  match_columns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,7 +41,7 @@ class PolicyInfoArgs:
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] to_principals: List of user or group names that the policy applies to.
                Required on create and optional on update
         :param pulumi.Input['PolicyInfoColumnMaskArgs'] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
@@ -48,6 +49,9 @@ class PolicyInfoArgs:
                the new options will replace the existing options as a whole
         :param pulumi.Input[_builtins.str] comment: Optional description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
+        :param pulumi.Input['PolicyInfoGrantArgs'] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]] match_columns: Optional list of condition expressions used to match table columns.
                Only valid when `for_securable_type` is `TABLE`.
                When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -73,6 +77,8 @@ class PolicyInfoArgs:
             pulumi.set(__self__, "comment", comment)
         if except_principals is not None:
             pulumi.set(__self__, "except_principals", except_principals)
+        if grant is not None:
+            pulumi.set(__self__, "grant", grant)
         if match_columns is not None:
             pulumi.set(__self__, "match_columns", match_columns)
         if name is not None:
@@ -106,7 +112,7 @@ class PolicyInfoArgs:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 
@@ -164,6 +170,20 @@ class PolicyInfoArgs:
     @except_principals.setter
     def except_principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "except_principals", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def grant(self) -> pulumi.Input[Optional['PolicyInfoGrantArgs']]:
+        """
+        Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "grant")
+
+    @grant.setter
+    def grant(self, value: pulumi.Input[Optional['PolicyInfoGrantArgs']]):
+        pulumi.set(self, "grant", value)
 
     @_builtins.property
     @pulumi.getter(name="matchColumns")
@@ -267,6 +287,7 @@ class _PolicyInfoState:
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant: pulumi.Input[Optional['PolicyInfoGrantArgs']] = None,
                  match_columns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
@@ -291,6 +312,9 @@ class _PolicyInfoState:
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input['PolicyInfoGrantArgs'] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]] match_columns: Optional list of condition expressions used to match table columns.
                Only valid when `for_securable_type` is `TABLE`.
                When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -301,7 +325,7 @@ class _PolicyInfoState:
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
                Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input['PolicyInfoProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PolicyInfoRowFilterArgs'] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
@@ -324,6 +348,8 @@ class _PolicyInfoState:
             pulumi.set(__self__, "except_principals", except_principals)
         if for_securable_type is not None:
             pulumi.set(__self__, "for_securable_type", for_securable_type)
+        if grant is not None:
+            pulumi.set(__self__, "grant", grant)
         if match_columns is not None:
             pulumi.set(__self__, "match_columns", match_columns)
         if name is not None:
@@ -424,6 +450,20 @@ class _PolicyInfoState:
         pulumi.set(self, "for_securable_type", value)
 
     @_builtins.property
+    @pulumi.getter
+    def grant(self) -> pulumi.Input[Optional['PolicyInfoGrantArgs']]:
+        """
+        Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "grant")
+
+    @grant.setter
+    def grant(self, value: pulumi.Input[Optional['PolicyInfoGrantArgs']]):
+        pulumi.set(self, "grant", value)
+
+    @_builtins.property
     @pulumi.getter(name="matchColumns")
     def match_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]:
         """
@@ -481,7 +521,7 @@ class _PolicyInfoState:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 
@@ -575,6 +615,7 @@ class PolicyInfo(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
                  match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
@@ -661,6 +702,9 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]] match_columns: Optional list of condition expressions used to match table columns.
                Only valid when `for_securable_type` is `TABLE`.
                When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -671,7 +715,7 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
                Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
@@ -771,6 +815,7 @@ class PolicyInfo(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
                  match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
@@ -795,6 +840,7 @@ class PolicyInfo(pulumi.CustomResource):
             if for_securable_type is None and not opts.urn:
                 raise TypeError("Missing required property 'for_securable_type'")
             __props__.__dict__["for_securable_type"] = for_securable_type
+            __props__.__dict__["grant"] = grant
             __props__.__dict__["match_columns"] = match_columns
             __props__.__dict__["name"] = name
             __props__.__dict__["on_securable_fullname"] = on_securable_fullname
@@ -828,6 +874,7 @@ class PolicyInfo(pulumi.CustomResource):
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
             match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
@@ -856,6 +903,9 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]] match_columns: Optional list of condition expressions used to match table columns.
                Only valid when `for_securable_type` is `TABLE`.
                When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -866,7 +916,7 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
                Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
@@ -887,6 +937,7 @@ class PolicyInfo(pulumi.CustomResource):
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["except_principals"] = except_principals
         __props__.__dict__["for_securable_type"] = for_securable_type
+        __props__.__dict__["grant"] = grant
         __props__.__dict__["match_columns"] = match_columns
         __props__.__dict__["name"] = name
         __props__.__dict__["on_securable_fullname"] = on_securable_fullname
@@ -953,6 +1004,16 @@ class PolicyInfo(pulumi.CustomResource):
         return pulumi.get(self, "for_securable_type")
 
     @_builtins.property
+    @pulumi.getter
+    def grant(self) -> pulumi.Output[Optional['outputs.PolicyInfoGrant']]:
+        """
+        Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "grant")
+
+    @_builtins.property
     @pulumi.getter(name="matchColumns")
     def match_columns(self) -> pulumi.Output[Optional[Sequence['outputs.PolicyInfoMatchColumn']]]:
         """
@@ -994,7 +1055,7 @@ class PolicyInfo(pulumi.CustomResource):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 

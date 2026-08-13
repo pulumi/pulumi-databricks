@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PolicyInfoColumnMaskArgs;
+import com.pulumi.databricks.inputs.PolicyInfoGrantArgs;
 import com.pulumi.databricks.inputs.PolicyInfoMatchColumnArgs;
 import com.pulumi.databricks.inputs.PolicyInfoProviderConfigArgs;
 import com.pulumi.databricks.inputs.PolicyInfoRowFilterArgs;
@@ -90,6 +91,25 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    @Import(name="grant")
+    private @Nullable Output<PolicyInfoGrantArgs> grant;
+
+    /**
+     * @return Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    public Optional<Output<PolicyInfoGrantArgs>> grant() {
+        return Optional.ofNullable(this.grant);
+    }
+
+    /**
      * Optional list of condition expressions used to match table columns.
      * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -162,14 +182,14 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     @Import(name="policyType", required=true)
     private Output<String> policyType;
 
     /**
-     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public Output<String> policyType() {
@@ -249,6 +269,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         this.comment = $.comment;
         this.exceptPrincipals = $.exceptPrincipals;
         this.forSecurableType = $.forSecurableType;
+        this.grant = $.grant;
         this.matchColumns = $.matchColumns;
         this.name = $.name;
         this.onSecurableFullname = $.onSecurableFullname;
@@ -381,6 +402,31 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param grant Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+         * Required on create and optional on update. When specified on update,
+         * the new options will replace the existing options as a whole
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grant(@Nullable Output<PolicyInfoGrantArgs> grant) {
+            $.grant = grant;
+            return this;
+        }
+
+        /**
+         * @param grant Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+         * Required on create and optional on update. When specified on update,
+         * the new options will replace the existing options as a whole
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grant(PolicyInfoGrantArgs grant) {
+            return grant(Output.of(grant));
+        }
+
+        /**
          * @param matchColumns Optional list of condition expressions used to match table columns.
          * Only valid when `forSecurableType` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -489,7 +535,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
          * 
          * @return builder
          * 
@@ -500,7 +546,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
          * 
          * @return builder
          * 

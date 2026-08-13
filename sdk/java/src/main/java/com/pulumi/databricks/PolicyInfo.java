@@ -11,6 +11,7 @@ import com.pulumi.databricks.PolicyInfoArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PolicyInfoState;
 import com.pulumi.databricks.outputs.PolicyInfoColumnMask;
+import com.pulumi.databricks.outputs.PolicyInfoGrant;
 import com.pulumi.databricks.outputs.PolicyInfoMatchColumn;
 import com.pulumi.databricks.outputs.PolicyInfoProviderConfig;
 import com.pulumi.databricks.outputs.PolicyInfoRowFilter;
@@ -233,6 +234,24 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
         return this.forSecurableType;
     }
     /**
+     * Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    @Export(name="grant", refs={PolicyInfoGrant.class}, tree="[0]")
+    private Output</* @Nullable */ PolicyInfoGrant> grant;
+
+    /**
+     * @return Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    public Output<Optional<PolicyInfoGrant>> grant() {
+        return Codegen.optional(this.grant);
+    }
+    /**
      * Optional list of condition expressions used to match table columns.
      * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -301,14 +320,14 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onSecurableType);
     }
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
-     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public Output<String> policyType() {

@@ -130,6 +130,12 @@ export class PolicyInfo extends pulumi.CustomResource {
      */
     declare public readonly forSecurableType: pulumi.Output<string>;
     /**
+     * Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     */
+    declare public readonly grant: pulumi.Output<outputs.PolicyInfoGrant | undefined>;
+    /**
      * Optional list of condition expressions used to match table columns.
      * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -152,7 +158,7 @@ export class PolicyInfo extends pulumi.CustomResource {
      */
     declare public readonly onSecurableType: pulumi.Output<string | undefined>;
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      */
     declare public readonly policyType: pulumi.Output<string>;
     /**
@@ -202,6 +208,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["exceptPrincipals"] = state?.exceptPrincipals;
             resourceInputs["forSecurableType"] = state?.forSecurableType;
+            resourceInputs["grant"] = state?.grant;
             resourceInputs["matchColumns"] = state?.matchColumns;
             resourceInputs["name"] = state?.name;
             resourceInputs["onSecurableFullname"] = state?.onSecurableFullname;
@@ -228,6 +235,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["comment"] = args?.comment;
             resourceInputs["exceptPrincipals"] = args?.exceptPrincipals;
             resourceInputs["forSecurableType"] = args?.forSecurableType;
+            resourceInputs["grant"] = args?.grant;
             resourceInputs["matchColumns"] = args?.matchColumns;
             resourceInputs["name"] = args?.name;
             resourceInputs["onSecurableFullname"] = args?.onSecurableFullname;
@@ -280,6 +288,12 @@ export interface PolicyInfoState {
      */
     forSecurableType?: pulumi.Input<string | undefined>;
     /**
+     * Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     */
+    grant?: pulumi.Input<inputs.PolicyInfoGrant | undefined>;
+    /**
      * Optional list of condition expressions used to match table columns.
      * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -302,7 +316,7 @@ export interface PolicyInfoState {
      */
     onSecurableType?: pulumi.Input<string | undefined>;
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      */
     policyType?: pulumi.Input<string | undefined>;
     /**
@@ -359,6 +373,12 @@ export interface PolicyInfoArgs {
      */
     forSecurableType: pulumi.Input<string>;
     /**
+     * Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     */
+    grant?: pulumi.Input<inputs.PolicyInfoGrant | undefined>;
+    /**
      * Optional list of condition expressions used to match table columns.
      * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
@@ -381,7 +401,7 @@ export interface PolicyInfoArgs {
      */
     onSecurableType?: pulumi.Input<string | undefined>;
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      */
     policyType: pulumi.Input<string>;
     /**

@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.BudgetAlertConfigurationActionConfiguration> ActionConfigurations;
         public readonly string? AlertConfigurationId;
+        public readonly ImmutableArray<Outputs.BudgetAlertConfigurationPrincipalOverride> PrincipalOverrides;
         /// <summary>
         /// The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `QuantityType`.
         /// </summary>
@@ -26,6 +27,7 @@ namespace Pulumi.Databricks.Outputs
         /// The way to calculate cost for this budget alert. This is what QuantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
         /// </summary>
         public readonly string? QuantityType;
+        public readonly string? ScopeType;
         /// <summary>
         /// The time window of usage data for the budget. (Enum: `MONTH`)
         /// </summary>
@@ -41,9 +43,13 @@ namespace Pulumi.Databricks.Outputs
 
             string? alertConfigurationId,
 
+            ImmutableArray<Outputs.BudgetAlertConfigurationPrincipalOverride> principalOverrides,
+
             string? quantityThreshold,
 
             string? quantityType,
+
+            string? scopeType,
 
             string? timePeriod,
 
@@ -51,8 +57,10 @@ namespace Pulumi.Databricks.Outputs
         {
             ActionConfigurations = actionConfigurations;
             AlertConfigurationId = alertConfigurationId;
+            PrincipalOverrides = principalOverrides;
             QuantityThreshold = quantityThreshold;
             QuantityType = quantityType;
+            ScopeType = scopeType;
             TimePeriod = timePeriod;
             TriggerType = triggerType;
         }

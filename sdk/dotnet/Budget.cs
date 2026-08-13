@@ -187,6 +187,9 @@ namespace Pulumi.Databricks
         [Output("filter")]
         public Output<Outputs.BudgetFilter?> Filter { get; private set; } = null!;
 
+        [Output("resourceType")]
+        public Output<string> ResourceType { get; private set; } = null!;
+
         [Output("updateTime")]
         public Output<int> UpdateTime { get; private set; } = null!;
 
@@ -268,6 +271,9 @@ namespace Pulumi.Databricks
         [Input("filter")]
         public Input<Inputs.BudgetFilterArgs>? Filter { get; set; }
 
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
         [Input("updateTime")]
         public Input<int>? UpdateTime { get; set; }
 
@@ -310,6 +316,9 @@ namespace Pulumi.Databricks
 
         [Input("filter")]
         public Input<Inputs.BudgetFilterGetArgs>? Filter { get; set; }
+
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
 
         [Input("updateTime")]
         public Input<int>? UpdateTime { get; set; }

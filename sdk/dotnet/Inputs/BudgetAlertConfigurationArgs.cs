@@ -27,6 +27,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("alertConfigurationId")]
         public Input<string>? AlertConfigurationId { get; set; }
 
+        [Input("principalOverrides")]
+        private InputList<Inputs.BudgetAlertConfigurationPrincipalOverrideArgs>? _principalOverrides;
+        public InputList<Inputs.BudgetAlertConfigurationPrincipalOverrideArgs> PrincipalOverrides
+        {
+            get => _principalOverrides ?? (_principalOverrides = new InputList<Inputs.BudgetAlertConfigurationPrincipalOverrideArgs>());
+            set => _principalOverrides = value;
+        }
+
         /// <summary>
         /// The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `QuantityType`.
         /// </summary>
@@ -38,6 +46,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("quantityType")]
         public Input<string>? QuantityType { get; set; }
+
+        [Input("scopeType")]
+        public Input<string>? ScopeType { get; set; }
 
         /// <summary>
         /// The time window of usage data for the budget. (Enum: `MONTH`)
