@@ -1035,6 +1035,9 @@
                             "fields": {
                                 "action_configurations": {
                                     "maxItemsOne": false
+                                },
+                                "principal_overrides": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -5348,6 +5351,13 @@
                     },
                     "except_principals": {
                         "maxItemsOne": false
+                    },
+                    "grant": {
+                        "fields": {
+                            "privileges": {
+                                "maxItemsOne": false
+                            }
+                        }
                     },
                     "match_columns": {
                         "maxItemsOne": false
@@ -10886,6 +10896,13 @@
                     "except_principals": {
                         "maxItemsOne": false
                     },
+                    "grant": {
+                        "fields": {
+                            "privileges": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "match_columns": {
                         "maxItemsOne": false
                     },
@@ -10918,6 +10935,13 @@
                                 },
                                 "except_principals": {
                                     "maxItemsOne": false
+                                },
+                                "grant": {
+                                    "fields": {
+                                        "privileges": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 },
                                 "match_columns": {
                                     "maxItemsOne": false
@@ -12299,6 +12323,9 @@
                 "ingress_dry_run.private_access.deny_rules.$.authentication.identities.$.principal_id",
                 "ingress_dry_run.public_access.allow_rules.$.authentication.identities.$.principal_id",
                 "ingress_dry_run.public_access.deny_rules.$.authentication.identities.$.principal_id"
+            ],
+            "databricks_budget": [
+                "alert_configurations.$.principal_overrides.$.principal_id"
             ],
             "databricks_git_credential": [
                 "principal_id"
