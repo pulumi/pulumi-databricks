@@ -309,6 +309,57 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Model service grants
+ *
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `modelService` attribute.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const modelService = new databricks.Grants("model_service", {
+ *     modelService: "main.default.my_model_service",
+ *     grants: [{
+ *         principal: "account users",
+ *         privileges: ["EXECUTE"],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Model provider service grants
+ *
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model provider service (databricks_ai_gateway_model_provider_service) specified in the `modelProviderService` attribute.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const modelProviderService = new databricks.Grants("model_provider_service", {
+ *     modelProviderService: "main.default.my_provider",
+ *     grants: [{
+ *         principal: "account users",
+ *         privileges: ["EXECUTE"],
+ *     }],
+ * });
+ * ```
+ *
+ * ## MCP service grants
+ *
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway MCP service (databricks_ai_gateway_mcp_service) specified in the `mcpService` attribute.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const mcpService = new databricks.Grants("mcp_service", {
+ *     mcpService: "main.default.my_mcp_service",
+ *     grants: [{
+ *         principal: "account users",
+ *         privileges: ["EXECUTE"],
+ *     }],
+ * });
+ * ```
+ *
  * ## Service credential grants
  *
  * You can grant `ALL_PRIVILEGES`, `ACCESS`, `CREATE_CONNECTION`, and `MANAGE` privileges to databricks.Credential id specified in `credential` attribute:
@@ -498,8 +549,11 @@ export class Grants extends pulumi.CustomResource {
     declare public readonly foreignConnection: pulumi.Output<string | undefined>;
     declare public readonly function: pulumi.Output<string | undefined>;
     declare public readonly grants: pulumi.Output<outputs.GrantsGrant[]>;
+    declare public readonly mcpService: pulumi.Output<string | undefined>;
     declare public readonly metastore: pulumi.Output<string | undefined>;
     declare public readonly model: pulumi.Output<string | undefined>;
+    declare public readonly modelProviderService: pulumi.Output<string | undefined>;
+    declare public readonly modelService: pulumi.Output<string | undefined>;
     declare public readonly pipeline: pulumi.Output<string | undefined>;
     declare public readonly providerConfig: pulumi.Output<outputs.GrantsProviderConfig>;
     declare public readonly recipient: pulumi.Output<string | undefined>;
@@ -528,8 +582,11 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["foreignConnection"] = state?.foreignConnection;
             resourceInputs["function"] = state?.function;
             resourceInputs["grants"] = state?.grants;
+            resourceInputs["mcpService"] = state?.mcpService;
             resourceInputs["metastore"] = state?.metastore;
             resourceInputs["model"] = state?.model;
+            resourceInputs["modelProviderService"] = state?.modelProviderService;
+            resourceInputs["modelService"] = state?.modelService;
             resourceInputs["pipeline"] = state?.pipeline;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["recipient"] = state?.recipient;
@@ -549,8 +606,11 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["foreignConnection"] = args?.foreignConnection;
             resourceInputs["function"] = args?.function;
             resourceInputs["grants"] = args?.grants;
+            resourceInputs["mcpService"] = args?.mcpService;
             resourceInputs["metastore"] = args?.metastore;
             resourceInputs["model"] = args?.model;
+            resourceInputs["modelProviderService"] = args?.modelProviderService;
+            resourceInputs["modelService"] = args?.modelService;
             resourceInputs["pipeline"] = args?.pipeline;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["recipient"] = args?.recipient;
@@ -575,8 +635,11 @@ export interface GrantsState {
     foreignConnection?: pulumi.Input<string | undefined>;
     function?: pulumi.Input<string | undefined>;
     grants?: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[] | undefined>;
+    mcpService?: pulumi.Input<string | undefined>;
     metastore?: pulumi.Input<string | undefined>;
     model?: pulumi.Input<string | undefined>;
+    modelProviderService?: pulumi.Input<string | undefined>;
+    modelService?: pulumi.Input<string | undefined>;
     pipeline?: pulumi.Input<string | undefined>;
     providerConfig?: pulumi.Input<inputs.GrantsProviderConfig | undefined>;
     recipient?: pulumi.Input<string | undefined>;
@@ -597,8 +660,11 @@ export interface GrantsArgs {
     foreignConnection?: pulumi.Input<string | undefined>;
     function?: pulumi.Input<string | undefined>;
     grants: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
+    mcpService?: pulumi.Input<string | undefined>;
     metastore?: pulumi.Input<string | undefined>;
     model?: pulumi.Input<string | undefined>;
+    modelProviderService?: pulumi.Input<string | undefined>;
+    modelService?: pulumi.Input<string | undefined>;
     pipeline?: pulumi.Input<string | undefined>;
     providerConfig?: pulumi.Input<inputs.GrantsProviderConfig | undefined>;
     recipient?: pulumi.Input<string | undefined>;

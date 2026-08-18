@@ -40,6 +40,7 @@ namespace Pulumi.Databricks.Inputs
         /// * `roles/servicePrincipal.user` - User of a service principal.
         /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
         /// * `roles/group.manager` - Manager of a group.
+        /// * `roles/group.assumer` - Assumer of a group, i.e. can assume the group as a role.
         /// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         /// * `roles/budgetPolicy.manager` - Manager of a budget policy.
         /// * `roles/budgetPolicy.user` - User of a budget policy.

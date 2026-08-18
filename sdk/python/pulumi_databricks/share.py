@@ -668,7 +668,7 @@ class Share(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def comment(self) -> pulumi.Output[_builtins.str]:
         """
         User-supplied free-form text.
         """

@@ -556,6 +556,126 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Model service grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `modelService` attribute.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var modelService = new Grants("modelService", GrantsArgs.builder()
+ *             .modelService("main.default.my_model_service")
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("account users")
+ *                 .privileges("EXECUTE")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Model provider service grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model provider service (databricks_ai_gateway_model_provider_service) specified in the `modelProviderService` attribute.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var modelProviderService = new Grants("modelProviderService", GrantsArgs.builder()
+ *             .modelProviderService("main.default.my_provider")
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("account users")
+ *                 .privileges("EXECUTE")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## MCP service grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway MCP service (databricks_ai_gateway_mcp_service) specified in the `mcpService` attribute.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mcpService = new Grants("mcpService", GrantsArgs.builder()
+ *             .mcpService("main.default.my_mcp_service")
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("account users")
+ *                 .privileges("EXECUTE")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Service credential grants
  * 
  * You can grant `ALL_PRIVILEGES`, `ACCESS`, `CREATE_CONNECTION`, and `MANAGE` privileges to databricks.Credential id specified in `credential` attribute:
@@ -881,6 +1001,12 @@ public class Grants extends com.pulumi.resources.CustomResource {
     public Output<List<GrantsGrant>> grants() {
         return this.grants;
     }
+    @Export(name="mcpService", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> mcpService;
+
+    public Output<Optional<String>> mcpService() {
+        return Codegen.optional(this.mcpService);
+    }
     @Export(name="metastore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metastore;
 
@@ -892,6 +1018,18 @@ public class Grants extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> model() {
         return Codegen.optional(this.model);
+    }
+    @Export(name="modelProviderService", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> modelProviderService;
+
+    public Output<Optional<String>> modelProviderService() {
+        return Codegen.optional(this.modelProviderService);
+    }
+    @Export(name="modelService", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> modelService;
+
+    public Output<Optional<String>> modelService() {
+        return Codegen.optional(this.modelService);
     }
     @Export(name="pipeline", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pipeline;

@@ -532,6 +532,117 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Model service grants
+ * 
+ * See databricks.Grants Model service grants for the list of privileges that apply to model services.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grant;
+ * import com.pulumi.databricks.GrantArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var modelService = new Grant("modelService", GrantArgs.builder()
+ *             .modelService("main.default.my_model_service")
+ *             .principal("account users")
+ *             .privileges("EXECUTE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Model provider service grants
+ * 
+ * See databricks.Grants Model provider service grants for the list of privileges that apply to model provider services.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grant;
+ * import com.pulumi.databricks.GrantArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var modelProviderService = new Grant("modelProviderService", GrantArgs.builder()
+ *             .modelProviderService("main.default.my_provider")
+ *             .principal("account users")
+ *             .privileges("EXECUTE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## MCP service grants
+ * 
+ * See databricks.Grants MCP service grants for the list of privileges that apply to MCP services.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grant;
+ * import com.pulumi.databricks.GrantArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mcpService = new Grant("mcpService", GrantArgs.builder()
+ *             .mcpService("main.default.my_mcp_service")
+ *             .principal("account users")
+ *             .privileges("EXECUTE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Service credential grants
  * 
  * See databricks.Grants Service credential grants for the list of privileges that apply to Service credentials.
@@ -841,6 +952,12 @@ public class Grant extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> function() {
         return Codegen.optional(this.function);
     }
+    @Export(name="mcpService", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> mcpService;
+
+    public Output<Optional<String>> mcpService() {
+        return Codegen.optional(this.mcpService);
+    }
     @Export(name="metastore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metastore;
 
@@ -852,6 +969,18 @@ public class Grant extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> model() {
         return Codegen.optional(this.model);
+    }
+    @Export(name="modelProviderService", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> modelProviderService;
+
+    public Output<Optional<String>> modelProviderService() {
+        return Codegen.optional(this.modelProviderService);
+    }
+    @Export(name="modelService", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> modelService;
+
+    public Output<Optional<String>> modelService() {
+        return Codegen.optional(this.modelService);
     }
     @Export(name="pipeline", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pipeline;

@@ -308,12 +308,19 @@ class AccessControlRuleSet(pulumi.CustomResource):
         # account level group
         ds = databricks.get_group(display_name="Data Science")
         john = databricks.get_user(user_name="john.doe@example.com")
+        jane = databricks.get_user(user_name="jane.doe@example.com")
         ds_group_rule_set = databricks.AccessControlRuleSet("ds_group_rule_set",
-            name=f"accounts/{account_id}/groups/{ds_databricks_group['id']}/ruleSets/default",
-            grant_rules=[{
-                "principals": [john.acl_principal_id],
-                "role": "roles/group.manager",
-            }])
+            name=f"accounts/{account_id}/groups/{ds.id}/ruleSets/default",
+            grant_rules=[
+                {
+                    "principals": [john.acl_principal_id],
+                    "role": "roles/group.manager",
+                },
+                {
+                    "principals": [jane.acl_principal_id],
+                    "role": "roles/group.assumer",
+                },
+            ])
         ```
 
         ## Account rule set usage
@@ -546,12 +553,19 @@ class AccessControlRuleSet(pulumi.CustomResource):
         # account level group
         ds = databricks.get_group(display_name="Data Science")
         john = databricks.get_user(user_name="john.doe@example.com")
+        jane = databricks.get_user(user_name="jane.doe@example.com")
         ds_group_rule_set = databricks.AccessControlRuleSet("ds_group_rule_set",
-            name=f"accounts/{account_id}/groups/{ds_databricks_group['id']}/ruleSets/default",
-            grant_rules=[{
-                "principals": [john.acl_principal_id],
-                "role": "roles/group.manager",
-            }])
+            name=f"accounts/{account_id}/groups/{ds.id}/ruleSets/default",
+            grant_rules=[
+                {
+                    "principals": [john.acl_principal_id],
+                    "role": "roles/group.manager",
+                },
+                {
+                    "principals": [jane.acl_principal_id],
+                    "role": "roles/group.assumer",
+                },
+            ])
         ```
 
         ## Account rule set usage

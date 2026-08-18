@@ -487,6 +487,102 @@ import (
 //
 // ```
 //
+// ## Model service grants
+//
+// See Grants Model service grants for the list of privileges that apply to model services.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrant(ctx, "model_service", &databricks.GrantArgs{
+//				ModelService: pulumi.String("main.default.my_model_service"),
+//				Principal:    pulumi.String("account users"),
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("EXECUTE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Model provider service grants
+//
+// See Grants Model provider service grants for the list of privileges that apply to model provider services.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrant(ctx, "model_provider_service", &databricks.GrantArgs{
+//				ModelProviderService: pulumi.String("main.default.my_provider"),
+//				Principal:            pulumi.String("account users"),
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("EXECUTE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## MCP service grants
+//
+// See Grants MCP service grants for the list of privileges that apply to MCP services.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrant(ctx, "mcp_service", &databricks.GrantArgs{
+//				McpService: pulumi.String("main.default.my_mcp_service"),
+//				Principal:  pulumi.String("account users"),
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("EXECUTE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Service credential grants
 //
 // See Grants Service credential grants for the list of privileges that apply to Service credentials.
@@ -747,23 +843,26 @@ import (
 type Grant struct {
 	pulumi.CustomResourceState
 
-	Catalog           pulumi.StringPtrOutput    `pulumi:"catalog"`
-	Credential        pulumi.StringPtrOutput    `pulumi:"credential"`
-	ExternalLocation  pulumi.StringPtrOutput    `pulumi:"externalLocation"`
-	ForeignConnection pulumi.StringPtrOutput    `pulumi:"foreignConnection"`
-	Function          pulumi.StringPtrOutput    `pulumi:"function"`
-	Metastore         pulumi.StringPtrOutput    `pulumi:"metastore"`
-	Model             pulumi.StringPtrOutput    `pulumi:"model"`
-	Pipeline          pulumi.StringPtrOutput    `pulumi:"pipeline"`
-	Principal         pulumi.StringOutput       `pulumi:"principal"`
-	Privileges        pulumi.StringArrayOutput  `pulumi:"privileges"`
-	ProviderConfig    GrantProviderConfigOutput `pulumi:"providerConfig"`
-	Recipient         pulumi.StringPtrOutput    `pulumi:"recipient"`
-	Schema            pulumi.StringPtrOutput    `pulumi:"schema"`
-	Share             pulumi.StringPtrOutput    `pulumi:"share"`
-	StorageCredential pulumi.StringPtrOutput    `pulumi:"storageCredential"`
-	Table             pulumi.StringPtrOutput    `pulumi:"table"`
-	Volume            pulumi.StringPtrOutput    `pulumi:"volume"`
+	Catalog              pulumi.StringPtrOutput    `pulumi:"catalog"`
+	Credential           pulumi.StringPtrOutput    `pulumi:"credential"`
+	ExternalLocation     pulumi.StringPtrOutput    `pulumi:"externalLocation"`
+	ForeignConnection    pulumi.StringPtrOutput    `pulumi:"foreignConnection"`
+	Function             pulumi.StringPtrOutput    `pulumi:"function"`
+	McpService           pulumi.StringPtrOutput    `pulumi:"mcpService"`
+	Metastore            pulumi.StringPtrOutput    `pulumi:"metastore"`
+	Model                pulumi.StringPtrOutput    `pulumi:"model"`
+	ModelProviderService pulumi.StringPtrOutput    `pulumi:"modelProviderService"`
+	ModelService         pulumi.StringPtrOutput    `pulumi:"modelService"`
+	Pipeline             pulumi.StringPtrOutput    `pulumi:"pipeline"`
+	Principal            pulumi.StringOutput       `pulumi:"principal"`
+	Privileges           pulumi.StringArrayOutput  `pulumi:"privileges"`
+	ProviderConfig       GrantProviderConfigOutput `pulumi:"providerConfig"`
+	Recipient            pulumi.StringPtrOutput    `pulumi:"recipient"`
+	Schema               pulumi.StringPtrOutput    `pulumi:"schema"`
+	Share                pulumi.StringPtrOutput    `pulumi:"share"`
+	StorageCredential    pulumi.StringPtrOutput    `pulumi:"storageCredential"`
+	Table                pulumi.StringPtrOutput    `pulumi:"table"`
+	Volume               pulumi.StringPtrOutput    `pulumi:"volume"`
 }
 
 // NewGrant registers a new resource with the given unique name, arguments, and options.
@@ -802,43 +901,49 @@ func GetGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Grant resources.
 type grantState struct {
-	Catalog           *string              `pulumi:"catalog"`
-	Credential        *string              `pulumi:"credential"`
-	ExternalLocation  *string              `pulumi:"externalLocation"`
-	ForeignConnection *string              `pulumi:"foreignConnection"`
-	Function          *string              `pulumi:"function"`
-	Metastore         *string              `pulumi:"metastore"`
-	Model             *string              `pulumi:"model"`
-	Pipeline          *string              `pulumi:"pipeline"`
-	Principal         *string              `pulumi:"principal"`
-	Privileges        []string             `pulumi:"privileges"`
-	ProviderConfig    *GrantProviderConfig `pulumi:"providerConfig"`
-	Recipient         *string              `pulumi:"recipient"`
-	Schema            *string              `pulumi:"schema"`
-	Share             *string              `pulumi:"share"`
-	StorageCredential *string              `pulumi:"storageCredential"`
-	Table             *string              `pulumi:"table"`
-	Volume            *string              `pulumi:"volume"`
+	Catalog              *string              `pulumi:"catalog"`
+	Credential           *string              `pulumi:"credential"`
+	ExternalLocation     *string              `pulumi:"externalLocation"`
+	ForeignConnection    *string              `pulumi:"foreignConnection"`
+	Function             *string              `pulumi:"function"`
+	McpService           *string              `pulumi:"mcpService"`
+	Metastore            *string              `pulumi:"metastore"`
+	Model                *string              `pulumi:"model"`
+	ModelProviderService *string              `pulumi:"modelProviderService"`
+	ModelService         *string              `pulumi:"modelService"`
+	Pipeline             *string              `pulumi:"pipeline"`
+	Principal            *string              `pulumi:"principal"`
+	Privileges           []string             `pulumi:"privileges"`
+	ProviderConfig       *GrantProviderConfig `pulumi:"providerConfig"`
+	Recipient            *string              `pulumi:"recipient"`
+	Schema               *string              `pulumi:"schema"`
+	Share                *string              `pulumi:"share"`
+	StorageCredential    *string              `pulumi:"storageCredential"`
+	Table                *string              `pulumi:"table"`
+	Volume               *string              `pulumi:"volume"`
 }
 
 type GrantState struct {
-	Catalog           pulumi.StringPtrInput
-	Credential        pulumi.StringPtrInput
-	ExternalLocation  pulumi.StringPtrInput
-	ForeignConnection pulumi.StringPtrInput
-	Function          pulumi.StringPtrInput
-	Metastore         pulumi.StringPtrInput
-	Model             pulumi.StringPtrInput
-	Pipeline          pulumi.StringPtrInput
-	Principal         pulumi.StringPtrInput
-	Privileges        pulumi.StringArrayInput
-	ProviderConfig    GrantProviderConfigPtrInput
-	Recipient         pulumi.StringPtrInput
-	Schema            pulumi.StringPtrInput
-	Share             pulumi.StringPtrInput
-	StorageCredential pulumi.StringPtrInput
-	Table             pulumi.StringPtrInput
-	Volume            pulumi.StringPtrInput
+	Catalog              pulumi.StringPtrInput
+	Credential           pulumi.StringPtrInput
+	ExternalLocation     pulumi.StringPtrInput
+	ForeignConnection    pulumi.StringPtrInput
+	Function             pulumi.StringPtrInput
+	McpService           pulumi.StringPtrInput
+	Metastore            pulumi.StringPtrInput
+	Model                pulumi.StringPtrInput
+	ModelProviderService pulumi.StringPtrInput
+	ModelService         pulumi.StringPtrInput
+	Pipeline             pulumi.StringPtrInput
+	Principal            pulumi.StringPtrInput
+	Privileges           pulumi.StringArrayInput
+	ProviderConfig       GrantProviderConfigPtrInput
+	Recipient            pulumi.StringPtrInput
+	Schema               pulumi.StringPtrInput
+	Share                pulumi.StringPtrInput
+	StorageCredential    pulumi.StringPtrInput
+	Table                pulumi.StringPtrInput
+	Volume               pulumi.StringPtrInput
 }
 
 func (GrantState) ElementType() reflect.Type {
@@ -846,44 +951,50 @@ func (GrantState) ElementType() reflect.Type {
 }
 
 type grantArgs struct {
-	Catalog           *string              `pulumi:"catalog"`
-	Credential        *string              `pulumi:"credential"`
-	ExternalLocation  *string              `pulumi:"externalLocation"`
-	ForeignConnection *string              `pulumi:"foreignConnection"`
-	Function          *string              `pulumi:"function"`
-	Metastore         *string              `pulumi:"metastore"`
-	Model             *string              `pulumi:"model"`
-	Pipeline          *string              `pulumi:"pipeline"`
-	Principal         string               `pulumi:"principal"`
-	Privileges        []string             `pulumi:"privileges"`
-	ProviderConfig    *GrantProviderConfig `pulumi:"providerConfig"`
-	Recipient         *string              `pulumi:"recipient"`
-	Schema            *string              `pulumi:"schema"`
-	Share             *string              `pulumi:"share"`
-	StorageCredential *string              `pulumi:"storageCredential"`
-	Table             *string              `pulumi:"table"`
-	Volume            *string              `pulumi:"volume"`
+	Catalog              *string              `pulumi:"catalog"`
+	Credential           *string              `pulumi:"credential"`
+	ExternalLocation     *string              `pulumi:"externalLocation"`
+	ForeignConnection    *string              `pulumi:"foreignConnection"`
+	Function             *string              `pulumi:"function"`
+	McpService           *string              `pulumi:"mcpService"`
+	Metastore            *string              `pulumi:"metastore"`
+	Model                *string              `pulumi:"model"`
+	ModelProviderService *string              `pulumi:"modelProviderService"`
+	ModelService         *string              `pulumi:"modelService"`
+	Pipeline             *string              `pulumi:"pipeline"`
+	Principal            string               `pulumi:"principal"`
+	Privileges           []string             `pulumi:"privileges"`
+	ProviderConfig       *GrantProviderConfig `pulumi:"providerConfig"`
+	Recipient            *string              `pulumi:"recipient"`
+	Schema               *string              `pulumi:"schema"`
+	Share                *string              `pulumi:"share"`
+	StorageCredential    *string              `pulumi:"storageCredential"`
+	Table                *string              `pulumi:"table"`
+	Volume               *string              `pulumi:"volume"`
 }
 
 // The set of arguments for constructing a Grant resource.
 type GrantArgs struct {
-	Catalog           pulumi.StringPtrInput
-	Credential        pulumi.StringPtrInput
-	ExternalLocation  pulumi.StringPtrInput
-	ForeignConnection pulumi.StringPtrInput
-	Function          pulumi.StringPtrInput
-	Metastore         pulumi.StringPtrInput
-	Model             pulumi.StringPtrInput
-	Pipeline          pulumi.StringPtrInput
-	Principal         pulumi.StringInput
-	Privileges        pulumi.StringArrayInput
-	ProviderConfig    GrantProviderConfigPtrInput
-	Recipient         pulumi.StringPtrInput
-	Schema            pulumi.StringPtrInput
-	Share             pulumi.StringPtrInput
-	StorageCredential pulumi.StringPtrInput
-	Table             pulumi.StringPtrInput
-	Volume            pulumi.StringPtrInput
+	Catalog              pulumi.StringPtrInput
+	Credential           pulumi.StringPtrInput
+	ExternalLocation     pulumi.StringPtrInput
+	ForeignConnection    pulumi.StringPtrInput
+	Function             pulumi.StringPtrInput
+	McpService           pulumi.StringPtrInput
+	Metastore            pulumi.StringPtrInput
+	Model                pulumi.StringPtrInput
+	ModelProviderService pulumi.StringPtrInput
+	ModelService         pulumi.StringPtrInput
+	Pipeline             pulumi.StringPtrInput
+	Principal            pulumi.StringInput
+	Privileges           pulumi.StringArrayInput
+	ProviderConfig       GrantProviderConfigPtrInput
+	Recipient            pulumi.StringPtrInput
+	Schema               pulumi.StringPtrInput
+	Share                pulumi.StringPtrInput
+	StorageCredential    pulumi.StringPtrInput
+	Table                pulumi.StringPtrInput
+	Volume               pulumi.StringPtrInput
 }
 
 func (GrantArgs) ElementType() reflect.Type {
@@ -993,12 +1104,24 @@ func (o GrantOutput) Function() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.Function }).(pulumi.StringPtrOutput)
 }
 
+func (o GrantOutput) McpService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.McpService }).(pulumi.StringPtrOutput)
+}
+
 func (o GrantOutput) Metastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.Metastore }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantOutput) ModelProviderService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.ModelProviderService }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantOutput) ModelService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.ModelService }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantOutput) Pipeline() pulumi.StringPtrOutput {

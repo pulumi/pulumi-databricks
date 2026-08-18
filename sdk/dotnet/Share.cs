@@ -196,7 +196,7 @@ namespace Pulumi.Databricks
         /// User-supplied free-form text.
         /// </summary>
         [Output("comment")]
-        public Output<string?> Comment { get; private set; } = null!;
+        public Output<string> Comment { get; private set; } = null!;
 
         /// <summary>
         /// Time when the share was created.

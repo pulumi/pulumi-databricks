@@ -118,12 +118,21 @@ import * as utilities from "./utilities";
  * const john = databricks.getUser({
  *     userName: "john.doe@example.com",
  * });
+ * const jane = databricks.getUser({
+ *     userName: "jane.doe@example.com",
+ * });
  * const dsGroupRuleSet = new databricks.AccessControlRuleSet("ds_group_rule_set", {
- *     name: `accounts/${accountId}/groups/${dsDatabricksGroup.id}/ruleSets/default`,
- *     grantRules: [{
- *         principals: [john.then(john => john.aclPrincipalId)],
- *         role: "roles/group.manager",
- *     }],
+ *     name: ds.then(ds => `accounts/${accountId}/groups/${ds.id}/ruleSets/default`),
+ *     grantRules: [
+ *         {
+ *             principals: [john.then(john => john.aclPrincipalId)],
+ *             role: "roles/group.manager",
+ *         },
+ *         {
+ *             principals: [jane.then(jane => jane.aclPrincipalId)],
+ *             role: "roles/group.assumer",
+ *         },
+ *     ],
  * });
  * ```
  *

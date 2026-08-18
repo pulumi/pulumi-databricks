@@ -456,6 +456,99 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Model service grants
+    /// 
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `ModelService` attribute.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var modelService = new Databricks.Grants("model_service", new()
+    ///     {
+    ///         ModelService = "main.default.my_model_service",
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "account users",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "EXECUTE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Model provider service grants
+    /// 
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model provider service (databricks_ai_gateway_model_provider_service) specified in the `ModelProviderService` attribute.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var modelProviderService = new Databricks.Grants("model_provider_service", new()
+    ///     {
+    ///         ModelProviderService = "main.default.my_provider",
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "account users",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "EXECUTE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## MCP service grants
+    /// 
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway MCP service (databricks_ai_gateway_mcp_service) specified in the `McpService` attribute.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mcpService = new Databricks.Grants("mcp_service", new()
+    ///     {
+    ///         McpService = "main.default.my_mcp_service",
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "account users",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "EXECUTE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Service credential grants
     /// 
     /// You can grant `ALL_PRIVILEGES`, `ACCESS`, `CREATE_CONNECTION`, and `MANAGE` privileges to databricks.Credential id specified in `Credential` attribute:
@@ -722,11 +815,20 @@ namespace Pulumi.Databricks
         [Output("grants")]
         public Output<ImmutableArray<Outputs.GrantsGrant>> GrantDetails { get; private set; } = null!;
 
+        [Output("mcpService")]
+        public Output<string?> McpService { get; private set; } = null!;
+
         [Output("metastore")]
         public Output<string?> Metastore { get; private set; } = null!;
 
         [Output("model")]
         public Output<string?> Model { get; private set; } = null!;
+
+        [Output("modelProviderService")]
+        public Output<string?> ModelProviderService { get; private set; } = null!;
+
+        [Output("modelService")]
+        public Output<string?> ModelService { get; private set; } = null!;
 
         [Output("pipeline")]
         public Output<string?> Pipeline { get; private set; } = null!;
@@ -821,11 +923,20 @@ namespace Pulumi.Databricks
             set => _grants = value;
         }
 
+        [Input("mcpService")]
+        public Input<string>? McpService { get; set; }
+
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
         [Input("model")]
         public Input<string>? Model { get; set; }
+
+        [Input("modelProviderService")]
+        public Input<string>? ModelProviderService { get; set; }
+
+        [Input("modelService")]
+        public Input<string>? ModelService { get; set; }
 
         [Input("pipeline")]
         public Input<string>? Pipeline { get; set; }
@@ -882,11 +993,20 @@ namespace Pulumi.Databricks
             set => _grants = value;
         }
 
+        [Input("mcpService")]
+        public Input<string>? McpService { get; set; }
+
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
         [Input("model")]
         public Input<string>? Model { get; set; }
+
+        [Input("modelProviderService")]
+        public Input<string>? ModelProviderService { get; set; }
+
+        [Input("modelService")]
+        public Input<string>? ModelService { get; set; }
 
         [Input("pipeline")]
         public Input<string>? Pipeline { get; set; }
