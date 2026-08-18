@@ -286,12 +286,21 @@ import javax.annotation.Nullable;
  *             .userName("john.doe}{@literal @}{@code example.com")
  *             .build());
  * 
+ *         final var jane = DatabricksFunctions.getUser(GetUserArgs.builder()
+ *             .userName("jane.doe}{@literal @}{@code example.com")
+ *             .build());
+ * 
  *         var dsGroupRuleSet = new AccessControlRuleSet("dsGroupRuleSet", AccessControlRuleSetArgs.builder()
- *             .name(String.format("accounts/%s/groups/%s/ruleSets/default", accountId,dsDatabricksGroup.id()))
- *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
- *                 .principals(john.aclPrincipalId())
- *                 .role("roles/group.manager")
- *                 .build())
+ *             .name(String.format("accounts/%s/groups/%s/ruleSets/default", accountId,ds.id()))
+ *             .grantRules(            
+ *                 AccessControlRuleSetGrantRuleArgs.builder()
+ *                     .principals(john.aclPrincipalId())
+ *                     .role("roles/group.manager")
+ *                     .build(),
+ *                 AccessControlRuleSetGrantRuleArgs.builder()
+ *                     .principals(jane.aclPrincipalId())
+ *                     .role("roles/group.assumer")
+ *                     .build())
  *             .build());
  * 
  *     }}{@code

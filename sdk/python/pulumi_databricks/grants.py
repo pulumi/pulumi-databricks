@@ -27,8 +27,11 @@ class GrantsArgs:
                  external_location: pulumi.Input[Optional[_builtins.str]] = None,
                  foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
                  function: pulumi.Input[Optional[_builtins.str]] = None,
+                 mcp_service: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore: pulumi.Input[Optional[_builtins.str]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_provider_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_service: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['GrantsProviderConfigArgs']] = None,
                  recipient: pulumi.Input[Optional[_builtins.str]] = None,
@@ -51,10 +54,16 @@ class GrantsArgs:
             pulumi.set(__self__, "foreign_connection", foreign_connection)
         if function is not None:
             pulumi.set(__self__, "function", function)
+        if mcp_service is not None:
+            pulumi.set(__self__, "mcp_service", mcp_service)
         if metastore is not None:
             pulumi.set(__self__, "metastore", metastore)
         if model is not None:
             pulumi.set(__self__, "model", model)
+        if model_provider_service is not None:
+            pulumi.set(__self__, "model_provider_service", model_provider_service)
+        if model_service is not None:
+            pulumi.set(__self__, "model_service", model_service)
         if pipeline is not None:
             pulumi.set(__self__, "pipeline", pipeline)
         if provider_config is not None:
@@ -127,6 +136,15 @@ class GrantsArgs:
         pulumi.set(self, "function", value)
 
     @_builtins.property
+    @pulumi.getter(name="mcpService")
+    def mcp_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "mcp_service")
+
+    @mcp_service.setter
+    def mcp_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mcp_service", value)
+
+    @_builtins.property
     @pulumi.getter
     def metastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "metastore")
@@ -143,6 +161,24 @@ class GrantsArgs:
     @model.setter
     def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelProviderService")
+    def model_provider_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "model_provider_service")
+
+    @model_provider_service.setter
+    def model_provider_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model_provider_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelService")
+    def model_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "model_service")
+
+    @model_service.setter
+    def model_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model_service", value)
 
     @_builtins.property
     @pulumi.getter
@@ -226,8 +262,11 @@ class _GrantsState:
                  foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
                  function: pulumi.Input[Optional[_builtins.str]] = None,
                  grants: pulumi.Input[Optional[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
+                 mcp_service: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore: pulumi.Input[Optional[_builtins.str]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_provider_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_service: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['GrantsProviderConfigArgs']] = None,
                  recipient: pulumi.Input[Optional[_builtins.str]] = None,
@@ -251,10 +290,16 @@ class _GrantsState:
             pulumi.set(__self__, "function", function)
         if grants is not None:
             pulumi.set(__self__, "grants", grants)
+        if mcp_service is not None:
+            pulumi.set(__self__, "mcp_service", mcp_service)
         if metastore is not None:
             pulumi.set(__self__, "metastore", metastore)
         if model is not None:
             pulumi.set(__self__, "model", model)
+        if model_provider_service is not None:
+            pulumi.set(__self__, "model_provider_service", model_provider_service)
+        if model_service is not None:
+            pulumi.set(__self__, "model_service", model_service)
         if pipeline is not None:
             pulumi.set(__self__, "pipeline", pipeline)
         if provider_config is not None:
@@ -327,6 +372,15 @@ class _GrantsState:
         pulumi.set(self, "grants", value)
 
     @_builtins.property
+    @pulumi.getter(name="mcpService")
+    def mcp_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "mcp_service")
+
+    @mcp_service.setter
+    def mcp_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mcp_service", value)
+
+    @_builtins.property
     @pulumi.getter
     def metastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "metastore")
@@ -343,6 +397,24 @@ class _GrantsState:
     @model.setter
     def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelProviderService")
+    def model_provider_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "model_provider_service")
+
+    @model_provider_service.setter
+    def model_provider_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model_provider_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelService")
+    def model_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "model_service")
+
+    @model_service.setter
+    def model_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model_service", value)
 
     @_builtins.property
     @pulumi.getter
@@ -429,8 +501,11 @@ class Grants(pulumi.CustomResource):
                  foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
                  function: pulumi.Input[Optional[_builtins.str]] = None,
                  grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
+                 mcp_service: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore: pulumi.Input[Optional[_builtins.str]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_provider_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_service: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
                  recipient: pulumi.Input[Optional[_builtins.str]] = None,
@@ -720,6 +795,54 @@ class Grants(pulumi.CustomResource):
                     "privileges": ["EXECUTE"],
                 },
             ])
+        ```
+
+        ## Model service grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `model_service` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        model_service = databricks.Grants("model_service",
+            model_service="main.default.my_model_service",
+            grants=[{
+                "principal": "account users",
+                "privileges": ["EXECUTE"],
+            }])
+        ```
+
+        ## Model provider service grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model provider service (databricks_ai_gateway_model_provider_service) specified in the `model_provider_service` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        model_provider_service = databricks.Grants("model_provider_service",
+            model_provider_service="main.default.my_provider",
+            grants=[{
+                "principal": "account users",
+                "privileges": ["EXECUTE"],
+            }])
+        ```
+
+        ## MCP service grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway MCP service (databricks_ai_gateway_mcp_service) specified in the `mcp_service` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        mcp_service = databricks.Grants("mcp_service",
+            mcp_service="main.default.my_mcp_service",
+            grants=[{
+                "principal": "account users",
+                "privileges": ["EXECUTE"],
+            }])
         ```
 
         ## Service credential grants
@@ -1160,6 +1283,54 @@ class Grants(pulumi.CustomResource):
             ])
         ```
 
+        ## Model service grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `model_service` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        model_service = databricks.Grants("model_service",
+            model_service="main.default.my_model_service",
+            grants=[{
+                "principal": "account users",
+                "privileges": ["EXECUTE"],
+            }])
+        ```
+
+        ## Model provider service grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model provider service (databricks_ai_gateway_model_provider_service) specified in the `model_provider_service` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        model_provider_service = databricks.Grants("model_provider_service",
+            model_provider_service="main.default.my_provider",
+            grants=[{
+                "principal": "account users",
+                "privileges": ["EXECUTE"],
+            }])
+        ```
+
+        ## MCP service grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway MCP service (databricks_ai_gateway_mcp_service) specified in the `mcp_service` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        mcp_service = databricks.Grants("mcp_service",
+            mcp_service="main.default.my_mcp_service",
+            grants=[{
+                "principal": "account users",
+                "privileges": ["EXECUTE"],
+            }])
+        ```
+
         ## Service credential grants
 
         You can grant `ALL_PRIVILEGES`, `ACCESS`, `CREATE_CONNECTION`, and `MANAGE` privileges to Credential id specified in `credential` attribute:
@@ -1328,8 +1499,11 @@ class Grants(pulumi.CustomResource):
                  foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
                  function: pulumi.Input[Optional[_builtins.str]] = None,
                  grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
+                 mcp_service: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore: pulumi.Input[Optional[_builtins.str]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_provider_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_service: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
                  recipient: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1355,8 +1529,11 @@ class Grants(pulumi.CustomResource):
             if grants is None and not opts.urn:
                 raise TypeError("Missing required property 'grants'")
             __props__.__dict__["grants"] = grants
+            __props__.__dict__["mcp_service"] = mcp_service
             __props__.__dict__["metastore"] = metastore
             __props__.__dict__["model"] = model
+            __props__.__dict__["model_provider_service"] = model_provider_service
+            __props__.__dict__["model_service"] = model_service
             __props__.__dict__["pipeline"] = pipeline
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["recipient"] = recipient
@@ -1381,8 +1558,11 @@ class Grants(pulumi.CustomResource):
             foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
             function: pulumi.Input[Optional[_builtins.str]] = None,
             grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
+            mcp_service: pulumi.Input[Optional[_builtins.str]] = None,
             metastore: pulumi.Input[Optional[_builtins.str]] = None,
             model: pulumi.Input[Optional[_builtins.str]] = None,
+            model_provider_service: pulumi.Input[Optional[_builtins.str]] = None,
+            model_service: pulumi.Input[Optional[_builtins.str]] = None,
             pipeline: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
             recipient: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1409,8 +1589,11 @@ class Grants(pulumi.CustomResource):
         __props__.__dict__["foreign_connection"] = foreign_connection
         __props__.__dict__["function"] = function
         __props__.__dict__["grants"] = grants
+        __props__.__dict__["mcp_service"] = mcp_service
         __props__.__dict__["metastore"] = metastore
         __props__.__dict__["model"] = model
+        __props__.__dict__["model_provider_service"] = model_provider_service
+        __props__.__dict__["model_service"] = model_service
         __props__.__dict__["pipeline"] = pipeline
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["recipient"] = recipient
@@ -1452,6 +1635,11 @@ class Grants(pulumi.CustomResource):
         return pulumi.get(self, "grants")
 
     @_builtins.property
+    @pulumi.getter(name="mcpService")
+    def mcp_service(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "mcp_service")
+
+    @_builtins.property
     @pulumi.getter
     def metastore(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "metastore")
@@ -1460,6 +1648,16 @@ class Grants(pulumi.CustomResource):
     @pulumi.getter
     def model(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter(name="modelProviderService")
+    def model_provider_service(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "model_provider_service")
+
+    @_builtins.property
+    @pulumi.getter(name="modelService")
+    def model_service(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "model_service")
 
     @_builtins.property
     @pulumi.getter

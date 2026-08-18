@@ -408,6 +408,81 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Model service grants
+    /// 
+    /// See databricks.Grants Model service grants for the list of privileges that apply to model services.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var modelService = new Databricks.Grant("model_service", new()
+    ///     {
+    ///         ModelService = "main.default.my_model_service",
+    ///         Principal = "account users",
+    ///         Privileges = new[]
+    ///         {
+    ///             "EXECUTE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Model provider service grants
+    /// 
+    /// See databricks.Grants Model provider service grants for the list of privileges that apply to model provider services.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var modelProviderService = new Databricks.Grant("model_provider_service", new()
+    ///     {
+    ///         ModelProviderService = "main.default.my_provider",
+    ///         Principal = "account users",
+    ///         Privileges = new[]
+    ///         {
+    ///             "EXECUTE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## MCP service grants
+    /// 
+    /// See databricks.Grants MCP service grants for the list of privileges that apply to MCP services.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mcpService = new Databricks.Grant("mcp_service", new()
+    ///     {
+    ///         McpService = "main.default.my_mcp_service",
+    ///         Principal = "account users",
+    ///         Privileges = new[]
+    ///         {
+    ///             "EXECUTE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Service credential grants
     /// 
     /// See databricks.Grants Service credential grants for the list of privileges that apply to Service credentials.
@@ -647,11 +722,20 @@ namespace Pulumi.Databricks
         [Output("function")]
         public Output<string?> Function { get; private set; } = null!;
 
+        [Output("mcpService")]
+        public Output<string?> McpService { get; private set; } = null!;
+
         [Output("metastore")]
         public Output<string?> Metastore { get; private set; } = null!;
 
         [Output("model")]
         public Output<string?> Model { get; private set; } = null!;
+
+        [Output("modelProviderService")]
+        public Output<string?> ModelProviderService { get; private set; } = null!;
+
+        [Output("modelService")]
+        public Output<string?> ModelService { get; private set; } = null!;
 
         [Output("pipeline")]
         public Output<string?> Pipeline { get; private set; } = null!;
@@ -744,11 +828,20 @@ namespace Pulumi.Databricks
         [Input("function")]
         public Input<string>? Function { get; set; }
 
+        [Input("mcpService")]
+        public Input<string>? McpService { get; set; }
+
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
         [Input("model")]
         public Input<string>? Model { get; set; }
+
+        [Input("modelProviderService")]
+        public Input<string>? ModelProviderService { get; set; }
+
+        [Input("modelService")]
+        public Input<string>? ModelService { get; set; }
 
         [Input("pipeline")]
         public Input<string>? Pipeline { get; set; }
@@ -808,11 +901,20 @@ namespace Pulumi.Databricks
         [Input("function")]
         public Input<string>? Function { get; set; }
 
+        [Input("mcpService")]
+        public Input<string>? McpService { get; set; }
+
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
         [Input("model")]
         public Input<string>? Model { get; set; }
+
+        [Input("modelProviderService")]
+        public Input<string>? ModelProviderService { get; set; }
+
+        [Input("modelService")]
+        public Input<string>? ModelService { get; set; }
 
         [Input("pipeline")]
         public Input<string>? Pipeline { get; set; }

@@ -178,7 +178,7 @@ type Share struct {
 	pulumi.CustomResourceState
 
 	// User-supplied free-form text.
-	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	Comment pulumi.StringOutput `pulumi:"comment"`
 	// Time when the share was created.
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
 	// The principal that created the share.
@@ -387,8 +387,8 @@ func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 }
 
 // User-supplied free-form text.
-func (o ShareOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+func (o ShareOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
 }
 
 // Time when the share was created.

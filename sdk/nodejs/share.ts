@@ -168,7 +168,7 @@ export class Share extends pulumi.CustomResource {
     /**
      * User-supplied free-form text.
      */
-    declare public readonly comment: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string>;
     /**
      * Time when the share was created.
      */

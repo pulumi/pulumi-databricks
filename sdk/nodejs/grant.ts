@@ -285,6 +285,51 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Model service grants
+ *
+ * See databricks.Grants Model service grants for the list of privileges that apply to model services.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const modelService = new databricks.Grant("model_service", {
+ *     modelService: "main.default.my_model_service",
+ *     principal: "account users",
+ *     privileges: ["EXECUTE"],
+ * });
+ * ```
+ *
+ * ## Model provider service grants
+ *
+ * See databricks.Grants Model provider service grants for the list of privileges that apply to model provider services.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const modelProviderService = new databricks.Grant("model_provider_service", {
+ *     modelProviderService: "main.default.my_provider",
+ *     principal: "account users",
+ *     privileges: ["EXECUTE"],
+ * });
+ * ```
+ *
+ * ## MCP service grants
+ *
+ * See databricks.Grants MCP service grants for the list of privileges that apply to MCP services.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const mcpService = new databricks.Grant("mcp_service", {
+ *     mcpService: "main.default.my_mcp_service",
+ *     principal: "account users",
+ *     privileges: ["EXECUTE"],
+ * });
+ * ```
+ *
  * ## Service credential grants
  *
  * See databricks.Grants Service credential grants for the list of privileges that apply to Service credentials.
@@ -464,8 +509,11 @@ export class Grant extends pulumi.CustomResource {
     declare public readonly externalLocation: pulumi.Output<string | undefined>;
     declare public readonly foreignConnection: pulumi.Output<string | undefined>;
     declare public readonly function: pulumi.Output<string | undefined>;
+    declare public readonly mcpService: pulumi.Output<string | undefined>;
     declare public readonly metastore: pulumi.Output<string | undefined>;
     declare public readonly model: pulumi.Output<string | undefined>;
+    declare public readonly modelProviderService: pulumi.Output<string | undefined>;
+    declare public readonly modelService: pulumi.Output<string | undefined>;
     declare public readonly pipeline: pulumi.Output<string | undefined>;
     declare public readonly principal: pulumi.Output<string>;
     declare public readonly privileges: pulumi.Output<string[]>;
@@ -495,8 +543,11 @@ export class Grant extends pulumi.CustomResource {
             resourceInputs["externalLocation"] = state?.externalLocation;
             resourceInputs["foreignConnection"] = state?.foreignConnection;
             resourceInputs["function"] = state?.function;
+            resourceInputs["mcpService"] = state?.mcpService;
             resourceInputs["metastore"] = state?.metastore;
             resourceInputs["model"] = state?.model;
+            resourceInputs["modelProviderService"] = state?.modelProviderService;
+            resourceInputs["modelService"] = state?.modelService;
             resourceInputs["pipeline"] = state?.pipeline;
             resourceInputs["principal"] = state?.principal;
             resourceInputs["privileges"] = state?.privileges;
@@ -520,8 +571,11 @@ export class Grant extends pulumi.CustomResource {
             resourceInputs["externalLocation"] = args?.externalLocation;
             resourceInputs["foreignConnection"] = args?.foreignConnection;
             resourceInputs["function"] = args?.function;
+            resourceInputs["mcpService"] = args?.mcpService;
             resourceInputs["metastore"] = args?.metastore;
             resourceInputs["model"] = args?.model;
+            resourceInputs["modelProviderService"] = args?.modelProviderService;
+            resourceInputs["modelService"] = args?.modelService;
             resourceInputs["pipeline"] = args?.pipeline;
             resourceInputs["principal"] = args?.principal;
             resourceInputs["privileges"] = args?.privileges;
@@ -547,8 +601,11 @@ export interface GrantState {
     externalLocation?: pulumi.Input<string | undefined>;
     foreignConnection?: pulumi.Input<string | undefined>;
     function?: pulumi.Input<string | undefined>;
+    mcpService?: pulumi.Input<string | undefined>;
     metastore?: pulumi.Input<string | undefined>;
     model?: pulumi.Input<string | undefined>;
+    modelProviderService?: pulumi.Input<string | undefined>;
+    modelService?: pulumi.Input<string | undefined>;
     pipeline?: pulumi.Input<string | undefined>;
     principal?: pulumi.Input<string | undefined>;
     privileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -570,8 +627,11 @@ export interface GrantArgs {
     externalLocation?: pulumi.Input<string | undefined>;
     foreignConnection?: pulumi.Input<string | undefined>;
     function?: pulumi.Input<string | undefined>;
+    mcpService?: pulumi.Input<string | undefined>;
     metastore?: pulumi.Input<string | undefined>;
     model?: pulumi.Input<string | undefined>;
+    modelProviderService?: pulumi.Input<string | undefined>;
+    modelService?: pulumi.Input<string | undefined>;
     pipeline?: pulumi.Input<string | undefined>;
     principal: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<string>[]>;

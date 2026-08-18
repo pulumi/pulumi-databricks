@@ -252,7 +252,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group
-//			_, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
+//			ds, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
 //			if err != nil {
@@ -264,14 +264,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			jane, err := databricks.GetUser(ctx, &databricks.LookupUserArgs{
+//				UserName: pulumi.StringRef("jane.doe@example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = databricks.NewAccessControlRuleSet(ctx, "ds_group_rule_set", &databricks.AccessControlRuleSetArgs{
-//				Name: pulumi.Sprintf("accounts/%v/groups/%v/ruleSets/default", accountId, dsDatabricksGroup.Id),
+//				Name: pulumi.Sprintf("accounts/%v/groups/%v/ruleSets/default", accountId, ds.Id),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
 //							pulumi.String(john.AclPrincipalId),
 //						},
 //						Role: pulumi.String("roles/group.manager"),
+//					},
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							pulumi.String(jane.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/group.assumer"),
 //					},
 //				},
 //			})

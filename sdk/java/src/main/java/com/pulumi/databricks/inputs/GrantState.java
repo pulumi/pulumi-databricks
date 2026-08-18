@@ -52,6 +52,13 @@ public final class GrantState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.function);
     }
 
+    @Import(name="mcpService")
+    private @Nullable Output<String> mcpService;
+
+    public Optional<Output<String>> mcpService() {
+        return Optional.ofNullable(this.mcpService);
+    }
+
     @Import(name="metastore")
     private @Nullable Output<String> metastore;
 
@@ -64,6 +71,20 @@ public final class GrantState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> model() {
         return Optional.ofNullable(this.model);
+    }
+
+    @Import(name="modelProviderService")
+    private @Nullable Output<String> modelProviderService;
+
+    public Optional<Output<String>> modelProviderService() {
+        return Optional.ofNullable(this.modelProviderService);
+    }
+
+    @Import(name="modelService")
+    private @Nullable Output<String> modelService;
+
+    public Optional<Output<String>> modelService() {
+        return Optional.ofNullable(this.modelService);
     }
 
     @Import(name="pipeline")
@@ -144,8 +165,11 @@ public final class GrantState extends com.pulumi.resources.ResourceArgs {
         this.externalLocation = $.externalLocation;
         this.foreignConnection = $.foreignConnection;
         this.function = $.function;
+        this.mcpService = $.mcpService;
         this.metastore = $.metastore;
         this.model = $.model;
+        this.modelProviderService = $.modelProviderService;
+        this.modelService = $.modelService;
         this.pipeline = $.pipeline;
         this.principal = $.principal;
         this.privileges = $.privileges;
@@ -221,6 +245,15 @@ public final class GrantState extends com.pulumi.resources.ResourceArgs {
             return function(Output.of(function));
         }
 
+        public Builder mcpService(@Nullable Output<String> mcpService) {
+            $.mcpService = mcpService;
+            return this;
+        }
+
+        public Builder mcpService(String mcpService) {
+            return mcpService(Output.of(mcpService));
+        }
+
         public Builder metastore(@Nullable Output<String> metastore) {
             $.metastore = metastore;
             return this;
@@ -237,6 +270,24 @@ public final class GrantState extends com.pulumi.resources.ResourceArgs {
 
         public Builder model(String model) {
             return model(Output.of(model));
+        }
+
+        public Builder modelProviderService(@Nullable Output<String> modelProviderService) {
+            $.modelProviderService = modelProviderService;
+            return this;
+        }
+
+        public Builder modelProviderService(String modelProviderService) {
+            return modelProviderService(Output.of(modelProviderService));
+        }
+
+        public Builder modelService(@Nullable Output<String> modelService) {
+            $.modelService = modelService;
+            return this;
+        }
+
+        public Builder modelService(String modelService) {
+            return modelService(Output.of(modelService));
         }
 
         public Builder pipeline(@Nullable Output<String> pipeline) {

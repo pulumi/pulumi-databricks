@@ -218,9 +218,14 @@ namespace Pulumi.Databricks
     ///         UserName = "john.doe@example.com",
     ///     });
     /// 
+    ///     var jane = Databricks.GetUser.Invoke(new()
+    ///     {
+    ///         UserName = "jane.doe@example.com",
+    ///     });
+    /// 
     ///     var dsGroupRuleSet = new Databricks.AccessControlRuleSet("ds_group_rule_set", new()
     ///     {
-    ///         Name = $"accounts/{accountId}/groups/{dsDatabricksGroup.Id}/ruleSets/default",
+    ///         Name = $"accounts/{accountId}/groups/{ds.Apply(getGroupResult =&gt; getGroupResult.Id)}/ruleSets/default",
     ///         GrantRules = new[]
     ///         {
     ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
@@ -230,6 +235,14 @@ namespace Pulumi.Databricks
     ///                     john.Apply(getUserResult =&gt; getUserResult.AclPrincipalId),
     ///                 },
     ///                 Role = "roles/group.manager",
+    ///             },
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     jane.Apply(getUserResult =&gt; getUserResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/group.assumer",
     ///             },
     ///         },
     ///     });
