@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetAiGatewayModelServicesProviderConfigArgs;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -19,25 +18,8 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
     public static final GetAiGatewayModelServicesArgs Empty = new GetAiGatewayModelServicesArgs();
 
     /**
-     * Whether to include model services for which the principal can only access
-     * selective metadata
-     * 
-     */
-    @Import(name="includeBrowse")
-    private @Nullable Output<Boolean> includeBrowse;
-
-    /**
-     * @return Whether to include model services for which the principal can only access
-     * selective metadata
-     * 
-     */
-    public Optional<Output<Boolean>> includeBrowse() {
-        return Optional.ofNullable(this.includeBrowse);
-    }
-
-    /**
      * Maximum number of model services to return. Defaults to 100 when unset or 0;
-     * the maximum is 100. Use `nextPageToken` to retrieve additional pages
+     * the maximum is 100. Use `pageToken` to retrieve additional pages
      * 
      */
     @Import(name="pageSize")
@@ -45,7 +27,7 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
 
     /**
      * @return Maximum number of model services to return. Defaults to 100 when unset or 0;
-     * the maximum is 100. Use `nextPageToken` to retrieve additional pages
+     * the maximum is 100. Use `pageToken` to retrieve additional pages
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -53,7 +35,7 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Resource name of the parent schema to list within, as
+     * Name of the parent schema to list within, as
      * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
      * characters individually
      * 
@@ -62,7 +44,7 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
     private @Nullable Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema to list within, as
+     * @return Name of the parent schema to list within, as
      * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
      * characters individually
      * 
@@ -87,14 +69,18 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
     }
 
     /**
-     * View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+     * View selector controlling which fields are populated per row. `FULL`
+     * returns the full representation of the service; `BASIC` returns a more
+     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      * 
      */
     @Import(name="view")
     private @Nullable Output<String> view;
 
     /**
-     * @return View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+     * @return View selector controlling which fields are populated per row. `FULL`
+     * returns the full representation of the service; `BASIC` returns a more
+     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      * 
      */
     public Optional<Output<String>> view() {
@@ -104,7 +90,6 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
     private GetAiGatewayModelServicesArgs() {}
 
     private GetAiGatewayModelServicesArgs(GetAiGatewayModelServicesArgs $) {
-        this.includeBrowse = $.includeBrowse;
         this.pageSize = $.pageSize;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
@@ -130,31 +115,8 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param includeBrowse Whether to include model services for which the principal can only access
-         * selective metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder includeBrowse(@Nullable Output<Boolean> includeBrowse) {
-            $.includeBrowse = includeBrowse;
-            return this;
-        }
-
-        /**
-         * @param includeBrowse Whether to include model services for which the principal can only access
-         * selective metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder includeBrowse(Boolean includeBrowse) {
-            return includeBrowse(Output.of(includeBrowse));
-        }
-
-        /**
          * @param pageSize Maximum number of model services to return. Defaults to 100 when unset or 0;
-         * the maximum is 100. Use `nextPageToken` to retrieve additional pages
+         * the maximum is 100. Use `pageToken` to retrieve additional pages
          * 
          * @return builder
          * 
@@ -166,7 +128,7 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
 
         /**
          * @param pageSize Maximum number of model services to return. Defaults to 100 when unset or 0;
-         * the maximum is 100. Use `nextPageToken` to retrieve additional pages
+         * the maximum is 100. Use `pageToken` to retrieve additional pages
          * 
          * @return builder
          * 
@@ -176,7 +138,7 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param parent Resource name of the parent schema to list within, as
+         * @param parent Name of the parent schema to list within, as
          * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
          * characters individually
          * 
@@ -189,7 +151,7 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param parent Resource name of the parent schema to list within, as
+         * @param parent Name of the parent schema to list within, as
          * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
          * characters individually
          * 
@@ -222,7 +184,9 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param view View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+         * @param view View selector controlling which fields are populated per row. `FULL`
+         * returns the full representation of the service; `BASIC` returns a more
+         * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
          * 
          * @return builder
          * 
@@ -233,7 +197,9 @@ public final class GetAiGatewayModelServicesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param view View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+         * @param view View selector controlling which fields are populated per row. `FULL`
+         * returns the full representation of the service; `BASIC` returns a more
+         * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
          * 
          * @return builder
          * 

@@ -55,16 +55,14 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Leaf identifier for the MCP service (the unqualified name within the
-     * parent schema, e.g. &#34;myMcpService&#34;)
+     * Name for the MCP service, e.g. &#34;myMcpService&#34;
      * 
      */
     @Import(name="mcpServiceId", required=true)
     private Output<String> mcpServiceId;
 
     /**
-     * @return Leaf identifier for the MCP service (the unqualified name within the
-     * parent schema, e.g. &#34;myMcpService&#34;)
+     * @return Name for the MCP service, e.g. &#34;myMcpService&#34;
      * 
      */
     public Output<String> mcpServiceId() {
@@ -87,7 +85,7 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -96,7 +94,7 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
     private Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -198,8 +196,7 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mcpServiceId Leaf identifier for the MCP service (the unqualified name within the
-         * parent schema, e.g. &#34;myMcpService&#34;)
+         * @param mcpServiceId Name for the MCP service, e.g. &#34;myMcpService&#34;
          * 
          * @return builder
          * 
@@ -210,8 +207,7 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mcpServiceId Leaf identifier for the MCP service (the unqualified name within the
-         * parent schema, e.g. &#34;myMcpService&#34;)
+         * @param mcpServiceId Name for the MCP service, e.g. &#34;myMcpService&#34;
          * 
          * @return builder
          * 
@@ -242,7 +238,7 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 
@@ -255,7 +251,7 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 

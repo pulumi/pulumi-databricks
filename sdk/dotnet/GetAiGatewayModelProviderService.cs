@@ -90,11 +90,6 @@ namespace Pulumi.Databricks
     public sealed class GetAiGatewayModelProviderServiceResult
     {
         /// <summary>
-        /// (boolean) - Whether the caller sees only metadata available through the BROWSE
-        /// privilege
-        /// </summary>
-        public readonly bool BrowseOnly;
-        /// <summary>
         /// (string) - User-provided description
         /// </summary>
         public readonly string Comment;
@@ -154,8 +149,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetAiGatewayModelProviderServiceResult(
-            bool browseOnly,
-
             string comment,
 
             Outputs.GetAiGatewayModelProviderServiceConfigResult config,
@@ -180,7 +173,6 @@ namespace Pulumi.Databricks
 
             string updatedBy)
         {
-            BrowseOnly = browseOnly;
             Comment = comment;
             Config = config;
             CreateTime = createTime;

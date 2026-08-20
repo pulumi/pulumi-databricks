@@ -30,9 +30,8 @@ class AiGatewayModelProviderServiceArgs:
         """
         The set of arguments for constructing a AiGatewayModelProviderService resource.
 
-        :param pulumi.Input[_builtins.str] model_provider_service_id: Leaf identifier for the provider service (the unqualified name within the
-               parent schema, e.g. "openai_prod")
-        :param pulumi.Input[_builtins.str] parent: Resource name of the parent schema.
+        :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
+        :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[_builtins.str] comment: User-provided description
@@ -59,8 +58,7 @@ class AiGatewayModelProviderServiceArgs:
     @pulumi.getter(name="modelProviderServiceId")
     def model_provider_service_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Leaf identifier for the provider service (the unqualified name within the
-        parent schema, e.g. "openai_prod")
+        Name for the model provider service, e.g. "openai_prod"
         """
         return pulumi.get(self, "model_provider_service_id")
 
@@ -72,7 +70,7 @@ class AiGatewayModelProviderServiceArgs:
     @pulumi.getter
     def parent(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource name of the parent schema.
+        Name of the parent schema.
         Format: `schemas/{catalog}.{schema}`.
         Each `{...}` component is capped at 255 characters individually
         """
@@ -138,7 +136,6 @@ class AiGatewayModelProviderServiceArgs:
 @pulumi.input_type
 class _AiGatewayModelProviderServiceState:
     def __init__(__self__, *,
-                 browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -156,8 +153,6 @@ class _AiGatewayModelProviderServiceState:
         """
         Input properties used for looking up and filtering AiGatewayModelProviderService resources.
 
-        :param pulumi.Input[_builtins.bool] browse_only: (boolean) - Whether the caller sees only metadata available through the BROWSE
-               privilege
         :param pulumi.Input[_builtins.str] comment: User-provided description
         :param pulumi.Input['AiGatewayModelProviderServiceConfigArgs'] config: Behavioral configuration: provider connection, model catalog, and
                passthrough policy. See `ModelProviderServiceConfig` for the per-field
@@ -173,8 +168,7 @@ class _AiGatewayModelProviderServiceState:
                `etag` field on the Update / Delete request; the server rejects the mutation
                if the stored etag differs
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the provider service
-        :param pulumi.Input[_builtins.str] model_provider_service_id: Leaf identifier for the provider service (the unqualified name within the
-               parent schema, e.g. "openai_prod")
+        :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the provider service.
                Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
                Each `{...}` component is capped at 255 characters individually.
@@ -182,15 +176,13 @@ class _AiGatewayModelProviderServiceState:
                `model_provider_service_id`; required and immutable on Update/Get/Delete
         :param pulumi.Input[_builtins.str] owner: The owner of the model provider service. Write-only; read owner via
                effective_owner
-        :param pulumi.Input[_builtins.str] parent: Resource name of the parent schema.
+        :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input['AiGatewayModelProviderServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - When the provider service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """
-        if browse_only is not None:
-            pulumi.set(__self__, "browse_only", browse_only)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if config is not None:
@@ -219,19 +211,6 @@ class _AiGatewayModelProviderServiceState:
             pulumi.set(__self__, "update_time", update_time)
         if updated_by is not None:
             pulumi.set(__self__, "updated_by", updated_by)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        (boolean) - Whether the caller sees only metadata available through the BROWSE
-        privilege
-        """
-        return pulumi.get(self, "browse_only")
-
-    @browse_only.setter
-    def browse_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "browse_only", value)
 
     @_builtins.property
     @pulumi.getter
@@ -329,8 +308,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="modelProviderServiceId")
     def model_provider_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Leaf identifier for the provider service (the unqualified name within the
-        parent schema, e.g. "openai_prod")
+        Name for the model provider service, e.g. "openai_prod"
         """
         return pulumi.get(self, "model_provider_service_id")
 
@@ -371,7 +349,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Resource name of the parent schema.
+        Name of the parent schema.
         Format: `schemas/{catalog}.{schema}`.
         Each `{...}` component is capped at 255 characters individually
         """
@@ -444,11 +422,10 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                passthrough policy. See `ModelProviderServiceConfig` for the per-field
                contract. Required on CreateModelProviderService; on Update it is required
                only when `config` (or a `config.*` subpath) appears in `update_mask`
-        :param pulumi.Input[_builtins.str] model_provider_service_id: Leaf identifier for the provider service (the unqualified name within the
-               parent schema, e.g. "openai_prod")
+        :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
         :param pulumi.Input[_builtins.str] owner: The owner of the model provider service. Write-only; read owner via
                effective_owner
-        :param pulumi.Input[_builtins.str] parent: Resource name of the parent schema.
+        :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
@@ -505,7 +482,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["provider_config"] = provider_config
-            __props__.__dict__["browse_only"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["effective_owner"] = None
@@ -524,7 +500,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -546,8 +521,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] browse_only: (boolean) - Whether the caller sees only metadata available through the BROWSE
-               privilege
         :param pulumi.Input[_builtins.str] comment: User-provided description
         :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']] config: Behavioral configuration: provider connection, model catalog, and
                passthrough policy. See `ModelProviderServiceConfig` for the per-field
@@ -563,8 +536,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                `etag` field on the Update / Delete request; the server rejects the mutation
                if the stored etag differs
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the provider service
-        :param pulumi.Input[_builtins.str] model_provider_service_id: Leaf identifier for the provider service (the unqualified name within the
-               parent schema, e.g. "openai_prod")
+        :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the provider service.
                Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
                Each `{...}` component is capped at 255 characters individually.
@@ -572,7 +544,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                `model_provider_service_id`; required and immutable on Update/Get/Delete
         :param pulumi.Input[_builtins.str] owner: The owner of the model provider service. Write-only; read owner via
                effective_owner
-        :param pulumi.Input[_builtins.str] parent: Resource name of the parent schema.
+        :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
@@ -583,7 +555,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
 
         __props__ = _AiGatewayModelProviderServiceState.__new__(_AiGatewayModelProviderServiceState)
 
-        __props__.__dict__["browse_only"] = browse_only
         __props__.__dict__["comment"] = comment
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
@@ -599,15 +570,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["updated_by"] = updated_by
         return AiGatewayModelProviderService(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> pulumi.Output[_builtins.bool]:
-        """
-        (boolean) - Whether the caller sees only metadata available through the BROWSE
-        privilege
-        """
-        return pulumi.get(self, "browse_only")
 
     @_builtins.property
     @pulumi.getter
@@ -677,8 +639,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="modelProviderServiceId")
     def model_provider_service_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Leaf identifier for the provider service (the unqualified name within the
-        parent schema, e.g. "openai_prod")
+        Name for the model provider service, e.g. "openai_prod"
         """
         return pulumi.get(self, "model_provider_service_id")
 
@@ -707,7 +668,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource name of the parent schema.
+        Name of the parent schema.
         Format: `schemas/{catalog}.{schema}`.
         Each `{...}` component is capped at 255 characters individually
         """

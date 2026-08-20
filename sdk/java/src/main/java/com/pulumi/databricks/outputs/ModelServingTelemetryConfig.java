@@ -7,12 +7,14 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ModelServingTelemetryConfigInferenceTableConfig;
 import com.pulumi.databricks.outputs.ModelServingTelemetryConfigTableNames;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingTelemetryConfig {
+    private @Nullable List<String> enabledTelemetryFeatures;
     /**
      * @return Block describing the configuration of usage tracking. Consists of the following attributes:
      * 
@@ -22,6 +24,9 @@ public final class ModelServingTelemetryConfig {
     private @Nullable String telemetryProfileId;
 
     private ModelServingTelemetryConfig() {}
+    public List<String> enabledTelemetryFeatures() {
+        return this.enabledTelemetryFeatures == null ? List.of() : this.enabledTelemetryFeatures;
+    }
     /**
      * @return Block describing the configuration of usage tracking. Consists of the following attributes:
      * 
@@ -45,17 +50,28 @@ public final class ModelServingTelemetryConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> enabledTelemetryFeatures;
         private @Nullable ModelServingTelemetryConfigInferenceTableConfig inferenceTableConfig;
         private @Nullable ModelServingTelemetryConfigTableNames tableNames;
         private @Nullable String telemetryProfileId;
         public Builder() {}
         public Builder(ModelServingTelemetryConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabledTelemetryFeatures = defaults.enabledTelemetryFeatures;
     	      this.inferenceTableConfig = defaults.inferenceTableConfig;
     	      this.tableNames = defaults.tableNames;
     	      this.telemetryProfileId = defaults.telemetryProfileId;
         }
 
+        @CustomType.Setter
+        public Builder enabledTelemetryFeatures(@Nullable List<String> enabledTelemetryFeatures) {
+
+            this.enabledTelemetryFeatures = enabledTelemetryFeatures;
+            return this;
+        }
+        public Builder enabledTelemetryFeatures(String... enabledTelemetryFeatures) {
+            return enabledTelemetryFeatures(List.of(enabledTelemetryFeatures));
+        }
         @CustomType.Setter
         public Builder inferenceTableConfig(@Nullable ModelServingTelemetryConfigInferenceTableConfig inferenceTableConfig) {
 
@@ -76,6 +92,7 @@ public final class ModelServingTelemetryConfig {
         }
         public ModelServingTelemetryConfig build() {
             final var _resultValue = new ModelServingTelemetryConfig();
+            _resultValue.enabledTelemetryFeatures = enabledTelemetryFeatures;
             _resultValue.inferenceTableConfig = inferenceTableConfig;
             _resultValue.tableNames = tableNames;
             _resultValue.telemetryProfileId = telemetryProfileId;

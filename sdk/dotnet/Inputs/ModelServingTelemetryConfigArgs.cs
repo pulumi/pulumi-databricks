@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingTelemetryConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("enabledTelemetryFeatures")]
+        private InputList<string>? _enabledTelemetryFeatures;
+        public InputList<string> EnabledTelemetryFeatures
+        {
+            get => _enabledTelemetryFeatures ?? (_enabledTelemetryFeatures = new InputList<string>());
+            set => _enabledTelemetryFeatures = value;
+        }
+
         /// <summary>
         /// Block describing the configuration of usage tracking. Consists of the following attributes:
         /// </summary>

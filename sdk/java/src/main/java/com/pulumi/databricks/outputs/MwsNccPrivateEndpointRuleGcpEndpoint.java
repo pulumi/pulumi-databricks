@@ -4,6 +4,8 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,10 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNccPrivateEndpointRuleGcpEndpoint {
+    private @Nullable Boolean allVpcScServices;
+    private @Nullable MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints googleApiEndpoints;
     private @Nullable String pscEndpointUri;
     private @Nullable String serviceAttachment;
 
     private MwsNccPrivateEndpointRuleGcpEndpoint() {}
+    public Optional<Boolean> allVpcScServices() {
+        return Optional.ofNullable(this.allVpcScServices);
+    }
+    public Optional<MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints> googleApiEndpoints() {
+        return Optional.ofNullable(this.googleApiEndpoints);
+    }
     public Optional<String> pscEndpointUri() {
         return Optional.ofNullable(this.pscEndpointUri);
     }
@@ -31,15 +41,31 @@ public final class MwsNccPrivateEndpointRuleGcpEndpoint {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allVpcScServices;
+        private @Nullable MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints googleApiEndpoints;
         private @Nullable String pscEndpointUri;
         private @Nullable String serviceAttachment;
         public Builder() {}
         public Builder(MwsNccPrivateEndpointRuleGcpEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allVpcScServices = defaults.allVpcScServices;
+    	      this.googleApiEndpoints = defaults.googleApiEndpoints;
     	      this.pscEndpointUri = defaults.pscEndpointUri;
     	      this.serviceAttachment = defaults.serviceAttachment;
         }
 
+        @CustomType.Setter
+        public Builder allVpcScServices(@Nullable Boolean allVpcScServices) {
+
+            this.allVpcScServices = allVpcScServices;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder googleApiEndpoints(@Nullable MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints googleApiEndpoints) {
+
+            this.googleApiEndpoints = googleApiEndpoints;
+            return this;
+        }
         @CustomType.Setter
         public Builder pscEndpointUri(@Nullable String pscEndpointUri) {
 
@@ -54,6 +80,8 @@ public final class MwsNccPrivateEndpointRuleGcpEndpoint {
         }
         public MwsNccPrivateEndpointRuleGcpEndpoint build() {
             final var _resultValue = new MwsNccPrivateEndpointRuleGcpEndpoint();
+            _resultValue.allVpcScServices = allVpcScServices;
+            _resultValue.googleApiEndpoints = googleApiEndpoints;
             _resultValue.pscEndpointUri = pscEndpointUri;
             _resultValue.serviceAttachment = serviceAttachment;
             return _resultValue;

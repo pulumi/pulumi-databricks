@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class FeatureEngineeringFeatureFunctionColumnSelection {
-    /**
-     * @return Column name from source to select as the feature value
-     * 
-     */
     private String column;
 
     private FeatureEngineeringFeatureFunctionColumnSelection() {}
-    /**
-     * @return Column name from source to select as the feature value
-     * 
-     */
     public String column() {
         return this.column;
     }

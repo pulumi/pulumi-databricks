@@ -39,7 +39,6 @@ class PolicyInfoArgs:
         The set of arguments for constructing a PolicyInfo resource.
 
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
-               Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] to_principals: List of user or group names that the policy applies to.
@@ -99,7 +98,6 @@ class PolicyInfoArgs:
     def for_securable_type(self) -> pulumi.Input[_builtins.str]:
         """
         Type of securables that the policy should take effect on.
-        Only `TABLE` is supported at this moment.
         Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "for_securable_type")
@@ -310,7 +308,6 @@ class _PolicyInfoState:
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the policy. Output only
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
-               Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         :param pulumi.Input['PolicyInfoGrantArgs'] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
@@ -440,7 +437,6 @@ class _PolicyInfoState:
     def for_securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of securables that the policy should take effect on.
-        Only `TABLE` is supported at this moment.
         Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "for_securable_type")
@@ -700,7 +696,6 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: Optional description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
-               Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
@@ -901,7 +896,6 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the policy. Output only
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
-               Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
@@ -998,7 +992,6 @@ class PolicyInfo(pulumi.CustomResource):
     def for_securable_type(self) -> pulumi.Output[_builtins.str]:
         """
         Type of securables that the policy should take effect on.
-        Only `TABLE` is supported at this moment.
         Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "for_securable_type")

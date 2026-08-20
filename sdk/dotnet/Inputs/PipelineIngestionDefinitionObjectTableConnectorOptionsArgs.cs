@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("apiSourceConnectorOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptionsArgs>? ApiSourceConnectorOptions { get; set; }
+
         [Input("confluenceOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptionsArgs>? ConfluenceOptions { get; set; }
 
@@ -26,6 +29,12 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("kafkaOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsArgs>? KafkaOptions { get; set; }
+
+        [Input("linkedinAdsOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgs>? LinkedinAdsOptions { get; set; }
+
+        [Input("marketoOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptionsArgs>? MarketoOptions { get; set; }
 
         [Input("metaAdsOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsArgs>? MetaAdsOptions { get; set; }

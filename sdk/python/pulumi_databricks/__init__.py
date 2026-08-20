@@ -8,6 +8,11 @@ import typing
 # Export this package's modules as members:
 from .access_control_rule_set import *
 from .account_federation_policy import *
+from .account_iam_direct_group_member_v2 import *
+from .account_iam_group_v2 import *
+from .account_iam_service_principal_v2 import *
+from .account_iam_user_v2 import *
+from .account_iam_workspace_assignment_v2 import *
 from .account_network_policy import *
 from .account_setting_user_preference_v2 import *
 from .account_setting_v2 import *
@@ -64,6 +69,16 @@ from .feature_engineering_materialized_feature import *
 from .file import *
 from .get_account_federation_policies import *
 from .get_account_federation_policy import *
+from .get_account_iam_direct_group_member_v2 import *
+from .get_account_iam_direct_group_members_v2 import *
+from .get_account_iam_group_v2 import *
+from .get_account_iam_groups_v2 import *
+from .get_account_iam_service_principal_v2 import *
+from .get_account_iam_service_principals_v2 import *
+from .get_account_iam_user_v2 import *
+from .get_account_iam_users_v2 import *
+from .get_account_iam_workspace_assignment_v2 import *
+from .get_account_iam_workspace_assignments_v2 import *
 from .get_account_network_policies import *
 from .get_account_network_policy import *
 from .get_account_setting_user_preference_v2 import *
@@ -223,6 +238,17 @@ from .get_warehouses_default_warehouse_override import *
 from .get_warehouses_default_warehouse_overrides import *
 from .get_workspace_entity_tag_assignment import *
 from .get_workspace_entity_tag_assignments import *
+from .get_workspace_iam_direct_group_member_v2 import *
+from .get_workspace_iam_direct_group_members_v2 import *
+from .get_workspace_iam_group_v2 import *
+from .get_workspace_iam_groups_v2 import *
+from .get_workspace_iam_service_principal_v2 import *
+from .get_workspace_iam_service_principals_v2 import *
+from .get_workspace_iam_user_v2 import *
+from .get_workspace_iam_users_v2 import *
+from .get_workspace_iam_workspace_assignment_v2 import *
+from .get_workspace_iam_workspace_assignments_v2 import *
+from .get_workspace_iam_workspace_identity_detail_v2 import *
 from .get_workspace_network_option import *
 from .get_workspace_setting_v2 import *
 from .get_zones import *
@@ -329,6 +355,12 @@ from .workspace_binding import *
 from .workspace_conf import *
 from .workspace_entity_tag_assignment import *
 from .workspace_file import *
+from .workspace_iam_direct_group_member_v2 import *
+from .workspace_iam_group_v2 import *
+from .workspace_iam_service_principal_v2 import *
+from .workspace_iam_user_v2 import *
+from .workspace_iam_workspace_assignment_v2 import *
+from .workspace_iam_workspace_identity_detail_v2 import *
 from .workspace_network_option import *
 from .workspace_setting_v2 import *
 from ._inputs import *
@@ -358,6 +390,46 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accountFederationPolicy:AccountFederationPolicy": "AccountFederationPolicy"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/accountIamDirectGroupMemberV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountIamDirectGroupMemberV2:AccountIamDirectGroupMemberV2": "AccountIamDirectGroupMemberV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/accountIamGroupV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountIamGroupV2:AccountIamGroupV2": "AccountIamGroupV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/accountIamServicePrincipalV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountIamServicePrincipalV2:AccountIamServicePrincipalV2": "AccountIamServicePrincipalV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/accountIamUserV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountIamUserV2:AccountIamUserV2": "AccountIamUserV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/accountIamWorkspaceAssignmentV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountIamWorkspaceAssignmentV2:AccountIamWorkspaceAssignmentV2": "AccountIamWorkspaceAssignmentV2"
   }
  },
  {
@@ -1606,6 +1678,54 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/workspaceFile:WorkspaceFile": "WorkspaceFile"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceIamDirectGroupMemberV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceIamDirectGroupMemberV2:WorkspaceIamDirectGroupMemberV2": "WorkspaceIamDirectGroupMemberV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceIamGroupV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2": "WorkspaceIamGroupV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceIamServicePrincipalV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2": "WorkspaceIamServicePrincipalV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceIamUserV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceIamUserV2:WorkspaceIamUserV2": "WorkspaceIamUserV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceIamWorkspaceAssignmentV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceIamWorkspaceAssignmentV2:WorkspaceIamWorkspaceAssignmentV2": "WorkspaceIamWorkspaceAssignmentV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceIamWorkspaceIdentityDetailV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2": "WorkspaceIamWorkspaceIdentityDetailV2"
   }
  },
  {

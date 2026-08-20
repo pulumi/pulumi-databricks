@@ -22,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureFunctionColumnSelection? ColumnSelection;
         /// <summary>
+        /// Applies a registered Unity Catalog function row-wise to source columns
+        /// </summary>
+        public readonly Outputs.FeatureEngineeringFeatureFunctionCustomUdf? CustomUdf;
+        /// <summary>
         /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
         /// Extra parameters for parameterized functions
         /// </summary>
@@ -38,12 +42,15 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.FeatureEngineeringFeatureFunctionColumnSelection? columnSelection,
 
+            Outputs.FeatureEngineeringFeatureFunctionCustomUdf? customUdf,
+
             ImmutableArray<Outputs.FeatureEngineeringFeatureFunctionExtraParameter> extraParameters,
 
             string? functionType)
         {
             AggregationFunction = aggregationFunction;
             ColumnSelection = columnSelection;
+            CustomUdf = customUdf;
             ExtraParameters = extraParameters;
             FunctionType = functionType;
         }

@@ -97,9 +97,66 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Budgets for Genie
+ * ### Budgets for AI Gateway Resources
  * 
- * Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what&#39;s coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+ * Budgets can also be scoped to track only spend through Unity AI Gateway endpoints by setting `resourceType` to `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`.
+ * 
+ * This includes Databricks products that may use Unity AI Gateway endpoints, such as Databricks Genie.
+ * 
+ * ### AI Gateway Budget for all endpoints
+ * 
+ * Create a shared budget tracking all costs for Unity AI Gateway endpoints, and send an email when the budget threshold is exceeded.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Budget;
+ * import com.pulumi.databricks.BudgetArgs;
+ * import com.pulumi.databricks.inputs.BudgetAlertConfigurationArgs;
+ * import com.pulumi.databricks.inputs.BudgetAlertConfigurationActionConfigurationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var aiGatewaySharedBudget = new Budget("aiGatewaySharedBudget", BudgetArgs.builder()
+ *             .displayName("aigw-shared-budget")
+ *             .resourceType("BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY")
+ *             .alertConfigurations(BudgetAlertConfigurationArgs.builder()
+ *                 .quantityThreshold("10000")
+ *                 .quantityType("LIST_PRICE_DOLLARS_USD")
+ *                 .triggerType("CUMULATIVE_SPENDING_EXCEEDED")
+ *                 .timePeriod("MONTH")
+ *                 .scopeType("ALERT_CONFIGURATION_SCOPE_TYPE_SHARED")
+ *                 .actionConfigurations(BudgetAlertConfigurationActionConfigurationArgs.builder()
+ *                     .actionType("EMAIL_NOTIFICATION")
+ *                     .target("abc}{@literal @}{@code gmail.com")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Shared Genie budget
+ * 
+ * Genie budgets use the Unity AI Gateway resource type and the `databricks-product: genie` tag. Do not add other resource tags to a Genie budget.
+ * 
+ * A shared Genie budget for all users. Spend is tracked in aggregate.
  * 
  * <pre>
  * {@code
@@ -128,11 +185,9 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         // Create a Budget with resource tags matching the Genie AI Gateway resource.
- *         // Prerequisite: Enable AI Gateway Budget (Public Preview)
- *         // https://docs.databricks.com/aws/en/genie/budgets#requirements
  *         var genieSharedBudget = new Budget("genieSharedBudget", BudgetArgs.builder()
  *             .displayName("genie-shared-budget")
+ *             .resourceType("BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY")
  *             .filter(BudgetFilterArgs.builder()
  *                 .tags(BudgetFilterTagArgs.builder()
  *                     .key("databricks-product")
@@ -147,6 +202,7 @@ import javax.annotation.Nullable;
  *                 .quantityType("LIST_PRICE_DOLLARS_USD")
  *                 .triggerType("CUMULATIVE_SPENDING_EXCEEDED")
  *                 .timePeriod("MONTH")
+ *                 .scopeType("ALERT_CONFIGURATION_SCOPE_TYPE_SHARED")
  *                 .actionConfigurations(BudgetAlertConfigurationActionConfigurationArgs.builder()
  *                     .actionType("EMAIL_NOTIFICATION")
  *                     .target("abc}{@literal @}{@code gmail.com")
@@ -156,6 +212,80 @@ import javax.annotation.Nullable;
  * 
  *     }}{@code
  * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Per-user budget overrides with block usage
+ * 
+ * A per-user threshold applies to each user in the budget&#39;s scope. Use `principalOverrides` to override the threshold for specific users, groups, or service principals. `BLOCK_USAGE` prevents further requests through Unity AI Gateway when the threshold is reached.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetGroupArgs;
+ * import com.pulumi.databricks.Budget;
+ * import com.pulumi.databricks.BudgetArgs;
+ * import com.pulumi.databricks.inputs.BudgetFilterArgs;
+ * import com.pulumi.databricks.inputs.BudgetFilterTagArgs;
+ * import com.pulumi.databricks.inputs.BudgetFilterTagValueArgs;
+ * import com.pulumi.databricks.inputs.BudgetAlertConfigurationArgs;
+ * import com.pulumi.databricks.inputs.BudgetAlertConfigurationPrincipalOverrideArgs;
+ * import com.pulumi.databricks.inputs.BudgetAlertConfigurationActionConfigurationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Find a group we want to apply
+ *         final var genie-power-users = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+ *             .displayName("genie-power-users")
+ *             .build());
+ * 
+ *         // Create a budget for Genie of $100 per user, and override
+ *         // the threshold to $300 per user for the genie-power-users group.
+ *         var geniePerUserBudget = new Budget("geniePerUserBudget", BudgetArgs.builder()
+ *             .displayName("genie-tier-1-budget")
+ *             .resourceType("BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY")
+ *             .filter(BudgetFilterArgs.builder()
+ *                 .tags(BudgetFilterTagArgs.builder()
+ *                     .key("databricks-product")
+ *                     .value(BudgetFilterTagValueArgs.builder()
+ *                         .operator("IN")
+ *                         .values("genie")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .alertConfigurations(BudgetAlertConfigurationArgs.builder()
+ *                 .quantityThreshold("100")
+ *                 .quantityType("LIST_PRICE_DOLLARS_USD")
+ *                 .triggerType("CUMULATIVE_SPENDING_EXCEEDED")
+ *                 .timePeriod("MONTH")
+ *                 .scopeType("ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER")
+ *                 .principalOverrides(BudgetAlertConfigurationPrincipalOverrideArgs.builder()
+ *                     .principalId(genie_power_usersDatabricksGroup.id())
+ *                     .overrideThreshold("300")
+ *                     .build())
+ *                 .actionConfigurations(BudgetAlertConfigurationActionConfigurationArgs.builder()
+ *                     .actionType("BLOCK_USAGE")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * 
@@ -228,9 +358,17 @@ public class Budget extends com.pulumi.resources.CustomResource {
     public Output<Optional<BudgetFilter>> filter() {
         return Codegen.optional(this.filter);
     }
+    /**
+     * The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+     * 
+     */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
+    /**
+     * @return The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+     * 
+     */
     public Output<String> resourceType() {
         return this.resourceType;
     }

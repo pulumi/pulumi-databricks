@@ -14,18 +14,23 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTrigger
     {
         /// <summary>
+        /// Configuration block to configure pause status. See continuous Configuration Block.
+        /// </summary>
+        public readonly Outputs.JobTriggerContinuous? Continuous;
+        /// <summary>
         /// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         /// </summary>
         public readonly Outputs.JobTriggerFileArrival? FileArrival;
         public readonly Outputs.JobTriggerModel? Model;
-        /// <summary>
-        /// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `PauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `PauseStatus`.
-        /// </summary>
         public readonly string? PauseStatus;
         /// <summary>
         /// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
         /// </summary>
         public readonly Outputs.JobTriggerPeriodic? Periodic;
+        /// <summary>
+        /// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        /// </summary>
+        public readonly Outputs.JobTriggerSchedule? Schedule;
         public readonly Outputs.JobTriggerSqlCondition? SqlCondition;
         /// <summary>
         /// configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
@@ -34,6 +39,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTrigger(
+            Outputs.JobTriggerContinuous? continuous,
+
             Outputs.JobTriggerFileArrival? fileArrival,
 
             Outputs.JobTriggerModel? model,
@@ -42,14 +49,18 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTriggerPeriodic? periodic,
 
+            Outputs.JobTriggerSchedule? schedule,
+
             Outputs.JobTriggerSqlCondition? sqlCondition,
 
             Outputs.JobTriggerTableUpdate? tableUpdate)
         {
+            Continuous = continuous;
             FileArrival = fileArrival;
             Model = model;
             PauseStatus = pauseStatus;
             Periodic = periodic;
+            Schedule = schedule;
             SqlCondition = sqlCondition;
             TableUpdate = tableUpdate;
         }

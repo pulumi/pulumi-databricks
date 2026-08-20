@@ -26,25 +26,23 @@ func GetAiGatewayModelServices(ctx *pulumi.Context, args *GetAiGatewayModelServi
 
 // A collection of arguments for invoking getAiGatewayModelServices.
 type GetAiGatewayModelServicesArgs struct {
-	// Whether to include model services for which the principal can only access
-	// selective metadata
-	IncludeBrowse *bool `pulumi:"includeBrowse"`
 	// Maximum number of model services to return. Defaults to 100 when unset or 0;
-	// the maximum is 100. Use `nextPageToken` to retrieve additional pages
+	// the maximum is 100. Use `pageToken` to retrieve additional pages
 	PageSize *int `pulumi:"pageSize"`
-	// Resource name of the parent schema to list within, as
+	// Name of the parent schema to list within, as
 	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
 	// characters individually
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAiGatewayModelServicesProviderConfig `pulumi:"providerConfig"`
-	// View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+	// View selector controlling which fields are populated per row. `FULL`
+	// returns the full representation of the service; `BASIC` returns a more
+	// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
 	View *string `pulumi:"view"`
 }
 
 // A collection of values returned by getAiGatewayModelServices.
 type GetAiGatewayModelServicesResult struct {
-	IncludeBrowse *bool                                   `pulumi:"includeBrowse"`
 	ModelServices []GetAiGatewayModelServicesModelService `pulumi:"modelServices"`
 	PageSize      *int                                    `pulumi:"pageSize"`
 	// (string) - Parent UC schema where the inference table is created.
@@ -66,19 +64,18 @@ func GetAiGatewayModelServicesOutput(ctx *pulumi.Context, args GetAiGatewayModel
 
 // A collection of arguments for invoking getAiGatewayModelServices.
 type GetAiGatewayModelServicesOutputArgs struct {
-	// Whether to include model services for which the principal can only access
-	// selective metadata
-	IncludeBrowse pulumi.BoolPtrInput `pulumi:"includeBrowse"`
 	// Maximum number of model services to return. Defaults to 100 when unset or 0;
-	// the maximum is 100. Use `nextPageToken` to retrieve additional pages
+	// the maximum is 100. Use `pageToken` to retrieve additional pages
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// Resource name of the parent schema to list within, as
+	// Name of the parent schema to list within, as
 	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
 	// characters individually
 	Parent pulumi.StringPtrInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAiGatewayModelServicesProviderConfigPtrInput `pulumi:"providerConfig"`
-	// View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+	// View selector controlling which fields are populated per row. `FULL`
+	// returns the full representation of the service; `BASIC` returns a more
+	// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
 	View pulumi.StringPtrInput `pulumi:"view"`
 }
 
@@ -99,10 +96,6 @@ func (o GetAiGatewayModelServicesResultOutput) ToGetAiGatewayModelServicesResult
 
 func (o GetAiGatewayModelServicesResultOutput) ToGetAiGatewayModelServicesResultOutputWithContext(ctx context.Context) GetAiGatewayModelServicesResultOutput {
 	return o
-}
-
-func (o GetAiGatewayModelServicesResultOutput) IncludeBrowse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAiGatewayModelServicesResult) *bool { return v.IncludeBrowse }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetAiGatewayModelServicesResultOutput) ModelServices() GetAiGatewayModelServicesModelServiceArrayOutput {

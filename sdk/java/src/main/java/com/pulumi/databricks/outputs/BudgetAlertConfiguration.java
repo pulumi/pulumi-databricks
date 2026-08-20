@@ -20,6 +20,10 @@ public final class BudgetAlertConfiguration {
      */
     private @Nullable List<BudgetAlertConfigurationActionConfiguration> actionConfigurations;
     private @Nullable String alertConfigurationId;
+    /**
+     * @return Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+     * 
+     */
     private @Nullable List<BudgetAlertConfigurationPrincipalOverride> principalOverrides;
     /**
      * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
@@ -31,6 +35,10 @@ public final class BudgetAlertConfiguration {
      * 
      */
     private @Nullable String quantityType;
+    /**
+     * @return How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+     * 
+     */
     private @Nullable String scopeType;
     /**
      * @return The time window of usage data for the budget. (Enum: `MONTH`)
@@ -54,6 +62,10 @@ public final class BudgetAlertConfiguration {
     public Optional<String> alertConfigurationId() {
         return Optional.ofNullable(this.alertConfigurationId);
     }
+    /**
+     * @return Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+     * 
+     */
     public List<BudgetAlertConfigurationPrincipalOverride> principalOverrides() {
         return this.principalOverrides == null ? List.of() : this.principalOverrides;
     }
@@ -71,6 +83,10 @@ public final class BudgetAlertConfiguration {
     public Optional<String> quantityType() {
         return Optional.ofNullable(this.quantityType);
     }
+    /**
+     * @return How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+     * 
+     */
     public Optional<String> scopeType() {
         return Optional.ofNullable(this.scopeType);
     }

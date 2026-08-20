@@ -137,7 +137,6 @@ type PolicyInfo struct {
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals pulumi.StringArrayOutput `pulumi:"exceptPrincipals"`
 	// Type of securables that the policy should take effect on.
-	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType pulumi.StringOutput `pulumi:"forSecurableType"`
 	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
@@ -229,7 +228,6 @@ type policyInfoState struct {
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals []string `pulumi:"exceptPrincipals"`
 	// Type of securables that the policy should take effect on.
-	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType *string `pulumi:"forSecurableType"`
 	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
@@ -283,7 +281,6 @@ type PolicyInfoState struct {
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals pulumi.StringArrayInput
 	// Type of securables that the policy should take effect on.
-	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType pulumi.StringPtrInput
 	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
@@ -337,7 +334,6 @@ type policyInfoArgs struct {
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals []string `pulumi:"exceptPrincipals"`
 	// Type of securables that the policy should take effect on.
-	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType string `pulumi:"forSecurableType"`
 	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
@@ -384,7 +380,6 @@ type PolicyInfoArgs struct {
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals pulumi.StringArrayInput
 	// Type of securables that the policy should take effect on.
-	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType pulumi.StringInput
 	// Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
@@ -535,7 +530,6 @@ func (o PolicyInfoOutput) ExceptPrincipals() pulumi.StringArrayOutput {
 }
 
 // Type of securables that the policy should take effect on.
-// Only `TABLE` is supported at this moment.
 // Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 func (o PolicyInfoOutput) ForSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringOutput { return v.ForSecurableType }).(pulumi.StringOutput)

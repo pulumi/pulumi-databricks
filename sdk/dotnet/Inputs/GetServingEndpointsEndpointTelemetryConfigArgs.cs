@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetServingEndpointsEndpointTelemetryConfigInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("enabledTelemetryFeatures")]
+        private InputList<string>? _enabledTelemetryFeatures;
+        public InputList<string> EnabledTelemetryFeatures
+        {
+            get => _enabledTelemetryFeatures ?? (_enabledTelemetryFeatures = new InputList<string>());
+            set => _enabledTelemetryFeatures = value;
+        }
+
         [Input("inferenceTableConfigs")]
         private InputList<Inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigInputArgs>? _inferenceTableConfigs;
         public InputList<Inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigInputArgs> InferenceTableConfigs

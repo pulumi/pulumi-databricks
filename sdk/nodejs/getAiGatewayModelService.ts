@@ -42,11 +42,6 @@ export interface GetAiGatewayModelServiceArgs {
  */
 export interface GetAiGatewayModelServiceResult {
     /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     */
-    readonly browseOnly: boolean;
-    /**
      * (string) - User-provided description
      */
     readonly comment: string;

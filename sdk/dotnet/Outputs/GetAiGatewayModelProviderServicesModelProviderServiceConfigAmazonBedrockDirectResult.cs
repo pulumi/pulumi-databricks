@@ -14,8 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectResult
     {
         /// <summary>
-        /// (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `ServiceCredential`.
-        /// Supersedes the flat `AwsAccessKeyId` / `AwsSecretAccessKey` fields
+        /// (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `ServiceCredential`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyResult? AwsAccessKey;
         /// <summary>

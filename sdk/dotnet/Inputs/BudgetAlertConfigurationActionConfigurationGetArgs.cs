@@ -16,13 +16,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? ActionConfigurationId { get; set; }
 
         /// <summary>
-        /// The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+        /// The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
         /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
 
         /// <summary>
-        /// The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+        /// For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `ActionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

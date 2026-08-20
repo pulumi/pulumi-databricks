@@ -5,11 +5,14 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgs;
@@ -25,6 +28,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectTableConnectorOptionsArgs Empty = new PipelineIngestionDefinitionObjectTableConnectorOptionsArgs();
+
+    @Import(name="apiSourceConnectorOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptionsArgs> apiSourceConnectorOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptionsArgs>> apiSourceConnectorOptions() {
+        return Optional.ofNullable(this.apiSourceConnectorOptions);
+    }
 
     @Import(name="confluenceOptions")
     private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptionsArgs> confluenceOptions;
@@ -59,6 +69,20 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs ex
 
     public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsArgs>> kafkaOptions() {
         return Optional.ofNullable(this.kafkaOptions);
+    }
+
+    @Import(name="linkedinAdsOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgs> linkedinAdsOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgs>> linkedinAdsOptions() {
+        return Optional.ofNullable(this.linkedinAdsOptions);
+    }
+
+    @Import(name="marketoOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptionsArgs> marketoOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptionsArgs>> marketoOptions() {
+        return Optional.ofNullable(this.marketoOptions);
     }
 
     @Import(name="metaAdsOptions")
@@ -113,11 +137,14 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs ex
     private PipelineIngestionDefinitionObjectTableConnectorOptionsArgs() {}
 
     private PipelineIngestionDefinitionObjectTableConnectorOptionsArgs(PipelineIngestionDefinitionObjectTableConnectorOptionsArgs $) {
+        this.apiSourceConnectorOptions = $.apiSourceConnectorOptions;
         this.confluenceOptions = $.confluenceOptions;
         this.gdriveOptions = $.gdriveOptions;
         this.googleAdsOptions = $.googleAdsOptions;
         this.jiraOptions = $.jiraOptions;
         this.kafkaOptions = $.kafkaOptions;
+        this.linkedinAdsOptions = $.linkedinAdsOptions;
+        this.marketoOptions = $.marketoOptions;
         this.metaAdsOptions = $.metaAdsOptions;
         this.outlookOptions = $.outlookOptions;
         this.redditAdsOptions = $.redditAdsOptions;
@@ -143,6 +170,15 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs ex
 
         public Builder(PipelineIngestionDefinitionObjectTableConnectorOptionsArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectTableConnectorOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder apiSourceConnectorOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptionsArgs> apiSourceConnectorOptions) {
+            $.apiSourceConnectorOptions = apiSourceConnectorOptions;
+            return this;
+        }
+
+        public Builder apiSourceConnectorOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptionsArgs apiSourceConnectorOptions) {
+            return apiSourceConnectorOptions(Output.of(apiSourceConnectorOptions));
         }
 
         public Builder confluenceOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptionsArgs> confluenceOptions) {
@@ -188,6 +224,24 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs ex
 
         public Builder kafkaOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsArgs kafkaOptions) {
             return kafkaOptions(Output.of(kafkaOptions));
+        }
+
+        public Builder linkedinAdsOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgs> linkedinAdsOptions) {
+            $.linkedinAdsOptions = linkedinAdsOptions;
+            return this;
+        }
+
+        public Builder linkedinAdsOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsArgs linkedinAdsOptions) {
+            return linkedinAdsOptions(Output.of(linkedinAdsOptions));
+        }
+
+        public Builder marketoOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptionsArgs> marketoOptions) {
+            $.marketoOptions = marketoOptions;
+            return this;
+        }
+
+        public Builder marketoOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptionsArgs marketoOptions) {
+            return marketoOptions(Output.of(marketoOptions));
         }
 
         public Builder metaAdsOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsArgs> metaAdsOptions) {

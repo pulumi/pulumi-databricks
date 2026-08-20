@@ -40,9 +40,17 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.alertConfigurationId);
     }
 
+    /**
+     * Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+     * 
+     */
     @Import(name="principalOverrides")
     private @Nullable Output<List<BudgetAlertConfigurationPrincipalOverrideArgs>> principalOverrides;
 
+    /**
+     * @return Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+     * 
+     */
     public Optional<Output<List<BudgetAlertConfigurationPrincipalOverrideArgs>>> principalOverrides() {
         return Optional.ofNullable(this.principalOverrides);
     }
@@ -77,9 +85,17 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.quantityType);
     }
 
+    /**
+     * How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+     * 
+     */
     @Import(name="scopeType")
     private @Nullable Output<String> scopeType;
 
+    /**
+     * @return How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+     * 
+     */
     public Optional<Output<String>> scopeType() {
         return Optional.ofNullable(this.scopeType);
     }
@@ -185,15 +201,33 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
             return alertConfigurationId(Output.of(alertConfigurationId));
         }
 
+        /**
+         * @param principalOverrides Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalOverrides(@Nullable Output<List<BudgetAlertConfigurationPrincipalOverrideArgs>> principalOverrides) {
             $.principalOverrides = principalOverrides;
             return this;
         }
 
+        /**
+         * @param principalOverrides Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalOverrides(List<BudgetAlertConfigurationPrincipalOverrideArgs> principalOverrides) {
             return principalOverrides(Output.of(principalOverrides));
         }
 
+        /**
+         * @param principalOverrides Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalOverrides(BudgetAlertConfigurationPrincipalOverrideArgs... principalOverrides) {
             return principalOverrides(List.of(principalOverrides));
         }
@@ -240,11 +274,23 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
             return quantityType(Output.of(quantityType));
         }
 
+        /**
+         * @param scopeType How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopeType(@Nullable Output<String> scopeType) {
             $.scopeType = scopeType;
             return this;
         }
 
+        /**
+         * @param scopeType How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopeType(String scopeType) {
             return scopeType(Output.of(scopeType));
         }

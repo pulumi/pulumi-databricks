@@ -22,7 +22,7 @@ public final class JobJobCluster {
      * @return Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      * 
      */
-    private JobJobClusterNewCluster newCluster;
+    private @Nullable JobJobClusterNewCluster newCluster;
     private @Nullable String serverlessComputeId;
 
     private JobJobCluster() {}
@@ -37,8 +37,8 @@ public final class JobJobCluster {
      * @return Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      * 
      */
-    public JobJobClusterNewCluster newCluster() {
-        return this.newCluster;
+    public Optional<JobJobClusterNewCluster> newCluster() {
+        return Optional.ofNullable(this.newCluster);
     }
     public Optional<String> serverlessComputeId() {
         return Optional.ofNullable(this.serverlessComputeId);
@@ -54,7 +54,7 @@ public final class JobJobCluster {
     @CustomType.Builder
     public static final class Builder {
         private String jobClusterKey;
-        private JobJobClusterNewCluster newCluster;
+        private @Nullable JobJobClusterNewCluster newCluster;
         private @Nullable String serverlessComputeId;
         public Builder() {}
         public Builder(JobJobCluster defaults) {
@@ -73,10 +73,8 @@ public final class JobJobCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder newCluster(JobJobClusterNewCluster newCluster) {
-            if (newCluster == null) {
-              throw new MissingRequiredPropertyException("JobJobCluster", "newCluster");
-            }
+        public Builder newCluster(@Nullable JobJobClusterNewCluster newCluster) {
+
             this.newCluster = newCluster;
             return this;
         }

@@ -36,15 +36,15 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      * 
      */
-    @Import(name="newCluster", required=true)
-    private Output<JobJobClusterNewClusterArgs> newCluster;
+    @Import(name="newCluster")
+    private @Nullable Output<JobJobClusterNewClusterArgs> newCluster;
 
     /**
      * @return Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      * 
      */
-    public Output<JobJobClusterNewClusterArgs> newCluster() {
-        return this.newCluster;
+    public Optional<Output<JobJobClusterNewClusterArgs>> newCluster() {
+        return Optional.ofNullable(this.newCluster);
     }
 
     @Import(name="serverlessComputeId")
@@ -107,7 +107,7 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder newCluster(Output<JobJobClusterNewClusterArgs> newCluster) {
+        public Builder newCluster(@Nullable Output<JobJobClusterNewClusterArgs> newCluster) {
             $.newCluster = newCluster;
             return this;
         }
@@ -134,9 +134,6 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
         public JobJobClusterArgs build() {
             if ($.jobClusterKey == null) {
                 throw new MissingRequiredPropertyException("JobJobClusterArgs", "jobClusterKey");
-            }
-            if ($.newCluster == null) {
-                throw new MissingRequiredPropertyException("JobJobClusterArgs", "newCluster");
             }
             return $;
         }

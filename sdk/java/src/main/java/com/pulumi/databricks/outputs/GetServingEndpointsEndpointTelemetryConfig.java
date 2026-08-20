@@ -14,11 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServingEndpointsEndpointTelemetryConfig {
+    private @Nullable List<String> enabledTelemetryFeatures;
     private @Nullable List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs;
     private @Nullable List<GetServingEndpointsEndpointTelemetryConfigTableName> tableNames;
     private @Nullable String telemetryProfileId;
 
     private GetServingEndpointsEndpointTelemetryConfig() {}
+    public List<String> enabledTelemetryFeatures() {
+        return this.enabledTelemetryFeatures == null ? List.of() : this.enabledTelemetryFeatures;
+    }
     public List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs() {
         return this.inferenceTableConfigs == null ? List.of() : this.inferenceTableConfigs;
     }
@@ -38,17 +42,28 @@ public final class GetServingEndpointsEndpointTelemetryConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> enabledTelemetryFeatures;
         private @Nullable List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs;
         private @Nullable List<GetServingEndpointsEndpointTelemetryConfigTableName> tableNames;
         private @Nullable String telemetryProfileId;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointTelemetryConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabledTelemetryFeatures = defaults.enabledTelemetryFeatures;
     	      this.inferenceTableConfigs = defaults.inferenceTableConfigs;
     	      this.tableNames = defaults.tableNames;
     	      this.telemetryProfileId = defaults.telemetryProfileId;
         }
 
+        @CustomType.Setter
+        public Builder enabledTelemetryFeatures(@Nullable List<String> enabledTelemetryFeatures) {
+
+            this.enabledTelemetryFeatures = enabledTelemetryFeatures;
+            return this;
+        }
+        public Builder enabledTelemetryFeatures(String... enabledTelemetryFeatures) {
+            return enabledTelemetryFeatures(List.of(enabledTelemetryFeatures));
+        }
         @CustomType.Setter
         public Builder inferenceTableConfigs(@Nullable List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs) {
 
@@ -75,6 +90,7 @@ public final class GetServingEndpointsEndpointTelemetryConfig {
         }
         public GetServingEndpointsEndpointTelemetryConfig build() {
             final var _resultValue = new GetServingEndpointsEndpointTelemetryConfig();
+            _resultValue.enabledTelemetryFeatures = enabledTelemetryFeatures;
             _resultValue.inferenceTableConfigs = inferenceTableConfigs;
             _resultValue.tableNames = tableNames;
             _resultValue.telemetryProfileId = telemetryProfileId;

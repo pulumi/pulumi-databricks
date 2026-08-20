@@ -13,18 +13,22 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetServingEndpointsEndpointTelemetryConfigResult
     {
+        public readonly ImmutableArray<string> EnabledTelemetryFeatures;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigResult> InferenceTableConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointTelemetryConfigTableNameResult> TableNames;
         public readonly string? TelemetryProfileId;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointTelemetryConfigResult(
+            ImmutableArray<string> enabledTelemetryFeatures,
+
             ImmutableArray<Outputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigResult> inferenceTableConfigs,
 
             ImmutableArray<Outputs.GetServingEndpointsEndpointTelemetryConfigTableNameResult> tableNames,
 
             string? telemetryProfileId)
         {
+            EnabledTelemetryFeatures = enabledTelemetryFeatures;
             InferenceTableConfigs = inferenceTableConfigs;
             TableNames = tableNames;
             TelemetryProfileId = telemetryProfileId;

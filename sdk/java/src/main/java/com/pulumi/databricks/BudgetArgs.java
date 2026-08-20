@@ -85,9 +85,17 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+     * 
+     */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
+    /**
+     * @return The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+     * 
+     */
     public Optional<Output<String>> resourceType() {
         return Optional.ofNullable(this.resourceType);
     }
@@ -224,11 +232,23 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
             return filter(Output.of(filter));
         }
 
+        /**
+         * @param resourceType The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(@Nullable Output<String> resourceType) {
             $.resourceType = resourceType;
             return this;
         }
 
+        /**
+         * @param resourceType The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(String resourceType) {
             return resourceType(Output.of(resourceType));
         }

@@ -8,7 +8,9 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppActiveDeploymentArgs;
 import com.pulumi.databricks.inputs.AppAppStatusArgs;
 import com.pulumi.databricks.inputs.AppComputeStatusArgs;
+import com.pulumi.databricks.inputs.AppDefaultGitSourceArgs;
 import com.pulumi.databricks.inputs.AppGitRepositoryArgs;
+import com.pulumi.databricks.inputs.AppGitSourceArgs;
 import com.pulumi.databricks.inputs.AppPendingDeploymentArgs;
 import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
@@ -145,6 +147,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.creator);
     }
 
+    @Import(name="defaultGitSource")
+    private @Nullable Output<AppDefaultGitSourceArgs> defaultGitSource;
+
+    public Optional<Output<AppDefaultGitSourceArgs>> defaultGitSource() {
+        return Optional.ofNullable(this.defaultGitSource);
+    }
+
     /**
      * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      * 
@@ -220,6 +229,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.effectiveUserApiScopes);
     }
 
+    @Import(name="forwardUserAccessToken")
+    private @Nullable Output<Boolean> forwardUserAccessToken;
+
+    public Optional<Output<Boolean>> forwardUserAccessToken() {
+        return Optional.ofNullable(this.forwardUserAccessToken);
+    }
+
     /**
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      * 
@@ -233,6 +249,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<AppGitRepositoryArgs>> gitRepository() {
         return Optional.ofNullable(this.gitRepository);
+    }
+
+    @Import(name="gitSource")
+    private @Nullable Output<AppGitSourceArgs> gitSource;
+
+    public Optional<Output<AppGitSourceArgs>> gitSource() {
+        return Optional.ofNullable(this.gitSource);
     }
 
     /**
@@ -369,6 +392,21 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.servicePrincipalName);
     }
 
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
+    @Import(name="sourceCodePath")
+    private @Nullable Output<String> sourceCodePath;
+
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
+    public Optional<Output<String>> sourceCodePath() {
+        return Optional.ofNullable(this.sourceCodePath);
+    }
+
     @Import(name="space")
     private @Nullable Output<String> space;
 
@@ -493,12 +531,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.computeStatus = $.computeStatus;
         this.createTime = $.createTime;
         this.creator = $.creator;
+        this.defaultGitSource = $.defaultGitSource;
         this.defaultSourceCodePath = $.defaultSourceCodePath;
         this.description = $.description;
         this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
         this.effectiveUsagePolicyId = $.effectiveUsagePolicyId;
         this.effectiveUserApiScopes = $.effectiveUserApiScopes;
+        this.forwardUserAccessToken = $.forwardUserAccessToken;
         this.gitRepository = $.gitRepository;
+        this.gitSource = $.gitSource;
         this.name = $.name;
         this.noCompute = $.noCompute;
         this.oauth2AppClientId = $.oauth2AppClientId;
@@ -509,6 +550,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.servicePrincipalClientId = $.servicePrincipalClientId;
         this.servicePrincipalId = $.servicePrincipalId;
         this.servicePrincipalName = $.servicePrincipalName;
+        this.sourceCodePath = $.sourceCodePath;
         this.space = $.space;
         this.telemetryExportDestinations = $.telemetryExportDestinations;
         this.thumbnailUrl = $.thumbnailUrl;
@@ -702,6 +744,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return creator(Output.of(creator));
         }
 
+        public Builder defaultGitSource(@Nullable Output<AppDefaultGitSourceArgs> defaultGitSource) {
+            $.defaultGitSource = defaultGitSource;
+            return this;
+        }
+
+        public Builder defaultGitSource(AppDefaultGitSourceArgs defaultGitSource) {
+            return defaultGitSource(Output.of(defaultGitSource));
+        }
+
         /**
          * @param defaultSourceCodePath The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
          * 
@@ -817,6 +868,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return effectiveUserApiScopes(List.of(effectiveUserApiScopes));
         }
 
+        public Builder forwardUserAccessToken(@Nullable Output<Boolean> forwardUserAccessToken) {
+            $.forwardUserAccessToken = forwardUserAccessToken;
+            return this;
+        }
+
+        public Builder forwardUserAccessToken(Boolean forwardUserAccessToken) {
+            return forwardUserAccessToken(Output.of(forwardUserAccessToken));
+        }
+
         /**
          * @param gitRepository Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
          * 
@@ -836,6 +896,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gitRepository(AppGitRepositoryArgs gitRepository) {
             return gitRepository(Output.of(gitRepository));
+        }
+
+        public Builder gitSource(@Nullable Output<AppGitSourceArgs> gitSource) {
+            $.gitSource = gitSource;
+            return this;
+        }
+
+        public Builder gitSource(AppGitSourceArgs gitSource) {
+            return gitSource(Output.of(gitSource));
         }
 
         /**
@@ -1032,6 +1101,27 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder servicePrincipalName(String servicePrincipalName) {
             return servicePrincipalName(Output.of(servicePrincipalName));
+        }
+
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceCodePath(@Nullable Output<String> sourceCodePath) {
+            $.sourceCodePath = sourceCodePath;
+            return this;
+        }
+
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceCodePath(String sourceCodePath) {
+            return sourceCodePath(Output.of(sourceCodePath));
         }
 
         public Builder space(@Nullable Output<String> space) {

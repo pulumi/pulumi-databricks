@@ -18,9 +18,6 @@ import (
 type AiGatewayMcpService struct {
 	pulumi.CustomResourceState
 
-	// (boolean) - Whether the caller sees only metadata available through the BROWSE
-	// privilege
-	BrowseOnly pulumi.BoolOutput `pulumi:"browseOnly"`
 	// User-provided description
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Operational configuration: connection, tool selectors, rate limit.
@@ -41,8 +38,7 @@ type AiGatewayMcpService struct {
 	// `etag` field on the Update / Delete request; the server rejects the mutation
 	// if the stored etag differs
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Leaf identifier for the MCP service (the unqualified name within the
-	// parent schema, e.g. "myMcpService")
+	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId pulumi.StringOutput `pulumi:"mcpServiceId"`
 	// (string) - Metastore hosting the MCP service
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
@@ -54,7 +50,7 @@ type AiGatewayMcpService struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The owner of the MCP service. Write-only; read owner via effective_owner
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -102,9 +98,6 @@ func GetAiGatewayMcpService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiGatewayMcpService resources.
 type aiGatewayMcpServiceState struct {
-	// (boolean) - Whether the caller sees only metadata available through the BROWSE
-	// privilege
-	BrowseOnly *bool `pulumi:"browseOnly"`
 	// User-provided description
 	Comment *string `pulumi:"comment"`
 	// Operational configuration: connection, tool selectors, rate limit.
@@ -125,8 +118,7 @@ type aiGatewayMcpServiceState struct {
 	// `etag` field on the Update / Delete request; the server rejects the mutation
 	// if the stored etag differs
 	Etag *string `pulumi:"etag"`
-	// Leaf identifier for the MCP service (the unqualified name within the
-	// parent schema, e.g. "myMcpService")
+	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId *string `pulumi:"mcpServiceId"`
 	// (string) - Metastore hosting the MCP service
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -138,7 +130,7 @@ type aiGatewayMcpServiceState struct {
 	Name *string `pulumi:"name"`
 	// The owner of the MCP service. Write-only; read owner via effective_owner
 	Owner *string `pulumi:"owner"`
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent *string `pulumi:"parent"`
@@ -151,9 +143,6 @@ type aiGatewayMcpServiceState struct {
 }
 
 type AiGatewayMcpServiceState struct {
-	// (boolean) - Whether the caller sees only metadata available through the BROWSE
-	// privilege
-	BrowseOnly pulumi.BoolPtrInput
 	// User-provided description
 	Comment pulumi.StringPtrInput
 	// Operational configuration: connection, tool selectors, rate limit.
@@ -174,8 +163,7 @@ type AiGatewayMcpServiceState struct {
 	// `etag` field on the Update / Delete request; the server rejects the mutation
 	// if the stored etag differs
 	Etag pulumi.StringPtrInput
-	// Leaf identifier for the MCP service (the unqualified name within the
-	// parent schema, e.g. "myMcpService")
+	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId pulumi.StringPtrInput
 	// (string) - Metastore hosting the MCP service
 	MetastoreId pulumi.StringPtrInput
@@ -187,7 +175,7 @@ type AiGatewayMcpServiceState struct {
 	Name pulumi.StringPtrInput
 	// The owner of the MCP service. Write-only; read owner via effective_owner
 	Owner pulumi.StringPtrInput
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent pulumi.StringPtrInput
@@ -211,12 +199,11 @@ type aiGatewayMcpServiceArgs struct {
 	// UpdateMcpService it is required only when `config` (or a `config.*`
 	// subpath) appears in `updateMask`
 	Config *AiGatewayMcpServiceConfig `pulumi:"config"`
-	// Leaf identifier for the MCP service (the unqualified name within the
-	// parent schema, e.g. "myMcpService")
+	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId string `pulumi:"mcpServiceId"`
 	// The owner of the MCP service. Write-only; read owner via effective_owner
 	Owner *string `pulumi:"owner"`
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent string `pulumi:"parent"`
@@ -233,12 +220,11 @@ type AiGatewayMcpServiceArgs struct {
 	// UpdateMcpService it is required only when `config` (or a `config.*`
 	// subpath) appears in `updateMask`
 	Config AiGatewayMcpServiceConfigPtrInput
-	// Leaf identifier for the MCP service (the unqualified name within the
-	// parent schema, e.g. "myMcpService")
+	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId pulumi.StringInput
 	// The owner of the MCP service. Write-only; read owner via effective_owner
 	Owner pulumi.StringPtrInput
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent pulumi.StringInput
@@ -333,12 +319,6 @@ func (o AiGatewayMcpServiceOutput) ToAiGatewayMcpServiceOutputWithContext(ctx co
 	return o
 }
 
-// (boolean) - Whether the caller sees only metadata available through the BROWSE
-// privilege
-func (o AiGatewayMcpServiceOutput) BrowseOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.BoolOutput { return v.BrowseOnly }).(pulumi.BoolOutput)
-}
-
 // User-provided description
 func (o AiGatewayMcpServiceOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
@@ -377,8 +357,7 @@ func (o AiGatewayMcpServiceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Leaf identifier for the MCP service (the unqualified name within the
-// parent schema, e.g. "myMcpService")
+// Name for the MCP service, e.g. "myMcpService"
 func (o AiGatewayMcpServiceOutput) McpServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.McpServiceId }).(pulumi.StringOutput)
 }
@@ -402,7 +381,7 @@ func (o AiGatewayMcpServiceOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Resource name of the parent schema.
+// Name of the parent schema.
 // Format: `schemas/{catalog}.{schema}`.
 // Each `{...}` component is capped at 255 characters individually
 func (o AiGatewayMcpServiceOutput) Parent() pulumi.StringOutput {

@@ -42,11 +42,6 @@ export interface GetAiGatewayMcpServiceArgs {
  */
 export interface GetAiGatewayMcpServiceResult {
     /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     */
-    readonly browseOnly: boolean;
-    /**
      * (string) - User-provided description
      */
     readonly comment: string;
@@ -83,7 +78,8 @@ export interface GetAiGatewayMcpServiceResult {
      */
     readonly metastoreId: string;
     /**
-     * (string)
+     * (string) - Name of the UC connection that hosts the MCP server, as
+     * `connections/{catalog}.{schema}.{connection}`
      */
     readonly name: string;
     /**

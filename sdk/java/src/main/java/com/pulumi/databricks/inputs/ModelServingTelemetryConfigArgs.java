@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingTelemetryConfigInferenceTableConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingTelemetryConfigTableNamesArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class ModelServingTelemetryConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ModelServingTelemetryConfigArgs Empty = new ModelServingTelemetryConfigArgs();
+
+    @Import(name="enabledTelemetryFeatures")
+    private @Nullable Output<List<String>> enabledTelemetryFeatures;
+
+    public Optional<Output<List<String>>> enabledTelemetryFeatures() {
+        return Optional.ofNullable(this.enabledTelemetryFeatures);
+    }
 
     /**
      * Block describing the configuration of usage tracking. Consists of the following attributes:
@@ -49,6 +57,7 @@ public final class ModelServingTelemetryConfigArgs extends com.pulumi.resources.
     private ModelServingTelemetryConfigArgs() {}
 
     private ModelServingTelemetryConfigArgs(ModelServingTelemetryConfigArgs $) {
+        this.enabledTelemetryFeatures = $.enabledTelemetryFeatures;
         this.inferenceTableConfig = $.inferenceTableConfig;
         this.tableNames = $.tableNames;
         this.telemetryProfileId = $.telemetryProfileId;
@@ -70,6 +79,19 @@ public final class ModelServingTelemetryConfigArgs extends com.pulumi.resources.
 
         public Builder(ModelServingTelemetryConfigArgs defaults) {
             $ = new ModelServingTelemetryConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder enabledTelemetryFeatures(@Nullable Output<List<String>> enabledTelemetryFeatures) {
+            $.enabledTelemetryFeatures = enabledTelemetryFeatures;
+            return this;
+        }
+
+        public Builder enabledTelemetryFeatures(List<String> enabledTelemetryFeatures) {
+            return enabledTelemetryFeatures(Output.of(enabledTelemetryFeatures));
+        }
+
+        public Builder enabledTelemetryFeatures(String... enabledTelemetryFeatures) {
+            return enabledTelemetryFeatures(List.of(enabledTelemetryFeatures));
         }
 
         /**

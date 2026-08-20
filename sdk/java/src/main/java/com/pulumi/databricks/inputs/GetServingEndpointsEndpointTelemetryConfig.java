@@ -17,6 +17,13 @@ public final class GetServingEndpointsEndpointTelemetryConfig extends com.pulumi
 
     public static final GetServingEndpointsEndpointTelemetryConfig Empty = new GetServingEndpointsEndpointTelemetryConfig();
 
+    @Import(name="enabledTelemetryFeatures")
+    private @Nullable List<String> enabledTelemetryFeatures;
+
+    public Optional<List<String>> enabledTelemetryFeatures() {
+        return Optional.ofNullable(this.enabledTelemetryFeatures);
+    }
+
     @Import(name="inferenceTableConfigs")
     private @Nullable List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs;
 
@@ -41,6 +48,7 @@ public final class GetServingEndpointsEndpointTelemetryConfig extends com.pulumi
     private GetServingEndpointsEndpointTelemetryConfig() {}
 
     private GetServingEndpointsEndpointTelemetryConfig(GetServingEndpointsEndpointTelemetryConfig $) {
+        this.enabledTelemetryFeatures = $.enabledTelemetryFeatures;
         this.inferenceTableConfigs = $.inferenceTableConfigs;
         this.tableNames = $.tableNames;
         this.telemetryProfileId = $.telemetryProfileId;
@@ -62,6 +70,15 @@ public final class GetServingEndpointsEndpointTelemetryConfig extends com.pulumi
 
         public Builder(GetServingEndpointsEndpointTelemetryConfig defaults) {
             $ = new GetServingEndpointsEndpointTelemetryConfig(Objects.requireNonNull(defaults));
+        }
+
+        public Builder enabledTelemetryFeatures(@Nullable List<String> enabledTelemetryFeatures) {
+            $.enabledTelemetryFeatures = enabledTelemetryFeatures;
+            return this;
+        }
+
+        public Builder enabledTelemetryFeatures(String... enabledTelemetryFeatures) {
+            return enabledTelemetryFeatures(List.of(enabledTelemetryFeatures));
         }
 
         public Builder inferenceTableConfigs(@Nullable List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig> inferenceTableConfigs) {

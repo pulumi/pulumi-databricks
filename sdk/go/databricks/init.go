@@ -25,6 +25,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessControlRuleSet{}
 	case "databricks:index/accountFederationPolicy:AccountFederationPolicy":
 		r = &AccountFederationPolicy{}
+	case "databricks:index/accountIamDirectGroupMemberV2:AccountIamDirectGroupMemberV2":
+		r = &AccountIamDirectGroupMemberV2{}
+	case "databricks:index/accountIamGroupV2:AccountIamGroupV2":
+		r = &AccountIamGroupV2{}
+	case "databricks:index/accountIamServicePrincipalV2:AccountIamServicePrincipalV2":
+		r = &AccountIamServicePrincipalV2{}
+	case "databricks:index/accountIamUserV2:AccountIamUserV2":
+		r = &AccountIamUserV2{}
+	case "databricks:index/accountIamWorkspaceAssignmentV2:AccountIamWorkspaceAssignmentV2":
+		r = &AccountIamWorkspaceAssignmentV2{}
 	case "databricks:index/accountNetworkPolicy:AccountNetworkPolicy":
 		r = &AccountNetworkPolicy{}
 	case "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2":
@@ -337,6 +347,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkspaceEntityTagAssignment{}
 	case "databricks:index/workspaceFile:WorkspaceFile":
 		r = &WorkspaceFile{}
+	case "databricks:index/workspaceIamDirectGroupMemberV2:WorkspaceIamDirectGroupMemberV2":
+		r = &WorkspaceIamDirectGroupMemberV2{}
+	case "databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2":
+		r = &WorkspaceIamGroupV2{}
+	case "databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2":
+		r = &WorkspaceIamServicePrincipalV2{}
+	case "databricks:index/workspaceIamUserV2:WorkspaceIamUserV2":
+		r = &WorkspaceIamUserV2{}
+	case "databricks:index/workspaceIamWorkspaceAssignmentV2:WorkspaceIamWorkspaceAssignmentV2":
+		r = &WorkspaceIamWorkspaceAssignmentV2{}
+	case "databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2":
+		r = &WorkspaceIamWorkspaceIdentityDetailV2{}
 	case "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption":
 		r = &WorkspaceNetworkOption{}
 	case "databricks:index/workspaceSettingV2:WorkspaceSettingV2":
@@ -380,6 +402,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/accountFederationPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accountIamDirectGroupMemberV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accountIamGroupV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accountIamServicePrincipalV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accountIamUserV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accountIamWorkspaceAssignmentV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1160,6 +1207,36 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/workspaceFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceIamDirectGroupMemberV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceIamGroupV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceIamServicePrincipalV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceIamUserV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceIamWorkspaceAssignmentV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceIamWorkspaceIdentityDetailV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

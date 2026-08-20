@@ -33,14 +33,14 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
     }
 
     /**
-     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      * 
      */
     @Import(name="pgType", required=true)
     private Output<String> pgType;
 
     /**
-     * @return PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * @return PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      * 
      */
     public Output<String> pgType() {
@@ -112,7 +112,7 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
         }
 
         /**
-         * @param pgType PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+         * @param pgType PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class DatabaseSyncedDatabaseTableSpecTypeOverrideArgs extends com.p
         }
 
         /**
-         * @param pgType PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+         * @param pgType PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
          * 
          * @return builder
          * 

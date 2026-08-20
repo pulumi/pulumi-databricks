@@ -43,6 +43,7 @@ namespace Pulumi.Databricks.Outputs
         /// The email of the user that created the deployment.
         /// </summary>
         public readonly string Creator;
+        public readonly Outputs.GetAppsAppDefaultGitSourceResult DefaultGitSource;
         /// <summary>
         /// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         /// </summary>
@@ -63,10 +64,12 @@ namespace Pulumi.Databricks.Outputs
         /// A list of effective api scopes granted to the user access token.
         /// </summary>
         public readonly ImmutableArray<string> EffectiveUserApiScopes;
+        public readonly bool? ForwardUserAccessToken;
         /// <summary>
         /// attribute - Git repository configuration for app deployments.
         /// </summary>
         public readonly Outputs.GetAppsAppGitRepositoryResult? GitRepository;
+        public readonly Outputs.GetAppsAppGitSourceResult GitSource;
         /// <summary>
         /// Id of the job to grant permission on.
         /// </summary>
@@ -103,6 +106,10 @@ namespace Pulumi.Databricks.Outputs
         /// name of the app service principal
         /// </summary>
         public readonly string ServicePrincipalName;
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
+        public readonly string SourceCodePath;
         /// <summary>
         /// Name of the app space this app belongs to.
         /// </summary>
@@ -156,6 +163,8 @@ namespace Pulumi.Databricks.Outputs
 
             string creator,
 
+            Outputs.GetAppsAppDefaultGitSourceResult defaultGitSource,
+
             string defaultSourceCodePath,
 
             string? description,
@@ -166,7 +175,11 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> effectiveUserApiScopes,
 
+            bool? forwardUserAccessToken,
+
             Outputs.GetAppsAppGitRepositoryResult? gitRepository,
+
+            Outputs.GetAppsAppGitSourceResult gitSource,
 
             string id,
 
@@ -185,6 +198,8 @@ namespace Pulumi.Databricks.Outputs
             int servicePrincipalId,
 
             string servicePrincipalName,
+
+            string sourceCodePath,
 
             string? space,
 
@@ -211,12 +226,15 @@ namespace Pulumi.Databricks.Outputs
             ComputeStatus = computeStatus;
             CreateTime = createTime;
             Creator = creator;
+            DefaultGitSource = defaultGitSource;
             DefaultSourceCodePath = defaultSourceCodePath;
             Description = description;
             EffectiveBudgetPolicyId = effectiveBudgetPolicyId;
             EffectiveUsagePolicyId = effectiveUsagePolicyId;
             EffectiveUserApiScopes = effectiveUserApiScopes;
+            ForwardUserAccessToken = forwardUserAccessToken;
             GitRepository = gitRepository;
+            GitSource = gitSource;
             Id = id;
             Name = name;
             Oauth2AppClientId = oauth2AppClientId;
@@ -226,6 +244,7 @@ namespace Pulumi.Databricks.Outputs
             ServicePrincipalClientId = servicePrincipalClientId;
             ServicePrincipalId = servicePrincipalId;
             ServicePrincipalName = servicePrincipalName;
+            SourceCodePath = sourceCodePath;
             Space = space;
             TelemetryExportDestinations = telemetryExportDestinations;
             ThumbnailUrl = thumbnailUrl;

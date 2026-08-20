@@ -23,14 +23,14 @@ public final class BudgetAlertConfigurationActionConfigurationArgs extends com.p
     }
 
     /**
-     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
      * 
      */
     @Import(name="actionType")
     private @Nullable Output<String> actionType;
 
     /**
-     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
      * 
      */
     public Optional<Output<String>> actionType() {
@@ -38,14 +38,14 @@ public final class BudgetAlertConfigurationActionConfigurationArgs extends com.p
     }
 
     /**
-     * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `actionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * @return For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `actionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
      * 
      */
     public Optional<Output<String>> target() {
@@ -88,7 +88,7 @@ public final class BudgetAlertConfigurationActionConfigurationArgs extends com.p
         }
 
         /**
-         * @param actionType The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+         * @param actionType The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class BudgetAlertConfigurationActionConfigurationArgs extends com.p
         }
 
         /**
-         * @param actionType The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+         * @param actionType The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class BudgetAlertConfigurationActionConfigurationArgs extends com.p
         }
 
         /**
-         * @param target The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+         * @param target For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `actionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class BudgetAlertConfigurationActionConfigurationArgs extends com.p
         }
 
         /**
-         * @param target The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+         * @param target For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `actionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
          * 
          * @return builder
          * 

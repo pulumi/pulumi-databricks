@@ -30,9 +30,8 @@ class AiGatewayMcpServiceArgs:
         """
         The set of arguments for constructing a AiGatewayMcpService resource.
 
-        :param pulumi.Input[_builtins.str] mcp_service_id: Leaf identifier for the MCP service (the unqualified name within the
-               parent schema, e.g. "my_mcp_service")
-        :param pulumi.Input[_builtins.str] parent: Resource name of the parent schema.
+        :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
+        :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[_builtins.str] comment: User-provided description
@@ -58,8 +57,7 @@ class AiGatewayMcpServiceArgs:
     @pulumi.getter(name="mcpServiceId")
     def mcp_service_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Leaf identifier for the MCP service (the unqualified name within the
-        parent schema, e.g. "my_mcp_service")
+        Name for the MCP service, e.g. "my_mcp_service"
         """
         return pulumi.get(self, "mcp_service_id")
 
@@ -71,7 +69,7 @@ class AiGatewayMcpServiceArgs:
     @pulumi.getter
     def parent(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource name of the parent schema.
+        Name of the parent schema.
         Format: `schemas/{catalog}.{schema}`.
         Each `{...}` component is capped at 255 characters individually
         """
@@ -136,7 +134,6 @@ class AiGatewayMcpServiceArgs:
 @pulumi.input_type
 class _AiGatewayMcpServiceState:
     def __init__(__self__, *,
-                 browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['AiGatewayMcpServiceConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -154,8 +151,6 @@ class _AiGatewayMcpServiceState:
         """
         Input properties used for looking up and filtering AiGatewayMcpService resources.
 
-        :param pulumi.Input[_builtins.bool] browse_only: (boolean) - Whether the caller sees only metadata available through the BROWSE
-               privilege
         :param pulumi.Input[_builtins.str] comment: User-provided description
         :param pulumi.Input['AiGatewayMcpServiceConfigArgs'] config: Operational configuration: connection, tool selectors, rate limit.
                Required on CreateMcpService; on
@@ -170,8 +165,7 @@ class _AiGatewayMcpServiceState:
                precondition on a mutation, echo the last-read value back via the dedicated
                `etag` field on the Update / Delete request; the server rejects the mutation
                if the stored etag differs
-        :param pulumi.Input[_builtins.str] mcp_service_id: Leaf identifier for the MCP service (the unqualified name within the
-               parent schema, e.g. "my_mcp_service")
+        :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the MCP service
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the MCP service.
                Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
@@ -179,15 +173,13 @@ class _AiGatewayMcpServiceState:
                Server-derived on Create from `parent` +
                `mcp_service_id`; required and immutable on Update/Get/Delete
         :param pulumi.Input[_builtins.str] owner: The owner of the MCP service. Write-only; read owner via effective_owner
-        :param pulumi.Input[_builtins.str] parent: Resource name of the parent schema.
+        :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input['AiGatewayMcpServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - When the MCP service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """
-        if browse_only is not None:
-            pulumi.set(__self__, "browse_only", browse_only)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if config is not None:
@@ -216,19 +208,6 @@ class _AiGatewayMcpServiceState:
             pulumi.set(__self__, "update_time", update_time)
         if updated_by is not None:
             pulumi.set(__self__, "updated_by", updated_by)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        (boolean) - Whether the caller sees only metadata available through the BROWSE
-        privilege
-        """
-        return pulumi.get(self, "browse_only")
-
-    @browse_only.setter
-    def browse_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "browse_only", value)
 
     @_builtins.property
     @pulumi.getter
@@ -314,8 +293,7 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="mcpServiceId")
     def mcp_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Leaf identifier for the MCP service (the unqualified name within the
-        parent schema, e.g. "my_mcp_service")
+        Name for the MCP service, e.g. "my_mcp_service"
         """
         return pulumi.get(self, "mcp_service_id")
 
@@ -367,7 +345,7 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Resource name of the parent schema.
+        Name of the parent schema.
         Format: `schemas/{catalog}.{schema}`.
         Each `{...}` component is capped at 255 characters individually
         """
@@ -440,10 +418,9 @@ class AiGatewayMcpService(pulumi.CustomResource):
                Required on CreateMcpService; on
                UpdateMcpService it is required only when `config` (or a `config.*`
                subpath) appears in `update_mask`
-        :param pulumi.Input[_builtins.str] mcp_service_id: Leaf identifier for the MCP service (the unqualified name within the
-               parent schema, e.g. "my_mcp_service")
+        :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
         :param pulumi.Input[_builtins.str] owner: The owner of the MCP service. Write-only; read owner via effective_owner
-        :param pulumi.Input[_builtins.str] parent: Resource name of the parent schema.
+        :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
@@ -500,7 +477,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["provider_config"] = provider_config
-            __props__.__dict__["browse_only"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["effective_owner"] = None
@@ -519,7 +495,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -541,8 +516,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] browse_only: (boolean) - Whether the caller sees only metadata available through the BROWSE
-               privilege
         :param pulumi.Input[_builtins.str] comment: User-provided description
         :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']] config: Operational configuration: connection, tool selectors, rate limit.
                Required on CreateMcpService; on
@@ -557,8 +530,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
                precondition on a mutation, echo the last-read value back via the dedicated
                `etag` field on the Update / Delete request; the server rejects the mutation
                if the stored etag differs
-        :param pulumi.Input[_builtins.str] mcp_service_id: Leaf identifier for the MCP service (the unqualified name within the
-               parent schema, e.g. "my_mcp_service")
+        :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the MCP service
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the MCP service.
                Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
@@ -566,7 +538,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
                Server-derived on Create from `parent` +
                `mcp_service_id`; required and immutable on Update/Get/Delete
         :param pulumi.Input[_builtins.str] owner: The owner of the MCP service. Write-only; read owner via effective_owner
-        :param pulumi.Input[_builtins.str] parent: Resource name of the parent schema.
+        :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
@@ -577,7 +549,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
 
         __props__ = _AiGatewayMcpServiceState.__new__(_AiGatewayMcpServiceState)
 
-        __props__.__dict__["browse_only"] = browse_only
         __props__.__dict__["comment"] = comment
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
@@ -593,15 +564,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["updated_by"] = updated_by
         return AiGatewayMcpService(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> pulumi.Output[_builtins.bool]:
-        """
-        (boolean) - Whether the caller sees only metadata available through the BROWSE
-        privilege
-        """
-        return pulumi.get(self, "browse_only")
 
     @_builtins.property
     @pulumi.getter
@@ -663,8 +625,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="mcpServiceId")
     def mcp_service_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Leaf identifier for the MCP service (the unqualified name within the
-        parent schema, e.g. "my_mcp_service")
+        Name for the MCP service, e.g. "my_mcp_service"
         """
         return pulumi.get(self, "mcp_service_id")
 
@@ -700,7 +661,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource name of the parent schema.
+        Name of the parent schema.
         Format: `schemas/{catalog}.{schema}`.
         Each `{...}` component is capped at 255 characters individually
         """

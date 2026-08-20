@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureFunctionColumnSelectionResult
     {
         /// <summary>
-        /// (string) - Column name from source to select as the feature value
+        /// (string) - Source column whose value is passed for this parameter at execution time
         /// </summary>
         public readonly string Column;
 

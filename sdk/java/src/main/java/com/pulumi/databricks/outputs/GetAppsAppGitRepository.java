@@ -5,11 +5,17 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppGitRepository {
+    private @Nullable Boolean autoDeploy;
+    private Integer callerCredentialId;
     /**
      * @return Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      * 
@@ -22,6 +28,12 @@ public final class GetAppsAppGitRepository {
     private String url;
 
     private GetAppsAppGitRepository() {}
+    public Optional<Boolean> autoDeploy() {
+        return Optional.ofNullable(this.autoDeploy);
+    }
+    public Integer callerCredentialId() {
+        return this.callerCredentialId;
+    }
     /**
      * @return Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      * 
@@ -46,15 +58,33 @@ public final class GetAppsAppGitRepository {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean autoDeploy;
+        private Integer callerCredentialId;
         private String provider;
         private String url;
         public Builder() {}
         public Builder(GetAppsAppGitRepository defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoDeploy = defaults.autoDeploy;
+    	      this.callerCredentialId = defaults.callerCredentialId;
     	      this.provider = defaults.provider;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
+        public Builder autoDeploy(@Nullable Boolean autoDeploy) {
+
+            this.autoDeploy = autoDeploy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder callerCredentialId(Integer callerCredentialId) {
+            if (callerCredentialId == null) {
+              throw new MissingRequiredPropertyException("GetAppsAppGitRepository", "callerCredentialId");
+            }
+            this.callerCredentialId = callerCredentialId;
+            return this;
+        }
         @CustomType.Setter
         public Builder provider(String provider) {
             if (provider == null) {
@@ -73,6 +103,8 @@ public final class GetAppsAppGitRepository {
         }
         public GetAppsAppGitRepository build() {
             final var _resultValue = new GetAppsAppGitRepository();
+            _resultValue.autoDeploy = autoDeploy;
+            _resultValue.callerCredentialId = callerCredentialId;
             _resultValue.provider = provider;
             _resultValue.url = url;
             return _resultValue;

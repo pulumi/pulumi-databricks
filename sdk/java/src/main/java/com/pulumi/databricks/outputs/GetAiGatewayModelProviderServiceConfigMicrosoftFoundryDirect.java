@@ -28,8 +28,7 @@ public final class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirect 
     private @Nullable String baseUrl;
     /**
      * @return (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
-     * `clientSecret` fields
+     * `serviceCredential`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal entraServicePrincipal;
@@ -66,8 +65,7 @@ public final class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirect 
     }
     /**
      * @return (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
-     * `clientSecret` fields
+     * `serviceCredential`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal> entraServicePrincipal() {

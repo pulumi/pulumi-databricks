@@ -7,11 +7,14 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppsAppActiveDeployment;
 import com.pulumi.databricks.outputs.GetAppsAppAppStatus;
 import com.pulumi.databricks.outputs.GetAppsAppComputeStatus;
+import com.pulumi.databricks.outputs.GetAppsAppDefaultGitSource;
 import com.pulumi.databricks.outputs.GetAppsAppGitRepository;
+import com.pulumi.databricks.outputs.GetAppsAppGitSource;
 import com.pulumi.databricks.outputs.GetAppsAppPendingDeployment;
 import com.pulumi.databricks.outputs.GetAppsAppResource;
 import com.pulumi.databricks.outputs.GetAppsAppTelemetryExportDestination;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -58,6 +61,7 @@ public final class GetAppsApp {
      * 
      */
     private String creator;
+    private GetAppsAppDefaultGitSource defaultGitSource;
     /**
      * @return The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      * 
@@ -83,11 +87,13 @@ public final class GetAppsApp {
      * 
      */
     private List<String> effectiveUserApiScopes;
+    private @Nullable Boolean forwardUserAccessToken;
     /**
      * @return attribute - Git repository configuration for app deployments.
      * 
      */
     private @Nullable GetAppsAppGitRepository gitRepository;
+    private GetAppsAppGitSource gitSource;
     /**
      * @return Id of the job to grant permission on.
      * 
@@ -133,6 +139,11 @@ public final class GetAppsApp {
      * 
      */
     private String servicePrincipalName;
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
+    private String sourceCodePath;
     /**
      * @return Name of the app space this app belongs to.
      * 
@@ -230,6 +241,9 @@ public final class GetAppsApp {
     public String creator() {
         return this.creator;
     }
+    public GetAppsAppDefaultGitSource defaultGitSource() {
+        return this.defaultGitSource;
+    }
     /**
      * @return The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      * 
@@ -265,12 +279,18 @@ public final class GetAppsApp {
     public List<String> effectiveUserApiScopes() {
         return this.effectiveUserApiScopes;
     }
+    public Optional<Boolean> forwardUserAccessToken() {
+        return Optional.ofNullable(this.forwardUserAccessToken);
+    }
     /**
      * @return attribute - Git repository configuration for app deployments.
      * 
      */
     public Optional<GetAppsAppGitRepository> gitRepository() {
         return Optional.ofNullable(this.gitRepository);
+    }
+    public GetAppsAppGitSource gitSource() {
+        return this.gitSource;
     }
     /**
      * @return Id of the job to grant permission on.
@@ -334,6 +354,13 @@ public final class GetAppsApp {
      */
     public String servicePrincipalName() {
         return this.servicePrincipalName;
+    }
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
+    public String sourceCodePath() {
+        return this.sourceCodePath;
     }
     /**
      * @return Name of the app space this app belongs to.
@@ -410,12 +437,15 @@ public final class GetAppsApp {
         private GetAppsAppComputeStatus computeStatus;
         private String createTime;
         private String creator;
+        private GetAppsAppDefaultGitSource defaultGitSource;
         private String defaultSourceCodePath;
         private @Nullable String description;
         private String effectiveBudgetPolicyId;
         private String effectiveUsagePolicyId;
         private List<String> effectiveUserApiScopes;
+        private @Nullable Boolean forwardUserAccessToken;
         private @Nullable GetAppsAppGitRepository gitRepository;
+        private GetAppsAppGitSource gitSource;
         private String id;
         private String name;
         private String oauth2AppClientId;
@@ -425,6 +455,7 @@ public final class GetAppsApp {
         private String servicePrincipalClientId;
         private Integer servicePrincipalId;
         private String servicePrincipalName;
+        private String sourceCodePath;
         private @Nullable String space;
         private @Nullable List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations;
         private String thumbnailUrl;
@@ -445,12 +476,15 @@ public final class GetAppsApp {
     	      this.computeStatus = defaults.computeStatus;
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
+    	      this.defaultGitSource = defaults.defaultGitSource;
     	      this.defaultSourceCodePath = defaults.defaultSourceCodePath;
     	      this.description = defaults.description;
     	      this.effectiveBudgetPolicyId = defaults.effectiveBudgetPolicyId;
     	      this.effectiveUsagePolicyId = defaults.effectiveUsagePolicyId;
     	      this.effectiveUserApiScopes = defaults.effectiveUserApiScopes;
+    	      this.forwardUserAccessToken = defaults.forwardUserAccessToken;
     	      this.gitRepository = defaults.gitRepository;
+    	      this.gitSource = defaults.gitSource;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.oauth2AppClientId = defaults.oauth2AppClientId;
@@ -460,6 +494,7 @@ public final class GetAppsApp {
     	      this.servicePrincipalClientId = defaults.servicePrincipalClientId;
     	      this.servicePrincipalId = defaults.servicePrincipalId;
     	      this.servicePrincipalName = defaults.servicePrincipalName;
+    	      this.sourceCodePath = defaults.sourceCodePath;
     	      this.space = defaults.space;
     	      this.telemetryExportDestinations = defaults.telemetryExportDestinations;
     	      this.thumbnailUrl = defaults.thumbnailUrl;
@@ -535,6 +570,14 @@ public final class GetAppsApp {
             return this;
         }
         @CustomType.Setter
+        public Builder defaultGitSource(GetAppsAppDefaultGitSource defaultGitSource) {
+            if (defaultGitSource == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "defaultGitSource");
+            }
+            this.defaultGitSource = defaultGitSource;
+            return this;
+        }
+        @CustomType.Setter
         public Builder defaultSourceCodePath(String defaultSourceCodePath) {
             if (defaultSourceCodePath == null) {
               throw new MissingRequiredPropertyException("GetAppsApp", "defaultSourceCodePath");
@@ -576,9 +619,23 @@ public final class GetAppsApp {
             return effectiveUserApiScopes(List.of(effectiveUserApiScopes));
         }
         @CustomType.Setter
+        public Builder forwardUserAccessToken(@Nullable Boolean forwardUserAccessToken) {
+
+            this.forwardUserAccessToken = forwardUserAccessToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder gitRepository(@Nullable GetAppsAppGitRepository gitRepository) {
 
             this.gitRepository = gitRepository;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitSource(GetAppsAppGitSource gitSource) {
+            if (gitSource == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "gitSource");
+            }
+            this.gitSource = gitSource;
             return this;
         }
         @CustomType.Setter
@@ -655,6 +712,14 @@ public final class GetAppsApp {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceCodePath(String sourceCodePath) {
+            if (sourceCodePath == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "sourceCodePath");
+            }
+            this.sourceCodePath = sourceCodePath;
+            return this;
+        }
+        @CustomType.Setter
         public Builder space(@Nullable String space) {
 
             this.space = space;
@@ -727,12 +792,15 @@ public final class GetAppsApp {
             _resultValue.computeStatus = computeStatus;
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;
+            _resultValue.defaultGitSource = defaultGitSource;
             _resultValue.defaultSourceCodePath = defaultSourceCodePath;
             _resultValue.description = description;
             _resultValue.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
             _resultValue.effectiveUsagePolicyId = effectiveUsagePolicyId;
             _resultValue.effectiveUserApiScopes = effectiveUserApiScopes;
+            _resultValue.forwardUserAccessToken = forwardUserAccessToken;
             _resultValue.gitRepository = gitRepository;
+            _resultValue.gitSource = gitSource;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.oauth2AppClientId = oauth2AppClientId;
@@ -742,6 +810,7 @@ public final class GetAppsApp {
             _resultValue.servicePrincipalClientId = servicePrincipalClientId;
             _resultValue.servicePrincipalId = servicePrincipalId;
             _resultValue.servicePrincipalName = servicePrincipalName;
+            _resultValue.sourceCodePath = sourceCodePath;
             _resultValue.space = space;
             _resultValue.telemetryExportDestinations = telemetryExportDestinations;
             _resultValue.thumbnailUrl = thumbnailUrl;

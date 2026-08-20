@@ -84,6 +84,11 @@ export interface AccountFederationPolicyOidcPolicy {
     subjectClaim?: pulumi.Input<string | undefined>;
 }
 
+export interface AccountIamUserV2FullName {
+    familyName?: pulumi.Input<string | undefined>;
+    givenName?: pulumi.Input<string | undefined>;
+}
+
 export interface AccountNetworkPolicyEgress {
     /**
      * The access policy enforced for egress traffic to the internet
@@ -1842,8 +1847,7 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrock {
 
 export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
-     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
+     * AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
      */
     awsAccessKey?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey | undefined>;
     region?: pulumi.Input<string | undefined>;
@@ -2032,7 +2036,7 @@ export interface AiGatewayModelProviderServiceConfigInferenceTable {
      */
     isDeleted?: pulumi.Input<boolean | undefined>;
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -2230,7 +2234,7 @@ export interface AiGatewayModelServiceConfigInferenceTable {
      */
     isDeleted?: pulumi.Input<boolean | undefined>;
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -3030,6 +3034,8 @@ export interface AppActiveDeploymentGitSource {
 }
 
 export interface AppActiveDeploymentGitSourceGitRepository {
+    autoDeploy?: pulumi.Input<boolean | undefined>;
+    callerCredentialId?: pulumi.Input<number | undefined>;
     /**
      * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -3075,7 +3081,71 @@ export interface AppComputeStatus {
     state?: pulumi.Input<string | undefined>;
 }
 
+export interface AppDefaultGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: pulumi.Input<string | undefined>;
+    commit?: pulumi.Input<string | undefined>;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
+    gitRepository?: pulumi.Input<inputs.AppDefaultGitSourceGitRepository | undefined>;
+    resolvedCommit?: pulumi.Input<string | undefined>;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<string | undefined>;
+}
+
+export interface AppDefaultGitSourceGitRepository {
+    autoDeploy?: pulumi.Input<boolean | undefined>;
+    callerCredentialId?: pulumi.Input<number | undefined>;
+    /**
+     * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
+    provider: pulumi.Input<string>;
+    /**
+     * URL of the Git repository.
+     */
+    url: pulumi.Input<string>;
+}
+
 export interface AppGitRepository {
+    autoDeploy?: pulumi.Input<boolean | undefined>;
+    callerCredentialId?: pulumi.Input<number | undefined>;
+    /**
+     * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
+    provider: pulumi.Input<string>;
+    /**
+     * URL of the Git repository.
+     */
+    url: pulumi.Input<string>;
+}
+
+export interface AppGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: pulumi.Input<string | undefined>;
+    commit?: pulumi.Input<string | undefined>;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
+    gitRepository?: pulumi.Input<inputs.AppGitSourceGitRepository | undefined>;
+    resolvedCommit?: pulumi.Input<string | undefined>;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<string | undefined>;
+}
+
+export interface AppGitSourceGitRepository {
+    autoDeploy?: pulumi.Input<boolean | undefined>;
+    callerCredentialId?: pulumi.Input<number | undefined>;
     /**
      * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -3159,6 +3229,8 @@ export interface AppPendingDeploymentGitSource {
 }
 
 export interface AppPendingDeploymentGitSourceGitRepository {
+    autoDeploy?: pulumi.Input<boolean | undefined>;
+    callerCredentialId?: pulumi.Input<number | undefined>;
     /**
      * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -3644,6 +3716,9 @@ export interface BudgetAlertConfiguration {
      */
     actionConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfigurationActionConfiguration>[] | undefined>;
     alertConfigurationId?: pulumi.Input<string | undefined>;
+    /**
+     * Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+     */
     principalOverrides?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfigurationPrincipalOverride>[] | undefined>;
     /**
      * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
@@ -3653,6 +3728,9 @@ export interface BudgetAlertConfiguration {
      * The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
      */
     quantityType?: pulumi.Input<string | undefined>;
+    /**
+     * How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+     */
     scopeType?: pulumi.Input<string | undefined>;
     /**
      * The time window of usage data for the budget. (Enum: `MONTH`)
@@ -3667,17 +3745,23 @@ export interface BudgetAlertConfiguration {
 export interface BudgetAlertConfigurationActionConfiguration {
     actionConfigurationId?: pulumi.Input<string | undefined>;
     /**
-     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
      */
     actionType?: pulumi.Input<string | undefined>;
     /**
-     * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `actionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
      */
     target?: pulumi.Input<string | undefined>;
 }
 
 export interface BudgetAlertConfigurationPrincipalOverride {
+    /**
+     * Dollar amount that overrides the parent alert's `quantityThreshold` for this principal.
+     */
     overrideThreshold?: pulumi.Input<string | undefined>;
+    /**
+     * Account-level principal id (user, group, or service principal).
+     */
     principalId?: pulumi.Input<string | undefined>;
 }
 
@@ -4987,7 +5071,7 @@ export interface DatabaseSyncedDatabaseTableSpecTypeOverride {
      */
     columnName: pulumi.Input<string>;
     /**
-     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: pulumi.Input<string>;
     /**
@@ -5475,6 +5559,10 @@ export interface FeatureEngineeringFeatureFunction {
      */
     columnSelection?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionColumnSelection | undefined>;
     /**
+     * Applies a registered Unity Catalog function row-wise to source columns
+     */
+    customUdf?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionCustomUdf | undefined>;
+    /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      */
@@ -5637,10 +5725,27 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp {
 }
 
 export interface FeatureEngineeringFeatureFunctionColumnSelection {
-    /**
-     * Column name from source to select as the feature value
-     */
     column: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionCustomUdf {
+    /**
+     * Fully qualified 3-part Unity Catalog path of the function to apply
+     */
+    functionPath: pulumi.Input<string>;
+    /**
+     * Binds each UC function parameter to a source column.
+     * May be empty for zero-argument functions (e.g. a timestamp generator)
+     */
+    inputBindings?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureFunctionCustomUdfInputBinding>[] | undefined>;
+}
+
+export interface FeatureEngineeringFeatureFunctionCustomUdfInputBinding {
+    column: pulumi.Input<string>;
+    /**
+     * Name of the UC function parameter
+     */
+    parameter: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringFeatureFunctionExtraParameter {
@@ -15132,12 +15237,14 @@ export interface GetServingEndpointsEndpointTagArgs {
 }
 
 export interface GetServingEndpointsEndpointTelemetryConfig {
+    enabledTelemetryFeatures?: string[];
     inferenceTableConfigs?: inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig[];
     tableNames?: inputs.GetServingEndpointsEndpointTelemetryConfigTableName[];
     telemetryProfileId?: string;
 }
 
 export interface GetServingEndpointsEndpointTelemetryConfigArgs {
+    enabledTelemetryFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     inferenceTableConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs>[] | undefined>;
     tableNames?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTelemetryConfigTableNameArgs>[] | undefined>;
     telemetryProfileId?: pulumi.Input<string | undefined>;
@@ -16659,6 +16766,160 @@ export interface GetWorkspaceEntityTagAssignmentsProviderConfigArgs {
     workspaceId?: pulumi.Input<string | undefined>;
 }
 
+export interface GetWorkspaceIamDirectGroupMemberV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamDirectGroupMembersV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamGroupV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamGroupV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamGroupsV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamGroupsV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamServicePrincipalV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamServicePrincipalV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamServicePrincipalsV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamUserV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamUserV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamUsersV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamUsersV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamWorkspaceAssignmentV2ProviderConfig {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgs {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
 export interface GetWorkspaceSettingV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -17056,7 +17317,7 @@ export interface JobJobCluster {
     /**
      * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      */
-    newCluster: pulumi.Input<inputs.JobJobClusterNewCluster>;
+    newCluster?: pulumi.Input<inputs.JobJobClusterNewCluster | undefined>;
     serverlessComputeId?: pulumi.Input<string | undefined>;
 }
 
@@ -17903,7 +18164,9 @@ export interface JobTask {
 export interface JobTaskAiRuntimeTask {
     codeSourcePath?: pulumi.Input<string | undefined>;
     deployments: pulumi.Input<pulumi.Input<inputs.JobTaskAiRuntimeTaskDeployment>[]>;
+    dockerImageUrl?: pulumi.Input<string | undefined>;
     experiment: pulumi.Input<string>;
+    mlflowArtifactLocation?: pulumi.Input<string | undefined>;
     mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
     mlflowRun?: pulumi.Input<string | undefined>;
 }
@@ -18251,7 +18514,9 @@ export interface JobTaskForEachTaskTask {
 export interface JobTaskForEachTaskTaskAiRuntimeTask {
     codeSourcePath?: pulumi.Input<string | undefined>;
     deployments: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskAiRuntimeTaskDeployment>[]>;
+    dockerImageUrl?: pulumi.Input<string | undefined>;
     experiment: pulumi.Input<string>;
+    mlflowArtifactLocation?: pulumi.Input<string | undefined>;
     mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
     mlflowRun?: pulumi.Input<string | undefined>;
 }
@@ -20003,18 +20268,23 @@ export interface JobTaskWebhookNotificationsOnSuccess {
 
 export interface JobTrigger {
     /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     */
+    continuous?: pulumi.Input<inputs.JobTriggerContinuous | undefined>;
+    /**
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      */
     fileArrival?: pulumi.Input<inputs.JobTriggerFileArrival | undefined>;
     model?: pulumi.Input<inputs.JobTriggerModel | undefined>;
-    /**
-     * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     */
     pauseStatus?: pulumi.Input<string | undefined>;
     /**
      * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
      */
     periodic?: pulumi.Input<inputs.JobTriggerPeriodic | undefined>;
+    /**
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     */
+    schedule?: pulumi.Input<inputs.JobTriggerSchedule | undefined>;
     sqlCondition?: pulumi.Input<inputs.JobTriggerSqlCondition | undefined>;
     /**
      * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
@@ -20022,18 +20292,21 @@ export interface JobTrigger {
     tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate | undefined>;
 }
 
-export interface JobTriggerFileArrival {
+export interface JobTriggerContinuous {
     /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     * Controls task level retry behaviour. Allowed values are:
+     * * `NEVER` (default): The failed task will not be retried.
+     * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
      */
+    taskRetryMode?: pulumi.Input<string | undefined>;
+}
+
+export interface JobTriggerFileArrival {
     minTimeBetweenTriggersSeconds?: pulumi.Input<number | undefined>;
     /**
-     * URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      */
     url: pulumi.Input<string>;
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: pulumi.Input<number | undefined>;
 }
 
@@ -20059,6 +20332,17 @@ export interface JobTriggerPeriodic {
     unit: pulumi.Input<string>;
 }
 
+export interface JobTriggerSchedule {
+    /**
+     * A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
+     */
+    quartzCronExpression: pulumi.Input<string>;
+    /**
+     * A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+     */
+    timezoneId: pulumi.Input<string>;
+}
+
 export interface JobTriggerSqlCondition {
     sqlQueryId: pulumi.Input<string>;
     triggerMode?: pulumi.Input<string | undefined>;
@@ -20070,17 +20354,11 @@ export interface JobTriggerTableUpdate {
      * The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
      */
     condition?: pulumi.Input<string | undefined>;
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number | undefined>;
     /**
      * A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
      */
     tableNames: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: pulumi.Input<number | undefined>;
 }
 
@@ -21306,6 +21584,7 @@ export interface ModelServingTag {
 }
 
 export interface ModelServingTelemetryConfig {
+    enabledTelemetryFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Block describing the configuration of usage tracking. Consists of the following attributes:
      */
@@ -21396,8 +21675,14 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
 }
 
 export interface MwsNccPrivateEndpointRuleGcpEndpoint {
+    allVpcScServices?: pulumi.Input<boolean | undefined>;
+    googleApiEndpoints?: pulumi.Input<inputs.MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints | undefined>;
     pscEndpointUri?: pulumi.Input<string | undefined>;
     serviceAttachment?: pulumi.Input<string | undefined>;
+}
+
+export interface MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
+    endpoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfig {
@@ -21516,11 +21801,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.127.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.127.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -21587,11 +21872,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.127.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.127.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -22212,11 +22497,14 @@ export interface PipelineIngestionDefinitionObjectSchema {
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
+    apiSourceConnectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsApiSourceConnectorOptions | undefined>;
     confluenceOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptions | undefined>;
     gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions | undefined>;
     googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions | undefined>;
     jiraOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions | undefined>;
     kafkaOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions | undefined>;
+    linkedinAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions | undefined>;
+    marketoOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions | undefined>;
     metaAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions | undefined>;
     outlookOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions | undefined>;
     redditAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions | undefined>;
@@ -22224,6 +22512,10 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     smartsheetOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions | undefined>;
     tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions | undefined>;
     zendeskSupportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsApiSourceConnectorOptions {
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptions {
@@ -22289,7 +22581,9 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer {
     format?: pulumi.Input<string | undefined>;
+    inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions | undefined>;
+    outputColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
@@ -22305,7 +22599,9 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformer {
     format?: pulumi.Input<string | undefined>;
+    inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions | undefined>;
+    outputColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
@@ -22317,6 +22613,23 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
     schemaEvolutionMode?: pulumi.Input<string | undefined>;
     schemaFilePath?: pulumi.Input<string | undefined>;
     schemaHints?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions {
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsCustomReportOptions | undefined>;
+    lookbackWindowDays?: pulumi.Input<number | undefined>;
+    syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsCustomReportOptions {
+    entityGranularities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    finder: pulumi.Input<string>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeGranularity?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions {
+    syncStartDate?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions {
@@ -22427,7 +22740,9 @@ export interface PipelineIngestionDefinitionObjectSchemaFanoutOptions {
 
 export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform {
     format?: pulumi.Input<string | undefined>;
+    inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions | undefined>;
+    outputColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions {
@@ -22492,11 +22807,14 @@ export interface PipelineIngestionDefinitionObjectTable {
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
+    apiSourceConnectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions | undefined>;
     confluenceOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions | undefined>;
     gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions | undefined>;
     googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions | undefined>;
     jiraOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions | undefined>;
     kafkaOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions | undefined>;
+    linkedinAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions | undefined>;
+    marketoOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions | undefined>;
     metaAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions | undefined>;
     outlookOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions | undefined>;
     redditAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions | undefined>;
@@ -22504,6 +22822,10 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
     smartsheetOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions | undefined>;
     tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions | undefined>;
     zendeskSupportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions {
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions {
@@ -22569,7 +22891,9 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer {
     format?: pulumi.Input<string | undefined>;
+    inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions | undefined>;
+    outputColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
@@ -22585,7 +22909,9 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformer {
     format?: pulumi.Input<string | undefined>;
+    inputColumn?: pulumi.Input<string | undefined>;
     jsonOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions | undefined>;
+    outputColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
@@ -22597,6 +22923,23 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
     schemaEvolutionMode?: pulumi.Input<string | undefined>;
     schemaFilePath?: pulumi.Input<string | undefined>;
     schemaHints?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions {
+    customReportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsCustomReportOptions | undefined>;
+    lookbackWindowDays?: pulumi.Input<number | undefined>;
+    syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsCustomReportOptions {
+    entityGranularities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    finder: pulumi.Input<string>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeGranularity?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions {
+    syncStartDate?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions {
@@ -22740,11 +23083,16 @@ export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkday
 }
 
 export interface PipelineIngestionDefinitionSourceConfiguration {
+    apiSourceConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig | undefined>;
     /**
      * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
     catalog?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalog | undefined>;
     googleAdsConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig | undefined>;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig {
+    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface PipelineIngestionDefinitionSourceConfigurationCatalog {
@@ -23714,6 +24062,12 @@ export interface PostgresSyncedTableSpecNewPipelineSpec {
      */
     budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
+     * Release channel of the underlying pipeline's runtime.
+     * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+     * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+     */
+    pipelineChannel?: pulumi.Input<string | undefined>;
+    /**
      * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be a standard catalog where the user has permissions to create Delta tables
      */
@@ -23728,7 +24082,7 @@ export interface PostgresSyncedTableSpecNewPipelineSpec {
 export interface PostgresSyncedTableSpecTypeOverride {
     columnName: pulumi.Input<string>;
     /**
-     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: pulumi.Input<string>;
     /**
@@ -25269,6 +25623,53 @@ export interface WorkspaceEntityTagAssignmentProviderConfig {
 }
 
 export interface WorkspaceFileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceIamDirectGroupMemberV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceIamGroupV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceIamServicePrincipalV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceIamUserV2FullName {
+    familyName?: pulumi.Input<string | undefined>;
+    givenName?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceIamUserV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceIamWorkspaceAssignmentV2ProviderConfig {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */

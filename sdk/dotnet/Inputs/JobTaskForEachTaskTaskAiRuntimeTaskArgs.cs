@@ -23,8 +23,14 @@ namespace Pulumi.Databricks.Inputs
             set => _deployments = value;
         }
 
+        [Input("dockerImageUrl")]
+        public Input<string>? DockerImageUrl { get; set; }
+
         [Input("experiment", required: true)]
         public Input<string> Experiment { get; set; } = null!;
+
+        [Input("mlflowArtifactLocation")]
+        public Input<string>? MlflowArtifactLocation { get; set; }
 
         [Input("mlflowExperimentDirectory")]
         public Input<string>? MlflowExperimentDirectory { get; set; }

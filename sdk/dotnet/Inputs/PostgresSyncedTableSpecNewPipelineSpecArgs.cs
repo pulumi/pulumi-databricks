@@ -19,6 +19,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
+        /// Release channel of the underlying pipeline's runtime.
+        /// Some source table configurations (e.g., read-time CDF) require PREVIEW.
+        /// Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+        /// </summary>
+        [Input("pipelineChannel")]
+        public Input<string>? PipelineChannel { get; set; }
+
+        /// <summary>
         /// UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
         /// This needs to be a standard catalog where the user has permissions to create Delta tables
         /// </summary>

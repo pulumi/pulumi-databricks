@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 public final class BudgetAlertConfigurationActionConfiguration {
     private @Nullable String actionConfigurationId;
     /**
-     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
      * 
      */
     private @Nullable String actionType;
     /**
-     * @return The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * @return For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `actionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
      * 
      */
     private @Nullable String target;
@@ -28,14 +28,14 @@ public final class BudgetAlertConfigurationActionConfiguration {
         return Optional.ofNullable(this.actionConfigurationId);
     }
     /**
-     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
      * 
      */
     public Optional<String> actionType() {
         return Optional.ofNullable(this.actionType);
     }
     /**
-     * @return The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * @return For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `actionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
      * 
      */
     public Optional<String> target() {

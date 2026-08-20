@@ -16,7 +16,9 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTaskAiRuntimeTask {
     private @Nullable String codeSourcePath;
     private List<JobTaskForEachTaskTaskAiRuntimeTaskDeployment> deployments;
+    private @Nullable String dockerImageUrl;
     private String experiment;
+    private @Nullable String mlflowArtifactLocation;
     private @Nullable String mlflowExperimentDirectory;
     private @Nullable String mlflowRun;
 
@@ -27,8 +29,14 @@ public final class JobTaskForEachTaskTaskAiRuntimeTask {
     public List<JobTaskForEachTaskTaskAiRuntimeTaskDeployment> deployments() {
         return this.deployments;
     }
+    public Optional<String> dockerImageUrl() {
+        return Optional.ofNullable(this.dockerImageUrl);
+    }
     public String experiment() {
         return this.experiment;
+    }
+    public Optional<String> mlflowArtifactLocation() {
+        return Optional.ofNullable(this.mlflowArtifactLocation);
     }
     public Optional<String> mlflowExperimentDirectory() {
         return Optional.ofNullable(this.mlflowExperimentDirectory);
@@ -48,7 +56,9 @@ public final class JobTaskForEachTaskTaskAiRuntimeTask {
     public static final class Builder {
         private @Nullable String codeSourcePath;
         private List<JobTaskForEachTaskTaskAiRuntimeTaskDeployment> deployments;
+        private @Nullable String dockerImageUrl;
         private String experiment;
+        private @Nullable String mlflowArtifactLocation;
         private @Nullable String mlflowExperimentDirectory;
         private @Nullable String mlflowRun;
         public Builder() {}
@@ -56,7 +66,9 @@ public final class JobTaskForEachTaskTaskAiRuntimeTask {
     	      Objects.requireNonNull(defaults);
     	      this.codeSourcePath = defaults.codeSourcePath;
     	      this.deployments = defaults.deployments;
+    	      this.dockerImageUrl = defaults.dockerImageUrl;
     	      this.experiment = defaults.experiment;
+    	      this.mlflowArtifactLocation = defaults.mlflowArtifactLocation;
     	      this.mlflowExperimentDirectory = defaults.mlflowExperimentDirectory;
     	      this.mlflowRun = defaults.mlflowRun;
         }
@@ -79,11 +91,23 @@ public final class JobTaskForEachTaskTaskAiRuntimeTask {
             return deployments(List.of(deployments));
         }
         @CustomType.Setter
+        public Builder dockerImageUrl(@Nullable String dockerImageUrl) {
+
+            this.dockerImageUrl = dockerImageUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder experiment(String experiment) {
             if (experiment == null) {
               throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskAiRuntimeTask", "experiment");
             }
             this.experiment = experiment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mlflowArtifactLocation(@Nullable String mlflowArtifactLocation) {
+
+            this.mlflowArtifactLocation = mlflowArtifactLocation;
             return this;
         }
         @CustomType.Setter
@@ -102,7 +126,9 @@ public final class JobTaskForEachTaskTaskAiRuntimeTask {
             final var _resultValue = new JobTaskForEachTaskTaskAiRuntimeTask();
             _resultValue.codeSourcePath = codeSourcePath;
             _resultValue.deployments = deployments;
+            _resultValue.dockerImageUrl = dockerImageUrl;
             _resultValue.experiment = experiment;
+            _resultValue.mlflowArtifactLocation = mlflowArtifactLocation;
             _resultValue.mlflowExperimentDirectory = mlflowExperimentDirectory;
             _resultValue.mlflowRun = mlflowRun;
             return _resultValue;

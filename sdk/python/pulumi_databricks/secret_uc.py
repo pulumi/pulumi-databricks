@@ -586,7 +586,7 @@ class SecretUc(pulumi.CustomResource):
             __props__.__dict__["schema_name"] = schema_name
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__.__dict__["value"] = value
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["effective_owner"] = None
@@ -595,6 +595,8 @@ class SecretUc(pulumi.CustomResource):
             __props__.__dict__["metastore_id"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["updated_by"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveValue", "value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SecretUc, __self__).__init__(
             'databricks:index/secretUc:SecretUc',
             resource_name,

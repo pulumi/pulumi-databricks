@@ -17,7 +17,8 @@ public final class GetAiGatewayMcpServicesMcpServiceConfigSourceConnection {
      */
     private Boolean isDeleted;
     /**
-     * @return (string)
+     * @return (string) - Name of the UC connection that hosts the MCP server, as
+     * `connections/{catalog}.{schema}.{connection}`
      * 
      */
     private String name;
@@ -31,7 +32,8 @@ public final class GetAiGatewayMcpServicesMcpServiceConfigSourceConnection {
         return this.isDeleted;
     }
     /**
-     * @return (string)
+     * @return (string) - Name of the UC connection that hosts the MCP server, as
+     * `connections/{catalog}.{schema}.{connection}`
      * 
      */
     public String name() {

@@ -26,25 +26,23 @@ func GetAiGatewayMcpServices(ctx *pulumi.Context, args *GetAiGatewayMcpServicesA
 
 // A collection of arguments for invoking getAiGatewayMcpServices.
 type GetAiGatewayMcpServicesArgs struct {
-	// Whether to include MCP services for which the principal can only access
-	// selective metadata
-	IncludeBrowse *bool `pulumi:"includeBrowse"`
 	// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-	// the maximum is 100. Use `nextPageToken` to retrieve additional pages
+	// the maximum is 100. Use `pageToken` to retrieve additional pages
 	PageSize *int `pulumi:"pageSize"`
-	// Resource name of the parent schema to list within, as
+	// Name of the parent schema to list within, as
 	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
 	// characters individually
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAiGatewayMcpServicesProviderConfig `pulumi:"providerConfig"`
-	// View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+	// View selector controlling which fields are populated per row. `FULL`
+	// returns the full representation of the service; `BASIC` returns a more
+	// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
 	View *string `pulumi:"view"`
 }
 
 // A collection of values returned by getAiGatewayMcpServices.
 type GetAiGatewayMcpServicesResult struct {
-	IncludeBrowse  *bool                                  `pulumi:"includeBrowse"`
 	McpServices    []GetAiGatewayMcpServicesMcpService    `pulumi:"mcpServices"`
 	PageSize       *int                                   `pulumi:"pageSize"`
 	Parent         *string                                `pulumi:"parent"`
@@ -63,19 +61,18 @@ func GetAiGatewayMcpServicesOutput(ctx *pulumi.Context, args GetAiGatewayMcpServ
 
 // A collection of arguments for invoking getAiGatewayMcpServices.
 type GetAiGatewayMcpServicesOutputArgs struct {
-	// Whether to include MCP services for which the principal can only access
-	// selective metadata
-	IncludeBrowse pulumi.BoolPtrInput `pulumi:"includeBrowse"`
 	// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-	// the maximum is 100. Use `nextPageToken` to retrieve additional pages
+	// the maximum is 100. Use `pageToken` to retrieve additional pages
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// Resource name of the parent schema to list within, as
+	// Name of the parent schema to list within, as
 	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
 	// characters individually
 	Parent pulumi.StringPtrInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAiGatewayMcpServicesProviderConfigPtrInput `pulumi:"providerConfig"`
-	// View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+	// View selector controlling which fields are populated per row. `FULL`
+	// returns the full representation of the service; `BASIC` returns a more
+	// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
 	View pulumi.StringPtrInput `pulumi:"view"`
 }
 
@@ -96,10 +93,6 @@ func (o GetAiGatewayMcpServicesResultOutput) ToGetAiGatewayMcpServicesResultOutp
 
 func (o GetAiGatewayMcpServicesResultOutput) ToGetAiGatewayMcpServicesResultOutputWithContext(ctx context.Context) GetAiGatewayMcpServicesResultOutput {
 	return o
-}
-
-func (o GetAiGatewayMcpServicesResultOutput) IncludeBrowse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAiGatewayMcpServicesResult) *bool { return v.IncludeBrowse }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetAiGatewayMcpServicesResultOutput) McpServices() GetAiGatewayMcpServicesMcpServiceArrayOutput {

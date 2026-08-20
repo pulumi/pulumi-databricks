@@ -12,7 +12,6 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AiGatewayMcpServiceState;
 import com.pulumi.databricks.outputs.AiGatewayMcpServiceConfig;
 import com.pulumi.databricks.outputs.AiGatewayMcpServiceProviderConfig;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,22 +24,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/aiGatewayMcpService:AiGatewayMcpService")
 public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
-    /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    @Export(name="browseOnly", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> browseOnly;
-
-    /**
-     * @return (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    public Output<Boolean> browseOnly() {
-        return this.browseOnly;
-    }
     /**
      * User-provided description
      * 
@@ -142,16 +125,14 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * Leaf identifier for the MCP service (the unqualified name within the
-     * parent schema, e.g. &#34;myMcpService&#34;)
+     * Name for the MCP service, e.g. &#34;myMcpService&#34;
      * 
      */
     @Export(name="mcpServiceId", refs={String.class}, tree="[0]")
     private Output<String> mcpServiceId;
 
     /**
-     * @return Leaf identifier for the MCP service (the unqualified name within the
-     * parent schema, e.g. &#34;myMcpService&#34;)
+     * @return Name for the MCP service, e.g. &#34;myMcpService&#34;
      * 
      */
     public Output<String> mcpServiceId() {
@@ -208,7 +189,7 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return this.owner;
     }
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -217,7 +198,7 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
     private Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 

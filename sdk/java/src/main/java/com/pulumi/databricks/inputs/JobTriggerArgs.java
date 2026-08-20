@@ -5,9 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTriggerContinuousArgs;
 import com.pulumi.databricks.inputs.JobTriggerFileArrivalArgs;
 import com.pulumi.databricks.inputs.JobTriggerModelArgs;
 import com.pulumi.databricks.inputs.JobTriggerPeriodicArgs;
+import com.pulumi.databricks.inputs.JobTriggerScheduleArgs;
 import com.pulumi.databricks.inputs.JobTriggerSqlConditionArgs;
 import com.pulumi.databricks.inputs.JobTriggerTableUpdateArgs;
 import java.lang.String;
@@ -19,6 +21,21 @@ import javax.annotation.Nullable;
 public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTriggerArgs Empty = new JobTriggerArgs();
+
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
+    @Import(name="continuous")
+    private @Nullable Output<JobTriggerContinuousArgs> continuous;
+
+    /**
+     * @return Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
+    public Optional<Output<JobTriggerContinuousArgs>> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
 
     /**
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
@@ -42,17 +59,9 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.model);
     }
 
-    /**
-     * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     * 
-     */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
-    /**
-     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     * 
-     */
     public Optional<Output<String>> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
@@ -70,6 +79,21 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<JobTriggerPeriodicArgs>> periodic() {
         return Optional.ofNullable(this.periodic);
+    }
+
+    /**
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     * 
+     */
+    @Import(name="schedule")
+    private @Nullable Output<JobTriggerScheduleArgs> schedule;
+
+    /**
+     * @return An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     * 
+     */
+    public Optional<Output<JobTriggerScheduleArgs>> schedule() {
+        return Optional.ofNullable(this.schedule);
     }
 
     @Import(name="sqlCondition")
@@ -97,10 +121,12 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
     private JobTriggerArgs() {}
 
     private JobTriggerArgs(JobTriggerArgs $) {
+        this.continuous = $.continuous;
         this.fileArrival = $.fileArrival;
         this.model = $.model;
         this.pauseStatus = $.pauseStatus;
         this.periodic = $.periodic;
+        this.schedule = $.schedule;
         this.sqlCondition = $.sqlCondition;
         this.tableUpdate = $.tableUpdate;
     }
@@ -121,6 +147,27 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(JobTriggerArgs defaults) {
             $ = new JobTriggerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param continuous Configuration block to configure pause status. See continuous Configuration Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuous(@Nullable Output<JobTriggerContinuousArgs> continuous) {
+            $.continuous = continuous;
+            return this;
+        }
+
+        /**
+         * @param continuous Configuration block to configure pause status. See continuous Configuration Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuous(JobTriggerContinuousArgs continuous) {
+            return continuous(Output.of(continuous));
         }
 
         /**
@@ -153,23 +200,11 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
             return model(Output.of(model));
         }
 
-        /**
-         * @param pauseStatus Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pauseStatus(@Nullable Output<String> pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
 
-        /**
-         * @param pauseStatus Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
         }
@@ -193,6 +228,27 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder periodic(JobTriggerPeriodicArgs periodic) {
             return periodic(Output.of(periodic));
+        }
+
+        /**
+         * @param schedule An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedule(@Nullable Output<JobTriggerScheduleArgs> schedule) {
+            $.schedule = schedule;
+            return this;
+        }
+
+        /**
+         * @param schedule An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedule(JobTriggerScheduleArgs schedule) {
+            return schedule(Output.of(schedule));
         }
 
         public Builder sqlCondition(@Nullable Output<JobTriggerSqlConditionArgs> sqlCondition) {

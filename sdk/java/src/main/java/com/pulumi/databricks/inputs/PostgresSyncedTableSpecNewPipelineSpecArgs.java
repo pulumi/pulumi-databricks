@@ -31,6 +31,25 @@ public final class PostgresSyncedTableSpecNewPipelineSpecArgs extends com.pulumi
     }
 
     /**
+     * Release channel of the underlying pipeline&#39;s runtime.
+     * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+     * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+     * 
+     */
+    @Import(name="pipelineChannel")
+    private @Nullable Output<String> pipelineChannel;
+
+    /**
+     * @return Release channel of the underlying pipeline&#39;s runtime.
+     * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+     * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+     * 
+     */
+    public Optional<Output<String>> pipelineChannel() {
+        return Optional.ofNullable(this.pipelineChannel);
+    }
+
+    /**
      * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be a standard catalog where the user has permissions to create Delta tables
      * 
@@ -68,6 +87,7 @@ public final class PostgresSyncedTableSpecNewPipelineSpecArgs extends com.pulumi
 
     private PostgresSyncedTableSpecNewPipelineSpecArgs(PostgresSyncedTableSpecNewPipelineSpecArgs $) {
         this.budgetPolicyId = $.budgetPolicyId;
+        this.pipelineChannel = $.pipelineChannel;
         this.storageCatalog = $.storageCatalog;
         this.storageSchema = $.storageSchema;
     }
@@ -109,6 +129,31 @@ public final class PostgresSyncedTableSpecNewPipelineSpecArgs extends com.pulumi
          */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        /**
+         * @param pipelineChannel Release channel of the underlying pipeline&#39;s runtime.
+         * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+         * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineChannel(@Nullable Output<String> pipelineChannel) {
+            $.pipelineChannel = pipelineChannel;
+            return this;
+        }
+
+        /**
+         * @param pipelineChannel Release channel of the underlying pipeline&#39;s runtime.
+         * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+         * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineChannel(String pipelineChannel) {
+            return pipelineChannel(Output.of(pipelineChannel));
         }
 
         /**

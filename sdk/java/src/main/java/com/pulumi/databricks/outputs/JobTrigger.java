@@ -4,9 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTriggerContinuous;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
 import com.pulumi.databricks.outputs.JobTriggerModel;
 import com.pulumi.databricks.outputs.JobTriggerPeriodic;
+import com.pulumi.databricks.outputs.JobTriggerSchedule;
 import com.pulumi.databricks.outputs.JobTriggerSqlCondition;
 import com.pulumi.databricks.outputs.JobTriggerTableUpdate;
 import java.lang.String;
@@ -17,21 +19,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTrigger {
     /**
+     * @return Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
+    private @Nullable JobTriggerContinuous continuous;
+    /**
      * @return configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      * 
      */
     private @Nullable JobTriggerFileArrival fileArrival;
     private @Nullable JobTriggerModel model;
-    /**
-     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     * 
-     */
     private @Nullable String pauseStatus;
     /**
      * @return configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
      * 
      */
     private @Nullable JobTriggerPeriodic periodic;
+    /**
+     * @return An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     * 
+     */
+    private @Nullable JobTriggerSchedule schedule;
     private @Nullable JobTriggerSqlCondition sqlCondition;
     /**
      * @return configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
@@ -40,6 +48,13 @@ public final class JobTrigger {
     private @Nullable JobTriggerTableUpdate tableUpdate;
 
     private JobTrigger() {}
+    /**
+     * @return Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
+    public Optional<JobTriggerContinuous> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
     /**
      * @return configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      * 
@@ -50,10 +65,6 @@ public final class JobTrigger {
     public Optional<JobTriggerModel> model() {
         return Optional.ofNullable(this.model);
     }
-    /**
-     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     * 
-     */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
@@ -63,6 +74,13 @@ public final class JobTrigger {
      */
     public Optional<JobTriggerPeriodic> periodic() {
         return Optional.ofNullable(this.periodic);
+    }
+    /**
+     * @return An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     * 
+     */
+    public Optional<JobTriggerSchedule> schedule() {
+        return Optional.ofNullable(this.schedule);
     }
     public Optional<JobTriggerSqlCondition> sqlCondition() {
         return Optional.ofNullable(this.sqlCondition);
@@ -84,23 +102,33 @@ public final class JobTrigger {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobTriggerContinuous continuous;
         private @Nullable JobTriggerFileArrival fileArrival;
         private @Nullable JobTriggerModel model;
         private @Nullable String pauseStatus;
         private @Nullable JobTriggerPeriodic periodic;
+        private @Nullable JobTriggerSchedule schedule;
         private @Nullable JobTriggerSqlCondition sqlCondition;
         private @Nullable JobTriggerTableUpdate tableUpdate;
         public Builder() {}
         public Builder(JobTrigger defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.continuous = defaults.continuous;
     	      this.fileArrival = defaults.fileArrival;
     	      this.model = defaults.model;
     	      this.pauseStatus = defaults.pauseStatus;
     	      this.periodic = defaults.periodic;
+    	      this.schedule = defaults.schedule;
     	      this.sqlCondition = defaults.sqlCondition;
     	      this.tableUpdate = defaults.tableUpdate;
         }
 
+        @CustomType.Setter
+        public Builder continuous(@Nullable JobTriggerContinuous continuous) {
+
+            this.continuous = continuous;
+            return this;
+        }
         @CustomType.Setter
         public Builder fileArrival(@Nullable JobTriggerFileArrival fileArrival) {
 
@@ -126,6 +154,12 @@ public final class JobTrigger {
             return this;
         }
         @CustomType.Setter
+        public Builder schedule(@Nullable JobTriggerSchedule schedule) {
+
+            this.schedule = schedule;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sqlCondition(@Nullable JobTriggerSqlCondition sqlCondition) {
 
             this.sqlCondition = sqlCondition;
@@ -139,10 +173,12 @@ public final class JobTrigger {
         }
         public JobTrigger build() {
             final var _resultValue = new JobTrigger();
+            _resultValue.continuous = continuous;
             _resultValue.fileArrival = fileArrival;
             _resultValue.model = model;
             _resultValue.pauseStatus = pauseStatus;
             _resultValue.periodic = periodic;
+            _resultValue.schedule = schedule;
             _resultValue.sqlCondition = sqlCondition;
             _resultValue.tableUpdate = tableUpdate;
             return _resultValue;

@@ -125,6 +125,9 @@ namespace Pulumi.Databricks
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
 
+        [Output("defaultGitSource")]
+        public Output<Outputs.AppDefaultGitSource> DefaultGitSource { get; private set; } = null!;
+
         /// <summary>
         /// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         /// </summary>
@@ -155,11 +158,17 @@ namespace Pulumi.Databricks
         [Output("effectiveUserApiScopes")]
         public Output<ImmutableArray<string>> EffectiveUserApiScopes { get; private set; } = null!;
 
+        [Output("forwardUserAccessToken")]
+        public Output<bool> ForwardUserAccessToken { get; private set; } = null!;
+
         /// <summary>
         /// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         /// </summary>
         [Output("gitRepository")]
         public Output<Outputs.AppGitRepository?> GitRepository { get; private set; } = null!;
+
+        [Output("gitSource")]
+        public Output<Outputs.AppGitSource> GitSource { get; private set; } = null!;
 
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -214,6 +223,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("servicePrincipalName")]
         public Output<string> ServicePrincipalName { get; private set; } = null!;
+
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
+        [Output("sourceCodePath")]
+        public Output<string> SourceCodePath { get; private set; } = null!;
 
         [Output("space")]
         public Output<string?> Space { get; private set; } = null!;
@@ -330,11 +345,17 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("forwardUserAccessToken")]
+        public Input<bool>? ForwardUserAccessToken { get; set; }
+
         /// <summary>
         /// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         /// </summary>
         [Input("gitRepository")]
         public Input<Inputs.AppGitRepositoryArgs>? GitRepository { get; set; }
+
+        [Input("gitSource")]
+        public Input<Inputs.AppGitSourceArgs>? GitSource { get; set; }
 
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -359,6 +380,12 @@ namespace Pulumi.Databricks
             get => _resources ?? (_resources = new InputList<Inputs.AppResourceArgs>());
             set => _resources = value;
         }
+
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
+        [Input("sourceCodePath")]
+        public Input<string>? SourceCodePath { get; set; }
 
         [Input("space")]
         public Input<string>? Space { get; set; }
@@ -449,6 +476,9 @@ namespace Pulumi.Databricks
         [Input("creator")]
         public Input<string>? Creator { get; set; }
 
+        [Input("defaultGitSource")]
+        public Input<Inputs.AppDefaultGitSourceGetArgs>? DefaultGitSource { get; set; }
+
         /// <summary>
         /// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         /// </summary>
@@ -485,11 +515,17 @@ namespace Pulumi.Databricks
             set => _effectiveUserApiScopes = value;
         }
 
+        [Input("forwardUserAccessToken")]
+        public Input<bool>? ForwardUserAccessToken { get; set; }
+
         /// <summary>
         /// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         /// </summary>
         [Input("gitRepository")]
         public Input<Inputs.AppGitRepositoryGetArgs>? GitRepository { get; set; }
+
+        [Input("gitSource")]
+        public Input<Inputs.AppGitSourceGetArgs>? GitSource { get; set; }
 
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -550,6 +586,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("servicePrincipalName")]
         public Input<string>? ServicePrincipalName { get; set; }
+
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
+        [Input("sourceCodePath")]
+        public Input<string>? SourceCodePath { get; set; }
 
         [Input("space")]
         public Input<string>? Space { get; set; }

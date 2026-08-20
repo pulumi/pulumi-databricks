@@ -18,13 +18,6 @@ namespace Pulumi.Databricks
     public partial class AiGatewayModelProviderService : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (boolean) - Whether the caller sees only metadata available through the BROWSE
-        /// privilege
-        /// </summary>
-        [Output("browseOnly")]
-        public Output<bool> BrowseOnly { get; private set; } = null!;
-
-        /// <summary>
         /// User-provided description
         /// </summary>
         [Output("comment")]
@@ -75,8 +68,7 @@ namespace Pulumi.Databricks
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Leaf identifier for the provider service (the unqualified name within the
-        /// parent schema, e.g. "OpenaiProd")
+        /// Name for the model provider service, e.g. "OpenaiProd"
         /// </summary>
         [Output("modelProviderServiceId")]
         public Output<string> ModelProviderServiceId { get; private set; } = null!;
@@ -99,7 +91,7 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the parent schema.
+        /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
         /// </summary>
@@ -186,8 +178,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AiGatewayModelProviderServiceConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Leaf identifier for the provider service (the unqualified name within the
-        /// parent schema, e.g. "OpenaiProd")
+        /// Name for the model provider service, e.g. "OpenaiProd"
         /// </summary>
         [Input("modelProviderServiceId", required: true)]
         public Input<string> ModelProviderServiceId { get; set; } = null!;
@@ -200,7 +191,7 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// Resource name of the parent schema.
+        /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
         /// </summary>
@@ -221,13 +212,6 @@ namespace Pulumi.Databricks
 
     public sealed class AiGatewayModelProviderServiceState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (boolean) - Whether the caller sees only metadata available through the BROWSE
-        /// privilege
-        /// </summary>
-        [Input("browseOnly")]
-        public Input<bool>? BrowseOnly { get; set; }
-
         /// <summary>
         /// User-provided description
         /// </summary>
@@ -279,8 +263,7 @@ namespace Pulumi.Databricks
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Leaf identifier for the provider service (the unqualified name within the
-        /// parent schema, e.g. "OpenaiProd")
+        /// Name for the model provider service, e.g. "OpenaiProd"
         /// </summary>
         [Input("modelProviderServiceId")]
         public Input<string>? ModelProviderServiceId { get; set; }
@@ -303,7 +286,7 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// Resource name of the parent schema.
+        /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
         /// </summary>

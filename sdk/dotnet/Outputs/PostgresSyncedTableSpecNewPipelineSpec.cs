@@ -18,6 +18,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? BudgetPolicyId;
         /// <summary>
+        /// Release channel of the underlying pipeline's runtime.
+        /// Some source table configurations (e.g., read-time CDF) require PREVIEW.
+        /// Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+        /// </summary>
+        public readonly string? PipelineChannel;
+        /// <summary>
         /// UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
         /// This needs to be a standard catalog where the user has permissions to create Delta tables
         /// </summary>
@@ -32,11 +38,14 @@ namespace Pulumi.Databricks.Outputs
         private PostgresSyncedTableSpecNewPipelineSpec(
             string? budgetPolicyId,
 
+            string? pipelineChannel,
+
             string? storageCatalog,
 
             string? storageSchema)
         {
             BudgetPolicyId = budgetPolicyId;
+            PipelineChannel = pipelineChannel;
             StorageCatalog = storageCatalog;
             StorageSchema = storageSchema;
         }

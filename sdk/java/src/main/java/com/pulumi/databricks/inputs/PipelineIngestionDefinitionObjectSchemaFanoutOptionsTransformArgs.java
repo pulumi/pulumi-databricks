@@ -23,6 +23,13 @@ public final class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
         return Optional.ofNullable(this.format);
     }
 
+    @Import(name="inputColumn")
+    private @Nullable Output<String> inputColumn;
+
+    public Optional<Output<String>> inputColumn() {
+        return Optional.ofNullable(this.inputColumn);
+    }
+
     @Import(name="jsonOptions")
     private @Nullable Output<PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsArgs> jsonOptions;
 
@@ -30,11 +37,20 @@ public final class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
         return Optional.ofNullable(this.jsonOptions);
     }
 
+    @Import(name="outputColumn")
+    private @Nullable Output<String> outputColumn;
+
+    public Optional<Output<String>> outputColumn() {
+        return Optional.ofNullable(this.outputColumn);
+    }
+
     private PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgs() {}
 
     private PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgs(PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgs $) {
         this.format = $.format;
+        this.inputColumn = $.inputColumn;
         this.jsonOptions = $.jsonOptions;
+        this.outputColumn = $.outputColumn;
     }
 
     public static Builder builder() {
@@ -64,6 +80,15 @@ public final class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
             return format(Output.of(format));
         }
 
+        public Builder inputColumn(@Nullable Output<String> inputColumn) {
+            $.inputColumn = inputColumn;
+            return this;
+        }
+
+        public Builder inputColumn(String inputColumn) {
+            return inputColumn(Output.of(inputColumn));
+        }
+
         public Builder jsonOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsArgs> jsonOptions) {
             $.jsonOptions = jsonOptions;
             return this;
@@ -71,6 +96,15 @@ public final class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
 
         public Builder jsonOptions(PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptionsArgs jsonOptions) {
             return jsonOptions(Output.of(jsonOptions));
+        }
+
+        public Builder outputColumn(@Nullable Output<String> outputColumn) {
+            $.outputColumn = outputColumn;
+            return this;
+        }
+
+        public Builder outputColumn(String outputColumn) {
+            return outputColumn(Output.of(outputColumn));
         }
 
         public PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformArgs build() {

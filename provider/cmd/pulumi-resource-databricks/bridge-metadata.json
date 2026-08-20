@@ -33,6 +33,34 @@
                     }
                 }
             },
+            "databricks_account_iam_direct_group_member_v2": {
+                "current": "databricks:index/accountIamDirectGroupMemberV2:AccountIamDirectGroupMemberV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_group_v2": {
+                "current": "databricks:index/accountIamGroupV2:AccountIamGroupV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_service_principal_v2": {
+                "current": "databricks:index/accountIamServicePrincipalV2:AccountIamServicePrincipalV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_user_v2": {
+                "current": "databricks:index/accountIamUserV2:AccountIamUserV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_workspace_assignment_v2": {
+                "current": "databricks:index/accountIamWorkspaceAssignmentV2:AccountIamWorkspaceAssignmentV2",
+                "majorVersion": 1,
+                "fields": {
+                    "effective_entitlements": {
+                        "maxItemsOne": false
+                    },
+                    "entitlements": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_account_network_policy": {
                 "current": "databricks:index/accountNetworkPolicy:AccountNetworkPolicy",
                 "majorVersion": 1,
@@ -1755,6 +1783,13 @@
                     },
                     "function": {
                         "fields": {
+                            "custom_udf": {
+                                "fields": {
+                                    "input_bindings": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "extra_parameters": {
                                 "maxItemsOne": false
                             }
@@ -3530,6 +3565,48 @@
                             }
                         }
                     },
+                    "triggers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "continuous": {
+                                    "maxItemsOne": true
+                                },
+                                "file_arrival": {
+                                    "maxItemsOne": true
+                                },
+                                "model": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "aliases": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "periodic": {
+                                    "maxItemsOne": true
+                                },
+                                "schedule": {
+                                    "maxItemsOne": true
+                                },
+                                "sql_condition": {
+                                    "maxItemsOne": true
+                                },
+                                "table_update": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "table_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "webhook_notifications": {
                         "maxItemsOne": true,
                         "elem": {
@@ -3928,6 +4005,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "enabled_telemetry_features": {
+                                    "maxItemsOne": false
+                                },
                                 "inference_table_config": {
                                     "maxItemsOne": true
                                 },
@@ -4106,7 +4186,21 @@
                         "maxItemsOne": false
                     },
                     "gcp_endpoint": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "google_api_endpoints": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "endpoints": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "resource_names": {
                         "maxItemsOne": false
@@ -4622,6 +4716,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "api_source_connector_options": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "confluence_options": {
                                                                         "maxItemsOne": true,
                                                                         "elem": {
@@ -4711,6 +4808,29 @@
                                                                                 }
                                                                             }
                                                                         }
+                                                                    },
+                                                                    "linkedin_ads_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "entity_granularity": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "metrics": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "marketo_options": {
+                                                                        "maxItemsOne": true
                                                                     },
                                                                     "meta_ads_options": {
                                                                         "maxItemsOne": true,
@@ -4917,6 +5037,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "api_source_connector_options": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "confluence_options": {
                                                                         "maxItemsOne": true,
                                                                         "elem": {
@@ -5006,6 +5129,29 @@
                                                                                 }
                                                                             }
                                                                         }
+                                                                    },
+                                                                    "linkedin_ads_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "custom_report_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "entity_granularity": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "metrics": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "marketo_options": {
+                                                                        "maxItemsOne": true
                                                                     },
                                                                     "meta_ads_options": {
                                                                         "maxItemsOne": true,
@@ -5194,6 +5340,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "api_source_connector_config": {
+                                                "maxItemsOne": true
+                                            },
                                             "catalog": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -6315,6 +6464,38 @@
                     }
                 }
             },
+            "databricks_workspace_iam_direct_group_member_v2": {
+                "current": "databricks:index/workspaceIamDirectGroupMemberV2:WorkspaceIamDirectGroupMemberV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_group_v2": {
+                "current": "databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_service_principal_v2": {
+                "current": "databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_user_v2": {
+                "current": "databricks:index/workspaceIamUserV2:WorkspaceIamUserV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_workspace_assignment_v2": {
+                "current": "databricks:index/workspaceIamWorkspaceAssignmentV2:WorkspaceIamWorkspaceAssignmentV2",
+                "majorVersion": 1,
+                "fields": {
+                    "effective_entitlements": {
+                        "maxItemsOne": false
+                    },
+                    "entitlements": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_workspace_iam_workspace_identity_detail_v2": {
+                "current": "databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2",
+                "majorVersion": 1
+            },
             "databricks_workspace_network_option": {
                 "current": "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption",
                 "majorVersion": 1
@@ -6383,6 +6564,89 @@
                         "fields": {
                             "audiences": {
                                 "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_account_iam_direct_group_member_v2": {
+                "current": "databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_direct_group_members_v2": {
+                "current": "databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2",
+                "majorVersion": 1,
+                "fields": {
+                    "direct_group_members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_account_iam_group_v2": {
+                "current": "databricks:index/getAccountIamGroupV2:getAccountIamGroupV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_groups_v2": {
+                "current": "databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2",
+                "majorVersion": 1,
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_account_iam_service_principal_v2": {
+                "current": "databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_service_principals_v2": {
+                "current": "databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2",
+                "majorVersion": 1,
+                "fields": {
+                    "service_principals": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_account_iam_user_v2": {
+                "current": "databricks:index/getAccountIamUserV2:getAccountIamUserV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_users_v2": {
+                "current": "databricks:index/getAccountIamUsersV2:getAccountIamUsersV2",
+                "majorVersion": 1,
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_account_iam_workspace_assignment_v2": {
+                "current": "databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2",
+                "majorVersion": 1,
+                "fields": {
+                    "effective_entitlements": {
+                        "maxItemsOne": false
+                    },
+                    "entitlements": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_account_iam_workspace_assignments_v2": {
+                "current": "databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2",
+                "majorVersion": 1,
+                "fields": {
+                    "workspace_assignments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "effective_entitlements": {
+                                    "maxItemsOne": false
+                                },
+                                "entitlements": {
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     }
@@ -9206,6 +9470,13 @@
                     },
                     "function": {
                         "fields": {
+                            "custom_udf": {
+                                "fields": {
+                                    "input_bindings": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "extra_parameters": {
                                 "maxItemsOne": false
                             }
@@ -9258,6 +9529,13 @@
                                 },
                                 "function": {
                                     "fields": {
+                                        "custom_udf": {
+                                            "fields": {
+                                                "input_bindings": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
                                         "extra_parameters": {
                                             "maxItemsOne": false
                                         }
@@ -11584,6 +11862,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "enabled_telemetry_features": {
+                                                "maxItemsOne": false
+                                            },
                                             "inference_table_config": {
                                                 "maxItemsOne": false
                                             },
@@ -12052,6 +12333,93 @@
                     }
                 }
             },
+            "databricks_workspace_iam_direct_group_member_v2": {
+                "current": "databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_direct_group_members_v2": {
+                "current": "databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2",
+                "majorVersion": 1,
+                "fields": {
+                    "direct_group_members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_workspace_iam_group_v2": {
+                "current": "databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_groups_v2": {
+                "current": "databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2",
+                "majorVersion": 1,
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_workspace_iam_service_principal_v2": {
+                "current": "databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_service_principals_v2": {
+                "current": "databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2",
+                "majorVersion": 1,
+                "fields": {
+                    "service_principals": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_workspace_iam_user_v2": {
+                "current": "databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_users_v2": {
+                "current": "databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2",
+                "majorVersion": 1,
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_workspace_iam_workspace_assignment_v2": {
+                "current": "databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2",
+                "majorVersion": 1,
+                "fields": {
+                    "effective_entitlements": {
+                        "maxItemsOne": false
+                    },
+                    "entitlements": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_workspace_iam_workspace_assignments_v2": {
+                "current": "databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2",
+                "majorVersion": 1,
+                "fields": {
+                    "workspace_assignments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "effective_entitlements": {
+                                    "maxItemsOne": false
+                                },
+                                "entitlements": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_workspace_iam_workspace_identity_detail_v2": {
+                "current": "databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2",
+                "majorVersion": 1
+            },
             "databricks_workspace_network_option": {
                 "current": "databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption",
                 "majorVersion": 1
@@ -12121,6 +12489,31 @@
     "default-resource-schema-fixups": {
         "resources": {
             "databricks_account_federation_policy": {},
+            "databricks_account_iam_direct_group_member_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_account_iam_group_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_account_iam_service_principal_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_account_iam_user_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_account_iam_workspace_assignment_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_account_network_policy": {},
             "databricks_account_setting_user_preference_v2": {
                 "computeID": {
@@ -12304,12 +12697,48 @@
                     "kind": "missing"
                 }
             },
+            "databricks_workspace_iam_direct_group_member_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_workspace_iam_group_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_workspace_iam_service_principal_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_workspace_iam_user_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_workspace_iam_workspace_assignment_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_workspace_iam_workspace_identity_detail_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_workspace_network_option": {},
             "databricks_workspace_setting_v2": {}
         }
     },
     "ids": {
         "resources": {
+            "databricks_account_iam_direct_group_member_v2": [
+                "principal_id"
+            ],
+            "databricks_account_iam_workspace_assignment_v2": [
+                "principal_id"
+            ],
             "databricks_account_network_policy": [
                 "ingress.cross_workspace_access.allow_rules.$.authentication.identities.$.principal_id",
                 "ingress.cross_workspace_access.deny_rules.$.authentication.identities.$.principal_id",
@@ -12335,9 +12764,30 @@
             ],
             "databricks_permission_assignment": [
                 "principal_id"
+            ],
+            "databricks_workspace_iam_direct_group_member_v2": [
+                "principal_id"
+            ],
+            "databricks_workspace_iam_workspace_assignment_v2": [
+                "principal_id"
+            ],
+            "databricks_workspace_iam_workspace_identity_detail_v2": [
+                "principal_id"
             ]
         },
         "dataSources": {
+            "databricks_account_iam_direct_group_member_v2": [
+                "principal_id"
+            ],
+            "databricks_account_iam_direct_group_members_v2": [
+                "direct_group_members.$.principal_id"
+            ],
+            "databricks_account_iam_workspace_assignment_v2": [
+                "principal_id"
+            ],
+            "databricks_account_iam_workspace_assignments_v2": [
+                "workspace_assignments.$.principal_id"
+            ],
             "databricks_account_network_policies": [
                 "items.$.ingress.cross_workspace_access.allow_rules.$.authentication.identities.$.principal_id",
                 "items.$.ingress.cross_workspace_access.deny_rules.$.authentication.identities.$.principal_id",
@@ -12365,6 +12815,21 @@
                 "ingress_dry_run.private_access.deny_rules.$.authentication.identities.$.principal_id",
                 "ingress_dry_run.public_access.allow_rules.$.authentication.identities.$.principal_id",
                 "ingress_dry_run.public_access.deny_rules.$.authentication.identities.$.principal_id"
+            ],
+            "databricks_workspace_iam_direct_group_member_v2": [
+                "principal_id"
+            ],
+            "databricks_workspace_iam_direct_group_members_v2": [
+                "direct_group_members.$.principal_id"
+            ],
+            "databricks_workspace_iam_workspace_assignment_v2": [
+                "principal_id"
+            ],
+            "databricks_workspace_iam_workspace_assignments_v2": [
+                "workspace_assignments.$.principal_id"
+            ],
+            "databricks_workspace_iam_workspace_identity_detail_v2": [
+                "principal_id"
             ]
         }
     },
@@ -12372,6 +12837,11 @@
         "resources": {
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": 0,
             "databricks:index/accountFederationPolicy:AccountFederationPolicy": 1,
+            "databricks:index/accountIamDirectGroupMemberV2:AccountIamDirectGroupMemberV2": 1,
+            "databricks:index/accountIamGroupV2:AccountIamGroupV2": 1,
+            "databricks:index/accountIamServicePrincipalV2:AccountIamServicePrincipalV2": 1,
+            "databricks:index/accountIamUserV2:AccountIamUserV2": 1,
+            "databricks:index/accountIamWorkspaceAssignmentV2:AccountIamWorkspaceAssignmentV2": 1,
             "databricks:index/accountNetworkPolicy:AccountNetworkPolicy": 1,
             "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2": 1,
             "databricks:index/accountSettingV2:AccountSettingV2": 1,
@@ -12528,12 +12998,28 @@
             "databricks:index/workspaceConf:WorkspaceConf": 0,
             "databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment": 1,
             "databricks:index/workspaceFile:WorkspaceFile": 0,
+            "databricks:index/workspaceIamDirectGroupMemberV2:WorkspaceIamDirectGroupMemberV2": 1,
+            "databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2": 1,
+            "databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2": 1,
+            "databricks:index/workspaceIamUserV2:WorkspaceIamUserV2": 1,
+            "databricks:index/workspaceIamWorkspaceAssignmentV2:WorkspaceIamWorkspaceAssignmentV2": 1,
+            "databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2": 1,
             "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption": 1,
             "databricks:index/workspaceSettingV2:WorkspaceSettingV2": 1
         },
         "functions": {
             "databricks:index/getAccountFederationPolicies:getAccountFederationPolicies": 1,
             "databricks:index/getAccountFederationPolicy:getAccountFederationPolicy": 1,
+            "databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2": 1,
+            "databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2": 1,
+            "databricks:index/getAccountIamGroupV2:getAccountIamGroupV2": 1,
+            "databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2": 1,
+            "databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2": 1,
+            "databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2": 1,
+            "databricks:index/getAccountIamUserV2:getAccountIamUserV2": 1,
+            "databricks:index/getAccountIamUsersV2:getAccountIamUsersV2": 1,
+            "databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2": 1,
+            "databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2": 1,
             "databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies": 1,
             "databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy": 1,
             "databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2": 1,
@@ -12693,6 +13179,17 @@
             "databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides": 1,
             "databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment": 1,
             "databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments": 1,
+            "databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2": 1,
+            "databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2": 1,
+            "databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2": 1,
+            "databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2": 1,
+            "databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2": 1,
+            "databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2": 1,
+            "databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2": 1,
+            "databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2": 1,
+            "databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2": 1,
+            "databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2": 1,
+            "databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2": 1,
             "databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption": 1,
             "databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2": 1,
             "databricks:index/getZones:getZones": 0
@@ -15624,6 +16121,9 @@
             "databricks_access_control_rule_set": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_account_iam_workspace_assignment_v2": [
+                "workspace_id"
+            ],
             "databricks_ai_gateway_mcp_service": [
                 "provider_config.workspace_id"
             ],
@@ -16056,6 +16556,25 @@
             "databricks_workspace_file": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_workspace_iam_direct_group_member_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_group_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_service_principal_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_user_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_workspace_assignment_v2": [
+                "provider_config.workspace_id",
+                "workspace_id"
+            ],
+            "databricks_workspace_iam_workspace_identity_detail_v2": [
+                "provider_config.workspace_id"
+            ],
             "databricks_workspace_network_option": [
                 "workspace_id"
             ],
@@ -16064,6 +16583,13 @@
             ]
         },
         "dataSources": {
+            "databricks_account_iam_workspace_assignment_v2": [
+                "workspace_id"
+            ],
+            "databricks_account_iam_workspace_assignments_v2": [
+                "workspace_assignments.$.workspace_id",
+                "workspace_id"
+            ],
             "databricks_ai_gateway_mcp_service": [
                 "provider_config.workspace_id"
             ],
@@ -16514,6 +17040,46 @@
             "databricks_workspace_entity_tag_assignments": [
                 "provider_config.workspace_id",
                 "tag_assignments.$.provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_direct_group_member_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_direct_group_members_v2": [
+                "direct_group_members.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_group_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_groups_v2": [
+                "groups.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_service_principal_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_service_principals_v2": [
+                "provider_config.workspace_id",
+                "service_principals.$.provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_user_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_users_v2": [
+                "provider_config.workspace_id",
+                "users.$.provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_workspace_assignment_v2": [
+                "provider_config.workspace_id",
+                "workspace_id"
+            ],
+            "databricks_workspace_iam_workspace_assignments_v2": [
+                "provider_config.workspace_id",
+                "workspace_assignments.$.provider_config.workspace_id",
+                "workspace_assignments.$.workspace_id"
+            ],
+            "databricks_workspace_iam_workspace_identity_detail_v2": [
+                "provider_config.workspace_id"
             ],
             "databricks_workspace_network_option": [
                 "workspace_id"

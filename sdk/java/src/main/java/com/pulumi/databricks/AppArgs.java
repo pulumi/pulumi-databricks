@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppGitRepositoryArgs;
+import com.pulumi.databricks.inputs.AppGitSourceArgs;
 import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
 import com.pulumi.databricks.inputs.AppTelemetryExportDestinationArgs;
@@ -81,6 +82,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="forwardUserAccessToken")
+    private @Nullable Output<Boolean> forwardUserAccessToken;
+
+    public Optional<Output<Boolean>> forwardUserAccessToken() {
+        return Optional.ofNullable(this.forwardUserAccessToken);
+    }
+
     /**
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      * 
@@ -94,6 +102,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<AppGitRepositoryArgs>> gitRepository() {
         return Optional.ofNullable(this.gitRepository);
+    }
+
+    @Import(name="gitSource")
+    private @Nullable Output<AppGitSourceArgs> gitSource;
+
+    public Optional<Output<AppGitSourceArgs>> gitSource() {
+        return Optional.ofNullable(this.gitSource);
     }
 
     /**
@@ -138,6 +153,21 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<AppResourceArgs>>> resources() {
         return Optional.ofNullable(this.resources);
+    }
+
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
+    @Import(name="sourceCodePath")
+    private @Nullable Output<String> sourceCodePath;
+
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
+    public Optional<Output<String>> sourceCodePath() {
+        return Optional.ofNullable(this.sourceCodePath);
     }
 
     @Import(name="space")
@@ -200,11 +230,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.computeMinInstances = $.computeMinInstances;
         this.computeSize = $.computeSize;
         this.description = $.description;
+        this.forwardUserAccessToken = $.forwardUserAccessToken;
         this.gitRepository = $.gitRepository;
+        this.gitSource = $.gitSource;
         this.name = $.name;
         this.noCompute = $.noCompute;
         this.providerConfig = $.providerConfig;
         this.resources = $.resources;
+        this.sourceCodePath = $.sourceCodePath;
         this.space = $.space;
         this.telemetryExportDestinations = $.telemetryExportDestinations;
         this.usagePolicyId = $.usagePolicyId;
@@ -310,6 +343,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        public Builder forwardUserAccessToken(@Nullable Output<Boolean> forwardUserAccessToken) {
+            $.forwardUserAccessToken = forwardUserAccessToken;
+            return this;
+        }
+
+        public Builder forwardUserAccessToken(Boolean forwardUserAccessToken) {
+            return forwardUserAccessToken(Output.of(forwardUserAccessToken));
+        }
+
         /**
          * @param gitRepository Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
          * 
@@ -329,6 +371,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gitRepository(AppGitRepositoryArgs gitRepository) {
             return gitRepository(Output.of(gitRepository));
+        }
+
+        public Builder gitSource(@Nullable Output<AppGitSourceArgs> gitSource) {
+            $.gitSource = gitSource;
+            return this;
+        }
+
+        public Builder gitSource(AppGitSourceArgs gitSource) {
+            return gitSource(Output.of(gitSource));
         }
 
         /**
@@ -399,6 +450,27 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resources(AppResourceArgs... resources) {
             return resources(List.of(resources));
+        }
+
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceCodePath(@Nullable Output<String> sourceCodePath) {
+            $.sourceCodePath = sourceCodePath;
+            return this;
+        }
+
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceCodePath(String sourceCodePath) {
+            return sourceCodePath(Output.of(sourceCodePath));
         }
 
         public Builder space(@Nullable Output<String> space) {

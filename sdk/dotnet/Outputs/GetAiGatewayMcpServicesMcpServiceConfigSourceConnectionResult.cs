@@ -18,7 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool IsDeleted;
         /// <summary>
-        /// (string)
+        /// (string) - Name of the UC connection that hosts the MCP server, as
+        /// `connections/{catalog}.{schema}.{connection}`
         /// </summary>
         public readonly string Name;
 

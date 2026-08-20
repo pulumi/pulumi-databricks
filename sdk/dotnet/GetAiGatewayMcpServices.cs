@@ -40,21 +40,14 @@ namespace Pulumi.Databricks
     public sealed class GetAiGatewayMcpServicesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to include MCP services for which the principal can only access
-        /// selective metadata
-        /// </summary>
-        [Input("includeBrowse")]
-        public bool? IncludeBrowse { get; set; }
-
-        /// <summary>
         /// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-        /// the maximum is 100. Use `NextPageToken` to retrieve additional pages
+        /// the maximum is 100. Use `PageToken` to retrieve additional pages
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Resource name of the parent schema to list within, as
+        /// Name of the parent schema to list within, as
         /// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
         /// characters individually
         /// </summary>
@@ -68,7 +61,9 @@ namespace Pulumi.Databricks
         public Inputs.GetAiGatewayMcpServicesProviderConfigArgs? ProviderConfig { get; set; }
 
         /// <summary>
-        /// View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+        /// View selector controlling which fields are populated per row. `FULL`
+        /// returns the full representation of the service; `BASIC` returns a more
+        /// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
         /// </summary>
         [Input("view")]
         public string? View { get; set; }
@@ -82,21 +77,14 @@ namespace Pulumi.Databricks
     public sealed class GetAiGatewayMcpServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to include MCP services for which the principal can only access
-        /// selective metadata
-        /// </summary>
-        [Input("includeBrowse")]
-        public Input<bool>? IncludeBrowse { get; set; }
-
-        /// <summary>
         /// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
-        /// the maximum is 100. Use `NextPageToken` to retrieve additional pages
+        /// the maximum is 100. Use `PageToken` to retrieve additional pages
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Resource name of the parent schema to list within, as
+        /// Name of the parent schema to list within, as
         /// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
         /// characters individually
         /// </summary>
@@ -110,7 +98,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetAiGatewayMcpServicesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+        /// View selector controlling which fields are populated per row. `FULL`
+        /// returns the full representation of the service; `BASIC` returns a more
+        /// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }
@@ -125,7 +115,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAiGatewayMcpServicesResult
     {
-        public readonly bool? IncludeBrowse;
         public readonly ImmutableArray<Outputs.GetAiGatewayMcpServicesMcpServiceResult> McpServices;
         public readonly int? PageSize;
         public readonly string? Parent;
@@ -134,8 +123,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetAiGatewayMcpServicesResult(
-            bool? includeBrowse,
-
             ImmutableArray<Outputs.GetAiGatewayMcpServicesMcpServiceResult> mcpServices,
 
             int? pageSize,
@@ -146,7 +133,6 @@ namespace Pulumi.Databricks
 
             string? view)
         {
-            IncludeBrowse = includeBrowse;
             McpServices = mcpServices;
             PageSize = pageSize;
             Parent = parent;

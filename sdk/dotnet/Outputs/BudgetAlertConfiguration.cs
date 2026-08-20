@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.BudgetAlertConfigurationActionConfiguration> ActionConfigurations;
         public readonly string? AlertConfigurationId;
+        /// <summary>
+        /// Per-principal threshold overrides for this alert. Only applies to per-user alerts (`ScopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+        /// </summary>
         public readonly ImmutableArray<Outputs.BudgetAlertConfigurationPrincipalOverride> PrincipalOverrides;
         /// <summary>
         /// The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `QuantityType`.
@@ -27,6 +30,9 @@ namespace Pulumi.Databricks.Outputs
         /// The way to calculate cost for this budget alert. This is what QuantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
         /// </summary>
         public readonly string? QuantityType;
+        /// <summary>
+        /// How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+        /// </summary>
         public readonly string? ScopeType;
         /// <summary>
         /// The time window of usage data for the budget. (Enum: `MONTH`)

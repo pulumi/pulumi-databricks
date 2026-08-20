@@ -14,16 +14,24 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
     {
         public readonly string? Format;
+        public readonly string? InputColumn;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions? JsonOptions;
+        public readonly string? OutputColumn;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform(
             string? format,
 
-            Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions? jsonOptions)
+            string? inputColumn,
+
+            Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions? jsonOptions,
+
+            string? outputColumn)
         {
             Format = format;
+            InputColumn = inputColumn;
             JsonOptions = jsonOptions;
+            OutputColumn = outputColumn;
         }
     }
 }

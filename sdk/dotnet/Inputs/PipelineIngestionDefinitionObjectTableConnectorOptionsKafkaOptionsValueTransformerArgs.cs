@@ -15,8 +15,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("format")]
         public Input<string>? Format { get; set; }
 
+        [Input("inputColumn")]
+        public Input<string>? InputColumn { get; set; }
+
         [Input("jsonOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgs>? JsonOptions { get; set; }
+
+        [Input("outputColumn")]
+        public Input<string>? OutputColumn { get; set; }
 
         public PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs()
         {

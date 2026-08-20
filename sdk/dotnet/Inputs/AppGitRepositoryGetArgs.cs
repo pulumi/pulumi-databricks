@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppGitRepositoryGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("autoDeploy")]
+        public Input<bool>? AutoDeploy { get; set; }
+
+        [Input("callerCredentialId")]
+        public Input<int>? CallerCredentialId { get; set; }
+
         /// <summary>
         /// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         /// </summary>

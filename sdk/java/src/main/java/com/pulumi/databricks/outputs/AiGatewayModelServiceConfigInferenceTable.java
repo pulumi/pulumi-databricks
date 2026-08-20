@@ -34,7 +34,7 @@ public final class AiGatewayModelServiceConfigInferenceTable {
      */
     private @Nullable Boolean isDeleted;
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -83,7 +83,7 @@ public final class AiGatewayModelServiceConfigInferenceTable {
         return Optional.ofNullable(this.isDeleted);
     }
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 

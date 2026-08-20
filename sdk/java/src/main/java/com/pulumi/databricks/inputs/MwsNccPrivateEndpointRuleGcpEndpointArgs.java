@@ -5,6 +5,8 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +16,20 @@ import javax.annotation.Nullable;
 public final class MwsNccPrivateEndpointRuleGcpEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MwsNccPrivateEndpointRuleGcpEndpointArgs Empty = new MwsNccPrivateEndpointRuleGcpEndpointArgs();
+
+    @Import(name="allVpcScServices")
+    private @Nullable Output<Boolean> allVpcScServices;
+
+    public Optional<Output<Boolean>> allVpcScServices() {
+        return Optional.ofNullable(this.allVpcScServices);
+    }
+
+    @Import(name="googleApiEndpoints")
+    private @Nullable Output<MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs> googleApiEndpoints;
+
+    public Optional<Output<MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs>> googleApiEndpoints() {
+        return Optional.ofNullable(this.googleApiEndpoints);
+    }
 
     @Import(name="pscEndpointUri")
     private @Nullable Output<String> pscEndpointUri;
@@ -32,6 +48,8 @@ public final class MwsNccPrivateEndpointRuleGcpEndpointArgs extends com.pulumi.r
     private MwsNccPrivateEndpointRuleGcpEndpointArgs() {}
 
     private MwsNccPrivateEndpointRuleGcpEndpointArgs(MwsNccPrivateEndpointRuleGcpEndpointArgs $) {
+        this.allVpcScServices = $.allVpcScServices;
+        this.googleApiEndpoints = $.googleApiEndpoints;
         this.pscEndpointUri = $.pscEndpointUri;
         this.serviceAttachment = $.serviceAttachment;
     }
@@ -52,6 +70,24 @@ public final class MwsNccPrivateEndpointRuleGcpEndpointArgs extends com.pulumi.r
 
         public Builder(MwsNccPrivateEndpointRuleGcpEndpointArgs defaults) {
             $ = new MwsNccPrivateEndpointRuleGcpEndpointArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder allVpcScServices(@Nullable Output<Boolean> allVpcScServices) {
+            $.allVpcScServices = allVpcScServices;
+            return this;
+        }
+
+        public Builder allVpcScServices(Boolean allVpcScServices) {
+            return allVpcScServices(Output.of(allVpcScServices));
+        }
+
+        public Builder googleApiEndpoints(@Nullable Output<MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs> googleApiEndpoints) {
+            $.googleApiEndpoints = googleApiEndpoints;
+            return this;
+        }
+
+        public Builder googleApiEndpoints(MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsArgs googleApiEndpoints) {
+            return googleApiEndpoints(Output.of(googleApiEndpoints));
         }
 
         public Builder pscEndpointUri(@Nullable Output<String> pscEndpointUri) {

@@ -17,6 +17,13 @@ public final class PostgresSyncedTableSpecNewPipelineSpec {
      */
     private @Nullable String budgetPolicyId;
     /**
+     * @return Release channel of the underlying pipeline&#39;s runtime.
+     * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+     * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+     * 
+     */
+    private @Nullable String pipelineChannel;
+    /**
      * @return UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be a standard catalog where the user has permissions to create Delta tables
      * 
@@ -36,6 +43,15 @@ public final class PostgresSyncedTableSpecNewPipelineSpec {
      */
     public Optional<String> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
+    }
+    /**
+     * @return Release channel of the underlying pipeline&#39;s runtime.
+     * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+     * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+     * 
+     */
+    public Optional<String> pipelineChannel() {
+        return Optional.ofNullable(this.pipelineChannel);
     }
     /**
      * @return UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
@@ -64,12 +80,14 @@ public final class PostgresSyncedTableSpecNewPipelineSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String budgetPolicyId;
+        private @Nullable String pipelineChannel;
         private @Nullable String storageCatalog;
         private @Nullable String storageSchema;
         public Builder() {}
         public Builder(PostgresSyncedTableSpecNewPipelineSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.pipelineChannel = defaults.pipelineChannel;
     	      this.storageCatalog = defaults.storageCatalog;
     	      this.storageSchema = defaults.storageSchema;
         }
@@ -78,6 +96,12 @@ public final class PostgresSyncedTableSpecNewPipelineSpec {
         public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
 
             this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pipelineChannel(@Nullable String pipelineChannel) {
+
+            this.pipelineChannel = pipelineChannel;
             return this;
         }
         @CustomType.Setter
@@ -95,6 +119,7 @@ public final class PostgresSyncedTableSpecNewPipelineSpec {
         public PostgresSyncedTableSpecNewPipelineSpec build() {
             final var _resultValue = new PostgresSyncedTableSpecNewPipelineSpec();
             _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.pipelineChannel = pipelineChannel;
             _resultValue.storageCatalog = storageCatalog;
             _resultValue.storageSchema = storageSchema;
             return _resultValue;

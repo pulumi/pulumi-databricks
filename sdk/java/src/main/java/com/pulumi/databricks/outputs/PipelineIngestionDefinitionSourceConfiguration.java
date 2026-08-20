@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfigurationCatalog;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig;
 import java.util.Objects;
@@ -12,6 +13,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionSourceConfiguration {
+    private @Nullable PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig apiSourceConnectorConfig;
     /**
      * @return The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
@@ -20,6 +22,9 @@ public final class PipelineIngestionDefinitionSourceConfiguration {
     private @Nullable PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig googleAdsConfig;
 
     private PipelineIngestionDefinitionSourceConfiguration() {}
+    public Optional<PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig> apiSourceConnectorConfig() {
+        return Optional.ofNullable(this.apiSourceConnectorConfig);
+    }
     /**
      * @return The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
@@ -40,15 +45,23 @@ public final class PipelineIngestionDefinitionSourceConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig apiSourceConnectorConfig;
         private @Nullable PipelineIngestionDefinitionSourceConfigurationCatalog catalog;
         private @Nullable PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig googleAdsConfig;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionSourceConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiSourceConnectorConfig = defaults.apiSourceConnectorConfig;
     	      this.catalog = defaults.catalog;
     	      this.googleAdsConfig = defaults.googleAdsConfig;
         }
 
+        @CustomType.Setter
+        public Builder apiSourceConnectorConfig(@Nullable PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig apiSourceConnectorConfig) {
+
+            this.apiSourceConnectorConfig = apiSourceConnectorConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder catalog(@Nullable PipelineIngestionDefinitionSourceConfigurationCatalog catalog) {
 
@@ -63,6 +76,7 @@ public final class PipelineIngestionDefinitionSourceConfiguration {
         }
         public PipelineIngestionDefinitionSourceConfiguration build() {
             final var _resultValue = new PipelineIngestionDefinitionSourceConfiguration();
+            _resultValue.apiSourceConnectorConfig = apiSourceConnectorConfig;
             _resultValue.catalog = catalog;
             _resultValue.googleAdsConfig = googleAdsConfig;
             return _resultValue;

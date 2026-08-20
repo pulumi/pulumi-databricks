@@ -672,6 +672,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobTrigger>> trigger() {
         return Codegen.optional(this.trigger);
     }
+    @Export(name="triggers", refs={List.class,JobTrigger.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<JobTrigger>> triggers;
+
+    public Output<Optional<List<JobTrigger>>> triggers() {
+        return Codegen.optional(this.triggers);
+    }
     /**
      * URL of the job on the given workspace
      * 

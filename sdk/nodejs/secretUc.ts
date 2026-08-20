@@ -183,7 +183,7 @@ export class SecretUc extends pulumi.CustomResource {
             resourceInputs["owner"] = args?.owner;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schemaName"] = args?.schemaName;
-            resourceInputs["value"] = args?.value;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["effectiveOwner"] = undefined /*out*/;
@@ -194,6 +194,8 @@ export class SecretUc extends pulumi.CustomResource {
             resourceInputs["updatedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveValue", "value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretUc.__pulumiType, name, resourceInputs, opts);
     }
 }

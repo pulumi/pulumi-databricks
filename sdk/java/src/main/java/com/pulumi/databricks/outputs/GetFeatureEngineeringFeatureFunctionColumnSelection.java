@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetFeatureEngineeringFeatureFunctionColumnSelection {
     /**
-     * @return (string) - Column name from source to select as the feature value
+     * @return (string) - Source column whose value is passed for this parameter at execution time
      * 
      */
     private String column;
 
     private GetFeatureEngineeringFeatureFunctionColumnSelection() {}
     /**
-     * @return (string) - Column name from source to select as the feature value
+     * @return (string) - Source column whose value is passed for this parameter at execution time
      * 
      */
     public String column() {
