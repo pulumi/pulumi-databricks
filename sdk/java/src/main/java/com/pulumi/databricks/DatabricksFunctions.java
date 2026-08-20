@@ -10,6 +10,26 @@ import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
 import com.pulumi.databricks.inputs.GetAccountFederationPoliciesPlainArgs;
 import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
 import com.pulumi.databricks.inputs.GetAccountFederationPolicyPlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamGroupV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamGroupV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamGroupsV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamUserV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamUserV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamUsersV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentsV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentsV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
 import com.pulumi.databricks.inputs.GetAccountNetworkPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2Args;
@@ -326,6 +346,28 @@ import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentPlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsPlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamUserV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamUserV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentsV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceIdentityDetailV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionPlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceSettingV2Args;
@@ -334,6 +376,16 @@ import com.pulumi.databricks.inputs.GetZonesArgs;
 import com.pulumi.databricks.inputs.GetZonesPlainArgs;
 import com.pulumi.databricks.outputs.GetAccountFederationPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountFederationPolicyResult;
+import com.pulumi.databricks.outputs.GetAccountIamDirectGroupMemberV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamDirectGroupMembersV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamGroupV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamGroupsV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamServicePrincipalV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamServicePrincipalsV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamUserV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamUsersV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamWorkspaceAssignmentV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamWorkspaceAssignmentsV2Result;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyResult;
 import com.pulumi.databricks.outputs.GetAccountSettingUserPreferenceV2Result;
@@ -493,6 +545,17 @@ import com.pulumi.databricks.outputs.GetWarehousesDefaultWarehouseOverrideResult
 import com.pulumi.databricks.outputs.GetWarehousesDefaultWarehouseOverridesResult;
 import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentResult;
 import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentsResult;
+import com.pulumi.databricks.outputs.GetWorkspaceIamDirectGroupMemberV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamDirectGroupMembersV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamGroupV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamGroupsV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamServicePrincipalV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamServicePrincipalsV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamUserV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamUsersV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamWorkspaceAssignmentV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamWorkspaceAssignmentsV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamWorkspaceIdentityDetailV2Result;
 import com.pulumi.databricks.outputs.GetWorkspaceNetworkOptionResult;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2Result;
 import com.pulumi.databricks.outputs.GetZonesResult;
@@ -916,6 +979,2498 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamDirectGroupMemberV2Result> getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args args) {
+        return getAccountIamDirectGroupMemberV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamDirectGroupMemberV2Result> getAccountIamDirectGroupMemberV2Plain(GetAccountIamDirectGroupMemberV2PlainArgs args) {
+        return getAccountIamDirectGroupMemberV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamDirectGroupMemberV2Result> getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamDirectGroupMemberV2Result> getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single direct group membership in an account, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMemberV2(GetAccountIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamDirectGroupMemberV2Result> getAccountIamDirectGroupMemberV2Plain(GetAccountIamDirectGroupMemberV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the direct members of an account group.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamDirectGroupMembersV2Result> getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args args) {
+        return getAccountIamDirectGroupMembersV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the direct members of an account group.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamDirectGroupMembersV2Result> getAccountIamDirectGroupMembersV2Plain(GetAccountIamDirectGroupMembersV2PlainArgs args) {
+        return getAccountIamDirectGroupMembersV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the direct members of an account group.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamDirectGroupMembersV2Result> getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the direct members of an account group.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamDirectGroupMembersV2Result> getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the direct members of an account group.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamDirectGroupMembersV2(GetAccountIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamDirectGroupMembersV2Result> getAccountIamDirectGroupMembersV2Plain(GetAccountIamDirectGroupMembersV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account group by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account group by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamGroupV2Result> getAccountIamGroupV2(GetAccountIamGroupV2Args args) {
+        return getAccountIamGroupV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account group by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account group by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamGroupV2Result> getAccountIamGroupV2Plain(GetAccountIamGroupV2PlainArgs args) {
+        return getAccountIamGroupV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account group by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account group by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamGroupV2Result> getAccountIamGroupV2(GetAccountIamGroupV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account group by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account group by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamGroupV2Result> getAccountIamGroupV2(GetAccountIamGroupV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account group by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account group by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupV2(GetAccountIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamGroupV2Result> getAccountIamGroupV2Plain(GetAccountIamGroupV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the groups in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamGroupsV2Result> getAccountIamGroupsV2() {
+        return getAccountIamGroupsV2(GetAccountIamGroupsV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the groups in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamGroupsV2Result> getAccountIamGroupsV2Plain() {
+        return getAccountIamGroupsV2Plain(GetAccountIamGroupsV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the groups in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamGroupsV2Result> getAccountIamGroupsV2(GetAccountIamGroupsV2Args args) {
+        return getAccountIamGroupsV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the groups in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamGroupsV2Result> getAccountIamGroupsV2Plain(GetAccountIamGroupsV2PlainArgs args) {
+        return getAccountIamGroupsV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the groups in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamGroupsV2Result> getAccountIamGroupsV2(GetAccountIamGroupsV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the groups in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamGroupsV2Result> getAccountIamGroupsV2(GetAccountIamGroupsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the groups in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamGroupsV2(GetAccountIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamGroupsV2Result> getAccountIamGroupsV2Plain(GetAccountIamGroupsV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account service principal by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account service principal by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamServicePrincipalV2Result> getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args args) {
+        return getAccountIamServicePrincipalV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account service principal by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account service principal by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamServicePrincipalV2Result> getAccountIamServicePrincipalV2Plain(GetAccountIamServicePrincipalV2PlainArgs args) {
+        return getAccountIamServicePrincipalV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account service principal by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account service principal by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamServicePrincipalV2Result> getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account service principal by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account service principal by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamServicePrincipalV2Result> getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account service principal by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account service principal by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalV2(GetAccountIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamServicePrincipalV2Result> getAccountIamServicePrincipalV2Plain(GetAccountIamServicePrincipalV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the service principals in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account service principals.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2() {
+        return getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the service principals in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account service principals.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2Plain() {
+        return getAccountIamServicePrincipalsV2Plain(GetAccountIamServicePrincipalsV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the service principals in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account service principals.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args args) {
+        return getAccountIamServicePrincipalsV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the service principals in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account service principals.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2Plain(GetAccountIamServicePrincipalsV2PlainArgs args) {
+        return getAccountIamServicePrincipalsV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the service principals in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account service principals.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the service principals in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account service principals.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the service principals in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account service principals.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamServicePrincipalsV2Result> getAccountIamServicePrincipalsV2Plain(GetAccountIamServicePrincipalsV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account user by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account user by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamUserV2Result> getAccountIamUserV2(GetAccountIamUserV2Args args) {
+        return getAccountIamUserV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account user by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account user by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamUserV2Result> getAccountIamUserV2Plain(GetAccountIamUserV2PlainArgs args) {
+        return getAccountIamUserV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account user by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account user by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamUserV2Result> getAccountIamUserV2(GetAccountIamUserV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account user by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account user by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamUserV2Result> getAccountIamUserV2(GetAccountIamUserV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single account user by its internal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up an account user by its internal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUserV2(GetAccountIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamUserV2Result> getAccountIamUserV2Plain(GetAccountIamUserV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the users in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account users.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamUsersV2Result> getAccountIamUsersV2() {
+        return getAccountIamUsersV2(GetAccountIamUsersV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the users in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account users.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamUsersV2Result> getAccountIamUsersV2Plain() {
+        return getAccountIamUsersV2Plain(GetAccountIamUsersV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the users in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account users.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamUsersV2Result> getAccountIamUsersV2(GetAccountIamUsersV2Args args) {
+        return getAccountIamUsersV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the users in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account users.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamUsersV2Result> getAccountIamUsersV2Plain(GetAccountIamUsersV2PlainArgs args) {
+        return getAccountIamUsersV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the users in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account users.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamUsersV2Result> getAccountIamUsersV2(GetAccountIamUsersV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the users in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account users.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamUsersV2Result> getAccountIamUsersV2(GetAccountIamUsersV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the users in an account.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all account users.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamUsersV2(GetAccountIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamUsersV2Result> getAccountIamUsersV2Plain(GetAccountIamUsersV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by workspace and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
+     *             .workspaceId("123456789")
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamWorkspaceAssignmentV2Result> getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args args) {
+        return getAccountIamWorkspaceAssignmentV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by workspace and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
+     *             .workspaceId("123456789")
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamWorkspaceAssignmentV2Result> getAccountIamWorkspaceAssignmentV2Plain(GetAccountIamWorkspaceAssignmentV2PlainArgs args) {
+        return getAccountIamWorkspaceAssignmentV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by workspace and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
+     *             .workspaceId("123456789")
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamWorkspaceAssignmentV2Result> getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by workspace and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
+     *             .workspaceId("123456789")
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamWorkspaceAssignmentV2Result> getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Reads a single workspace assignment for an account principal, identified by workspace and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by workspace and principal ID.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAccountIamWorkspaceAssignmentV2(GetAccountIamWorkspaceAssignmentV2Args.builder()
+     *             .workspaceId("123456789")
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamWorkspaceAssignmentV2Result> getAccountIamWorkspaceAssignmentV2Plain(GetAccountIamWorkspaceAssignmentV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the principal assignments for a workspace.
+     * 
+     */
+    public static Output<GetAccountIamWorkspaceAssignmentsV2Result> getAccountIamWorkspaceAssignmentsV2(GetAccountIamWorkspaceAssignmentsV2Args args) {
+        return getAccountIamWorkspaceAssignmentsV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the principal assignments for a workspace.
+     * 
+     */
+    public static CompletableFuture<GetAccountIamWorkspaceAssignmentsV2Result> getAccountIamWorkspaceAssignmentsV2Plain(GetAccountIamWorkspaceAssignmentsV2PlainArgs args) {
+        return getAccountIamWorkspaceAssignmentsV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the principal assignments for a workspace.
+     * 
+     */
+    public static Output<GetAccountIamWorkspaceAssignmentsV2Result> getAccountIamWorkspaceAssignmentsV2(GetAccountIamWorkspaceAssignmentsV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", TypeShape.of(GetAccountIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the principal assignments for a workspace.
+     * 
+     */
+    public static Output<GetAccountIamWorkspaceAssignmentsV2Result> getAccountIamWorkspaceAssignmentsV2(GetAccountIamWorkspaceAssignmentsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", TypeShape.of(GetAccountIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Lists the principal assignments for a workspace.
+     * 
+     */
+    public static CompletableFuture<GetAccountIamWorkspaceAssignmentsV2Result> getAccountIamWorkspaceAssignmentsV2Plain(GetAccountIamWorkspaceAssignmentsV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", TypeShape.of(GetAccountIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -10252,7 +12807,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -10308,7 +12863,7 @@ public final class DatabricksFunctions {
         return getDataClassificationCatalogConfig(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -10364,7 +12919,7 @@ public final class DatabricksFunctions {
         return getDataClassificationCatalogConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -10420,7 +12975,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -10476,7 +13031,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
@@ -41676,6 +44231,2580 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetWorkspaceEntityTagAssignmentsResult> getWorkspaceEntityTagAssignmentsPlain(GetWorkspaceEntityTagAssignmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments", TypeShape.of(GetWorkspaceEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID, using a
+     * workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamDirectGroupMemberV2Result> getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args args) {
+        return getWorkspaceIamDirectGroupMemberV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID, using a
+     * workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamDirectGroupMemberV2Result> getWorkspaceIamDirectGroupMemberV2Plain(GetWorkspaceIamDirectGroupMemberV2PlainArgs args) {
+        return getWorkspaceIamDirectGroupMemberV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID, using a
+     * workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamDirectGroupMemberV2Result> getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID, using a
+     * workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamDirectGroupMemberV2Result> getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single direct group membership, scoped to a workspace, identified by group and principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single direct group member by group and principal ID, using a
+     * workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMemberV2(GetWorkspaceIamDirectGroupMemberV2Args.builder()
+     *             .groupId(123456789)
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamDirectGroupMemberV2Result> getWorkspaceIamDirectGroupMemberV2Plain(GetWorkspaceIamDirectGroupMemberV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the direct members of a group, scoped to a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamDirectGroupMembersV2Result> getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args args) {
+        return getWorkspaceIamDirectGroupMembersV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the direct members of a group, scoped to a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamDirectGroupMembersV2Result> getWorkspaceIamDirectGroupMembersV2Plain(GetWorkspaceIamDirectGroupMembersV2PlainArgs args) {
+        return getWorkspaceIamDirectGroupMembersV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the direct members of a group, scoped to a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamDirectGroupMembersV2Result> getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the direct members of a group, scoped to a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamDirectGroupMembersV2Result> getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the direct members of a group, scoped to a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all direct members of a group, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamDirectGroupMembersV2(GetWorkspaceIamDirectGroupMembersV2Args.builder()
+     *             .groupId(123456789)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamDirectGroupMembersV2Result> getWorkspaceIamDirectGroupMembersV2Plain(GetWorkspaceIamDirectGroupMembersV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a group by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamGroupV2Result> getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args args) {
+        return getWorkspaceIamGroupV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a group by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamGroupV2Result> getWorkspaceIamGroupV2Plain(GetWorkspaceIamGroupV2PlainArgs args) {
+        return getWorkspaceIamGroupV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a group by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamGroupV2Result> getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a group by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamGroupV2Result> getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single group by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a group by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupV2(GetWorkspaceIamGroupV2Args.builder()
+     *             .groupId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamGroupV2Result> getWorkspaceIamGroupV2Plain(GetWorkspaceIamGroupV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the groups visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all groups visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamGroupsV2Result> getWorkspaceIamGroupsV2() {
+        return getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the groups visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all groups visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamGroupsV2Result> getWorkspaceIamGroupsV2Plain() {
+        return getWorkspaceIamGroupsV2Plain(GetWorkspaceIamGroupsV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the groups visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all groups visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamGroupsV2Result> getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args args) {
+        return getWorkspaceIamGroupsV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the groups visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all groups visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamGroupsV2Result> getWorkspaceIamGroupsV2Plain(GetWorkspaceIamGroupsV2PlainArgs args) {
+        return getWorkspaceIamGroupsV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the groups visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all groups visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamGroupsV2Result> getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the groups visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all groups visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamGroupsV2Result> getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the groups visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all groups visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamGroupsV2Result> getWorkspaceIamGroupsV2Plain(GetWorkspaceIamGroupsV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamServicePrincipalV2Result> getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args args) {
+        return getWorkspaceIamServicePrincipalV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamServicePrincipalV2Result> getWorkspaceIamServicePrincipalV2Plain(GetWorkspaceIamServicePrincipalV2PlainArgs args) {
+        return getWorkspaceIamServicePrincipalV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamServicePrincipalV2Result> getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamServicePrincipalV2Result> getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a service principal by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalV2(GetWorkspaceIamServicePrincipalV2Args.builder()
+     *             .servicePrincipalId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamServicePrincipalV2Result> getWorkspaceIamServicePrincipalV2Plain(GetWorkspaceIamServicePrincipalV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the service principals visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all service principals visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamServicePrincipalsV2Result> getWorkspaceIamServicePrincipalsV2() {
+        return getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the service principals visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all service principals visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamServicePrincipalsV2Result> getWorkspaceIamServicePrincipalsV2Plain() {
+        return getWorkspaceIamServicePrincipalsV2Plain(GetWorkspaceIamServicePrincipalsV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the service principals visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all service principals visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamServicePrincipalsV2Result> getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args args) {
+        return getWorkspaceIamServicePrincipalsV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the service principals visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all service principals visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamServicePrincipalsV2Result> getWorkspaceIamServicePrincipalsV2Plain(GetWorkspaceIamServicePrincipalsV2PlainArgs args) {
+        return getWorkspaceIamServicePrincipalsV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the service principals visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all service principals visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamServicePrincipalsV2Result> getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the service principals visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all service principals visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamServicePrincipalsV2Result> getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the service principals visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all service principals visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamServicePrincipalsV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamServicePrincipalsV2Result> getWorkspaceIamServicePrincipalsV2Plain(GetWorkspaceIamServicePrincipalsV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a user by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamUserV2Result> getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args args) {
+        return getWorkspaceIamUserV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a user by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamUserV2Result> getWorkspaceIamUserV2Plain(GetWorkspaceIamUserV2PlainArgs args) {
+        return getWorkspaceIamUserV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a user by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamUserV2Result> getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a user by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamUserV2Result> getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single user by its internal ID, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a user by its internal ID, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUserV2(GetWorkspaceIamUserV2Args.builder()
+     *             .userId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamUserV2Result> getWorkspaceIamUserV2Plain(GetWorkspaceIamUserV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the users visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all users visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamUsersV2Result> getWorkspaceIamUsersV2() {
+        return getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the users visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all users visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamUsersV2Result> getWorkspaceIamUsersV2Plain() {
+        return getWorkspaceIamUsersV2Plain(GetWorkspaceIamUsersV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the users visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all users visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamUsersV2Result> getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args args) {
+        return getWorkspaceIamUsersV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the users visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all users visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamUsersV2Result> getWorkspaceIamUsersV2Plain(GetWorkspaceIamUsersV2PlainArgs args) {
+        return getWorkspaceIamUsersV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the users visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all users visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamUsersV2Result> getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the users visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all users visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamUsersV2Result> getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the users visible to a workspace, using a workspace-scoped provider.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * List all users visible to the workspace, using a workspace-scoped provider.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamUsersV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamUsersV2Result> getWorkspaceIamUsersV2Plain(GetWorkspaceIamUsersV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by principal ID, using a workspace-scoped
+     * provider (the workspace is taken from the provider context).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceAssignmentV2Result> getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args args) {
+        return getWorkspaceIamWorkspaceAssignmentV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by principal ID, using a workspace-scoped
+     * provider (the workspace is taken from the provider context).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamWorkspaceAssignmentV2Result> getWorkspaceIamWorkspaceAssignmentV2Plain(GetWorkspaceIamWorkspaceAssignmentV2PlainArgs args) {
+        return getWorkspaceIamWorkspaceAssignmentV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by principal ID, using a workspace-scoped
+     * provider (the workspace is taken from the provider context).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceAssignmentV2Result> getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by principal ID, using a workspace-scoped
+     * provider (the workspace is taken from the provider context).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceAssignmentV2Result> getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads a single workspace assignment, scoped to the workspace, identified by principal ID.
+     * 
+     * ## Example Usage
+     * 
+     * Example usage:
+     * 
+     * Look up a single workspace assignment by principal ID, using a workspace-scoped
+     * provider (the workspace is taken from the provider context).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamWorkspaceAssignmentV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceIamWorkspaceAssignmentV2(GetWorkspaceIamWorkspaceAssignmentV2Args.builder()
+     *             .principalId("987654321")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamWorkspaceAssignmentV2Result> getWorkspaceIamWorkspaceAssignmentV2Plain(GetWorkspaceIamWorkspaceAssignmentV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the principal assignments for the workspace, using a workspace-scoped provider.
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceAssignmentsV2Result> getWorkspaceIamWorkspaceAssignmentsV2() {
+        return getWorkspaceIamWorkspaceAssignmentsV2(GetWorkspaceIamWorkspaceAssignmentsV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the principal assignments for the workspace, using a workspace-scoped provider.
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamWorkspaceAssignmentsV2Result> getWorkspaceIamWorkspaceAssignmentsV2Plain() {
+        return getWorkspaceIamWorkspaceAssignmentsV2Plain(GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the principal assignments for the workspace, using a workspace-scoped provider.
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceAssignmentsV2Result> getWorkspaceIamWorkspaceAssignmentsV2(GetWorkspaceIamWorkspaceAssignmentsV2Args args) {
+        return getWorkspaceIamWorkspaceAssignmentsV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the principal assignments for the workspace, using a workspace-scoped provider.
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamWorkspaceAssignmentsV2Result> getWorkspaceIamWorkspaceAssignmentsV2Plain(GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs args) {
+        return getWorkspaceIamWorkspaceAssignmentsV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the principal assignments for the workspace, using a workspace-scoped provider.
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceAssignmentsV2Result> getWorkspaceIamWorkspaceAssignmentsV2(GetWorkspaceIamWorkspaceAssignmentsV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the principal assignments for the workspace, using a workspace-scoped provider.
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceAssignmentsV2Result> getWorkspaceIamWorkspaceAssignmentsV2(GetWorkspaceIamWorkspaceAssignmentsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Lists the principal assignments for the workspace, using a workspace-scoped provider.
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamWorkspaceAssignmentsV2Result> getWorkspaceIamWorkspaceAssignmentsV2Plain(GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args args) {
+        return getWorkspaceIamWorkspaceIdentityDetailV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2Plain(GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs args) {
+        return getWorkspaceIamWorkspaceIdentityDetailV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", TypeShape.of(GetWorkspaceIamWorkspaceIdentityDetailV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * 
+     */
+    public static Output<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2(GetWorkspaceIamWorkspaceIdentityDetailV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", TypeShape.of(GetWorkspaceIamWorkspaceIdentityDetailV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Reads the workspace identity detail for a principal — its principal type, assignment type (direct or indirect), and workspace activity status.
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamWorkspaceIdentityDetailV2Result> getWorkspaceIamWorkspaceIdentityDetailV2Plain(GetWorkspaceIamWorkspaceIdentityDetailV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", TypeShape.of(GetWorkspaceIamWorkspaceIdentityDetailV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

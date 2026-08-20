@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesModelProviderService;
 import com.pulumi.databricks.outputs.GetAiGatewayModelProviderServicesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,7 +16,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiGatewayModelProviderServicesResult {
-    private @Nullable Boolean includeBrowse;
     private List<GetAiGatewayModelProviderServicesModelProviderService> modelProviderServices;
     private @Nullable Integer pageSize;
     /**
@@ -31,9 +29,6 @@ public final class GetAiGatewayModelProviderServicesResult {
     private @Nullable String view;
 
     private GetAiGatewayModelProviderServicesResult() {}
-    public Optional<Boolean> includeBrowse() {
-        return Optional.ofNullable(this.includeBrowse);
-    }
     public List<GetAiGatewayModelProviderServicesModelProviderService> modelProviderServices() {
         return this.modelProviderServices;
     }
@@ -65,7 +60,6 @@ public final class GetAiGatewayModelProviderServicesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean includeBrowse;
         private List<GetAiGatewayModelProviderServicesModelProviderService> modelProviderServices;
         private @Nullable Integer pageSize;
         private @Nullable String parent;
@@ -74,7 +68,6 @@ public final class GetAiGatewayModelProviderServicesResult {
         public Builder() {}
         public Builder(GetAiGatewayModelProviderServicesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.includeBrowse = defaults.includeBrowse;
     	      this.modelProviderServices = defaults.modelProviderServices;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
@@ -82,12 +75,6 @@ public final class GetAiGatewayModelProviderServicesResult {
     	      this.view = defaults.view;
         }
 
-        @CustomType.Setter
-        public Builder includeBrowse(@Nullable Boolean includeBrowse) {
-
-            this.includeBrowse = includeBrowse;
-            return this;
-        }
         @CustomType.Setter
         public Builder modelProviderServices(List<GetAiGatewayModelProviderServicesModelProviderService> modelProviderServices) {
             if (modelProviderServices == null) {
@@ -125,7 +112,6 @@ public final class GetAiGatewayModelProviderServicesResult {
         }
         public GetAiGatewayModelProviderServicesResult build() {
             final var _resultValue = new GetAiGatewayModelProviderServicesResult();
-            _resultValue.includeBrowse = includeBrowse;
             _resultValue.modelProviderServices = modelProviderServices;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;

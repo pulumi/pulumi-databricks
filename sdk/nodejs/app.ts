@@ -115,6 +115,7 @@ export class App extends pulumi.CustomResource {
      * The email of the user that created the deployment.
      */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultGitSource: pulumi.Output<outputs.AppDefaultGitSource>;
     /**
      * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      */
@@ -135,10 +136,12 @@ export class App extends pulumi.CustomResource {
      * A list of effective api scopes granted to the user access token.
      */
     declare public /*out*/ readonly effectiveUserApiScopes: pulumi.Output<string[]>;
+    declare public readonly forwardUserAccessToken: pulumi.Output<boolean>;
     /**
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      */
     declare public readonly gitRepository: pulumi.Output<outputs.AppGitRepository | undefined>;
+    declare public readonly gitSource: pulumi.Output<outputs.AppGitSource>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
@@ -173,6 +176,10 @@ export class App extends pulumi.CustomResource {
      * name of the app service principal
      */
     declare public /*out*/ readonly servicePrincipalName: pulumi.Output<string>;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    declare public readonly sourceCodePath: pulumi.Output<string>;
     declare public readonly space: pulumi.Output<string | undefined>;
     /**
      * A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
@@ -225,12 +232,15 @@ export class App extends pulumi.CustomResource {
             resourceInputs["computeStatus"] = state?.computeStatus;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["creator"] = state?.creator;
+            resourceInputs["defaultGitSource"] = state?.defaultGitSource;
             resourceInputs["defaultSourceCodePath"] = state?.defaultSourceCodePath;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveBudgetPolicyId"] = state?.effectiveBudgetPolicyId;
             resourceInputs["effectiveUsagePolicyId"] = state?.effectiveUsagePolicyId;
             resourceInputs["effectiveUserApiScopes"] = state?.effectiveUserApiScopes;
+            resourceInputs["forwardUserAccessToken"] = state?.forwardUserAccessToken;
             resourceInputs["gitRepository"] = state?.gitRepository;
+            resourceInputs["gitSource"] = state?.gitSource;
             resourceInputs["name"] = state?.name;
             resourceInputs["noCompute"] = state?.noCompute;
             resourceInputs["oauth2AppClientId"] = state?.oauth2AppClientId;
@@ -241,6 +251,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["servicePrincipalClientId"] = state?.servicePrincipalClientId;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
             resourceInputs["servicePrincipalName"] = state?.servicePrincipalName;
+            resourceInputs["sourceCodePath"] = state?.sourceCodePath;
             resourceInputs["space"] = state?.space;
             resourceInputs["telemetryExportDestinations"] = state?.telemetryExportDestinations;
             resourceInputs["thumbnailUrl"] = state?.thumbnailUrl;
@@ -256,11 +267,14 @@ export class App extends pulumi.CustomResource {
             resourceInputs["computeMinInstances"] = args?.computeMinInstances;
             resourceInputs["computeSize"] = args?.computeSize;
             resourceInputs["description"] = args?.description;
+            resourceInputs["forwardUserAccessToken"] = args?.forwardUserAccessToken;
             resourceInputs["gitRepository"] = args?.gitRepository;
+            resourceInputs["gitSource"] = args?.gitSource;
             resourceInputs["name"] = args?.name;
             resourceInputs["noCompute"] = args?.noCompute;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["resources"] = args?.resources;
+            resourceInputs["sourceCodePath"] = args?.sourceCodePath;
             resourceInputs["space"] = args?.space;
             resourceInputs["telemetryExportDestinations"] = args?.telemetryExportDestinations;
             resourceInputs["usagePolicyId"] = args?.usagePolicyId;
@@ -270,6 +284,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["computeStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["defaultGitSource"] = undefined /*out*/;
             resourceInputs["defaultSourceCodePath"] = undefined /*out*/;
             resourceInputs["effectiveBudgetPolicyId"] = undefined /*out*/;
             resourceInputs["effectiveUsagePolicyId"] = undefined /*out*/;
@@ -324,6 +339,7 @@ export interface AppState {
      * The email of the user that created the deployment.
      */
     creator?: pulumi.Input<string | undefined>;
+    defaultGitSource?: pulumi.Input<inputs.AppDefaultGitSource | undefined>;
     /**
      * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      */
@@ -344,10 +360,12 @@ export interface AppState {
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    forwardUserAccessToken?: pulumi.Input<boolean | undefined>;
     /**
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      */
     gitRepository?: pulumi.Input<inputs.AppGitRepository | undefined>;
+    gitSource?: pulumi.Input<inputs.AppGitSource | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
@@ -382,6 +400,10 @@ export interface AppState {
      * name of the app service principal
      */
     servicePrincipalName?: pulumi.Input<string | undefined>;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: pulumi.Input<string | undefined>;
     space?: pulumi.Input<string | undefined>;
     /**
      * A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
@@ -431,10 +453,12 @@ export interface AppArgs {
      * The description of the app.
      */
     description?: pulumi.Input<string | undefined>;
+    forwardUserAccessToken?: pulumi.Input<boolean | undefined>;
     /**
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      */
     gitRepository?: pulumi.Input<inputs.AppGitRepository | undefined>;
+    gitSource?: pulumi.Input<inputs.AppGitSource | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
@@ -445,6 +469,10 @@ export interface AppArgs {
      * A list of resources that the app have access to.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[] | undefined>;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: pulumi.Input<string | undefined>;
     space?: pulumi.Input<string | undefined>;
     /**
      * A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).

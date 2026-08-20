@@ -34,7 +34,7 @@ public final class GetAiGatewayModelServicesModelServiceConfigInferenceTable {
      */
     private Boolean isDeleted;
     /**
-     * @return Resource name of the parent schema to list within, as
+     * @return Name of the parent schema to list within, as
      * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
      * characters individually
      * 
@@ -83,7 +83,7 @@ public final class GetAiGatewayModelServicesModelServiceConfigInferenceTable {
         return this.isDeleted;
     }
     /**
-     * @return Resource name of the parent schema to list within, as
+     * @return Name of the parent schema to list within, as
      * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
      * characters individually
      * 

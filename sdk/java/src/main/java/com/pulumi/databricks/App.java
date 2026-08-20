@@ -13,7 +13,9 @@ import com.pulumi.databricks.inputs.AppState;
 import com.pulumi.databricks.outputs.AppActiveDeployment;
 import com.pulumi.databricks.outputs.AppAppStatus;
 import com.pulumi.databricks.outputs.AppComputeStatus;
+import com.pulumi.databricks.outputs.AppDefaultGitSource;
 import com.pulumi.databricks.outputs.AppGitRepository;
+import com.pulumi.databricks.outputs.AppGitSource;
 import com.pulumi.databricks.outputs.AppPendingDeployment;
 import com.pulumi.databricks.outputs.AppProviderConfig;
 import com.pulumi.databricks.outputs.AppResource;
@@ -214,6 +216,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<String> creator() {
         return this.creator;
     }
+    @Export(name="defaultGitSource", refs={AppDefaultGitSource.class}, tree="[0]")
+    private Output<AppDefaultGitSource> defaultGitSource;
+
+    public Output<AppDefaultGitSource> defaultGitSource() {
+        return this.defaultGitSource;
+    }
     /**
      * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      * 
@@ -284,6 +292,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<List<String>> effectiveUserApiScopes() {
         return this.effectiveUserApiScopes;
     }
+    @Export(name="forwardUserAccessToken", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forwardUserAccessToken;
+
+    public Output<Boolean> forwardUserAccessToken() {
+        return this.forwardUserAccessToken;
+    }
     /**
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      * 
@@ -297,6 +311,12 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AppGitRepository>> gitRepository() {
         return Codegen.optional(this.gitRepository);
+    }
+    @Export(name="gitSource", refs={AppGitSource.class}, tree="[0]")
+    private Output<AppGitSource> gitSource;
+
+    public Output<AppGitSource> gitSource() {
+        return this.gitSource;
     }
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -421,6 +441,20 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> servicePrincipalName() {
         return this.servicePrincipalName;
+    }
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
+    @Export(name="sourceCodePath", refs={String.class}, tree="[0]")
+    private Output<String> sourceCodePath;
+
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
+    public Output<String> sourceCodePath() {
+        return this.sourceCodePath;
     }
     @Export(name="space", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> space;

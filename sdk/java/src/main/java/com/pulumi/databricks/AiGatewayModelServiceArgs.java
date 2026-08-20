@@ -55,16 +55,14 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Leaf identifier for the model service (the unqualified name within the
-     * parent schema, e.g. &#34;myModelService&#34;)
+     * Name for the model service, e.g. &#34;myModelService&#34;
      * 
      */
     @Import(name="modelServiceId", required=true)
     private Output<String> modelServiceId;
 
     /**
-     * @return Leaf identifier for the model service (the unqualified name within the
-     * parent schema, e.g. &#34;myModelService&#34;)
+     * @return Name for the model service, e.g. &#34;myModelService&#34;
      * 
      */
     public Output<String> modelServiceId() {
@@ -87,7 +85,7 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -96,7 +94,7 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
     private Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -198,8 +196,7 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param modelServiceId Leaf identifier for the model service (the unqualified name within the
-         * parent schema, e.g. &#34;myModelService&#34;)
+         * @param modelServiceId Name for the model service, e.g. &#34;myModelService&#34;
          * 
          * @return builder
          * 
@@ -210,8 +207,7 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param modelServiceId Leaf identifier for the model service (the unqualified name within the
-         * parent schema, e.g. &#34;myModelService&#34;)
+         * @param modelServiceId Name for the model service, e.g. &#34;myModelService&#34;
          * 
          * @return builder
          * 
@@ -242,7 +238,7 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 
@@ -255,7 +251,7 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 

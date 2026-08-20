@@ -28,10 +28,7 @@ class GetAiGatewayMcpServiceResult:
     """
     A collection of values returned by getAiGatewayMcpService.
     """
-    def __init__(__self__, browse_only=None, comment=None, config=None, create_time=None, created_by=None, effective_owner=None, etag=None, metastore_id=None, name=None, owner=None, provider_config=None, update_time=None, updated_by=None):
-        if browse_only and not isinstance(browse_only, bool):
-            raise TypeError("Expected argument 'browse_only' to be a bool")
-        pulumi.set(__self__, "browse_only", browse_only)
+    def __init__(__self__, comment=None, config=None, create_time=None, created_by=None, effective_owner=None, etag=None, metastore_id=None, name=None, owner=None, provider_config=None, update_time=None, updated_by=None):
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
@@ -68,15 +65,6 @@ class GetAiGatewayMcpServiceResult:
         if updated_by and not isinstance(updated_by, str):
             raise TypeError("Expected argument 'updated_by' to be a str")
         pulumi.set(__self__, "updated_by", updated_by)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> _builtins.bool:
-        """
-        (boolean) - Whether the caller sees only metadata available through the BROWSE
-        privilege
-        """
-        return pulumi.get(self, "browse_only")
 
     @_builtins.property
     @pulumi.getter
@@ -146,7 +134,8 @@ class GetAiGatewayMcpServiceResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string)
+        (string) - Name of the UC connection that hosts the MCP server, as
+        `connections/{catalog}.{schema}.{connection}`
         """
         return pulumi.get(self, "name")
 
@@ -186,7 +175,6 @@ class AwaitableGetAiGatewayMcpServiceResult(GetAiGatewayMcpServiceResult):
         if False:
             yield self
         return GetAiGatewayMcpServiceResult(
-            browse_only=self.browse_only,
             comment=self.comment,
             config=self.config,
             create_time=self.create_time,
@@ -224,7 +212,6 @@ def get_ai_gateway_mcp_service(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAiGatewayMcpService:getAiGatewayMcpService', __args__, opts=opts, typ=GetAiGatewayMcpServiceResult).value
 
     return AwaitableGetAiGatewayMcpServiceResult(
-        browse_only=pulumi.get(__ret__, 'browse_only'),
         comment=pulumi.get(__ret__, 'comment'),
         config=pulumi.get(__ret__, 'config'),
         create_time=pulumi.get(__ret__, 'create_time'),
@@ -259,7 +246,6 @@ def get_ai_gateway_mcp_service_output(name: pulumi.Input[Optional[_builtins.str]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAiGatewayMcpService:getAiGatewayMcpService', __args__, opts=opts, typ=GetAiGatewayMcpServiceResult)
     return __ret__.apply(lambda __response__: GetAiGatewayMcpServiceResult(
-        browse_only=pulumi.get(__response__, 'browse_only'),
         comment=pulumi.get(__response__, 'comment'),
         config=pulumi.get(__response__, 'config'),
         create_time=pulumi.get(__response__, 'create_time'),

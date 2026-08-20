@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BudgetAlertConfigurationPrincipalOverride {
+    /**
+     * @return Dollar amount that overrides the parent alert&#39;s `quantityThreshold` for this principal.
+     * 
+     */
     private @Nullable String overrideThreshold;
+    /**
+     * @return Account-level principal id (user, group, or service principal).
+     * 
+     */
     private @Nullable String principalId;
 
     private BudgetAlertConfigurationPrincipalOverride() {}
+    /**
+     * @return Dollar amount that overrides the parent alert&#39;s `quantityThreshold` for this principal.
+     * 
+     */
     public Optional<String> overrideThreshold() {
         return Optional.ofNullable(this.overrideThreshold);
     }
+    /**
+     * @return Account-level principal id (user, group, or service principal).
+     * 
+     */
     public Optional<String> principalId() {
         return Optional.ofNullable(this.principalId);
     }

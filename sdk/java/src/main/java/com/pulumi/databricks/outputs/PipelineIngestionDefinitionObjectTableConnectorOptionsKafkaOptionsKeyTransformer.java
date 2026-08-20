@@ -13,14 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer {
     private @Nullable String format;
+    private @Nullable String inputColumn;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions jsonOptions;
+    private @Nullable String outputColumn;
 
     private PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer() {}
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
+    public Optional<String> inputColumn() {
+        return Optional.ofNullable(this.inputColumn);
+    }
     public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions> jsonOptions() {
         return Optional.ofNullable(this.jsonOptions);
+    }
+    public Optional<String> outputColumn() {
+        return Optional.ofNullable(this.outputColumn);
     }
 
     public static Builder builder() {
@@ -33,12 +41,16 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOp
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String format;
+        private @Nullable String inputColumn;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions jsonOptions;
+        private @Nullable String outputColumn;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.format = defaults.format;
+    	      this.inputColumn = defaults.inputColumn;
     	      this.jsonOptions = defaults.jsonOptions;
+    	      this.outputColumn = defaults.outputColumn;
         }
 
         @CustomType.Setter
@@ -48,15 +60,29 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOp
             return this;
         }
         @CustomType.Setter
+        public Builder inputColumn(@Nullable String inputColumn) {
+
+            this.inputColumn = inputColumn;
+            return this;
+        }
+        @CustomType.Setter
         public Builder jsonOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions jsonOptions) {
 
             this.jsonOptions = jsonOptions;
             return this;
         }
+        @CustomType.Setter
+        public Builder outputColumn(@Nullable String outputColumn) {
+
+            this.outputColumn = outputColumn;
+            return this;
+        }
         public PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer();
             _resultValue.format = format;
+            _resultValue.inputColumn = inputColumn;
             _resultValue.jsonOptions = jsonOptions;
+            _resultValue.outputColumn = outputColumn;
             return _resultValue;
         }
     }

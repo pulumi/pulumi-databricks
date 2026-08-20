@@ -15,7 +15,6 @@ export function getAiGatewayModelServices(args?: GetAiGatewayModelServicesArgs, 
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", {
-        "includeBrowse": args.includeBrowse,
         "pageSize": args.pageSize,
         "parent": args.parent,
         "providerConfig": args.providerConfig,
@@ -28,17 +27,12 @@ export function getAiGatewayModelServices(args?: GetAiGatewayModelServicesArgs, 
  */
 export interface GetAiGatewayModelServicesArgs {
     /**
-     * Whether to include model services for which the principal can only access
-     * selective metadata
-     */
-    includeBrowse?: boolean;
-    /**
      * Maximum number of model services to return. Defaults to 100 when unset or 0;
-     * the maximum is 100. Use `nextPageToken` to retrieve additional pages
+     * the maximum is 100. Use `pageToken` to retrieve additional pages
      */
     pageSize?: number;
     /**
-     * Resource name of the parent schema to list within, as
+     * Name of the parent schema to list within, as
      * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
      * characters individually
      */
@@ -48,7 +42,9 @@ export interface GetAiGatewayModelServicesArgs {
      */
     providerConfig?: inputs.GetAiGatewayModelServicesProviderConfig;
     /**
-     * View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+     * View selector controlling which fields are populated per row. `FULL`
+     * returns the full representation of the service; `BASIC` returns a more
+     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      */
     view?: string;
 }
@@ -57,7 +53,6 @@ export interface GetAiGatewayModelServicesArgs {
  * A collection of values returned by getAiGatewayModelServices.
  */
 export interface GetAiGatewayModelServicesResult {
-    readonly includeBrowse?: boolean;
     readonly modelServices: outputs.GetAiGatewayModelServicesModelService[];
     readonly pageSize?: number;
     /**
@@ -78,7 +73,6 @@ export function getAiGatewayModelServicesOutput(args?: GetAiGatewayModelServices
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", {
-        "includeBrowse": args.includeBrowse,
         "pageSize": args.pageSize,
         "parent": args.parent,
         "providerConfig": args.providerConfig,
@@ -91,17 +85,12 @@ export function getAiGatewayModelServicesOutput(args?: GetAiGatewayModelServices
  */
 export interface GetAiGatewayModelServicesOutputArgs {
     /**
-     * Whether to include model services for which the principal can only access
-     * selective metadata
-     */
-    includeBrowse?: pulumi.Input<boolean | undefined>;
-    /**
      * Maximum number of model services to return. Defaults to 100 when unset or 0;
-     * the maximum is 100. Use `nextPageToken` to retrieve additional pages
+     * the maximum is 100. Use `pageToken` to retrieve additional pages
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * Resource name of the parent schema to list within, as
+     * Name of the parent schema to list within, as
      * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
      * characters individually
      */
@@ -111,7 +100,9 @@ export interface GetAiGatewayModelServicesOutputArgs {
      */
     providerConfig?: pulumi.Input<inputs.GetAiGatewayModelServicesProviderConfigArgs | undefined>;
     /**
-     * View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+     * View selector controlling which fields are populated per row. `FULL`
+     * returns the full representation of the service; `BASIC` returns a more
+     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      */
     view?: pulumi.Input<string | undefined>;
 }

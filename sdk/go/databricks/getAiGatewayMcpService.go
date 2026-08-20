@@ -38,9 +38,6 @@ type LookupAiGatewayMcpServiceArgs struct {
 
 // A collection of values returned by getAiGatewayMcpService.
 type LookupAiGatewayMcpServiceResult struct {
-	// (boolean) - Whether the caller sees only metadata available through the BROWSE
-	// privilege
-	BrowseOnly bool `pulumi:"browseOnly"`
 	// (string) - User-provided description
 	Comment string `pulumi:"comment"`
 	// (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
@@ -63,7 +60,8 @@ type LookupAiGatewayMcpServiceResult struct {
 	Etag string `pulumi:"etag"`
 	// (string) - Metastore hosting the MCP service
 	MetastoreId string `pulumi:"metastoreId"`
-	// (string)
+	// (string) - Name of the UC connection that hosts the MCP server, as
+	// `connections/{catalog}.{schema}.{connection}`
 	Name string `pulumi:"name"`
 	// (string) - The owner of the MCP service. Write-only; read owner via effective_owner
 	Owner          string                                `pulumi:"owner"`
@@ -114,12 +112,6 @@ func (o LookupAiGatewayMcpServiceResultOutput) ToLookupAiGatewayMcpServiceResult
 	return o
 }
 
-// (boolean) - Whether the caller sees only metadata available through the BROWSE
-// privilege
-func (o LookupAiGatewayMcpServiceResultOutput) BrowseOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) bool { return v.BrowseOnly }).(pulumi.BoolOutput)
-}
-
 // (string) - User-provided description
 func (o LookupAiGatewayMcpServiceResultOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.Comment }).(pulumi.StringOutput)
@@ -163,7 +155,8 @@ func (o LookupAiGatewayMcpServiceResultOutput) MetastoreId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// (string)
+// (string) - Name of the UC connection that hosts the MCP server, as
+// `connections/{catalog}.{schema}.{connection}`
 func (o LookupAiGatewayMcpServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -28,8 +28,7 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAz
     private @Nullable String baseUrl;
     /**
      * @return (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
-     * `clientSecret` fields
+     * `serviceCredential`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal entraServicePrincipal;
@@ -66,8 +65,7 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAz
     }
     /**
      * @return (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
-     * `clientSecret` fields
+     * `serviceCredential`
      * 
      */
     public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal> entraServicePrincipal() {

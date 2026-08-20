@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayModelServiceConfig;
 import com.pulumi.databricks.outputs.GetAiGatewayModelServiceProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,12 +15,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiGatewayModelServiceResult {
-    /**
-     * @return (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    private Boolean browseOnly;
     /**
      * @return (string) - User-provided description
      * 
@@ -95,14 +88,6 @@ public final class GetAiGatewayModelServiceResult {
     private String updatedBy;
 
     private GetAiGatewayModelServiceResult() {}
-    /**
-     * @return (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    public Boolean browseOnly() {
-        return this.browseOnly;
-    }
     /**
      * @return (string) - User-provided description
      * 
@@ -210,7 +195,6 @@ public final class GetAiGatewayModelServiceResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean browseOnly;
         private String comment;
         private GetAiGatewayModelServiceConfig config;
         private String createTime;
@@ -227,7 +211,6 @@ public final class GetAiGatewayModelServiceResult {
         public Builder() {}
         public Builder(GetAiGatewayModelServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.browseOnly = defaults.browseOnly;
     	      this.comment = defaults.comment;
     	      this.config = defaults.config;
     	      this.createTime = defaults.createTime;
@@ -243,14 +226,6 @@ public final class GetAiGatewayModelServiceResult {
     	      this.updatedBy = defaults.updatedBy;
         }
 
-        @CustomType.Setter
-        public Builder browseOnly(Boolean browseOnly) {
-            if (browseOnly == null) {
-              throw new MissingRequiredPropertyException("GetAiGatewayModelServiceResult", "browseOnly");
-            }
-            this.browseOnly = browseOnly;
-            return this;
-        }
         @CustomType.Setter
         public Builder comment(String comment) {
             if (comment == null) {
@@ -358,7 +333,6 @@ public final class GetAiGatewayModelServiceResult {
         }
         public GetAiGatewayModelServiceResult build() {
             final var _resultValue = new GetAiGatewayModelServiceResult();
-            _resultValue.browseOnly = browseOnly;
             _resultValue.comment = comment;
             _resultValue.config = config;
             _resultValue.createTime = createTime;

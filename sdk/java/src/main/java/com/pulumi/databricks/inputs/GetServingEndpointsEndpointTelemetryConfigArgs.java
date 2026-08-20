@@ -18,6 +18,13 @@ public final class GetServingEndpointsEndpointTelemetryConfigArgs extends com.pu
 
     public static final GetServingEndpointsEndpointTelemetryConfigArgs Empty = new GetServingEndpointsEndpointTelemetryConfigArgs();
 
+    @Import(name="enabledTelemetryFeatures")
+    private @Nullable Output<List<String>> enabledTelemetryFeatures;
+
+    public Optional<Output<List<String>>> enabledTelemetryFeatures() {
+        return Optional.ofNullable(this.enabledTelemetryFeatures);
+    }
+
     @Import(name="inferenceTableConfigs")
     private @Nullable Output<List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs>> inferenceTableConfigs;
 
@@ -42,6 +49,7 @@ public final class GetServingEndpointsEndpointTelemetryConfigArgs extends com.pu
     private GetServingEndpointsEndpointTelemetryConfigArgs() {}
 
     private GetServingEndpointsEndpointTelemetryConfigArgs(GetServingEndpointsEndpointTelemetryConfigArgs $) {
+        this.enabledTelemetryFeatures = $.enabledTelemetryFeatures;
         this.inferenceTableConfigs = $.inferenceTableConfigs;
         this.tableNames = $.tableNames;
         this.telemetryProfileId = $.telemetryProfileId;
@@ -63,6 +71,19 @@ public final class GetServingEndpointsEndpointTelemetryConfigArgs extends com.pu
 
         public Builder(GetServingEndpointsEndpointTelemetryConfigArgs defaults) {
             $ = new GetServingEndpointsEndpointTelemetryConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder enabledTelemetryFeatures(@Nullable Output<List<String>> enabledTelemetryFeatures) {
+            $.enabledTelemetryFeatures = enabledTelemetryFeatures;
+            return this;
+        }
+
+        public Builder enabledTelemetryFeatures(List<String> enabledTelemetryFeatures) {
+            return enabledTelemetryFeatures(Output.of(enabledTelemetryFeatures));
+        }
+
+        public Builder enabledTelemetryFeatures(String... enabledTelemetryFeatures) {
+            return enabledTelemetryFeatures(List.of(enabledTelemetryFeatures));
         }
 
         public Builder inferenceTableConfigs(@Nullable Output<List<GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs>> inferenceTableConfigs) {

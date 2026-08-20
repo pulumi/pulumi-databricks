@@ -14,8 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeaturesFeatureTimeWindowSawtoothResult
     {
         /// <summary>
-        /// (string) - The delay applied to the end of the window (must be non-negative).
-        /// For example, delay=1d shifts the window end 1 day before the evaluation time
+        /// (string) - Delay is not currently supported for Sawtooth windows
         /// </summary>
         public readonly string? Delay;
         /// <summary>

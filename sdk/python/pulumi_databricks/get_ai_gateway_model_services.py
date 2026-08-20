@@ -28,10 +28,7 @@ class GetAiGatewayModelServicesResult:
     """
     A collection of values returned by getAiGatewayModelServices.
     """
-    def __init__(__self__, include_browse=None, model_services=None, page_size=None, parent=None, provider_config=None, view=None):
-        if include_browse and not isinstance(include_browse, bool):
-            raise TypeError("Expected argument 'include_browse' to be a bool")
-        pulumi.set(__self__, "include_browse", include_browse)
+    def __init__(__self__, model_services=None, page_size=None, parent=None, provider_config=None, view=None):
         if model_services and not isinstance(model_services, list):
             raise TypeError("Expected argument 'model_services' to be a list")
         pulumi.set(__self__, "model_services", model_services)
@@ -47,11 +44,6 @@ class GetAiGatewayModelServicesResult:
         if view and not isinstance(view, str):
             raise TypeError("Expected argument 'view' to be a str")
         pulumi.set(__self__, "view", view)
-
-    @_builtins.property
-    @pulumi.getter(name="includeBrowse")
-    def include_browse(self) -> Optional[_builtins.bool]:
-        return pulumi.get(self, "include_browse")
 
     @_builtins.property
     @pulumi.getter(name="modelServices")
@@ -90,7 +82,6 @@ class AwaitableGetAiGatewayModelServicesResult(GetAiGatewayModelServicesResult):
         if False:
             yield self
         return GetAiGatewayModelServicesResult(
-            include_browse=self.include_browse,
             model_services=self.model_services,
             page_size=self.page_size,
             parent=self.parent,
@@ -98,8 +89,7 @@ class AwaitableGetAiGatewayModelServicesResult(GetAiGatewayModelServicesResult):
             view=self.view)
 
 
-def get_ai_gateway_model_services(include_browse: Optional[_builtins.bool] = None,
-                                  page_size: Optional[_builtins.int] = None,
+def get_ai_gateway_model_services(page_size: Optional[_builtins.int] = None,
                                   parent: Optional[_builtins.str] = None,
                                   provider_config: Optional[Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict']] = None,
                                   view: Optional[_builtins.str] = None,
@@ -110,18 +100,17 @@ def get_ai_gateway_model_services(include_browse: Optional[_builtins.bool] = Non
     [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
 
 
-    :param _builtins.bool include_browse: Whether to include model services for which the principal can only access
-           selective metadata
     :param _builtins.int page_size: Maximum number of model services to return. Defaults to 100 when unset or 0;
-           the maximum is 100. Use `next_page_token` to retrieve additional pages
-    :param _builtins.str parent: Resource name of the parent schema to list within, as
+           the maximum is 100. Use `page_token` to retrieve additional pages
+    :param _builtins.str parent: Name of the parent schema to list within, as
            `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
            characters individually
     :param Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str view: View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+    :param _builtins.str view: View selector controlling which fields are populated per row. `FULL`
+           returns the full representation of the service; `BASIC` returns a more
+           compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
     """
     __args__ = dict()
-    __args__['includeBrowse'] = include_browse
     __args__['pageSize'] = page_size
     __args__['parent'] = parent
     __args__['providerConfig'] = provider_config
@@ -130,14 +119,12 @@ def get_ai_gateway_model_services(include_browse: Optional[_builtins.bool] = Non
     __ret__ = pulumi.runtime.invoke('databricks:index/getAiGatewayModelServices:getAiGatewayModelServices', __args__, opts=opts, typ=GetAiGatewayModelServicesResult).value
 
     return AwaitableGetAiGatewayModelServicesResult(
-        include_browse=pulumi.get(__ret__, 'include_browse'),
         model_services=pulumi.get(__ret__, 'model_services'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         view=pulumi.get(__ret__, 'view'))
-def get_ai_gateway_model_services_output(include_browse: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                                         page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+def get_ai_gateway_model_services_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                          parent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict']]]] = None,
                                          view: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -148,18 +135,17 @@ def get_ai_gateway_model_services_output(include_browse: pulumi.Input[Optional[O
     [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
 
 
-    :param _builtins.bool include_browse: Whether to include model services for which the principal can only access
-           selective metadata
     :param _builtins.int page_size: Maximum number of model services to return. Defaults to 100 when unset or 0;
-           the maximum is 100. Use `next_page_token` to retrieve additional pages
-    :param _builtins.str parent: Resource name of the parent schema to list within, as
+           the maximum is 100. Use `page_token` to retrieve additional pages
+    :param _builtins.str parent: Name of the parent schema to list within, as
            `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
            characters individually
     :param Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str view: View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+    :param _builtins.str view: View selector controlling which fields are populated per row. `FULL`
+           returns the full representation of the service; `BASIC` returns a more
+           compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
     """
     __args__ = dict()
-    __args__['includeBrowse'] = include_browse
     __args__['pageSize'] = page_size
     __args__['parent'] = parent
     __args__['providerConfig'] = provider_config
@@ -167,7 +153,6 @@ def get_ai_gateway_model_services_output(include_browse: pulumi.Input[Optional[O
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAiGatewayModelServices:getAiGatewayModelServices', __args__, opts=opts, typ=GetAiGatewayModelServicesResult)
     return __ret__.apply(lambda __response__: GetAiGatewayModelServicesResult(
-        include_browse=pulumi.get(__response__, 'include_browse'),
         model_services=pulumi.get(__response__, 'model_services'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent'),

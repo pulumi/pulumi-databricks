@@ -30,7 +30,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? IsDeleted;
         /// <summary>
-        /// Resource name of the parent schema.
+        /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
         /// </summary>

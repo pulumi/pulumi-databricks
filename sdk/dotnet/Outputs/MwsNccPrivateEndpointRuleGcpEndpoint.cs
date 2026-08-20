@@ -13,15 +13,23 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsNccPrivateEndpointRuleGcpEndpoint
     {
+        public readonly bool? AllVpcScServices;
+        public readonly Outputs.MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints? GoogleApiEndpoints;
         public readonly string? PscEndpointUri;
         public readonly string? ServiceAttachment;
 
         [OutputConstructor]
         private MwsNccPrivateEndpointRuleGcpEndpoint(
+            bool? allVpcScServices,
+
+            Outputs.MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints? googleApiEndpoints,
+
             string? pscEndpointUri,
 
             string? serviceAttachment)
         {
+            AllVpcScServices = allVpcScServices;
+            GoogleApiEndpoints = googleApiEndpoints;
             PscEndpointUri = pscEndpointUri;
             ServiceAttachment = serviceAttachment;
         }

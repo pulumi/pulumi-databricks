@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AiGatewayMcpServiceConfigArgs;
 import com.pulumi.databricks.inputs.AiGatewayMcpServiceProviderConfigArgs;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,23 +16,6 @@ import javax.annotation.Nullable;
 public final class AiGatewayMcpServiceState extends com.pulumi.resources.ResourceArgs {
 
     public static final AiGatewayMcpServiceState Empty = new AiGatewayMcpServiceState();
-
-    /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    @Import(name="browseOnly")
-    private @Nullable Output<Boolean> browseOnly;
-
-    /**
-     * @return (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    public Optional<Output<Boolean>> browseOnly() {
-        return Optional.ofNullable(this.browseOnly);
-    }
 
     /**
      * User-provided description
@@ -142,16 +124,14 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Leaf identifier for the MCP service (the unqualified name within the
-     * parent schema, e.g. &#34;myMcpService&#34;)
+     * Name for the MCP service, e.g. &#34;myMcpService&#34;
      * 
      */
     @Import(name="mcpServiceId")
     private @Nullable Output<String> mcpServiceId;
 
     /**
-     * @return Leaf identifier for the MCP service (the unqualified name within the
-     * parent schema, e.g. &#34;myMcpService&#34;)
+     * @return Name for the MCP service, e.g. &#34;myMcpService&#34;
      * 
      */
     public Optional<Output<String>> mcpServiceId() {
@@ -212,7 +192,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -221,7 +201,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     private @Nullable Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -278,7 +258,6 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     private AiGatewayMcpServiceState() {}
 
     private AiGatewayMcpServiceState(AiGatewayMcpServiceState $) {
-        this.browseOnly = $.browseOnly;
         this.comment = $.comment;
         this.config = $.config;
         this.createTime = $.createTime;
@@ -311,29 +290,6 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
 
         public Builder(AiGatewayMcpServiceState defaults) {
             $ = new AiGatewayMcpServiceState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param browseOnly (boolean) - Whether the caller sees only metadata available through the BROWSE
-         * privilege
-         * 
-         * @return builder
-         * 
-         */
-        public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
-            $.browseOnly = browseOnly;
-            return this;
-        }
-
-        /**
-         * @param browseOnly (boolean) - Whether the caller sees only metadata available through the BROWSE
-         * privilege
-         * 
-         * @return builder
-         * 
-         */
-        public Builder browseOnly(Boolean browseOnly) {
-            return browseOnly(Output.of(browseOnly));
         }
 
         /**
@@ -479,8 +435,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mcpServiceId Leaf identifier for the MCP service (the unqualified name within the
-         * parent schema, e.g. &#34;myMcpService&#34;)
+         * @param mcpServiceId Name for the MCP service, e.g. &#34;myMcpService&#34;
          * 
          * @return builder
          * 
@@ -491,8 +446,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mcpServiceId Leaf identifier for the MCP service (the unqualified name within the
-         * parent schema, e.g. &#34;myMcpService&#34;)
+         * @param mcpServiceId Name for the MCP service, e.g. &#34;myMcpService&#34;
          * 
          * @return builder
          * 
@@ -573,7 +527,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 
@@ -586,7 +540,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 

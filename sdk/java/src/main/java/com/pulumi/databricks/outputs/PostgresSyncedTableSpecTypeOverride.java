@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class PostgresSyncedTableSpecTypeOverride {
     private String columnName;
     /**
-     * @return PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * @return PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      * 
      */
     private String pgType;
@@ -31,7 +31,7 @@ public final class PostgresSyncedTableSpecTypeOverride {
         return this.columnName;
     }
     /**
-     * @return PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * @return PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      * 
      */
     public String pgType() {

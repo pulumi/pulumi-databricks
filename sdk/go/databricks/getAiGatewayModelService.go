@@ -38,9 +38,6 @@ type LookupAiGatewayModelServiceArgs struct {
 
 // A collection of values returned by getAiGatewayModelService.
 type LookupAiGatewayModelServiceResult struct {
-	// (boolean) - Whether the caller sees only metadata available through the BROWSE
-	// privilege
-	BrowseOnly bool `pulumi:"browseOnly"`
 	// (string) - User-provided description
 	Comment string `pulumi:"comment"`
 	// (ModelServiceConfig) - Operational configuration: destinations, routing, rate limits, inference
@@ -116,12 +113,6 @@ func (o LookupAiGatewayModelServiceResultOutput) ToLookupAiGatewayModelServiceRe
 
 func (o LookupAiGatewayModelServiceResultOutput) ToLookupAiGatewayModelServiceResultOutputWithContext(ctx context.Context) LookupAiGatewayModelServiceResultOutput {
 	return o
-}
-
-// (boolean) - Whether the caller sees only metadata available through the BROWSE
-// privilege
-func (o LookupAiGatewayModelServiceResultOutput) BrowseOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) bool { return v.BrowseOnly }).(pulumi.BoolOutput)
 }
 
 // (string) - User-provided description

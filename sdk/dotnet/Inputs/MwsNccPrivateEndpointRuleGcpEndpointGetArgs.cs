@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MwsNccPrivateEndpointRuleGcpEndpointGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allVpcScServices")]
+        public Input<bool>? AllVpcScServices { get; set; }
+
+        [Input("googleApiEndpoints")]
+        public Input<Inputs.MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpointsGetArgs>? GoogleApiEndpoints { get; set; }
+
         [Input("pscEndpointUri")]
         public Input<string>? PscEndpointUri { get; set; }
 

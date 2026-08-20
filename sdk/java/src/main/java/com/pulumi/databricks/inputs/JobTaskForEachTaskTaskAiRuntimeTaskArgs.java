@@ -32,11 +32,25 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskArgs extends com.pulumi.re
         return this.deployments;
     }
 
+    @Import(name="dockerImageUrl")
+    private @Nullable Output<String> dockerImageUrl;
+
+    public Optional<Output<String>> dockerImageUrl() {
+        return Optional.ofNullable(this.dockerImageUrl);
+    }
+
     @Import(name="experiment", required=true)
     private Output<String> experiment;
 
     public Output<String> experiment() {
         return this.experiment;
+    }
+
+    @Import(name="mlflowArtifactLocation")
+    private @Nullable Output<String> mlflowArtifactLocation;
+
+    public Optional<Output<String>> mlflowArtifactLocation() {
+        return Optional.ofNullable(this.mlflowArtifactLocation);
     }
 
     @Import(name="mlflowExperimentDirectory")
@@ -58,7 +72,9 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskArgs extends com.pulumi.re
     private JobTaskForEachTaskTaskAiRuntimeTaskArgs(JobTaskForEachTaskTaskAiRuntimeTaskArgs $) {
         this.codeSourcePath = $.codeSourcePath;
         this.deployments = $.deployments;
+        this.dockerImageUrl = $.dockerImageUrl;
         this.experiment = $.experiment;
+        this.mlflowArtifactLocation = $.mlflowArtifactLocation;
         this.mlflowExperimentDirectory = $.mlflowExperimentDirectory;
         this.mlflowRun = $.mlflowRun;
     }
@@ -103,6 +119,15 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskArgs extends com.pulumi.re
             return deployments(List.of(deployments));
         }
 
+        public Builder dockerImageUrl(@Nullable Output<String> dockerImageUrl) {
+            $.dockerImageUrl = dockerImageUrl;
+            return this;
+        }
+
+        public Builder dockerImageUrl(String dockerImageUrl) {
+            return dockerImageUrl(Output.of(dockerImageUrl));
+        }
+
         public Builder experiment(Output<String> experiment) {
             $.experiment = experiment;
             return this;
@@ -110,6 +135,15 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskArgs extends com.pulumi.re
 
         public Builder experiment(String experiment) {
             return experiment(Output.of(experiment));
+        }
+
+        public Builder mlflowArtifactLocation(@Nullable Output<String> mlflowArtifactLocation) {
+            $.mlflowArtifactLocation = mlflowArtifactLocation;
+            return this;
+        }
+
+        public Builder mlflowArtifactLocation(String mlflowArtifactLocation) {
+            return mlflowArtifactLocation(Output.of(mlflowArtifactLocation));
         }
 
         public Builder mlflowExperimentDirectory(@Nullable Output<String> mlflowExperimentDirectory) {

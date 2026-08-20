@@ -14,17 +14,9 @@ public final class FeatureEngineeringFeatureFunctionColumnSelectionArgs extends 
 
     public static final FeatureEngineeringFeatureFunctionColumnSelectionArgs Empty = new FeatureEngineeringFeatureFunctionColumnSelectionArgs();
 
-    /**
-     * Column name from source to select as the feature value
-     * 
-     */
     @Import(name="column", required=true)
     private Output<String> column;
 
-    /**
-     * @return Column name from source to select as the feature value
-     * 
-     */
     public Output<String> column() {
         return this.column;
     }
@@ -53,23 +45,11 @@ public final class FeatureEngineeringFeatureFunctionColumnSelectionArgs extends 
             $ = new FeatureEngineeringFeatureFunctionColumnSelectionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param column Column name from source to select as the feature value
-         * 
-         * @return builder
-         * 
-         */
         public Builder column(Output<String> column) {
             $.column = column;
             return this;
         }
 
-        /**
-         * @param column Column name from source to select as the feature value
-         * 
-         * @return builder
-         * 
-         */
         public Builder column(String column) {
             return column(Output.of(column));
         }

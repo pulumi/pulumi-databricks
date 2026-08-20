@@ -29,6 +29,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("principalOverrides")]
         private InputList<Inputs.BudgetAlertConfigurationPrincipalOverrideGetArgs>? _principalOverrides;
+
+        /// <summary>
+        /// Per-principal threshold overrides for this alert. Only applies to per-user alerts (`ScopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+        /// </summary>
         public InputList<Inputs.BudgetAlertConfigurationPrincipalOverrideGetArgs> PrincipalOverrides
         {
             get => _principalOverrides ?? (_principalOverrides = new InputList<Inputs.BudgetAlertConfigurationPrincipalOverrideGetArgs>());
@@ -47,6 +51,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("quantityType")]
         public Input<string>? QuantityType { get; set; }
 
+        /// <summary>
+        /// How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+        /// </summary>
         [Input("scopeType")]
         public Input<string>? ScopeType { get; set; }
 

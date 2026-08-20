@@ -84,6 +84,11 @@ export interface AccountFederationPolicyOidcPolicy {
     subjectClaim?: string;
 }
 
+export interface AccountIamUserV2FullName {
+    familyName?: string;
+    givenName?: string;
+}
+
 export interface AccountNetworkPolicyEgress {
     /**
      * The access policy enforced for egress traffic to the internet
@@ -1842,8 +1847,7 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrock {
 
 export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
-     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
+     * AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
      */
     awsAccessKey?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey;
     region?: string;
@@ -2032,7 +2036,7 @@ export interface AiGatewayModelProviderServiceConfigInferenceTable {
      */
     isDeleted: boolean;
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -2230,7 +2234,7 @@ export interface AiGatewayModelServiceConfigInferenceTable {
      */
     isDeleted: boolean;
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -3030,6 +3034,8 @@ export interface AppActiveDeploymentGitSource {
 }
 
 export interface AppActiveDeploymentGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -3075,7 +3081,71 @@ export interface AppComputeStatus {
     state: string;
 }
 
+export interface AppDefaultGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: string;
+    commit?: string;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
+    gitRepository: outputs.AppDefaultGitSourceGitRepository;
+    resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface AppDefaultGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
+    /**
+     * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
+    provider: string;
+    /**
+     * URL of the Git repository.
+     */
+    url: string;
+}
+
 export interface AppGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
+    /**
+     * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
+    provider: string;
+    /**
+     * URL of the Git repository.
+     */
+    url: string;
+}
+
+export interface AppGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: string;
+    commit?: string;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
+    gitRepository: outputs.AppGitSourceGitRepository;
+    resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface AppGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -3159,6 +3229,8 @@ export interface AppPendingDeploymentGitSource {
 }
 
 export interface AppPendingDeploymentGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -3644,6 +3716,9 @@ export interface BudgetAlertConfiguration {
      */
     actionConfigurations?: outputs.BudgetAlertConfigurationActionConfiguration[];
     alertConfigurationId: string;
+    /**
+     * Per-principal threshold overrides for this alert. Only applies to per-user alerts (`scopeType` = `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`); ignored for shared alerts. Consists of the following fields:
+     */
     principalOverrides?: outputs.BudgetAlertConfigurationPrincipalOverride[];
     /**
      * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
@@ -3653,6 +3728,9 @@ export interface BudgetAlertConfiguration {
      * The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
      */
     quantityType?: string;
+    /**
+     * How the alert threshold is evaluated. Determines whether spend is tracked in aggregate or per individual user. (Enum: `ALERT_CONFIGURATION_SCOPE_TYPE_SHARED`, `ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER`)
+     */
     scopeType: string;
     /**
      * The time window of usage data for the budget. (Enum: `MONTH`)
@@ -3667,17 +3745,23 @@ export interface BudgetAlertConfiguration {
 export interface BudgetAlertConfigurationActionConfiguration {
     actionConfigurationId: string;
     /**
-     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`, `BLOCK_USAGE`). Note: `BLOCK_USAGE` action type is only supported on AI Gateway-scoped budgets.
      */
     actionType?: string;
     /**
-     * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * For `EMAIL_NOTIFICATION` action type, this is the email address to send the notification to. Required if the `actionType` is `EMAIL_NOTIFICATION`. Does not apply to the `BLOCK_USAGE` action type, and this field must be omitted in that case.
      */
     target?: string;
 }
 
 export interface BudgetAlertConfigurationPrincipalOverride {
+    /**
+     * Dollar amount that overrides the parent alert's `quantityThreshold` for this principal.
+     */
     overrideThreshold?: string;
+    /**
+     * Account-level principal id (user, group, or service principal).
+     */
     principalId?: string;
 }
 
@@ -4987,7 +5071,7 @@ export interface DatabaseSyncedDatabaseTableSpecTypeOverride {
      */
     columnName: string;
     /**
-     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: string;
     /**
@@ -5475,6 +5559,10 @@ export interface FeatureEngineeringFeatureFunction {
      */
     columnSelection?: outputs.FeatureEngineeringFeatureFunctionColumnSelection;
     /**
+     * Applies a registered Unity Catalog function row-wise to source columns
+     */
+    customUdf?: outputs.FeatureEngineeringFeatureFunctionCustomUdf;
+    /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      */
@@ -5637,10 +5725,27 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp {
 }
 
 export interface FeatureEngineeringFeatureFunctionColumnSelection {
-    /**
-     * Column name from source to select as the feature value
-     */
     column: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionCustomUdf {
+    /**
+     * Fully qualified 3-part Unity Catalog path of the function to apply
+     */
+    functionPath: string;
+    /**
+     * Binds each UC function parameter to a source column.
+     * May be empty for zero-argument functions (e.g. a timestamp generator)
+     */
+    inputBindings?: outputs.FeatureEngineeringFeatureFunctionCustomUdfInputBinding[];
+}
+
+export interface FeatureEngineeringFeatureFunctionCustomUdfInputBinding {
+    column: string;
+    /**
+     * Name of the UC function parameter
+     */
+    parameter: string;
 }
 
 export interface FeatureEngineeringFeatureFunctionExtraParameter {
@@ -6321,6 +6426,160 @@ export interface GetAccountFederationPolicyOidcPolicy {
      * is 'sub'
      */
     subjectClaim?: string;
+}
+
+export interface GetAccountIamDirectGroupMembersV2DirectGroupMember {
+    /**
+     * (string) - Display name of the principal
+     */
+    displayName: string;
+    /**
+     * (string) - The external ID of the principal in Databricks
+     */
+    externalId: string;
+    /**
+     * Required. Internal ID of the group in Databricks whose direct members are being listed
+     */
+    groupId: number;
+    /**
+     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     */
+    membershipSource: string;
+    /**
+     * (integer) - Internal ID of the principal in Databricks
+     */
+    principalId: number;
+    /**
+     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     */
+    principalType: string;
+}
+
+export interface GetAccountIamGroupsV2Group {
+    /**
+     * (string) - The parent account ID for group in Databricks
+     */
+    accountId: string;
+    /**
+     * (string) - ExternalId of the group in the customer's IdP
+     */
+    externalId: string;
+    /**
+     * (string) - Internal group ID of the group in Databricks
+     */
+    groupId: string;
+    /**
+     * (string) - Display name of the group
+     */
+    groupName: string;
+}
+
+export interface GetAccountIamServicePrincipalsV2ServicePrincipal {
+    /**
+     * (string) - The parent account ID for the service principal in Databricks
+     */
+    accountId: string;
+    /**
+     * (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     */
+    accountSpStatus: string;
+    /**
+     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
+     * afterwards; when omitted, the server generates one
+     */
+    applicationId: string;
+    /**
+     * (string) - Display name of the service principal
+     */
+    displayName: string;
+    /**
+     * (string) - ExternalId of the service principal in the customer's IdP
+     */
+    externalId: string;
+    /**
+     * (string) - Internal service principal ID of the service principal in Databricks
+     */
+    servicePrincipalId: string;
+}
+
+export interface GetAccountIamUserV2FullName {
+    /**
+     * (string)
+     */
+    familyName?: string;
+    /**
+     * (string)
+     */
+    givenName?: string;
+}
+
+export interface GetAccountIamUsersV2User {
+    /**
+     * (string) - The accountId parent of the user in Databricks
+     */
+    accountId: string;
+    /**
+     * (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     */
+    accountUserStatus: string;
+    /**
+     * (string) - ExternalId of the user in the customer's IdP
+     */
+    externalId: string;
+    /**
+     * (UserFullName)
+     */
+    fullName: outputs.GetAccountIamUsersV2UserFullName;
+    /**
+     * (string) - Internal userId of the user in Databricks
+     */
+    userId: string;
+    /**
+     * (string) - Username/email of the user
+     */
+    username: string;
+}
+
+export interface GetAccountIamUsersV2UserFullName {
+    /**
+     * (string)
+     */
+    familyName?: string;
+    /**
+     * (string)
+     */
+    givenName?: string;
+}
+
+export interface GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment {
+    /**
+     * (string) - The account ID parent of the workspace where the principal is assigned
+     */
+    accountId: string;
+    /**
+     * (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
+     * group membership. Get responses populate this field. List responses leave it empty
+     */
+    effectiveEntitlements: string[];
+    /**
+     * (list of string) - Entitlements granted directly to the principal on this workspace. This is the only
+     * client-settable field. Create and update manage exactly this set, including entitlements the
+     * principal also holds through a group.
+     * List responses leave this field empty. Get a single principal to read its entitlements
+     */
+    entitlements: string[];
+    /**
+     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     */
+    principalId: number;
+    /**
+     * (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     */
+    principalType: string;
+    /**
+     * Required. The workspace ID for which the workspace assignments are being fetched
+     */
+    workspaceId: number;
 }
 
 export interface GetAccountNetworkPoliciesItem {
@@ -11077,11 +11336,6 @@ export interface GetAiGatewayMcpServiceProviderConfig {
 
 export interface GetAiGatewayMcpServicesMcpService {
     /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     */
-    browseOnly: boolean;
-    /**
      * (string) - User-provided description
      */
     comment: string;
@@ -11118,7 +11372,8 @@ export interface GetAiGatewayMcpServicesMcpService {
      */
     metastoreId: string;
     /**
-     * (string)
+     * (string) - Name of the UC connection that hosts the MCP server, as
+     * `connections/{catalog}.{schema}.{connection}`
      */
     name: string;
     /**
@@ -11204,7 +11459,8 @@ export interface GetAiGatewayMcpServicesMcpServiceConfigSourceConnection {
      */
     isDeleted: boolean;
     /**
-     * (string)
+     * (string) - Name of the UC connection that hosts the MCP server, as
+     * `connections/{catalog}.{schema}.{connection}`
      */
     name: string;
 }
@@ -11321,8 +11577,7 @@ export interface GetAiGatewayModelProviderServiceConfigAmazonBedrock {
 
 export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
-     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
+     * (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
      */
     awsAccessKey?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey;
     /**
@@ -11439,8 +11694,7 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirect {
     baseUrl?: string;
     /**
      * (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
-     * `clientSecret` fields
+     * `serviceCredential`
      */
     entraServicePrincipal?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal;
     /**
@@ -11623,8 +11877,7 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
     baseUrl?: string;
     /**
      * (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
-     * `clientSecret` fields
+     * `serviceCredential`
      */
     entraServicePrincipal?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal;
     /**
@@ -11785,11 +12038,6 @@ export interface GetAiGatewayModelProviderServiceProviderConfig {
 
 export interface GetAiGatewayModelProviderServicesModelProviderService {
     /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     */
-    browseOnly: boolean;
-    /**
      * (string) - User-provided description
      */
     comment: string;
@@ -11949,8 +12197,7 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmaz
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
-     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
+     * (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
      */
     awsAccessKey?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey;
     /**
@@ -12066,8 +12313,7 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzur
     baseUrl?: string;
     /**
      * (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
-     * `clientSecret` fields
+     * `serviceCredential`
      */
     entraServicePrincipal?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal;
     /**
@@ -12208,7 +12454,7 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigInfe
      */
     isDeleted: boolean;
     /**
-     * Resource name of the parent schema to list within, as
+     * Name of the parent schema to list within, as
      * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
      * characters individually
      */
@@ -12249,8 +12495,7 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicr
     baseUrl?: string;
     /**
      * (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `apiKey` and
-     * `serviceCredential`. Supersedes the flat `tenantId` / `clientId` /
-     * `clientSecret` fields
+     * `serviceCredential`
      */
     entraServicePrincipal?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal;
     /**
@@ -12764,11 +13009,6 @@ export interface GetAiGatewayModelServiceProviderConfig {
 
 export interface GetAiGatewayModelServicesModelService {
     /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     */
-    browseOnly: boolean;
-    /**
      * (string) - User-provided description
      */
     comment: string;
@@ -12867,7 +13107,7 @@ export interface GetAiGatewayModelServicesModelServiceConfigInferenceTable {
      */
     isDeleted: boolean;
     /**
-     * Resource name of the parent schema to list within, as
+     * Name of the parent schema to list within, as
      * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
      * characters individually
      */
@@ -14240,6 +14480,7 @@ export interface GetAppApp {
      * The email of the user that created the deployment.
      */
     creator: string;
+    defaultGitSource: outputs.GetAppAppDefaultGitSource;
     /**
      * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      */
@@ -14260,10 +14501,12 @@ export interface GetAppApp {
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes: string[];
+    forwardUserAccessToken?: boolean;
     /**
      * attribute - Git repository configuration for app deployments.
      */
     gitRepository?: outputs.GetAppAppGitRepository;
+    gitSource: outputs.GetAppAppGitSource;
     /**
      * Id of the job to grant permission on.
      */
@@ -14300,6 +14543,10 @@ export interface GetAppApp {
      * name of the app service principal
      */
     servicePrincipalName: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath: string;
     /**
      * Name of the app space this app belongs to.
      */
@@ -14407,6 +14654,8 @@ export interface GetAppAppActiveDeploymentGitSource {
 }
 
 export interface GetAppAppActiveDeploymentGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -14452,7 +14701,71 @@ export interface GetAppAppComputeStatus {
     state: string;
 }
 
+export interface GetAppAppDefaultGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: string;
+    commit?: string;
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
+    gitRepository: outputs.GetAppAppDefaultGitSourceGitRepository;
+    resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface GetAppAppDefaultGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
+    provider: string;
+    /**
+     * URL of the Git repository.
+     */
+    url: string;
+}
+
 export interface GetAppAppGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
+    provider: string;
+    /**
+     * URL of the Git repository.
+     */
+    url: string;
+}
+
+export interface GetAppAppGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: string;
+    commit?: string;
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
+    gitRepository: outputs.GetAppAppGitSourceGitRepository;
+    resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface GetAppAppGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -14536,6 +14849,8 @@ export interface GetAppAppPendingDeploymentGitSource {
 }
 
 export interface GetAppAppPendingDeploymentGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -15286,6 +15601,7 @@ export interface GetAppsApp {
      * The email of the user that created the deployment.
      */
     creator: string;
+    defaultGitSource: outputs.GetAppsAppDefaultGitSource;
     /**
      * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      */
@@ -15306,10 +15622,12 @@ export interface GetAppsApp {
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes: string[];
+    forwardUserAccessToken?: boolean;
     /**
      * attribute - Git repository configuration for app deployments.
      */
     gitRepository?: outputs.GetAppsAppGitRepository;
+    gitSource: outputs.GetAppsAppGitSource;
     /**
      * Id of the job to grant permission on.
      */
@@ -15346,6 +15664,10 @@ export interface GetAppsApp {
      * name of the app service principal
      */
     servicePrincipalName: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath: string;
     /**
      * Name of the app space this app belongs to.
      */
@@ -15453,6 +15775,8 @@ export interface GetAppsAppActiveDeploymentGitSource {
 }
 
 export interface GetAppsAppActiveDeploymentGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -15498,7 +15822,71 @@ export interface GetAppsAppComputeStatus {
     state: string;
 }
 
+export interface GetAppsAppDefaultGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: string;
+    commit?: string;
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
+    gitRepository: outputs.GetAppsAppDefaultGitSourceGitRepository;
+    resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface GetAppsAppDefaultGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
+    provider: string;
+    /**
+     * URL of the Git repository.
+     */
+    url: string;
+}
+
 export interface GetAppsAppGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
+    provider: string;
+    /**
+     * URL of the Git repository.
+     */
+    url: string;
+}
+
+export interface GetAppsAppGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: string;
+    commit?: string;
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
+    gitRepository: outputs.GetAppsAppGitSourceGitRepository;
+    resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface GetAppsAppGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -15582,6 +15970,8 @@ export interface GetAppsAppPendingDeploymentGitSource {
 }
 
 export interface GetAppsAppPendingDeploymentGitSourceGitRepository {
+    autoDeploy?: boolean;
+    callerCredentialId: number;
     /**
      * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
@@ -18226,7 +18616,7 @@ export interface GetDatabaseSyncedDatabaseTableSpecTypeOverride {
      */
     columnName: string;
     /**
-     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: string;
     /**
@@ -18567,7 +18957,7 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride {
      */
     columnName: string;
     /**
-     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: string;
     /**
@@ -19473,6 +19863,10 @@ export interface GetFeatureEngineeringFeatureFunction {
      */
     columnSelection?: outputs.GetFeatureEngineeringFeatureFunctionColumnSelection;
     /**
+     * (CustomUdf) - Applies a registered Unity Catalog function row-wise to source columns
+     */
+    customUdf?: outputs.GetFeatureEngineeringFeatureFunctionCustomUdf;
+    /**
      * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      */
@@ -19728,8 +20122,7 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
     /**
-     * (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * (string) - Delay is not currently supported for Sawtooth windows
      */
     delay?: string;
     /**
@@ -19740,8 +20133,7 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth {
     /**
-     * (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * (string) - Delay is not currently supported for Sawtooth windows
      */
     delay?: string;
     /**
@@ -19784,9 +20176,32 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionVarSamp 
 
 export interface GetFeatureEngineeringFeatureFunctionColumnSelection {
     /**
-     * (string) - Column name from source to select as the feature value
+     * (string) - Source column whose value is passed for this parameter at execution time
      */
     column: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionCustomUdf {
+    /**
+     * (string) - Fully qualified 3-part Unity Catalog path of the function to apply
+     */
+    functionPath: string;
+    /**
+     * (list of InputBinding) - Binds each UC function parameter to a source column.
+     * May be empty for zero-argument functions (e.g. a timestamp generator)
+     */
+    inputBindings?: outputs.GetFeatureEngineeringFeatureFunctionCustomUdfInputBinding[];
+}
+
+export interface GetFeatureEngineeringFeatureFunctionCustomUdfInputBinding {
+    /**
+     * (string) - Source column whose value is passed for this parameter at execution time
+     */
+    column: string;
+    /**
+     * (string) - Name of the UC function parameter
+     */
+    parameter: string;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionExtraParameter {
@@ -20014,8 +20429,7 @@ export interface GetFeatureEngineeringFeatureTimeWindowContinuous {
 
 export interface GetFeatureEngineeringFeatureTimeWindowRolling {
     /**
-     * (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * (string) - Delay is not currently supported for Sawtooth windows
      */
     delay?: string;
     /**
@@ -20026,8 +20440,7 @@ export interface GetFeatureEngineeringFeatureTimeWindowRolling {
 
 export interface GetFeatureEngineeringFeatureTimeWindowSawtooth {
     /**
-     * (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * (string) - Delay is not currently supported for Sawtooth windows
      */
     delay?: string;
     /**
@@ -20165,6 +20578,10 @@ export interface GetFeatureEngineeringFeaturesFeatureFunction {
      * (ColumnSelection) - Selects the latest value of a single column in a data source
      */
     columnSelection?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection;
+    /**
+     * (CustomUdf) - Applies a registered Unity Catalog function row-wise to source columns
+     */
+    customUdf?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionCustomUdf;
     /**
      * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -20421,8 +20838,7 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling {
     /**
-     * (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * (string) - Delay is not currently supported for Sawtooth windows
      */
     delay?: string;
     /**
@@ -20433,8 +20849,7 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtooth {
     /**
-     * (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * (string) - Delay is not currently supported for Sawtooth windows
      */
     delay?: string;
     /**
@@ -20477,9 +20892,32 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection {
     /**
-     * (string) - Column name from source to select as the feature value
+     * (string) - Source column whose value is passed for this parameter at execution time
      */
     column: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionCustomUdf {
+    /**
+     * (string) - Fully qualified 3-part Unity Catalog path of the function to apply
+     */
+    functionPath: string;
+    /**
+     * (list of InputBinding) - Binds each UC function parameter to a source column.
+     * May be empty for zero-argument functions (e.g. a timestamp generator)
+     */
+    inputBindings?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfInputBinding[];
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfInputBinding {
+    /**
+     * (string) - Source column whose value is passed for this parameter at execution time
+     */
+    column: string;
+    /**
+     * (string) - Name of the UC function parameter
+     */
+    parameter: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter {
@@ -20703,8 +21141,7 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous {
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindowRolling {
     /**
-     * (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * (string) - Delay is not currently supported for Sawtooth windows
      */
     delay?: string;
     /**
@@ -20715,8 +21152,7 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowRolling {
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindowSawtooth {
     /**
-     * (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * (string) - Delay is not currently supported for Sawtooth windows
      */
     delay?: string;
     /**
@@ -24333,7 +24769,6 @@ export interface GetPolicyInfosPolicy {
     exceptPrincipals: string[];
     /**
      * (string) - Type of securables that the policy should take effect on.
-     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: string;
@@ -26337,6 +26772,12 @@ export interface GetPostgresSyncedTableSpecNewPipelineSpec {
      */
     budgetPolicyId?: string;
     /**
+     * (string) - Release channel of the underlying pipeline's runtime.
+     * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+     * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+     */
+    pipelineChannel?: string;
+    /**
      * (string) - UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be a standard catalog where the user has permissions to create Delta tables
      */
@@ -26354,7 +26795,7 @@ export interface GetPostgresSyncedTableSpecTypeOverride {
      */
     columnName: string;
     /**
-     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: string;
     /**
@@ -27534,6 +27975,7 @@ export interface GetServingEndpointsEndpointTag {
 }
 
 export interface GetServingEndpointsEndpointTelemetryConfig {
+    enabledTelemetryFeatures?: string[];
     inferenceTableConfigs?: outputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig[];
     tableNames?: outputs.GetServingEndpointsEndpointTelemetryConfigTableName[];
     telemetryProfileId?: string;
@@ -28623,6 +29065,292 @@ export interface GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfig {
     workspaceId: string;
 }
 
+export interface GetWorkspaceIamDirectGroupMemberV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
+    /**
+     * (string) - Display name of the principal
+     */
+    displayName: string;
+    /**
+     * (string) - The external ID of the principal in Databricks
+     */
+    externalId: string;
+    /**
+     * Required. Internal ID of the group in Databricks whose direct members are being listed
+     */
+    groupId: number;
+    /**
+     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     */
+    membershipSource: string;
+    /**
+     * (integer) - Internal ID of the principal in Databricks
+     */
+    principalId: number;
+    /**
+     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     */
+    principalType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfig;
+}
+
+export interface GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamDirectGroupMembersV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamGroupV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamGroupsV2Group {
+    /**
+     * (string) - The parent account ID for group in Databricks
+     */
+    accountId: string;
+    /**
+     * (string) - ExternalId of the group in the customer's IdP
+     */
+    externalId: string;
+    /**
+     * (string) - Internal group ID of the group in Databricks
+     */
+    groupId: string;
+    /**
+     * (string) - Display name of the group
+     */
+    groupName: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetWorkspaceIamGroupsV2GroupProviderConfig;
+}
+
+export interface GetWorkspaceIamGroupsV2GroupProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamGroupsV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamServicePrincipalV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamServicePrincipalsV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
+    /**
+     * (string) - The parent account ID for the service principal in Databricks
+     */
+    accountId: string;
+    /**
+     * (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     */
+    accountSpStatus: string;
+    /**
+     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
+     * afterwards; when omitted, the server generates one
+     */
+    applicationId: string;
+    /**
+     * (string) - Display name of the service principal
+     */
+    displayName: string;
+    /**
+     * (string) - ExternalId of the service principal in the customer's IdP
+     */
+    externalId: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfig;
+    /**
+     * (string) - Internal service principal ID of the service principal in Databricks
+     */
+    servicePrincipalId: string;
+}
+
+export interface GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamUserV2FullName {
+    /**
+     * (string)
+     */
+    familyName?: string;
+    /**
+     * (string)
+     */
+    givenName?: string;
+}
+
+export interface GetWorkspaceIamUserV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamUsersV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamUsersV2User {
+    /**
+     * (string) - The accountId parent of the user in Databricks
+     */
+    accountId: string;
+    /**
+     * (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     */
+    accountUserStatus: string;
+    /**
+     * (string) - ExternalId of the user in the customer's IdP
+     */
+    externalId: string;
+    /**
+     * (UserFullName)
+     */
+    fullName: outputs.GetWorkspaceIamUsersV2UserFullName;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetWorkspaceIamUsersV2UserProviderConfig;
+    /**
+     * (string) - Internal userId of the user in Databricks
+     */
+    userId: string;
+    /**
+     * (string) - Username/email of the user
+     */
+    username: string;
+}
+
+export interface GetWorkspaceIamUsersV2UserFullName {
+    /**
+     * (string)
+     */
+    familyName?: string;
+    /**
+     * (string)
+     */
+    givenName?: string;
+}
+
+export interface GetWorkspaceIamUsersV2UserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamWorkspaceAssignmentV2ProviderConfig {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment {
+    /**
+     * (string) - The account ID parent of the workspace where the principal is assigned
+     */
+    accountId: string;
+    /**
+     * (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
+     * group membership. Get responses populate this field. List responses leave it empty
+     */
+    effectiveEntitlements: string[];
+    /**
+     * (list of string) - Entitlements granted directly to the principal on this workspace. This is the only
+     * client-settable field. Create and update manage exactly this set, including entitlements the
+     * principal also holds through a group.
+     * List responses leave this field empty. Get a single principal to read its entitlements
+     */
+    entitlements: string[];
+    /**
+     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     */
+    principalId: number;
+    /**
+     * (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     */
+    principalType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentProviderConfig;
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId: number;
+}
+
+export interface GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentProviderConfig {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
      * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -29298,7 +30026,7 @@ export interface JobJobCluster {
     /**
      * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      */
-    newCluster: outputs.JobJobClusterNewCluster;
+    newCluster?: outputs.JobJobClusterNewCluster;
     serverlessComputeId?: string;
 }
 
@@ -30145,7 +30873,9 @@ export interface JobTask {
 export interface JobTaskAiRuntimeTask {
     codeSourcePath?: string;
     deployments: outputs.JobTaskAiRuntimeTaskDeployment[];
+    dockerImageUrl?: string;
     experiment: string;
+    mlflowArtifactLocation?: string;
     mlflowExperimentDirectory?: string;
     mlflowRun?: string;
 }
@@ -30493,7 +31223,9 @@ export interface JobTaskForEachTaskTask {
 export interface JobTaskForEachTaskTaskAiRuntimeTask {
     codeSourcePath?: string;
     deployments: outputs.JobTaskForEachTaskTaskAiRuntimeTaskDeployment[];
+    dockerImageUrl?: string;
     experiment: string;
+    mlflowArtifactLocation?: string;
     mlflowExperimentDirectory?: string;
     mlflowRun?: string;
 }
@@ -32245,18 +32977,23 @@ export interface JobTaskWebhookNotificationsOnSuccess {
 
 export interface JobTrigger {
     /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     */
+    continuous?: outputs.JobTriggerContinuous;
+    /**
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      */
     fileArrival?: outputs.JobTriggerFileArrival;
     model?: outputs.JobTriggerModel;
-    /**
-     * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     */
     pauseStatus?: string;
     /**
      * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
      */
     periodic?: outputs.JobTriggerPeriodic;
+    /**
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     */
+    schedule?: outputs.JobTriggerSchedule;
     sqlCondition?: outputs.JobTriggerSqlCondition;
     /**
      * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
@@ -32264,18 +33001,21 @@ export interface JobTrigger {
     tableUpdate?: outputs.JobTriggerTableUpdate;
 }
 
-export interface JobTriggerFileArrival {
+export interface JobTriggerContinuous {
     /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     * Controls task level retry behaviour. Allowed values are:
+     * * `NEVER` (default): The failed task will not be retried.
+     * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
      */
+    taskRetryMode?: string;
+}
+
+export interface JobTriggerFileArrival {
     minTimeBetweenTriggersSeconds?: number;
     /**
-     * URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      */
     url: string;
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: number;
 }
 
@@ -32301,6 +33041,17 @@ export interface JobTriggerPeriodic {
     unit: string;
 }
 
+export interface JobTriggerSchedule {
+    /**
+     * A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
+     */
+    quartzCronExpression: string;
+    /**
+     * A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+     */
+    timezoneId: string;
+}
+
 export interface JobTriggerSqlCondition {
     sqlQueryId: string;
     triggerMode?: string;
@@ -32312,17 +33063,11 @@ export interface JobTriggerTableUpdate {
      * The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
      */
     condition?: string;
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
     minTimeBetweenTriggersSeconds?: number;
     /**
      * A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
      */
     tableNames: string[];
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: number;
 }
 
@@ -33548,6 +34293,7 @@ export interface ModelServingTag {
 }
 
 export interface ModelServingTelemetryConfig {
+    enabledTelemetryFeatures?: string[];
     /**
      * Block describing the configuration of usage tracking. Consists of the following attributes:
      */
@@ -33638,8 +34384,14 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
 }
 
 export interface MwsNccPrivateEndpointRuleGcpEndpoint {
+    allVpcScServices?: boolean;
+    googleApiEndpoints?: outputs.MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints;
     pscEndpointUri: string;
     serviceAttachment?: string;
+}
+
+export interface MwsNccPrivateEndpointRuleGcpEndpointGoogleApiEndpoints {
+    endpoints?: string[];
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfig {
@@ -33758,11 +34510,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.127.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.127.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -33829,11 +34581,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.127.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.127.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -34454,11 +35206,14 @@ export interface PipelineIngestionDefinitionObjectSchema {
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
+    apiSourceConnectorOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsApiSourceConnectorOptions;
     confluenceOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptions;
     gdriveOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions;
     googleAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions;
     jiraOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions;
     kafkaOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions;
+    linkedinAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions;
+    marketoOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions;
     redditAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions;
@@ -34466,6 +35221,10 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     smartsheetOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions;
     tiktokAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions;
     zendeskSupportOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsApiSourceConnectorOptions {
+    options?: {[key: string]: string};
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptions {
@@ -34531,7 +35290,9 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer {
     format?: string;
+    inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions;
+    outputColumn?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
@@ -34547,7 +35308,9 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformer {
     format?: string;
+    inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions;
+    outputColumn?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
@@ -34559,6 +35322,23 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOpt
     schemaEvolutionMode?: string;
     schemaFilePath?: string;
     schemaHints?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions {
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsCustomReportOptions;
+    lookbackWindowDays?: number;
+    syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptionsCustomReportOptions {
+    entityGranularities?: string[];
+    finder: string;
+    metrics?: string[];
+    timeGranularity?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions {
+    syncStartDate?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions {
@@ -34669,7 +35449,9 @@ export interface PipelineIngestionDefinitionObjectSchemaFanoutOptions {
 
 export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform {
     format?: string;
+    inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions;
+    outputColumn?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions {
@@ -34734,11 +35516,14 @@ export interface PipelineIngestionDefinitionObjectTable {
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
+    apiSourceConnectorOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions;
     confluenceOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions;
     gdriveOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions;
     googleAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions;
     jiraOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions;
     kafkaOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions;
+    linkedinAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions;
+    marketoOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions;
     redditAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions;
@@ -34746,6 +35531,10 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
     smartsheetOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions;
     tiktokAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions;
     zendeskSupportOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions {
+    options?: {[key: string]: string};
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions {
@@ -34811,7 +35600,9 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer {
     format?: string;
+    inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions;
+    outputColumn?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
@@ -34827,7 +35618,9 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformer {
     format?: string;
+    inputColumn?: string;
     jsonOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions;
+    outputColumn?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
@@ -34839,6 +35632,23 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOpti
     schemaEvolutionMode?: string;
     schemaFilePath?: string;
     schemaHints?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions {
+    customReportOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsCustomReportOptions;
+    lookbackWindowDays?: number;
+    syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptionsCustomReportOptions {
+    entityGranularities?: string[];
+    finder: string;
+    metrics?: string[];
+    timeGranularity?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions {
+    syncStartDate?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions {
@@ -34982,11 +35792,16 @@ export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkday
 }
 
 export interface PipelineIngestionDefinitionSourceConfiguration {
+    apiSourceConnectorConfig?: outputs.PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig;
     /**
      * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
     catalog?: outputs.PipelineIngestionDefinitionSourceConfigurationCatalog;
     googleAdsConfig?: outputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfig {
+    configs?: {[key: string]: string};
 }
 
 export interface PipelineIngestionDefinitionSourceConfigurationCatalog {
@@ -35956,6 +36771,12 @@ export interface PostgresSyncedTableSpecNewPipelineSpec {
      */
     budgetPolicyId?: string;
     /**
+     * Release channel of the underlying pipeline's runtime.
+     * Some source table configurations (e.g., read-time CDF) require PREVIEW.
+     * Defaults to CURRENT if not specified. Possible values are: `CURRENT`, `PREVIEW`
+     */
+    pipelineChannel?: string;
+    /**
      * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be a standard catalog where the user has permissions to create Delta tables
      */
@@ -35970,7 +36791,7 @@ export interface PostgresSyncedTableSpecNewPipelineSpec {
 export interface PostgresSyncedTableSpecTypeOverride {
     columnName: string;
     /**
-     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      */
     pgType: string;
     /**
@@ -37511,6 +38332,53 @@ export interface WorkspaceEntityTagAssignmentProviderConfig {
 }
 
 export interface WorkspaceFileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceIamDirectGroupMemberV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceIamGroupV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceIamServicePrincipalV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceIamUserV2FullName {
+    familyName?: string;
+    givenName?: string;
+}
+
+export interface WorkspaceIamUserV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceIamWorkspaceAssignmentV2ProviderConfig {
+    /**
+     * (integer) - The workspace ID where the principal is assigned
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */

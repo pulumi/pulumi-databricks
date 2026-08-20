@@ -6,13 +6,31 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AppGitRepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppGitRepositoryArgs Empty = new AppGitRepositoryArgs();
+
+    @Import(name="autoDeploy")
+    private @Nullable Output<Boolean> autoDeploy;
+
+    public Optional<Output<Boolean>> autoDeploy() {
+        return Optional.ofNullable(this.autoDeploy);
+    }
+
+    @Import(name="callerCredentialId")
+    private @Nullable Output<Integer> callerCredentialId;
+
+    public Optional<Output<Integer>> callerCredentialId() {
+        return Optional.ofNullable(this.callerCredentialId);
+    }
 
     /**
      * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
@@ -47,6 +65,8 @@ public final class AppGitRepositoryArgs extends com.pulumi.resources.ResourceArg
     private AppGitRepositoryArgs() {}
 
     private AppGitRepositoryArgs(AppGitRepositoryArgs $) {
+        this.autoDeploy = $.autoDeploy;
+        this.callerCredentialId = $.callerCredentialId;
         this.provider = $.provider;
         this.url = $.url;
     }
@@ -67,6 +87,24 @@ public final class AppGitRepositoryArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(AppGitRepositoryArgs defaults) {
             $ = new AppGitRepositoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder autoDeploy(@Nullable Output<Boolean> autoDeploy) {
+            $.autoDeploy = autoDeploy;
+            return this;
+        }
+
+        public Builder autoDeploy(Boolean autoDeploy) {
+            return autoDeploy(Output.of(autoDeploy));
+        }
+
+        public Builder callerCredentialId(@Nullable Output<Integer> callerCredentialId) {
+            $.callerCredentialId = callerCredentialId;
+            return this;
+        }
+
+        public Builder callerCredentialId(Integer callerCredentialId) {
+            return callerCredentialId(Output.of(callerCredentialId));
         }
 
         /**

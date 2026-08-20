@@ -12,7 +12,6 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceState;
 import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceConfig;
 import com.pulumi.databricks.outputs.AiGatewayModelProviderServiceProviderConfig;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,22 +24,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService")
 public class AiGatewayModelProviderService extends com.pulumi.resources.CustomResource {
-    /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    @Export(name="browseOnly", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> browseOnly;
-
-    /**
-     * @return (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    public Output<Boolean> browseOnly() {
-        return this.browseOnly;
-    }
     /**
      * User-provided description
      * 
@@ -156,16 +139,14 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return this.metastoreId;
     }
     /**
-     * Leaf identifier for the provider service (the unqualified name within the
-     * parent schema, e.g. &#34;openaiProd&#34;)
+     * Name for the model provider service, e.g. &#34;openaiProd&#34;
      * 
      */
     @Export(name="modelProviderServiceId", refs={String.class}, tree="[0]")
     private Output<String> modelProviderServiceId;
 
     /**
-     * @return Leaf identifier for the provider service (the unqualified name within the
-     * parent schema, e.g. &#34;openaiProd&#34;)
+     * @return Name for the model provider service, e.g. &#34;openaiProd&#34;
      * 
      */
     public Output<String> modelProviderServiceId() {
@@ -210,7 +191,7 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return this.owner;
     }
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -219,7 +200,7 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
     private Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 

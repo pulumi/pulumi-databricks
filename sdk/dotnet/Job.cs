@@ -314,6 +314,9 @@ namespace Pulumi.Databricks
         [Output("trigger")]
         public Output<Outputs.JobTrigger?> Trigger { get; private set; } = null!;
 
+        [Output("triggers")]
+        public Output<ImmutableArray<Outputs.JobTrigger>> Triggers { get; private set; } = null!;
+
         /// <summary>
         /// URL of the job on the given workspace
         /// </summary>
@@ -612,6 +615,14 @@ namespace Pulumi.Databricks
         [Input("trigger")]
         public Input<Inputs.JobTriggerArgs>? Trigger { get; set; }
 
+        [Input("triggers")]
+        private InputList<Inputs.JobTriggerArgs>? _triggers;
+        public InputList<Inputs.JobTriggerArgs> Triggers
+        {
+            get => _triggers ?? (_triggers = new InputList<Inputs.JobTriggerArgs>());
+            set => _triggers = value;
+        }
+
         [Input("usagePolicyId")]
         public Input<string>? UsagePolicyId { get; set; }
 
@@ -865,6 +876,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("trigger")]
         public Input<Inputs.JobTriggerGetArgs>? Trigger { get; set; }
+
+        [Input("triggers")]
+        private InputList<Inputs.JobTriggerGetArgs>? _triggers;
+        public InputList<Inputs.JobTriggerGetArgs> Triggers
+        {
+            get => _triggers ?? (_triggers = new InputList<Inputs.JobTriggerGetArgs>());
+            set => _triggers = value;
+        }
 
         /// <summary>
         /// URL of the job on the given workspace

@@ -19,7 +19,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride {
      */
     private String columnName;
     /**
-     * @return (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * @return (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      * 
      */
     private String pgType;
@@ -39,7 +39,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride {
         return this.columnName;
     }
     /**
-     * @return (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     * @return (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
      * 
      */
     public String pgType() {

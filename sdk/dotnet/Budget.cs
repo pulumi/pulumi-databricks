@@ -92,9 +92,15 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// ### Budgets for Genie
+    /// ### Budgets for AI Gateway Resources
     /// 
-    /// Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what's coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+    /// Budgets can also be scoped to track only spend through Unity AI Gateway endpoints by setting `ResourceType` to `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`.
+    /// 
+    /// This includes Databricks products that may use Unity AI Gateway endpoints, such as Databricks Genie.
+    /// 
+    /// ### AI Gateway Budget for all endpoints
+    /// 
+    /// Create a shared budget tracking all costs for Unity AI Gateway endpoints, and send an email when the budget threshold is exceeded.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -104,12 +110,52 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a Budget with resource tags matching the Genie AI Gateway resource.
-    ///     // Prerequisite: Enable AI Gateway Budget (Public Preview)
-    ///     // https://docs.databricks.com/aws/en/genie/budgets#requirements
+    ///     var aiGatewaySharedBudget = new Databricks.Budget("ai_gateway_shared_budget", new()
+    ///     {
+    ///         DisplayName = "aigw-shared-budget",
+    ///         ResourceType = "BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
+    ///         AlertConfigurations = new[]
+    ///         {
+    ///             new Databricks.Inputs.BudgetAlertConfigurationArgs
+    ///             {
+    ///                 QuantityThreshold = "10000",
+    ///                 QuantityType = "LIST_PRICE_DOLLARS_USD",
+    ///                 TriggerType = "CUMULATIVE_SPENDING_EXCEEDED",
+    ///                 TimePeriod = "MONTH",
+    ///                 ScopeType = "ALERT_CONFIGURATION_SCOPE_TYPE_SHARED",
+    ///                 ActionConfigurations = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.BudgetAlertConfigurationActionConfigurationArgs
+    ///                     {
+    ///                         ActionType = "EMAIL_NOTIFICATION",
+    ///                         Target = "abc@gmail.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Shared Genie budget
+    /// 
+    /// Genie budgets use the Unity AI Gateway resource type and the `databricks-product: genie` tag. Do not add other resource tags to a Genie budget.
+    /// 
+    /// A shared Genie budget for all users. Spend is tracked in aggregate.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
     ///     var genieSharedBudget = new Databricks.Budget("genie_shared_budget", new()
     ///     {
     ///         DisplayName = "genie-shared-budget",
+    ///         ResourceType = "BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
     ///         Filter = new Databricks.Inputs.BudgetFilterArgs
     ///         {
     ///             Tags = new[]
@@ -136,12 +182,86 @@ namespace Pulumi.Databricks
     ///                 QuantityType = "LIST_PRICE_DOLLARS_USD",
     ///                 TriggerType = "CUMULATIVE_SPENDING_EXCEEDED",
     ///                 TimePeriod = "MONTH",
+    ///                 ScopeType = "ALERT_CONFIGURATION_SCOPE_TYPE_SHARED",
     ///                 ActionConfigurations = new[]
     ///                 {
     ///                     new Databricks.Inputs.BudgetAlertConfigurationActionConfigurationArgs
     ///                     {
     ///                         ActionType = "EMAIL_NOTIFICATION",
     ///                         Target = "abc@gmail.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Per-user budget overrides with block usage
+    /// 
+    /// A per-user threshold applies to each user in the budget's scope. Use `PrincipalOverrides` to override the threshold for specific users, groups, or service principals. `BLOCK_USAGE` prevents further requests through Unity AI Gateway when the threshold is reached.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Find a group we want to apply
+    ///     var genie_power_users = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "genie-power-users",
+    ///     });
+    /// 
+    ///     // Create a budget for Genie of $100 per user, and override
+    ///     // the threshold to $300 per user for the genie-power-users group.
+    ///     var geniePerUserBudget = new Databricks.Budget("genie_per_user_budget", new()
+    ///     {
+    ///         DisplayName = "genie-tier-1-budget",
+    ///         ResourceType = "BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
+    ///         Filter = new Databricks.Inputs.BudgetFilterArgs
+    ///         {
+    ///             Tags = new[]
+    ///             {
+    ///                 new Databricks.Inputs.BudgetFilterTagArgs
+    ///                 {
+    ///                     Key = "databricks-product",
+    ///                     Value = new Databricks.Inputs.BudgetFilterTagValueArgs
+    ///                     {
+    ///                         Operator = "IN",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "genie",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         AlertConfigurations = new[]
+    ///         {
+    ///             new Databricks.Inputs.BudgetAlertConfigurationArgs
+    ///             {
+    ///                 QuantityThreshold = "100",
+    ///                 QuantityType = "LIST_PRICE_DOLLARS_USD",
+    ///                 TriggerType = "CUMULATIVE_SPENDING_EXCEEDED",
+    ///                 TimePeriod = "MONTH",
+    ///                 ScopeType = "ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER",
+    ///                 PrincipalOverrides = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.BudgetAlertConfigurationPrincipalOverrideArgs
+    ///                     {
+    ///                         PrincipalId = genie_power_usersDatabricksGroup.Id,
+    ///                         OverrideThreshold = "300",
+    ///                     },
+    ///                 },
+    ///                 ActionConfigurations = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.BudgetAlertConfigurationActionConfigurationArgs
+    ///                     {
+    ///                         ActionType = "BLOCK_USAGE",
     ///                     },
     ///                 },
     ///             },
@@ -187,6 +307,9 @@ namespace Pulumi.Databricks
         [Output("filter")]
         public Output<Outputs.BudgetFilter?> Filter { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+        /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
@@ -271,6 +394,9 @@ namespace Pulumi.Databricks
         [Input("filter")]
         public Input<Inputs.BudgetFilterArgs>? Filter { get; set; }
 
+        /// <summary>
+        /// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+        /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
@@ -317,6 +443,9 @@ namespace Pulumi.Databricks
         [Input("filter")]
         public Input<Inputs.BudgetFilterGetArgs>? Filter { get; set; }
 
+        /// <summary>
+        /// The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+        /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfigArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationCatalogArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfigArgs;
 import java.util.Objects;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionSourceConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionSourceConfigurationArgs Empty = new PipelineIngestionDefinitionSourceConfigurationArgs();
+
+    @Import(name="apiSourceConnectorConfig")
+    private @Nullable Output<PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfigArgs> apiSourceConnectorConfig;
+
+    public Optional<Output<PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfigArgs>> apiSourceConnectorConfig() {
+        return Optional.ofNullable(this.apiSourceConnectorConfig);
+    }
 
     /**
      * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
@@ -41,6 +49,7 @@ public final class PipelineIngestionDefinitionSourceConfigurationArgs extends co
     private PipelineIngestionDefinitionSourceConfigurationArgs() {}
 
     private PipelineIngestionDefinitionSourceConfigurationArgs(PipelineIngestionDefinitionSourceConfigurationArgs $) {
+        this.apiSourceConnectorConfig = $.apiSourceConnectorConfig;
         this.catalog = $.catalog;
         this.googleAdsConfig = $.googleAdsConfig;
     }
@@ -61,6 +70,15 @@ public final class PipelineIngestionDefinitionSourceConfigurationArgs extends co
 
         public Builder(PipelineIngestionDefinitionSourceConfigurationArgs defaults) {
             $ = new PipelineIngestionDefinitionSourceConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder apiSourceConnectorConfig(@Nullable Output<PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfigArgs> apiSourceConnectorConfig) {
+            $.apiSourceConnectorConfig = apiSourceConnectorConfig;
+            return this;
+        }
+
+        public Builder apiSourceConnectorConfig(PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfigArgs apiSourceConnectorConfig) {
+            return apiSourceConnectorConfig(Output.of(apiSourceConnectorConfig));
         }
 
         /**

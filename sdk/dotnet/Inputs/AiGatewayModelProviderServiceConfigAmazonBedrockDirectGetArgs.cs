@@ -13,8 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiGatewayModelProviderServiceConfigAmazonBedrockDirectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS access-key-pair auth. Mutually exclusive with `ServiceCredential`.
-        /// Supersedes the flat `AwsAccessKeyId` / `AwsSecretAccessKey` fields
+        /// AWS access-key-pair auth. Mutually exclusive with `ServiceCredential`
         /// </summary>
         [Input("awsAccessKey")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyGetArgs>? AwsAccessKey { get; set; }

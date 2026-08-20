@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionColumnSelectionArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionCustomUdfArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs;
 import java.lang.String;
 import java.util.List;
@@ -50,6 +51,21 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
     }
 
     /**
+     * Applies a registered Unity Catalog function row-wise to source columns
+     * 
+     */
+    @Import(name="customUdf")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionCustomUdfArgs> customUdf;
+
+    /**
+     * @return Applies a registered Unity Catalog function row-wise to source columns
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureFunctionCustomUdfArgs>> customUdf() {
+        return Optional.ofNullable(this.customUdf);
+    }
+
+    /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      * 
@@ -88,6 +104,7 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
     private FeatureEngineeringFeatureFunctionArgs(FeatureEngineeringFeatureFunctionArgs $) {
         this.aggregationFunction = $.aggregationFunction;
         this.columnSelection = $.columnSelection;
+        this.customUdf = $.customUdf;
         this.extraParameters = $.extraParameters;
         this.functionType = $.functionType;
     }
@@ -150,6 +167,27 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
          */
         public Builder columnSelection(FeatureEngineeringFeatureFunctionColumnSelectionArgs columnSelection) {
             return columnSelection(Output.of(columnSelection));
+        }
+
+        /**
+         * @param customUdf Applies a registered Unity Catalog function row-wise to source columns
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customUdf(@Nullable Output<FeatureEngineeringFeatureFunctionCustomUdfArgs> customUdf) {
+            $.customUdf = customUdf;
+            return this;
+        }
+
+        /**
+         * @param customUdf Applies a registered Unity Catalog function row-wise to source columns
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customUdf(FeatureEngineeringFeatureFunctionCustomUdfArgs customUdf) {
+            return customUdf(Output.of(customUdf));
         }
 
         /**

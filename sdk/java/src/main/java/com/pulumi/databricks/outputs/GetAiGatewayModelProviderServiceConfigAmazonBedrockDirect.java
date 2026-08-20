@@ -14,8 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
-     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
+     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey awsAccessKey;
@@ -41,8 +40,7 @@ public final class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
 
     private GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect() {}
     /**
-     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`.
-     * Supersedes the flat `awsAccessKeyId` / `awsSecretAccessKey` fields
+     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey> awsAccessKey() {

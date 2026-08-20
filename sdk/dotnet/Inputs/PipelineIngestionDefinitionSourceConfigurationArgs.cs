@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionSourceConfigurationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("apiSourceConnectorConfig")]
+        public Input<Inputs.PipelineIngestionDefinitionSourceConfigurationApiSourceConnectorConfigArgs>? ApiSourceConnectorConfig { get; set; }
+
         /// <summary>
         /// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `Storage` to `Catalog` or vice versa.  If pipeline was already created with `Catalog` set, the value could be changed.* (Conflicts with `Storage`).
         /// </summary>

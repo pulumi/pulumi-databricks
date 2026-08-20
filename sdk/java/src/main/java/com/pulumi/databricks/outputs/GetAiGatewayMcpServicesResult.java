@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayMcpServicesMcpService;
 import com.pulumi.databricks.outputs.GetAiGatewayMcpServicesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,7 +16,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiGatewayMcpServicesResult {
-    private @Nullable Boolean includeBrowse;
     private List<GetAiGatewayMcpServicesMcpService> mcpServices;
     private @Nullable Integer pageSize;
     private @Nullable String parent;
@@ -25,9 +23,6 @@ public final class GetAiGatewayMcpServicesResult {
     private @Nullable String view;
 
     private GetAiGatewayMcpServicesResult() {}
-    public Optional<Boolean> includeBrowse() {
-        return Optional.ofNullable(this.includeBrowse);
-    }
     public List<GetAiGatewayMcpServicesMcpService> mcpServices() {
         return this.mcpServices;
     }
@@ -53,7 +48,6 @@ public final class GetAiGatewayMcpServicesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean includeBrowse;
         private List<GetAiGatewayMcpServicesMcpService> mcpServices;
         private @Nullable Integer pageSize;
         private @Nullable String parent;
@@ -62,7 +56,6 @@ public final class GetAiGatewayMcpServicesResult {
         public Builder() {}
         public Builder(GetAiGatewayMcpServicesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.includeBrowse = defaults.includeBrowse;
     	      this.mcpServices = defaults.mcpServices;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
@@ -70,12 +63,6 @@ public final class GetAiGatewayMcpServicesResult {
     	      this.view = defaults.view;
         }
 
-        @CustomType.Setter
-        public Builder includeBrowse(@Nullable Boolean includeBrowse) {
-
-            this.includeBrowse = includeBrowse;
-            return this;
-        }
         @CustomType.Setter
         public Builder mcpServices(List<GetAiGatewayMcpServicesMcpService> mcpServices) {
             if (mcpServices == null) {
@@ -113,7 +100,6 @@ public final class GetAiGatewayMcpServicesResult {
         }
         public GetAiGatewayMcpServicesResult build() {
             final var _resultValue = new GetAiGatewayMcpServicesResult();
-            _resultValue.includeBrowse = includeBrowse;
             _resultValue.mcpServices = mcpServices;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;

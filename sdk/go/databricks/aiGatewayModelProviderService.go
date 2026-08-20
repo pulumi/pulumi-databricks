@@ -18,9 +18,6 @@ import (
 type AiGatewayModelProviderService struct {
 	pulumi.CustomResourceState
 
-	// (boolean) - Whether the caller sees only metadata available through the BROWSE
-	// privilege
-	BrowseOnly pulumi.BoolOutput `pulumi:"browseOnly"`
 	// User-provided description
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Behavioral configuration: provider connection, model catalog, and
@@ -43,8 +40,7 @@ type AiGatewayModelProviderService struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// (string) - Metastore hosting the provider service
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
-	// Leaf identifier for the provider service (the unqualified name within the
-	// parent schema, e.g. "openaiProd")
+	// Name for the model provider service, e.g. "openaiProd"
 	ModelProviderServiceId pulumi.StringOutput `pulumi:"modelProviderServiceId"`
 	// (string) - Resource name of the provider service.
 	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
@@ -55,7 +51,7 @@ type AiGatewayModelProviderService struct {
 	// The owner of the model provider service. Write-only; read owner via
 	// effective_owner
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -103,9 +99,6 @@ func GetAiGatewayModelProviderService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiGatewayModelProviderService resources.
 type aiGatewayModelProviderServiceState struct {
-	// (boolean) - Whether the caller sees only metadata available through the BROWSE
-	// privilege
-	BrowseOnly *bool `pulumi:"browseOnly"`
 	// User-provided description
 	Comment *string `pulumi:"comment"`
 	// Behavioral configuration: provider connection, model catalog, and
@@ -128,8 +121,7 @@ type aiGatewayModelProviderServiceState struct {
 	Etag *string `pulumi:"etag"`
 	// (string) - Metastore hosting the provider service
 	MetastoreId *string `pulumi:"metastoreId"`
-	// Leaf identifier for the provider service (the unqualified name within the
-	// parent schema, e.g. "openaiProd")
+	// Name for the model provider service, e.g. "openaiProd"
 	ModelProviderServiceId *string `pulumi:"modelProviderServiceId"`
 	// (string) - Resource name of the provider service.
 	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
@@ -140,7 +132,7 @@ type aiGatewayModelProviderServiceState struct {
 	// The owner of the model provider service. Write-only; read owner via
 	// effective_owner
 	Owner *string `pulumi:"owner"`
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent *string `pulumi:"parent"`
@@ -153,9 +145,6 @@ type aiGatewayModelProviderServiceState struct {
 }
 
 type AiGatewayModelProviderServiceState struct {
-	// (boolean) - Whether the caller sees only metadata available through the BROWSE
-	// privilege
-	BrowseOnly pulumi.BoolPtrInput
 	// User-provided description
 	Comment pulumi.StringPtrInput
 	// Behavioral configuration: provider connection, model catalog, and
@@ -178,8 +167,7 @@ type AiGatewayModelProviderServiceState struct {
 	Etag pulumi.StringPtrInput
 	// (string) - Metastore hosting the provider service
 	MetastoreId pulumi.StringPtrInput
-	// Leaf identifier for the provider service (the unqualified name within the
-	// parent schema, e.g. "openaiProd")
+	// Name for the model provider service, e.g. "openaiProd"
 	ModelProviderServiceId pulumi.StringPtrInput
 	// (string) - Resource name of the provider service.
 	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
@@ -190,7 +178,7 @@ type AiGatewayModelProviderServiceState struct {
 	// The owner of the model provider service. Write-only; read owner via
 	// effective_owner
 	Owner pulumi.StringPtrInput
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent pulumi.StringPtrInput
@@ -214,13 +202,12 @@ type aiGatewayModelProviderServiceArgs struct {
 	// contract. Required on CreateModelProviderService; on Update it is required
 	// only when `config` (or a `config.*` subpath) appears in `updateMask`
 	Config *AiGatewayModelProviderServiceConfig `pulumi:"config"`
-	// Leaf identifier for the provider service (the unqualified name within the
-	// parent schema, e.g. "openaiProd")
+	// Name for the model provider service, e.g. "openaiProd"
 	ModelProviderServiceId string `pulumi:"modelProviderServiceId"`
 	// The owner of the model provider service. Write-only; read owner via
 	// effective_owner
 	Owner *string `pulumi:"owner"`
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent string `pulumi:"parent"`
@@ -237,13 +224,12 @@ type AiGatewayModelProviderServiceArgs struct {
 	// contract. Required on CreateModelProviderService; on Update it is required
 	// only when `config` (or a `config.*` subpath) appears in `updateMask`
 	Config AiGatewayModelProviderServiceConfigPtrInput
-	// Leaf identifier for the provider service (the unqualified name within the
-	// parent schema, e.g. "openaiProd")
+	// Name for the model provider service, e.g. "openaiProd"
 	ModelProviderServiceId pulumi.StringInput
 	// The owner of the model provider service. Write-only; read owner via
 	// effective_owner
 	Owner pulumi.StringPtrInput
-	// Resource name of the parent schema.
+	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent pulumi.StringInput
@@ -338,12 +324,6 @@ func (o AiGatewayModelProviderServiceOutput) ToAiGatewayModelProviderServiceOutp
 	return o
 }
 
-// (boolean) - Whether the caller sees only metadata available through the BROWSE
-// privilege
-func (o AiGatewayModelProviderServiceOutput) BrowseOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.BoolOutput { return v.BrowseOnly }).(pulumi.BoolOutput)
-}
-
 // User-provided description
 func (o AiGatewayModelProviderServiceOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
@@ -387,8 +367,7 @@ func (o AiGatewayModelProviderServiceOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// Leaf identifier for the provider service (the unqualified name within the
-// parent schema, e.g. "openaiProd")
+// Name for the model provider service, e.g. "openaiProd"
 func (o AiGatewayModelProviderServiceOutput) ModelProviderServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.ModelProviderServiceId }).(pulumi.StringOutput)
 }
@@ -408,7 +387,7 @@ func (o AiGatewayModelProviderServiceOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Resource name of the parent schema.
+// Name of the parent schema.
 // Format: `schemas/{catalog}.{schema}`.
 // Each `{...}` component is capped at 255 characters individually
 func (o AiGatewayModelProviderServiceOutput) Parent() pulumi.StringOutput {

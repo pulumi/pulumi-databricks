@@ -13,6 +13,12 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobTriggerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration block to configure pause status. See continuous Configuration Block.
+        /// </summary>
+        [Input("continuous")]
+        public Input<Inputs.JobTriggerContinuousGetArgs>? Continuous { get; set; }
+
+        /// <summary>
         /// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         /// </summary>
         [Input("fileArrival")]
@@ -21,9 +27,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("model")]
         public Input<Inputs.JobTriggerModelGetArgs>? Model { get; set; }
 
-        /// <summary>
-        /// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `PauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `PauseStatus`.
-        /// </summary>
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 
@@ -32,6 +35,12 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("periodic")]
         public Input<Inputs.JobTriggerPeriodicGetArgs>? Periodic { get; set; }
+
+        /// <summary>
+        /// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.JobTriggerScheduleGetArgs>? Schedule { get; set; }
 
         [Input("sqlCondition")]
         public Input<Inputs.JobTriggerSqlConditionGetArgs>? SqlCondition { get; set; }

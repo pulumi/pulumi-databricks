@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class BudgetAlertConfigurationPrincipalOverrideArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Dollar amount that overrides the parent alert's `QuantityThreshold` for this principal.
+        /// </summary>
         [Input("overrideThreshold")]
         public Input<string>? OverrideThreshold { get; set; }
 
+        /// <summary>
+        /// Account-level principal id (user, group, or service principal).
+        /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
 

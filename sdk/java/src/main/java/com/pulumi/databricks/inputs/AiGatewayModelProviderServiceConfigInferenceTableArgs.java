@@ -64,7 +64,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTableArgs extends
     }
 
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -73,7 +73,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTableArgs extends
     private Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -211,7 +211,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTableArgs extends
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 
@@ -224,7 +224,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTableArgs extends
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 

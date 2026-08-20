@@ -90,11 +90,6 @@ namespace Pulumi.Databricks
     public sealed class GetAiGatewayMcpServiceResult
     {
         /// <summary>
-        /// (boolean) - Whether the caller sees only metadata available through the BROWSE
-        /// privilege
-        /// </summary>
-        public readonly bool BrowseOnly;
-        /// <summary>
         /// (string) - User-provided description
         /// </summary>
         public readonly string Comment;
@@ -131,7 +126,8 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
-        /// (string)
+        /// (string) - Name of the UC connection that hosts the MCP server, as
+        /// `connections/{catalog}.{schema}.{connection}`
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -150,8 +146,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetAiGatewayMcpServiceResult(
-            bool browseOnly,
-
             string comment,
 
             Outputs.GetAiGatewayMcpServiceConfigResult config,
@@ -176,7 +170,6 @@ namespace Pulumi.Databricks
 
             string updatedBy)
         {
-            BrowseOnly = browseOnly;
             Comment = comment;
             Config = config;
             CreateTime = createTime;

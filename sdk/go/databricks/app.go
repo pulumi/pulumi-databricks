@@ -93,7 +93,8 @@ type App struct {
 	// The creation time of the deployment.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The email of the user that created the deployment.
-	Creator pulumi.StringOutput `pulumi:"creator"`
+	Creator          pulumi.StringOutput       `pulumi:"creator"`
+	DefaultGitSource AppDefaultGitSourceOutput `pulumi:"defaultGitSource"`
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringOutput `pulumi:"defaultSourceCodePath"`
 	// The description of the app.
@@ -104,8 +105,10 @@ type App struct {
 	EffectiveUsagePolicyId pulumi.StringOutput `pulumi:"effectiveUsagePolicyId"`
 	// A list of effective api scopes granted to the user access token.
 	EffectiveUserApiScopes pulumi.StringArrayOutput `pulumi:"effectiveUserApiScopes"`
+	ForwardUserAccessToken pulumi.BoolOutput        `pulumi:"forwardUserAccessToken"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository AppGitRepositoryPtrOutput `pulumi:"gitRepository"`
+	GitSource     AppGitSourceOutput        `pulumi:"gitSource"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name      pulumi.StringOutput  `pulumi:"name"`
 	NoCompute pulumi.BoolPtrOutput `pulumi:"noCompute"`
@@ -123,8 +126,10 @@ type App struct {
 	// id of the app service principal
 	ServicePrincipalId pulumi.IntOutput `pulumi:"servicePrincipalId"`
 	// name of the app service principal
-	ServicePrincipalName pulumi.StringOutput    `pulumi:"servicePrincipalName"`
-	Space                pulumi.StringPtrOutput `pulumi:"space"`
+	ServicePrincipalName pulumi.StringOutput `pulumi:"servicePrincipalName"`
+	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	SourceCodePath pulumi.StringOutput    `pulumi:"sourceCodePath"`
+	Space          pulumi.StringPtrOutput `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayOutput `pulumi:"telemetryExportDestinations"`
 	// The URL of the thumbnail image for the app.
@@ -186,7 +191,8 @@ type appState struct {
 	// The creation time of the deployment.
 	CreateTime *string `pulumi:"createTime"`
 	// The email of the user that created the deployment.
-	Creator *string `pulumi:"creator"`
+	Creator          *string              `pulumi:"creator"`
+	DefaultGitSource *AppDefaultGitSource `pulumi:"defaultGitSource"`
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath *string `pulumi:"defaultSourceCodePath"`
 	// The description of the app.
@@ -197,8 +203,10 @@ type appState struct {
 	EffectiveUsagePolicyId *string `pulumi:"effectiveUsagePolicyId"`
 	// A list of effective api scopes granted to the user access token.
 	EffectiveUserApiScopes []string `pulumi:"effectiveUserApiScopes"`
+	ForwardUserAccessToken *bool    `pulumi:"forwardUserAccessToken"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository *AppGitRepository `pulumi:"gitRepository"`
+	GitSource     *AppGitSource     `pulumi:"gitSource"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name      *string `pulumi:"name"`
 	NoCompute *bool   `pulumi:"noCompute"`
@@ -217,7 +225,9 @@ type appState struct {
 	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
 	// name of the app service principal
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
-	Space                *string `pulumi:"space"`
+	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	SourceCodePath *string `pulumi:"sourceCodePath"`
+	Space          *string `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
 	// The URL of the thumbnail image for the app.
@@ -250,7 +260,8 @@ type AppState struct {
 	// The creation time of the deployment.
 	CreateTime pulumi.StringPtrInput
 	// The email of the user that created the deployment.
-	Creator pulumi.StringPtrInput
+	Creator          pulumi.StringPtrInput
+	DefaultGitSource AppDefaultGitSourcePtrInput
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringPtrInput
 	// The description of the app.
@@ -261,8 +272,10 @@ type AppState struct {
 	EffectiveUsagePolicyId pulumi.StringPtrInput
 	// A list of effective api scopes granted to the user access token.
 	EffectiveUserApiScopes pulumi.StringArrayInput
+	ForwardUserAccessToken pulumi.BoolPtrInput
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository AppGitRepositoryPtrInput
+	GitSource     AppGitSourcePtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name      pulumi.StringPtrInput
 	NoCompute pulumi.BoolPtrInput
@@ -281,7 +294,9 @@ type AppState struct {
 	ServicePrincipalId pulumi.IntPtrInput
 	// name of the app service principal
 	ServicePrincipalName pulumi.StringPtrInput
-	Space                pulumi.StringPtrInput
+	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	SourceCodePath pulumi.StringPtrInput
+	Space          pulumi.StringPtrInput
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
 	// The URL of the thumbnail image for the app.
@@ -310,16 +325,20 @@ type appArgs struct {
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize *string `pulumi:"computeSize"`
 	// The description of the app.
-	Description *string `pulumi:"description"`
+	Description            *string `pulumi:"description"`
+	ForwardUserAccessToken *bool   `pulumi:"forwardUserAccessToken"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository *AppGitRepository `pulumi:"gitRepository"`
+	GitSource     *AppGitSource     `pulumi:"gitSource"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name           *string            `pulumi:"name"`
 	NoCompute      *bool              `pulumi:"noCompute"`
 	ProviderConfig *AppProviderConfig `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
 	Resources []AppResource `pulumi:"resources"`
-	Space     *string       `pulumi:"space"`
+	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	SourceCodePath *string `pulumi:"sourceCodePath"`
+	Space          *string `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
 	// The Usage Policy ID set for this resource.
@@ -337,16 +356,20 @@ type AppArgs struct {
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize pulumi.StringPtrInput
 	// The description of the app.
-	Description pulumi.StringPtrInput
+	Description            pulumi.StringPtrInput
+	ForwardUserAccessToken pulumi.BoolPtrInput
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository AppGitRepositoryPtrInput
+	GitSource     AppGitSourcePtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name           pulumi.StringPtrInput
 	NoCompute      pulumi.BoolPtrInput
 	ProviderConfig AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
 	Resources AppResourceArrayInput
-	Space     pulumi.StringPtrInput
+	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	SourceCodePath pulumi.StringPtrInput
+	Space          pulumi.StringPtrInput
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
 	// The Usage Policy ID set for this resource.
@@ -485,6 +508,10 @@ func (o AppOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
+func (o AppOutput) DefaultGitSource() AppDefaultGitSourceOutput {
+	return o.ApplyT(func(v *App) AppDefaultGitSourceOutput { return v.DefaultGitSource }).(AppDefaultGitSourceOutput)
+}
+
 // The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 func (o AppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DefaultSourceCodePath }).(pulumi.StringOutput)
@@ -510,9 +537,17 @@ func (o AppOutput) EffectiveUserApiScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.EffectiveUserApiScopes }).(pulumi.StringArrayOutput)
 }
 
+func (o AppOutput) ForwardUserAccessToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v *App) pulumi.BoolOutput { return v.ForwardUserAccessToken }).(pulumi.BoolOutput)
+}
+
 // Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 func (o AppOutput) GitRepository() AppGitRepositoryPtrOutput {
 	return o.ApplyT(func(v *App) AppGitRepositoryPtrOutput { return v.GitRepository }).(AppGitRepositoryPtrOutput)
+}
+
+func (o AppOutput) GitSource() AppGitSourceOutput {
+	return o.ApplyT(func(v *App) AppGitSourceOutput { return v.GitSource }).(AppGitSourceOutput)
 }
 
 // The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -561,6 +596,11 @@ func (o AppOutput) ServicePrincipalId() pulumi.IntOutput {
 // name of the app service principal
 func (o AppOutput) ServicePrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ServicePrincipalName }).(pulumi.StringOutput)
+}
+
+// The snapshotted workspace file system path of the source code loaded by the deployed app.
+func (o AppOutput) SourceCodePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.SourceCodePath }).(pulumi.StringOutput)
 }
 
 func (o AppOutput) Space() pulumi.StringPtrOutput {

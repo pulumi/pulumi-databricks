@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions;
@@ -22,11 +25,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
+    private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions apiSourceConnectorOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions confluenceOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions gdriveOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions googleAdsOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions jiraOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions kafkaOptions;
+    private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions linkedinAdsOptions;
+    private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions marketoOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions metaAdsOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions outlookOptions;
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions redditAdsOptions;
@@ -36,6 +42,9 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
     private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions zendeskSupportOptions;
 
     private PipelineIngestionDefinitionObjectTableConnectorOptions() {}
+    public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions> apiSourceConnectorOptions() {
+        return Optional.ofNullable(this.apiSourceConnectorOptions);
+    }
     public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions> confluenceOptions() {
         return Optional.ofNullable(this.confluenceOptions);
     }
@@ -50,6 +59,12 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
     }
     public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions> kafkaOptions() {
         return Optional.ofNullable(this.kafkaOptions);
+    }
+    public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions> linkedinAdsOptions() {
+        return Optional.ofNullable(this.linkedinAdsOptions);
+    }
+    public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions> marketoOptions() {
+        return Optional.ofNullable(this.marketoOptions);
     }
     public Optional<PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions> metaAdsOptions() {
         return Optional.ofNullable(this.metaAdsOptions);
@@ -82,11 +97,14 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions apiSourceConnectorOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions confluenceOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions gdriveOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions googleAdsOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions jiraOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions kafkaOptions;
+        private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions linkedinAdsOptions;
+        private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions marketoOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions metaAdsOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions outlookOptions;
         private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions redditAdsOptions;
@@ -97,11 +115,14 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectTableConnectorOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiSourceConnectorOptions = defaults.apiSourceConnectorOptions;
     	      this.confluenceOptions = defaults.confluenceOptions;
     	      this.gdriveOptions = defaults.gdriveOptions;
     	      this.googleAdsOptions = defaults.googleAdsOptions;
     	      this.jiraOptions = defaults.jiraOptions;
     	      this.kafkaOptions = defaults.kafkaOptions;
+    	      this.linkedinAdsOptions = defaults.linkedinAdsOptions;
+    	      this.marketoOptions = defaults.marketoOptions;
     	      this.metaAdsOptions = defaults.metaAdsOptions;
     	      this.outlookOptions = defaults.outlookOptions;
     	      this.redditAdsOptions = defaults.redditAdsOptions;
@@ -111,6 +132,12 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
     	      this.zendeskSupportOptions = defaults.zendeskSupportOptions;
         }
 
+        @CustomType.Setter
+        public Builder apiSourceConnectorOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsApiSourceConnectorOptions apiSourceConnectorOptions) {
+
+            this.apiSourceConnectorOptions = apiSourceConnectorOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder confluenceOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions confluenceOptions) {
 
@@ -139,6 +166,18 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
         public Builder kafkaOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions kafkaOptions) {
 
             this.kafkaOptions = kafkaOptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder linkedinAdsOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsLinkedinAdsOptions linkedinAdsOptions) {
+
+            this.linkedinAdsOptions = linkedinAdsOptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketoOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions marketoOptions) {
+
+            this.marketoOptions = marketoOptions;
             return this;
         }
         @CustomType.Setter
@@ -185,11 +224,14 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptions {
         }
         public PipelineIngestionDefinitionObjectTableConnectorOptions build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectTableConnectorOptions();
+            _resultValue.apiSourceConnectorOptions = apiSourceConnectorOptions;
             _resultValue.confluenceOptions = confluenceOptions;
             _resultValue.gdriveOptions = gdriveOptions;
             _resultValue.googleAdsOptions = googleAdsOptions;
             _resultValue.jiraOptions = jiraOptions;
             _resultValue.kafkaOptions = kafkaOptions;
+            _resultValue.linkedinAdsOptions = linkedinAdsOptions;
+            _resultValue.marketoOptions = marketoOptions;
             _resultValue.metaAdsOptions = metaAdsOptions;
             _resultValue.outlookOptions = outlookOptions;
             _resultValue.redditAdsOptions = redditAdsOptions;

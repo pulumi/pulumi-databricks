@@ -13,11 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectSchemaConnectorOptions
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsApiSourceConnectorOptions? ApiSourceConnectorOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptions? ConfluenceOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions? GdriveOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions? GoogleAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions? JiraOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions? KafkaOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions? LinkedinAdsOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions? MarketoOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions? MetaAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions? OutlookOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions? RedditAdsOptions;
@@ -28,6 +31,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectSchemaConnectorOptions(
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsApiSourceConnectorOptions? apiSourceConnectorOptions,
+
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptions? confluenceOptions,
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions? gdriveOptions,
@@ -37,6 +42,10 @@ namespace Pulumi.Databricks.Outputs
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions? jiraOptions,
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions? kafkaOptions,
+
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsLinkedinAdsOptions? linkedinAdsOptions,
+
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions? marketoOptions,
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions? metaAdsOptions,
 
@@ -52,11 +61,14 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions? zendeskSupportOptions)
         {
+            ApiSourceConnectorOptions = apiSourceConnectorOptions;
             ConfluenceOptions = confluenceOptions;
             GdriveOptions = gdriveOptions;
             GoogleAdsOptions = googleAdsOptions;
             JiraOptions = jiraOptions;
             KafkaOptions = kafkaOptions;
+            LinkedinAdsOptions = linkedinAdsOptions;
+            MarketoOptions = marketoOptions;
             MetaAdsOptions = metaAdsOptions;
             OutlookOptions = outlookOptions;
             RedditAdsOptions = redditAdsOptions;

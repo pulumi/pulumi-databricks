@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingTelemetryConfig
     {
+        public readonly ImmutableArray<string> EnabledTelemetryFeatures;
         /// <summary>
         /// Block describing the configuration of usage tracking. Consists of the following attributes:
         /// </summary>
@@ -22,12 +23,15 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingTelemetryConfig(
+            ImmutableArray<string> enabledTelemetryFeatures,
+
             Outputs.ModelServingTelemetryConfigInferenceTableConfig? inferenceTableConfig,
 
             Outputs.ModelServingTelemetryConfigTableNames? tableNames,
 
             string? telemetryProfileId)
         {
+            EnabledTelemetryFeatures = enabledTelemetryFeatures;
             InferenceTableConfig = inferenceTableConfig;
             TableNames = tableNames;
             TelemetryProfileId = telemetryProfileId;

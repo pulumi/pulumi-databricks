@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppPendingDeploymentGitSourceGitRepository
     {
+        public readonly bool? AutoDeploy;
+        public readonly int? CallerCredentialId;
         /// <summary>
         /// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         /// </summary>
@@ -24,10 +26,16 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private AppPendingDeploymentGitSourceGitRepository(
+            bool? autoDeploy,
+
+            int? callerCredentialId,
+
             string provider,
 
             string url)
         {
+            AutoDeploy = autoDeploy;
+            CallerCredentialId = callerCredentialId;
             Provider = provider;
             Url = url;
         }

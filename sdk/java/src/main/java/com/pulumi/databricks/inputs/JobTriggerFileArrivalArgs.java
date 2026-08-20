@@ -17,47 +17,31 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
 
     public static final JobTriggerFileArrivalArgs Empty = new JobTriggerFileArrivalArgs();
 
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     * 
-     */
     @Import(name="minTimeBetweenTriggersSeconds")
     private @Nullable Output<Integer> minTimeBetweenTriggersSeconds;
 
-    /**
-     * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     * 
-     */
     public Optional<Output<Integer>> minTimeBetweenTriggersSeconds() {
         return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
 
     /**
-     * URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
+     * @return URL of the job on the given workspace
      * 
      */
     public Output<String> url() {
         return this.url;
     }
 
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     * 
-     */
     @Import(name="waitAfterLastChangeSeconds")
     private @Nullable Output<Integer> waitAfterLastChangeSeconds;
 
-    /**
-     * @return If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     * 
-     */
     public Optional<Output<Integer>> waitAfterLastChangeSeconds() {
         return Optional.ofNullable(this.waitAfterLastChangeSeconds);
     }
@@ -88,29 +72,17 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
             $ = new JobTriggerFileArrivalArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param minTimeBetweenTriggersSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTimeBetweenTriggersSeconds(@Nullable Output<Integer> minTimeBetweenTriggersSeconds) {
             $.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
 
-        /**
-         * @param minTimeBetweenTriggersSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTimeBetweenTriggersSeconds(Integer minTimeBetweenTriggersSeconds) {
             return minTimeBetweenTriggersSeconds(Output.of(minTimeBetweenTriggersSeconds));
         }
 
         /**
-         * @param url URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
+         * @param url URL of the job on the given workspace
          * 
          * @return builder
          * 
@@ -121,7 +93,7 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
+         * @param url URL of the job on the given workspace
          * 
          * @return builder
          * 
@@ -130,23 +102,11 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
             return url(Output.of(url));
         }
 
-        /**
-         * @param waitAfterLastChangeSeconds If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitAfterLastChangeSeconds(@Nullable Output<Integer> waitAfterLastChangeSeconds) {
             $.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
             return this;
         }
 
-        /**
-         * @param waitAfterLastChangeSeconds If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitAfterLastChangeSeconds(Integer waitAfterLastChangeSeconds) {
             return waitAfterLastChangeSeconds(Output.of(waitAfterLastChangeSeconds));
         }

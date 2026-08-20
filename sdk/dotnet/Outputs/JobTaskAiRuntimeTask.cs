@@ -15,7 +15,9 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? CodeSourcePath;
         public readonly ImmutableArray<Outputs.JobTaskAiRuntimeTaskDeployment> Deployments;
+        public readonly string? DockerImageUrl;
         public readonly string Experiment;
+        public readonly string? MlflowArtifactLocation;
         public readonly string? MlflowExperimentDirectory;
         public readonly string? MlflowRun;
 
@@ -25,7 +27,11 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.JobTaskAiRuntimeTaskDeployment> deployments,
 
+            string? dockerImageUrl,
+
             string experiment,
+
+            string? mlflowArtifactLocation,
 
             string? mlflowExperimentDirectory,
 
@@ -33,7 +39,9 @@ namespace Pulumi.Databricks.Outputs
         {
             CodeSourcePath = codeSourcePath;
             Deployments = deployments;
+            DockerImageUrl = dockerImageUrl;
             Experiment = experiment;
+            MlflowArtifactLocation = mlflowArtifactLocation;
             MlflowExperimentDirectory = mlflowExperimentDirectory;
             MlflowRun = mlflowRun;
         }

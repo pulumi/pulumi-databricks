@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureFunctionColumnSelectionGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Column name from source to select as the feature value
-        /// </summary>
         [Input("column", required: true)]
         public Input<string> Column { get; set; } = null!;
 

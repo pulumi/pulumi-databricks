@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AiGatewayModelServiceConfigArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelServiceProviderConfigArgs;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,23 +17,6 @@ import javax.annotation.Nullable;
 public final class AiGatewayModelServiceState extends com.pulumi.resources.ResourceArgs {
 
     public static final AiGatewayModelServiceState Empty = new AiGatewayModelServiceState();
-
-    /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    @Import(name="browseOnly")
-    private @Nullable Output<Boolean> browseOnly;
-
-    /**
-     * @return (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    public Optional<Output<Boolean>> browseOnly() {
-        return Optional.ofNullable(this.browseOnly);
-    }
 
     /**
      * User-provided description
@@ -158,16 +140,14 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Leaf identifier for the model service (the unqualified name within the
-     * parent schema, e.g. &#34;myModelService&#34;)
+     * Name for the model service, e.g. &#34;myModelService&#34;
      * 
      */
     @Import(name="modelServiceId")
     private @Nullable Output<String> modelServiceId;
 
     /**
-     * @return Leaf identifier for the model service (the unqualified name within the
-     * parent schema, e.g. &#34;myModelService&#34;)
+     * @return Name for the model service, e.g. &#34;myModelService&#34;
      * 
      */
     public Optional<Output<String>> modelServiceId() {
@@ -213,7 +193,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -222,7 +202,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     private @Nullable Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -298,7 +278,6 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     private AiGatewayModelServiceState() {}
 
     private AiGatewayModelServiceState(AiGatewayModelServiceState $) {
-        this.browseOnly = $.browseOnly;
         this.comment = $.comment;
         this.config = $.config;
         this.createTime = $.createTime;
@@ -332,29 +311,6 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
 
         public Builder(AiGatewayModelServiceState defaults) {
             $ = new AiGatewayModelServiceState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param browseOnly (boolean) - Whether the caller sees only metadata available through the BROWSE
-         * privilege
-         * 
-         * @return builder
-         * 
-         */
-        public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
-            $.browseOnly = browseOnly;
-            return this;
-        }
-
-        /**
-         * @param browseOnly (boolean) - Whether the caller sees only metadata available through the BROWSE
-         * privilege
-         * 
-         * @return builder
-         * 
-         */
-        public Builder browseOnly(Boolean browseOnly) {
-            return browseOnly(Output.of(browseOnly));
         }
 
         /**
@@ -521,8 +477,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param modelServiceId Leaf identifier for the model service (the unqualified name within the
-         * parent schema, e.g. &#34;myModelService&#34;)
+         * @param modelServiceId Name for the model service, e.g. &#34;myModelService&#34;
          * 
          * @return builder
          * 
@@ -533,8 +488,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param modelServiceId Leaf identifier for the model service (the unqualified name within the
-         * parent schema, e.g. &#34;myModelService&#34;)
+         * @param modelServiceId Name for the model service, e.g. &#34;myModelService&#34;
          * 
          * @return builder
          * 
@@ -594,7 +548,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 
@@ -607,7 +561,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 

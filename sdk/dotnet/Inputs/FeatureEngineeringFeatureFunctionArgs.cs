@@ -24,6 +24,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("columnSelection")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionColumnSelectionArgs>? ColumnSelection { get; set; }
 
+        /// <summary>
+        /// Applies a registered Unity Catalog function row-wise to source columns
+        /// </summary>
+        [Input("customUdf")]
+        public Input<Inputs.FeatureEngineeringFeatureFunctionCustomUdfArgs>? CustomUdf { get; set; }
+
         [Input("extraParameters")]
         private InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs>? _extraParameters;
 

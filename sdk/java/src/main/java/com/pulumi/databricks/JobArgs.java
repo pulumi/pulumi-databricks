@@ -676,6 +676,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.trigger);
     }
 
+    @Import(name="triggers")
+    private @Nullable Output<List<JobTriggerArgs>> triggers;
+
+    public Optional<Output<List<JobTriggerArgs>>> triggers() {
+        return Optional.ofNullable(this.triggers);
+    }
+
     @Import(name="usagePolicyId")
     private @Nullable Output<String> usagePolicyId;
 
@@ -742,6 +749,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.tasks = $.tasks;
         this.timeoutSeconds = $.timeoutSeconds;
         this.trigger = $.trigger;
+        this.triggers = $.triggers;
         this.usagePolicyId = $.usagePolicyId;
         this.webhookNotifications = $.webhookNotifications;
     }
@@ -1659,6 +1667,19 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder trigger(JobTriggerArgs trigger) {
             return trigger(Output.of(trigger));
+        }
+
+        public Builder triggers(@Nullable Output<List<JobTriggerArgs>> triggers) {
+            $.triggers = triggers;
+            return this;
+        }
+
+        public Builder triggers(List<JobTriggerArgs> triggers) {
+            return triggers(Output.of(triggers));
+        }
+
+        public Builder triggers(JobTriggerArgs... triggers) {
+            return triggers(List.of(triggers));
         }
 
         public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {

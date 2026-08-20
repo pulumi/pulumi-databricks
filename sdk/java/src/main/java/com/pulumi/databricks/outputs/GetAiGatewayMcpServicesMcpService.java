@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAiGatewayMcpServicesMcpServiceConfig;
 import com.pulumi.databricks.outputs.GetAiGatewayMcpServicesMcpServiceProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,12 +14,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiGatewayMcpServicesMcpService {
-    /**
-     * @return (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    private Boolean browseOnly;
     /**
      * @return (string) - User-provided description
      * 
@@ -65,7 +58,8 @@ public final class GetAiGatewayMcpServicesMcpService {
      */
     private String metastoreId;
     /**
-     * @return (string)
+     * @return (string) - Name of the UC connection that hosts the MCP server, as
+     * `connections/{catalog}.{schema}.{connection}`
      * 
      */
     private String name;
@@ -91,14 +85,6 @@ public final class GetAiGatewayMcpServicesMcpService {
     private String updatedBy;
 
     private GetAiGatewayMcpServicesMcpService() {}
-    /**
-     * @return (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     * 
-     */
-    public Boolean browseOnly() {
-        return this.browseOnly;
-    }
     /**
      * @return (string) - User-provided description
      * 
@@ -157,7 +143,8 @@ public final class GetAiGatewayMcpServicesMcpService {
         return this.metastoreId;
     }
     /**
-     * @return (string)
+     * @return (string) - Name of the UC connection that hosts the MCP server, as
+     * `connections/{catalog}.{schema}.{connection}`
      * 
      */
     public String name() {
@@ -201,7 +188,6 @@ public final class GetAiGatewayMcpServicesMcpService {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean browseOnly;
         private String comment;
         private GetAiGatewayMcpServicesMcpServiceConfig config;
         private String createTime;
@@ -217,7 +203,6 @@ public final class GetAiGatewayMcpServicesMcpService {
         public Builder() {}
         public Builder(GetAiGatewayMcpServicesMcpService defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.browseOnly = defaults.browseOnly;
     	      this.comment = defaults.comment;
     	      this.config = defaults.config;
     	      this.createTime = defaults.createTime;
@@ -232,14 +217,6 @@ public final class GetAiGatewayMcpServicesMcpService {
     	      this.updatedBy = defaults.updatedBy;
         }
 
-        @CustomType.Setter
-        public Builder browseOnly(Boolean browseOnly) {
-            if (browseOnly == null) {
-              throw new MissingRequiredPropertyException("GetAiGatewayMcpServicesMcpService", "browseOnly");
-            }
-            this.browseOnly = browseOnly;
-            return this;
-        }
         @CustomType.Setter
         public Builder comment(String comment) {
             if (comment == null) {
@@ -336,7 +313,6 @@ public final class GetAiGatewayMcpServicesMcpService {
         }
         public GetAiGatewayMcpServicesMcpService build() {
             final var _resultValue = new GetAiGatewayMcpServicesMcpService();
-            _resultValue.browseOnly = browseOnly;
             _resultValue.comment = comment;
             _resultValue.config = config;
             _resultValue.createTime = createTime;

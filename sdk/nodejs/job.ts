@@ -262,6 +262,7 @@ export class Job extends pulumi.CustomResource {
      * The conditions that triggers the job to start. See trigger Configuration Block below.
      */
     declare public readonly trigger: pulumi.Output<outputs.JobTrigger | undefined>;
+    declare public readonly triggers: pulumi.Output<outputs.JobTrigger[] | undefined>;
     /**
      * URL of the job on the given workspace
      */
@@ -326,6 +327,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tasks"] = state?.tasks;
             resourceInputs["timeoutSeconds"] = state?.timeoutSeconds;
             resourceInputs["trigger"] = state?.trigger;
+            resourceInputs["triggers"] = state?.triggers;
             resourceInputs["url"] = state?.url;
             resourceInputs["usagePolicyId"] = state?.usagePolicyId;
             resourceInputs["webhookNotifications"] = state?.webhookNotifications;
@@ -372,6 +374,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tasks"] = args?.tasks;
             resourceInputs["timeoutSeconds"] = args?.timeoutSeconds;
             resourceInputs["trigger"] = args?.trigger;
+            resourceInputs["triggers"] = args?.triggers;
             resourceInputs["usagePolicyId"] = args?.usagePolicyId;
             resourceInputs["webhookNotifications"] = args?.webhookNotifications;
             resourceInputs["url"] = undefined /*out*/;
@@ -539,6 +542,7 @@ export interface JobState {
      * The conditions that triggers the job to start. See trigger Configuration Block below.
      */
     trigger?: pulumi.Input<inputs.JobTrigger | undefined>;
+    triggers?: pulumi.Input<pulumi.Input<inputs.JobTrigger>[] | undefined>;
     /**
      * URL of the job on the given workspace
      */
@@ -708,6 +712,7 @@ export interface JobArgs {
      * The conditions that triggers the job to start. See trigger Configuration Block below.
      */
     trigger?: pulumi.Input<inputs.JobTrigger | undefined>;
+    triggers?: pulumi.Input<pulumi.Input<inputs.JobTrigger>[] | undefined>;
     usagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.

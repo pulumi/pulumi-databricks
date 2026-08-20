@@ -18,13 +18,6 @@ namespace Pulumi.Databricks
     public partial class AiGatewayMcpService : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (boolean) - Whether the caller sees only metadata available through the BROWSE
-        /// privilege
-        /// </summary>
-        [Output("browseOnly")]
-        public Output<bool> BrowseOnly { get; private set; } = null!;
-
-        /// <summary>
         /// User-provided description
         /// </summary>
         [Output("comment")]
@@ -69,8 +62,7 @@ namespace Pulumi.Databricks
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Leaf identifier for the MCP service (the unqualified name within the
-        /// parent schema, e.g. "MyMcpService")
+        /// Name for the MCP service, e.g. "MyMcpService"
         /// </summary>
         [Output("mcpServiceId")]
         public Output<string> McpServiceId { get; private set; } = null!;
@@ -98,7 +90,7 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the parent schema.
+        /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
         /// </summary>
@@ -185,8 +177,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AiGatewayMcpServiceConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Leaf identifier for the MCP service (the unqualified name within the
-        /// parent schema, e.g. "MyMcpService")
+        /// Name for the MCP service, e.g. "MyMcpService"
         /// </summary>
         [Input("mcpServiceId", required: true)]
         public Input<string> McpServiceId { get; set; } = null!;
@@ -198,7 +189,7 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// Resource name of the parent schema.
+        /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
         /// </summary>
@@ -219,13 +210,6 @@ namespace Pulumi.Databricks
 
     public sealed class AiGatewayMcpServiceState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (boolean) - Whether the caller sees only metadata available through the BROWSE
-        /// privilege
-        /// </summary>
-        [Input("browseOnly")]
-        public Input<bool>? BrowseOnly { get; set; }
-
         /// <summary>
         /// User-provided description
         /// </summary>
@@ -271,8 +255,7 @@ namespace Pulumi.Databricks
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Leaf identifier for the MCP service (the unqualified name within the
-        /// parent schema, e.g. "MyMcpService")
+        /// Name for the MCP service, e.g. "MyMcpService"
         /// </summary>
         [Input("mcpServiceId")]
         public Input<string>? McpServiceId { get; set; }
@@ -300,7 +283,7 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// Resource name of the parent schema.
+        /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
         /// </summary>

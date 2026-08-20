@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling {
     /**
-     * @return (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * @return (string) - Delay is not currently supported for Sawtooth windows
      * 
      */
     private @Nullable String delay;
@@ -25,8 +24,7 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
 
     private GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling() {}
     /**
-     * @return (string) - The delay applied to the end of the window (must be non-negative).
-     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     * @return (string) - Delay is not currently supported for Sawtooth windows
      * 
      */
     public Optional<String> delay() {

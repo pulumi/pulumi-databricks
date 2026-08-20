@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunction;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionColumnSelection;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionCustomUdf;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionExtraParameter;
 import java.lang.String;
 import java.util.List;
@@ -25,6 +26,11 @@ public final class FeatureEngineeringFeatureFunction {
      * 
      */
     private @Nullable FeatureEngineeringFeatureFunctionColumnSelection columnSelection;
+    /**
+     * @return Applies a registered Unity Catalog function row-wise to source columns
+     * 
+     */
+    private @Nullable FeatureEngineeringFeatureFunctionCustomUdf customUdf;
     /**
      * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -54,6 +60,13 @@ public final class FeatureEngineeringFeatureFunction {
         return Optional.ofNullable(this.columnSelection);
     }
     /**
+     * @return Applies a registered Unity Catalog function row-wise to source columns
+     * 
+     */
+    public Optional<FeatureEngineeringFeatureFunctionCustomUdf> customUdf() {
+        return Optional.ofNullable(this.customUdf);
+    }
+    /**
      * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      * 
@@ -81,6 +94,7 @@ public final class FeatureEngineeringFeatureFunction {
     public static final class Builder {
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunction aggregationFunction;
         private @Nullable FeatureEngineeringFeatureFunctionColumnSelection columnSelection;
+        private @Nullable FeatureEngineeringFeatureFunctionCustomUdf customUdf;
         private @Nullable List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters;
         private @Nullable String functionType;
         public Builder() {}
@@ -88,6 +102,7 @@ public final class FeatureEngineeringFeatureFunction {
     	      Objects.requireNonNull(defaults);
     	      this.aggregationFunction = defaults.aggregationFunction;
     	      this.columnSelection = defaults.columnSelection;
+    	      this.customUdf = defaults.customUdf;
     	      this.extraParameters = defaults.extraParameters;
     	      this.functionType = defaults.functionType;
         }
@@ -102,6 +117,12 @@ public final class FeatureEngineeringFeatureFunction {
         public Builder columnSelection(@Nullable FeatureEngineeringFeatureFunctionColumnSelection columnSelection) {
 
             this.columnSelection = columnSelection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customUdf(@Nullable FeatureEngineeringFeatureFunctionCustomUdf customUdf) {
+
+            this.customUdf = customUdf;
             return this;
         }
         @CustomType.Setter
@@ -123,6 +144,7 @@ public final class FeatureEngineeringFeatureFunction {
             final var _resultValue = new FeatureEngineeringFeatureFunction();
             _resultValue.aggregationFunction = aggregationFunction;
             _resultValue.columnSelection = columnSelection;
+            _resultValue.customUdf = customUdf;
             _resultValue.extraParameters = extraParameters;
             _resultValue.functionType = functionType;
             return _resultValue;

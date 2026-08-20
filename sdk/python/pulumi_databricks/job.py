@@ -62,6 +62,7 @@ class JobArgs:
                  tasks: pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  trigger: pulumi.Input[Optional['JobTriggerArgs']] = None,
+                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input['JobTriggerArgs']]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  webhook_notifications: pulumi.Input[Optional['JobWebhookNotificationsArgs']] = None):
         """
@@ -216,6 +217,8 @@ class JobArgs:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if trigger is not None:
             pulumi.set(__self__, "trigger", trigger)
+        if triggers is not None:
+            pulumi.set(__self__, "triggers", triggers)
         if usage_policy_id is not None:
             pulumi.set(__self__, "usage_policy_id", usage_policy_id)
         if webhook_notifications is not None:
@@ -682,6 +685,15 @@ class JobArgs:
         pulumi.set(self, "trigger", value)
 
     @_builtins.property
+    @pulumi.getter
+    def triggers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTriggerArgs']]]]:
+        return pulumi.get(self, "triggers")
+
+    @triggers.setter
+    def triggers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTriggerArgs']]]]):
+        pulumi.set(self, "triggers", value)
+
+    @_builtins.property
     @pulumi.getter(name="usagePolicyId")
     def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "usage_policy_id")
@@ -747,6 +759,7 @@ class _JobState:
                  tasks: pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  trigger: pulumi.Input[Optional['JobTriggerArgs']] = None,
+                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input['JobTriggerArgs']]]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  webhook_notifications: pulumi.Input[Optional['JobWebhookNotificationsArgs']] = None):
@@ -903,6 +916,8 @@ class _JobState:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if trigger is not None:
             pulumi.set(__self__, "trigger", trigger)
+        if triggers is not None:
+            pulumi.set(__self__, "triggers", triggers)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if usage_policy_id is not None:
@@ -1372,6 +1387,15 @@ class _JobState:
 
     @_builtins.property
     @pulumi.getter
+    def triggers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTriggerArgs']]]]:
+        return pulumi.get(self, "triggers")
+
+    @triggers.setter
+    def triggers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTriggerArgs']]]]):
+        pulumi.set(self, "triggers", value)
+
+    @_builtins.property
+    @pulumi.getter
     def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the job on the given workspace
@@ -1451,6 +1475,7 @@ class Job(pulumi.CustomResource):
                  tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
                  timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
+                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None,
                  __props__=None):
@@ -1697,6 +1722,7 @@ class Job(pulumi.CustomResource):
                  tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
                  timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
+                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None,
                  __props__=None):
@@ -1749,6 +1775,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["tasks"] = tasks
             __props__.__dict__["timeout_seconds"] = timeout_seconds
             __props__.__dict__["trigger"] = trigger
+            __props__.__dict__["triggers"] = triggers
             __props__.__dict__["usage_policy_id"] = usage_policy_id
             __props__.__dict__["webhook_notifications"] = webhook_notifications
             __props__.__dict__["url"] = None
@@ -1803,6 +1830,7 @@ class Job(pulumi.CustomResource):
             tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
             timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
+            triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]]]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None) -> 'Job':
@@ -1890,6 +1918,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["tasks"] = tasks
         __props__.__dict__["timeout_seconds"] = timeout_seconds
         __props__.__dict__["trigger"] = trigger
+        __props__.__dict__["triggers"] = triggers
         __props__.__dict__["url"] = url
         __props__.__dict__["usage_policy_id"] = usage_policy_id
         __props__.__dict__["webhook_notifications"] = webhook_notifications
@@ -2190,6 +2219,11 @@ class Job(pulumi.CustomResource):
         The conditions that triggers the job to start. See trigger Configuration Block below.
         """
         return pulumi.get(self, "trigger")
+
+    @_builtins.property
+    @pulumi.getter
+    def triggers(self) -> pulumi.Output[Optional[Sequence['outputs.JobTrigger']]]:
+        return pulumi.get(self, "triggers")
 
     @_builtins.property
     @pulumi.getter

@@ -25,8 +25,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? BaseUrl;
         /// <summary>
         /// (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `ApiKey` and
-        /// `ServiceCredential`. Supersedes the flat `TenantId` / `ClientId` /
-        /// `ClientSecret` fields
+        /// `ServiceCredential`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalResult? EntraServicePrincipal;
         /// <summary>

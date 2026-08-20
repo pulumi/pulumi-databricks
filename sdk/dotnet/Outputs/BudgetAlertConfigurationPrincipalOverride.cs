@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class BudgetAlertConfigurationPrincipalOverride
     {
+        /// <summary>
+        /// Dollar amount that overrides the parent alert's `QuantityThreshold` for this principal.
+        /// </summary>
         public readonly string? OverrideThreshold;
+        /// <summary>
+        /// Account-level principal id (user, group, or service principal).
+        /// </summary>
         public readonly string? PrincipalId;
 
         [OutputConstructor]

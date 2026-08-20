@@ -40,11 +40,6 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
     }
 
     /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     */
-    declare public /*out*/ readonly browseOnly: pulumi.Output<boolean>;
-    /**
      * User-provided description
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
@@ -81,8 +76,7 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
-     * Leaf identifier for the provider service (the unqualified name within the
-     * parent schema, e.g. "openaiProd")
+     * Name for the model provider service, e.g. "openaiProd"
      */
     declare public readonly modelProviderServiceId: pulumi.Output<string>;
     /**
@@ -99,7 +93,7 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public readonly owner: pulumi.Output<string>;
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -130,7 +124,6 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiGatewayModelProviderServiceState | undefined;
-            resourceInputs["browseOnly"] = state?.browseOnly;
             resourceInputs["comment"] = state?.comment;
             resourceInputs["config"] = state?.config;
             resourceInputs["createTime"] = state?.createTime;
@@ -159,7 +152,6 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
             resourceInputs["owner"] = args?.owner;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
-            resourceInputs["browseOnly"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["effectiveOwner"] = undefined /*out*/;
@@ -178,11 +170,6 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiGatewayModelProviderService resources.
  */
 export interface AiGatewayModelProviderServiceState {
-    /**
-     * (boolean) - Whether the caller sees only metadata available through the BROWSE
-     * privilege
-     */
-    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * User-provided description
      */
@@ -220,8 +207,7 @@ export interface AiGatewayModelProviderServiceState {
      */
     metastoreId?: pulumi.Input<string | undefined>;
     /**
-     * Leaf identifier for the provider service (the unqualified name within the
-     * parent schema, e.g. "openaiProd")
+     * Name for the model provider service, e.g. "openaiProd"
      */
     modelProviderServiceId?: pulumi.Input<string | undefined>;
     /**
@@ -238,7 +224,7 @@ export interface AiGatewayModelProviderServiceState {
      */
     owner?: pulumi.Input<string | undefined>;
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -273,8 +259,7 @@ export interface AiGatewayModelProviderServiceArgs {
      */
     config?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfig | undefined>;
     /**
-     * Leaf identifier for the provider service (the unqualified name within the
-     * parent schema, e.g. "openaiProd")
+     * Name for the model provider service, e.g. "openaiProd"
      */
     modelProviderServiceId: pulumi.Input<string>;
     /**
@@ -283,7 +268,7 @@ export interface AiGatewayModelProviderServiceArgs {
      */
     owner?: pulumi.Input<string | undefined>;
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      */

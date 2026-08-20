@@ -179,6 +179,11 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveValue",
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -247,14 +252,24 @@ namespace Pulumi.Databricks
         [Input("schemaName", required: true)]
         public Input<string> SchemaName { get; set; } = null!;
 
+        [Input("value", required: true)]
+        private Input<string>? _value;
+
         /// <summary>
         /// The secret value to store. This field is input-only and is not returned in responses — use
         /// the **effective_value** field (via GetSecret with **include_value** set to true) to read the
         /// secret value. The maximum size is 60 KiB (pre-encryption). Accepted content includes
         /// passwords, tokens, keys, and other sensitive credential data
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretUcArgs()
         {
@@ -295,12 +310,22 @@ namespace Pulumi.Databricks
         [Input("effectiveOwner")]
         public Input<string>? EffectiveOwner { get; set; }
 
+        [Input("effectiveValue")]
+        private Input<string>? _effectiveValue;
+
         /// <summary>
         /// (string) - The secret value. Only populated in responses when you have the **READ_SECRET**
         /// privilege and **include_value** is set to true in the request. The maximum size is 60 KiB
         /// </summary>
-        [Input("effectiveValue")]
-        public Input<string>? EffectiveValue { get; set; }
+        public Input<string>? EffectiveValue
+        {
+            get => _effectiveValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _effectiveValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// User-provided expiration time of the secret. This field indicates when the secret should no
@@ -359,14 +384,24 @@ namespace Pulumi.Databricks
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// The secret value to store. This field is input-only and is not returned in responses — use
         /// the **effective_value** field (via GetSecret with **include_value** set to true) to read the
         /// secret value. The maximum size is 60 KiB (pre-encryption). Accepted content includes
         /// passwords, tokens, keys, and other sensitive credential data
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretUcState()
         {

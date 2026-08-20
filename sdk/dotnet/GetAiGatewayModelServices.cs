@@ -40,21 +40,14 @@ namespace Pulumi.Databricks
     public sealed class GetAiGatewayModelServicesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to include model services for which the principal can only access
-        /// selective metadata
-        /// </summary>
-        [Input("includeBrowse")]
-        public bool? IncludeBrowse { get; set; }
-
-        /// <summary>
         /// Maximum number of model services to return. Defaults to 100 when unset or 0;
-        /// the maximum is 100. Use `NextPageToken` to retrieve additional pages
+        /// the maximum is 100. Use `PageToken` to retrieve additional pages
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Resource name of the parent schema to list within, as
+        /// Name of the parent schema to list within, as
         /// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
         /// characters individually
         /// </summary>
@@ -68,7 +61,9 @@ namespace Pulumi.Databricks
         public Inputs.GetAiGatewayModelServicesProviderConfigArgs? ProviderConfig { get; set; }
 
         /// <summary>
-        /// View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+        /// View selector controlling which fields are populated per row. `FULL`
+        /// returns the full representation of the service; `BASIC` returns a more
+        /// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
         /// </summary>
         [Input("view")]
         public string? View { get; set; }
@@ -82,21 +77,14 @@ namespace Pulumi.Databricks
     public sealed class GetAiGatewayModelServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to include model services for which the principal can only access
-        /// selective metadata
-        /// </summary>
-        [Input("includeBrowse")]
-        public Input<bool>? IncludeBrowse { get; set; }
-
-        /// <summary>
         /// Maximum number of model services to return. Defaults to 100 when unset or 0;
-        /// the maximum is 100. Use `NextPageToken` to retrieve additional pages
+        /// the maximum is 100. Use `PageToken` to retrieve additional pages
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Resource name of the parent schema to list within, as
+        /// Name of the parent schema to list within, as
         /// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
         /// characters individually
         /// </summary>
@@ -110,7 +98,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetAiGatewayModelServicesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// View selector controlling which fields are populated per row. Possible values are: `BASIC`, `FULL`
+        /// View selector controlling which fields are populated per row. `FULL`
+        /// returns the full representation of the service; `BASIC` returns a more
+        /// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }
@@ -125,7 +115,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAiGatewayModelServicesResult
     {
-        public readonly bool? IncludeBrowse;
         public readonly ImmutableArray<Outputs.GetAiGatewayModelServicesModelServiceResult> ModelServices;
         public readonly int? PageSize;
         /// <summary>
@@ -139,8 +128,6 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetAiGatewayModelServicesResult(
-            bool? includeBrowse,
-
             ImmutableArray<Outputs.GetAiGatewayModelServicesModelServiceResult> modelServices,
 
             int? pageSize,
@@ -151,7 +138,6 @@ namespace Pulumi.Databricks
 
             string? view)
         {
-            IncludeBrowse = includeBrowse;
             ModelServices = modelServices;
             PageSize = pageSize;
             Parent = parent;

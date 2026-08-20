@@ -15,16 +15,32 @@ public final class BudgetAlertConfigurationPrincipalOverrideArgs extends com.pul
 
     public static final BudgetAlertConfigurationPrincipalOverrideArgs Empty = new BudgetAlertConfigurationPrincipalOverrideArgs();
 
+    /**
+     * Dollar amount that overrides the parent alert&#39;s `quantityThreshold` for this principal.
+     * 
+     */
     @Import(name="overrideThreshold")
     private @Nullable Output<String> overrideThreshold;
 
+    /**
+     * @return Dollar amount that overrides the parent alert&#39;s `quantityThreshold` for this principal.
+     * 
+     */
     public Optional<Output<String>> overrideThreshold() {
         return Optional.ofNullable(this.overrideThreshold);
     }
 
+    /**
+     * Account-level principal id (user, group, or service principal).
+     * 
+     */
     @Import(name="principalId")
     private @Nullable Output<String> principalId;
 
+    /**
+     * @return Account-level principal id (user, group, or service principal).
+     * 
+     */
     public Optional<Output<String>> principalId() {
         return Optional.ofNullable(this.principalId);
     }
@@ -54,20 +70,44 @@ public final class BudgetAlertConfigurationPrincipalOverrideArgs extends com.pul
             $ = new BudgetAlertConfigurationPrincipalOverrideArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param overrideThreshold Dollar amount that overrides the parent alert&#39;s `quantityThreshold` for this principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideThreshold(@Nullable Output<String> overrideThreshold) {
             $.overrideThreshold = overrideThreshold;
             return this;
         }
 
+        /**
+         * @param overrideThreshold Dollar amount that overrides the parent alert&#39;s `quantityThreshold` for this principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideThreshold(String overrideThreshold) {
             return overrideThreshold(Output.of(overrideThreshold));
         }
 
+        /**
+         * @param principalId Account-level principal id (user, group, or service principal).
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalId(@Nullable Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
 
+        /**
+         * @param principalId Account-level principal id (user, group, or service principal).
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }

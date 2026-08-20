@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> ColumnName { get; set; } = null!;
 
         /// <summary>
-        /// PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+        /// PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_HALFVEC`, `PG_SPECIFIC_TYPE_VARCHAR`, `PG_SPECIFIC_TYPE_VECTOR`
         /// </summary>
         [Input("pgType", required: true)]
         public Input<string> PgType { get; set; } = null!;

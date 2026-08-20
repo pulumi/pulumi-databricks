@@ -15,6 +15,31 @@ export type AccountFederationPolicy = import("./accountFederationPolicy").Accoun
 export const AccountFederationPolicy: typeof import("./accountFederationPolicy").AccountFederationPolicy = null as any;
 utilities.lazyLoad(exports, ["AccountFederationPolicy"], () => require("./accountFederationPolicy"));
 
+export { AccountIamDirectGroupMemberV2Args, AccountIamDirectGroupMemberV2State } from "./accountIamDirectGroupMemberV2";
+export type AccountIamDirectGroupMemberV2 = import("./accountIamDirectGroupMemberV2").AccountIamDirectGroupMemberV2;
+export const AccountIamDirectGroupMemberV2: typeof import("./accountIamDirectGroupMemberV2").AccountIamDirectGroupMemberV2 = null as any;
+utilities.lazyLoad(exports, ["AccountIamDirectGroupMemberV2"], () => require("./accountIamDirectGroupMemberV2"));
+
+export { AccountIamGroupV2Args, AccountIamGroupV2State } from "./accountIamGroupV2";
+export type AccountIamGroupV2 = import("./accountIamGroupV2").AccountIamGroupV2;
+export const AccountIamGroupV2: typeof import("./accountIamGroupV2").AccountIamGroupV2 = null as any;
+utilities.lazyLoad(exports, ["AccountIamGroupV2"], () => require("./accountIamGroupV2"));
+
+export { AccountIamServicePrincipalV2Args, AccountIamServicePrincipalV2State } from "./accountIamServicePrincipalV2";
+export type AccountIamServicePrincipalV2 = import("./accountIamServicePrincipalV2").AccountIamServicePrincipalV2;
+export const AccountIamServicePrincipalV2: typeof import("./accountIamServicePrincipalV2").AccountIamServicePrincipalV2 = null as any;
+utilities.lazyLoad(exports, ["AccountIamServicePrincipalV2"], () => require("./accountIamServicePrincipalV2"));
+
+export { AccountIamUserV2Args, AccountIamUserV2State } from "./accountIamUserV2";
+export type AccountIamUserV2 = import("./accountIamUserV2").AccountIamUserV2;
+export const AccountIamUserV2: typeof import("./accountIamUserV2").AccountIamUserV2 = null as any;
+utilities.lazyLoad(exports, ["AccountIamUserV2"], () => require("./accountIamUserV2"));
+
+export { AccountIamWorkspaceAssignmentV2Args, AccountIamWorkspaceAssignmentV2State } from "./accountIamWorkspaceAssignmentV2";
+export type AccountIamWorkspaceAssignmentV2 = import("./accountIamWorkspaceAssignmentV2").AccountIamWorkspaceAssignmentV2;
+export const AccountIamWorkspaceAssignmentV2: typeof import("./accountIamWorkspaceAssignmentV2").AccountIamWorkspaceAssignmentV2 = null as any;
+utilities.lazyLoad(exports, ["AccountIamWorkspaceAssignmentV2"], () => require("./accountIamWorkspaceAssignmentV2"));
+
 export { AccountNetworkPolicyArgs, AccountNetworkPolicyState } from "./accountNetworkPolicy";
 export type AccountNetworkPolicy = import("./accountNetworkPolicy").AccountNetworkPolicy;
 export const AccountNetworkPolicy: typeof import("./accountNetworkPolicy").AccountNetworkPolicy = null as any;
@@ -294,6 +319,56 @@ export { GetAccountFederationPolicyArgs, GetAccountFederationPolicyResult, GetAc
 export const getAccountFederationPolicy: typeof import("./getAccountFederationPolicy").getAccountFederationPolicy = null as any;
 export const getAccountFederationPolicyOutput: typeof import("./getAccountFederationPolicy").getAccountFederationPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountFederationPolicy","getAccountFederationPolicyOutput"], () => require("./getAccountFederationPolicy"));
+
+export { GetAccountIamDirectGroupMemberV2Args, GetAccountIamDirectGroupMemberV2Result, GetAccountIamDirectGroupMemberV2OutputArgs } from "./getAccountIamDirectGroupMemberV2";
+export const getAccountIamDirectGroupMemberV2: typeof import("./getAccountIamDirectGroupMemberV2").getAccountIamDirectGroupMemberV2 = null as any;
+export const getAccountIamDirectGroupMemberV2Output: typeof import("./getAccountIamDirectGroupMemberV2").getAccountIamDirectGroupMemberV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamDirectGroupMemberV2","getAccountIamDirectGroupMemberV2Output"], () => require("./getAccountIamDirectGroupMemberV2"));
+
+export { GetAccountIamDirectGroupMembersV2Args, GetAccountIamDirectGroupMembersV2Result, GetAccountIamDirectGroupMembersV2OutputArgs } from "./getAccountIamDirectGroupMembersV2";
+export const getAccountIamDirectGroupMembersV2: typeof import("./getAccountIamDirectGroupMembersV2").getAccountIamDirectGroupMembersV2 = null as any;
+export const getAccountIamDirectGroupMembersV2Output: typeof import("./getAccountIamDirectGroupMembersV2").getAccountIamDirectGroupMembersV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamDirectGroupMembersV2","getAccountIamDirectGroupMembersV2Output"], () => require("./getAccountIamDirectGroupMembersV2"));
+
+export { GetAccountIamGroupV2Args, GetAccountIamGroupV2Result, GetAccountIamGroupV2OutputArgs } from "./getAccountIamGroupV2";
+export const getAccountIamGroupV2: typeof import("./getAccountIamGroupV2").getAccountIamGroupV2 = null as any;
+export const getAccountIamGroupV2Output: typeof import("./getAccountIamGroupV2").getAccountIamGroupV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamGroupV2","getAccountIamGroupV2Output"], () => require("./getAccountIamGroupV2"));
+
+export { GetAccountIamGroupsV2Args, GetAccountIamGroupsV2Result, GetAccountIamGroupsV2OutputArgs } from "./getAccountIamGroupsV2";
+export const getAccountIamGroupsV2: typeof import("./getAccountIamGroupsV2").getAccountIamGroupsV2 = null as any;
+export const getAccountIamGroupsV2Output: typeof import("./getAccountIamGroupsV2").getAccountIamGroupsV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamGroupsV2","getAccountIamGroupsV2Output"], () => require("./getAccountIamGroupsV2"));
+
+export { GetAccountIamServicePrincipalV2Args, GetAccountIamServicePrincipalV2Result, GetAccountIamServicePrincipalV2OutputArgs } from "./getAccountIamServicePrincipalV2";
+export const getAccountIamServicePrincipalV2: typeof import("./getAccountIamServicePrincipalV2").getAccountIamServicePrincipalV2 = null as any;
+export const getAccountIamServicePrincipalV2Output: typeof import("./getAccountIamServicePrincipalV2").getAccountIamServicePrincipalV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamServicePrincipalV2","getAccountIamServicePrincipalV2Output"], () => require("./getAccountIamServicePrincipalV2"));
+
+export { GetAccountIamServicePrincipalsV2Args, GetAccountIamServicePrincipalsV2Result, GetAccountIamServicePrincipalsV2OutputArgs } from "./getAccountIamServicePrincipalsV2";
+export const getAccountIamServicePrincipalsV2: typeof import("./getAccountIamServicePrincipalsV2").getAccountIamServicePrincipalsV2 = null as any;
+export const getAccountIamServicePrincipalsV2Output: typeof import("./getAccountIamServicePrincipalsV2").getAccountIamServicePrincipalsV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamServicePrincipalsV2","getAccountIamServicePrincipalsV2Output"], () => require("./getAccountIamServicePrincipalsV2"));
+
+export { GetAccountIamUserV2Args, GetAccountIamUserV2Result, GetAccountIamUserV2OutputArgs } from "./getAccountIamUserV2";
+export const getAccountIamUserV2: typeof import("./getAccountIamUserV2").getAccountIamUserV2 = null as any;
+export const getAccountIamUserV2Output: typeof import("./getAccountIamUserV2").getAccountIamUserV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamUserV2","getAccountIamUserV2Output"], () => require("./getAccountIamUserV2"));
+
+export { GetAccountIamUsersV2Args, GetAccountIamUsersV2Result, GetAccountIamUsersV2OutputArgs } from "./getAccountIamUsersV2";
+export const getAccountIamUsersV2: typeof import("./getAccountIamUsersV2").getAccountIamUsersV2 = null as any;
+export const getAccountIamUsersV2Output: typeof import("./getAccountIamUsersV2").getAccountIamUsersV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamUsersV2","getAccountIamUsersV2Output"], () => require("./getAccountIamUsersV2"));
+
+export { GetAccountIamWorkspaceAssignmentV2Args, GetAccountIamWorkspaceAssignmentV2Result, GetAccountIamWorkspaceAssignmentV2OutputArgs } from "./getAccountIamWorkspaceAssignmentV2";
+export const getAccountIamWorkspaceAssignmentV2: typeof import("./getAccountIamWorkspaceAssignmentV2").getAccountIamWorkspaceAssignmentV2 = null as any;
+export const getAccountIamWorkspaceAssignmentV2Output: typeof import("./getAccountIamWorkspaceAssignmentV2").getAccountIamWorkspaceAssignmentV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamWorkspaceAssignmentV2","getAccountIamWorkspaceAssignmentV2Output"], () => require("./getAccountIamWorkspaceAssignmentV2"));
+
+export { GetAccountIamWorkspaceAssignmentsV2Args, GetAccountIamWorkspaceAssignmentsV2Result, GetAccountIamWorkspaceAssignmentsV2OutputArgs } from "./getAccountIamWorkspaceAssignmentsV2";
+export const getAccountIamWorkspaceAssignmentsV2: typeof import("./getAccountIamWorkspaceAssignmentsV2").getAccountIamWorkspaceAssignmentsV2 = null as any;
+export const getAccountIamWorkspaceAssignmentsV2Output: typeof import("./getAccountIamWorkspaceAssignmentsV2").getAccountIamWorkspaceAssignmentsV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamWorkspaceAssignmentsV2","getAccountIamWorkspaceAssignmentsV2Output"], () => require("./getAccountIamWorkspaceAssignmentsV2"));
 
 export { GetAccountNetworkPoliciesResult } from "./getAccountNetworkPolicies";
 export const getAccountNetworkPolicies: typeof import("./getAccountNetworkPolicies").getAccountNetworkPolicies = null as any;
@@ -1090,6 +1165,61 @@ export const getWorkspaceEntityTagAssignments: typeof import("./getWorkspaceEnti
 export const getWorkspaceEntityTagAssignmentsOutput: typeof import("./getWorkspaceEntityTagAssignments").getWorkspaceEntityTagAssignmentsOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkspaceEntityTagAssignments","getWorkspaceEntityTagAssignmentsOutput"], () => require("./getWorkspaceEntityTagAssignments"));
 
+export { GetWorkspaceIamDirectGroupMemberV2Args, GetWorkspaceIamDirectGroupMemberV2Result, GetWorkspaceIamDirectGroupMemberV2OutputArgs } from "./getWorkspaceIamDirectGroupMemberV2";
+export const getWorkspaceIamDirectGroupMemberV2: typeof import("./getWorkspaceIamDirectGroupMemberV2").getWorkspaceIamDirectGroupMemberV2 = null as any;
+export const getWorkspaceIamDirectGroupMemberV2Output: typeof import("./getWorkspaceIamDirectGroupMemberV2").getWorkspaceIamDirectGroupMemberV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamDirectGroupMemberV2","getWorkspaceIamDirectGroupMemberV2Output"], () => require("./getWorkspaceIamDirectGroupMemberV2"));
+
+export { GetWorkspaceIamDirectGroupMembersV2Args, GetWorkspaceIamDirectGroupMembersV2Result, GetWorkspaceIamDirectGroupMembersV2OutputArgs } from "./getWorkspaceIamDirectGroupMembersV2";
+export const getWorkspaceIamDirectGroupMembersV2: typeof import("./getWorkspaceIamDirectGroupMembersV2").getWorkspaceIamDirectGroupMembersV2 = null as any;
+export const getWorkspaceIamDirectGroupMembersV2Output: typeof import("./getWorkspaceIamDirectGroupMembersV2").getWorkspaceIamDirectGroupMembersV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamDirectGroupMembersV2","getWorkspaceIamDirectGroupMembersV2Output"], () => require("./getWorkspaceIamDirectGroupMembersV2"));
+
+export { GetWorkspaceIamGroupV2Args, GetWorkspaceIamGroupV2Result, GetWorkspaceIamGroupV2OutputArgs } from "./getWorkspaceIamGroupV2";
+export const getWorkspaceIamGroupV2: typeof import("./getWorkspaceIamGroupV2").getWorkspaceIamGroupV2 = null as any;
+export const getWorkspaceIamGroupV2Output: typeof import("./getWorkspaceIamGroupV2").getWorkspaceIamGroupV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamGroupV2","getWorkspaceIamGroupV2Output"], () => require("./getWorkspaceIamGroupV2"));
+
+export { GetWorkspaceIamGroupsV2Args, GetWorkspaceIamGroupsV2Result, GetWorkspaceIamGroupsV2OutputArgs } from "./getWorkspaceIamGroupsV2";
+export const getWorkspaceIamGroupsV2: typeof import("./getWorkspaceIamGroupsV2").getWorkspaceIamGroupsV2 = null as any;
+export const getWorkspaceIamGroupsV2Output: typeof import("./getWorkspaceIamGroupsV2").getWorkspaceIamGroupsV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamGroupsV2","getWorkspaceIamGroupsV2Output"], () => require("./getWorkspaceIamGroupsV2"));
+
+export { GetWorkspaceIamServicePrincipalV2Args, GetWorkspaceIamServicePrincipalV2Result, GetWorkspaceIamServicePrincipalV2OutputArgs } from "./getWorkspaceIamServicePrincipalV2";
+export const getWorkspaceIamServicePrincipalV2: typeof import("./getWorkspaceIamServicePrincipalV2").getWorkspaceIamServicePrincipalV2 = null as any;
+export const getWorkspaceIamServicePrincipalV2Output: typeof import("./getWorkspaceIamServicePrincipalV2").getWorkspaceIamServicePrincipalV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamServicePrincipalV2","getWorkspaceIamServicePrincipalV2Output"], () => require("./getWorkspaceIamServicePrincipalV2"));
+
+export { GetWorkspaceIamServicePrincipalsV2Args, GetWorkspaceIamServicePrincipalsV2Result, GetWorkspaceIamServicePrincipalsV2OutputArgs } from "./getWorkspaceIamServicePrincipalsV2";
+export const getWorkspaceIamServicePrincipalsV2: typeof import("./getWorkspaceIamServicePrincipalsV2").getWorkspaceIamServicePrincipalsV2 = null as any;
+export const getWorkspaceIamServicePrincipalsV2Output: typeof import("./getWorkspaceIamServicePrincipalsV2").getWorkspaceIamServicePrincipalsV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamServicePrincipalsV2","getWorkspaceIamServicePrincipalsV2Output"], () => require("./getWorkspaceIamServicePrincipalsV2"));
+
+export { GetWorkspaceIamUserV2Args, GetWorkspaceIamUserV2Result, GetWorkspaceIamUserV2OutputArgs } from "./getWorkspaceIamUserV2";
+export const getWorkspaceIamUserV2: typeof import("./getWorkspaceIamUserV2").getWorkspaceIamUserV2 = null as any;
+export const getWorkspaceIamUserV2Output: typeof import("./getWorkspaceIamUserV2").getWorkspaceIamUserV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamUserV2","getWorkspaceIamUserV2Output"], () => require("./getWorkspaceIamUserV2"));
+
+export { GetWorkspaceIamUsersV2Args, GetWorkspaceIamUsersV2Result, GetWorkspaceIamUsersV2OutputArgs } from "./getWorkspaceIamUsersV2";
+export const getWorkspaceIamUsersV2: typeof import("./getWorkspaceIamUsersV2").getWorkspaceIamUsersV2 = null as any;
+export const getWorkspaceIamUsersV2Output: typeof import("./getWorkspaceIamUsersV2").getWorkspaceIamUsersV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamUsersV2","getWorkspaceIamUsersV2Output"], () => require("./getWorkspaceIamUsersV2"));
+
+export { GetWorkspaceIamWorkspaceAssignmentV2Args, GetWorkspaceIamWorkspaceAssignmentV2Result, GetWorkspaceIamWorkspaceAssignmentV2OutputArgs } from "./getWorkspaceIamWorkspaceAssignmentV2";
+export const getWorkspaceIamWorkspaceAssignmentV2: typeof import("./getWorkspaceIamWorkspaceAssignmentV2").getWorkspaceIamWorkspaceAssignmentV2 = null as any;
+export const getWorkspaceIamWorkspaceAssignmentV2Output: typeof import("./getWorkspaceIamWorkspaceAssignmentV2").getWorkspaceIamWorkspaceAssignmentV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamWorkspaceAssignmentV2","getWorkspaceIamWorkspaceAssignmentV2Output"], () => require("./getWorkspaceIamWorkspaceAssignmentV2"));
+
+export { GetWorkspaceIamWorkspaceAssignmentsV2Args, GetWorkspaceIamWorkspaceAssignmentsV2Result, GetWorkspaceIamWorkspaceAssignmentsV2OutputArgs } from "./getWorkspaceIamWorkspaceAssignmentsV2";
+export const getWorkspaceIamWorkspaceAssignmentsV2: typeof import("./getWorkspaceIamWorkspaceAssignmentsV2").getWorkspaceIamWorkspaceAssignmentsV2 = null as any;
+export const getWorkspaceIamWorkspaceAssignmentsV2Output: typeof import("./getWorkspaceIamWorkspaceAssignmentsV2").getWorkspaceIamWorkspaceAssignmentsV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamWorkspaceAssignmentsV2","getWorkspaceIamWorkspaceAssignmentsV2Output"], () => require("./getWorkspaceIamWorkspaceAssignmentsV2"));
+
+export { GetWorkspaceIamWorkspaceIdentityDetailV2Args, GetWorkspaceIamWorkspaceIdentityDetailV2Result, GetWorkspaceIamWorkspaceIdentityDetailV2OutputArgs } from "./getWorkspaceIamWorkspaceIdentityDetailV2";
+export const getWorkspaceIamWorkspaceIdentityDetailV2: typeof import("./getWorkspaceIamWorkspaceIdentityDetailV2").getWorkspaceIamWorkspaceIdentityDetailV2 = null as any;
+export const getWorkspaceIamWorkspaceIdentityDetailV2Output: typeof import("./getWorkspaceIamWorkspaceIdentityDetailV2").getWorkspaceIamWorkspaceIdentityDetailV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamWorkspaceIdentityDetailV2","getWorkspaceIamWorkspaceIdentityDetailV2Output"], () => require("./getWorkspaceIamWorkspaceIdentityDetailV2"));
+
 export { GetWorkspaceNetworkOptionArgs, GetWorkspaceNetworkOptionResult, GetWorkspaceNetworkOptionOutputArgs } from "./getWorkspaceNetworkOption";
 export const getWorkspaceNetworkOption: typeof import("./getWorkspaceNetworkOption").getWorkspaceNetworkOption = null as any;
 export const getWorkspaceNetworkOptionOutput: typeof import("./getWorkspaceNetworkOption").getWorkspaceNetworkOptionOutput = null as any;
@@ -1618,6 +1748,36 @@ export type WorkspaceFile = import("./workspaceFile").WorkspaceFile;
 export const WorkspaceFile: typeof import("./workspaceFile").WorkspaceFile = null as any;
 utilities.lazyLoad(exports, ["WorkspaceFile"], () => require("./workspaceFile"));
 
+export { WorkspaceIamDirectGroupMemberV2Args, WorkspaceIamDirectGroupMemberV2State } from "./workspaceIamDirectGroupMemberV2";
+export type WorkspaceIamDirectGroupMemberV2 = import("./workspaceIamDirectGroupMemberV2").WorkspaceIamDirectGroupMemberV2;
+export const WorkspaceIamDirectGroupMemberV2: typeof import("./workspaceIamDirectGroupMemberV2").WorkspaceIamDirectGroupMemberV2 = null as any;
+utilities.lazyLoad(exports, ["WorkspaceIamDirectGroupMemberV2"], () => require("./workspaceIamDirectGroupMemberV2"));
+
+export { WorkspaceIamGroupV2Args, WorkspaceIamGroupV2State } from "./workspaceIamGroupV2";
+export type WorkspaceIamGroupV2 = import("./workspaceIamGroupV2").WorkspaceIamGroupV2;
+export const WorkspaceIamGroupV2: typeof import("./workspaceIamGroupV2").WorkspaceIamGroupV2 = null as any;
+utilities.lazyLoad(exports, ["WorkspaceIamGroupV2"], () => require("./workspaceIamGroupV2"));
+
+export { WorkspaceIamServicePrincipalV2Args, WorkspaceIamServicePrincipalV2State } from "./workspaceIamServicePrincipalV2";
+export type WorkspaceIamServicePrincipalV2 = import("./workspaceIamServicePrincipalV2").WorkspaceIamServicePrincipalV2;
+export const WorkspaceIamServicePrincipalV2: typeof import("./workspaceIamServicePrincipalV2").WorkspaceIamServicePrincipalV2 = null as any;
+utilities.lazyLoad(exports, ["WorkspaceIamServicePrincipalV2"], () => require("./workspaceIamServicePrincipalV2"));
+
+export { WorkspaceIamUserV2Args, WorkspaceIamUserV2State } from "./workspaceIamUserV2";
+export type WorkspaceIamUserV2 = import("./workspaceIamUserV2").WorkspaceIamUserV2;
+export const WorkspaceIamUserV2: typeof import("./workspaceIamUserV2").WorkspaceIamUserV2 = null as any;
+utilities.lazyLoad(exports, ["WorkspaceIamUserV2"], () => require("./workspaceIamUserV2"));
+
+export { WorkspaceIamWorkspaceAssignmentV2Args, WorkspaceIamWorkspaceAssignmentV2State } from "./workspaceIamWorkspaceAssignmentV2";
+export type WorkspaceIamWorkspaceAssignmentV2 = import("./workspaceIamWorkspaceAssignmentV2").WorkspaceIamWorkspaceAssignmentV2;
+export const WorkspaceIamWorkspaceAssignmentV2: typeof import("./workspaceIamWorkspaceAssignmentV2").WorkspaceIamWorkspaceAssignmentV2 = null as any;
+utilities.lazyLoad(exports, ["WorkspaceIamWorkspaceAssignmentV2"], () => require("./workspaceIamWorkspaceAssignmentV2"));
+
+export { WorkspaceIamWorkspaceIdentityDetailV2Args, WorkspaceIamWorkspaceIdentityDetailV2State } from "./workspaceIamWorkspaceIdentityDetailV2";
+export type WorkspaceIamWorkspaceIdentityDetailV2 = import("./workspaceIamWorkspaceIdentityDetailV2").WorkspaceIamWorkspaceIdentityDetailV2;
+export const WorkspaceIamWorkspaceIdentityDetailV2: typeof import("./workspaceIamWorkspaceIdentityDetailV2").WorkspaceIamWorkspaceIdentityDetailV2 = null as any;
+utilities.lazyLoad(exports, ["WorkspaceIamWorkspaceIdentityDetailV2"], () => require("./workspaceIamWorkspaceIdentityDetailV2"));
+
 export { WorkspaceNetworkOptionArgs, WorkspaceNetworkOptionState } from "./workspaceNetworkOption";
 export type WorkspaceNetworkOption = import("./workspaceNetworkOption").WorkspaceNetworkOption;
 export const WorkspaceNetworkOption: typeof import("./workspaceNetworkOption").WorkspaceNetworkOption = null as any;
@@ -1646,6 +1806,16 @@ const _module = {
                 return new AccessControlRuleSet(name, <any>undefined, { urn })
             case "databricks:index/accountFederationPolicy:AccountFederationPolicy":
                 return new AccountFederationPolicy(name, <any>undefined, { urn })
+            case "databricks:index/accountIamDirectGroupMemberV2:AccountIamDirectGroupMemberV2":
+                return new AccountIamDirectGroupMemberV2(name, <any>undefined, { urn })
+            case "databricks:index/accountIamGroupV2:AccountIamGroupV2":
+                return new AccountIamGroupV2(name, <any>undefined, { urn })
+            case "databricks:index/accountIamServicePrincipalV2:AccountIamServicePrincipalV2":
+                return new AccountIamServicePrincipalV2(name, <any>undefined, { urn })
+            case "databricks:index/accountIamUserV2:AccountIamUserV2":
+                return new AccountIamUserV2(name, <any>undefined, { urn })
+            case "databricks:index/accountIamWorkspaceAssignmentV2:AccountIamWorkspaceAssignmentV2":
+                return new AccountIamWorkspaceAssignmentV2(name, <any>undefined, { urn })
             case "databricks:index/accountNetworkPolicy:AccountNetworkPolicy":
                 return new AccountNetworkPolicy(name, <any>undefined, { urn })
             case "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2":
@@ -1958,6 +2128,18 @@ const _module = {
                 return new WorkspaceEntityTagAssignment(name, <any>undefined, { urn })
             case "databricks:index/workspaceFile:WorkspaceFile":
                 return new WorkspaceFile(name, <any>undefined, { urn })
+            case "databricks:index/workspaceIamDirectGroupMemberV2:WorkspaceIamDirectGroupMemberV2":
+                return new WorkspaceIamDirectGroupMemberV2(name, <any>undefined, { urn })
+            case "databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2":
+                return new WorkspaceIamGroupV2(name, <any>undefined, { urn })
+            case "databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2":
+                return new WorkspaceIamServicePrincipalV2(name, <any>undefined, { urn })
+            case "databricks:index/workspaceIamUserV2:WorkspaceIamUserV2":
+                return new WorkspaceIamUserV2(name, <any>undefined, { urn })
+            case "databricks:index/workspaceIamWorkspaceAssignmentV2:WorkspaceIamWorkspaceAssignmentV2":
+                return new WorkspaceIamWorkspaceAssignmentV2(name, <any>undefined, { urn })
+            case "databricks:index/workspaceIamWorkspaceIdentityDetailV2:WorkspaceIamWorkspaceIdentityDetailV2":
+                return new WorkspaceIamWorkspaceIdentityDetailV2(name, <any>undefined, { urn })
             case "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption":
                 return new WorkspaceNetworkOption(name, <any>undefined, { urn })
             case "databricks:index/workspaceSettingV2:WorkspaceSettingV2":
@@ -1969,6 +2151,11 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountFederationPolicy", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountIamDirectGroupMemberV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountIamGroupV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountIamServicePrincipalV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountIamUserV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountIamWorkspaceAssignmentV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountNetworkPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingUserPreferenceV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingV2", _module)
@@ -2125,6 +2312,12 @@ pulumi.runtime.registerResourceModule("databricks", "index/workspaceBinding", _m
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceEntityTagAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceIamDirectGroupMemberV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceIamGroupV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceIamServicePrincipalV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceIamUserV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceIamWorkspaceAssignmentV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceIamWorkspaceIdentityDetailV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceNetworkOption", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceSettingV2", _module)
 pulumi.runtime.registerResourcePackage("databricks", {

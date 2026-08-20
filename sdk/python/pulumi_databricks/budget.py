@@ -35,6 +35,7 @@ class BudgetArgs:
         :param pulumi.Input[_builtins.str] account_id: The ID of the Databricks Account.
         :param pulumi.Input[_builtins.str] budget_configuration_id: The ID of the budget configuration.
         :param pulumi.Input[_builtins.str] display_name: Name of the budget in Databricks Account.
+        :param pulumi.Input[_builtins.str] resource_type: The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -119,6 +120,9 @@ class BudgetArgs:
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -152,6 +156,7 @@ class _BudgetState:
         :param pulumi.Input[_builtins.str] account_id: The ID of the Databricks Account.
         :param pulumi.Input[_builtins.str] budget_configuration_id: The ID of the budget configuration.
         :param pulumi.Input[_builtins.str] display_name: Name of the budget in Databricks Account.
+        :param pulumi.Input[_builtins.str] resource_type: The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -236,6 +241,9 @@ class _BudgetState:
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -318,19 +326,49 @@ class Budget(pulumi.CustomResource):
             })
         ```
 
-        ### Budgets for Genie
+        ### Budgets for AI Gateway Resources
 
-        Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what's coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+        Budgets can also be scoped to track only spend through Unity AI Gateway endpoints by setting `resource_type` to `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`.
+
+        This includes Databricks products that may use Unity AI Gateway endpoints, such as Databricks Genie.
+
+        ### AI Gateway Budget for all endpoints
+
+        Create a shared budget tracking all costs for Unity AI Gateway endpoints, and send an email when the budget threshold is exceeded.
 
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
-        # Create a Budget with resource tags matching the Genie AI Gateway resource.
-        # Prerequisite: Enable AI Gateway Budget (Public Preview)
-        # https://docs.databricks.com/aws/en/genie/budgets#requirements
+        ai_gateway_shared_budget = databricks.Budget("ai_gateway_shared_budget",
+            display_name="aigw-shared-budget",
+            resource_type="BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
+            alert_configurations=[{
+                "quantity_threshold": "10000",
+                "quantity_type": "LIST_PRICE_DOLLARS_USD",
+                "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
+                "time_period": "MONTH",
+                "scope_type": "ALERT_CONFIGURATION_SCOPE_TYPE_SHARED",
+                "action_configurations": [{
+                    "action_type": "EMAIL_NOTIFICATION",
+                    "target": "abc@gmail.com",
+                }],
+            }])
+        ```
+
+        ### Shared Genie budget
+
+        Genie budgets use the Unity AI Gateway resource type and the `databricks-product: genie` tag. Do not add other resource tags to a Genie budget.
+
+        A shared Genie budget for all users. Spend is tracked in aggregate.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
         genie_shared_budget = databricks.Budget("genie_shared_budget",
             display_name="genie-shared-budget",
+            resource_type="BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
             filter={
                 "tags": [{
                     "key": "databricks-product",
@@ -345,9 +383,50 @@ class Budget(pulumi.CustomResource):
                 "quantity_type": "LIST_PRICE_DOLLARS_USD",
                 "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
                 "time_period": "MONTH",
+                "scope_type": "ALERT_CONFIGURATION_SCOPE_TYPE_SHARED",
                 "action_configurations": [{
                     "action_type": "EMAIL_NOTIFICATION",
                     "target": "abc@gmail.com",
+                }],
+            }])
+        ```
+
+        ### Per-user budget overrides with block usage
+
+        A per-user threshold applies to each user in the budget's scope. Use `principal_overrides` to override the threshold for specific users, groups, or service principals. `BLOCK_USAGE` prevents further requests through Unity AI Gateway when the threshold is reached.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Find a group we want to apply
+        genie_power_users = databricks.get_group(display_name="genie-power-users")
+        # Create a budget for Genie of $100 per user, and override
+        # the threshold to $300 per user for the genie-power-users group.
+        genie_per_user_budget = databricks.Budget("genie_per_user_budget",
+            display_name="genie-tier-1-budget",
+            resource_type="BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
+            filter={
+                "tags": [{
+                    "key": "databricks-product",
+                    "value": {
+                        "operator": "IN",
+                        "values": ["genie"],
+                    },
+                }],
+            },
+            alert_configurations=[{
+                "quantity_threshold": "100",
+                "quantity_type": "LIST_PRICE_DOLLARS_USD",
+                "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
+                "time_period": "MONTH",
+                "scope_type": "ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER",
+                "principal_overrides": [{
+                    "principal_id": genie_power_users_databricks_group["id"],
+                    "override_threshold": "300",
+                }],
+                "action_configurations": [{
+                    "action_type": "BLOCK_USAGE",
                 }],
             }])
         ```
@@ -364,6 +443,7 @@ class Budget(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The ID of the Databricks Account.
         :param pulumi.Input[_builtins.str] budget_configuration_id: The ID of the budget configuration.
         :param pulumi.Input[_builtins.str] display_name: Name of the budget in Databricks Account.
+        :param pulumi.Input[_builtins.str] resource_type: The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
         """
         ...
     @overload
@@ -422,19 +502,49 @@ class Budget(pulumi.CustomResource):
             })
         ```
 
-        ### Budgets for Genie
+        ### Budgets for AI Gateway Resources
 
-        Starting July 6, 2026, Genie products move to a pay-as-you-go pricing model with a per-user free monthly allowance. Account admins can begin [configuring budgets and cost controls](https://docs.databricks.com/aws/en/genie/budgets). For details, see [what's coming](https://docs.databricks.com/aws/en/release-notes/whats-coming#genie-paygo-pricing).
+        Budgets can also be scoped to track only spend through Unity AI Gateway endpoints by setting `resource_type` to `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`.
+
+        This includes Databricks products that may use Unity AI Gateway endpoints, such as Databricks Genie.
+
+        ### AI Gateway Budget for all endpoints
+
+        Create a shared budget tracking all costs for Unity AI Gateway endpoints, and send an email when the budget threshold is exceeded.
 
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
-        # Create a Budget with resource tags matching the Genie AI Gateway resource.
-        # Prerequisite: Enable AI Gateway Budget (Public Preview)
-        # https://docs.databricks.com/aws/en/genie/budgets#requirements
+        ai_gateway_shared_budget = databricks.Budget("ai_gateway_shared_budget",
+            display_name="aigw-shared-budget",
+            resource_type="BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
+            alert_configurations=[{
+                "quantity_threshold": "10000",
+                "quantity_type": "LIST_PRICE_DOLLARS_USD",
+                "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
+                "time_period": "MONTH",
+                "scope_type": "ALERT_CONFIGURATION_SCOPE_TYPE_SHARED",
+                "action_configurations": [{
+                    "action_type": "EMAIL_NOTIFICATION",
+                    "target": "abc@gmail.com",
+                }],
+            }])
+        ```
+
+        ### Shared Genie budget
+
+        Genie budgets use the Unity AI Gateway resource type and the `databricks-product: genie` tag. Do not add other resource tags to a Genie budget.
+
+        A shared Genie budget for all users. Spend is tracked in aggregate.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
         genie_shared_budget = databricks.Budget("genie_shared_budget",
             display_name="genie-shared-budget",
+            resource_type="BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
             filter={
                 "tags": [{
                     "key": "databricks-product",
@@ -449,9 +559,50 @@ class Budget(pulumi.CustomResource):
                 "quantity_type": "LIST_PRICE_DOLLARS_USD",
                 "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
                 "time_period": "MONTH",
+                "scope_type": "ALERT_CONFIGURATION_SCOPE_TYPE_SHARED",
                 "action_configurations": [{
                     "action_type": "EMAIL_NOTIFICATION",
                     "target": "abc@gmail.com",
+                }],
+            }])
+        ```
+
+        ### Per-user budget overrides with block usage
+
+        A per-user threshold applies to each user in the budget's scope. Use `principal_overrides` to override the threshold for specific users, groups, or service principals. `BLOCK_USAGE` prevents further requests through Unity AI Gateway when the threshold is reached.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Find a group we want to apply
+        genie_power_users = databricks.get_group(display_name="genie-power-users")
+        # Create a budget for Genie of $100 per user, and override
+        # the threshold to $300 per user for the genie-power-users group.
+        genie_per_user_budget = databricks.Budget("genie_per_user_budget",
+            display_name="genie-tier-1-budget",
+            resource_type="BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY",
+            filter={
+                "tags": [{
+                    "key": "databricks-product",
+                    "value": {
+                        "operator": "IN",
+                        "values": ["genie"],
+                    },
+                }],
+            },
+            alert_configurations=[{
+                "quantity_threshold": "100",
+                "quantity_type": "LIST_PRICE_DOLLARS_USD",
+                "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
+                "time_period": "MONTH",
+                "scope_type": "ALERT_CONFIGURATION_SCOPE_TYPE_PER_USER",
+                "principal_overrides": [{
+                    "principal_id": genie_power_users_databricks_group["id"],
+                    "override_threshold": "300",
+                }],
+                "action_configurations": [{
+                    "action_type": "BLOCK_USAGE",
                 }],
             }])
         ```
@@ -531,6 +682,7 @@ class Budget(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The ID of the Databricks Account.
         :param pulumi.Input[_builtins.str] budget_configuration_id: The ID of the budget configuration.
         :param pulumi.Input[_builtins.str] display_name: Name of the budget in Databricks Account.
+        :param pulumi.Input[_builtins.str] resource_type: The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -588,6 +740,9 @@ class Budget(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource scope for this budget. Determines whether the budget tracks all resources or a specific resource. (Enum: `BUDGET_RESOURCE_TYPE_ALL_RESOURCES`, `BUDGET_RESOURCE_TYPE_UNITY_AI_GATEWAY`)
+        """
         return pulumi.get(self, "resource_type")
 
     @_builtins.property

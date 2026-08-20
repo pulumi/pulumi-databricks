@@ -89,7 +89,6 @@ type LookupPolicyInfoResult struct {
 	// (list of string) - Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals []string `pulumi:"exceptPrincipals"`
 	// (string) - Type of securables that the policy should take effect on.
-	// Only `TABLE` is supported at this moment.
 	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType string `pulumi:"forSecurableType"`
 	// (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
@@ -202,7 +201,6 @@ func (o LookupPolicyInfoResultOutput) ExceptPrincipals() pulumi.StringArrayOutpu
 }
 
 // (string) - Type of securables that the policy should take effect on.
-// Only `TABLE` is supported at this moment.
 // Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 func (o LookupPolicyInfoResultOutput) ForSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.ForSecurableType }).(pulumi.StringOutput)

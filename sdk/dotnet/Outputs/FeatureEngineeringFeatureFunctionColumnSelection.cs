@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureFunctionColumnSelection
     {
-        /// <summary>
-        /// Column name from source to select as the feature value
-        /// </summary>
         public readonly string Column;
 
         [OutputConstructor]

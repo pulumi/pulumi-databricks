@@ -188,7 +188,8 @@ type Job struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
-	Trigger JobTriggerPtrOutput `pulumi:"trigger"`
+	Trigger  JobTriggerPtrOutput   `pulumi:"trigger"`
+	Triggers JobTriggerArrayOutput `pulumi:"triggers"`
 	// URL of the job on the given workspace
 	Url           pulumi.StringOutput    `pulumi:"url"`
 	UsagePolicyId pulumi.StringPtrOutput `pulumi:"usagePolicyId"`
@@ -309,7 +310,8 @@ type jobState struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
-	Trigger *JobTrigger `pulumi:"trigger"`
+	Trigger  *JobTrigger  `pulumi:"trigger"`
+	Triggers []JobTrigger `pulumi:"triggers"`
 	// URL of the job on the given workspace
 	Url           *string `pulumi:"url"`
 	UsagePolicyId *string `pulumi:"usagePolicyId"`
@@ -401,7 +403,8 @@ type JobState struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
-	Trigger JobTriggerPtrInput
+	Trigger  JobTriggerPtrInput
+	Triggers JobTriggerArrayInput
 	// URL of the job on the given workspace
 	Url           pulumi.StringPtrInput
 	UsagePolicyId pulumi.StringPtrInput
@@ -497,8 +500,9 @@ type jobArgs struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
-	Trigger       *JobTrigger `pulumi:"trigger"`
-	UsagePolicyId *string     `pulumi:"usagePolicyId"`
+	Trigger       *JobTrigger  `pulumi:"trigger"`
+	Triggers      []JobTrigger `pulumi:"triggers"`
+	UsagePolicyId *string      `pulumi:"usagePolicyId"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
@@ -589,6 +593,7 @@ type JobArgs struct {
 	TimeoutSeconds pulumi.IntPtrInput
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
 	Trigger       JobTriggerPtrInput
+	Triggers      JobTriggerArrayInput
 	UsagePolicyId pulumi.StringPtrInput
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
@@ -886,6 +891,10 @@ func (o JobOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 // The conditions that triggers the job to start. See trigger Configuration Block below.
 func (o JobOutput) Trigger() JobTriggerPtrOutput {
 	return o.ApplyT(func(v *Job) JobTriggerPtrOutput { return v.Trigger }).(JobTriggerPtrOutput)
+}
+
+func (o JobOutput) Triggers() JobTriggerArrayOutput {
+	return o.ApplyT(func(v *Job) JobTriggerArrayOutput { return v.Triggers }).(JobTriggerArrayOutput)
 }
 
 // URL of the job on the given workspace

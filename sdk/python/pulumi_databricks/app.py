@@ -26,11 +26,14 @@ class AppArgs:
                  compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  git_repository: pulumi.Input[Optional['AppGitRepositoryArgs']] = None,
+                 git_source: pulumi.Input[Optional['AppGitSourceArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  provider_config: pulumi.Input[Optional['AppProviderConfigArgs']] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
+                 source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -44,6 +47,7 @@ class AppArgs:
         :param pulumi.Input['AppGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
+        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
         :param pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
@@ -58,8 +62,12 @@ class AppArgs:
             pulumi.set(__self__, "compute_size", compute_size)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if forward_user_access_token is not None:
+            pulumi.set(__self__, "forward_user_access_token", forward_user_access_token)
         if git_repository is not None:
             pulumi.set(__self__, "git_repository", git_repository)
+        if git_source is not None:
+            pulumi.set(__self__, "git_source", git_source)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if no_compute is not None:
@@ -68,6 +76,8 @@ class AppArgs:
             pulumi.set(__self__, "provider_config", provider_config)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
         if space is not None:
             pulumi.set(__self__, "space", space)
         if telemetry_export_destinations is not None:
@@ -132,6 +142,15 @@ class AppArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="forwardUserAccessToken")
+    def forward_user_access_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "forward_user_access_token")
+
+    @forward_user_access_token.setter
+    def forward_user_access_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "forward_user_access_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="gitRepository")
     def git_repository(self) -> pulumi.Input[Optional['AppGitRepositoryArgs']]:
         """
@@ -142,6 +161,15 @@ class AppArgs:
     @git_repository.setter
     def git_repository(self, value: pulumi.Input[Optional['AppGitRepositoryArgs']]):
         pulumi.set(self, "git_repository", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitSource")
+    def git_source(self) -> pulumi.Input[Optional['AppGitSourceArgs']]:
+        return pulumi.get(self, "git_source")
+
+    @git_source.setter
+    def git_source(self, value: pulumi.Input[Optional['AppGitSourceArgs']]):
+        pulumi.set(self, "git_source", value)
 
     @_builtins.property
     @pulumi.getter
@@ -184,6 +212,18 @@ class AppArgs:
     @resources.setter
     def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppResourceArgs']]]]):
         pulumi.set(self, "resources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        """
+        return pulumi.get(self, "source_code_path")
+
+    @source_code_path.setter
+    def source_code_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_code_path", value)
 
     @_builtins.property
     @pulumi.getter
@@ -243,12 +283,15 @@ class _AppState:
                  compute_status: pulumi.Input[Optional['AppComputeStatusArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_git_source: pulumi.Input[Optional['AppDefaultGitSourceArgs']] = None,
                  default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  git_repository: pulumi.Input[Optional['AppGitRepositoryArgs']] = None,
+                 git_source: pulumi.Input[Optional['AppGitSourceArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  oauth2_app_client_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -259,6 +302,7 @@ class _AppState:
                  service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
                  service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
                  thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -291,6 +335,7 @@ class _AppState:
         :param pulumi.Input[_builtins.str] service_principal_client_id: client_id (application_id) of the app service principal
         :param pulumi.Input[_builtins.int] service_principal_id: id of the app service principal
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
+        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
         :param pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
@@ -317,6 +362,8 @@ class _AppState:
             pulumi.set(__self__, "create_time", create_time)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if default_git_source is not None:
+            pulumi.set(__self__, "default_git_source", default_git_source)
         if default_source_code_path is not None:
             pulumi.set(__self__, "default_source_code_path", default_source_code_path)
         if description is not None:
@@ -327,8 +374,12 @@ class _AppState:
             pulumi.set(__self__, "effective_usage_policy_id", effective_usage_policy_id)
         if effective_user_api_scopes is not None:
             pulumi.set(__self__, "effective_user_api_scopes", effective_user_api_scopes)
+        if forward_user_access_token is not None:
+            pulumi.set(__self__, "forward_user_access_token", forward_user_access_token)
         if git_repository is not None:
             pulumi.set(__self__, "git_repository", git_repository)
+        if git_source is not None:
+            pulumi.set(__self__, "git_source", git_source)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if no_compute is not None:
@@ -349,6 +400,8 @@ class _AppState:
             pulumi.set(__self__, "service_principal_id", service_principal_id)
         if service_principal_name is not None:
             pulumi.set(__self__, "service_principal_name", service_principal_name)
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
         if space is not None:
             pulumi.set(__self__, "space", space)
         if telemetry_export_destinations is not None:
@@ -469,6 +522,15 @@ class _AppState:
         pulumi.set(self, "creator", value)
 
     @_builtins.property
+    @pulumi.getter(name="defaultGitSource")
+    def default_git_source(self) -> pulumi.Input[Optional['AppDefaultGitSourceArgs']]:
+        return pulumi.get(self, "default_git_source")
+
+    @default_git_source.setter
+    def default_git_source(self, value: pulumi.Input[Optional['AppDefaultGitSourceArgs']]):
+        pulumi.set(self, "default_git_source", value)
+
+    @_builtins.property
     @pulumi.getter(name="defaultSourceCodePath")
     def default_source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -529,6 +591,15 @@ class _AppState:
         pulumi.set(self, "effective_user_api_scopes", value)
 
     @_builtins.property
+    @pulumi.getter(name="forwardUserAccessToken")
+    def forward_user_access_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "forward_user_access_token")
+
+    @forward_user_access_token.setter
+    def forward_user_access_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "forward_user_access_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="gitRepository")
     def git_repository(self) -> pulumi.Input[Optional['AppGitRepositoryArgs']]:
         """
@@ -539,6 +610,15 @@ class _AppState:
     @git_repository.setter
     def git_repository(self, value: pulumi.Input[Optional['AppGitRepositoryArgs']]):
         pulumi.set(self, "git_repository", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitSource")
+    def git_source(self) -> pulumi.Input[Optional['AppGitSourceArgs']]:
+        return pulumi.get(self, "git_source")
+
+    @git_source.setter
+    def git_source(self, value: pulumi.Input[Optional['AppGitSourceArgs']]):
+        pulumi.set(self, "git_source", value)
 
     @_builtins.property
     @pulumi.getter
@@ -655,6 +735,18 @@ class _AppState:
         pulumi.set(self, "service_principal_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        """
+        return pulumi.get(self, "source_code_path")
+
+    @source_code_path.setter
+    def source_code_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_code_path", value)
+
+    @_builtins.property
     @pulumi.getter
     def space(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "space")
@@ -759,11 +851,14 @@ class App(pulumi.CustomResource):
                  compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
+                 git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+                 source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -828,6 +923,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
+        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
@@ -909,11 +1005,14 @@ class App(pulumi.CustomResource):
                  compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
+                 git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+                 source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -932,11 +1031,14 @@ class App(pulumi.CustomResource):
             __props__.__dict__["compute_min_instances"] = compute_min_instances
             __props__.__dict__["compute_size"] = compute_size
             __props__.__dict__["description"] = description
+            __props__.__dict__["forward_user_access_token"] = forward_user_access_token
             __props__.__dict__["git_repository"] = git_repository
+            __props__.__dict__["git_source"] = git_source
             __props__.__dict__["name"] = name
             __props__.__dict__["no_compute"] = no_compute
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["resources"] = resources
+            __props__.__dict__["source_code_path"] = source_code_path
             __props__.__dict__["space"] = space
             __props__.__dict__["telemetry_export_destinations"] = telemetry_export_destinations
             __props__.__dict__["usage_policy_id"] = usage_policy_id
@@ -946,6 +1048,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["compute_status"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["creator"] = None
+            __props__.__dict__["default_git_source"] = None
             __props__.__dict__["default_source_code_path"] = None
             __props__.__dict__["effective_budget_policy_id"] = None
             __props__.__dict__["effective_usage_policy_id"] = None
@@ -979,12 +1082,15 @@ class App(pulumi.CustomResource):
             compute_status: pulumi.Input[Optional[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
+            default_git_source: pulumi.Input[Optional[Union['AppDefaultGitSourceArgs', 'AppDefaultGitSourceArgsDict']]] = None,
             default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
             git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
+            git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
             oauth2_app_client_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -995,6 +1101,7 @@ class App(pulumi.CustomResource):
             service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
             service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
             space: pulumi.Input[Optional[_builtins.str]] = None,
             telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
             thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1031,6 +1138,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_principal_client_id: client_id (application_id) of the app service principal
         :param pulumi.Input[_builtins.int] service_principal_id: id of the app service principal
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
+        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
@@ -1052,12 +1160,15 @@ class App(pulumi.CustomResource):
         __props__.__dict__["compute_status"] = compute_status
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
+        __props__.__dict__["default_git_source"] = default_git_source
         __props__.__dict__["default_source_code_path"] = default_source_code_path
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_budget_policy_id"] = effective_budget_policy_id
         __props__.__dict__["effective_usage_policy_id"] = effective_usage_policy_id
         __props__.__dict__["effective_user_api_scopes"] = effective_user_api_scopes
+        __props__.__dict__["forward_user_access_token"] = forward_user_access_token
         __props__.__dict__["git_repository"] = git_repository
+        __props__.__dict__["git_source"] = git_source
         __props__.__dict__["name"] = name
         __props__.__dict__["no_compute"] = no_compute
         __props__.__dict__["oauth2_app_client_id"] = oauth2_app_client_id
@@ -1068,6 +1179,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["service_principal_client_id"] = service_principal_client_id
         __props__.__dict__["service_principal_id"] = service_principal_id
         __props__.__dict__["service_principal_name"] = service_principal_name
+        __props__.__dict__["source_code_path"] = source_code_path
         __props__.__dict__["space"] = space
         __props__.__dict__["telemetry_export_destinations"] = telemetry_export_destinations
         __props__.__dict__["thumbnail_url"] = thumbnail_url
@@ -1145,6 +1257,11 @@ class App(pulumi.CustomResource):
         return pulumi.get(self, "creator")
 
     @_builtins.property
+    @pulumi.getter(name="defaultGitSource")
+    def default_git_source(self) -> pulumi.Output['outputs.AppDefaultGitSource']:
+        return pulumi.get(self, "default_git_source")
+
+    @_builtins.property
     @pulumi.getter(name="defaultSourceCodePath")
     def default_source_code_path(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1185,12 +1302,22 @@ class App(pulumi.CustomResource):
         return pulumi.get(self, "effective_user_api_scopes")
 
     @_builtins.property
+    @pulumi.getter(name="forwardUserAccessToken")
+    def forward_user_access_token(self) -> pulumi.Output[_builtins.bool]:
+        return pulumi.get(self, "forward_user_access_token")
+
+    @_builtins.property
     @pulumi.getter(name="gitRepository")
     def git_repository(self) -> pulumi.Output[Optional['outputs.AppGitRepository']]:
         """
         Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         """
         return pulumi.get(self, "git_repository")
+
+    @_builtins.property
+    @pulumi.getter(name="gitSource")
+    def git_source(self) -> pulumi.Output['outputs.AppGitSource']:
+        return pulumi.get(self, "git_source")
 
     @_builtins.property
     @pulumi.getter
@@ -1265,6 +1392,14 @@ class App(pulumi.CustomResource):
         name of the app service principal
         """
         return pulumi.get(self, "service_principal_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> pulumi.Output[_builtins.str]:
+        """
+        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        """
+        return pulumi.get(self, "source_code_path")
 
     @_builtins.property
     @pulumi.getter

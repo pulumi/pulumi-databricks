@@ -55,16 +55,14 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
     }
 
     /**
-     * Leaf identifier for the provider service (the unqualified name within the
-     * parent schema, e.g. &#34;openaiProd&#34;)
+     * Name for the model provider service, e.g. &#34;openaiProd&#34;
      * 
      */
     @Import(name="modelProviderServiceId", required=true)
     private Output<String> modelProviderServiceId;
 
     /**
-     * @return Leaf identifier for the provider service (the unqualified name within the
-     * parent schema, e.g. &#34;openaiProd&#34;)
+     * @return Name for the model provider service, e.g. &#34;openaiProd&#34;
      * 
      */
     public Output<String> modelProviderServiceId() {
@@ -89,7 +87,7 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
     }
 
     /**
-     * Resource name of the parent schema.
+     * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -98,7 +96,7 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
     private Output<String> parent;
 
     /**
-     * @return Resource name of the parent schema.
+     * @return Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
      * 
@@ -200,8 +198,7 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param modelProviderServiceId Leaf identifier for the provider service (the unqualified name within the
-         * parent schema, e.g. &#34;openaiProd&#34;)
+         * @param modelProviderServiceId Name for the model provider service, e.g. &#34;openaiProd&#34;
          * 
          * @return builder
          * 
@@ -212,8 +209,7 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param modelProviderServiceId Leaf identifier for the provider service (the unqualified name within the
-         * parent schema, e.g. &#34;openaiProd&#34;)
+         * @param modelProviderServiceId Name for the model provider service, e.g. &#34;openaiProd&#34;
          * 
          * @return builder
          * 
@@ -246,7 +242,7 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 
@@ -259,7 +255,7 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param parent Resource name of the parent schema.
+         * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
          * 

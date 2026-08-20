@@ -107,7 +107,7 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
                                            provider_config: Optional[Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict']] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataClassificationCatalogConfigResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 
@@ -150,7 +150,7 @@ def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_b
                                                   provider_config: pulumi.Input[Optional[Optional[Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict']]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataClassificationCatalogConfigResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 
