@@ -19363,11 +19363,11 @@
                 },
                 "podIpRangeName": {
                     "type": "string",
-                    "deprecationMessage": "gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-vpc"
+                    "deprecationMessage": "gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.129.0/docs/guides/gcp-workspace#creating-a-vpc"
                 },
                 "serviceIpRangeName": {
                     "type": "string",
-                    "deprecationMessage": "gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-vpc"
+                    "deprecationMessage": "gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.129.0/docs/guides/gcp-workspace#creating-a-vpc"
                 },
                 "subnetId": {
                     "type": "string",
@@ -19505,11 +19505,11 @@
             "properties": {
                 "gkeClusterPodIpRange": {
                     "type": "string",
-                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.129.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "gkeClusterServiceIpRange": {
                     "type": "string",
-                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.129.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "subnetCidr": {
                     "type": "string",
@@ -79676,7 +79676,7 @@
                 },
                 "gkeConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
-                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.129.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "isNoPublicIpEnabled": {
                     "type": "boolean"
@@ -79814,7 +79814,7 @@
                 },
                 "gkeConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
-                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
+                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.129.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
                     "willReplaceOnChanges": true
                 },
                 "isNoPublicIpEnabled": {
@@ -79957,7 +79957,7 @@
                     },
                     "gkeConfig": {
                         "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
-                        "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.128.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
+                        "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.129.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
                         "willReplaceOnChanges": true
                     },
                     "isNoPublicIpEnabled": {
