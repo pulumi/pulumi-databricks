@@ -50,12 +50,8 @@ type LookupOnlineStoreResult struct {
 }
 
 func LookupOnlineStoreOutput(ctx *pulumi.Context, args LookupOnlineStoreOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineStoreResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOnlineStoreResultOutput, error) {
-			args := v.(LookupOnlineStoreArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getOnlineStore:getOnlineStore", args, LookupOnlineStoreResultOutput{}, options).(LookupOnlineStoreResultOutput), nil
-		}).(LookupOnlineStoreResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getOnlineStore:getOnlineStore", args, LookupOnlineStoreResultOutput{}, options).(LookupOnlineStoreResultOutput)
 }
 
 // A collection of arguments for invoking getOnlineStore.

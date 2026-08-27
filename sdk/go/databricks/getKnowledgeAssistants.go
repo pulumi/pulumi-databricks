@@ -42,12 +42,8 @@ type GetKnowledgeAssistantsResult struct {
 }
 
 func GetKnowledgeAssistantsOutput(ctx *pulumi.Context, args GetKnowledgeAssistantsOutputArgs, opts ...pulumi.InvokeOption) GetKnowledgeAssistantsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKnowledgeAssistantsResultOutput, error) {
-			args := v.(GetKnowledgeAssistantsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", args, GetKnowledgeAssistantsResultOutput{}, options).(GetKnowledgeAssistantsResultOutput), nil
-		}).(GetKnowledgeAssistantsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", args, GetKnowledgeAssistantsResultOutput{}, options).(GetKnowledgeAssistantsResultOutput)
 }
 
 // A collection of arguments for invoking getKnowledgeAssistants.

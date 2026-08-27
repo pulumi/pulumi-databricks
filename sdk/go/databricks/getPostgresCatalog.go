@@ -85,12 +85,8 @@ type LookupPostgresCatalogResult struct {
 }
 
 func LookupPostgresCatalogOutput(ctx *pulumi.Context, args LookupPostgresCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresCatalogResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresCatalogResultOutput, error) {
-			args := v.(LookupPostgresCatalogArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresCatalog:getPostgresCatalog", args, LookupPostgresCatalogResultOutput{}, options).(LookupPostgresCatalogResultOutput), nil
-		}).(LookupPostgresCatalogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresCatalog:getPostgresCatalog", args, LookupPostgresCatalogResultOutput{}, options).(LookupPostgresCatalogResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresCatalog.

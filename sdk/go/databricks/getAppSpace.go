@@ -71,12 +71,8 @@ type LookupAppSpaceResult struct {
 }
 
 func LookupAppSpaceOutput(ctx *pulumi.Context, args LookupAppSpaceOutputArgs, opts ...pulumi.InvokeOption) LookupAppSpaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppSpaceResultOutput, error) {
-			args := v.(LookupAppSpaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAppSpace:getAppSpace", args, LookupAppSpaceResultOutput{}, options).(LookupAppSpaceResultOutput), nil
-		}).(LookupAppSpaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAppSpace:getAppSpace", args, LookupAppSpaceResultOutput{}, options).(LookupAppSpaceResultOutput)
 }
 
 // A collection of arguments for invoking getAppSpace.

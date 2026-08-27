@@ -38,12 +38,8 @@ type GetOnlineStoresResult struct {
 }
 
 func GetOnlineStoresOutput(ctx *pulumi.Context, args GetOnlineStoresOutputArgs, opts ...pulumi.InvokeOption) GetOnlineStoresResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOnlineStoresResultOutput, error) {
-			args := v.(GetOnlineStoresArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getOnlineStores:getOnlineStores", args, GetOnlineStoresResultOutput{}, options).(GetOnlineStoresResultOutput), nil
-		}).(GetOnlineStoresResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getOnlineStores:getOnlineStores", args, GetOnlineStoresResultOutput{}, options).(GetOnlineStoresResultOutput)
 }
 
 // A collection of arguments for invoking getOnlineStores.

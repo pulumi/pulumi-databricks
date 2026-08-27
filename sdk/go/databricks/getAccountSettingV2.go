@@ -87,12 +87,8 @@ type LookupAccountSettingV2Result struct {
 }
 
 func LookupAccountSettingV2Output(ctx *pulumi.Context, args LookupAccountSettingV2OutputArgs, opts ...pulumi.InvokeOption) LookupAccountSettingV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountSettingV2ResultOutput, error) {
-			args := v.(LookupAccountSettingV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAccountSettingV2:getAccountSettingV2", args, LookupAccountSettingV2ResultOutput{}, options).(LookupAccountSettingV2ResultOutput), nil
-		}).(LookupAccountSettingV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountSettingV2:getAccountSettingV2", args, LookupAccountSettingV2ResultOutput{}, options).(LookupAccountSettingV2ResultOutput)
 }
 
 // A collection of arguments for invoking getAccountSettingV2.

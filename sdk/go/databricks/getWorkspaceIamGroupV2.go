@@ -78,12 +78,8 @@ type LookupWorkspaceIamGroupV2Result struct {
 }
 
 func LookupWorkspaceIamGroupV2Output(ctx *pulumi.Context, args LookupWorkspaceIamGroupV2OutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceIamGroupV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceIamGroupV2ResultOutput, error) {
-			args := v.(LookupWorkspaceIamGroupV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", args, LookupWorkspaceIamGroupV2ResultOutput{}, options).(LookupWorkspaceIamGroupV2ResultOutput), nil
-		}).(LookupWorkspaceIamGroupV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", args, LookupWorkspaceIamGroupV2ResultOutput{}, options).(LookupWorkspaceIamGroupV2ResultOutput)
 }
 
 // A collection of arguments for invoking getWorkspaceIamGroupV2.

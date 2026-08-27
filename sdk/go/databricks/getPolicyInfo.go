@@ -130,12 +130,8 @@ type LookupPolicyInfoResult struct {
 }
 
 func LookupPolicyInfoOutput(ctx *pulumi.Context, args LookupPolicyInfoOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPolicyInfoResultOutput, error) {
-			args := v.(LookupPolicyInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPolicyInfo:getPolicyInfo", args, LookupPolicyInfoResultOutput{}, options).(LookupPolicyInfoResultOutput), nil
-		}).(LookupPolicyInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPolicyInfo:getPolicyInfo", args, LookupPolicyInfoResultOutput{}, options).(LookupPolicyInfoResultOutput)
 }
 
 // A collection of arguments for invoking getPolicyInfo.

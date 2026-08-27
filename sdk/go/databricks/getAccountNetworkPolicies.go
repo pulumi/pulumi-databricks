@@ -60,10 +60,8 @@ type GetAccountNetworkPoliciesResult struct {
 }
 
 func GetAccountNetworkPoliciesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountNetworkPoliciesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountNetworkPoliciesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", nil, GetAccountNetworkPoliciesResultOutput{}, options).(GetAccountNetworkPoliciesResultOutput), nil
-	}).(GetAccountNetworkPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", nil, GetAccountNetworkPoliciesResultOutput{}, options).(GetAccountNetworkPoliciesResultOutput)
 }
 
 // A collection of values returned by getAccountNetworkPolicies.

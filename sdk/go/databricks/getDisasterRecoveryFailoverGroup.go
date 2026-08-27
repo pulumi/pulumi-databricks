@@ -94,12 +94,8 @@ type LookupDisasterRecoveryFailoverGroupResult struct {
 }
 
 func LookupDisasterRecoveryFailoverGroupOutput(ctx *pulumi.Context, args LookupDisasterRecoveryFailoverGroupOutputArgs, opts ...pulumi.InvokeOption) LookupDisasterRecoveryFailoverGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDisasterRecoveryFailoverGroupResultOutput, error) {
-			args := v.(LookupDisasterRecoveryFailoverGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", args, LookupDisasterRecoveryFailoverGroupResultOutput{}, options).(LookupDisasterRecoveryFailoverGroupResultOutput), nil
-		}).(LookupDisasterRecoveryFailoverGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", args, LookupDisasterRecoveryFailoverGroupResultOutput{}, options).(LookupDisasterRecoveryFailoverGroupResultOutput)
 }
 
 // A collection of arguments for invoking getDisasterRecoveryFailoverGroup.

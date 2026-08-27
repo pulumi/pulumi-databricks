@@ -30031,7 +30031,6 @@ export interface JobJobCluster {
 }
 
 export interface JobJobClusterNewCluster {
-    __applyPolicyDefaultValuesAllowLists?: string[];
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobJobClusterNewClusterAutoscale;
     awsAttributes?: outputs.JobJobClusterNewClusterAwsAttributes;
@@ -32297,7 +32296,6 @@ export interface JobTaskLibraryPypi {
 }
 
 export interface JobTaskNewCluster {
-    __applyPolicyDefaultValuesAllowLists?: string[];
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobTaskNewClusterAutoscale;
     awsAttributes?: outputs.JobTaskNewClusterAwsAttributes;

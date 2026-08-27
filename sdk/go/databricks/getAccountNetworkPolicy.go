@@ -55,12 +55,8 @@ type LookupAccountNetworkPolicyResult struct {
 }
 
 func LookupAccountNetworkPolicyOutput(ctx *pulumi.Context, args LookupAccountNetworkPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccountNetworkPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountNetworkPolicyResultOutput, error) {
-			args := v.(LookupAccountNetworkPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args, LookupAccountNetworkPolicyResultOutput{}, options).(LookupAccountNetworkPolicyResultOutput), nil
-		}).(LookupAccountNetworkPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args, LookupAccountNetworkPolicyResultOutput{}, options).(LookupAccountNetworkPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAccountNetworkPolicy.

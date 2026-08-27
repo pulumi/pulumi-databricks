@@ -89,12 +89,8 @@ type GetDashboardsResult struct {
 }
 
 func GetDashboardsOutput(ctx *pulumi.Context, args GetDashboardsOutputArgs, opts ...pulumi.InvokeOption) GetDashboardsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDashboardsResultOutput, error) {
-			args := v.(GetDashboardsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDashboards:getDashboards", args, GetDashboardsResultOutput{}, options).(GetDashboardsResultOutput), nil
-		}).(GetDashboardsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDashboards:getDashboards", args, GetDashboardsResultOutput{}, options).(GetDashboardsResultOutput)
 }
 
 // A collection of arguments for invoking getDashboards.

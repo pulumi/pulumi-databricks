@@ -60,12 +60,8 @@ type LookupSupervisorAgentResult struct {
 }
 
 func LookupSupervisorAgentOutput(ctx *pulumi.Context, args LookupSupervisorAgentOutputArgs, opts ...pulumi.InvokeOption) LookupSupervisorAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSupervisorAgentResultOutput, error) {
-			args := v.(LookupSupervisorAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getSupervisorAgent:getSupervisorAgent", args, LookupSupervisorAgentResultOutput{}, options).(LookupSupervisorAgentResultOutput), nil
-		}).(LookupSupervisorAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getSupervisorAgent:getSupervisorAgent", args, LookupSupervisorAgentResultOutput{}, options).(LookupSupervisorAgentResultOutput)
 }
 
 // A collection of arguments for invoking getSupervisorAgent.

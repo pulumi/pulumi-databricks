@@ -51,12 +51,8 @@ type LookupAccountSettingUserPreferenceV2Result struct {
 }
 
 func LookupAccountSettingUserPreferenceV2Output(ctx *pulumi.Context, args LookupAccountSettingUserPreferenceV2OutputArgs, opts ...pulumi.InvokeOption) LookupAccountSettingUserPreferenceV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountSettingUserPreferenceV2ResultOutput, error) {
-			args := v.(LookupAccountSettingUserPreferenceV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", args, LookupAccountSettingUserPreferenceV2ResultOutput{}, options).(LookupAccountSettingUserPreferenceV2ResultOutput), nil
-		}).(LookupAccountSettingUserPreferenceV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", args, LookupAccountSettingUserPreferenceV2ResultOutput{}, options).(LookupAccountSettingUserPreferenceV2ResultOutput)
 }
 
 // A collection of arguments for invoking getAccountSettingUserPreferenceV2.

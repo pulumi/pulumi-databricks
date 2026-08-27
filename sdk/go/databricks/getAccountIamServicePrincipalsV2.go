@@ -70,12 +70,8 @@ type GetAccountIamServicePrincipalsV2Result struct {
 }
 
 func GetAccountIamServicePrincipalsV2Output(ctx *pulumi.Context, args GetAccountIamServicePrincipalsV2OutputArgs, opts ...pulumi.InvokeOption) GetAccountIamServicePrincipalsV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountIamServicePrincipalsV2ResultOutput, error) {
-			args := v.(GetAccountIamServicePrincipalsV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", args, GetAccountIamServicePrincipalsV2ResultOutput{}, options).(GetAccountIamServicePrincipalsV2ResultOutput), nil
-		}).(GetAccountIamServicePrincipalsV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", args, GetAccountIamServicePrincipalsV2ResultOutput{}, options).(GetAccountIamServicePrincipalsV2ResultOutput)
 }
 
 // A collection of arguments for invoking getAccountIamServicePrincipalsV2.

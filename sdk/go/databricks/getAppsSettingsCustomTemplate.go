@@ -81,12 +81,8 @@ type LookupAppsSettingsCustomTemplateResult struct {
 }
 
 func LookupAppsSettingsCustomTemplateOutput(ctx *pulumi.Context, args LookupAppsSettingsCustomTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupAppsSettingsCustomTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppsSettingsCustomTemplateResultOutput, error) {
-			args := v.(LookupAppsSettingsCustomTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", args, LookupAppsSettingsCustomTemplateResultOutput{}, options).(LookupAppsSettingsCustomTemplateResultOutput), nil
-		}).(LookupAppsSettingsCustomTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", args, LookupAppsSettingsCustomTemplateResultOutput{}, options).(LookupAppsSettingsCustomTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getAppsSettingsCustomTemplate.

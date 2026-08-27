@@ -43,12 +43,8 @@ type GetAccountIamWorkspaceAssignmentsV2Result struct {
 }
 
 func GetAccountIamWorkspaceAssignmentsV2Output(ctx *pulumi.Context, args GetAccountIamWorkspaceAssignmentsV2OutputArgs, opts ...pulumi.InvokeOption) GetAccountIamWorkspaceAssignmentsV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountIamWorkspaceAssignmentsV2ResultOutput, error) {
-			args := v.(GetAccountIamWorkspaceAssignmentsV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", args, GetAccountIamWorkspaceAssignmentsV2ResultOutput{}, options).(GetAccountIamWorkspaceAssignmentsV2ResultOutput), nil
-		}).(GetAccountIamWorkspaceAssignmentsV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", args, GetAccountIamWorkspaceAssignmentsV2ResultOutput{}, options).(GetAccountIamWorkspaceAssignmentsV2ResultOutput)
 }
 
 // A collection of arguments for invoking getAccountIamWorkspaceAssignmentsV2.

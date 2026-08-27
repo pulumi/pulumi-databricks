@@ -48,12 +48,8 @@ type LookupWorkspaceIamWorkspaceIdentityDetailV2Result struct {
 }
 
 func LookupWorkspaceIamWorkspaceIdentityDetailV2Output(ctx *pulumi.Context, args LookupWorkspaceIamWorkspaceIdentityDetailV2OutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput, error) {
-			args := v.(LookupWorkspaceIamWorkspaceIdentityDetailV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", args, LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput{}, options).(LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput), nil
-		}).(LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", args, LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput{}, options).(LookupWorkspaceIamWorkspaceIdentityDetailV2ResultOutput)
 }
 
 // A collection of arguments for invoking getWorkspaceIamWorkspaceIdentityDetailV2.

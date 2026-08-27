@@ -73,12 +73,8 @@ type GetQualityMonitorsV2Result struct {
 }
 
 func GetQualityMonitorsV2Output(ctx *pulumi.Context, args GetQualityMonitorsV2OutputArgs, opts ...pulumi.InvokeOption) GetQualityMonitorsV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetQualityMonitorsV2ResultOutput, error) {
-			args := v.(GetQualityMonitorsV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args, GetQualityMonitorsV2ResultOutput{}, options).(GetQualityMonitorsV2ResultOutput), nil
-		}).(GetQualityMonitorsV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args, GetQualityMonitorsV2ResultOutput{}, options).(GetQualityMonitorsV2ResultOutput)
 }
 
 // A collection of arguments for invoking getQualityMonitorsV2.

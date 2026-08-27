@@ -66,12 +66,8 @@ type GetAccountFederationPoliciesResult struct {
 }
 
 func GetAccountFederationPoliciesOutput(ctx *pulumi.Context, args GetAccountFederationPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAccountFederationPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountFederationPoliciesResultOutput, error) {
-			args := v.(GetAccountFederationPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", args, GetAccountFederationPoliciesResultOutput{}, options).(GetAccountFederationPoliciesResultOutput), nil
-		}).(GetAccountFederationPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", args, GetAccountFederationPoliciesResultOutput{}, options).(GetAccountFederationPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getAccountFederationPolicies.

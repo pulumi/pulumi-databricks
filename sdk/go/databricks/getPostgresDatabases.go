@@ -52,12 +52,8 @@ type GetPostgresDatabasesResult struct {
 }
 
 func GetPostgresDatabasesOutput(ctx *pulumi.Context, args GetPostgresDatabasesOutputArgs, opts ...pulumi.InvokeOption) GetPostgresDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPostgresDatabasesResultOutput, error) {
-			args := v.(GetPostgresDatabasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresDatabases:getPostgresDatabases", args, GetPostgresDatabasesResultOutput{}, options).(GetPostgresDatabasesResultOutput), nil
-		}).(GetPostgresDatabasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresDatabases:getPostgresDatabases", args, GetPostgresDatabasesResultOutput{}, options).(GetPostgresDatabasesResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresDatabases.

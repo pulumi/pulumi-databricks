@@ -104,12 +104,8 @@ type LookupDataQualityMonitorResult struct {
 }
 
 func LookupDataQualityMonitorOutput(ctx *pulumi.Context, args LookupDataQualityMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupDataQualityMonitorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataQualityMonitorResultOutput, error) {
-			args := v.(LookupDataQualityMonitorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDataQualityMonitor:getDataQualityMonitor", args, LookupDataQualityMonitorResultOutput{}, options).(LookupDataQualityMonitorResultOutput), nil
-		}).(LookupDataQualityMonitorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDataQualityMonitor:getDataQualityMonitor", args, LookupDataQualityMonitorResultOutput{}, options).(LookupDataQualityMonitorResultOutput)
 }
 
 // A collection of arguments for invoking getDataQualityMonitor.

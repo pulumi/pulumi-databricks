@@ -75,12 +75,8 @@ type GetBudgetPoliciesResult struct {
 }
 
 func GetBudgetPoliciesOutput(ctx *pulumi.Context, args GetBudgetPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetBudgetPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBudgetPoliciesResultOutput, error) {
-			args := v.(GetBudgetPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getBudgetPolicies:getBudgetPolicies", args, GetBudgetPoliciesResultOutput{}, options).(GetBudgetPoliciesResultOutput), nil
-		}).(GetBudgetPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getBudgetPolicies:getBudgetPolicies", args, GetBudgetPoliciesResultOutput{}, options).(GetBudgetPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getBudgetPolicies.

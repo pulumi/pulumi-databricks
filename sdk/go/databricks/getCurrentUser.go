@@ -45,12 +45,8 @@ type GetCurrentUserResult struct {
 }
 
 func GetCurrentUserOutput(ctx *pulumi.Context, args GetCurrentUserOutputArgs, opts ...pulumi.InvokeOption) GetCurrentUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCurrentUserResultOutput, error) {
-			args := v.(GetCurrentUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getCurrentUser:getCurrentUser", args, GetCurrentUserResultOutput{}, options).(GetCurrentUserResultOutput), nil
-		}).(GetCurrentUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getCurrentUser:getCurrentUser", args, GetCurrentUserResultOutput{}, options).(GetCurrentUserResultOutput)
 }
 
 // A collection of arguments for invoking getCurrentUser.

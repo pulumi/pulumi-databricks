@@ -83,12 +83,8 @@ type LookupStorageCredentialResult struct {
 }
 
 func LookupStorageCredentialOutput(ctx *pulumi.Context, args LookupStorageCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupStorageCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStorageCredentialResultOutput, error) {
-			args := v.(LookupStorageCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getStorageCredential:getStorageCredential", args, LookupStorageCredentialResultOutput{}, options).(LookupStorageCredentialResultOutput), nil
-		}).(LookupStorageCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getStorageCredential:getStorageCredential", args, LookupStorageCredentialResultOutput{}, options).(LookupStorageCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getStorageCredential.

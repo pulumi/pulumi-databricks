@@ -74,12 +74,8 @@ type GetAiSearchEndpointsResult struct {
 }
 
 func GetAiSearchEndpointsOutput(ctx *pulumi.Context, args GetAiSearchEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetAiSearchEndpointsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAiSearchEndpointsResultOutput, error) {
-			args := v.(GetAiSearchEndpointsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", args, GetAiSearchEndpointsResultOutput{}, options).(GetAiSearchEndpointsResultOutput), nil
-		}).(GetAiSearchEndpointsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", args, GetAiSearchEndpointsResultOutput{}, options).(GetAiSearchEndpointsResultOutput)
 }
 
 // A collection of arguments for invoking getAiSearchEndpoints.

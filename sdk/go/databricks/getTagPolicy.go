@@ -88,12 +88,8 @@ type LookupTagPolicyResult struct {
 }
 
 func LookupTagPolicyOutput(ctx *pulumi.Context, args LookupTagPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTagPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTagPolicyResultOutput, error) {
-			args := v.(LookupTagPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getTagPolicy:getTagPolicy", args, LookupTagPolicyResultOutput{}, options).(LookupTagPolicyResultOutput), nil
-		}).(LookupTagPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getTagPolicy:getTagPolicy", args, LookupTagPolicyResultOutput{}, options).(LookupTagPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTagPolicy.

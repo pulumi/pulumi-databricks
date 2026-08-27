@@ -90,12 +90,8 @@ type LookupWorkspaceSettingV2Result struct {
 }
 
 func LookupWorkspaceSettingV2Output(ctx *pulumi.Context, args LookupWorkspaceSettingV2OutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceSettingV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceSettingV2ResultOutput, error) {
-			args := v.(LookupWorkspaceSettingV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", args, LookupWorkspaceSettingV2ResultOutput{}, options).(LookupWorkspaceSettingV2ResultOutput), nil
-		}).(LookupWorkspaceSettingV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", args, LookupWorkspaceSettingV2ResultOutput{}, options).(LookupWorkspaceSettingV2ResultOutput)
 }
 
 // A collection of arguments for invoking getWorkspaceSettingV2.

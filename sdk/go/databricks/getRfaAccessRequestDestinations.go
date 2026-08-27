@@ -86,12 +86,8 @@ type LookupRfaAccessRequestDestinationsResult struct {
 }
 
 func LookupRfaAccessRequestDestinationsOutput(ctx *pulumi.Context, args LookupRfaAccessRequestDestinationsOutputArgs, opts ...pulumi.InvokeOption) LookupRfaAccessRequestDestinationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRfaAccessRequestDestinationsResultOutput, error) {
-			args := v.(LookupRfaAccessRequestDestinationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", args, LookupRfaAccessRequestDestinationsResultOutput{}, options).(LookupRfaAccessRequestDestinationsResultOutput), nil
-		}).(LookupRfaAccessRequestDestinationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", args, LookupRfaAccessRequestDestinationsResultOutput{}, options).(LookupRfaAccessRequestDestinationsResultOutput)
 }
 
 // A collection of arguments for invoking getRfaAccessRequestDestinations.

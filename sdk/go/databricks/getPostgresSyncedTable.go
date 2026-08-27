@@ -88,12 +88,8 @@ type LookupPostgresSyncedTableResult struct {
 }
 
 func LookupPostgresSyncedTableOutput(ctx *pulumi.Context, args LookupPostgresSyncedTableOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresSyncedTableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresSyncedTableResultOutput, error) {
-			args := v.(LookupPostgresSyncedTableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", args, LookupPostgresSyncedTableResultOutput{}, options).(LookupPostgresSyncedTableResultOutput), nil
-		}).(LookupPostgresSyncedTableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", args, LookupPostgresSyncedTableResultOutput{}, options).(LookupPostgresSyncedTableResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresSyncedTable.

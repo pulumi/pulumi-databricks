@@ -69,12 +69,8 @@ type GetEnvironmentsWorkspaceBaseEnvironmentsResult struct {
 }
 
 func GetEnvironmentsWorkspaceBaseEnvironmentsOutput(ctx *pulumi.Context, args GetEnvironmentsWorkspaceBaseEnvironmentsOutputArgs, opts ...pulumi.InvokeOption) GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput, error) {
-			args := v.(GetEnvironmentsWorkspaceBaseEnvironmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", args, GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput{}, options).(GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput), nil
-		}).(GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", args, GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput{}, options).(GetEnvironmentsWorkspaceBaseEnvironmentsResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironmentsWorkspaceBaseEnvironments.

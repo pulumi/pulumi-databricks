@@ -96,12 +96,8 @@ type LookupDataClassificationCatalogConfigResult struct {
 }
 
 func LookupDataClassificationCatalogConfigOutput(ctx *pulumi.Context, args LookupDataClassificationCatalogConfigOutputArgs, opts ...pulumi.InvokeOption) LookupDataClassificationCatalogConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataClassificationCatalogConfigResultOutput, error) {
-			args := v.(LookupDataClassificationCatalogConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", args, LookupDataClassificationCatalogConfigResultOutput{}, options).(LookupDataClassificationCatalogConfigResultOutput), nil
-		}).(LookupDataClassificationCatalogConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", args, LookupDataClassificationCatalogConfigResultOutput{}, options).(LookupDataClassificationCatalogConfigResultOutput)
 }
 
 // A collection of arguments for invoking getDataClassificationCatalogConfig.

@@ -77,12 +77,8 @@ type LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult struct {
 }
 
 func LookupEnvironmentsDefaultWorkspaceBaseEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentsDefaultWorkspaceBaseEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput, error) {
-			args := v.(LookupEnvironmentsDefaultWorkspaceBaseEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", args, LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput{}, options).(LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput), nil
-		}).(LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", args, LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput{}, options).(LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironmentsDefaultWorkspaceBaseEnvironment.

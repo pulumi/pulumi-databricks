@@ -72,12 +72,8 @@ type GetServicePrincipalFederationPoliciesResult struct {
 }
 
 func GetServicePrincipalFederationPoliciesOutput(ctx *pulumi.Context, args GetServicePrincipalFederationPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetServicePrincipalFederationPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServicePrincipalFederationPoliciesResultOutput, error) {
-			args := v.(GetServicePrincipalFederationPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", args, GetServicePrincipalFederationPoliciesResultOutput{}, options).(GetServicePrincipalFederationPoliciesResultOutput), nil
-		}).(GetServicePrincipalFederationPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", args, GetServicePrincipalFederationPoliciesResultOutput{}, options).(GetServicePrincipalFederationPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getServicePrincipalFederationPolicies.

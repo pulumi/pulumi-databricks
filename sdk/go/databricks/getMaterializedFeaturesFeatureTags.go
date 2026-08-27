@@ -42,12 +42,8 @@ type GetMaterializedFeaturesFeatureTagsResult struct {
 }
 
 func GetMaterializedFeaturesFeatureTagsOutput(ctx *pulumi.Context, args GetMaterializedFeaturesFeatureTagsOutputArgs, opts ...pulumi.InvokeOption) GetMaterializedFeaturesFeatureTagsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMaterializedFeaturesFeatureTagsResultOutput, error) {
-			args := v.(GetMaterializedFeaturesFeatureTagsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args, GetMaterializedFeaturesFeatureTagsResultOutput{}, options).(GetMaterializedFeaturesFeatureTagsResultOutput), nil
-		}).(GetMaterializedFeaturesFeatureTagsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args, GetMaterializedFeaturesFeatureTagsResultOutput{}, options).(GetMaterializedFeaturesFeatureTagsResultOutput)
 }
 
 // A collection of arguments for invoking getMaterializedFeaturesFeatureTags.

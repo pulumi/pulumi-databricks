@@ -50,12 +50,8 @@ type GetPostgresCdfConfigsResult struct {
 }
 
 func GetPostgresCdfConfigsOutput(ctx *pulumi.Context, args GetPostgresCdfConfigsOutputArgs, opts ...pulumi.InvokeOption) GetPostgresCdfConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPostgresCdfConfigsResultOutput, error) {
-			args := v.(GetPostgresCdfConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresCdfConfigs:getPostgresCdfConfigs", args, GetPostgresCdfConfigsResultOutput{}, options).(GetPostgresCdfConfigsResultOutput), nil
-		}).(GetPostgresCdfConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresCdfConfigs:getPostgresCdfConfigs", args, GetPostgresCdfConfigsResultOutput{}, options).(GetPostgresCdfConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresCdfConfigs.

@@ -99,12 +99,8 @@ type LookupDisasterRecoveryStableUrlResult struct {
 }
 
 func LookupDisasterRecoveryStableUrlOutput(ctx *pulumi.Context, args LookupDisasterRecoveryStableUrlOutputArgs, opts ...pulumi.InvokeOption) LookupDisasterRecoveryStableUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDisasterRecoveryStableUrlResultOutput, error) {
-			args := v.(LookupDisasterRecoveryStableUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", args, LookupDisasterRecoveryStableUrlResultOutput{}, options).(LookupDisasterRecoveryStableUrlResultOutput), nil
-		}).(LookupDisasterRecoveryStableUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", args, LookupDisasterRecoveryStableUrlResultOutput{}, options).(LookupDisasterRecoveryStableUrlResultOutput)
 }
 
 // A collection of arguments for invoking getDisasterRecoveryStableUrl.

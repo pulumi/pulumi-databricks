@@ -32661,9 +32661,7 @@ class JobJobClusterNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "__applyPolicyDefaultValuesAllowLists":
-            suggest = "__apply_policy_default_values_allow_lists"
-        elif key == "applyPolicyDefaultValues":
+        if key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -32748,7 +32746,6 @@ class JobJobClusterNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 __apply_policy_default_values_allow_lists: Optional[Sequence[_builtins.str]] = None,
                  apply_policy_default_values: Optional[_builtins.bool] = None,
                  autoscale: Optional['outputs.JobJobClusterNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobJobClusterNewClusterAwsAttributes'] = None,
@@ -32793,8 +32790,6 @@ class JobJobClusterNewCluster(dict):
         :param 'JobJobClusterNewClusterProviderConfigArgs' provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param 'JobJobClusterNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
-        if __apply_policy_default_values_allow_lists is not None:
-            pulumi.set(__self__, "__apply_policy_default_values_allow_lists", __apply_policy_default_values_allow_lists)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -32873,11 +32868,6 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
-
-    @_builtins.property
-    @pulumi.getter(name="__applyPolicyDefaultValuesAllowLists")
-    def __apply_policy_default_values_allow_lists(self) -> Optional[Sequence[_builtins.str]]:
-        return pulumi.get(self, "__apply_policy_default_values_allow_lists")
 
     @_builtins.property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -43946,9 +43936,7 @@ class JobTaskNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "__applyPolicyDefaultValuesAllowLists":
-            suggest = "__apply_policy_default_values_allow_lists"
-        elif key == "applyPolicyDefaultValues":
+        if key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -44033,7 +44021,6 @@ class JobTaskNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 __apply_policy_default_values_allow_lists: Optional[Sequence[_builtins.str]] = None,
                  apply_policy_default_values: Optional[_builtins.bool] = None,
                  autoscale: Optional['outputs.JobTaskNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobTaskNewClusterAwsAttributes'] = None,
@@ -44078,8 +44065,6 @@ class JobTaskNewCluster(dict):
         :param 'JobTaskNewClusterProviderConfigArgs' provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param 'JobTaskNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
-        if __apply_policy_default_values_allow_lists is not None:
-            pulumi.set(__self__, "__apply_policy_default_values_allow_lists", __apply_policy_default_values_allow_lists)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -44158,11 +44143,6 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
-
-    @_builtins.property
-    @pulumi.getter(name="__applyPolicyDefaultValuesAllowLists")
-    def __apply_policy_default_values_allow_lists(self) -> Optional[Sequence[_builtins.str]]:
-        return pulumi.get(self, "__apply_policy_default_values_allow_lists")
 
     @_builtins.property
     @pulumi.getter(name="applyPolicyDefaultValues")

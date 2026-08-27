@@ -74,12 +74,8 @@ type GetAccountIamDirectGroupMembersV2Result struct {
 }
 
 func GetAccountIamDirectGroupMembersV2Output(ctx *pulumi.Context, args GetAccountIamDirectGroupMembersV2OutputArgs, opts ...pulumi.InvokeOption) GetAccountIamDirectGroupMembersV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountIamDirectGroupMembersV2ResultOutput, error) {
-			args := v.(GetAccountIamDirectGroupMembersV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", args, GetAccountIamDirectGroupMembersV2ResultOutput{}, options).(GetAccountIamDirectGroupMembersV2ResultOutput), nil
-		}).(GetAccountIamDirectGroupMembersV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", args, GetAccountIamDirectGroupMembersV2ResultOutput{}, options).(GetAccountIamDirectGroupMembersV2ResultOutput)
 }
 
 // A collection of arguments for invoking getAccountIamDirectGroupMembersV2.

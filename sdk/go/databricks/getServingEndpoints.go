@@ -97,12 +97,8 @@ type GetServingEndpointsResult struct {
 }
 
 func GetServingEndpointsOutput(ctx *pulumi.Context, args GetServingEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetServingEndpointsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServingEndpointsResultOutput, error) {
-			args := v.(GetServingEndpointsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getServingEndpoints:getServingEndpoints", args, GetServingEndpointsResultOutput{}, options).(GetServingEndpointsResultOutput), nil
-		}).(GetServingEndpointsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getServingEndpoints:getServingEndpoints", args, GetServingEndpointsResultOutput{}, options).(GetServingEndpointsResultOutput)
 }
 
 // A collection of arguments for invoking getServingEndpoints.

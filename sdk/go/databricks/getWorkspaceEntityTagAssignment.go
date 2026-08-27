@@ -104,12 +104,8 @@ type LookupWorkspaceEntityTagAssignmentResult struct {
 }
 
 func LookupWorkspaceEntityTagAssignmentOutput(ctx *pulumi.Context, args LookupWorkspaceEntityTagAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceEntityTagAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceEntityTagAssignmentResultOutput, error) {
-			args := v.(LookupWorkspaceEntityTagAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment", args, LookupWorkspaceEntityTagAssignmentResultOutput{}, options).(LookupWorkspaceEntityTagAssignmentResultOutput), nil
-		}).(LookupWorkspaceEntityTagAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment", args, LookupWorkspaceEntityTagAssignmentResultOutput{}, options).(LookupWorkspaceEntityTagAssignmentResultOutput)
 }
 
 // A collection of arguments for invoking getWorkspaceEntityTagAssignment.

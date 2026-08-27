@@ -98,12 +98,8 @@ type LookupExternalMetadataResult struct {
 }
 
 func LookupExternalMetadataOutput(ctx *pulumi.Context, args LookupExternalMetadataOutputArgs, opts ...pulumi.InvokeOption) LookupExternalMetadataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExternalMetadataResultOutput, error) {
-			args := v.(LookupExternalMetadataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getExternalMetadata:getExternalMetadata", args, LookupExternalMetadataResultOutput{}, options).(LookupExternalMetadataResultOutput), nil
-		}).(LookupExternalMetadataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getExternalMetadata:getExternalMetadata", args, LookupExternalMetadataResultOutput{}, options).(LookupExternalMetadataResultOutput)
 }
 
 // A collection of arguments for invoking getExternalMetadata.

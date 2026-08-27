@@ -107,12 +107,8 @@ type GetSqlWarehousesResult struct {
 }
 
 func GetSqlWarehousesOutput(ctx *pulumi.Context, args GetSqlWarehousesOutputArgs, opts ...pulumi.InvokeOption) GetSqlWarehousesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSqlWarehousesResultOutput, error) {
-			args := v.(GetSqlWarehousesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getSqlWarehouses:getSqlWarehouses", args, GetSqlWarehousesResultOutput{}, options).(GetSqlWarehousesResultOutput), nil
-		}).(GetSqlWarehousesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getSqlWarehouses:getSqlWarehouses", args, GetSqlWarehousesResultOutput{}, options).(GetSqlWarehousesResultOutput)
 }
 
 // A collection of arguments for invoking getSqlWarehouses.

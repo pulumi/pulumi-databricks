@@ -76,12 +76,8 @@ type GetCurrentConfigResult struct {
 }
 
 func GetCurrentConfigOutput(ctx *pulumi.Context, args GetCurrentConfigOutputArgs, opts ...pulumi.InvokeOption) GetCurrentConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCurrentConfigResultOutput, error) {
-			args := v.(GetCurrentConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getCurrentConfig:getCurrentConfig", args, GetCurrentConfigResultOutput{}, options).(GetCurrentConfigResultOutput), nil
-		}).(GetCurrentConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getCurrentConfig:getCurrentConfig", args, GetCurrentConfigResultOutput{}, options).(GetCurrentConfigResultOutput)
 }
 
 // A collection of arguments for invoking getCurrentConfig.

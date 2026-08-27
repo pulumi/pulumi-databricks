@@ -18630,30 +18630,29 @@ func (o JobJobClusterArrayOutput) Index(i pulumi.IntInput) JobJobClusterOutput {
 }
 
 type JobJobClusterNewCluster struct {
-	__applyPolicyDefaultValuesAllowLists []string                                          `pulumi:"__applyPolicyDefaultValuesAllowLists"`
-	ApplyPolicyDefaultValues             *bool                                             `pulumi:"applyPolicyDefaultValues"`
-	Autoscale                            *JobJobClusterNewClusterAutoscale                 `pulumi:"autoscale"`
-	AwsAttributes                        *JobJobClusterNewClusterAwsAttributes             `pulumi:"awsAttributes"`
-	AzureAttributes                      *JobJobClusterNewClusterAzureAttributes           `pulumi:"azureAttributes"`
-	ClusterId                            *string                                           `pulumi:"clusterId"`
-	ClusterLogConf                       *JobJobClusterNewClusterClusterLogConf            `pulumi:"clusterLogConf"`
-	ClusterMountInfos                    []JobJobClusterNewClusterClusterMountInfo         `pulumi:"clusterMountInfos"`
-	ClusterName                          *string                                           `pulumi:"clusterName"`
-	CustomTags                           map[string]string                                 `pulumi:"customTags"`
-	DataSecurityMode                     *string                                           `pulumi:"dataSecurityMode"`
-	DependencyMode                       *string                                           `pulumi:"dependencyMode"`
-	DockerImage                          *JobJobClusterNewClusterDockerImage               `pulumi:"dockerImage"`
-	DriverInstancePoolId                 *string                                           `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeFlexibility            *JobJobClusterNewClusterDriverNodeTypeFlexibility `pulumi:"driverNodeTypeFlexibility"`
-	DriverNodeTypeId                     *string                                           `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk                    *bool                                             `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption            *bool                                             `pulumi:"enableLocalDiskEncryption"`
-	GcpAttributes                        *JobJobClusterNewClusterGcpAttributes             `pulumi:"gcpAttributes"`
-	IdempotencyToken                     *string                                           `pulumi:"idempotencyToken"`
-	InitScripts                          []JobJobClusterNewClusterInitScript               `pulumi:"initScripts"`
-	InstancePoolId                       *string                                           `pulumi:"instancePoolId"`
-	IsSingleNode                         *bool                                             `pulumi:"isSingleNode"`
-	Kind                                 *string                                           `pulumi:"kind"`
+	ApplyPolicyDefaultValues  *bool                                             `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                 *JobJobClusterNewClusterAutoscale                 `pulumi:"autoscale"`
+	AwsAttributes             *JobJobClusterNewClusterAwsAttributes             `pulumi:"awsAttributes"`
+	AzureAttributes           *JobJobClusterNewClusterAzureAttributes           `pulumi:"azureAttributes"`
+	ClusterId                 *string                                           `pulumi:"clusterId"`
+	ClusterLogConf            *JobJobClusterNewClusterClusterLogConf            `pulumi:"clusterLogConf"`
+	ClusterMountInfos         []JobJobClusterNewClusterClusterMountInfo         `pulumi:"clusterMountInfos"`
+	ClusterName               *string                                           `pulumi:"clusterName"`
+	CustomTags                map[string]string                                 `pulumi:"customTags"`
+	DataSecurityMode          *string                                           `pulumi:"dataSecurityMode"`
+	DependencyMode            *string                                           `pulumi:"dependencyMode"`
+	DockerImage               *JobJobClusterNewClusterDockerImage               `pulumi:"dockerImage"`
+	DriverInstancePoolId      *string                                           `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeFlexibility *JobJobClusterNewClusterDriverNodeTypeFlexibility `pulumi:"driverNodeTypeFlexibility"`
+	DriverNodeTypeId          *string                                           `pulumi:"driverNodeTypeId"`
+	EnableElasticDisk         *bool                                             `pulumi:"enableElasticDisk"`
+	EnableLocalDiskEncryption *bool                                             `pulumi:"enableLocalDiskEncryption"`
+	GcpAttributes             *JobJobClusterNewClusterGcpAttributes             `pulumi:"gcpAttributes"`
+	IdempotencyToken          *string                                           `pulumi:"idempotencyToken"`
+	InitScripts               []JobJobClusterNewClusterInitScript               `pulumi:"initScripts"`
+	InstancePoolId            *string                                           `pulumi:"instancePoolId"`
+	IsSingleNode              *bool                                             `pulumi:"isSingleNode"`
+	Kind                      *string                                           `pulumi:"kind"`
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries  []JobJobClusterNewClusterLibrary `pulumi:"libraries"`
 	NodeTypeId *string                          `pulumi:"nodeTypeId"`
@@ -18687,30 +18686,29 @@ type JobJobClusterNewClusterInput interface {
 }
 
 type JobJobClusterNewClusterArgs struct {
-	__applyPolicyDefaultValuesAllowLists pulumi.StringArrayInput                                  `pulumi:"__applyPolicyDefaultValuesAllowLists"`
-	ApplyPolicyDefaultValues             pulumi.BoolPtrInput                                      `pulumi:"applyPolicyDefaultValues"`
-	Autoscale                            JobJobClusterNewClusterAutoscalePtrInput                 `pulumi:"autoscale"`
-	AwsAttributes                        JobJobClusterNewClusterAwsAttributesPtrInput             `pulumi:"awsAttributes"`
-	AzureAttributes                      JobJobClusterNewClusterAzureAttributesPtrInput           `pulumi:"azureAttributes"`
-	ClusterId                            pulumi.StringPtrInput                                    `pulumi:"clusterId"`
-	ClusterLogConf                       JobJobClusterNewClusterClusterLogConfPtrInput            `pulumi:"clusterLogConf"`
-	ClusterMountInfos                    JobJobClusterNewClusterClusterMountInfoArrayInput        `pulumi:"clusterMountInfos"`
-	ClusterName                          pulumi.StringPtrInput                                    `pulumi:"clusterName"`
-	CustomTags                           pulumi.StringMapInput                                    `pulumi:"customTags"`
-	DataSecurityMode                     pulumi.StringPtrInput                                    `pulumi:"dataSecurityMode"`
-	DependencyMode                       pulumi.StringPtrInput                                    `pulumi:"dependencyMode"`
-	DockerImage                          JobJobClusterNewClusterDockerImagePtrInput               `pulumi:"dockerImage"`
-	DriverInstancePoolId                 pulumi.StringPtrInput                                    `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeFlexibility            JobJobClusterNewClusterDriverNodeTypeFlexibilityPtrInput `pulumi:"driverNodeTypeFlexibility"`
-	DriverNodeTypeId                     pulumi.StringPtrInput                                    `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk                    pulumi.BoolPtrInput                                      `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption            pulumi.BoolPtrInput                                      `pulumi:"enableLocalDiskEncryption"`
-	GcpAttributes                        JobJobClusterNewClusterGcpAttributesPtrInput             `pulumi:"gcpAttributes"`
-	IdempotencyToken                     pulumi.StringPtrInput                                    `pulumi:"idempotencyToken"`
-	InitScripts                          JobJobClusterNewClusterInitScriptArrayInput              `pulumi:"initScripts"`
-	InstancePoolId                       pulumi.StringPtrInput                                    `pulumi:"instancePoolId"`
-	IsSingleNode                         pulumi.BoolPtrInput                                      `pulumi:"isSingleNode"`
-	Kind                                 pulumi.StringPtrInput                                    `pulumi:"kind"`
+	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                                      `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                 JobJobClusterNewClusterAutoscalePtrInput                 `pulumi:"autoscale"`
+	AwsAttributes             JobJobClusterNewClusterAwsAttributesPtrInput             `pulumi:"awsAttributes"`
+	AzureAttributes           JobJobClusterNewClusterAzureAttributesPtrInput           `pulumi:"azureAttributes"`
+	ClusterId                 pulumi.StringPtrInput                                    `pulumi:"clusterId"`
+	ClusterLogConf            JobJobClusterNewClusterClusterLogConfPtrInput            `pulumi:"clusterLogConf"`
+	ClusterMountInfos         JobJobClusterNewClusterClusterMountInfoArrayInput        `pulumi:"clusterMountInfos"`
+	ClusterName               pulumi.StringPtrInput                                    `pulumi:"clusterName"`
+	CustomTags                pulumi.StringMapInput                                    `pulumi:"customTags"`
+	DataSecurityMode          pulumi.StringPtrInput                                    `pulumi:"dataSecurityMode"`
+	DependencyMode            pulumi.StringPtrInput                                    `pulumi:"dependencyMode"`
+	DockerImage               JobJobClusterNewClusterDockerImagePtrInput               `pulumi:"dockerImage"`
+	DriverInstancePoolId      pulumi.StringPtrInput                                    `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeFlexibility JobJobClusterNewClusterDriverNodeTypeFlexibilityPtrInput `pulumi:"driverNodeTypeFlexibility"`
+	DriverNodeTypeId          pulumi.StringPtrInput                                    `pulumi:"driverNodeTypeId"`
+	EnableElasticDisk         pulumi.BoolPtrInput                                      `pulumi:"enableElasticDisk"`
+	EnableLocalDiskEncryption pulumi.BoolPtrInput                                      `pulumi:"enableLocalDiskEncryption"`
+	GcpAttributes             JobJobClusterNewClusterGcpAttributesPtrInput             `pulumi:"gcpAttributes"`
+	IdempotencyToken          pulumi.StringPtrInput                                    `pulumi:"idempotencyToken"`
+	InitScripts               JobJobClusterNewClusterInitScriptArrayInput              `pulumi:"initScripts"`
+	InstancePoolId            pulumi.StringPtrInput                                    `pulumi:"instancePoolId"`
+	IsSingleNode              pulumi.BoolPtrInput                                      `pulumi:"isSingleNode"`
+	Kind                      pulumi.StringPtrInput                                    `pulumi:"kind"`
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries  JobJobClusterNewClusterLibraryArrayInput `pulumi:"libraries"`
 	NodeTypeId pulumi.StringPtrInput                    `pulumi:"nodeTypeId"`
@@ -18807,10 +18805,6 @@ func (o JobJobClusterNewClusterOutput) ToJobJobClusterNewClusterPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewCluster) *JobJobClusterNewCluster {
 		return &v
 	}).(JobJobClusterNewClusterPtrOutput)
-}
-
-func (o JobJobClusterNewClusterOutput) __applyPolicyDefaultValuesAllowLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JobJobClusterNewCluster) []string { return v.__applyPolicyDefaultValuesAllowLists }).(pulumi.StringArrayOutput)
 }
 
 func (o JobJobClusterNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
@@ -18998,15 +18992,6 @@ func (o JobJobClusterNewClusterPtrOutput) Elem() JobJobClusterNewClusterOutput {
 		var ret JobJobClusterNewCluster
 		return ret
 	}).(JobJobClusterNewClusterOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) __applyPolicyDefaultValuesAllowLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) []string {
-		if v == nil {
-			return nil
-		}
-		return v.__applyPolicyDefaultValuesAllowLists
-	}).(pulumi.StringArrayOutput)
 }
 
 func (o JobJobClusterNewClusterPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
@@ -52156,30 +52141,29 @@ func (o JobTaskLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type JobTaskNewCluster struct {
-	__applyPolicyDefaultValuesAllowLists []string                                    `pulumi:"__applyPolicyDefaultValuesAllowLists"`
-	ApplyPolicyDefaultValues             *bool                                       `pulumi:"applyPolicyDefaultValues"`
-	Autoscale                            *JobTaskNewClusterAutoscale                 `pulumi:"autoscale"`
-	AwsAttributes                        *JobTaskNewClusterAwsAttributes             `pulumi:"awsAttributes"`
-	AzureAttributes                      *JobTaskNewClusterAzureAttributes           `pulumi:"azureAttributes"`
-	ClusterId                            *string                                     `pulumi:"clusterId"`
-	ClusterLogConf                       *JobTaskNewClusterClusterLogConf            `pulumi:"clusterLogConf"`
-	ClusterMountInfos                    []JobTaskNewClusterClusterMountInfo         `pulumi:"clusterMountInfos"`
-	ClusterName                          *string                                     `pulumi:"clusterName"`
-	CustomTags                           map[string]string                           `pulumi:"customTags"`
-	DataSecurityMode                     *string                                     `pulumi:"dataSecurityMode"`
-	DependencyMode                       *string                                     `pulumi:"dependencyMode"`
-	DockerImage                          *JobTaskNewClusterDockerImage               `pulumi:"dockerImage"`
-	DriverInstancePoolId                 *string                                     `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeFlexibility            *JobTaskNewClusterDriverNodeTypeFlexibility `pulumi:"driverNodeTypeFlexibility"`
-	DriverNodeTypeId                     *string                                     `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk                    *bool                                       `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption            *bool                                       `pulumi:"enableLocalDiskEncryption"`
-	GcpAttributes                        *JobTaskNewClusterGcpAttributes             `pulumi:"gcpAttributes"`
-	IdempotencyToken                     *string                                     `pulumi:"idempotencyToken"`
-	InitScripts                          []JobTaskNewClusterInitScript               `pulumi:"initScripts"`
-	InstancePoolId                       *string                                     `pulumi:"instancePoolId"`
-	IsSingleNode                         *bool                                       `pulumi:"isSingleNode"`
-	Kind                                 *string                                     `pulumi:"kind"`
+	ApplyPolicyDefaultValues  *bool                                       `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                 *JobTaskNewClusterAutoscale                 `pulumi:"autoscale"`
+	AwsAttributes             *JobTaskNewClusterAwsAttributes             `pulumi:"awsAttributes"`
+	AzureAttributes           *JobTaskNewClusterAzureAttributes           `pulumi:"azureAttributes"`
+	ClusterId                 *string                                     `pulumi:"clusterId"`
+	ClusterLogConf            *JobTaskNewClusterClusterLogConf            `pulumi:"clusterLogConf"`
+	ClusterMountInfos         []JobTaskNewClusterClusterMountInfo         `pulumi:"clusterMountInfos"`
+	ClusterName               *string                                     `pulumi:"clusterName"`
+	CustomTags                map[string]string                           `pulumi:"customTags"`
+	DataSecurityMode          *string                                     `pulumi:"dataSecurityMode"`
+	DependencyMode            *string                                     `pulumi:"dependencyMode"`
+	DockerImage               *JobTaskNewClusterDockerImage               `pulumi:"dockerImage"`
+	DriverInstancePoolId      *string                                     `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeFlexibility *JobTaskNewClusterDriverNodeTypeFlexibility `pulumi:"driverNodeTypeFlexibility"`
+	DriverNodeTypeId          *string                                     `pulumi:"driverNodeTypeId"`
+	EnableElasticDisk         *bool                                       `pulumi:"enableElasticDisk"`
+	EnableLocalDiskEncryption *bool                                       `pulumi:"enableLocalDiskEncryption"`
+	GcpAttributes             *JobTaskNewClusterGcpAttributes             `pulumi:"gcpAttributes"`
+	IdempotencyToken          *string                                     `pulumi:"idempotencyToken"`
+	InitScripts               []JobTaskNewClusterInitScript               `pulumi:"initScripts"`
+	InstancePoolId            *string                                     `pulumi:"instancePoolId"`
+	IsSingleNode              *bool                                       `pulumi:"isSingleNode"`
+	Kind                      *string                                     `pulumi:"kind"`
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries  []JobTaskNewClusterLibrary `pulumi:"libraries"`
 	NodeTypeId *string                    `pulumi:"nodeTypeId"`
@@ -52213,30 +52197,29 @@ type JobTaskNewClusterInput interface {
 }
 
 type JobTaskNewClusterArgs struct {
-	__applyPolicyDefaultValuesAllowLists pulumi.StringArrayInput                            `pulumi:"__applyPolicyDefaultValuesAllowLists"`
-	ApplyPolicyDefaultValues             pulumi.BoolPtrInput                                `pulumi:"applyPolicyDefaultValues"`
-	Autoscale                            JobTaskNewClusterAutoscalePtrInput                 `pulumi:"autoscale"`
-	AwsAttributes                        JobTaskNewClusterAwsAttributesPtrInput             `pulumi:"awsAttributes"`
-	AzureAttributes                      JobTaskNewClusterAzureAttributesPtrInput           `pulumi:"azureAttributes"`
-	ClusterId                            pulumi.StringPtrInput                              `pulumi:"clusterId"`
-	ClusterLogConf                       JobTaskNewClusterClusterLogConfPtrInput            `pulumi:"clusterLogConf"`
-	ClusterMountInfos                    JobTaskNewClusterClusterMountInfoArrayInput        `pulumi:"clusterMountInfos"`
-	ClusterName                          pulumi.StringPtrInput                              `pulumi:"clusterName"`
-	CustomTags                           pulumi.StringMapInput                              `pulumi:"customTags"`
-	DataSecurityMode                     pulumi.StringPtrInput                              `pulumi:"dataSecurityMode"`
-	DependencyMode                       pulumi.StringPtrInput                              `pulumi:"dependencyMode"`
-	DockerImage                          JobTaskNewClusterDockerImagePtrInput               `pulumi:"dockerImage"`
-	DriverInstancePoolId                 pulumi.StringPtrInput                              `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeFlexibility            JobTaskNewClusterDriverNodeTypeFlexibilityPtrInput `pulumi:"driverNodeTypeFlexibility"`
-	DriverNodeTypeId                     pulumi.StringPtrInput                              `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk                    pulumi.BoolPtrInput                                `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption            pulumi.BoolPtrInput                                `pulumi:"enableLocalDiskEncryption"`
-	GcpAttributes                        JobTaskNewClusterGcpAttributesPtrInput             `pulumi:"gcpAttributes"`
-	IdempotencyToken                     pulumi.StringPtrInput                              `pulumi:"idempotencyToken"`
-	InitScripts                          JobTaskNewClusterInitScriptArrayInput              `pulumi:"initScripts"`
-	InstancePoolId                       pulumi.StringPtrInput                              `pulumi:"instancePoolId"`
-	IsSingleNode                         pulumi.BoolPtrInput                                `pulumi:"isSingleNode"`
-	Kind                                 pulumi.StringPtrInput                              `pulumi:"kind"`
+	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                                `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                 JobTaskNewClusterAutoscalePtrInput                 `pulumi:"autoscale"`
+	AwsAttributes             JobTaskNewClusterAwsAttributesPtrInput             `pulumi:"awsAttributes"`
+	AzureAttributes           JobTaskNewClusterAzureAttributesPtrInput           `pulumi:"azureAttributes"`
+	ClusterId                 pulumi.StringPtrInput                              `pulumi:"clusterId"`
+	ClusterLogConf            JobTaskNewClusterClusterLogConfPtrInput            `pulumi:"clusterLogConf"`
+	ClusterMountInfos         JobTaskNewClusterClusterMountInfoArrayInput        `pulumi:"clusterMountInfos"`
+	ClusterName               pulumi.StringPtrInput                              `pulumi:"clusterName"`
+	CustomTags                pulumi.StringMapInput                              `pulumi:"customTags"`
+	DataSecurityMode          pulumi.StringPtrInput                              `pulumi:"dataSecurityMode"`
+	DependencyMode            pulumi.StringPtrInput                              `pulumi:"dependencyMode"`
+	DockerImage               JobTaskNewClusterDockerImagePtrInput               `pulumi:"dockerImage"`
+	DriverInstancePoolId      pulumi.StringPtrInput                              `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeFlexibility JobTaskNewClusterDriverNodeTypeFlexibilityPtrInput `pulumi:"driverNodeTypeFlexibility"`
+	DriverNodeTypeId          pulumi.StringPtrInput                              `pulumi:"driverNodeTypeId"`
+	EnableElasticDisk         pulumi.BoolPtrInput                                `pulumi:"enableElasticDisk"`
+	EnableLocalDiskEncryption pulumi.BoolPtrInput                                `pulumi:"enableLocalDiskEncryption"`
+	GcpAttributes             JobTaskNewClusterGcpAttributesPtrInput             `pulumi:"gcpAttributes"`
+	IdempotencyToken          pulumi.StringPtrInput                              `pulumi:"idempotencyToken"`
+	InitScripts               JobTaskNewClusterInitScriptArrayInput              `pulumi:"initScripts"`
+	InstancePoolId            pulumi.StringPtrInput                              `pulumi:"instancePoolId"`
+	IsSingleNode              pulumi.BoolPtrInput                                `pulumi:"isSingleNode"`
+	Kind                      pulumi.StringPtrInput                              `pulumi:"kind"`
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries  JobTaskNewClusterLibraryArrayInput `pulumi:"libraries"`
 	NodeTypeId pulumi.StringPtrInput              `pulumi:"nodeTypeId"`
@@ -52333,10 +52316,6 @@ func (o JobTaskNewClusterOutput) ToJobTaskNewClusterPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNewCluster) *JobTaskNewCluster {
 		return &v
 	}).(JobTaskNewClusterPtrOutput)
-}
-
-func (o JobTaskNewClusterOutput) __applyPolicyDefaultValuesAllowLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JobTaskNewCluster) []string { return v.__applyPolicyDefaultValuesAllowLists }).(pulumi.StringArrayOutput)
 }
 
 func (o JobTaskNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
@@ -52524,15 +52503,6 @@ func (o JobTaskNewClusterPtrOutput) Elem() JobTaskNewClusterOutput {
 		var ret JobTaskNewCluster
 		return ret
 	}).(JobTaskNewClusterOutput)
-}
-
-func (o JobTaskNewClusterPtrOutput) __applyPolicyDefaultValuesAllowLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobTaskNewCluster) []string {
-		if v == nil {
-			return nil
-		}
-		return v.__applyPolicyDefaultValuesAllowLists
-	}).(pulumi.StringArrayOutput)
 }
 
 func (o JobTaskNewClusterPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
