@@ -66,12 +66,8 @@ type LookupServicePrincipalFederationPolicyResult struct {
 }
 
 func LookupServicePrincipalFederationPolicyOutput(ctx *pulumi.Context, args LookupServicePrincipalFederationPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupServicePrincipalFederationPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServicePrincipalFederationPolicyResultOutput, error) {
-			args := v.(LookupServicePrincipalFederationPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", args, LookupServicePrincipalFederationPolicyResultOutput{}, options).(LookupServicePrincipalFederationPolicyResultOutput), nil
-		}).(LookupServicePrincipalFederationPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", args, LookupServicePrincipalFederationPolicyResultOutput{}, options).(LookupServicePrincipalFederationPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getServicePrincipalFederationPolicy.

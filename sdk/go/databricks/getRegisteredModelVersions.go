@@ -78,12 +78,8 @@ type GetRegisteredModelVersionsResult struct {
 }
 
 func GetRegisteredModelVersionsOutput(ctx *pulumi.Context, args GetRegisteredModelVersionsOutputArgs, opts ...pulumi.InvokeOption) GetRegisteredModelVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegisteredModelVersionsResultOutput, error) {
-			args := v.(GetRegisteredModelVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getRegisteredModelVersions:getRegisteredModelVersions", args, GetRegisteredModelVersionsResultOutput{}, options).(GetRegisteredModelVersionsResultOutput), nil
-		}).(GetRegisteredModelVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getRegisteredModelVersions:getRegisteredModelVersions", args, GetRegisteredModelVersionsResultOutput{}, options).(GetRegisteredModelVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getRegisteredModelVersions.

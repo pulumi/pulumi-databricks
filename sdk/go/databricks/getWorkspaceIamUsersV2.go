@@ -73,12 +73,8 @@ type GetWorkspaceIamUsersV2Result struct {
 }
 
 func GetWorkspaceIamUsersV2Output(ctx *pulumi.Context, args GetWorkspaceIamUsersV2OutputArgs, opts ...pulumi.InvokeOption) GetWorkspaceIamUsersV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWorkspaceIamUsersV2ResultOutput, error) {
-			args := v.(GetWorkspaceIamUsersV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", args, GetWorkspaceIamUsersV2ResultOutput{}, options).(GetWorkspaceIamUsersV2ResultOutput), nil
-		}).(GetWorkspaceIamUsersV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", args, GetWorkspaceIamUsersV2ResultOutput{}, options).(GetWorkspaceIamUsersV2ResultOutput)
 }
 
 // A collection of arguments for invoking getWorkspaceIamUsersV2.

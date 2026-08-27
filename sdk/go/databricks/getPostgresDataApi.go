@@ -83,12 +83,8 @@ type LookupPostgresDataApiResult struct {
 }
 
 func LookupPostgresDataApiOutput(ctx *pulumi.Context, args LookupPostgresDataApiOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresDataApiResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresDataApiResultOutput, error) {
-			args := v.(LookupPostgresDataApiArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresDataApi:getPostgresDataApi", args, LookupPostgresDataApiResultOutput{}, options).(LookupPostgresDataApiResultOutput), nil
-		}).(LookupPostgresDataApiResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresDataApi:getPostgresDataApi", args, LookupPostgresDataApiResultOutput{}, options).(LookupPostgresDataApiResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresDataApi.

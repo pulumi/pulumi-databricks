@@ -107,12 +107,8 @@ type GetEntityTagAssignmentsResult struct {
 }
 
 func GetEntityTagAssignmentsOutput(ctx *pulumi.Context, args GetEntityTagAssignmentsOutputArgs, opts ...pulumi.InvokeOption) GetEntityTagAssignmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEntityTagAssignmentsResultOutput, error) {
-			args := v.(GetEntityTagAssignmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getEntityTagAssignments:getEntityTagAssignments", args, GetEntityTagAssignmentsResultOutput{}, options).(GetEntityTagAssignmentsResultOutput), nil
-		}).(GetEntityTagAssignmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getEntityTagAssignments:getEntityTagAssignments", args, GetEntityTagAssignmentsResultOutput{}, options).(GetEntityTagAssignmentsResultOutput)
 }
 
 // A collection of arguments for invoking getEntityTagAssignments.

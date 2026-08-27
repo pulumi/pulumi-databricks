@@ -59,12 +59,8 @@ type LookupFeatureEngineeringKafkaConfigResult struct {
 }
 
 func LookupFeatureEngineeringKafkaConfigOutput(ctx *pulumi.Context, args LookupFeatureEngineeringKafkaConfigOutputArgs, opts ...pulumi.InvokeOption) LookupFeatureEngineeringKafkaConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFeatureEngineeringKafkaConfigResultOutput, error) {
-			args := v.(LookupFeatureEngineeringKafkaConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig", args, LookupFeatureEngineeringKafkaConfigResultOutput{}, options).(LookupFeatureEngineeringKafkaConfigResultOutput), nil
-		}).(LookupFeatureEngineeringKafkaConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig", args, LookupFeatureEngineeringKafkaConfigResultOutput{}, options).(LookupFeatureEngineeringKafkaConfigResultOutput)
 }
 
 // A collection of arguments for invoking getFeatureEngineeringKafkaConfig.

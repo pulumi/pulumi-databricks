@@ -67,12 +67,8 @@ type LookupAiSearchIndexResult struct {
 }
 
 func LookupAiSearchIndexOutput(ctx *pulumi.Context, args LookupAiSearchIndexOutputArgs, opts ...pulumi.InvokeOption) LookupAiSearchIndexResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiSearchIndexResultOutput, error) {
-			args := v.(LookupAiSearchIndexArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAiSearchIndex:getAiSearchIndex", args, LookupAiSearchIndexResultOutput{}, options).(LookupAiSearchIndexResultOutput), nil
-		}).(LookupAiSearchIndexResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAiSearchIndex:getAiSearchIndex", args, LookupAiSearchIndexResultOutput{}, options).(LookupAiSearchIndexResultOutput)
 }
 
 // A collection of arguments for invoking getAiSearchIndex.

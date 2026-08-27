@@ -38,12 +38,8 @@ type GetFeatureEngineeringKafkaConfigsResult struct {
 }
 
 func GetFeatureEngineeringKafkaConfigsOutput(ctx *pulumi.Context, args GetFeatureEngineeringKafkaConfigsOutputArgs, opts ...pulumi.InvokeOption) GetFeatureEngineeringKafkaConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFeatureEngineeringKafkaConfigsResultOutput, error) {
-			args := v.(GetFeatureEngineeringKafkaConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs", args, GetFeatureEngineeringKafkaConfigsResultOutput{}, options).(GetFeatureEngineeringKafkaConfigsResultOutput), nil
-		}).(GetFeatureEngineeringKafkaConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs", args, GetFeatureEngineeringKafkaConfigsResultOutput{}, options).(GetFeatureEngineeringKafkaConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getFeatureEngineeringKafkaConfigs.

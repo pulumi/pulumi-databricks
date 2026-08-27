@@ -43,12 +43,8 @@ type GetDatabaseDatabaseCatalogsResult struct {
 }
 
 func GetDatabaseDatabaseCatalogsOutput(ctx *pulumi.Context, args GetDatabaseDatabaseCatalogsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseDatabaseCatalogsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatabaseDatabaseCatalogsResultOutput, error) {
-			args := v.(GetDatabaseDatabaseCatalogsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args, GetDatabaseDatabaseCatalogsResultOutput{}, options).(GetDatabaseDatabaseCatalogsResultOutput), nil
-		}).(GetDatabaseDatabaseCatalogsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args, GetDatabaseDatabaseCatalogsResultOutput{}, options).(GetDatabaseDatabaseCatalogsResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseDatabaseCatalogs.

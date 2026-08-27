@@ -13,7 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskNewCluster
     {
-        public readonly ImmutableArray<string> __applyPolicyDefaultValuesAllowLists;
         public readonly bool? ApplyPolicyDefaultValues;
         public readonly Outputs.JobTaskNewClusterAutoscale? Autoscale;
         public readonly Outputs.JobTaskNewClusterAwsAttributes? AwsAttributes;
@@ -65,8 +64,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTaskNewCluster(
-            ImmutableArray<string> __applyPolicyDefaultValuesAllowLists,
-
             bool? applyPolicyDefaultValues,
 
             Outputs.JobTaskNewClusterAutoscale? autoscale,
@@ -145,7 +142,6 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskNewClusterWorkloadType? workloadType)
         {
-            this.__applyPolicyDefaultValuesAllowLists = __applyPolicyDefaultValuesAllowLists;
             ApplyPolicyDefaultValues = applyPolicyDefaultValues;
             Autoscale = autoscale;
             AwsAttributes = awsAttributes;

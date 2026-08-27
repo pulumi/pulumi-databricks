@@ -93,12 +93,8 @@ type LookupEnvironmentsWorkspaceBaseEnvironmentResult struct {
 }
 
 func LookupEnvironmentsWorkspaceBaseEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentsWorkspaceBaseEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput, error) {
-			args := v.(LookupEnvironmentsWorkspaceBaseEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", args, LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput{}, options).(LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput), nil
-		}).(LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", args, LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput{}, options).(LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironmentsWorkspaceBaseEnvironment.

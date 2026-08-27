@@ -17322,7 +17322,6 @@ export interface JobJobCluster {
 }
 
 export interface JobJobClusterNewCluster {
-    __applyPolicyDefaultValuesAllowLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
     autoscale?: pulumi.Input<inputs.JobJobClusterNewClusterAutoscale | undefined>;
     awsAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAwsAttributes | undefined>;
@@ -19588,7 +19587,6 @@ export interface JobTaskLibraryPypi {
 }
 
 export interface JobTaskNewCluster {
-    __applyPolicyDefaultValuesAllowLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
     autoscale?: pulumi.Input<inputs.JobTaskNewClusterAutoscale | undefined>;
     awsAttributes?: pulumi.Input<inputs.JobTaskNewClusterAwsAttributes | undefined>;

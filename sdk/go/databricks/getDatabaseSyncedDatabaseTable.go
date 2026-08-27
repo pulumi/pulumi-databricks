@@ -94,12 +94,8 @@ type LookupDatabaseSyncedDatabaseTableResult struct {
 }
 
 func LookupDatabaseSyncedDatabaseTableOutput(ctx *pulumi.Context, args LookupDatabaseSyncedDatabaseTableOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseSyncedDatabaseTableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseSyncedDatabaseTableResultOutput, error) {
-			args := v.(LookupDatabaseSyncedDatabaseTableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", args, LookupDatabaseSyncedDatabaseTableResultOutput{}, options).(LookupDatabaseSyncedDatabaseTableResultOutput), nil
-		}).(LookupDatabaseSyncedDatabaseTableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", args, LookupDatabaseSyncedDatabaseTableResultOutput{}, options).(LookupDatabaseSyncedDatabaseTableResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseSyncedDatabaseTable.

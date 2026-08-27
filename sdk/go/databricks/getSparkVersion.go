@@ -137,12 +137,8 @@ type GetSparkVersionResult struct {
 }
 
 func GetSparkVersionOutput(ctx *pulumi.Context, args GetSparkVersionOutputArgs, opts ...pulumi.InvokeOption) GetSparkVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSparkVersionResultOutput, error) {
-			args := v.(GetSparkVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getSparkVersion:getSparkVersion", args, GetSparkVersionResultOutput{}, options).(GetSparkVersionResultOutput), nil
-		}).(GetSparkVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getSparkVersion:getSparkVersion", args, GetSparkVersionResultOutput{}, options).(GetSparkVersionResultOutput)
 }
 
 // A collection of arguments for invoking getSparkVersion.

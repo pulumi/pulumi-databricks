@@ -74,12 +74,8 @@ type LookupWorkspaceNetworkOptionResult struct {
 }
 
 func LookupWorkspaceNetworkOptionOutput(ctx *pulumi.Context, args LookupWorkspaceNetworkOptionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceNetworkOptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceNetworkOptionResultOutput, error) {
-			args := v.(LookupWorkspaceNetworkOptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", args, LookupWorkspaceNetworkOptionResultOutput{}, options).(LookupWorkspaceNetworkOptionResultOutput), nil
-		}).(LookupWorkspaceNetworkOptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", args, LookupWorkspaceNetworkOptionResultOutput{}, options).(LookupWorkspaceNetworkOptionResultOutput)
 }
 
 // A collection of arguments for invoking getWorkspaceNetworkOption.

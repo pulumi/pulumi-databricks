@@ -72,12 +72,8 @@ type GetAlertsV2Result struct {
 }
 
 func GetAlertsV2Output(ctx *pulumi.Context, args GetAlertsV2OutputArgs, opts ...pulumi.InvokeOption) GetAlertsV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAlertsV2ResultOutput, error) {
-			args := v.(GetAlertsV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAlertsV2:getAlertsV2", args, GetAlertsV2ResultOutput{}, options).(GetAlertsV2ResultOutput), nil
-		}).(GetAlertsV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAlertsV2:getAlertsV2", args, GetAlertsV2ResultOutput{}, options).(GetAlertsV2ResultOutput)
 }
 
 // A collection of arguments for invoking getAlertsV2.

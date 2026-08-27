@@ -80,12 +80,8 @@ type GetCurrentMetastoreResult struct {
 }
 
 func GetCurrentMetastoreOutput(ctx *pulumi.Context, args GetCurrentMetastoreOutputArgs, opts ...pulumi.InvokeOption) GetCurrentMetastoreResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCurrentMetastoreResultOutput, error) {
-			args := v.(GetCurrentMetastoreArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getCurrentMetastore:getCurrentMetastore", args, GetCurrentMetastoreResultOutput{}, options).(GetCurrentMetastoreResultOutput), nil
-		}).(GetCurrentMetastoreResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getCurrentMetastore:getCurrentMetastore", args, GetCurrentMetastoreResultOutput{}, options).(GetCurrentMetastoreResultOutput)
 }
 
 // A collection of arguments for invoking getCurrentMetastore.

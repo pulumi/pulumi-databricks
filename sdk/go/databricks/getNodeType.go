@@ -153,12 +153,8 @@ type GetNodeTypeResult struct {
 }
 
 func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNodeTypeResultOutput, error) {
-			args := v.(GetNodeTypeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getNodeType:getNodeType", args, GetNodeTypeResultOutput{}, options).(GetNodeTypeResultOutput), nil
-		}).(GetNodeTypeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getNodeType:getNodeType", args, GetNodeTypeResultOutput{}, options).(GetNodeTypeResultOutput)
 }
 
 // A collection of arguments for invoking getNodeType.

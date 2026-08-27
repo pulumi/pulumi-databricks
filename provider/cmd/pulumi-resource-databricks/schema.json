@@ -10979,12 +10979,6 @@
         },
         "databricks:index/JobJobClusterNewCluster:JobJobClusterNewCluster": {
             "properties": {
-                "__applyPolicyDefaultValuesAllowLists": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "applyPolicyDefaultValues": {
                     "type": "boolean"
                 },
@@ -15388,12 +15382,6 @@
         },
         "databricks:index/JobTaskNewCluster:JobTaskNewCluster": {
             "properties": {
-                "__applyPolicyDefaultValuesAllowLists": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "applyPolicyDefaultValues": {
                     "type": "boolean"
                 },

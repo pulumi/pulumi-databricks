@@ -105,12 +105,8 @@ type GetNotificationDestinationsResult struct {
 }
 
 func GetNotificationDestinationsOutput(ctx *pulumi.Context, args GetNotificationDestinationsOutputArgs, opts ...pulumi.InvokeOption) GetNotificationDestinationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNotificationDestinationsResultOutput, error) {
-			args := v.(GetNotificationDestinationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getNotificationDestinations:getNotificationDestinations", args, GetNotificationDestinationsResultOutput{}, options).(GetNotificationDestinationsResultOutput), nil
-		}).(GetNotificationDestinationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getNotificationDestinations:getNotificationDestinations", args, GetNotificationDestinationsResultOutput{}, options).(GetNotificationDestinationsResultOutput)
 }
 
 // A collection of arguments for invoking getNotificationDestinations.

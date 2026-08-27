@@ -34,7 +34,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as databricks from "@pulumi/databricks";
 import * as std from "@pulumi/std";
 
-function notImplemented(message: string) {
+function notImplemented(message: string): any {
     throw new Error(message);
 }
 
@@ -215,7 +215,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func notImplemented(message string) pulumi.AnyOutput {
+func notImplemented(message string) any {
 	panic(message)
 }
 

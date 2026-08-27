@@ -87,12 +87,8 @@ type LookupNotebookResult struct {
 }
 
 func LookupNotebookOutput(ctx *pulumi.Context, args LookupNotebookOutputArgs, opts ...pulumi.InvokeOption) LookupNotebookResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNotebookResultOutput, error) {
-			args := v.(LookupNotebookArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getNotebook:getNotebook", args, LookupNotebookResultOutput{}, options).(LookupNotebookResultOutput), nil
-		}).(LookupNotebookResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getNotebook:getNotebook", args, LookupNotebookResultOutput{}, options).(LookupNotebookResultOutput)
 }
 
 // A collection of arguments for invoking getNotebook.

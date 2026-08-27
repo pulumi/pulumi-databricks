@@ -70,12 +70,8 @@ type LookupMlflowExperimentResult struct {
 }
 
 func LookupMlflowExperimentOutput(ctx *pulumi.Context, args LookupMlflowExperimentOutputArgs, opts ...pulumi.InvokeOption) LookupMlflowExperimentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMlflowExperimentResultOutput, error) {
-			args := v.(LookupMlflowExperimentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getMlflowExperiment:getMlflowExperiment", args, LookupMlflowExperimentResultOutput{}, options).(LookupMlflowExperimentResultOutput), nil
-		}).(LookupMlflowExperimentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getMlflowExperiment:getMlflowExperiment", args, LookupMlflowExperimentResultOutput{}, options).(LookupMlflowExperimentResultOutput)
 }
 
 // A collection of arguments for invoking getMlflowExperiment.

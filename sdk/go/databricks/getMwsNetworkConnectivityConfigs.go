@@ -103,12 +103,8 @@ type GetMwsNetworkConnectivityConfigsResult struct {
 }
 
 func GetMwsNetworkConnectivityConfigsOutput(ctx *pulumi.Context, args GetMwsNetworkConnectivityConfigsOutputArgs, opts ...pulumi.InvokeOption) GetMwsNetworkConnectivityConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMwsNetworkConnectivityConfigsResultOutput, error) {
-			args := v.(GetMwsNetworkConnectivityConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs", args, GetMwsNetworkConnectivityConfigsResultOutput{}, options).(GetMwsNetworkConnectivityConfigsResultOutput), nil
-		}).(GetMwsNetworkConnectivityConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs", args, GetMwsNetworkConnectivityConfigsResultOutput{}, options).(GetMwsNetworkConnectivityConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getMwsNetworkConnectivityConfigs.

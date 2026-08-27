@@ -67,12 +67,8 @@ type GetMlflowModelsResult struct {
 }
 
 func GetMlflowModelsOutput(ctx *pulumi.Context, args GetMlflowModelsOutputArgs, opts ...pulumi.InvokeOption) GetMlflowModelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMlflowModelsResultOutput, error) {
-			args := v.(GetMlflowModelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getMlflowModels:getMlflowModels", args, GetMlflowModelsResultOutput{}, options).(GetMlflowModelsResultOutput), nil
-		}).(GetMlflowModelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getMlflowModels:getMlflowModels", args, GetMlflowModelsResultOutput{}, options).(GetMlflowModelsResultOutput)
 }
 
 // A collection of arguments for invoking getMlflowModels.

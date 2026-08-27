@@ -83,12 +83,8 @@ type LookupExternalLocationResult struct {
 }
 
 func LookupExternalLocationOutput(ctx *pulumi.Context, args LookupExternalLocationOutputArgs, opts ...pulumi.InvokeOption) LookupExternalLocationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExternalLocationResultOutput, error) {
-			args := v.(LookupExternalLocationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getExternalLocation:getExternalLocation", args, LookupExternalLocationResultOutput{}, options).(LookupExternalLocationResultOutput), nil
-		}).(LookupExternalLocationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getExternalLocation:getExternalLocation", args, LookupExternalLocationResultOutput{}, options).(LookupExternalLocationResultOutput)
 }
 
 // A collection of arguments for invoking getExternalLocation.

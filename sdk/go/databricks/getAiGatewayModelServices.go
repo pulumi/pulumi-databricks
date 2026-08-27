@@ -54,12 +54,8 @@ type GetAiGatewayModelServicesResult struct {
 }
 
 func GetAiGatewayModelServicesOutput(ctx *pulumi.Context, args GetAiGatewayModelServicesOutputArgs, opts ...pulumi.InvokeOption) GetAiGatewayModelServicesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAiGatewayModelServicesResultOutput, error) {
-			args := v.(GetAiGatewayModelServicesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", args, GetAiGatewayModelServicesResultOutput{}, options).(GetAiGatewayModelServicesResultOutput), nil
-		}).(GetAiGatewayModelServicesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", args, GetAiGatewayModelServicesResultOutput{}, options).(GetAiGatewayModelServicesResultOutput)
 }
 
 // A collection of arguments for invoking getAiGatewayModelServices.

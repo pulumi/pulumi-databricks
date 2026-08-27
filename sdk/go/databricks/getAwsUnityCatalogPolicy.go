@@ -115,12 +115,8 @@ type GetAwsUnityCatalogPolicyResult struct {
 }
 
 func GetAwsUnityCatalogPolicyOutput(ctx *pulumi.Context, args GetAwsUnityCatalogPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsUnityCatalogPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAwsUnityCatalogPolicyResultOutput, error) {
-			args := v.(GetAwsUnityCatalogPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args, GetAwsUnityCatalogPolicyResultOutput{}, options).(GetAwsUnityCatalogPolicyResultOutput), nil
-		}).(GetAwsUnityCatalogPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args, GetAwsUnityCatalogPolicyResultOutput{}, options).(GetAwsUnityCatalogPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAwsUnityCatalogPolicy.

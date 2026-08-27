@@ -68,12 +68,8 @@ type LookupKnowledgeAssistantKnowledgeSourceResult struct {
 }
 
 func LookupKnowledgeAssistantKnowledgeSourceOutput(ctx *pulumi.Context, args LookupKnowledgeAssistantKnowledgeSourceOutputArgs, opts ...pulumi.InvokeOption) LookupKnowledgeAssistantKnowledgeSourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKnowledgeAssistantKnowledgeSourceResultOutput, error) {
-			args := v.(LookupKnowledgeAssistantKnowledgeSourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getKnowledgeAssistantKnowledgeSource:getKnowledgeAssistantKnowledgeSource", args, LookupKnowledgeAssistantKnowledgeSourceResultOutput{}, options).(LookupKnowledgeAssistantKnowledgeSourceResultOutput), nil
-		}).(LookupKnowledgeAssistantKnowledgeSourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getKnowledgeAssistantKnowledgeSource:getKnowledgeAssistantKnowledgeSource", args, LookupKnowledgeAssistantKnowledgeSourceResultOutput{}, options).(LookupKnowledgeAssistantKnowledgeSourceResultOutput)
 }
 
 // A collection of arguments for invoking getKnowledgeAssistantKnowledgeSource.

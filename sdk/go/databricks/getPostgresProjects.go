@@ -51,12 +51,8 @@ type GetPostgresProjectsResult struct {
 }
 
 func GetPostgresProjectsOutput(ctx *pulumi.Context, args GetPostgresProjectsOutputArgs, opts ...pulumi.InvokeOption) GetPostgresProjectsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPostgresProjectsResultOutput, error) {
-			args := v.(GetPostgresProjectsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresProjects:getPostgresProjects", args, GetPostgresProjectsResultOutput{}, options).(GetPostgresProjectsResultOutput), nil
-		}).(GetPostgresProjectsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresProjects:getPostgresProjects", args, GetPostgresProjectsResultOutput{}, options).(GetPostgresProjectsResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresProjects.

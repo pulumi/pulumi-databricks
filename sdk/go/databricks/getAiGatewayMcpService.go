@@ -73,12 +73,8 @@ type LookupAiGatewayMcpServiceResult struct {
 }
 
 func LookupAiGatewayMcpServiceOutput(ctx *pulumi.Context, args LookupAiGatewayMcpServiceOutputArgs, opts ...pulumi.InvokeOption) LookupAiGatewayMcpServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiGatewayMcpServiceResultOutput, error) {
-			args := v.(LookupAiGatewayMcpServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", args, LookupAiGatewayMcpServiceResultOutput{}, options).(LookupAiGatewayMcpServiceResultOutput), nil
-		}).(LookupAiGatewayMcpServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", args, LookupAiGatewayMcpServiceResultOutput{}, options).(LookupAiGatewayMcpServiceResultOutput)
 }
 
 // A collection of arguments for invoking getAiGatewayMcpService.

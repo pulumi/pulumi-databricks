@@ -76,12 +76,8 @@ type GetRecipientsResult struct {
 }
 
 func GetRecipientsOutput(ctx *pulumi.Context, args GetRecipientsOutputArgs, opts ...pulumi.InvokeOption) GetRecipientsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRecipientsResultOutput, error) {
-			args := v.(GetRecipientsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getRecipients:getRecipients", args, GetRecipientsResultOutput{}, options).(GetRecipientsResultOutput), nil
-		}).(GetRecipientsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getRecipients:getRecipients", args, GetRecipientsResultOutput{}, options).(GetRecipientsResultOutput)
 }
 
 // A collection of arguments for invoking getRecipients.

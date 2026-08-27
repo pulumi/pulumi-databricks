@@ -90,12 +90,8 @@ type GetPostgresCdfStatusResult struct {
 }
 
 func GetPostgresCdfStatusOutput(ctx *pulumi.Context, args GetPostgresCdfStatusOutputArgs, opts ...pulumi.InvokeOption) GetPostgresCdfStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPostgresCdfStatusResultOutput, error) {
-			args := v.(GetPostgresCdfStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresCdfStatus:getPostgresCdfStatus", args, GetPostgresCdfStatusResultOutput{}, options).(GetPostgresCdfStatusResultOutput), nil
-		}).(GetPostgresCdfStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresCdfStatus:getPostgresCdfStatus", args, GetPostgresCdfStatusResultOutput{}, options).(GetPostgresCdfStatusResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresCdfStatus.

@@ -84,12 +84,8 @@ type GetDbfsFilePathsResult struct {
 }
 
 func GetDbfsFilePathsOutput(ctx *pulumi.Context, args GetDbfsFilePathsOutputArgs, opts ...pulumi.InvokeOption) GetDbfsFilePathsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDbfsFilePathsResultOutput, error) {
-			args := v.(GetDbfsFilePathsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDbfsFilePaths:getDbfsFilePaths", args, GetDbfsFilePathsResultOutput{}, options).(GetDbfsFilePathsResultOutput), nil
-		}).(GetDbfsFilePathsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDbfsFilePaths:getDbfsFilePaths", args, GetDbfsFilePathsResultOutput{}, options).(GetDbfsFilePathsResultOutput)
 }
 
 // A collection of arguments for invoking getDbfsFilePaths.

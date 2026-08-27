@@ -102,12 +102,8 @@ type GetDataQualityRefreshesResult struct {
 }
 
 func GetDataQualityRefreshesOutput(ctx *pulumi.Context, args GetDataQualityRefreshesOutputArgs, opts ...pulumi.InvokeOption) GetDataQualityRefreshesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDataQualityRefreshesResultOutput, error) {
-			args := v.(GetDataQualityRefreshesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", args, GetDataQualityRefreshesResultOutput{}, options).(GetDataQualityRefreshesResultOutput), nil
-		}).(GetDataQualityRefreshesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", args, GetDataQualityRefreshesResultOutput{}, options).(GetDataQualityRefreshesResultOutput)
 }
 
 // A collection of arguments for invoking getDataQualityRefreshes.

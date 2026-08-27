@@ -88,12 +88,8 @@ type LookupPostgresEndpointResult struct {
 }
 
 func LookupPostgresEndpointOutput(ctx *pulumi.Context, args LookupPostgresEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresEndpointResultOutput, error) {
-			args := v.(LookupPostgresEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresEndpoint:getPostgresEndpoint", args, LookupPostgresEndpointResultOutput{}, options).(LookupPostgresEndpointResultOutput), nil
-		}).(LookupPostgresEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresEndpoint:getPostgresEndpoint", args, LookupPostgresEndpointResultOutput{}, options).(LookupPostgresEndpointResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresEndpoint.

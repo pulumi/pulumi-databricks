@@ -88,12 +88,8 @@ type LookupPostgresBranchResult struct {
 }
 
 func LookupPostgresBranchOutput(ctx *pulumi.Context, args LookupPostgresBranchOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresBranchResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresBranchResultOutput, error) {
-			args := v.(LookupPostgresBranchArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresBranch:getPostgresBranch", args, LookupPostgresBranchResultOutput{}, options).(LookupPostgresBranchResultOutput), nil
-		}).(LookupPostgresBranchResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresBranch:getPostgresBranch", args, LookupPostgresBranchResultOutput{}, options).(LookupPostgresBranchResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresBranch.

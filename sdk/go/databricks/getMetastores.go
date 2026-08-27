@@ -76,12 +76,8 @@ type GetMetastoresResult struct {
 }
 
 func GetMetastoresOutput(ctx *pulumi.Context, args GetMetastoresOutputArgs, opts ...pulumi.InvokeOption) GetMetastoresResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMetastoresResultOutput, error) {
-			args := v.(GetMetastoresArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getMetastores:getMetastores", args, GetMetastoresResultOutput{}, options).(GetMetastoresResultOutput), nil
-		}).(GetMetastoresResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getMetastores:getMetastores", args, GetMetastoresResultOutput{}, options).(GetMetastoresResultOutput)
 }
 
 // A collection of arguments for invoking getMetastores.

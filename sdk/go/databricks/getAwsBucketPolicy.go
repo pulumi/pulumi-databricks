@@ -96,12 +96,8 @@ type GetAwsBucketPolicyResult struct {
 }
 
 func GetAwsBucketPolicyOutput(ctx *pulumi.Context, args GetAwsBucketPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsBucketPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAwsBucketPolicyResultOutput, error) {
-			args := v.(GetAwsBucketPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args, GetAwsBucketPolicyResultOutput{}, options).(GetAwsBucketPolicyResultOutput), nil
-		}).(GetAwsBucketPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args, GetAwsBucketPolicyResultOutput{}, options).(GetAwsBucketPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAwsBucketPolicy.

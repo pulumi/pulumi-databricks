@@ -76,12 +76,8 @@ type GetCatalogsResult struct {
 }
 
 func GetCatalogsOutput(ctx *pulumi.Context, args GetCatalogsOutputArgs, opts ...pulumi.InvokeOption) GetCatalogsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCatalogsResultOutput, error) {
-			args := v.(GetCatalogsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getCatalogs:getCatalogs", args, GetCatalogsResultOutput{}, options).(GetCatalogsResultOutput), nil
-		}).(GetCatalogsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getCatalogs:getCatalogs", args, GetCatalogsResultOutput{}, options).(GetCatalogsResultOutput)
 }
 
 // A collection of arguments for invoking getCatalogs.

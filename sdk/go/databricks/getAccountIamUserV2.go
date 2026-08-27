@@ -79,12 +79,8 @@ type LookupAccountIamUserV2Result struct {
 }
 
 func LookupAccountIamUserV2Output(ctx *pulumi.Context, args LookupAccountIamUserV2OutputArgs, opts ...pulumi.InvokeOption) LookupAccountIamUserV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountIamUserV2ResultOutput, error) {
-			args := v.(LookupAccountIamUserV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getAccountIamUserV2:getAccountIamUserV2", args, LookupAccountIamUserV2ResultOutput{}, options).(LookupAccountIamUserV2ResultOutput), nil
-		}).(LookupAccountIamUserV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getAccountIamUserV2:getAccountIamUserV2", args, LookupAccountIamUserV2ResultOutput{}, options).(LookupAccountIamUserV2ResultOutput)
 }
 
 // A collection of arguments for invoking getAccountIamUserV2.

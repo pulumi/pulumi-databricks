@@ -52,12 +52,8 @@ type GetPostgresRolesResult struct {
 }
 
 func GetPostgresRolesOutput(ctx *pulumi.Context, args GetPostgresRolesOutputArgs, opts ...pulumi.InvokeOption) GetPostgresRolesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPostgresRolesResultOutput, error) {
-			args := v.(GetPostgresRolesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getPostgresRoles:getPostgresRoles", args, GetPostgresRolesResultOutput{}, options).(GetPostgresRolesResultOutput), nil
-		}).(GetPostgresRolesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getPostgresRoles:getPostgresRoles", args, GetPostgresRolesResultOutput{}, options).(GetPostgresRolesResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresRoles.

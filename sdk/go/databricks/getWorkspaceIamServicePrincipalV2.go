@@ -83,12 +83,8 @@ type LookupWorkspaceIamServicePrincipalV2Result struct {
 }
 
 func LookupWorkspaceIamServicePrincipalV2Output(ctx *pulumi.Context, args LookupWorkspaceIamServicePrincipalV2OutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceIamServicePrincipalV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceIamServicePrincipalV2ResultOutput, error) {
-			args := v.(LookupWorkspaceIamServicePrincipalV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", args, LookupWorkspaceIamServicePrincipalV2ResultOutput{}, options).(LookupWorkspaceIamServicePrincipalV2ResultOutput), nil
-		}).(LookupWorkspaceIamServicePrincipalV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", args, LookupWorkspaceIamServicePrincipalV2ResultOutput{}, options).(LookupWorkspaceIamServicePrincipalV2ResultOutput)
 }
 
 // A collection of arguments for invoking getWorkspaceIamServicePrincipalV2.

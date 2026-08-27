@@ -42,12 +42,8 @@ type GetFeatureEngineeringMaterializedFeaturesResult struct {
 }
 
 func GetFeatureEngineeringMaterializedFeaturesOutput(ctx *pulumi.Context, args GetFeatureEngineeringMaterializedFeaturesOutputArgs, opts ...pulumi.InvokeOption) GetFeatureEngineeringMaterializedFeaturesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFeatureEngineeringMaterializedFeaturesResultOutput, error) {
-			args := v.(GetFeatureEngineeringMaterializedFeaturesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures", args, GetFeatureEngineeringMaterializedFeaturesResultOutput{}, options).(GetFeatureEngineeringMaterializedFeaturesResultOutput), nil
-		}).(GetFeatureEngineeringMaterializedFeaturesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures", args, GetFeatureEngineeringMaterializedFeaturesResultOutput{}, options).(GetFeatureEngineeringMaterializedFeaturesResultOutput)
 }
 
 // A collection of arguments for invoking getFeatureEngineeringMaterializedFeatures.

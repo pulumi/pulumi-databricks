@@ -71,12 +71,8 @@ type GetExternalMetadatasResult struct {
 }
 
 func GetExternalMetadatasOutput(ctx *pulumi.Context, args GetExternalMetadatasOutputArgs, opts ...pulumi.InvokeOption) GetExternalMetadatasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetExternalMetadatasResultOutput, error) {
-			args := v.(GetExternalMetadatasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getExternalMetadatas:getExternalMetadatas", args, GetExternalMetadatasResultOutput{}, options).(GetExternalMetadatasResultOutput), nil
-		}).(GetExternalMetadatasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getExternalMetadatas:getExternalMetadatas", args, GetExternalMetadatasResultOutput{}, options).(GetExternalMetadatasResultOutput)
 }
 
 // A collection of arguments for invoking getExternalMetadatas.

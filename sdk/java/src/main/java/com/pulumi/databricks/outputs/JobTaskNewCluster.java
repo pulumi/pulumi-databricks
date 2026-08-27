@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskNewCluster {
-    private @Nullable List<String> __applyPolicyDefaultValuesAllowLists;
     private @Nullable Boolean applyPolicyDefaultValues;
     private @Nullable JobTaskNewClusterAutoscale autoscale;
     private @Nullable JobTaskNewClusterAwsAttributes awsAttributes;
@@ -82,9 +81,6 @@ public final class JobTaskNewCluster {
     private @Nullable JobTaskNewClusterWorkloadType workloadType;
 
     private JobTaskNewCluster() {}
-    public List<String> __applyPolicyDefaultValuesAllowLists() {
-        return this.__applyPolicyDefaultValuesAllowLists == null ? List.of() : this.__applyPolicyDefaultValuesAllowLists;
-    }
     public Optional<Boolean> applyPolicyDefaultValues() {
         return Optional.ofNullable(this.applyPolicyDefaultValues);
     }
@@ -224,7 +220,6 @@ public final class JobTaskNewCluster {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> __applyPolicyDefaultValuesAllowLists;
         private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable JobTaskNewClusterAutoscale autoscale;
         private @Nullable JobTaskNewClusterAwsAttributes awsAttributes;
@@ -267,7 +262,6 @@ public final class JobTaskNewCluster {
         public Builder() {}
         public Builder(JobTaskNewCluster defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.__applyPolicyDefaultValuesAllowLists = defaults.__applyPolicyDefaultValuesAllowLists;
     	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
     	      this.autoscale = defaults.autoscale;
     	      this.awsAttributes = defaults.awsAttributes;
@@ -309,15 +303,6 @@ public final class JobTaskNewCluster {
     	      this.workloadType = defaults.workloadType;
         }
 
-        @CustomType.Setter
-        public Builder __applyPolicyDefaultValuesAllowLists(@Nullable List<String> __applyPolicyDefaultValuesAllowLists) {
-
-            this.__applyPolicyDefaultValuesAllowLists = __applyPolicyDefaultValuesAllowLists;
-            return this;
-        }
-        public Builder __applyPolicyDefaultValuesAllowLists(String... __applyPolicyDefaultValuesAllowLists) {
-            return __applyPolicyDefaultValuesAllowLists(List.of(__applyPolicyDefaultValuesAllowLists));
-        }
         @CustomType.Setter
         public Builder applyPolicyDefaultValues(@Nullable Boolean applyPolicyDefaultValues) {
 
@@ -566,7 +551,6 @@ public final class JobTaskNewCluster {
         }
         public JobTaskNewCluster build() {
             final var _resultValue = new JobTaskNewCluster();
-            _resultValue.__applyPolicyDefaultValuesAllowLists = __applyPolicyDefaultValuesAllowLists;
             _resultValue.applyPolicyDefaultValues = applyPolicyDefaultValues;
             _resultValue.autoscale = autoscale;
             _resultValue.awsAttributes = awsAttributes;

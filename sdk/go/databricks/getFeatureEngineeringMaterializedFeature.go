@@ -65,12 +65,8 @@ type LookupFeatureEngineeringMaterializedFeatureResult struct {
 }
 
 func LookupFeatureEngineeringMaterializedFeatureOutput(ctx *pulumi.Context, args LookupFeatureEngineeringMaterializedFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupFeatureEngineeringMaterializedFeatureResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFeatureEngineeringMaterializedFeatureResultOutput, error) {
-			args := v.(LookupFeatureEngineeringMaterializedFeatureArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature", args, LookupFeatureEngineeringMaterializedFeatureResultOutput{}, options).(LookupFeatureEngineeringMaterializedFeatureResultOutput), nil
-		}).(LookupFeatureEngineeringMaterializedFeatureResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature", args, LookupFeatureEngineeringMaterializedFeatureResultOutput{}, options).(LookupFeatureEngineeringMaterializedFeatureResultOutput)
 }
 
 // A collection of arguments for invoking getFeatureEngineeringMaterializedFeature.

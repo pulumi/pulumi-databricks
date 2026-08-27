@@ -90,12 +90,8 @@ type LookupWarehousesDefaultWarehouseOverrideResult struct {
 }
 
 func LookupWarehousesDefaultWarehouseOverrideOutput(ctx *pulumi.Context, args LookupWarehousesDefaultWarehouseOverrideOutputArgs, opts ...pulumi.InvokeOption) LookupWarehousesDefaultWarehouseOverrideResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWarehousesDefaultWarehouseOverrideResultOutput, error) {
-			args := v.(LookupWarehousesDefaultWarehouseOverrideArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", args, LookupWarehousesDefaultWarehouseOverrideResultOutput{}, options).(LookupWarehousesDefaultWarehouseOverrideResultOutput), nil
-		}).(LookupWarehousesDefaultWarehouseOverrideResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", args, LookupWarehousesDefaultWarehouseOverrideResultOutput{}, options).(LookupWarehousesDefaultWarehouseOverrideResultOutput)
 }
 
 // A collection of arguments for invoking getWarehousesDefaultWarehouseOverride.

@@ -46,12 +46,8 @@ type GetFeatureEngineeringFeaturesResult struct {
 }
 
 func GetFeatureEngineeringFeaturesOutput(ctx *pulumi.Context, args GetFeatureEngineeringFeaturesOutputArgs, opts ...pulumi.InvokeOption) GetFeatureEngineeringFeaturesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFeatureEngineeringFeaturesResultOutput, error) {
-			args := v.(GetFeatureEngineeringFeaturesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", args, GetFeatureEngineeringFeaturesResultOutput{}, options).(GetFeatureEngineeringFeaturesResultOutput), nil
-		}).(GetFeatureEngineeringFeaturesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", args, GetFeatureEngineeringFeaturesResultOutput{}, options).(GetFeatureEngineeringFeaturesResultOutput)
 }
 
 // A collection of arguments for invoking getFeatureEngineeringFeatures.

@@ -73,12 +73,8 @@ type GetNotebookPathsResult struct {
 }
 
 func GetNotebookPathsOutput(ctx *pulumi.Context, args GetNotebookPathsOutputArgs, opts ...pulumi.InvokeOption) GetNotebookPathsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNotebookPathsResultOutput, error) {
-			args := v.(GetNotebookPathsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getNotebookPaths:getNotebookPaths", args, GetNotebookPathsResultOutput{}, options).(GetNotebookPathsResultOutput), nil
-		}).(GetNotebookPathsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getNotebookPaths:getNotebookPaths", args, GetNotebookPathsResultOutput{}, options).(GetNotebookPathsResultOutput)
 }
 
 // A collection of arguments for invoking getNotebookPaths.

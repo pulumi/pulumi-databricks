@@ -80,12 +80,8 @@ type GetTagPoliciesResult struct {
 }
 
 func GetTagPoliciesOutput(ctx *pulumi.Context, args GetTagPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTagPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTagPoliciesResultOutput, error) {
-			args := v.(GetTagPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getTagPolicies:getTagPolicies", args, GetTagPoliciesResultOutput{}, options).(GetTagPoliciesResultOutput), nil
-		}).(GetTagPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getTagPolicies:getTagPolicies", args, GetTagPoliciesResultOutput{}, options).(GetTagPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getTagPolicies.

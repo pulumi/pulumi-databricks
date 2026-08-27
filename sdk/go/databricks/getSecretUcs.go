@@ -89,12 +89,8 @@ type GetSecretUcsResult struct {
 }
 
 func GetSecretUcsOutput(ctx *pulumi.Context, args GetSecretUcsOutputArgs, opts ...pulumi.InvokeOption) GetSecretUcsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSecretUcsResultOutput, error) {
-			args := v.(GetSecretUcsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getSecretUcs:getSecretUcs", args, GetSecretUcsResultOutput{}, options).(GetSecretUcsResultOutput), nil
-		}).(GetSecretUcsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getSecretUcs:getSecretUcs", args, GetSecretUcsResultOutput{}, options).(GetSecretUcsResultOutput)
 }
 
 // A collection of arguments for invoking getSecretUcs.

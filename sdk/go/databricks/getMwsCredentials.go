@@ -83,12 +83,8 @@ type LookupMwsCredentialsResult struct {
 }
 
 func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOutputArgs, opts ...pulumi.InvokeOption) LookupMwsCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMwsCredentialsResultOutput, error) {
-			args := v.(LookupMwsCredentialsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getMwsCredentials:getMwsCredentials", args, LookupMwsCredentialsResultOutput{}, options).(LookupMwsCredentialsResultOutput), nil
-		}).(LookupMwsCredentialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("databricks:index/getMwsCredentials:getMwsCredentials", args, LookupMwsCredentialsResultOutput{}, options).(LookupMwsCredentialsResultOutput)
 }
 
 // A collection of arguments for invoking getMwsCredentials.
