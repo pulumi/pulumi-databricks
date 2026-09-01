@@ -46,6 +46,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly discoveryUrl: pulumi.Output<string | undefined>;
     declare public readonly googleCredentials: pulumi.Output<string | undefined>;
     declare public readonly googleServiceAccount: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     declare public readonly host: pulumi.Output<string | undefined>;
     declare public readonly metadataServiceUrl: pulumi.Output<string | undefined>;
     declare public readonly oidcTokenEnv: pulumi.Output<string | undefined>;
@@ -93,6 +94,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["discoveryUrl"] = args?.discoveryUrl;
             resourceInputs["googleCredentials"] = args?.googleCredentials ? pulumi.secret(args.googleCredentials) : undefined;
             resourceInputs["googleServiceAccount"] = args?.googleServiceAccount;
+            resourceInputs["groupId"] = args?.groupId;
             resourceInputs["host"] = args?.host;
             resourceInputs["httpTimeoutSeconds"] = pulumi.output(args?.httpTimeoutSeconds).apply(JSON.stringify);
             resourceInputs["metadataServiceUrl"] = args?.metadataServiceUrl ? pulumi.secret(args.metadataServiceUrl) : undefined;
@@ -155,6 +157,7 @@ export interface ProviderArgs {
     discoveryUrl?: pulumi.Input<string | undefined>;
     googleCredentials?: pulumi.Input<string | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string | undefined>;
     host?: pulumi.Input<string | undefined>;
     httpTimeoutSeconds?: pulumi.Input<number | undefined>;
     metadataServiceUrl?: pulumi.Input<string | undefined>;

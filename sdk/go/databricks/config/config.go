@@ -86,6 +86,9 @@ func GetGoogleCredentials(ctx *pulumi.Context) string {
 func GetGoogleServiceAccount(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:googleServiceAccount")
 }
+func GetGroupId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:groupId")
+}
 func GetHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:host")
 }

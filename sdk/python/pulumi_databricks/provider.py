@@ -44,6 +44,7 @@ class ProviderArgs:
                  discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
                  google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
                  google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  http_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  metadata_service_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -113,6 +114,8 @@ class ProviderArgs:
             pulumi.set(__self__, "google_credentials", google_credentials)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if http_timeout_seconds is not None:
@@ -372,6 +375,15 @@ class ProviderArgs:
         pulumi.set(self, "google_service_account", value)
 
     @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "host")
@@ -547,6 +559,7 @@ class Provider(pulumi.ProviderResource):
                  discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
                  google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
                  google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  http_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  metadata_service_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -627,6 +640,7 @@ class Provider(pulumi.ProviderResource):
                  discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
                  google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
                  google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  http_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  metadata_service_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -677,6 +691,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["discovery_url"] = discovery_url
             __props__.__dict__["google_credentials"] = None if google_credentials is None else pulumi.Output.secret(google_credentials)
             __props__.__dict__["google_service_account"] = google_service_account
+            __props__.__dict__["group_id"] = group_id
             __props__.__dict__["host"] = host
             __props__.__dict__["http_timeout_seconds"] = pulumi.Output.from_input(http_timeout_seconds).apply(pulumi.runtime.to_json) if http_timeout_seconds is not None else None
             __props__.__dict__["metadata_service_url"] = None if metadata_service_url is None else pulumi.Output.secret(metadata_service_url)
@@ -805,6 +820,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "google_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "group_id")
 
     @_builtins.property
     @pulumi.getter

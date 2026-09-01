@@ -39,6 +39,7 @@ type Provider struct {
 	DiscoveryUrl               pulumi.StringPtrOutput `pulumi:"discoveryUrl"`
 	GoogleCredentials          pulumi.StringPtrOutput `pulumi:"googleCredentials"`
 	GoogleServiceAccount       pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
+	GroupId                    pulumi.StringPtrOutput `pulumi:"groupId"`
 	Host                       pulumi.StringPtrOutput `pulumi:"host"`
 	MetadataServiceUrl         pulumi.StringPtrOutput `pulumi:"metadataServiceUrl"`
 	OidcTokenEnv               pulumi.StringPtrOutput `pulumi:"oidcTokenEnv"`
@@ -120,6 +121,7 @@ type providerArgs struct {
 	DiscoveryUrl               *string  `pulumi:"discoveryUrl"`
 	GoogleCredentials          *string  `pulumi:"googleCredentials"`
 	GoogleServiceAccount       *string  `pulumi:"googleServiceAccount"`
+	GroupId                    *string  `pulumi:"groupId"`
 	Host                       *string  `pulumi:"host"`
 	HttpTimeoutSeconds         *int     `pulumi:"httpTimeoutSeconds"`
 	MetadataServiceUrl         *string  `pulumi:"metadataServiceUrl"`
@@ -165,6 +167,7 @@ type ProviderArgs struct {
 	DiscoveryUrl               pulumi.StringPtrInput
 	GoogleCredentials          pulumi.StringPtrInput
 	GoogleServiceAccount       pulumi.StringPtrInput
+	GroupId                    pulumi.StringPtrInput
 	Host                       pulumi.StringPtrInput
 	HttpTimeoutSeconds         pulumi.IntPtrInput
 	MetadataServiceUrl         pulumi.StringPtrInput
@@ -325,6 +328,10 @@ func (o ProviderOutput) GoogleCredentials() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Host() pulumi.StringPtrOutput {

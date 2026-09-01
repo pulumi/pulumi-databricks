@@ -207,6 +207,14 @@ Object.defineProperty(exports, "googleServiceAccount", {
     enumerable: true,
 });
 
+export declare const groupId: string | undefined;
+Object.defineProperty(exports, "groupId", {
+    get() {
+        return __config.get("groupId");
+    },
+    enumerable: true,
+});
+
 export declare const host: string | undefined;
 Object.defineProperty(exports, "host", {
     get() {

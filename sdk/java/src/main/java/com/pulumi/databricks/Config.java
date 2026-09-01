@@ -89,6 +89,9 @@ public final class Config {
     public Optional<String> googleServiceAccount() {
         return Codegen.stringProp("googleServiceAccount").config(config).get();
     }
+    public Optional<String> groupId() {
+        return Codegen.stringProp("groupId").config(config).get();
+    }
     public Optional<String> host() {
         return Codegen.stringProp("host").config(config).get();
     }

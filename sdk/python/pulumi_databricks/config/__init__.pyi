@@ -64,6 +64,8 @@ googleCredentials: Optional[str]
 
 googleServiceAccount: Optional[str]
 
+groupId: Optional[str]
+
 host: Optional[str]
 
 httpTimeoutSeconds: Optional[int]

@@ -207,6 +207,13 @@ namespace Pulumi.Databricks
             set => _googleServiceAccount.Set(value);
         }
 
+        private static readonly __Value<string?> _groupId = new __Value<string?>(() => __config.Get("groupId"));
+        public static string? GroupId
+        {
+            get => _groupId.Get();
+            set => _groupId.Set(value);
+        }
+
         private static readonly __Value<string?> _host = new __Value<string?>(() => __config.Get("host"));
         public static string? Host
         {

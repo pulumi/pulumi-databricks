@@ -121,6 +121,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('googleServiceAccount')
 
     @_builtins.property
+    def group_id(self) -> Optional[str]:
+        return __config__.get('groupId')
+
+    @_builtins.property
     def host(self) -> Optional[str]:
         return __config__.get('host')
 
