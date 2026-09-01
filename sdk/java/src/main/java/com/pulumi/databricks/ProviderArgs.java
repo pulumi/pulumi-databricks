@@ -193,6 +193,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.googleServiceAccount);
     }
 
+    @Import(name="groupId")
+    private @Nullable Output<String> groupId;
+
+    public Optional<Output<String>> groupId() {
+        return Optional.ofNullable(this.groupId);
+    }
+
     @Import(name="host")
     private @Nullable Output<String> host;
 
@@ -333,6 +340,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.discoveryUrl = $.discoveryUrl;
         this.googleCredentials = $.googleCredentials;
         this.googleServiceAccount = $.googleServiceAccount;
+        this.groupId = $.groupId;
         this.host = $.host;
         this.httpTimeoutSeconds = $.httpTimeoutSeconds;
         this.metadataServiceUrl = $.metadataServiceUrl;
@@ -592,6 +600,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder googleServiceAccount(String googleServiceAccount) {
             return googleServiceAccount(Output.of(googleServiceAccount));
+        }
+
+        public Builder groupId(@Nullable Output<String> groupId) {
+            $.groupId = groupId;
+            return this;
+        }
+
+        public Builder groupId(String groupId) {
+            return groupId(Output.of(groupId));
         }
 
         public Builder host(@Nullable Output<String> host) {

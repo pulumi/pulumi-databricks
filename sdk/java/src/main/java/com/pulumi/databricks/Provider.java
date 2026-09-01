@@ -149,6 +149,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> googleServiceAccount() {
         return Codegen.optional(this.googleServiceAccount);
     }
+    @Export(name="groupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> groupId;
+
+    public Output<Optional<String>> groupId() {
+        return Codegen.optional(this.groupId);
+    }
     @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 

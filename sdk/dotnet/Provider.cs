@@ -81,6 +81,9 @@ namespace Pulumi.Databricks
         [Output("googleServiceAccount")]
         public Output<string?> GoogleServiceAccount { get; private set; } = null!;
 
+        [Output("groupId")]
+        public Output<string?> GroupId { get; private set; } = null!;
+
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
 
@@ -255,6 +258,9 @@ namespace Pulumi.Databricks
 
         [Input("googleServiceAccount")]
         public Input<string>? GoogleServiceAccount { get; set; }
+
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
 
         [Input("host")]
         public Input<string>? Host { get; set; }
