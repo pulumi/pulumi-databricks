@@ -7,15 +7,20 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskNewClusterWorkerNodeTypeFlexibility {
     private @Nullable List<String> alternateNodeTypeIds;
+    private @Nullable String awsContextId;
 
     private JobTaskNewClusterWorkerNodeTypeFlexibility() {}
     public List<String> alternateNodeTypeIds() {
         return this.alternateNodeTypeIds == null ? List.of() : this.alternateNodeTypeIds;
+    }
+    public Optional<String> awsContextId() {
+        return Optional.ofNullable(this.awsContextId);
     }
 
     public static Builder builder() {
@@ -28,10 +33,12 @@ public final class JobTaskNewClusterWorkerNodeTypeFlexibility {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> alternateNodeTypeIds;
+        private @Nullable String awsContextId;
         public Builder() {}
         public Builder(JobTaskNewClusterWorkerNodeTypeFlexibility defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alternateNodeTypeIds = defaults.alternateNodeTypeIds;
+    	      this.awsContextId = defaults.awsContextId;
         }
 
         @CustomType.Setter
@@ -43,9 +50,16 @@ public final class JobTaskNewClusterWorkerNodeTypeFlexibility {
         public Builder alternateNodeTypeIds(String... alternateNodeTypeIds) {
             return alternateNodeTypeIds(List.of(alternateNodeTypeIds));
         }
+        @CustomType.Setter
+        public Builder awsContextId(@Nullable String awsContextId) {
+
+            this.awsContextId = awsContextId;
+            return this;
+        }
         public JobTaskNewClusterWorkerNodeTypeFlexibility build() {
             final var _resultValue = new JobTaskNewClusterWorkerNodeTypeFlexibility();
             _resultValue.alternateNodeTypeIds = alternateNodeTypeIds;
+            _resultValue.awsContextId = awsContextId;
             return _resultValue;
         }
     }

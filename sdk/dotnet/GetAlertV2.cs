@@ -127,7 +127,7 @@ namespace Pulumi.Databricks
     public sealed class GetAlertV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// UUID identifying the alert
+        /// The canonical identifier of the alert to retrieve information about
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Databricks
     public sealed class GetAlertV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// UUID identifying the alert
+        /// The canonical identifier of the alert to retrieve information about
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAlertV2EvaluationResult Evaluation;
         /// <summary>
-        /// (string) - UUID identifying the alert
+        /// (string) - The canonical identifier of the alert to retrieve information about
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -207,8 +207,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string OwnerUserName;
         /// <summary>
-        /// (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-        /// query text with `:name` syntax. Static values only
+        /// (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAlertV2ParameterResult> Parameters;
         /// <summary>

@@ -22,6 +22,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureSourceKafkaSource? KafkaSource;
         /// <summary>
+        /// Completeness timing for this Feature's use of the source. This configuration is part of the
+        /// Feature definition; it does not modify the underlying table or stream
+        /// </summary>
+        public readonly Outputs.FeatureEngineeringFeatureSourceLateness? Lateness;
+        /// <summary>
         /// A request-time data source
         /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureSourceRequestSource? RequestSource;
@@ -36,12 +41,15 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.FeatureEngineeringFeatureSourceKafkaSource? kafkaSource,
 
+            Outputs.FeatureEngineeringFeatureSourceLateness? lateness,
+
             Outputs.FeatureEngineeringFeatureSourceRequestSource? requestSource,
 
             Outputs.FeatureEngineeringFeatureSourceStreamSource? streamSource)
         {
             DeltaTableSource = deltaTableSource;
             KafkaSource = kafkaSource;
+            Lateness = lateness;
             RequestSource = requestSource;
             StreamSource = streamSource;
         }

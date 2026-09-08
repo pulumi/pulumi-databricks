@@ -14,6 +14,12 @@ import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2Args;
 import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMemberV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2Args;
 import com.pulumi.databricks.inputs.GetAccountIamDirectGroupMembersV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamExternalGroupV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamExternalGroupV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamExternalServicePrincipalV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamExternalServicePrincipalV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAccountIamExternalUserV2Args;
+import com.pulumi.databricks.inputs.GetAccountIamExternalUserV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAccountIamGroupV2Args;
 import com.pulumi.databricks.inputs.GetAccountIamGroupV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAccountIamGroupsV2Args;
@@ -266,6 +272,8 @@ import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
 import com.pulumi.databricks.inputs.GetPostgresRolePlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresRolesArgs;
 import com.pulumi.databricks.inputs.GetPostgresRolesPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresSnapshotScheduleArgs;
+import com.pulumi.databricks.inputs.GetPostgresSnapshotSchedulePlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresSyncedTableArgs;
 import com.pulumi.databricks.inputs.GetPostgresSyncedTablePlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
@@ -350,6 +358,12 @@ import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2Args;
 import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMemberV2PlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2Args;
 import com.pulumi.databricks.inputs.GetWorkspaceIamDirectGroupMembersV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2PlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2PlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2Args;
 import com.pulumi.databricks.inputs.GetWorkspaceIamGroupV2PlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceIamGroupsV2Args;
@@ -378,6 +392,9 @@ import com.pulumi.databricks.outputs.GetAccountFederationPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountFederationPolicyResult;
 import com.pulumi.databricks.outputs.GetAccountIamDirectGroupMemberV2Result;
 import com.pulumi.databricks.outputs.GetAccountIamDirectGroupMembersV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamExternalGroupV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamExternalServicePrincipalV2Result;
+import com.pulumi.databricks.outputs.GetAccountIamExternalUserV2Result;
 import com.pulumi.databricks.outputs.GetAccountIamGroupV2Result;
 import com.pulumi.databricks.outputs.GetAccountIamGroupsV2Result;
 import com.pulumi.databricks.outputs.GetAccountIamServicePrincipalV2Result;
@@ -505,6 +522,7 @@ import com.pulumi.databricks.outputs.GetPostgresProjectResult;
 import com.pulumi.databricks.outputs.GetPostgresProjectsResult;
 import com.pulumi.databricks.outputs.GetPostgresRoleResult;
 import com.pulumi.databricks.outputs.GetPostgresRolesResult;
+import com.pulumi.databricks.outputs.GetPostgresSnapshotScheduleResult;
 import com.pulumi.databricks.outputs.GetPostgresSyncedTableResult;
 import com.pulumi.databricks.outputs.GetQualityMonitorV2Result;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2Result;
@@ -547,6 +565,9 @@ import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentResult;
 import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentsResult;
 import com.pulumi.databricks.outputs.GetWorkspaceIamDirectGroupMemberV2Result;
 import com.pulumi.databricks.outputs.GetWorkspaceIamDirectGroupMembersV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamExternalGroupV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamExternalServicePrincipalV2Result;
+import com.pulumi.databricks.outputs.GetWorkspaceIamExternalUserV2Result;
 import com.pulumi.databricks.outputs.GetWorkspaceIamGroupV2Result;
 import com.pulumi.databricks.outputs.GetWorkspaceIamGroupsV2Result;
 import com.pulumi.databricks.outputs.GetWorkspaceIamServicePrincipalV2Result;
@@ -981,7 +1002,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1030,7 +1051,7 @@ public final class DatabricksFunctions {
         return getAccountIamDirectGroupMemberV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1079,7 +1100,7 @@ public final class DatabricksFunctions {
         return getAccountIamDirectGroupMemberV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1128,7 +1149,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1177,7 +1198,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1226,7 +1247,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1274,7 +1295,7 @@ public final class DatabricksFunctions {
         return getAccountIamDirectGroupMembersV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1322,7 +1343,7 @@ public final class DatabricksFunctions {
         return getAccountIamDirectGroupMembersV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1370,7 +1391,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1418,7 +1439,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1466,7 +1487,787 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalGroupV2(GetAccountIamExternalGroupV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-groups/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalGroupV2Result> getAccountIamExternalGroupV2(GetAccountIamExternalGroupV2Args args) {
+        return getAccountIamExternalGroupV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalGroupV2(GetAccountIamExternalGroupV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-groups/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamExternalGroupV2Result> getAccountIamExternalGroupV2Plain(GetAccountIamExternalGroupV2PlainArgs args) {
+        return getAccountIamExternalGroupV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalGroupV2(GetAccountIamExternalGroupV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-groups/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalGroupV2Result> getAccountIamExternalGroupV2(GetAccountIamExternalGroupV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2", TypeShape.of(GetAccountIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalGroupV2(GetAccountIamExternalGroupV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-groups/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalGroupV2Result> getAccountIamExternalGroupV2(GetAccountIamExternalGroupV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2", TypeShape.of(GetAccountIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalGroupV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalGroupV2(GetAccountIamExternalGroupV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-groups/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamExternalGroupV2Result> getAccountIamExternalGroupV2Plain(GetAccountIamExternalGroupV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2", TypeShape.of(GetAccountIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalServicePrincipalV2(GetAccountIamExternalServicePrincipalV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalServicePrincipalV2Result> getAccountIamExternalServicePrincipalV2(GetAccountIamExternalServicePrincipalV2Args args) {
+        return getAccountIamExternalServicePrincipalV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalServicePrincipalV2(GetAccountIamExternalServicePrincipalV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamExternalServicePrincipalV2Result> getAccountIamExternalServicePrincipalV2Plain(GetAccountIamExternalServicePrincipalV2PlainArgs args) {
+        return getAccountIamExternalServicePrincipalV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalServicePrincipalV2(GetAccountIamExternalServicePrincipalV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalServicePrincipalV2Result> getAccountIamExternalServicePrincipalV2(GetAccountIamExternalServicePrincipalV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalServicePrincipalV2:getAccountIamExternalServicePrincipalV2", TypeShape.of(GetAccountIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalServicePrincipalV2(GetAccountIamExternalServicePrincipalV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalServicePrincipalV2Result> getAccountIamExternalServicePrincipalV2(GetAccountIamExternalServicePrincipalV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalServicePrincipalV2:getAccountIamExternalServicePrincipalV2", TypeShape.of(GetAccountIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalServicePrincipalV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalServicePrincipalV2(GetAccountIamExternalServicePrincipalV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamExternalServicePrincipalV2Result> getAccountIamExternalServicePrincipalV2Plain(GetAccountIamExternalServicePrincipalV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamExternalServicePrincipalV2:getAccountIamExternalServicePrincipalV2", TypeShape.of(GetAccountIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalUserV2(GetAccountIamExternalUserV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-users/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalUserV2Result> getAccountIamExternalUserV2(GetAccountIamExternalUserV2Args args) {
+        return getAccountIamExternalUserV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalUserV2(GetAccountIamExternalUserV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-users/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamExternalUserV2Result> getAccountIamExternalUserV2Plain(GetAccountIamExternalUserV2PlainArgs args) {
+        return getAccountIamExternalUserV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalUserV2(GetAccountIamExternalUserV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-users/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalUserV2Result> getAccountIamExternalUserV2(GetAccountIamExternalUserV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2", TypeShape.of(GetAccountIamExternalUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalUserV2(GetAccountIamExternalUserV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-users/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountIamExternalUserV2Result> getAccountIamExternalUserV2(GetAccountIamExternalUserV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2", TypeShape.of(GetAccountIamExternalUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `accounts/{account_id}/external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountIamExternalUserV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAccountIamExternalUserV2(GetAccountIamExternalUserV2Args.builder()
+     *             .name("accounts/00000000-0000-0000-0000-000000000000/external-users/11111111-2222-3333-4444-555555555555")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountIamExternalUserV2Result> getAccountIamExternalUserV2Plain(GetAccountIamExternalUserV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2", TypeShape.of(GetAccountIamExternalUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1514,7 +2315,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1562,7 +2363,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1610,7 +2411,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1658,7 +2459,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1706,7 +2507,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1753,7 +2554,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupsV2(GetAccountIamGroupsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1800,7 +2601,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupsV2Plain(GetAccountIamGroupsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1847,7 +2648,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1894,7 +2695,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1941,7 +2742,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1988,7 +2789,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2035,7 +2836,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2083,7 +2884,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2131,7 +2932,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2179,7 +2980,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2227,7 +3028,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2275,7 +3076,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2322,7 +3123,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalsV2(GetAccountIamServicePrincipalsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2369,7 +3170,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalsV2Plain(GetAccountIamServicePrincipalsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2416,7 +3217,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2463,7 +3264,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2510,7 +3311,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2557,7 +3358,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2604,7 +3405,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2652,7 +3453,7 @@ public final class DatabricksFunctions {
         return getAccountIamUserV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2700,7 +3501,7 @@ public final class DatabricksFunctions {
         return getAccountIamUserV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2748,7 +3549,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2796,7 +3597,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2844,7 +3645,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2891,7 +3692,7 @@ public final class DatabricksFunctions {
         return getAccountIamUsersV2(GetAccountIamUsersV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2938,7 +3739,7 @@ public final class DatabricksFunctions {
         return getAccountIamUsersV2Plain(GetAccountIamUsersV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2985,7 +3786,7 @@ public final class DatabricksFunctions {
         return getAccountIamUsersV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3032,7 +3833,7 @@ public final class DatabricksFunctions {
         return getAccountIamUsersV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3079,7 +3880,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3126,7 +3927,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3173,7 +3974,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3222,7 +4023,7 @@ public final class DatabricksFunctions {
         return getAccountIamWorkspaceAssignmentV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3271,7 +4072,7 @@ public final class DatabricksFunctions {
         return getAccountIamWorkspaceAssignmentV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3320,7 +4121,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3369,7 +4170,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3418,7 +4219,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3429,7 +4230,7 @@ public final class DatabricksFunctions {
         return getAccountIamWorkspaceAssignmentsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3440,7 +4241,7 @@ public final class DatabricksFunctions {
         return getAccountIamWorkspaceAssignmentsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3451,7 +4252,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", TypeShape.of(GetAccountIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3462,7 +4263,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", TypeShape.of(GetAccountIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3928,7 +4729,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", TypeShape.of(GetAccountSettingUserPreferenceV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
@@ -3943,7 +4744,7 @@ public final class DatabricksFunctions {
         return getAccountSettingV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
@@ -3958,7 +4759,7 @@ public final class DatabricksFunctions {
         return getAccountSettingV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
@@ -3973,7 +4774,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
@@ -3988,7 +4789,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
@@ -32278,6 +33079,51 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
+     */
+    public static Output<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs args) {
+        return getPostgresSnapshotSchedule(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     */
+    public static CompletableFuture<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedulePlain(GetPostgresSnapshotSchedulePlainArgs args) {
+        return getPostgresSnapshotSchedulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     */
+    public static Output<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", TypeShape.of(GetPostgresSnapshotScheduleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     */
+    public static Output<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedule(GetPostgresSnapshotScheduleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", TypeShape.of(GetPostgresSnapshotScheduleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     */
+    public static CompletableFuture<GetPostgresSnapshotScheduleResult> getPostgresSnapshotSchedulePlain(GetPostgresSnapshotSchedulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", TypeShape.of(GetPostgresSnapshotScheduleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres synced table.
      * 
      * ## Example Usage
@@ -44233,7 +45079,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments", TypeShape.of(GetWorkspaceEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44283,7 +45129,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamDirectGroupMemberV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44333,7 +45179,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamDirectGroupMemberV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44383,7 +45229,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44433,7 +45279,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44483,7 +45329,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44531,7 +45377,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamDirectGroupMembersV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44579,7 +45425,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamDirectGroupMembersV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44627,7 +45473,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44675,7 +45521,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44723,7 +45569,847 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist. Provisioning happens at the account level; it does not assign the group to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalGroupV2(GetWorkspaceIamExternalGroupV2Args.builder()
+     *             .name("external-groups/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalGroupV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalGroupV2Result> getWorkspaceIamExternalGroupV2(GetWorkspaceIamExternalGroupV2Args args) {
+        return getWorkspaceIamExternalGroupV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist. Provisioning happens at the account level; it does not assign the group to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalGroupV2(GetWorkspaceIamExternalGroupV2Args.builder()
+     *             .name("external-groups/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalGroupV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamExternalGroupV2Result> getWorkspaceIamExternalGroupV2Plain(GetWorkspaceIamExternalGroupV2PlainArgs args) {
+        return getWorkspaceIamExternalGroupV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist. Provisioning happens at the account level; it does not assign the group to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalGroupV2(GetWorkspaceIamExternalGroupV2Args.builder()
+     *             .name("external-groups/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalGroupV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalGroupV2Result> getWorkspaceIamExternalGroupV2(GetWorkspaceIamExternalGroupV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalGroupV2:getWorkspaceIamExternalGroupV2", TypeShape.of(GetWorkspaceIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist. Provisioning happens at the account level; it does not assign the group to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalGroupV2(GetWorkspaceIamExternalGroupV2Args.builder()
+     *             .name("external-groups/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalGroupV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalGroupV2Result> getWorkspaceIamExternalGroupV2(GetWorkspaceIamExternalGroupV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalGroupV2:getWorkspaceIamExternalGroupV2", TypeShape.of(GetWorkspaceIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external group — a group that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the group does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-groups/{external_group_id}`, where `externalGroupId` is the group&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the group against the IdP and provisions the group in the account if it does not already exist. Provisioning happens at the account level; it does not assign the group to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external group within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalGroupV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalGroupV2(GetWorkspaceIamExternalGroupV2Args.builder()
+     *             .name("external-groups/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalGroupV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamExternalGroupV2Result> getWorkspaceIamExternalGroupV2Plain(GetWorkspaceIamExternalGroupV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamExternalGroupV2:getWorkspaceIamExternalGroupV2", TypeShape.of(GetWorkspaceIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist. Provisioning happens at the account level; it does not assign the service principal to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalServicePrincipalV2(GetWorkspaceIamExternalServicePrincipalV2Args.builder()
+     *             .name("external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalServicePrincipalV2Result> getWorkspaceIamExternalServicePrincipalV2(GetWorkspaceIamExternalServicePrincipalV2Args args) {
+        return getWorkspaceIamExternalServicePrincipalV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist. Provisioning happens at the account level; it does not assign the service principal to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalServicePrincipalV2(GetWorkspaceIamExternalServicePrincipalV2Args.builder()
+     *             .name("external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamExternalServicePrincipalV2Result> getWorkspaceIamExternalServicePrincipalV2Plain(GetWorkspaceIamExternalServicePrincipalV2PlainArgs args) {
+        return getWorkspaceIamExternalServicePrincipalV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist. Provisioning happens at the account level; it does not assign the service principal to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalServicePrincipalV2(GetWorkspaceIamExternalServicePrincipalV2Args.builder()
+     *             .name("external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalServicePrincipalV2Result> getWorkspaceIamExternalServicePrincipalV2(GetWorkspaceIamExternalServicePrincipalV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalServicePrincipalV2:getWorkspaceIamExternalServicePrincipalV2", TypeShape.of(GetWorkspaceIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist. Provisioning happens at the account level; it does not assign the service principal to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalServicePrincipalV2(GetWorkspaceIamExternalServicePrincipalV2Args.builder()
+     *             .name("external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalServicePrincipalV2Result> getWorkspaceIamExternalServicePrincipalV2(GetWorkspaceIamExternalServicePrincipalV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalServicePrincipalV2:getWorkspaceIamExternalServicePrincipalV2", TypeShape.of(GetWorkspaceIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external service principal — a service principal that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the service principal does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-service-principals/{external_service_principal_id}`, where `externalServicePrincipalId` is the service principal&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the service principal against the IdP and provisions the service principal in the account if it does not already exist. Provisioning happens at the account level; it does not assign the service principal to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external service principal within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalServicePrincipalV2(GetWorkspaceIamExternalServicePrincipalV2Args.builder()
+     *             .name("external-service-principals/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamExternalServicePrincipalV2Result> getWorkspaceIamExternalServicePrincipalV2Plain(GetWorkspaceIamExternalServicePrincipalV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamExternalServicePrincipalV2:getWorkspaceIamExternalServicePrincipalV2", TypeShape.of(GetWorkspaceIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist. Provisioning happens at the account level; it does not assign the user to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalUserV2(GetWorkspaceIamExternalUserV2Args.builder()
+     *             .name("external-users/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalUserV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalUserV2Result> getWorkspaceIamExternalUserV2(GetWorkspaceIamExternalUserV2Args args) {
+        return getWorkspaceIamExternalUserV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist. Provisioning happens at the account level; it does not assign the user to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalUserV2(GetWorkspaceIamExternalUserV2Args.builder()
+     *             .name("external-users/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalUserV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamExternalUserV2Result> getWorkspaceIamExternalUserV2Plain(GetWorkspaceIamExternalUserV2PlainArgs args) {
+        return getWorkspaceIamExternalUserV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist. Provisioning happens at the account level; it does not assign the user to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalUserV2(GetWorkspaceIamExternalUserV2Args.builder()
+     *             .name("external-users/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalUserV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalUserV2Result> getWorkspaceIamExternalUserV2(GetWorkspaceIamExternalUserV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalUserV2:getWorkspaceIamExternalUserV2", TypeShape.of(GetWorkspaceIamExternalUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist. Provisioning happens at the account level; it does not assign the user to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalUserV2(GetWorkspaceIamExternalUserV2Args.builder()
+     *             .name("external-users/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalUserV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceIamExternalUserV2Result> getWorkspaceIamExternalUserV2(GetWorkspaceIamExternalUserV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalUserV2:getWorkspaceIamExternalUserV2", TypeShape.of(GetWorkspaceIamExternalUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
+     * 
+     * Retrieves an external user — a user that can be synced from your identity provider (IdP) — with the given external ID from the customer&#39;s IdP, scoped to a workspace. If the user does not exist in the account, it will be created. If the customer is not onboarded onto Automatic Identity Management (AIM), this returns an error.
+     * 
+     * The `name` uses the format `external-users/{external_user_id}`, where `externalUserId` is the user&#39;s object ID in the IdP (for example, a Microsoft Entra ID object ID).
+     * 
+     * &gt; **Note** Reading this data source has a side effect: it resolves the user against the IdP and provisions the user in the account if it does not already exist. Provisioning happens at the account level; it does not assign the user to the workspace.
+     * 
+     * &gt; **Note** This data source can be used with an account-level or workspace-level provider. With an account-level provider, a `workspaceId` is required — set it in the `providerConfig` block (or via the provider&#39;s `workspaceId` attribute). With a workspace-level provider, `workspaceId` is optional and defaults to the provider&#39;s workspace.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external user within a workspace, using an account-level provider with the target workspace selected via `providerConfig`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2Args;
+     * import com.pulumi.databricks.inputs.GetWorkspaceIamExternalUserV2ProviderConfigArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getWorkspaceIamExternalUserV2(GetWorkspaceIamExternalUserV2Args.builder()
+     *             .name("external-users/11111111-2222-3333-4444-555555555555")
+     *             .providerConfig(GetWorkspaceIamExternalUserV2ProviderConfigArgs.builder()
+     *                 .workspaceId("1234567890123456")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceIamExternalUserV2Result> getWorkspaceIamExternalUserV2Plain(GetWorkspaceIamExternalUserV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamExternalUserV2:getWorkspaceIamExternalUserV2", TypeShape.of(GetWorkspaceIamExternalUserV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44771,7 +46457,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44819,7 +46505,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44867,7 +46553,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44915,7 +46601,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -44963,7 +46649,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45010,7 +46696,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45057,7 +46743,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupsV2Plain(GetWorkspaceIamGroupsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45104,7 +46790,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45151,7 +46837,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45198,7 +46884,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45245,7 +46931,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45292,7 +46978,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45340,7 +47026,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45388,7 +47074,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45436,7 +47122,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45484,7 +47170,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45532,7 +47218,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45579,7 +47265,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45626,7 +47312,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalsV2Plain(GetWorkspaceIamServicePrincipalsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45673,7 +47359,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45720,7 +47406,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45767,7 +47453,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45814,7 +47500,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45861,7 +47547,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45909,7 +47595,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUserV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -45957,7 +47643,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUserV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46005,7 +47691,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46053,7 +47739,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46101,7 +47787,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46148,7 +47834,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46195,7 +47881,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUsersV2Plain(GetWorkspaceIamUsersV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46242,7 +47928,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUsersV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46289,7 +47975,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUsersV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46336,7 +48022,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46383,7 +48069,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46430,7 +48116,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46479,7 +48165,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46528,7 +48214,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46577,7 +48263,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46626,7 +48312,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46675,7 +48361,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46686,7 +48372,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentsV2(GetWorkspaceIamWorkspaceAssignmentsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46697,7 +48383,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentsV2Plain(GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46708,7 +48394,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46719,7 +48405,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46730,7 +48416,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46741,7 +48427,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46752,7 +48438,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46763,7 +48449,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceIdentityDetailV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46774,7 +48460,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceIdentityDetailV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46785,7 +48471,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", TypeShape.of(GetWorkspaceIamWorkspaceIdentityDetailV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -46796,7 +48482,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", TypeShape.of(GetWorkspaceIamWorkspaceIdentityDetailV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -47047,7 +48733,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
@@ -47062,7 +48748,7 @@ public final class DatabricksFunctions {
         return getWorkspaceSettingV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
@@ -47077,7 +48763,7 @@ public final class DatabricksFunctions {
         return getWorkspaceSettingV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
@@ -47092,7 +48778,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
@@ -47107,7 +48793,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 

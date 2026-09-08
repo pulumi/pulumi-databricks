@@ -12,7 +12,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtooth {
     /**
-     * @return (string) - Delay is not currently supported for Sawtooth windows
+     * @return (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
      * 
      */
     private @Nullable String delay;
@@ -24,7 +26,9 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
 
     private GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtooth() {}
     /**
-     * @return (string) - Delay is not currently supported for Sawtooth windows
+     * @return (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
      * 
      */
     public Optional<String> delay() {

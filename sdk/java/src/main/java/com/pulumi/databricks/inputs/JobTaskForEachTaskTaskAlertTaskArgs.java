@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskAlertTaskSubscriberArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +31,13 @@ public final class JobTaskForEachTaskTaskAlertTaskArgs extends com.pulumi.resour
      */
     public Optional<Output<String>> alertId() {
         return Optional.ofNullable(this.alertId);
+    }
+
+    @Import(name="parameters")
+    private @Nullable Output<Map<String,String>> parameters;
+
+    public Optional<Output<Map<String,String>>> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     /**
@@ -65,6 +73,7 @@ public final class JobTaskForEachTaskTaskAlertTaskArgs extends com.pulumi.resour
 
     private JobTaskForEachTaskTaskAlertTaskArgs(JobTaskForEachTaskTaskAlertTaskArgs $) {
         this.alertId = $.alertId;
+        this.parameters = $.parameters;
         this.subscribers = $.subscribers;
         this.warehouseId = $.warehouseId;
         this.workspacePath = $.workspacePath;
@@ -107,6 +116,15 @@ public final class JobTaskForEachTaskTaskAlertTaskArgs extends com.pulumi.resour
          */
         public Builder alertId(String alertId) {
             return alertId(Output.of(alertId));
+        }
+
+        public Builder parameters(@Nullable Output<Map<String,String>> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        public Builder parameters(Map<String,String> parameters) {
+            return parameters(Output.of(parameters));
         }
 
         /**

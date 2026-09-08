@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -58,7 +58,8 @@ func GetAccountIamUsersV2(ctx *pulumi.Context, args *GetAccountIamUsersV2Args, o
 type GetAccountIamUsersV2Args struct {
 	// Optional. Allows filtering users by username or external id
 	Filter *string `pulumi:"filter"`
-	// The maximum number of users to return. The service may return fewer than this value
+	// The maximum number of users to return. The service may return fewer than this value.
+	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
 }
 
@@ -78,7 +79,8 @@ func GetAccountIamUsersV2Output(ctx *pulumi.Context, args GetAccountIamUsersV2Ou
 type GetAccountIamUsersV2OutputArgs struct {
 	// Optional. Allows filtering users by username or external id
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The maximum number of users to return. The service may return fewer than this value
+	// The maximum number of users to return. The service may return fewer than this value.
+	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 

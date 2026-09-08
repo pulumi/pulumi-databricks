@@ -44,8 +44,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunction {
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp stddevSamp;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionSum sum;
     /**
-     * @return Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * @return The time window over which the aggregation is computed
      * 
      */
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow timeWindow;
@@ -99,8 +98,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunction {
         return Optional.ofNullable(this.sum);
     }
     /**
-     * @return Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * @return The time window over which the aggregation is computed
      * 
      */
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow> timeWindow() {

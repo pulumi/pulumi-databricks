@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// (String) identifier of the Databricks Alert (databricks_alert).
         /// </summary>
         public readonly string? AlertId;
+        public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>
         /// The list of subscribers to send the snapshot of the dashboard to.
         /// </summary>
@@ -28,6 +29,8 @@ namespace Pulumi.Databricks.Outputs
         private JobTaskForEachTaskTaskAlertTask(
             string? alertId,
 
+            ImmutableDictionary<string, string>? parameters,
+
             ImmutableArray<Outputs.JobTaskForEachTaskTaskAlertTaskSubscriber> subscribers,
 
             string? warehouseId,
@@ -35,6 +38,7 @@ namespace Pulumi.Databricks.Outputs
             string? workspacePath)
         {
             AlertId = alertId;
+            Parameters = parameters;
             Subscribers = subscribers;
             WarehouseId = warehouseId;
             WorkspacePath = workspacePath;

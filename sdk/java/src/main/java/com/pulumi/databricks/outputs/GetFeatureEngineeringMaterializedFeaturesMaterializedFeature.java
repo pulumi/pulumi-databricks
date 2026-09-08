@@ -20,12 +20,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
     /**
-     * @return (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     * 
-     */
-    private String cronSchedule;
-    /**
      * @return (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
      * 
      */
@@ -91,14 +85,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
     private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureTableTrigger tableTrigger;
 
     private GetFeatureEngineeringMaterializedFeaturesMaterializedFeature() {}
-    /**
-     * @return (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     * 
-     */
-    public String cronSchedule() {
-        return this.cronSchedule;
-    }
     /**
      * @return (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
      * 
@@ -197,7 +183,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
     }
     @CustomType.Builder
     public static final class Builder {
-        private String cronSchedule;
         private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger cronScheduleTrigger;
         private String featureName;
         private Boolean isOnline;
@@ -213,7 +198,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeaturesMaterializedFeature defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.cronSchedule = defaults.cronSchedule;
     	      this.cronScheduleTrigger = defaults.cronScheduleTrigger;
     	      this.featureName = defaults.featureName;
     	      this.isOnline = defaults.isOnline;
@@ -228,14 +212,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
     	      this.tableTrigger = defaults.tableTrigger;
         }
 
-        @CustomType.Setter
-        public Builder cronSchedule(String cronSchedule) {
-            if (cronSchedule == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeaturesMaterializedFeature", "cronSchedule");
-            }
-            this.cronSchedule = cronSchedule;
-            return this;
-        }
         @CustomType.Setter
         public Builder cronScheduleTrigger(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger cronScheduleTrigger) {
             if (cronScheduleTrigger == null) {
@@ -332,7 +308,6 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
         }
         public GetFeatureEngineeringMaterializedFeaturesMaterializedFeature build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeaturesMaterializedFeature();
-            _resultValue.cronSchedule = cronSchedule;
             _resultValue.cronScheduleTrigger = cronScheduleTrigger;
             _resultValue.featureName = featureName;
             _resultValue.isOnline = isOnline;

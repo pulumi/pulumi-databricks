@@ -46,6 +46,13 @@ public final class GetPostgresBranchSpec {
      */
     private @Nullable String sourceBranchTime;
     /**
+     * @return (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     * 
+     */
+    private @Nullable String sourceSnapshot;
+    /**
      * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
      * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      * 
@@ -99,6 +106,15 @@ public final class GetPostgresBranchSpec {
         return Optional.ofNullable(this.sourceBranchTime);
     }
     /**
+     * @return (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     * 
+     */
+    public Optional<String> sourceSnapshot() {
+        return Optional.ofNullable(this.sourceSnapshot);
+    }
+    /**
      * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
      * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      * 
@@ -122,6 +138,7 @@ public final class GetPostgresBranchSpec {
         private @Nullable String sourceBranch;
         private @Nullable String sourceBranchLsn;
         private @Nullable String sourceBranchTime;
+        private @Nullable String sourceSnapshot;
         private @Nullable String ttl;
         public Builder() {}
         public Builder(GetPostgresBranchSpec defaults) {
@@ -132,6 +149,7 @@ public final class GetPostgresBranchSpec {
     	      this.sourceBranch = defaults.sourceBranch;
     	      this.sourceBranchLsn = defaults.sourceBranchLsn;
     	      this.sourceBranchTime = defaults.sourceBranchTime;
+    	      this.sourceSnapshot = defaults.sourceSnapshot;
     	      this.ttl = defaults.ttl;
         }
 
@@ -172,6 +190,12 @@ public final class GetPostgresBranchSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceSnapshot(@Nullable String sourceSnapshot) {
+
+            this.sourceSnapshot = sourceSnapshot;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ttl(@Nullable String ttl) {
 
             this.ttl = ttl;
@@ -185,6 +209,7 @@ public final class GetPostgresBranchSpec {
             _resultValue.sourceBranch = sourceBranch;
             _resultValue.sourceBranchLsn = sourceBranchLsn;
             _resultValue.sourceBranchTime = sourceBranchTime;
+            _resultValue.sourceSnapshot = sourceSnapshot;
             _resultValue.ttl = ttl;
             return _resultValue;
         }

@@ -16,6 +16,20 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
     public static final FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs Empty = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs();
 
+    @Import(name="delay")
+    private @Nullable Output<String> delay;
+
+    public Optional<Output<String>> delay() {
+        return Optional.ofNullable(this.delay);
+    }
+
+    @Import(name="offset")
+    private @Nullable Output<String> offset;
+
+    public Optional<Output<String>> offset() {
+        return Optional.ofNullable(this.offset);
+    }
+
     /**
      * The slide duration (interval by which windows advance, must be positive and less than duration)
      * 
@@ -41,6 +55,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs() {}
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs $) {
+        this.delay = $.delay;
+        this.offset = $.offset;
         this.slideDuration = $.slideDuration;
         this.windowDuration = $.windowDuration;
     }
@@ -61,6 +77,24 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs defaults) {
             $ = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder delay(@Nullable Output<String> delay) {
+            $.delay = delay;
+            return this;
+        }
+
+        public Builder delay(String delay) {
+            return delay(Output.of(delay));
+        }
+
+        public Builder offset(@Nullable Output<String> offset) {
+            $.offset = offset;
+            return this;
+        }
+
+        public Builder offset(String offset) {
+            return offset(Output.of(offset));
         }
 
         /**

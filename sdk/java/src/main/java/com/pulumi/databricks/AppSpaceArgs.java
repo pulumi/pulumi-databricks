@@ -19,6 +19,25 @@ public final class AppSpaceArgs extends com.pulumi.resources.ResourceArgs {
     public static final AppSpaceArgs Empty = new AppSpaceArgs();
 
     /**
+     * The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     * 
+     */
+    @Import(name="assumeGroupId")
+    private @Nullable Output<String> assumeGroupId;
+
+    /**
+     * @return The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     * 
+     */
+    public Optional<Output<String>> assumeGroupId() {
+        return Optional.ofNullable(this.assumeGroupId);
+    }
+
+    /**
      * The description of the app space
      * 
      */
@@ -113,6 +132,7 @@ public final class AppSpaceArgs extends com.pulumi.resources.ResourceArgs {
     private AppSpaceArgs() {}
 
     private AppSpaceArgs(AppSpaceArgs $) {
+        this.assumeGroupId = $.assumeGroupId;
         this.description = $.description;
         this.name = $.name;
         this.providerConfig = $.providerConfig;
@@ -137,6 +157,31 @@ public final class AppSpaceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AppSpaceArgs defaults) {
             $ = new AppSpaceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param assumeGroupId The group whose permissions users assume via Role Authorization for apps in this space. When
+         * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+         * Set only at space creation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assumeGroupId(@Nullable Output<String> assumeGroupId) {
+            $.assumeGroupId = assumeGroupId;
+            return this;
+        }
+
+        /**
+         * @param assumeGroupId The group whose permissions users assume via Role Authorization for apps in this space. When
+         * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+         * Set only at space creation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assumeGroupId(String assumeGroupId) {
+            return assumeGroupId(Output.of(assumeGroupId));
         }
 
         /**

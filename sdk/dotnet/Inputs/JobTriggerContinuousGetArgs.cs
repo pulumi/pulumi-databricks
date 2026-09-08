@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTriggerContinuousGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("maintenanceWindow")]
+        public Input<Inputs.JobTriggerContinuousMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
+
         /// <summary>
         /// Controls task level retry behaviour. Allowed values are:
         /// * `NEVER` (default): The failed task will not be retried.

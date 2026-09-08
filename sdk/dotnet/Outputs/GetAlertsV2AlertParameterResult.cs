@@ -18,9 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-        /// string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-        /// Complex types such as ARRAY, MAP, and STRUCT are not supported
+        /// (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+        /// the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         /// </summary>
         public readonly string? Type;
         /// <summary>

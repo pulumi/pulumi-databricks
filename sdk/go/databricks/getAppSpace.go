@@ -35,6 +35,10 @@ type LookupAppSpaceArgs struct {
 
 // A collection of values returned by getAppSpace.
 type LookupAppSpaceResult struct {
+	// (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+	// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+	// Set only at space creation
+	AssumeGroupId string `pulumi:"assumeGroupId"`
 	// (string) - The creation time of the app space. Formatted timestamp in ISO 6801
 	CreateTime string `pulumi:"createTime"`
 	// (string) - The email of the user that created the app space
@@ -101,6 +105,13 @@ func (o LookupAppSpaceResultOutput) ToLookupAppSpaceResultOutput() LookupAppSpac
 
 func (o LookupAppSpaceResultOutput) ToLookupAppSpaceResultOutputWithContext(ctx context.Context) LookupAppSpaceResultOutput {
 	return o
+}
+
+// (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+// Set only at space creation
+func (o LookupAppSpaceResultOutput) AssumeGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppSpaceResult) string { return v.AssumeGroupId }).(pulumi.StringOutput)
 }
 
 // (string) - The creation time of the app space. Formatted timestamp in ISO 6801

@@ -5,11 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,13 +18,6 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs Empty = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs();
-
-    @Import(name="continuous")
-    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs> continuous;
-
-    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs>> continuous() {
-        return Optional.ofNullable(this.continuous);
-    }
 
     @Import(name="rolling")
     private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs> rolling;
@@ -55,6 +48,33 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         return Optional.ofNullable(this.sliding);
     }
 
+    /**
+     * Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+     * the historical inputs read by a window. For example, a 365-day window with
+     * start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+     * for 365 days of data; a lifetime window produces no output before start_time. If unset,
+     * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+     * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+     * eligible source data exists
+     * 
+     */
+    @Import(name="startTime")
+    private @Nullable Output<String> startTime;
+
+    /**
+     * @return Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+     * the historical inputs read by a window. For example, a 365-day window with
+     * start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+     * for 365 days of data; a lifetime window produces no output before start_time. If unset,
+     * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+     * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+     * eligible source data exists
+     * 
+     */
+    public Optional<Output<String>> startTime() {
+        return Optional.ofNullable(this.startTime);
+    }
+
     @Import(name="tumbling")
     private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs> tumbling;
 
@@ -65,10 +85,10 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs() {}
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs $) {
-        this.continuous = $.continuous;
         this.rolling = $.rolling;
         this.sawtooth = $.sawtooth;
         this.sliding = $.sliding;
+        this.startTime = $.startTime;
         this.tumbling = $.tumbling;
     }
 
@@ -88,15 +108,6 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs defaults) {
             $ = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder continuous(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs> continuous) {
-            $.continuous = continuous;
-            return this;
-        }
-
-        public Builder continuous(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs continuous) {
-            return continuous(Output.of(continuous));
         }
 
         public Builder rolling(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs> rolling) {
@@ -136,6 +147,39 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
         public Builder sliding(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs sliding) {
             return sliding(Output.of(sliding));
+        }
+
+        /**
+         * @param startTime Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+         * the historical inputs read by a window. For example, a 365-day window with
+         * start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+         * for 365 days of data; a lifetime window produces no output before start_time. If unset,
+         * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+         * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+         * eligible source data exists
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(@Nullable Output<String> startTime) {
+            $.startTime = startTime;
+            return this;
+        }
+
+        /**
+         * @param startTime Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+         * the historical inputs read by a window. For example, a 365-day window with
+         * start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+         * for 365 days of data; a lifetime window produces no output before start_time. If unset,
+         * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+         * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+         * eligible source data exists
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(String startTime) {
+            return startTime(Output.of(startTime));
         }
 
         public Builder tumbling(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs> tumbling) {

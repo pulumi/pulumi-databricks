@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Enable Data Classification for a set of schemas in a catalog
  *         var example = new DataClassificationCatalogConfig("example", DataClassificationCatalogConfigArgs.builder()
- *             .name("catalogs/prod_catalog/config")
+ *             .parent("catalogs/prod_catalog")
  *             .includedSchemas(DataClassificationCatalogConfigIncludedSchemasArgs.builder()
  *                 .names(                
  *                     "sales",
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  *         // Enable Data Classification for the entire catalog (all current and future schemas)
  *         var allSchemas = new DataClassificationCatalogConfig("allSchemas", DataClassificationCatalogConfigArgs.builder()
- *             .name("catalogs/staging_catalog/config")
+ *             .parent("catalogs/staging_catalog")
  *             .build());
  * 
  *     }

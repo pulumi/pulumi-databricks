@@ -20,11 +20,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? DataframeSchema;
         /// <summary>
-        /// (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        /// The entity columns of the Delta table
-        /// </summary>
-        public readonly ImmutableArray<string> EntityColumns;
-        /// <summary>
         /// (string) - The filter condition applied to the source data before aggregation
         /// </summary>
         public readonly string? FilterCondition;
@@ -35,11 +30,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string FullName;
         /// <summary>
-        /// (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        /// The timeseries column of the Delta table
-        /// </summary>
-        public readonly string? TimeseriesColumn;
-        /// <summary>
         /// (string) - The pipeline runs these SQL statements immediately after conversion into
         /// the schema specified on the Stream object
         /// </summary>
@@ -49,21 +39,15 @@ namespace Pulumi.Databricks.Outputs
         private GetFeatureEngineeringFeatureSourceDeltaTableSourceResult(
             string? dataframeSchema,
 
-            ImmutableArray<string> entityColumns,
-
             string? filterCondition,
 
             string fullName,
 
-            string? timeseriesColumn,
-
             string? transformationSql)
         {
             DataframeSchema = dataframeSchema;
-            EntityColumns = entityColumns;
             FilterCondition = filterCondition;
             FullName = fullName;
-            TimeseriesColumn = timeseriesColumn;
             TransformationSql = transformationSql;
         }
     }

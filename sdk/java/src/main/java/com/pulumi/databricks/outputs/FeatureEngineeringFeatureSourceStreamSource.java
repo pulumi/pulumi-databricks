@@ -13,11 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureSourceStreamSource {
     private @Nullable String dataframeSchema;
-    /**
-     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     * 
-     */
     private @Nullable String filterCondition;
     /**
      * @return The full three-part name (catalog, schema, name) of the feature. This is the
@@ -32,11 +27,6 @@ public final class FeatureEngineeringFeatureSourceStreamSource {
     public Optional<String> dataframeSchema() {
         return Optional.ofNullable(this.dataframeSchema);
     }
-    /**
-     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     * 
-     */
     public Optional<String> filterCondition() {
         return Optional.ofNullable(this.filterCondition);
     }

@@ -6,7 +6,6 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,12 +20,6 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      */
     private @Nullable String dataframeSchema;
     /**
-     * @return (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     * 
-     */
-    private @Nullable List<String> entityColumns;
-    /**
      * @return (string) - The filter condition applied to the source data before aggregation
      * 
      */
@@ -36,12 +29,6 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      * 
      */
     private String fullName;
-    /**
-     * @return (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     * 
-     */
-    private @Nullable String timeseriesColumn;
     /**
      * @return (string) - The pipeline runs these SQL statements immediately after conversion into
      * the schema specified on the Stream object
@@ -60,14 +47,6 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
         return Optional.ofNullable(this.dataframeSchema);
     }
     /**
-     * @return (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     * 
-     */
-    public List<String> entityColumns() {
-        return this.entityColumns == null ? List.of() : this.entityColumns;
-    }
-    /**
      * @return (string) - The filter condition applied to the source data before aggregation
      * 
      */
@@ -80,14 +59,6 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      */
     public String fullName() {
         return this.fullName;
-    }
-    /**
-     * @return (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     * 
-     */
-    public Optional<String> timeseriesColumn() {
-        return Optional.ofNullable(this.timeseriesColumn);
     }
     /**
      * @return (string) - The pipeline runs these SQL statements immediately after conversion into
@@ -108,19 +79,15 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dataframeSchema;
-        private @Nullable List<String> entityColumns;
         private @Nullable String filterCondition;
         private String fullName;
-        private @Nullable String timeseriesColumn;
         private @Nullable String transformationSql;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataframeSchema = defaults.dataframeSchema;
-    	      this.entityColumns = defaults.entityColumns;
     	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
-    	      this.timeseriesColumn = defaults.timeseriesColumn;
     	      this.transformationSql = defaults.transformationSql;
         }
 
@@ -129,15 +96,6 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
 
             this.dataframeSchema = dataframeSchema;
             return this;
-        }
-        @CustomType.Setter
-        public Builder entityColumns(@Nullable List<String> entityColumns) {
-
-            this.entityColumns = entityColumns;
-            return this;
-        }
-        public Builder entityColumns(String... entityColumns) {
-            return entityColumns(List.of(entityColumns));
         }
         @CustomType.Setter
         public Builder filterCondition(@Nullable String filterCondition) {
@@ -154,12 +112,6 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
             return this;
         }
         @CustomType.Setter
-        public Builder timeseriesColumn(@Nullable String timeseriesColumn) {
-
-            this.timeseriesColumn = timeseriesColumn;
-            return this;
-        }
-        @CustomType.Setter
         public Builder transformationSql(@Nullable String transformationSql) {
 
             this.transformationSql = transformationSql;
@@ -168,10 +120,8 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
         public GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource();
             _resultValue.dataframeSchema = dataframeSchema;
-            _resultValue.entityColumns = entityColumns;
             _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
-            _resultValue.timeseriesColumn = timeseriesColumn;
             _resultValue.transformationSql = transformationSql;
             return _resultValue;
         }

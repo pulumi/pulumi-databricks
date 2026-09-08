@@ -25,6 +25,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.FeatureEngineeringFeatureSourceKafkaSourceArgs>? KafkaSource { get; set; }
 
         /// <summary>
+        /// Completeness timing for this Feature's use of the source. This configuration is part of the
+        /// Feature definition; it does not modify the underlying table or stream
+        /// </summary>
+        [Input("lateness")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceLatenessArgs>? Lateness { get; set; }
+
+        /// <summary>
         /// A request-time data source
         /// </summary>
         [Input("requestSource")]

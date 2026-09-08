@@ -88,6 +88,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? SourceBranchTime { get; set; }
 
         /// <summary>
+        /// (string) - The snapshot this branch was restored from. Set only for branches created by
+        /// restoring a snapshot; unset for all other branches.
+        /// Format: projects/{project_id}/snapshots/{snapshot_id}
+        /// </summary>
+        [Input("sourceSnapshot")]
+        public Input<string>? SourceSnapshot { get; set; }
+
+        /// <summary>
         /// (string) - A timestamp indicating when the `CurrentState` began
         /// </summary>
         [Input("stateChangeTime")]

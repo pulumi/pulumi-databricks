@@ -30,8 +30,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("sourceSchema")]
         public Input<string>? SourceSchema { get; set; }
 
-        [Input("sourceTable", required: true)]
-        public Input<string> SourceTable { get; set; } = null!;
+        [Input("sourceTable")]
+        public Input<string>? SourceTable { get; set; }
 
         [Input("tableConfiguration")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableTableConfigurationArgs>? TableConfiguration { get; set; }

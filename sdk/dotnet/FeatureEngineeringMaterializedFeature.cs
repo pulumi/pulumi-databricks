@@ -16,13 +16,6 @@ namespace Pulumi.Databricks
     public partial class FeatureEngineeringMaterializedFeature : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-        /// Hidden from GraphQL: superseded by the `Trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-        /// </summary>
-        [Output("cronSchedule")]
-        public Output<string?> CronSchedule { get; private set; } = null!;
-
-        /// <summary>
         /// A cron-based schedule trigger for the materialization pipeline
         /// </summary>
         [Output("cronScheduleTrigger")]
@@ -145,13 +138,6 @@ namespace Pulumi.Databricks
     public sealed class FeatureEngineeringMaterializedFeatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-        /// Hidden from GraphQL: superseded by the `Trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-        /// </summary>
-        [Input("cronSchedule")]
-        public Input<string>? CronSchedule { get; set; }
-
-        /// <summary>
         /// A cron-based schedule trigger for the materialization pipeline
         /// </summary>
         [Input("cronScheduleTrigger")]
@@ -210,13 +196,6 @@ namespace Pulumi.Databricks
 
     public sealed class FeatureEngineeringMaterializedFeatureState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-        /// Hidden from GraphQL: superseded by the `Trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-        /// </summary>
-        [Input("cronSchedule")]
-        public Input<string>? CronSchedule { get; set; }
-
         /// <summary>
         /// A cron-based schedule trigger for the materialization pipeline
         /// </summary>

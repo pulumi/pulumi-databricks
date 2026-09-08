@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceDeltaTableSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceKafkaSource;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceLateness;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceRequestSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceStreamSource;
 import java.util.Objects;
@@ -24,6 +25,12 @@ public final class FeatureEngineeringFeatureSource {
      * 
      */
     private @Nullable FeatureEngineeringFeatureSourceKafkaSource kafkaSource;
+    /**
+     * @return Completeness timing for this Feature&#39;s use of the source. This configuration is part of the
+     * Feature definition; it does not modify the underlying table or stream
+     * 
+     */
+    private @Nullable FeatureEngineeringFeatureSourceLateness lateness;
     /**
      * @return A request-time data source
      * 
@@ -51,6 +58,14 @@ public final class FeatureEngineeringFeatureSource {
         return Optional.ofNullable(this.kafkaSource);
     }
     /**
+     * @return Completeness timing for this Feature&#39;s use of the source. This configuration is part of the
+     * Feature definition; it does not modify the underlying table or stream
+     * 
+     */
+    public Optional<FeatureEngineeringFeatureSourceLateness> lateness() {
+        return Optional.ofNullable(this.lateness);
+    }
+    /**
      * @return A request-time data source
      * 
      */
@@ -76,6 +91,7 @@ public final class FeatureEngineeringFeatureSource {
     public static final class Builder {
         private @Nullable FeatureEngineeringFeatureSourceDeltaTableSource deltaTableSource;
         private @Nullable FeatureEngineeringFeatureSourceKafkaSource kafkaSource;
+        private @Nullable FeatureEngineeringFeatureSourceLateness lateness;
         private @Nullable FeatureEngineeringFeatureSourceRequestSource requestSource;
         private @Nullable FeatureEngineeringFeatureSourceStreamSource streamSource;
         public Builder() {}
@@ -83,6 +99,7 @@ public final class FeatureEngineeringFeatureSource {
     	      Objects.requireNonNull(defaults);
     	      this.deltaTableSource = defaults.deltaTableSource;
     	      this.kafkaSource = defaults.kafkaSource;
+    	      this.lateness = defaults.lateness;
     	      this.requestSource = defaults.requestSource;
     	      this.streamSource = defaults.streamSource;
         }
@@ -97,6 +114,12 @@ public final class FeatureEngineeringFeatureSource {
         public Builder kafkaSource(@Nullable FeatureEngineeringFeatureSourceKafkaSource kafkaSource) {
 
             this.kafkaSource = kafkaSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lateness(@Nullable FeatureEngineeringFeatureSourceLateness lateness) {
+
+            this.lateness = lateness;
             return this;
         }
         @CustomType.Setter
@@ -115,6 +138,7 @@ public final class FeatureEngineeringFeatureSource {
             final var _resultValue = new FeatureEngineeringFeatureSource();
             _resultValue.deltaTableSource = deltaTableSource;
             _resultValue.kafkaSource = kafkaSource;
+            _resultValue.lateness = lateness;
             _resultValue.requestSource = requestSource;
             _resultValue.streamSource = streamSource;
             return _resultValue;

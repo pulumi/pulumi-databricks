@@ -33,14 +33,16 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
     }
 
     /**
-     * The maximum number of SPs to return. The service may return fewer than this value
+     * The maximum number of SPs to return. The service may return fewer than this value.
+     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return The maximum number of SPs to return. The service may return fewer than this value
+     * @return The maximum number of SPs to return. The service may return fewer than this value.
+     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -110,7 +112,8 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
         }
 
         /**
-         * @param pageSize The maximum number of SPs to return. The service may return fewer than this value
+         * @param pageSize The maximum number of SPs to return. The service may return fewer than this value.
+         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
          * 
          * @return builder
          * 
@@ -121,7 +124,8 @@ public final class GetWorkspaceIamServicePrincipalsV2Args extends com.pulumi.res
         }
 
         /**
-         * @param pageSize The maximum number of SPs to return. The service may return fewer than this value
+         * @param pageSize The maximum number of SPs to return. The service may return fewer than this value.
+         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
          * 
          * @return builder
          * 

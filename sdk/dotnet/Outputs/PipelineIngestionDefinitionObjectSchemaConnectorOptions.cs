@@ -23,6 +23,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions? MarketoOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions? MetaAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions? OutlookOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions? RabbitmqOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions? RedditAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions? SharepointOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions? SmartsheetOptions;
@@ -51,6 +52,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions? outlookOptions,
 
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions? rabbitmqOptions,
+
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions? redditAdsOptions,
 
             Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions? sharepointOptions,
@@ -71,6 +74,7 @@ namespace Pulumi.Databricks.Outputs
             MarketoOptions = marketoOptions;
             MetaAdsOptions = metaAdsOptions;
             OutlookOptions = outlookOptions;
+            RabbitmqOptions = rabbitmqOptions;
             RedditAdsOptions = redditAdsOptions;
             SharepointOptions = sharepointOptions;
             SmartsheetOptions = smartsheetOptions;

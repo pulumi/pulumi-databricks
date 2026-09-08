@@ -138,16 +138,14 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
     }
 
     /**
-     * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * The time window over which the aggregation is computed
      * 
      */
     @Import(name="timeWindow")
     private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs> timeWindow;
 
     /**
-     * @return Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * @return The time window over which the aggregation is computed
      * 
      */
     public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs>> timeWindow() {
@@ -345,8 +343,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
         }
 
         /**
-         * @param timeWindow Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-         * The time window in which the feature is computed
+         * @param timeWindow The time window over which the aggregation is computed
          * 
          * @return builder
          * 
@@ -357,8 +354,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
         }
 
         /**
-         * @param timeWindow Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-         * The time window in which the feature is computed
+         * @param timeWindow The time window over which the aggregation is computed
          * 
          * @return builder
          * 

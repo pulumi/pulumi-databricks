@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * // Enable Data Classification for a set of schemas in a catalog
  * const example = new databricks.DataClassificationCatalogConfig("example", {
- *     name: "catalogs/prod_catalog/config",
+ *     parent: "catalogs/prod_catalog",
  *     includedSchemas: {
  *         names: [
  *             "sales",
@@ -49,7 +49,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * // Enable Data Classification for the entire catalog (all current and future schemas)
- * const allSchemas = new databricks.DataClassificationCatalogConfig("all_schemas", {name: "catalogs/staging_catalog/config"});
+ * const allSchemas = new databricks.DataClassificationCatalogConfig("all_schemas", {parent: "catalogs/staging_catalog"});
  * ```
  */
 export class DataClassificationCatalogConfig extends pulumi.CustomResource {

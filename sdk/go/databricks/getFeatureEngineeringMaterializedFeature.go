@@ -32,9 +32,6 @@ type LookupFeatureEngineeringMaterializedFeatureArgs struct {
 
 // A collection of values returned by getFeatureEngineeringMaterializedFeature.
 type LookupFeatureEngineeringMaterializedFeatureResult struct {
-	// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-	// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-	CronSchedule string `pulumi:"cronSchedule"`
 	// (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
 	// (string) - The full name of the feature in Unity Catalog
@@ -94,12 +91,6 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) ToLookupFeature
 
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) ToLookupFeatureEngineeringMaterializedFeatureResultOutputWithContext(ctx context.Context) LookupFeatureEngineeringMaterializedFeatureResultOutput {
 	return o
-}
-
-// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) CronSchedule() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.CronSchedule }).(pulumi.StringOutput)
 }
 
 // (CronSchedule) - A cron-based schedule trigger for the materialization pipeline

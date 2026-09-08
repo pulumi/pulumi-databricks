@@ -5,11 +5,8 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs;
-import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,36 +16,9 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
 
     public static final FeatureEngineeringFeatureSourceKafkaSourceArgs Empty = new FeatureEngineeringFeatureSourceKafkaSourceArgs();
 
-    /**
-     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity column identifiers of the Kafka source
-     * 
-     */
-    @Import(name="entityColumnIdentifiers")
-    private @Nullable Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers;
-
-    /**
-     * @return Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity column identifiers of the Kafka source
-     * 
-     */
-    public Optional<Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>>> entityColumnIdentifiers() {
-        return Optional.ofNullable(this.entityColumnIdentifiers);
-    }
-
-    /**
-     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     * 
-     */
     @Import(name="filterCondition")
     private @Nullable Output<String> filterCondition;
 
-    /**
-     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     * 
-     */
     public Optional<Output<String>> filterCondition() {
         return Optional.ofNullable(this.filterCondition);
     }
@@ -68,30 +38,11 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
         return this.name;
     }
 
-    /**
-     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column identifier of the Kafka source
-     * 
-     */
-    @Import(name="timeseriesColumnIdentifier")
-    private @Nullable Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier;
-
-    /**
-     * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column identifier of the Kafka source
-     * 
-     */
-    public Optional<Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs>> timeseriesColumnIdentifier() {
-        return Optional.ofNullable(this.timeseriesColumnIdentifier);
-    }
-
     private FeatureEngineeringFeatureSourceKafkaSourceArgs() {}
 
     private FeatureEngineeringFeatureSourceKafkaSourceArgs(FeatureEngineeringFeatureSourceKafkaSourceArgs $) {
-        this.entityColumnIdentifiers = $.entityColumnIdentifiers;
         this.filterCondition = $.filterCondition;
         this.name = $.name;
-        this.timeseriesColumnIdentifier = $.timeseriesColumnIdentifier;
     }
 
     public static Builder builder() {
@@ -112,59 +63,11 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
             $ = new FeatureEngineeringFeatureSourceKafkaSourceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param entityColumnIdentifiers Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-         * The entity column identifiers of the Kafka source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder entityColumnIdentifiers(@Nullable Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers) {
-            $.entityColumnIdentifiers = entityColumnIdentifiers;
-            return this;
-        }
-
-        /**
-         * @param entityColumnIdentifiers Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-         * The entity column identifiers of the Kafka source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder entityColumnIdentifiers(List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs> entityColumnIdentifiers) {
-            return entityColumnIdentifiers(Output.of(entityColumnIdentifiers));
-        }
-
-        /**
-         * @param entityColumnIdentifiers Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-         * The entity column identifiers of the Kafka source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder entityColumnIdentifiers(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs... entityColumnIdentifiers) {
-            return entityColumnIdentifiers(List.of(entityColumnIdentifiers));
-        }
-
-        /**
-         * @param filterCondition Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-         * The filter condition applied to the source data before aggregation
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterCondition(@Nullable Output<String> filterCondition) {
             $.filterCondition = filterCondition;
             return this;
         }
 
-        /**
-         * @param filterCondition Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-         * The filter condition applied to the source data before aggregation
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterCondition(String filterCondition) {
             return filterCondition(Output.of(filterCondition));
         }
@@ -188,29 +91,6 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param timeseriesColumnIdentifier Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-         * The timeseries column identifier of the Kafka source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder timeseriesColumnIdentifier(@Nullable Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier) {
-            $.timeseriesColumnIdentifier = timeseriesColumnIdentifier;
-            return this;
-        }
-
-        /**
-         * @param timeseriesColumnIdentifier Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-         * The timeseries column identifier of the Kafka source
-         * 
-         * @return builder
-         * 
-         */
-        public Builder timeseriesColumnIdentifier(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs timeseriesColumnIdentifier) {
-            return timeseriesColumnIdentifier(Output.of(timeseriesColumnIdentifier));
         }
 
         public FeatureEngineeringFeatureSourceKafkaSourceArgs build() {

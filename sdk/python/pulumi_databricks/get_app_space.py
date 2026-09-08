@@ -28,7 +28,10 @@ class GetAppSpaceResult:
     """
     A collection of values returned by getAppSpace.
     """
-    def __init__(__self__, create_time=None, creator=None, description=None, effective_usage_policy_id=None, effective_user_api_scopes=None, id=None, name=None, provider_config=None, resources=None, service_principal_client_id=None, service_principal_id=None, service_principal_name=None, status=None, update_time=None, updater=None, usage_policy_id=None, user_api_scopes=None):
+    def __init__(__self__, assume_group_id=None, create_time=None, creator=None, description=None, effective_usage_policy_id=None, effective_user_api_scopes=None, id=None, name=None, provider_config=None, resources=None, service_principal_client_id=None, service_principal_id=None, service_principal_name=None, status=None, update_time=None, updater=None, usage_policy_id=None, user_api_scopes=None):
+        if assume_group_id and not isinstance(assume_group_id, str):
+            raise TypeError("Expected argument 'assume_group_id' to be a str")
+        pulumi.set(__self__, "assume_group_id", assume_group_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -80,6 +83,16 @@ class GetAppSpaceResult:
         if user_api_scopes and not isinstance(user_api_scopes, list):
             raise TypeError("Expected argument 'user_api_scopes' to be a list")
         pulumi.set(__self__, "user_api_scopes", user_api_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="assumeGroupId")
+    def assume_group_id(self) -> _builtins.str:
+        """
+        (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+        set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        Set only at space creation
+        """
+        return pulumi.get(self, "assume_group_id")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -221,6 +234,7 @@ class AwaitableGetAppSpaceResult(GetAppSpaceResult):
         if False:
             yield self
         return GetAppSpaceResult(
+            assume_group_id=self.assume_group_id,
             create_time=self.create_time,
             creator=self.creator,
             description=self.description,
@@ -260,6 +274,7 @@ def get_app_space(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAppSpace:getAppSpace', __args__, opts=opts, typ=GetAppSpaceResult).value
 
     return AwaitableGetAppSpaceResult(
+        assume_group_id=pulumi.get(__ret__, 'assume_group_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
         creator=pulumi.get(__ret__, 'creator'),
         description=pulumi.get(__ret__, 'description'),
@@ -296,6 +311,7 @@ def get_app_space_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAppSpace:getAppSpace', __args__, opts=opts, typ=GetAppSpaceResult)
     return __ret__.apply(lambda __response__: GetAppSpaceResult(
+        assume_group_id=pulumi.get(__response__, 'assume_group_id'),
         create_time=pulumi.get(__response__, 'create_time'),
         creator=pulumi.get(__response__, 'creator'),
         description=pulumi.get(__response__, 'description'),

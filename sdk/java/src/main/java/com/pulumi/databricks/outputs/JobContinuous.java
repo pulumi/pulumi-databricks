@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobContinuousMaintenanceWindow;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobContinuous {
+    private @Nullable JobContinuousMaintenanceWindow maintenanceWindow;
     /**
      * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
@@ -25,6 +27,9 @@ public final class JobContinuous {
     private @Nullable String taskRetryMode;
 
     private JobContinuous() {}
+    public Optional<JobContinuousMaintenanceWindow> maintenanceWindow() {
+        return Optional.ofNullable(this.maintenanceWindow);
+    }
     /**
      * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
@@ -51,15 +56,23 @@ public final class JobContinuous {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobContinuousMaintenanceWindow maintenanceWindow;
         private @Nullable String pauseStatus;
         private @Nullable String taskRetryMode;
         public Builder() {}
         public Builder(JobContinuous defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.maintenanceWindow = defaults.maintenanceWindow;
     	      this.pauseStatus = defaults.pauseStatus;
     	      this.taskRetryMode = defaults.taskRetryMode;
         }
 
+        @CustomType.Setter
+        public Builder maintenanceWindow(@Nullable JobContinuousMaintenanceWindow maintenanceWindow) {
+
+            this.maintenanceWindow = maintenanceWindow;
+            return this;
+        }
         @CustomType.Setter
         public Builder pauseStatus(@Nullable String pauseStatus) {
 
@@ -74,6 +87,7 @@ public final class JobContinuous {
         }
         public JobContinuous build() {
             final var _resultValue = new JobContinuous();
+            _resultValue.maintenanceWindow = maintenanceWindow;
             _resultValue.pauseStatus = pauseStatus;
             _resultValue.taskRetryMode = taskRetryMode;
             return _resultValue;

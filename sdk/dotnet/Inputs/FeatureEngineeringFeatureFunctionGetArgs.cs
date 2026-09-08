@@ -30,26 +30,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("customUdf")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionCustomUdfGetArgs>? CustomUdf { get; set; }
 
-        [Input("extraParameters")]
-        private InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterGetArgs>? _extraParameters;
-
-        /// <summary>
-        /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        /// Extra parameters for parameterized functions
-        /// </summary>
-        public InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterGetArgs> ExtraParameters
-        {
-            get => _extraParameters ?? (_extraParameters = new InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterGetArgs>());
-            set => _extraParameters = value;
-        }
-
-        /// <summary>
-        /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        /// The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-        /// </summary>
-        [Input("functionType")]
-        public Input<string>? FunctionType { get; set; }
-
         public FeatureEngineeringFeatureFunctionGetArgs()
         {
         }

@@ -7,12 +7,22 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
+    private @Nullable String delay;
+    private @Nullable String offset;
     private String windowDuration;
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling() {}
+    public Optional<String> delay() {
+        return Optional.ofNullable(this.delay);
+    }
+    public Optional<String> offset() {
+        return Optional.ofNullable(this.offset);
+    }
     public String windowDuration() {
         return this.windowDuration;
     }
@@ -26,13 +36,29 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String delay;
+        private @Nullable String offset;
         private String windowDuration;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.delay = defaults.delay;
+    	      this.offset = defaults.offset;
     	      this.windowDuration = defaults.windowDuration;
         }
 
+        @CustomType.Setter
+        public Builder delay(@Nullable String delay) {
+
+            this.delay = delay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder offset(@Nullable String offset) {
+
+            this.offset = offset;
+            return this;
+        }
         @CustomType.Setter
         public Builder windowDuration(String windowDuration) {
             if (windowDuration == null) {
@@ -43,6 +69,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         }
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling build() {
             final var _resultValue = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling();
+            _resultValue.delay = delay;
+            _resultValue.offset = offset;
             _resultValue.windowDuration = windowDuration;
             return _resultValue;
         }

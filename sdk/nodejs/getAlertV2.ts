@@ -46,7 +46,7 @@ export function getAlertV2(args: GetAlertV2Args, opts?: pulumi.InvokeOptions): P
  */
 export interface GetAlertV2Args {
     /**
-     * UUID identifying the alert
+     * The canonical identifier of the alert to retrieve information about
      */
     id: string;
     /**
@@ -86,7 +86,7 @@ export interface GetAlertV2Result {
      */
     readonly evaluation: outputs.GetAlertV2Evaluation;
     /**
-     * (string) - UUID identifying the alert
+     * (string) - The canonical identifier of the alert to retrieve information about
      */
     readonly id: string;
     /**
@@ -98,8 +98,7 @@ export interface GetAlertV2Result {
      */
     readonly ownerUserName: string;
     /**
-     * (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-     * query text with `:name` syntax. Static values only
+     * (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
      */
     readonly parameters: outputs.GetAlertV2Parameter[];
     /**
@@ -178,7 +177,7 @@ export function getAlertV2Output(args: GetAlertV2OutputArgs, opts?: pulumi.Invok
  */
 export interface GetAlertV2OutputArgs {
     /**
-     * UUID identifying the alert
+     * The canonical identifier of the alert to retrieve information about
      */
     id: pulumi.Input<string>;
     /**

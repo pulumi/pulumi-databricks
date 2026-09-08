@@ -125,7 +125,7 @@ def get_workspace_iam_direct_group_member_v2(group_id: Optional[_builtins.int] =
                                              provider_config: Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamDirectGroupMemberV2Result:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -171,7 +171,7 @@ def get_workspace_iam_direct_group_member_v2_output(group_id: pulumi.Input[Optio
                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamDirectGroupMemberV2Result]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 

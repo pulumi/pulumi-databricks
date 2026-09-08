@@ -328,7 +328,7 @@ def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
                              provider_config: Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceSettingV2Result:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
 
@@ -377,7 +377,7 @@ def get_workspace_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] 
                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceSettingV2Result]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
 

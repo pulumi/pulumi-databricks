@@ -70,14 +70,15 @@ def get_workspace_iam_workspace_assignments_v2(page_size: Optional[_builtins.int
                                                provider_config: Optional[Union['GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgsDict']] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamWorkspaceAssignmentsV2Result:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
     Lists the principal assignments for the workspace, using a workspace-scoped provider.
 
 
-    :param _builtins.int page_size: The maximum number of workspace assignments to return. The service may return fewer than this value
+    :param _builtins.int page_size: The maximum number of workspace assignments to return. The service may return fewer than this value.
+           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
     :param Union['GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -94,14 +95,15 @@ def get_workspace_iam_workspace_assignments_v2_output(page_size: pulumi.Input[Op
                                                       provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgsDict']]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamWorkspaceAssignmentsV2Result]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
     Lists the principal assignments for the workspace, using a workspace-scoped provider.
 
 
-    :param _builtins.int page_size: The maximum number of workspace assignments to return. The service may return fewer than this value
+    :param _builtins.int page_size: The maximum number of workspace assignments to return. The service may return fewer than this value.
+           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
     :param Union['GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

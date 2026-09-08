@@ -274,7 +274,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
 
         # Enable Data Classification for a set of schemas in a catalog
         example = databricks.DataClassificationCatalogConfig("example",
-            name="catalogs/prod_catalog/config",
+            parent="catalogs/prod_catalog",
             included_schemas={
                 "names": [
                     "sales",
@@ -293,7 +293,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                 },
             ])
         # Enable Data Classification for the entire catalog (all current and future schemas)
-        all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", name="catalogs/staging_catalog/config")
+        all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", parent="catalogs/staging_catalog")
         ```
 
 
@@ -341,7 +341,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
 
         # Enable Data Classification for a set of schemas in a catalog
         example = databricks.DataClassificationCatalogConfig("example",
-            name="catalogs/prod_catalog/config",
+            parent="catalogs/prod_catalog",
             included_schemas={
                 "names": [
                     "sales",
@@ -360,7 +360,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
                 },
             ])
         # Enable Data Classification for the entire catalog (all current and future schemas)
-        all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", name="catalogs/staging_catalog/config")
+        all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", parent="catalogs/staging_catalog")
         ```
 
 

@@ -22,7 +22,6 @@ __all__ = ['FeatureEngineeringMaterializedFeatureArgs', 'FeatureEngineeringMater
 class FeatureEngineeringMaterializedFeatureArgs:
     def __init__(__self__, *,
                  feature_name: pulumi.Input[_builtins.str],
-                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs']] = None,
                  offline_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
                  online_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
@@ -34,8 +33,6 @@ class FeatureEngineeringMaterializedFeatureArgs:
         The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
 
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
-        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs'] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs'] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs'] online_store_config: Destination for writing feature values to an online Lakebase table
@@ -48,8 +45,6 @@ class FeatureEngineeringMaterializedFeatureArgs:
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureTableTriggerArgs'] table_trigger: A trigger that fires when the upstream source table changes
         """
         pulumi.set(__self__, "feature_name", feature_name)
-        if cron_schedule is not None:
-            pulumi.set(__self__, "cron_schedule", cron_schedule)
         if cron_schedule_trigger is not None:
             pulumi.set(__self__, "cron_schedule_trigger", cron_schedule_trigger)
         if offline_store_config is not None:
@@ -76,19 +71,6 @@ class FeatureEngineeringMaterializedFeatureArgs:
     @feature_name.setter
     def feature_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "feature_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-        Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-        """
-        return pulumi.get(self, "cron_schedule")
-
-    @cron_schedule.setter
-    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="cronScheduleTrigger")
@@ -181,7 +163,6 @@ class FeatureEngineeringMaterializedFeatureArgs:
 @pulumi.input_type
 class _FeatureEngineeringMaterializedFeatureState:
     def __init__(__self__, *,
-                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs']] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_online: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -197,8 +178,6 @@ class _FeatureEngineeringMaterializedFeatureState:
         """
         Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
 
-        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs'] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -216,8 +195,6 @@ class _FeatureEngineeringMaterializedFeatureState:
         :param pulumi.Input[_builtins.str] table_name: (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureTableTriggerArgs'] table_trigger: A trigger that fires when the upstream source table changes
         """
-        if cron_schedule is not None:
-            pulumi.set(__self__, "cron_schedule", cron_schedule)
         if cron_schedule_trigger is not None:
             pulumi.set(__self__, "cron_schedule_trigger", cron_schedule_trigger)
         if feature_name is not None:
@@ -242,19 +219,6 @@ class _FeatureEngineeringMaterializedFeatureState:
             pulumi.set(__self__, "table_name", table_name)
         if table_trigger is not None:
             pulumi.set(__self__, "table_trigger", table_trigger)
-
-    @_builtins.property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-        Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-        """
-        return pulumi.get(self, "cron_schedule")
-
-    @cron_schedule.setter
-    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="cronScheduleTrigger")
@@ -411,7 +375,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
                  offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
@@ -427,8 +390,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']] offline_store_config: Destination for writing feature values to an offline Delta table
@@ -466,7 +427,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
                  offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
@@ -484,7 +444,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureEngineeringMaterializedFeatureArgs.__new__(FeatureEngineeringMaterializedFeatureArgs)
 
-            __props__.__dict__["cron_schedule"] = cron_schedule
             __props__.__dict__["cron_schedule_trigger"] = cron_schedule_trigger
             if feature_name is None and not opts.urn:
                 raise TypeError("Missing required property 'feature_name'")
@@ -509,7 +468,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
             cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
             feature_name: pulumi.Input[Optional[_builtins.str]] = None,
             is_online: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -529,8 +487,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -552,7 +508,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
 
         __props__ = _FeatureEngineeringMaterializedFeatureState.__new__(_FeatureEngineeringMaterializedFeatureState)
 
-        __props__.__dict__["cron_schedule"] = cron_schedule
         __props__.__dict__["cron_schedule_trigger"] = cron_schedule_trigger
         __props__.__dict__["feature_name"] = feature_name
         __props__.__dict__["is_online"] = is_online
@@ -566,15 +521,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         __props__.__dict__["table_name"] = table_name
         __props__.__dict__["table_trigger"] = table_trigger
         return FeatureEngineeringMaterializedFeature(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-        Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-        """
-        return pulumi.get(self, "cron_schedule")
 
     @_builtins.property
     @pulumi.getter(name="cronScheduleTrigger")

@@ -36,11 +36,6 @@ export interface GetFeatureEngineeringMaterializedFeatureArgs {
  */
 export interface GetFeatureEngineeringMaterializedFeatureResult {
     /**
-     * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     */
-    readonly cronSchedule: string;
-    /**
      * (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
      */
     readonly cronScheduleTrigger: outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger;

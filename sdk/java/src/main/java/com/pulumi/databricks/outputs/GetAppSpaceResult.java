@@ -18,6 +18,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppSpaceResult {
     /**
+     * @return (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     * 
+     */
+    private String assumeGroupId;
+    /**
      * @return (string) - The creation time of the app space. Formatted timestamp in ISO 6801
      * 
      */
@@ -100,6 +107,15 @@ public final class GetAppSpaceResult {
     private List<String> userApiScopes;
 
     private GetAppSpaceResult() {}
+    /**
+     * @return (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     * 
+     */
+    public String assumeGroupId() {
+        return this.assumeGroupId;
+    }
     /**
      * @return (string) - The creation time of the app space. Formatted timestamp in ISO 6801
      * 
@@ -225,6 +241,7 @@ public final class GetAppSpaceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String assumeGroupId;
         private String createTime;
         private String creator;
         private String description;
@@ -245,6 +262,7 @@ public final class GetAppSpaceResult {
         public Builder() {}
         public Builder(GetAppSpaceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.assumeGroupId = defaults.assumeGroupId;
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
     	      this.description = defaults.description;
@@ -264,6 +282,14 @@ public final class GetAppSpaceResult {
     	      this.userApiScopes = defaults.userApiScopes;
         }
 
+        @CustomType.Setter
+        public Builder assumeGroupId(String assumeGroupId) {
+            if (assumeGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAppSpaceResult", "assumeGroupId");
+            }
+            this.assumeGroupId = assumeGroupId;
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -409,6 +435,7 @@ public final class GetAppSpaceResult {
         }
         public GetAppSpaceResult build() {
             final var _resultValue = new GetAppSpaceResult();
+            _resultValue.assumeGroupId = assumeGroupId;
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;
             _resultValue.description = description;

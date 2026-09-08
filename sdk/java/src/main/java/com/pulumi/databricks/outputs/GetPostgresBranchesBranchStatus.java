@@ -76,6 +76,13 @@ public final class GetPostgresBranchesBranchStatus {
      */
     private String sourceBranchTime;
     /**
+     * @return (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     * 
+     */
+    private String sourceSnapshot;
+    /**
      * @return (string) - A timestamp indicating when the `currentState` began
      * 
      */
@@ -170,6 +177,15 @@ public final class GetPostgresBranchesBranchStatus {
         return this.sourceBranchTime;
     }
     /**
+     * @return (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     * 
+     */
+    public String sourceSnapshot() {
+        return this.sourceSnapshot;
+    }
+    /**
      * @return (string) - A timestamp indicating when the `currentState` began
      * 
      */
@@ -198,6 +214,7 @@ public final class GetPostgresBranchesBranchStatus {
         private String sourceBranch;
         private String sourceBranchLsn;
         private String sourceBranchTime;
+        private String sourceSnapshot;
         private String stateChangeTime;
         public Builder() {}
         public Builder(GetPostgresBranchesBranchStatus defaults) {
@@ -214,6 +231,7 @@ public final class GetPostgresBranchesBranchStatus {
     	      this.sourceBranch = defaults.sourceBranch;
     	      this.sourceBranchLsn = defaults.sourceBranchLsn;
     	      this.sourceBranchTime = defaults.sourceBranchTime;
+    	      this.sourceSnapshot = defaults.sourceSnapshot;
     	      this.stateChangeTime = defaults.stateChangeTime;
         }
 
@@ -314,6 +332,14 @@ public final class GetPostgresBranchesBranchStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceSnapshot(String sourceSnapshot) {
+            if (sourceSnapshot == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchesBranchStatus", "sourceSnapshot");
+            }
+            this.sourceSnapshot = sourceSnapshot;
+            return this;
+        }
+        @CustomType.Setter
         public Builder stateChangeTime(String stateChangeTime) {
             if (stateChangeTime == null) {
               throw new MissingRequiredPropertyException("GetPostgresBranchesBranchStatus", "stateChangeTime");
@@ -335,6 +361,7 @@ public final class GetPostgresBranchesBranchStatus {
             _resultValue.sourceBranch = sourceBranch;
             _resultValue.sourceBranchLsn = sourceBranchLsn;
             _resultValue.sourceBranchTime = sourceBranchTime;
+            _resultValue.sourceSnapshot = sourceSnapshot;
             _resultValue.stateChangeTime = stateChangeTime;
             return _resultValue;
         }

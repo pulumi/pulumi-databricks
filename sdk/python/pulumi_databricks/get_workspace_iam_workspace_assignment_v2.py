@@ -128,7 +128,7 @@ def get_workspace_iam_workspace_assignment_v2(principal_id: Optional[_builtins.s
                                               provider_config: Optional[Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamWorkspaceAssignmentV2Result:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -170,7 +170,7 @@ def get_workspace_iam_workspace_assignment_v2_output(principal_id: pulumi.Input[
                                                      provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamWorkspaceAssignmentV2Result]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 

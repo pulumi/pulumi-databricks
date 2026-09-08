@@ -128,8 +128,17 @@ namespace Pulumi.Databricks
         public Output<string> OwnerUserName { get; private set; } = null!;
 
         /// <summary>
-        /// Query parameters bound when executing the alert query, referenced in the
-        /// query text with `:name` syntax. Static values only
+        /// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+        /// 
+        /// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+        /// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+        /// value, the `Value` field may be omitted or set to `Null` explicitly. If the `Type` field
+        /// is omitted, the value is interpreted as a string.
+        /// 
+        /// If the type is given, parameters will be checked for type correctness according
+        /// to the given type. A value is correct if the provided string can be converted to
+        /// the requested type using the `Cast` function. The exact semantics are described in
+        /// the section [`Cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.AlertV2Parameter>> Parameters { get; private set; } = null!;
@@ -262,8 +271,17 @@ namespace Pulumi.Databricks
         private InputList<Inputs.AlertV2ParameterArgs>? _parameters;
 
         /// <summary>
-        /// Query parameters bound when executing the alert query, referenced in the
-        /// query text with `:name` syntax. Static values only
+        /// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+        /// 
+        /// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+        /// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+        /// value, the `Value` field may be omitted or set to `Null` explicitly. If the `Type` field
+        /// is omitted, the value is interpreted as a string.
+        /// 
+        /// If the type is given, parameters will be checked for type correctness according
+        /// to the given type. A value is correct if the provided string can be converted to
+        /// the requested type using the `Cast` function. The exact semantics are described in
+        /// the section [`Cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         /// </summary>
         public InputList<Inputs.AlertV2ParameterArgs> Parameters
         {
@@ -381,8 +399,17 @@ namespace Pulumi.Databricks
         private InputList<Inputs.AlertV2ParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Query parameters bound when executing the alert query, referenced in the
-        /// query text with `:name` syntax. Static values only
+        /// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+        /// 
+        /// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+        /// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+        /// value, the `Value` field may be omitted or set to `Null` explicitly. If the `Type` field
+        /// is omitted, the value is interpreted as a string.
+        /// 
+        /// If the type is given, parameters will be checked for type correctness according
+        /// to the given type. A value is correct if the provided string can be converted to
+        /// the requested type using the `Cast` function. The exact semantics are described in
+        /// the section [`Cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         /// </summary>
         public InputList<Inputs.AlertV2ParameterGetArgs> Parameters
         {

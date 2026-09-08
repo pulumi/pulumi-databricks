@@ -18,6 +18,14 @@ namespace Pulumi.Databricks
     public partial class AppSpace : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The group whose permissions users assume via Role Authorization for apps in this space. When
+        /// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        /// Set only at space creation
+        /// </summary>
+        [Output("assumeGroupId")]
+        public Output<string?> AssumeGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         /// </summary>
         [Output("createTime")]
@@ -161,6 +169,14 @@ namespace Pulumi.Databricks
     public sealed class AppSpaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The group whose permissions users assume via Role Authorization for apps in this space. When
+        /// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        /// Set only at space creation
+        /// </summary>
+        [Input("assumeGroupId")]
+        public Input<string>? AssumeGroupId { get; set; }
+
+        /// <summary>
         /// The description of the app space
         /// </summary>
         [Input("description")]
@@ -217,6 +233,14 @@ namespace Pulumi.Databricks
 
     public sealed class AppSpaceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The group whose permissions users assume via Role Authorization for apps in this space. When
+        /// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        /// Set only at space creation
+        /// </summary>
+        [Input("assumeGroupId")]
+        public Input<string>? AssumeGroupId { get; set; }
+
         /// <summary>
         /// (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         /// </summary>

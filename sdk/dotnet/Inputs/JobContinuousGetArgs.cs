@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobContinuousGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("maintenanceWindow")]
+        public Input<Inputs.JobContinuousMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
+
         /// <summary>
         /// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `PauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `PauseStatus`.
         /// </summary>

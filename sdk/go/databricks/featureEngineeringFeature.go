@@ -26,18 +26,12 @@ type FeatureEngineeringFeature struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The entity columns for the feature, used as aggregation keys and for query-time lookup
 	Entities FeatureEngineeringFeatureEntityArrayOutput `pulumi:"entities"`
-	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-	// The filter condition applied to the source data before aggregation
-	FilterCondition pulumi.StringPtrOutput `pulumi:"filterCondition"`
 	// The full three-part name (catalog, schema, name) of the feature. This is the
 	// feature's resource identifier; the catalog_name, schema_name, and name fields
 	// below are OUTPUT_ONLY decomposed views of this value
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionOutput `pulumi:"function"`
-	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-	// The input columns from which the feature is computed
-	Inputs pulumi.StringArrayOutput `pulumi:"inputs"`
 	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
@@ -52,9 +46,6 @@ type FeatureEngineeringFeature struct {
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceOutput `pulumi:"source"`
-	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-	// The time window in which the feature is computed
-	TimeWindow FeatureEngineeringFeatureTimeWindowPtrOutput `pulumi:"timeWindow"`
 	// Column recording time, used for point-in-time joins, backfills, and aggregations
 	TimeseriesColumn FeatureEngineeringFeatureTimeseriesColumnPtrOutput `pulumi:"timeseriesColumn"`
 }
@@ -108,18 +99,12 @@ type featureEngineeringFeatureState struct {
 	Description *string `pulumi:"description"`
 	// The entity columns for the feature, used as aggregation keys and for query-time lookup
 	Entities []FeatureEngineeringFeatureEntity `pulumi:"entities"`
-	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-	// The filter condition applied to the source data before aggregation
-	FilterCondition *string `pulumi:"filterCondition"`
 	// The full three-part name (catalog, schema, name) of the feature. This is the
 	// feature's resource identifier; the catalog_name, schema_name, and name fields
 	// below are OUTPUT_ONLY decomposed views of this value
 	FullName *string `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function *FeatureEngineeringFeatureFunction `pulumi:"function"`
-	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-	// The input columns from which the feature is computed
-	Inputs []string `pulumi:"inputs"`
 	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
@@ -134,9 +119,6 @@ type featureEngineeringFeatureState struct {
 	SchemaName *string `pulumi:"schemaName"`
 	// The data source of the feature
 	Source *FeatureEngineeringFeatureSource `pulumi:"source"`
-	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-	// The time window in which the feature is computed
-	TimeWindow *FeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
 	// Column recording time, used for point-in-time joins, backfills, and aggregations
 	TimeseriesColumn *FeatureEngineeringFeatureTimeseriesColumn `pulumi:"timeseriesColumn"`
 }
@@ -152,18 +134,12 @@ type FeatureEngineeringFeatureState struct {
 	Description pulumi.StringPtrInput
 	// The entity columns for the feature, used as aggregation keys and for query-time lookup
 	Entities FeatureEngineeringFeatureEntityArrayInput
-	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-	// The filter condition applied to the source data before aggregation
-	FilterCondition pulumi.StringPtrInput
 	// The full three-part name (catalog, schema, name) of the feature. This is the
 	// feature's resource identifier; the catalog_name, schema_name, and name fields
 	// below are OUTPUT_ONLY decomposed views of this value
 	FullName pulumi.StringPtrInput
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionPtrInput
-	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-	// The input columns from which the feature is computed
-	Inputs pulumi.StringArrayInput
 	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
@@ -178,9 +154,6 @@ type FeatureEngineeringFeatureState struct {
 	SchemaName pulumi.StringPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourcePtrInput
-	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-	// The time window in which the feature is computed
-	TimeWindow FeatureEngineeringFeatureTimeWindowPtrInput
 	// Column recording time, used for point-in-time joins, backfills, and aggregations
 	TimeseriesColumn FeatureEngineeringFeatureTimeseriesColumnPtrInput
 }
@@ -194,18 +167,12 @@ type featureEngineeringFeatureArgs struct {
 	Description *string `pulumi:"description"`
 	// The entity columns for the feature, used as aggregation keys and for query-time lookup
 	Entities []FeatureEngineeringFeatureEntity `pulumi:"entities"`
-	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-	// The filter condition applied to the source data before aggregation
-	FilterCondition *string `pulumi:"filterCondition"`
 	// The full three-part name (catalog, schema, name) of the feature. This is the
 	// feature's resource identifier; the catalog_name, schema_name, and name fields
 	// below are OUTPUT_ONLY decomposed views of this value
 	FullName string `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunction `pulumi:"function"`
-	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-	// The input columns from which the feature is computed
-	Inputs []string `pulumi:"inputs"`
 	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
@@ -216,9 +183,6 @@ type featureEngineeringFeatureArgs struct {
 	ProviderConfig *FeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSource `pulumi:"source"`
-	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-	// The time window in which the feature is computed
-	TimeWindow *FeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
 	// Column recording time, used for point-in-time joins, backfills, and aggregations
 	TimeseriesColumn *FeatureEngineeringFeatureTimeseriesColumn `pulumi:"timeseriesColumn"`
 }
@@ -229,18 +193,12 @@ type FeatureEngineeringFeatureArgs struct {
 	Description pulumi.StringPtrInput
 	// The entity columns for the feature, used as aggregation keys and for query-time lookup
 	Entities FeatureEngineeringFeatureEntityArrayInput
-	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-	// The filter condition applied to the source data before aggregation
-	FilterCondition pulumi.StringPtrInput
 	// The full three-part name (catalog, schema, name) of the feature. This is the
 	// feature's resource identifier; the catalog_name, schema_name, and name fields
 	// below are OUTPUT_ONLY decomposed views of this value
 	FullName pulumi.StringInput
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionInput
-	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-	// The input columns from which the feature is computed
-	Inputs pulumi.StringArrayInput
 	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
@@ -251,9 +209,6 @@ type FeatureEngineeringFeatureArgs struct {
 	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceInput
-	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-	// The time window in which the feature is computed
-	TimeWindow FeatureEngineeringFeatureTimeWindowPtrInput
 	// Column recording time, used for point-in-time joins, backfills, and aggregations
 	TimeseriesColumn FeatureEngineeringFeatureTimeseriesColumnPtrInput
 }
@@ -370,12 +325,6 @@ func (o FeatureEngineeringFeatureOutput) Entities() FeatureEngineeringFeatureEnt
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureEntityArrayOutput { return v.Entities }).(FeatureEngineeringFeatureEntityArrayOutput)
 }
 
-// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-// The filter condition applied to the source data before aggregation
-func (o FeatureEngineeringFeatureOutput) FilterCondition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringPtrOutput { return v.FilterCondition }).(pulumi.StringPtrOutput)
-}
-
 // The full three-part name (catalog, schema, name) of the feature. This is the
 // feature's resource identifier; the catalog_name, schema_name, and name fields
 // below are OUTPUT_ONLY decomposed views of this value
@@ -386,12 +335,6 @@ func (o FeatureEngineeringFeatureOutput) FullName() pulumi.StringOutput {
 // The function by which the feature is computed
 func (o FeatureEngineeringFeatureOutput) Function() FeatureEngineeringFeatureFunctionOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureFunctionOutput { return v.Function }).(FeatureEngineeringFeatureFunctionOutput)
-}
-
-// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-// The input columns from which the feature is computed
-func (o FeatureEngineeringFeatureOutput) Inputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringArrayOutput { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
 // Lineage context information for this feature.
@@ -425,12 +368,6 @@ func (o FeatureEngineeringFeatureOutput) SchemaName() pulumi.StringOutput {
 // The data source of the feature
 func (o FeatureEngineeringFeatureOutput) Source() FeatureEngineeringFeatureSourceOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureSourceOutput { return v.Source }).(FeatureEngineeringFeatureSourceOutput)
-}
-
-// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-// The time window in which the feature is computed
-func (o FeatureEngineeringFeatureOutput) TimeWindow() FeatureEngineeringFeatureTimeWindowPtrOutput {
-	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureTimeWindowPtrOutput { return v.TimeWindow }).(FeatureEngineeringFeatureTimeWindowPtrOutput)
 }
 
 // Column recording time, used for point-in-time joins, backfills, and aggregations

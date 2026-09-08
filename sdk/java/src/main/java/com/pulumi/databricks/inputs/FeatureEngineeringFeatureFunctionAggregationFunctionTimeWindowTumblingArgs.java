@@ -8,11 +8,27 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs Empty = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs();
+
+    @Import(name="delay")
+    private @Nullable Output<String> delay;
+
+    public Optional<Output<String>> delay() {
+        return Optional.ofNullable(this.delay);
+    }
+
+    @Import(name="offset")
+    private @Nullable Output<String> offset;
+
+    public Optional<Output<String>> offset() {
+        return Optional.ofNullable(this.offset);
+    }
 
     @Import(name="windowDuration", required=true)
     private Output<String> windowDuration;
@@ -24,6 +40,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs() {}
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs $) {
+        this.delay = $.delay;
+        this.offset = $.offset;
         this.windowDuration = $.windowDuration;
     }
 
@@ -43,6 +61,24 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs defaults) {
             $ = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder delay(@Nullable Output<String> delay) {
+            $.delay = delay;
+            return this;
+        }
+
+        public Builder delay(String delay) {
+            return delay(Output.of(delay));
+        }
+
+        public Builder offset(@Nullable Output<String> offset) {
+            $.offset = offset;
+            return this;
+        }
+
+        public Builder offset(String offset) {
+            return offset(Output.of(offset));
         }
 
         public Builder windowDuration(Output<String> windowDuration) {

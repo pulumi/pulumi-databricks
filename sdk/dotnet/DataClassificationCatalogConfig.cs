@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
     ///     // Enable Data Classification for a set of schemas in a catalog
     ///     var example = new Databricks.DataClassificationCatalogConfig("example", new()
     ///     {
-    ///         Name = "catalogs/prod_catalog/config",
+    ///         Parent = "catalogs/prod_catalog",
     ///         IncludedSchemas = new Databricks.Inputs.DataClassificationCatalogConfigIncludedSchemasArgs
     ///         {
     ///             Names = new[]
@@ -65,7 +65,7 @@ namespace Pulumi.Databricks
     ///     // Enable Data Classification for the entire catalog (all current and future schemas)
     ///     var allSchemas = new Databricks.DataClassificationCatalogConfig("all_schemas", new()
     ///     {
-    ///         Name = "catalogs/staging_catalog/config",
+    ///         Parent = "catalogs/staging_catalog",
     ///     });
     /// 
     /// });

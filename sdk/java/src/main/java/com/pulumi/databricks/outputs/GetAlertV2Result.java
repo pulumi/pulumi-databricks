@@ -52,7 +52,7 @@ public final class GetAlertV2Result {
      */
     private GetAlertV2Evaluation evaluation;
     /**
-     * @return (string) - UUID identifying the alert
+     * @return (string) - The canonical identifier of the alert to retrieve information about
      * 
      */
     private String id;
@@ -67,8 +67,7 @@ public final class GetAlertV2Result {
      */
     private String ownerUserName;
     /**
-     * @return (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-     * query text with `:name` syntax. Static values only
+     * @return (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
      * 
      */
     private List<GetAlertV2Parameter> parameters;
@@ -161,7 +160,7 @@ public final class GetAlertV2Result {
         return this.evaluation;
     }
     /**
-     * @return (string) - UUID identifying the alert
+     * @return (string) - The canonical identifier of the alert to retrieve information about
      * 
      */
     public String id() {
@@ -182,8 +181,7 @@ public final class GetAlertV2Result {
         return this.ownerUserName;
     }
     /**
-     * @return (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-     * query text with `:name` syntax. Static values only
+     * @return (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
      * 
      */
     public List<GetAlertV2Parameter> parameters() {

@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureSourceStreamSource
     {
         public readonly string? DataframeSchema;
-        /// <summary>
-        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        /// The filter condition applied to the source data before aggregation
-        /// </summary>
         public readonly string? FilterCondition;
         /// <summary>
         /// The full three-part name (catalog, schema, name) of the feature. This is the

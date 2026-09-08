@@ -14,11 +14,16 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobJobClusterNewClusterDriverNodeTypeFlexibility
     {
         public readonly ImmutableArray<string> AlternateNodeTypeIds;
+        public readonly string? AwsContextId;
 
         [OutputConstructor]
-        private JobJobClusterNewClusterDriverNodeTypeFlexibility(ImmutableArray<string> alternateNodeTypeIds)
+        private JobJobClusterNewClusterDriverNodeTypeFlexibility(
+            ImmutableArray<string> alternateNodeTypeIds,
+
+            string? awsContextId)
         {
             AlternateNodeTypeIds = alternateNodeTypeIds;
+            AwsContextId = awsContextId;
         }
     }
 }

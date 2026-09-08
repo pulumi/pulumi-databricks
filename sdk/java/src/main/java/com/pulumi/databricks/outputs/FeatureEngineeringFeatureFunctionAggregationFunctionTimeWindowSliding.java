@@ -12,6 +12,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
+    private @Nullable String delay;
+    private @Nullable String offset;
     /**
      * @return The slide duration (interval by which windows advance, must be positive and less than duration)
      * 
@@ -20,6 +22,12 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     private @Nullable String windowDuration;
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding() {}
+    public Optional<String> delay() {
+        return Optional.ofNullable(this.delay);
+    }
+    public Optional<String> offset() {
+        return Optional.ofNullable(this.offset);
+    }
     /**
      * @return The slide duration (interval by which windows advance, must be positive and less than duration)
      * 
@@ -40,15 +48,31 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String delay;
+        private @Nullable String offset;
         private String slideDuration;
         private @Nullable String windowDuration;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.delay = defaults.delay;
+    	      this.offset = defaults.offset;
     	      this.slideDuration = defaults.slideDuration;
     	      this.windowDuration = defaults.windowDuration;
         }
 
+        @CustomType.Setter
+        public Builder delay(@Nullable String delay) {
+
+            this.delay = delay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder offset(@Nullable String offset) {
+
+            this.offset = offset;
+            return this;
+        }
         @CustomType.Setter
         public Builder slideDuration(String slideDuration) {
             if (slideDuration == null) {
@@ -65,6 +89,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         }
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding build() {
             final var _resultValue = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding();
+            _resultValue.delay = delay;
+            _resultValue.offset = offset;
             _resultValue.slideDuration = slideDuration;
             _resultValue.windowDuration = windowDuration;
             return _resultValue;

@@ -15,10 +15,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataframeSchema")]
         public Input<string>? DataframeSchema { get; set; }
 
-        /// <summary>
-        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        /// The filter condition applied to the source data before aggregation
-        /// </summary>
         [Input("filterCondition")]
         public Input<string>? FilterCondition { get; set; }
 

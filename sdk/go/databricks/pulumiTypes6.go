@@ -13,6 +13,1952 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetUsersUserRole struct {
+	Display *string `pulumi:"display"`
+	Primary *bool   `pulumi:"primary"`
+	Ref     *string `pulumi:"ref"`
+	Type    *string `pulumi:"type"`
+	Value   *string `pulumi:"value"`
+}
+
+// GetUsersUserRoleInput is an input type that accepts GetUsersUserRoleArgs and GetUsersUserRoleOutput values.
+// You can construct a concrete instance of `GetUsersUserRoleInput` via:
+//
+//	GetUsersUserRoleArgs{...}
+type GetUsersUserRoleInput interface {
+	pulumi.Input
+
+	ToGetUsersUserRoleOutput() GetUsersUserRoleOutput
+	ToGetUsersUserRoleOutputWithContext(context.Context) GetUsersUserRoleOutput
+}
+
+type GetUsersUserRoleArgs struct {
+	Display pulumi.StringPtrInput `pulumi:"display"`
+	Primary pulumi.BoolPtrInput   `pulumi:"primary"`
+	Ref     pulumi.StringPtrInput `pulumi:"ref"`
+	Type    pulumi.StringPtrInput `pulumi:"type"`
+	Value   pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetUsersUserRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUserRole)(nil)).Elem()
+}
+
+func (i GetUsersUserRoleArgs) ToGetUsersUserRoleOutput() GetUsersUserRoleOutput {
+	return i.ToGetUsersUserRoleOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserRoleArgs) ToGetUsersUserRoleOutputWithContext(ctx context.Context) GetUsersUserRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserRoleOutput)
+}
+
+// GetUsersUserRoleArrayInput is an input type that accepts GetUsersUserRoleArray and GetUsersUserRoleArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserRoleArrayInput` via:
+//
+//	GetUsersUserRoleArray{ GetUsersUserRoleArgs{...} }
+type GetUsersUserRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserRoleArrayOutput() GetUsersUserRoleArrayOutput
+	ToGetUsersUserRoleArrayOutputWithContext(context.Context) GetUsersUserRoleArrayOutput
+}
+
+type GetUsersUserRoleArray []GetUsersUserRoleInput
+
+func (GetUsersUserRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUserRole)(nil)).Elem()
+}
+
+func (i GetUsersUserRoleArray) ToGetUsersUserRoleArrayOutput() GetUsersUserRoleArrayOutput {
+	return i.ToGetUsersUserRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserRoleArray) ToGetUsersUserRoleArrayOutputWithContext(ctx context.Context) GetUsersUserRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserRoleArrayOutput)
+}
+
+type GetUsersUserRoleOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUserRole)(nil)).Elem()
+}
+
+func (o GetUsersUserRoleOutput) ToGetUsersUserRoleOutput() GetUsersUserRoleOutput {
+	return o
+}
+
+func (o GetUsersUserRoleOutput) ToGetUsersUserRoleOutputWithContext(ctx context.Context) GetUsersUserRoleOutput {
+	return o
+}
+
+func (o GetUsersUserRoleOutput) Display() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersUserRole) *string { return v.Display }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersUserRoleOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersUserRole) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetUsersUserRoleOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersUserRole) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersUserRoleOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersUserRole) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersUserRoleOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersUserRole) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetUsersUserRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUserRole)(nil)).Elem()
+}
+
+func (o GetUsersUserRoleArrayOutput) ToGetUsersUserRoleArrayOutput() GetUsersUserRoleArrayOutput {
+	return o
+}
+
+func (o GetUsersUserRoleArrayOutput) ToGetUsersUserRoleArrayOutputWithContext(ctx context.Context) GetUsersUserRoleArrayOutput {
+	return o
+}
+
+func (o GetUsersUserRoleArrayOutput) Index(i pulumi.IntInput) GetUsersUserRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUserRole {
+		return vs[0].([]GetUsersUserRole)[vs[1].(int)]
+	}).(GetUsersUserRoleOutput)
+}
+
+type GetViewsProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetViewsProviderConfigInput is an input type that accepts GetViewsProviderConfigArgs and GetViewsProviderConfigOutput values.
+// You can construct a concrete instance of `GetViewsProviderConfigInput` via:
+//
+//	GetViewsProviderConfigArgs{...}
+type GetViewsProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetViewsProviderConfigOutput() GetViewsProviderConfigOutput
+	ToGetViewsProviderConfigOutputWithContext(context.Context) GetViewsProviderConfigOutput
+}
+
+type GetViewsProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetViewsProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetViewsProviderConfig)(nil)).Elem()
+}
+
+func (i GetViewsProviderConfigArgs) ToGetViewsProviderConfigOutput() GetViewsProviderConfigOutput {
+	return i.ToGetViewsProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetViewsProviderConfigArgs) ToGetViewsProviderConfigOutputWithContext(ctx context.Context) GetViewsProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetViewsProviderConfigOutput)
+}
+
+func (i GetViewsProviderConfigArgs) ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput {
+	return i.ToGetViewsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetViewsProviderConfigArgs) ToGetViewsProviderConfigPtrOutputWithContext(ctx context.Context) GetViewsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetViewsProviderConfigOutput).ToGetViewsProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetViewsProviderConfigPtrInput is an input type that accepts GetViewsProviderConfigArgs, GetViewsProviderConfigPtr and GetViewsProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetViewsProviderConfigPtrInput` via:
+//
+//	        GetViewsProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetViewsProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput
+	ToGetViewsProviderConfigPtrOutputWithContext(context.Context) GetViewsProviderConfigPtrOutput
+}
+
+type getViewsProviderConfigPtrType GetViewsProviderConfigArgs
+
+func GetViewsProviderConfigPtr(v *GetViewsProviderConfigArgs) GetViewsProviderConfigPtrInput {
+	return (*getViewsProviderConfigPtrType)(v)
+}
+
+func (*getViewsProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetViewsProviderConfig)(nil)).Elem()
+}
+
+func (i *getViewsProviderConfigPtrType) ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput {
+	return i.ToGetViewsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getViewsProviderConfigPtrType) ToGetViewsProviderConfigPtrOutputWithContext(ctx context.Context) GetViewsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetViewsProviderConfigPtrOutput)
+}
+
+type GetViewsProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetViewsProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetViewsProviderConfig)(nil)).Elem()
+}
+
+func (o GetViewsProviderConfigOutput) ToGetViewsProviderConfigOutput() GetViewsProviderConfigOutput {
+	return o
+}
+
+func (o GetViewsProviderConfigOutput) ToGetViewsProviderConfigOutputWithContext(ctx context.Context) GetViewsProviderConfigOutput {
+	return o
+}
+
+func (o GetViewsProviderConfigOutput) ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput {
+	return o.ToGetViewsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetViewsProviderConfigOutput) ToGetViewsProviderConfigPtrOutputWithContext(ctx context.Context) GetViewsProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetViewsProviderConfig) *GetViewsProviderConfig {
+		return &v
+	}).(GetViewsProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetViewsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetViewsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetViewsProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetViewsProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetViewsProviderConfig)(nil)).Elem()
+}
+
+func (o GetViewsProviderConfigPtrOutput) ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetViewsProviderConfigPtrOutput) ToGetViewsProviderConfigPtrOutputWithContext(ctx context.Context) GetViewsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetViewsProviderConfigPtrOutput) Elem() GetViewsProviderConfigOutput {
+	return o.ApplyT(func(v *GetViewsProviderConfig) GetViewsProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetViewsProviderConfig
+		return ret
+	}).(GetViewsProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetViewsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetViewsProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVolumeProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetVolumeProviderConfigInput is an input type that accepts GetVolumeProviderConfigArgs and GetVolumeProviderConfigOutput values.
+// You can construct a concrete instance of `GetVolumeProviderConfigInput` via:
+//
+//	GetVolumeProviderConfigArgs{...}
+type GetVolumeProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetVolumeProviderConfigOutput() GetVolumeProviderConfigOutput
+	ToGetVolumeProviderConfigOutputWithContext(context.Context) GetVolumeProviderConfigOutput
+}
+
+type GetVolumeProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetVolumeProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeProviderConfig)(nil)).Elem()
+}
+
+func (i GetVolumeProviderConfigArgs) ToGetVolumeProviderConfigOutput() GetVolumeProviderConfigOutput {
+	return i.ToGetVolumeProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetVolumeProviderConfigArgs) ToGetVolumeProviderConfigOutputWithContext(ctx context.Context) GetVolumeProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeProviderConfigOutput)
+}
+
+func (i GetVolumeProviderConfigArgs) ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput {
+	return i.ToGetVolumeProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetVolumeProviderConfigArgs) ToGetVolumeProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumeProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeProviderConfigOutput).ToGetVolumeProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetVolumeProviderConfigPtrInput is an input type that accepts GetVolumeProviderConfigArgs, GetVolumeProviderConfigPtr and GetVolumeProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetVolumeProviderConfigPtrInput` via:
+//
+//	        GetVolumeProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVolumeProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput
+	ToGetVolumeProviderConfigPtrOutputWithContext(context.Context) GetVolumeProviderConfigPtrOutput
+}
+
+type getVolumeProviderConfigPtrType GetVolumeProviderConfigArgs
+
+func GetVolumeProviderConfigPtr(v *GetVolumeProviderConfigArgs) GetVolumeProviderConfigPtrInput {
+	return (*getVolumeProviderConfigPtrType)(v)
+}
+
+func (*getVolumeProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumeProviderConfig)(nil)).Elem()
+}
+
+func (i *getVolumeProviderConfigPtrType) ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput {
+	return i.ToGetVolumeProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getVolumeProviderConfigPtrType) ToGetVolumeProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumeProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeProviderConfigPtrOutput)
+}
+
+type GetVolumeProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeProviderConfig)(nil)).Elem()
+}
+
+func (o GetVolumeProviderConfigOutput) ToGetVolumeProviderConfigOutput() GetVolumeProviderConfigOutput {
+	return o
+}
+
+func (o GetVolumeProviderConfigOutput) ToGetVolumeProviderConfigOutputWithContext(ctx context.Context) GetVolumeProviderConfigOutput {
+	return o
+}
+
+func (o GetVolumeProviderConfigOutput) ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput {
+	return o.ToGetVolumeProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetVolumeProviderConfigOutput) ToGetVolumeProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumeProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumeProviderConfig) *GetVolumeProviderConfig {
+		return &v
+	}).(GetVolumeProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetVolumeProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetVolumeProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumeProviderConfig)(nil)).Elem()
+}
+
+func (o GetVolumeProviderConfigPtrOutput) ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetVolumeProviderConfigPtrOutput) ToGetVolumeProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumeProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetVolumeProviderConfigPtrOutput) Elem() GetVolumeProviderConfigOutput {
+	return o.ApplyT(func(v *GetVolumeProviderConfig) GetVolumeProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetVolumeProviderConfig
+		return ret
+	}).(GetVolumeProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetVolumeProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVolumeVolumeInfo struct {
+	// the AWS access point to use when accessing s3 bucket for this volume's external location
+	AccessPoint *string `pulumi:"accessPoint"`
+	// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// the name of the catalog where the schema and the volume are
+	CatalogName *string `pulumi:"catalogName"`
+	// the comment attached to the volume
+	Comment *string `pulumi:"comment"`
+	// the Unix timestamp at the volume's creation
+	CreatedAt *int `pulumi:"createdAt"`
+	// the identifier of the user who created the volume
+	CreatedBy *string `pulumi:"createdBy"`
+	// encryption options that apply to clients connecting to cloud storage
+	EncryptionDetails *GetVolumeVolumeInfoEncryptionDetails `pulumi:"encryptionDetails"`
+	// the three-level (fully qualified) name of the volume
+	FullName *string `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+	Name *string `pulumi:"name"`
+	// the identifier of the user who owns the volume
+	Owner *string `pulumi:"owner"`
+	// the name of the schema where the volume is
+	SchemaName *string `pulumi:"schemaName"`
+	// the storage location on the cloud
+	StorageLocation *string `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the volume
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the volume last time
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// the unique identifier of the volume
+	VolumeId *string `pulumi:"volumeId"`
+	// whether the volume is `MANAGED` or `EXTERNAL`
+	VolumeType *string `pulumi:"volumeType"`
+}
+
+// GetVolumeVolumeInfoInput is an input type that accepts GetVolumeVolumeInfoArgs and GetVolumeVolumeInfoOutput values.
+// You can construct a concrete instance of `GetVolumeVolumeInfoInput` via:
+//
+//	GetVolumeVolumeInfoArgs{...}
+type GetVolumeVolumeInfoInput interface {
+	pulumi.Input
+
+	ToGetVolumeVolumeInfoOutput() GetVolumeVolumeInfoOutput
+	ToGetVolumeVolumeInfoOutputWithContext(context.Context) GetVolumeVolumeInfoOutput
+}
+
+type GetVolumeVolumeInfoArgs struct {
+	// the AWS access point to use when accessing s3 bucket for this volume's external location
+	AccessPoint pulumi.StringPtrInput `pulumi:"accessPoint"`
+	// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
+	// the name of the catalog where the schema and the volume are
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// the comment attached to the volume
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// the Unix timestamp at the volume's creation
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the identifier of the user who created the volume
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// encryption options that apply to clients connecting to cloud storage
+	EncryptionDetails GetVolumeVolumeInfoEncryptionDetailsPtrInput `pulumi:"encryptionDetails"`
+	// the three-level (fully qualified) name of the volume
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// the identifier of the user who owns the volume
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// the name of the schema where the volume is
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// the storage location on the cloud
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the volume
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the volume last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// the unique identifier of the volume
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+	// whether the volume is `MANAGED` or `EXTERNAL`
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (GetVolumeVolumeInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeVolumeInfo)(nil)).Elem()
+}
+
+func (i GetVolumeVolumeInfoArgs) ToGetVolumeVolumeInfoOutput() GetVolumeVolumeInfoOutput {
+	return i.ToGetVolumeVolumeInfoOutputWithContext(context.Background())
+}
+
+func (i GetVolumeVolumeInfoArgs) ToGetVolumeVolumeInfoOutputWithContext(ctx context.Context) GetVolumeVolumeInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoOutput)
+}
+
+func (i GetVolumeVolumeInfoArgs) ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput {
+	return i.ToGetVolumeVolumeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetVolumeVolumeInfoArgs) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoOutput).ToGetVolumeVolumeInfoPtrOutputWithContext(ctx)
+}
+
+// GetVolumeVolumeInfoPtrInput is an input type that accepts GetVolumeVolumeInfoArgs, GetVolumeVolumeInfoPtr and GetVolumeVolumeInfoPtrOutput values.
+// You can construct a concrete instance of `GetVolumeVolumeInfoPtrInput` via:
+//
+//	        GetVolumeVolumeInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVolumeVolumeInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput
+	ToGetVolumeVolumeInfoPtrOutputWithContext(context.Context) GetVolumeVolumeInfoPtrOutput
+}
+
+type getVolumeVolumeInfoPtrType GetVolumeVolumeInfoArgs
+
+func GetVolumeVolumeInfoPtr(v *GetVolumeVolumeInfoArgs) GetVolumeVolumeInfoPtrInput {
+	return (*getVolumeVolumeInfoPtrType)(v)
+}
+
+func (*getVolumeVolumeInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumeVolumeInfo)(nil)).Elem()
+}
+
+func (i *getVolumeVolumeInfoPtrType) ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput {
+	return i.ToGetVolumeVolumeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getVolumeVolumeInfoPtrType) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoPtrOutput)
+}
+
+type GetVolumeVolumeInfoOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeVolumeInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeVolumeInfo)(nil)).Elem()
+}
+
+func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoOutput() GetVolumeVolumeInfoOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoOutputWithContext(ctx context.Context) GetVolumeVolumeInfoOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput {
+	return o.ToGetVolumeVolumeInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumeVolumeInfo) *GetVolumeVolumeInfo {
+		return &v
+	}).(GetVolumeVolumeInfoPtrOutput)
+}
+
+// the AWS access point to use when accessing s3 bucket for this volume's external location
+func (o GetVolumeVolumeInfoOutput) AccessPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.AccessPoint }).(pulumi.StringPtrOutput)
+}
+
+// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+func (o GetVolumeVolumeInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+}
+
+// the name of the catalog where the schema and the volume are
+func (o GetVolumeVolumeInfoOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+// the comment attached to the volume
+func (o GetVolumeVolumeInfoOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// the Unix timestamp at the volume's creation
+func (o GetVolumeVolumeInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who created the volume
+func (o GetVolumeVolumeInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// encryption options that apply to clients connecting to cloud storage
+func (o GetVolumeVolumeInfoOutput) EncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *GetVolumeVolumeInfoEncryptionDetails { return v.EncryptionDetails }).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
+}
+
+// the three-level (fully qualified) name of the volume
+func (o GetVolumeVolumeInfoOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the metastore
+func (o GetVolumeVolumeInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+func (o GetVolumeVolumeInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// the identifier of the user who owns the volume
+func (o GetVolumeVolumeInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// the name of the schema where the volume is
+func (o GetVolumeVolumeInfoOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
+}
+
+// the storage location on the cloud
+func (o GetVolumeVolumeInfoOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
+}
+
+// the timestamp of the last time changes were made to the volume
+func (o GetVolumeVolumeInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who updated the volume last time
+func (o GetVolumeVolumeInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the volume
+func (o GetVolumeVolumeInfoOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
+}
+
+// whether the volume is `MANAGED` or `EXTERNAL`
+func (o GetVolumeVolumeInfoOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type GetVolumeVolumeInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeVolumeInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumeVolumeInfo)(nil)).Elem()
+}
+
+func (o GetVolumeVolumeInfoPtrOutput) ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoPtrOutput) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoPtrOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoPtrOutput) Elem() GetVolumeVolumeInfoOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) GetVolumeVolumeInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetVolumeVolumeInfo
+		return ret
+	}).(GetVolumeVolumeInfoOutput)
+}
+
+// the AWS access point to use when accessing s3 bucket for this volume's external location
+func (o GetVolumeVolumeInfoPtrOutput) AccessPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+func (o GetVolumeVolumeInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BrowseOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// the name of the catalog where the schema and the volume are
+func (o GetVolumeVolumeInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the comment attached to the volume
+func (o GetVolumeVolumeInfoPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// the Unix timestamp at the volume's creation
+func (o GetVolumeVolumeInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who created the volume
+func (o GetVolumeVolumeInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// encryption options that apply to clients connecting to cloud storage
+func (o GetVolumeVolumeInfoPtrOutput) EncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *GetVolumeVolumeInfoEncryptionDetails {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionDetails
+	}).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
+}
+
+// the three-level (fully qualified) name of the volume
+func (o GetVolumeVolumeInfoPtrOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the metastore
+func (o GetVolumeVolumeInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+func (o GetVolumeVolumeInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// the identifier of the user who owns the volume
+func (o GetVolumeVolumeInfoPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// the name of the schema where the volume is
+func (o GetVolumeVolumeInfoPtrOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the storage location on the cloud
+func (o GetVolumeVolumeInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// the timestamp of the last time changes were made to the volume
+func (o GetVolumeVolumeInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who updated the volume last time
+func (o GetVolumeVolumeInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the volume
+func (o GetVolumeVolumeInfoPtrOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeId
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether the volume is `MANAGED` or `EXTERNAL`
+func (o GetVolumeVolumeInfoPtrOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVolumeVolumeInfoEncryptionDetails struct {
+	SseEncryptionDetails *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails `pulumi:"sseEncryptionDetails"`
+}
+
+// GetVolumeVolumeInfoEncryptionDetailsInput is an input type that accepts GetVolumeVolumeInfoEncryptionDetailsArgs and GetVolumeVolumeInfoEncryptionDetailsOutput values.
+// You can construct a concrete instance of `GetVolumeVolumeInfoEncryptionDetailsInput` via:
+//
+//	GetVolumeVolumeInfoEncryptionDetailsArgs{...}
+type GetVolumeVolumeInfoEncryptionDetailsInput interface {
+	pulumi.Input
+
+	ToGetVolumeVolumeInfoEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsOutput
+	ToGetVolumeVolumeInfoEncryptionDetailsOutputWithContext(context.Context) GetVolumeVolumeInfoEncryptionDetailsOutput
+}
+
+type GetVolumeVolumeInfoEncryptionDetailsArgs struct {
+	SseEncryptionDetails GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput `pulumi:"sseEncryptionDetails"`
+}
+
+func (GetVolumeVolumeInfoEncryptionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetails)(nil)).Elem()
+}
+
+func (i GetVolumeVolumeInfoEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsOutput {
+	return i.ToGetVolumeVolumeInfoEncryptionDetailsOutputWithContext(context.Background())
+}
+
+func (i GetVolumeVolumeInfoEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsOutput)
+}
+
+func (i GetVolumeVolumeInfoEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return i.ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i GetVolumeVolumeInfoEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsOutput).ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx)
+}
+
+// GetVolumeVolumeInfoEncryptionDetailsPtrInput is an input type that accepts GetVolumeVolumeInfoEncryptionDetailsArgs, GetVolumeVolumeInfoEncryptionDetailsPtr and GetVolumeVolumeInfoEncryptionDetailsPtrOutput values.
+// You can construct a concrete instance of `GetVolumeVolumeInfoEncryptionDetailsPtrInput` via:
+//
+//	        GetVolumeVolumeInfoEncryptionDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVolumeVolumeInfoEncryptionDetailsPtrInput interface {
+	pulumi.Input
+
+	ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput
+	ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput
+}
+
+type getVolumeVolumeInfoEncryptionDetailsPtrType GetVolumeVolumeInfoEncryptionDetailsArgs
+
+func GetVolumeVolumeInfoEncryptionDetailsPtr(v *GetVolumeVolumeInfoEncryptionDetailsArgs) GetVolumeVolumeInfoEncryptionDetailsPtrInput {
+	return (*getVolumeVolumeInfoEncryptionDetailsPtrType)(v)
+}
+
+func (*getVolumeVolumeInfoEncryptionDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumeVolumeInfoEncryptionDetails)(nil)).Elem()
+}
+
+func (i *getVolumeVolumeInfoEncryptionDetailsPtrType) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return i.ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *getVolumeVolumeInfoEncryptionDetailsPtrType) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
+}
+
+type GetVolumeVolumeInfoEncryptionDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeVolumeInfoEncryptionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetails)(nil)).Elem()
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return o.ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumeVolumeInfoEncryptionDetails) *GetVolumeVolumeInfoEncryptionDetails {
+		return &v
+	}).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsOutput) SseEncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfoEncryptionDetails) *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
+		return v.SseEncryptionDetails
+	}).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type GetVolumeVolumeInfoEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeVolumeInfoEncryptionDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumeVolumeInfoEncryptionDetails)(nil)).Elem()
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsPtrOutput) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsPtrOutput) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsPtrOutput) Elem() GetVolumeVolumeInfoEncryptionDetailsOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetails) GetVolumeVolumeInfoEncryptionDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GetVolumeVolumeInfoEncryptionDetails
+		return ret
+	}).(GetVolumeVolumeInfoEncryptionDetailsOutput)
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsPtrOutput) SseEncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetails) *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
+		if v == nil {
+			return nil
+		}
+		return v.SseEncryptionDetails
+	}).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails struct {
+	Algorithm    *string `pulumi:"algorithm"`
+	AwsKmsKeyArn *string `pulumi:"awsKmsKeyArn"`
+}
+
+// GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput is an input type that accepts GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs and GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput values.
+// You can construct a concrete instance of `GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput` via:
+//
+//	GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{...}
+type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput interface {
+	pulumi.Input
+
+	ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput
+	ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput
+}
+
+type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs struct {
+	Algorithm    pulumi.StringPtrInput `pulumi:"algorithm"`
+	AwsKmsKeyArn pulumi.StringPtrInput `pulumi:"awsKmsKeyArn"`
+}
+
+func (GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (i GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return i.ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Background())
+}
+
+func (i GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput)
+}
+
+func (i GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return i.ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput).ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx)
+}
+
+// GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput is an input type that accepts GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs, GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtr and GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput values.
+// You can construct a concrete instance of `GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput` via:
+//
+//	        GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput interface {
+	pulumi.Input
+
+	ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput
+	ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput
+}
+
+type getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs
+
+func GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtr(v *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput {
+	return (*getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType)(v)
+}
+
+func (*getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (i *getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return i.ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
+		return &v
+	}).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *string { return v.AwsKmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) Elem() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails
+		return ret
+	}).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput)
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsKmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVolumesProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetVolumesProviderConfigInput is an input type that accepts GetVolumesProviderConfigArgs and GetVolumesProviderConfigOutput values.
+// You can construct a concrete instance of `GetVolumesProviderConfigInput` via:
+//
+//	GetVolumesProviderConfigArgs{...}
+type GetVolumesProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetVolumesProviderConfigOutput() GetVolumesProviderConfigOutput
+	ToGetVolumesProviderConfigOutputWithContext(context.Context) GetVolumesProviderConfigOutput
+}
+
+type GetVolumesProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetVolumesProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumesProviderConfig)(nil)).Elem()
+}
+
+func (i GetVolumesProviderConfigArgs) ToGetVolumesProviderConfigOutput() GetVolumesProviderConfigOutput {
+	return i.ToGetVolumesProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetVolumesProviderConfigArgs) ToGetVolumesProviderConfigOutputWithContext(ctx context.Context) GetVolumesProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumesProviderConfigOutput)
+}
+
+func (i GetVolumesProviderConfigArgs) ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput {
+	return i.ToGetVolumesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetVolumesProviderConfigArgs) ToGetVolumesProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumesProviderConfigOutput).ToGetVolumesProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetVolumesProviderConfigPtrInput is an input type that accepts GetVolumesProviderConfigArgs, GetVolumesProviderConfigPtr and GetVolumesProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetVolumesProviderConfigPtrInput` via:
+//
+//	        GetVolumesProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVolumesProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput
+	ToGetVolumesProviderConfigPtrOutputWithContext(context.Context) GetVolumesProviderConfigPtrOutput
+}
+
+type getVolumesProviderConfigPtrType GetVolumesProviderConfigArgs
+
+func GetVolumesProviderConfigPtr(v *GetVolumesProviderConfigArgs) GetVolumesProviderConfigPtrInput {
+	return (*getVolumesProviderConfigPtrType)(v)
+}
+
+func (*getVolumesProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumesProviderConfig)(nil)).Elem()
+}
+
+func (i *getVolumesProviderConfigPtrType) ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput {
+	return i.ToGetVolumesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getVolumesProviderConfigPtrType) ToGetVolumesProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumesProviderConfigPtrOutput)
+}
+
+type GetVolumesProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetVolumesProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumesProviderConfig)(nil)).Elem()
+}
+
+func (o GetVolumesProviderConfigOutput) ToGetVolumesProviderConfigOutput() GetVolumesProviderConfigOutput {
+	return o
+}
+
+func (o GetVolumesProviderConfigOutput) ToGetVolumesProviderConfigOutputWithContext(ctx context.Context) GetVolumesProviderConfigOutput {
+	return o
+}
+
+func (o GetVolumesProviderConfigOutput) ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput {
+	return o.ToGetVolumesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetVolumesProviderConfigOutput) ToGetVolumesProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumesProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumesProviderConfig) *GetVolumesProviderConfig {
+		return &v
+	}).(GetVolumesProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetVolumesProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumesProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetVolumesProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVolumesProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVolumesProviderConfig)(nil)).Elem()
+}
+
+func (o GetVolumesProviderConfigPtrOutput) ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetVolumesProviderConfigPtrOutput) ToGetVolumesProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetVolumesProviderConfigPtrOutput) Elem() GetVolumesProviderConfigOutput {
+	return o.ApplyT(func(v *GetVolumesProviderConfig) GetVolumesProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetVolumesProviderConfig
+		return ret
+	}).(GetVolumesProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetVolumesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVolumesProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverrideProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetWarehousesDefaultWarehouseOverrideProviderConfigInput is an input type that accepts GetWarehousesDefaultWarehouseOverrideProviderConfigArgs and GetWarehousesDefaultWarehouseOverrideProviderConfigOutput values.
+// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverrideProviderConfigInput` via:
+//
+//	GetWarehousesDefaultWarehouseOverrideProviderConfigArgs{...}
+type GetWarehousesDefaultWarehouseOverrideProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigOutput
+	ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigOutput
+}
+
+type GetWarehousesDefaultWarehouseOverrideProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
+}
+
+func (i GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverrideProviderConfigOutput)
+}
+
+func (i GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverrideProviderConfigOutput).ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput is an input type that accepts GetWarehousesDefaultWarehouseOverrideProviderConfigArgs, GetWarehousesDefaultWarehouseOverrideProviderConfigPtr and GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput` via:
+//
+//	        GetWarehousesDefaultWarehouseOverrideProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput
+	ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput
+}
+
+type getWarehousesDefaultWarehouseOverrideProviderConfigPtrType GetWarehousesDefaultWarehouseOverrideProviderConfigArgs
+
+func GetWarehousesDefaultWarehouseOverrideProviderConfigPtr(v *GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput {
+	return (*getWarehousesDefaultWarehouseOverrideProviderConfigPtrType)(v)
+}
+
+func (*getWarehousesDefaultWarehouseOverrideProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
+}
+
+func (i *getWarehousesDefaultWarehouseOverrideProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getWarehousesDefaultWarehouseOverrideProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverrideProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
+}
+
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o.ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWarehousesDefaultWarehouseOverrideProviderConfig) *GetWarehousesDefaultWarehouseOverrideProviderConfig {
+		return &v
+	}).(GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverrideProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
+}
+
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) Elem() GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
+	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverrideProviderConfig) GetWarehousesDefaultWarehouseOverrideProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetWarehousesDefaultWarehouseOverrideProviderConfig
+		return ret
+	}).(GetWarehousesDefaultWarehouseOverrideProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverrideProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride struct {
+	// (string) - The ID component of the resource name (user ID)
+	DefaultWarehouseOverrideId string `pulumi:"defaultWarehouseOverrideId"`
+	// (string) - The resource name of the default warehouse override.
+	// Format: default-warehouse-overrides/{default_warehouse_override_id}
+	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig `pulumi:"providerConfig"`
+	// (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
+	Type string `pulumi:"type"`
+	// (string) - The specific warehouse ID when type is CUSTOM.
+	// Not set for LAST_SELECTED type
+	WarehouseId string `pulumi:"warehouseId"`
+}
+
+// GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs and GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput values.
+// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput` via:
+//
+//	GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs{...}
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput interface {
+	pulumi.Input
+
+	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput
+	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs struct {
+	// (string) - The ID component of the resource name (user ID)
+	DefaultWarehouseOverrideId pulumi.StringInput `pulumi:"defaultWarehouseOverrideId"`
+	// (string) - The resource name of the default warehouse override.
+	// Format: default-warehouse-overrides/{default_warehouse_override_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
+	Type pulumi.StringInput `pulumi:"type"`
+	// (string) - The specific warehouse ID when type is CUSTOM.
+	// Not set for LAST_SELECTED type
+	WarehouseId pulumi.StringInput `pulumi:"warehouseId"`
+}
+
+func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)(nil)).Elem()
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutputWithContext(context.Background())
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput)
+}
+
+// GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray and GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput values.
+// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayInput` via:
+//
+//	GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray{ GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs{...} }
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput
+	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray []GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput
+
+func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)(nil)).Elem()
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)(nil)).Elem()
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
+	return o
+}
+
+// (string) - The ID component of the resource name (user ID)
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) DefaultWarehouseOverrideId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) string {
+		return v.DefaultWarehouseOverrideId
+	}).(pulumi.StringOutput)
+}
+
+// (string) - The resource name of the default warehouse override.
+// Format: default-warehouse-overrides/{default_warehouse_override_id}
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) ProviderConfig() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig {
+		return v.ProviderConfig
+	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput)
+}
+
+// (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// (string) - The specific warehouse ID when type is CUSTOM.
+// Not set for LAST_SELECTED type
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) WarehouseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) string { return v.WarehouseId }).(pulumi.StringOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)(nil)).Elem()
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput) Index(i pulumi.IntInput) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride {
+		return vs[0].([]GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)[vs[1].(int)]
+	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs and GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput values.
+// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigInput` via:
+//
+//	GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs{...}
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput
+	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput)
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput).ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs, GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtr and GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput` via:
+//
+//	        GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput
+	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput
+}
+
+type getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs
+
+func GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtr(v *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput {
+	return (*getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType)(v)
+}
+
+func (*getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
+}
+
+func (i *getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig) *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig {
+		return &v
+	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig) string {
+		return v.WorkspaceId
+	}).(pulumi.StringOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) Elem() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
+	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig
+		return ret
+	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetWarehousesDefaultWarehouseOverridesProviderConfigInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesProviderConfigArgs and GetWarehousesDefaultWarehouseOverridesProviderConfigOutput values.
+// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesProviderConfigInput` via:
+//
+//	GetWarehousesDefaultWarehouseOverridesProviderConfigArgs{...}
+type GetWarehousesDefaultWarehouseOverridesProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigOutput
+	ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigOutput
+}
+
+type GetWarehousesDefaultWarehouseOverridesProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesProviderConfig)(nil)).Elem()
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesProviderConfigOutput)
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesProviderConfigOutput).ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesProviderConfigArgs, GetWarehousesDefaultWarehouseOverridesProviderConfigPtr and GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput` via:
+//
+//	        GetWarehousesDefaultWarehouseOverridesProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput
+	ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput
+}
+
+type getWarehousesDefaultWarehouseOverridesProviderConfigPtrType GetWarehousesDefaultWarehouseOverridesProviderConfigArgs
+
+func GetWarehousesDefaultWarehouseOverridesProviderConfigPtr(v *GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput {
+	return (*getWarehousesDefaultWarehouseOverridesProviderConfigPtrType)(v)
+}
+
+func (*getWarehousesDefaultWarehouseOverridesProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverridesProviderConfig)(nil)).Elem()
+}
+
+func (i *getWarehousesDefaultWarehouseOverridesProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
+	return i.ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getWarehousesDefaultWarehouseOverridesProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesProviderConfig)(nil)).Elem()
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
+	return o.ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWarehousesDefaultWarehouseOverridesProviderConfig) *GetWarehousesDefaultWarehouseOverridesProviderConfig {
+		return &v
+	}).(GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverridesProviderConfig)(nil)).Elem()
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) Elem() GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
+	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverridesProviderConfig) GetWarehousesDefaultWarehouseOverridesProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetWarehousesDefaultWarehouseOverridesProviderConfig
+		return ret
+	}).(GetWarehousesDefaultWarehouseOverridesProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverridesProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWorkspaceEntityTagAssignmentProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetWorkspaceEntityTagAssignmentProviderConfigInput is an input type that accepts GetWorkspaceEntityTagAssignmentProviderConfigArgs and GetWorkspaceEntityTagAssignmentProviderConfigOutput values.
+// You can construct a concrete instance of `GetWorkspaceEntityTagAssignmentProviderConfigInput` via:
+//
+//	GetWorkspaceEntityTagAssignmentProviderConfigArgs{...}
+type GetWorkspaceEntityTagAssignmentProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceEntityTagAssignmentProviderConfigOutput() GetWorkspaceEntityTagAssignmentProviderConfigOutput
+	ToGetWorkspaceEntityTagAssignmentProviderConfigOutputWithContext(context.Context) GetWorkspaceEntityTagAssignmentProviderConfigOutput
+}
+
+type GetWorkspaceEntityTagAssignmentProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetWorkspaceEntityTagAssignmentProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceEntityTagAssignmentProviderConfig)(nil)).Elem()
+}
+
+func (i GetWorkspaceEntityTagAssignmentProviderConfigArgs) ToGetWorkspaceEntityTagAssignmentProviderConfigOutput() GetWorkspaceEntityTagAssignmentProviderConfigOutput {
+	return i.ToGetWorkspaceEntityTagAssignmentProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceEntityTagAssignmentProviderConfigArgs) ToGetWorkspaceEntityTagAssignmentProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceEntityTagAssignmentProviderConfigOutput)
+}
+
+func (i GetWorkspaceEntityTagAssignmentProviderConfigArgs) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return i.ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceEntityTagAssignmentProviderConfigArgs) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceEntityTagAssignmentProviderConfigOutput).ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceEntityTagAssignmentProviderConfigPtrInput is an input type that accepts GetWorkspaceEntityTagAssignmentProviderConfigArgs, GetWorkspaceEntityTagAssignmentProviderConfigPtr and GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceEntityTagAssignmentProviderConfigPtrInput` via:
+//
+//	        GetWorkspaceEntityTagAssignmentProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceEntityTagAssignmentProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput
+	ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput
+}
+
+type getWorkspaceEntityTagAssignmentProviderConfigPtrType GetWorkspaceEntityTagAssignmentProviderConfigArgs
+
+func GetWorkspaceEntityTagAssignmentProviderConfigPtr(v *GetWorkspaceEntityTagAssignmentProviderConfigArgs) GetWorkspaceEntityTagAssignmentProviderConfigPtrInput {
+	return (*getWorkspaceEntityTagAssignmentProviderConfigPtrType)(v)
+}
+
+func (*getWorkspaceEntityTagAssignmentProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceEntityTagAssignmentProviderConfig)(nil)).Elem()
+}
+
+func (i *getWorkspaceEntityTagAssignmentProviderConfigPtrType) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return i.ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceEntityTagAssignmentProviderConfigPtrType) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput)
+}
+
+type GetWorkspaceEntityTagAssignmentProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceEntityTagAssignmentProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceEntityTagAssignmentProviderConfig)(nil)).Elem()
+}
+
+func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigOutput() GetWorkspaceEntityTagAssignmentProviderConfigOutput {
+	return o
+}
+
+func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigOutput {
+	return o
+}
+
+func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return o.ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceEntityTagAssignmentProviderConfig) *GetWorkspaceEntityTagAssignmentProviderConfig {
+		return &v
+	}).(GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceEntityTagAssignmentProviderConfig)(nil)).Elem()
+}
+
+func (o GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) Elem() GetWorkspaceEntityTagAssignmentProviderConfigOutput {
+	return o.ApplyT(func(v *GetWorkspaceEntityTagAssignmentProviderConfig) GetWorkspaceEntityTagAssignmentProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceEntityTagAssignmentProviderConfig
+		return ret
+	}).(GetWorkspaceEntityTagAssignmentProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceEntityTagAssignmentProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetWorkspaceEntityTagAssignmentsProviderConfig struct {
 	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 	WorkspaceId string `pulumi:"workspaceId"`
@@ -981,6 +2927,478 @@ func (o GetWorkspaceIamDirectGroupMembersV2ProviderConfigPtrOutput) Elem() GetWo
 // Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 func (o GetWorkspaceIamDirectGroupMembersV2ProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetWorkspaceIamDirectGroupMembersV2ProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWorkspaceIamExternalGroupV2ProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetWorkspaceIamExternalGroupV2ProviderConfigInput is an input type that accepts GetWorkspaceIamExternalGroupV2ProviderConfigArgs and GetWorkspaceIamExternalGroupV2ProviderConfigOutput values.
+// You can construct a concrete instance of `GetWorkspaceIamExternalGroupV2ProviderConfigInput` via:
+//
+//	GetWorkspaceIamExternalGroupV2ProviderConfigArgs{...}
+type GetWorkspaceIamExternalGroupV2ProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceIamExternalGroupV2ProviderConfigOutput() GetWorkspaceIamExternalGroupV2ProviderConfigOutput
+	ToGetWorkspaceIamExternalGroupV2ProviderConfigOutputWithContext(context.Context) GetWorkspaceIamExternalGroupV2ProviderConfigOutput
+}
+
+type GetWorkspaceIamExternalGroupV2ProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetWorkspaceIamExternalGroupV2ProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceIamExternalGroupV2ProviderConfig)(nil)).Elem()
+}
+
+func (i GetWorkspaceIamExternalGroupV2ProviderConfigArgs) ToGetWorkspaceIamExternalGroupV2ProviderConfigOutput() GetWorkspaceIamExternalGroupV2ProviderConfigOutput {
+	return i.ToGetWorkspaceIamExternalGroupV2ProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceIamExternalGroupV2ProviderConfigArgs) ToGetWorkspaceIamExternalGroupV2ProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceIamExternalGroupV2ProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalGroupV2ProviderConfigOutput)
+}
+
+func (i GetWorkspaceIamExternalGroupV2ProviderConfigArgs) ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput() GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput {
+	return i.ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceIamExternalGroupV2ProviderConfigArgs) ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalGroupV2ProviderConfigOutput).ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceIamExternalGroupV2ProviderConfigPtrInput is an input type that accepts GetWorkspaceIamExternalGroupV2ProviderConfigArgs, GetWorkspaceIamExternalGroupV2ProviderConfigPtr and GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceIamExternalGroupV2ProviderConfigPtrInput` via:
+//
+//	        GetWorkspaceIamExternalGroupV2ProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceIamExternalGroupV2ProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput() GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput
+	ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(context.Context) GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput
+}
+
+type getWorkspaceIamExternalGroupV2ProviderConfigPtrType GetWorkspaceIamExternalGroupV2ProviderConfigArgs
+
+func GetWorkspaceIamExternalGroupV2ProviderConfigPtr(v *GetWorkspaceIamExternalGroupV2ProviderConfigArgs) GetWorkspaceIamExternalGroupV2ProviderConfigPtrInput {
+	return (*getWorkspaceIamExternalGroupV2ProviderConfigPtrType)(v)
+}
+
+func (*getWorkspaceIamExternalGroupV2ProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceIamExternalGroupV2ProviderConfig)(nil)).Elem()
+}
+
+func (i *getWorkspaceIamExternalGroupV2ProviderConfigPtrType) ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput() GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput {
+	return i.ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceIamExternalGroupV2ProviderConfigPtrType) ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput)
+}
+
+type GetWorkspaceIamExternalGroupV2ProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceIamExternalGroupV2ProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceIamExternalGroupV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigOutput) ToGetWorkspaceIamExternalGroupV2ProviderConfigOutput() GetWorkspaceIamExternalGroupV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigOutput) ToGetWorkspaceIamExternalGroupV2ProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceIamExternalGroupV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigOutput) ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput() GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput {
+	return o.ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigOutput) ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceIamExternalGroupV2ProviderConfig) *GetWorkspaceIamExternalGroupV2ProviderConfig {
+		return &v
+	}).(GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceIamExternalGroupV2ProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceIamExternalGroupV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput) ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput() GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput) ToGetWorkspaceIamExternalGroupV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput) Elem() GetWorkspaceIamExternalGroupV2ProviderConfigOutput {
+	return o.ApplyT(func(v *GetWorkspaceIamExternalGroupV2ProviderConfig) GetWorkspaceIamExternalGroupV2ProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceIamExternalGroupV2ProviderConfig
+		return ret
+	}).(GetWorkspaceIamExternalGroupV2ProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceIamExternalGroupV2ProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWorkspaceIamExternalServicePrincipalV2ProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetWorkspaceIamExternalServicePrincipalV2ProviderConfigInput is an input type that accepts GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs and GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput values.
+// You can construct a concrete instance of `GetWorkspaceIamExternalServicePrincipalV2ProviderConfigInput` via:
+//
+//	GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs{...}
+type GetWorkspaceIamExternalServicePrincipalV2ProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput
+	ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutputWithContext(context.Context) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput
+}
+
+type GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceIamExternalServicePrincipalV2ProviderConfig)(nil)).Elem()
+}
+
+func (i GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput {
+	return i.ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput)
+}
+
+func (i GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput {
+	return i.ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput).ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrInput is an input type that accepts GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs, GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtr and GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrInput` via:
+//
+//	        GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput
+	ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(context.Context) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput
+}
+
+type getWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrType GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs
+
+func GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtr(v *GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrInput {
+	return (*getWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrType)(v)
+}
+
+func (*getWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceIamExternalServicePrincipalV2ProviderConfig)(nil)).Elem()
+}
+
+func (i *getWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrType) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput {
+	return i.ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrType) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput)
+}
+
+type GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceIamExternalServicePrincipalV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput {
+	return o.ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceIamExternalServicePrincipalV2ProviderConfig) *GetWorkspaceIamExternalServicePrincipalV2ProviderConfig {
+		return &v
+	}).(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceIamExternalServicePrincipalV2ProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceIamExternalServicePrincipalV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput) ToGetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput) Elem() GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput {
+	return o.ApplyT(func(v *GetWorkspaceIamExternalServicePrincipalV2ProviderConfig) GetWorkspaceIamExternalServicePrincipalV2ProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceIamExternalServicePrincipalV2ProviderConfig
+		return ret
+	}).(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceIamExternalServicePrincipalV2ProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWorkspaceIamExternalUserV2FullName struct {
+	// (string) - The family (last) name of the user, from the customer's IdP
+	FamilyName string `pulumi:"familyName"`
+	// (string) - The given (first) name of the user, from the customer's IdP
+	GivenName string `pulumi:"givenName"`
+}
+
+// GetWorkspaceIamExternalUserV2FullNameInput is an input type that accepts GetWorkspaceIamExternalUserV2FullNameArgs and GetWorkspaceIamExternalUserV2FullNameOutput values.
+// You can construct a concrete instance of `GetWorkspaceIamExternalUserV2FullNameInput` via:
+//
+//	GetWorkspaceIamExternalUserV2FullNameArgs{...}
+type GetWorkspaceIamExternalUserV2FullNameInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceIamExternalUserV2FullNameOutput() GetWorkspaceIamExternalUserV2FullNameOutput
+	ToGetWorkspaceIamExternalUserV2FullNameOutputWithContext(context.Context) GetWorkspaceIamExternalUserV2FullNameOutput
+}
+
+type GetWorkspaceIamExternalUserV2FullNameArgs struct {
+	// (string) - The family (last) name of the user, from the customer's IdP
+	FamilyName pulumi.StringInput `pulumi:"familyName"`
+	// (string) - The given (first) name of the user, from the customer's IdP
+	GivenName pulumi.StringInput `pulumi:"givenName"`
+}
+
+func (GetWorkspaceIamExternalUserV2FullNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceIamExternalUserV2FullName)(nil)).Elem()
+}
+
+func (i GetWorkspaceIamExternalUserV2FullNameArgs) ToGetWorkspaceIamExternalUserV2FullNameOutput() GetWorkspaceIamExternalUserV2FullNameOutput {
+	return i.ToGetWorkspaceIamExternalUserV2FullNameOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceIamExternalUserV2FullNameArgs) ToGetWorkspaceIamExternalUserV2FullNameOutputWithContext(ctx context.Context) GetWorkspaceIamExternalUserV2FullNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalUserV2FullNameOutput)
+}
+
+type GetWorkspaceIamExternalUserV2FullNameOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceIamExternalUserV2FullNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceIamExternalUserV2FullName)(nil)).Elem()
+}
+
+func (o GetWorkspaceIamExternalUserV2FullNameOutput) ToGetWorkspaceIamExternalUserV2FullNameOutput() GetWorkspaceIamExternalUserV2FullNameOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalUserV2FullNameOutput) ToGetWorkspaceIamExternalUserV2FullNameOutputWithContext(ctx context.Context) GetWorkspaceIamExternalUserV2FullNameOutput {
+	return o
+}
+
+// (string) - The family (last) name of the user, from the customer's IdP
+func (o GetWorkspaceIamExternalUserV2FullNameOutput) FamilyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2FullName) string { return v.FamilyName }).(pulumi.StringOutput)
+}
+
+// (string) - The given (first) name of the user, from the customer's IdP
+func (o GetWorkspaceIamExternalUserV2FullNameOutput) GivenName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2FullName) string { return v.GivenName }).(pulumi.StringOutput)
+}
+
+type GetWorkspaceIamExternalUserV2ProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetWorkspaceIamExternalUserV2ProviderConfigInput is an input type that accepts GetWorkspaceIamExternalUserV2ProviderConfigArgs and GetWorkspaceIamExternalUserV2ProviderConfigOutput values.
+// You can construct a concrete instance of `GetWorkspaceIamExternalUserV2ProviderConfigInput` via:
+//
+//	GetWorkspaceIamExternalUserV2ProviderConfigArgs{...}
+type GetWorkspaceIamExternalUserV2ProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceIamExternalUserV2ProviderConfigOutput() GetWorkspaceIamExternalUserV2ProviderConfigOutput
+	ToGetWorkspaceIamExternalUserV2ProviderConfigOutputWithContext(context.Context) GetWorkspaceIamExternalUserV2ProviderConfigOutput
+}
+
+type GetWorkspaceIamExternalUserV2ProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetWorkspaceIamExternalUserV2ProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceIamExternalUserV2ProviderConfig)(nil)).Elem()
+}
+
+func (i GetWorkspaceIamExternalUserV2ProviderConfigArgs) ToGetWorkspaceIamExternalUserV2ProviderConfigOutput() GetWorkspaceIamExternalUserV2ProviderConfigOutput {
+	return i.ToGetWorkspaceIamExternalUserV2ProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceIamExternalUserV2ProviderConfigArgs) ToGetWorkspaceIamExternalUserV2ProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceIamExternalUserV2ProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalUserV2ProviderConfigOutput)
+}
+
+func (i GetWorkspaceIamExternalUserV2ProviderConfigArgs) ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutput() GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput {
+	return i.ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceIamExternalUserV2ProviderConfigArgs) ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalUserV2ProviderConfigOutput).ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceIamExternalUserV2ProviderConfigPtrInput is an input type that accepts GetWorkspaceIamExternalUserV2ProviderConfigArgs, GetWorkspaceIamExternalUserV2ProviderConfigPtr and GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceIamExternalUserV2ProviderConfigPtrInput` via:
+//
+//	        GetWorkspaceIamExternalUserV2ProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceIamExternalUserV2ProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutput() GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput
+	ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(context.Context) GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput
+}
+
+type getWorkspaceIamExternalUserV2ProviderConfigPtrType GetWorkspaceIamExternalUserV2ProviderConfigArgs
+
+func GetWorkspaceIamExternalUserV2ProviderConfigPtr(v *GetWorkspaceIamExternalUserV2ProviderConfigArgs) GetWorkspaceIamExternalUserV2ProviderConfigPtrInput {
+	return (*getWorkspaceIamExternalUserV2ProviderConfigPtrType)(v)
+}
+
+func (*getWorkspaceIamExternalUserV2ProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceIamExternalUserV2ProviderConfig)(nil)).Elem()
+}
+
+func (i *getWorkspaceIamExternalUserV2ProviderConfigPtrType) ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutput() GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput {
+	return i.ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceIamExternalUserV2ProviderConfigPtrType) ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput)
+}
+
+type GetWorkspaceIamExternalUserV2ProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceIamExternalUserV2ProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceIamExternalUserV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetWorkspaceIamExternalUserV2ProviderConfigOutput) ToGetWorkspaceIamExternalUserV2ProviderConfigOutput() GetWorkspaceIamExternalUserV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalUserV2ProviderConfigOutput) ToGetWorkspaceIamExternalUserV2ProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceIamExternalUserV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalUserV2ProviderConfigOutput) ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutput() GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput {
+	return o.ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceIamExternalUserV2ProviderConfigOutput) ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceIamExternalUserV2ProviderConfig) *GetWorkspaceIamExternalUserV2ProviderConfig {
+		return &v
+	}).(GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWorkspaceIamExternalUserV2ProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2ProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceIamExternalUserV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput) ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutput() GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput) ToGetWorkspaceIamExternalUserV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput) Elem() GetWorkspaceIamExternalUserV2ProviderConfigOutput {
+	return o.ApplyT(func(v *GetWorkspaceIamExternalUserV2ProviderConfig) GetWorkspaceIamExternalUserV2ProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceIamExternalUserV2ProviderConfig
+		return ret
+	}).(GetWorkspaceIamExternalUserV2ProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceIamExternalUserV2ProviderConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6355,6 +8773,30 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleInput)(nil)).Elem(), GetUsersUserRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleArrayInput)(nil)).Elem(), GetUsersUserRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetViewsProviderConfigInput)(nil)).Elem(), GetViewsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetViewsProviderConfigPtrInput)(nil)).Elem(), GetViewsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeProviderConfigInput)(nil)).Elem(), GetVolumeProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeProviderConfigPtrInput)(nil)).Elem(), GetVolumeProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoInput)(nil)).Elem(), GetVolumeVolumeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoPtrInput)(nil)).Elem(), GetVolumeVolumeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesProviderConfigInput)(nil)).Elem(), GetVolumesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesProviderConfigPtrInput)(nil)).Elem(), GetVolumesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverrideProviderConfigInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverrideProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverrideProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesProviderConfigInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEntityTagAssignmentProviderConfigInput)(nil)).Elem(), GetWorkspaceEntityTagAssignmentProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEntityTagAssignmentProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceEntityTagAssignmentProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEntityTagAssignmentsProviderConfigInput)(nil)).Elem(), GetWorkspaceEntityTagAssignmentsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEntityTagAssignmentsProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceEntityTagAssignmentsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEntityTagAssignmentsTagAssignmentInput)(nil)).Elem(), GetWorkspaceEntityTagAssignmentsTagAssignmentArgs{})
@@ -6369,6 +8811,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamDirectGroupMembersV2ProviderConfigInput)(nil)).Elem(), GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamDirectGroupMembersV2ProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamExternalGroupV2ProviderConfigInput)(nil)).Elem(), GetWorkspaceIamExternalGroupV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamExternalGroupV2ProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceIamExternalGroupV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamExternalServicePrincipalV2ProviderConfigInput)(nil)).Elem(), GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamExternalUserV2FullNameInput)(nil)).Elem(), GetWorkspaceIamExternalUserV2FullNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamExternalUserV2ProviderConfigInput)(nil)).Elem(), GetWorkspaceIamExternalUserV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamExternalUserV2ProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceIamExternalUserV2ProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamGroupV2ProviderConfigInput)(nil)).Elem(), GetWorkspaceIamGroupV2ProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamGroupV2ProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceIamGroupV2ProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceIamGroupsV2GroupInput)(nil)).Elem(), GetWorkspaceIamGroupsV2GroupArgs{})
@@ -6447,6 +8896,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetUsersUserRoleOutput{})
+	pulumi.RegisterOutputType(GetUsersUserRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetViewsProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetViewsProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetVolumeProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetVolumeProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetVolumeVolumeInfoOutput{})
+	pulumi.RegisterOutputType(GetVolumeVolumeInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetVolumeVolumeInfoEncryptionDetailsOutput{})
+	pulumi.RegisterOutputType(GetVolumeVolumeInfoEncryptionDetailsPtrOutput{})
+	pulumi.RegisterOutputType(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput{})
+	pulumi.RegisterOutputType(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput{})
+	pulumi.RegisterOutputType(GetVolumesProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetVolumesProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverrideProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput{})
+	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceEntityTagAssignmentProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceEntityTagAssignmentsProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceEntityTagAssignmentsProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceEntityTagAssignmentsTagAssignmentOutput{})
@@ -6461,6 +8934,13 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceIamDirectGroupMembersV2ProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceIamDirectGroupMembersV2ProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceIamExternalGroupV2ProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceIamExternalGroupV2ProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceIamExternalServicePrincipalV2ProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceIamExternalUserV2FullNameOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceIamExternalUserV2ProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceIamGroupV2ProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceIamGroupV2ProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceIamGroupsV2GroupOutput{})

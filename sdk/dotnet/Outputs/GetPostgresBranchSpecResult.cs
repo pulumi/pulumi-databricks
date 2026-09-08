@@ -41,6 +41,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? SourceBranchTime;
         /// <summary>
+        /// (string) - The snapshot this branch was restored from. Set only for branches created by
+        /// restoring a snapshot; unset for all other branches.
+        /// Format: projects/{project_id}/snapshots/{snapshot_id}
+        /// </summary>
+        public readonly string? SourceSnapshot;
+        /// <summary>
         /// (string) - Relative time-to-live duration. When set, the branch will expire at CreationTime + ttl.
         /// Mutually exclusive with `ExpireTime` and `NoExpiry`. When updating, use `spec.expiration` in the update_mask
         /// </summary>
@@ -60,6 +66,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? sourceBranchTime,
 
+            string? sourceSnapshot,
+
             string? ttl)
         {
             ExpireTime = expireTime;
@@ -68,6 +76,7 @@ namespace Pulumi.Databricks.Outputs
             SourceBranch = sourceBranch;
             SourceBranchLsn = sourceBranchLsn;
             SourceBranchTime = sourceBranchTime;
+            SourceSnapshot = sourceSnapshot;
             Ttl = ttl;
         }
     }

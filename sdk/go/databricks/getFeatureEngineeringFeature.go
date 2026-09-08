@@ -44,15 +44,10 @@ type LookupFeatureEngineeringFeatureResult struct {
 	Description string `pulumi:"description"`
 	// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
 	Entities []GetFeatureEngineeringFeatureEntity `pulumi:"entities"`
-	// (string) - The filter condition applied to the source data before aggregation
-	FilterCondition string `pulumi:"filterCondition"`
 	// (string) - Three-part full name of the Stream (catalog.schema.stream)
 	FullName string `pulumi:"fullName"`
 	// (Function) - The function by which the feature is computed
 	Function GetFeatureEngineeringFeatureFunction `pulumi:"function"`
-	// (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-	// The input columns from which the feature is computed
-	Inputs []string `pulumi:"inputs"`
 	// (LineageContext) - Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
@@ -71,10 +66,7 @@ type LookupFeatureEngineeringFeatureResult struct {
 	SchemaName string `pulumi:"schemaName"`
 	// (DataSource) - The data source of the feature
 	Source GetFeatureEngineeringFeatureSource `pulumi:"source"`
-	// (TimeWindow) - The time window over which the aggregation is computed
-	TimeWindow GetFeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
-	// (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-	// The timeseries column of the Delta table
+	// (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
 	TimeseriesColumn GetFeatureEngineeringFeatureTimeseriesColumn `pulumi:"timeseriesColumn"`
 }
 
@@ -137,11 +129,6 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Entities() GetFeatureEngine
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) []GetFeatureEngineeringFeatureEntity { return v.Entities }).(GetFeatureEngineeringFeatureEntityArrayOutput)
 }
 
-// (string) - The filter condition applied to the source data before aggregation
-func (o LookupFeatureEngineeringFeatureResultOutput) FilterCondition() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.FilterCondition }).(pulumi.StringOutput)
-}
-
 // (string) - Three-part full name of the Stream (catalog.schema.stream)
 func (o LookupFeatureEngineeringFeatureResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.FullName }).(pulumi.StringOutput)
@@ -150,12 +137,6 @@ func (o LookupFeatureEngineeringFeatureResultOutput) FullName() pulumi.StringOut
 // (Function) - The function by which the feature is computed
 func (o LookupFeatureEngineeringFeatureResultOutput) Function() GetFeatureEngineeringFeatureFunctionOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureFunction { return v.Function }).(GetFeatureEngineeringFeatureFunctionOutput)
-}
-
-// (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-// The input columns from which the feature is computed
-func (o LookupFeatureEngineeringFeatureResultOutput) Inputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
 // (LineageContext) - Lineage context information for this feature.
@@ -195,15 +176,7 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Source() GetFeatureEngineer
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureSource { return v.Source }).(GetFeatureEngineeringFeatureSourceOutput)
 }
 
-// (TimeWindow) - The time window over which the aggregation is computed
-func (o LookupFeatureEngineeringFeatureResultOutput) TimeWindow() GetFeatureEngineeringFeatureTimeWindowOutput {
-	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureTimeWindow {
-		return v.TimeWindow
-	}).(GetFeatureEngineeringFeatureTimeWindowOutput)
-}
-
-// (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-// The timeseries column of the Delta table
+// (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
 func (o LookupFeatureEngineeringFeatureResultOutput) TimeseriesColumn() GetFeatureEngineeringFeatureTimeseriesColumnOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureTimeseriesColumn {
 		return v.TimeseriesColumn

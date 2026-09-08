@@ -701,7 +701,7 @@ class AccountSettingV2(pulumi.CustomResource):
                  string_val: pulumi.Input[Optional[Union['AccountSettingV2StringValArgs', 'AccountSettingV2StringValArgsDict']]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/account/settingsv2)
 
@@ -753,7 +753,7 @@ class AccountSettingV2(pulumi.CustomResource):
                  args: Optional[AccountSettingV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/account/settingsv2)
 

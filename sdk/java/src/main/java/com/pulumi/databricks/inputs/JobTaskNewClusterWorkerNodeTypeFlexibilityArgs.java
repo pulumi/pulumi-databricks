@@ -23,10 +23,18 @@ public final class JobTaskNewClusterWorkerNodeTypeFlexibilityArgs extends com.pu
         return Optional.ofNullable(this.alternateNodeTypeIds);
     }
 
+    @Import(name="awsContextId")
+    private @Nullable Output<String> awsContextId;
+
+    public Optional<Output<String>> awsContextId() {
+        return Optional.ofNullable(this.awsContextId);
+    }
+
     private JobTaskNewClusterWorkerNodeTypeFlexibilityArgs() {}
 
     private JobTaskNewClusterWorkerNodeTypeFlexibilityArgs(JobTaskNewClusterWorkerNodeTypeFlexibilityArgs $) {
         this.alternateNodeTypeIds = $.alternateNodeTypeIds;
+        this.awsContextId = $.awsContextId;
     }
 
     public static Builder builder() {
@@ -58,6 +66,15 @@ public final class JobTaskNewClusterWorkerNodeTypeFlexibilityArgs extends com.pu
 
         public Builder alternateNodeTypeIds(String... alternateNodeTypeIds) {
             return alternateNodeTypeIds(List.of(alternateNodeTypeIds));
+        }
+
+        public Builder awsContextId(@Nullable Output<String> awsContextId) {
+            $.awsContextId = awsContextId;
+            return this;
+        }
+
+        public Builder awsContextId(String awsContextId) {
+            return awsContextId(Output.of(awsContextId));
         }
 
         public JobTaskNewClusterWorkerNodeTypeFlexibilityArgs build() {

@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("continuous")]
-        public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousGetArgs>? Continuous { get; set; }
-
         [Input("rolling")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingGetArgs>? Rolling { get; set; }
 
@@ -26,6 +23,18 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("sliding")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingGetArgs>? Sliding { get; set; }
+
+        /// <summary>
+        /// Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+        /// the historical inputs read by a window. For example, a 365-day window with
+        /// start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+        /// for 365 days of data; a lifetime window produces no output before start_time. If unset,
+        /// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+        /// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+        /// eligible source data exists
+        /// </summary>
+        [Input("startTime")]
+        public Input<string>? StartTime { get; set; }
 
         [Input("tumbling")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingGetArgs>? Tumbling { get; set; }

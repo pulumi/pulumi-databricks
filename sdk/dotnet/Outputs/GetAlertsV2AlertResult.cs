@@ -40,7 +40,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAlertsV2AlertEvaluationResult Evaluation;
         /// <summary>
-        /// (string) - UUID identifying the alert
+        /// (string) - The canonical identifier of the alert to retrieve information about
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -52,8 +52,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string OwnerUserName;
         /// <summary>
-        /// (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-        /// query text with `:name` syntax. Static values only
+        /// (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAlertsV2AlertParameterResult> Parameters;
         /// <summary>

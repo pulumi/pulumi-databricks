@@ -13,6 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding {
     /**
+     * @return (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
+     * 
+     */
+    private @Nullable String delay;
+    /**
+     * @return (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+     * a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+     * midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+     * 
+     */
+    private @Nullable String offset;
+    /**
      * @return (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
      * 
      */
@@ -24,6 +38,24 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
     private @Nullable String windowDuration;
 
     private GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding() {}
+    /**
+     * @return (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
+     * 
+     */
+    public Optional<String> delay() {
+        return Optional.ofNullable(this.delay);
+    }
+    /**
+     * @return (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+     * a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+     * midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+     * 
+     */
+    public Optional<String> offset() {
+        return Optional.ofNullable(this.offset);
+    }
     /**
      * @return (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
      * 
@@ -48,15 +80,31 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String delay;
+        private @Nullable String offset;
         private String slideDuration;
         private @Nullable String windowDuration;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.delay = defaults.delay;
+    	      this.offset = defaults.offset;
     	      this.slideDuration = defaults.slideDuration;
     	      this.windowDuration = defaults.windowDuration;
         }
 
+        @CustomType.Setter
+        public Builder delay(@Nullable String delay) {
+
+            this.delay = delay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder offset(@Nullable String offset) {
+
+            this.offset = offset;
+            return this;
+        }
         @CustomType.Setter
         public Builder slideDuration(String slideDuration) {
             if (slideDuration == null) {
@@ -73,6 +121,8 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
         }
         public GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding();
+            _resultValue.delay = delay;
+            _resultValue.offset = offset;
             _resultValue.slideDuration = slideDuration;
             _resultValue.windowDuration = windowDuration;
             return _resultValue;

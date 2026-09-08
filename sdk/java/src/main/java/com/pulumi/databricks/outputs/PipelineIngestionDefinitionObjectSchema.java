@@ -20,7 +20,7 @@ public final class PipelineIngestionDefinitionObjectSchema {
     private String destinationSchema;
     private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptions fanoutOptions;
     private @Nullable String sourceCatalog;
-    private String sourceSchema;
+    private @Nullable String sourceSchema;
     private @Nullable PipelineIngestionDefinitionObjectSchemaTableConfiguration tableConfiguration;
 
     private PipelineIngestionDefinitionObjectSchema() {}
@@ -39,8 +39,8 @@ public final class PipelineIngestionDefinitionObjectSchema {
     public Optional<String> sourceCatalog() {
         return Optional.ofNullable(this.sourceCatalog);
     }
-    public String sourceSchema() {
-        return this.sourceSchema;
+    public Optional<String> sourceSchema() {
+        return Optional.ofNullable(this.sourceSchema);
     }
     public Optional<PipelineIngestionDefinitionObjectSchemaTableConfiguration> tableConfiguration() {
         return Optional.ofNullable(this.tableConfiguration);
@@ -60,7 +60,7 @@ public final class PipelineIngestionDefinitionObjectSchema {
         private String destinationSchema;
         private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptions fanoutOptions;
         private @Nullable String sourceCatalog;
-        private String sourceSchema;
+        private @Nullable String sourceSchema;
         private @Nullable PipelineIngestionDefinitionObjectSchemaTableConfiguration tableConfiguration;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectSchema defaults) {
@@ -109,10 +109,8 @@ public final class PipelineIngestionDefinitionObjectSchema {
             return this;
         }
         @CustomType.Setter
-        public Builder sourceSchema(String sourceSchema) {
-            if (sourceSchema == null) {
-              throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectSchema", "sourceSchema");
-            }
+        public Builder sourceSchema(@Nullable String sourceSchema) {
+
             this.sourceSchema = sourceSchema;
             return this;
         }

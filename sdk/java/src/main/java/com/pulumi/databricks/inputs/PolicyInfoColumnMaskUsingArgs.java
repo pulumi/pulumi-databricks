@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PolicyInfoColumnMaskUsingFunctionArgExpressionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,11 +38,31 @@ public final class PolicyInfoColumnMaskUsingArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.constant);
     }
 
+    /**
+     * An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     * 
+     */
+    @Import(name="functionArgExpression")
+    private @Nullable Output<PolicyInfoColumnMaskUsingFunctionArgExpressionArgs> functionArgExpression;
+
+    /**
+     * @return An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     * 
+     */
+    public Optional<Output<PolicyInfoColumnMaskUsingFunctionArgExpressionArgs>> functionArgExpression() {
+        return Optional.ofNullable(this.functionArgExpression);
+    }
+
     private PolicyInfoColumnMaskUsingArgs() {}
 
     private PolicyInfoColumnMaskUsingArgs(PolicyInfoColumnMaskUsingArgs $) {
         this.alias = $.alias;
         this.constant = $.constant;
+        this.functionArgExpression = $.functionArgExpression;
     }
 
     public static Builder builder() {
@@ -90,6 +111,31 @@ public final class PolicyInfoColumnMaskUsingArgs extends com.pulumi.resources.Re
          */
         public Builder constant(String constant) {
             return constant(Output.of(constant));
+        }
+
+        /**
+         * @param functionArgExpression An expression evaluated at query time. Wraps per-request expression variants
+         * (e.g., tag introspection) so new variants can be added without extending the
+         * FunctionArgument oneof
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArgExpression(@Nullable Output<PolicyInfoColumnMaskUsingFunctionArgExpressionArgs> functionArgExpression) {
+            $.functionArgExpression = functionArgExpression;
+            return this;
+        }
+
+        /**
+         * @param functionArgExpression An expression evaluated at query time. Wraps per-request expression variants
+         * (e.g., tag introspection) so new variants can be added without extending the
+         * FunctionArgument oneof
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArgExpression(PolicyInfoColumnMaskUsingFunctionArgExpressionArgs functionArgExpression) {
+            return functionArgExpression(Output.of(functionArgExpression));
         }
 
         public PolicyInfoColumnMaskUsingArgs build() {

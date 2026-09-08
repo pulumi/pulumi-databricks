@@ -69,7 +69,7 @@ def get_account_iam_users_v2(filter: Optional[_builtins.str] = None,
                              page_size: Optional[_builtins.int] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamUsersV2Result:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -90,7 +90,8 @@ def get_account_iam_users_v2(filter: Optional[_builtins.str] = None,
 
 
     :param _builtins.str filter: Optional. Allows filtering users by username or external id
-    :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value
+    :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
+           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -106,7 +107,7 @@ def get_account_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_buil
                                     page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamUsersV2Result]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -127,7 +128,8 @@ def get_account_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_buil
 
 
     :param _builtins.str filter: Optional. Allows filtering users by username or external id
-    :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value
+    :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
+           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
     """
     __args__ = dict()
     __args__['filter'] = filter

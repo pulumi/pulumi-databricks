@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding
     {
+        public readonly string? Delay;
+        public readonly string? Offset;
         /// <summary>
         /// The slide duration (interval by which windows advance, must be positive and less than duration)
         /// </summary>
@@ -21,10 +23,16 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding(
+            string? delay,
+
+            string? offset,
+
             string slideDuration,
 
             string? windowDuration)
         {
+            Delay = delay;
+            Offset = offset;
             SlideDuration = slideDuration;
             WindowDuration = windowDuration;
         }

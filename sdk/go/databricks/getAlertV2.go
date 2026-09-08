@@ -63,7 +63,7 @@ func LookupAlertV2(ctx *pulumi.Context, args *LookupAlertV2Args, opts ...pulumi.
 
 // A collection of arguments for invoking getAlertV2.
 type LookupAlertV2Args struct {
-	// UUID identifying the alert
+	// The canonical identifier of the alert to retrieve information about
 	Id string `pulumi:"id"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAlertV2ProviderConfig `pulumi:"providerConfig"`
@@ -85,14 +85,13 @@ type LookupAlertV2Result struct {
 	EffectiveRunAs GetAlertV2EffectiveRunAs `pulumi:"effectiveRunAs"`
 	// (AlertV2Evaluation)
 	Evaluation GetAlertV2Evaluation `pulumi:"evaluation"`
-	// (string) - UUID identifying the alert
+	// (string) - The canonical identifier of the alert to retrieve information about
 	Id string `pulumi:"id"`
 	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
 	LifecycleState string `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName string `pulumi:"ownerUserName"`
-	// (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-	// query text with `:name` syntax. Static values only
+	// (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
 	Parameters []GetAlertV2Parameter `pulumi:"parameters"`
 	// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath     string                    `pulumi:"parentPath"`
@@ -124,7 +123,7 @@ func LookupAlertV2Output(ctx *pulumi.Context, args LookupAlertV2OutputArgs, opts
 
 // A collection of arguments for invoking getAlertV2.
 type LookupAlertV2OutputArgs struct {
-	// UUID identifying the alert
+	// The canonical identifier of the alert to retrieve information about
 	Id pulumi.StringInput `pulumi:"id"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAlertV2ProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -181,7 +180,7 @@ func (o LookupAlertV2ResultOutput) Evaluation() GetAlertV2EvaluationOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) GetAlertV2Evaluation { return v.Evaluation }).(GetAlertV2EvaluationOutput)
 }
 
-// (string) - UUID identifying the alert
+// (string) - The canonical identifier of the alert to retrieve information about
 func (o LookupAlertV2ResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -196,8 +195,7 @@ func (o LookupAlertV2ResultOutput) OwnerUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.OwnerUserName }).(pulumi.StringOutput)
 }
 
-// (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-// query text with `:name` syntax. Static values only
+// (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
 func (o LookupAlertV2ResultOutput) Parameters() GetAlertV2ParameterArrayOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) []GetAlertV2Parameter { return v.Parameters }).(GetAlertV2ParameterArrayOutput)
 }
