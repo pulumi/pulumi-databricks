@@ -1789,31 +1789,11 @@
                                         "maxItemsOne": false
                                     }
                                 }
-                            },
-                            "extra_parameters": {
-                                "maxItemsOne": false
                             }
                         }
                     },
-                    "inputs": {
-                        "maxItemsOne": false
-                    },
                     "source": {
                         "fields": {
-                            "delta_table_source": {
-                                "fields": {
-                                    "entity_columns": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            },
-                            "kafka_source": {
-                                "fields": {
-                                    "entity_column_identifiers": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            },
                             "request_source": {
                                 "fields": {
                                     "flat_schema": {
@@ -1833,30 +1813,8 @@
                 "current": "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig",
                 "majorVersion": 1,
                 "fields": {
-                    "backfill_source": {
-                        "fields": {
-                            "delta_table_source": {
-                                "fields": {
-                                    "entity_columns": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "ingestion_config": {
                         "fields": {
-                            "backfill_source": {
-                                "fields": {
-                                    "delta_table_source": {
-                                        "fields": {
-                                            "entity_columns": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            },
                             "deduplication_columns": {
                                 "maxItemsOne": false
                             }
@@ -2055,7 +2013,14 @@
                 "majorVersion": 1,
                 "fields": {
                     "continuous": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "maintenance_window": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "dbt_task": {
                         "maxItemsOne": true,
@@ -3570,7 +3535,14 @@
                         "elem": {
                             "fields": {
                                 "continuous": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "maintenance_window": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "file_arrival": {
                                     "maxItemsOne": true
@@ -4892,6 +4864,9 @@
                                                                             }
                                                                         }
                                                                     },
+                                                                    "rabbitmq_options": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "reddit_ads_options": {
                                                                         "maxItemsOne": true,
                                                                         "elem": {
@@ -5212,6 +5187,9 @@
                                                                                 }
                                                                             }
                                                                         }
+                                                                    },
+                                                                    "rabbitmq_options": {
+                                                                        "maxItemsOne": true
                                                                     },
                                                                     "reddit_ads_options": {
                                                                         "maxItemsOne": true,
@@ -5615,6 +5593,15 @@
                                 "maxItemsOne": false
                             }
                         }
+                    }
+                }
+            },
+            "databricks_postgres_snapshot_schedule": {
+                "current": "databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule",
+                "majorVersion": 1,
+                "fields": {
+                    "schedule": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -6581,6 +6568,18 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "databricks_account_iam_external_group_v2": {
+                "current": "databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_external_service_principal_v2": {
+                "current": "databricks:index/getAccountIamExternalServicePrincipalV2:getAccountIamExternalServicePrincipalV2",
+                "majorVersion": 1
+            },
+            "databricks_account_iam_external_user_v2": {
+                "current": "databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2",
+                "majorVersion": 1
             },
             "databricks_account_iam_group_v2": {
                 "current": "databricks:index/getAccountIamGroupV2:getAccountIamGroupV2",
@@ -9476,31 +9475,11 @@
                                         "maxItemsOne": false
                                     }
                                 }
-                            },
-                            "extra_parameters": {
-                                "maxItemsOne": false
                             }
                         }
                     },
-                    "inputs": {
-                        "maxItemsOne": false
-                    },
                     "source": {
                         "fields": {
-                            "delta_table_source": {
-                                "fields": {
-                                    "entity_columns": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            },
-                            "kafka_source": {
-                                "fields": {
-                                    "entity_column_identifiers": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            },
                             "request_source": {
                                 "fields": {
                                     "flat_schema": {
@@ -9535,31 +9514,11 @@
                                                     "maxItemsOne": false
                                                 }
                                             }
-                                        },
-                                        "extra_parameters": {
-                                            "maxItemsOne": false
                                         }
                                     }
                                 },
-                                "inputs": {
-                                    "maxItemsOne": false
-                                },
                                 "source": {
                                     "fields": {
-                                        "delta_table_source": {
-                                            "fields": {
-                                                "entity_columns": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        },
-                                        "kafka_source": {
-                                            "fields": {
-                                                "entity_column_identifiers": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        },
                                         "request_source": {
                                             "fields": {
                                                 "flat_schema": {
@@ -9582,30 +9541,8 @@
                 "current": "databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig",
                 "majorVersion": 1,
                 "fields": {
-                    "backfill_source": {
-                        "fields": {
-                            "delta_table_source": {
-                                "fields": {
-                                    "entity_columns": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "ingestion_config": {
                         "fields": {
-                            "backfill_source": {
-                                "fields": {
-                                    "delta_table_source": {
-                                        "fields": {
-                                            "entity_columns": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            },
                             "deduplication_columns": {
                                 "maxItemsOne": false
                             }
@@ -9621,30 +9558,8 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "backfill_source": {
-                                    "fields": {
-                                        "delta_table_source": {
-                                            "fields": {
-                                                "entity_columns": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
                                 "ingestion_config": {
                                     "fields": {
-                                        "backfill_source": {
-                                            "fields": {
-                                                "delta_table_source": {
-                                                    "fields": {
-                                                        "entity_columns": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        },
                                         "deduplication_columns": {
                                             "maxItemsOne": false
                                         }
@@ -11437,6 +11352,15 @@
                     }
                 }
             },
+            "databricks_postgres_snapshot_schedule": {
+                "current": "databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule",
+                "majorVersion": 1,
+                "fields": {
+                    "schedule": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_postgres_synced_table": {
                 "current": "databricks:index/getPostgresSyncedTable:getPostgresSyncedTable",
                 "majorVersion": 1,
@@ -12346,6 +12270,18 @@
                     }
                 }
             },
+            "databricks_workspace_iam_external_group_v2": {
+                "current": "databricks:index/getWorkspaceIamExternalGroupV2:getWorkspaceIamExternalGroupV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_external_service_principal_v2": {
+                "current": "databricks:index/getWorkspaceIamExternalServicePrincipalV2:getWorkspaceIamExternalServicePrincipalV2",
+                "majorVersion": 1
+            },
+            "databricks_workspace_iam_external_user_v2": {
+                "current": "databricks:index/getWorkspaceIamExternalUserV2:getWorkspaceIamExternalUserV2",
+                "majorVersion": 1
+            },
             "databricks_workspace_iam_group_v2": {
                 "current": "databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2",
                 "majorVersion": 1
@@ -12659,6 +12595,11 @@
                     "kind": "missing"
                 }
             },
+            "databricks_postgres_snapshot_schedule": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_postgres_synced_table": {
                 "computeID": {
                     "kind": "missing"
@@ -12952,6 +12893,7 @@
             "databricks:index/postgresEndpoint:PostgresEndpoint": 1,
             "databricks:index/postgresProject:PostgresProject": 1,
             "databricks:index/postgresRole:PostgresRole": 1,
+            "databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule": 1,
             "databricks:index/postgresSyncedTable:PostgresSyncedTable": 1,
             "databricks:index/qualityMonitor:QualityMonitor": 1,
             "databricks:index/qualityMonitorV2:QualityMonitorV2": 1,
@@ -13012,6 +12954,9 @@
             "databricks:index/getAccountFederationPolicy:getAccountFederationPolicy": 1,
             "databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2": 1,
             "databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2": 1,
+            "databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2": 1,
+            "databricks:index/getAccountIamExternalServicePrincipalV2:getAccountIamExternalServicePrincipalV2": 1,
+            "databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2": 1,
             "databricks:index/getAccountIamGroupV2:getAccountIamGroupV2": 1,
             "databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2": 1,
             "databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2": 1,
@@ -13139,6 +13084,7 @@
             "databricks:index/getPostgresProjects:getPostgresProjects": 1,
             "databricks:index/getPostgresRole:getPostgresRole": 1,
             "databricks:index/getPostgresRoles:getPostgresRoles": 1,
+            "databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule": 1,
             "databricks:index/getPostgresSyncedTable:getPostgresSyncedTable": 1,
             "databricks:index/getQualityMonitorV2:getQualityMonitorV2": 1,
             "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2": 1,
@@ -13181,6 +13127,9 @@
             "databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments": 1,
             "databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2": 1,
             "databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2": 1,
+            "databricks:index/getWorkspaceIamExternalGroupV2:getWorkspaceIamExternalGroupV2": 1,
+            "databricks:index/getWorkspaceIamExternalServicePrincipalV2:getWorkspaceIamExternalServicePrincipalV2": 1,
+            "databricks:index/getWorkspaceIamExternalUserV2:getWorkspaceIamExternalUserV2": 1,
             "databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2": 1,
             "databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2": 1,
             "databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2": 1,
@@ -16417,6 +16366,9 @@
             "databricks_postgres_role": [
                 "provider_config.workspace_id"
             ],
+            "databricks_postgres_snapshot_schedule": [
+                "provider_config.workspace_id"
+            ],
             "databricks_postgres_synced_table": [
                 "provider_config.workspace_id"
             ],
@@ -16920,6 +16872,9 @@
                 "provider_config.workspace_id",
                 "roles.$.provider_config.workspace_id"
             ],
+            "databricks_postgres_snapshot_schedule": [
+                "provider_config.workspace_id"
+            ],
             "databricks_postgres_synced_table": [
                 "provider_config.workspace_id"
             ],
@@ -17046,6 +17001,15 @@
             ],
             "databricks_workspace_iam_direct_group_members_v2": [
                 "direct_group_members.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_external_group_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_external_service_principal_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_iam_external_user_v2": [
                 "provider_config.workspace_id"
             ],
             "databricks_workspace_iam_group_v2": [
