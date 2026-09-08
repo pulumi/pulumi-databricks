@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTriggerContinuous
     {
+        public readonly Outputs.JobTriggerContinuousMaintenanceWindow? MaintenanceWindow;
         /// <summary>
         /// Controls task level retry behaviour. Allowed values are:
         /// * `NEVER` (default): The failed task will not be retried.
@@ -21,8 +22,12 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? TaskRetryMode;
 
         [OutputConstructor]
-        private JobTriggerContinuous(string? taskRetryMode)
+        private JobTriggerContinuous(
+            Outputs.JobTriggerContinuousMaintenanceWindow? maintenanceWindow,
+
+            string? taskRetryMode)
         {
+            MaintenanceWindow = maintenanceWindow;
             TaskRetryMode = taskRetryMode;
         }
     }

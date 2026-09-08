@@ -6,7 +6,6 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,17 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureSourceDeltaTableSource {
     private @Nullable String dataframeSchema;
-    /**
-     * @return Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     * 
-     */
-    private @Nullable List<String> entityColumns;
-    /**
-     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     * 
-     */
     private @Nullable String filterCondition;
     /**
      * @return The full three-part name (catalog, schema, name) of the feature. This is the
@@ -33,30 +21,12 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
      * 
      */
     private String fullName;
-    /**
-     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
-     * 
-     */
-    private @Nullable String timeseriesColumn;
     private @Nullable String transformationSql;
 
     private FeatureEngineeringFeatureSourceDeltaTableSource() {}
     public Optional<String> dataframeSchema() {
         return Optional.ofNullable(this.dataframeSchema);
     }
-    /**
-     * @return Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     * 
-     */
-    public List<String> entityColumns() {
-        return this.entityColumns == null ? List.of() : this.entityColumns;
-    }
-    /**
-     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     * 
-     */
     public Optional<String> filterCondition() {
         return Optional.ofNullable(this.filterCondition);
     }
@@ -68,13 +38,6 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
      */
     public String fullName() {
         return this.fullName;
-    }
-    /**
-     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
-     * 
-     */
-    public Optional<String> timeseriesColumn() {
-        return Optional.ofNullable(this.timeseriesColumn);
     }
     public Optional<String> transformationSql() {
         return Optional.ofNullable(this.transformationSql);
@@ -90,19 +53,15 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dataframeSchema;
-        private @Nullable List<String> entityColumns;
         private @Nullable String filterCondition;
         private String fullName;
-        private @Nullable String timeseriesColumn;
         private @Nullable String transformationSql;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureSourceDeltaTableSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataframeSchema = defaults.dataframeSchema;
-    	      this.entityColumns = defaults.entityColumns;
     	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
-    	      this.timeseriesColumn = defaults.timeseriesColumn;
     	      this.transformationSql = defaults.transformationSql;
         }
 
@@ -111,15 +70,6 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
 
             this.dataframeSchema = dataframeSchema;
             return this;
-        }
-        @CustomType.Setter
-        public Builder entityColumns(@Nullable List<String> entityColumns) {
-
-            this.entityColumns = entityColumns;
-            return this;
-        }
-        public Builder entityColumns(String... entityColumns) {
-            return entityColumns(List.of(entityColumns));
         }
         @CustomType.Setter
         public Builder filterCondition(@Nullable String filterCondition) {
@@ -136,12 +86,6 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
             return this;
         }
         @CustomType.Setter
-        public Builder timeseriesColumn(@Nullable String timeseriesColumn) {
-
-            this.timeseriesColumn = timeseriesColumn;
-            return this;
-        }
-        @CustomType.Setter
         public Builder transformationSql(@Nullable String transformationSql) {
 
             this.transformationSql = transformationSql;
@@ -150,10 +94,8 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
         public FeatureEngineeringFeatureSourceDeltaTableSource build() {
             final var _resultValue = new FeatureEngineeringFeatureSourceDeltaTableSource();
             _resultValue.dataframeSchema = dataframeSchema;
-            _resultValue.entityColumns = entityColumns;
             _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
-            _resultValue.timeseriesColumn = timeseriesColumn;
             _resultValue.transformationSql = transformationSql;
             return _resultValue;
         }

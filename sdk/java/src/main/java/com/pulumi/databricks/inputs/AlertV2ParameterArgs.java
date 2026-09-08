@@ -24,18 +24,16 @@ public final class AlertV2ParameterArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     * The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+     * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     * @return The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+     * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
      * 
      */
     public Optional<Output<String>> type() {
@@ -85,9 +83,8 @@ public final class AlertV2ParameterArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-         * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-         * Complex types such as ARRAY, MAP, and STRUCT are not supported
+         * @param type The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+         * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
          * 
          * @return builder
          * 
@@ -98,9 +95,8 @@ public final class AlertV2ParameterArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-         * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-         * Complex types such as ARRAY, MAP, and STRUCT are not supported
+         * @param type The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+         * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
          * 
          * @return builder
          * 

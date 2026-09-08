@@ -14,11 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult
     {
         /// <summary>
-        /// (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        /// The entity column identifiers of the Kafka source
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult> EntityColumnIdentifiers;
-        /// <summary>
         /// (string) - The filter condition applied to the source data before aggregation
         /// </summary>
         public readonly string? FilterCondition;
@@ -31,26 +26,15 @@ namespace Pulumi.Databricks.Outputs
         /// backwards compatibility but is deprecated; migrate to dot notation
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        /// The timeseries column identifier of the Kafka source
-        /// </summary>
-        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult? TimeseriesColumnIdentifier;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult(
-            ImmutableArray<Outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult> entityColumnIdentifiers,
-
             string? filterCondition,
 
-            string name,
-
-            Outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult? timeseriesColumnIdentifier)
+            string name)
         {
-            EntityColumnIdentifiers = entityColumnIdentifiers;
             FilterCondition = filterCondition;
             Name = name;
-            TimeseriesColumnIdentifier = timeseriesColumnIdentifier;
         }
     }
 }

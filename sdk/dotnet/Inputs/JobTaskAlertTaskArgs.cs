@@ -18,6 +18,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("alertId")]
         public Input<string>? AlertId { get; set; }
 
+        [Input("parameters")]
+        private InputMap<string>? _parameters;
+        public InputMap<string> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputMap<string>());
+            set => _parameters = value;
+        }
+
         [Input("subscribers")]
         private InputList<Inputs.JobTaskAlertTaskSubscriberArgs>? _subscribers;
 

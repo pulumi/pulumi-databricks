@@ -1067,8 +1067,6 @@ __all__ = [
     'FeatureEngineeringFeatureFunctionAggregationFunctionSumArgsDict',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgsDict',
-    'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs',
-    'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgsDict',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgsDict',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs',
@@ -1087,8 +1085,6 @@ __all__ = [
     'FeatureEngineeringFeatureFunctionCustomUdfArgsDict',
     'FeatureEngineeringFeatureFunctionCustomUdfInputBindingArgs',
     'FeatureEngineeringFeatureFunctionCustomUdfInputBindingArgsDict',
-    'FeatureEngineeringFeatureFunctionExtraParameterArgs',
-    'FeatureEngineeringFeatureFunctionExtraParameterArgsDict',
     'FeatureEngineeringFeatureLineageContextArgs',
     'FeatureEngineeringFeatureLineageContextArgsDict',
     'FeatureEngineeringFeatureLineageContextJobContextArgs',
@@ -1101,10 +1097,8 @@ __all__ = [
     'FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict',
     'FeatureEngineeringFeatureSourceKafkaSourceArgs',
     'FeatureEngineeringFeatureSourceKafkaSourceArgsDict',
-    'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs',
-    'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict',
-    'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs',
-    'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict',
+    'FeatureEngineeringFeatureSourceLatenessArgs',
+    'FeatureEngineeringFeatureSourceLatenessArgsDict',
     'FeatureEngineeringFeatureSourceRequestSourceArgs',
     'FeatureEngineeringFeatureSourceRequestSourceArgsDict',
     'FeatureEngineeringFeatureSourceRequestSourceFlatSchemaArgs',
@@ -1113,18 +1107,6 @@ __all__ = [
     'FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArgsDict',
     'FeatureEngineeringFeatureSourceStreamSourceArgs',
     'FeatureEngineeringFeatureSourceStreamSourceArgsDict',
-    'FeatureEngineeringFeatureTimeWindowArgs',
-    'FeatureEngineeringFeatureTimeWindowArgsDict',
-    'FeatureEngineeringFeatureTimeWindowContinuousArgs',
-    'FeatureEngineeringFeatureTimeWindowContinuousArgsDict',
-    'FeatureEngineeringFeatureTimeWindowRollingArgs',
-    'FeatureEngineeringFeatureTimeWindowRollingArgsDict',
-    'FeatureEngineeringFeatureTimeWindowSawtoothArgs',
-    'FeatureEngineeringFeatureTimeWindowSawtoothArgsDict',
-    'FeatureEngineeringFeatureTimeWindowSlidingArgs',
-    'FeatureEngineeringFeatureTimeWindowSlidingArgsDict',
-    'FeatureEngineeringFeatureTimeWindowTumblingArgs',
-    'FeatureEngineeringFeatureTimeWindowTumblingArgsDict',
     'FeatureEngineeringFeatureTimeseriesColumnArgs',
     'FeatureEngineeringFeatureTimeseriesColumnArgsDict',
     'FeatureEngineeringKafkaConfigAuthConfigArgs',
@@ -1225,6 +1207,8 @@ __all__ = [
     'IpAccessListProviderConfigArgsDict',
     'JobContinuousArgs',
     'JobContinuousArgsDict',
+    'JobContinuousMaintenanceWindowArgs',
+    'JobContinuousMaintenanceWindowArgsDict',
     'JobDbtTaskArgs',
     'JobDbtTaskArgsDict',
     'JobDeploymentArgs',
@@ -1761,6 +1745,8 @@ __all__ = [
     'JobTriggerArgsDict',
     'JobTriggerContinuousArgs',
     'JobTriggerContinuousArgsDict',
+    'JobTriggerContinuousMaintenanceWindowArgs',
+    'JobTriggerContinuousMaintenanceWindowArgsDict',
     'JobTriggerFileArrivalArgs',
     'JobTriggerFileArrivalArgsDict',
     'JobTriggerModelArgs',
@@ -2181,6 +2167,8 @@ __all__ = [
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgs',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsArgs',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsArgsDict',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsCustomReportOptionsArgs',
@@ -2257,6 +2245,8 @@ __all__ = [
     'PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgs',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgsDict',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptionsArgs',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgs',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgsDict',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsCustomReportOptionsArgs',
@@ -2337,6 +2327,14 @@ __all__ = [
     'PolicyInfoColumnMaskArgsDict',
     'PolicyInfoColumnMaskUsingArgs',
     'PolicyInfoColumnMaskUsingArgsDict',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionArgs',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionArgsDict',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgsDict',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgsDict',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict',
     'PolicyInfoGrantArgs',
     'PolicyInfoGrantArgsDict',
     'PolicyInfoMatchColumnArgs',
@@ -2347,6 +2345,14 @@ __all__ = [
     'PolicyInfoRowFilterArgsDict',
     'PolicyInfoRowFilterUsingArgs',
     'PolicyInfoRowFilterUsingArgsDict',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionArgs',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionArgsDict',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgsDict',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgsDict',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict',
     'PostgresBranchProviderConfigArgs',
     'PostgresBranchProviderConfigArgsDict',
     'PostgresBranchSpecArgs',
@@ -2419,6 +2425,16 @@ __all__ = [
     'PostgresRoleStatusArgsDict',
     'PostgresRoleStatusAttributesArgs',
     'PostgresRoleStatusAttributesArgsDict',
+    'PostgresSnapshotScheduleProviderConfigArgs',
+    'PostgresSnapshotScheduleProviderConfigArgsDict',
+    'PostgresSnapshotScheduleScheduleArgs',
+    'PostgresSnapshotScheduleScheduleArgsDict',
+    'PostgresSnapshotScheduleScheduleDailyScheduleArgs',
+    'PostgresSnapshotScheduleScheduleDailyScheduleArgsDict',
+    'PostgresSnapshotScheduleScheduleMonthlyScheduleArgs',
+    'PostgresSnapshotScheduleScheduleMonthlyScheduleArgsDict',
+    'PostgresSnapshotScheduleScheduleWeeklyScheduleArgs',
+    'PostgresSnapshotScheduleScheduleWeeklyScheduleArgsDict',
     'PostgresSyncedTableProviderConfigArgs',
     'PostgresSyncedTableProviderConfigArgsDict',
     'PostgresSyncedTableSpecArgs',
@@ -3651,6 +3667,8 @@ __all__ = [
     'GetPostgresRoleProviderConfigArgsDict',
     'GetPostgresRolesProviderConfigArgs',
     'GetPostgresRolesProviderConfigArgsDict',
+    'GetPostgresSnapshotScheduleProviderConfigArgs',
+    'GetPostgresSnapshotScheduleProviderConfigArgsDict',
     'GetPostgresSyncedTableProviderConfigArgs',
     'GetPostgresSyncedTableProviderConfigArgsDict',
     'GetQualityMonitorV2ProviderConfigArgs',
@@ -3913,6 +3931,12 @@ __all__ = [
     'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict',
     'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs',
     'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict',
+    'GetWorkspaceIamExternalGroupV2ProviderConfigArgs',
+    'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict',
+    'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs',
+    'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict',
+    'GetWorkspaceIamExternalUserV2ProviderConfigArgs',
+    'GetWorkspaceIamExternalUserV2ProviderConfigArgsDict',
     'GetWorkspaceIamGroupV2ProviderConfigArgs',
     'GetWorkspaceIamGroupV2ProviderConfigArgsDict',
     'GetWorkspaceIamGroupsV2ProviderConfigArgs',
@@ -18500,9 +18524,8 @@ class AlertV2ParameterArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-    string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-    Complex types such as ARRAY, MAP, and STRUCT are not supported
+    The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+    the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
     """
     value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -18513,9 +18536,8 @@ class AlertV2ParameterArgs:
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] type: The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-               string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-               Complex types such as ARRAY, MAP, and STRUCT are not supported
+        :param pulumi.Input[_builtins.str] type: The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+               the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         """
         pulumi.set(__self__, "name", name)
         if type is not None:
@@ -18536,9 +18558,8 @@ class AlertV2ParameterArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-        string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-        Complex types such as ARRAY, MAP, and STRUCT are not supported
+        The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+        the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         """
         return pulumi.get(self, "type")
 
@@ -24422,16 +24443,20 @@ class ClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
     """
     list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
     """
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterDriverNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_node_type_ids: list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
         """
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -24444,6 +24469,15 @@ class ClusterDriverNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class ClusterGcpAttributesArgsDict(TypedDict):
@@ -25643,16 +25677,20 @@ class ClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
     """
     list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
     """
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterWorkerNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_node_type_ids: list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
         """
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -25665,6 +25703,15 @@ class ClusterWorkerNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class ClusterWorkloadTypeArgsDict(TypedDict):
@@ -31238,33 +31285,17 @@ class FeatureEngineeringFeatureFunctionArgsDict(TypedDict):
     """
     Applies a registered Unity Catalog function row-wise to source columns
     """
-    extra_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgsDict']]]]]
-    """
-    Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-    Extra parameters for parameterized functions
-    """
-    function_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-    The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-    """
 
 @pulumi.input_type
 class FeatureEngineeringFeatureFunctionArgs:
     def __init__(__self__, *,
                  aggregation_function: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionArgs']] = None,
                  column_selection: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionColumnSelectionArgs']] = None,
-                 custom_udf: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionCustomUdfArgs']] = None,
-                 extra_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]] = None,
-                 function_type: pulumi.Input[Optional[_builtins.str]] = None):
+                 custom_udf: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionCustomUdfArgs']] = None):
         """
         :param pulumi.Input['FeatureEngineeringFeatureFunctionAggregationFunctionArgs'] aggregation_function: An aggregation function applied over a time window
         :param pulumi.Input['FeatureEngineeringFeatureFunctionColumnSelectionArgs'] column_selection: Selects the latest value of a single column in a data source
         :param pulumi.Input['FeatureEngineeringFeatureFunctionCustomUdfArgs'] custom_udf: Applies a registered Unity Catalog function row-wise to source columns
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]] extra_parameters: Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-               Extra parameters for parameterized functions
-        :param pulumi.Input[_builtins.str] function_type: Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-               The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
         """
         if aggregation_function is not None:
             pulumi.set(__self__, "aggregation_function", aggregation_function)
@@ -31272,10 +31303,6 @@ class FeatureEngineeringFeatureFunctionArgs:
             pulumi.set(__self__, "column_selection", column_selection)
         if custom_udf is not None:
             pulumi.set(__self__, "custom_udf", custom_udf)
-        if extra_parameters is not None:
-            pulumi.set(__self__, "extra_parameters", extra_parameters)
-        if function_type is not None:
-            pulumi.set(__self__, "function_type", function_type)
 
     @_builtins.property
     @pulumi.getter(name="aggregationFunction")
@@ -31313,32 +31340,6 @@ class FeatureEngineeringFeatureFunctionArgs:
     def custom_udf(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionCustomUdfArgs']]):
         pulumi.set(self, "custom_udf", value)
 
-    @_builtins.property
-    @pulumi.getter(name="extraParameters")
-    def extra_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]]:
-        """
-        Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        Extra parameters for parameterized functions
-        """
-        return pulumi.get(self, "extra_parameters")
-
-    @extra_parameters.setter
-    def extra_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]]):
-        pulumi.set(self, "extra_parameters", value)
-
-    @_builtins.property
-    @pulumi.getter(name="functionType")
-    def function_type(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-        """
-        return pulumi.get(self, "function_type")
-
-    @function_type.setter
-    def function_type(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "function_type", value)
-
 
 class FeatureEngineeringFeatureFunctionAggregationFunctionArgsDict(TypedDict):
     approx_count_distinct: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctArgsDict']]]
@@ -31358,8 +31359,7 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionArgsDict(TypedDict):
     sum: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionSumArgsDict']]]
     time_window: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgsDict']]]
     """
-    Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-    The time window in which the feature is computed
+    The time window over which the aggregation is computed
     """
     var_pop: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionVarPopArgsDict']]]
     var_samp: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionVarSampArgsDict']]]
@@ -31386,8 +31386,7 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionArgs:
                  var_pop: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionVarPopArgs']] = None,
                  var_samp: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionVarSampArgs']] = None):
         """
-        :param pulumi.Input['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs'] time_window: Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-               The time window in which the feature is computed
+        :param pulumi.Input['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs'] time_window: The time window over which the aggregation is computed
         """
         if approx_count_distinct is not None:
             pulumi.set(__self__, "approx_count_distinct", approx_count_distinct)
@@ -31565,8 +31564,7 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionArgs:
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs']]:
         """
-        Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-        The time window in which the feature is computed
+        The time window over which the aggregation is computed
         """
         return pulumi.get(self, "time_window")
 
@@ -31990,45 +31988,52 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionSumArgs:
 
 
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgsDict(TypedDict):
-    continuous: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgsDict']]]
     rolling: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgsDict']]]
     sawtooth: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgsDict']]]
     """
     A sawtooth window served via the hybrid batch + streaming path
     """
     sliding: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgsDict']]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+    the historical inputs read by a window. For example, a 365-day window with
+    start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+    for 365 days of data; a lifetime window produces no output before start_time. If unset,
+    tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+    full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+    eligible source data exists
+    """
     tumbling: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgsDict']]]
 
 @pulumi.input_type
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs:
     def __init__(__self__, *,
-                 continuous: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs']] = None,
                  rolling: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs']] = None,
                  sawtooth: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs']] = None,
                  sliding: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs']] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  tumbling: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs']] = None):
         """
         :param pulumi.Input['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs'] sawtooth: A sawtooth window served via the hybrid batch + streaming path
+        :param pulumi.Input[_builtins.str] start_time: Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+               the historical inputs read by a window. For example, a 365-day window with
+               start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+               for 365 days of data; a lifetime window produces no output before start_time. If unset,
+               tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+               full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+               eligible source data exists
         """
-        if continuous is not None:
-            pulumi.set(__self__, "continuous", continuous)
         if rolling is not None:
             pulumi.set(__self__, "rolling", rolling)
         if sawtooth is not None:
             pulumi.set(__self__, "sawtooth", sawtooth)
         if sliding is not None:
             pulumi.set(__self__, "sliding", sliding)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
         if tumbling is not None:
             pulumi.set(__self__, "tumbling", tumbling)
-
-    @_builtins.property
-    @pulumi.getter
-    def continuous(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs']]:
-        return pulumi.get(self, "continuous")
-
-    @continuous.setter
-    def continuous(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs']]):
-        pulumi.set(self, "continuous", value)
 
     @_builtins.property
     @pulumi.getter
@@ -32061,6 +32066,24 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs:
         pulumi.set(self, "sliding", value)
 
     @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+        the historical inputs read by a window. For example, a 365-day window with
+        start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+        for 365 days of data; a lifetime window produces no output before start_time. If unset,
+        tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+        full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+        eligible source data exists
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def tumbling(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs']]:
         return pulumi.get(self, "tumbling")
@@ -32068,47 +32091,6 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs:
     @tumbling.setter
     def tumbling(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs']]):
         pulumi.set(self, "tumbling", value)
-
-
-class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgsDict(TypedDict):
-    window_duration: pulumi.Input[_builtins.str]
-    offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The offset of the continuous window (must be non-positive)
-    """
-
-@pulumi.input_type
-class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs:
-    def __init__(__self__, *,
-                 window_duration: pulumi.Input[_builtins.str],
-                 offset: pulumi.Input[Optional[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] offset: The offset of the continuous window (must be non-positive)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "window_duration")
-
-    @window_duration.setter
-    def window_duration(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "window_duration", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The offset of the continuous window (must be non-positive)
-        """
-        return pulumi.get(self, "offset")
-
-    @offset.setter
-    def offset(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "offset", value)
 
 
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgsDict(TypedDict):
@@ -32182,17 +32164,25 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgsD
     """
     The slide duration (interval by which windows advance, must be positive and less than duration)
     """
+    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     window_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs:
     def __init__(__self__, *,
                  slide_duration: pulumi.Input[_builtins.str],
+                 delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 offset: pulumi.Input[Optional[_builtins.str]] = None,
                  window_duration: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] slide_duration: The slide duration (interval by which windows advance, must be positive and less than duration)
         """
         pulumi.set(__self__, "slide_duration", slide_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
         if window_duration is not None:
             pulumi.set(__self__, "window_duration", window_duration)
 
@@ -32209,6 +32199,24 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs:
         pulumi.set(self, "slide_duration", value)
 
     @_builtins.property
+    @pulumi.getter
+    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delay", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "offset", value)
+
+    @_builtins.property
     @pulumi.getter(name="windowDuration")
     def window_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "window_duration")
@@ -32220,12 +32228,20 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs:
 
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgsDict(TypedDict):
     window_duration: pulumi.Input[_builtins.str]
+    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs:
     def __init__(__self__, *,
-                 window_duration: pulumi.Input[_builtins.str]):
+                 window_duration: pulumi.Input[_builtins.str],
+                 delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 offset: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "window_duration", window_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
 
     @_builtins.property
     @pulumi.getter(name="windowDuration")
@@ -32235,6 +32251,24 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs
     @window_duration.setter
     def window_duration(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "window_duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delay", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "offset", value)
 
 
 class FeatureEngineeringFeatureFunctionAggregationFunctionVarPopArgsDict(TypedDict):
@@ -32385,53 +32419,6 @@ class FeatureEngineeringFeatureFunctionCustomUdfInputBindingArgs:
         pulumi.set(self, "parameter", value)
 
 
-class FeatureEngineeringFeatureFunctionExtraParameterArgsDict(TypedDict):
-    key: pulumi.Input[_builtins.str]
-    """
-    The name of the parameter
-    """
-    value: pulumi.Input[_builtins.str]
-    """
-    The value of the parameter
-    """
-
-@pulumi.input_type
-class FeatureEngineeringFeatureFunctionExtraParameterArgs:
-    def __init__(__self__, *,
-                 key: pulumi.Input[_builtins.str],
-                 value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] key: The name of the parameter
-        :param pulumi.Input[_builtins.str] value: The value of the parameter
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the parameter
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        The value of the parameter
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
 class FeatureEngineeringFeatureLineageContextArgsDict(TypedDict):
     job_context: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextJobContextArgsDict']]]
     """
@@ -32568,6 +32555,11 @@ class FeatureEngineeringFeatureSourceArgsDict(TypedDict):
     """
     A Kafka stream data source
     """
+    lateness: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureSourceLatenessArgsDict']]]
+    """
+    Completeness timing for this Feature's use of the source. This configuration is part of the
+    Feature definition; it does not modify the underlying table or stream
+    """
     request_source: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureSourceRequestSourceArgsDict']]]
     """
     A request-time data source
@@ -32582,11 +32574,14 @@ class FeatureEngineeringFeatureSourceArgs:
     def __init__(__self__, *,
                  delta_table_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']] = None,
                  kafka_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceArgs']] = None,
+                 lateness: pulumi.Input[Optional['FeatureEngineeringFeatureSourceLatenessArgs']] = None,
                  request_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceRequestSourceArgs']] = None,
                  stream_source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceStreamSourceArgs']] = None):
         """
         :param pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs'] delta_table_source: A Delta table data source
         :param pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceArgs'] kafka_source: A Kafka stream data source
+        :param pulumi.Input['FeatureEngineeringFeatureSourceLatenessArgs'] lateness: Completeness timing for this Feature's use of the source. This configuration is part of the
+               Feature definition; it does not modify the underlying table or stream
         :param pulumi.Input['FeatureEngineeringFeatureSourceRequestSourceArgs'] request_source: A request-time data source
         :param pulumi.Input['FeatureEngineeringFeatureSourceStreamSourceArgs'] stream_source: A Stream data source
         """
@@ -32594,6 +32589,8 @@ class FeatureEngineeringFeatureSourceArgs:
             pulumi.set(__self__, "delta_table_source", delta_table_source)
         if kafka_source is not None:
             pulumi.set(__self__, "kafka_source", kafka_source)
+        if lateness is not None:
+            pulumi.set(__self__, "lateness", lateness)
         if request_source is not None:
             pulumi.set(__self__, "request_source", request_source)
         if stream_source is not None:
@@ -32622,6 +32619,19 @@ class FeatureEngineeringFeatureSourceArgs:
     @kafka_source.setter
     def kafka_source(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceArgs']]):
         pulumi.set(self, "kafka_source", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def lateness(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureSourceLatenessArgs']]:
+        """
+        Completeness timing for this Feature's use of the source. This configuration is part of the
+        Feature definition; it does not modify the underlying table or stream
+        """
+        return pulumi.get(self, "lateness")
+
+    @lateness.setter
+    def lateness(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureSourceLatenessArgs']]):
+        pulumi.set(self, "lateness", value)
 
     @_builtins.property
     @pulumi.getter(name="requestSource")
@@ -32656,20 +32666,7 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict(TypedDict):
     below are OUTPUT_ONLY decomposed views of this value
     """
     dataframe_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    entity_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    """
-    Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-    The entity columns of the Delta table
-    """
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-    The filter condition applied to the source data before aggregation
-    """
-    timeseries_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Column recording time, used for point-in-time joins, backfills, and aggregations
-    """
     transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -32677,29 +32674,18 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
     def __init__(__self__, *,
                  full_name: pulumi.Input[_builtins.str],
                  dataframe_schema: pulumi.Input[Optional[_builtins.str]] = None,
-                 entity_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeseries_column: pulumi.Input[Optional[_builtins.str]] = None,
                  transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
                feature's resource identifier; the catalog_name, schema_name, and name fields
                below are OUTPUT_ONLY decomposed views of this value
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_columns: Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
-        :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-               The filter condition applied to the source data before aggregation
-        :param pulumi.Input[_builtins.str] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -32727,42 +32713,13 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
         pulumi.set(self, "dataframe_schema", value)
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @entity_columns.setter
-    def entity_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "entity_columns", value)
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        The filter condition applied to the source data before aggregation
-        """
         return pulumi.get(self, "filter_condition")
 
     @filter_condition.setter
     def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Column recording time, used for point-in-time joins, backfills, and aggregations
-        """
-        return pulumi.get(self, "timeseries_column")
-
-    @timeseries_column.setter
-    def timeseries_column(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "timeseries_column", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -32779,45 +32736,19 @@ class FeatureEngineeringFeatureSourceKafkaSourceArgsDict(TypedDict):
     """
     (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
     """
-    entity_column_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict']]]]]
-    """
-    Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-    The entity column identifiers of the Kafka source
-    """
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-    The filter condition applied to the source data before aggregation
-    """
-    timeseries_column_identifier: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict']]]
-    """
-    Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-    The timeseries column identifier of the Kafka source
-    """
 
 @pulumi.input_type
 class FeatureEngineeringFeatureSourceKafkaSourceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 entity_column_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]]] = None,
-                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeseries_column_identifier: pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']] = None):
+                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]] entity_column_identifiers: Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity column identifiers of the Kafka source
-        :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-               The filter condition applied to the source data before aggregation
-        :param pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs'] timeseries_column_identifier: Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column identifier of the Kafka source
         """
         pulumi.set(__self__, "name", name)
-        if entity_column_identifiers is not None:
-            pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column_identifier is not None:
-            pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
 
     @_builtins.property
     @pulumi.getter
@@ -32832,105 +32763,51 @@ class FeatureEngineeringFeatureSourceKafkaSourceArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter(name="entityColumnIdentifiers")
-    def entity_column_identifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]]]:
-        """
-        Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity column identifiers of the Kafka source
-        """
-        return pulumi.get(self, "entity_column_identifiers")
-
-    @entity_column_identifiers.setter
-    def entity_column_identifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]]]):
-        pulumi.set(self, "entity_column_identifiers", value)
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        The filter condition applied to the source data before aggregation
-        """
         return pulumi.get(self, "filter_condition")
 
     @filter_condition.setter
     def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
 
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumnIdentifier")
-    def timeseries_column_identifier(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']]:
-        """
-        Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column identifier of the Kafka source
-        """
-        return pulumi.get(self, "timeseries_column_identifier")
 
-    @timeseries_column_identifier.setter
-    def timeseries_column_identifier(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']]):
-        pulumi.set(self, "timeseries_column_identifier", value)
-
-
-class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict(TypedDict):
-    variant_expr_path: pulumi.Input[_builtins.str]
+class FeatureEngineeringFeatureSourceLatenessArgsDict(TypedDict):
+    settling_delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-    and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+    Non-negative time to wait after a window ends before treating its source data as complete.
+    Training shifts the eligible evaluation time backwards by this duration so it does not join
+    data that would still have been settling online. Materialization waits for the duration to
+    elapse before publishing the window. If unset, source data is considered settled immediately
     """
 
 @pulumi.input_type
-class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs:
+class FeatureEngineeringFeatureSourceLatenessArgs:
     def __init__(__self__, *,
-                 variant_expr_path: pulumi.Input[_builtins.str]):
+                 settling_delay: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] variant_expr_path: String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-               and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+        :param pulumi.Input[_builtins.str] settling_delay: Non-negative time to wait after a window ends before treating its source data as complete.
+               Training shifts the eligible evaluation time backwards by this duration so it does not join
+               data that would still have been settling online. Materialization waits for the duration to
+               elapse before publishing the window. If unset, source data is considered settled immediately
         """
-        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+        if settling_delay is not None:
+            pulumi.set(__self__, "settling_delay", settling_delay)
 
     @_builtins.property
-    @pulumi.getter(name="variantExprPath")
-    def variant_expr_path(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="settlingDelay")
+    def settling_delay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-        and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+        Non-negative time to wait after a window ends before treating its source data as complete.
+        Training shifts the eligible evaluation time backwards by this duration so it does not join
+        data that would still have been settling online. Materialization waits for the duration to
+        elapse before publishing the window. If unset, source data is considered settled immediately
         """
-        return pulumi.get(self, "variant_expr_path")
+        return pulumi.get(self, "settling_delay")
 
-    @variant_expr_path.setter
-    def variant_expr_path(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "variant_expr_path", value)
-
-
-class FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict(TypedDict):
-    variant_expr_path: pulumi.Input[_builtins.str]
-    """
-    String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-    and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-    """
-
-@pulumi.input_type
-class FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs:
-    def __init__(__self__, *,
-                 variant_expr_path: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] variant_expr_path: String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-               and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-        """
-        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
-
-    @_builtins.property
-    @pulumi.getter(name="variantExprPath")
-    def variant_expr_path(self) -> pulumi.Input[_builtins.str]:
-        """
-        String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-        and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-        """
-        return pulumi.get(self, "variant_expr_path")
-
-    @variant_expr_path.setter
-    def variant_expr_path(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "variant_expr_path", value)
+    @settling_delay.setter
+    def settling_delay(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "settling_delay", value)
 
 
 class FeatureEngineeringFeatureSourceRequestSourceArgsDict(TypedDict):
@@ -33046,10 +32923,6 @@ class FeatureEngineeringFeatureSourceStreamSourceArgsDict(TypedDict):
     """
     dataframe_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-    The filter condition applied to the source data before aggregation
-    """
     transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -33063,8 +32936,6 @@ class FeatureEngineeringFeatureSourceStreamSourceArgs:
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
                feature's resource identifier; the catalog_name, schema_name, and name fields
                below are OUTPUT_ONLY decomposed views of this value
-        :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-               The filter condition applied to the source data before aggregation
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
@@ -33100,10 +32971,6 @@ class FeatureEngineeringFeatureSourceStreamSourceArgs:
     @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        The filter condition applied to the source data before aggregation
-        """
         return pulumi.get(self, "filter_condition")
 
     @filter_condition.setter
@@ -33118,254 +32985,6 @@ class FeatureEngineeringFeatureSourceStreamSourceArgs:
     @transformation_sql.setter
     def transformation_sql(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transformation_sql", value)
-
-
-class FeatureEngineeringFeatureTimeWindowArgsDict(TypedDict):
-    continuous: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowContinuousArgsDict']]]
-    rolling: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowRollingArgsDict']]]
-    sawtooth: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSawtoothArgsDict']]]
-    """
-    A sawtooth window served via the hybrid batch + streaming path
-    """
-    sliding: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSlidingArgsDict']]]
-    tumbling: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowTumblingArgsDict']]]
-
-@pulumi.input_type
-class FeatureEngineeringFeatureTimeWindowArgs:
-    def __init__(__self__, *,
-                 continuous: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowContinuousArgs']] = None,
-                 rolling: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowRollingArgs']] = None,
-                 sawtooth: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSawtoothArgs']] = None,
-                 sliding: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSlidingArgs']] = None,
-                 tumbling: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowTumblingArgs']] = None):
-        """
-        :param pulumi.Input['FeatureEngineeringFeatureTimeWindowSawtoothArgs'] sawtooth: A sawtooth window served via the hybrid batch + streaming path
-        """
-        if continuous is not None:
-            pulumi.set(__self__, "continuous", continuous)
-        if rolling is not None:
-            pulumi.set(__self__, "rolling", rolling)
-        if sawtooth is not None:
-            pulumi.set(__self__, "sawtooth", sawtooth)
-        if sliding is not None:
-            pulumi.set(__self__, "sliding", sliding)
-        if tumbling is not None:
-            pulumi.set(__self__, "tumbling", tumbling)
-
-    @_builtins.property
-    @pulumi.getter
-    def continuous(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowContinuousArgs']]:
-        return pulumi.get(self, "continuous")
-
-    @continuous.setter
-    def continuous(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowContinuousArgs']]):
-        pulumi.set(self, "continuous", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def rolling(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowRollingArgs']]:
-        return pulumi.get(self, "rolling")
-
-    @rolling.setter
-    def rolling(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowRollingArgs']]):
-        pulumi.set(self, "rolling", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def sawtooth(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSawtoothArgs']]:
-        """
-        A sawtooth window served via the hybrid batch + streaming path
-        """
-        return pulumi.get(self, "sawtooth")
-
-    @sawtooth.setter
-    def sawtooth(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSawtoothArgs']]):
-        pulumi.set(self, "sawtooth", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def sliding(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSlidingArgs']]:
-        return pulumi.get(self, "sliding")
-
-    @sliding.setter
-    def sliding(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSlidingArgs']]):
-        pulumi.set(self, "sliding", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def tumbling(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowTumblingArgs']]:
-        return pulumi.get(self, "tumbling")
-
-    @tumbling.setter
-    def tumbling(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowTumblingArgs']]):
-        pulumi.set(self, "tumbling", value)
-
-
-class FeatureEngineeringFeatureTimeWindowContinuousArgsDict(TypedDict):
-    window_duration: pulumi.Input[_builtins.str]
-    offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The offset of the continuous window (must be non-positive)
-    """
-
-@pulumi.input_type
-class FeatureEngineeringFeatureTimeWindowContinuousArgs:
-    def __init__(__self__, *,
-                 window_duration: pulumi.Input[_builtins.str],
-                 offset: pulumi.Input[Optional[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] offset: The offset of the continuous window (must be non-positive)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "window_duration")
-
-    @window_duration.setter
-    def window_duration(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "window_duration", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The offset of the continuous window (must be non-positive)
-        """
-        return pulumi.get(self, "offset")
-
-    @offset.setter
-    def offset(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "offset", value)
-
-
-class FeatureEngineeringFeatureTimeWindowRollingArgsDict(TypedDict):
-    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    window_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-
-@pulumi.input_type
-class FeatureEngineeringFeatureTimeWindowRollingArgs:
-    def __init__(__self__, *,
-                 delay: pulumi.Input[Optional[_builtins.str]] = None,
-                 window_duration: pulumi.Input[Optional[_builtins.str]] = None):
-        if delay is not None:
-            pulumi.set(__self__, "delay", delay)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter
-    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "delay")
-
-    @delay.setter
-    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "delay", value)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "window_duration")
-
-    @window_duration.setter
-    def window_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "window_duration", value)
-
-
-class FeatureEngineeringFeatureTimeWindowSawtoothArgsDict(TypedDict):
-    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    window_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-
-@pulumi.input_type
-class FeatureEngineeringFeatureTimeWindowSawtoothArgs:
-    def __init__(__self__, *,
-                 delay: pulumi.Input[Optional[_builtins.str]] = None,
-                 window_duration: pulumi.Input[Optional[_builtins.str]] = None):
-        if delay is not None:
-            pulumi.set(__self__, "delay", delay)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter
-    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "delay")
-
-    @delay.setter
-    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "delay", value)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "window_duration")
-
-    @window_duration.setter
-    def window_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "window_duration", value)
-
-
-class FeatureEngineeringFeatureTimeWindowSlidingArgsDict(TypedDict):
-    slide_duration: pulumi.Input[_builtins.str]
-    """
-    The slide duration (interval by which windows advance, must be positive and less than duration)
-    """
-    window_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-
-@pulumi.input_type
-class FeatureEngineeringFeatureTimeWindowSlidingArgs:
-    def __init__(__self__, *,
-                 slide_duration: pulumi.Input[_builtins.str],
-                 window_duration: pulumi.Input[Optional[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] slide_duration: The slide duration (interval by which windows advance, must be positive and less than duration)
-        """
-        pulumi.set(__self__, "slide_duration", slide_duration)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="slideDuration")
-    def slide_duration(self) -> pulumi.Input[_builtins.str]:
-        """
-        The slide duration (interval by which windows advance, must be positive and less than duration)
-        """
-        return pulumi.get(self, "slide_duration")
-
-    @slide_duration.setter
-    def slide_duration(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "slide_duration", value)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "window_duration")
-
-    @window_duration.setter
-    def window_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "window_duration", value)
-
-
-class FeatureEngineeringFeatureTimeWindowTumblingArgsDict(TypedDict):
-    window_duration: pulumi.Input[_builtins.str]
-
-@pulumi.input_type
-class FeatureEngineeringFeatureTimeWindowTumblingArgs:
-    def __init__(__self__, *,
-                 window_duration: pulumi.Input[_builtins.str]):
-        pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "window_duration")
-
-    @window_duration.setter
-    def window_duration(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "window_duration", value)
 
 
 class FeatureEngineeringFeatureTimeseriesColumnArgsDict(TypedDict):
@@ -33808,19 +33427,9 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgsDict(TypedD
     Required if transformation_sql is specified.
     Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
     """
-    entity_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    """
-    Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-    The entity columns of the Delta table
-    """
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-    """
-    timeseries_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-    The timeseries column of the Delta table
     """
     transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -33834,20 +33443,14 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
     def __init__(__self__, *,
                  full_name: pulumi.Input[_builtins.str],
                  dataframe_schema: pulumi.Input[Optional[_builtins.str]] = None,
-                 entity_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeseries_column: pulumi.Input[Optional[_builtins.str]] = None,
                  transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] full_name: The full three-part (catalog, schema, table) name of the Delta table
         :param pulumi.Input[_builtins.str] dataframe_schema: Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
                Required if transformation_sql is specified.
                Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_columns: Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param pulumi.Input[_builtins.str] filter_condition: Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-        :param pulumi.Input[_builtins.str] timeseries_column: Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param pulumi.Input[_builtins.str] transformation_sql: A single SQL SELECT expression applied after filter_condition.
                Should contains all the columns needed (eg. "SELECT *, col_a + col_b AS col_c FROM x.y.z WHERE col_a > 0" would have `transformation_sql` "*, col_a + col_b AS col_c")
                If transformation_sql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -33855,12 +33458,8 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -33891,19 +33490,6 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
         pulumi.set(self, "dataframe_schema", value)
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @entity_columns.setter
-    def entity_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "entity_columns", value)
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -33914,19 +33500,6 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
     @filter_condition.setter
     def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
-
-    @timeseries_column.setter
-    def timeseries_column(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "timeseries_column", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -34151,19 +33724,9 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
     Required if transformation_sql is specified.
     Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
     """
-    entity_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    """
-    Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-    The entity columns of the Delta table
-    """
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-    """
-    timeseries_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-    The timeseries column of the Delta table
     """
     transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -34177,20 +33740,14 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
     def __init__(__self__, *,
                  full_name: pulumi.Input[_builtins.str],
                  dataframe_schema: pulumi.Input[Optional[_builtins.str]] = None,
-                 entity_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeseries_column: pulumi.Input[Optional[_builtins.str]] = None,
                  transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] full_name: The full three-part (catalog, schema, table) name of the Delta table
         :param pulumi.Input[_builtins.str] dataframe_schema: Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
                Required if transformation_sql is specified.
                Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_columns: Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param pulumi.Input[_builtins.str] filter_condition: Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-        :param pulumi.Input[_builtins.str] timeseries_column: Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param pulumi.Input[_builtins.str] transformation_sql: A single SQL SELECT expression applied after filter_condition.
                Should contains all the columns needed (eg. "SELECT *, col_a + col_b AS col_c FROM x.y.z WHERE col_a > 0" would have `transformation_sql` "*, col_a + col_b AS col_c")
                If transformation_sql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -34198,12 +33755,8 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -34234,19 +33787,6 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
         pulumi.set(self, "dataframe_schema", value)
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @entity_columns.setter
-    def entity_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "entity_columns", value)
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -34257,19 +33797,6 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
     @filter_condition.setter
     def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
-
-    @timeseries_column.setter
-    def timeseries_column(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "timeseries_column", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -35821,6 +35348,7 @@ class IpAccessListProviderConfigArgs:
 
 
 class JobContinuousArgsDict(TypedDict):
+    maintenance_window: NotRequired[pulumi.Input[Optional['JobContinuousMaintenanceWindowArgsDict']]]
     pause_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
@@ -35835,6 +35363,7 @@ class JobContinuousArgsDict(TypedDict):
 @pulumi.input_type
 class JobContinuousArgs:
     def __init__(__self__, *,
+                 maintenance_window: pulumi.Input[Optional['JobContinuousMaintenanceWindowArgs']] = None,
                  pause_status: pulumi.Input[Optional[_builtins.str]] = None,
                  task_retry_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -35843,10 +35372,21 @@ class JobContinuousArgs:
                * `NEVER` (default): The failed task will not be retried.
                * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
         """
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
         if task_retry_mode is not None:
             pulumi.set(__self__, "task_retry_mode", task_retry_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Input[Optional['JobContinuousMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: pulumi.Input[Optional['JobContinuousMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter(name="pauseStatus")
@@ -35873,6 +35413,58 @@ class JobContinuousArgs:
     @task_retry_mode.setter
     def task_retry_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_retry_mode", value)
+
+
+class JobContinuousMaintenanceWindowArgsDict(TypedDict):
+    day_of_week: pulumi.Input[_builtins.str]
+    start_hour: pulumi.Input[_builtins.int]
+    timezone_id: pulumi.Input[_builtins.str]
+    """
+    A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+    """
+
+@pulumi.input_type
+class JobContinuousMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[_builtins.str],
+                 start_hour: pulumi.Input[_builtins.int],
+                 timezone_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] timezone_id: A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "start_hour", start_hour)
+        pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> pulumi.Input[_builtins.int]:
+        return pulumi.get(self, "start_hour")
+
+    @start_hour.setter
+    def start_hour(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "start_hour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timezone_id", value)
 
 
 class JobDbtTaskArgsDict(TypedDict):
@@ -37893,13 +37485,17 @@ class JobJobClusterNewClusterDockerImageBasicAuthArgs:
 
 class JobJobClusterNewClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -37909,6 +37505,15 @@ class JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class JobJobClusterNewClusterGcpAttributesArgsDict(TypedDict):
@@ -38637,13 +38242,17 @@ class JobJobClusterNewClusterProviderConfigArgs:
 
 class JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -38653,6 +38262,15 @@ class JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class JobJobClusterNewClusterWorkloadTypeArgsDict(TypedDict):
@@ -40112,13 +39730,17 @@ class JobNewClusterDockerImageBasicAuthArgs:
 
 class JobNewClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobNewClusterDriverNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -40128,6 +39750,15 @@ class JobNewClusterDriverNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class JobNewClusterGcpAttributesArgsDict(TypedDict):
@@ -40856,13 +40487,17 @@ class JobNewClusterProviderConfigArgs:
 
 class JobNewClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobNewClusterWorkerNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -40872,6 +40507,15 @@ class JobNewClusterWorkerNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class JobNewClusterWorkloadTypeArgsDict(TypedDict):
@@ -42629,6 +42273,7 @@ class JobTaskAlertTaskArgsDict(TypedDict):
     """
     (String) identifier of the Databricks Alert (databricks_alert).
     """
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     subscribers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskAlertTaskSubscriberArgsDict']]]]]
     """
     The list of subscribers to send the snapshot of the dashboard to.
@@ -42640,6 +42285,7 @@ class JobTaskAlertTaskArgsDict(TypedDict):
 class JobTaskAlertTaskArgs:
     def __init__(__self__, *,
                  alert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  subscribers: pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskAlertTaskSubscriberArgs']]]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_path: pulumi.Input[Optional[_builtins.str]] = None):
@@ -42649,6 +42295,8 @@ class JobTaskAlertTaskArgs:
         """
         if alert_id is not None:
             pulumi.set(__self__, "alert_id", alert_id)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if subscribers is not None:
             pulumi.set(__self__, "subscribers", subscribers)
         if warehouse_id is not None:
@@ -42667,6 +42315,15 @@ class JobTaskAlertTaskArgs:
     @alert_id.setter
     def alert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
@@ -44497,6 +44154,7 @@ class JobTaskForEachTaskTaskAlertTaskArgsDict(TypedDict):
     """
     (String) identifier of the Databricks Alert (databricks_alert).
     """
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     subscribers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskForEachTaskTaskAlertTaskSubscriberArgsDict']]]]]
     """
     The list of subscribers to send the snapshot of the dashboard to.
@@ -44508,6 +44166,7 @@ class JobTaskForEachTaskTaskAlertTaskArgsDict(TypedDict):
 class JobTaskForEachTaskTaskAlertTaskArgs:
     def __init__(__self__, *,
                  alert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  subscribers: pulumi.Input[Optional[Sequence[pulumi.Input['JobTaskForEachTaskTaskAlertTaskSubscriberArgs']]]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_path: pulumi.Input[Optional[_builtins.str]] = None):
@@ -44517,6 +44176,8 @@ class JobTaskForEachTaskTaskAlertTaskArgs:
         """
         if alert_id is not None:
             pulumi.set(__self__, "alert_id", alert_id)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if subscribers is not None:
             pulumi.set(__self__, "subscribers", subscribers)
         if warehouse_id is not None:
@@ -44535,6 +44196,15 @@ class JobTaskForEachTaskTaskAlertTaskArgs:
     @alert_id.setter
     def alert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
@@ -47105,13 +46775,17 @@ class JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs:
 
 class JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -47121,6 +46795,15 @@ class JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class JobTaskForEachTaskTaskNewClusterGcpAttributesArgsDict(TypedDict):
@@ -47849,13 +47532,17 @@ class JobTaskForEachTaskTaskNewClusterProviderConfigArgs:
 
 class JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -47865,6 +47552,15 @@ class JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class JobTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict(TypedDict):
@@ -51596,13 +51292,17 @@ class JobTaskNewClusterDockerImageBasicAuthArgs:
 
 class JobTaskNewClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobTaskNewClusterDriverNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -51612,6 +51312,15 @@ class JobTaskNewClusterDriverNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class JobTaskNewClusterGcpAttributesArgsDict(TypedDict):
@@ -52340,13 +52049,17 @@ class JobTaskNewClusterProviderConfigArgs:
 
 class JobTaskNewClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    aws_context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobTaskNewClusterWorkerNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alternate_node_type_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aws_context_id: pulumi.Input[Optional[_builtins.str]] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -52356,6 +52069,15 @@ class JobTaskNewClusterWorkerNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class JobTaskNewClusterWorkloadTypeArgsDict(TypedDict):
@@ -54567,6 +54289,7 @@ class JobTriggerArgs:
 
 
 class JobTriggerContinuousArgsDict(TypedDict):
+    maintenance_window: NotRequired[pulumi.Input[Optional['JobTriggerContinuousMaintenanceWindowArgsDict']]]
     task_retry_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Controls task level retry behaviour. Allowed values are:
@@ -54577,14 +54300,26 @@ class JobTriggerContinuousArgsDict(TypedDict):
 @pulumi.input_type
 class JobTriggerContinuousArgs:
     def __init__(__self__, *,
+                 maintenance_window: pulumi.Input[Optional['JobTriggerContinuousMaintenanceWindowArgs']] = None,
                  task_retry_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] task_retry_mode: Controls task level retry behaviour. Allowed values are:
                * `NEVER` (default): The failed task will not be retried.
                * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
         """
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if task_retry_mode is not None:
             pulumi.set(__self__, "task_retry_mode", task_retry_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Input[Optional['JobTriggerContinuousMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: pulumi.Input[Optional['JobTriggerContinuousMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter(name="taskRetryMode")
@@ -54599,6 +54334,58 @@ class JobTriggerContinuousArgs:
     @task_retry_mode.setter
     def task_retry_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_retry_mode", value)
+
+
+class JobTriggerContinuousMaintenanceWindowArgsDict(TypedDict):
+    day_of_week: pulumi.Input[_builtins.str]
+    start_hour: pulumi.Input[_builtins.int]
+    timezone_id: pulumi.Input[_builtins.str]
+    """
+    A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+    """
+
+@pulumi.input_type
+class JobTriggerContinuousMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[_builtins.str],
+                 start_hour: pulumi.Input[_builtins.int],
+                 timezone_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] timezone_id: A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "start_hour", start_hour)
+        pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> pulumi.Input[_builtins.int]:
+        return pulumi.get(self, "start_hour")
+
+    @start_hour.setter
+    def start_hour(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "start_hour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timezone_id", value)
 
 
 class JobTriggerFileArrivalArgsDict(TypedDict):
@@ -62142,13 +61929,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -62202,7 +61989,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -62212,7 +61999,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -62470,13 +62257,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -62491,7 +62278,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -62501,7 +62288,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -66393,10 +66180,10 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportPara
 class PipelineIngestionDefinitionObjectSchemaArgsDict(TypedDict):
     destination_catalog: pulumi.Input[_builtins.str]
     destination_schema: pulumi.Input[_builtins.str]
-    source_schema: pulumi.Input[_builtins.str]
     connector_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgsDict']]]
     fanout_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgsDict']]]
     source_catalog: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    source_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     table_configuration: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict']]]
 
 @pulumi.input_type
@@ -66404,20 +66191,21 @@ class PipelineIngestionDefinitionObjectSchemaArgs:
     def __init__(__self__, *,
                  destination_catalog: pulumi.Input[_builtins.str],
                  destination_schema: pulumi.Input[_builtins.str],
-                 source_schema: pulumi.Input[_builtins.str],
                  connector_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs']] = None,
                  fanout_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaFanoutOptionsArgs']] = None,
                  source_catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_schema: pulumi.Input[Optional[_builtins.str]] = None,
                  table_configuration: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs']] = None):
         pulumi.set(__self__, "destination_catalog", destination_catalog)
         pulumi.set(__self__, "destination_schema", destination_schema)
-        pulumi.set(__self__, "source_schema", source_schema)
         if connector_options is not None:
             pulumi.set(__self__, "connector_options", connector_options)
         if fanout_options is not None:
             pulumi.set(__self__, "fanout_options", fanout_options)
         if source_catalog is not None:
             pulumi.set(__self__, "source_catalog", source_catalog)
+        if source_schema is not None:
+            pulumi.set(__self__, "source_schema", source_schema)
         if table_configuration is not None:
             pulumi.set(__self__, "table_configuration", table_configuration)
 
@@ -66438,15 +66226,6 @@ class PipelineIngestionDefinitionObjectSchemaArgs:
     @destination_schema.setter
     def destination_schema(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "destination_schema", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceSchema")
-    def source_schema(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "source_schema")
-
-    @source_schema.setter
-    def source_schema(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "source_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorOptions")
@@ -66476,6 +66255,15 @@ class PipelineIngestionDefinitionObjectSchemaArgs:
         pulumi.set(self, "source_catalog", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceSchema")
+    def source_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "source_schema")
+
+    @source_schema.setter
+    def source_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_schema", value)
+
+    @_builtins.property
     @pulumi.getter(name="tableConfiguration")
     def table_configuration(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs']]:
         return pulumi.get(self, "table_configuration")
@@ -66496,6 +66284,7 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgsDict(TypedDict)
     marketo_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptionsArgsDict']]]
     meta_ads_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgsDict']]]
     outlook_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgsDict']]]
+    rabbitmq_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgsDict']]]
     reddit_ads_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsArgsDict']]]
     sharepoint_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsArgsDict']]]
     smartsheet_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptionsArgsDict']]]
@@ -66515,6 +66304,7 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs:
                  marketo_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptionsArgs']] = None,
                  meta_ads_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs']] = None,
                  outlook_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs']] = None,
+                 rabbitmq_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgs']] = None,
                  reddit_ads_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsArgs']] = None,
                  sharepoint_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsArgs']] = None,
                  smartsheet_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptionsArgs']] = None,
@@ -66540,6 +66330,8 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs:
             pulumi.set(__self__, "meta_ads_options", meta_ads_options)
         if outlook_options is not None:
             pulumi.set(__self__, "outlook_options", outlook_options)
+        if rabbitmq_options is not None:
+            pulumi.set(__self__, "rabbitmq_options", rabbitmq_options)
         if reddit_ads_options is not None:
             pulumi.set(__self__, "reddit_ads_options", reddit_ads_options)
         if sharepoint_options is not None:
@@ -66640,6 +66432,15 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs:
     @outlook_options.setter
     def outlook_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs']]):
         pulumi.set(self, "outlook_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rabbitmqOptions")
+    def rabbitmq_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgs']]:
+        return pulumi.get(self, "rabbitmq_options")
+
+    @rabbitmq_options.setter
+    def rabbitmq_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgs']]):
+        pulumi.set(self, "rabbitmq_options", value)
 
     @_builtins.property
     @pulumi.getter(name="redditAdsOptions")
@@ -67962,6 +67763,25 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs:
         pulumi.set(self, "subject_filters", value)
 
 
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgsDict(TypedDict):
+    queue: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptionsArgs:
+    def __init__(__self__, *,
+                 queue: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "queue", queue)
+
+    @_builtins.property
+    @pulumi.getter
+    def queue(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "queue")
+
+    @queue.setter
+    def queue(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "queue", value)
+
+
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsArgsDict(TypedDict):
     custom_report_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsCustomReportOptionsArgsDict']]]
     lookback_window_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -69037,11 +68857,11 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportPara
 class PipelineIngestionDefinitionObjectTableArgsDict(TypedDict):
     destination_catalog: pulumi.Input[_builtins.str]
     destination_schema: pulumi.Input[_builtins.str]
-    source_table: pulumi.Input[_builtins.str]
     connector_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsArgsDict']]]
     destination_table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     source_catalog: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     source_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    source_table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     table_configuration: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict']]]
 
 @pulumi.input_type
@@ -69049,15 +68869,14 @@ class PipelineIngestionDefinitionObjectTableArgs:
     def __init__(__self__, *,
                  destination_catalog: pulumi.Input[_builtins.str],
                  destination_schema: pulumi.Input[_builtins.str],
-                 source_table: pulumi.Input[_builtins.str],
                  connector_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsArgs']] = None,
                  destination_table: pulumi.Input[Optional[_builtins.str]] = None,
                  source_catalog: pulumi.Input[Optional[_builtins.str]] = None,
                  source_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_table: pulumi.Input[Optional[_builtins.str]] = None,
                  table_configuration: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableTableConfigurationArgs']] = None):
         pulumi.set(__self__, "destination_catalog", destination_catalog)
         pulumi.set(__self__, "destination_schema", destination_schema)
-        pulumi.set(__self__, "source_table", source_table)
         if connector_options is not None:
             pulumi.set(__self__, "connector_options", connector_options)
         if destination_table is not None:
@@ -69066,6 +68885,8 @@ class PipelineIngestionDefinitionObjectTableArgs:
             pulumi.set(__self__, "source_catalog", source_catalog)
         if source_schema is not None:
             pulumi.set(__self__, "source_schema", source_schema)
+        if source_table is not None:
+            pulumi.set(__self__, "source_table", source_table)
         if table_configuration is not None:
             pulumi.set(__self__, "table_configuration", table_configuration)
 
@@ -69086,15 +68907,6 @@ class PipelineIngestionDefinitionObjectTableArgs:
     @destination_schema.setter
     def destination_schema(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "destination_schema", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceTable")
-    def source_table(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "source_table")
-
-    @source_table.setter
-    def source_table(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "source_table", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorOptions")
@@ -69133,6 +68945,15 @@ class PipelineIngestionDefinitionObjectTableArgs:
         pulumi.set(self, "source_schema", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceTable")
+    def source_table(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "source_table")
+
+    @source_table.setter
+    def source_table(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_table", value)
+
+    @_builtins.property
     @pulumi.getter(name="tableConfiguration")
     def table_configuration(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableTableConfigurationArgs']]:
         return pulumi.get(self, "table_configuration")
@@ -69153,6 +68974,7 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsArgsDict(TypedDict):
     marketo_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptionsArgsDict']]]
     meta_ads_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsArgsDict']]]
     outlook_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgsDict']]]
+    rabbitmq_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptionsArgsDict']]]
     reddit_ads_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgsDict']]]
     sharepoint_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsArgsDict']]]
     smartsheet_options: NotRequired[pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptionsArgsDict']]]
@@ -69172,6 +68994,7 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs:
                  marketo_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptionsArgs']] = None,
                  meta_ads_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsArgs']] = None,
                  outlook_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgs']] = None,
+                 rabbitmq_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptionsArgs']] = None,
                  reddit_ads_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgs']] = None,
                  sharepoint_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsArgs']] = None,
                  smartsheet_options: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptionsArgs']] = None,
@@ -69197,6 +69020,8 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs:
             pulumi.set(__self__, "meta_ads_options", meta_ads_options)
         if outlook_options is not None:
             pulumi.set(__self__, "outlook_options", outlook_options)
+        if rabbitmq_options is not None:
+            pulumi.set(__self__, "rabbitmq_options", rabbitmq_options)
         if reddit_ads_options is not None:
             pulumi.set(__self__, "reddit_ads_options", reddit_ads_options)
         if sharepoint_options is not None:
@@ -69297,6 +69122,15 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs:
     @outlook_options.setter
     def outlook_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgs']]):
         pulumi.set(self, "outlook_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rabbitmqOptions")
+    def rabbitmq_options(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptionsArgs']]:
+        return pulumi.get(self, "rabbitmq_options")
+
+    @rabbitmq_options.setter
+    def rabbitmq_options(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptionsArgs']]):
+        pulumi.set(self, "rabbitmq_options", value)
 
     @_builtins.property
     @pulumi.getter(name="redditAdsOptions")
@@ -70617,6 +70451,25 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgs:
     @subject_filters.setter
     def subject_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subject_filters", value)
+
+
+class PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptionsArgsDict(TypedDict):
+    queue: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptionsArgs:
+    def __init__(__self__, *,
+                 queue: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "queue", queue)
+
+    @_builtins.property
+    @pulumi.getter
+    def queue(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "queue")
+
+    @queue.setter
+    def queue(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "queue", value)
 
 
 class PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsArgsDict(TypedDict):
@@ -72662,19 +72515,31 @@ class PolicyInfoColumnMaskUsingArgsDict(TypedDict):
     """
     A constant literal
     """
+    function_arg_expression: NotRequired[pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionArgsDict']]]
+    """
+    An expression evaluated at query time. Wraps per-request expression variants
+    (e.g., tag introspection) so new variants can be added without extending the
+    FunctionArgument oneof
+    """
 
 @pulumi.input_type
 class PolicyInfoColumnMaskUsingArgs:
     def __init__(__self__, *,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
-                 constant: pulumi.Input[Optional[_builtins.str]] = None):
+                 constant: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_arg_expression: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] constant: A constant literal
+        :param pulumi.Input['PolicyInfoColumnMaskUsingFunctionArgExpressionArgs'] function_arg_expression: An expression evaluated at query time. Wraps per-request expression variants
+               (e.g., tag introspection) so new variants can be added without extending the
+               FunctionArgument oneof
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if constant is not None:
             pulumi.set(__self__, "constant", constant)
+        if function_arg_expression is not None:
+            pulumi.set(__self__, "function_arg_expression", function_arg_expression)
 
     @_builtins.property
     @pulumi.getter
@@ -72696,6 +72561,157 @@ class PolicyInfoColumnMaskUsingArgs:
     @constant.setter
     def constant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "constant", value)
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgExpression")
+    def function_arg_expression(self) -> pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionArgs']]:
+        """
+        An expression evaluated at query time. Wraps per-request expression variants
+        (e.g., tag introspection) so new variants can be added without extending the
+        FunctionArgument oneof
+        """
+        return pulumi.get(self, "function_arg_expression")
+
+    @function_arg_expression.setter
+    def function_arg_expression(self, value: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionArgs']]):
+        pulumi.set(self, "function_arg_expression", value)
+
+
+class PolicyInfoColumnMaskUsingFunctionArgExpressionArgsDict(TypedDict):
+    tag_introspection: NotRequired[pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgsDict']]]
+    """
+    An expression that introspects tags at query time
+    """
+
+@pulumi.input_type
+class PolicyInfoColumnMaskUsingFunctionArgExpressionArgs:
+    def __init__(__self__, *,
+                 tag_introspection: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs']] = None):
+        """
+        :param pulumi.Input['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs'] tag_introspection: An expression that introspects tags at query time
+        """
+        if tag_introspection is not None:
+            pulumi.set(__self__, "tag_introspection", tag_introspection)
+
+    @_builtins.property
+    @pulumi.getter(name="tagIntrospection")
+    def tag_introspection(self) -> pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs']]:
+        """
+        An expression that introspects tags at query time
+        """
+        return pulumi.get(self, "tag_introspection")
+
+    @tag_introspection.setter
+    def tag_introspection(self, value: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs']]):
+        pulumi.set(self, "tag_introspection", value)
+
+
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgsDict(TypedDict):
+    column_tag_value: NotRequired[pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgsDict']]]
+    """
+    Extracts the value of a column-level tag
+    """
+    tag_value: NotRequired[pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict']]]
+    """
+    Extracts the value of a securable-level tag
+    """
+
+@pulumi.input_type
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs:
+    def __init__(__self__, *,
+                 column_tag_value: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs']] = None,
+                 tag_value: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs']] = None):
+        """
+        :param pulumi.Input['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs'] column_tag_value: Extracts the value of a column-level tag
+        :param pulumi.Input['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs'] tag_value: Extracts the value of a securable-level tag
+        """
+        if column_tag_value is not None:
+            pulumi.set(__self__, "column_tag_value", column_tag_value)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnTagValue")
+    def column_tag_value(self) -> pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs']]:
+        """
+        Extracts the value of a column-level tag
+        """
+        return pulumi.get(self, "column_tag_value")
+
+    @column_tag_value.setter
+    def column_tag_value(self, value: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs']]):
+        pulumi.set(self, "column_tag_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs']]:
+        """
+        Extracts the value of a securable-level tag
+        """
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: pulumi.Input[Optional['PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs']]):
+        pulumi.set(self, "tag_value", value)
+
+
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgsDict(TypedDict):
+    column_alias: pulumi.Input[_builtins.str]
+    """
+    The alias from MATCH COLUMNS that identifies the column
+    """
+    tag_key: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs:
+    def __init__(__self__, *,
+                 column_alias: pulumi.Input[_builtins.str],
+                 tag_key: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] column_alias: The alias from MATCH COLUMNS that identifies the column
+        """
+        pulumi.set(__self__, "column_alias", column_alias)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="columnAlias")
+    def column_alias(self) -> pulumi.Input[_builtins.str]:
+        """
+        The alias from MATCH COLUMNS that identifies the column
+        """
+        return pulumi.get(self, "column_alias")
+
+    @column_alias.setter
+    def column_alias(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "column_alias", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tag_key", value)
+
+
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict(TypedDict):
+    tag_key: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs:
+    def __init__(__self__, *,
+                 tag_key: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tag_key", value)
 
 
 class PolicyInfoGrantArgsDict(TypedDict):
@@ -72844,19 +72860,31 @@ class PolicyInfoRowFilterUsingArgsDict(TypedDict):
     """
     A constant literal
     """
+    function_arg_expression: NotRequired[pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionArgsDict']]]
+    """
+    An expression evaluated at query time. Wraps per-request expression variants
+    (e.g., tag introspection) so new variants can be added without extending the
+    FunctionArgument oneof
+    """
 
 @pulumi.input_type
 class PolicyInfoRowFilterUsingArgs:
     def __init__(__self__, *,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
-                 constant: pulumi.Input[Optional[_builtins.str]] = None):
+                 constant: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_arg_expression: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] constant: A constant literal
+        :param pulumi.Input['PolicyInfoRowFilterUsingFunctionArgExpressionArgs'] function_arg_expression: An expression evaluated at query time. Wraps per-request expression variants
+               (e.g., tag introspection) so new variants can be added without extending the
+               FunctionArgument oneof
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if constant is not None:
             pulumi.set(__self__, "constant", constant)
+        if function_arg_expression is not None:
+            pulumi.set(__self__, "function_arg_expression", function_arg_expression)
 
     @_builtins.property
     @pulumi.getter
@@ -72878,6 +72906,157 @@ class PolicyInfoRowFilterUsingArgs:
     @constant.setter
     def constant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "constant", value)
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgExpression")
+    def function_arg_expression(self) -> pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionArgs']]:
+        """
+        An expression evaluated at query time. Wraps per-request expression variants
+        (e.g., tag introspection) so new variants can be added without extending the
+        FunctionArgument oneof
+        """
+        return pulumi.get(self, "function_arg_expression")
+
+    @function_arg_expression.setter
+    def function_arg_expression(self, value: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionArgs']]):
+        pulumi.set(self, "function_arg_expression", value)
+
+
+class PolicyInfoRowFilterUsingFunctionArgExpressionArgsDict(TypedDict):
+    tag_introspection: NotRequired[pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgsDict']]]
+    """
+    An expression that introspects tags at query time
+    """
+
+@pulumi.input_type
+class PolicyInfoRowFilterUsingFunctionArgExpressionArgs:
+    def __init__(__self__, *,
+                 tag_introspection: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs']] = None):
+        """
+        :param pulumi.Input['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs'] tag_introspection: An expression that introspects tags at query time
+        """
+        if tag_introspection is not None:
+            pulumi.set(__self__, "tag_introspection", tag_introspection)
+
+    @_builtins.property
+    @pulumi.getter(name="tagIntrospection")
+    def tag_introspection(self) -> pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs']]:
+        """
+        An expression that introspects tags at query time
+        """
+        return pulumi.get(self, "tag_introspection")
+
+    @tag_introspection.setter
+    def tag_introspection(self, value: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs']]):
+        pulumi.set(self, "tag_introspection", value)
+
+
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgsDict(TypedDict):
+    column_tag_value: NotRequired[pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgsDict']]]
+    """
+    Extracts the value of a column-level tag
+    """
+    tag_value: NotRequired[pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict']]]
+    """
+    Extracts the value of a securable-level tag
+    """
+
+@pulumi.input_type
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs:
+    def __init__(__self__, *,
+                 column_tag_value: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs']] = None,
+                 tag_value: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs']] = None):
+        """
+        :param pulumi.Input['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs'] column_tag_value: Extracts the value of a column-level tag
+        :param pulumi.Input['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs'] tag_value: Extracts the value of a securable-level tag
+        """
+        if column_tag_value is not None:
+            pulumi.set(__self__, "column_tag_value", column_tag_value)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnTagValue")
+    def column_tag_value(self) -> pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs']]:
+        """
+        Extracts the value of a column-level tag
+        """
+        return pulumi.get(self, "column_tag_value")
+
+    @column_tag_value.setter
+    def column_tag_value(self, value: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs']]):
+        pulumi.set(self, "column_tag_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs']]:
+        """
+        Extracts the value of a securable-level tag
+        """
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: pulumi.Input[Optional['PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs']]):
+        pulumi.set(self, "tag_value", value)
+
+
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgsDict(TypedDict):
+    column_alias: pulumi.Input[_builtins.str]
+    """
+    The alias from MATCH COLUMNS that identifies the column
+    """
+    tag_key: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs:
+    def __init__(__self__, *,
+                 column_alias: pulumi.Input[_builtins.str],
+                 tag_key: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] column_alias: The alias from MATCH COLUMNS that identifies the column
+        """
+        pulumi.set(__self__, "column_alias", column_alias)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="columnAlias")
+    def column_alias(self) -> pulumi.Input[_builtins.str]:
+        """
+        The alias from MATCH COLUMNS that identifies the column
+        """
+        return pulumi.get(self, "column_alias")
+
+    @column_alias.setter
+    def column_alias(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "column_alias", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tag_key", value)
+
+
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict(TypedDict):
+    tag_key: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs:
+    def __init__(__self__, *,
+                 tag_key: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tag_key", value)
 
 
 class PostgresBranchProviderConfigArgsDict(TypedDict):
@@ -72937,6 +73116,12 @@ class PostgresBranchSpecArgsDict(TypedDict):
     """
     (string) - The point in time on the source branch from which this branch was created
     """
+    source_snapshot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (string) - The snapshot this branch was restored from. Set only for branches created by
+    restoring a snapshot; unset for all other branches.
+    Format: projects/{project_id}/snapshots/{snapshot_id}
+    """
     ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Relative time-to-live duration. When set, the branch will expire at creation_time + ttl.
@@ -72952,6 +73137,7 @@ class PostgresBranchSpecArgs:
                  source_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  source_branch_lsn: pulumi.Input[Optional[_builtins.str]] = None,
                  source_branch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
@@ -72963,6 +73149,9 @@ class PostgresBranchSpecArgs:
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[_builtins.str] source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param pulumi.Input[_builtins.str] source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param pulumi.Input[_builtins.str] source_snapshot: (string) - The snapshot this branch was restored from. Set only for branches created by
+               restoring a snapshot; unset for all other branches.
+               Format: projects/{project_id}/snapshots/{snapshot_id}
         :param pulumi.Input[_builtins.str] ttl: Relative time-to-live duration. When set, the branch will expire at creation_time + ttl.
                Mutually exclusive with `expire_time` and `no_expiry`. When updating, use `spec.expiration` in the update_mask
         """
@@ -72978,6 +73167,8 @@ class PostgresBranchSpecArgs:
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -73057,6 +73248,20 @@ class PostgresBranchSpecArgs:
         pulumi.set(self, "source_branch_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The snapshot this branch was restored from. Set only for branches created by
+        restoring a snapshot; unset for all other branches.
+        Format: projects/{project_id}/snapshots/{snapshot_id}
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @source_snapshot.setter
+    def source_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_snapshot", value)
+
+    @_builtins.property
     @pulumi.getter
     def ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -73122,6 +73327,12 @@ class PostgresBranchStatusArgsDict(TypedDict):
     """
     (string) - The point in time on the source branch from which this branch was created
     """
+    source_snapshot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (string) - The snapshot this branch was restored from. Set only for branches created by
+    restoring a snapshot; unset for all other branches.
+    Format: projects/{project_id}/snapshots/{snapshot_id}
+    """
     state_change_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (string) - A timestamp indicating when the `current_state` began
@@ -73142,6 +73353,7 @@ class PostgresBranchStatusArgs:
                  source_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  source_branch_lsn: pulumi.Input[Optional[_builtins.str]] = None,
                  source_branch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  state_change_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] branch_id: The part of the name, chosen by the user when the resource was created
@@ -73159,6 +73371,9 @@ class PostgresBranchStatusArgs:
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[_builtins.str] source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param pulumi.Input[_builtins.str] source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param pulumi.Input[_builtins.str] source_snapshot: (string) - The snapshot this branch was restored from. Set only for branches created by
+               restoring a snapshot; unset for all other branches.
+               Format: projects/{project_id}/snapshots/{snapshot_id}
         :param pulumi.Input[_builtins.str] state_change_time: (string) - A timestamp indicating when the `current_state` began
         """
         if branch_id is not None:
@@ -73185,6 +73400,8 @@ class PostgresBranchStatusArgs:
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
         if state_change_time is not None:
             pulumi.set(__self__, "state_change_time", state_change_time)
 
@@ -73334,6 +73551,20 @@ class PostgresBranchStatusArgs:
     @source_branch_time.setter
     def source_branch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_branch_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - The snapshot this branch was restored from. Set only for branches created by
+        restoring a snapshot; unset for all other branches.
+        Format: projects/{project_id}/snapshots/{snapshot_id}
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @source_snapshot.setter
+    def source_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="stateChangeTime")
@@ -76066,6 +76297,237 @@ class PostgresRoleStatusAttributesArgs:
     @createrole.setter
     def createrole(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "createrole", value)
+
+
+class PostgresSnapshotScheduleProviderConfigArgsDict(TypedDict):
+    workspace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class PostgresSnapshotScheduleProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class PostgresSnapshotScheduleScheduleArgsDict(TypedDict):
+    retention: pulumi.Input[_builtins.str]
+    """
+    How long snapshots from this cadence are kept before automatic deletion.
+    Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+    so changing it affects only later snapshots
+    """
+    daily_schedule: NotRequired[pulumi.Input[Optional['PostgresSnapshotScheduleScheduleDailyScheduleArgsDict']]]
+    """
+    Take a snapshot once per day
+    """
+    monthly_schedule: NotRequired[pulumi.Input[Optional['PostgresSnapshotScheduleScheduleMonthlyScheduleArgsDict']]]
+    """
+    Take a snapshot once per month
+    """
+    weekly_schedule: NotRequired[pulumi.Input[Optional['PostgresSnapshotScheduleScheduleWeeklyScheduleArgsDict']]]
+    """
+    Take a snapshot once per week
+    """
+
+@pulumi.input_type
+class PostgresSnapshotScheduleScheduleArgs:
+    def __init__(__self__, *,
+                 retention: pulumi.Input[_builtins.str],
+                 daily_schedule: pulumi.Input[Optional['PostgresSnapshotScheduleScheduleDailyScheduleArgs']] = None,
+                 monthly_schedule: pulumi.Input[Optional['PostgresSnapshotScheduleScheduleMonthlyScheduleArgs']] = None,
+                 weekly_schedule: pulumi.Input[Optional['PostgresSnapshotScheduleScheduleWeeklyScheduleArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] retention: How long snapshots from this cadence are kept before automatic deletion.
+               Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+               so changing it affects only later snapshots
+        :param pulumi.Input['PostgresSnapshotScheduleScheduleDailyScheduleArgs'] daily_schedule: Take a snapshot once per day
+        :param pulumi.Input['PostgresSnapshotScheduleScheduleMonthlyScheduleArgs'] monthly_schedule: Take a snapshot once per month
+        :param pulumi.Input['PostgresSnapshotScheduleScheduleWeeklyScheduleArgs'] weekly_schedule: Take a snapshot once per week
+        """
+        pulumi.set(__self__, "retention", retention)
+        if daily_schedule is not None:
+            pulumi.set(__self__, "daily_schedule", daily_schedule)
+        if monthly_schedule is not None:
+            pulumi.set(__self__, "monthly_schedule", monthly_schedule)
+        if weekly_schedule is not None:
+            pulumi.set(__self__, "weekly_schedule", weekly_schedule)
+
+    @_builtins.property
+    @pulumi.getter
+    def retention(self) -> pulumi.Input[_builtins.str]:
+        """
+        How long snapshots from this cadence are kept before automatic deletion.
+        Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+        so changing it affects only later snapshots
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "retention", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dailySchedule")
+    def daily_schedule(self) -> pulumi.Input[Optional['PostgresSnapshotScheduleScheduleDailyScheduleArgs']]:
+        """
+        Take a snapshot once per day
+        """
+        return pulumi.get(self, "daily_schedule")
+
+    @daily_schedule.setter
+    def daily_schedule(self, value: pulumi.Input[Optional['PostgresSnapshotScheduleScheduleDailyScheduleArgs']]):
+        pulumi.set(self, "daily_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monthlySchedule")
+    def monthly_schedule(self) -> pulumi.Input[Optional['PostgresSnapshotScheduleScheduleMonthlyScheduleArgs']]:
+        """
+        Take a snapshot once per month
+        """
+        return pulumi.get(self, "monthly_schedule")
+
+    @monthly_schedule.setter
+    def monthly_schedule(self, value: pulumi.Input[Optional['PostgresSnapshotScheduleScheduleMonthlyScheduleArgs']]):
+        pulumi.set(self, "monthly_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="weeklySchedule")
+    def weekly_schedule(self) -> pulumi.Input[Optional['PostgresSnapshotScheduleScheduleWeeklyScheduleArgs']]:
+        """
+        Take a snapshot once per week
+        """
+        return pulumi.get(self, "weekly_schedule")
+
+    @weekly_schedule.setter
+    def weekly_schedule(self, value: pulumi.Input[Optional['PostgresSnapshotScheduleScheduleWeeklyScheduleArgs']]):
+        pulumi.set(self, "weekly_schedule", value)
+
+
+class PostgresSnapshotScheduleScheduleDailyScheduleArgsDict(TypedDict):
+    hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+
+@pulumi.input_type
+class PostgresSnapshotScheduleScheduleDailyScheduleArgs:
+    def __init__(__self__, *,
+                 hour: pulumi.Input[Optional[_builtins.int]] = None):
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "hour")
+
+    @hour.setter
+    def hour(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hour", value)
+
+
+class PostgresSnapshotScheduleScheduleMonthlyScheduleArgsDict(TypedDict):
+    day: pulumi.Input[_builtins.int]
+    """
+    The day of the month on which to take the snapshot, in [1, 31]. In shorter
+    months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+    or 29, and on Apr 30), so every month gets exactly one snapshot
+    """
+    hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+
+@pulumi.input_type
+class PostgresSnapshotScheduleScheduleMonthlyScheduleArgs:
+    def __init__(__self__, *,
+                 day: pulumi.Input[_builtins.int],
+                 hour: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] day: The day of the month on which to take the snapshot, in [1, 31]. In shorter
+               months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+               or 29, and on Apr 30), so every month gets exactly one snapshot
+        """
+        pulumi.set(__self__, "day", day)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> pulumi.Input[_builtins.int]:
+        """
+        The day of the month on which to take the snapshot, in [1, 31]. In shorter
+        months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+        or 29, and on Apr 30), so every month gets exactly one snapshot
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "day", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "hour")
+
+    @hour.setter
+    def hour(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hour", value)
+
+
+class PostgresSnapshotScheduleScheduleWeeklyScheduleArgsDict(TypedDict):
+    day_of_week: pulumi.Input[_builtins.str]
+    """
+    The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+    """
+    hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+
+@pulumi.input_type
+class PostgresSnapshotScheduleScheduleWeeklyScheduleArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[_builtins.str],
+                 hour: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] day_of_week: The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[_builtins.str]:
+        """
+        The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "hour")
+
+    @hour.setter
+    def hour(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hour", value)
 
 
 class PostgresSyncedTableProviderConfigArgsDict(TypedDict):
@@ -79241,7 +79703,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict(TypedDict):
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The type of securable (catalog/schema/table).
-    Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+    Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
     """
 
 @pulumi.input_type
@@ -79255,7 +79717,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurableArgs:
         :param pulumi.Input[_builtins.str] provider_share: Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param pulumi.Input[_builtins.str] type: Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -79294,7 +79756,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurableArgs:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -79346,7 +79808,7 @@ class RfaAccessRequestDestinationsSecurableArgsDict(TypedDict):
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The type of securable (catalog/schema/table).
-    Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+    Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
     """
 
 @pulumi.input_type
@@ -79361,7 +79823,7 @@ class RfaAccessRequestDestinationsSecurableArgs:
         :param pulumi.Input[_builtins.str] provider_share: Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param pulumi.Input[_builtins.str] type: Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -79401,7 +79863,7 @@ class RfaAccessRequestDestinationsSecurableArgs:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -88239,13 +88701,17 @@ class GetClusterClusterInfoDriverNodeAwsAttributesArgs:
 
 class GetClusterClusterInfoDriverNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[Sequence[_builtins.str]]
+    aws_context_id: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetClusterClusterInfoDriverNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -88255,6 +88721,15 @@ class GetClusterClusterInfoDriverNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: Optional[Sequence[_builtins.str]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class GetClusterClusterInfoExecutorArgsDict(TypedDict):
@@ -90034,13 +90509,17 @@ class GetClusterClusterInfoSpecDockerImageBasicAuthArgs:
 
 class GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[Sequence[_builtins.str]]
+    aws_context_id: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -90050,6 +90529,15 @@ class GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: Optional[Sequence[_builtins.str]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class GetClusterClusterInfoSpecGcpAttributesArgsDict(TypedDict):
@@ -90766,13 +91254,17 @@ class GetClusterClusterInfoSpecProviderConfigArgs:
 
 class GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[Sequence[_builtins.str]]
+    aws_context_id: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -90782,6 +91274,15 @@ class GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: Optional[Sequence[_builtins.str]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class GetClusterClusterInfoSpecWorkloadTypeArgsDict(TypedDict):
@@ -90884,13 +91385,17 @@ class GetClusterClusterInfoTerminationReasonArgs:
 
 class GetClusterClusterInfoWorkerNodeTypeFlexibilityArgsDict(TypedDict):
     alternate_node_type_ids: NotRequired[Sequence[_builtins.str]]
+    aws_context_id: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs:
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -90900,6 +91405,15 @@ class GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs:
     @alternate_node_type_ids.setter
     def alternate_node_type_ids(self, value: Optional[Sequence[_builtins.str]]):
         pulumi.set(self, "alternate_node_type_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
+
+    @aws_context_id.setter
+    def aws_context_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "aws_context_id", value)
 
 
 class GetClusterClusterInfoWorkloadTypeArgsDict(TypedDict):
@@ -110237,6 +110751,34 @@ class GetPostgresRolesProviderConfigArgs:
         pulumi.set(self, "workspace_id", value)
 
 
+class GetPostgresSnapshotScheduleProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetPostgresSnapshotScheduleProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
 class GetPostgresSyncedTableProviderConfigArgsDict(TypedDict):
     workspace_id: _builtins.str
     """
@@ -118670,6 +119212,90 @@ class GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetWorkspaceIamExternalGroupV2ProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetWorkspaceIamExternalUserV2ProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetWorkspaceIamExternalUserV2ProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskAlertTaskSubscriber;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +19,7 @@ public final class JobTaskAlertTask {
      * 
      */
     private @Nullable String alertId;
+    private @Nullable Map<String,String> parameters;
     /**
      * @return The list of subscribers to send the snapshot of the dashboard to.
      * 
@@ -33,6 +35,9 @@ public final class JobTaskAlertTask {
      */
     public Optional<String> alertId() {
         return Optional.ofNullable(this.alertId);
+    }
+    public Map<String,String> parameters() {
+        return this.parameters == null ? Map.of() : this.parameters;
     }
     /**
      * @return The list of subscribers to send the snapshot of the dashboard to.
@@ -58,6 +63,7 @@ public final class JobTaskAlertTask {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String alertId;
+        private @Nullable Map<String,String> parameters;
         private @Nullable List<JobTaskAlertTaskSubscriber> subscribers;
         private @Nullable String warehouseId;
         private @Nullable String workspacePath;
@@ -65,6 +71,7 @@ public final class JobTaskAlertTask {
         public Builder(JobTaskAlertTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertId = defaults.alertId;
+    	      this.parameters = defaults.parameters;
     	      this.subscribers = defaults.subscribers;
     	      this.warehouseId = defaults.warehouseId;
     	      this.workspacePath = defaults.workspacePath;
@@ -74,6 +81,12 @@ public final class JobTaskAlertTask {
         public Builder alertId(@Nullable String alertId) {
 
             this.alertId = alertId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parameters(@Nullable Map<String,String> parameters) {
+
+            this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
@@ -100,6 +113,7 @@ public final class JobTaskAlertTask {
         public JobTaskAlertTask build() {
             final var _resultValue = new JobTaskAlertTask();
             _resultValue.alertId = alertId;
+            _resultValue.parameters = parameters;
             _resultValue.subscribers = subscribers;
             _resultValue.warehouseId = warehouseId;
             _resultValue.workspacePath = workspacePath;

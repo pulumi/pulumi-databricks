@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -45,7 +45,8 @@ export interface GetWorkspaceIamUsersV2Args {
      */
     filter?: string;
     /**
-     * The maximum number of users to return. The service may return fewer than this value
+     * The maximum number of users to return. The service may return fewer than this value.
+     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: number;
     /**
@@ -64,7 +65,7 @@ export interface GetWorkspaceIamUsersV2Result {
     readonly users: outputs.GetWorkspaceIamUsersV2User[];
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -102,7 +103,8 @@ export interface GetWorkspaceIamUsersV2OutputArgs {
      */
     filter?: pulumi.Input<string | undefined>;
     /**
-     * The maximum number of users to return. The service may return fewer than this value
+     * The maximum number of users to return. The service may return fewer than this value.
+     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

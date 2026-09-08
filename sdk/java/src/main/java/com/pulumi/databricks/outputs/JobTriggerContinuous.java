@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTriggerContinuousMaintenanceWindow;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTriggerContinuous {
+    private @Nullable JobTriggerContinuousMaintenanceWindow maintenanceWindow;
     /**
      * @return Controls task level retry behaviour. Allowed values are:
      * * `NEVER` (default): The failed task will not be retried.
@@ -20,6 +22,9 @@ public final class JobTriggerContinuous {
     private @Nullable String taskRetryMode;
 
     private JobTriggerContinuous() {}
+    public Optional<JobTriggerContinuousMaintenanceWindow> maintenanceWindow() {
+        return Optional.ofNullable(this.maintenanceWindow);
+    }
     /**
      * @return Controls task level retry behaviour. Allowed values are:
      * * `NEVER` (default): The failed task will not be retried.
@@ -39,13 +44,21 @@ public final class JobTriggerContinuous {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobTriggerContinuousMaintenanceWindow maintenanceWindow;
         private @Nullable String taskRetryMode;
         public Builder() {}
         public Builder(JobTriggerContinuous defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.maintenanceWindow = defaults.maintenanceWindow;
     	      this.taskRetryMode = defaults.taskRetryMode;
         }
 
+        @CustomType.Setter
+        public Builder maintenanceWindow(@Nullable JobTriggerContinuousMaintenanceWindow maintenanceWindow) {
+
+            this.maintenanceWindow = maintenanceWindow;
+            return this;
+        }
         @CustomType.Setter
         public Builder taskRetryMode(@Nullable String taskRetryMode) {
 
@@ -54,6 +67,7 @@ public final class JobTriggerContinuous {
         }
         public JobTriggerContinuous build() {
             final var _resultValue = new JobTriggerContinuous();
+            _resultValue.maintenanceWindow = maintenanceWindow;
             _resultValue.taskRetryMode = taskRetryMode;
             return _resultValue;
         }

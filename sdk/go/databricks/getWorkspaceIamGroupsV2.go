@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
@@ -58,7 +58,8 @@ func GetWorkspaceIamGroupsV2(ctx *pulumi.Context, args *GetWorkspaceIamGroupsV2A
 type GetWorkspaceIamGroupsV2Args struct {
 	// Optional. Allows filtering groups by group name or external id
 	Filter *string `pulumi:"filter"`
-	// The maximum number of groups to return. The service may return fewer than this value
+	// The maximum number of groups to return. The service may return fewer than this value.
+	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamGroupsV2ProviderConfig `pulumi:"providerConfig"`
@@ -81,7 +82,8 @@ func GetWorkspaceIamGroupsV2Output(ctx *pulumi.Context, args GetWorkspaceIamGrou
 type GetWorkspaceIamGroupsV2OutputArgs struct {
 	// Optional. Allows filtering groups by group name or external id
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The maximum number of groups to return. The service may return fewer than this value
+	// The maximum number of groups to return. The service may return fewer than this value.
+	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamGroupsV2ProviderConfigPtrInput `pulumi:"providerConfig"`

@@ -17,6 +17,10 @@ import (
 type AppSpace struct {
 	pulumi.CustomResourceState
 
+	// The group whose permissions users assume via Role Authorization for apps in this space. When
+	// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+	// Set only at space creation
+	AssumeGroupId pulumi.StringPtrOutput `pulumi:"assumeGroupId"`
 	// (string) - The creation time of the app space. Formatted timestamp in ISO 6801
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// (string) - The email of the user that created the app space
@@ -82,6 +86,10 @@ func GetAppSpace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppSpace resources.
 type appSpaceState struct {
+	// The group whose permissions users assume via Role Authorization for apps in this space. When
+	// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+	// Set only at space creation
+	AssumeGroupId *string `pulumi:"assumeGroupId"`
 	// (string) - The creation time of the app space. Formatted timestamp in ISO 6801
 	CreateTime *string `pulumi:"createTime"`
 	// (string) - The email of the user that created the app space
@@ -118,6 +126,10 @@ type appSpaceState struct {
 }
 
 type AppSpaceState struct {
+	// The group whose permissions users assume via Role Authorization for apps in this space. When
+	// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+	// Set only at space creation
+	AssumeGroupId pulumi.StringPtrInput
 	// (string) - The creation time of the app space. Formatted timestamp in ISO 6801
 	CreateTime pulumi.StringPtrInput
 	// (string) - The email of the user that created the app space
@@ -158,6 +170,10 @@ func (AppSpaceState) ElementType() reflect.Type {
 }
 
 type appSpaceArgs struct {
+	// The group whose permissions users assume via Role Authorization for apps in this space. When
+	// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+	// Set only at space creation
+	AssumeGroupId *string `pulumi:"assumeGroupId"`
 	// The description of the app space
 	Description *string `pulumi:"description"`
 	// The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
@@ -175,6 +191,10 @@ type appSpaceArgs struct {
 
 // The set of arguments for constructing a AppSpace resource.
 type AppSpaceArgs struct {
+	// The group whose permissions users assume via Role Authorization for apps in this space. When
+	// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+	// Set only at space creation
+	AssumeGroupId pulumi.StringPtrInput
 	// The description of the app space
 	Description pulumi.StringPtrInput
 	// The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
@@ -275,6 +295,13 @@ func (o AppSpaceOutput) ToAppSpaceOutput() AppSpaceOutput {
 
 func (o AppSpaceOutput) ToAppSpaceOutputWithContext(ctx context.Context) AppSpaceOutput {
 	return o
+}
+
+// The group whose permissions users assume via Role Authorization for apps in this space. When
+// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+// Set only at space creation
+func (o AppSpaceOutput) AssumeGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpace) pulumi.StringPtrOutput { return v.AssumeGroupId }).(pulumi.StringPtrOutput)
 }
 
 // (string) - The creation time of the app space. Formatted timestamp in ISO 6801

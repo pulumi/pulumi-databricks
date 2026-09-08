@@ -23,23 +23,6 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
     public static final FeatureEngineeringMaterializedFeatureState Empty = new FeatureEngineeringMaterializedFeatureState();
 
     /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     * 
-     */
-    @Import(name="cronSchedule")
-    private @Nullable Output<String> cronSchedule;
-
-    /**
-     * @return The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     * 
-     */
-    public Optional<Output<String>> cronSchedule() {
-        return Optional.ofNullable(this.cronSchedule);
-    }
-
-    /**
      * A cron-based schedule trigger for the materialization pipeline
      * 
      */
@@ -230,7 +213,6 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
     private FeatureEngineeringMaterializedFeatureState() {}
 
     private FeatureEngineeringMaterializedFeatureState(FeatureEngineeringMaterializedFeatureState $) {
-        this.cronSchedule = $.cronSchedule;
         this.cronScheduleTrigger = $.cronScheduleTrigger;
         this.featureName = $.featureName;
         this.isOnline = $.isOnline;
@@ -261,29 +243,6 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
 
         public Builder(FeatureEngineeringMaterializedFeatureState defaults) {
             $ = new FeatureEngineeringMaterializedFeatureState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param cronSchedule The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-         * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cronSchedule(@Nullable Output<String> cronSchedule) {
-            $.cronSchedule = cronSchedule;
-            return this;
-        }
-
-        /**
-         * @param cronSchedule The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-         * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cronSchedule(String cronSchedule) {
-            return cronSchedule(Output.of(cronSchedule));
         }
 
         /**

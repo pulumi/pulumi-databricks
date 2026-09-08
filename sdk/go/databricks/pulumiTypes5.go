@@ -13,1678 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType struct {
-	Clients GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients `pulumi:"clients"`
-}
-
-// GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs and GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeInput` via:
-//
-//	GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs{...}
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput
-	ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput
-}
-
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs struct {
-	Clients GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsInput `pulumi:"clients"`
-}
-
-func (GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput {
-	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput)
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput).ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs, GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtr and GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrInput` via:
-//
-//	        GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput
-	ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput
-}
-
-type getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrType GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs
-
-func GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtr(v *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrInput {
-	return (*getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput)
-}
-
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return o.ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType) *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
-		return &v
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput) Clients() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients {
-		return v.Clients
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput)
-}
-
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput) Elem() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType
-		return ret
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput) Clients() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType) *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients {
-		if v == nil {
-			return nil
-		}
-		return &v.Clients
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients struct {
-	Jobs      *bool `pulumi:"jobs"`
-	Notebooks *bool `pulumi:"notebooks"`
-}
-
-// GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs and GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsInput` via:
-//
-//	GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs{...}
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput
-	ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput
-}
-
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs struct {
-	Jobs      pulumi.BoolPtrInput `pulumi:"jobs"`
-	Notebooks pulumi.BoolPtrInput `pulumi:"notebooks"`
-}
-
-func (GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput {
-	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput)
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput).ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs, GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtr and GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput
-	ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput
-}
-
-type getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrType GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs
-
-func GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtr(v *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrInput {
-	return (*getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return o.ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients) *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients {
-		return &v
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput) Jobs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients) *bool { return v.Jobs }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput) Notebooks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients) *bool { return v.Notebooks }).(pulumi.BoolPtrOutput)
-}
-
-type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput) Elem() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients) GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients
-		return ret
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput) Jobs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Jobs
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Notebooks
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibrary struct {
-	Cran *GetJobJobSettingsSettingsLibraryCran `pulumi:"cran"`
-	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
-	Egg   *string                                `pulumi:"egg"`
-	Jar   *string                                `pulumi:"jar"`
-	Maven *GetJobJobSettingsSettingsLibraryMaven `pulumi:"maven"`
-	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig GetJobJobSettingsSettingsLibraryProviderConfig `pulumi:"providerConfig"`
-	Pypi           *GetJobJobSettingsSettingsLibraryPypi          `pulumi:"pypi"`
-	Requirements   *string                                        `pulumi:"requirements"`
-	Whl            *string                                        `pulumi:"whl"`
-}
-
-// GetJobJobSettingsSettingsLibraryInput is an input type that accepts GetJobJobSettingsSettingsLibraryArgs and GetJobJobSettingsSettingsLibraryOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryInput` via:
-//
-//	GetJobJobSettingsSettingsLibraryArgs{...}
-type GetJobJobSettingsSettingsLibraryInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryOutput() GetJobJobSettingsSettingsLibraryOutput
-	ToGetJobJobSettingsSettingsLibraryOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryOutput
-}
-
-type GetJobJobSettingsSettingsLibraryArgs struct {
-	Cran GetJobJobSettingsSettingsLibraryCranPtrInput `pulumi:"cran"`
-	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
-	Egg   pulumi.StringPtrInput                         `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput                         `pulumi:"jar"`
-	Maven GetJobJobSettingsSettingsLibraryMavenPtrInput `pulumi:"maven"`
-	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig GetJobJobSettingsSettingsLibraryProviderConfigInput `pulumi:"providerConfig"`
-	Pypi           GetJobJobSettingsSettingsLibraryPypiPtrInput        `pulumi:"pypi"`
-	Requirements   pulumi.StringPtrInput                               `pulumi:"requirements"`
-	Whl            pulumi.StringPtrInput                               `pulumi:"whl"`
-}
-
-func (GetJobJobSettingsSettingsLibraryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibrary)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsLibraryArgs) ToGetJobJobSettingsSettingsLibraryOutput() GetJobJobSettingsSettingsLibraryOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryArgs) ToGetJobJobSettingsSettingsLibraryOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryOutput)
-}
-
-// GetJobJobSettingsSettingsLibraryArrayInput is an input type that accepts GetJobJobSettingsSettingsLibraryArray and GetJobJobSettingsSettingsLibraryArrayOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryArrayInput` via:
-//
-//	GetJobJobSettingsSettingsLibraryArray{ GetJobJobSettingsSettingsLibraryArgs{...} }
-type GetJobJobSettingsSettingsLibraryArrayInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryArrayOutput() GetJobJobSettingsSettingsLibraryArrayOutput
-	ToGetJobJobSettingsSettingsLibraryArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryArrayOutput
-}
-
-type GetJobJobSettingsSettingsLibraryArray []GetJobJobSettingsSettingsLibraryInput
-
-func (GetJobJobSettingsSettingsLibraryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsLibrary)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsLibraryArray) ToGetJobJobSettingsSettingsLibraryArrayOutput() GetJobJobSettingsSettingsLibraryArrayOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryArrayOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryArray) ToGetJobJobSettingsSettingsLibraryArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryArrayOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibrary)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryOutput) ToGetJobJobSettingsSettingsLibraryOutput() GetJobJobSettingsSettingsLibraryOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryOutput) ToGetJobJobSettingsSettingsLibraryOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryOutput) Cran() GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *GetJobJobSettingsSettingsLibraryCran { return v.Cran }).(GetJobJobSettingsSettingsLibraryCranPtrOutput)
-}
-
-// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
-func (o GetJobJobSettingsSettingsLibraryOutput) Egg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *string { return v.Egg }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryOutput) Jar() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *string { return v.Jar }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryOutput) Maven() GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *GetJobJobSettingsSettingsLibraryMaven { return v.Maven }).(GetJobJobSettingsSettingsLibraryMavenPtrOutput)
-}
-
-// Configure the provider for management through account provider. This block consists of the following fields:
-func (o GetJobJobSettingsSettingsLibraryOutput) ProviderConfig() GetJobJobSettingsSettingsLibraryProviderConfigOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) GetJobJobSettingsSettingsLibraryProviderConfig {
-		return v.ProviderConfig
-	}).(GetJobJobSettingsSettingsLibraryProviderConfigOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryOutput) Pypi() GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *GetJobJobSettingsSettingsLibraryPypi { return v.Pypi }).(GetJobJobSettingsSettingsLibraryPypiPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryOutput) Requirements() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryOutput) Whl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *string { return v.Whl }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryArrayOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsLibrary)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryArrayOutput) ToGetJobJobSettingsSettingsLibraryArrayOutput() GetJobJobSettingsSettingsLibraryArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryArrayOutput) ToGetJobJobSettingsSettingsLibraryArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsLibraryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsLibrary {
-		return vs[0].([]GetJobJobSettingsSettingsLibrary)[vs[1].(int)]
-	}).(GetJobJobSettingsSettingsLibraryOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryCran struct {
-	Package string  `pulumi:"package"`
-	Repo    *string `pulumi:"repo"`
-}
-
-// GetJobJobSettingsSettingsLibraryCranInput is an input type that accepts GetJobJobSettingsSettingsLibraryCranArgs and GetJobJobSettingsSettingsLibraryCranOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryCranInput` via:
-//
-//	GetJobJobSettingsSettingsLibraryCranArgs{...}
-type GetJobJobSettingsSettingsLibraryCranInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryCranOutput() GetJobJobSettingsSettingsLibraryCranOutput
-	ToGetJobJobSettingsSettingsLibraryCranOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryCranOutput
-}
-
-type GetJobJobSettingsSettingsLibraryCranArgs struct {
-	Package pulumi.StringInput    `pulumi:"package"`
-	Repo    pulumi.StringPtrInput `pulumi:"repo"`
-}
-
-func (GetJobJobSettingsSettingsLibraryCranArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibraryCran)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsLibraryCranArgs) ToGetJobJobSettingsSettingsLibraryCranOutput() GetJobJobSettingsSettingsLibraryCranOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryCranOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryCranArgs) ToGetJobJobSettingsSettingsLibraryCranOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryCranOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryCranOutput)
-}
-
-func (i GetJobJobSettingsSettingsLibraryCranArgs) ToGetJobJobSettingsSettingsLibraryCranPtrOutput() GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryCranArgs) ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryCranOutput).ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsLibraryCranPtrInput is an input type that accepts GetJobJobSettingsSettingsLibraryCranArgs, GetJobJobSettingsSettingsLibraryCranPtr and GetJobJobSettingsSettingsLibraryCranPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryCranPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsLibraryCranArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsLibraryCranPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryCranPtrOutput() GetJobJobSettingsSettingsLibraryCranPtrOutput
-	ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryCranPtrOutput
-}
-
-type getJobJobSettingsSettingsLibraryCranPtrType GetJobJobSettingsSettingsLibraryCranArgs
-
-func GetJobJobSettingsSettingsLibraryCranPtr(v *GetJobJobSettingsSettingsLibraryCranArgs) GetJobJobSettingsSettingsLibraryCranPtrInput {
-	return (*getJobJobSettingsSettingsLibraryCranPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsLibraryCranPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsLibraryCran)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsLibraryCranPtrType) ToGetJobJobSettingsSettingsLibraryCranPtrOutput() GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsLibraryCranPtrType) ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryCranPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryCranOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryCranOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibraryCran)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranOutput) ToGetJobJobSettingsSettingsLibraryCranOutput() GetJobJobSettingsSettingsLibraryCranOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranOutput) ToGetJobJobSettingsSettingsLibraryCranOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryCranOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranOutput) ToGetJobJobSettingsSettingsLibraryCranPtrOutput() GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return o.ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranOutput) ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsLibraryCran) *GetJobJobSettingsSettingsLibraryCran {
-		return &v
-	}).(GetJobJobSettingsSettingsLibraryCranPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranOutput) Package() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibraryCran) string { return v.Package }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibraryCran) *string { return v.Repo }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryCranPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryCranPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsLibraryCran)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranPtrOutput) ToGetJobJobSettingsSettingsLibraryCranPtrOutput() GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranPtrOutput) ToGetJobJobSettingsSettingsLibraryCranPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryCranPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranPtrOutput) Elem() GetJobJobSettingsSettingsLibraryCranOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryCran) GetJobJobSettingsSettingsLibraryCran {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsLibraryCran
-		return ret
-	}).(GetJobJobSettingsSettingsLibraryCranOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranPtrOutput) Package() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryCran) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Package
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryCranPtrOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryCran) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Repo
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryMaven struct {
-	Coordinates string   `pulumi:"coordinates"`
-	Exclusions  []string `pulumi:"exclusions"`
-	Repo        *string  `pulumi:"repo"`
-}
-
-// GetJobJobSettingsSettingsLibraryMavenInput is an input type that accepts GetJobJobSettingsSettingsLibraryMavenArgs and GetJobJobSettingsSettingsLibraryMavenOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryMavenInput` via:
-//
-//	GetJobJobSettingsSettingsLibraryMavenArgs{...}
-type GetJobJobSettingsSettingsLibraryMavenInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryMavenOutput() GetJobJobSettingsSettingsLibraryMavenOutput
-	ToGetJobJobSettingsSettingsLibraryMavenOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryMavenOutput
-}
-
-type GetJobJobSettingsSettingsLibraryMavenArgs struct {
-	Coordinates pulumi.StringInput      `pulumi:"coordinates"`
-	Exclusions  pulumi.StringArrayInput `pulumi:"exclusions"`
-	Repo        pulumi.StringPtrInput   `pulumi:"repo"`
-}
-
-func (GetJobJobSettingsSettingsLibraryMavenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibraryMaven)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsLibraryMavenArgs) ToGetJobJobSettingsSettingsLibraryMavenOutput() GetJobJobSettingsSettingsLibraryMavenOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryMavenOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryMavenArgs) ToGetJobJobSettingsSettingsLibraryMavenOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryMavenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryMavenOutput)
-}
-
-func (i GetJobJobSettingsSettingsLibraryMavenArgs) ToGetJobJobSettingsSettingsLibraryMavenPtrOutput() GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryMavenArgs) ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryMavenOutput).ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsLibraryMavenPtrInput is an input type that accepts GetJobJobSettingsSettingsLibraryMavenArgs, GetJobJobSettingsSettingsLibraryMavenPtr and GetJobJobSettingsSettingsLibraryMavenPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryMavenPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsLibraryMavenArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsLibraryMavenPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryMavenPtrOutput() GetJobJobSettingsSettingsLibraryMavenPtrOutput
-	ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryMavenPtrOutput
-}
-
-type getJobJobSettingsSettingsLibraryMavenPtrType GetJobJobSettingsSettingsLibraryMavenArgs
-
-func GetJobJobSettingsSettingsLibraryMavenPtr(v *GetJobJobSettingsSettingsLibraryMavenArgs) GetJobJobSettingsSettingsLibraryMavenPtrInput {
-	return (*getJobJobSettingsSettingsLibraryMavenPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsLibraryMavenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsLibraryMaven)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsLibraryMavenPtrType) ToGetJobJobSettingsSettingsLibraryMavenPtrOutput() GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsLibraryMavenPtrType) ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryMavenPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryMavenOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryMavenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibraryMaven)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenOutput) ToGetJobJobSettingsSettingsLibraryMavenOutput() GetJobJobSettingsSettingsLibraryMavenOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenOutput) ToGetJobJobSettingsSettingsLibraryMavenOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryMavenOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenOutput) ToGetJobJobSettingsSettingsLibraryMavenPtrOutput() GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return o.ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenOutput) ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsLibraryMaven) *GetJobJobSettingsSettingsLibraryMaven {
-		return &v
-	}).(GetJobJobSettingsSettingsLibraryMavenPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenOutput) Coordinates() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibraryMaven) string { return v.Coordinates }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenOutput) Exclusions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibraryMaven) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibraryMaven) *string { return v.Repo }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryMavenPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryMavenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsLibraryMaven)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenPtrOutput) ToGetJobJobSettingsSettingsLibraryMavenPtrOutput() GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenPtrOutput) ToGetJobJobSettingsSettingsLibraryMavenPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryMavenPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenPtrOutput) Elem() GetJobJobSettingsSettingsLibraryMavenOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryMaven) GetJobJobSettingsSettingsLibraryMaven {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsLibraryMaven
-		return ret
-	}).(GetJobJobSettingsSettingsLibraryMavenOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenPtrOutput) Coordinates() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryMaven) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Coordinates
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenPtrOutput) Exclusions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryMaven) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Exclusions
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryMavenPtrOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryMaven) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Repo
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId string `pulumi:"workspaceId"`
-}
-
-// GetJobJobSettingsSettingsLibraryProviderConfigInput is an input type that accepts GetJobJobSettingsSettingsLibraryProviderConfigArgs and GetJobJobSettingsSettingsLibraryProviderConfigOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryProviderConfigInput` via:
-//
-//	GetJobJobSettingsSettingsLibraryProviderConfigArgs{...}
-type GetJobJobSettingsSettingsLibraryProviderConfigInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryProviderConfigOutput() GetJobJobSettingsSettingsLibraryProviderConfigOutput
-	ToGetJobJobSettingsSettingsLibraryProviderConfigOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryProviderConfigOutput
-}
-
-type GetJobJobSettingsSettingsLibraryProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
-}
-
-func (GetJobJobSettingsSettingsLibraryProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibraryProviderConfig)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsLibraryProviderConfigArgs) ToGetJobJobSettingsSettingsLibraryProviderConfigOutput() GetJobJobSettingsSettingsLibraryProviderConfigOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryProviderConfigOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryProviderConfigArgs) ToGetJobJobSettingsSettingsLibraryProviderConfigOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryProviderConfigOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibraryProviderConfig)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryProviderConfigOutput) ToGetJobJobSettingsSettingsLibraryProviderConfigOutput() GetJobJobSettingsSettingsLibraryProviderConfigOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryProviderConfigOutput) ToGetJobJobSettingsSettingsLibraryProviderConfigOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryProviderConfigOutput {
-	return o
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetJobJobSettingsSettingsLibraryProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibraryProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryPypi struct {
-	Package string  `pulumi:"package"`
-	Repo    *string `pulumi:"repo"`
-}
-
-// GetJobJobSettingsSettingsLibraryPypiInput is an input type that accepts GetJobJobSettingsSettingsLibraryPypiArgs and GetJobJobSettingsSettingsLibraryPypiOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryPypiInput` via:
-//
-//	GetJobJobSettingsSettingsLibraryPypiArgs{...}
-type GetJobJobSettingsSettingsLibraryPypiInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryPypiOutput() GetJobJobSettingsSettingsLibraryPypiOutput
-	ToGetJobJobSettingsSettingsLibraryPypiOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryPypiOutput
-}
-
-type GetJobJobSettingsSettingsLibraryPypiArgs struct {
-	Package pulumi.StringInput    `pulumi:"package"`
-	Repo    pulumi.StringPtrInput `pulumi:"repo"`
-}
-
-func (GetJobJobSettingsSettingsLibraryPypiArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibraryPypi)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsLibraryPypiArgs) ToGetJobJobSettingsSettingsLibraryPypiOutput() GetJobJobSettingsSettingsLibraryPypiOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryPypiOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryPypiArgs) ToGetJobJobSettingsSettingsLibraryPypiOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryPypiOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryPypiOutput)
-}
-
-func (i GetJobJobSettingsSettingsLibraryPypiArgs) ToGetJobJobSettingsSettingsLibraryPypiPtrOutput() GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsLibraryPypiArgs) ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryPypiOutput).ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsLibraryPypiPtrInput is an input type that accepts GetJobJobSettingsSettingsLibraryPypiArgs, GetJobJobSettingsSettingsLibraryPypiPtr and GetJobJobSettingsSettingsLibraryPypiPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsLibraryPypiPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsLibraryPypiArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsLibraryPypiPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsLibraryPypiPtrOutput() GetJobJobSettingsSettingsLibraryPypiPtrOutput
-	ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsLibraryPypiPtrOutput
-}
-
-type getJobJobSettingsSettingsLibraryPypiPtrType GetJobJobSettingsSettingsLibraryPypiArgs
-
-func GetJobJobSettingsSettingsLibraryPypiPtr(v *GetJobJobSettingsSettingsLibraryPypiArgs) GetJobJobSettingsSettingsLibraryPypiPtrInput {
-	return (*getJobJobSettingsSettingsLibraryPypiPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsLibraryPypiPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsLibraryPypi)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsLibraryPypiPtrType) ToGetJobJobSettingsSettingsLibraryPypiPtrOutput() GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return i.ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsLibraryPypiPtrType) ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsLibraryPypiPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryPypiOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryPypiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsLibraryPypi)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiOutput) ToGetJobJobSettingsSettingsLibraryPypiOutput() GetJobJobSettingsSettingsLibraryPypiOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiOutput) ToGetJobJobSettingsSettingsLibraryPypiOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryPypiOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiOutput) ToGetJobJobSettingsSettingsLibraryPypiPtrOutput() GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return o.ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiOutput) ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsLibraryPypi) *GetJobJobSettingsSettingsLibraryPypi {
-		return &v
-	}).(GetJobJobSettingsSettingsLibraryPypiPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiOutput) Package() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibraryPypi) string { return v.Package }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsLibraryPypi) *string { return v.Repo }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsLibraryPypiPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsLibraryPypiPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsLibraryPypi)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiPtrOutput) ToGetJobJobSettingsSettingsLibraryPypiPtrOutput() GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiPtrOutput) ToGetJobJobSettingsSettingsLibraryPypiPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsLibraryPypiPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiPtrOutput) Elem() GetJobJobSettingsSettingsLibraryPypiOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryPypi) GetJobJobSettingsSettingsLibraryPypi {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsLibraryPypi
-		return ret
-	}).(GetJobJobSettingsSettingsLibraryPypiOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiPtrOutput) Package() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryPypi) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Package
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsLibraryPypi) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Repo
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewCluster struct {
-	ApplyPolicyDefaultValues  *bool                                                 `pulumi:"applyPolicyDefaultValues"`
-	Autoscale                 *GetJobJobSettingsSettingsNewClusterAutoscale         `pulumi:"autoscale"`
-	AutoterminationMinutes    *int                                                  `pulumi:"autoterminationMinutes"`
-	AwsAttributes             *GetJobJobSettingsSettingsNewClusterAwsAttributes     `pulumi:"awsAttributes"`
-	AzureAttributes           *GetJobJobSettingsSettingsNewClusterAzureAttributes   `pulumi:"azureAttributes"`
-	ClusterId                 *string                                               `pulumi:"clusterId"`
-	ClusterLogConf            *GetJobJobSettingsSettingsNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
-	ClusterMountInfos         []GetJobJobSettingsSettingsNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
-	ClusterName               *string                                               `pulumi:"clusterName"`
-	CustomTags                map[string]string                                     `pulumi:"customTags"`
-	DataSecurityMode          *string                                               `pulumi:"dataSecurityMode"`
-	DockerImage               *GetJobJobSettingsSettingsNewClusterDockerImage       `pulumi:"dockerImage"`
-	DriverInstancePoolId      string                                                `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeId          string                                                `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk         bool                                                  `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption bool                                                  `pulumi:"enableLocalDiskEncryption"`
-	GcpAttributes             *GetJobJobSettingsSettingsNewClusterGcpAttributes     `pulumi:"gcpAttributes"`
-	IdempotencyToken          *string                                               `pulumi:"idempotencyToken"`
-	InitScripts               []GetJobJobSettingsSettingsNewClusterInitScript       `pulumi:"initScripts"`
-	InstancePoolId            *string                                               `pulumi:"instancePoolId"`
-	NodeTypeId                string                                                `pulumi:"nodeTypeId"`
-	NumWorkers                int                                                   `pulumi:"numWorkers"`
-	PolicyId                  *string                                               `pulumi:"policyId"`
-	RuntimeEngine             *string                                               `pulumi:"runtimeEngine"`
-	SingleUserName            *string                                               `pulumi:"singleUserName"`
-	SparkConf                 map[string]string                                     `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]string                                     `pulumi:"sparkEnvVars"`
-	SparkVersion              *string                                               `pulumi:"sparkVersion"`
-	SshPublicKeys             []string                                              `pulumi:"sshPublicKeys"`
-	WorkloadType              *GetJobJobSettingsSettingsNewClusterWorkloadType      `pulumi:"workloadType"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInput is an input type that accepts GetJobJobSettingsSettingsNewClusterArgs and GetJobJobSettingsSettingsNewClusterOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterArgs{...}
-type GetJobJobSettingsSettingsNewClusterInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterOutput() GetJobJobSettingsSettingsNewClusterOutput
-	ToGetJobJobSettingsSettingsNewClusterOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterArgs struct {
-	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                                           `pulumi:"applyPolicyDefaultValues"`
-	Autoscale                 GetJobJobSettingsSettingsNewClusterAutoscalePtrInput          `pulumi:"autoscale"`
-	AutoterminationMinutes    pulumi.IntPtrInput                                            `pulumi:"autoterminationMinutes"`
-	AwsAttributes             GetJobJobSettingsSettingsNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
-	AzureAttributes           GetJobJobSettingsSettingsNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
-	ClusterId                 pulumi.StringPtrInput                                         `pulumi:"clusterId"`
-	ClusterLogConf            GetJobJobSettingsSettingsNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
-	ClusterMountInfos         GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
-	ClusterName               pulumi.StringPtrInput                                         `pulumi:"clusterName"`
-	CustomTags                pulumi.StringMapInput                                         `pulumi:"customTags"`
-	DataSecurityMode          pulumi.StringPtrInput                                         `pulumi:"dataSecurityMode"`
-	DockerImage               GetJobJobSettingsSettingsNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
-	DriverInstancePoolId      pulumi.StringInput                                            `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeId          pulumi.StringInput                                            `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk         pulumi.BoolInput                                              `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption pulumi.BoolInput                                              `pulumi:"enableLocalDiskEncryption"`
-	GcpAttributes             GetJobJobSettingsSettingsNewClusterGcpAttributesPtrInput      `pulumi:"gcpAttributes"`
-	IdempotencyToken          pulumi.StringPtrInput                                         `pulumi:"idempotencyToken"`
-	InitScripts               GetJobJobSettingsSettingsNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
-	InstancePoolId            pulumi.StringPtrInput                                         `pulumi:"instancePoolId"`
-	NodeTypeId                pulumi.StringInput                                            `pulumi:"nodeTypeId"`
-	NumWorkers                pulumi.IntInput                                               `pulumi:"numWorkers"`
-	PolicyId                  pulumi.StringPtrInput                                         `pulumi:"policyId"`
-	RuntimeEngine             pulumi.StringPtrInput                                         `pulumi:"runtimeEngine"`
-	SingleUserName            pulumi.StringPtrInput                                         `pulumi:"singleUserName"`
-	SparkConf                 pulumi.StringMapInput                                         `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.StringMapInput                                         `pulumi:"sparkEnvVars"`
-	SparkVersion              pulumi.StringPtrInput                                         `pulumi:"sparkVersion"`
-	SshPublicKeys             pulumi.StringArrayInput                                       `pulumi:"sshPublicKeys"`
-	WorkloadType              GetJobJobSettingsSettingsNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewCluster)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterArgs) ToGetJobJobSettingsSettingsNewClusterOutput() GetJobJobSettingsSettingsNewClusterOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterArgs) ToGetJobJobSettingsSettingsNewClusterOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterArgs) ToGetJobJobSettingsSettingsNewClusterPtrOutput() GetJobJobSettingsSettingsNewClusterPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterArgs) ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterOutput).ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterArgs, GetJobJobSettingsSettingsNewClusterPtr and GetJobJobSettingsSettingsNewClusterPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterPtrOutput() GetJobJobSettingsSettingsNewClusterPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterPtrType GetJobJobSettingsSettingsNewClusterArgs
-
-func GetJobJobSettingsSettingsNewClusterPtr(v *GetJobJobSettingsSettingsNewClusterArgs) GetJobJobSettingsSettingsNewClusterPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewCluster)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterPtrType) ToGetJobJobSettingsSettingsNewClusterPtrOutput() GetJobJobSettingsSettingsNewClusterPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterPtrType) ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewCluster)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ToGetJobJobSettingsSettingsNewClusterOutput() GetJobJobSettingsSettingsNewClusterOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ToGetJobJobSettingsSettingsNewClusterOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ToGetJobJobSettingsSettingsNewClusterPtrOutput() GetJobJobSettingsSettingsNewClusterPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewCluster {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *bool { return v.ApplyPolicyDefaultValues }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) Autoscale() GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterAutoscale {
-		return v.Autoscale
-	}).(GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *int { return v.AutoterminationMinutes }).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) AwsAttributes() GetJobJobSettingsSettingsNewClusterAwsAttributesPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterAwsAttributes {
-		return v.AwsAttributes
-	}).(GetJobJobSettingsSettingsNewClusterAwsAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) AzureAttributes() GetJobJobSettingsSettingsNewClusterAzureAttributesPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterAzureAttributes {
-		return v.AzureAttributes
-	}).(GetJobJobSettingsSettingsNewClusterAzureAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ClusterLogConf() GetJobJobSettingsSettingsNewClusterClusterLogConfPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterClusterLogConf {
-		return v.ClusterLogConf
-	}).(GetJobJobSettingsSettingsNewClusterClusterLogConfPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ClusterMountInfos() GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) []GetJobJobSettingsSettingsNewClusterClusterMountInfo {
-		return v.ClusterMountInfos
-	}).(GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) ClusterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) CustomTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.DataSecurityMode }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) DockerImage() GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterDockerImage {
-		return v.DockerImage
-	}).(GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) DriverInstancePoolId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) string { return v.DriverInstancePoolId }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) DriverNodeTypeId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) string { return v.DriverNodeTypeId }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) EnableElasticDisk() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) bool { return v.EnableElasticDisk }).(pulumi.BoolOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) EnableLocalDiskEncryption() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) bool { return v.EnableLocalDiskEncryption }).(pulumi.BoolOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) GcpAttributes() GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterGcpAttributes {
-		return v.GcpAttributes
-	}).(GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) IdempotencyToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.IdempotencyToken }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) InitScripts() GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) []GetJobJobSettingsSettingsNewClusterInitScript {
-		return v.InitScripts
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) NodeTypeId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) string { return v.NodeTypeId }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) NumWorkers() pulumi.IntOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) int { return v.NumWorkers }).(pulumi.IntOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) RuntimeEngine() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.RuntimeEngine }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) SingleUserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) SparkConf() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) SshPublicKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) []string { return v.SshPublicKeys }).(pulumi.StringArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterOutput) WorkloadType() GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterWorkloadType {
-		return v.WorkloadType
-	}).(GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewCluster)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) ToGetJobJobSettingsSettingsNewClusterPtrOutput() GetJobJobSettingsSettingsNewClusterPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) ToGetJobJobSettingsSettingsNewClusterPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) GetJobJobSettingsSettingsNewCluster {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewCluster
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ApplyPolicyDefaultValues
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) Autoscale() GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterAutoscale {
-		if v == nil {
-			return nil
-		}
-		return v.Autoscale
-	}).(GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AutoterminationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) AwsAttributes() GetJobJobSettingsSettingsNewClusterAwsAttributesPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterAwsAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.AwsAttributes
-	}).(GetJobJobSettingsSettingsNewClusterAwsAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) AzureAttributes() GetJobJobSettingsSettingsNewClusterAzureAttributesPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterAzureAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.AzureAttributes
-	}).(GetJobJobSettingsSettingsNewClusterAzureAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) ClusterLogConf() GetJobJobSettingsSettingsNewClusterClusterLogConfPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterClusterLogConf {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterLogConf
-	}).(GetJobJobSettingsSettingsNewClusterClusterLogConfPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) ClusterMountInfos() GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) []GetJobJobSettingsSettingsNewClusterClusterMountInfo {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterMountInfos
-	}).(GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) ClusterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) CustomTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomTags
-	}).(pulumi.StringMapOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DataSecurityMode
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) DockerImage() GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterDockerImage {
-		if v == nil {
-			return nil
-		}
-		return v.DockerImage
-	}).(GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DriverInstancePoolId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) DriverNodeTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DriverNodeTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableElasticDisk
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) EnableLocalDiskEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableLocalDiskEncryption
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) GcpAttributes() GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterGcpAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.GcpAttributes
-	}).(GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) IdempotencyToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdempotencyToken
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) InitScripts() GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) []GetJobJobSettingsSettingsNewClusterInitScript {
-		if v == nil {
-			return nil
-		}
-		return v.InitScripts
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InstancePoolId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NodeTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) NumWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NumWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) RuntimeEngine() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RuntimeEngine
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SingleUserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SingleUserName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SparkConf() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkConf
-	}).(pulumi.StringMapOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkEnvVars
-	}).(pulumi.StringMapOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SshPublicKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SshPublicKeys
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) WorkloadType() GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) *GetJobJobSettingsSettingsNewClusterWorkloadType {
-		if v == nil {
-			return nil
-		}
-		return v.WorkloadType
-	}).(GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterAutoscale struct {
-	MaxWorkers *int `pulumi:"maxWorkers"`
-	MinWorkers *int `pulumi:"minWorkers"`
-}
-
-// GetJobJobSettingsSettingsNewClusterAutoscaleInput is an input type that accepts GetJobJobSettingsSettingsNewClusterAutoscaleArgs and GetJobJobSettingsSettingsNewClusterAutoscaleOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterAutoscaleInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterAutoscaleArgs{...}
-type GetJobJobSettingsSettingsNewClusterAutoscaleInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterAutoscaleOutput() GetJobJobSettingsSettingsNewClusterAutoscaleOutput
-	ToGetJobJobSettingsSettingsNewClusterAutoscaleOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterAutoscaleOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterAutoscaleArgs struct {
-	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
-	MinWorkers pulumi.IntPtrInput `pulumi:"minWorkers"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterAutoscaleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterAutoscale)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterAutoscaleArgs) ToGetJobJobSettingsSettingsNewClusterAutoscaleOutput() GetJobJobSettingsSettingsNewClusterAutoscaleOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterAutoscaleOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterAutoscaleArgs) ToGetJobJobSettingsSettingsNewClusterAutoscaleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterAutoscaleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterAutoscaleOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterAutoscaleArgs) ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutput() GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterAutoscaleArgs) ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterAutoscaleOutput).ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterAutoscalePtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterAutoscaleArgs, GetJobJobSettingsSettingsNewClusterAutoscalePtr and GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterAutoscalePtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterAutoscaleArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterAutoscalePtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutput() GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput
-	ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterAutoscalePtrType GetJobJobSettingsSettingsNewClusterAutoscaleArgs
-
-func GetJobJobSettingsSettingsNewClusterAutoscalePtr(v *GetJobJobSettingsSettingsNewClusterAutoscaleArgs) GetJobJobSettingsSettingsNewClusterAutoscalePtrInput {
-	return (*getJobJobSettingsSettingsNewClusterAutoscalePtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterAutoscalePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterAutoscale)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterAutoscalePtrType) ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutput() GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterAutoscalePtrType) ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterAutoscaleOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterAutoscaleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterAutoscale)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscaleOutput) ToGetJobJobSettingsSettingsNewClusterAutoscaleOutput() GetJobJobSettingsSettingsNewClusterAutoscaleOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscaleOutput) ToGetJobJobSettingsSettingsNewClusterAutoscaleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterAutoscaleOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscaleOutput) ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutput() GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscaleOutput) ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterAutoscale) *GetJobJobSettingsSettingsNewClusterAutoscale {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscaleOutput) MaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterAutoscale) *int { return v.MaxWorkers }).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscaleOutput) MinWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterAutoscale) *int { return v.MinWorkers }).(pulumi.IntPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterAutoscale)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput) ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutput() GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput) ToGetJobJobSettingsSettingsNewClusterAutoscalePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput) Elem() GetJobJobSettingsSettingsNewClusterAutoscaleOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterAutoscale) GetJobJobSettingsSettingsNewClusterAutoscale {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterAutoscale
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterAutoscaleOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput) MaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterAutoscale) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterAutoscale) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
 type GetJobJobSettingsSettingsNewClusterAwsAttributes struct {
 	Availability        *string `pulumi:"availability"`
 	EbsVolumeCount      *int    `pulumi:"ebsVolumeCount"`
@@ -34899,6 +33227,10 @@ type GetPolicyInfoColumnMaskUsing struct {
 	Alias *string `pulumi:"alias"`
 	// (string) - A constant literal
 	Constant *string `pulumi:"constant"`
+	// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+	// (e.g., tag introspection) so new variants can be added without extending the
+	// FunctionArgument oneof
+	FunctionArgExpression *GetPolicyInfoColumnMaskUsingFunctionArgExpression `pulumi:"functionArgExpression"`
 }
 
 // GetPolicyInfoColumnMaskUsingInput is an input type that accepts GetPolicyInfoColumnMaskUsingArgs and GetPolicyInfoColumnMaskUsingOutput values.
@@ -34917,6 +33249,10 @@ type GetPolicyInfoColumnMaskUsingArgs struct {
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// (string) - A constant literal
 	Constant pulumi.StringPtrInput `pulumi:"constant"`
+	// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+	// (e.g., tag introspection) so new variants can be added without extending the
+	// FunctionArgument oneof
+	FunctionArgExpression GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrInput `pulumi:"functionArgExpression"`
 }
 
 func (GetPolicyInfoColumnMaskUsingArgs) ElementType() reflect.Type {
@@ -34980,6 +33316,15 @@ func (o GetPolicyInfoColumnMaskUsingOutput) Constant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyInfoColumnMaskUsing) *string { return v.Constant }).(pulumi.StringPtrOutput)
 }
 
+// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+// (e.g., tag introspection) so new variants can be added without extending the
+// FunctionArgument oneof
+func (o GetPolicyInfoColumnMaskUsingOutput) FunctionArgExpression() GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfoColumnMaskUsing) *GetPolicyInfoColumnMaskUsingFunctionArgExpression {
+		return v.FunctionArgExpression
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput)
+}
+
 type GetPolicyInfoColumnMaskUsingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyInfoColumnMaskUsingArrayOutput) ElementType() reflect.Type {
@@ -34998,6 +33343,604 @@ func (o GetPolicyInfoColumnMaskUsingArrayOutput) Index(i pulumi.IntInput) GetPol
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyInfoColumnMaskUsing {
 		return vs[0].([]GetPolicyInfoColumnMaskUsing)[vs[1].(int)]
 	}).(GetPolicyInfoColumnMaskUsingOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpression struct {
+	// (TagIntrospectionExpression) - An expression that introspects tags at query time
+	TagIntrospection *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection `pulumi:"tagIntrospection"`
+}
+
+// GetPolicyInfoColumnMaskUsingFunctionArgExpressionInput is an input type that accepts GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs and GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput values.
+// You can construct a concrete instance of `GetPolicyInfoColumnMaskUsingFunctionArgExpressionInput` via:
+//
+//	GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs{...}
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionOutputWithContext(context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs struct {
+	// (TagIntrospectionExpression) - An expression that introspects tags at query time
+	TagIntrospection GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput `pulumi:"tagIntrospection"`
+}
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput)
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput).ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrInput is an input type that accepts GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs, GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtr and GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrInput` via:
+//
+//	        GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput
+}
+
+type getPolicyInfoColumnMaskUsingFunctionArgExpressionPtrType GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs
+
+func GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtr(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs) GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrInput {
+	return (*getPolicyInfoColumnMaskUsingFunctionArgExpressionPtrType)(v)
+}
+
+func (*getPolicyInfoColumnMaskUsingFunctionArgExpressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoColumnMaskUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (i *getPolicyInfoColumnMaskUsingFunctionArgExpressionPtrType) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfoColumnMaskUsingFunctionArgExpressionPtrType) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfoColumnMaskUsingFunctionArgExpression) *GetPolicyInfoColumnMaskUsingFunctionArgExpression {
+		return &v
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput)
+}
+
+// (TagIntrospectionExpression) - An expression that introspects tags at query time
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput) TagIntrospection() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfoColumnMaskUsingFunctionArgExpression) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection {
+		return v.TagIntrospection
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoColumnMaskUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput) Elem() GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpression) GetPolicyInfoColumnMaskUsingFunctionArgExpression {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfoColumnMaskUsingFunctionArgExpression
+		return ret
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput)
+}
+
+// (TagIntrospectionExpression) - An expression that introspects tags at query time
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput) TagIntrospection() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpression) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection {
+		if v == nil {
+			return nil
+		}
+		return v.TagIntrospection
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection struct {
+	// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+	ColumnTagValue *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue `pulumi:"columnTagValue"`
+	// (TagValueExtraction) - Extracts the value of a securable-level tag
+	TagValue *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue `pulumi:"tagValue"`
+}
+
+// GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionInput is an input type that accepts GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs and GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput values.
+// You can construct a concrete instance of `GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionInput` via:
+//
+//	GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs{...}
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutputWithContext(context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs struct {
+	// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+	ColumnTagValue GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput `pulumi:"columnTagValue"`
+	// (TagValueExtraction) - Extracts the value of a securable-level tag
+	TagValue GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput `pulumi:"tagValue"`
+}
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput)
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput).ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput is an input type that accepts GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs, GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtr and GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput` via:
+//
+//	        GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput
+}
+
+type getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs
+
+func GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtr(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput {
+	return (*getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType)(v)
+}
+
+func (*getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (i *getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection {
+		return &v
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ColumnTagValue() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyT(func(v GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		return v.ColumnTagValue
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (TagValueExtraction) - Extracts the value of a securable-level tag
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) TagValue() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyT(func(v GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+		return v.TagValue
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) Elem() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection
+		return ret
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput)
+}
+
+// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) ColumnTagValue() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnTagValue
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (TagValueExtraction) - Extracts the value of a securable-level tag
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) TagValue() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+		if v == nil {
+			return nil
+		}
+		return v.TagValue
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue struct {
+	// (string) - The alias from MATCH COLUMNS that identifies the column
+	ColumnAlias string `pulumi:"columnAlias"`
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput is an input type that accepts GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs and GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput values.
+// You can construct a concrete instance of `GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput` via:
+//
+//	GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{...}
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs struct {
+	// (string) - The alias from MATCH COLUMNS that identifies the column
+	ColumnAlias pulumi.StringInput `pulumi:"columnAlias"`
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput)
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput).ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput is an input type that accepts GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs, GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtr and GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput` via:
+//
+//	        GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput
+}
+
+type getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs
+
+func GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtr(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput {
+	return (*getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType)(v)
+}
+
+func (*getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (i *getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		return &v
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (string) - The alias from MATCH COLUMNS that identifies the column
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ColumnAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) string {
+		return v.ColumnAlias
+	}).(pulumi.StringOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) string {
+		return v.TagKey
+	}).(pulumi.StringOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) Elem() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue
+		return ret
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput)
+}
+
+// (string) - The alias from MATCH COLUMNS that identifies the column
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ColumnAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ColumnAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue struct {
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueInput is an input type that accepts GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs and GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput values.
+// You can construct a concrete instance of `GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueInput` via:
+//
+//	GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{...}
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs struct {
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput)
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput).ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput is an input type that accepts GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs, GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtr and GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput` via:
+//
+//	        GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput
+	ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput
+}
+
+type getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs
+
+func GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtr(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput {
+	return (*getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType)(v)
+}
+
+func (*getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (i *getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return i.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue) *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+		return &v
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue) string {
+		return v.TagKey
+	}).(pulumi.StringOutput)
+}
+
+type GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ToGetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) Elem() GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue) GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue
+		return ret
+	}).(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetPolicyInfoGrant struct {
@@ -35382,6 +34325,10 @@ type GetPolicyInfoRowFilterUsing struct {
 	Alias *string `pulumi:"alias"`
 	// (string) - A constant literal
 	Constant *string `pulumi:"constant"`
+	// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+	// (e.g., tag introspection) so new variants can be added without extending the
+	// FunctionArgument oneof
+	FunctionArgExpression *GetPolicyInfoRowFilterUsingFunctionArgExpression `pulumi:"functionArgExpression"`
 }
 
 // GetPolicyInfoRowFilterUsingInput is an input type that accepts GetPolicyInfoRowFilterUsingArgs and GetPolicyInfoRowFilterUsingOutput values.
@@ -35400,6 +34347,10 @@ type GetPolicyInfoRowFilterUsingArgs struct {
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// (string) - A constant literal
 	Constant pulumi.StringPtrInput `pulumi:"constant"`
+	// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+	// (e.g., tag introspection) so new variants can be added without extending the
+	// FunctionArgument oneof
+	FunctionArgExpression GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrInput `pulumi:"functionArgExpression"`
 }
 
 func (GetPolicyInfoRowFilterUsingArgs) ElementType() reflect.Type {
@@ -35463,6 +34414,15 @@ func (o GetPolicyInfoRowFilterUsingOutput) Constant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyInfoRowFilterUsing) *string { return v.Constant }).(pulumi.StringPtrOutput)
 }
 
+// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+// (e.g., tag introspection) so new variants can be added without extending the
+// FunctionArgument oneof
+func (o GetPolicyInfoRowFilterUsingOutput) FunctionArgExpression() GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfoRowFilterUsing) *GetPolicyInfoRowFilterUsingFunctionArgExpression {
+		return v.FunctionArgExpression
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput)
+}
+
 type GetPolicyInfoRowFilterUsingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyInfoRowFilterUsingArrayOutput) ElementType() reflect.Type {
@@ -35483,6 +34443,604 @@ func (o GetPolicyInfoRowFilterUsingArrayOutput) Index(i pulumi.IntInput) GetPoli
 	}).(GetPolicyInfoRowFilterUsingOutput)
 }
 
+type GetPolicyInfoRowFilterUsingFunctionArgExpression struct {
+	// (TagIntrospectionExpression) - An expression that introspects tags at query time
+	TagIntrospection *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection `pulumi:"tagIntrospection"`
+}
+
+// GetPolicyInfoRowFilterUsingFunctionArgExpressionInput is an input type that accepts GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs and GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput values.
+// You can construct a concrete instance of `GetPolicyInfoRowFilterUsingFunctionArgExpressionInput` via:
+//
+//	GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs{...}
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionOutputWithContext(context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs struct {
+	// (TagIntrospectionExpression) - An expression that introspects tags at query time
+	TagIntrospection GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput `pulumi:"tagIntrospection"`
+}
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput)
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput).ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrInput is an input type that accepts GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs, GetPolicyInfoRowFilterUsingFunctionArgExpressionPtr and GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrInput` via:
+//
+//	        GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput
+}
+
+type getPolicyInfoRowFilterUsingFunctionArgExpressionPtrType GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs
+
+func GetPolicyInfoRowFilterUsingFunctionArgExpressionPtr(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs) GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrInput {
+	return (*getPolicyInfoRowFilterUsingFunctionArgExpressionPtrType)(v)
+}
+
+func (*getPolicyInfoRowFilterUsingFunctionArgExpressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoRowFilterUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (i *getPolicyInfoRowFilterUsingFunctionArgExpressionPtrType) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfoRowFilterUsingFunctionArgExpressionPtrType) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfoRowFilterUsingFunctionArgExpression) *GetPolicyInfoRowFilterUsingFunctionArgExpression {
+		return &v
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput)
+}
+
+// (TagIntrospectionExpression) - An expression that introspects tags at query time
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput) TagIntrospection() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfoRowFilterUsingFunctionArgExpression) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection {
+		return v.TagIntrospection
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoRowFilterUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput) Elem() GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpression) GetPolicyInfoRowFilterUsingFunctionArgExpression {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfoRowFilterUsingFunctionArgExpression
+		return ret
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput)
+}
+
+// (TagIntrospectionExpression) - An expression that introspects tags at query time
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput) TagIntrospection() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpression) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection {
+		if v == nil {
+			return nil
+		}
+		return v.TagIntrospection
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection struct {
+	// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+	ColumnTagValue *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue `pulumi:"columnTagValue"`
+	// (TagValueExtraction) - Extracts the value of a securable-level tag
+	TagValue *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue `pulumi:"tagValue"`
+}
+
+// GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionInput is an input type that accepts GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs and GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput values.
+// You can construct a concrete instance of `GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionInput` via:
+//
+//	GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs{...}
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutputWithContext(context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs struct {
+	// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+	ColumnTagValue GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput `pulumi:"columnTagValue"`
+	// (TagValueExtraction) - Extracts the value of a securable-level tag
+	TagValue GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput `pulumi:"tagValue"`
+}
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput)
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput).ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput is an input type that accepts GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs, GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtr and GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput` via:
+//
+//	        GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput
+}
+
+type getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs
+
+func GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtr(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput {
+	return (*getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType)(v)
+}
+
+func (*getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (i *getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection {
+		return &v
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ColumnTagValue() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyT(func(v GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		return v.ColumnTagValue
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (TagValueExtraction) - Extracts the value of a securable-level tag
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) TagValue() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyT(func(v GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+		return v.TagValue
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) Elem() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection
+		return ret
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput)
+}
+
+// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) ColumnTagValue() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnTagValue
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (TagValueExtraction) - Extracts the value of a securable-level tag
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) TagValue() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+		if v == nil {
+			return nil
+		}
+		return v.TagValue
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue struct {
+	// (string) - The alias from MATCH COLUMNS that identifies the column
+	ColumnAlias string `pulumi:"columnAlias"`
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput is an input type that accepts GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs and GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput values.
+// You can construct a concrete instance of `GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput` via:
+//
+//	GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{...}
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs struct {
+	// (string) - The alias from MATCH COLUMNS that identifies the column
+	ColumnAlias pulumi.StringInput `pulumi:"columnAlias"`
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput)
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput).ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput is an input type that accepts GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs, GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtr and GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput` via:
+//
+//	        GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput
+}
+
+type getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs
+
+func GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtr(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput {
+	return (*getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType)(v)
+}
+
+func (*getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (i *getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		return &v
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (string) - The alias from MATCH COLUMNS that identifies the column
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ColumnAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) string {
+		return v.ColumnAlias
+	}).(pulumi.StringOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) string {
+		return v.TagKey
+	}).(pulumi.StringOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) Elem() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue
+		return ret
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput)
+}
+
+// (string) - The alias from MATCH COLUMNS that identifies the column
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ColumnAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ColumnAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue struct {
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueInput is an input type that accepts GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs and GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput values.
+// You can construct a concrete instance of `GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueInput` via:
+//
+//	GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs{...}
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs struct {
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput)
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput).ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput is an input type that accepts GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs, GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtr and GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput` via:
+//
+//	        GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput
+	ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput
+}
+
+type getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs
+
+func GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtr(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput {
+	return (*getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType)(v)
+}
+
+func (*getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (i *getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return i.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue) *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+		return &v
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue) string {
+		return v.TagKey
+	}).(pulumi.StringOutput)
+}
+
+type GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ToGetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) Elem() GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue) GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue
+		return ret
+	}).(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetPolicyInfosPolicy struct {
 	// (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
 	// Required on create and optional on update. When specified on update,
@@ -35497,7 +35055,7 @@ type GetPolicyInfosPolicy struct {
 	// (list of string) - Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals []string `pulumi:"exceptPrincipals"`
 	// (string) - Type of securables that the policy should take effect on.
-	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType string `pulumi:"forSecurableType"`
 	// (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
 	// Required on create and optional on update. When specified on update,
@@ -35560,7 +35118,7 @@ type GetPolicyInfosPolicyArgs struct {
 	// (list of string) - Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals pulumi.StringArrayInput `pulumi:"exceptPrincipals"`
 	// (string) - Type of securables that the policy should take effect on.
-	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	ForSecurableType pulumi.StringInput `pulumi:"forSecurableType"`
 	// (GrantOptions) - Options for grant policies. Valid only if `policyType` is `POLICY_TYPE_GRANT`.
 	// Required on create and optional on update. When specified on update,
@@ -35677,7 +35235,7 @@ func (o GetPolicyInfosPolicyOutput) ExceptPrincipals() pulumi.StringArrayOutput 
 }
 
 // (string) - Type of securables that the policy should take effect on.
-// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 func (o GetPolicyInfosPolicyOutput) ForSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyInfosPolicy) string { return v.ForSecurableType }).(pulumi.StringOutput)
 }
@@ -35868,6 +35426,10 @@ type GetPolicyInfosPolicyColumnMaskUsing struct {
 	Alias *string `pulumi:"alias"`
 	// (string) - A constant literal
 	Constant *string `pulumi:"constant"`
+	// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+	// (e.g., tag introspection) so new variants can be added without extending the
+	// FunctionArgument oneof
+	FunctionArgExpression *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression `pulumi:"functionArgExpression"`
 }
 
 // GetPolicyInfosPolicyColumnMaskUsingInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingArgs and GetPolicyInfosPolicyColumnMaskUsingOutput values.
@@ -35886,6 +35448,10 @@ type GetPolicyInfosPolicyColumnMaskUsingArgs struct {
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// (string) - A constant literal
 	Constant pulumi.StringPtrInput `pulumi:"constant"`
+	// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+	// (e.g., tag introspection) so new variants can be added without extending the
+	// FunctionArgument oneof
+	FunctionArgExpression GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrInput `pulumi:"functionArgExpression"`
 }
 
 func (GetPolicyInfosPolicyColumnMaskUsingArgs) ElementType() reflect.Type {
@@ -35949,6 +35515,15 @@ func (o GetPolicyInfosPolicyColumnMaskUsingOutput) Constant() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetPolicyInfosPolicyColumnMaskUsing) *string { return v.Constant }).(pulumi.StringPtrOutput)
 }
 
+// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+// (e.g., tag introspection) so new variants can be added without extending the
+// FunctionArgument oneof
+func (o GetPolicyInfosPolicyColumnMaskUsingOutput) FunctionArgExpression() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyColumnMaskUsing) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression {
+		return v.FunctionArgExpression
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput)
+}
+
 type GetPolicyInfosPolicyColumnMaskUsingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyInfosPolicyColumnMaskUsingArrayOutput) ElementType() reflect.Type {
@@ -35967,6 +35542,604 @@ func (o GetPolicyInfosPolicyColumnMaskUsingArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyInfosPolicyColumnMaskUsing {
 		return vs[0].([]GetPolicyInfosPolicyColumnMaskUsing)[vs[1].(int)]
 	}).(GetPolicyInfosPolicyColumnMaskUsingOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression struct {
+	// (TagIntrospectionExpression) - An expression that introspects tags at query time
+	TagIntrospection *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection `pulumi:"tagIntrospection"`
+}
+
+// GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs and GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionInput` via:
+//
+//	GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs{...}
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutputWithContext(context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs struct {
+	// (TagIntrospectionExpression) - An expression that introspects tags at query time
+	TagIntrospection GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput `pulumi:"tagIntrospection"`
+}
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput)
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput).ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs, GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtr and GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrInput` via:
+//
+//	        GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput
+}
+
+type getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrType GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs
+
+func GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtr(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrInput {
+	return (*getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrType)(v)
+}
+
+func (*getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrType) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrType) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression {
+		return &v
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput)
+}
+
+// (TagIntrospectionExpression) - An expression that introspects tags at query time
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput) TagIntrospection() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection {
+		return v.TagIntrospection
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput) Elem() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression
+		return ret
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput)
+}
+
+// (TagIntrospectionExpression) - An expression that introspects tags at query time
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput) TagIntrospection() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection {
+		if v == nil {
+			return nil
+		}
+		return v.TagIntrospection
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection struct {
+	// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+	ColumnTagValue *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue `pulumi:"columnTagValue"`
+	// (TagValueExtraction) - Extracts the value of a securable-level tag
+	TagValue *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue `pulumi:"tagValue"`
+}
+
+// GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs and GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionInput` via:
+//
+//	GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs{...}
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutputWithContext(context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs struct {
+	// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+	ColumnTagValue GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput `pulumi:"columnTagValue"`
+	// (TagValueExtraction) - Extracts the value of a securable-level tag
+	TagValue GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput `pulumi:"tagValue"`
+}
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput)
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput).ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs, GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtr and GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput` via:
+//
+//	        GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput
+}
+
+type getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs
+
+func GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtr(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput {
+	return (*getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType)(v)
+}
+
+func (*getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrType) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection {
+		return &v
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) ColumnTagValue() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		return v.ColumnTagValue
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (TagValueExtraction) - Extracts the value of a securable-level tag
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput) TagValue() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+		return v.TagValue
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) Elem() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection
+		return ret
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput)
+}
+
+// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) ColumnTagValue() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnTagValue
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (TagValueExtraction) - Extracts the value of a securable-level tag
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput) TagValue() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+		if v == nil {
+			return nil
+		}
+		return v.TagValue
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue struct {
+	// (string) - The alias from MATCH COLUMNS that identifies the column
+	ColumnAlias string `pulumi:"columnAlias"`
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs and GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput` via:
+//
+//	GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{...}
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs struct {
+	// (string) - The alias from MATCH COLUMNS that identifies the column
+	ColumnAlias pulumi.StringInput `pulumi:"columnAlias"`
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput)
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput).ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs, GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtr and GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput` via:
+//
+//	        GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput
+}
+
+type getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs
+
+func GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtr(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput {
+	return (*getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType)(v)
+}
+
+func (*getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		return &v
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (string) - The alias from MATCH COLUMNS that identifies the column
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ColumnAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) string {
+		return v.ColumnAlias
+	}).(pulumi.StringOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) string {
+		return v.TagKey
+	}).(pulumi.StringOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) Elem() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue
+		return ret
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput)
+}
+
+// (string) - The alias from MATCH COLUMNS that identifies the column
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ColumnAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ColumnAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue struct {
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs and GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueInput` via:
+//
+//	GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{...}
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs struct {
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput)
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput).ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput is an input type that accepts GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs, GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtr and GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput` via:
+//
+//	        GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput
+	ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput
+}
+
+type getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs
+
+func GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtr(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput {
+	return (*getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType)(v)
+}
+
+func (*getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return i.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue) *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+		return &v
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue) string {
+		return v.TagKey
+	}).(pulumi.StringOutput)
+}
+
+type GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ToGetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) Elem() GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue) GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue
+		return ret
+	}).(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetPolicyInfosPolicyGrant struct {
@@ -36351,6 +36524,10 @@ type GetPolicyInfosPolicyRowFilterUsing struct {
 	Alias *string `pulumi:"alias"`
 	// (string) - A constant literal
 	Constant *string `pulumi:"constant"`
+	// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+	// (e.g., tag introspection) so new variants can be added without extending the
+	// FunctionArgument oneof
+	FunctionArgExpression *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression `pulumi:"functionArgExpression"`
 }
 
 // GetPolicyInfosPolicyRowFilterUsingInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingArgs and GetPolicyInfosPolicyRowFilterUsingOutput values.
@@ -36369,6 +36546,10 @@ type GetPolicyInfosPolicyRowFilterUsingArgs struct {
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// (string) - A constant literal
 	Constant pulumi.StringPtrInput `pulumi:"constant"`
+	// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+	// (e.g., tag introspection) so new variants can be added without extending the
+	// FunctionArgument oneof
+	FunctionArgExpression GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrInput `pulumi:"functionArgExpression"`
 }
 
 func (GetPolicyInfosPolicyRowFilterUsingArgs) ElementType() reflect.Type {
@@ -36432,6 +36613,15 @@ func (o GetPolicyInfosPolicyRowFilterUsingOutput) Constant() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsing) *string { return v.Constant }).(pulumi.StringPtrOutput)
 }
 
+// (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+// (e.g., tag introspection) so new variants can be added without extending the
+// FunctionArgument oneof
+func (o GetPolicyInfosPolicyRowFilterUsingOutput) FunctionArgExpression() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsing) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression {
+		return v.FunctionArgExpression
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput)
+}
+
 type GetPolicyInfosPolicyRowFilterUsingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyInfosPolicyRowFilterUsingArrayOutput) ElementType() reflect.Type {
@@ -36450,6 +36640,604 @@ func (o GetPolicyInfosPolicyRowFilterUsingArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyInfosPolicyRowFilterUsing {
 		return vs[0].([]GetPolicyInfosPolicyRowFilterUsing)[vs[1].(int)]
 	}).(GetPolicyInfosPolicyRowFilterUsingOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression struct {
+	// (TagIntrospectionExpression) - An expression that introspects tags at query time
+	TagIntrospection *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection `pulumi:"tagIntrospection"`
+}
+
+// GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs and GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionInput` via:
+//
+//	GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs{...}
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs struct {
+	// (TagIntrospectionExpression) - An expression that introspects tags at query time
+	TagIntrospection GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput `pulumi:"tagIntrospection"`
+}
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput)
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput).ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs, GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtr and GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrInput` via:
+//
+//	        GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput
+}
+
+type getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrType GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs
+
+func GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtr(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrInput {
+	return (*getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrType)(v)
+}
+
+func (*getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrType) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrType) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression {
+		return &v
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput)
+}
+
+// (TagIntrospectionExpression) - An expression that introspects tags at query time
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput) TagIntrospection() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection {
+		return v.TagIntrospection
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput) Elem() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression
+		return ret
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput)
+}
+
+// (TagIntrospectionExpression) - An expression that introspects tags at query time
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput) TagIntrospection() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection {
+		if v == nil {
+			return nil
+		}
+		return v.TagIntrospection
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection struct {
+	// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+	ColumnTagValue *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue `pulumi:"columnTagValue"`
+	// (TagValueExtraction) - Extracts the value of a securable-level tag
+	TagValue *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue `pulumi:"tagValue"`
+}
+
+// GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs and GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionInput` via:
+//
+//	GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs{...}
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs struct {
+	// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+	ColumnTagValue GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput `pulumi:"columnTagValue"`
+	// (TagValueExtraction) - Extracts the value of a securable-level tag
+	TagValue GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput `pulumi:"tagValue"`
+}
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput)
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput).ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs, GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtr and GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput` via:
+//
+//	        GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput
+}
+
+type getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs
+
+func GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtr(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput {
+	return (*getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType)(v)
+}
+
+func (*getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrType) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection {
+		return &v
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput)
+}
+
+// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) ColumnTagValue() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		return v.ColumnTagValue
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (TagValueExtraction) - Extracts the value of a securable-level tag
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput) TagValue() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+		return v.TagValue
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) Elem() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection
+		return ret
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput)
+}
+
+// (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) ColumnTagValue() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnTagValue
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (TagValueExtraction) - Extracts the value of a securable-level tag
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput) TagValue() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+		if v == nil {
+			return nil
+		}
+		return v.TagValue
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue struct {
+	// (string) - The alias from MATCH COLUMNS that identifies the column
+	ColumnAlias string `pulumi:"columnAlias"`
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs and GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput` via:
+//
+//	GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{...}
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs struct {
+	// (string) - The alias from MATCH COLUMNS that identifies the column
+	ColumnAlias pulumi.StringInput `pulumi:"columnAlias"`
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput)
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput).ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs, GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtr and GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput` via:
+//
+//	        GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput
+}
+
+type getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs
+
+func GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtr(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput {
+	return (*getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType)(v)
+}
+
+func (*getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrType) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		return &v
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput)
+}
+
+// (string) - The alias from MATCH COLUMNS that identifies the column
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) ColumnAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) string {
+		return v.ColumnAlias
+	}).(pulumi.StringOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) string {
+		return v.TagKey
+	}).(pulumi.StringOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) Elem() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue
+		return ret
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput)
+}
+
+// (string) - The alias from MATCH COLUMNS that identifies the column
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) ColumnAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ColumnAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue struct {
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs and GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueInput` via:
+//
+//	GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs{...}
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs struct {
+	// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput)
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput).ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx)
+}
+
+// GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput is an input type that accepts GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs, GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtr and GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput values.
+// You can construct a concrete instance of `GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput` via:
+//
+//	        GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput interface {
+	pulumi.Input
+
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput
+	ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput
+}
+
+type getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs
+
+func GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtr(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput {
+	return (*getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType)(v)
+}
+
+func (*getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (i *getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return i.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrType) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue) *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+		return &v
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue) string {
+		return v.TagKey
+	}).(pulumi.StringOutput)
+}
+
+type GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue)(nil)).Elem()
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) ToGetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutputWithContext(ctx context.Context) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput {
+	return o
+}
+
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) Elem() GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue) GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue
+		return ret
+	}).(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput)
+}
+
+// (string) - 1024 matches the maxLength on FunctionArgument.constant above
+func (o GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetPolicyInfosProviderConfig struct {
@@ -36742,6 +37530,10 @@ type GetPostgresBranchSpec struct {
 	SourceBranchLsn *string `pulumi:"sourceBranchLsn"`
 	// (string) - The point in time on the source branch from which this branch was created
 	SourceBranchTime *string `pulumi:"sourceBranchTime"`
+	// (string) - The snapshot this branch was restored from. Set only for branches created by
+	// restoring a snapshot; unset for all other branches.
+	// Format: projects/{project_id}/snapshots/{snapshot_id}
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 	// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
 	// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
 	Ttl *string `pulumi:"ttl"`
@@ -36774,6 +37566,10 @@ type GetPostgresBranchSpecArgs struct {
 	SourceBranchLsn pulumi.StringPtrInput `pulumi:"sourceBranchLsn"`
 	// (string) - The point in time on the source branch from which this branch was created
 	SourceBranchTime pulumi.StringPtrInput `pulumi:"sourceBranchTime"`
+	// (string) - The snapshot this branch was restored from. Set only for branches created by
+	// restoring a snapshot; unset for all other branches.
+	// Format: projects/{project_id}/snapshots/{snapshot_id}
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 	// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
 	// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
 	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
@@ -36838,6 +37634,13 @@ func (o GetPostgresBranchSpecOutput) SourceBranchTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPostgresBranchSpec) *string { return v.SourceBranchTime }).(pulumi.StringPtrOutput)
 }
 
+// (string) - The snapshot this branch was restored from. Set only for branches created by
+// restoring a snapshot; unset for all other branches.
+// Format: projects/{project_id}/snapshots/{snapshot_id}
+func (o GetPostgresBranchSpecOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchSpec) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
 // (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
 // Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
 func (o GetPostgresBranchSpecOutput) Ttl() pulumi.StringPtrOutput {
@@ -36872,6 +37675,10 @@ type GetPostgresBranchStatus struct {
 	SourceBranchLsn string `pulumi:"sourceBranchLsn"`
 	// (string) - The point in time on the source branch from which this branch was created
 	SourceBranchTime string `pulumi:"sourceBranchTime"`
+	// (string) - The snapshot this branch was restored from. Set only for branches created by
+	// restoring a snapshot; unset for all other branches.
+	// Format: projects/{project_id}/snapshots/{snapshot_id}
+	SourceSnapshot string `pulumi:"sourceSnapshot"`
 	// (string) - A timestamp indicating when the `currentState` began
 	StateChangeTime string `pulumi:"stateChangeTime"`
 }
@@ -36915,6 +37722,10 @@ type GetPostgresBranchStatusArgs struct {
 	SourceBranchLsn pulumi.StringInput `pulumi:"sourceBranchLsn"`
 	// (string) - The point in time on the source branch from which this branch was created
 	SourceBranchTime pulumi.StringInput `pulumi:"sourceBranchTime"`
+	// (string) - The snapshot this branch was restored from. Set only for branches created by
+	// restoring a snapshot; unset for all other branches.
+	// Format: projects/{project_id}/snapshots/{snapshot_id}
+	SourceSnapshot pulumi.StringInput `pulumi:"sourceSnapshot"`
 	// (string) - A timestamp indicating when the `currentState` began
 	StateChangeTime pulumi.StringInput `pulumi:"stateChangeTime"`
 }
@@ -37006,6 +37817,13 @@ func (o GetPostgresBranchStatusOutput) SourceBranchLsn() pulumi.StringOutput {
 // (string) - The point in time on the source branch from which this branch was created
 func (o GetPostgresBranchStatusOutput) SourceBranchTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.SourceBranchTime }).(pulumi.StringOutput)
+}
+
+// (string) - The snapshot this branch was restored from. Set only for branches created by
+// restoring a snapshot; unset for all other branches.
+// Format: projects/{project_id}/snapshots/{snapshot_id}
+func (o GetPostgresBranchStatusOutput) SourceSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchStatus) string { return v.SourceSnapshot }).(pulumi.StringOutput)
 }
 
 // (string) - A timestamp indicating when the `currentState` began
@@ -37341,6 +38159,10 @@ type GetPostgresBranchesBranchSpec struct {
 	SourceBranchLsn *string `pulumi:"sourceBranchLsn"`
 	// (string) - The point in time on the source branch from which this branch was created
 	SourceBranchTime *string `pulumi:"sourceBranchTime"`
+	// (string) - The snapshot this branch was restored from. Set only for branches created by
+	// restoring a snapshot; unset for all other branches.
+	// Format: projects/{project_id}/snapshots/{snapshot_id}
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 	// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
 	// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
 	Ttl *string `pulumi:"ttl"`
@@ -37373,6 +38195,10 @@ type GetPostgresBranchesBranchSpecArgs struct {
 	SourceBranchLsn pulumi.StringPtrInput `pulumi:"sourceBranchLsn"`
 	// (string) - The point in time on the source branch from which this branch was created
 	SourceBranchTime pulumi.StringPtrInput `pulumi:"sourceBranchTime"`
+	// (string) - The snapshot this branch was restored from. Set only for branches created by
+	// restoring a snapshot; unset for all other branches.
+	// Format: projects/{project_id}/snapshots/{snapshot_id}
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 	// (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
 	// Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
 	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
@@ -37437,6 +38263,13 @@ func (o GetPostgresBranchesBranchSpecOutput) SourceBranchTime() pulumi.StringPtr
 	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *string { return v.SourceBranchTime }).(pulumi.StringPtrOutput)
 }
 
+// (string) - The snapshot this branch was restored from. Set only for branches created by
+// restoring a snapshot; unset for all other branches.
+// Format: projects/{project_id}/snapshots/{snapshot_id}
+func (o GetPostgresBranchesBranchSpecOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchSpec) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
 // (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
 // Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
 func (o GetPostgresBranchesBranchSpecOutput) Ttl() pulumi.StringPtrOutput {
@@ -37471,6 +38304,10 @@ type GetPostgresBranchesBranchStatus struct {
 	SourceBranchLsn string `pulumi:"sourceBranchLsn"`
 	// (string) - The point in time on the source branch from which this branch was created
 	SourceBranchTime string `pulumi:"sourceBranchTime"`
+	// (string) - The snapshot this branch was restored from. Set only for branches created by
+	// restoring a snapshot; unset for all other branches.
+	// Format: projects/{project_id}/snapshots/{snapshot_id}
+	SourceSnapshot string `pulumi:"sourceSnapshot"`
 	// (string) - A timestamp indicating when the `currentState` began
 	StateChangeTime string `pulumi:"stateChangeTime"`
 }
@@ -37514,6 +38351,10 @@ type GetPostgresBranchesBranchStatusArgs struct {
 	SourceBranchLsn pulumi.StringInput `pulumi:"sourceBranchLsn"`
 	// (string) - The point in time on the source branch from which this branch was created
 	SourceBranchTime pulumi.StringInput `pulumi:"sourceBranchTime"`
+	// (string) - The snapshot this branch was restored from. Set only for branches created by
+	// restoring a snapshot; unset for all other branches.
+	// Format: projects/{project_id}/snapshots/{snapshot_id}
+	SourceSnapshot pulumi.StringInput `pulumi:"sourceSnapshot"`
 	// (string) - A timestamp indicating when the `currentState` began
 	StateChangeTime pulumi.StringInput `pulumi:"stateChangeTime"`
 }
@@ -37605,6 +38446,13 @@ func (o GetPostgresBranchesBranchStatusOutput) SourceBranchLsn() pulumi.StringOu
 // (string) - The point in time on the source branch from which this branch was created
 func (o GetPostgresBranchesBranchStatusOutput) SourceBranchTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.SourceBranchTime }).(pulumi.StringOutput)
+}
+
+// (string) - The snapshot this branch was restored from. Set only for branches created by
+// restoring a snapshot; unset for all other branches.
+// Format: projects/{project_id}/snapshots/{snapshot_id}
+func (o GetPostgresBranchesBranchStatusOutput) SourceSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresBranchesBranchStatus) string { return v.SourceSnapshot }).(pulumi.StringOutput)
 }
 
 // (string) - A timestamp indicating when the `currentState` began
@@ -47366,6 +48214,736 @@ func (o GetPostgresRolesRoleStatusAttributesPtrOutput) Createrole() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetPostgresSnapshotScheduleProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresSnapshotScheduleProviderConfigInput is an input type that accepts GetPostgresSnapshotScheduleProviderConfigArgs and GetPostgresSnapshotScheduleProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleProviderConfigInput` via:
+//
+//	GetPostgresSnapshotScheduleProviderConfigArgs{...}
+type GetPostgresSnapshotScheduleProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleProviderConfigOutput() GetPostgresSnapshotScheduleProviderConfigOutput
+	ToGetPostgresSnapshotScheduleProviderConfigOutputWithContext(context.Context) GetPostgresSnapshotScheduleProviderConfigOutput
+}
+
+type GetPostgresSnapshotScheduleProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresSnapshotScheduleProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresSnapshotScheduleProviderConfigArgs) ToGetPostgresSnapshotScheduleProviderConfigOutput() GetPostgresSnapshotScheduleProviderConfigOutput {
+	return i.ToGetPostgresSnapshotScheduleProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleProviderConfigArgs) ToGetPostgresSnapshotScheduleProviderConfigOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleProviderConfigOutput)
+}
+
+func (i GetPostgresSnapshotScheduleProviderConfigArgs) ToGetPostgresSnapshotScheduleProviderConfigPtrOutput() GetPostgresSnapshotScheduleProviderConfigPtrOutput {
+	return i.ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleProviderConfigArgs) ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleProviderConfigOutput).ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresSnapshotScheduleProviderConfigPtrInput is an input type that accepts GetPostgresSnapshotScheduleProviderConfigArgs, GetPostgresSnapshotScheduleProviderConfigPtr and GetPostgresSnapshotScheduleProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleProviderConfigPtrInput` via:
+//
+//	        GetPostgresSnapshotScheduleProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresSnapshotScheduleProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleProviderConfigPtrOutput() GetPostgresSnapshotScheduleProviderConfigPtrOutput
+	ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(context.Context) GetPostgresSnapshotScheduleProviderConfigPtrOutput
+}
+
+type getPostgresSnapshotScheduleProviderConfigPtrType GetPostgresSnapshotScheduleProviderConfigArgs
+
+func GetPostgresSnapshotScheduleProviderConfigPtr(v *GetPostgresSnapshotScheduleProviderConfigArgs) GetPostgresSnapshotScheduleProviderConfigPtrInput {
+	return (*getPostgresSnapshotScheduleProviderConfigPtrType)(v)
+}
+
+func (*getPostgresSnapshotScheduleProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSnapshotScheduleProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresSnapshotScheduleProviderConfigPtrType) ToGetPostgresSnapshotScheduleProviderConfigPtrOutput() GetPostgresSnapshotScheduleProviderConfigPtrOutput {
+	return i.ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresSnapshotScheduleProviderConfigPtrType) ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleProviderConfigPtrOutput)
+}
+
+type GetPostgresSnapshotScheduleProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleProviderConfigOutput) ToGetPostgresSnapshotScheduleProviderConfigOutput() GetPostgresSnapshotScheduleProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleProviderConfigOutput) ToGetPostgresSnapshotScheduleProviderConfigOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleProviderConfigOutput) ToGetPostgresSnapshotScheduleProviderConfigPtrOutput() GetPostgresSnapshotScheduleProviderConfigPtrOutput {
+	return o.ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresSnapshotScheduleProviderConfigOutput) ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresSnapshotScheduleProviderConfig) *GetPostgresSnapshotScheduleProviderConfig {
+		return &v
+	}).(GetPostgresSnapshotScheduleProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresSnapshotScheduleProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresSnapshotScheduleProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSnapshotScheduleProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleProviderConfigPtrOutput) ToGetPostgresSnapshotScheduleProviderConfigPtrOutput() GetPostgresSnapshotScheduleProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleProviderConfigPtrOutput) ToGetPostgresSnapshotScheduleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleProviderConfigPtrOutput) Elem() GetPostgresSnapshotScheduleProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleProviderConfig) GetPostgresSnapshotScheduleProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresSnapshotScheduleProviderConfig
+		return ret
+	}).(GetPostgresSnapshotScheduleProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresSnapshotScheduleProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresSnapshotScheduleSchedule struct {
+	// (DailySchedule) - Take a snapshot once per day
+	DailySchedule *GetPostgresSnapshotScheduleScheduleDailySchedule `pulumi:"dailySchedule"`
+	// (MonthlySchedule) - Take a snapshot once per month
+	MonthlySchedule *GetPostgresSnapshotScheduleScheduleMonthlySchedule `pulumi:"monthlySchedule"`
+	// (string) - How long snapshots from this cadence are kept before automatic deletion.
+	// Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+	// so changing it affects only later snapshots
+	Retention string `pulumi:"retention"`
+	// (WeeklySchedule) - Take a snapshot once per week
+	WeeklySchedule *GetPostgresSnapshotScheduleScheduleWeeklySchedule `pulumi:"weeklySchedule"`
+}
+
+// GetPostgresSnapshotScheduleScheduleInput is an input type that accepts GetPostgresSnapshotScheduleScheduleArgs and GetPostgresSnapshotScheduleScheduleOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleScheduleInput` via:
+//
+//	GetPostgresSnapshotScheduleScheduleArgs{...}
+type GetPostgresSnapshotScheduleScheduleInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleScheduleOutput() GetPostgresSnapshotScheduleScheduleOutput
+	ToGetPostgresSnapshotScheduleScheduleOutputWithContext(context.Context) GetPostgresSnapshotScheduleScheduleOutput
+}
+
+type GetPostgresSnapshotScheduleScheduleArgs struct {
+	// (DailySchedule) - Take a snapshot once per day
+	DailySchedule GetPostgresSnapshotScheduleScheduleDailySchedulePtrInput `pulumi:"dailySchedule"`
+	// (MonthlySchedule) - Take a snapshot once per month
+	MonthlySchedule GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrInput `pulumi:"monthlySchedule"`
+	// (string) - How long snapshots from this cadence are kept before automatic deletion.
+	// Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+	// so changing it affects only later snapshots
+	Retention pulumi.StringInput `pulumi:"retention"`
+	// (WeeklySchedule) - Take a snapshot once per week
+	WeeklySchedule GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrInput `pulumi:"weeklySchedule"`
+}
+
+func (GetPostgresSnapshotScheduleScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleSchedule)(nil)).Elem()
+}
+
+func (i GetPostgresSnapshotScheduleScheduleArgs) ToGetPostgresSnapshotScheduleScheduleOutput() GetPostgresSnapshotScheduleScheduleOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleScheduleArgs) ToGetPostgresSnapshotScheduleScheduleOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleOutput)
+}
+
+// GetPostgresSnapshotScheduleScheduleArrayInput is an input type that accepts GetPostgresSnapshotScheduleScheduleArray and GetPostgresSnapshotScheduleScheduleArrayOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleScheduleArrayInput` via:
+//
+//	GetPostgresSnapshotScheduleScheduleArray{ GetPostgresSnapshotScheduleScheduleArgs{...} }
+type GetPostgresSnapshotScheduleScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleScheduleArrayOutput() GetPostgresSnapshotScheduleScheduleArrayOutput
+	ToGetPostgresSnapshotScheduleScheduleArrayOutputWithContext(context.Context) GetPostgresSnapshotScheduleScheduleArrayOutput
+}
+
+type GetPostgresSnapshotScheduleScheduleArray []GetPostgresSnapshotScheduleScheduleInput
+
+func (GetPostgresSnapshotScheduleScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresSnapshotScheduleSchedule)(nil)).Elem()
+}
+
+func (i GetPostgresSnapshotScheduleScheduleArray) ToGetPostgresSnapshotScheduleScheduleArrayOutput() GetPostgresSnapshotScheduleScheduleArrayOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleScheduleArray) ToGetPostgresSnapshotScheduleScheduleArrayOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleArrayOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleSchedule)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleScheduleOutput) ToGetPostgresSnapshotScheduleScheduleOutput() GetPostgresSnapshotScheduleScheduleOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleOutput) ToGetPostgresSnapshotScheduleScheduleOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleOutput {
+	return o
+}
+
+// (DailySchedule) - Take a snapshot once per day
+func (o GetPostgresSnapshotScheduleScheduleOutput) DailySchedule() GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleSchedule) *GetPostgresSnapshotScheduleScheduleDailySchedule {
+		return v.DailySchedule
+	}).(GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput)
+}
+
+// (MonthlySchedule) - Take a snapshot once per month
+func (o GetPostgresSnapshotScheduleScheduleOutput) MonthlySchedule() GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleSchedule) *GetPostgresSnapshotScheduleScheduleMonthlySchedule {
+		return v.MonthlySchedule
+	}).(GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput)
+}
+
+// (string) - How long snapshots from this cadence are kept before automatic deletion.
+// Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+// so changing it affects only later snapshots
+func (o GetPostgresSnapshotScheduleScheduleOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleSchedule) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+// (WeeklySchedule) - Take a snapshot once per week
+func (o GetPostgresSnapshotScheduleScheduleOutput) WeeklySchedule() GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleSchedule) *GetPostgresSnapshotScheduleScheduleWeeklySchedule {
+		return v.WeeklySchedule
+	}).(GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresSnapshotScheduleSchedule)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleScheduleArrayOutput) ToGetPostgresSnapshotScheduleScheduleArrayOutput() GetPostgresSnapshotScheduleScheduleArrayOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleArrayOutput) ToGetPostgresSnapshotScheduleScheduleArrayOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleArrayOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleArrayOutput) Index(i pulumi.IntInput) GetPostgresSnapshotScheduleScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresSnapshotScheduleSchedule {
+		return vs[0].([]GetPostgresSnapshotScheduleSchedule)[vs[1].(int)]
+	}).(GetPostgresSnapshotScheduleScheduleOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleDailySchedule struct {
+	// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+	Hour *int `pulumi:"hour"`
+}
+
+// GetPostgresSnapshotScheduleScheduleDailyScheduleInput is an input type that accepts GetPostgresSnapshotScheduleScheduleDailyScheduleArgs and GetPostgresSnapshotScheduleScheduleDailyScheduleOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleScheduleDailyScheduleInput` via:
+//
+//	GetPostgresSnapshotScheduleScheduleDailyScheduleArgs{...}
+type GetPostgresSnapshotScheduleScheduleDailyScheduleInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleScheduleDailyScheduleOutput() GetPostgresSnapshotScheduleScheduleDailyScheduleOutput
+	ToGetPostgresSnapshotScheduleScheduleDailyScheduleOutputWithContext(context.Context) GetPostgresSnapshotScheduleScheduleDailyScheduleOutput
+}
+
+type GetPostgresSnapshotScheduleScheduleDailyScheduleArgs struct {
+	// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+}
+
+func (GetPostgresSnapshotScheduleScheduleDailyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleDailySchedule)(nil)).Elem()
+}
+
+func (i GetPostgresSnapshotScheduleScheduleDailyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleDailyScheduleOutput() GetPostgresSnapshotScheduleScheduleDailyScheduleOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleDailyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleScheduleDailyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleDailyScheduleOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleDailyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleDailyScheduleOutput)
+}
+
+func (i GetPostgresSnapshotScheduleScheduleDailyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleScheduleDailyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleDailyScheduleOutput).ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(ctx)
+}
+
+// GetPostgresSnapshotScheduleScheduleDailySchedulePtrInput is an input type that accepts GetPostgresSnapshotScheduleScheduleDailyScheduleArgs, GetPostgresSnapshotScheduleScheduleDailySchedulePtr and GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleScheduleDailySchedulePtrInput` via:
+//
+//	        GetPostgresSnapshotScheduleScheduleDailyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresSnapshotScheduleScheduleDailySchedulePtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput
+	ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(context.Context) GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput
+}
+
+type getPostgresSnapshotScheduleScheduleDailySchedulePtrType GetPostgresSnapshotScheduleScheduleDailyScheduleArgs
+
+func GetPostgresSnapshotScheduleScheduleDailySchedulePtr(v *GetPostgresSnapshotScheduleScheduleDailyScheduleArgs) GetPostgresSnapshotScheduleScheduleDailySchedulePtrInput {
+	return (*getPostgresSnapshotScheduleScheduleDailySchedulePtrType)(v)
+}
+
+func (*getPostgresSnapshotScheduleScheduleDailySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSnapshotScheduleScheduleDailySchedule)(nil)).Elem()
+}
+
+func (i *getPostgresSnapshotScheduleScheduleDailySchedulePtrType) ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresSnapshotScheduleScheduleDailySchedulePtrType) ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleDailyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleScheduleDailyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleDailySchedule)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleScheduleDailyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleDailyScheduleOutput() GetPostgresSnapshotScheduleScheduleDailyScheduleOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleDailyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleDailyScheduleOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleDailyScheduleOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleDailyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return o.ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresSnapshotScheduleScheduleDailyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresSnapshotScheduleScheduleDailySchedule) *GetPostgresSnapshotScheduleScheduleDailySchedule {
+		return &v
+	}).(GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput)
+}
+
+// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+func (o GetPostgresSnapshotScheduleScheduleDailyScheduleOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleScheduleDailySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSnapshotScheduleScheduleDailySchedule)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput) ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput) ToGetPostgresSnapshotScheduleScheduleDailySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput) Elem() GetPostgresSnapshotScheduleScheduleDailyScheduleOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleScheduleDailySchedule) GetPostgresSnapshotScheduleScheduleDailySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresSnapshotScheduleScheduleDailySchedule
+		return ret
+	}).(GetPostgresSnapshotScheduleScheduleDailyScheduleOutput)
+}
+
+// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+func (o GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleScheduleDailySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleMonthlySchedule struct {
+	// (integer) - The day of the month on which to take the snapshot, in [1, 31]. In shorter
+	// months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+	// or 29, and on Apr 30), so every month gets exactly one snapshot
+	Day int `pulumi:"day"`
+	// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+	Hour *int `pulumi:"hour"`
+}
+
+// GetPostgresSnapshotScheduleScheduleMonthlyScheduleInput is an input type that accepts GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs and GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleScheduleMonthlyScheduleInput` via:
+//
+//	GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs{...}
+type GetPostgresSnapshotScheduleScheduleMonthlyScheduleInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput() GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput
+	ToGetPostgresSnapshotScheduleScheduleMonthlyScheduleOutputWithContext(context.Context) GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput
+}
+
+type GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs struct {
+	// (integer) - The day of the month on which to take the snapshot, in [1, 31]. In shorter
+	// months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+	// or 29, and on Apr 30), so every month gets exactly one snapshot
+	Day pulumi.IntInput `pulumi:"day"`
+	// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+}
+
+func (GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleMonthlySchedule)(nil)).Elem()
+}
+
+func (i GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput() GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleMonthlyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleMonthlyScheduleOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput)
+}
+
+func (i GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput).ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(ctx)
+}
+
+// GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrInput is an input type that accepts GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs, GetPostgresSnapshotScheduleScheduleMonthlySchedulePtr and GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrInput` via:
+//
+//	        GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput
+	ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(context.Context) GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput
+}
+
+type getPostgresSnapshotScheduleScheduleMonthlySchedulePtrType GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs
+
+func GetPostgresSnapshotScheduleScheduleMonthlySchedulePtr(v *GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs) GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrInput {
+	return (*getPostgresSnapshotScheduleScheduleMonthlySchedulePtrType)(v)
+}
+
+func (*getPostgresSnapshotScheduleScheduleMonthlySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSnapshotScheduleScheduleMonthlySchedule)(nil)).Elem()
+}
+
+func (i *getPostgresSnapshotScheduleScheduleMonthlySchedulePtrType) ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresSnapshotScheduleScheduleMonthlySchedulePtrType) ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleMonthlySchedule)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput() GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleMonthlyScheduleOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return o.ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresSnapshotScheduleScheduleMonthlySchedule) *GetPostgresSnapshotScheduleScheduleMonthlySchedule {
+		return &v
+	}).(GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput)
+}
+
+// (integer) - The day of the month on which to take the snapshot, in [1, 31]. In shorter
+// months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+// or 29, and on Apr 30), so every month gets exactly one snapshot
+func (o GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleScheduleMonthlySchedule) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+func (o GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleScheduleMonthlySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSnapshotScheduleScheduleMonthlySchedule)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput) ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput) ToGetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput) Elem() GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleScheduleMonthlySchedule) GetPostgresSnapshotScheduleScheduleMonthlySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresSnapshotScheduleScheduleMonthlySchedule
+		return ret
+	}).(GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput)
+}
+
+// (integer) - The day of the month on which to take the snapshot, in [1, 31]. In shorter
+// months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+// or 29, and on Apr 30), so every month gets exactly one snapshot
+func (o GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleScheduleMonthlySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+func (o GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleScheduleMonthlySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleWeeklySchedule struct {
+	// (string) - The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+	Hour *int `pulumi:"hour"`
+}
+
+// GetPostgresSnapshotScheduleScheduleWeeklyScheduleInput is an input type that accepts GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs and GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleScheduleWeeklyScheduleInput` via:
+//
+//	GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs{...}
+type GetPostgresSnapshotScheduleScheduleWeeklyScheduleInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput() GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput
+	ToGetPostgresSnapshotScheduleScheduleWeeklyScheduleOutputWithContext(context.Context) GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput
+}
+
+type GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs struct {
+	// (string) - The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+}
+
+func (GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (i GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput() GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleWeeklyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleWeeklyScheduleOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput)
+}
+
+func (i GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs) ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput).ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(ctx)
+}
+
+// GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrInput is an input type that accepts GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs, GetPostgresSnapshotScheduleScheduleWeeklySchedulePtr and GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput values.
+// You can construct a concrete instance of `GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrInput` via:
+//
+//	        GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput
+	ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(context.Context) GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput
+}
+
+type getPostgresSnapshotScheduleScheduleWeeklySchedulePtrType GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs
+
+func GetPostgresSnapshotScheduleScheduleWeeklySchedulePtr(v *GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs) GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrInput {
+	return (*getPostgresSnapshotScheduleScheduleWeeklySchedulePtrType)(v)
+}
+
+func (*getPostgresSnapshotScheduleScheduleWeeklySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSnapshotScheduleScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (i *getPostgresSnapshotScheduleScheduleWeeklySchedulePtrType) ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return i.ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresSnapshotScheduleScheduleWeeklySchedulePtrType) ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput() GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleWeeklyScheduleOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return o.ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput) ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresSnapshotScheduleScheduleWeeklySchedule) *GetPostgresSnapshotScheduleScheduleWeeklySchedule {
+		return &v
+	}).(GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput)
+}
+
+// (string) - The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+func (o GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleScheduleWeeklySchedule) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+func (o GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPostgresSnapshotScheduleScheduleWeeklySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSnapshotScheduleScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (o GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput) ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput() GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput) ToGetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutputWithContext(ctx context.Context) GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput {
+	return o
+}
+
+func (o GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput) Elem() GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleScheduleWeeklySchedule) GetPostgresSnapshotScheduleScheduleWeeklySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresSnapshotScheduleScheduleWeeklySchedule
+		return ret
+	}).(GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput)
+}
+
+// (string) - The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+func (o GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleScheduleWeeklySchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+func (o GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSnapshotScheduleScheduleWeeklySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetPostgresSyncedTableProviderConfig struct {
 	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 	WorkspaceId string `pulumi:"workspaceId"`
@@ -52306,7 +53884,7 @@ type GetRfaAccessRequestDestinationsDestinationSourceSecurable struct {
 	// getting shared in D2D Delta Sharing
 	ProviderShare *string `pulumi:"providerShare"`
 	// (string) - Required. The type of securable (catalog/schema/table).
-	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	Type *string `pulumi:"type"`
 }
 
@@ -52328,7 +53906,7 @@ type GetRfaAccessRequestDestinationsDestinationSourceSecurableArgs struct {
 	// getting shared in D2D Delta Sharing
 	ProviderShare pulumi.StringPtrInput `pulumi:"providerShare"`
 	// (string) - Required. The type of securable (catalog/schema/table).
-	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -52370,7 +53948,7 @@ func (o GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput) Provide
 }
 
 // (string) - Required. The type of securable (catalog/schema/table).
-// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 func (o GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRfaAccessRequestDestinationsDestinationSourceSecurable) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -52519,7 +54097,7 @@ type GetRfaAccessRequestDestinationsSecurable struct {
 	// getting shared in D2D Delta Sharing
 	ProviderShare *string `pulumi:"providerShare"`
 	// (string) - Required. The type of securable (catalog/schema/table).
-	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	Type *string `pulumi:"type"`
 }
 
@@ -52541,7 +54119,7 @@ type GetRfaAccessRequestDestinationsSecurableArgs struct {
 	// getting shared in D2D Delta Sharing
 	ProviderShare pulumi.StringPtrInput `pulumi:"providerShare"`
 	// (string) - Required. The type of securable (catalog/schema/table).
-	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -52583,7 +54161,7 @@ func (o GetRfaAccessRequestDestinationsSecurableOutput) ProviderShare() pulumi.S
 }
 
 // (string) - Required. The type of securable (catalog/schema/table).
-// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 func (o GetRfaAccessRequestDestinationsSecurableOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRfaAccessRequestDestinationsSecurable) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -70120,1970 +71698,7 @@ func (o GetUsersUserNamePtrOutput) GivenName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetUsersUserRole struct {
-	Display *string `pulumi:"display"`
-	Primary *bool   `pulumi:"primary"`
-	Ref     *string `pulumi:"ref"`
-	Type    *string `pulumi:"type"`
-	Value   *string `pulumi:"value"`
-}
-
-// GetUsersUserRoleInput is an input type that accepts GetUsersUserRoleArgs and GetUsersUserRoleOutput values.
-// You can construct a concrete instance of `GetUsersUserRoleInput` via:
-//
-//	GetUsersUserRoleArgs{...}
-type GetUsersUserRoleInput interface {
-	pulumi.Input
-
-	ToGetUsersUserRoleOutput() GetUsersUserRoleOutput
-	ToGetUsersUserRoleOutputWithContext(context.Context) GetUsersUserRoleOutput
-}
-
-type GetUsersUserRoleArgs struct {
-	Display pulumi.StringPtrInput `pulumi:"display"`
-	Primary pulumi.BoolPtrInput   `pulumi:"primary"`
-	Ref     pulumi.StringPtrInput `pulumi:"ref"`
-	Type    pulumi.StringPtrInput `pulumi:"type"`
-	Value   pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (GetUsersUserRoleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUsersUserRole)(nil)).Elem()
-}
-
-func (i GetUsersUserRoleArgs) ToGetUsersUserRoleOutput() GetUsersUserRoleOutput {
-	return i.ToGetUsersUserRoleOutputWithContext(context.Background())
-}
-
-func (i GetUsersUserRoleArgs) ToGetUsersUserRoleOutputWithContext(ctx context.Context) GetUsersUserRoleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserRoleOutput)
-}
-
-// GetUsersUserRoleArrayInput is an input type that accepts GetUsersUserRoleArray and GetUsersUserRoleArrayOutput values.
-// You can construct a concrete instance of `GetUsersUserRoleArrayInput` via:
-//
-//	GetUsersUserRoleArray{ GetUsersUserRoleArgs{...} }
-type GetUsersUserRoleArrayInput interface {
-	pulumi.Input
-
-	ToGetUsersUserRoleArrayOutput() GetUsersUserRoleArrayOutput
-	ToGetUsersUserRoleArrayOutputWithContext(context.Context) GetUsersUserRoleArrayOutput
-}
-
-type GetUsersUserRoleArray []GetUsersUserRoleInput
-
-func (GetUsersUserRoleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUsersUserRole)(nil)).Elem()
-}
-
-func (i GetUsersUserRoleArray) ToGetUsersUserRoleArrayOutput() GetUsersUserRoleArrayOutput {
-	return i.ToGetUsersUserRoleArrayOutputWithContext(context.Background())
-}
-
-func (i GetUsersUserRoleArray) ToGetUsersUserRoleArrayOutputWithContext(ctx context.Context) GetUsersUserRoleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserRoleArrayOutput)
-}
-
-type GetUsersUserRoleOutput struct{ *pulumi.OutputState }
-
-func (GetUsersUserRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUsersUserRole)(nil)).Elem()
-}
-
-func (o GetUsersUserRoleOutput) ToGetUsersUserRoleOutput() GetUsersUserRoleOutput {
-	return o
-}
-
-func (o GetUsersUserRoleOutput) ToGetUsersUserRoleOutputWithContext(ctx context.Context) GetUsersUserRoleOutput {
-	return o
-}
-
-func (o GetUsersUserRoleOutput) Display() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetUsersUserRole) *string { return v.Display }).(pulumi.StringPtrOutput)
-}
-
-func (o GetUsersUserRoleOutput) Primary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUsersUserRole) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetUsersUserRoleOutput) Ref() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetUsersUserRole) *string { return v.Ref }).(pulumi.StringPtrOutput)
-}
-
-func (o GetUsersUserRoleOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetUsersUserRole) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-func (o GetUsersUserRoleOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetUsersUserRole) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type GetUsersUserRoleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetUsersUserRoleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUsersUserRole)(nil)).Elem()
-}
-
-func (o GetUsersUserRoleArrayOutput) ToGetUsersUserRoleArrayOutput() GetUsersUserRoleArrayOutput {
-	return o
-}
-
-func (o GetUsersUserRoleArrayOutput) ToGetUsersUserRoleArrayOutputWithContext(ctx context.Context) GetUsersUserRoleArrayOutput {
-	return o
-}
-
-func (o GetUsersUserRoleArrayOutput) Index(i pulumi.IntInput) GetUsersUserRoleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUserRole {
-		return vs[0].([]GetUsersUserRole)[vs[1].(int)]
-	}).(GetUsersUserRoleOutput)
-}
-
-type GetViewsProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId string `pulumi:"workspaceId"`
-}
-
-// GetViewsProviderConfigInput is an input type that accepts GetViewsProviderConfigArgs and GetViewsProviderConfigOutput values.
-// You can construct a concrete instance of `GetViewsProviderConfigInput` via:
-//
-//	GetViewsProviderConfigArgs{...}
-type GetViewsProviderConfigInput interface {
-	pulumi.Input
-
-	ToGetViewsProviderConfigOutput() GetViewsProviderConfigOutput
-	ToGetViewsProviderConfigOutputWithContext(context.Context) GetViewsProviderConfigOutput
-}
-
-type GetViewsProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
-}
-
-func (GetViewsProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetViewsProviderConfig)(nil)).Elem()
-}
-
-func (i GetViewsProviderConfigArgs) ToGetViewsProviderConfigOutput() GetViewsProviderConfigOutput {
-	return i.ToGetViewsProviderConfigOutputWithContext(context.Background())
-}
-
-func (i GetViewsProviderConfigArgs) ToGetViewsProviderConfigOutputWithContext(ctx context.Context) GetViewsProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetViewsProviderConfigOutput)
-}
-
-func (i GetViewsProviderConfigArgs) ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput {
-	return i.ToGetViewsProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GetViewsProviderConfigArgs) ToGetViewsProviderConfigPtrOutputWithContext(ctx context.Context) GetViewsProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetViewsProviderConfigOutput).ToGetViewsProviderConfigPtrOutputWithContext(ctx)
-}
-
-// GetViewsProviderConfigPtrInput is an input type that accepts GetViewsProviderConfigArgs, GetViewsProviderConfigPtr and GetViewsProviderConfigPtrOutput values.
-// You can construct a concrete instance of `GetViewsProviderConfigPtrInput` via:
-//
-//	        GetViewsProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetViewsProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput
-	ToGetViewsProviderConfigPtrOutputWithContext(context.Context) GetViewsProviderConfigPtrOutput
-}
-
-type getViewsProviderConfigPtrType GetViewsProviderConfigArgs
-
-func GetViewsProviderConfigPtr(v *GetViewsProviderConfigArgs) GetViewsProviderConfigPtrInput {
-	return (*getViewsProviderConfigPtrType)(v)
-}
-
-func (*getViewsProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetViewsProviderConfig)(nil)).Elem()
-}
-
-func (i *getViewsProviderConfigPtrType) ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput {
-	return i.ToGetViewsProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *getViewsProviderConfigPtrType) ToGetViewsProviderConfigPtrOutputWithContext(ctx context.Context) GetViewsProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetViewsProviderConfigPtrOutput)
-}
-
-type GetViewsProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (GetViewsProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetViewsProviderConfig)(nil)).Elem()
-}
-
-func (o GetViewsProviderConfigOutput) ToGetViewsProviderConfigOutput() GetViewsProviderConfigOutput {
-	return o
-}
-
-func (o GetViewsProviderConfigOutput) ToGetViewsProviderConfigOutputWithContext(ctx context.Context) GetViewsProviderConfigOutput {
-	return o
-}
-
-func (o GetViewsProviderConfigOutput) ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput {
-	return o.ToGetViewsProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GetViewsProviderConfigOutput) ToGetViewsProviderConfigPtrOutputWithContext(ctx context.Context) GetViewsProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetViewsProviderConfig) *GetViewsProviderConfig {
-		return &v
-	}).(GetViewsProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetViewsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetViewsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
-}
-
-type GetViewsProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GetViewsProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetViewsProviderConfig)(nil)).Elem()
-}
-
-func (o GetViewsProviderConfigPtrOutput) ToGetViewsProviderConfigPtrOutput() GetViewsProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetViewsProviderConfigPtrOutput) ToGetViewsProviderConfigPtrOutputWithContext(ctx context.Context) GetViewsProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetViewsProviderConfigPtrOutput) Elem() GetViewsProviderConfigOutput {
-	return o.ApplyT(func(v *GetViewsProviderConfig) GetViewsProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GetViewsProviderConfig
-		return ret
-	}).(GetViewsProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetViewsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetViewsProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetVolumeProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId string `pulumi:"workspaceId"`
-}
-
-// GetVolumeProviderConfigInput is an input type that accepts GetVolumeProviderConfigArgs and GetVolumeProviderConfigOutput values.
-// You can construct a concrete instance of `GetVolumeProviderConfigInput` via:
-//
-//	GetVolumeProviderConfigArgs{...}
-type GetVolumeProviderConfigInput interface {
-	pulumi.Input
-
-	ToGetVolumeProviderConfigOutput() GetVolumeProviderConfigOutput
-	ToGetVolumeProviderConfigOutputWithContext(context.Context) GetVolumeProviderConfigOutput
-}
-
-type GetVolumeProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
-}
-
-func (GetVolumeProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeProviderConfig)(nil)).Elem()
-}
-
-func (i GetVolumeProviderConfigArgs) ToGetVolumeProviderConfigOutput() GetVolumeProviderConfigOutput {
-	return i.ToGetVolumeProviderConfigOutputWithContext(context.Background())
-}
-
-func (i GetVolumeProviderConfigArgs) ToGetVolumeProviderConfigOutputWithContext(ctx context.Context) GetVolumeProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeProviderConfigOutput)
-}
-
-func (i GetVolumeProviderConfigArgs) ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput {
-	return i.ToGetVolumeProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GetVolumeProviderConfigArgs) ToGetVolumeProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumeProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeProviderConfigOutput).ToGetVolumeProviderConfigPtrOutputWithContext(ctx)
-}
-
-// GetVolumeProviderConfigPtrInput is an input type that accepts GetVolumeProviderConfigArgs, GetVolumeProviderConfigPtr and GetVolumeProviderConfigPtrOutput values.
-// You can construct a concrete instance of `GetVolumeProviderConfigPtrInput` via:
-//
-//	        GetVolumeProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVolumeProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput
-	ToGetVolumeProviderConfigPtrOutputWithContext(context.Context) GetVolumeProviderConfigPtrOutput
-}
-
-type getVolumeProviderConfigPtrType GetVolumeProviderConfigArgs
-
-func GetVolumeProviderConfigPtr(v *GetVolumeProviderConfigArgs) GetVolumeProviderConfigPtrInput {
-	return (*getVolumeProviderConfigPtrType)(v)
-}
-
-func (*getVolumeProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumeProviderConfig)(nil)).Elem()
-}
-
-func (i *getVolumeProviderConfigPtrType) ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput {
-	return i.ToGetVolumeProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *getVolumeProviderConfigPtrType) ToGetVolumeProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumeProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeProviderConfigPtrOutput)
-}
-
-type GetVolumeProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (GetVolumeProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeProviderConfig)(nil)).Elem()
-}
-
-func (o GetVolumeProviderConfigOutput) ToGetVolumeProviderConfigOutput() GetVolumeProviderConfigOutput {
-	return o
-}
-
-func (o GetVolumeProviderConfigOutput) ToGetVolumeProviderConfigOutputWithContext(ctx context.Context) GetVolumeProviderConfigOutput {
-	return o
-}
-
-func (o GetVolumeProviderConfigOutput) ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput {
-	return o.ToGetVolumeProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GetVolumeProviderConfigOutput) ToGetVolumeProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumeProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumeProviderConfig) *GetVolumeProviderConfig {
-		return &v
-	}).(GetVolumeProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetVolumeProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVolumeProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
-}
-
-type GetVolumeProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVolumeProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumeProviderConfig)(nil)).Elem()
-}
-
-func (o GetVolumeProviderConfigPtrOutput) ToGetVolumeProviderConfigPtrOutput() GetVolumeProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetVolumeProviderConfigPtrOutput) ToGetVolumeProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumeProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetVolumeProviderConfigPtrOutput) Elem() GetVolumeProviderConfigOutput {
-	return o.ApplyT(func(v *GetVolumeProviderConfig) GetVolumeProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GetVolumeProviderConfig
-		return ret
-	}).(GetVolumeProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetVolumeProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetVolumeVolumeInfo struct {
-	// the AWS access point to use when accessing s3 bucket for this volume's external location
-	AccessPoint *string `pulumi:"accessPoint"`
-	// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
-	BrowseOnly *bool `pulumi:"browseOnly"`
-	// the name of the catalog where the schema and the volume are
-	CatalogName *string `pulumi:"catalogName"`
-	// the comment attached to the volume
-	Comment *string `pulumi:"comment"`
-	// the Unix timestamp at the volume's creation
-	CreatedAt *int `pulumi:"createdAt"`
-	// the identifier of the user who created the volume
-	CreatedBy *string `pulumi:"createdBy"`
-	// encryption options that apply to clients connecting to cloud storage
-	EncryptionDetails *GetVolumeVolumeInfoEncryptionDetails `pulumi:"encryptionDetails"`
-	// the three-level (fully qualified) name of the volume
-	FullName *string `pulumi:"fullName"`
-	// the unique identifier of the metastore
-	MetastoreId *string `pulumi:"metastoreId"`
-	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-	Name *string `pulumi:"name"`
-	// the identifier of the user who owns the volume
-	Owner *string `pulumi:"owner"`
-	// the name of the schema where the volume is
-	SchemaName *string `pulumi:"schemaName"`
-	// the storage location on the cloud
-	StorageLocation *string `pulumi:"storageLocation"`
-	// the timestamp of the last time changes were made to the volume
-	UpdatedAt *int `pulumi:"updatedAt"`
-	// the identifier of the user who updated the volume last time
-	UpdatedBy *string `pulumi:"updatedBy"`
-	// the unique identifier of the volume
-	VolumeId *string `pulumi:"volumeId"`
-	// whether the volume is `MANAGED` or `EXTERNAL`
-	VolumeType *string `pulumi:"volumeType"`
-}
-
-// GetVolumeVolumeInfoInput is an input type that accepts GetVolumeVolumeInfoArgs and GetVolumeVolumeInfoOutput values.
-// You can construct a concrete instance of `GetVolumeVolumeInfoInput` via:
-//
-//	GetVolumeVolumeInfoArgs{...}
-type GetVolumeVolumeInfoInput interface {
-	pulumi.Input
-
-	ToGetVolumeVolumeInfoOutput() GetVolumeVolumeInfoOutput
-	ToGetVolumeVolumeInfoOutputWithContext(context.Context) GetVolumeVolumeInfoOutput
-}
-
-type GetVolumeVolumeInfoArgs struct {
-	// the AWS access point to use when accessing s3 bucket for this volume's external location
-	AccessPoint pulumi.StringPtrInput `pulumi:"accessPoint"`
-	// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
-	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
-	// the name of the catalog where the schema and the volume are
-	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// the comment attached to the volume
-	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// the Unix timestamp at the volume's creation
-	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
-	// the identifier of the user who created the volume
-	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
-	// encryption options that apply to clients connecting to cloud storage
-	EncryptionDetails GetVolumeVolumeInfoEncryptionDetailsPtrInput `pulumi:"encryptionDetails"`
-	// the three-level (fully qualified) name of the volume
-	FullName pulumi.StringPtrInput `pulumi:"fullName"`
-	// the unique identifier of the metastore
-	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
-	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// the identifier of the user who owns the volume
-	Owner pulumi.StringPtrInput `pulumi:"owner"`
-	// the name of the schema where the volume is
-	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
-	// the storage location on the cloud
-	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
-	// the timestamp of the last time changes were made to the volume
-	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
-	// the identifier of the user who updated the volume last time
-	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
-	// the unique identifier of the volume
-	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
-	// whether the volume is `MANAGED` or `EXTERNAL`
-	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
-}
-
-func (GetVolumeVolumeInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeVolumeInfo)(nil)).Elem()
-}
-
-func (i GetVolumeVolumeInfoArgs) ToGetVolumeVolumeInfoOutput() GetVolumeVolumeInfoOutput {
-	return i.ToGetVolumeVolumeInfoOutputWithContext(context.Background())
-}
-
-func (i GetVolumeVolumeInfoArgs) ToGetVolumeVolumeInfoOutputWithContext(ctx context.Context) GetVolumeVolumeInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoOutput)
-}
-
-func (i GetVolumeVolumeInfoArgs) ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput {
-	return i.ToGetVolumeVolumeInfoPtrOutputWithContext(context.Background())
-}
-
-func (i GetVolumeVolumeInfoArgs) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoOutput).ToGetVolumeVolumeInfoPtrOutputWithContext(ctx)
-}
-
-// GetVolumeVolumeInfoPtrInput is an input type that accepts GetVolumeVolumeInfoArgs, GetVolumeVolumeInfoPtr and GetVolumeVolumeInfoPtrOutput values.
-// You can construct a concrete instance of `GetVolumeVolumeInfoPtrInput` via:
-//
-//	        GetVolumeVolumeInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVolumeVolumeInfoPtrInput interface {
-	pulumi.Input
-
-	ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput
-	ToGetVolumeVolumeInfoPtrOutputWithContext(context.Context) GetVolumeVolumeInfoPtrOutput
-}
-
-type getVolumeVolumeInfoPtrType GetVolumeVolumeInfoArgs
-
-func GetVolumeVolumeInfoPtr(v *GetVolumeVolumeInfoArgs) GetVolumeVolumeInfoPtrInput {
-	return (*getVolumeVolumeInfoPtrType)(v)
-}
-
-func (*getVolumeVolumeInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumeVolumeInfo)(nil)).Elem()
-}
-
-func (i *getVolumeVolumeInfoPtrType) ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput {
-	return i.ToGetVolumeVolumeInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *getVolumeVolumeInfoPtrType) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoPtrOutput)
-}
-
-type GetVolumeVolumeInfoOutput struct{ *pulumi.OutputState }
-
-func (GetVolumeVolumeInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeVolumeInfo)(nil)).Elem()
-}
-
-func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoOutput() GetVolumeVolumeInfoOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoOutputWithContext(ctx context.Context) GetVolumeVolumeInfoOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput {
-	return o.ToGetVolumeVolumeInfoPtrOutputWithContext(context.Background())
-}
-
-func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumeVolumeInfo) *GetVolumeVolumeInfo {
-		return &v
-	}).(GetVolumeVolumeInfoPtrOutput)
-}
-
-// the AWS access point to use when accessing s3 bucket for this volume's external location
-func (o GetVolumeVolumeInfoOutput) AccessPoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.AccessPoint }).(pulumi.StringPtrOutput)
-}
-
-// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
-func (o GetVolumeVolumeInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
-}
-
-// the name of the catalog where the schema and the volume are
-func (o GetVolumeVolumeInfoOutput) CatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
-}
-
-// the comment attached to the volume
-func (o GetVolumeVolumeInfoOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
-}
-
-// the Unix timestamp at the volume's creation
-func (o GetVolumeVolumeInfoOutput) CreatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
-}
-
-// the identifier of the user who created the volume
-func (o GetVolumeVolumeInfoOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// encryption options that apply to clients connecting to cloud storage
-func (o GetVolumeVolumeInfoOutput) EncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *GetVolumeVolumeInfoEncryptionDetails { return v.EncryptionDetails }).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
-}
-
-// the three-level (fully qualified) name of the volume
-func (o GetVolumeVolumeInfoOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
-}
-
-// the unique identifier of the metastore
-func (o GetVolumeVolumeInfoOutput) MetastoreId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
-}
-
-// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-func (o GetVolumeVolumeInfoOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// the identifier of the user who owns the volume
-func (o GetVolumeVolumeInfoOutput) Owner() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
-}
-
-// the name of the schema where the volume is
-func (o GetVolumeVolumeInfoOutput) SchemaName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
-}
-
-// the storage location on the cloud
-func (o GetVolumeVolumeInfoOutput) StorageLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
-}
-
-// the timestamp of the last time changes were made to the volume
-func (o GetVolumeVolumeInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
-}
-
-// the identifier of the user who updated the volume last time
-func (o GetVolumeVolumeInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
-}
-
-// the unique identifier of the volume
-func (o GetVolumeVolumeInfoOutput) VolumeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
-}
-
-// whether the volume is `MANAGED` or `EXTERNAL`
-func (o GetVolumeVolumeInfoOutput) VolumeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
-}
-
-type GetVolumeVolumeInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVolumeVolumeInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumeVolumeInfo)(nil)).Elem()
-}
-
-func (o GetVolumeVolumeInfoPtrOutput) ToGetVolumeVolumeInfoPtrOutput() GetVolumeVolumeInfoPtrOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoPtrOutput) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoPtrOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoPtrOutput) Elem() GetVolumeVolumeInfoOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) GetVolumeVolumeInfo {
-		if v != nil {
-			return *v
-		}
-		var ret GetVolumeVolumeInfo
-		return ret
-	}).(GetVolumeVolumeInfoOutput)
-}
-
-// the AWS access point to use when accessing s3 bucket for this volume's external location
-func (o GetVolumeVolumeInfoPtrOutput) AccessPoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AccessPoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
-func (o GetVolumeVolumeInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.BrowseOnly
-	}).(pulumi.BoolPtrOutput)
-}
-
-// the name of the catalog where the schema and the volume are
-func (o GetVolumeVolumeInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CatalogName
-	}).(pulumi.StringPtrOutput)
-}
-
-// the comment attached to the volume
-func (o GetVolumeVolumeInfoPtrOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Comment
-	}).(pulumi.StringPtrOutput)
-}
-
-// the Unix timestamp at the volume's creation
-func (o GetVolumeVolumeInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedAt
-	}).(pulumi.IntPtrOutput)
-}
-
-// the identifier of the user who created the volume
-func (o GetVolumeVolumeInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// encryption options that apply to clients connecting to cloud storage
-func (o GetVolumeVolumeInfoPtrOutput) EncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *GetVolumeVolumeInfoEncryptionDetails {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionDetails
-	}).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
-}
-
-// the three-level (fully qualified) name of the volume
-func (o GetVolumeVolumeInfoPtrOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FullName
-	}).(pulumi.StringPtrOutput)
-}
-
-// the unique identifier of the metastore
-func (o GetVolumeVolumeInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MetastoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-func (o GetVolumeVolumeInfoPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// the identifier of the user who owns the volume
-func (o GetVolumeVolumeInfoPtrOutput) Owner() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Owner
-	}).(pulumi.StringPtrOutput)
-}
-
-// the name of the schema where the volume is
-func (o GetVolumeVolumeInfoPtrOutput) SchemaName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaName
-	}).(pulumi.StringPtrOutput)
-}
-
-// the storage location on the cloud
-func (o GetVolumeVolumeInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// the timestamp of the last time changes were made to the volume
-func (o GetVolumeVolumeInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *int {
-		if v == nil {
-			return nil
-		}
-		return v.UpdatedAt
-	}).(pulumi.IntPtrOutput)
-}
-
-// the identifier of the user who updated the volume last time
-func (o GetVolumeVolumeInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UpdatedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// the unique identifier of the volume
-func (o GetVolumeVolumeInfoPtrOutput) VolumeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VolumeId
-	}).(pulumi.StringPtrOutput)
-}
-
-// whether the volume is `MANAGED` or `EXTERNAL`
-func (o GetVolumeVolumeInfoPtrOutput) VolumeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VolumeType
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetVolumeVolumeInfoEncryptionDetails struct {
-	SseEncryptionDetails *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails `pulumi:"sseEncryptionDetails"`
-}
-
-// GetVolumeVolumeInfoEncryptionDetailsInput is an input type that accepts GetVolumeVolumeInfoEncryptionDetailsArgs and GetVolumeVolumeInfoEncryptionDetailsOutput values.
-// You can construct a concrete instance of `GetVolumeVolumeInfoEncryptionDetailsInput` via:
-//
-//	GetVolumeVolumeInfoEncryptionDetailsArgs{...}
-type GetVolumeVolumeInfoEncryptionDetailsInput interface {
-	pulumi.Input
-
-	ToGetVolumeVolumeInfoEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsOutput
-	ToGetVolumeVolumeInfoEncryptionDetailsOutputWithContext(context.Context) GetVolumeVolumeInfoEncryptionDetailsOutput
-}
-
-type GetVolumeVolumeInfoEncryptionDetailsArgs struct {
-	SseEncryptionDetails GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput `pulumi:"sseEncryptionDetails"`
-}
-
-func (GetVolumeVolumeInfoEncryptionDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetails)(nil)).Elem()
-}
-
-func (i GetVolumeVolumeInfoEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsOutput {
-	return i.ToGetVolumeVolumeInfoEncryptionDetailsOutputWithContext(context.Background())
-}
-
-func (i GetVolumeVolumeInfoEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsOutput)
-}
-
-func (i GetVolumeVolumeInfoEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return i.ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i GetVolumeVolumeInfoEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsOutput).ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx)
-}
-
-// GetVolumeVolumeInfoEncryptionDetailsPtrInput is an input type that accepts GetVolumeVolumeInfoEncryptionDetailsArgs, GetVolumeVolumeInfoEncryptionDetailsPtr and GetVolumeVolumeInfoEncryptionDetailsPtrOutput values.
-// You can construct a concrete instance of `GetVolumeVolumeInfoEncryptionDetailsPtrInput` via:
-//
-//	        GetVolumeVolumeInfoEncryptionDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVolumeVolumeInfoEncryptionDetailsPtrInput interface {
-	pulumi.Input
-
-	ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput
-	ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput
-}
-
-type getVolumeVolumeInfoEncryptionDetailsPtrType GetVolumeVolumeInfoEncryptionDetailsArgs
-
-func GetVolumeVolumeInfoEncryptionDetailsPtr(v *GetVolumeVolumeInfoEncryptionDetailsArgs) GetVolumeVolumeInfoEncryptionDetailsPtrInput {
-	return (*getVolumeVolumeInfoEncryptionDetailsPtrType)(v)
-}
-
-func (*getVolumeVolumeInfoEncryptionDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumeVolumeInfoEncryptionDetails)(nil)).Elem()
-}
-
-func (i *getVolumeVolumeInfoEncryptionDetailsPtrType) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return i.ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *getVolumeVolumeInfoEncryptionDetailsPtrType) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
-}
-
-type GetVolumeVolumeInfoEncryptionDetailsOutput struct{ *pulumi.OutputState }
-
-func (GetVolumeVolumeInfoEncryptionDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetails)(nil)).Elem()
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return o.ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumeVolumeInfoEncryptionDetails) *GetVolumeVolumeInfoEncryptionDetails {
-		return &v
-	}).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsOutput) SseEncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfoEncryptionDetails) *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
-		return v.SseEncryptionDetails
-	}).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
-}
-
-type GetVolumeVolumeInfoEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVolumeVolumeInfoEncryptionDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumeVolumeInfoEncryptionDetails)(nil)).Elem()
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsPtrOutput) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsPtrOutput) ToGetVolumeVolumeInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsPtrOutput) Elem() GetVolumeVolumeInfoEncryptionDetailsOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetails) GetVolumeVolumeInfoEncryptionDetails {
-		if v != nil {
-			return *v
-		}
-		var ret GetVolumeVolumeInfoEncryptionDetails
-		return ret
-	}).(GetVolumeVolumeInfoEncryptionDetailsOutput)
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsPtrOutput) SseEncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetails) *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
-		if v == nil {
-			return nil
-		}
-		return v.SseEncryptionDetails
-	}).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
-}
-
-type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails struct {
-	Algorithm    *string `pulumi:"algorithm"`
-	AwsKmsKeyArn *string `pulumi:"awsKmsKeyArn"`
-}
-
-// GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput is an input type that accepts GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs and GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput values.
-// You can construct a concrete instance of `GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput` via:
-//
-//	GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{...}
-type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput interface {
-	pulumi.Input
-
-	ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput
-	ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput
-}
-
-type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs struct {
-	Algorithm    pulumi.StringPtrInput `pulumi:"algorithm"`
-	AwsKmsKeyArn pulumi.StringPtrInput `pulumi:"awsKmsKeyArn"`
-}
-
-func (GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
-}
-
-func (i GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
-	return i.ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Background())
-}
-
-func (i GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput)
-}
-
-func (i GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return i.ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput).ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx)
-}
-
-// GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput is an input type that accepts GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs, GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtr and GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput values.
-// You can construct a concrete instance of `GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput` via:
-//
-//	        GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput interface {
-	pulumi.Input
-
-	ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput
-	ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput
-}
-
-type getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs
-
-func GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtr(v *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput {
-	return (*getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType)(v)
-}
-
-func (*getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
-}
-
-func (i *getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return i.ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrType) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
-}
-
-type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput struct{ *pulumi.OutputState }
-
-func (GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o.ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
-		return &v
-	}).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *string { return v.AwsKmsKeyArn }).(pulumi.StringPtrOutput)
-}
-
-type GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ToGetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) Elem() GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
-		if v != nil {
-			return *v
-		}
-		var ret GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails
-		return ret
-	}).(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput)
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Algorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsKmsKeyArn
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetVolumesProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId string `pulumi:"workspaceId"`
-}
-
-// GetVolumesProviderConfigInput is an input type that accepts GetVolumesProviderConfigArgs and GetVolumesProviderConfigOutput values.
-// You can construct a concrete instance of `GetVolumesProviderConfigInput` via:
-//
-//	GetVolumesProviderConfigArgs{...}
-type GetVolumesProviderConfigInput interface {
-	pulumi.Input
-
-	ToGetVolumesProviderConfigOutput() GetVolumesProviderConfigOutput
-	ToGetVolumesProviderConfigOutputWithContext(context.Context) GetVolumesProviderConfigOutput
-}
-
-type GetVolumesProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
-}
-
-func (GetVolumesProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumesProviderConfig)(nil)).Elem()
-}
-
-func (i GetVolumesProviderConfigArgs) ToGetVolumesProviderConfigOutput() GetVolumesProviderConfigOutput {
-	return i.ToGetVolumesProviderConfigOutputWithContext(context.Background())
-}
-
-func (i GetVolumesProviderConfigArgs) ToGetVolumesProviderConfigOutputWithContext(ctx context.Context) GetVolumesProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumesProviderConfigOutput)
-}
-
-func (i GetVolumesProviderConfigArgs) ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput {
-	return i.ToGetVolumesProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GetVolumesProviderConfigArgs) ToGetVolumesProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumesProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumesProviderConfigOutput).ToGetVolumesProviderConfigPtrOutputWithContext(ctx)
-}
-
-// GetVolumesProviderConfigPtrInput is an input type that accepts GetVolumesProviderConfigArgs, GetVolumesProviderConfigPtr and GetVolumesProviderConfigPtrOutput values.
-// You can construct a concrete instance of `GetVolumesProviderConfigPtrInput` via:
-//
-//	        GetVolumesProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVolumesProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput
-	ToGetVolumesProviderConfigPtrOutputWithContext(context.Context) GetVolumesProviderConfigPtrOutput
-}
-
-type getVolumesProviderConfigPtrType GetVolumesProviderConfigArgs
-
-func GetVolumesProviderConfigPtr(v *GetVolumesProviderConfigArgs) GetVolumesProviderConfigPtrInput {
-	return (*getVolumesProviderConfigPtrType)(v)
-}
-
-func (*getVolumesProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumesProviderConfig)(nil)).Elem()
-}
-
-func (i *getVolumesProviderConfigPtrType) ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput {
-	return i.ToGetVolumesProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *getVolumesProviderConfigPtrType) ToGetVolumesProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumesProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVolumesProviderConfigPtrOutput)
-}
-
-type GetVolumesProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (GetVolumesProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumesProviderConfig)(nil)).Elem()
-}
-
-func (o GetVolumesProviderConfigOutput) ToGetVolumesProviderConfigOutput() GetVolumesProviderConfigOutput {
-	return o
-}
-
-func (o GetVolumesProviderConfigOutput) ToGetVolumesProviderConfigOutputWithContext(ctx context.Context) GetVolumesProviderConfigOutput {
-	return o
-}
-
-func (o GetVolumesProviderConfigOutput) ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput {
-	return o.ToGetVolumesProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GetVolumesProviderConfigOutput) ToGetVolumesProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumesProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVolumesProviderConfig) *GetVolumesProviderConfig {
-		return &v
-	}).(GetVolumesProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetVolumesProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVolumesProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
-}
-
-type GetVolumesProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVolumesProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVolumesProviderConfig)(nil)).Elem()
-}
-
-func (o GetVolumesProviderConfigPtrOutput) ToGetVolumesProviderConfigPtrOutput() GetVolumesProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetVolumesProviderConfigPtrOutput) ToGetVolumesProviderConfigPtrOutputWithContext(ctx context.Context) GetVolumesProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetVolumesProviderConfigPtrOutput) Elem() GetVolumesProviderConfigOutput {
-	return o.ApplyT(func(v *GetVolumesProviderConfig) GetVolumesProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GetVolumesProviderConfig
-		return ret
-	}).(GetVolumesProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetVolumesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVolumesProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverrideProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId string `pulumi:"workspaceId"`
-}
-
-// GetWarehousesDefaultWarehouseOverrideProviderConfigInput is an input type that accepts GetWarehousesDefaultWarehouseOverrideProviderConfigArgs and GetWarehousesDefaultWarehouseOverrideProviderConfigOutput values.
-// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverrideProviderConfigInput` via:
-//
-//	GetWarehousesDefaultWarehouseOverrideProviderConfigArgs{...}
-type GetWarehousesDefaultWarehouseOverrideProviderConfigInput interface {
-	pulumi.Input
-
-	ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigOutput
-	ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigOutput
-}
-
-type GetWarehousesDefaultWarehouseOverrideProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
-}
-
-func (GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
-}
-
-func (i GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutputWithContext(context.Background())
-}
-
-func (i GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverrideProviderConfigOutput)
-}
-
-func (i GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverrideProviderConfigOutput).ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx)
-}
-
-// GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput is an input type that accepts GetWarehousesDefaultWarehouseOverrideProviderConfigArgs, GetWarehousesDefaultWarehouseOverrideProviderConfigPtr and GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput values.
-// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput` via:
-//
-//	        GetWarehousesDefaultWarehouseOverrideProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput
-	ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput
-}
-
-type getWarehousesDefaultWarehouseOverrideProviderConfigPtrType GetWarehousesDefaultWarehouseOverrideProviderConfigArgs
-
-func GetWarehousesDefaultWarehouseOverrideProviderConfigPtr(v *GetWarehousesDefaultWarehouseOverrideProviderConfigArgs) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput {
-	return (*getWarehousesDefaultWarehouseOverrideProviderConfigPtrType)(v)
-}
-
-func (*getWarehousesDefaultWarehouseOverrideProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
-}
-
-func (i *getWarehousesDefaultWarehouseOverrideProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *getWarehousesDefaultWarehouseOverrideProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverrideProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
-}
-
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o.ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWarehousesDefaultWarehouseOverrideProviderConfig) *GetWarehousesDefaultWarehouseOverrideProviderConfig {
-		return &v
-	}).(GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverrideProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
-}
-
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) Elem() GetWarehousesDefaultWarehouseOverrideProviderConfigOutput {
-	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverrideProviderConfig) GetWarehousesDefaultWarehouseOverrideProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GetWarehousesDefaultWarehouseOverrideProviderConfig
-		return ret
-	}).(GetWarehousesDefaultWarehouseOverrideProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverrideProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride struct {
-	// (string) - The ID component of the resource name (user ID)
-	DefaultWarehouseOverrideId string `pulumi:"defaultWarehouseOverrideId"`
-	// (string) - The resource name of the default warehouse override.
-	// Format: default-warehouse-overrides/{default_warehouse_override_id}
-	Name string `pulumi:"name"`
-	// Configure the provider for management through account provider.
-	ProviderConfig *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig `pulumi:"providerConfig"`
-	// (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
-	Type string `pulumi:"type"`
-	// (string) - The specific warehouse ID when type is CUSTOM.
-	// Not set for LAST_SELECTED type
-	WarehouseId string `pulumi:"warehouseId"`
-}
-
-// GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs and GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput values.
-// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput` via:
-//
-//	GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs{...}
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput interface {
-	pulumi.Input
-
-	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput
-	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs struct {
-	// (string) - The ID component of the resource name (user ID)
-	DefaultWarehouseOverrideId pulumi.StringInput `pulumi:"defaultWarehouseOverrideId"`
-	// (string) - The resource name of the default warehouse override.
-	// Format: default-warehouse-overrides/{default_warehouse_override_id}
-	Name pulumi.StringInput `pulumi:"name"`
-	// Configure the provider for management through account provider.
-	ProviderConfig GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput `pulumi:"providerConfig"`
-	// (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
-	Type pulumi.StringInput `pulumi:"type"`
-	// (string) - The specific warehouse ID when type is CUSTOM.
-	// Not set for LAST_SELECTED type
-	WarehouseId pulumi.StringInput `pulumi:"warehouseId"`
-}
-
-func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)(nil)).Elem()
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutputWithContext(context.Background())
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput)
-}
-
-// GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray and GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput values.
-// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayInput` via:
-//
-//	GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray{ GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs{...} }
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayInput interface {
-	pulumi.Input
-
-	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput
-	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray []GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput
-
-func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)(nil)).Elem()
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutputWithContext(context.Background())
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput struct{ *pulumi.OutputState }
-
-func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)(nil)).Elem()
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
-	return o
-}
-
-// (string) - The ID component of the resource name (user ID)
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) DefaultWarehouseOverrideId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) string {
-		return v.DefaultWarehouseOverrideId
-	}).(pulumi.StringOutput)
-}
-
-// (string) - The resource name of the default warehouse override.
-// Format: default-warehouse-overrides/{default_warehouse_override_id}
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Configure the provider for management through account provider.
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) ProviderConfig() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig {
-		return v.ProviderConfig
-	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput)
-}
-
-// (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// (string) - The specific warehouse ID when type is CUSTOM.
-// Not set for LAST_SELECTED type
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput) WarehouseId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride) string { return v.WarehouseId }).(pulumi.StringOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)(nil)).Elem()
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput) Index(i pulumi.IntInput) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride {
-		return vs[0].([]GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride)[vs[1].(int)]
-	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId string `pulumi:"workspaceId"`
-}
-
-// GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs and GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput values.
-// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigInput` via:
-//
-//	GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs{...}
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigInput interface {
-	pulumi.Input
-
-	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput
-	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
-}
-
-func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutputWithContext(context.Background())
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput)
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput).ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx)
-}
-
-// GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs, GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtr and GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput values.
-// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput` via:
-//
-//	        GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput
-	ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput
-}
-
-type getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs
-
-func GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtr(v *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput {
-	return (*getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType)(v)
-}
-
-func (*getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
-}
-
-func (i *getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *getWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o.ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig) *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig {
-		return &v
-	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig) string {
-		return v.WorkspaceId
-	}).(pulumi.StringOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig)(nil)).Elem()
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) Elem() GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput {
-	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig) GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig
-		return ret
-	}).(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId string `pulumi:"workspaceId"`
-}
-
-// GetWarehousesDefaultWarehouseOverridesProviderConfigInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesProviderConfigArgs and GetWarehousesDefaultWarehouseOverridesProviderConfigOutput values.
-// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesProviderConfigInput` via:
-//
-//	GetWarehousesDefaultWarehouseOverridesProviderConfigArgs{...}
-type GetWarehousesDefaultWarehouseOverridesProviderConfigInput interface {
-	pulumi.Input
-
-	ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigOutput
-	ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigOutput
-}
-
-type GetWarehousesDefaultWarehouseOverridesProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
-}
-
-func (GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesProviderConfig)(nil)).Elem()
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutputWithContext(context.Background())
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesProviderConfigOutput)
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesProviderConfigOutput).ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx)
-}
-
-// GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput is an input type that accepts GetWarehousesDefaultWarehouseOverridesProviderConfigArgs, GetWarehousesDefaultWarehouseOverridesProviderConfigPtr and GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput values.
-// You can construct a concrete instance of `GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput` via:
-//
-//	        GetWarehousesDefaultWarehouseOverridesProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput
-	ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput
-}
-
-type getWarehousesDefaultWarehouseOverridesProviderConfigPtrType GetWarehousesDefaultWarehouseOverridesProviderConfigArgs
-
-func GetWarehousesDefaultWarehouseOverridesProviderConfigPtr(v *GetWarehousesDefaultWarehouseOverridesProviderConfigArgs) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput {
-	return (*getWarehousesDefaultWarehouseOverridesProviderConfigPtrType)(v)
-}
-
-func (*getWarehousesDefaultWarehouseOverridesProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverridesProviderConfig)(nil)).Elem()
-}
-
-func (i *getWarehousesDefaultWarehouseOverridesProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
-	return i.ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *getWarehousesDefaultWarehouseOverridesProviderConfigPtrType) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesProviderConfig)(nil)).Elem()
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
-	return o.ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWarehousesDefaultWarehouseOverridesProviderConfig) *GetWarehousesDefaultWarehouseOverridesProviderConfig {
-		return &v
-	}).(GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWarehousesDefaultWarehouseOverridesProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
-}
-
-type GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWarehousesDefaultWarehouseOverridesProviderConfig)(nil)).Elem()
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput() GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) ToGetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutputWithContext(ctx context.Context) GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) Elem() GetWarehousesDefaultWarehouseOverridesProviderConfigOutput {
-	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverridesProviderConfig) GetWarehousesDefaultWarehouseOverridesProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GetWarehousesDefaultWarehouseOverridesProviderConfig
-		return ret
-	}).(GetWarehousesDefaultWarehouseOverridesProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWarehousesDefaultWarehouseOverridesProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetWorkspaceEntityTagAssignmentProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId string `pulumi:"workspaceId"`
-}
-
-// GetWorkspaceEntityTagAssignmentProviderConfigInput is an input type that accepts GetWorkspaceEntityTagAssignmentProviderConfigArgs and GetWorkspaceEntityTagAssignmentProviderConfigOutput values.
-// You can construct a concrete instance of `GetWorkspaceEntityTagAssignmentProviderConfigInput` via:
-//
-//	GetWorkspaceEntityTagAssignmentProviderConfigArgs{...}
-type GetWorkspaceEntityTagAssignmentProviderConfigInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceEntityTagAssignmentProviderConfigOutput() GetWorkspaceEntityTagAssignmentProviderConfigOutput
-	ToGetWorkspaceEntityTagAssignmentProviderConfigOutputWithContext(context.Context) GetWorkspaceEntityTagAssignmentProviderConfigOutput
-}
-
-type GetWorkspaceEntityTagAssignmentProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
-}
-
-func (GetWorkspaceEntityTagAssignmentProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceEntityTagAssignmentProviderConfig)(nil)).Elem()
-}
-
-func (i GetWorkspaceEntityTagAssignmentProviderConfigArgs) ToGetWorkspaceEntityTagAssignmentProviderConfigOutput() GetWorkspaceEntityTagAssignmentProviderConfigOutput {
-	return i.ToGetWorkspaceEntityTagAssignmentProviderConfigOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceEntityTagAssignmentProviderConfigArgs) ToGetWorkspaceEntityTagAssignmentProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceEntityTagAssignmentProviderConfigOutput)
-}
-
-func (i GetWorkspaceEntityTagAssignmentProviderConfigArgs) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
-	return i.ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GetWorkspaceEntityTagAssignmentProviderConfigArgs) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceEntityTagAssignmentProviderConfigOutput).ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx)
-}
-
-// GetWorkspaceEntityTagAssignmentProviderConfigPtrInput is an input type that accepts GetWorkspaceEntityTagAssignmentProviderConfigArgs, GetWorkspaceEntityTagAssignmentProviderConfigPtr and GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput values.
-// You can construct a concrete instance of `GetWorkspaceEntityTagAssignmentProviderConfigPtrInput` via:
-//
-//	        GetWorkspaceEntityTagAssignmentProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetWorkspaceEntityTagAssignmentProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput
-	ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput
-}
-
-type getWorkspaceEntityTagAssignmentProviderConfigPtrType GetWorkspaceEntityTagAssignmentProviderConfigArgs
-
-func GetWorkspaceEntityTagAssignmentProviderConfigPtr(v *GetWorkspaceEntityTagAssignmentProviderConfigArgs) GetWorkspaceEntityTagAssignmentProviderConfigPtrInput {
-	return (*getWorkspaceEntityTagAssignmentProviderConfigPtrType)(v)
-}
-
-func (*getWorkspaceEntityTagAssignmentProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWorkspaceEntityTagAssignmentProviderConfig)(nil)).Elem()
-}
-
-func (i *getWorkspaceEntityTagAssignmentProviderConfigPtrType) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
-	return i.ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *getWorkspaceEntityTagAssignmentProviderConfigPtrType) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput)
-}
-
-type GetWorkspaceEntityTagAssignmentProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceEntityTagAssignmentProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceEntityTagAssignmentProviderConfig)(nil)).Elem()
-}
-
-func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigOutput() GetWorkspaceEntityTagAssignmentProviderConfigOutput {
-	return o
-}
-
-func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigOutput {
-	return o
-}
-
-func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
-	return o.ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceEntityTagAssignmentProviderConfig) *GetWorkspaceEntityTagAssignmentProviderConfig {
-		return &v
-	}).(GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetWorkspaceEntityTagAssignmentProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
-}
-
-type GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWorkspaceEntityTagAssignmentProviderConfig)(nil)).Elem()
-}
-
-func (o GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutput() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) ToGetWorkspaceEntityTagAssignmentProviderConfigPtrOutputWithContext(ctx context.Context) GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
-	return o
-}
-
-func (o GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) Elem() GetWorkspaceEntityTagAssignmentProviderConfigOutput {
-	return o.ApplyT(func(v *GetWorkspaceEntityTagAssignmentProviderConfig) GetWorkspaceEntityTagAssignmentProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GetWorkspaceEntityTagAssignmentProviderConfig
-		return ret
-	}).(GetWorkspaceEntityTagAssignmentProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWorkspaceEntityTagAssignmentProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryCranInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryCranArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryCranPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryCranArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryMavenInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryMavenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryMavenPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryMavenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryProviderConfigInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryPypiInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryPypiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsLibraryPypiPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsLibraryPypiArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterAutoscaleInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterAutoscaleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterAutoscalePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterAwsAttributesInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterAwsAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterAwsAttributesPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterAwsAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterAzureAttributesInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterAzureAttributesArgs{})
@@ -72506,6 +72121,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskInput)(nil)).Elem(), GetPolicyInfoColumnMaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingArrayInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput)(nil)).Elem(), GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoGrantInput)(nil)).Elem(), GetPolicyInfoGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoMatchColumnInput)(nil)).Elem(), GetPolicyInfoMatchColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoMatchColumnArrayInput)(nil)).Elem(), GetPolicyInfoMatchColumnArray{})
@@ -72514,11 +72137,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterInput)(nil)).Elem(), GetPolicyInfoRowFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingArrayInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput)(nil)).Elem(), GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyInput)(nil)).Elem(), GetPolicyInfosPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyArrayInput)(nil)).Elem(), GetPolicyInfosPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingArrayInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput)(nil)).Elem(), GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyGrantInput)(nil)).Elem(), GetPolicyInfosPolicyGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyMatchColumnInput)(nil)).Elem(), GetPolicyInfosPolicyMatchColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyMatchColumnArrayInput)(nil)).Elem(), GetPolicyInfosPolicyMatchColumnArray{})
@@ -72527,6 +72166,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingArrayInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrInput)(nil)).Elem(), GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosProviderConfigInput)(nil)).Elem(), GetPolicyInfosProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyInfosProviderConfigPtrInput)(nil)).Elem(), GetPolicyInfosProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresBranchProviderConfigInput)(nil)).Elem(), GetPostgresBranchProviderConfigArgs{})
@@ -72657,6 +72304,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleStatusInput)(nil)).Elem(), GetPostgresRolesRoleStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleStatusAttributesInput)(nil)).Elem(), GetPostgresRolesRoleStatusAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleStatusAttributesPtrInput)(nil)).Elem(), GetPostgresRolesRoleStatusAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleProviderConfigInput)(nil)).Elem(), GetPostgresSnapshotScheduleProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleProviderConfigPtrInput)(nil)).Elem(), GetPostgresSnapshotScheduleProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleInput)(nil)).Elem(), GetPostgresSnapshotScheduleScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleArrayInput)(nil)).Elem(), GetPostgresSnapshotScheduleScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleDailyScheduleInput)(nil)).Elem(), GetPostgresSnapshotScheduleScheduleDailyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleDailySchedulePtrInput)(nil)).Elem(), GetPostgresSnapshotScheduleScheduleDailyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleMonthlyScheduleInput)(nil)).Elem(), GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrInput)(nil)).Elem(), GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleWeeklyScheduleInput)(nil)).Elem(), GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrInput)(nil)).Elem(), GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableProviderConfigInput)(nil)).Elem(), GetPostgresSyncedTableProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableProviderConfigPtrInput)(nil)).Elem(), GetPostgresSyncedTableProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableSpecInput)(nil)).Elem(), GetPostgresSyncedTableSpecArgs{})
@@ -72966,47 +72623,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserGroupArrayInput)(nil)).Elem(), GetUsersUserGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserNameInput)(nil)).Elem(), GetUsersUserNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserNamePtrInput)(nil)).Elem(), GetUsersUserNameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleInput)(nil)).Elem(), GetUsersUserRoleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleArrayInput)(nil)).Elem(), GetUsersUserRoleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetViewsProviderConfigInput)(nil)).Elem(), GetViewsProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetViewsProviderConfigPtrInput)(nil)).Elem(), GetViewsProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeProviderConfigInput)(nil)).Elem(), GetVolumeProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeProviderConfigPtrInput)(nil)).Elem(), GetVolumeProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoInput)(nil)).Elem(), GetVolumeVolumeInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoPtrInput)(nil)).Elem(), GetVolumeVolumeInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesProviderConfigInput)(nil)).Elem(), GetVolumesProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesProviderConfigPtrInput)(nil)).Elem(), GetVolumesProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverrideProviderConfigInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverrideProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverrideProviderConfigPtrInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverrideProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesProviderConfigInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWarehousesDefaultWarehouseOverridesProviderConfigPtrInput)(nil)).Elem(), GetWarehousesDefaultWarehouseOverridesProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEntityTagAssignmentProviderConfigInput)(nil)).Elem(), GetWorkspaceEntityTagAssignmentProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEntityTagAssignmentProviderConfigPtrInput)(nil)).Elem(), GetWorkspaceEntityTagAssignmentProviderConfigArgs{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryArrayOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryCranOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryCranPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryMavenOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryMavenPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryPypiOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsLibraryPypiPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterAutoscaleOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterAwsAttributesOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterAwsAttributesPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterAzureAttributesOutput{})
@@ -73429,6 +73045,14 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingFunctionArgExpressionOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingFunctionArgExpressionPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoGrantOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoMatchColumnOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoMatchColumnArrayOutput{})
@@ -73437,11 +73061,27 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyInfoRowFilterOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingFunctionArgExpressionOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingFunctionArgExpressionPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyGrantOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyMatchColumnOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyMatchColumnArrayOutput{})
@@ -73450,6 +73090,14 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionPtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValuePtrOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueOutput{})
+	pulumi.RegisterOutputType(GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValuePtrOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetPolicyInfosProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresBranchProviderConfigOutput{})
@@ -73580,6 +73228,16 @@ func init() {
 	pulumi.RegisterOutputType(GetPostgresRolesRoleStatusOutput{})
 	pulumi.RegisterOutputType(GetPostgresRolesRoleStatusAttributesOutput{})
 	pulumi.RegisterOutputType(GetPostgresRolesRoleStatusAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleScheduleOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleScheduleDailyScheduleOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleScheduleDailySchedulePtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleScheduleMonthlyScheduleOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleScheduleMonthlySchedulePtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleScheduleWeeklyScheduleOutput{})
+	pulumi.RegisterOutputType(GetPostgresSnapshotScheduleScheduleWeeklySchedulePtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresSyncedTableProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetPostgresSyncedTableProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresSyncedTableSpecOutput{})
@@ -73889,28 +73547,4 @@ func init() {
 	pulumi.RegisterOutputType(GetUsersUserGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserNameOutput{})
 	pulumi.RegisterOutputType(GetUsersUserNamePtrOutput{})
-	pulumi.RegisterOutputType(GetUsersUserRoleOutput{})
-	pulumi.RegisterOutputType(GetUsersUserRoleArrayOutput{})
-	pulumi.RegisterOutputType(GetViewsProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetViewsProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(GetVolumeProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetVolumeProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(GetVolumeVolumeInfoOutput{})
-	pulumi.RegisterOutputType(GetVolumeVolumeInfoPtrOutput{})
-	pulumi.RegisterOutputType(GetVolumeVolumeInfoEncryptionDetailsOutput{})
-	pulumi.RegisterOutputType(GetVolumeVolumeInfoEncryptionDetailsPtrOutput{})
-	pulumi.RegisterOutputType(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsOutput{})
-	pulumi.RegisterOutputType(GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput{})
-	pulumi.RegisterOutputType(GetVolumesProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetVolumesProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverrideProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverrideProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideOutput{})
-	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideArrayOutput{})
-	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetWarehousesDefaultWarehouseOverridesProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceEntityTagAssignmentProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput{})
 }

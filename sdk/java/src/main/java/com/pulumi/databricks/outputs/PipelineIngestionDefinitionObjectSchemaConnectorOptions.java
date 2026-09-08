@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConn
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions;
@@ -35,6 +36,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions marketoOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions metaAdsOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions outlookOptions;
+    private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions rabbitmqOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions redditAdsOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions sharepointOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions smartsheetOptions;
@@ -72,6 +74,9 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions> outlookOptions() {
         return Optional.ofNullable(this.outlookOptions);
     }
+    public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions> rabbitmqOptions() {
+        return Optional.ofNullable(this.rabbitmqOptions);
+    }
     public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions> redditAdsOptions() {
         return Optional.ofNullable(this.redditAdsOptions);
     }
@@ -107,6 +112,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions marketoOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions metaAdsOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions outlookOptions;
+        private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions rabbitmqOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions redditAdsOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions sharepointOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions smartsheetOptions;
@@ -125,6 +131,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     	      this.marketoOptions = defaults.marketoOptions;
     	      this.metaAdsOptions = defaults.metaAdsOptions;
     	      this.outlookOptions = defaults.outlookOptions;
+    	      this.rabbitmqOptions = defaults.rabbitmqOptions;
     	      this.redditAdsOptions = defaults.redditAdsOptions;
     	      this.sharepointOptions = defaults.sharepointOptions;
     	      this.smartsheetOptions = defaults.smartsheetOptions;
@@ -193,6 +200,12 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder rabbitmqOptions(@Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions rabbitmqOptions) {
+
+            this.rabbitmqOptions = rabbitmqOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder redditAdsOptions(@Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions redditAdsOptions) {
 
             this.redditAdsOptions = redditAdsOptions;
@@ -234,6 +247,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
             _resultValue.marketoOptions = marketoOptions;
             _resultValue.metaAdsOptions = metaAdsOptions;
             _resultValue.outlookOptions = outlookOptions;
+            _resultValue.rabbitmqOptions = rabbitmqOptions;
             _resultValue.redditAdsOptions = redditAdsOptions;
             _resultValue.sharepointOptions = sharepointOptions;
             _resultValue.smartsheetOptions = smartsheetOptions;

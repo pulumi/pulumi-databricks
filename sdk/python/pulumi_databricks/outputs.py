@@ -542,7 +542,6 @@ __all__ = [
     'FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp',
     'FeatureEngineeringFeatureFunctionAggregationFunctionSum',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow',
-    'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding',
@@ -552,25 +551,17 @@ __all__ = [
     'FeatureEngineeringFeatureFunctionColumnSelection',
     'FeatureEngineeringFeatureFunctionCustomUdf',
     'FeatureEngineeringFeatureFunctionCustomUdfInputBinding',
-    'FeatureEngineeringFeatureFunctionExtraParameter',
     'FeatureEngineeringFeatureLineageContext',
     'FeatureEngineeringFeatureLineageContextJobContext',
     'FeatureEngineeringFeatureProviderConfig',
     'FeatureEngineeringFeatureSource',
     'FeatureEngineeringFeatureSourceDeltaTableSource',
     'FeatureEngineeringFeatureSourceKafkaSource',
-    'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier',
-    'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier',
+    'FeatureEngineeringFeatureSourceLateness',
     'FeatureEngineeringFeatureSourceRequestSource',
     'FeatureEngineeringFeatureSourceRequestSourceFlatSchema',
     'FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField',
     'FeatureEngineeringFeatureSourceStreamSource',
-    'FeatureEngineeringFeatureTimeWindow',
-    'FeatureEngineeringFeatureTimeWindowContinuous',
-    'FeatureEngineeringFeatureTimeWindowRolling',
-    'FeatureEngineeringFeatureTimeWindowSawtooth',
-    'FeatureEngineeringFeatureTimeWindowSliding',
-    'FeatureEngineeringFeatureTimeWindowTumbling',
     'FeatureEngineeringFeatureTimeseriesColumn',
     'FeatureEngineeringKafkaConfigAuthConfig',
     'FeatureEngineeringKafkaConfigAuthConfigMtlsConfig',
@@ -621,6 +612,7 @@ __all__ = [
     'InstanceProfileProviderConfig',
     'IpAccessListProviderConfig',
     'JobContinuous',
+    'JobContinuousMaintenanceWindow',
     'JobDbtTask',
     'JobDeployment',
     'JobEmailNotifications',
@@ -889,6 +881,7 @@ __all__ = [
     'JobTaskWebhookNotificationsOnSuccess',
     'JobTrigger',
     'JobTriggerContinuous',
+    'JobTriggerContinuousMaintenanceWindow',
     'JobTriggerFileArrival',
     'JobTriggerModel',
     'JobTriggerPeriodic',
@@ -1099,6 +1092,7 @@ __all__ = [
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsCustomReportOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions',
+    'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsCustomReportOptions',
     'PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions',
@@ -1137,6 +1131,7 @@ __all__ = [
     'PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsCustomReportOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions',
+    'PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptionsCustomReportOptions',
     'PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions',
@@ -1177,11 +1172,19 @@ __all__ = [
     'PipelineTriggerManual',
     'PolicyInfoColumnMask',
     'PolicyInfoColumnMaskUsing',
+    'PolicyInfoColumnMaskUsingFunctionArgExpression',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue',
+    'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue',
     'PolicyInfoGrant',
     'PolicyInfoMatchColumn',
     'PolicyInfoProviderConfig',
     'PolicyInfoRowFilter',
     'PolicyInfoRowFilterUsing',
+    'PolicyInfoRowFilterUsingFunctionArgExpression',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue',
+    'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue',
     'PostgresBranchProviderConfig',
     'PostgresBranchSpec',
     'PostgresBranchStatus',
@@ -1218,6 +1221,11 @@ __all__ = [
     'PostgresRoleSpecAttributes',
     'PostgresRoleStatus',
     'PostgresRoleStatusAttributes',
+    'PostgresSnapshotScheduleProviderConfig',
+    'PostgresSnapshotScheduleSchedule',
+    'PostgresSnapshotScheduleScheduleDailySchedule',
+    'PostgresSnapshotScheduleScheduleMonthlySchedule',
+    'PostgresSnapshotScheduleScheduleWeeklySchedule',
     'PostgresSyncedTableProviderConfig',
     'PostgresSyncedTableSpec',
     'PostgresSyncedTableSpecExtraColumn',
@@ -1405,6 +1413,7 @@ __all__ = [
     'GetAccountFederationPoliciesPolicyOidcPolicyResult',
     'GetAccountFederationPolicyOidcPolicyResult',
     'GetAccountIamDirectGroupMembersV2DirectGroupMemberResult',
+    'GetAccountIamExternalUserV2FullNameResult',
     'GetAccountIamGroupsV2GroupResult',
     'GetAccountIamServicePrincipalsV2ServicePrincipalResult',
     'GetAccountIamUserV2FullNameResult',
@@ -2322,7 +2331,6 @@ __all__ = [
     'GetFeatureEngineeringFeatureFunctionAggregationFunctionStddevSampResult',
     'GetFeatureEngineeringFeatureFunctionAggregationFunctionSumResult',
     'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult',
-    'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousResult',
     'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult',
     'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothResult',
     'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingResult',
@@ -2332,25 +2340,17 @@ __all__ = [
     'GetFeatureEngineeringFeatureFunctionColumnSelectionResult',
     'GetFeatureEngineeringFeatureFunctionCustomUdfResult',
     'GetFeatureEngineeringFeatureFunctionCustomUdfInputBindingResult',
-    'GetFeatureEngineeringFeatureFunctionExtraParameterResult',
     'GetFeatureEngineeringFeatureLineageContextResult',
     'GetFeatureEngineeringFeatureLineageContextJobContextResult',
     'GetFeatureEngineeringFeatureProviderConfigResult',
     'GetFeatureEngineeringFeatureSourceResult',
     'GetFeatureEngineeringFeatureSourceDeltaTableSourceResult',
     'GetFeatureEngineeringFeatureSourceKafkaSourceResult',
-    'GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult',
-    'GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult',
+    'GetFeatureEngineeringFeatureSourceLatenessResult',
     'GetFeatureEngineeringFeatureSourceRequestSourceResult',
     'GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaResult',
     'GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldResult',
     'GetFeatureEngineeringFeatureSourceStreamSourceResult',
-    'GetFeatureEngineeringFeatureTimeWindowResult',
-    'GetFeatureEngineeringFeatureTimeWindowContinuousResult',
-    'GetFeatureEngineeringFeatureTimeWindowRollingResult',
-    'GetFeatureEngineeringFeatureTimeWindowSawtoothResult',
-    'GetFeatureEngineeringFeatureTimeWindowSlidingResult',
-    'GetFeatureEngineeringFeatureTimeWindowTumblingResult',
     'GetFeatureEngineeringFeatureTimeseriesColumnResult',
     'GetFeatureEngineeringFeaturesFeatureResult',
     'GetFeatureEngineeringFeaturesFeatureEntityResult',
@@ -2372,7 +2372,6 @@ __all__ = [
     'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionStddevSampResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionSumResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowResult',
-    'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRollingResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtoothResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSlidingResult',
@@ -2382,25 +2381,17 @@ __all__ = [
     'GetFeatureEngineeringFeaturesFeatureFunctionColumnSelectionResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfInputBindingResult',
-    'GetFeatureEngineeringFeaturesFeatureFunctionExtraParameterResult',
     'GetFeatureEngineeringFeaturesFeatureLineageContextResult',
     'GetFeatureEngineeringFeaturesFeatureLineageContextJobContextResult',
     'GetFeatureEngineeringFeaturesFeatureProviderConfigResult',
     'GetFeatureEngineeringFeaturesFeatureSourceResult',
     'GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult',
     'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult',
-    'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult',
-    'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult',
+    'GetFeatureEngineeringFeaturesFeatureSourceLatenessResult',
     'GetFeatureEngineeringFeaturesFeatureSourceRequestSourceResult',
     'GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaResult',
     'GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaFieldResult',
     'GetFeatureEngineeringFeaturesFeatureSourceStreamSourceResult',
-    'GetFeatureEngineeringFeaturesFeatureTimeWindowResult',
-    'GetFeatureEngineeringFeaturesFeatureTimeWindowContinuousResult',
-    'GetFeatureEngineeringFeaturesFeatureTimeWindowRollingResult',
-    'GetFeatureEngineeringFeaturesFeatureTimeWindowSawtoothResult',
-    'GetFeatureEngineeringFeaturesFeatureTimeWindowSlidingResult',
-    'GetFeatureEngineeringFeaturesFeatureTimeWindowTumblingResult',
     'GetFeatureEngineeringFeaturesFeatureTimeseriesColumnResult',
     'GetFeatureEngineeringFeaturesProviderConfigResult',
     'GetFeatureEngineeringKafkaConfigAuthConfigResult',
@@ -2742,19 +2733,35 @@ __all__ = [
     'GetPipelinesProviderConfigResult',
     'GetPolicyInfoColumnMaskResult',
     'GetPolicyInfoColumnMaskUsingResult',
+    'GetPolicyInfoColumnMaskUsingFunctionArgExpressionResult',
+    'GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionResult',
+    'GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult',
+    'GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueResult',
     'GetPolicyInfoGrantResult',
     'GetPolicyInfoMatchColumnResult',
     'GetPolicyInfoProviderConfigResult',
     'GetPolicyInfoRowFilterResult',
     'GetPolicyInfoRowFilterUsingResult',
+    'GetPolicyInfoRowFilterUsingFunctionArgExpressionResult',
+    'GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionResult',
+    'GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult',
+    'GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueResult',
     'GetPolicyInfosPolicyResult',
     'GetPolicyInfosPolicyColumnMaskResult',
     'GetPolicyInfosPolicyColumnMaskUsingResult',
+    'GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionResult',
+    'GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionResult',
+    'GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult',
+    'GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueResult',
     'GetPolicyInfosPolicyGrantResult',
     'GetPolicyInfosPolicyMatchColumnResult',
     'GetPolicyInfosPolicyProviderConfigResult',
     'GetPolicyInfosPolicyRowFilterResult',
     'GetPolicyInfosPolicyRowFilterUsingResult',
+    'GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionResult',
+    'GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionResult',
+    'GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult',
+    'GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueResult',
     'GetPolicyInfosProviderConfigResult',
     'GetPostgresBranchProviderConfigResult',
     'GetPostgresBranchSpecResult',
@@ -2838,6 +2845,11 @@ __all__ = [
     'GetPostgresRolesRoleSpecAttributesResult',
     'GetPostgresRolesRoleStatusResult',
     'GetPostgresRolesRoleStatusAttributesResult',
+    'GetPostgresSnapshotScheduleProviderConfigResult',
+    'GetPostgresSnapshotScheduleScheduleResult',
+    'GetPostgresSnapshotScheduleScheduleDailyScheduleResult',
+    'GetPostgresSnapshotScheduleScheduleMonthlyScheduleResult',
+    'GetPostgresSnapshotScheduleScheduleWeeklyScheduleResult',
     'GetPostgresSyncedTableProviderConfigResult',
     'GetPostgresSyncedTableSpecResult',
     'GetPostgresSyncedTableSpecExtraColumnResult',
@@ -3023,6 +3035,10 @@ __all__ = [
     'GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberResult',
     'GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfigResult',
     'GetWorkspaceIamDirectGroupMembersV2ProviderConfigResult',
+    'GetWorkspaceIamExternalGroupV2ProviderConfigResult',
+    'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigResult',
+    'GetWorkspaceIamExternalUserV2FullNameResult',
+    'GetWorkspaceIamExternalUserV2ProviderConfigResult',
     'GetWorkspaceIamGroupV2ProviderConfigResult',
     'GetWorkspaceIamGroupsV2GroupResult',
     'GetWorkspaceIamGroupsV2GroupProviderConfigResult',
@@ -16808,9 +16824,8 @@ class AlertV2Parameter(dict):
                  type: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str type: The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-               string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-               Complex types such as ARRAY, MAP, and STRUCT are not supported
+        :param _builtins.str type: The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+               the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         """
         pulumi.set(__self__, "name", name)
         if type is not None:
@@ -16827,9 +16842,8 @@ class AlertV2Parameter(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-        string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-        Complex types such as ARRAY, MAP, and STRUCT are not supported
+        The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+        the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         """
         return pulumi.get(self, "type")
 
@@ -21720,6 +21734,8 @@ class ClusterDriverNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -21733,12 +21749,15 @@ class ClusterDriverNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] alternate_node_type_ids: list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
         """
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -21747,6 +21766,11 @@ class ClusterDriverNodeTypeFlexibility(dict):
         list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
         """
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -22620,6 +22644,8 @@ class ClusterWorkerNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -22633,12 +22659,15 @@ class ClusterWorkerNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] alternate_node_type_ids: list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
         """
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
@@ -22647,6 +22676,11 @@ class ClusterWorkerNodeTypeFlexibility(dict):
         list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
         """
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -27704,10 +27738,6 @@ class FeatureEngineeringFeatureFunction(dict):
             suggest = "column_selection"
         elif key == "customUdf":
             suggest = "custom_udf"
-        elif key == "extraParameters":
-            suggest = "extra_parameters"
-        elif key == "functionType":
-            suggest = "function_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureFunction. Access the value via the '{suggest}' property getter instead.")
@@ -27723,17 +27753,11 @@ class FeatureEngineeringFeatureFunction(dict):
     def __init__(__self__, *,
                  aggregation_function: Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunction'] = None,
                  column_selection: Optional['outputs.FeatureEngineeringFeatureFunctionColumnSelection'] = None,
-                 custom_udf: Optional['outputs.FeatureEngineeringFeatureFunctionCustomUdf'] = None,
-                 extra_parameters: Optional[Sequence['outputs.FeatureEngineeringFeatureFunctionExtraParameter']] = None,
-                 function_type: Optional[_builtins.str] = None):
+                 custom_udf: Optional['outputs.FeatureEngineeringFeatureFunctionCustomUdf'] = None):
         """
         :param 'FeatureEngineeringFeatureFunctionAggregationFunctionArgs' aggregation_function: An aggregation function applied over a time window
         :param 'FeatureEngineeringFeatureFunctionColumnSelectionArgs' column_selection: Selects the latest value of a single column in a data source
         :param 'FeatureEngineeringFeatureFunctionCustomUdfArgs' custom_udf: Applies a registered Unity Catalog function row-wise to source columns
-        :param Sequence['FeatureEngineeringFeatureFunctionExtraParameterArgs'] extra_parameters: Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-               Extra parameters for parameterized functions
-        :param _builtins.str function_type: Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-               The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
         """
         if aggregation_function is not None:
             pulumi.set(__self__, "aggregation_function", aggregation_function)
@@ -27741,10 +27765,6 @@ class FeatureEngineeringFeatureFunction(dict):
             pulumi.set(__self__, "column_selection", column_selection)
         if custom_udf is not None:
             pulumi.set(__self__, "custom_udf", custom_udf)
-        if extra_parameters is not None:
-            pulumi.set(__self__, "extra_parameters", extra_parameters)
-        if function_type is not None:
-            pulumi.set(__self__, "function_type", function_type)
 
     @_builtins.property
     @pulumi.getter(name="aggregationFunction")
@@ -27769,24 +27789,6 @@ class FeatureEngineeringFeatureFunction(dict):
         Applies a registered Unity Catalog function row-wise to source columns
         """
         return pulumi.get(self, "custom_udf")
-
-    @_builtins.property
-    @pulumi.getter(name="extraParameters")
-    def extra_parameters(self) -> Optional[Sequence['outputs.FeatureEngineeringFeatureFunctionExtraParameter']]:
-        """
-        Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        Extra parameters for parameterized functions
-        """
-        return pulumi.get(self, "extra_parameters")
-
-    @_builtins.property
-    @pulumi.getter(name="functionType")
-    def function_type(self) -> Optional[_builtins.str]:
-        """
-        Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-        """
-        return pulumi.get(self, "function_type")
 
 
 @pulumi.output_type
@@ -27850,8 +27852,7 @@ class FeatureEngineeringFeatureFunctionAggregationFunction(dict):
                  var_pop: Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarPop'] = None,
                  var_samp: Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp'] = None):
         """
-        :param 'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs' time_window: Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-               The time window in which the feature is computed
+        :param 'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs' time_window: The time window over which the aggregation is computed
         """
         if approx_count_distinct is not None:
             pulumi.set(__self__, "approx_count_distinct", approx_count_distinct)
@@ -27969,8 +27970,7 @@ class FeatureEngineeringFeatureFunctionAggregationFunction(dict):
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow']:
         """
-        Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-        The time window in which the feature is computed
+        The time window over which the aggregation is computed
         """
         return pulumi.get(self, "time_window")
 
@@ -28251,30 +28251,49 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionSum(dict):
 
 @pulumi.output_type
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 continuous: Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous'] = None,
                  rolling: Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling'] = None,
                  sawtooth: Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth'] = None,
                  sliding: Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding'] = None,
+                 start_time: Optional[_builtins.str] = None,
                  tumbling: Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling'] = None):
         """
         :param 'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs' sawtooth: A sawtooth window served via the hybrid batch + streaming path
+        :param _builtins.str start_time: Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+               the historical inputs read by a window. For example, a 365-day window with
+               start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+               for 365 days of data; a lifetime window produces no output before start_time. If unset,
+               tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+               full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+               eligible source data exists
         """
-        if continuous is not None:
-            pulumi.set(__self__, "continuous", continuous)
         if rolling is not None:
             pulumi.set(__self__, "rolling", rolling)
         if sawtooth is not None:
             pulumi.set(__self__, "sawtooth", sawtooth)
         if sliding is not None:
             pulumi.set(__self__, "sliding", sliding)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
         if tumbling is not None:
             pulumi.set(__self__, "tumbling", tumbling)
-
-    @_builtins.property
-    @pulumi.getter
-    def continuous(self) -> Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous']:
-        return pulumi.get(self, "continuous")
 
     @_builtins.property
     @pulumi.getter
@@ -28295,52 +28314,23 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow(dict):
         return pulumi.get(self, "sliding")
 
     @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+        the historical inputs read by a window. For example, a 365-day window with
+        start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+        for 365 days of data; a lifetime window produces no output before start_time. If unset,
+        tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+        full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+        eligible source data exists
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
     @pulumi.getter
     def tumbling(self) -> Optional['outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling']:
         return pulumi.get(self, "tumbling")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "windowDuration":
-            suggest = "window_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 window_duration: _builtins.str,
-                 offset: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str offset: The offset of the continuous window (must be non-positive)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        return pulumi.get(self, "window_duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> Optional[_builtins.str]:
-        """
-        The offset of the continuous window (must be non-positive)
-        """
-        return pulumi.get(self, "offset")
 
 
 @pulumi.output_type
@@ -28442,11 +28432,17 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding(dict
 
     def __init__(__self__, *,
                  slide_duration: _builtins.str,
+                 delay: Optional[_builtins.str] = None,
+                 offset: Optional[_builtins.str] = None,
                  window_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.str slide_duration: The slide duration (interval by which windows advance, must be positive and less than duration)
         """
         pulumi.set(__self__, "slide_duration", slide_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
         if window_duration is not None:
             pulumi.set(__self__, "window_duration", window_duration)
 
@@ -28457,6 +28453,16 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding(dict
         The slide duration (interval by which windows advance, must be positive and less than duration)
         """
         return pulumi.get(self, "slide_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "offset")
 
     @_builtins.property
     @pulumi.getter(name="windowDuration")
@@ -28484,13 +28490,29 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling(dic
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 window_duration: _builtins.str):
+                 window_duration: _builtins.str,
+                 delay: Optional[_builtins.str] = None,
+                 offset: Optional[_builtins.str] = None):
         pulumi.set(__self__, "window_duration", window_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
 
     @_builtins.property
     @pulumi.getter(name="windowDuration")
     def window_duration(self) -> _builtins.str:
         return pulumi.get(self, "window_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "offset")
 
 
 @pulumi.output_type
@@ -28603,35 +28625,6 @@ class FeatureEngineeringFeatureFunctionCustomUdfInputBinding(dict):
         Name of the UC function parameter
         """
         return pulumi.get(self, "parameter")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureFunctionExtraParameter(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        """
-        :param _builtins.str key: The name of the parameter
-        :param _builtins.str value: The value of the parameter
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        The name of the parameter
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        """
-        The value of the parameter
-        """
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -28798,11 +28791,14 @@ class FeatureEngineeringFeatureSource(dict):
     def __init__(__self__, *,
                  delta_table_source: Optional['outputs.FeatureEngineeringFeatureSourceDeltaTableSource'] = None,
                  kafka_source: Optional['outputs.FeatureEngineeringFeatureSourceKafkaSource'] = None,
+                 lateness: Optional['outputs.FeatureEngineeringFeatureSourceLateness'] = None,
                  request_source: Optional['outputs.FeatureEngineeringFeatureSourceRequestSource'] = None,
                  stream_source: Optional['outputs.FeatureEngineeringFeatureSourceStreamSource'] = None):
         """
         :param 'FeatureEngineeringFeatureSourceDeltaTableSourceArgs' delta_table_source: A Delta table data source
         :param 'FeatureEngineeringFeatureSourceKafkaSourceArgs' kafka_source: A Kafka stream data source
+        :param 'FeatureEngineeringFeatureSourceLatenessArgs' lateness: Completeness timing for this Feature's use of the source. This configuration is part of the
+               Feature definition; it does not modify the underlying table or stream
         :param 'FeatureEngineeringFeatureSourceRequestSourceArgs' request_source: A request-time data source
         :param 'FeatureEngineeringFeatureSourceStreamSourceArgs' stream_source: A Stream data source
         """
@@ -28810,6 +28806,8 @@ class FeatureEngineeringFeatureSource(dict):
             pulumi.set(__self__, "delta_table_source", delta_table_source)
         if kafka_source is not None:
             pulumi.set(__self__, "kafka_source", kafka_source)
+        if lateness is not None:
+            pulumi.set(__self__, "lateness", lateness)
         if request_source is not None:
             pulumi.set(__self__, "request_source", request_source)
         if stream_source is not None:
@@ -28830,6 +28828,15 @@ class FeatureEngineeringFeatureSource(dict):
         A Kafka stream data source
         """
         return pulumi.get(self, "kafka_source")
+
+    @_builtins.property
+    @pulumi.getter
+    def lateness(self) -> Optional['outputs.FeatureEngineeringFeatureSourceLateness']:
+        """
+        Completeness timing for this Feature's use of the source. This configuration is part of the
+        Feature definition; it does not modify the underlying table or stream
+        """
+        return pulumi.get(self, "lateness")
 
     @_builtins.property
     @pulumi.getter(name="requestSource")
@@ -28857,12 +28864,8 @@ class FeatureEngineeringFeatureSourceDeltaTableSource(dict):
             suggest = "full_name"
         elif key == "dataframeSchema":
             suggest = "dataframe_schema"
-        elif key == "entityColumns":
-            suggest = "entity_columns"
         elif key == "filterCondition":
             suggest = "filter_condition"
-        elif key == "timeseriesColumn":
-            suggest = "timeseries_column"
         elif key == "transformationSql":
             suggest = "transformation_sql"
 
@@ -28880,29 +28883,18 @@ class FeatureEngineeringFeatureSourceDeltaTableSource(dict):
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
                feature's resource identifier; the catalog_name, schema_name, and name fields
                below are OUTPUT_ONLY decomposed views of this value
-        :param Sequence[_builtins.str] entity_columns: Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
-        :param _builtins.str filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-               The filter condition applied to the source data before aggregation
-        :param _builtins.str timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -28922,30 +28914,9 @@ class FeatureEngineeringFeatureSourceDeltaTableSource(dict):
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
-        """
-        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        The filter condition applied to the source data before aggregation
-        """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        Column recording time, used for point-in-time joins, backfills, and aggregations
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -28958,12 +28929,8 @@ class FeatureEngineeringFeatureSourceKafkaSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "entityColumnIdentifiers":
-            suggest = "entity_column_identifiers"
-        elif key == "filterCondition":
+        if key == "filterCondition":
             suggest = "filter_condition"
-        elif key == "timeseriesColumnIdentifier":
-            suggest = "timeseries_column_identifier"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureSourceKafkaSource. Access the value via the '{suggest}' property getter instead.")
@@ -28978,25 +28945,13 @@ class FeatureEngineeringFeatureSourceKafkaSource(dict):
 
     def __init__(__self__, *,
                  name: _builtins.str,
-                 entity_column_identifiers: Optional[Sequence['outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier']] = None,
-                 filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column_identifier: Optional['outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier'] = None):
+                 filter_condition: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
-        :param Sequence['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs'] entity_column_identifiers: Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity column identifiers of the Kafka source
-        :param _builtins.str filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-               The filter condition applied to the source data before aggregation
-        :param 'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs' timeseries_column_identifier: Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column identifier of the Kafka source
         """
         pulumi.set(__self__, "name", name)
-        if entity_column_identifiers is not None:
-            pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column_identifier is not None:
-            pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
 
     @_builtins.property
     @pulumi.getter
@@ -29007,105 +28962,51 @@ class FeatureEngineeringFeatureSourceKafkaSource(dict):
         return pulumi.get(self, "name")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumnIdentifiers")
-    def entity_column_identifiers(self) -> Optional[Sequence['outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier']]:
-        """
-        Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity column identifiers of the Kafka source
-        """
-        return pulumi.get(self, "entity_column_identifiers")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
-        """
-        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        The filter condition applied to the source data before aggregation
-        """
         return pulumi.get(self, "filter_condition")
 
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumnIdentifier")
-    def timeseries_column_identifier(self) -> Optional['outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier']:
-        """
-        Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column identifier of the Kafka source
-        """
-        return pulumi.get(self, "timeseries_column_identifier")
-
 
 @pulumi.output_type
-class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier(dict):
+class FeatureEngineeringFeatureSourceLateness(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "variantExprPath":
-            suggest = "variant_expr_path"
+        if key == "settlingDelay":
+            suggest = "settling_delay"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureSourceLateness. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier.__key_warning(key)
+        FeatureEngineeringFeatureSourceLateness.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier.__key_warning(key)
+        FeatureEngineeringFeatureSourceLateness.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 variant_expr_path: _builtins.str):
+                 settling_delay: Optional[_builtins.str] = None):
         """
-        :param _builtins.str variant_expr_path: String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-               and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+        :param _builtins.str settling_delay: Non-negative time to wait after a window ends before treating its source data as complete.
+               Training shifts the eligible evaluation time backwards by this duration so it does not join
+               data that would still have been settling online. Materialization waits for the duration to
+               elapse before publishing the window. If unset, source data is considered settled immediately
         """
-        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+        if settling_delay is not None:
+            pulumi.set(__self__, "settling_delay", settling_delay)
 
     @_builtins.property
-    @pulumi.getter(name="variantExprPath")
-    def variant_expr_path(self) -> _builtins.str:
+    @pulumi.getter(name="settlingDelay")
+    def settling_delay(self) -> Optional[_builtins.str]:
         """
-        String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-        and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+        Non-negative time to wait after a window ends before treating its source data as complete.
+        Training shifts the eligible evaluation time backwards by this duration so it does not join
+        data that would still have been settling online. Materialization waits for the duration to
+        elapse before publishing the window. If unset, source data is considered settled immediately
         """
-        return pulumi.get(self, "variant_expr_path")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "variantExprPath":
-            suggest = "variant_expr_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 variant_expr_path: _builtins.str):
-        """
-        :param _builtins.str variant_expr_path: String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-               and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-        """
-        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
-
-    @_builtins.property
-    @pulumi.getter(name="variantExprPath")
-    def variant_expr_path(self) -> _builtins.str:
-        """
-        String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-        and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-        """
-        return pulumi.get(self, "variant_expr_path")
+        return pulumi.get(self, "settling_delay")
 
 
 @pulumi.output_type
@@ -29242,8 +29143,6 @@ class FeatureEngineeringFeatureSourceStreamSource(dict):
         :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
                feature's resource identifier; the catalog_name, schema_name, and name fields
                below are OUTPUT_ONLY decomposed views of this value
-        :param _builtins.str filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-               The filter condition applied to the source data before aggregation
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
@@ -29271,260 +29170,12 @@ class FeatureEngineeringFeatureSourceStreamSource(dict):
     @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
-        """
-        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        The filter condition applied to the source data before aggregation
-        """
         return pulumi.get(self, "filter_condition")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
     def transformation_sql(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "transformation_sql")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureTimeWindow(dict):
-    def __init__(__self__, *,
-                 continuous: Optional['outputs.FeatureEngineeringFeatureTimeWindowContinuous'] = None,
-                 rolling: Optional['outputs.FeatureEngineeringFeatureTimeWindowRolling'] = None,
-                 sawtooth: Optional['outputs.FeatureEngineeringFeatureTimeWindowSawtooth'] = None,
-                 sliding: Optional['outputs.FeatureEngineeringFeatureTimeWindowSliding'] = None,
-                 tumbling: Optional['outputs.FeatureEngineeringFeatureTimeWindowTumbling'] = None):
-        """
-        :param 'FeatureEngineeringFeatureTimeWindowSawtoothArgs' sawtooth: A sawtooth window served via the hybrid batch + streaming path
-        """
-        if continuous is not None:
-            pulumi.set(__self__, "continuous", continuous)
-        if rolling is not None:
-            pulumi.set(__self__, "rolling", rolling)
-        if sawtooth is not None:
-            pulumi.set(__self__, "sawtooth", sawtooth)
-        if sliding is not None:
-            pulumi.set(__self__, "sliding", sliding)
-        if tumbling is not None:
-            pulumi.set(__self__, "tumbling", tumbling)
-
-    @_builtins.property
-    @pulumi.getter
-    def continuous(self) -> Optional['outputs.FeatureEngineeringFeatureTimeWindowContinuous']:
-        return pulumi.get(self, "continuous")
-
-    @_builtins.property
-    @pulumi.getter
-    def rolling(self) -> Optional['outputs.FeatureEngineeringFeatureTimeWindowRolling']:
-        return pulumi.get(self, "rolling")
-
-    @_builtins.property
-    @pulumi.getter
-    def sawtooth(self) -> Optional['outputs.FeatureEngineeringFeatureTimeWindowSawtooth']:
-        """
-        A sawtooth window served via the hybrid batch + streaming path
-        """
-        return pulumi.get(self, "sawtooth")
-
-    @_builtins.property
-    @pulumi.getter
-    def sliding(self) -> Optional['outputs.FeatureEngineeringFeatureTimeWindowSliding']:
-        return pulumi.get(self, "sliding")
-
-    @_builtins.property
-    @pulumi.getter
-    def tumbling(self) -> Optional['outputs.FeatureEngineeringFeatureTimeWindowTumbling']:
-        return pulumi.get(self, "tumbling")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureTimeWindowContinuous(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "windowDuration":
-            suggest = "window_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureTimeWindowContinuous. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FeatureEngineeringFeatureTimeWindowContinuous.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FeatureEngineeringFeatureTimeWindowContinuous.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 window_duration: _builtins.str,
-                 offset: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str offset: The offset of the continuous window (must be non-positive)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        return pulumi.get(self, "window_duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> Optional[_builtins.str]:
-        """
-        The offset of the continuous window (must be non-positive)
-        """
-        return pulumi.get(self, "offset")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureTimeWindowRolling(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "windowDuration":
-            suggest = "window_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureTimeWindowRolling. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FeatureEngineeringFeatureTimeWindowRolling.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FeatureEngineeringFeatureTimeWindowRolling.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 delay: Optional[_builtins.str] = None,
-                 window_duration: Optional[_builtins.str] = None):
-        if delay is not None:
-            pulumi.set(__self__, "delay", delay)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter
-    def delay(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "delay")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureTimeWindowSawtooth(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "windowDuration":
-            suggest = "window_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureTimeWindowSawtooth. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FeatureEngineeringFeatureTimeWindowSawtooth.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FeatureEngineeringFeatureTimeWindowSawtooth.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 delay: Optional[_builtins.str] = None,
-                 window_duration: Optional[_builtins.str] = None):
-        if delay is not None:
-            pulumi.set(__self__, "delay", delay)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter
-    def delay(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "delay")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureTimeWindowSliding(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "slideDuration":
-            suggest = "slide_duration"
-        elif key == "windowDuration":
-            suggest = "window_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureTimeWindowSliding. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FeatureEngineeringFeatureTimeWindowSliding.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FeatureEngineeringFeatureTimeWindowSliding.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 slide_duration: _builtins.str,
-                 window_duration: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str slide_duration: The slide duration (interval by which windows advance, must be positive and less than duration)
-        """
-        pulumi.set(__self__, "slide_duration", slide_duration)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="slideDuration")
-    def slide_duration(self) -> _builtins.str:
-        """
-        The slide duration (interval by which windows advance, must be positive and less than duration)
-        """
-        return pulumi.get(self, "slide_duration")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class FeatureEngineeringFeatureTimeWindowTumbling(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "windowDuration":
-            suggest = "window_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureTimeWindowTumbling. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FeatureEngineeringFeatureTimeWindowTumbling.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FeatureEngineeringFeatureTimeWindowTumbling.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 window_duration: _builtins.str):
-        pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        return pulumi.get(self, "window_duration")
 
 
 @pulumi.output_type
@@ -29868,12 +29519,8 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource(dict):
             suggest = "full_name"
         elif key == "dataframeSchema":
             suggest = "dataframe_schema"
-        elif key == "entityColumns":
-            suggest = "entity_columns"
         elif key == "filterCondition":
             suggest = "filter_condition"
-        elif key == "timeseriesColumn":
-            suggest = "timeseries_column"
         elif key == "transformationSql":
             suggest = "transformation_sql"
 
@@ -29891,20 +29538,14 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource(dict):
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: The full three-part (catalog, schema, table) name of the Delta table
         :param _builtins.str dataframe_schema: Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
                Required if transformation_sql is specified.
                Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
-        :param Sequence[_builtins.str] entity_columns: Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param _builtins.str filter_condition: Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-        :param _builtins.str timeseries_column: Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param _builtins.str transformation_sql: A single SQL SELECT expression applied after filter_condition.
                Should contains all the columns needed (eg. "SELECT *, col_a + col_b AS col_c FROM x.y.z WHERE col_a > 0" would have `transformation_sql` "*, col_a + col_b AS col_c")
                If transformation_sql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -29912,12 +29553,8 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource(dict):
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -29940,30 +29577,12 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource(dict):
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
         Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -30154,12 +29773,8 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
             suggest = "full_name"
         elif key == "dataframeSchema":
             suggest = "dataframe_schema"
-        elif key == "entityColumns":
-            suggest = "entity_columns"
         elif key == "filterCondition":
             suggest = "filter_condition"
-        elif key == "timeseriesColumn":
-            suggest = "timeseries_column"
         elif key == "transformationSql":
             suggest = "transformation_sql"
 
@@ -30177,20 +29792,14 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: The full three-part (catalog, schema, table) name of the Delta table
         :param _builtins.str dataframe_schema: Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
                Required if transformation_sql is specified.
                Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
-        :param Sequence[_builtins.str] entity_columns: Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param _builtins.str filter_condition: Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-        :param _builtins.str timeseries_column: Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param _builtins.str transformation_sql: A single SQL SELECT expression applied after filter_condition.
                Should contains all the columns needed (eg. "SELECT *, col_a + col_b AS col_c FROM x.y.z WHERE col_a > 0" would have `transformation_sql` "*, col_a + col_b AS col_c")
                If transformation_sql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -30198,12 +29807,8 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -30226,30 +29831,12 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
         Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -31879,7 +31466,9 @@ class JobContinuous(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "pauseStatus":
+        if key == "maintenanceWindow":
+            suggest = "maintenance_window"
+        elif key == "pauseStatus":
             suggest = "pause_status"
         elif key == "taskRetryMode":
             suggest = "task_retry_mode"
@@ -31896,6 +31485,7 @@ class JobContinuous(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 maintenance_window: Optional['outputs.JobContinuousMaintenanceWindow'] = None,
                  pause_status: Optional[_builtins.str] = None,
                  task_retry_mode: Optional[_builtins.str] = None):
         """
@@ -31904,10 +31494,17 @@ class JobContinuous(dict):
                * `NEVER` (default): The failed task will not be retried.
                * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
         """
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
         if task_retry_mode is not None:
             pulumi.set(__self__, "task_retry_mode", task_retry_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional['outputs.JobContinuousMaintenanceWindow']:
+        return pulumi.get(self, "maintenance_window")
 
     @_builtins.property
     @pulumi.getter(name="pauseStatus")
@@ -31926,6 +31523,59 @@ class JobContinuous(dict):
         * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
         """
         return pulumi.get(self, "task_retry_mode")
+
+
+@pulumi.output_type
+class JobContinuousMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "startHour":
+            suggest = "start_hour"
+        elif key == "timezoneId":
+            suggest = "timezone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobContinuousMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobContinuousMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobContinuousMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: _builtins.str,
+                 start_hour: _builtins.int,
+                 timezone_id: _builtins.str):
+        """
+        :param _builtins.str timezone_id: A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "start_hour", start_hour)
+        pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> _builtins.str:
+        return pulumi.get(self, "day_of_week")
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> _builtins.int:
+        return pulumi.get(self, "start_hour")
+
+    @_builtins.property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> _builtins.str:
+        """
+        A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        return pulumi.get(self, "timezone_id")
 
 
 @pulumi.output_type
@@ -33632,6 +33282,8 @@ class JobJobClusterNewClusterDriverNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobJobClusterNewClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -33645,14 +33297,22 @@ class JobJobClusterNewClusterDriverNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -34216,6 +33876,8 @@ class JobJobClusterNewClusterWorkerNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobJobClusterNewClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -34229,14 +33891,22 @@ class JobJobClusterNewClusterWorkerNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -35445,6 +35115,8 @@ class JobNewClusterDriverNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobNewClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -35458,14 +35130,22 @@ class JobNewClusterDriverNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -36029,6 +35709,8 @@ class JobNewClusterWorkerNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobNewClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -36042,14 +35724,22 @@ class JobNewClusterWorkerNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -37523,6 +37213,7 @@ class JobTaskAlertTask(dict):
 
     def __init__(__self__, *,
                  alert_id: Optional[_builtins.str] = None,
+                 parameters: Optional[Mapping[str, _builtins.str]] = None,
                  subscribers: Optional[Sequence['outputs.JobTaskAlertTaskSubscriber']] = None,
                  warehouse_id: Optional[_builtins.str] = None,
                  workspace_path: Optional[_builtins.str] = None):
@@ -37532,6 +37223,8 @@ class JobTaskAlertTask(dict):
         """
         if alert_id is not None:
             pulumi.set(__self__, "alert_id", alert_id)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if subscribers is not None:
             pulumi.set(__self__, "subscribers", subscribers)
         if warehouse_id is not None:
@@ -37546,6 +37239,11 @@ class JobTaskAlertTask(dict):
         (String) identifier of the Databricks Alert (databricks_alert).
         """
         return pulumi.get(self, "alert_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter
@@ -39055,6 +38753,7 @@ class JobTaskForEachTaskTaskAlertTask(dict):
 
     def __init__(__self__, *,
                  alert_id: Optional[_builtins.str] = None,
+                 parameters: Optional[Mapping[str, _builtins.str]] = None,
                  subscribers: Optional[Sequence['outputs.JobTaskForEachTaskTaskAlertTaskSubscriber']] = None,
                  warehouse_id: Optional[_builtins.str] = None,
                  workspace_path: Optional[_builtins.str] = None):
@@ -39064,6 +38763,8 @@ class JobTaskForEachTaskTaskAlertTask(dict):
         """
         if alert_id is not None:
             pulumi.set(__self__, "alert_id", alert_id)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if subscribers is not None:
             pulumi.set(__self__, "subscribers", subscribers)
         if warehouse_id is not None:
@@ -39078,6 +38779,11 @@ class JobTaskForEachTaskTaskAlertTask(dict):
         (String) identifier of the Databricks Alert (databricks_alert).
         """
         return pulumi.get(self, "alert_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter
@@ -41237,6 +40943,8 @@ class JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -41250,14 +40958,22 @@ class JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -41821,6 +41537,8 @@ class JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -41834,14 +41552,22 @@ class JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -44907,6 +44633,8 @@ class JobTaskNewClusterDriverNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskNewClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -44920,14 +44648,22 @@ class JobTaskNewClusterDriverNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -45491,6 +45227,8 @@ class JobTaskNewClusterWorkerNodeTypeFlexibility(dict):
         suggest = None
         if key == "alternateNodeTypeIds":
             suggest = "alternate_node_type_ids"
+        elif key == "awsContextId":
+            suggest = "aws_context_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskNewClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
@@ -45504,14 +45242,22 @@ class JobTaskNewClusterWorkerNodeTypeFlexibility(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -47313,7 +47059,9 @@ class JobTriggerContinuous(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "taskRetryMode":
+        if key == "maintenanceWindow":
+            suggest = "maintenance_window"
+        elif key == "taskRetryMode":
             suggest = "task_retry_mode"
 
         if suggest:
@@ -47328,14 +47076,22 @@ class JobTriggerContinuous(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 maintenance_window: Optional['outputs.JobTriggerContinuousMaintenanceWindow'] = None,
                  task_retry_mode: Optional[_builtins.str] = None):
         """
         :param _builtins.str task_retry_mode: Controls task level retry behaviour. Allowed values are:
                * `NEVER` (default): The failed task will not be retried.
                * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
         """
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if task_retry_mode is not None:
             pulumi.set(__self__, "task_retry_mode", task_retry_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional['outputs.JobTriggerContinuousMaintenanceWindow']:
+        return pulumi.get(self, "maintenance_window")
 
     @_builtins.property
     @pulumi.getter(name="taskRetryMode")
@@ -47346,6 +47102,59 @@ class JobTriggerContinuous(dict):
         * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
         """
         return pulumi.get(self, "task_retry_mode")
+
+
+@pulumi.output_type
+class JobTriggerContinuousMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "startHour":
+            suggest = "start_hour"
+        elif key == "timezoneId":
+            suggest = "timezone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTriggerContinuousMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTriggerContinuousMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTriggerContinuousMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: _builtins.str,
+                 start_hour: _builtins.int,
+                 timezone_id: _builtins.str):
+        """
+        :param _builtins.str timezone_id: A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "start_hour", start_hour)
+        pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> _builtins.str:
+        return pulumi.get(self, "day_of_week")
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> _builtins.int:
+        return pulumi.get(self, "start_hour")
+
+    @_builtins.property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> _builtins.str:
+        """
+        A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        return pulumi.get(self, "timezone_id")
 
 
 @pulumi.output_type
@@ -54009,13 +53818,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -54287,13 +54096,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -57727,14 +57536,14 @@ class PipelineIngestionDefinitionObjectSchema(dict):
             suggest = "destination_catalog"
         elif key == "destinationSchema":
             suggest = "destination_schema"
-        elif key == "sourceSchema":
-            suggest = "source_schema"
         elif key == "connectorOptions":
             suggest = "connector_options"
         elif key == "fanoutOptions":
             suggest = "fanout_options"
         elif key == "sourceCatalog":
             suggest = "source_catalog"
+        elif key == "sourceSchema":
+            suggest = "source_schema"
         elif key == "tableConfiguration":
             suggest = "table_configuration"
 
@@ -57752,20 +57561,21 @@ class PipelineIngestionDefinitionObjectSchema(dict):
     def __init__(__self__, *,
                  destination_catalog: _builtins.str,
                  destination_schema: _builtins.str,
-                 source_schema: _builtins.str,
                  connector_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions'] = None,
                  fanout_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptions'] = None,
                  source_catalog: Optional[_builtins.str] = None,
+                 source_schema: Optional[_builtins.str] = None,
                  table_configuration: Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration'] = None):
         pulumi.set(__self__, "destination_catalog", destination_catalog)
         pulumi.set(__self__, "destination_schema", destination_schema)
-        pulumi.set(__self__, "source_schema", source_schema)
         if connector_options is not None:
             pulumi.set(__self__, "connector_options", connector_options)
         if fanout_options is not None:
             pulumi.set(__self__, "fanout_options", fanout_options)
         if source_catalog is not None:
             pulumi.set(__self__, "source_catalog", source_catalog)
+        if source_schema is not None:
+            pulumi.set(__self__, "source_schema", source_schema)
         if table_configuration is not None:
             pulumi.set(__self__, "table_configuration", table_configuration)
 
@@ -57778,11 +57588,6 @@ class PipelineIngestionDefinitionObjectSchema(dict):
     @pulumi.getter(name="destinationSchema")
     def destination_schema(self) -> _builtins.str:
         return pulumi.get(self, "destination_schema")
-
-    @_builtins.property
-    @pulumi.getter(name="sourceSchema")
-    def source_schema(self) -> _builtins.str:
-        return pulumi.get(self, "source_schema")
 
     @_builtins.property
     @pulumi.getter(name="connectorOptions")
@@ -57798,6 +57603,11 @@ class PipelineIngestionDefinitionObjectSchema(dict):
     @pulumi.getter(name="sourceCatalog")
     def source_catalog(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "source_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSchema")
+    def source_schema(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "source_schema")
 
     @_builtins.property
     @pulumi.getter(name="tableConfiguration")
@@ -57830,6 +57640,8 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptions(dict):
             suggest = "meta_ads_options"
         elif key == "outlookOptions":
             suggest = "outlook_options"
+        elif key == "rabbitmqOptions":
+            suggest = "rabbitmq_options"
         elif key == "redditAdsOptions":
             suggest = "reddit_ads_options"
         elif key == "sharepointOptions":
@@ -57863,6 +57675,7 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptions(dict):
                  marketo_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions'] = None,
                  meta_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions'] = None,
                  outlook_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions'] = None,
+                 rabbitmq_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions'] = None,
                  reddit_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions'] = None,
                  sharepoint_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions'] = None,
                  smartsheet_options: Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions'] = None,
@@ -57888,6 +57701,8 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptions(dict):
             pulumi.set(__self__, "meta_ads_options", meta_ads_options)
         if outlook_options is not None:
             pulumi.set(__self__, "outlook_options", outlook_options)
+        if rabbitmq_options is not None:
+            pulumi.set(__self__, "rabbitmq_options", rabbitmq_options)
         if reddit_ads_options is not None:
             pulumi.set(__self__, "reddit_ads_options", reddit_ads_options)
         if sharepoint_options is not None:
@@ -57948,6 +57763,11 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptions(dict):
     @pulumi.getter(name="outlookOptions")
     def outlook_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions']:
         return pulumi.get(self, "outlook_options")
+
+    @_builtins.property
+    @pulumi.getter(name="rabbitmqOptions")
+    def rabbitmq_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions']:
+        return pulumi.get(self, "rabbitmq_options")
 
     @_builtins.property
     @pulumi.getter(name="redditAdsOptions")
@@ -59182,6 +59002,18 @@ class PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions(dict
 
 
 @pulumi.output_type
+class PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions(dict):
+    def __init__(__self__, *,
+                 queue: _builtins.str):
+        pulumi.set(__self__, "queue", queue)
+
+    @_builtins.property
+    @pulumi.getter
+    def queue(self) -> _builtins.str:
+        return pulumi.get(self, "queue")
+
+
+@pulumi.output_type
 class PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -60199,8 +60031,6 @@ class PipelineIngestionDefinitionObjectTable(dict):
             suggest = "destination_catalog"
         elif key == "destinationSchema":
             suggest = "destination_schema"
-        elif key == "sourceTable":
-            suggest = "source_table"
         elif key == "connectorOptions":
             suggest = "connector_options"
         elif key == "destinationTable":
@@ -60209,6 +60039,8 @@ class PipelineIngestionDefinitionObjectTable(dict):
             suggest = "source_catalog"
         elif key == "sourceSchema":
             suggest = "source_schema"
+        elif key == "sourceTable":
+            suggest = "source_table"
         elif key == "tableConfiguration":
             suggest = "table_configuration"
 
@@ -60226,15 +60058,14 @@ class PipelineIngestionDefinitionObjectTable(dict):
     def __init__(__self__, *,
                  destination_catalog: _builtins.str,
                  destination_schema: _builtins.str,
-                 source_table: _builtins.str,
                  connector_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptions'] = None,
                  destination_table: Optional[_builtins.str] = None,
                  source_catalog: Optional[_builtins.str] = None,
                  source_schema: Optional[_builtins.str] = None,
+                 source_table: Optional[_builtins.str] = None,
                  table_configuration: Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfiguration'] = None):
         pulumi.set(__self__, "destination_catalog", destination_catalog)
         pulumi.set(__self__, "destination_schema", destination_schema)
-        pulumi.set(__self__, "source_table", source_table)
         if connector_options is not None:
             pulumi.set(__self__, "connector_options", connector_options)
         if destination_table is not None:
@@ -60243,6 +60074,8 @@ class PipelineIngestionDefinitionObjectTable(dict):
             pulumi.set(__self__, "source_catalog", source_catalog)
         if source_schema is not None:
             pulumi.set(__self__, "source_schema", source_schema)
+        if source_table is not None:
+            pulumi.set(__self__, "source_table", source_table)
         if table_configuration is not None:
             pulumi.set(__self__, "table_configuration", table_configuration)
 
@@ -60255,11 +60088,6 @@ class PipelineIngestionDefinitionObjectTable(dict):
     @pulumi.getter(name="destinationSchema")
     def destination_schema(self) -> _builtins.str:
         return pulumi.get(self, "destination_schema")
-
-    @_builtins.property
-    @pulumi.getter(name="sourceTable")
-    def source_table(self) -> _builtins.str:
-        return pulumi.get(self, "source_table")
 
     @_builtins.property
     @pulumi.getter(name="connectorOptions")
@@ -60280,6 +60108,11 @@ class PipelineIngestionDefinitionObjectTable(dict):
     @pulumi.getter(name="sourceSchema")
     def source_schema(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "source_schema")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceTable")
+    def source_table(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "source_table")
 
     @_builtins.property
     @pulumi.getter(name="tableConfiguration")
@@ -60312,6 +60145,8 @@ class PipelineIngestionDefinitionObjectTableConnectorOptions(dict):
             suggest = "meta_ads_options"
         elif key == "outlookOptions":
             suggest = "outlook_options"
+        elif key == "rabbitmqOptions":
+            suggest = "rabbitmq_options"
         elif key == "redditAdsOptions":
             suggest = "reddit_ads_options"
         elif key == "sharepointOptions":
@@ -60345,6 +60180,7 @@ class PipelineIngestionDefinitionObjectTableConnectorOptions(dict):
                  marketo_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions'] = None,
                  meta_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions'] = None,
                  outlook_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions'] = None,
+                 rabbitmq_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions'] = None,
                  reddit_ads_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions'] = None,
                  sharepoint_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions'] = None,
                  smartsheet_options: Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions'] = None,
@@ -60370,6 +60206,8 @@ class PipelineIngestionDefinitionObjectTableConnectorOptions(dict):
             pulumi.set(__self__, "meta_ads_options", meta_ads_options)
         if outlook_options is not None:
             pulumi.set(__self__, "outlook_options", outlook_options)
+        if rabbitmq_options is not None:
+            pulumi.set(__self__, "rabbitmq_options", rabbitmq_options)
         if reddit_ads_options is not None:
             pulumi.set(__self__, "reddit_ads_options", reddit_ads_options)
         if sharepoint_options is not None:
@@ -60430,6 +60268,11 @@ class PipelineIngestionDefinitionObjectTableConnectorOptions(dict):
     @pulumi.getter(name="outlookOptions")
     def outlook_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions']:
         return pulumi.get(self, "outlook_options")
+
+    @_builtins.property
+    @pulumi.getter(name="rabbitmqOptions")
+    def rabbitmq_options(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions']:
+        return pulumi.get(self, "rabbitmq_options")
 
     @_builtins.property
     @pulumi.getter(name="redditAdsOptions")
@@ -61661,6 +61504,18 @@ class PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions(dict)
     @pulumi.getter(name="subjectFilters")
     def subject_filters(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "subject_filters")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions(dict):
+    def __init__(__self__, *,
+                 queue: _builtins.str):
+        pulumi.set(__self__, "queue", queue)
+
+    @_builtins.property
+    @pulumi.getter
+    def queue(self) -> _builtins.str:
+        return pulumi.get(self, "queue")
 
 
 @pulumi.output_type
@@ -63539,16 +63394,39 @@ class PolicyInfoColumnMask(dict):
 
 @pulumi.output_type
 class PolicyInfoColumnMaskUsing(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionArgExpression":
+            suggest = "function_arg_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoColumnMaskUsing. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoColumnMaskUsing.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoColumnMaskUsing.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alias: Optional[_builtins.str] = None,
-                 constant: Optional[_builtins.str] = None):
+                 constant: Optional[_builtins.str] = None,
+                 function_arg_expression: Optional['outputs.PolicyInfoColumnMaskUsingFunctionArgExpression'] = None):
         """
         :param _builtins.str constant: A constant literal
+        :param 'PolicyInfoColumnMaskUsingFunctionArgExpressionArgs' function_arg_expression: An expression evaluated at query time. Wraps per-request expression variants
+               (e.g., tag introspection) so new variants can be added without extending the
+               FunctionArgument oneof
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if constant is not None:
             pulumi.set(__self__, "constant", constant)
+        if function_arg_expression is not None:
+            pulumi.set(__self__, "function_arg_expression", function_arg_expression)
 
     @_builtins.property
     @pulumi.getter
@@ -63562,6 +63440,175 @@ class PolicyInfoColumnMaskUsing(dict):
         A constant literal
         """
         return pulumi.get(self, "constant")
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgExpression")
+    def function_arg_expression(self) -> Optional['outputs.PolicyInfoColumnMaskUsingFunctionArgExpression']:
+        """
+        An expression evaluated at query time. Wraps per-request expression variants
+        (e.g., tag introspection) so new variants can be added without extending the
+        FunctionArgument oneof
+        """
+        return pulumi.get(self, "function_arg_expression")
+
+
+@pulumi.output_type
+class PolicyInfoColumnMaskUsingFunctionArgExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagIntrospection":
+            suggest = "tag_introspection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoColumnMaskUsingFunctionArgExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoColumnMaskUsingFunctionArgExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoColumnMaskUsingFunctionArgExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_introspection: Optional['outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection'] = None):
+        """
+        :param 'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs' tag_introspection: An expression that introspects tags at query time
+        """
+        if tag_introspection is not None:
+            pulumi.set(__self__, "tag_introspection", tag_introspection)
+
+    @_builtins.property
+    @pulumi.getter(name="tagIntrospection")
+    def tag_introspection(self) -> Optional['outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection']:
+        """
+        An expression that introspects tags at query time
+        """
+        return pulumi.get(self, "tag_introspection")
+
+
+@pulumi.output_type
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnTagValue":
+            suggest = "column_tag_value"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_tag_value: Optional['outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue'] = None,
+                 tag_value: Optional['outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue'] = None):
+        """
+        :param 'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs' column_tag_value: Extracts the value of a column-level tag
+        :param 'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs' tag_value: Extracts the value of a securable-level tag
+        """
+        if column_tag_value is not None:
+            pulumi.set(__self__, "column_tag_value", column_tag_value)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnTagValue")
+    def column_tag_value(self) -> Optional['outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue']:
+        """
+        Extracts the value of a column-level tag
+        """
+        return pulumi.get(self, "column_tag_value")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional['outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue']:
+        """
+        Extracts the value of a securable-level tag
+        """
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnAlias":
+            suggest = "column_alias"
+        elif key == "tagKey":
+            suggest = "tag_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_alias: _builtins.str,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str column_alias: The alias from MATCH COLUMNS that identifies the column
+        """
+        pulumi.set(__self__, "column_alias", column_alias)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="columnAlias")
+    def column_alias(self) -> _builtins.str:
+        """
+        The alias from MATCH COLUMNS that identifies the column
+        """
+        return pulumi.get(self, "column_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        return pulumi.get(self, "tag_key")
+
+
+@pulumi.output_type
+class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: _builtins.str):
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        return pulumi.get(self, "tag_key")
 
 
 @pulumi.output_type
@@ -63690,16 +63737,39 @@ class PolicyInfoRowFilter(dict):
 
 @pulumi.output_type
 class PolicyInfoRowFilterUsing(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionArgExpression":
+            suggest = "function_arg_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoRowFilterUsing. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoRowFilterUsing.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoRowFilterUsing.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alias: Optional[_builtins.str] = None,
-                 constant: Optional[_builtins.str] = None):
+                 constant: Optional[_builtins.str] = None,
+                 function_arg_expression: Optional['outputs.PolicyInfoRowFilterUsingFunctionArgExpression'] = None):
         """
         :param _builtins.str constant: A constant literal
+        :param 'PolicyInfoRowFilterUsingFunctionArgExpressionArgs' function_arg_expression: An expression evaluated at query time. Wraps per-request expression variants
+               (e.g., tag introspection) so new variants can be added without extending the
+               FunctionArgument oneof
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if constant is not None:
             pulumi.set(__self__, "constant", constant)
+        if function_arg_expression is not None:
+            pulumi.set(__self__, "function_arg_expression", function_arg_expression)
 
     @_builtins.property
     @pulumi.getter
@@ -63713,6 +63783,175 @@ class PolicyInfoRowFilterUsing(dict):
         A constant literal
         """
         return pulumi.get(self, "constant")
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgExpression")
+    def function_arg_expression(self) -> Optional['outputs.PolicyInfoRowFilterUsingFunctionArgExpression']:
+        """
+        An expression evaluated at query time. Wraps per-request expression variants
+        (e.g., tag introspection) so new variants can be added without extending the
+        FunctionArgument oneof
+        """
+        return pulumi.get(self, "function_arg_expression")
+
+
+@pulumi.output_type
+class PolicyInfoRowFilterUsingFunctionArgExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagIntrospection":
+            suggest = "tag_introspection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoRowFilterUsingFunctionArgExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoRowFilterUsingFunctionArgExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoRowFilterUsingFunctionArgExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_introspection: Optional['outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection'] = None):
+        """
+        :param 'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs' tag_introspection: An expression that introspects tags at query time
+        """
+        if tag_introspection is not None:
+            pulumi.set(__self__, "tag_introspection", tag_introspection)
+
+    @_builtins.property
+    @pulumi.getter(name="tagIntrospection")
+    def tag_introspection(self) -> Optional['outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection']:
+        """
+        An expression that introspects tags at query time
+        """
+        return pulumi.get(self, "tag_introspection")
+
+
+@pulumi.output_type
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnTagValue":
+            suggest = "column_tag_value"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_tag_value: Optional['outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue'] = None,
+                 tag_value: Optional['outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue'] = None):
+        """
+        :param 'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs' column_tag_value: Extracts the value of a column-level tag
+        :param 'PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs' tag_value: Extracts the value of a securable-level tag
+        """
+        if column_tag_value is not None:
+            pulumi.set(__self__, "column_tag_value", column_tag_value)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnTagValue")
+    def column_tag_value(self) -> Optional['outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue']:
+        """
+        Extracts the value of a column-level tag
+        """
+        return pulumi.get(self, "column_tag_value")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional['outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue']:
+        """
+        Extracts the value of a securable-level tag
+        """
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnAlias":
+            suggest = "column_alias"
+        elif key == "tagKey":
+            suggest = "tag_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_alias: _builtins.str,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str column_alias: The alias from MATCH COLUMNS that identifies the column
+        """
+        pulumi.set(__self__, "column_alias", column_alias)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="columnAlias")
+    def column_alias(self) -> _builtins.str:
+        """
+        The alias from MATCH COLUMNS that identifies the column
+        """
+        return pulumi.get(self, "column_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        return pulumi.get(self, "tag_key")
+
+
+@pulumi.output_type
+class PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: _builtins.str):
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        return pulumi.get(self, "tag_key")
 
 
 @pulumi.output_type
@@ -63768,6 +64007,8 @@ class PostgresBranchSpec(dict):
             suggest = "source_branch_lsn"
         elif key == "sourceBranchTime":
             suggest = "source_branch_time"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PostgresBranchSpec. Access the value via the '{suggest}' property getter instead.")
@@ -63787,6 +64028,7 @@ class PostgresBranchSpec(dict):
                  source_branch: Optional[_builtins.str] = None,
                  source_branch_lsn: Optional[_builtins.str] = None,
                  source_branch_time: Optional[_builtins.str] = None,
+                 source_snapshot: Optional[_builtins.str] = None,
                  ttl: Optional[_builtins.str] = None):
         """
         :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
@@ -63798,6 +64040,9 @@ class PostgresBranchSpec(dict):
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str source_snapshot: (string) - The snapshot this branch was restored from. Set only for branches created by
+               restoring a snapshot; unset for all other branches.
+               Format: projects/{project_id}/snapshots/{snapshot_id}
         :param _builtins.str ttl: Relative time-to-live duration. When set, the branch will expire at creation_time + ttl.
                Mutually exclusive with `expire_time` and `no_expiry`. When updating, use `spec.expiration` in the update_mask
         """
@@ -63813,6 +64058,8 @@ class PostgresBranchSpec(dict):
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -63868,6 +64115,16 @@ class PostgresBranchSpec(dict):
         return pulumi.get(self, "source_branch_time")
 
     @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[_builtins.str]:
+        """
+        (string) - The snapshot this branch was restored from. Set only for branches created by
+        restoring a snapshot; unset for all other branches.
+        Format: projects/{project_id}/snapshots/{snapshot_id}
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @_builtins.property
     @pulumi.getter
     def ttl(self) -> Optional[_builtins.str]:
         """
@@ -63904,6 +64161,8 @@ class PostgresBranchStatus(dict):
             suggest = "source_branch_lsn"
         elif key == "sourceBranchTime":
             suggest = "source_branch_time"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
         elif key == "stateChangeTime":
             suggest = "state_change_time"
 
@@ -63931,6 +64190,7 @@ class PostgresBranchStatus(dict):
                  source_branch: Optional[_builtins.str] = None,
                  source_branch_lsn: Optional[_builtins.str] = None,
                  source_branch_time: Optional[_builtins.str] = None,
+                 source_snapshot: Optional[_builtins.str] = None,
                  state_change_time: Optional[_builtins.str] = None):
         """
         :param _builtins.str branch_id: The part of the name, chosen by the user when the resource was created
@@ -63948,6 +64208,9 @@ class PostgresBranchStatus(dict):
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str source_snapshot: (string) - The snapshot this branch was restored from. Set only for branches created by
+               restoring a snapshot; unset for all other branches.
+               Format: projects/{project_id}/snapshots/{snapshot_id}
         :param _builtins.str state_change_time: (string) - A timestamp indicating when the `current_state` began
         """
         if branch_id is not None:
@@ -63974,6 +64237,8 @@ class PostgresBranchStatus(dict):
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
         if state_change_time is not None:
             pulumi.set(__self__, "state_change_time", state_change_time)
 
@@ -64075,6 +64340,16 @@ class PostgresBranchStatus(dict):
         (string) - The point in time on the source branch from which this branch was created
         """
         return pulumi.get(self, "source_branch_time")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[_builtins.str]:
+        """
+        (string) - The snapshot this branch was restored from. Set only for branches created by
+        restoring a snapshot; unset for all other branches.
+        Format: projects/{project_id}/snapshots/{snapshot_id}
+        """
+        return pulumi.get(self, "source_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="stateChangeTime")
@@ -66402,6 +66677,207 @@ class PostgresRoleStatusAttributes(dict):
     @pulumi.getter
     def createrole(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "createrole")
+
+
+@pulumi.output_type
+class PostgresSnapshotScheduleProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgresSnapshotScheduleProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgresSnapshotScheduleProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgresSnapshotScheduleProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workspace_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class PostgresSnapshotScheduleSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dailySchedule":
+            suggest = "daily_schedule"
+        elif key == "monthlySchedule":
+            suggest = "monthly_schedule"
+        elif key == "weeklySchedule":
+            suggest = "weekly_schedule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgresSnapshotScheduleSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgresSnapshotScheduleSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgresSnapshotScheduleSchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 retention: _builtins.str,
+                 daily_schedule: Optional['outputs.PostgresSnapshotScheduleScheduleDailySchedule'] = None,
+                 monthly_schedule: Optional['outputs.PostgresSnapshotScheduleScheduleMonthlySchedule'] = None,
+                 weekly_schedule: Optional['outputs.PostgresSnapshotScheduleScheduleWeeklySchedule'] = None):
+        """
+        :param _builtins.str retention: How long snapshots from this cadence are kept before automatic deletion.
+               Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+               so changing it affects only later snapshots
+        :param 'PostgresSnapshotScheduleScheduleDailyScheduleArgs' daily_schedule: Take a snapshot once per day
+        :param 'PostgresSnapshotScheduleScheduleMonthlyScheduleArgs' monthly_schedule: Take a snapshot once per month
+        :param 'PostgresSnapshotScheduleScheduleWeeklyScheduleArgs' weekly_schedule: Take a snapshot once per week
+        """
+        pulumi.set(__self__, "retention", retention)
+        if daily_schedule is not None:
+            pulumi.set(__self__, "daily_schedule", daily_schedule)
+        if monthly_schedule is not None:
+            pulumi.set(__self__, "monthly_schedule", monthly_schedule)
+        if weekly_schedule is not None:
+            pulumi.set(__self__, "weekly_schedule", weekly_schedule)
+
+    @_builtins.property
+    @pulumi.getter
+    def retention(self) -> _builtins.str:
+        """
+        How long snapshots from this cadence are kept before automatic deletion.
+        Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+        so changing it affects only later snapshots
+        """
+        return pulumi.get(self, "retention")
+
+    @_builtins.property
+    @pulumi.getter(name="dailySchedule")
+    def daily_schedule(self) -> Optional['outputs.PostgresSnapshotScheduleScheduleDailySchedule']:
+        """
+        Take a snapshot once per day
+        """
+        return pulumi.get(self, "daily_schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="monthlySchedule")
+    def monthly_schedule(self) -> Optional['outputs.PostgresSnapshotScheduleScheduleMonthlySchedule']:
+        """
+        Take a snapshot once per month
+        """
+        return pulumi.get(self, "monthly_schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="weeklySchedule")
+    def weekly_schedule(self) -> Optional['outputs.PostgresSnapshotScheduleScheduleWeeklySchedule']:
+        """
+        Take a snapshot once per week
+        """
+        return pulumi.get(self, "weekly_schedule")
+
+
+@pulumi.output_type
+class PostgresSnapshotScheduleScheduleDailySchedule(dict):
+    def __init__(__self__, *,
+                 hour: Optional[_builtins.int] = None):
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "hour")
+
+
+@pulumi.output_type
+class PostgresSnapshotScheduleScheduleMonthlySchedule(dict):
+    def __init__(__self__, *,
+                 day: _builtins.int,
+                 hour: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int day: The day of the month on which to take the snapshot, in [1, 31]. In shorter
+               months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+               or 29, and on Apr 30), so every month gets exactly one snapshot
+        """
+        pulumi.set(__self__, "day", day)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> _builtins.int:
+        """
+        The day of the month on which to take the snapshot, in [1, 31]. In shorter
+        months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+        or 29, and on Apr 30), so every month gets exactly one snapshot
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "hour")
+
+
+@pulumi.output_type
+class PostgresSnapshotScheduleScheduleWeeklySchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgresSnapshotScheduleScheduleWeeklySchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgresSnapshotScheduleScheduleWeeklySchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgresSnapshotScheduleScheduleWeeklySchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: _builtins.str,
+                 hour: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str day_of_week: The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> _builtins.str:
+        """
+        The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "hour")
 
 
 @pulumi.output_type
@@ -69180,7 +69656,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurable(dict):
         :param _builtins.str provider_share: Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param _builtins.str type: Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -69211,7 +69687,7 @@ class RfaAccessRequestDestinationsDestinationSourceSecurable(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -69283,7 +69759,7 @@ class RfaAccessRequestDestinationsSecurable(dict):
         :param _builtins.str provider_share: Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param _builtins.str type: Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -69315,7 +69791,7 @@ class RfaAccessRequestDestinationsSecurable(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -75216,6 +75692,35 @@ class GetAccountIamDirectGroupMembersV2DirectGroupMemberResult(dict):
         (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         """
         return pulumi.get(self, "principal_type")
+
+
+@pulumi.output_type
+class GetAccountIamExternalUserV2FullNameResult(dict):
+    def __init__(__self__, *,
+                 family_name: _builtins.str,
+                 given_name: _builtins.str):
+        """
+        :param _builtins.str family_name: (string) - The family (last) name of the user, from the customer's IdP
+        :param _builtins.str given_name: (string) - The given (first) name of the user, from the customer's IdP
+        """
+        pulumi.set(__self__, "family_name", family_name)
+        pulumi.set(__self__, "given_name", given_name)
+
+    @_builtins.property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> _builtins.str:
+        """
+        (string) - The family (last) name of the user, from the customer's IdP
+        """
+        return pulumi.get(self, "family_name")
+
+    @_builtins.property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> _builtins.str:
+        """
+        (string) - The given (first) name of the user, from the customer's IdP
+        """
+        return pulumi.get(self, "given_name")
 
 
 @pulumi.output_type
@@ -96207,9 +96712,8 @@ class GetAlertV2ParameterResult(dict):
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string)
-        :param _builtins.str type: (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-               string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-               Complex types such as ARRAY, MAP, and STRUCT are not supported
+        :param _builtins.str type: (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+               the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         :param _builtins.str value: (AlertV2OperandValue)
         """
         pulumi.set(__self__, "name", name)
@@ -96230,9 +96734,8 @@ class GetAlertV2ParameterResult(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-        string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-        Complex types such as ARRAY, MAP, and STRUCT are not supported
+        (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+        the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         """
         return pulumi.get(self, "type")
 
@@ -96371,11 +96874,10 @@ class GetAlertsV2AlertResult(dict):
                This is an output-only field that shows the resolved run-as identity after applying
                permissions and defaults
         :param 'GetAlertsV2AlertEvaluationArgs' evaluation: (AlertV2Evaluation)
-        :param _builtins.str id: (string) - UUID identifying the alert
+        :param _builtins.str id: (string) - The canonical identifier of the alert to retrieve information about
         :param _builtins.str lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         :param _builtins.str owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
-        :param Sequence['GetAlertsV2AlertParameterArgs'] parameters: (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-               query text with `:name` syntax. Static values only
+        :param Sequence['GetAlertsV2AlertParameterArgs'] parameters: (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
         :param _builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param _builtins.str query_text: (string) - Text of the query to be run
         :param 'GetAlertsV2AlertRunAsArgs' run_as: (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
@@ -96465,7 +96967,7 @@ class GetAlertsV2AlertResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        (string) - UUID identifying the alert
+        (string) - The canonical identifier of the alert to retrieve information about
         """
         return pulumi.get(self, "id")
 
@@ -96489,8 +96991,7 @@ class GetAlertsV2AlertResult(dict):
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GetAlertsV2AlertParameterResult']:
         """
-        (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-        query text with `:name` syntax. Static values only
+        (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
         """
         return pulumi.get(self, "parameters")
 
@@ -96941,9 +97442,8 @@ class GetAlertsV2AlertParameterResult(dict):
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string)
-        :param _builtins.str type: (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-               string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-               Complex types such as ARRAY, MAP, and STRUCT are not supported
+        :param _builtins.str type: (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+               the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         :param _builtins.str value: (AlertV2OperandValue)
         """
         pulumi.set(__self__, "name", name)
@@ -96964,9 +97464,8 @@ class GetAlertsV2AlertParameterResult(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-        string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-        Complex types such as ARRAY, MAP, and STRUCT are not supported
+        (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+        the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         """
         return pulumi.get(self, "type")
 
@@ -99617,6 +100116,7 @@ class GetAppSpacesProviderConfigResult(dict):
 @pulumi.output_type
 class GetAppSpacesSpaceResult(dict):
     def __init__(__self__, *,
+                 assume_group_id: _builtins.str,
                  create_time: _builtins.str,
                  creator: _builtins.str,
                  description: _builtins.str,
@@ -99635,6 +100135,9 @@ class GetAppSpacesSpaceResult(dict):
                  user_api_scopes: Sequence[_builtins.str],
                  provider_config: Optional['outputs.GetAppSpacesSpaceProviderConfigResult'] = None):
         """
+        :param _builtins.str assume_group_id: (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+               set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+               Set only at space creation
         :param _builtins.str create_time: (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         :param _builtins.str creator: (string) - The email of the user that created the app space
         :param _builtins.str description: (string) - Description of the App Resource
@@ -99653,6 +100156,7 @@ class GetAppSpacesSpaceResult(dict):
         :param Sequence[_builtins.str] user_api_scopes: (list of string) - OAuth scopes for apps in the space
         :param 'GetAppSpacesSpaceProviderConfigArgs' provider_config: Configure the provider for management through account provider.
         """
+        pulumi.set(__self__, "assume_group_id", assume_group_id)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "description", description)
@@ -99671,6 +100175,16 @@ class GetAppSpacesSpaceResult(dict):
         pulumi.set(__self__, "user_api_scopes", user_api_scopes)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+
+    @_builtins.property
+    @pulumi.getter(name="assumeGroupId")
+    def assume_group_id(self) -> _builtins.str:
+        """
+        (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+        set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        Set only at space creation
+        """
+        return pulumi.get(self, "assume_group_id")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -104578,14 +105092,22 @@ class GetClusterClusterInfoDriverNodeAwsAttributesResult(dict):
 @pulumi.output_type
 class GetClusterClusterInfoDriverNodeTypeFlexibilityResult(dict):
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -105686,14 +106208,22 @@ class GetClusterClusterInfoSpecDockerImageBasicAuthResult(dict):
 @pulumi.output_type
 class GetClusterClusterInfoSpecDriverNodeTypeFlexibilityResult(dict):
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -106141,14 +106671,22 @@ class GetClusterClusterInfoSpecProviderConfigResult(dict):
 @pulumi.output_type
 class GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityResult(dict):
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -106216,14 +106754,22 @@ class GetClusterClusterInfoTerminationReasonResult(dict):
 @pulumi.output_type
 class GetClusterClusterInfoWorkerNodeTypeFlexibilityResult(dict):
     def __init__(__self__, *,
-                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None,
+                 aws_context_id: Optional[_builtins.str] = None):
         if alternate_node_type_ids is not None:
             pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+        if aws_context_id is not None:
+            pulumi.set(__self__, "aws_context_id", aws_context_id)
 
     @_builtins.property
     @pulumi.getter(name="alternateNodeTypeIds")
     def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "alternate_node_type_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="awsContextId")
+    def aws_context_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "aws_context_id")
 
 
 @pulumi.output_type
@@ -113489,17 +114035,11 @@ class GetFeatureEngineeringFeatureFunctionResult(dict):
     def __init__(__self__, *,
                  aggregation_function: Optional['outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionResult'] = None,
                  column_selection: Optional['outputs.GetFeatureEngineeringFeatureFunctionColumnSelectionResult'] = None,
-                 custom_udf: Optional['outputs.GetFeatureEngineeringFeatureFunctionCustomUdfResult'] = None,
-                 extra_parameters: Optional[Sequence['outputs.GetFeatureEngineeringFeatureFunctionExtraParameterResult']] = None,
-                 function_type: Optional[_builtins.str] = None):
+                 custom_udf: Optional['outputs.GetFeatureEngineeringFeatureFunctionCustomUdfResult'] = None):
         """
         :param 'GetFeatureEngineeringFeatureFunctionAggregationFunctionArgs' aggregation_function: (AggregationFunction) - An aggregation function applied over a time window
         :param 'GetFeatureEngineeringFeatureFunctionColumnSelectionArgs' column_selection: (ColumnSelection) - Selects the latest value of a single column in a data source
         :param 'GetFeatureEngineeringFeatureFunctionCustomUdfArgs' custom_udf: (CustomUdf) - Applies a registered Unity Catalog function row-wise to source columns
-        :param Sequence['GetFeatureEngineeringFeatureFunctionExtraParameterArgs'] extra_parameters: (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-               Extra parameters for parameterized functions
-        :param _builtins.str function_type: (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-               The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
         """
         if aggregation_function is not None:
             pulumi.set(__self__, "aggregation_function", aggregation_function)
@@ -113507,10 +114047,6 @@ class GetFeatureEngineeringFeatureFunctionResult(dict):
             pulumi.set(__self__, "column_selection", column_selection)
         if custom_udf is not None:
             pulumi.set(__self__, "custom_udf", custom_udf)
-        if extra_parameters is not None:
-            pulumi.set(__self__, "extra_parameters", extra_parameters)
-        if function_type is not None:
-            pulumi.set(__self__, "function_type", function_type)
 
     @_builtins.property
     @pulumi.getter(name="aggregationFunction")
@@ -113535,24 +114071,6 @@ class GetFeatureEngineeringFeatureFunctionResult(dict):
         (CustomUdf) - Applies a registered Unity Catalog function row-wise to source columns
         """
         return pulumi.get(self, "custom_udf")
-
-    @_builtins.property
-    @pulumi.getter(name="extraParameters")
-    def extra_parameters(self) -> Optional[Sequence['outputs.GetFeatureEngineeringFeatureFunctionExtraParameterResult']]:
-        """
-        (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        Extra parameters for parameterized functions
-        """
-        return pulumi.get(self, "extra_parameters")
-
-    @_builtins.property
-    @pulumi.getter(name="functionType")
-    def function_type(self) -> Optional[_builtins.str]:
-        """
-        (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-        """
-        return pulumi.get(self, "function_type")
 
 
 @pulumi.output_type
@@ -114130,36 +114648,34 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionSumResult(dict):
 @pulumi.output_type
 class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult(dict):
     def __init__(__self__, *,
-                 continuous: Optional['outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousResult'] = None,
                  rolling: Optional['outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult'] = None,
                  sawtooth: Optional['outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothResult'] = None,
                  sliding: Optional['outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingResult'] = None,
+                 start_time: Optional[_builtins.str] = None,
                  tumbling: Optional['outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingResult'] = None):
         """
-        :param 'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs' continuous: (ContinuousWindow, deprecated)
         :param 'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs' rolling: (RollingWindow)
         :param 'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs' sawtooth: (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
         :param 'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs' sliding: (SlidingWindow)
+        :param _builtins.str start_time: (string) - Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+               the historical inputs read by a window. For example, a 365-day window with
+               start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+               for 365 days of data; a lifetime window produces no output before start_time. If unset,
+               tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+               full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+               eligible source data exists
         :param 'GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs' tumbling: (TumblingWindow)
         """
-        if continuous is not None:
-            pulumi.set(__self__, "continuous", continuous)
         if rolling is not None:
             pulumi.set(__self__, "rolling", rolling)
         if sawtooth is not None:
             pulumi.set(__self__, "sawtooth", sawtooth)
         if sliding is not None:
             pulumi.set(__self__, "sliding", sliding)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
         if tumbling is not None:
             pulumi.set(__self__, "tumbling", tumbling)
-
-    @_builtins.property
-    @pulumi.getter
-    def continuous(self) -> Optional['outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousResult']:
-        """
-        (ContinuousWindow, deprecated)
-        """
-        return pulumi.get(self, "continuous")
 
     @_builtins.property
     @pulumi.getter
@@ -114186,6 +114702,20 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult(di
         return pulumi.get(self, "sliding")
 
     @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        (string) - Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+        the historical inputs read by a window. For example, a 365-day window with
+        start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+        for 365 days of data; a lifetime window produces no output before start_time. If unset,
+        tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+        full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+        eligible source data exists
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
     @pulumi.getter
     def tumbling(self) -> Optional['outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingResult']:
         """
@@ -114195,42 +114725,14 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult(di
 
 
 @pulumi.output_type
-class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousResult(dict):
-    def __init__(__self__, *,
-                 window_duration: _builtins.str,
-                 offset: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        :param _builtins.str offset: (string) - The offset of the continuous window (must be non-positive)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> Optional[_builtins.str]:
-        """
-        (string) - The offset of the continuous window (must be non-positive)
-        """
-        return pulumi.get(self, "offset")
-
-
-@pulumi.output_type
 class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult(dict):
     def __init__(__self__, *,
                  delay: Optional[_builtins.str] = None,
                  window_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.str delay: (string) - Delay is not currently supported for Sawtooth windows
+        :param _builtins.str delay: (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+               variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+               the analytic lag is zero. It composes with source.lateness when both are set
         :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         """
         if delay is not None:
@@ -114242,7 +114744,9 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingRe
     @pulumi.getter
     def delay(self) -> Optional[_builtins.str]:
         """
-        (string) - Delay is not currently supported for Sawtooth windows
+        (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        the analytic lag is zero. It composes with source.lateness when both are set
         """
         return pulumi.get(self, "delay")
 
@@ -114261,7 +114765,9 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothR
                  delay: Optional[_builtins.str] = None,
                  window_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.str delay: (string) - Delay is not currently supported for Sawtooth windows
+        :param _builtins.str delay: (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+               variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+               the analytic lag is zero. It composes with source.lateness when both are set
         :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         """
         if delay is not None:
@@ -114273,7 +114779,9 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothR
     @pulumi.getter
     def delay(self) -> Optional[_builtins.str]:
         """
-        (string) - Delay is not currently supported for Sawtooth windows
+        (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        the analytic lag is zero. It composes with source.lateness when both are set
         """
         return pulumi.get(self, "delay")
 
@@ -114290,12 +114798,24 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothR
 class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingResult(dict):
     def __init__(__self__, *,
                  slide_duration: _builtins.str,
+                 delay: Optional[_builtins.str] = None,
+                 offset: Optional[_builtins.str] = None,
                  window_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.str slide_duration: (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+        :param _builtins.str delay: (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+               variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+               the analytic lag is zero. It composes with source.lateness when both are set
+        :param _builtins.str offset: (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+               a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+               midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
         :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         """
         pulumi.set(__self__, "slide_duration", slide_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
         if window_duration is not None:
             pulumi.set(__self__, "window_duration", window_duration)
 
@@ -114306,6 +114826,26 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingRe
         (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
         """
         return pulumi.get(self, "slide_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.str]:
+        """
+        (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        the analytic lag is zero. It composes with source.lateness when both are set
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> Optional[_builtins.str]:
+        """
+        (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+        a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+        midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+        """
+        return pulumi.get(self, "offset")
 
     @_builtins.property
     @pulumi.getter(name="windowDuration")
@@ -114319,11 +114859,23 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingRe
 @pulumi.output_type
 class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingResult(dict):
     def __init__(__self__, *,
-                 window_duration: _builtins.str):
+                 window_duration: _builtins.str,
+                 delay: Optional[_builtins.str] = None,
+                 offset: Optional[_builtins.str] = None):
         """
         :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+        :param _builtins.str delay: (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+               variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+               the analytic lag is zero. It composes with source.lateness when both are set
+        :param _builtins.str offset: (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+               a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+               midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
         """
         pulumi.set(__self__, "window_duration", window_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
 
     @_builtins.property
     @pulumi.getter(name="windowDuration")
@@ -114332,6 +114884,26 @@ class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingR
         (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         """
         return pulumi.get(self, "window_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.str]:
+        """
+        (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        the analytic lag is zero. It composes with source.lateness when both are set
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> Optional[_builtins.str]:
+        """
+        (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+        a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+        midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+        """
+        return pulumi.get(self, "offset")
 
 
 @pulumi.output_type
@@ -114450,35 +115022,6 @@ class GetFeatureEngineeringFeatureFunctionCustomUdfInputBindingResult(dict):
 
 
 @pulumi.output_type
-class GetFeatureEngineeringFeatureFunctionExtraParameterResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        """
-        :param _builtins.str key: (string) - The name of the parameter
-        :param _builtins.str value: (string) - The value of the parameter
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        (string) - The name of the parameter
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        """
-        (string) - The value of the parameter
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
 class GetFeatureEngineeringFeatureLineageContextResult(dict):
     def __init__(__self__, *,
                  job_context: Optional['outputs.GetFeatureEngineeringFeatureLineageContextJobContextResult'] = None,
@@ -114563,11 +115106,14 @@ class GetFeatureEngineeringFeatureSourceResult(dict):
     def __init__(__self__, *,
                  delta_table_source: Optional['outputs.GetFeatureEngineeringFeatureSourceDeltaTableSourceResult'] = None,
                  kafka_source: Optional['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult'] = None,
+                 lateness: Optional['outputs.GetFeatureEngineeringFeatureSourceLatenessResult'] = None,
                  request_source: Optional['outputs.GetFeatureEngineeringFeatureSourceRequestSourceResult'] = None,
                  stream_source: Optional['outputs.GetFeatureEngineeringFeatureSourceStreamSourceResult'] = None):
         """
         :param 'GetFeatureEngineeringFeatureSourceDeltaTableSourceArgs' delta_table_source: (DeltaTableSource) - A Delta table data source
         :param 'GetFeatureEngineeringFeatureSourceKafkaSourceArgs' kafka_source: (KafkaSource) - A Kafka stream data source
+        :param 'GetFeatureEngineeringFeatureSourceLatenessArgs' lateness: (SourceLateness) - Completeness timing for this Feature's use of the source. This configuration is part of the
+               Feature definition; it does not modify the underlying table or stream
         :param 'GetFeatureEngineeringFeatureSourceRequestSourceArgs' request_source: (RequestSource) - A request-time data source
         :param 'GetFeatureEngineeringFeatureSourceStreamSourceArgs' stream_source: (StreamSource) - A Stream data source
         """
@@ -114575,6 +115121,8 @@ class GetFeatureEngineeringFeatureSourceResult(dict):
             pulumi.set(__self__, "delta_table_source", delta_table_source)
         if kafka_source is not None:
             pulumi.set(__self__, "kafka_source", kafka_source)
+        if lateness is not None:
+            pulumi.set(__self__, "lateness", lateness)
         if request_source is not None:
             pulumi.set(__self__, "request_source", request_source)
         if stream_source is not None:
@@ -114595,6 +115143,15 @@ class GetFeatureEngineeringFeatureSourceResult(dict):
         (KafkaSource) - A Kafka stream data source
         """
         return pulumi.get(self, "kafka_source")
+
+    @_builtins.property
+    @pulumi.getter
+    def lateness(self) -> Optional['outputs.GetFeatureEngineeringFeatureSourceLatenessResult']:
+        """
+        (SourceLateness) - Completeness timing for this Feature's use of the source. This configuration is part of the
+        Feature definition; it does not modify the underlying table or stream
+        """
+        return pulumi.get(self, "lateness")
 
     @_builtins.property
     @pulumi.getter(name="requestSource")
@@ -114618,9 +115175,7 @@ class GetFeatureEngineeringFeatureSourceDeltaTableSourceResult(dict):
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
@@ -114629,23 +115184,15 @@ class GetFeatureEngineeringFeatureSourceDeltaTableSourceResult(dict):
         :param _builtins.str dataframe_schema: (string) - Schema of the resulting dataframe after transformations, in Spark StructType
                JSON format (from df.schema.json()).
                Any subsequent functions operate against this dataframe
-        :param Sequence[_builtins.str] entity_columns: (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param _builtins.str filter_condition: (string) - The filter condition applied to the source data before aggregation
-        :param _builtins.str timeseries_column: (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param _builtins.str transformation_sql: (string) - The pipeline runs these SQL statements immediately after conversion into
                the schema specified on the Stream object
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -114670,30 +115217,12 @@ class GetFeatureEngineeringFeatureSourceDeltaTableSourceResult(dict):
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
         (string) - The filter condition applied to the source data before aggregation
         """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -114709,9 +115238,7 @@ class GetFeatureEngineeringFeatureSourceDeltaTableSourceResult(dict):
 class GetFeatureEngineeringFeatureSourceKafkaSourceResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
-                 entity_column_identifiers: Optional[Sequence['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult']] = None,
-                 filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column_identifier: Optional['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult'] = None):
+                 filter_condition: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
                reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
@@ -114719,19 +115246,11 @@ class GetFeatureEngineeringFeatureSourceKafkaSourceResult(dict):
                is what will be present in materialized tables and expected to match at query time.
                Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
                backwards compatibility but is deprecated; migrate to dot notation
-        :param Sequence['GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs'] entity_column_identifiers: (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity column identifiers of the Kafka source
         :param _builtins.str filter_condition: (string) - The filter condition applied to the source data before aggregation
-        :param 'GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs' timeseries_column_identifier: (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column identifier of the Kafka source
         """
         pulumi.set(__self__, "name", name)
-        if entity_column_identifiers is not None:
-            pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column_identifier is not None:
-            pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
 
     @_builtins.property
     @pulumi.getter
@@ -114747,15 +115266,6 @@ class GetFeatureEngineeringFeatureSourceKafkaSourceResult(dict):
         return pulumi.get(self, "name")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumnIdentifiers")
-    def entity_column_identifiers(self) -> Optional[Sequence['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult']]:
-        """
-        (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity column identifiers of the Kafka source
-        """
-        return pulumi.get(self, "entity_column_identifiers")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
@@ -114763,54 +115273,30 @@ class GetFeatureEngineeringFeatureSourceKafkaSourceResult(dict):
         """
         return pulumi.get(self, "filter_condition")
 
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumnIdentifier")
-    def timeseries_column_identifier(self) -> Optional['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult']:
-        """
-        (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column identifier of the Kafka source
-        """
-        return pulumi.get(self, "timeseries_column_identifier")
-
 
 @pulumi.output_type
-class GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult(dict):
+class GetFeatureEngineeringFeatureSourceLatenessResult(dict):
     def __init__(__self__, *,
-                 variant_expr_path: _builtins.str):
+                 settling_delay: Optional[_builtins.str] = None):
         """
-        :param _builtins.str variant_expr_path: (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-               and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+        :param _builtins.str settling_delay: (string) - Non-negative time to wait after a window ends before treating its source data as complete.
+               Training shifts the eligible evaluation time backwards by this duration so it does not join
+               data that would still have been settling online. Materialization waits for the duration to
+               elapse before publishing the window. If unset, source data is considered settled immediately
         """
-        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+        if settling_delay is not None:
+            pulumi.set(__self__, "settling_delay", settling_delay)
 
     @_builtins.property
-    @pulumi.getter(name="variantExprPath")
-    def variant_expr_path(self) -> _builtins.str:
+    @pulumi.getter(name="settlingDelay")
+    def settling_delay(self) -> Optional[_builtins.str]:
         """
-        (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-        and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+        (string) - Non-negative time to wait after a window ends before treating its source data as complete.
+        Training shifts the eligible evaluation time backwards by this duration so it does not join
+        data that would still have been settling online. Materialization waits for the duration to
+        elapse before publishing the window. If unset, source data is considered settled immediately
         """
-        return pulumi.get(self, "variant_expr_path")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult(dict):
-    def __init__(__self__, *,
-                 variant_expr_path: _builtins.str):
-        """
-        :param _builtins.str variant_expr_path: (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-               and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-        """
-        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
-
-    @_builtins.property
-    @pulumi.getter(name="variantExprPath")
-    def variant_expr_path(self) -> _builtins.str:
-        """
-        (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-        and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-        """
-        return pulumi.get(self, "variant_expr_path")
+        return pulumi.get(self, "settling_delay")
 
 
 @pulumi.output_type
@@ -114954,213 +115440,6 @@ class GetFeatureEngineeringFeatureSourceStreamSourceResult(dict):
 
 
 @pulumi.output_type
-class GetFeatureEngineeringFeatureTimeWindowResult(dict):
-    def __init__(__self__, *,
-                 continuous: Optional['outputs.GetFeatureEngineeringFeatureTimeWindowContinuousResult'] = None,
-                 rolling: Optional['outputs.GetFeatureEngineeringFeatureTimeWindowRollingResult'] = None,
-                 sawtooth: Optional['outputs.GetFeatureEngineeringFeatureTimeWindowSawtoothResult'] = None,
-                 sliding: Optional['outputs.GetFeatureEngineeringFeatureTimeWindowSlidingResult'] = None,
-                 tumbling: Optional['outputs.GetFeatureEngineeringFeatureTimeWindowTumblingResult'] = None):
-        """
-        :param 'GetFeatureEngineeringFeatureTimeWindowContinuousArgs' continuous: (ContinuousWindow, deprecated)
-        :param 'GetFeatureEngineeringFeatureTimeWindowRollingArgs' rolling: (RollingWindow)
-        :param 'GetFeatureEngineeringFeatureTimeWindowSawtoothArgs' sawtooth: (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
-        :param 'GetFeatureEngineeringFeatureTimeWindowSlidingArgs' sliding: (SlidingWindow)
-        :param 'GetFeatureEngineeringFeatureTimeWindowTumblingArgs' tumbling: (TumblingWindow)
-        """
-        if continuous is not None:
-            pulumi.set(__self__, "continuous", continuous)
-        if rolling is not None:
-            pulumi.set(__self__, "rolling", rolling)
-        if sawtooth is not None:
-            pulumi.set(__self__, "sawtooth", sawtooth)
-        if sliding is not None:
-            pulumi.set(__self__, "sliding", sliding)
-        if tumbling is not None:
-            pulumi.set(__self__, "tumbling", tumbling)
-
-    @_builtins.property
-    @pulumi.getter
-    def continuous(self) -> Optional['outputs.GetFeatureEngineeringFeatureTimeWindowContinuousResult']:
-        """
-        (ContinuousWindow, deprecated)
-        """
-        return pulumi.get(self, "continuous")
-
-    @_builtins.property
-    @pulumi.getter
-    def rolling(self) -> Optional['outputs.GetFeatureEngineeringFeatureTimeWindowRollingResult']:
-        """
-        (RollingWindow)
-        """
-        return pulumi.get(self, "rolling")
-
-    @_builtins.property
-    @pulumi.getter
-    def sawtooth(self) -> Optional['outputs.GetFeatureEngineeringFeatureTimeWindowSawtoothResult']:
-        """
-        (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
-        """
-        return pulumi.get(self, "sawtooth")
-
-    @_builtins.property
-    @pulumi.getter
-    def sliding(self) -> Optional['outputs.GetFeatureEngineeringFeatureTimeWindowSlidingResult']:
-        """
-        (SlidingWindow)
-        """
-        return pulumi.get(self, "sliding")
-
-    @_builtins.property
-    @pulumi.getter
-    def tumbling(self) -> Optional['outputs.GetFeatureEngineeringFeatureTimeWindowTumblingResult']:
-        """
-        (TumblingWindow)
-        """
-        return pulumi.get(self, "tumbling")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeatureTimeWindowContinuousResult(dict):
-    def __init__(__self__, *,
-                 window_duration: _builtins.str,
-                 offset: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        :param _builtins.str offset: (string) - The offset of the continuous window (must be non-positive)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> Optional[_builtins.str]:
-        """
-        (string) - The offset of the continuous window (must be non-positive)
-        """
-        return pulumi.get(self, "offset")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeatureTimeWindowRollingResult(dict):
-    def __init__(__self__, *,
-                 delay: Optional[_builtins.str] = None,
-                 window_duration: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str delay: (string) - Delay is not currently supported for Sawtooth windows
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        if delay is not None:
-            pulumi.set(__self__, "delay", delay)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter
-    def delay(self) -> Optional[_builtins.str]:
-        """
-        (string) - Delay is not currently supported for Sawtooth windows
-        """
-        return pulumi.get(self, "delay")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeatureTimeWindowSawtoothResult(dict):
-    def __init__(__self__, *,
-                 delay: Optional[_builtins.str] = None,
-                 window_duration: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str delay: (string) - Delay is not currently supported for Sawtooth windows
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        if delay is not None:
-            pulumi.set(__self__, "delay", delay)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter
-    def delay(self) -> Optional[_builtins.str]:
-        """
-        (string) - Delay is not currently supported for Sawtooth windows
-        """
-        return pulumi.get(self, "delay")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeatureTimeWindowSlidingResult(dict):
-    def __init__(__self__, *,
-                 slide_duration: _builtins.str,
-                 window_duration: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str slide_duration: (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        pulumi.set(__self__, "slide_duration", slide_duration)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="slideDuration")
-    def slide_duration(self) -> _builtins.str:
-        """
-        (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-        """
-        return pulumi.get(self, "slide_duration")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeatureTimeWindowTumblingResult(dict):
-    def __init__(__self__, *,
-                 window_duration: _builtins.str):
-        """
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
 class GetFeatureEngineeringFeatureTimeseriesColumnResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str):
@@ -115196,15 +115475,12 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
                  created_by: _builtins.str,
                  description: _builtins.str,
                  entities: Sequence['outputs.GetFeatureEngineeringFeaturesFeatureEntityResult'],
-                 filter_condition: _builtins.str,
                  full_name: _builtins.str,
                  function: 'outputs.GetFeatureEngineeringFeaturesFeatureFunctionResult',
-                 inputs: Sequence[_builtins.str],
                  lineage_context: 'outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult',
                  name: _builtins.str,
                  schema_name: _builtins.str,
                  source: 'outputs.GetFeatureEngineeringFeaturesFeatureSourceResult',
-                 time_window: 'outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowResult',
                  timeseries_column: 'outputs.GetFeatureEngineeringFeaturesFeatureTimeseriesColumnResult',
                  provider_config: Optional['outputs.GetFeatureEngineeringFeaturesFeatureProviderConfigResult'] = None):
         """
@@ -115213,11 +115489,8 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
         :param _builtins.str created_by: (string) - Username of the feature creator
         :param _builtins.str description: (string) - The description of the feature
         :param Sequence['GetFeatureEngineeringFeaturesFeatureEntityArgs'] entities: (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
-        :param _builtins.str filter_condition: (string) - The filter condition applied to the source data before aggregation
         :param _builtins.str full_name: (string) - Three-part full name of the Stream (catalog.schema.stream)
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionArgs' function: (Function) - The function by which the feature is computed
-        :param Sequence[_builtins.str] inputs: (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-               The input columns from which the feature is computed
         :param 'GetFeatureEngineeringFeaturesFeatureLineageContextArgs' lineage_context: (LineageContext) - Lineage context information for this feature.
                WARNING: This field is primarily intended for internal use by Databricks systems and
                is automatically populated when features are created through Databricks notebooks or jobs.
@@ -115231,9 +115504,7 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
                backwards compatibility but is deprecated; migrate to dot notation
         :param _builtins.str schema_name: Name of parent schema relative to its parent catalog
         :param 'GetFeatureEngineeringFeaturesFeatureSourceArgs' source: (DataSource) - The data source of the feature
-        :param 'GetFeatureEngineeringFeaturesFeatureTimeWindowArgs' time_window: (TimeWindow) - The time window over which the aggregation is computed
-        :param 'GetFeatureEngineeringFeaturesFeatureTimeseriesColumnArgs' timeseries_column: (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
+        :param 'GetFeatureEngineeringFeaturesFeatureTimeseriesColumnArgs' timeseries_column: (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
         :param 'GetFeatureEngineeringFeaturesFeatureProviderConfigArgs' provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -115241,15 +115512,12 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "entities", entities)
-        pulumi.set(__self__, "filter_condition", filter_condition)
         pulumi.set(__self__, "full_name", full_name)
         pulumi.set(__self__, "function", function)
-        pulumi.set(__self__, "inputs", inputs)
         pulumi.set(__self__, "lineage_context", lineage_context)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "schema_name", schema_name)
         pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "time_window", time_window)
         pulumi.set(__self__, "timeseries_column", timeseries_column)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
@@ -115295,14 +115563,6 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
         return pulumi.get(self, "entities")
 
     @_builtins.property
-    @pulumi.getter(name="filterCondition")
-    def filter_condition(self) -> _builtins.str:
-        """
-        (string) - The filter condition applied to the source data before aggregation
-        """
-        return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
     @pulumi.getter(name="fullName")
     def full_name(self) -> _builtins.str:
         """
@@ -115317,15 +115577,6 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
         (Function) - The function by which the feature is computed
         """
         return pulumi.get(self, "function")
-
-    @_builtins.property
-    @pulumi.getter
-    def inputs(self) -> Sequence[_builtins.str]:
-        """
-        (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-        The input columns from which the feature is computed
-        """
-        return pulumi.get(self, "inputs")
 
     @_builtins.property
     @pulumi.getter(name="lineageContext")
@@ -115369,19 +115620,10 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
         return pulumi.get(self, "source")
 
     @_builtins.property
-    @pulumi.getter(name="timeWindow")
-    def time_window(self) -> 'outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowResult':
-        """
-        (TimeWindow) - The time window over which the aggregation is computed
-        """
-        return pulumi.get(self, "time_window")
-
-    @_builtins.property
     @pulumi.getter(name="timeseriesColumn")
     def timeseries_column(self) -> 'outputs.GetFeatureEngineeringFeaturesFeatureTimeseriesColumnResult':
         """
-        (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
+        (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         return pulumi.get(self, "timeseries_column")
 
@@ -115427,17 +115669,11 @@ class GetFeatureEngineeringFeaturesFeatureFunctionResult(dict):
     def __init__(__self__, *,
                  aggregation_function: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionResult'] = None,
                  column_selection: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionColumnSelectionResult'] = None,
-                 custom_udf: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfResult'] = None,
-                 extra_parameters: Optional[Sequence['outputs.GetFeatureEngineeringFeaturesFeatureFunctionExtraParameterResult']] = None,
-                 function_type: Optional[_builtins.str] = None):
+                 custom_udf: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfResult'] = None):
         """
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionArgs' aggregation_function: (AggregationFunction) - An aggregation function applied over a time window
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionColumnSelectionArgs' column_selection: (ColumnSelection) - Selects the latest value of a single column in a data source
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfArgs' custom_udf: (CustomUdf) - Applies a registered Unity Catalog function row-wise to source columns
-        :param Sequence['GetFeatureEngineeringFeaturesFeatureFunctionExtraParameterArgs'] extra_parameters: (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-               Extra parameters for parameterized functions
-        :param _builtins.str function_type: (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-               The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
         """
         if aggregation_function is not None:
             pulumi.set(__self__, "aggregation_function", aggregation_function)
@@ -115445,10 +115681,6 @@ class GetFeatureEngineeringFeaturesFeatureFunctionResult(dict):
             pulumi.set(__self__, "column_selection", column_selection)
         if custom_udf is not None:
             pulumi.set(__self__, "custom_udf", custom_udf)
-        if extra_parameters is not None:
-            pulumi.set(__self__, "extra_parameters", extra_parameters)
-        if function_type is not None:
-            pulumi.set(__self__, "function_type", function_type)
 
     @_builtins.property
     @pulumi.getter(name="aggregationFunction")
@@ -115473,24 +115705,6 @@ class GetFeatureEngineeringFeaturesFeatureFunctionResult(dict):
         (CustomUdf) - Applies a registered Unity Catalog function row-wise to source columns
         """
         return pulumi.get(self, "custom_udf")
-
-    @_builtins.property
-    @pulumi.getter(name="extraParameters")
-    def extra_parameters(self) -> Optional[Sequence['outputs.GetFeatureEngineeringFeaturesFeatureFunctionExtraParameterResult']]:
-        """
-        (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        Extra parameters for parameterized functions
-        """
-        return pulumi.get(self, "extra_parameters")
-
-    @_builtins.property
-    @pulumi.getter(name="functionType")
-    def function_type(self) -> Optional[_builtins.str]:
-        """
-        (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-        The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-        """
-        return pulumi.get(self, "function_type")
 
 
 @pulumi.output_type
@@ -116068,36 +116282,34 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionSumResult(d
 @pulumi.output_type
 class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowResult(dict):
     def __init__(__self__, *,
-                 continuous: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousResult'] = None,
                  rolling: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRollingResult'] = None,
                  sawtooth: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtoothResult'] = None,
                  sliding: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSlidingResult'] = None,
+                 start_time: Optional[_builtins.str] = None,
                  tumbling: Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumblingResult'] = None):
         """
-        :param 'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousArgs' continuous: (ContinuousWindow, deprecated)
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRollingArgs' rolling: (RollingWindow)
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs' sawtooth: (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSlidingArgs' sliding: (SlidingWindow)
+        :param _builtins.str start_time: (string) - Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+               the historical inputs read by a window. For example, a 365-day window with
+               start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+               for 365 days of data; a lifetime window produces no output before start_time. If unset,
+               tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+               full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+               eligible source data exists
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumblingArgs' tumbling: (TumblingWindow)
         """
-        if continuous is not None:
-            pulumi.set(__self__, "continuous", continuous)
         if rolling is not None:
             pulumi.set(__self__, "rolling", rolling)
         if sawtooth is not None:
             pulumi.set(__self__, "sawtooth", sawtooth)
         if sliding is not None:
             pulumi.set(__self__, "sliding", sliding)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
         if tumbling is not None:
             pulumi.set(__self__, "tumbling", tumbling)
-
-    @_builtins.property
-    @pulumi.getter
-    def continuous(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousResult']:
-        """
-        (ContinuousWindow, deprecated)
-        """
-        return pulumi.get(self, "continuous")
 
     @_builtins.property
     @pulumi.getter
@@ -116124,6 +116336,20 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowR
         return pulumi.get(self, "sliding")
 
     @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        (string) - Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+        the historical inputs read by a window. For example, a 365-day window with
+        start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+        for 365 days of data; a lifetime window produces no output before start_time. If unset,
+        tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+        full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+        eligible source data exists
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
     @pulumi.getter
     def tumbling(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumblingResult']:
         """
@@ -116133,42 +116359,14 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowR
 
 
 @pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuousResult(dict):
-    def __init__(__self__, *,
-                 window_duration: _builtins.str,
-                 offset: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        :param _builtins.str offset: (string) - The offset of the continuous window (must be non-positive)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> Optional[_builtins.str]:
-        """
-        (string) - The offset of the continuous window (must be non-positive)
-        """
-        return pulumi.get(self, "offset")
-
-
-@pulumi.output_type
 class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRollingResult(dict):
     def __init__(__self__, *,
                  delay: Optional[_builtins.str] = None,
                  window_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.str delay: (string) - Delay is not currently supported for Sawtooth windows
+        :param _builtins.str delay: (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+               variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+               the analytic lag is zero. It composes with source.lateness when both are set
         :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         """
         if delay is not None:
@@ -116180,7 +116378,9 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowR
     @pulumi.getter
     def delay(self) -> Optional[_builtins.str]:
         """
-        (string) - Delay is not currently supported for Sawtooth windows
+        (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        the analytic lag is zero. It composes with source.lateness when both are set
         """
         return pulumi.get(self, "delay")
 
@@ -116199,7 +116399,9 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowS
                  delay: Optional[_builtins.str] = None,
                  window_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.str delay: (string) - Delay is not currently supported for Sawtooth windows
+        :param _builtins.str delay: (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+               variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+               the analytic lag is zero. It composes with source.lateness when both are set
         :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         """
         if delay is not None:
@@ -116211,7 +116413,9 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowS
     @pulumi.getter
     def delay(self) -> Optional[_builtins.str]:
         """
-        (string) - Delay is not currently supported for Sawtooth windows
+        (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        the analytic lag is zero. It composes with source.lateness when both are set
         """
         return pulumi.get(self, "delay")
 
@@ -116228,12 +116432,24 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowS
 class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSlidingResult(dict):
     def __init__(__self__, *,
                  slide_duration: _builtins.str,
+                 delay: Optional[_builtins.str] = None,
+                 offset: Optional[_builtins.str] = None,
                  window_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.str slide_duration: (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+        :param _builtins.str delay: (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+               variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+               the analytic lag is zero. It composes with source.lateness when both are set
+        :param _builtins.str offset: (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+               a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+               midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
         :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         """
         pulumi.set(__self__, "slide_duration", slide_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
         if window_duration is not None:
             pulumi.set(__self__, "window_duration", window_duration)
 
@@ -116244,6 +116460,26 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowS
         (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
         """
         return pulumi.get(self, "slide_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.str]:
+        """
+        (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        the analytic lag is zero. It composes with source.lateness when both are set
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> Optional[_builtins.str]:
+        """
+        (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+        a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+        midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+        """
+        return pulumi.get(self, "offset")
 
     @_builtins.property
     @pulumi.getter(name="windowDuration")
@@ -116257,11 +116493,23 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowS
 @pulumi.output_type
 class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumblingResult(dict):
     def __init__(__self__, *,
-                 window_duration: _builtins.str):
+                 window_duration: _builtins.str,
+                 delay: Optional[_builtins.str] = None,
+                 offset: Optional[_builtins.str] = None):
         """
         :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+        :param _builtins.str delay: (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+               variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+               the analytic lag is zero. It composes with source.lateness when both are set
+        :param _builtins.str offset: (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+               a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+               midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
         """
         pulumi.set(__self__, "window_duration", window_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
 
     @_builtins.property
     @pulumi.getter(name="windowDuration")
@@ -116270,6 +116518,26 @@ class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowT
         (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
         """
         return pulumi.get(self, "window_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.str]:
+        """
+        (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        the analytic lag is zero. It composes with source.lateness when both are set
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> Optional[_builtins.str]:
+        """
+        (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+        a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+        midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+        """
+        return pulumi.get(self, "offset")
 
 
 @pulumi.output_type
@@ -116388,35 +116656,6 @@ class GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfInputBindingResult(di
 
 
 @pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureFunctionExtraParameterResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        """
-        :param _builtins.str key: (string) - The name of the parameter
-        :param _builtins.str value: (string) - The value of the parameter
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        (string) - The name of the parameter
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        """
-        (string) - The value of the parameter
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
 class GetFeatureEngineeringFeaturesFeatureLineageContextResult(dict):
     def __init__(__self__, *,
                  job_context: Optional['outputs.GetFeatureEngineeringFeaturesFeatureLineageContextJobContextResult'] = None,
@@ -116501,11 +116740,14 @@ class GetFeatureEngineeringFeaturesFeatureSourceResult(dict):
     def __init__(__self__, *,
                  delta_table_source: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult'] = None,
                  kafka_source: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult'] = None,
+                 lateness: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceLatenessResult'] = None,
                  request_source: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceResult'] = None,
                  stream_source: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceStreamSourceResult'] = None):
         """
         :param 'GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceArgs' delta_table_source: (DeltaTableSource) - A Delta table data source
         :param 'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceArgs' kafka_source: (KafkaSource) - A Kafka stream data source
+        :param 'GetFeatureEngineeringFeaturesFeatureSourceLatenessArgs' lateness: (SourceLateness) - Completeness timing for this Feature's use of the source. This configuration is part of the
+               Feature definition; it does not modify the underlying table or stream
         :param 'GetFeatureEngineeringFeaturesFeatureSourceRequestSourceArgs' request_source: (RequestSource) - A request-time data source
         :param 'GetFeatureEngineeringFeaturesFeatureSourceStreamSourceArgs' stream_source: (StreamSource) - A Stream data source
         """
@@ -116513,6 +116755,8 @@ class GetFeatureEngineeringFeaturesFeatureSourceResult(dict):
             pulumi.set(__self__, "delta_table_source", delta_table_source)
         if kafka_source is not None:
             pulumi.set(__self__, "kafka_source", kafka_source)
+        if lateness is not None:
+            pulumi.set(__self__, "lateness", lateness)
         if request_source is not None:
             pulumi.set(__self__, "request_source", request_source)
         if stream_source is not None:
@@ -116533,6 +116777,15 @@ class GetFeatureEngineeringFeaturesFeatureSourceResult(dict):
         (KafkaSource) - A Kafka stream data source
         """
         return pulumi.get(self, "kafka_source")
+
+    @_builtins.property
+    @pulumi.getter
+    def lateness(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceLatenessResult']:
+        """
+        (SourceLateness) - Completeness timing for this Feature's use of the source. This configuration is part of the
+        Feature definition; it does not modify the underlying table or stream
+        """
+        return pulumi.get(self, "lateness")
 
     @_builtins.property
     @pulumi.getter(name="requestSource")
@@ -116556,32 +116809,22 @@ class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult(dict):
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: (string) - Three-part full name of the Stream (catalog.schema.stream)
         :param _builtins.str dataframe_schema: (string) - Schema of the resulting dataframe after transformations, in Spark StructType
                JSON format (from df.schema.json()).
                Any subsequent functions operate against this dataframe
-        :param Sequence[_builtins.str] entity_columns: (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param _builtins.str filter_condition: (string) - The filter condition applied to the source data before aggregation
-        :param _builtins.str timeseries_column: (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param _builtins.str transformation_sql: (string) - The pipeline runs these SQL statements immediately after conversion into
                the schema specified on the Stream object
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -116604,30 +116847,12 @@ class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult(dict):
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
         (string) - The filter condition applied to the source data before aggregation
         """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -116643,9 +116868,7 @@ class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult(dict):
 class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
-                 entity_column_identifiers: Optional[Sequence['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult']] = None,
-                 filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column_identifier: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult'] = None):
+                 filter_condition: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
                reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
@@ -116653,19 +116876,11 @@ class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult(dict):
                is what will be present in materialized tables and expected to match at query time.
                Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
                backwards compatibility but is deprecated; migrate to dot notation
-        :param Sequence['GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierArgs'] entity_column_identifiers: (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity column identifiers of the Kafka source
         :param _builtins.str filter_condition: (string) - The filter condition applied to the source data before aggregation
-        :param 'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs' timeseries_column_identifier: (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column identifier of the Kafka source
         """
         pulumi.set(__self__, "name", name)
-        if entity_column_identifiers is not None:
-            pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column_identifier is not None:
-            pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
 
     @_builtins.property
     @pulumi.getter
@@ -116681,15 +116896,6 @@ class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult(dict):
         return pulumi.get(self, "name")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumnIdentifiers")
-    def entity_column_identifiers(self) -> Optional[Sequence['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult']]:
-        """
-        (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity column identifiers of the Kafka source
-        """
-        return pulumi.get(self, "entity_column_identifiers")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
@@ -116697,54 +116903,30 @@ class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult(dict):
         """
         return pulumi.get(self, "filter_condition")
 
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumnIdentifier")
-    def timeseries_column_identifier(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult']:
-        """
-        (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column identifier of the Kafka source
-        """
-        return pulumi.get(self, "timeseries_column_identifier")
-
 
 @pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult(dict):
+class GetFeatureEngineeringFeaturesFeatureSourceLatenessResult(dict):
     def __init__(__self__, *,
-                 variant_expr_path: _builtins.str):
+                 settling_delay: Optional[_builtins.str] = None):
         """
-        :param _builtins.str variant_expr_path: (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-               and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+        :param _builtins.str settling_delay: (string) - Non-negative time to wait after a window ends before treating its source data as complete.
+               Training shifts the eligible evaluation time backwards by this duration so it does not join
+               data that would still have been settling online. Materialization waits for the duration to
+               elapse before publishing the window. If unset, source data is considered settled immediately
         """
-        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+        if settling_delay is not None:
+            pulumi.set(__self__, "settling_delay", settling_delay)
 
     @_builtins.property
-    @pulumi.getter(name="variantExprPath")
-    def variant_expr_path(self) -> _builtins.str:
+    @pulumi.getter(name="settlingDelay")
+    def settling_delay(self) -> Optional[_builtins.str]:
         """
-        (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-        and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+        (string) - Non-negative time to wait after a window ends before treating its source data as complete.
+        Training shifts the eligible evaluation time backwards by this duration so it does not join
+        data that would still have been settling online. Materialization waits for the duration to
+        elapse before publishing the window. If unset, source data is considered settled immediately
         """
-        return pulumi.get(self, "variant_expr_path")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult(dict):
-    def __init__(__self__, *,
-                 variant_expr_path: _builtins.str):
-        """
-        :param _builtins.str variant_expr_path: (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-               and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-        """
-        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
-
-    @_builtins.property
-    @pulumi.getter(name="variantExprPath")
-    def variant_expr_path(self) -> _builtins.str:
-        """
-        (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-        and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-        """
-        return pulumi.get(self, "variant_expr_path")
+        return pulumi.get(self, "settling_delay")
 
 
 @pulumi.output_type
@@ -116881,213 +117063,6 @@ class GetFeatureEngineeringFeaturesFeatureSourceStreamSourceResult(dict):
         the schema specified on the Stream object
         """
         return pulumi.get(self, "transformation_sql")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureTimeWindowResult(dict):
-    def __init__(__self__, *,
-                 continuous: Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowContinuousResult'] = None,
-                 rolling: Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowRollingResult'] = None,
-                 sawtooth: Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowSawtoothResult'] = None,
-                 sliding: Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowSlidingResult'] = None,
-                 tumbling: Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowTumblingResult'] = None):
-        """
-        :param 'GetFeatureEngineeringFeaturesFeatureTimeWindowContinuousArgs' continuous: (ContinuousWindow, deprecated)
-        :param 'GetFeatureEngineeringFeaturesFeatureTimeWindowRollingArgs' rolling: (RollingWindow)
-        :param 'GetFeatureEngineeringFeaturesFeatureTimeWindowSawtoothArgs' sawtooth: (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
-        :param 'GetFeatureEngineeringFeaturesFeatureTimeWindowSlidingArgs' sliding: (SlidingWindow)
-        :param 'GetFeatureEngineeringFeaturesFeatureTimeWindowTumblingArgs' tumbling: (TumblingWindow)
-        """
-        if continuous is not None:
-            pulumi.set(__self__, "continuous", continuous)
-        if rolling is not None:
-            pulumi.set(__self__, "rolling", rolling)
-        if sawtooth is not None:
-            pulumi.set(__self__, "sawtooth", sawtooth)
-        if sliding is not None:
-            pulumi.set(__self__, "sliding", sliding)
-        if tumbling is not None:
-            pulumi.set(__self__, "tumbling", tumbling)
-
-    @_builtins.property
-    @pulumi.getter
-    def continuous(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowContinuousResult']:
-        """
-        (ContinuousWindow, deprecated)
-        """
-        return pulumi.get(self, "continuous")
-
-    @_builtins.property
-    @pulumi.getter
-    def rolling(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowRollingResult']:
-        """
-        (RollingWindow)
-        """
-        return pulumi.get(self, "rolling")
-
-    @_builtins.property
-    @pulumi.getter
-    def sawtooth(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowSawtoothResult']:
-        """
-        (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
-        """
-        return pulumi.get(self, "sawtooth")
-
-    @_builtins.property
-    @pulumi.getter
-    def sliding(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowSlidingResult']:
-        """
-        (SlidingWindow)
-        """
-        return pulumi.get(self, "sliding")
-
-    @_builtins.property
-    @pulumi.getter
-    def tumbling(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowTumblingResult']:
-        """
-        (TumblingWindow)
-        """
-        return pulumi.get(self, "tumbling")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureTimeWindowContinuousResult(dict):
-    def __init__(__self__, *,
-                 window_duration: _builtins.str,
-                 offset: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        :param _builtins.str offset: (string) - The offset of the continuous window (must be non-positive)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> Optional[_builtins.str]:
-        """
-        (string) - The offset of the continuous window (must be non-positive)
-        """
-        return pulumi.get(self, "offset")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureTimeWindowRollingResult(dict):
-    def __init__(__self__, *,
-                 delay: Optional[_builtins.str] = None,
-                 window_duration: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str delay: (string) - Delay is not currently supported for Sawtooth windows
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        if delay is not None:
-            pulumi.set(__self__, "delay", delay)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter
-    def delay(self) -> Optional[_builtins.str]:
-        """
-        (string) - Delay is not currently supported for Sawtooth windows
-        """
-        return pulumi.get(self, "delay")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureTimeWindowSawtoothResult(dict):
-    def __init__(__self__, *,
-                 delay: Optional[_builtins.str] = None,
-                 window_duration: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str delay: (string) - Delay is not currently supported for Sawtooth windows
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        if delay is not None:
-            pulumi.set(__self__, "delay", delay)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter
-    def delay(self) -> Optional[_builtins.str]:
-        """
-        (string) - Delay is not currently supported for Sawtooth windows
-        """
-        return pulumi.get(self, "delay")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureTimeWindowSlidingResult(dict):
-    def __init__(__self__, *,
-                 slide_duration: _builtins.str,
-                 window_duration: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str slide_duration: (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        pulumi.set(__self__, "slide_duration", slide_duration)
-        if window_duration is not None:
-            pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="slideDuration")
-    def slide_duration(self) -> _builtins.str:
-        """
-        (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-        """
-        return pulumi.get(self, "slide_duration")
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> Optional[_builtins.str]:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
-
-
-@pulumi.output_type
-class GetFeatureEngineeringFeaturesFeatureTimeWindowTumblingResult(dict):
-    def __init__(__self__, *,
-                 window_duration: _builtins.str):
-        """
-        :param _builtins.str window_duration: (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        pulumi.set(__self__, "window_duration", window_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="windowDuration")
-    def window_duration(self) -> _builtins.str:
-        """
-        (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-        """
-        return pulumi.get(self, "window_duration")
 
 
 @pulumi.output_type
@@ -117388,20 +117363,14 @@ class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceResult(dict)
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: (string) - The full three-part (catalog, schema, table) name of the Delta table
         :param _builtins.str dataframe_schema: (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
                Required if transformation_sql is specified.
                Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
-        :param Sequence[_builtins.str] entity_columns: (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param _builtins.str filter_condition: (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-        :param _builtins.str timeseries_column: (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param _builtins.str transformation_sql: (string) - A single SQL SELECT expression applied after filter_condition.
                Should contains all the columns needed (eg. "SELECT *, col_a + col_b AS col_c FROM x.y.z WHERE col_a > 0" would have `transformation_sql` "*, col_a + col_b AS col_c")
                If transformation_sql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -117409,12 +117378,8 @@ class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceResult(dict)
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -117437,30 +117402,12 @@ class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceResult(dict)
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
         (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -117602,20 +117549,14 @@ class GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSou
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: (string) - The full three-part (catalog, schema, table) name of the Delta table
         :param _builtins.str dataframe_schema: (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
                Required if transformation_sql is specified.
                Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
-        :param Sequence[_builtins.str] entity_columns: (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param _builtins.str filter_condition: (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-        :param _builtins.str timeseries_column: (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param _builtins.str transformation_sql: (string) - A single SQL SELECT expression applied after filter_condition.
                Should contains all the columns needed (eg. "SELECT *, col_a + col_b AS col_c FROM x.y.z WHERE col_a > 0" would have `transformation_sql` "*, col_a + col_b AS col_c")
                If transformation_sql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -117623,12 +117564,8 @@ class GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSou
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -117651,30 +117588,12 @@ class GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSou
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
         (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -118307,20 +118226,14 @@ class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: (string) - The full three-part (catalog, schema, table) name of the Delta table
         :param _builtins.str dataframe_schema: (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
                Required if transformation_sql is specified.
                Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
-        :param Sequence[_builtins.str] entity_columns: (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param _builtins.str filter_condition: (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-        :param _builtins.str timeseries_column: (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param _builtins.str transformation_sql: (string) - A single SQL SELECT expression applied after filter_condition.
                Should contains all the columns needed (eg. "SELECT *, col_a + col_b AS col_c FROM x.y.z WHERE col_a > 0" would have `transformation_sql` "*, col_a + col_b AS col_c")
                If transformation_sql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -118328,12 +118241,8 @@ class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -118356,30 +118265,12 @@ class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
         (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -118521,20 +118412,14 @@ class GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBackfillSourceD
     def __init__(__self__, *,
                  full_name: _builtins.str,
                  dataframe_schema: Optional[_builtins.str] = None,
-                 entity_columns: Optional[Sequence[_builtins.str]] = None,
                  filter_condition: Optional[_builtins.str] = None,
-                 timeseries_column: Optional[_builtins.str] = None,
                  transformation_sql: Optional[_builtins.str] = None):
         """
         :param _builtins.str full_name: (string) - The full three-part (catalog, schema, table) name of the Delta table
         :param _builtins.str dataframe_schema: (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
                Required if transformation_sql is specified.
                Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
-        :param Sequence[_builtins.str] entity_columns: (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-               The entity columns of the Delta table
         :param _builtins.str filter_condition: (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
-        :param _builtins.str timeseries_column: (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-               The timeseries column of the Delta table
         :param _builtins.str transformation_sql: (string) - A single SQL SELECT expression applied after filter_condition.
                Should contains all the columns needed (eg. "SELECT *, col_a + col_b AS col_c FROM x.y.z WHERE col_a > 0" would have `transformation_sql` "*, col_a + col_b AS col_c")
                If transformation_sql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -118542,12 +118427,8 @@ class GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBackfillSourceD
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
-        if entity_columns is not None:
-            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
-        if timeseries_column is not None:
-            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -118570,30 +118451,12 @@ class GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBackfillSourceD
         return pulumi.get(self, "dataframe_schema")
 
     @_builtins.property
-    @pulumi.getter(name="entityColumns")
-    def entity_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        The entity columns of the Delta table
-        """
-        return pulumi.get(self, "entity_columns")
-
-    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[_builtins.str]:
         """
         (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         """
         return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[_builtins.str]:
-        """
-        (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
-        """
-        return pulumi.get(self, "timeseries_column")
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -119048,7 +118911,6 @@ class GetFeatureEngineeringMaterializedFeatureTableTriggerResult(dict):
 @pulumi.output_type
 class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
     def __init__(__self__, *,
-                 cron_schedule: _builtins.str,
                  cron_schedule_trigger: 'outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTriggerResult',
                  feature_name: _builtins.str,
                  is_online: _builtins.bool,
@@ -119062,8 +118924,6 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
                  table_trigger: 'outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureTableTriggerResult',
                  provider_config: Optional['outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfigResult'] = None):
         """
-        :param _builtins.str cron_schedule: (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTriggerArgs' cron_schedule_trigger: (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
         :param _builtins.str feature_name: Filter by feature name. If specified, only materialized features materialized from this feature will be returned
         :param _builtins.bool is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -119081,7 +118941,6 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
         :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureTableTriggerArgs' table_trigger: (TableTrigger) - A trigger that fires when the upstream source table changes
         :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfigArgs' provider_config: Configure the provider for management through account provider.
         """
-        pulumi.set(__self__, "cron_schedule", cron_schedule)
         pulumi.set(__self__, "cron_schedule_trigger", cron_schedule_trigger)
         pulumi.set(__self__, "feature_name", feature_name)
         pulumi.set(__self__, "is_online", is_online)
@@ -119095,15 +118954,6 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
         pulumi.set(__self__, "table_trigger", table_trigger)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
-
-    @_builtins.property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> _builtins.str:
-        """
-        (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-        Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-        """
-        return pulumi.get(self, "cron_schedule")
 
     @_builtins.property
     @pulumi.getter(name="cronScheduleTrigger")
@@ -130287,15 +130137,21 @@ class GetPolicyInfoColumnMaskResult(dict):
 class GetPolicyInfoColumnMaskUsingResult(dict):
     def __init__(__self__, *,
                  alias: Optional[_builtins.str] = None,
-                 constant: Optional[_builtins.str] = None):
+                 constant: Optional[_builtins.str] = None,
+                 function_arg_expression: Optional['outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionResult'] = None):
         """
         :param _builtins.str alias: (string) - Optional alias of the matched column
         :param _builtins.str constant: (string) - A constant literal
+        :param 'GetPolicyInfoColumnMaskUsingFunctionArgExpressionArgs' function_arg_expression: (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+               (e.g., tag introspection) so new variants can be added without extending the
+               FunctionArgument oneof
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if constant is not None:
             pulumi.set(__self__, "constant", constant)
+        if function_arg_expression is not None:
+            pulumi.set(__self__, "function_arg_expression", function_arg_expression)
 
     @_builtins.property
     @pulumi.getter
@@ -130312,6 +130168,113 @@ class GetPolicyInfoColumnMaskUsingResult(dict):
         (string) - A constant literal
         """
         return pulumi.get(self, "constant")
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgExpression")
+    def function_arg_expression(self) -> Optional['outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionResult']:
+        """
+        (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+        (e.g., tag introspection) so new variants can be added without extending the
+        FunctionArgument oneof
+        """
+        return pulumi.get(self, "function_arg_expression")
+
+
+@pulumi.output_type
+class GetPolicyInfoColumnMaskUsingFunctionArgExpressionResult(dict):
+    def __init__(__self__, *,
+                 tag_introspection: Optional['outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionResult'] = None):
+        """
+        :param 'GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs' tag_introspection: (TagIntrospectionExpression) - An expression that introspects tags at query time
+        """
+        if tag_introspection is not None:
+            pulumi.set(__self__, "tag_introspection", tag_introspection)
+
+    @_builtins.property
+    @pulumi.getter(name="tagIntrospection")
+    def tag_introspection(self) -> Optional['outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionResult']:
+        """
+        (TagIntrospectionExpression) - An expression that introspects tags at query time
+        """
+        return pulumi.get(self, "tag_introspection")
+
+
+@pulumi.output_type
+class GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionResult(dict):
+    def __init__(__self__, *,
+                 column_tag_value: Optional['outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult'] = None,
+                 tag_value: Optional['outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueResult'] = None):
+        """
+        :param 'GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs' column_tag_value: (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+        :param 'GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs' tag_value: (TagValueExtraction) - Extracts the value of a securable-level tag
+        """
+        if column_tag_value is not None:
+            pulumi.set(__self__, "column_tag_value", column_tag_value)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnTagValue")
+    def column_tag_value(self) -> Optional['outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult']:
+        """
+        (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+        """
+        return pulumi.get(self, "column_tag_value")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional['outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueResult']:
+        """
+        (TagValueExtraction) - Extracts the value of a securable-level tag
+        """
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult(dict):
+    def __init__(__self__, *,
+                 column_alias: _builtins.str,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str column_alias: (string) - The alias from MATCH COLUMNS that identifies the column
+        :param _builtins.str tag_key: (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        pulumi.set(__self__, "column_alias", column_alias)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="columnAlias")
+    def column_alias(self) -> _builtins.str:
+        """
+        (string) - The alias from MATCH COLUMNS that identifies the column
+        """
+        return pulumi.get(self, "column_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        return pulumi.get(self, "tag_key")
+
+
+@pulumi.output_type
+class GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueResult(dict):
+    def __init__(__self__, *,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str tag_key: (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        return pulumi.get(self, "tag_key")
 
 
 @pulumi.output_type
@@ -130429,15 +130392,21 @@ class GetPolicyInfoRowFilterResult(dict):
 class GetPolicyInfoRowFilterUsingResult(dict):
     def __init__(__self__, *,
                  alias: Optional[_builtins.str] = None,
-                 constant: Optional[_builtins.str] = None):
+                 constant: Optional[_builtins.str] = None,
+                 function_arg_expression: Optional['outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionResult'] = None):
         """
         :param _builtins.str alias: (string) - Optional alias of the matched column
         :param _builtins.str constant: (string) - A constant literal
+        :param 'GetPolicyInfoRowFilterUsingFunctionArgExpressionArgs' function_arg_expression: (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+               (e.g., tag introspection) so new variants can be added without extending the
+               FunctionArgument oneof
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if constant is not None:
             pulumi.set(__self__, "constant", constant)
+        if function_arg_expression is not None:
+            pulumi.set(__self__, "function_arg_expression", function_arg_expression)
 
     @_builtins.property
     @pulumi.getter
@@ -130454,6 +130423,113 @@ class GetPolicyInfoRowFilterUsingResult(dict):
         (string) - A constant literal
         """
         return pulumi.get(self, "constant")
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgExpression")
+    def function_arg_expression(self) -> Optional['outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionResult']:
+        """
+        (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+        (e.g., tag introspection) so new variants can be added without extending the
+        FunctionArgument oneof
+        """
+        return pulumi.get(self, "function_arg_expression")
+
+
+@pulumi.output_type
+class GetPolicyInfoRowFilterUsingFunctionArgExpressionResult(dict):
+    def __init__(__self__, *,
+                 tag_introspection: Optional['outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionResult'] = None):
+        """
+        :param 'GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionArgs' tag_introspection: (TagIntrospectionExpression) - An expression that introspects tags at query time
+        """
+        if tag_introspection is not None:
+            pulumi.set(__self__, "tag_introspection", tag_introspection)
+
+    @_builtins.property
+    @pulumi.getter(name="tagIntrospection")
+    def tag_introspection(self) -> Optional['outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionResult']:
+        """
+        (TagIntrospectionExpression) - An expression that introspects tags at query time
+        """
+        return pulumi.get(self, "tag_introspection")
+
+
+@pulumi.output_type
+class GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionResult(dict):
+    def __init__(__self__, *,
+                 column_tag_value: Optional['outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult'] = None,
+                 tag_value: Optional['outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueResult'] = None):
+        """
+        :param 'GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs' column_tag_value: (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+        :param 'GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs' tag_value: (TagValueExtraction) - Extracts the value of a securable-level tag
+        """
+        if column_tag_value is not None:
+            pulumi.set(__self__, "column_tag_value", column_tag_value)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnTagValue")
+    def column_tag_value(self) -> Optional['outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult']:
+        """
+        (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+        """
+        return pulumi.get(self, "column_tag_value")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional['outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueResult']:
+        """
+        (TagValueExtraction) - Extracts the value of a securable-level tag
+        """
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult(dict):
+    def __init__(__self__, *,
+                 column_alias: _builtins.str,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str column_alias: (string) - The alias from MATCH COLUMNS that identifies the column
+        :param _builtins.str tag_key: (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        pulumi.set(__self__, "column_alias", column_alias)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="columnAlias")
+    def column_alias(self) -> _builtins.str:
+        """
+        (string) - The alias from MATCH COLUMNS that identifies the column
+        """
+        return pulumi.get(self, "column_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        return pulumi.get(self, "tag_key")
+
+
+@pulumi.output_type
+class GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueResult(dict):
+    def __init__(__self__, *,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str tag_key: (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        return pulumi.get(self, "tag_key")
 
 
 @pulumi.output_type
@@ -130487,7 +130563,7 @@ class GetPolicyInfosPolicyResult(dict):
         :param _builtins.str created_by: (string) - Username of the user who created the policy. Output only
         :param Sequence[_builtins.str] except_principals: (list of string) - Optional list of user or group names that should be excluded from the policy
         :param _builtins.str for_securable_type: (string) - Type of securables that the policy should take effect on.
-               Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         :param 'GetPolicyInfosPolicyGrantArgs' grant: (GrantOptions) - Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
@@ -130578,7 +130654,7 @@ class GetPolicyInfosPolicyResult(dict):
     def for_securable_type(self) -> _builtins.str:
         """
         (string) - Type of securables that the policy should take effect on.
-        Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "for_securable_type")
 
@@ -130752,15 +130828,21 @@ class GetPolicyInfosPolicyColumnMaskResult(dict):
 class GetPolicyInfosPolicyColumnMaskUsingResult(dict):
     def __init__(__self__, *,
                  alias: Optional[_builtins.str] = None,
-                 constant: Optional[_builtins.str] = None):
+                 constant: Optional[_builtins.str] = None,
+                 function_arg_expression: Optional['outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionResult'] = None):
         """
         :param _builtins.str alias: (string) - Optional alias of the matched column
         :param _builtins.str constant: (string) - A constant literal
+        :param 'GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionArgs' function_arg_expression: (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+               (e.g., tag introspection) so new variants can be added without extending the
+               FunctionArgument oneof
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if constant is not None:
             pulumi.set(__self__, "constant", constant)
+        if function_arg_expression is not None:
+            pulumi.set(__self__, "function_arg_expression", function_arg_expression)
 
     @_builtins.property
     @pulumi.getter
@@ -130777,6 +130859,113 @@ class GetPolicyInfosPolicyColumnMaskUsingResult(dict):
         (string) - A constant literal
         """
         return pulumi.get(self, "constant")
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgExpression")
+    def function_arg_expression(self) -> Optional['outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionResult']:
+        """
+        (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+        (e.g., tag introspection) so new variants can be added without extending the
+        FunctionArgument oneof
+        """
+        return pulumi.get(self, "function_arg_expression")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionResult(dict):
+    def __init__(__self__, *,
+                 tag_introspection: Optional['outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionResult'] = None):
+        """
+        :param 'GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionArgs' tag_introspection: (TagIntrospectionExpression) - An expression that introspects tags at query time
+        """
+        if tag_introspection is not None:
+            pulumi.set(__self__, "tag_introspection", tag_introspection)
+
+    @_builtins.property
+    @pulumi.getter(name="tagIntrospection")
+    def tag_introspection(self) -> Optional['outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionResult']:
+        """
+        (TagIntrospectionExpression) - An expression that introspects tags at query time
+        """
+        return pulumi.get(self, "tag_introspection")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionResult(dict):
+    def __init__(__self__, *,
+                 column_tag_value: Optional['outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult'] = None,
+                 tag_value: Optional['outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueResult'] = None):
+        """
+        :param 'GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs' column_tag_value: (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+        :param 'GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs' tag_value: (TagValueExtraction) - Extracts the value of a securable-level tag
+        """
+        if column_tag_value is not None:
+            pulumi.set(__self__, "column_tag_value", column_tag_value)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnTagValue")
+    def column_tag_value(self) -> Optional['outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult']:
+        """
+        (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+        """
+        return pulumi.get(self, "column_tag_value")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional['outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueResult']:
+        """
+        (TagValueExtraction) - Extracts the value of a securable-level tag
+        """
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult(dict):
+    def __init__(__self__, *,
+                 column_alias: _builtins.str,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str column_alias: (string) - The alias from MATCH COLUMNS that identifies the column
+        :param _builtins.str tag_key: (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        pulumi.set(__self__, "column_alias", column_alias)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="columnAlias")
+    def column_alias(self) -> _builtins.str:
+        """
+        (string) - The alias from MATCH COLUMNS that identifies the column
+        """
+        return pulumi.get(self, "column_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        return pulumi.get(self, "tag_key")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueResult(dict):
+    def __init__(__self__, *,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str tag_key: (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        return pulumi.get(self, "tag_key")
 
 
 @pulumi.output_type
@@ -130894,15 +131083,21 @@ class GetPolicyInfosPolicyRowFilterResult(dict):
 class GetPolicyInfosPolicyRowFilterUsingResult(dict):
     def __init__(__self__, *,
                  alias: Optional[_builtins.str] = None,
-                 constant: Optional[_builtins.str] = None):
+                 constant: Optional[_builtins.str] = None,
+                 function_arg_expression: Optional['outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionResult'] = None):
         """
         :param _builtins.str alias: (string) - Optional alias of the matched column
         :param _builtins.str constant: (string) - A constant literal
+        :param 'GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionArgs' function_arg_expression: (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+               (e.g., tag introspection) so new variants can be added without extending the
+               FunctionArgument oneof
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if constant is not None:
             pulumi.set(__self__, "constant", constant)
+        if function_arg_expression is not None:
+            pulumi.set(__self__, "function_arg_expression", function_arg_expression)
 
     @_builtins.property
     @pulumi.getter
@@ -130919,6 +131114,113 @@ class GetPolicyInfosPolicyRowFilterUsingResult(dict):
         (string) - A constant literal
         """
         return pulumi.get(self, "constant")
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgExpression")
+    def function_arg_expression(self) -> Optional['outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionResult']:
+        """
+        (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+        (e.g., tag introspection) so new variants can be added without extending the
+        FunctionArgument oneof
+        """
+        return pulumi.get(self, "function_arg_expression")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionResult(dict):
+    def __init__(__self__, *,
+                 tag_introspection: Optional['outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionResult'] = None):
+        """
+        :param 'GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionArgs' tag_introspection: (TagIntrospectionExpression) - An expression that introspects tags at query time
+        """
+        if tag_introspection is not None:
+            pulumi.set(__self__, "tag_introspection", tag_introspection)
+
+    @_builtins.property
+    @pulumi.getter(name="tagIntrospection")
+    def tag_introspection(self) -> Optional['outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionResult']:
+        """
+        (TagIntrospectionExpression) - An expression that introspects tags at query time
+        """
+        return pulumi.get(self, "tag_introspection")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionResult(dict):
+    def __init__(__self__, *,
+                 column_tag_value: Optional['outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult'] = None,
+                 tag_value: Optional['outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueResult'] = None):
+        """
+        :param 'GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgs' column_tag_value: (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+        :param 'GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueArgs' tag_value: (TagValueExtraction) - Extracts the value of a securable-level tag
+        """
+        if column_tag_value is not None:
+            pulumi.set(__self__, "column_tag_value", column_tag_value)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnTagValue")
+    def column_tag_value(self) -> Optional['outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult']:
+        """
+        (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+        """
+        return pulumi.get(self, "column_tag_value")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional['outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueResult']:
+        """
+        (TagValueExtraction) - Extracts the value of a securable-level tag
+        """
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValueResult(dict):
+    def __init__(__self__, *,
+                 column_alias: _builtins.str,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str column_alias: (string) - The alias from MATCH COLUMNS that identifies the column
+        :param _builtins.str tag_key: (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        pulumi.set(__self__, "column_alias", column_alias)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="columnAlias")
+    def column_alias(self) -> _builtins.str:
+        """
+        (string) - The alias from MATCH COLUMNS that identifies the column
+        """
+        return pulumi.get(self, "column_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        return pulumi.get(self, "tag_key")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValueResult(dict):
+    def __init__(__self__, *,
+                 tag_key: _builtins.str):
+        """
+        :param _builtins.str tag_key: (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - 1024 matches the max_length on FunctionArgument.constant above
+        """
+        return pulumi.get(self, "tag_key")
 
 
 @pulumi.output_type
@@ -130966,6 +131268,7 @@ class GetPostgresBranchSpecResult(dict):
                  source_branch: Optional[_builtins.str] = None,
                  source_branch_lsn: Optional[_builtins.str] = None,
                  source_branch_time: Optional[_builtins.str] = None,
+                 source_snapshot: Optional[_builtins.str] = None,
                  ttl: Optional[_builtins.str] = None):
         """
         :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
@@ -130977,6 +131280,9 @@ class GetPostgresBranchSpecResult(dict):
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str source_snapshot: (string) - The snapshot this branch was restored from. Set only for branches created by
+               restoring a snapshot; unset for all other branches.
+               Format: projects/{project_id}/snapshots/{snapshot_id}
         :param _builtins.str ttl: (string) - Relative time-to-live duration. When set, the branch will expire at creation_time + ttl.
                Mutually exclusive with `expire_time` and `no_expiry`. When updating, use `spec.expiration` in the update_mask
         """
@@ -130992,6 +131298,8 @@ class GetPostgresBranchSpecResult(dict):
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -131047,6 +131355,16 @@ class GetPostgresBranchSpecResult(dict):
         return pulumi.get(self, "source_branch_time")
 
     @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[_builtins.str]:
+        """
+        (string) - The snapshot this branch was restored from. Set only for branches created by
+        restoring a snapshot; unset for all other branches.
+        Format: projects/{project_id}/snapshots/{snapshot_id}
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @_builtins.property
     @pulumi.getter
     def ttl(self) -> Optional[_builtins.str]:
         """
@@ -131071,6 +131389,7 @@ class GetPostgresBranchStatusResult(dict):
                  source_branch: _builtins.str,
                  source_branch_lsn: _builtins.str,
                  source_branch_time: _builtins.str,
+                 source_snapshot: _builtins.str,
                  state_change_time: _builtins.str):
         """
         :param _builtins.str branch_id: (string) - Part of the resource name
@@ -131088,6 +131407,9 @@ class GetPostgresBranchStatusResult(dict):
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str source_snapshot: (string) - The snapshot this branch was restored from. Set only for branches created by
+               restoring a snapshot; unset for all other branches.
+               Format: projects/{project_id}/snapshots/{snapshot_id}
         :param _builtins.str state_change_time: (string) - A timestamp indicating when the `current_state` began
         """
         pulumi.set(__self__, "branch_id", branch_id)
@@ -131102,6 +131424,7 @@ class GetPostgresBranchStatusResult(dict):
         pulumi.set(__self__, "source_branch", source_branch)
         pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         pulumi.set(__self__, "source_branch_time", source_branch_time)
+        pulumi.set(__self__, "source_snapshot", source_snapshot)
         pulumi.set(__self__, "state_change_time", state_change_time)
 
     @_builtins.property
@@ -131202,6 +131525,16 @@ class GetPostgresBranchStatusResult(dict):
         (string) - The point in time on the source branch from which this branch was created
         """
         return pulumi.get(self, "source_branch_time")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> _builtins.str:
+        """
+        (string) - The snapshot this branch was restored from. Set only for branches created by
+        restoring a snapshot; unset for all other branches.
+        Format: projects/{project_id}/snapshots/{snapshot_id}
+        """
+        return pulumi.get(self, "source_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="stateChangeTime")
@@ -131350,6 +131683,7 @@ class GetPostgresBranchesBranchSpecResult(dict):
                  source_branch: Optional[_builtins.str] = None,
                  source_branch_lsn: Optional[_builtins.str] = None,
                  source_branch_time: Optional[_builtins.str] = None,
+                 source_snapshot: Optional[_builtins.str] = None,
                  ttl: Optional[_builtins.str] = None):
         """
         :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
@@ -131361,6 +131695,9 @@ class GetPostgresBranchesBranchSpecResult(dict):
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str source_snapshot: (string) - The snapshot this branch was restored from. Set only for branches created by
+               restoring a snapshot; unset for all other branches.
+               Format: projects/{project_id}/snapshots/{snapshot_id}
         :param _builtins.str ttl: (string) - Relative time-to-live duration. When set, the branch will expire at creation_time + ttl.
                Mutually exclusive with `expire_time` and `no_expiry`. When updating, use `spec.expiration` in the update_mask
         """
@@ -131376,6 +131713,8 @@ class GetPostgresBranchesBranchSpecResult(dict):
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -131431,6 +131770,16 @@ class GetPostgresBranchesBranchSpecResult(dict):
         return pulumi.get(self, "source_branch_time")
 
     @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[_builtins.str]:
+        """
+        (string) - The snapshot this branch was restored from. Set only for branches created by
+        restoring a snapshot; unset for all other branches.
+        Format: projects/{project_id}/snapshots/{snapshot_id}
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @_builtins.property
     @pulumi.getter
     def ttl(self) -> Optional[_builtins.str]:
         """
@@ -131455,6 +131804,7 @@ class GetPostgresBranchesBranchStatusResult(dict):
                  source_branch: _builtins.str,
                  source_branch_lsn: _builtins.str,
                  source_branch_time: _builtins.str,
+                 source_snapshot: _builtins.str,
                  state_change_time: _builtins.str):
         """
         :param _builtins.str branch_id: (string) - Part of the resource name
@@ -131472,6 +131822,9 @@ class GetPostgresBranchesBranchStatusResult(dict):
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str source_snapshot: (string) - The snapshot this branch was restored from. Set only for branches created by
+               restoring a snapshot; unset for all other branches.
+               Format: projects/{project_id}/snapshots/{snapshot_id}
         :param _builtins.str state_change_time: (string) - A timestamp indicating when the `current_state` began
         """
         pulumi.set(__self__, "branch_id", branch_id)
@@ -131486,6 +131839,7 @@ class GetPostgresBranchesBranchStatusResult(dict):
         pulumi.set(__self__, "source_branch", source_branch)
         pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         pulumi.set(__self__, "source_branch_time", source_branch_time)
+        pulumi.set(__self__, "source_snapshot", source_snapshot)
         pulumi.set(__self__, "state_change_time", state_change_time)
 
     @_builtins.property
@@ -131586,6 +131940,16 @@ class GetPostgresBranchesBranchStatusResult(dict):
         (string) - The point in time on the source branch from which this branch was created
         """
         return pulumi.get(self, "source_branch_time")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> _builtins.str:
+        """
+        (string) - The snapshot this branch was restored from. Set only for branches created by
+        restoring a snapshot; unset for all other branches.
+        Format: projects/{project_id}/snapshots/{snapshot_id}
+        """
+        return pulumi.get(self, "source_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="stateChangeTime")
@@ -135719,6 +136083,165 @@ class GetPostgresRolesRoleStatusAttributesResult(dict):
 
 
 @pulumi.output_type
+class GetPostgresSnapshotScheduleProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetPostgresSnapshotScheduleScheduleResult(dict):
+    def __init__(__self__, *,
+                 retention: _builtins.str,
+                 daily_schedule: Optional['outputs.GetPostgresSnapshotScheduleScheduleDailyScheduleResult'] = None,
+                 monthly_schedule: Optional['outputs.GetPostgresSnapshotScheduleScheduleMonthlyScheduleResult'] = None,
+                 weekly_schedule: Optional['outputs.GetPostgresSnapshotScheduleScheduleWeeklyScheduleResult'] = None):
+        """
+        :param _builtins.str retention: (string) - How long snapshots from this cadence are kept before automatic deletion.
+               Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+               so changing it affects only later snapshots
+        :param 'GetPostgresSnapshotScheduleScheduleDailyScheduleArgs' daily_schedule: (DailySchedule) - Take a snapshot once per day
+        :param 'GetPostgresSnapshotScheduleScheduleMonthlyScheduleArgs' monthly_schedule: (MonthlySchedule) - Take a snapshot once per month
+        :param 'GetPostgresSnapshotScheduleScheduleWeeklyScheduleArgs' weekly_schedule: (WeeklySchedule) - Take a snapshot once per week
+        """
+        pulumi.set(__self__, "retention", retention)
+        if daily_schedule is not None:
+            pulumi.set(__self__, "daily_schedule", daily_schedule)
+        if monthly_schedule is not None:
+            pulumi.set(__self__, "monthly_schedule", monthly_schedule)
+        if weekly_schedule is not None:
+            pulumi.set(__self__, "weekly_schedule", weekly_schedule)
+
+    @_builtins.property
+    @pulumi.getter
+    def retention(self) -> _builtins.str:
+        """
+        (string) - How long snapshots from this cadence are kept before automatic deletion.
+        Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+        so changing it affects only later snapshots
+        """
+        return pulumi.get(self, "retention")
+
+    @_builtins.property
+    @pulumi.getter(name="dailySchedule")
+    def daily_schedule(self) -> Optional['outputs.GetPostgresSnapshotScheduleScheduleDailyScheduleResult']:
+        """
+        (DailySchedule) - Take a snapshot once per day
+        """
+        return pulumi.get(self, "daily_schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="monthlySchedule")
+    def monthly_schedule(self) -> Optional['outputs.GetPostgresSnapshotScheduleScheduleMonthlyScheduleResult']:
+        """
+        (MonthlySchedule) - Take a snapshot once per month
+        """
+        return pulumi.get(self, "monthly_schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="weeklySchedule")
+    def weekly_schedule(self) -> Optional['outputs.GetPostgresSnapshotScheduleScheduleWeeklyScheduleResult']:
+        """
+        (WeeklySchedule) - Take a snapshot once per week
+        """
+        return pulumi.get(self, "weekly_schedule")
+
+
+@pulumi.output_type
+class GetPostgresSnapshotScheduleScheduleDailyScheduleResult(dict):
+    def __init__(__self__, *,
+                 hour: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int hour: (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+        """
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+        """
+        return pulumi.get(self, "hour")
+
+
+@pulumi.output_type
+class GetPostgresSnapshotScheduleScheduleMonthlyScheduleResult(dict):
+    def __init__(__self__, *,
+                 day: _builtins.int,
+                 hour: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int day: (integer) - The day of the month on which to take the snapshot, in [1, 31]. In shorter
+               months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+               or 29, and on Apr 30), so every month gets exactly one snapshot
+        :param _builtins.int hour: (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+        """
+        pulumi.set(__self__, "day", day)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> _builtins.int:
+        """
+        (integer) - The day of the month on which to take the snapshot, in [1, 31]. In shorter
+        months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+        or 29, and on Apr 30), so every month gets exactly one snapshot
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+        """
+        return pulumi.get(self, "hour")
+
+
+@pulumi.output_type
+class GetPostgresSnapshotScheduleScheduleWeeklyScheduleResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: _builtins.str,
+                 hour: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str day_of_week: (string) - The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        :param _builtins.int hour: (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> _builtins.str:
+        """
+        (string) - The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @_builtins.property
+    @pulumi.getter
+    def hour(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+        """
+        return pulumi.get(self, "hour")
+
+
+@pulumi.output_type
 class GetPostgresSyncedTableProviderConfigResult(dict):
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
@@ -137586,7 +138109,7 @@ class GetRfaAccessRequestDestinationsDestinationSourceSecurableResult(dict):
         :param _builtins.str provider_share: (string) - Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param _builtins.str type: (string) - Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -137617,7 +138140,7 @@ class GetRfaAccessRequestDestinationsDestinationSourceSecurableResult(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         (string) - Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -137651,7 +138174,7 @@ class GetRfaAccessRequestDestinationsSecurableResult(dict):
         :param _builtins.str provider_share: (string) - Optional. The name of the Share object that contains the securable when the securable is
                getting shared in D2D Delta Sharing
         :param _builtins.str type: (string) - Required. The type of securable (catalog/schema/table).
-               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -137682,7 +138205,7 @@ class GetRfaAccessRequestDestinationsSecurableResult(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         (string) - Required. The type of securable (catalog/schema/table).
-        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "type")
 
@@ -143659,6 +144182,89 @@ class GetWorkspaceIamDirectGroupMembersV2DirectGroupMemberProviderConfigResult(d
 
 @pulumi.output_type
 class GetWorkspaceIamDirectGroupMembersV2ProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetWorkspaceIamExternalGroupV2ProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetWorkspaceIamExternalServicePrincipalV2ProviderConfigResult(dict):
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetWorkspaceIamExternalUserV2FullNameResult(dict):
+    def __init__(__self__, *,
+                 family_name: _builtins.str,
+                 given_name: _builtins.str):
+        """
+        :param _builtins.str family_name: (string) - The family (last) name of the user, from the customer's IdP
+        :param _builtins.str given_name: (string) - The given (first) name of the user, from the customer's IdP
+        """
+        pulumi.set(__self__, "family_name", family_name)
+        pulumi.set(__self__, "given_name", given_name)
+
+    @_builtins.property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> _builtins.str:
+        """
+        (string) - The family (last) name of the user, from the customer's IdP
+        """
+        return pulumi.get(self, "family_name")
+
+    @_builtins.property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> _builtins.str:
+        """
+        (string) - The given (first) name of the user, from the customer's IdP
+        """
+        return pulumi.get(self, "given_name")
+
+
+@pulumi.output_type
+class GetWorkspaceIamExternalUserV2ProviderConfigResult(dict):
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """

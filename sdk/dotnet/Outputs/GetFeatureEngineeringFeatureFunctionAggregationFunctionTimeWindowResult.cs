@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult
     {
         /// <summary>
-        /// (ContinuousWindow, deprecated)
-        /// </summary>
-        public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousResult? Continuous;
-        /// <summary>
         /// (RollingWindow)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult? Rolling;
@@ -30,26 +26,36 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingResult? Sliding;
         /// <summary>
+        /// (string) - Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+        /// the historical inputs read by a window. For example, a 365-day window with
+        /// start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+        /// for 365 days of data; a lifetime window produces no output before start_time. If unset,
+        /// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+        /// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+        /// eligible source data exists
+        /// </summary>
+        public readonly string? StartTime;
+        /// <summary>
         /// (TumblingWindow)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingResult? Tumbling;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult(
-            Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousResult? continuous,
-
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult? rolling,
 
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothResult? sawtooth,
 
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingResult? sliding,
 
+            string? startTime,
+
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingResult? tumbling)
         {
-            Continuous = continuous;
             Rolling = rolling;
             Sawtooth = sawtooth;
             Sliding = sliding;
+            StartTime = startTime;
             Tumbling = tumbling;
         }
     }

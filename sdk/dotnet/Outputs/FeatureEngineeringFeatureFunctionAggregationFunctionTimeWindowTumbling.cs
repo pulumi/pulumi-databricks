@@ -13,11 +13,20 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling
     {
+        public readonly string? Delay;
+        public readonly string? Offset;
         public readonly string WindowDuration;
 
         [OutputConstructor]
-        private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling(string windowDuration)
+        private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling(
+            string? delay,
+
+            string? offset,
+
+            string windowDuration)
         {
+            Delay = delay;
+            Offset = offset;
             WindowDuration = windowDuration;
         }
     }

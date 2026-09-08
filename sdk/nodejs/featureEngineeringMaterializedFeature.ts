@@ -38,11 +38,6 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
     }
 
     /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     */
-    declare public readonly cronSchedule: pulumi.Output<string | undefined>;
-    /**
      * A cron-based schedule trigger for the materialization pipeline
      */
     declare public readonly cronScheduleTrigger: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger | undefined>;
@@ -108,7 +103,6 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureEngineeringMaterializedFeatureState | undefined;
-            resourceInputs["cronSchedule"] = state?.cronSchedule;
             resourceInputs["cronScheduleTrigger"] = state?.cronScheduleTrigger;
             resourceInputs["featureName"] = state?.featureName;
             resourceInputs["isOnline"] = state?.isOnline;
@@ -126,7 +120,6 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
             if (args?.featureName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featureName'");
             }
-            resourceInputs["cronSchedule"] = args?.cronSchedule;
             resourceInputs["cronScheduleTrigger"] = args?.cronScheduleTrigger;
             resourceInputs["featureName"] = args?.featureName;
             resourceInputs["offlineStoreConfig"] = args?.offlineStoreConfig;
@@ -149,11 +142,6 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
  * Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
  */
 export interface FeatureEngineeringMaterializedFeatureState {
-    /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     */
-    cronSchedule?: pulumi.Input<string | undefined>;
     /**
      * A cron-based schedule trigger for the materialization pipeline
      */
@@ -212,11 +200,6 @@ export interface FeatureEngineeringMaterializedFeatureState {
  * The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
  */
 export interface FeatureEngineeringMaterializedFeatureArgs {
-    /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     */
-    cronSchedule?: pulumi.Input<string | undefined>;
     /**
      * A cron-based schedule trigger for the materialization pipeline
      */

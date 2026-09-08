@@ -54,11 +54,11 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
         return Optional.ofNullable(this.sourceCatalog);
     }
 
-    @Import(name="sourceSchema", required=true)
-    private Output<String> sourceSchema;
+    @Import(name="sourceSchema")
+    private @Nullable Output<String> sourceSchema;
 
-    public Output<String> sourceSchema() {
-        return this.sourceSchema;
+    public Optional<Output<String>> sourceSchema() {
+        return Optional.ofNullable(this.sourceSchema);
     }
 
     @Import(name="tableConfiguration")
@@ -143,7 +143,7 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
             return sourceCatalog(Output.of(sourceCatalog));
         }
 
-        public Builder sourceSchema(Output<String> sourceSchema) {
+        public Builder sourceSchema(@Nullable Output<String> sourceSchema) {
             $.sourceSchema = sourceSchema;
             return this;
         }
@@ -167,9 +167,6 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
             }
             if ($.destinationSchema == null) {
                 throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectSchemaArgs", "destinationSchema");
-            }
-            if ($.sourceSchema == null) {
-                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectSchemaArgs", "sourceSchema");
             }
             return $;
         }

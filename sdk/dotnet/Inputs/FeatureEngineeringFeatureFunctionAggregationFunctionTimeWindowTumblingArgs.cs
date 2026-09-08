@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs : global::Pulumi.ResourceArgs
     {
+        [Input("delay")]
+        public Input<string>? Delay { get; set; }
+
+        [Input("offset")]
+        public Input<string>? Offset { get; set; }
+
         [Input("windowDuration", required: true)]
         public Input<string> WindowDuration { get; set; } = null!;
 

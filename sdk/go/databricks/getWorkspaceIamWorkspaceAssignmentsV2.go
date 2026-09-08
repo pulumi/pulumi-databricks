@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
@@ -28,7 +28,8 @@ func GetWorkspaceIamWorkspaceAssignmentsV2(ctx *pulumi.Context, args *GetWorkspa
 
 // A collection of arguments for invoking getWorkspaceIamWorkspaceAssignmentsV2.
 type GetWorkspaceIamWorkspaceAssignmentsV2Args struct {
-	// The maximum number of workspace assignments to return. The service may return fewer than this value
+	// The maximum number of workspace assignments to return. The service may return fewer than this value.
+	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig `pulumi:"providerConfig"`
@@ -48,7 +49,8 @@ func GetWorkspaceIamWorkspaceAssignmentsV2Output(ctx *pulumi.Context, args GetWo
 
 // A collection of arguments for invoking getWorkspaceIamWorkspaceAssignmentsV2.
 type GetWorkspaceIamWorkspaceAssignmentsV2OutputArgs struct {
-	// The maximum number of workspace assignments to return. The service may return fewer than this value
+	// The maximum number of workspace assignments to return. The service may return fewer than this value.
+	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigPtrInput `pulumi:"providerConfig"`

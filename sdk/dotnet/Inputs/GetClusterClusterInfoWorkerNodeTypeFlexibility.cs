@@ -20,6 +20,9 @@ namespace Pulumi.Databricks.Inputs
             set => _alternateNodeTypeIds = value;
         }
 
+        [Input("awsContextId")]
+        public string? AwsContextId { get; set; }
+
         public GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs()
         {
         }

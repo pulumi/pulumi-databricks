@@ -9,7 +9,6 @@ import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunctio
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureLineageContext;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureProviderConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSource;
-import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureTimeWindow;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureTimeseriesColumn;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -46,11 +45,6 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private List<GetFeatureEngineeringFeaturesFeatureEntity> entities;
     /**
-     * @return (string) - The filter condition applied to the source data before aggregation
-     * 
-     */
-    private String filterCondition;
-    /**
      * @return (string) - Three-part full name of the Stream (catalog.schema.stream)
      * 
      */
@@ -60,12 +54,6 @@ public final class GetFeatureEngineeringFeaturesFeature {
      * 
      */
     private GetFeatureEngineeringFeaturesFeatureFunction function;
-    /**
-     * @return (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-     * The input columns from which the feature is computed
-     * 
-     */
-    private List<String> inputs;
     /**
      * @return (LineageContext) - Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -101,13 +89,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private GetFeatureEngineeringFeaturesFeatureSource source;
     /**
-     * @return (TimeWindow) - The time window over which the aggregation is computed
-     * 
-     */
-    private GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow;
-    /**
-     * @return (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * @return (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
      * 
      */
     private GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn;
@@ -149,13 +131,6 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.entities;
     }
     /**
-     * @return (string) - The filter condition applied to the source data before aggregation
-     * 
-     */
-    public String filterCondition() {
-        return this.filterCondition;
-    }
-    /**
      * @return (string) - Three-part full name of the Stream (catalog.schema.stream)
      * 
      */
@@ -168,14 +143,6 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     public GetFeatureEngineeringFeaturesFeatureFunction function() {
         return this.function;
-    }
-    /**
-     * @return (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-     * The input columns from which the feature is computed
-     * 
-     */
-    public List<String> inputs() {
-        return this.inputs;
     }
     /**
      * @return (LineageContext) - Lineage context information for this feature.
@@ -222,15 +189,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.source;
     }
     /**
-     * @return (TimeWindow) - The time window over which the aggregation is computed
-     * 
-     */
-    public GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow() {
-        return this.timeWindow;
-    }
-    /**
-     * @return (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * @return (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
      * 
      */
     public GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn() {
@@ -251,16 +210,13 @@ public final class GetFeatureEngineeringFeaturesFeature {
         private String createdBy;
         private String description;
         private List<GetFeatureEngineeringFeaturesFeatureEntity> entities;
-        private String filterCondition;
         private String fullName;
         private GetFeatureEngineeringFeaturesFeatureFunction function;
-        private List<String> inputs;
         private GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext;
         private String name;
         private @Nullable GetFeatureEngineeringFeaturesFeatureProviderConfig providerConfig;
         private String schemaName;
         private GetFeatureEngineeringFeaturesFeatureSource source;
-        private GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow;
         private GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeature defaults) {
@@ -270,16 +226,13 @@ public final class GetFeatureEngineeringFeaturesFeature {
     	      this.createdBy = defaults.createdBy;
     	      this.description = defaults.description;
     	      this.entities = defaults.entities;
-    	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
     	      this.function = defaults.function;
-    	      this.inputs = defaults.inputs;
     	      this.lineageContext = defaults.lineageContext;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
     	      this.source = defaults.source;
-    	      this.timeWindow = defaults.timeWindow;
     	      this.timeseriesColumn = defaults.timeseriesColumn;
         }
 
@@ -327,14 +280,6 @@ public final class GetFeatureEngineeringFeaturesFeature {
             return entities(List.of(entities));
         }
         @CustomType.Setter
-        public Builder filterCondition(String filterCondition) {
-            if (filterCondition == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "filterCondition");
-            }
-            this.filterCondition = filterCondition;
-            return this;
-        }
-        @CustomType.Setter
         public Builder fullName(String fullName) {
             if (fullName == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "fullName");
@@ -349,17 +294,6 @@ public final class GetFeatureEngineeringFeaturesFeature {
             }
             this.function = function;
             return this;
-        }
-        @CustomType.Setter
-        public Builder inputs(List<String> inputs) {
-            if (inputs == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "inputs");
-            }
-            this.inputs = inputs;
-            return this;
-        }
-        public Builder inputs(String... inputs) {
-            return inputs(List.of(inputs));
         }
         @CustomType.Setter
         public Builder lineageContext(GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext) {
@@ -400,14 +334,6 @@ public final class GetFeatureEngineeringFeaturesFeature {
             return this;
         }
         @CustomType.Setter
-        public Builder timeWindow(GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow) {
-            if (timeWindow == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "timeWindow");
-            }
-            this.timeWindow = timeWindow;
-            return this;
-        }
-        @CustomType.Setter
         public Builder timeseriesColumn(GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn) {
             if (timeseriesColumn == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "timeseriesColumn");
@@ -422,16 +348,13 @@ public final class GetFeatureEngineeringFeaturesFeature {
             _resultValue.createdBy = createdBy;
             _resultValue.description = description;
             _resultValue.entities = entities;
-            _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
             _resultValue.function = function;
-            _resultValue.inputs = inputs;
             _resultValue.lineageContext = lineageContext;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;
             _resultValue.source = source;
-            _resultValue.timeWindow = timeWindow;
             _resultValue.timeseriesColumn = timeseriesColumn;
             return _resultValue;
         }

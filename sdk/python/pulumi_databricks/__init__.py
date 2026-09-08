@@ -71,6 +71,9 @@ from .get_account_federation_policies import *
 from .get_account_federation_policy import *
 from .get_account_iam_direct_group_member_v2 import *
 from .get_account_iam_direct_group_members_v2 import *
+from .get_account_iam_external_group_v2 import *
+from .get_account_iam_external_service_principal_v2 import *
+from .get_account_iam_external_user_v2 import *
 from .get_account_iam_group_v2 import *
 from .get_account_iam_groups_v2 import *
 from .get_account_iam_service_principal_v2 import *
@@ -198,6 +201,7 @@ from .get_postgres_project import *
 from .get_postgres_projects import *
 from .get_postgres_role import *
 from .get_postgres_roles import *
+from .get_postgres_snapshot_schedule import *
 from .get_postgres_synced_table import *
 from .get_quality_monitor_v2 import *
 from .get_quality_monitors_v2 import *
@@ -240,6 +244,9 @@ from .get_workspace_entity_tag_assignment import *
 from .get_workspace_entity_tag_assignments import *
 from .get_workspace_iam_direct_group_member_v2 import *
 from .get_workspace_iam_direct_group_members_v2 import *
+from .get_workspace_iam_external_group_v2 import *
+from .get_workspace_iam_external_service_principal_v2 import *
+from .get_workspace_iam_external_user_v2 import *
 from .get_workspace_iam_group_v2 import *
 from .get_workspace_iam_groups_v2 import *
 from .get_workspace_iam_service_principal_v2 import *
@@ -308,6 +315,7 @@ from .postgres_database import *
 from .postgres_endpoint import *
 from .postgres_project import *
 from .postgres_role import *
+from .postgres_snapshot_schedule import *
 from .postgres_synced_table import *
 from .provider import *
 from .quality_monitor import *
@@ -1310,6 +1318,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/postgresRole:PostgresRole": "PostgresRole"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/postgresSnapshotSchedule",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule": "PostgresSnapshotSchedule"
   }
  },
  {

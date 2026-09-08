@@ -23,19 +23,9 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
         return Optional.ofNullable(this.dataframeSchema);
     }
 
-    /**
-     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     * 
-     */
     @Import(name="filterCondition")
     private @Nullable Output<String> filterCondition;
 
-    /**
-     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     * 
-     */
     public Optional<Output<String>> filterCondition() {
         return Optional.ofNullable(this.filterCondition);
     }
@@ -102,25 +92,11 @@ public final class FeatureEngineeringFeatureSourceStreamSourceArgs extends com.p
             return dataframeSchema(Output.of(dataframeSchema));
         }
 
-        /**
-         * @param filterCondition Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-         * The filter condition applied to the source data before aggregation
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterCondition(@Nullable Output<String> filterCondition) {
             $.filterCondition = filterCondition;
             return this;
         }
 
-        /**
-         * @param filterCondition Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-         * The filter condition applied to the source data before aggregation
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterCondition(String filterCondition) {
             return filterCondition(Output.of(filterCondition));
         }

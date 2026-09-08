@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -28,7 +28,8 @@ func GetAccountIamWorkspaceAssignmentsV2(ctx *pulumi.Context, args *GetAccountIa
 
 // A collection of arguments for invoking getAccountIamWorkspaceAssignmentsV2.
 type GetAccountIamWorkspaceAssignmentsV2Args struct {
-	// The maximum number of workspace assignments to return. The service may return fewer than this value
+	// The maximum number of workspace assignments to return. The service may return fewer than this value.
+	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize *int `pulumi:"pageSize"`
 	// Required. The workspace ID for which the workspace assignments are being fetched
 	WorkspaceId string `pulumi:"workspaceId"`
@@ -49,7 +50,8 @@ func GetAccountIamWorkspaceAssignmentsV2Output(ctx *pulumi.Context, args GetAcco
 
 // A collection of arguments for invoking getAccountIamWorkspaceAssignmentsV2.
 type GetAccountIamWorkspaceAssignmentsV2OutputArgs struct {
-	// The maximum number of workspace assignments to return. The service may return fewer than this value
+	// The maximum number of workspace assignments to return. The service may return fewer than this value.
+	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Required. The workspace ID for which the workspace assignments are being fetched
 	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`

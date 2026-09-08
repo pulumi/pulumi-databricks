@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppSpacesSpaceResult
     {
         /// <summary>
+        /// (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+        /// set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        /// Set only at space creation
+        /// </summary>
+        public readonly string AssumeGroupId;
+        /// <summary>
         /// (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         /// </summary>
         public readonly string CreateTime;
@@ -84,6 +90,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetAppSpacesSpaceResult(
+            string assumeGroupId,
+
             string createTime,
 
             string creator,
@@ -118,6 +126,7 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> userApiScopes)
         {
+            AssumeGroupId = assumeGroupId;
             CreateTime = createTime;
             Creator = creator;
             Description = description;

@@ -46643,9 +46643,8 @@ func (o AlertV2EvaluationThresholdValuePtrOutput) StringValue() pulumi.StringPtr
 
 type AlertV2Parameter struct {
 	Name string `pulumi:"name"`
-	// The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-	// string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-	// Complex types such as ARRAY, MAP, and STRUCT are not supported
+	// The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+	// the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
 	Type  *string `pulumi:"type"`
 	Value *string `pulumi:"value"`
 }
@@ -46663,9 +46662,8 @@ type AlertV2ParameterInput interface {
 
 type AlertV2ParameterArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
-	// The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-	// string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-	// Complex types such as ARRAY, MAP, and STRUCT are not supported
+	// The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+	// the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
 	Type  pulumi.StringPtrInput `pulumi:"type"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -46725,9 +46723,8 @@ func (o AlertV2ParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertV2Parameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-// string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-// Complex types such as ARRAY, MAP, and STRUCT are not supported
+// The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+// the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
 func (o AlertV2ParameterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertV2Parameter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -62091,6 +62088,7 @@ func (o ClusterDockerImageBasicAuthPtrOutput) Username() pulumi.StringPtrOutput 
 type ClusterDriverNodeTypeFlexibility struct {
 	// list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
 	AlternateNodeTypeIds []string `pulumi:"alternateNodeTypeIds"`
+	AwsContextId         *string  `pulumi:"awsContextId"`
 }
 
 // ClusterDriverNodeTypeFlexibilityInput is an input type that accepts ClusterDriverNodeTypeFlexibilityArgs and ClusterDriverNodeTypeFlexibilityOutput values.
@@ -62107,6 +62105,7 @@ type ClusterDriverNodeTypeFlexibilityInput interface {
 type ClusterDriverNodeTypeFlexibilityArgs struct {
 	// list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
 	AlternateNodeTypeIds pulumi.StringArrayInput `pulumi:"alternateNodeTypeIds"`
+	AwsContextId         pulumi.StringPtrInput   `pulumi:"awsContextId"`
 }
 
 func (ClusterDriverNodeTypeFlexibilityArgs) ElementType() reflect.Type {
@@ -62191,6 +62190,10 @@ func (o ClusterDriverNodeTypeFlexibilityOutput) AlternateNodeTypeIds() pulumi.St
 	return o.ApplyT(func(v ClusterDriverNodeTypeFlexibility) []string { return v.AlternateNodeTypeIds }).(pulumi.StringArrayOutput)
 }
 
+func (o ClusterDriverNodeTypeFlexibilityOutput) AwsContextId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDriverNodeTypeFlexibility) *string { return v.AwsContextId }).(pulumi.StringPtrOutput)
+}
+
 type ClusterDriverNodeTypeFlexibilityPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterDriverNodeTypeFlexibilityPtrOutput) ElementType() reflect.Type {
@@ -62223,6 +62226,15 @@ func (o ClusterDriverNodeTypeFlexibilityPtrOutput) AlternateNodeTypeIds() pulumi
 		}
 		return v.AlternateNodeTypeIds
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterDriverNodeTypeFlexibilityPtrOutput) AwsContextId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDriverNodeTypeFlexibility) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsContextId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterGcpAttributes struct {
@@ -65510,6 +65522,7 @@ func (o ClusterProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 type ClusterWorkerNodeTypeFlexibility struct {
 	// list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
 	AlternateNodeTypeIds []string `pulumi:"alternateNodeTypeIds"`
+	AwsContextId         *string  `pulumi:"awsContextId"`
 }
 
 // ClusterWorkerNodeTypeFlexibilityInput is an input type that accepts ClusterWorkerNodeTypeFlexibilityArgs and ClusterWorkerNodeTypeFlexibilityOutput values.
@@ -65526,6 +65539,7 @@ type ClusterWorkerNodeTypeFlexibilityInput interface {
 type ClusterWorkerNodeTypeFlexibilityArgs struct {
 	// list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
 	AlternateNodeTypeIds pulumi.StringArrayInput `pulumi:"alternateNodeTypeIds"`
+	AwsContextId         pulumi.StringPtrInput   `pulumi:"awsContextId"`
 }
 
 func (ClusterWorkerNodeTypeFlexibilityArgs) ElementType() reflect.Type {
@@ -65610,6 +65624,10 @@ func (o ClusterWorkerNodeTypeFlexibilityOutput) AlternateNodeTypeIds() pulumi.St
 	return o.ApplyT(func(v ClusterWorkerNodeTypeFlexibility) []string { return v.AlternateNodeTypeIds }).(pulumi.StringArrayOutput)
 }
 
+func (o ClusterWorkerNodeTypeFlexibilityOutput) AwsContextId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterWorkerNodeTypeFlexibility) *string { return v.AwsContextId }).(pulumi.StringPtrOutput)
+}
+
 type ClusterWorkerNodeTypeFlexibilityPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterWorkerNodeTypeFlexibilityPtrOutput) ElementType() reflect.Type {
@@ -65642,6 +65660,15 @@ func (o ClusterWorkerNodeTypeFlexibilityPtrOutput) AlternateNodeTypeIds() pulumi
 		}
 		return v.AlternateNodeTypeIds
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterWorkerNodeTypeFlexibilityPtrOutput) AwsContextId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterWorkerNodeTypeFlexibility) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsContextId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterWorkloadType struct {

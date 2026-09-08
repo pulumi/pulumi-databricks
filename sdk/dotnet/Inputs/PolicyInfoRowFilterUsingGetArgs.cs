@@ -21,6 +21,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("constant")]
         public Input<string>? Constant { get; set; }
 
+        /// <summary>
+        /// An expression evaluated at query time. Wraps per-request expression variants
+        /// (e.g., tag introspection) so new variants can be added without extending the
+        /// FunctionArgument oneof
+        /// </summary>
+        [Input("functionArgExpression")]
+        public Input<Inputs.PolicyInfoRowFilterUsingFunctionArgExpressionGetArgs>? FunctionArgExpression { get; set; }
+
         public PolicyInfoRowFilterUsingGetArgs()
         {
         }

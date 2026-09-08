@@ -113,6 +113,25 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     * 
+     */
+    @Import(name="sourceSnapshot")
+    private @Nullable Output<String> sourceSnapshot;
+
+    /**
+     * @return (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     * 
+     */
+    public Optional<Output<String>> sourceSnapshot() {
+        return Optional.ofNullable(this.sourceSnapshot);
+    }
+
+    /**
      * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
      * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      * 
@@ -138,6 +157,7 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
         this.sourceBranch = $.sourceBranch;
         this.sourceBranchLsn = $.sourceBranchLsn;
         this.sourceBranchTime = $.sourceBranchTime;
+        this.sourceSnapshot = $.sourceSnapshot;
         this.ttl = $.ttl;
     }
 
@@ -289,6 +309,31 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sourceBranchTime(String sourceBranchTime) {
             return sourceBranchTime(Output.of(sourceBranchTime));
+        }
+
+        /**
+         * @param sourceSnapshot (string) - The snapshot this branch was restored from. Set only for branches created by
+         * restoring a snapshot; unset for all other branches.
+         * Format: projects/{project_id}/snapshots/{snapshot_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshot(@Nullable Output<String> sourceSnapshot) {
+            $.sourceSnapshot = sourceSnapshot;
+            return this;
+        }
+
+        /**
+         * @param sourceSnapshot (string) - The snapshot this branch was restored from. Set only for branches created by
+         * restoring a snapshot; unset for all other branches.
+         * Format: projects/{project_id}/snapshots/{snapshot_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshot(String sourceSnapshot) {
+            return sourceSnapshot(Output.of(sourceSnapshot));
         }
 
         /**

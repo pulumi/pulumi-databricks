@@ -72,7 +72,7 @@ def get_account_iam_direct_group_members_v2(group_id: Optional[_builtins.int] = 
                                             page_size: Optional[_builtins.int] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamDirectGroupMembersV2Result:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -94,7 +94,7 @@ def get_account_iam_direct_group_members_v2(group_id: Optional[_builtins.int] = 
 
     :param _builtins.int group_id: Required. Internal ID of the group in Databricks whose direct members are being listed
     :param _builtins.int page_size: The maximum number of members to return. The service may return fewer than this value.
-           If not provided, defaults to 1000 (also the maximum allowed)
+           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
     """
     __args__ = dict()
     __args__['groupId'] = group_id
@@ -110,7 +110,7 @@ def get_account_iam_direct_group_members_v2_output(group_id: pulumi.Input[Option
                                                    page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamDirectGroupMembersV2Result]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -132,7 +132,7 @@ def get_account_iam_direct_group_members_v2_output(group_id: pulumi.Input[Option
 
     :param _builtins.int group_id: Required. Internal ID of the group in Databricks whose direct members are being listed
     :param _builtins.int page_size: The maximum number of members to return. The service may return fewer than this value.
-           If not provided, defaults to 1000 (also the maximum allowed)
+           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
     """
     __args__ = dict()
     __args__['groupId'] = group_id

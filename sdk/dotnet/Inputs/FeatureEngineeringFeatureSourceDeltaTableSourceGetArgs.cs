@@ -15,23 +15,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataframeSchema")]
         public Input<string>? DataframeSchema { get; set; }
 
-        [Input("entityColumns")]
-        private InputList<string>? _entityColumns;
-
-        /// <summary>
-        /// Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-        /// The entity columns of the Delta table
-        /// </summary>
-        public InputList<string> EntityColumns
-        {
-            get => _entityColumns ?? (_entityColumns = new InputList<string>());
-            set => _entityColumns = value;
-        }
-
-        /// <summary>
-        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-        /// The filter condition applied to the source data before aggregation
-        /// </summary>
         [Input("filterCondition")]
         public Input<string>? FilterCondition { get; set; }
 
@@ -42,12 +25,6 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
-
-        /// <summary>
-        /// Column recording time, used for point-in-time joins, backfills, and aggregations
-        /// </summary>
-        [Input("timeseriesColumn")]
-        public Input<string>? TimeseriesColumn { get; set; }
 
         [Input("transformationSql")]
         public Input<string>? TransformationSql { get; set; }

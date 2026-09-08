@@ -28,7 +28,7 @@ class GetFeatureEngineeringFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringFeature.
     """
-    def __init__(__self__, catalog_name=None, created_at=None, created_by=None, description=None, entities=None, filter_condition=None, full_name=None, function=None, inputs=None, lineage_context=None, name=None, provider_config=None, schema_name=None, source=None, time_window=None, timeseries_column=None):
+    def __init__(__self__, catalog_name=None, created_at=None, created_by=None, description=None, entities=None, full_name=None, function=None, lineage_context=None, name=None, provider_config=None, schema_name=None, source=None, timeseries_column=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -44,18 +44,12 @@ class GetFeatureEngineeringFeatureResult:
         if entities and not isinstance(entities, list):
             raise TypeError("Expected argument 'entities' to be a list")
         pulumi.set(__self__, "entities", entities)
-        if filter_condition and not isinstance(filter_condition, str):
-            raise TypeError("Expected argument 'filter_condition' to be a str")
-        pulumi.set(__self__, "filter_condition", filter_condition)
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
         if function and not isinstance(function, dict):
             raise TypeError("Expected argument 'function' to be a dict")
         pulumi.set(__self__, "function", function)
-        if inputs and not isinstance(inputs, list):
-            raise TypeError("Expected argument 'inputs' to be a list")
-        pulumi.set(__self__, "inputs", inputs)
         if lineage_context and not isinstance(lineage_context, dict):
             raise TypeError("Expected argument 'lineage_context' to be a dict")
         pulumi.set(__self__, "lineage_context", lineage_context)
@@ -71,9 +65,6 @@ class GetFeatureEngineeringFeatureResult:
         if source and not isinstance(source, dict):
             raise TypeError("Expected argument 'source' to be a dict")
         pulumi.set(__self__, "source", source)
-        if time_window and not isinstance(time_window, dict):
-            raise TypeError("Expected argument 'time_window' to be a dict")
-        pulumi.set(__self__, "time_window", time_window)
         if timeseries_column and not isinstance(timeseries_column, dict):
             raise TypeError("Expected argument 'timeseries_column' to be a dict")
         pulumi.set(__self__, "timeseries_column", timeseries_column)
@@ -119,14 +110,6 @@ class GetFeatureEngineeringFeatureResult:
         return pulumi.get(self, "entities")
 
     @_builtins.property
-    @pulumi.getter(name="filterCondition")
-    def filter_condition(self) -> _builtins.str:
-        """
-        (string) - The filter condition applied to the source data before aggregation
-        """
-        return pulumi.get(self, "filter_condition")
-
-    @_builtins.property
     @pulumi.getter(name="fullName")
     def full_name(self) -> _builtins.str:
         """
@@ -141,15 +124,6 @@ class GetFeatureEngineeringFeatureResult:
         (Function) - The function by which the feature is computed
         """
         return pulumi.get(self, "function")
-
-    @_builtins.property
-    @pulumi.getter
-    def inputs(self) -> Sequence[_builtins.str]:
-        """
-        (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-        The input columns from which the feature is computed
-        """
-        return pulumi.get(self, "inputs")
 
     @_builtins.property
     @pulumi.getter(name="lineageContext")
@@ -198,19 +172,10 @@ class GetFeatureEngineeringFeatureResult:
         return pulumi.get(self, "source")
 
     @_builtins.property
-    @pulumi.getter(name="timeWindow")
-    def time_window(self) -> 'outputs.GetFeatureEngineeringFeatureTimeWindowResult':
-        """
-        (TimeWindow) - The time window over which the aggregation is computed
-        """
-        return pulumi.get(self, "time_window")
-
-    @_builtins.property
     @pulumi.getter(name="timeseriesColumn")
     def timeseries_column(self) -> 'outputs.GetFeatureEngineeringFeatureTimeseriesColumnResult':
         """
-        (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        The timeseries column of the Delta table
+        (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         return pulumi.get(self, "timeseries_column")
 
@@ -226,16 +191,13 @@ class AwaitableGetFeatureEngineeringFeatureResult(GetFeatureEngineeringFeatureRe
             created_by=self.created_by,
             description=self.description,
             entities=self.entities,
-            filter_condition=self.filter_condition,
             full_name=self.full_name,
             function=self.function,
-            inputs=self.inputs,
             lineage_context=self.lineage_context,
             name=self.name,
             provider_config=self.provider_config,
             schema_name=self.schema_name,
             source=self.source,
-            time_window=self.time_window,
             timeseries_column=self.timeseries_column)
 
 
@@ -263,16 +225,13 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
         created_by=pulumi.get(__ret__, 'created_by'),
         description=pulumi.get(__ret__, 'description'),
         entities=pulumi.get(__ret__, 'entities'),
-        filter_condition=pulumi.get(__ret__, 'filter_condition'),
         full_name=pulumi.get(__ret__, 'full_name'),
         function=pulumi.get(__ret__, 'function'),
-        inputs=pulumi.get(__ret__, 'inputs'),
         lineage_context=pulumi.get(__ret__, 'lineage_context'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'),
         source=pulumi.get(__ret__, 'source'),
-        time_window=pulumi.get(__ret__, 'time_window'),
         timeseries_column=pulumi.get(__ret__, 'timeseries_column'))
 def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
                                            provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict']]]] = None,
@@ -297,14 +256,11 @@ def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_bui
         created_by=pulumi.get(__response__, 'created_by'),
         description=pulumi.get(__response__, 'description'),
         entities=pulumi.get(__response__, 'entities'),
-        filter_condition=pulumi.get(__response__, 'filter_condition'),
         full_name=pulumi.get(__response__, 'full_name'),
         function=pulumi.get(__response__, 'function'),
-        inputs=pulumi.get(__response__, 'inputs'),
         lineage_context=pulumi.get(__response__, 'lineage_context'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         schema_name=pulumi.get(__response__, 'schema_name'),
         source=pulumi.get(__response__, 'source'),
-        time_window=pulumi.get(__response__, 'time_window'),
         timeseries_column=pulumi.get(__response__, 'timeseries_column')))

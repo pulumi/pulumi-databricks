@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs : global::Pulumi.ResourceArgs
     {
+        [Input("delay")]
+        public Input<string>? Delay { get; set; }
+
+        [Input("offset")]
+        public Input<string>? Offset { get; set; }
+
         /// <summary>
         /// The slide duration (interval by which windows advance, must be positive and less than duration)
         /// </summary>

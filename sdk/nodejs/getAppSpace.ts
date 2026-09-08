@@ -39,6 +39,12 @@ export interface GetAppSpaceArgs {
  */
 export interface GetAppSpaceResult {
     /**
+     * (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     */
+    readonly assumeGroupId: string;
+    /**
      * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
      */
     readonly createTime: string;

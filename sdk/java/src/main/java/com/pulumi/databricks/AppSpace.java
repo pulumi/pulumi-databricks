@@ -28,6 +28,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/appSpace:AppSpace")
 public class AppSpace extends com.pulumi.resources.CustomResource {
     /**
+     * The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     * 
+     */
+    @Export(name="assumeGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> assumeGroupId;
+
+    /**
+     * @return The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     * 
+     */
+    public Output<Optional<String>> assumeGroupId() {
+        return Codegen.optional(this.assumeGroupId);
+    }
+    /**
      * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
      * 
      */

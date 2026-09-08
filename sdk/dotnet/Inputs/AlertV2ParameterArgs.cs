@@ -16,9 +16,8 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-        /// string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-        /// Complex types such as ARRAY, MAP, and STRUCT are not supported
+        /// The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+        /// the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

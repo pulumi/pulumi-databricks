@@ -18,15 +18,24 @@ namespace Pulumi.Databricks.Outputs
         /// A constant literal
         /// </summary>
         public readonly string? Constant;
+        /// <summary>
+        /// An expression evaluated at query time. Wraps per-request expression variants
+        /// (e.g., tag introspection) so new variants can be added without extending the
+        /// FunctionArgument oneof
+        /// </summary>
+        public readonly Outputs.PolicyInfoRowFilterUsingFunctionArgExpression? FunctionArgExpression;
 
         [OutputConstructor]
         private PolicyInfoRowFilterUsing(
             string? alias,
 
-            string? constant)
+            string? constant,
+
+            Outputs.PolicyInfoRowFilterUsingFunctionArgExpression? functionArgExpression)
         {
             Alias = alias;
             Constant = constant;
+            FunctionArgExpression = functionArgExpression;
         }
     }
 }

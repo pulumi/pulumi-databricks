@@ -65,6 +65,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string SourceBranchTime;
         /// <summary>
+        /// (string) - The snapshot this branch was restored from. Set only for branches created by
+        /// restoring a snapshot; unset for all other branches.
+        /// Format: projects/{project_id}/snapshots/{snapshot_id}
+        /// </summary>
+        public readonly string SourceSnapshot;
+        /// <summary>
         /// (string) - A timestamp indicating when the `CurrentState` began
         /// </summary>
         public readonly string StateChangeTime;
@@ -95,6 +101,8 @@ namespace Pulumi.Databricks.Outputs
 
             string sourceBranchTime,
 
+            string sourceSnapshot,
+
             string stateChangeTime)
         {
             BranchId = branchId;
@@ -109,6 +117,7 @@ namespace Pulumi.Databricks.Outputs
             SourceBranch = sourceBranch;
             SourceBranchLsn = sourceBranchLsn;
             SourceBranchTime = sourceBranchTime;
+            SourceSnapshot = sourceSnapshot;
             StateChangeTime = stateChangeTime;
         }
     }

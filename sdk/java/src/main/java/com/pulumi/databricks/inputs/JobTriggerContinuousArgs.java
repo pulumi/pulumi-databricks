@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTriggerContinuousMaintenanceWindowArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class JobTriggerContinuousArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTriggerContinuousArgs Empty = new JobTriggerContinuousArgs();
+
+    @Import(name="maintenanceWindow")
+    private @Nullable Output<JobTriggerContinuousMaintenanceWindowArgs> maintenanceWindow;
+
+    public Optional<Output<JobTriggerContinuousMaintenanceWindowArgs>> maintenanceWindow() {
+        return Optional.ofNullable(this.maintenanceWindow);
+    }
 
     /**
      * Controls task level retry behaviour. Allowed values are:
@@ -37,6 +45,7 @@ public final class JobTriggerContinuousArgs extends com.pulumi.resources.Resourc
     private JobTriggerContinuousArgs() {}
 
     private JobTriggerContinuousArgs(JobTriggerContinuousArgs $) {
+        this.maintenanceWindow = $.maintenanceWindow;
         this.taskRetryMode = $.taskRetryMode;
     }
 
@@ -56,6 +65,15 @@ public final class JobTriggerContinuousArgs extends com.pulumi.resources.Resourc
 
         public Builder(JobTriggerContinuousArgs defaults) {
             $ = new JobTriggerContinuousArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder maintenanceWindow(@Nullable Output<JobTriggerContinuousMaintenanceWindowArgs> maintenanceWindow) {
+            $.maintenanceWindow = maintenanceWindow;
+            return this;
+        }
+
+        public Builder maintenanceWindow(JobTriggerContinuousMaintenanceWindowArgs maintenanceWindow) {
+            return maintenanceWindow(Output.of(maintenanceWindow));
         }
 
         /**

@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobContinuous
     {
+        public readonly Outputs.JobContinuousMaintenanceWindow? MaintenanceWindow;
         /// <summary>
         /// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `PauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `PauseStatus`.
         /// </summary>
@@ -26,10 +27,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobContinuous(
+            Outputs.JobContinuousMaintenanceWindow? maintenanceWindow,
+
             string? pauseStatus,
 
             string? taskRetryMode)
         {
+            MaintenanceWindow = maintenanceWindow;
             PauseStatus = pauseStatus;
             TaskRetryMode = taskRetryMode;
         }

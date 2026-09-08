@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? DestinationTable;
         public readonly string? SourceCatalog;
         public readonly string? SourceSchema;
-        public readonly string SourceTable;
+        public readonly string? SourceTable;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableTableConfiguration? TableConfiguration;
 
         [OutputConstructor]
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? sourceSchema,
 
-            string sourceTable,
+            string? sourceTable,
 
             Outputs.PipelineIngestionDefinitionObjectTableTableConfiguration? tableConfiguration)
         {

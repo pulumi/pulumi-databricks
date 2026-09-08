@@ -243,7 +243,7 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -283,7 +283,7 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
                  args: WorkspaceIamServicePrincipalV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 

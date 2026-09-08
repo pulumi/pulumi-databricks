@@ -18,9 +18,8 @@ public final class GetAlertsV2AlertParameter {
      */
     private String name;
     /**
-     * @return (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     * @return (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+     * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
      * 
      */
     private @Nullable String type;
@@ -39,9 +38,8 @@ public final class GetAlertsV2AlertParameter {
         return this.name;
     }
     /**
-     * @return (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     * @return (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+     * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
      * 
      */
     public Optional<String> type() {

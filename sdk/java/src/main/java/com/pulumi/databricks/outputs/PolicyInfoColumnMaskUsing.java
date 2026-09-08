@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PolicyInfoColumnMaskUsingFunctionArgExpression;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,13 @@ public final class PolicyInfoColumnMaskUsing {
      * 
      */
     private @Nullable String constant;
+    /**
+     * @return An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     * 
+     */
+    private @Nullable PolicyInfoColumnMaskUsingFunctionArgExpression functionArgExpression;
 
     private PolicyInfoColumnMaskUsing() {}
     public Optional<String> alias() {
@@ -28,6 +36,15 @@ public final class PolicyInfoColumnMaskUsing {
      */
     public Optional<String> constant() {
         return Optional.ofNullable(this.constant);
+    }
+    /**
+     * @return An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     * 
+     */
+    public Optional<PolicyInfoColumnMaskUsingFunctionArgExpression> functionArgExpression() {
+        return Optional.ofNullable(this.functionArgExpression);
     }
 
     public static Builder builder() {
@@ -41,11 +58,13 @@ public final class PolicyInfoColumnMaskUsing {
     public static final class Builder {
         private @Nullable String alias;
         private @Nullable String constant;
+        private @Nullable PolicyInfoColumnMaskUsingFunctionArgExpression functionArgExpression;
         public Builder() {}
         public Builder(PolicyInfoColumnMaskUsing defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
     	      this.constant = defaults.constant;
+    	      this.functionArgExpression = defaults.functionArgExpression;
         }
 
         @CustomType.Setter
@@ -60,10 +79,17 @@ public final class PolicyInfoColumnMaskUsing {
             this.constant = constant;
             return this;
         }
+        @CustomType.Setter
+        public Builder functionArgExpression(@Nullable PolicyInfoColumnMaskUsingFunctionArgExpression functionArgExpression) {
+
+            this.functionArgExpression = functionArgExpression;
+            return this;
+        }
         public PolicyInfoColumnMaskUsing build() {
             final var _resultValue = new PolicyInfoColumnMaskUsing();
             _resultValue.alias = alias;
             _resultValue.constant = constant;
+            _resultValue.functionArgExpression = functionArgExpression;
             return _resultValue;
         }
     }

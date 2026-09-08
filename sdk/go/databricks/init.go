@@ -255,6 +255,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PostgresProject{}
 	case "databricks:index/postgresRole:PostgresRole":
 		r = &PostgresRole{}
+	case "databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule":
+		r = &PostgresSnapshotSchedule{}
 	case "databricks:index/postgresSyncedTable:PostgresSyncedTable":
 		r = &PostgresSyncedTable{}
 	case "databricks:index/qualityMonitor:QualityMonitor":
@@ -977,6 +979,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/postgresRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/postgresSnapshotSchedule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

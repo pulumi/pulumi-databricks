@@ -14,6 +14,18 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingResult
     {
         /// <summary>
+        /// (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+        /// variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+        /// the analytic lag is zero. It composes with source.lateness when both are set
+        /// </summary>
+        public readonly string? Delay;
+        /// <summary>
+        /// (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+        /// a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+        /// midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+        /// </summary>
+        public readonly string? Offset;
+        /// <summary>
         /// (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
         /// </summary>
         public readonly string SlideDuration;
@@ -24,10 +36,16 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingResult(
+            string? delay,
+
+            string? offset,
+
             string slideDuration,
 
             string? windowDuration)
         {
+            Delay = delay;
+            Offset = offset;
             SlideDuration = slideDuration;
             WindowDuration = windowDuration;
         }

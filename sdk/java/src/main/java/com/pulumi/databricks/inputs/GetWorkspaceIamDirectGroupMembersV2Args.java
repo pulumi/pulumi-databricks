@@ -34,7 +34,7 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
 
     /**
      * The maximum number of members to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000 (also the maximum allowed)
+     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      * 
      */
     @Import(name="pageSize")
@@ -42,7 +42,7 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
 
     /**
      * @return The maximum number of members to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000 (also the maximum allowed)
+     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -113,7 +113,7 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
 
         /**
          * @param pageSize The maximum number of members to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000 (also the maximum allowed)
+         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GetWorkspaceIamDirectGroupMembersV2Args extends com.pulumi.re
 
         /**
          * @param pageSize The maximum number of members to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000 (also the maximum allowed)
+         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
          * 
          * @return builder
          * 

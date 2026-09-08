@@ -72,14 +72,15 @@ def get_account_iam_workspace_assignments_v2(page_size: Optional[_builtins.int] 
                                              workspace_id: Optional[_builtins.str] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamWorkspaceAssignmentsV2Result:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
     Lists the principal assignments for a workspace.
 
 
-    :param _builtins.int page_size: The maximum number of workspace assignments to return. The service may return fewer than this value
+    :param _builtins.int page_size: The maximum number of workspace assignments to return. The service may return fewer than this value.
+           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
     :param _builtins.str workspace_id: Required. The workspace ID for which the workspace assignments are being fetched
     """
     __args__ = dict()
@@ -96,14 +97,15 @@ def get_account_iam_workspace_assignments_v2_output(page_size: pulumi.Input[Opti
                                                     workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamWorkspaceAssignmentsV2Result]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
     Lists the principal assignments for a workspace.
 
 
-    :param _builtins.int page_size: The maximum number of workspace assignments to return. The service may return fewer than this value
+    :param _builtins.int page_size: The maximum number of workspace assignments to return. The service may return fewer than this value.
+           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
     :param _builtins.str workspace_id: Required. The workspace ID for which the workspace assignments are being fetched
     """
     __args__ = dict()

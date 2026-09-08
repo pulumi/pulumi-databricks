@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountIamUsersV2
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamUsersV2Result>("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", args ?? new GetAccountIamUsersV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamUsersV2Result>("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", args ?? new GetAccountIamUsersV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -112,7 +112,8 @@ namespace Pulumi.Databricks
         public string? Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of users to return. The service may return fewer than this value
+        /// The maximum number of users to return. The service may return fewer than this value.
+        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -132,7 +133,8 @@ namespace Pulumi.Databricks
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of users to return. The service may return fewer than this value
+        /// The maximum number of users to return. The service may return fewer than this value.
+        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

@@ -20,7 +20,7 @@ public final class PipelineIngestionDefinitionObjectTable {
     private @Nullable String destinationTable;
     private @Nullable String sourceCatalog;
     private @Nullable String sourceSchema;
-    private String sourceTable;
+    private @Nullable String sourceTable;
     private @Nullable PipelineIngestionDefinitionObjectTableTableConfiguration tableConfiguration;
 
     private PipelineIngestionDefinitionObjectTable() {}
@@ -42,8 +42,8 @@ public final class PipelineIngestionDefinitionObjectTable {
     public Optional<String> sourceSchema() {
         return Optional.ofNullable(this.sourceSchema);
     }
-    public String sourceTable() {
-        return this.sourceTable;
+    public Optional<String> sourceTable() {
+        return Optional.ofNullable(this.sourceTable);
     }
     public Optional<PipelineIngestionDefinitionObjectTableTableConfiguration> tableConfiguration() {
         return Optional.ofNullable(this.tableConfiguration);
@@ -64,7 +64,7 @@ public final class PipelineIngestionDefinitionObjectTable {
         private @Nullable String destinationTable;
         private @Nullable String sourceCatalog;
         private @Nullable String sourceSchema;
-        private String sourceTable;
+        private @Nullable String sourceTable;
         private @Nullable PipelineIngestionDefinitionObjectTableTableConfiguration tableConfiguration;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectTable defaults) {
@@ -120,10 +120,8 @@ public final class PipelineIngestionDefinitionObjectTable {
             return this;
         }
         @CustomType.Setter
-        public Builder sourceTable(String sourceTable) {
-            if (sourceTable == null) {
-              throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTable", "sourceTable");
-            }
+        public Builder sourceTable(@Nullable String sourceTable) {
+
             this.sourceTable = sourceTable;
             return this;
         }

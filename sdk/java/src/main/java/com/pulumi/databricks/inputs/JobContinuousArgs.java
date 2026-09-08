@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobContinuousMaintenanceWindowArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobContinuousArgs Empty = new JobContinuousArgs();
+
+    @Import(name="maintenanceWindow")
+    private @Nullable Output<JobContinuousMaintenanceWindowArgs> maintenanceWindow;
+
+    public Optional<Output<JobContinuousMaintenanceWindowArgs>> maintenanceWindow() {
+        return Optional.ofNullable(this.maintenanceWindow);
+    }
 
     /**
      * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
@@ -52,6 +60,7 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
     private JobContinuousArgs() {}
 
     private JobContinuousArgs(JobContinuousArgs $) {
+        this.maintenanceWindow = $.maintenanceWindow;
         this.pauseStatus = $.pauseStatus;
         this.taskRetryMode = $.taskRetryMode;
     }
@@ -72,6 +81,15 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(JobContinuousArgs defaults) {
             $ = new JobContinuousArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder maintenanceWindow(@Nullable Output<JobContinuousMaintenanceWindowArgs> maintenanceWindow) {
+            $.maintenanceWindow = maintenanceWindow;
+            return this;
+        }
+
+        public Builder maintenanceWindow(JobContinuousMaintenanceWindowArgs maintenanceWindow) {
+            return maintenanceWindow(Output.of(maintenanceWindow));
         }
 
         /**

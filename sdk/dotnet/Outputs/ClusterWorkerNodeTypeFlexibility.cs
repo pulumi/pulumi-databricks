@@ -17,11 +17,16 @@ namespace Pulumi.Databricks.Outputs
         /// list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
         /// </summary>
         public readonly ImmutableArray<string> AlternateNodeTypeIds;
+        public readonly string? AwsContextId;
 
         [OutputConstructor]
-        private ClusterWorkerNodeTypeFlexibility(ImmutableArray<string> alternateNodeTypeIds)
+        private ClusterWorkerNodeTypeFlexibility(
+            ImmutableArray<string> alternateNodeTypeIds,
+
+            string? awsContextId)
         {
             AlternateNodeTypeIds = alternateNodeTypeIds;
+            AwsContextId = awsContextId;
         }
     }
 }

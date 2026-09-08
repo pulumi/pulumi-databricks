@@ -40,6 +40,12 @@ export class AppSpace extends pulumi.CustomResource {
     }
 
     /**
+     * The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     */
+    declare public readonly assumeGroupId: pulumi.Output<string | undefined>;
+    /**
      * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -118,6 +124,7 @@ export class AppSpace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppSpaceState | undefined;
+            resourceInputs["assumeGroupId"] = state?.assumeGroupId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["creator"] = state?.creator;
             resourceInputs["description"] = state?.description;
@@ -136,6 +143,7 @@ export class AppSpace extends pulumi.CustomResource {
             resourceInputs["userApiScopes"] = state?.userApiScopes;
         } else {
             const args = argsOrState as AppSpaceArgs | undefined;
+            resourceInputs["assumeGroupId"] = args?.assumeGroupId;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["providerConfig"] = args?.providerConfig;
@@ -162,6 +170,12 @@ export class AppSpace extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AppSpace resources.
  */
 export interface AppSpaceState {
+    /**
+     * The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     */
+    assumeGroupId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
      */
@@ -233,6 +247,12 @@ export interface AppSpaceState {
  * The set of arguments for constructing a AppSpace resource.
  */
 export interface AppSpaceArgs {
+    /**
+     * The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     */
+    assumeGroupId?: pulumi.Input<string | undefined>;
     /**
      * The description of the app space
      */

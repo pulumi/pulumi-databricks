@@ -21,6 +21,7 @@ __all__ = ['AppSpaceArgs', 'AppSpace']
 @pulumi.input_type
 class AppSpaceArgs:
     def __init__(__self__, *,
+                 assume_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AppSpaceProviderConfigArgs']] = None,
@@ -30,6 +31,9 @@ class AppSpaceArgs:
         """
         The set of arguments for constructing a AppSpace resource.
 
+        :param pulumi.Input[_builtins.str] assume_group_id: The group whose permissions users assume via Role Authorization for apps in this space. When
+               set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+               Set only at space creation
         :param pulumi.Input[_builtins.str] description: The description of the app space
         :param pulumi.Input[_builtins.str] name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
                It must be unique within the workspace
@@ -38,6 +42,8 @@ class AppSpaceArgs:
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy ID for managing cost at the space level
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: OAuth scopes for apps in the space
         """
+        if assume_group_id is not None:
+            pulumi.set(__self__, "assume_group_id", assume_group_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -50,6 +56,20 @@ class AppSpaceArgs:
             pulumi.set(__self__, "usage_policy_id", usage_policy_id)
         if user_api_scopes is not None:
             pulumi.set(__self__, "user_api_scopes", user_api_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="assumeGroupId")
+    def assume_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The group whose permissions users assume via Role Authorization for apps in this space. When
+        set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        Set only at space creation
+        """
+        return pulumi.get(self, "assume_group_id")
+
+    @assume_group_id.setter
+    def assume_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "assume_group_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -128,6 +148,7 @@ class AppSpaceArgs:
 @pulumi.input_type
 class _AppSpaceState:
     def __init__(__self__, *,
+                 assume_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -147,6 +168,9 @@ class _AppSpaceState:
         """
         Input properties used for looking up and filtering AppSpace resources.
 
+        :param pulumi.Input[_builtins.str] assume_group_id: The group whose permissions users assume via Role Authorization for apps in this space. When
+               set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+               Set only at space creation
         :param pulumi.Input[_builtins.str] create_time: (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the user that created the app space
         :param pulumi.Input[_builtins.str] description: The description of the app space
@@ -165,6 +189,8 @@ class _AppSpaceState:
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy ID for managing cost at the space level
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: OAuth scopes for apps in the space
         """
+        if assume_group_id is not None:
+            pulumi.set(__self__, "assume_group_id", assume_group_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if creator is not None:
@@ -197,6 +223,20 @@ class _AppSpaceState:
             pulumi.set(__self__, "usage_policy_id", usage_policy_id)
         if user_api_scopes is not None:
             pulumi.set(__self__, "user_api_scopes", user_api_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="assumeGroupId")
+    def assume_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The group whose permissions users assume via Role Authorization for apps in this space. When
+        set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        Set only at space creation
+        """
+        return pulumi.get(self, "assume_group_id")
+
+    @assume_group_id.setter
+    def assume_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "assume_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -398,6 +438,7 @@ class AppSpace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 assume_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
@@ -413,6 +454,9 @@ class AppSpace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] assume_group_id: The group whose permissions users assume via Role Authorization for apps in this space. When
+               set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+               Set only at space creation
         :param pulumi.Input[_builtins.str] description: The description of the app space
         :param pulumi.Input[_builtins.str] name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
                It must be unique within the workspace
@@ -448,6 +492,7 @@ class AppSpace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 assume_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
@@ -463,6 +508,7 @@ class AppSpace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppSpaceArgs.__new__(AppSpaceArgs)
 
+            __props__.__dict__["assume_group_id"] = assume_group_id
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["provider_config"] = provider_config
@@ -489,6 +535,7 @@ class AppSpace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            assume_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -512,6 +559,9 @@ class AppSpace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] assume_group_id: The group whose permissions users assume via Role Authorization for apps in this space. When
+               set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+               Set only at space creation
         :param pulumi.Input[_builtins.str] create_time: (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the user that created the app space
         :param pulumi.Input[_builtins.str] description: The description of the app space
@@ -534,6 +584,7 @@ class AppSpace(pulumi.CustomResource):
 
         __props__ = _AppSpaceState.__new__(_AppSpaceState)
 
+        __props__.__dict__["assume_group_id"] = assume_group_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
         __props__.__dict__["description"] = description
@@ -551,6 +602,16 @@ class AppSpace(pulumi.CustomResource):
         __props__.__dict__["usage_policy_id"] = usage_policy_id
         __props__.__dict__["user_api_scopes"] = user_api_scopes
         return AppSpace(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="assumeGroupId")
+    def assume_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The group whose permissions users assume via Role Authorization for apps in this space. When
+        set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+        Set only at space creation
+        """
+        return pulumi.get(self, "assume_group_id")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

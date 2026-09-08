@@ -330,6 +330,21 @@ export const getAccountIamDirectGroupMembersV2: typeof import("./getAccountIamDi
 export const getAccountIamDirectGroupMembersV2Output: typeof import("./getAccountIamDirectGroupMembersV2").getAccountIamDirectGroupMembersV2Output = null as any;
 utilities.lazyLoad(exports, ["getAccountIamDirectGroupMembersV2","getAccountIamDirectGroupMembersV2Output"], () => require("./getAccountIamDirectGroupMembersV2"));
 
+export { GetAccountIamExternalGroupV2Args, GetAccountIamExternalGroupV2Result, GetAccountIamExternalGroupV2OutputArgs } from "./getAccountIamExternalGroupV2";
+export const getAccountIamExternalGroupV2: typeof import("./getAccountIamExternalGroupV2").getAccountIamExternalGroupV2 = null as any;
+export const getAccountIamExternalGroupV2Output: typeof import("./getAccountIamExternalGroupV2").getAccountIamExternalGroupV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamExternalGroupV2","getAccountIamExternalGroupV2Output"], () => require("./getAccountIamExternalGroupV2"));
+
+export { GetAccountIamExternalServicePrincipalV2Args, GetAccountIamExternalServicePrincipalV2Result, GetAccountIamExternalServicePrincipalV2OutputArgs } from "./getAccountIamExternalServicePrincipalV2";
+export const getAccountIamExternalServicePrincipalV2: typeof import("./getAccountIamExternalServicePrincipalV2").getAccountIamExternalServicePrincipalV2 = null as any;
+export const getAccountIamExternalServicePrincipalV2Output: typeof import("./getAccountIamExternalServicePrincipalV2").getAccountIamExternalServicePrincipalV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamExternalServicePrincipalV2","getAccountIamExternalServicePrincipalV2Output"], () => require("./getAccountIamExternalServicePrincipalV2"));
+
+export { GetAccountIamExternalUserV2Args, GetAccountIamExternalUserV2Result, GetAccountIamExternalUserV2OutputArgs } from "./getAccountIamExternalUserV2";
+export const getAccountIamExternalUserV2: typeof import("./getAccountIamExternalUserV2").getAccountIamExternalUserV2 = null as any;
+export const getAccountIamExternalUserV2Output: typeof import("./getAccountIamExternalUserV2").getAccountIamExternalUserV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountIamExternalUserV2","getAccountIamExternalUserV2Output"], () => require("./getAccountIamExternalUserV2"));
+
 export { GetAccountIamGroupV2Args, GetAccountIamGroupV2Result, GetAccountIamGroupV2OutputArgs } from "./getAccountIamGroupV2";
 export const getAccountIamGroupV2: typeof import("./getAccountIamGroupV2").getAccountIamGroupV2 = null as any;
 export const getAccountIamGroupV2Output: typeof import("./getAccountIamGroupV2").getAccountIamGroupV2Output = null as any;
@@ -965,6 +980,11 @@ export const getPostgresRoles: typeof import("./getPostgresRoles").getPostgresRo
 export const getPostgresRolesOutput: typeof import("./getPostgresRoles").getPostgresRolesOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresRoles","getPostgresRolesOutput"], () => require("./getPostgresRoles"));
 
+export { GetPostgresSnapshotScheduleArgs, GetPostgresSnapshotScheduleResult, GetPostgresSnapshotScheduleOutputArgs } from "./getPostgresSnapshotSchedule";
+export const getPostgresSnapshotSchedule: typeof import("./getPostgresSnapshotSchedule").getPostgresSnapshotSchedule = null as any;
+export const getPostgresSnapshotScheduleOutput: typeof import("./getPostgresSnapshotSchedule").getPostgresSnapshotScheduleOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresSnapshotSchedule","getPostgresSnapshotScheduleOutput"], () => require("./getPostgresSnapshotSchedule"));
+
 export { GetPostgresSyncedTableArgs, GetPostgresSyncedTableResult, GetPostgresSyncedTableOutputArgs } from "./getPostgresSyncedTable";
 export const getPostgresSyncedTable: typeof import("./getPostgresSyncedTable").getPostgresSyncedTable = null as any;
 export const getPostgresSyncedTableOutput: typeof import("./getPostgresSyncedTable").getPostgresSyncedTableOutput = null as any;
@@ -1174,6 +1194,21 @@ export { GetWorkspaceIamDirectGroupMembersV2Args, GetWorkspaceIamDirectGroupMemb
 export const getWorkspaceIamDirectGroupMembersV2: typeof import("./getWorkspaceIamDirectGroupMembersV2").getWorkspaceIamDirectGroupMembersV2 = null as any;
 export const getWorkspaceIamDirectGroupMembersV2Output: typeof import("./getWorkspaceIamDirectGroupMembersV2").getWorkspaceIamDirectGroupMembersV2Output = null as any;
 utilities.lazyLoad(exports, ["getWorkspaceIamDirectGroupMembersV2","getWorkspaceIamDirectGroupMembersV2Output"], () => require("./getWorkspaceIamDirectGroupMembersV2"));
+
+export { GetWorkspaceIamExternalGroupV2Args, GetWorkspaceIamExternalGroupV2Result, GetWorkspaceIamExternalGroupV2OutputArgs } from "./getWorkspaceIamExternalGroupV2";
+export const getWorkspaceIamExternalGroupV2: typeof import("./getWorkspaceIamExternalGroupV2").getWorkspaceIamExternalGroupV2 = null as any;
+export const getWorkspaceIamExternalGroupV2Output: typeof import("./getWorkspaceIamExternalGroupV2").getWorkspaceIamExternalGroupV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamExternalGroupV2","getWorkspaceIamExternalGroupV2Output"], () => require("./getWorkspaceIamExternalGroupV2"));
+
+export { GetWorkspaceIamExternalServicePrincipalV2Args, GetWorkspaceIamExternalServicePrincipalV2Result, GetWorkspaceIamExternalServicePrincipalV2OutputArgs } from "./getWorkspaceIamExternalServicePrincipalV2";
+export const getWorkspaceIamExternalServicePrincipalV2: typeof import("./getWorkspaceIamExternalServicePrincipalV2").getWorkspaceIamExternalServicePrincipalV2 = null as any;
+export const getWorkspaceIamExternalServicePrincipalV2Output: typeof import("./getWorkspaceIamExternalServicePrincipalV2").getWorkspaceIamExternalServicePrincipalV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamExternalServicePrincipalV2","getWorkspaceIamExternalServicePrincipalV2Output"], () => require("./getWorkspaceIamExternalServicePrincipalV2"));
+
+export { GetWorkspaceIamExternalUserV2Args, GetWorkspaceIamExternalUserV2Result, GetWorkspaceIamExternalUserV2OutputArgs } from "./getWorkspaceIamExternalUserV2";
+export const getWorkspaceIamExternalUserV2: typeof import("./getWorkspaceIamExternalUserV2").getWorkspaceIamExternalUserV2 = null as any;
+export const getWorkspaceIamExternalUserV2Output: typeof import("./getWorkspaceIamExternalUserV2").getWorkspaceIamExternalUserV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceIamExternalUserV2","getWorkspaceIamExternalUserV2Output"], () => require("./getWorkspaceIamExternalUserV2"));
 
 export { GetWorkspaceIamGroupV2Args, GetWorkspaceIamGroupV2Result, GetWorkspaceIamGroupV2OutputArgs } from "./getWorkspaceIamGroupV2";
 export const getWorkspaceIamGroupV2: typeof import("./getWorkspaceIamGroupV2").getWorkspaceIamGroupV2 = null as any;
@@ -1514,6 +1549,11 @@ export { PostgresRoleArgs, PostgresRoleState } from "./postgresRole";
 export type PostgresRole = import("./postgresRole").PostgresRole;
 export const PostgresRole: typeof import("./postgresRole").PostgresRole = null as any;
 utilities.lazyLoad(exports, ["PostgresRole"], () => require("./postgresRole"));
+
+export { PostgresSnapshotScheduleArgs, PostgresSnapshotScheduleState } from "./postgresSnapshotSchedule";
+export type PostgresSnapshotSchedule = import("./postgresSnapshotSchedule").PostgresSnapshotSchedule;
+export const PostgresSnapshotSchedule: typeof import("./postgresSnapshotSchedule").PostgresSnapshotSchedule = null as any;
+utilities.lazyLoad(exports, ["PostgresSnapshotSchedule"], () => require("./postgresSnapshotSchedule"));
 
 export { PostgresSyncedTableArgs, PostgresSyncedTableState } from "./postgresSyncedTable";
 export type PostgresSyncedTable = import("./postgresSyncedTable").PostgresSyncedTable;
@@ -2036,6 +2076,8 @@ const _module = {
                 return new PostgresProject(name, <any>undefined, { urn })
             case "databricks:index/postgresRole:PostgresRole":
                 return new PostgresRole(name, <any>undefined, { urn })
+            case "databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule":
+                return new PostgresSnapshotSchedule(name, <any>undefined, { urn })
             case "databricks:index/postgresSyncedTable:PostgresSyncedTable":
                 return new PostgresSyncedTable(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitor:QualityMonitor":
@@ -2266,6 +2308,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/postgresDatabase", _m
 pulumi.runtime.registerResourceModule("databricks", "index/postgresEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresProject", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresRole", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresSnapshotSchedule", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresSyncedTable", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitorV2", _module)

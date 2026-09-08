@@ -60,11 +60,11 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
         return Optional.ofNullable(this.sourceSchema);
     }
 
-    @Import(name="sourceTable", required=true)
-    private Output<String> sourceTable;
+    @Import(name="sourceTable")
+    private @Nullable Output<String> sourceTable;
 
-    public Output<String> sourceTable() {
-        return this.sourceTable;
+    public Optional<Output<String>> sourceTable() {
+        return Optional.ofNullable(this.sourceTable);
     }
 
     @Import(name="tableConfiguration")
@@ -159,7 +159,7 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
             return sourceSchema(Output.of(sourceSchema));
         }
 
-        public Builder sourceTable(Output<String> sourceTable) {
+        public Builder sourceTable(@Nullable Output<String> sourceTable) {
             $.sourceTable = sourceTable;
             return this;
         }
@@ -183,9 +183,6 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
             }
             if ($.destinationSchema == null) {
                 throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTableArgs", "destinationSchema");
-            }
-            if ($.sourceTable == null) {
-                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTableArgs", "sourceTable");
             }
             return $;
         }

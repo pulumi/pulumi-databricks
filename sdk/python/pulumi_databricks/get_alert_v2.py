@@ -138,7 +138,7 @@ class GetAlertV2Result:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        (string) - UUID identifying the alert
+        (string) - The canonical identifier of the alert to retrieve information about
         """
         return pulumi.get(self, "id")
 
@@ -162,8 +162,7 @@ class GetAlertV2Result:
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GetAlertV2ParameterResult']:
         """
-        (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-        query text with `:name` syntax. Static values only
+        (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
         """
         return pulumi.get(self, "parameters")
 
@@ -290,7 +289,7 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str id: UUID identifying the alert
+    :param _builtins.str id: The canonical identifier of the alert to retrieve information about
     :param Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -347,7 +346,7 @@ def get_alert_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str id: UUID identifying the alert
+    :param _builtins.str id: The canonical identifier of the alert to retrieve information about
     :param Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

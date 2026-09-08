@@ -100,10 +100,6 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeatureEntityResult> Entities;
         /// <summary>
-        /// (string) - The filter condition applied to the source data before aggregation
-        /// </summary>
-        public readonly string FilterCondition;
-        /// <summary>
         /// (string) - Three-part full name of the Stream (catalog.schema.stream)
         /// </summary>
         public readonly string FullName;
@@ -111,11 +107,6 @@ namespace Pulumi.Databricks
         /// (Function) - The function by which the feature is computed
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureFunctionResult Function;
-        /// <summary>
-        /// (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-        /// The input columns from which the feature is computed
-        /// </summary>
-        public readonly ImmutableArray<string> Inputs;
         /// <summary>
         /// (LineageContext) - Lineage context information for this feature.
         /// WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -143,12 +134,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceResult Source;
         /// <summary>
-        /// (TimeWindow) - The time window over which the aggregation is computed
-        /// </summary>
-        public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowResult TimeWindow;
-        /// <summary>
-        /// (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        /// The timeseries column of the Delta table
+        /// (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureTimeseriesColumnResult TimeseriesColumn;
 
@@ -164,13 +150,9 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetFeatureEngineeringFeatureEntityResult> entities,
 
-            string filterCondition,
-
             string fullName,
 
             Outputs.GetFeatureEngineeringFeatureFunctionResult function,
-
-            ImmutableArray<string> inputs,
 
             Outputs.GetFeatureEngineeringFeatureLineageContextResult lineageContext,
 
@@ -182,8 +164,6 @@ namespace Pulumi.Databricks
 
             Outputs.GetFeatureEngineeringFeatureSourceResult source,
 
-            Outputs.GetFeatureEngineeringFeatureTimeWindowResult timeWindow,
-
             Outputs.GetFeatureEngineeringFeatureTimeseriesColumnResult timeseriesColumn)
         {
             CatalogName = catalogName;
@@ -191,16 +171,13 @@ namespace Pulumi.Databricks
             CreatedBy = createdBy;
             Description = description;
             Entities = entities;
-            FilterCondition = filterCondition;
             FullName = fullName;
             Function = function;
-            Inputs = inputs;
             LineageContext = lineageContext;
             Name = name;
             ProviderConfig = providerConfig;
             SchemaName = schemaName;
             Source = source;
-            TimeWindow = timeWindow;
             TimeseriesColumn = timeseriesColumn;
         }
     }

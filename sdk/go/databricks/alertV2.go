@@ -98,8 +98,17 @@ type AlertV2 struct {
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName pulumi.StringOutput `pulumi:"ownerUserName"`
-	// Query parameters bound when executing the alert query, referenced in the
-	// query text with `:name` syntax. Static values only
+	// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+	//
+	// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+	// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+	// value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+	// is omitted, the value is interpreted as a string.
+	//
+	// If the type is given, parameters will be checked for type correctness according
+	// to the given type. A value is correct if the provided string can be converted to
+	// the requested type using the `cast` function. The exact semantics are described in
+	// the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
 	Parameters AlertV2ParameterArrayOutput `pulumi:"parameters"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
@@ -188,8 +197,17 @@ type alertV2State struct {
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName *string `pulumi:"ownerUserName"`
-	// Query parameters bound when executing the alert query, referenced in the
-	// query text with `:name` syntax. Static values only
+	// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+	//
+	// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+	// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+	// value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+	// is omitted, the value is interpreted as a string.
+	//
+	// If the type is given, parameters will be checked for type correctness according
+	// to the given type. A value is correct if the provided string can be converted to
+	// the requested type using the `cast` function. The exact semantics are described in
+	// the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
 	Parameters []AlertV2Parameter `pulumi:"parameters"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath *string `pulumi:"parentPath"`
@@ -234,8 +252,17 @@ type AlertV2State struct {
 	LifecycleState pulumi.StringPtrInput
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName pulumi.StringPtrInput
-	// Query parameters bound when executing the alert query, referenced in the
-	// query text with `:name` syntax. Static values only
+	// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+	//
+	// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+	// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+	// value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+	// is omitted, the value is interpreted as a string.
+	//
+	// If the type is given, parameters will be checked for type correctness according
+	// to the given type. A value is correct if the provided string can be converted to
+	// the requested type using the `cast` function. The exact semantics are described in
+	// the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
 	Parameters AlertV2ParameterArrayInput
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrInput
@@ -274,8 +301,17 @@ type alertV2Args struct {
 	// The display name of the alert
 	DisplayName string            `pulumi:"displayName"`
 	Evaluation  AlertV2Evaluation `pulumi:"evaluation"`
-	// Query parameters bound when executing the alert query, referenced in the
-	// query text with `:name` syntax. Static values only
+	// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+	//
+	// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+	// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+	// value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+	// is omitted, the value is interpreted as a string.
+	//
+	// If the type is given, parameters will be checked for type correctness according
+	// to the given type. A value is correct if the provided string can be converted to
+	// the requested type using the `cast` function. The exact semantics are described in
+	// the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
 	Parameters []AlertV2Parameter `pulumi:"parameters"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath *string `pulumi:"parentPath"`
@@ -309,8 +345,17 @@ type AlertV2Args struct {
 	// The display name of the alert
 	DisplayName pulumi.StringInput
 	Evaluation  AlertV2EvaluationInput
-	// Query parameters bound when executing the alert query, referenced in the
-	// query text with `:name` syntax. Static values only
+	// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+	//
+	// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+	// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+	// value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+	// is omitted, the value is interpreted as a string.
+	//
+	// If the type is given, parameters will be checked for type correctness according
+	// to the given type. A value is correct if the provided string can be converted to
+	// the requested type using the `cast` function. The exact semantics are described in
+	// the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
 	Parameters AlertV2ParameterArrayInput
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrInput
@@ -463,8 +508,17 @@ func (o AlertV2Output) OwnerUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.OwnerUserName }).(pulumi.StringOutput)
 }
 
-// Query parameters bound when executing the alert query, referenced in the
-// query text with `:name` syntax. Static values only
+// A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+//
+// Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+// Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+// value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+// is omitted, the value is interpreted as a string.
+//
+// If the type is given, parameters will be checked for type correctness according
+// to the given type. A value is correct if the provided string can be converted to
+// the requested type using the `cast` function. The exact semantics are described in
+// the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
 func (o AlertV2Output) Parameters() AlertV2ParameterArrayOutput {
 	return o.ApplyT(func(v *AlertV2) AlertV2ParameterArrayOutput { return v.Parameters }).(AlertV2ParameterArrayOutput)
 }

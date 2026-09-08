@@ -734,7 +734,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
 
@@ -787,7 +787,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  args: Optional[WorkspaceSettingV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
 

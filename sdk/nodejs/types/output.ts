@@ -2917,9 +2917,8 @@ export interface AlertV2EvaluationThresholdValue {
 export interface AlertV2Parameter {
     name: string;
     /**
-     * The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     * The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+     * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
      */
     type?: string;
     value?: string;
@@ -4093,6 +4092,7 @@ export interface ClusterDriverNodeTypeFlexibility {
      * list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
      */
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface ClusterGcpAttributes {
@@ -4333,6 +4333,7 @@ export interface ClusterWorkerNodeTypeFlexibility {
      * list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
      */
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface ClusterWorkloadType {
@@ -5562,16 +5563,6 @@ export interface FeatureEngineeringFeatureFunction {
      * Applies a registered Unity Catalog function row-wise to source columns
      */
     customUdf?: outputs.FeatureEngineeringFeatureFunctionCustomUdf;
-    /**
-     * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-     * Extra parameters for parameterized functions
-     */
-    extraParameters?: outputs.FeatureEngineeringFeatureFunctionExtraParameter[];
-    /**
-     * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-     */
-    functionType?: string;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunction {
@@ -5591,8 +5582,7 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunction {
     stddevSamp?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp;
     sum?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionSum;
     /**
-     * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * The time window over which the aggregation is computed
      */
     timeWindow?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow;
     varPop?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarPop;
@@ -5676,22 +5666,23 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
-    continuous?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
     rolling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
     /**
      * A sawtooth window served via the hybrid batch + streaming path
      */
     sawtooth?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth;
     sliding?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
-    tumbling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
-}
-
-export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
     /**
-     * The offset of the continuous window (must be non-positive)
+     * Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+     * the historical inputs read by a window. For example, a 365-day window with
+     * start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+     * for 365 days of data; a lifetime window produces no output before start_time. If unset,
+     * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+     * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+     * eligible source data exists
      */
-    offset?: string;
-    windowDuration: string;
+    startTime?: string;
+    tumbling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
@@ -5705,6 +5696,8 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowS
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
+    delay?: string;
+    offset?: string;
     /**
      * The slide duration (interval by which windows advance, must be positive and less than duration)
      */
@@ -5713,6 +5706,8 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowS
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
+    delay?: string;
+    offset?: string;
     windowDuration: string;
 }
 
@@ -5746,17 +5741,6 @@ export interface FeatureEngineeringFeatureFunctionCustomUdfInputBinding {
      * Name of the UC function parameter
      */
     parameter: string;
-}
-
-export interface FeatureEngineeringFeatureFunctionExtraParameter {
-    /**
-     * The name of the parameter
-     */
-    key: string;
-    /**
-     * The value of the parameter
-     */
-    value: string;
 }
 
 export interface FeatureEngineeringFeatureLineageContext {
@@ -5798,6 +5782,11 @@ export interface FeatureEngineeringFeatureSource {
      */
     kafkaSource?: outputs.FeatureEngineeringFeatureSourceKafkaSource;
     /**
+     * Completeness timing for this Feature's use of the source. This configuration is part of the
+     * Feature definition; it does not modify the underlying table or stream
+     */
+    lateness?: outputs.FeatureEngineeringFeatureSourceLateness;
+    /**
      * A request-time data source
      */
     requestSource?: outputs.FeatureEngineeringFeatureSourceRequestSource;
@@ -5809,15 +5798,6 @@ export interface FeatureEngineeringFeatureSource {
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
     dataframeSchema?: string;
-    /**
-     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
-     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     */
     filterCondition?: string;
     /**
      * The full three-part name (catalog, schema, name) of the feature. This is the
@@ -5825,49 +5805,25 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: string;
-    /**
-     * Column recording time, used for point-in-time joins, backfills, and aggregations
-     */
-    timeseriesColumn?: string;
     transformationSql?: string;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSource {
-    /**
-     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity column identifiers of the Kafka source
-     */
-    entityColumnIdentifiers?: outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
-    /**
-     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     */
     filterCondition?: string;
     /**
      * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
      */
     name: string;
-    /**
-     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column identifier of the Kafka source
-     */
-    timeseriesColumnIdentifier?: outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 }
 
-export interface FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
+export interface FeatureEngineeringFeatureSourceLateness {
     /**
-     * String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+     * Non-negative time to wait after a window ends before treating its source data as complete.
+     * Training shifts the eligible evaluation time backwards by this duration so it does not join
+     * data that would still have been settling online. Materialization waits for the duration to
+     * elapse before publishing the window. If unset, source data is considered settled immediately
      */
-    variantExprPath: string;
-}
-
-export interface FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
-    /**
-     * String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-     */
-    variantExprPath: string;
+    settlingDelay?: string;
 }
 
 export interface FeatureEngineeringFeatureSourceRequestSource {
@@ -5897,10 +5853,6 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
 
 export interface FeatureEngineeringFeatureSourceStreamSource {
     dataframeSchema?: string;
-    /**
-     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
-     * The filter condition applied to the source data before aggregation
-     */
     filterCondition?: string;
     /**
      * The full three-part name (catalog, schema, name) of the feature. This is the
@@ -5909,47 +5861,6 @@ export interface FeatureEngineeringFeatureSourceStreamSource {
      */
     fullName: string;
     transformationSql?: string;
-}
-
-export interface FeatureEngineeringFeatureTimeWindow {
-    continuous?: outputs.FeatureEngineeringFeatureTimeWindowContinuous;
-    rolling?: outputs.FeatureEngineeringFeatureTimeWindowRolling;
-    /**
-     * A sawtooth window served via the hybrid batch + streaming path
-     */
-    sawtooth?: outputs.FeatureEngineeringFeatureTimeWindowSawtooth;
-    sliding?: outputs.FeatureEngineeringFeatureTimeWindowSliding;
-    tumbling?: outputs.FeatureEngineeringFeatureTimeWindowTumbling;
-}
-
-export interface FeatureEngineeringFeatureTimeWindowContinuous {
-    /**
-     * The offset of the continuous window (must be non-positive)
-     */
-    offset?: string;
-    windowDuration: string;
-}
-
-export interface FeatureEngineeringFeatureTimeWindowRolling {
-    delay?: string;
-    windowDuration?: string;
-}
-
-export interface FeatureEngineeringFeatureTimeWindowSawtooth {
-    delay?: string;
-    windowDuration?: string;
-}
-
-export interface FeatureEngineeringFeatureTimeWindowSliding {
-    /**
-     * The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
-    slideDuration: string;
-    windowDuration?: string;
-}
-
-export interface FeatureEngineeringFeatureTimeWindowTumbling {
-    windowDuration: string;
 }
 
 export interface FeatureEngineeringFeatureTimeseriesColumn {
@@ -6061,11 +5972,6 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      */
     dataframeSchema?: string;
     /**
-     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
      * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
     filterCondition?: string;
@@ -6073,11 +5979,6 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
-    /**
-     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     */
-    timeseriesColumn?: string;
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -6138,11 +6039,6 @@ export interface FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDelta
      */
     dataframeSchema?: string;
     /**
-     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
      * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
     filterCondition?: string;
@@ -6150,11 +6046,6 @@ export interface FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDelta
      * The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
-    /**
-     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     */
-    timeseriesColumn?: string;
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -6453,6 +6344,17 @@ export interface GetAccountIamDirectGroupMembersV2DirectGroupMember {
      * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     principalType: string;
+}
+
+export interface GetAccountIamExternalUserV2FullName {
+    /**
+     * (string) - The family (last) name of the user, from the customer's IdP
+     */
+    familyName: string;
+    /**
+     * (string) - The given (first) name of the user, from the customer's IdP
+     */
+    givenName: string;
 }
 
 export interface GetAccountIamGroupsV2Group {
@@ -14130,9 +14032,8 @@ export interface GetAlertV2Parameter {
      */
     name: string;
     /**
-     * (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     * (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+     * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
      */
     type?: string;
     /**
@@ -14205,7 +14106,7 @@ export interface GetAlertsV2Alert {
      */
     evaluation: outputs.GetAlertsV2AlertEvaluation;
     /**
-     * (string) - UUID identifying the alert
+     * (string) - The canonical identifier of the alert to retrieve information about
      */
     id: string;
     /**
@@ -14217,8 +14118,7 @@ export interface GetAlertsV2Alert {
      */
     ownerUserName: string;
     /**
-     * (list of AlertStatementParameter) - Query parameters bound when executing the alert query, referenced in the
-     * query text with `:name` syntax. Static values only
+     * (list of AlertStatementParameter) - A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
      */
     parameters: outputs.GetAlertsV2AlertParameter[];
     /**
@@ -14395,9 +14295,8 @@ export interface GetAlertsV2AlertParameter {
      */
     name: string;
     /**
-     * (string) - The SQL data type of the parameter, e.g. STRING, INT, or DATE. Defaults to STRING. This is a
-     * string rather than an enum because scalar subtypes such as DECIMAL(10, 4) cannot be enumerated.
-     * Complex types such as ARRAY, MAP, and STRUCT are not supported
+     * (string) - The SQL data type of the parameter, for example `STRING`, `INT`, or `DECIMAL(10, 2)`. If no type is given
+     * the type is assumed to be `STRING`. Complex types such as `ARRAY`, `MAP`, and `STRUCT` are not supported
      */
     type?: string;
     /**
@@ -15296,6 +15195,12 @@ export interface GetAppSpacesProviderConfig {
 }
 
 export interface GetAppSpacesSpace {
+    /**
+     * (string) - The group whose permissions users assume via Role Authorization for apps in this space. When
+     * set, user tokens assume the role of this group instead of doing regular obo token downscoping.
+     * Set only at space creation
+     */
+    assumeGroupId: string;
     /**
      * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
      */
@@ -16866,6 +16771,7 @@ export interface GetClusterClusterInfoDriverNodeAwsAttributes {
 
 export interface GetClusterClusterInfoDriverNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface GetClusterClusterInfoExecutor {
@@ -17114,6 +17020,7 @@ export interface GetClusterClusterInfoSpecDockerImageBasicAuth {
 
 export interface GetClusterClusterInfoSpecDriverNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface GetClusterClusterInfoSpecGcpAttributes {
@@ -17223,6 +17130,7 @@ export interface GetClusterClusterInfoSpecProviderConfig {
 
 export interface GetClusterClusterInfoSpecWorkerNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface GetClusterClusterInfoSpecWorkloadType {
@@ -17242,6 +17150,7 @@ export interface GetClusterClusterInfoTerminationReason {
 
 export interface GetClusterClusterInfoWorkerNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface GetClusterClusterInfoWorkloadType {
@@ -19866,16 +19775,6 @@ export interface GetFeatureEngineeringFeatureFunction {
      * (CustomUdf) - Applies a registered Unity Catalog function row-wise to source columns
      */
     customUdf?: outputs.GetFeatureEngineeringFeatureFunctionCustomUdf;
-    /**
-     * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-     * Extra parameters for parameterized functions
-     */
-    extraParameters?: outputs.GetFeatureEngineeringFeatureFunctionExtraParameter[];
-    /**
-     * (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-     */
-    functionType?: string;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunction {
@@ -20088,10 +19987,6 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionSum {
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     /**
-     * (ContinuousWindow, deprecated)
-     */
-    continuous?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
-    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
@@ -20104,25 +19999,26 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
      */
     sliding?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
     /**
+     * (string) - Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+     * the historical inputs read by a window. For example, a 365-day window with
+     * start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+     * for 365 days of data; a lifetime window produces no output before start_time. If unset,
+     * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+     * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+     * eligible source data exists
+     */
+    startTime?: string;
+    /**
      * (TumblingWindow)
      */
     tumbling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
 }
 
-export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
-    /**
-     * (string) - The offset of the continuous window (must be non-positive)
-     */
-    offset?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
     /**
-     * (string) - Delay is not currently supported for Sawtooth windows
+     * (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
      */
     delay?: string;
     /**
@@ -20133,7 +20029,9 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth {
     /**
-     * (string) - Delay is not currently supported for Sawtooth windows
+     * (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
      */
     delay?: string;
     /**
@@ -20143,6 +20041,18 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
+    /**
+     * (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
+     */
+    delay?: string;
+    /**
+     * (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+     * a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+     * midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+     */
+    offset?: string;
     /**
      * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
      */
@@ -20154,6 +20064,18 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
 }
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
+    /**
+     * (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
+     */
+    delay?: string;
+    /**
+     * (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+     * a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+     * midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+     */
+    offset?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -20204,17 +20126,6 @@ export interface GetFeatureEngineeringFeatureFunctionCustomUdfInputBinding {
     parameter: string;
 }
 
-export interface GetFeatureEngineeringFeatureFunctionExtraParameter {
-    /**
-     * (string) - The name of the parameter
-     */
-    key: string;
-    /**
-     * (string) - The value of the parameter
-     */
-    value: string;
-}
-
 export interface GetFeatureEngineeringFeatureLineageContext {
     /**
      * (JobContext) - Job context information including job ID and run ID
@@ -20254,6 +20165,11 @@ export interface GetFeatureEngineeringFeatureSource {
      */
     kafkaSource?: outputs.GetFeatureEngineeringFeatureSourceKafkaSource;
     /**
+     * (SourceLateness) - Completeness timing for this Feature's use of the source. This configuration is part of the
+     * Feature definition; it does not modify the underlying table or stream
+     */
+    lateness?: outputs.GetFeatureEngineeringFeatureSourceLateness;
+    /**
      * (RequestSource) - A request-time data source
      */
     requestSource?: outputs.GetFeatureEngineeringFeatureSourceRequestSource;
@@ -20271,11 +20187,6 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      */
     dataframeSchema?: string;
     /**
-     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
      * (string) - The filter condition applied to the source data before aggregation
      */
     filterCondition?: string;
@@ -20286,11 +20197,6 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      */
     fullName: string;
     /**
-     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     */
-    timeseriesColumn?: string;
-    /**
      * (string) - The pipeline runs these SQL statements immediately after conversion into
      * the schema specified on the Stream object
      */
@@ -20298,11 +20204,6 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
 }
 
 export interface GetFeatureEngineeringFeatureSourceKafkaSource {
-    /**
-     * (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity column identifiers of the Kafka source
-     */
-    entityColumnIdentifiers?: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
     /**
      * (string) - The filter condition applied to the source data before aggregation
      */
@@ -20316,27 +20217,16 @@ export interface GetFeatureEngineeringFeatureSourceKafkaSource {
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
-    /**
-     * (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column identifier of the Kafka source
-     */
-    timeseriesColumnIdentifier?: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 }
 
-export interface GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
+export interface GetFeatureEngineeringFeatureSourceLateness {
     /**
-     * (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+     * (string) - Non-negative time to wait after a window ends before treating its source data as complete.
+     * Training shifts the eligible evaluation time backwards by this duration so it does not join
+     * data that would still have been settling online. Materialization waits for the duration to
+     * elapse before publishing the window. If unset, source data is considered settled immediately
      */
-    variantExprPath: string;
-}
-
-export interface GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
-    /**
-     * (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-     */
-    variantExprPath: string;
+    settlingDelay?: string;
 }
 
 export interface GetFeatureEngineeringFeatureSourceRequestSource {
@@ -20393,80 +20283,6 @@ export interface GetFeatureEngineeringFeatureSourceStreamSource {
     transformationSql?: string;
 }
 
-export interface GetFeatureEngineeringFeatureTimeWindow {
-    /**
-     * (ContinuousWindow, deprecated)
-     */
-    continuous?: outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
-    /**
-     * (RollingWindow)
-     */
-    rolling?: outputs.GetFeatureEngineeringFeatureTimeWindowRolling;
-    /**
-     * (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
-     */
-    sawtooth?: outputs.GetFeatureEngineeringFeatureTimeWindowSawtooth;
-    /**
-     * (SlidingWindow)
-     */
-    sliding?: outputs.GetFeatureEngineeringFeatureTimeWindowSliding;
-    /**
-     * (TumblingWindow)
-     */
-    tumbling?: outputs.GetFeatureEngineeringFeatureTimeWindowTumbling;
-}
-
-export interface GetFeatureEngineeringFeatureTimeWindowContinuous {
-    /**
-     * (string) - The offset of the continuous window (must be non-positive)
-     */
-    offset?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
-export interface GetFeatureEngineeringFeatureTimeWindowRolling {
-    /**
-     * (string) - Delay is not currently supported for Sawtooth windows
-     */
-    delay?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeatureTimeWindowSawtooth {
-    /**
-     * (string) - Delay is not currently supported for Sawtooth windows
-     */
-    delay?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeatureTimeWindowSliding {
-    /**
-     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
-    slideDuration: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeatureTimeWindowTumbling {
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
 export interface GetFeatureEngineeringFeatureTimeseriesColumn {
     /**
      * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
@@ -20501,10 +20317,6 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     entities: outputs.GetFeatureEngineeringFeaturesFeatureEntity[];
     /**
-     * (string) - The filter condition applied to the source data before aggregation
-     */
-    filterCondition: string;
-    /**
      * (string) - Three-part full name of the Stream (catalog.schema.stream)
      */
     fullName: string;
@@ -20512,11 +20324,6 @@ export interface GetFeatureEngineeringFeaturesFeature {
      * (Function) - The function by which the feature is computed
      */
     function: outputs.GetFeatureEngineeringFeaturesFeatureFunction;
-    /**
-     * (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
-     * The input columns from which the feature is computed
-     */
-    inputs: string[];
     /**
      * (LineageContext) - Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -20547,12 +20354,7 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     source: outputs.GetFeatureEngineeringFeaturesFeatureSource;
     /**
-     * (TimeWindow) - The time window over which the aggregation is computed
-     */
-    timeWindow: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindow;
-    /**
-     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
      */
     timeseriesColumn: outputs.GetFeatureEngineeringFeaturesFeatureTimeseriesColumn;
 }
@@ -20582,16 +20384,6 @@ export interface GetFeatureEngineeringFeaturesFeatureFunction {
      * (CustomUdf) - Applies a registered Unity Catalog function row-wise to source columns
      */
     customUdf?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionCustomUdf;
-    /**
-     * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-     * Extra parameters for parameterized functions
-     */
-    extraParameters?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter[];
-    /**
-     * (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
-     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
-     */
-    functionType?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction {
@@ -20804,10 +20596,6 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow {
     /**
-     * (ContinuousWindow, deprecated)
-     */
-    continuous?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous;
-    /**
      * (RollingWindow)
      */
     rolling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling;
@@ -20820,25 +20608,26 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      */
     sliding?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding;
     /**
+     * (string) - Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+     * the historical inputs read by a window. For example, a 365-day window with
+     * start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+     * for 365 days of data; a lifetime window produces no output before start_time. If unset,
+     * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+     * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+     * eligible source data exists
+     */
+    startTime?: string;
+    /**
      * (TumblingWindow)
      */
     tumbling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumbling;
 }
 
-export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous {
-    /**
-     * (string) - The offset of the continuous window (must be non-positive)
-     */
-    offset?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling {
     /**
-     * (string) - Delay is not currently supported for Sawtooth windows
+     * (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
      */
     delay?: string;
     /**
@@ -20849,7 +20638,9 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSawtooth {
     /**
-     * (string) - Delay is not currently supported for Sawtooth windows
+     * (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
      */
     delay?: string;
     /**
@@ -20859,6 +20650,18 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding {
+    /**
+     * (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
+     */
+    delay?: string;
+    /**
+     * (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+     * a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+     * midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+     */
+    offset?: string;
     /**
      * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
      */
@@ -20870,6 +20673,18 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumbling {
+    /**
+     * (string) - Non-negative analytic lag that evaluates the window this far in the past. Use this for timing
+     * variations unrelated to source lateness, such as a 30-day count as of one week ago. If unset,
+     * the analytic lag is zero. It composes with source.lateness when both are set
+     */
+    delay?: string;
+    /**
+     * (string) - Non-negative phase shift from the default midnight UTC alignment. For example, offset=22h on
+     * a 24h window produces boundaries at 22:00 UTC (17:00 New York in standard time) instead of
+     * midnight UTC. If unset, the offset is zero. Must be shorter than window_duration
+     */
+    offset?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -20920,17 +20735,6 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionCustomUdfInputBindi
     parameter: string;
 }
 
-export interface GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter {
-    /**
-     * (string) - The name of the parameter
-     */
-    key: string;
-    /**
-     * (string) - The value of the parameter
-     */
-    value: string;
-}
-
 export interface GetFeatureEngineeringFeaturesFeatureLineageContext {
     /**
      * (JobContext) - Job context information including job ID and run ID
@@ -20970,6 +20774,11 @@ export interface GetFeatureEngineeringFeaturesFeatureSource {
      */
     kafkaSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
     /**
+     * (SourceLateness) - Completeness timing for this Feature's use of the source. This configuration is part of the
+     * Feature definition; it does not modify the underlying table or stream
+     */
+    lateness?: outputs.GetFeatureEngineeringFeaturesFeatureSourceLateness;
+    /**
      * (RequestSource) - A request-time data source
      */
     requestSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSource;
@@ -20987,11 +20796,6 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      */
     dataframeSchema?: string;
     /**
-     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
      * (string) - The filter condition applied to the source data before aggregation
      */
     filterCondition?: string;
@@ -21000,11 +20804,6 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      */
     fullName: string;
     /**
-     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     */
-    timeseriesColumn?: string;
-    /**
      * (string) - The pipeline runs these SQL statements immediately after conversion into
      * the schema specified on the Stream object
      */
@@ -21012,11 +20811,6 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
-    /**
-     * (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity column identifiers of the Kafka source
-     */
-    entityColumnIdentifiers?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier[];
     /**
      * (string) - The filter condition applied to the source data before aggregation
      */
@@ -21030,27 +20824,16 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
-    /**
-     * (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column identifier of the Kafka source
-     */
-    timeseriesColumnIdentifier?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 }
 
-export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier {
+export interface GetFeatureEngineeringFeaturesFeatureSourceLateness {
     /**
-     * (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
+     * (string) - Non-negative time to wait after a window ends before treating its source data as complete.
+     * Training shifts the eligible evaluation time backwards by this duration so it does not join
+     * data that would still have been settling online. Materialization waits for the duration to
+     * elapse before publishing the window. If unset, source data is considered settled immediately
      */
-    variantExprPath: string;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
-    /**
-     * (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
-     */
-    variantExprPath: string;
+    settlingDelay?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSource {
@@ -21103,80 +20886,6 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
      * the schema specified on the Stream object
      */
     transformationSql?: string;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
-    /**
-     * (ContinuousWindow, deprecated)
-     */
-    continuous?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous;
-    /**
-     * (RollingWindow)
-     */
-    rolling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowRolling;
-    /**
-     * (SawtoothWindow) - A sawtooth window served via the hybrid batch + streaming path
-     */
-    sawtooth?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowSawtooth;
-    /**
-     * (SlidingWindow)
-     */
-    sliding?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowSliding;
-    /**
-     * (TumblingWindow)
-     */
-    tumbling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous {
-    /**
-     * (string) - The offset of the continuous window (must be non-positive)
-     */
-    offset?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureTimeWindowRolling {
-    /**
-     * (string) - Delay is not currently supported for Sawtooth windows
-     */
-    delay?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureTimeWindowSawtooth {
-    /**
-     * (string) - Delay is not currently supported for Sawtooth windows
-     */
-    delay?: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureTimeWindowSliding {
-    /**
-     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
-     */
-    slideDuration: string;
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration?: string;
-}
-
-export interface GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling {
-    /**
-     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
-     */
-    windowDuration: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeseriesColumn {
@@ -21300,11 +21009,6 @@ export interface GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource 
      */
     dataframeSchema?: string;
     /**
-     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
      * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
     filterCondition?: string;
@@ -21312,11 +21016,6 @@ export interface GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource 
      * (string) - The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
-    /**
-     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     */
-    timeseriesColumn?: string;
     /**
      * (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -21380,11 +21079,6 @@ export interface GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDe
      */
     dataframeSchema?: string;
     /**
-     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
      * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
     filterCondition?: string;
@@ -21392,11 +21086,6 @@ export interface GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDe
      * (string) - The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
-    /**
-     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     */
-    timeseriesColumn?: string;
     /**
      * (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -21644,11 +21333,6 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDelta
      */
     dataframeSchema?: string;
     /**
-     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
      * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
     filterCondition?: string;
@@ -21656,11 +21340,6 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDelta
      * (string) - The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
-    /**
-     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     */
-    timeseriesColumn?: string;
     /**
      * (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -21724,11 +21403,6 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBack
      */
     dataframeSchema?: string;
     /**
-     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
-     * The entity columns of the Delta table
-     */
-    entityColumns?: string[];
-    /**
      * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
     filterCondition?: string;
@@ -21736,11 +21410,6 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBack
      * (string) - The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
-    /**
-     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
-     */
-    timeseriesColumn?: string;
     /**
      * (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -21916,11 +21585,6 @@ export interface GetFeatureEngineeringMaterializedFeatureTableTrigger {
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
-    /**
-     * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
-     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
-     */
-    cronSchedule: string;
     /**
      * (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
      */
@@ -24688,6 +24352,48 @@ export interface GetPolicyInfoColumnMaskUsing {
      * (string) - A constant literal
      */
     constant?: string;
+    /**
+     * (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     */
+    functionArgExpression?: outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpression;
+}
+
+export interface GetPolicyInfoColumnMaskUsingFunctionArgExpression {
+    /**
+     * (TagIntrospectionExpression) - An expression that introspects tags at query time
+     */
+    tagIntrospection?: outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection;
+}
+
+export interface GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection {
+    /**
+     * (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+     */
+    columnTagValue?: outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue;
+    /**
+     * (TagValueExtraction) - Extracts the value of a securable-level tag
+     */
+    tagValue?: outputs.GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue;
+}
+
+export interface GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+    /**
+     * (string) - The alias from MATCH COLUMNS that identifies the column
+     */
+    columnAlias: string;
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
+}
+
+export interface GetPolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
 }
 
 export interface GetPolicyInfoGrant {
@@ -24742,6 +24448,48 @@ export interface GetPolicyInfoRowFilterUsing {
      * (string) - A constant literal
      */
     constant?: string;
+    /**
+     * (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     */
+    functionArgExpression?: outputs.GetPolicyInfoRowFilterUsingFunctionArgExpression;
+}
+
+export interface GetPolicyInfoRowFilterUsingFunctionArgExpression {
+    /**
+     * (TagIntrospectionExpression) - An expression that introspects tags at query time
+     */
+    tagIntrospection?: outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection;
+}
+
+export interface GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection {
+    /**
+     * (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+     */
+    columnTagValue?: outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue;
+    /**
+     * (TagValueExtraction) - Extracts the value of a securable-level tag
+     */
+    tagValue?: outputs.GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue;
+}
+
+export interface GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+    /**
+     * (string) - The alias from MATCH COLUMNS that identifies the column
+     */
+    columnAlias: string;
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
+}
+
+export interface GetPolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
 }
 
 export interface GetPolicyInfosPolicy {
@@ -24769,7 +24517,7 @@ export interface GetPolicyInfosPolicy {
     exceptPrincipals: string[];
     /**
      * (string) - Type of securables that the policy should take effect on.
-     * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: string;
     /**
@@ -24864,6 +24612,48 @@ export interface GetPolicyInfosPolicyColumnMaskUsing {
      * (string) - A constant literal
      */
     constant?: string;
+    /**
+     * (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     */
+    functionArgExpression?: outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression;
+}
+
+export interface GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpression {
+    /**
+     * (TagIntrospectionExpression) - An expression that introspects tags at query time
+     */
+    tagIntrospection?: outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection;
+}
+
+export interface GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospection {
+    /**
+     * (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+     */
+    columnTagValue?: outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue;
+    /**
+     * (TagValueExtraction) - Extracts the value of a securable-level tag
+     */
+    tagValue?: outputs.GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue;
+}
+
+export interface GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+    /**
+     * (string) - The alias from MATCH COLUMNS that identifies the column
+     */
+    columnAlias: string;
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
+}
+
+export interface GetPolicyInfosPolicyColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
 }
 
 export interface GetPolicyInfosPolicyGrant {
@@ -24918,6 +24708,48 @@ export interface GetPolicyInfosPolicyRowFilterUsing {
      * (string) - A constant literal
      */
     constant?: string;
+    /**
+     * (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     */
+    functionArgExpression?: outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression;
+}
+
+export interface GetPolicyInfosPolicyRowFilterUsingFunctionArgExpression {
+    /**
+     * (TagIntrospectionExpression) - An expression that introspects tags at query time
+     */
+    tagIntrospection?: outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection;
+}
+
+export interface GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospection {
+    /**
+     * (ColumnTagValueExtraction) - Extracts the value of a column-level tag
+     */
+    columnTagValue?: outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue;
+    /**
+     * (TagValueExtraction) - Extracts the value of a securable-level tag
+     */
+    tagValue?: outputs.GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue;
+}
+
+export interface GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+    /**
+     * (string) - The alias from MATCH COLUMNS that identifies the column
+     */
+    columnAlias: string;
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
+}
+
+export interface GetPolicyInfosPolicyRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+    /**
+     * (string) - 1024 matches the maxLength on FunctionArgument.constant above
+     */
+    tagKey: string;
 }
 
 export interface GetPolicyInfosProviderConfig {
@@ -24962,6 +24794,12 @@ export interface GetPostgresBranchSpec {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime?: string;
+    /**
+     * (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     */
+    sourceSnapshot?: string;
     /**
      * (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
      * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
@@ -25021,6 +24859,12 @@ export interface GetPostgresBranchStatus {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime: string;
+    /**
+     * (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     */
+    sourceSnapshot: string;
     /**
      * (string) - A timestamp indicating when the `currentState` began
      */
@@ -25104,6 +24948,12 @@ export interface GetPostgresBranchesBranchSpec {
      */
     sourceBranchTime?: string;
     /**
+     * (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     */
+    sourceSnapshot?: string;
+    /**
      * (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
      * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      */
@@ -25162,6 +25012,12 @@ export interface GetPostgresBranchesBranchStatus {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime: string;
+    /**
+     * (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     */
+    sourceSnapshot: string;
     /**
      * (string) - A timestamp indicating when the `currentState` began
      */
@@ -26681,6 +26537,65 @@ export interface GetPostgresRolesRoleStatusAttributes {
     createrole?: boolean;
 }
 
+export interface GetPostgresSnapshotScheduleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresSnapshotScheduleSchedule {
+    /**
+     * (DailySchedule) - Take a snapshot once per day
+     */
+    dailySchedule?: outputs.GetPostgresSnapshotScheduleScheduleDailySchedule;
+    /**
+     * (MonthlySchedule) - Take a snapshot once per month
+     */
+    monthlySchedule?: outputs.GetPostgresSnapshotScheduleScheduleMonthlySchedule;
+    /**
+     * (string) - How long snapshots from this cadence are kept before automatic deletion.
+     * Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+     * so changing it affects only later snapshots
+     */
+    retention: string;
+    /**
+     * (WeeklySchedule) - Take a snapshot once per week
+     */
+    weeklySchedule?: outputs.GetPostgresSnapshotScheduleScheduleWeeklySchedule;
+}
+
+export interface GetPostgresSnapshotScheduleScheduleDailySchedule {
+    /**
+     * (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+     */
+    hour?: number;
+}
+
+export interface GetPostgresSnapshotScheduleScheduleMonthlySchedule {
+    /**
+     * (integer) - The day of the month on which to take the snapshot, in [1, 31]. In shorter
+     * months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+     * or 29, and on Apr 30), so every month gets exactly one snapshot
+     */
+    day: number;
+    /**
+     * (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+     */
+    hour?: number;
+}
+
+export interface GetPostgresSnapshotScheduleScheduleWeeklySchedule {
+    /**
+     * (string) - The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek: string;
+    /**
+     * (integer) - The hour of the day, in UTC, at which to take the snapshot, in [0, 23]
+     */
+    hour?: number;
+}
+
 export interface GetPostgresSyncedTableProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -27343,7 +27258,7 @@ export interface GetRfaAccessRequestDestinationsDestinationSourceSecurable {
     providerShare?: string;
     /**
      * (string) - Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -27367,7 +27282,7 @@ export interface GetRfaAccessRequestDestinationsSecurable {
     providerShare?: string;
     /**
      * (string) - Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -29117,6 +29032,38 @@ export interface GetWorkspaceIamDirectGroupMembersV2ProviderConfig {
     workspaceId: string;
 }
 
+export interface GetWorkspaceIamExternalGroupV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamExternalServicePrincipalV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceIamExternalUserV2FullName {
+    /**
+     * (string) - The family (last) name of the user, from the customer's IdP
+     */
+    familyName: string;
+    /**
+     * (string) - The given (first) name of the user, from the customer's IdP
+     */
+    givenName: string;
+}
+
+export interface GetWorkspaceIamExternalUserV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetWorkspaceIamGroupV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -29848,6 +29795,7 @@ export interface IpAccessListProviderConfig {
 }
 
 export interface JobContinuous {
+    maintenanceWindow?: outputs.JobContinuousMaintenanceWindow;
     /**
      * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
@@ -29858,6 +29806,15 @@ export interface JobContinuous {
      * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
      */
     taskRetryMode?: string;
+}
+
+export interface JobContinuousMaintenanceWindow {
+    dayOfWeek: string;
+    startHour: number;
+    /**
+     * A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+     */
+    timezoneId: string;
 }
 
 export interface JobDbtTask {
@@ -30162,6 +30119,7 @@ export interface JobJobClusterNewClusterDockerImageBasicAuth {
 
 export interface JobJobClusterNewClusterDriverNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface JobJobClusterNewClusterGcpAttributes {
@@ -30274,6 +30232,7 @@ export interface JobJobClusterNewClusterProviderConfig {
 
 export interface JobJobClusterNewClusterWorkerNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface JobJobClusterNewClusterWorkloadType {
@@ -30457,6 +30416,7 @@ export interface JobNewClusterDockerImageBasicAuth {
 
 export interface JobNewClusterDriverNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface JobNewClusterGcpAttributes {
@@ -30569,6 +30529,7 @@ export interface JobNewClusterProviderConfig {
 
 export interface JobNewClusterWorkerNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -30903,6 +30864,7 @@ export interface JobTaskAlertTask {
      * (String) identifier of the Databricks Alert (databricks_alert).
      */
     alertId?: string;
+    parameters?: {[key: string]: string};
     /**
      * The list of subscribers to send the snapshot of the dashboard to.
      */
@@ -31253,6 +31215,7 @@ export interface JobTaskForEachTaskTaskAlertTask {
      * (String) identifier of the Databricks Alert (databricks_alert).
      */
     alertId?: string;
+    parameters?: {[key: string]: string};
     /**
      * The list of subscribers to send the snapshot of the dashboard to.
      */
@@ -31665,6 +31628,7 @@ export interface JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth {
 
 export interface JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
@@ -31777,6 +31741,7 @@ export interface JobTaskForEachTaskTaskNewClusterProviderConfig {
 
 export interface JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
@@ -32427,6 +32392,7 @@ export interface JobTaskNewClusterDockerImageBasicAuth {
 
 export interface JobTaskNewClusterDriverNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface JobTaskNewClusterGcpAttributes {
@@ -32539,6 +32505,7 @@ export interface JobTaskNewClusterProviderConfig {
 
 export interface JobTaskNewClusterWorkerNodeTypeFlexibility {
     alternateNodeTypeIds?: string[];
+    awsContextId?: string;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -33000,12 +32967,22 @@ export interface JobTrigger {
 }
 
 export interface JobTriggerContinuous {
+    maintenanceWindow?: outputs.JobTriggerContinuousMaintenanceWindow;
     /**
      * Controls task level retry behaviour. Allowed values are:
      * * `NEVER` (default): The failed task will not be retried.
      * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
      */
     taskRetryMode?: string;
+}
+
+export interface JobTriggerContinuousMaintenanceWindow {
+    dayOfWeek: string;
+    startHour: number;
+    /**
+     * A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+     */
+    timezoneId: string;
 }
 
 export interface JobTriggerFileArrival {
@@ -34508,11 +34485,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -34579,11 +34556,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.130.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -35199,7 +35176,7 @@ export interface PipelineIngestionDefinitionObjectSchema {
     destinationSchema: string;
     fanoutOptions?: outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptions;
     sourceCatalog?: string;
-    sourceSchema: string;
+    sourceSchema?: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration;
 }
 
@@ -35214,6 +35191,7 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     marketoOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMarketoOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions;
+    rabbitmqOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions;
     redditAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions;
     sharepointOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions;
     smartsheetOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions;
@@ -35373,6 +35351,10 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookO
     subjectFilters?: string[];
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsRabbitmqOptions {
+    queue: string;
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptions {
     customReportOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsRedditAdsOptionsCustomReportOptions;
     lookbackWindowDays?: number;
@@ -35509,7 +35491,7 @@ export interface PipelineIngestionDefinitionObjectTable {
     destinationTable?: string;
     sourceCatalog?: string;
     sourceSchema?: string;
-    sourceTable: string;
+    sourceTable?: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionObjectTableTableConfiguration;
 }
 
@@ -35524,6 +35506,7 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
     marketoOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMarketoOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions;
+    rabbitmqOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions;
     redditAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions;
     sharepointOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions;
     smartsheetOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions;
@@ -35681,6 +35664,10 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOp
     senderFilters?: string[];
     startDate?: string;
     subjectFilters?: string[];
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsRabbitmqOptions {
+    queue: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsRedditAdsOptions {
@@ -35984,6 +35971,42 @@ export interface PolicyInfoColumnMaskUsing {
      * A constant literal
      */
     constant?: string;
+    /**
+     * An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     */
+    functionArgExpression?: outputs.PolicyInfoColumnMaskUsingFunctionArgExpression;
+}
+
+export interface PolicyInfoColumnMaskUsingFunctionArgExpression {
+    /**
+     * An expression that introspects tags at query time
+     */
+    tagIntrospection?: outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection;
+}
+
+export interface PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospection {
+    /**
+     * Extracts the value of a column-level tag
+     */
+    columnTagValue?: outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue;
+    /**
+     * Extracts the value of a securable-level tag
+     */
+    tagValue?: outputs.PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue;
+}
+
+export interface PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+    /**
+     * The alias from MATCH COLUMNS that identifies the column
+     */
+    columnAlias: string;
+    tagKey: string;
+}
+
+export interface PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValue {
+    tagKey: string;
 }
 
 export interface PolicyInfoGrant {
@@ -36022,6 +36045,42 @@ export interface PolicyInfoRowFilterUsing {
      * A constant literal
      */
     constant?: string;
+    /**
+     * An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     */
+    functionArgExpression?: outputs.PolicyInfoRowFilterUsingFunctionArgExpression;
+}
+
+export interface PolicyInfoRowFilterUsingFunctionArgExpression {
+    /**
+     * An expression that introspects tags at query time
+     */
+    tagIntrospection?: outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection;
+}
+
+export interface PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospection {
+    /**
+     * Extracts the value of a column-level tag
+     */
+    columnTagValue?: outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue;
+    /**
+     * Extracts the value of a securable-level tag
+     */
+    tagValue?: outputs.PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue;
+}
+
+export interface PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionColumnTagValue {
+    /**
+     * The alias from MATCH COLUMNS that identifies the column
+     */
+    columnAlias: string;
+    tagKey: string;
+}
+
+export interface PolicyInfoRowFilterUsingFunctionArgExpressionTagIntrospectionTagValue {
+    tagKey: string;
 }
 
 export interface PostgresBranchProviderConfig {
@@ -36059,6 +36118,12 @@ export interface PostgresBranchSpec {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime?: string;
+    /**
+     * (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     */
+    sourceSnapshot?: string;
     /**
      * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
      * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
@@ -36118,6 +36183,12 @@ export interface PostgresBranchStatus {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime: string;
+    /**
+     * (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     */
+    sourceSnapshot: string;
     /**
      * (string) - A timestamp indicating when the `currentState` began
      */
@@ -36661,6 +36732,56 @@ export interface PostgresRoleStatusAttributes {
     bypassrls?: boolean;
     createdb?: boolean;
     createrole?: boolean;
+}
+
+export interface PostgresSnapshotScheduleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface PostgresSnapshotScheduleSchedule {
+    /**
+     * Take a snapshot once per day
+     */
+    dailySchedule?: outputs.PostgresSnapshotScheduleScheduleDailySchedule;
+    /**
+     * Take a snapshot once per month
+     */
+    monthlySchedule?: outputs.PostgresSnapshotScheduleScheduleMonthlySchedule;
+    /**
+     * How long snapshots from this cadence are kept before automatic deletion.
+     * Must be at least 1 hour. Applied when a snapshot is taken; not retroactive,
+     * so changing it affects only later snapshots
+     */
+    retention: string;
+    /**
+     * Take a snapshot once per week
+     */
+    weeklySchedule?: outputs.PostgresSnapshotScheduleScheduleWeeklySchedule;
+}
+
+export interface PostgresSnapshotScheduleScheduleDailySchedule {
+    hour?: number;
+}
+
+export interface PostgresSnapshotScheduleScheduleMonthlySchedule {
+    /**
+     * The day of the month on which to take the snapshot, in [1, 31]. In shorter
+     * months the snapshot is taken on the last day instead (day 31 runs on Feb 28
+     * or 29, and on Apr 30), so every month gets exactly one snapshot
+     */
+    day: number;
+    hour?: number;
+}
+
+export interface PostgresSnapshotScheduleScheduleWeeklySchedule {
+    /**
+     * The day of the week on which to take the snapshot. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek: string;
+    hour?: number;
 }
 
 export interface PostgresSyncedTableProviderConfig {
@@ -37361,7 +37482,7 @@ export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     providerShare?: string;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }
@@ -37386,7 +37507,7 @@ export interface RfaAccessRequestDestinationsSecurable {
     providerShare?: string;
     /**
      * Required. The type of securable (catalog/schema/table).
-     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
 }

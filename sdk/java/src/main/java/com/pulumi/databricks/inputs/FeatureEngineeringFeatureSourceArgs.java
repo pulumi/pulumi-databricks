@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceKafkaSourceArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceLatenessArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceRequestSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceStreamSourceArgs;
 import java.util.Objects;
@@ -49,6 +50,23 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
     }
 
     /**
+     * Completeness timing for this Feature&#39;s use of the source. This configuration is part of the
+     * Feature definition; it does not modify the underlying table or stream
+     * 
+     */
+    @Import(name="lateness")
+    private @Nullable Output<FeatureEngineeringFeatureSourceLatenessArgs> lateness;
+
+    /**
+     * @return Completeness timing for this Feature&#39;s use of the source. This configuration is part of the
+     * Feature definition; it does not modify the underlying table or stream
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureSourceLatenessArgs>> lateness() {
+        return Optional.ofNullable(this.lateness);
+    }
+
+    /**
      * A request-time data source
      * 
      */
@@ -83,6 +101,7 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
     private FeatureEngineeringFeatureSourceArgs(FeatureEngineeringFeatureSourceArgs $) {
         this.deltaTableSource = $.deltaTableSource;
         this.kafkaSource = $.kafkaSource;
+        this.lateness = $.lateness;
         this.requestSource = $.requestSource;
         this.streamSource = $.streamSource;
     }
@@ -145,6 +164,29 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
          */
         public Builder kafkaSource(FeatureEngineeringFeatureSourceKafkaSourceArgs kafkaSource) {
             return kafkaSource(Output.of(kafkaSource));
+        }
+
+        /**
+         * @param lateness Completeness timing for this Feature&#39;s use of the source. This configuration is part of the
+         * Feature definition; it does not modify the underlying table or stream
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lateness(@Nullable Output<FeatureEngineeringFeatureSourceLatenessArgs> lateness) {
+            $.lateness = lateness;
+            return this;
+        }
+
+        /**
+         * @param lateness Completeness timing for this Feature&#39;s use of the source. This configuration is part of the
+         * Feature definition; it does not modify the underlying table or stream
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lateness(FeatureEngineeringFeatureSourceLatenessArgs lateness) {
+            return lateness(Output.of(lateness));
         }
 
         /**

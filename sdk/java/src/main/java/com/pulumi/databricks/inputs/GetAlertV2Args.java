@@ -18,14 +18,14 @@ public final class GetAlertV2Args extends com.pulumi.resources.InvokeArgs {
     public static final GetAlertV2Args Empty = new GetAlertV2Args();
 
     /**
-     * UUID identifying the alert
+     * The canonical identifier of the alert to retrieve information about
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return UUID identifying the alert
+     * @return The canonical identifier of the alert to retrieve information about
      * 
      */
     public Output<String> id() {
@@ -73,7 +73,7 @@ public final class GetAlertV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id UUID identifying the alert
+         * @param id The canonical identifier of the alert to retrieve information about
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetAlertV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id UUID identifying the alert
+         * @param id The canonical identifier of the alert to retrieve information about
          * 
          * @return builder
          * 

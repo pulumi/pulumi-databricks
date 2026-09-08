@@ -31,10 +31,18 @@ public final class ClusterDriverNodeTypeFlexibilityArgs extends com.pulumi.resou
         return Optional.ofNullable(this.alternateNodeTypeIds);
     }
 
+    @Import(name="awsContextId")
+    private @Nullable Output<String> awsContextId;
+
+    public Optional<Output<String>> awsContextId() {
+        return Optional.ofNullable(this.awsContextId);
+    }
+
     private ClusterDriverNodeTypeFlexibilityArgs() {}
 
     private ClusterDriverNodeTypeFlexibilityArgs(ClusterDriverNodeTypeFlexibilityArgs $) {
         this.alternateNodeTypeIds = $.alternateNodeTypeIds;
+        this.awsContextId = $.awsContextId;
     }
 
     public static Builder builder() {
@@ -84,6 +92,15 @@ public final class ClusterDriverNodeTypeFlexibilityArgs extends com.pulumi.resou
          */
         public Builder alternateNodeTypeIds(String... alternateNodeTypeIds) {
             return alternateNodeTypeIds(List.of(alternateNodeTypeIds));
+        }
+
+        public Builder awsContextId(@Nullable Output<String> awsContextId) {
+            $.awsContextId = awsContextId;
+            return this;
+        }
+
+        public Builder awsContextId(String awsContextId) {
+            return awsContextId(Output.of(awsContextId));
         }
 
         public ClusterDriverNodeTypeFlexibilityArgs build() {

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPolicyInfoRowFilterUsingFunctionArgExpression;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,13 @@ public final class GetPolicyInfoRowFilterUsing {
      * 
      */
     private @Nullable String constant;
+    /**
+     * @return (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     * 
+     */
+    private @Nullable GetPolicyInfoRowFilterUsingFunctionArgExpression functionArgExpression;
 
     private GetPolicyInfoRowFilterUsing() {}
     /**
@@ -37,6 +45,15 @@ public final class GetPolicyInfoRowFilterUsing {
     public Optional<String> constant() {
         return Optional.ofNullable(this.constant);
     }
+    /**
+     * @return (FunctionArgExpression) - An expression evaluated at query time. Wraps per-request expression variants
+     * (e.g., tag introspection) so new variants can be added without extending the
+     * FunctionArgument oneof
+     * 
+     */
+    public Optional<GetPolicyInfoRowFilterUsingFunctionArgExpression> functionArgExpression() {
+        return Optional.ofNullable(this.functionArgExpression);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +66,13 @@ public final class GetPolicyInfoRowFilterUsing {
     public static final class Builder {
         private @Nullable String alias;
         private @Nullable String constant;
+        private @Nullable GetPolicyInfoRowFilterUsingFunctionArgExpression functionArgExpression;
         public Builder() {}
         public Builder(GetPolicyInfoRowFilterUsing defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
     	      this.constant = defaults.constant;
+    	      this.functionArgExpression = defaults.functionArgExpression;
         }
 
         @CustomType.Setter
@@ -68,10 +87,17 @@ public final class GetPolicyInfoRowFilterUsing {
             this.constant = constant;
             return this;
         }
+        @CustomType.Setter
+        public Builder functionArgExpression(@Nullable GetPolicyInfoRowFilterUsingFunctionArgExpression functionArgExpression) {
+
+            this.functionArgExpression = functionArgExpression;
+            return this;
+        }
         public GetPolicyInfoRowFilterUsing build() {
             final var _resultValue = new GetPolicyInfoRowFilterUsing();
             _resultValue.alias = alias;
             _resultValue.constant = constant;
+            _resultValue.functionArgExpression = functionArgExpression;
             return _resultValue;
         }
     }

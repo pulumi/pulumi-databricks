@@ -29,8 +29,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp? StddevSamp;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionSum? Sum;
         /// <summary>
-        /// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-        /// The time window in which the feature is computed
+        /// The time window over which the aggregation is computed
         /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow? TimeWindow;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarPop? VarPop;

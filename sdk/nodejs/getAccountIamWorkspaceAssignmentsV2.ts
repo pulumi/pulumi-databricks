@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -26,7 +26,8 @@ export function getAccountIamWorkspaceAssignmentsV2(args: GetAccountIamWorkspace
  */
 export interface GetAccountIamWorkspaceAssignmentsV2Args {
     /**
-     * The maximum number of workspace assignments to return. The service may return fewer than this value
+     * The maximum number of workspace assignments to return. The service may return fewer than this value.
+     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: number;
     /**
@@ -47,7 +48,7 @@ export interface GetAccountIamWorkspaceAssignmentsV2Result {
     readonly workspaceId: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -66,7 +67,8 @@ export function getAccountIamWorkspaceAssignmentsV2Output(args: GetAccountIamWor
  */
 export interface GetAccountIamWorkspaceAssignmentsV2OutputArgs {
     /**
-     * The maximum number of workspace assignments to return. The service may return fewer than this value
+     * The maximum number of workspace assignments to return. The service may return fewer than this value.
+     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

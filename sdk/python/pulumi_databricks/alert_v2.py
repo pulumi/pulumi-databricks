@@ -42,8 +42,17 @@ class AlertV2Args:
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
-        :param pulumi.Input[Sequence[pulumi.Input['AlertV2ParameterArgs']]] parameters: Query parameters bound when executing the alert query, referenced in the
-               query text with `:name` syntax. Static values only
+        :param pulumi.Input[Sequence[pulumi.Input['AlertV2ParameterArgs']]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+               
+               Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+               Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+               value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+               is omitted, the value is interpreted as a string.
+               
+               If the type is given, parameters will be checked for type correctness according
+               to the given type. A value is correct if the provided string can be converted to
+               the requested type using the `cast` function. The exact semantics are described in
+               the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input['AlertV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
@@ -160,8 +169,17 @@ class AlertV2Args:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]]:
         """
-        Query parameters bound when executing the alert query, referenced in the
-        query text with `:name` syntax. Static values only
+        A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+
+        Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+        Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+        value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+        is omitted, the value is interpreted as a string.
+
+        If the type is given, parameters will be checked for type correctness according
+        to the given type. A value is correct if the provided string can be converted to
+        the requested type using the `cast` function. The exact semantics are described in
+        the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         """
         return pulumi.get(self, "parameters")
 
@@ -269,8 +287,17 @@ class _AlertV2State:
                permissions and defaults
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
-        :param pulumi.Input[Sequence[pulumi.Input['AlertV2ParameterArgs']]] parameters: Query parameters bound when executing the alert query, referenced in the
-               query text with `:name` syntax. Static values only
+        :param pulumi.Input[Sequence[pulumi.Input['AlertV2ParameterArgs']]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+               
+               Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+               Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+               value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+               is omitted, the value is interpreted as a string.
+               
+               If the type is given, parameters will be checked for type correctness according
+               to the given type. A value is correct if the provided string can be converted to
+               the requested type using the `cast` function. The exact semantics are described in
+               the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input['AlertV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
@@ -422,8 +449,17 @@ class _AlertV2State:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertV2ParameterArgs']]]]:
         """
-        Query parameters bound when executing the alert query, referenced in the
-        query text with `:name` syntax. Static values only
+        A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+
+        Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+        Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+        value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+        is omitted, the value is interpreted as a string.
+
+        If the type is given, parameters will be checked for type correctness according
+        to the given type. A value is correct if the provided string can be converted to
+        the requested type using the `cast` function. The exact semantics are described in
+        the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         """
         return pulumi.get(self, "parameters")
 
@@ -619,8 +655,17 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]] parameters: Query parameters bound when executing the alert query, referenced in the
-               query text with `:name` syntax. Static values only
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+               
+               Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+               Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+               value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+               is omitted, the value is interpreted as a string.
+               
+               If the type is given, parameters will be checked for type correctness according
+               to the given type. A value is correct if the provided string can be converted to
+               the requested type using the `cast` function. The exact semantics are described in
+               the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
@@ -801,8 +846,17 @@ class AlertV2(pulumi.CustomResource):
                permissions and defaults
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]] parameters: Query parameters bound when executing the alert query, referenced in the
-               query text with `:name` syntax. Static values only
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+               
+               Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+               Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+               value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+               is omitted, the value is interpreted as a string.
+               
+               If the type is given, parameters will be checked for type correctness according
+               to the given type. A value is correct if the provided string can be converted to
+               the requested type using the `cast` function. The exact semantics are described in
+               the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
@@ -909,8 +963,17 @@ class AlertV2(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.AlertV2Parameter']]]:
         """
-        Query parameters bound when executing the alert query, referenced in the
-        query text with `:name` syntax. Static values only
+        A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+
+        Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
+        Each parameter consists of a name, a value, and optionally a type. To represent a NULL
+        value, the `value` field may be omitted or set to `null` explicitly. If the `type` field
+        is omitted, the value is interpreted as a string.
+
+        If the type is given, parameters will be checked for type correctness according
+        to the given type. A value is correct if the provided string can be converted to
+        the requested type using the `cast` function. The exact semantics are described in
+        the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         """
         return pulumi.get(self, "parameters")
 

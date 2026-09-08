@@ -77,6 +77,13 @@ public final class PostgresBranchStatus {
      */
     private @Nullable String sourceBranchTime;
     /**
+     * @return (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     * 
+     */
+    private @Nullable String sourceSnapshot;
+    /**
      * @return (string) - A timestamp indicating when the `currentState` began
      * 
      */
@@ -171,6 +178,15 @@ public final class PostgresBranchStatus {
         return Optional.ofNullable(this.sourceBranchTime);
     }
     /**
+     * @return (string) - The snapshot this branch was restored from. Set only for branches created by
+     * restoring a snapshot; unset for all other branches.
+     * Format: projects/{project_id}/snapshots/{snapshot_id}
+     * 
+     */
+    public Optional<String> sourceSnapshot() {
+        return Optional.ofNullable(this.sourceSnapshot);
+    }
+    /**
      * @return (string) - A timestamp indicating when the `currentState` began
      * 
      */
@@ -199,6 +215,7 @@ public final class PostgresBranchStatus {
         private @Nullable String sourceBranch;
         private @Nullable String sourceBranchLsn;
         private @Nullable String sourceBranchTime;
+        private @Nullable String sourceSnapshot;
         private @Nullable String stateChangeTime;
         public Builder() {}
         public Builder(PostgresBranchStatus defaults) {
@@ -215,6 +232,7 @@ public final class PostgresBranchStatus {
     	      this.sourceBranch = defaults.sourceBranch;
     	      this.sourceBranchLsn = defaults.sourceBranchLsn;
     	      this.sourceBranchTime = defaults.sourceBranchTime;
+    	      this.sourceSnapshot = defaults.sourceSnapshot;
     	      this.stateChangeTime = defaults.stateChangeTime;
         }
 
@@ -291,6 +309,12 @@ public final class PostgresBranchStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceSnapshot(@Nullable String sourceSnapshot) {
+
+            this.sourceSnapshot = sourceSnapshot;
+            return this;
+        }
+        @CustomType.Setter
         public Builder stateChangeTime(@Nullable String stateChangeTime) {
 
             this.stateChangeTime = stateChangeTime;
@@ -310,6 +334,7 @@ public final class PostgresBranchStatus {
             _resultValue.sourceBranch = sourceBranch;
             _resultValue.sourceBranchLsn = sourceBranchLsn;
             _resultValue.sourceBranchTime = sourceBranchTime;
+            _resultValue.sourceSnapshot = sourceSnapshot;
             _resultValue.stateChangeTime = stateChangeTime;
             return _resultValue;
         }

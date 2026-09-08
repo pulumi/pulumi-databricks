@@ -42,7 +42,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Enable Data Classification for a set of schemas in a catalog
 //			_, err := databricks.NewDataClassificationCatalogConfig(ctx, "example", &databricks.DataClassificationCatalogConfigArgs{
-//				Name: "catalogs/prod_catalog/config",
+//				Parent: pulumi.String("catalogs/prod_catalog"),
 //				IncludedSchemas: &databricks.DataClassificationCatalogConfigIncludedSchemasArgs{
 //					Names: pulumi.StringArray{
 //						pulumi.String("sales"),
@@ -66,7 +66,7 @@ import (
 //			}
 //			// Enable Data Classification for the entire catalog (all current and future schemas)
 //			_, err = databricks.NewDataClassificationCatalogConfig(ctx, "all_schemas", &databricks.DataClassificationCatalogConfigArgs{
-//				Name: "catalogs/staging_catalog/config",
+//				Parent: pulumi.String("catalogs/staging_catalog"),
 //			})
 //			if err != nil {
 //				return err

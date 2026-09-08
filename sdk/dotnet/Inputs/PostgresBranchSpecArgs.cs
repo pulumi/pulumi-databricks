@@ -52,6 +52,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? SourceBranchTime { get; set; }
 
         /// <summary>
+        /// (string) - The snapshot this branch was restored from. Set only for branches created by
+        /// restoring a snapshot; unset for all other branches.
+        /// Format: projects/{project_id}/snapshots/{snapshot_id}
+        /// </summary>
+        [Input("sourceSnapshot")]
+        public Input<string>? SourceSnapshot { get; set; }
+
+        /// <summary>
         /// Relative time-to-live duration. When set, the branch will expire at CreationTime + ttl.
         /// Mutually exclusive with `ExpireTime` and `NoExpiry`. When updating, use `spec.expiration` in the update_mask
         /// </summary>
