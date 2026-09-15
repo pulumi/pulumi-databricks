@@ -37,7 +37,8 @@ type LookupFeatureEngineeringKafkaConfigResult struct {
 	AuthConfig GetFeatureEngineeringKafkaConfigAuthConfig `pulumi:"authConfig"`
 	// (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
 	// The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
-	// The schema for this source must match exactly that of the key and payload schemas specified for this Stream
+	// The schema for this source must match exactly that of the key and payload schemas specified for this Stream,
+	// except that it may omit any columns listed in excluded_columns
 	BackfillSource GetFeatureEngineeringKafkaConfigBackfillSource `pulumi:"backfillSource"`
 	// (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
 	BootstrapServers string `pulumi:"bootstrapServers"`
@@ -100,7 +101,8 @@ func (o LookupFeatureEngineeringKafkaConfigResultOutput) AuthConfig() GetFeature
 
 // (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
 // The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
-// The schema for this source must match exactly that of the key and payload schemas specified for this Stream
+// The schema for this source must match exactly that of the key and payload schemas specified for this Stream,
+// except that it may omit any columns listed in excluded_columns
 func (o LookupFeatureEngineeringKafkaConfigResultOutput) BackfillSource() GetFeatureEngineeringKafkaConfigBackfillSourceOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) GetFeatureEngineeringKafkaConfigBackfillSource {
 		return v.BackfillSource

@@ -13,16 +13,16 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiGatewayModelProviderServiceConfigRateLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Scope key. Determines whether `Principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+        /// Scope of the rate limit. Depending on this value, the limit applies to a
+        /// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// Principal this limit applies to: user email, group name, or service
-        /// principal application ID. Required unless `Key` is
-        /// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-        /// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+        /// principal application ID. Required when `Key` applies to a user, group, or
+        /// service principal; otherwise it must be unset
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
@@ -34,29 +34,15 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> RenewalPeriod { get; set; } = null!;
 
         /// <summary>
-        /// Request tag key this limit applies to. Required when `Key` is
-        /// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-        /// </summary>
-        [Input("requestTagKey")]
-        public Input<string>? RequestTagKey { get; set; }
-
-        /// <summary>
-        /// Request tag value this limit applies to. Only valid when `Key` is
-        /// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-        /// value of `RequestTagKey` (an any-value default); a set value is a
-        /// specific override for that value
-        /// </summary>
-        [Input("requestTagValue")]
-        public Input<string>? RequestTagValue { get; set; }
-
-        /// <summary>
-        /// Max requests allowed within a renewal period. Leave unset for no request limit
+        /// Maximum requests allowed in one renewal period. Leave unset for no request
+        /// limit. Set to `0` to deny all requests
         /// </summary>
         [Input("requests")]
         public Input<int>? Requests { get; set; }
 
         /// <summary>
-        /// Max tokens allowed within a renewal period. Leave unset for no token limit
+        /// Maximum tokens allowed in one renewal period. Leave unset for no token
+        /// limit. Set to `0` to deny all requests
         /// </summary>
         [Input("tokens")]
         public Input<int>? Tokens { get; set; }

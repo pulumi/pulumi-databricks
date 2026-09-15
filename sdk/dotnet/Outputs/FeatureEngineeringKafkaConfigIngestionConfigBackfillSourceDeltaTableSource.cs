@@ -19,6 +19,7 @@ namespace Pulumi.Databricks.Outputs
         /// Example: {"type":"struct","fields":[{"name":"ColA","type":"integer","nullable":true,"metadata":{}},{"name":"ColC","type":"integer","nullable":true,"metadata":{}}]}
         /// </summary>
         public readonly string? DataframeSchema;
+        public readonly ImmutableArray<string> EntityColumns;
         /// <summary>
         /// Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         /// </summary>
@@ -27,6 +28,7 @@ namespace Pulumi.Databricks.Outputs
         /// The full three-part (catalog, schema, table) name of the Delta table
         /// </summary>
         public readonly string FullName;
+        public readonly string? TimeseriesColumn;
         /// <summary>
         /// A single SQL SELECT expression applied after filter_condition.
         /// Should contains all the columns needed (eg. "SELECT *, ColA + ColB AS ColC FROM x.y.z WHERE ColA &gt; 0" would have `TransformationSql` "*, ColA + ColB AS ColC")
@@ -38,15 +40,21 @@ namespace Pulumi.Databricks.Outputs
         private FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource(
             string? dataframeSchema,
 
+            ImmutableArray<string> entityColumns,
+
             string? filterCondition,
 
             string fullName,
 
+            string? timeseriesColumn,
+
             string? transformationSql)
         {
             DataframeSchema = dataframeSchema;
+            EntityColumns = entityColumns;
             FilterCondition = filterCondition;
             FullName = fullName;
+            TimeseriesColumn = timeseriesColumn;
             TransformationSql = transformationSql;
         }
     }

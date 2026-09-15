@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelServicesModelServiceConfig {
     /**
-     * @return (InferenceTableConfig) - Inference table config for payload logging
+     * @return (InferenceTableConfig) - Inference table configuration for payload logging
      * 
      */
     private @Nullable GetAiGatewayModelServicesModelServiceConfigInferenceTable inferenceTable;
@@ -25,14 +25,14 @@ public final class GetAiGatewayModelServicesModelServiceConfig {
      */
     private @Nullable List<GetAiGatewayModelServicesModelServiceConfigRateLimit> rateLimits;
     /**
-     * @return (ModelServiceConfigRoutingConfig) - Routing configuration: destinations, routing strategy, and fallback
+     * @return (ModelServiceConfigRoutingConfig) - Routing configuration: destinations and fallback
      * 
      */
     private @Nullable GetAiGatewayModelServicesModelServiceConfigRouting routing;
 
     private GetAiGatewayModelServicesModelServiceConfig() {}
     /**
-     * @return (InferenceTableConfig) - Inference table config for payload logging
+     * @return (InferenceTableConfig) - Inference table configuration for payload logging
      * 
      */
     public Optional<GetAiGatewayModelServicesModelServiceConfigInferenceTable> inferenceTable() {
@@ -46,7 +46,7 @@ public final class GetAiGatewayModelServicesModelServiceConfig {
         return this.rateLimits == null ? List.of() : this.rateLimits;
     }
     /**
-     * @return (ModelServiceConfigRoutingConfig) - Routing configuration: destinations, routing strategy, and fallback
+     * @return (ModelServiceConfigRoutingConfig) - Routing configuration: destinations and fallback
      * 
      */
     public Optional<GetAiGatewayModelServicesModelServiceConfigRouting> routing() {

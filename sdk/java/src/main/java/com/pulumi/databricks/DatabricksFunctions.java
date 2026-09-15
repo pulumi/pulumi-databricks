@@ -146,6 +146,10 @@ import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlArgs;
 import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlPlainArgs;
 import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsArgs;
 import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsPlainArgs;
+import com.pulumi.databricks.inputs.GetDomainArgs;
+import com.pulumi.databricks.inputs.GetDomainPlainArgs;
+import com.pulumi.databricks.inputs.GetDomainsArgs;
+import com.pulumi.databricks.inputs.GetDomainsPlainArgs;
 import com.pulumi.databricks.inputs.GetEndpointArgs;
 import com.pulumi.databricks.inputs.GetEndpointPlainArgs;
 import com.pulumi.databricks.inputs.GetEndpointsArgs;
@@ -288,6 +292,10 @@ import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsPlainArgs;
 import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
 import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsPlainArgs;
+import com.pulumi.databricks.inputs.GetSandboxArgs;
+import com.pulumi.databricks.inputs.GetSandboxPlainArgs;
+import com.pulumi.databricks.inputs.GetSandboxesArgs;
+import com.pulumi.databricks.inputs.GetSandboxesPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemaArgs;
 import com.pulumi.databricks.inputs.GetSchemaPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemasArgs;
@@ -459,6 +467,8 @@ import com.pulumi.databricks.outputs.GetDisasterRecoveryFailoverGroupResult;
 import com.pulumi.databricks.outputs.GetDisasterRecoveryFailoverGroupsResult;
 import com.pulumi.databricks.outputs.GetDisasterRecoveryStableUrlResult;
 import com.pulumi.databricks.outputs.GetDisasterRecoveryStableUrlsResult;
+import com.pulumi.databricks.outputs.GetDomainResult;
+import com.pulumi.databricks.outputs.GetDomainsResult;
 import com.pulumi.databricks.outputs.GetEndpointResult;
 import com.pulumi.databricks.outputs.GetEndpointsResult;
 import com.pulumi.databricks.outputs.GetEntityTagAssignmentResult;
@@ -530,6 +540,8 @@ import com.pulumi.databricks.outputs.GetRecipientsResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsResult;
 import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsResult;
+import com.pulumi.databricks.outputs.GetSandboxResult;
+import com.pulumi.databricks.outputs.GetSandboxesResult;
 import com.pulumi.databricks.outputs.GetSchemaResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
 import com.pulumi.databricks.outputs.GetSecretUcResult;
@@ -4804,324 +4816,1692 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog MCP service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the MCP service named `knowledgeTools` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayMcpService(GetAiGatewayMcpServiceArgs.builder()
+     *             .name("mcp-services/main.default.knowledge_tools")
+     *             .build());
+     * 
+     *         ctx.export("mcpServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayMcpServiceResult> getAiGatewayMcpService(GetAiGatewayMcpServiceArgs args) {
         return getAiGatewayMcpService(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog MCP service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the MCP service named `knowledgeTools` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayMcpService(GetAiGatewayMcpServiceArgs.builder()
+     *             .name("mcp-services/main.default.knowledge_tools")
+     *             .build());
+     * 
+     *         ctx.export("mcpServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayMcpServiceResult> getAiGatewayMcpServicePlain(GetAiGatewayMcpServicePlainArgs args) {
         return getAiGatewayMcpServicePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog MCP service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the MCP service named `knowledgeTools` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayMcpService(GetAiGatewayMcpServiceArgs.builder()
+     *             .name("mcp-services/main.default.knowledge_tools")
+     *             .build());
+     * 
+     *         ctx.export("mcpServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayMcpServiceResult> getAiGatewayMcpService(GetAiGatewayMcpServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", TypeShape.of(GetAiGatewayMcpServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog MCP service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the MCP service named `knowledgeTools` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayMcpService(GetAiGatewayMcpServiceArgs.builder()
+     *             .name("mcp-services/main.default.knowledge_tools")
+     *             .build());
+     * 
+     *         ctx.export("mcpServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayMcpServiceResult> getAiGatewayMcpService(GetAiGatewayMcpServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", TypeShape.of(GetAiGatewayMcpServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog MCP service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the MCP service named `knowledgeTools` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayMcpService(GetAiGatewayMcpServiceArgs.builder()
+     *             .name("mcp-services/main.default.knowledge_tools")
+     *             .build());
+     * 
+     *         ctx.export("mcpServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayMcpServiceResult> getAiGatewayMcpServicePlain(GetAiGatewayMcpServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", TypeShape.of(GetAiGatewayMcpServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists MCP services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("mcpServices", all.mcpServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayMcpServicesResult> getAiGatewayMcpServices() {
         return getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists MCP services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("mcpServices", all.mcpServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayMcpServicesResult> getAiGatewayMcpServicesPlain() {
         return getAiGatewayMcpServicesPlain(GetAiGatewayMcpServicesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists MCP services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("mcpServices", all.mcpServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayMcpServicesResult> getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs args) {
         return getAiGatewayMcpServices(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists MCP services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("mcpServices", all.mcpServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayMcpServicesResult> getAiGatewayMcpServicesPlain(GetAiGatewayMcpServicesPlainArgs args) {
         return getAiGatewayMcpServicesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists MCP services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("mcpServices", all.mcpServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayMcpServicesResult> getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayMcpServices:getAiGatewayMcpServices", TypeShape.of(GetAiGatewayMcpServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists MCP services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("mcpServices", all.mcpServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayMcpServicesResult> getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayMcpServices:getAiGatewayMcpServices", TypeShape.of(GetAiGatewayMcpServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists MCP services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayMcpServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayMcpServices(GetAiGatewayMcpServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("mcpServices", all.mcpServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayMcpServicesResult> getAiGatewayMcpServicesPlain(GetAiGatewayMcpServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayMcpServices:getAiGatewayMcpServices", TypeShape.of(GetAiGatewayMcpServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model provider service named `customProvider` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs.builder()
+     *             .name("model-provider-services/main.default.custom_provider")
+     *             .build());
+     * 
+     *         ctx.export("providerType", example.config().providerType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs args) {
         return getAiGatewayModelProviderService(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model provider service named `customProvider` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs.builder()
+     *             .name("model-provider-services/main.default.custom_provider")
+     *             .build());
+     * 
+     *         ctx.export("providerType", example.config().providerType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderServicePlain(GetAiGatewayModelProviderServicePlainArgs args) {
         return getAiGatewayModelProviderServicePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model provider service named `customProvider` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs.builder()
+     *             .name("model-provider-services/main.default.custom_provider")
+     *             .build());
+     * 
+     *         ctx.export("providerType", example.config().providerType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", TypeShape.of(GetAiGatewayModelProviderServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model provider service named `customProvider` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs.builder()
+     *             .name("model-provider-services/main.default.custom_provider")
+     *             .build());
+     * 
+     *         ctx.export("providerType", example.config().providerType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", TypeShape.of(GetAiGatewayModelProviderServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model provider service named `customProvider` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelProviderService(GetAiGatewayModelProviderServiceArgs.builder()
+     *             .name("model-provider-services/main.default.custom_provider")
+     *             .build());
+     * 
+     *         ctx.export("providerType", example.config().providerType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelProviderServiceResult> getAiGatewayModelProviderServicePlain(GetAiGatewayModelProviderServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", TypeShape.of(GetAiGatewayModelProviderServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model provider services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelProviderServices", all.modelProviderServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServices() {
         return getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model provider services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelProviderServices", all.modelProviderServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServicesPlain() {
         return getAiGatewayModelProviderServicesPlain(GetAiGatewayModelProviderServicesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model provider services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelProviderServices", all.modelProviderServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs args) {
         return getAiGatewayModelProviderServices(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model provider services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelProviderServices", all.modelProviderServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServicesPlain(GetAiGatewayModelProviderServicesPlainArgs args) {
         return getAiGatewayModelProviderServicesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model provider services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelProviderServices", all.modelProviderServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelProviderServices:getAiGatewayModelProviderServices", TypeShape.of(GetAiGatewayModelProviderServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model provider services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelProviderServices", all.modelProviderServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelProviderServices:getAiGatewayModelProviderServices", TypeShape.of(GetAiGatewayModelProviderServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model provider services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelProviderServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelProviderServices(GetAiGatewayModelProviderServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelProviderServices", all.modelProviderServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelProviderServicesResult> getAiGatewayModelProviderServicesPlain(GetAiGatewayModelProviderServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayModelProviderServices:getAiGatewayModelProviderServices", TypeShape.of(GetAiGatewayModelProviderServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model service named `customerSupport` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelService(GetAiGatewayModelServiceArgs.builder()
+     *             .name("model-services/main.default.customer_support")
+     *             .build());
+     * 
+     *         ctx.export("modelServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelServiceResult> getAiGatewayModelService(GetAiGatewayModelServiceArgs args) {
         return getAiGatewayModelService(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model service named `customerSupport` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelService(GetAiGatewayModelServiceArgs.builder()
+     *             .name("model-services/main.default.customer_support")
+     *             .build());
+     * 
+     *         ctx.export("modelServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelServiceResult> getAiGatewayModelServicePlain(GetAiGatewayModelServicePlainArgs args) {
         return getAiGatewayModelServicePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model service named `customerSupport` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelService(GetAiGatewayModelServiceArgs.builder()
+     *             .name("model-services/main.default.customer_support")
+     *             .build());
+     * 
+     *         ctx.export("modelServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelServiceResult> getAiGatewayModelService(GetAiGatewayModelServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelService:getAiGatewayModelService", TypeShape.of(GetAiGatewayModelServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model service named `customerSupport` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelService(GetAiGatewayModelServiceArgs.builder()
+     *             .name("model-services/main.default.customer_support")
+     *             .build());
+     * 
+     *         ctx.export("modelServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelServiceResult> getAiGatewayModelService(GetAiGatewayModelServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelService:getAiGatewayModelService", TypeShape.of(GetAiGatewayModelServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Retrieves a Unity Catalog model service by its full resource name.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves the model service named `customerSupport` from the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServiceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiGatewayModelService(GetAiGatewayModelServiceArgs.builder()
+     *             .name("model-services/main.default.customer_support")
+     *             .build());
+     * 
+     *         ctx.export("modelServiceConfig", example.config());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelServiceResult> getAiGatewayModelServicePlain(GetAiGatewayModelServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayModelService:getAiGatewayModelService", TypeShape.of(GetAiGatewayModelServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelServices(GetAiGatewayModelServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelServices", all.modelServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelServicesResult> getAiGatewayModelServices() {
         return getAiGatewayModelServices(GetAiGatewayModelServicesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelServices(GetAiGatewayModelServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelServices", all.modelServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelServicesResult> getAiGatewayModelServicesPlain() {
         return getAiGatewayModelServicesPlain(GetAiGatewayModelServicesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelServices(GetAiGatewayModelServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelServices", all.modelServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelServicesResult> getAiGatewayModelServices(GetAiGatewayModelServicesArgs args) {
         return getAiGatewayModelServices(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelServices(GetAiGatewayModelServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelServices", all.modelServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelServicesResult> getAiGatewayModelServicesPlain(GetAiGatewayModelServicesPlainArgs args) {
         return getAiGatewayModelServicesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelServices(GetAiGatewayModelServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelServices", all.modelServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelServicesResult> getAiGatewayModelServices(GetAiGatewayModelServicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", TypeShape.of(GetAiGatewayModelServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelServices(GetAiGatewayModelServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelServices", all.modelServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiGatewayModelServicesResult> getAiGatewayModelServices(GetAiGatewayModelServicesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", TypeShape.of(GetAiGatewayModelServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+     * 
+     * Lists the Unity Catalog model services that are visible to the current principal in a schema.
+     * 
+     * ## Example Usage
+     * 
+     * The following example lists model services in the `main.default` schema:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiGatewayModelServices(GetAiGatewayModelServicesArgs.builder()
+     *             .parent("schemas/main.default")
+     *             .build());
+     * 
+     *         ctx.export("modelServices", all.modelServices());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiGatewayModelServicesResult> getAiGatewayModelServicesPlain(GetAiGatewayModelServicesPlainArgs args, InvokeOptions options) {
@@ -18000,6 +19380,317 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrlsPlain(GetDisasterRecoveryStableUrlsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Retrieves a single Discover domain by its resource name (`domains/{id}`), returning the governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finance = DatabricksFunctions.getDomain(GetDomainArgs.builder()
+     *             .name("domains/finance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainResult> getDomain(GetDomainArgs args) {
+        return getDomain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Retrieves a single Discover domain by its resource name (`domains/{id}`), returning the governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finance = DatabricksFunctions.getDomain(GetDomainArgs.builder()
+     *             .name("domains/finance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDomainResult> getDomainPlain(GetDomainPlainArgs args) {
+        return getDomainPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Retrieves a single Discover domain by its resource name (`domains/{id}`), returning the governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finance = DatabricksFunctions.getDomain(GetDomainArgs.builder()
+     *             .name("domains/finance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainResult> getDomain(GetDomainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Retrieves a single Discover domain by its resource name (`domains/{id}`), returning the governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finance = DatabricksFunctions.getDomain(GetDomainArgs.builder()
+     *             .name("domains/finance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainResult> getDomain(GetDomainArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Retrieves a single Discover domain by its resource name (`domains/{id}`), returning the governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finance = DatabricksFunctions.getDomain(GetDomainArgs.builder()
+     *             .name("domains/finance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDomainResult> getDomainPlain(GetDomainPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Lists the Discover domains in the account, returning each domain&#39;s governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains() {
+        return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Lists the Discover domains in the account, returning each domain&#39;s governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
+        return getDomainsPlain(GetDomainsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Lists the Discover domains in the account, returning each domain&#39;s governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
+        return getDomains(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Lists the Discover domains in the account, returning each domain&#39;s governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
+        return getDomainsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Lists the Discover domains in the account, returning each domain&#39;s governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Lists the Discover domains in the account, returning each domain&#39;s governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/domains)
+     * 
+     * Lists the Discover domains in the account, returning each domain&#39;s governed tag key and presentation metadata (subtitle, description, owners, icon).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -35111,6 +36802,539 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain(GetRfaAccessRequestDestinationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", TypeShape.of(GetRfaAccessRequestDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Retrieves the configuration and runtime status of a single Sandbox by its resource name.
+     * Use this data source to read an existing sandbox&#39;s spec and its current lifecycle state.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSandbox(GetSandboxArgs.builder()
+     *             .name("sandboxes/my-sandbox")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSandboxResult> getSandbox(GetSandboxArgs args) {
+        return getSandbox(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Retrieves the configuration and runtime status of a single Sandbox by its resource name.
+     * Use this data source to read an existing sandbox&#39;s spec and its current lifecycle state.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSandbox(GetSandboxArgs.builder()
+     *             .name("sandboxes/my-sandbox")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSandboxResult> getSandboxPlain(GetSandboxPlainArgs args) {
+        return getSandboxPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Retrieves the configuration and runtime status of a single Sandbox by its resource name.
+     * Use this data source to read an existing sandbox&#39;s spec and its current lifecycle state.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSandbox(GetSandboxArgs.builder()
+     *             .name("sandboxes/my-sandbox")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSandboxResult> getSandbox(GetSandboxArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSandbox:getSandbox", TypeShape.of(GetSandboxResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Retrieves the configuration and runtime status of a single Sandbox by its resource name.
+     * Use this data source to read an existing sandbox&#39;s spec and its current lifecycle state.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSandbox(GetSandboxArgs.builder()
+     *             .name("sandboxes/my-sandbox")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSandboxResult> getSandbox(GetSandboxArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSandbox:getSandbox", TypeShape.of(GetSandboxResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Retrieves the configuration and runtime status of a single Sandbox by its resource name.
+     * Use this data source to read an existing sandbox&#39;s spec and its current lifecycle state.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSandbox(GetSandboxArgs.builder()
+     *             .name("sandboxes/my-sandbox")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSandboxResult> getSandboxPlain(GetSandboxPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSandbox:getSandbox", TypeShape.of(GetSandboxResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Lists the Sandboxes visible to the caller in the workspace, returning each sandbox&#39;s spec and
+     * current runtime status. Use this data source to enumerate existing sandboxes.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSandboxes(GetSandboxesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSandboxesResult> getSandboxes() {
+        return getSandboxes(GetSandboxesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Lists the Sandboxes visible to the caller in the workspace, returning each sandbox&#39;s spec and
+     * current runtime status. Use this data source to enumerate existing sandboxes.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSandboxes(GetSandboxesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSandboxesResult> getSandboxesPlain() {
+        return getSandboxesPlain(GetSandboxesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Lists the Sandboxes visible to the caller in the workspace, returning each sandbox&#39;s spec and
+     * current runtime status. Use this data source to enumerate existing sandboxes.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSandboxes(GetSandboxesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSandboxesResult> getSandboxes(GetSandboxesArgs args) {
+        return getSandboxes(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Lists the Sandboxes visible to the caller in the workspace, returning each sandbox&#39;s spec and
+     * current runtime status. Use this data source to enumerate existing sandboxes.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSandboxes(GetSandboxesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSandboxesResult> getSandboxesPlain(GetSandboxesPlainArgs args) {
+        return getSandboxesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Lists the Sandboxes visible to the caller in the workspace, returning each sandbox&#39;s spec and
+     * current runtime status. Use this data source to enumerate existing sandboxes.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSandboxes(GetSandboxesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSandboxesResult> getSandboxes(GetSandboxesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSandboxes:getSandboxes", TypeShape.of(GetSandboxesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Lists the Sandboxes visible to the caller in the workspace, returning each sandbox&#39;s spec and
+     * current runtime status. Use this data source to enumerate existing sandboxes.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSandboxes(GetSandboxesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSandboxesResult> getSandboxes(GetSandboxesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSandboxes:getSandboxes", TypeShape.of(GetSandboxesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/sandbox)
+     * 
+     * Lists the Sandboxes visible to the caller in the workspace, returning each sandbox&#39;s spec and
+     * current runtime status. Use this data source to enumerate existing sandboxes.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSandboxesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSandboxes(GetSandboxesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSandboxesResult> getSandboxesPlain(GetSandboxesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSandboxes:getSandboxes", TypeShape.of(GetSandboxesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.

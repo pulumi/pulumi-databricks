@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryResult
     {
         /// <summary>
-        /// (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+        /// (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectResult? Direct;
 

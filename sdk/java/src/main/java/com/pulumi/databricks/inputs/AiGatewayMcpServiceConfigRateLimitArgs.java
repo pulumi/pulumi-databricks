@@ -18,14 +18,16 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
     public static final AiGatewayMcpServiceConfigRateLimitArgs Empty = new AiGatewayMcpServiceConfigRateLimitArgs();
 
     /**
-     * Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     * Scope of the rate limit. Depending on this value, the limit applies to a
+     * principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     * @return Scope of the rate limit. Depending on this value, the limit applies to a
+     * principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
      * 
      */
     public Output<String> key() {
@@ -34,9 +36,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
 
     /**
      * Principal this limit applies to: user email, group name, or service
-     * principal application ID. Required unless `key` is
-     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     * principal application ID. Required when `key` applies to a user, group, or
+     * service principal; otherwise it must be unset
      * 
      */
     @Import(name="principal")
@@ -44,9 +45,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
 
     /**
      * @return Principal this limit applies to: user email, group name, or service
-     * principal application ID. Required unless `key` is
-     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     * principal application ID. Required when `key` applies to a user, group, or
+     * service principal; otherwise it must be unset
      * 
      */
     public Optional<Output<String>> principal() {
@@ -69,52 +69,16 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
     }
 
     /**
-     * Request tag key this limit applies to. Required when `key` is
-     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-     * 
-     */
-    @Import(name="requestTagKey")
-    private @Nullable Output<String> requestTagKey;
-
-    /**
-     * @return Request tag key this limit applies to. Required when `key` is
-     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-     * 
-     */
-    public Optional<Output<String>> requestTagKey() {
-        return Optional.ofNullable(this.requestTagKey);
-    }
-
-    /**
-     * Request tag value this limit applies to. Only valid when `key` is
-     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-     * value of `requestTagKey` (an any-value default); a set value is a
-     * specific override for that value
-     * 
-     */
-    @Import(name="requestTagValue")
-    private @Nullable Output<String> requestTagValue;
-
-    /**
-     * @return Request tag value this limit applies to. Only valid when `key` is
-     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-     * value of `requestTagKey` (an any-value default); a set value is a
-     * specific override for that value
-     * 
-     */
-    public Optional<Output<String>> requestTagValue() {
-        return Optional.ofNullable(this.requestTagValue);
-    }
-
-    /**
-     * Max requests allowed within a renewal period. Leave unset for no request limit
+     * Maximum requests allowed in one renewal period. Leave unset for no request
+     * limit. Set to `0` to deny all requests
      * 
      */
     @Import(name="requests")
     private @Nullable Output<Integer> requests;
 
     /**
-     * @return Max requests allowed within a renewal period. Leave unset for no request limit
+     * @return Maximum requests allowed in one renewal period. Leave unset for no request
+     * limit. Set to `0` to deny all requests
      * 
      */
     public Optional<Output<Integer>> requests() {
@@ -122,14 +86,16 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
     }
 
     /**
-     * Max tokens allowed within a renewal period. Leave unset for no token limit
+     * Maximum tokens allowed in one renewal period. Leave unset for no token
+     * limit. Set to `0` to deny all requests
      * 
      */
     @Import(name="tokens")
     private @Nullable Output<Integer> tokens;
 
     /**
-     * @return Max tokens allowed within a renewal period. Leave unset for no token limit
+     * @return Maximum tokens allowed in one renewal period. Leave unset for no token
+     * limit. Set to `0` to deny all requests
      * 
      */
     public Optional<Output<Integer>> tokens() {
@@ -142,8 +108,6 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
         this.key = $.key;
         this.principal = $.principal;
         this.renewalPeriod = $.renewalPeriod;
-        this.requestTagKey = $.requestTagKey;
-        this.requestTagValue = $.requestTagValue;
         this.requests = $.requests;
         this.tokens = $.tokens;
     }
@@ -167,7 +131,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
         }
 
         /**
-         * @param key Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+         * @param key Scope of the rate limit. Depending on this value, the limit applies to a
+         * principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
          * 
          * @return builder
          * 
@@ -178,7 +143,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
         }
 
         /**
-         * @param key Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+         * @param key Scope of the rate limit. Depending on this value, the limit applies to a
+         * principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
          * 
          * @return builder
          * 
@@ -189,9 +155,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
 
         /**
          * @param principal Principal this limit applies to: user email, group name, or service
-         * principal application ID. Required unless `key` is
-         * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-         * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+         * principal application ID. Required when `key` applies to a user, group, or
+         * service principal; otherwise it must be unset
          * 
          * @return builder
          * 
@@ -203,9 +168,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
 
         /**
          * @param principal Principal this limit applies to: user email, group name, or service
-         * principal application ID. Required unless `key` is
-         * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-         * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+         * principal application ID. Required when `key` applies to a user, group, or
+         * service principal; otherwise it must be unset
          * 
          * @return builder
          * 
@@ -236,57 +200,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
         }
 
         /**
-         * @param requestTagKey Request tag key this limit applies to. Required when `key` is
-         * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestTagKey(@Nullable Output<String> requestTagKey) {
-            $.requestTagKey = requestTagKey;
-            return this;
-        }
-
-        /**
-         * @param requestTagKey Request tag key this limit applies to. Required when `key` is
-         * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestTagKey(String requestTagKey) {
-            return requestTagKey(Output.of(requestTagKey));
-        }
-
-        /**
-         * @param requestTagValue Request tag value this limit applies to. Only valid when `key` is
-         * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-         * value of `requestTagKey` (an any-value default); a set value is a
-         * specific override for that value
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestTagValue(@Nullable Output<String> requestTagValue) {
-            $.requestTagValue = requestTagValue;
-            return this;
-        }
-
-        /**
-         * @param requestTagValue Request tag value this limit applies to. Only valid when `key` is
-         * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-         * value of `requestTagKey` (an any-value default); a set value is a
-         * specific override for that value
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestTagValue(String requestTagValue) {
-            return requestTagValue(Output.of(requestTagValue));
-        }
-
-        /**
-         * @param requests Max requests allowed within a renewal period. Leave unset for no request limit
+         * @param requests Maximum requests allowed in one renewal period. Leave unset for no request
+         * limit. Set to `0` to deny all requests
          * 
          * @return builder
          * 
@@ -297,7 +212,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
         }
 
         /**
-         * @param requests Max requests allowed within a renewal period. Leave unset for no request limit
+         * @param requests Maximum requests allowed in one renewal period. Leave unset for no request
+         * limit. Set to `0` to deny all requests
          * 
          * @return builder
          * 
@@ -307,7 +223,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
         }
 
         /**
-         * @param tokens Max tokens allowed within a renewal period. Leave unset for no token limit
+         * @param tokens Maximum tokens allowed in one renewal period. Leave unset for no token
+         * limit. Set to `0` to deny all requests
          * 
          * @return builder
          * 
@@ -318,7 +235,8 @@ public final class AiGatewayMcpServiceConfigRateLimitArgs extends com.pulumi.res
         }
 
         /**
-         * @param tokens Max tokens allowed within a renewal period. Leave unset for no token limit
+         * @param tokens Maximum tokens allowed in one renewal period. Leave unset for no token
+         * limit. Set to `0` to deny all requests
          * 
          * @return builder
          * 

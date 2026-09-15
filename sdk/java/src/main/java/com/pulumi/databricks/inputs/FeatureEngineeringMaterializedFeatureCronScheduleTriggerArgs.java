@@ -16,24 +16,38 @@ public final class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs 
     public static final FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs Empty = new FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs();
 
     /**
-     * The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight)
+     * The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
+     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
+     * window timing and fills it in on the response
      * 
      */
     @Import(name="cronExpression")
     private @Nullable Output<String> cronExpression;
 
     /**
-     * @return The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight)
+     * @return The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
+     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
+     * window timing and fills it in on the response
      * 
      */
     public Optional<Output<String>> cronExpression() {
         return Optional.ofNullable(this.cronExpression);
     }
 
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
     private FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs() {}
 
     private FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs(FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs $) {
         this.cronExpression = $.cronExpression;
+        this.mode = $.mode;
     }
 
     public static Builder builder() {
@@ -55,7 +69,10 @@ public final class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs 
         }
 
         /**
-         * @param cronExpression The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight)
+         * @param cronExpression The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
+         * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+         * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
+         * window timing and fills it in on the response
          * 
          * @return builder
          * 
@@ -66,13 +83,25 @@ public final class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs 
         }
 
         /**
-         * @param cronExpression The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight)
+         * @param cronExpression The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
+         * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+         * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
+         * window timing and fills it in on the response
          * 
          * @return builder
          * 
          */
         public Builder cronExpression(String cronExpression) {
             return cronExpression(Output.of(cronExpression));
+        }
+
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         public FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs build() {

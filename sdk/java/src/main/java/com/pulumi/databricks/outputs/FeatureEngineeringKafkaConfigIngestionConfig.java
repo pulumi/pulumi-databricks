@@ -10,6 +10,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +29,12 @@ public final class FeatureEngineeringKafkaConfigIngestionConfig {
      * 
      */
     private @Nullable FeatureEngineeringKafkaConfigIngestionConfigBackfillSource backfillSource;
+    /**
+     * @return The ID of the budget policy used to attribute the serverless compute cost of this stream&#39;s
+     * managed ingestion. If not specified, a default budget policy may be applied
+     * 
+     */
+    private @Nullable String budgetPolicyId;
     /**
      * @return Column paths used to identify duplicate rows during ingestion; only one row per
      * distinct combination of these values is kept. Use dot notation for nested fields
@@ -53,6 +60,17 @@ public final class FeatureEngineeringKafkaConfigIngestionConfig {
      * 
      */
     private @Nullable String ingestionPipelineId;
+    /**
+     * @return Custom tags to associate with this stream&#39;s managed ingestion. They are applied to the
+     * ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+     * compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+     * These tags apply only to the managed ingestion compute; they are not applied to the Stream
+     * entity itself, and are distinct from any Unity Catalog tags on the Stream.
+     * A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+     * cluster tags
+     * 
+     */
+    private @Nullable Map<String,String> tags;
 
     private FeatureEngineeringKafkaConfigIngestionConfig() {}
     /**
@@ -70,6 +88,14 @@ public final class FeatureEngineeringKafkaConfigIngestionConfig {
      */
     public Optional<FeatureEngineeringKafkaConfigIngestionConfigBackfillSource> backfillSource() {
         return Optional.ofNullable(this.backfillSource);
+    }
+    /**
+     * @return The ID of the budget policy used to attribute the serverless compute cost of this stream&#39;s
+     * managed ingestion. If not specified, a default budget policy may be applied
+     * 
+     */
+    public Optional<String> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
     }
     /**
      * @return Column paths used to identify duplicate rows during ingestion; only one row per
@@ -104,6 +130,19 @@ public final class FeatureEngineeringKafkaConfigIngestionConfig {
     public Optional<String> ingestionPipelineId() {
         return Optional.ofNullable(this.ingestionPipelineId);
     }
+    /**
+     * @return Custom tags to associate with this stream&#39;s managed ingestion. They are applied to the
+     * ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+     * compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+     * These tags apply only to the managed ingestion compute; they are not applied to the Stream
+     * entity itself, and are distinct from any Unity Catalog tags on the Stream.
+     * A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+     * cluster tags
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -116,19 +155,23 @@ public final class FeatureEngineeringKafkaConfigIngestionConfig {
     public static final class Builder {
         private @Nullable Integer backfillJobId;
         private @Nullable FeatureEngineeringKafkaConfigIngestionConfigBackfillSource backfillSource;
+        private @Nullable String budgetPolicyId;
         private @Nullable List<String> deduplicationColumns;
         private FeatureEngineeringKafkaConfigIngestionConfigIngestionDestination ingestionDestination;
         private @Nullable Integer ingestionJobId;
         private @Nullable String ingestionPipelineId;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(FeatureEngineeringKafkaConfigIngestionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backfillJobId = defaults.backfillJobId;
     	      this.backfillSource = defaults.backfillSource;
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
     	      this.deduplicationColumns = defaults.deduplicationColumns;
     	      this.ingestionDestination = defaults.ingestionDestination;
     	      this.ingestionJobId = defaults.ingestionJobId;
     	      this.ingestionPipelineId = defaults.ingestionPipelineId;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -141,6 +184,12 @@ public final class FeatureEngineeringKafkaConfigIngestionConfig {
         public Builder backfillSource(@Nullable FeatureEngineeringKafkaConfigIngestionConfigBackfillSource backfillSource) {
 
             this.backfillSource = backfillSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
+
+            this.budgetPolicyId = budgetPolicyId;
             return this;
         }
         @CustomType.Setter
@@ -172,14 +221,22 @@ public final class FeatureEngineeringKafkaConfigIngestionConfig {
             this.ingestionPipelineId = ingestionPipelineId;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
         public FeatureEngineeringKafkaConfigIngestionConfig build() {
             final var _resultValue = new FeatureEngineeringKafkaConfigIngestionConfig();
             _resultValue.backfillJobId = backfillJobId;
             _resultValue.backfillSource = backfillSource;
+            _resultValue.budgetPolicyId = budgetPolicyId;
             _resultValue.deduplicationColumns = deduplicationColumns;
             _resultValue.ingestionDestination = ingestionDestination;
             _resultValue.ingestionJobId = ingestionJobId;
             _resultValue.ingestionPipelineId = ingestionPipelineId;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

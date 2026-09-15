@@ -74,7 +74,8 @@ class GetFeatureEngineeringKafkaConfigResult:
         """
         (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
         The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
-        The schema for this source must match exactly that of the key and payload schemas specified for this Stream
+        The schema for this source must match exactly that of the key and payload schemas specified for this Stream,
+        except that it may omit any columns listed in excluded_columns
         """
         return pulumi.get(self, "backfill_source")
 

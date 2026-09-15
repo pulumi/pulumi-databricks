@@ -250,6 +250,11 @@ export type DisasterRecoveryStableUrl = import("./disasterRecoveryStableUrl").Di
 export const DisasterRecoveryStableUrl: typeof import("./disasterRecoveryStableUrl").DisasterRecoveryStableUrl = null as any;
 utilities.lazyLoad(exports, ["DisasterRecoveryStableUrl"], () => require("./disasterRecoveryStableUrl"));
 
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
 export { EndpointArgs, EndpointState } from "./endpoint";
 export type Endpoint = import("./endpoint").Endpoint;
 export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
@@ -665,6 +670,16 @@ export const getDisasterRecoveryStableUrls: typeof import("./getDisasterRecovery
 export const getDisasterRecoveryStableUrlsOutput: typeof import("./getDisasterRecoveryStableUrls").getDisasterRecoveryStableUrlsOutput = null as any;
 utilities.lazyLoad(exports, ["getDisasterRecoveryStableUrls","getDisasterRecoveryStableUrlsOutput"], () => require("./getDisasterRecoveryStableUrls"));
 
+export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
+export const getDomain: typeof import("./getDomain").getDomain = null as any;
+export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
+utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
 export { GetEndpointArgs, GetEndpointResult, GetEndpointOutputArgs } from "./getEndpoint";
 export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as any;
 export const getEndpointOutput: typeof import("./getEndpoint").getEndpointOutput = null as any;
@@ -1019,6 +1034,16 @@ export { GetRfaAccessRequestDestinationsArgs, GetRfaAccessRequestDestinationsRes
 export const getRfaAccessRequestDestinations: typeof import("./getRfaAccessRequestDestinations").getRfaAccessRequestDestinations = null as any;
 export const getRfaAccessRequestDestinationsOutput: typeof import("./getRfaAccessRequestDestinations").getRfaAccessRequestDestinationsOutput = null as any;
 utilities.lazyLoad(exports, ["getRfaAccessRequestDestinations","getRfaAccessRequestDestinationsOutput"], () => require("./getRfaAccessRequestDestinations"));
+
+export { GetSandboxArgs, GetSandboxResult, GetSandboxOutputArgs } from "./getSandbox";
+export const getSandbox: typeof import("./getSandbox").getSandbox = null as any;
+export const getSandboxOutput: typeof import("./getSandbox").getSandboxOutput = null as any;
+utilities.lazyLoad(exports, ["getSandbox","getSandboxOutput"], () => require("./getSandbox"));
+
+export { GetSandboxesArgs, GetSandboxesResult, GetSandboxesOutputArgs } from "./getSandboxes";
+export const getSandboxes: typeof import("./getSandboxes").getSandboxes = null as any;
+export const getSandboxesOutput: typeof import("./getSandboxes").getSandboxesOutput = null as any;
+utilities.lazyLoad(exports, ["getSandboxes","getSandboxesOutput"], () => require("./getSandboxes"));
 
 export { GetSchemaArgs, GetSchemaResult, GetSchemaOutputArgs } from "./getSchema";
 export const getSchema: typeof import("./getSchema").getSchema = null as any;
@@ -1603,6 +1628,11 @@ export type RfaAccessRequestDestinations = import("./rfaAccessRequestDestination
 export const RfaAccessRequestDestinations: typeof import("./rfaAccessRequestDestinations").RfaAccessRequestDestinations = null as any;
 utilities.lazyLoad(exports, ["RfaAccessRequestDestinations"], () => require("./rfaAccessRequestDestinations"));
 
+export { SandboxArgs, SandboxState } from "./sandbox";
+export type Sandbox = import("./sandbox").Sandbox;
+export const Sandbox: typeof import("./sandbox").Sandbox = null as any;
+utilities.lazyLoad(exports, ["Sandbox"], () => require("./sandbox"));
+
 export { SchemaArgs, SchemaState } from "./schema";
 export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
@@ -1940,6 +1970,8 @@ const _module = {
                 return new DisasterRecoveryFailoverGroup(name, <any>undefined, { urn })
             case "databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl":
                 return new DisasterRecoveryStableUrl(name, <any>undefined, { urn })
+            case "databricks:index/domain:Domain":
+                return new Domain(name, <any>undefined, { urn })
             case "databricks:index/endpoint:Endpoint":
                 return new Endpoint(name, <any>undefined, { urn })
             case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
@@ -2096,6 +2128,8 @@ const _module = {
                 return new RestrictWorkspaceAdminsSetting(name, <any>undefined, { urn })
             case "databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations":
                 return new RfaAccessRequestDestinations(name, <any>undefined, { urn })
+            case "databricks:index/sandbox:Sandbox":
+                return new Sandbox(name, <any>undefined, { urn })
             case "databricks:index/schema:Schema":
                 return new Schema(name, <any>undefined, { urn })
             case "databricks:index/secret:Secret":
@@ -2240,6 +2274,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyDbfsSett
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyFeaturesSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disasterRecoveryFailoverGroup", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disasterRecoveryStableUrl", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/domain", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/endpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/enhancedSecurityMonitoringWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
@@ -2318,6 +2353,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/registeredModel", _mo
 pulumi.runtime.registerResourceModule("databricks", "index/repo", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/restrictWorkspaceAdminsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/rfaAccessRequestDestinations", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/sandbox", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/schema", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secret", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretAcl", _module)

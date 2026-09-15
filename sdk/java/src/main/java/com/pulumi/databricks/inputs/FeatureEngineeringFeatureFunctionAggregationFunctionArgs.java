@@ -137,17 +137,9 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
         return Optional.ofNullable(this.sum);
     }
 
-    /**
-     * The time window over which the aggregation is computed
-     * 
-     */
     @Import(name="timeWindow")
     private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs> timeWindow;
 
-    /**
-     * @return The time window over which the aggregation is computed
-     * 
-     */
     public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs>> timeWindow() {
         return Optional.ofNullable(this.timeWindow);
     }
@@ -342,23 +334,11 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionArgs exte
             return sum(Output.of(sum));
         }
 
-        /**
-         * @param timeWindow The time window over which the aggregation is computed
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindow(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs> timeWindow) {
             $.timeWindow = timeWindow;
             return this;
         }
 
-        /**
-         * @param timeWindow The time window over which the aggregation is computed
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindow(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs timeWindow) {
             return timeWindow(Output.of(timeWindow));
         }

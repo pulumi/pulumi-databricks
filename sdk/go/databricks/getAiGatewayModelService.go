@@ -11,9 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+//
+// Retrieves a Unity Catalog model service by its full resource name.
+//
+// ## Example Usage
+//
+// The following example retrieves the model service named `customerSupport` from the `main.default` schema:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := databricks.GetAiGatewayModelService(ctx, &databricks.LookupAiGatewayModelServiceArgs{
+//				Name: "model-services/main.default.customer_support",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("modelServiceConfig", example.Config)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAiGatewayModelService(ctx *pulumi.Context, args *LookupAiGatewayModelServiceArgs, opts ...pulumi.InvokeOption) (*LookupAiGatewayModelServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiGatewayModelServiceResult
@@ -40,36 +71,32 @@ type LookupAiGatewayModelServiceArgs struct {
 type LookupAiGatewayModelServiceResult struct {
 	// (string) - User-provided description
 	Comment string `pulumi:"comment"`
-	// (ModelServiceConfig) - Operational configuration: destinations, routing, rate limits, inference
-	// table. Required on CreateModelService; on UpdateModelService it is
-	// required only when `config` (or a `config.*` subpath) appears in
-	// `updateMask`
+	// (ModelServiceConfig) - Destinations, routing, rate limits, and payload logging configuration.
+	// Required on Create. On Update, provide this field when `updateMask`
+	// contains `config` or one of its subpaths
 	Config GetAiGatewayModelServiceConfig `pulumi:"config"`
-	// (string) - When the model service was created
+	// (string) - Time the model service was created
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Creator identity
 	CreatedBy string `pulumi:"createdBy"`
-	// (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-	// when `owner` is not explicitly set on creation
+	// (string) - Owner of the model service
 	EffectiveOwner string `pulumi:"effectiveOwner"`
-	// (string) - Optimistic concurrency control token. Server-generated from the
-	// entity's state and returned on every read. To use it as an if-match
-	// precondition on a mutation, echo the last-read value back via the dedicated
-	// `etag` field on the Update / Delete request; the server rejects the mutation
-	// if the stored etag differs
+	// (string) - Optimistic concurrency token returned on every read. To make an Update or
+	// Delete conditional, pass the last-read value in that request's `etag`
+	// field. In REST responses, this value is a base64 string; URL-encode it when
+	// setting the `etag` query parameter
 	Etag string `pulumi:"etag"`
 	// (string) - Metastore hosting the model service
 	MetastoreId string `pulumi:"metastoreId"`
 	// (string) - User-facing label for this destination, used in routing references
-	Name string `pulumi:"name"`
-	// (string) - The owner of the model service. Write-only; read owner via effective_owner
-	Owner          string                                  `pulumi:"owner"`
+	Name           string                                  `pulumi:"name"`
 	ProviderConfig *GetAiGatewayModelServiceProviderConfig `pulumi:"providerConfig"`
-	// (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-	// "completions"). Derived from the destinations' backing models / providers
+	// (list of string) - API types supported across this service's destinations, such as
+	// `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+	// `mlflow/v1/chat/completions`. Derived from the backing models and providers
 	// at read time
 	SupportedApiTypes []string `pulumi:"supportedApiTypes"`
-	// (string) - When the model service was last modified
+	// (string) - Time the model service was last modified
 	UpdateTime string `pulumi:"updateTime"`
 	// (string) - Identity of the last updater
 	UpdatedBy string `pulumi:"updatedBy"`
@@ -116,15 +143,14 @@ func (o LookupAiGatewayModelServiceResultOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.Comment }).(pulumi.StringOutput)
 }
 
-// (ModelServiceConfig) - Operational configuration: destinations, routing, rate limits, inference
-// table. Required on CreateModelService; on UpdateModelService it is
-// required only when `config` (or a `config.*` subpath) appears in
-// `updateMask`
+// (ModelServiceConfig) - Destinations, routing, rate limits, and payload logging configuration.
+// Required on Create. On Update, provide this field when `updateMask`
+// contains `config` or one of its subpaths
 func (o LookupAiGatewayModelServiceResultOutput) Config() GetAiGatewayModelServiceConfigOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) GetAiGatewayModelServiceConfig { return v.Config }).(GetAiGatewayModelServiceConfigOutput)
 }
 
-// (string) - When the model service was created
+// (string) - Time the model service was created
 func (o LookupAiGatewayModelServiceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -134,17 +160,15 @@ func (o LookupAiGatewayModelServiceResultOutput) CreatedBy() pulumi.StringOutput
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-// when `owner` is not explicitly set on creation
+// (string) - Owner of the model service
 func (o LookupAiGatewayModelServiceResultOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
 
-// (string) - Optimistic concurrency control token. Server-generated from the
-// entity's state and returned on every read. To use it as an if-match
-// precondition on a mutation, echo the last-read value back via the dedicated
-// `etag` field on the Update / Delete request; the server rejects the mutation
-// if the stored etag differs
+// (string) - Optimistic concurrency token returned on every read. To make an Update or
+// Delete conditional, pass the last-read value in that request's `etag`
+// field. In REST responses, this value is a base64 string; URL-encode it when
+// setting the `etag` query parameter
 func (o LookupAiGatewayModelServiceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -159,25 +183,21 @@ func (o LookupAiGatewayModelServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - The owner of the model service. Write-only; read owner via effective_owner
-func (o LookupAiGatewayModelServiceResultOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.Owner }).(pulumi.StringOutput)
-}
-
 func (o LookupAiGatewayModelServiceResultOutput) ProviderConfig() GetAiGatewayModelServiceProviderConfigPtrOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) *GetAiGatewayModelServiceProviderConfig {
 		return v.ProviderConfig
 	}).(GetAiGatewayModelServiceProviderConfigPtrOutput)
 }
 
-// (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-// "completions"). Derived from the destinations' backing models / providers
+// (list of string) - API types supported across this service's destinations, such as
+// `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+// `mlflow/v1/chat/completions`. Derived from the backing models and providers
 // at read time
 func (o LookupAiGatewayModelServiceResultOutput) SupportedApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) []string { return v.SupportedApiTypes }).(pulumi.StringArrayOutput)
 }
 
-// (string) - When the model service was last modified
+// (string) - Time the model service was last modified
 func (o LookupAiGatewayModelServiceResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

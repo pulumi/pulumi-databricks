@@ -503,6 +503,42 @@ import (
 //
 // ```
 //
+// ## Secret grants
+//
+// You can grant `ALL_PRIVILEGES`, `MANAGE`, and `READ_SECRET` privileges to a Unity Catalog secret (databricks_secret_uc) specified in the `secret` attribute.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrants(ctx, "secret", &databricks.GrantsArgs{
+//				Secret: pulumi.String("main.default.my_secret"),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("READ_SECRET"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Model service grants
 //
 // You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `modelService` attribute.
@@ -894,6 +930,7 @@ type Grants struct {
 	ProviderConfig       GrantsProviderConfigOutput `pulumi:"providerConfig"`
 	Recipient            pulumi.StringPtrOutput     `pulumi:"recipient"`
 	Schema               pulumi.StringPtrOutput     `pulumi:"schema"`
+	Secret               pulumi.StringPtrOutput     `pulumi:"secret"`
 	Share                pulumi.StringPtrOutput     `pulumi:"share"`
 	StorageCredential    pulumi.StringPtrOutput     `pulumi:"storageCredential"`
 	Table                pulumi.StringPtrOutput     `pulumi:"table"`
@@ -948,6 +985,7 @@ type grantsState struct {
 	ProviderConfig       *GrantsProviderConfig `pulumi:"providerConfig"`
 	Recipient            *string               `pulumi:"recipient"`
 	Schema               *string               `pulumi:"schema"`
+	Secret               *string               `pulumi:"secret"`
 	Share                *string               `pulumi:"share"`
 	StorageCredential    *string               `pulumi:"storageCredential"`
 	Table                *string               `pulumi:"table"`
@@ -970,6 +1008,7 @@ type GrantsState struct {
 	ProviderConfig       GrantsProviderConfigPtrInput
 	Recipient            pulumi.StringPtrInput
 	Schema               pulumi.StringPtrInput
+	Secret               pulumi.StringPtrInput
 	Share                pulumi.StringPtrInput
 	StorageCredential    pulumi.StringPtrInput
 	Table                pulumi.StringPtrInput
@@ -996,6 +1035,7 @@ type grantsArgs struct {
 	ProviderConfig       *GrantsProviderConfig `pulumi:"providerConfig"`
 	Recipient            *string               `pulumi:"recipient"`
 	Schema               *string               `pulumi:"schema"`
+	Secret               *string               `pulumi:"secret"`
 	Share                *string               `pulumi:"share"`
 	StorageCredential    *string               `pulumi:"storageCredential"`
 	Table                *string               `pulumi:"table"`
@@ -1019,6 +1059,7 @@ type GrantsArgs struct {
 	ProviderConfig       GrantsProviderConfigPtrInput
 	Recipient            pulumi.StringPtrInput
 	Schema               pulumi.StringPtrInput
+	Secret               pulumi.StringPtrInput
 	Share                pulumi.StringPtrInput
 	StorageCredential    pulumi.StringPtrInput
 	Table                pulumi.StringPtrInput
@@ -1170,6 +1211,10 @@ func (o GrantsOutput) Recipient() pulumi.StringPtrOutput {
 
 func (o GrantsOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantsOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantsOutput) Share() pulumi.StringPtrOutput {

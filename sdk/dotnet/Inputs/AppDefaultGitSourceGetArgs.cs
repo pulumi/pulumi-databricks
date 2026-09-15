@@ -12,12 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppDefaultGitSourceGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
-        /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
 
+        /// <summary>
+        /// Git commit SHA to check out and deploy from.
+        /// </summary>
         [Input("commit")]
         public Input<string>? Commit { get; set; }
 
@@ -31,11 +31,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? ResolvedCommit { get; set; }
 
         /// <summary>
-        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`GitRepository`/`GitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `DefaultSourceCodePath`.
         /// </summary>
         [Input("sourceCodePath")]
         public Input<string>? SourceCodePath { get; set; }
 
+        /// <summary>
+        /// Git tag to check out and deploy from.
+        /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 

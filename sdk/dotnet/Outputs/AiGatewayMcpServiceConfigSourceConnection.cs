@@ -14,7 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AiGatewayMcpServiceConfigSourceConnection
     {
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+        /// the reference so callers can identify the broken dependency; tool
+        /// invocation fails until the source connection is updated
         /// </summary>
         public readonly bool? IsDeleted;
         /// <summary>

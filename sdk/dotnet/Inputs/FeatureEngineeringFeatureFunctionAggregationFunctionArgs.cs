@@ -57,9 +57,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("sum")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionSumArgs>? Sum { get; set; }
 
-        /// <summary>
-        /// The time window over which the aggregation is computed
-        /// </summary>
         [Input("timeWindow")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs>? TimeWindow { get; set; }
 

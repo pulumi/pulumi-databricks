@@ -14,20 +14,19 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelServiceConfigRoutingDestinationResult
     {
         /// <summary>
-        /// (string) - Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+        /// (string) - Backing-model category. Provide the matching type-specific configuration
+        /// and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
         /// </summary>
         public readonly string DestinationType;
         /// <summary>
-        /// (ModelServiceConfigExternalModelConfig)
+        /// (ModelServiceConfigExternalModelConfig) - Configuration for an external model reached through a model provider service
         /// </summary>
         public readonly Outputs.GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfigResult? ExternalModelConfig;
         /// <summary>
-        /// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-        /// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-        /// deleted but the destination row still references it. The dangling
-        /// destination is surfaced (not silently dropped) so callers can see the
-        /// broken routing. Inference traffic through this destination fails closed
-        /// (BAD_REQUEST / FAILED_PRECONDITION)
+        /// (boolean) - Whether the destination's backing model or model provider service has
+        /// been deleted. The destination remains visible so you can identify the
+        /// broken dependency. Requests cannot use this destination until the backing
+        /// resource is restored or the destination is replaced
         /// </summary>
         public readonly bool IsDeleted;
         /// <summary>
@@ -39,16 +38,18 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (ModelServiceConfigPayPerTokenConfig)
+        /// (ModelServiceConfigPayPerTokenConfig) - Configuration for a pay-per-token Databricks foundation model
         /// </summary>
         public readonly Outputs.GetAiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigResult? PayPerTokenConfig;
         /// <summary>
-        /// (ModelServiceConfigProvisionedThroughputConfig)
+        /// (ModelServiceConfigProvisionedThroughputConfig) - Configuration for a provisioned-throughput Databricks foundation model
         /// </summary>
         public readonly Outputs.GetAiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigResult? ProvisionedThroughputConfig;
         /// <summary>
-        /// (integer) - Share of traffic sent to this destination, 0-100. Optional on fallback
-        /// destinations; see FallbackConfig
+        /// (integer) - Percentage of primary traffic sent to this destination, from 0 to 100.
+        /// Required when there is more than one primary destination, in which case the
+        /// primary percentages must sum to 100; a single primary destination receives
+        /// all traffic. Fallback destinations are ordered and do not use this field
         /// </summary>
         public readonly int? TrafficPercentage;
 

@@ -12,25 +12,106 @@ namespace Pulumi.Databricks
     public static class GetAiGatewayModelServices
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Lists the Unity Catalog model services that are visible to the current principal in a schema.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example lists model services in the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAiGatewayModelServices.Invoke(new()
+        ///     {
+        ///         Parent = "schemas/main.default",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["modelServices"] = all.Apply(getAiGatewayModelServicesResult =&gt; getAiGatewayModelServicesResult.ModelServices),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAiGatewayModelServicesResult> InvokeAsync(GetAiGatewayModelServicesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiGatewayModelServicesResult>("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", args ?? new GetAiGatewayModelServicesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Lists the Unity Catalog model services that are visible to the current principal in a schema.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example lists model services in the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAiGatewayModelServices.Invoke(new()
+        ///     {
+        ///         Parent = "schemas/main.default",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["modelServices"] = all.Apply(getAiGatewayModelServicesResult =&gt; getAiGatewayModelServicesResult.ModelServices),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiGatewayModelServicesResult> Invoke(GetAiGatewayModelServicesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiGatewayModelServicesResult>("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", args ?? new GetAiGatewayModelServicesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Lists the Unity Catalog model services that are visible to the current principal in a schema.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example lists model services in the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAiGatewayModelServices.Invoke(new()
+        ///     {
+        ///         Parent = "schemas/main.default",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["modelServices"] = all.Apply(getAiGatewayModelServicesResult =&gt; getAiGatewayModelServicesResult.ModelServices),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiGatewayModelServicesResult> Invoke(GetAiGatewayModelServicesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiGatewayModelServicesResult>("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", args ?? new GetAiGatewayModelServicesInvokeArgs(), options.WithDefaults());
@@ -47,9 +128,9 @@ namespace Pulumi.Databricks
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Name of the parent schema to list within, as
-        /// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-        /// characters individually
+        /// Parent schema to list within, in the form
+        /// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+        /// 255 characters individually
         /// </summary>
         [Input("parent")]
         public string? Parent { get; set; }
@@ -61,9 +142,10 @@ namespace Pulumi.Databricks
         public Inputs.GetAiGatewayModelServicesProviderConfigArgs? ProviderConfig { get; set; }
 
         /// <summary>
-        /// View selector controlling which fields are populated per row. `FULL`
-        /// returns the full representation of the service; `BASIC` returns a more
-        /// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+        /// Fields to return for each service. `FULL` includes destinations,
+        /// inference-table details, and rate-limit principal names. `BASIC` omits
+        /// destinations and inference-table details and omits principal names from
+        /// rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
         /// </summary>
         [Input("view")]
         public string? View { get; set; }
@@ -84,9 +166,9 @@ namespace Pulumi.Databricks
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Name of the parent schema to list within, as
-        /// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-        /// characters individually
+        /// Parent schema to list within, in the form
+        /// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+        /// 255 characters individually
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -98,9 +180,10 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetAiGatewayModelServicesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// View selector controlling which fields are populated per row. `FULL`
-        /// returns the full representation of the service; `BASIC` returns a more
-        /// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+        /// Fields to return for each service. `FULL` includes destinations,
+        /// inference-table details, and rate-limit principal names. `BASIC` omits
+        /// destinations and inference-table details and omits principal names from
+        /// rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }
@@ -118,9 +201,9 @@ namespace Pulumi.Databricks
         public readonly ImmutableArray<Outputs.GetAiGatewayModelServicesModelServiceResult> ModelServices;
         public readonly int? PageSize;
         /// <summary>
-        /// (string) - Parent UC schema where the inference table is created.
-        /// Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
-        /// thereafter; changing it on an existing service is rejected
+        /// (string) - Parent Unity Catalog schema where the inference table is created, in the
+        /// form `schemas/{catalog}.{schema}`. Required when configuring an inference
+        /// table. After the inference table is created, this field cannot be changed
         /// </summary>
         public readonly string? Parent;
         public readonly Outputs.GetAiGatewayModelServicesProviderConfigResult? ProviderConfig;

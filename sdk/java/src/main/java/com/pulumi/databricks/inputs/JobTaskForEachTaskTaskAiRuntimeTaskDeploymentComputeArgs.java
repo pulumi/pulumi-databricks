@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,11 +31,19 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs exte
         return this.acceleratorType;
     }
 
+    @Import(name="provisionedCapacityId")
+    private @Nullable Output<String> provisionedCapacityId;
+
+    public Optional<Output<String>> provisionedCapacityId() {
+        return Optional.ofNullable(this.provisionedCapacityId);
+    }
+
     private JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs() {}
 
     private JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs(JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs $) {
         this.acceleratorCount = $.acceleratorCount;
         this.acceleratorType = $.acceleratorType;
+        this.provisionedCapacityId = $.provisionedCapacityId;
     }
 
     public static Builder builder() {
@@ -70,6 +80,15 @@ public final class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs exte
 
         public Builder acceleratorType(String acceleratorType) {
             return acceleratorType(Output.of(acceleratorType));
+        }
+
+        public Builder provisionedCapacityId(@Nullable Output<String> provisionedCapacityId) {
+            $.provisionedCapacityId = provisionedCapacityId;
+            return this;
+        }
+
+        public Builder provisionedCapacityId(String provisionedCapacityId) {
+            return provisionedCapacityId(Output.of(provisionedCapacityId));
         }
 
         public JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs build() {

@@ -125,6 +125,32 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// 
+    /// ### Branch from a Snapshot
+    /// 
+    /// Create a branch whose data comes from an existing snapshot instead of a source branch. The snapshot must be `AVAILABLE` and belong to the same project. `SourceSnapshot` is immutable and mutually exclusive with `SourceBranch`. The restored snapshot is reported back in `status.source_snapshot`.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fromSnapshot = new Databricks.PostgresBranch("from_snapshot", new()
+    ///     {
+    ///         BranchId = "restored-branch",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             SourceSnapshot = "projects/my-project/snapshots/my-snapshot",
+    ///             NoExpiry = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/postgresBranch:PostgresBranch")]
     public partial class PostgresBranch : global::Pulumi.CustomResource

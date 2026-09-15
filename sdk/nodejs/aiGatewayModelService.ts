@@ -7,9 +7,40 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Manages a Unity Catalog model service. A model service provides a stable endpoint that routes inference requests to one or more destinations, such as Databricks foundation models or external model provider services.
+ *
+ * Model services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+ *
+ * ## Example Usage
+ *
+ * The following example creates a model service that sends all traffic to a Databricks foundation model:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = new databricks.AiGatewayModelService("example", {
+ *     parent: "schemas/main.default",
+ *     modelServiceId: "customer_support",
+ *     comment: "Routes customer support requests",
+ *     config: {
+ *         routing: {
+ *             destinations: [{
+ *                 name: "primary",
+ *                 destinationType: "DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL",
+ *                 payPerTokenConfig: {
+ *                     model: "models/system.ai.databricks-gpt-5",
+ *                 },
+ *                 trafficPercentage: 100,
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class AiGatewayModelService extends pulumi.CustomResource {
     /**
@@ -44,14 +75,13 @@ export class AiGatewayModelService extends pulumi.CustomResource {
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     /**
-     * Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      */
     declare public readonly config: pulumi.Output<outputs.AiGatewayModelServiceConfig | undefined>;
     /**
-     * (string) - When the model service was created
+     * (string) - Time the model service was created
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -59,16 +89,14 @@ export class AiGatewayModelService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
-     * (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the model service
      */
     declare public /*out*/ readonly effectiveOwner: pulumi.Output<string>;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -88,10 +116,6 @@ export class AiGatewayModelService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The owner of the model service. Write-only; read owner via effective_owner
-     */
-    declare public readonly owner: pulumi.Output<string>;
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -102,13 +126,14 @@ export class AiGatewayModelService extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.AiGatewayModelServiceProviderConfig>;
     /**
-     * (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-     * "completions"). Derived from the destinations' backing models / providers
+     * (list of string) - API types supported across this service's destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      */
     declare public /*out*/ readonly supportedApiTypes: pulumi.Output<string[]>;
     /**
-     * (string) - When the model service was last modified
+     * (string) - Time the model service was last modified
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
@@ -138,7 +163,6 @@ export class AiGatewayModelService extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["modelServiceId"] = state?.modelServiceId;
             resourceInputs["name"] = state?.name;
-            resourceInputs["owner"] = state?.owner;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["supportedApiTypes"] = state?.supportedApiTypes;
@@ -155,7 +179,6 @@ export class AiGatewayModelService extends pulumi.CustomResource {
             resourceInputs["comment"] = args?.comment;
             resourceInputs["config"] = args?.config;
             resourceInputs["modelServiceId"] = args?.modelServiceId;
-            resourceInputs["owner"] = args?.owner;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -182,14 +205,13 @@ export interface AiGatewayModelServiceState {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      */
     config?: pulumi.Input<inputs.AiGatewayModelServiceConfig | undefined>;
     /**
-     * (string) - When the model service was created
+     * (string) - Time the model service was created
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
@@ -197,16 +219,14 @@ export interface AiGatewayModelServiceState {
      */
     createdBy?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the model service
      */
     effectiveOwner?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     etag?: pulumi.Input<string | undefined>;
     /**
@@ -226,10 +246,6 @@ export interface AiGatewayModelServiceState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The owner of the model service. Write-only; read owner via effective_owner
-     */
-    owner?: pulumi.Input<string | undefined>;
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -240,13 +256,14 @@ export interface AiGatewayModelServiceState {
      */
     providerConfig?: pulumi.Input<inputs.AiGatewayModelServiceProviderConfig | undefined>;
     /**
-     * (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-     * "completions"). Derived from the destinations' backing models / providers
+     * (list of string) - API types supported across this service's destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      */
     supportedApiTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * (string) - When the model service was last modified
+     * (string) - Time the model service was last modified
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
@@ -264,20 +281,15 @@ export interface AiGatewayModelServiceArgs {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      */
     config?: pulumi.Input<inputs.AiGatewayModelServiceConfig | undefined>;
     /**
      * Name for the model service, e.g. "myModelService"
      */
     modelServiceId: pulumi.Input<string>;
-    /**
-     * The owner of the model service. Write-only; read owner via effective_owner
-     */
-    owner?: pulumi.Input<string | undefined>;
     /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.

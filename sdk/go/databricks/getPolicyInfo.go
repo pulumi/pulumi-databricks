@@ -86,6 +86,10 @@ type LookupPolicyInfoResult struct {
 	CreatedAt int `pulumi:"createdAt"`
 	// (string) - Username of the user who created the policy. Output only
 	CreatedBy string `pulumi:"createdBy"`
+	// (DenyOptions) - Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Deny GetPolicyInfoDeny `pulumi:"deny"`
 	// (list of string) - Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals []string `pulumi:"exceptPrincipals"`
 	// (string) - Type of securables that the policy should take effect on.
@@ -111,7 +115,7 @@ type LookupPolicyInfoResult struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType string `pulumi:"onSecurableType"`
-	// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+	// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType     string                       `pulumi:"policyType"`
 	ProviderConfig *GetPolicyInfoProviderConfig `pulumi:"providerConfig"`
 	// (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
@@ -191,6 +195,13 @@ func (o LookupPolicyInfoResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// (DenyOptions) - Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+// Required on create and optional on update. When specified on update,
+// the new options will replace the existing options as a whole
+func (o LookupPolicyInfoResultOutput) Deny() GetPolicyInfoDenyOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) GetPolicyInfoDeny { return v.Deny }).(GetPolicyInfoDenyOutput)
+}
+
 // (list of string) - Optional list of user or group names that should be excluded from the policy
 func (o LookupPolicyInfoResultOutput) ExceptPrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyInfoResult) []string { return v.ExceptPrincipals }).(pulumi.StringArrayOutput)
@@ -240,7 +251,7 @@ func (o LookupPolicyInfoResultOutput) OnSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.OnSecurableType }).(pulumi.StringOutput)
 }
 
-// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 func (o LookupPolicyInfoResultOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.PolicyType }).(pulumi.StringOutput)
 }

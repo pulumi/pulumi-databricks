@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AiGatewayModelServiceConfig
     {
         /// <summary>
-        /// Inference table config for payload logging
+        /// Inference table configuration for payload logging
         /// </summary>
         public readonly Outputs.AiGatewayModelServiceConfigInferenceTable? InferenceTable;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AiGatewayModelServiceConfigRateLimit> RateLimits;
         /// <summary>
-        /// Routing configuration: destinations, routing strategy, and fallback
+        /// Routing configuration: destinations and fallback
         /// </summary>
         public readonly Outputs.AiGatewayModelServiceConfigRouting? Routing;
 

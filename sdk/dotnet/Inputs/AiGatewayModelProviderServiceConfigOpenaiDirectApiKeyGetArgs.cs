@@ -14,8 +14,8 @@ namespace Pulumi.Databricks.Inputs
     {
         /// <summary>
         /// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        /// reads. Get and List responses omit `Plaintext`; the field's presence in
-        /// the read shape only indicates that a secret is configured
+        /// reads. Get and List responses omit `Plaintext`; the enclosing secret
+        /// object remains present to indicate that a secret is configured
         /// </summary>
         [Input("plaintext")]
         public Input<string>? Plaintext { get; set; }

@@ -17,23 +17,31 @@ public final class AppGitSourceArgs extends com.pulumi.resources.ResourceArgs {
     public static final AppGitSourceArgs Empty = new AppGitSourceArgs();
 
     /**
-     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
      * 
      */
     @Import(name="branch")
     private @Nullable Output<String> branch;
 
     /**
-     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * @return Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
      * 
      */
     public Optional<Output<String>> branch() {
         return Optional.ofNullable(this.branch);
     }
 
+    /**
+     * Git commit SHA to check out and deploy from.
+     * 
+     */
     @Import(name="commit")
     private @Nullable Output<String> commit;
 
+    /**
+     * @return Git commit SHA to check out and deploy from.
+     * 
+     */
     public Optional<Output<String>> commit() {
         return Optional.ofNullable(this.commit);
     }
@@ -61,23 +69,31 @@ public final class AppGitSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * Path to the app source code within the repository. Defaults to the repository root.
      * 
      */
     @Import(name="sourceCodePath")
     private @Nullable Output<String> sourceCodePath;
 
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Path to the app source code within the repository. Defaults to the repository root.
      * 
      */
     public Optional<Output<String>> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }
 
+    /**
+     * Git tag to check out and deploy from.
+     * 
+     */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
+    /**
+     * @return Git tag to check out and deploy from.
+     * 
+     */
     public Optional<Output<String>> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -112,7 +128,7 @@ public final class AppGitSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param branch The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+         * @param branch Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
          * 
          * @return builder
          * 
@@ -123,7 +139,7 @@ public final class AppGitSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param branch The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+         * @param branch Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
          * 
          * @return builder
          * 
@@ -132,11 +148,23 @@ public final class AppGitSourceArgs extends com.pulumi.resources.ResourceArgs {
             return branch(Output.of(branch));
         }
 
+        /**
+         * @param commit Git commit SHA to check out and deploy from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commit(@Nullable Output<String> commit) {
             $.commit = commit;
             return this;
         }
 
+        /**
+         * @param commit Git commit SHA to check out and deploy from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commit(String commit) {
             return commit(Output.of(commit));
         }
@@ -172,7 +200,7 @@ public final class AppGitSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * @param sourceCodePath Path to the app source code within the repository. Defaults to the repository root.
          * 
          * @return builder
          * 
@@ -183,7 +211,7 @@ public final class AppGitSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * @param sourceCodePath Path to the app source code within the repository. Defaults to the repository root.
          * 
          * @return builder
          * 
@@ -192,11 +220,23 @@ public final class AppGitSourceArgs extends com.pulumi.resources.ResourceArgs {
             return sourceCodePath(Output.of(sourceCodePath));
         }
 
+        /**
+         * @param tag Git tag to check out and deploy from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(@Nullable Output<String> tag) {
             $.tag = tag;
             return this;
         }
 
+        /**
+         * @param tag Git tag to check out and deploy from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(String tag) {
             return tag(Output.of(tag));
         }

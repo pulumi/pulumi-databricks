@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppPendingDeploymentDeploymentArtifacts {
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     private @Nullable String sourceCodePath;
 
     private AppPendingDeploymentDeploymentArtifacts() {}
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     public Optional<String> sourceCodePath() {

@@ -27,7 +27,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Explicitly disable expiration. When set to true, the branch will not expire.
         /// If set to false, the request is invalid; provide either ttl or ExpireTime instead.
-        /// Mutually exclusive with `ExpireTime` and `Ttl`. When updating, use `spec.expiration` in the update_mask
+        /// Mutually exclusive with `ExpireTime` and `Ttl`
         /// </summary>
         [Input("noExpiry")]
         public Input<bool>? NoExpiry { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// Relative time-to-live duration. When set, the branch will expire at CreationTime + ttl.
-        /// Mutually exclusive with `ExpireTime` and `NoExpiry`. When updating, use `spec.expiration` in the update_mask
+        /// Mutually exclusive with `ExpireTime` and `NoExpiry`
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }

@@ -13,10 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppPendingDeploymentGitSource {
     /**
-     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * @return Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
      * 
      */
     private @Nullable String branch;
+    /**
+     * @return Git commit SHA to check out and deploy from.
+     * 
+     */
     private @Nullable String commit;
     /**
      * @return Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
@@ -25,20 +29,28 @@ public final class AppPendingDeploymentGitSource {
     private @Nullable AppPendingDeploymentGitSourceGitRepository gitRepository;
     private @Nullable String resolvedCommit;
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Path to the app source code within the repository. Defaults to the repository root.
      * 
      */
     private @Nullable String sourceCodePath;
+    /**
+     * @return Git tag to check out and deploy from.
+     * 
+     */
     private @Nullable String tag;
 
     private AppPendingDeploymentGitSource() {}
     /**
-     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * @return Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
      * 
      */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
+    /**
+     * @return Git commit SHA to check out and deploy from.
+     * 
+     */
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
     }
@@ -53,12 +65,16 @@ public final class AppPendingDeploymentGitSource {
         return Optional.ofNullable(this.resolvedCommit);
     }
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Path to the app source code within the repository. Defaults to the repository root.
      * 
      */
     public Optional<String> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }
+    /**
+     * @return Git tag to check out and deploy from.
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }

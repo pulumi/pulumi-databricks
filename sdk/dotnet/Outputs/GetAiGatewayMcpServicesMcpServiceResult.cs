@@ -18,14 +18,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Comment;
         /// <summary>
-        /// (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
-        /// Required on CreateMcpService; on
-        /// UpdateMcpService it is required only when `Config` (or a `config.*`
-        /// subpath) appears in `UpdateMask`
+        /// (McpServiceConfig) - Connection, tool selectors, and rate limits. Required on Create. On Update,
+        /// provide this field when `UpdateMask` contains `Config` or one of its
+        /// subpaths
         /// </summary>
         public readonly Outputs.GetAiGatewayMcpServicesMcpServiceConfigResult Config;
         /// <summary>
-        /// (string) - When the MCP service was created
+        /// (string) - Time the MCP service was created
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -33,16 +32,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-        /// when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the MCP service
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -50,20 +47,16 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
-        /// (string) - Name of the UC connection that hosts the MCP server, as
-        /// `connections/{catalog}.{schema}.{connection}`
+        /// (string) - Resource name of the Unity Catalog connection used to access the MCP
+        /// server, in the form `connections/{catalog}.{schema}.{connection}`
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string) - The owner of the MCP service. Write-only; read owner via effective_owner
-        /// </summary>
-        public readonly string Owner;
         /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetAiGatewayMcpServicesMcpServiceProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - When the MCP service was last modified
+        /// (string) - Time the MCP service was last modified
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
@@ -89,8 +82,6 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
-            string owner,
-
             Outputs.GetAiGatewayMcpServicesMcpServiceProviderConfigResult? providerConfig,
 
             string updateTime,
@@ -105,7 +96,6 @@ namespace Pulumi.Databricks.Outputs
             Etag = etag;
             MetastoreId = metastoreId;
             Name = name;
-            Owner = owner;
             ProviderConfig = providerConfig;
             UpdateTime = updateTime;
             UpdatedBy = updatedBy;

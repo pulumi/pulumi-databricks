@@ -15,23 +15,9 @@ public final class PolicyInfoGrantArgs extends com.pulumi.resources.ResourceArgs
 
     public static final PolicyInfoGrantArgs Empty = new PolicyInfoGrantArgs();
 
-    /**
-     * List of privileges to grant.
-     * When any of these privileges are requested, the policy will grant access
-     * if the principal and condition match.
-     * Required on create and update
-     * 
-     */
     @Import(name="privileges", required=true)
     private Output<List<String>> privileges;
 
-    /**
-     * @return List of privileges to grant.
-     * When any of these privileges are requested, the policy will grant access
-     * if the principal and condition match.
-     * Required on create and update
-     * 
-     */
     public Output<List<String>> privileges() {
         return this.privileges;
     }
@@ -60,42 +46,15 @@ public final class PolicyInfoGrantArgs extends com.pulumi.resources.ResourceArgs
             $ = new PolicyInfoGrantArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param privileges List of privileges to grant.
-         * When any of these privileges are requested, the policy will grant access
-         * if the principal and condition match.
-         * Required on create and update
-         * 
-         * @return builder
-         * 
-         */
         public Builder privileges(Output<List<String>> privileges) {
             $.privileges = privileges;
             return this;
         }
 
-        /**
-         * @param privileges List of privileges to grant.
-         * When any of these privileges are requested, the policy will grant access
-         * if the principal and condition match.
-         * Required on create and update
-         * 
-         * @return builder
-         * 
-         */
         public Builder privileges(List<String> privileges) {
             return privileges(Output.of(privileges));
         }
 
-        /**
-         * @param privileges List of privileges to grant.
-         * When any of these privileges are requested, the policy will grant access
-         * if the principal and condition match.
-         * Required on create and update
-         * 
-         * @return builder
-         * 
-         */
         public Builder privileges(String... privileges) {
             return privileges(List.of(privileges));
         }

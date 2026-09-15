@@ -7,9 +7,25 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+ *
+ * ## Example Usage
+ *
+ * The following example retrieves the model provider service named `customProvider` from the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiGatewayModelProviderService({
+ *     name: "model-provider-services/main.default.custom_provider",
+ * });
+ * export const providerType = example.then(example => example.config?.providerType);
+ * ```
  */
 export function getAiGatewayModelProviderService(args: GetAiGatewayModelProviderServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAiGatewayModelProviderServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -46,14 +62,13 @@ export interface GetAiGatewayModelProviderServiceResult {
      */
     readonly comment: string;
     /**
-     * (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * (ModelProviderServiceConfig) - Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      */
     readonly config: outputs.GetAiGatewayModelProviderServiceConfig;
     /**
-     * (string) - When the provider service was created
+     * (string) - Time the provider service was created
      */
     readonly createTime: string;
     /**
@@ -61,16 +76,14 @@ export interface GetAiGatewayModelProviderServiceResult {
      */
     readonly createdBy: string;
     /**
-     * (string) - The resolved owner of the model provider service. Falls back to the
-     * caller's identity when `owner` is not explicitly set on creation
+     * (string) - Owner of the model provider service
      */
     readonly effectiveOwner: string;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     readonly etag: string;
     /**
@@ -78,20 +91,15 @@ export interface GetAiGatewayModelProviderServiceResult {
      */
     readonly metastoreId: string;
     /**
-     * (string) - Resource name of the bound UC service credential, in the AIP-122 form
-     * `credentials/{name}` (a metastore-level single-part credential name). On
-     * create the caller supplies the name here. On read it reflects the
-     * credential's current name at read time
+     * (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential's current
+     * name
      */
     readonly name: string;
-    /**
-     * (string) - The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     */
-    readonly owner: string;
     readonly providerConfig?: outputs.GetAiGatewayModelProviderServiceProviderConfig;
     /**
-     * (string) - When the provider service was last modified
+     * (string) - Time the provider service was last modified
      */
     readonly updateTime: string;
     /**
@@ -100,9 +108,25 @@ export interface GetAiGatewayModelProviderServiceResult {
     readonly updatedBy: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+ *
+ * ## Example Usage
+ *
+ * The following example retrieves the model provider service named `customProvider` from the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiGatewayModelProviderService({
+ *     name: "model-provider-services/main.default.custom_provider",
+ * });
+ * export const providerType = example.then(example => example.config?.providerType);
+ * ```
  */
 export function getAiGatewayModelProviderServiceOutput(args: GetAiGatewayModelProviderServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiGatewayModelProviderServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

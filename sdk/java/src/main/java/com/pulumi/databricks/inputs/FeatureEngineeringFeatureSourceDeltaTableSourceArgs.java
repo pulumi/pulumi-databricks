@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,6 +22,13 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
 
     public Optional<Output<String>> dataframeSchema() {
         return Optional.ofNullable(this.dataframeSchema);
+    }
+
+    @Import(name="entityColumns")
+    private @Nullable Output<List<String>> entityColumns;
+
+    public Optional<Output<List<String>>> entityColumns() {
+        return Optional.ofNullable(this.entityColumns);
     }
 
     @Import(name="filterCondition")
@@ -49,6 +57,21 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
         return this.fullName;
     }
 
+    /**
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * 
+     */
+    @Import(name="timeseriesColumn")
+    private @Nullable Output<String> timeseriesColumn;
+
+    /**
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
+     * 
+     */
+    public Optional<Output<String>> timeseriesColumn() {
+        return Optional.ofNullable(this.timeseriesColumn);
+    }
+
     @Import(name="transformationSql")
     private @Nullable Output<String> transformationSql;
 
@@ -60,8 +83,10 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
 
     private FeatureEngineeringFeatureSourceDeltaTableSourceArgs(FeatureEngineeringFeatureSourceDeltaTableSourceArgs $) {
         this.dataframeSchema = $.dataframeSchema;
+        this.entityColumns = $.entityColumns;
         this.filterCondition = $.filterCondition;
         this.fullName = $.fullName;
+        this.timeseriesColumn = $.timeseriesColumn;
         this.transformationSql = $.transformationSql;
     }
 
@@ -90,6 +115,19 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
 
         public Builder dataframeSchema(String dataframeSchema) {
             return dataframeSchema(Output.of(dataframeSchema));
+        }
+
+        public Builder entityColumns(@Nullable Output<List<String>> entityColumns) {
+            $.entityColumns = entityColumns;
+            return this;
+        }
+
+        public Builder entityColumns(List<String> entityColumns) {
+            return entityColumns(Output.of(entityColumns));
+        }
+
+        public Builder entityColumns(String... entityColumns) {
+            return entityColumns(List.of(entityColumns));
         }
 
         public Builder filterCondition(@Nullable Output<String> filterCondition) {
@@ -124,6 +162,27 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
          */
         public Builder fullName(String fullName) {
             return fullName(Output.of(fullName));
+        }
+
+        /**
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeseriesColumn(@Nullable Output<String> timeseriesColumn) {
+            $.timeseriesColumn = timeseriesColumn;
+            return this;
+        }
+
+        /**
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeseriesColumn(String timeseriesColumn) {
+            return timeseriesColumn(Output.of(timeseriesColumn));
         }
 
         public Builder transformationSql(@Nullable Output<String> transformationSql) {

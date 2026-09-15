@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureSourceKafkaSourceResult
     {
         /// <summary>
+        /// (list of ColumnIdentifier, deprecated)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult> EntityColumnIdentifiers;
+        /// <summary>
         /// (string) - The filter condition applied to the source data before aggregation
         /// </summary>
         public readonly string? FilterCondition;
@@ -26,15 +30,25 @@ namespace Pulumi.Databricks.Outputs
         /// backwards compatibility but is deprecated; migrate to dot notation
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// (ColumnIdentifier, deprecated)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult? TimeseriesColumnIdentifier;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureSourceKafkaSourceResult(
+            ImmutableArray<Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult> entityColumnIdentifiers,
+
             string? filterCondition,
 
-            string name)
+            string name,
+
+            Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult? timeseriesColumnIdentifier)
         {
+            EntityColumnIdentifiers = entityColumnIdentifiers;
             FilterCondition = filterCondition;
             Name = name;
+            TimeseriesColumnIdentifier = timeseriesColumnIdentifier;
         }
     }
 }

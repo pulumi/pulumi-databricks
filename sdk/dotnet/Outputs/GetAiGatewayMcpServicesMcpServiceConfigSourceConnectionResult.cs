@@ -14,12 +14,14 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayMcpServicesMcpServiceConfigSourceConnectionResult
     {
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+        /// the reference so callers can identify the broken dependency; tool
+        /// invocation fails until the source connection is updated
         /// </summary>
         public readonly bool IsDeleted;
         /// <summary>
-        /// (string) - Name of the UC connection that hosts the MCP server, as
-        /// `connections/{catalog}.{schema}.{connection}`
+        /// (string) - Resource name of the Unity Catalog connection used to access the MCP
+        /// server, in the form `connections/{catalog}.{schema}.{connection}`
         /// </summary>
         public readonly string Name;
 

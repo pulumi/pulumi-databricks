@@ -37,6 +37,7 @@ class GrantArgs:
                  provider_config: pulumi.Input[Optional['GrantProviderConfigArgs']] = None,
                  recipient: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
                  share: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
@@ -74,6 +75,8 @@ class GrantArgs:
             pulumi.set(__self__, "recipient", recipient)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
         if share is not None:
             pulumi.set(__self__, "share", share)
         if storage_credential is not None:
@@ -229,6 +232,15 @@ class GrantArgs:
 
     @_builtins.property
     @pulumi.getter
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret", value)
+
+    @_builtins.property
+    @pulumi.getter
     def share(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "share")
 
@@ -283,6 +295,7 @@ class _GrantState:
                  provider_config: pulumi.Input[Optional['GrantProviderConfigArgs']] = None,
                  recipient: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
                  share: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
@@ -322,6 +335,8 @@ class _GrantState:
             pulumi.set(__self__, "recipient", recipient)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
         if share is not None:
             pulumi.set(__self__, "share", share)
         if storage_credential is not None:
@@ -477,6 +492,15 @@ class _GrantState:
 
     @_builtins.property
     @pulumi.getter
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret", value)
+
+    @_builtins.property
+    @pulumi.getter
     def share(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "share")
 
@@ -534,6 +558,7 @@ class Grant(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['GrantProviderConfigArgs', 'GrantProviderConfigArgsDict']]] = None,
                  recipient: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
                  share: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
@@ -789,6 +814,20 @@ class Grant(pulumi.CustomResource):
             function="main.reporting.udf",
             principal="Data Analysts",
             privileges=["EXECUTE"])
+        ```
+
+        ## Secret grants
+
+        See Grants Secret grants for the list of privileges that apply to Secrets.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        secret = databricks.Grant("secret",
+            secret="main.default.my_secret",
+            principal="Data Engineers",
+            privileges=["READ_SECRET"])
         ```
 
         ## Model service grants
@@ -1229,6 +1268,20 @@ class Grant(pulumi.CustomResource):
             privileges=["EXECUTE"])
         ```
 
+        ## Secret grants
+
+        See Grants Secret grants for the list of privileges that apply to Secrets.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        secret = databricks.Grant("secret",
+            secret="main.default.my_secret",
+            principal="Data Engineers",
+            privileges=["READ_SECRET"])
+        ```
+
         ## Model service grants
 
         See Grants Model service grants for the list of privileges that apply to model services.
@@ -1437,6 +1490,7 @@ class Grant(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['GrantProviderConfigArgs', 'GrantProviderConfigArgsDict']]] = None,
                  recipient: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
                  share: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1470,6 +1524,7 @@ class Grant(pulumi.CustomResource):
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["recipient"] = recipient
             __props__.__dict__["schema"] = schema
+            __props__.__dict__["secret"] = secret
             __props__.__dict__["share"] = share
             __props__.__dict__["storage_credential"] = storage_credential
             __props__.__dict__["table"] = table
@@ -1500,6 +1555,7 @@ class Grant(pulumi.CustomResource):
             provider_config: pulumi.Input[Optional[Union['GrantProviderConfigArgs', 'GrantProviderConfigArgsDict']]] = None,
             recipient: pulumi.Input[Optional[_builtins.str]] = None,
             schema: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
             share: pulumi.Input[Optional[_builtins.str]] = None,
             storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
             table: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1532,6 +1588,7 @@ class Grant(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["recipient"] = recipient
         __props__.__dict__["schema"] = schema
+        __props__.__dict__["secret"] = secret
         __props__.__dict__["share"] = share
         __props__.__dict__["storage_credential"] = storage_credential
         __props__.__dict__["table"] = table
@@ -1617,6 +1674,11 @@ class Grant(pulumi.CustomResource):
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter

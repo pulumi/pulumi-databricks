@@ -7,6 +7,9 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunction;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionColumnSelection;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionCustomUdf;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionExtraParameter;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +31,12 @@ public final class FeatureEngineeringFeatureFunction {
      * 
      */
     private @Nullable FeatureEngineeringFeatureFunctionCustomUdf customUdf;
+    private @Nullable List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters;
+    /**
+     * @return Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * 
+     */
+    private @Nullable String functionType;
 
     private FeatureEngineeringFeatureFunction() {}
     /**
@@ -51,6 +60,16 @@ public final class FeatureEngineeringFeatureFunction {
     public Optional<FeatureEngineeringFeatureFunctionCustomUdf> customUdf() {
         return Optional.ofNullable(this.customUdf);
     }
+    public List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters() {
+        return this.extraParameters == null ? List.of() : this.extraParameters;
+    }
+    /**
+     * @return Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * 
+     */
+    public Optional<String> functionType() {
+        return Optional.ofNullable(this.functionType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +83,16 @@ public final class FeatureEngineeringFeatureFunction {
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunction aggregationFunction;
         private @Nullable FeatureEngineeringFeatureFunctionColumnSelection columnSelection;
         private @Nullable FeatureEngineeringFeatureFunctionCustomUdf customUdf;
+        private @Nullable List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters;
+        private @Nullable String functionType;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregationFunction = defaults.aggregationFunction;
     	      this.columnSelection = defaults.columnSelection;
     	      this.customUdf = defaults.customUdf;
+    	      this.extraParameters = defaults.extraParameters;
+    	      this.functionType = defaults.functionType;
         }
 
         @CustomType.Setter
@@ -90,11 +113,28 @@ public final class FeatureEngineeringFeatureFunction {
             this.customUdf = customUdf;
             return this;
         }
+        @CustomType.Setter
+        public Builder extraParameters(@Nullable List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters) {
+
+            this.extraParameters = extraParameters;
+            return this;
+        }
+        public Builder extraParameters(FeatureEngineeringFeatureFunctionExtraParameter... extraParameters) {
+            return extraParameters(List.of(extraParameters));
+        }
+        @CustomType.Setter
+        public Builder functionType(@Nullable String functionType) {
+
+            this.functionType = functionType;
+            return this;
+        }
         public FeatureEngineeringFeatureFunction build() {
             final var _resultValue = new FeatureEngineeringFeatureFunction();
             _resultValue.aggregationFunction = aggregationFunction;
             _resultValue.columnSelection = columnSelection;
             _resultValue.customUdf = customUdf;
+            _resultValue.extraParameters = extraParameters;
+            _resultValue.functionType = functionType;
             return _resultValue;
         }
     }

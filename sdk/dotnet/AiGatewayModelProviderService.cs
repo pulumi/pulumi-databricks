@@ -10,9 +10,63 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+    /// 
+    /// Manages a Unity Catalog model provider service. A model provider service defines how model services connect to an external model provider and which provider models they can access.
+    /// 
+    /// Model provider services are contained in a Unity Catalog schema and governed by Unity Catalog permissions. Supply provider credentials through a sensitive variable or another secure input instead of hardcoding them in your configuration.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The following example creates a model provider service for a custom OpenAI-compatible provider. Pass `ProviderApiKey` through a secure input, such as the `TF_VAR_provider_api_key` environment variable.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var providerApiKey = config.Require("providerApiKey");
+    ///     var example = new Databricks.AiGatewayModelProviderService("example", new()
+    ///     {
+    ///         Parent = "schemas/main.default",
+    ///         ModelProviderServiceId = "custom_provider",
+    ///         Comment = "Connects to a custom model provider",
+    ///         Config = new Databricks.Inputs.AiGatewayModelProviderServiceConfigArgs
+    ///         {
+    ///             ProviderType = "EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM",
+    ///             Targets = new[]
+    ///             {
+    ///                 new Databricks.Inputs.AiGatewayModelProviderServiceConfigTargetArgs
+    ///                 {
+    ///                     Model = "chat-model",
+    ///                     NativeApiTypes = new[]
+    ///                     {
+    ///                         "openai/v1/chat/completions",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Custom = new Databricks.Inputs.AiGatewayModelProviderServiceConfigCustomArgs
+    ///             {
+    ///                 Direct = new Databricks.Inputs.AiGatewayModelProviderServiceConfigCustomDirectArgs
+    ///                 {
+    ///                     BaseUrl = "https://api.example.com/v1",
+    ///                     ApiKey = new Databricks.Inputs.AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs
+    ///                     {
+    ///                         Plaintext = providerApiKey,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService")]
     public partial class AiGatewayModelProviderService : global::Pulumi.CustomResource
@@ -24,16 +78,15 @@ namespace Pulumi.Databricks
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Behavioral configuration: provider connection, model catalog, and
-        /// passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        /// contract. Required on CreateModelProviderService; on Update it is required
-        /// only when `Config` (or a `config.*` subpath) appears in `UpdateMask`
+        /// Provider authentication, exposed models, request-forwarding controls, rate
+        /// limits, and payload logging. Required on Create. On Update, it is required
+        /// only when `Config` or one of its subpaths appears in `UpdateMask`
         /// </summary>
         [Output("config")]
         public Output<Outputs.AiGatewayModelProviderServiceConfig?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - When the provider service was created
+        /// (string) - Time the provider service was created
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -45,18 +98,16 @@ namespace Pulumi.Databricks
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resolved owner of the model provider service. Falls back to the
-        /// caller's identity when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the model provider service
         /// </summary>
         [Output("effectiveOwner")]
         public Output<string> EffectiveOwner { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -84,13 +135,6 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the model provider service. Write-only; read owner via
-        /// effective_owner
-        /// </summary>
-        [Output("owner")]
-        public Output<string> Owner { get; private set; } = null!;
-
-        /// <summary>
         /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
@@ -105,7 +149,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.AiGatewayModelProviderServiceProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - When the provider service was last modified
+        /// (string) - Time the provider service was last modified
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -169,10 +213,9 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Behavioral configuration: provider connection, model catalog, and
-        /// passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        /// contract. Required on CreateModelProviderService; on Update it is required
-        /// only when `Config` (or a `config.*` subpath) appears in `UpdateMask`
+        /// Provider authentication, exposed models, request-forwarding controls, rate
+        /// limits, and payload logging. Required on Create. On Update, it is required
+        /// only when `Config` or one of its subpaths appears in `UpdateMask`
         /// </summary>
         [Input("config")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigArgs>? Config { get; set; }
@@ -182,13 +225,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("modelProviderServiceId", required: true)]
         public Input<string> ModelProviderServiceId { get; set; } = null!;
-
-        /// <summary>
-        /// The owner of the model provider service. Write-only; read owner via
-        /// effective_owner
-        /// </summary>
-        [Input("owner")]
-        public Input<string>? Owner { get; set; }
 
         /// <summary>
         /// Name of the parent schema.
@@ -219,16 +255,15 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Behavioral configuration: provider connection, model catalog, and
-        /// passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        /// contract. Required on CreateModelProviderService; on Update it is required
-        /// only when `Config` (or a `config.*` subpath) appears in `UpdateMask`
+        /// Provider authentication, exposed models, request-forwarding controls, rate
+        /// limits, and payload logging. Required on Create. On Update, it is required
+        /// only when `Config` or one of its subpaths appears in `UpdateMask`
         /// </summary>
         [Input("config")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// (string) - When the provider service was created
+        /// (string) - Time the provider service was created
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -240,18 +275,16 @@ namespace Pulumi.Databricks
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// (string) - The resolved owner of the model provider service. Falls back to the
-        /// caller's identity when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the model provider service
         /// </summary>
         [Input("effectiveOwner")]
         public Input<string>? EffectiveOwner { get; set; }
 
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -279,13 +312,6 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The owner of the model provider service. Write-only; read owner via
-        /// effective_owner
-        /// </summary>
-        [Input("owner")]
-        public Input<string>? Owner { get; set; }
-
-        /// <summary>
         /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
@@ -300,7 +326,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AiGatewayModelProviderServiceProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// (string) - When the provider service was last modified
+        /// (string) - Time the provider service was last modified
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

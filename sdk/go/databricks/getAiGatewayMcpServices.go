@@ -11,9 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+//
+// Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+//
+// ## Example Usage
+//
+// The following example lists MCP services in the `main.default` schema:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetAiGatewayMcpServices(ctx, &databricks.GetAiGatewayMcpServicesArgs{
+//				Parent: pulumi.StringRef("schemas/main.default"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mcpServices", all.McpServices)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAiGatewayMcpServices(ctx *pulumi.Context, args *GetAiGatewayMcpServicesArgs, opts ...pulumi.InvokeOption) (*GetAiGatewayMcpServicesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAiGatewayMcpServicesResult
@@ -29,15 +60,15 @@ type GetAiGatewayMcpServicesArgs struct {
 	// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
 	// the maximum is 100. Use `pageToken` to retrieve additional pages
 	PageSize *int `pulumi:"pageSize"`
-	// Name of the parent schema to list within, as
-	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-	// characters individually
+	// Parent schema to list within, in the form
+	// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+	// 255 characters individually
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAiGatewayMcpServicesProviderConfig `pulumi:"providerConfig"`
-	// View selector controlling which fields are populated per row. `FULL`
-	// returns the full representation of the service; `BASIC` returns a more
-	// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+	// Fields to return for each service. `FULL` includes source-connection
+	// details and rate-limit principal names. `BASIC` omits the source connection
+	// and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
 	View *string `pulumi:"view"`
 }
 
@@ -60,15 +91,15 @@ type GetAiGatewayMcpServicesOutputArgs struct {
 	// Maximum number of MCP services to return. Defaults to 100 when unset or 0;
 	// the maximum is 100. Use `pageToken` to retrieve additional pages
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// Name of the parent schema to list within, as
-	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-	// characters individually
+	// Parent schema to list within, in the form
+	// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+	// 255 characters individually
 	Parent pulumi.StringPtrInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAiGatewayMcpServicesProviderConfigPtrInput `pulumi:"providerConfig"`
-	// View selector controlling which fields are populated per row. `FULL`
-	// returns the full representation of the service; `BASIC` returns a more
-	// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+	// Fields to return for each service. `FULL` includes source-connection
+	// details and rate-limit principal names. `BASIC` omits the source connection
+	// and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
 	View pulumi.StringPtrInput `pulumi:"view"`
 }
 

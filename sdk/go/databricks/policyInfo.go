@@ -134,6 +134,10 @@ type PolicyInfo struct {
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
 	// (string) - Username of the user who created the policy. Output only
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Deny PolicyInfoDenyPtrOutput `pulumi:"deny"`
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals pulumi.StringArrayOutput `pulumi:"exceptPrincipals"`
 	// Type of securables that the policy should take effect on.
@@ -157,7 +161,7 @@ type PolicyInfo struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrOutput `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PolicyInfoProviderConfigOutput `pulumi:"providerConfig"`
@@ -225,6 +229,10 @@ type policyInfoState struct {
 	CreatedAt *int `pulumi:"createdAt"`
 	// (string) - Username of the user who created the policy. Output only
 	CreatedBy *string `pulumi:"createdBy"`
+	// Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Deny *PolicyInfoDeny `pulumi:"deny"`
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals []string `pulumi:"exceptPrincipals"`
 	// Type of securables that the policy should take effect on.
@@ -248,7 +256,7 @@ type policyInfoState struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType *string `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType *string `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PolicyInfoProviderConfig `pulumi:"providerConfig"`
@@ -278,6 +286,10 @@ type PolicyInfoState struct {
 	CreatedAt pulumi.IntPtrInput
 	// (string) - Username of the user who created the policy. Output only
 	CreatedBy pulumi.StringPtrInput
+	// Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Deny PolicyInfoDenyPtrInput
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals pulumi.StringArrayInput
 	// Type of securables that the policy should take effect on.
@@ -301,7 +313,7 @@ type PolicyInfoState struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrInput
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PolicyInfoProviderConfigPtrInput
@@ -331,6 +343,10 @@ type policyInfoArgs struct {
 	ColumnMask *PolicyInfoColumnMask `pulumi:"columnMask"`
 	// Optional description of the policy
 	Comment *string `pulumi:"comment"`
+	// Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Deny *PolicyInfoDeny `pulumi:"deny"`
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals []string `pulumi:"exceptPrincipals"`
 	// Type of securables that the policy should take effect on.
@@ -354,7 +370,7 @@ type policyInfoArgs struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType *string `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType string `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PolicyInfoProviderConfig `pulumi:"providerConfig"`
@@ -377,6 +393,10 @@ type PolicyInfoArgs struct {
 	ColumnMask PolicyInfoColumnMaskPtrInput
 	// Optional description of the policy
 	Comment pulumi.StringPtrInput
+	// Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+	// Required on create and optional on update. When specified on update,
+	// the new options will replace the existing options as a whole
+	Deny PolicyInfoDenyPtrInput
 	// Optional list of user or group names that should be excluded from the policy
 	ExceptPrincipals pulumi.StringArrayInput
 	// Type of securables that the policy should take effect on.
@@ -400,7 +420,7 @@ type PolicyInfoArgs struct {
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrInput
-	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PolicyInfoProviderConfigPtrInput
@@ -524,6 +544,13 @@ func (o PolicyInfoOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+// Required on create and optional on update. When specified on update,
+// the new options will replace the existing options as a whole
+func (o PolicyInfoOutput) Deny() PolicyInfoDenyPtrOutput {
+	return o.ApplyT(func(v *PolicyInfo) PolicyInfoDenyPtrOutput { return v.Deny }).(PolicyInfoDenyPtrOutput)
+}
+
 // Optional list of user or group names that should be excluded from the policy
 func (o PolicyInfoOutput) ExceptPrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringArrayOutput { return v.ExceptPrincipals }).(pulumi.StringArrayOutput)
@@ -568,7 +595,7 @@ func (o PolicyInfoOutput) OnSecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringPtrOutput { return v.OnSecurableType }).(pulumi.StringPtrOutput)
 }
 
-// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
 func (o PolicyInfoOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }

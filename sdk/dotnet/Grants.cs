@@ -456,6 +456,37 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Secret grants
+    /// 
+    /// You can grant `ALL_PRIVILEGES`, `MANAGE`, and `READ_SECRET` privileges to a Unity Catalog secret (databricks_secret_uc) specified in the `Secret` attribute.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret = new Databricks.Grants("secret", new()
+    ///     {
+    ///         Secret = "main.default.my_secret",
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "READ_SECRET",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Model service grants
     /// 
     /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `ModelService` attribute.
@@ -842,6 +873,9 @@ namespace Pulumi.Databricks
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
+        [Output("secret")]
+        public Output<string?> Secret { get; private set; } = null!;
+
         [Output("share")]
         public Output<string?> Share { get; private set; } = null!;
 
@@ -950,6 +984,9 @@ namespace Pulumi.Databricks
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
+
         [Input("share")]
         public Input<string>? Share { get; set; }
 
@@ -1019,6 +1056,9 @@ namespace Pulumi.Databricks
 
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
 
         [Input("share")]
         public Input<string>? Share { get; set; }

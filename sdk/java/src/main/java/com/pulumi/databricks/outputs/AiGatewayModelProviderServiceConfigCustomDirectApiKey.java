@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 public final class AiGatewayModelProviderServiceConfigCustomDirectApiKey {
     /**
      * @return Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the field&#39;s presence in
-     * the read shape only indicates that a secret is configured
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
      * 
      */
     private @Nullable String plaintext;
@@ -22,8 +22,8 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectApiKey {
     private AiGatewayModelProviderServiceConfigCustomDirectApiKey() {}
     /**
      * @return Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the field&#39;s presence in
-     * the read shape only indicates that a secret is configured
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
      * 
      */
     public Optional<String> plaintext() {

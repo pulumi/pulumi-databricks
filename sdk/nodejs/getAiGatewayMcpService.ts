@@ -7,9 +7,25 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Retrieves a Unity Catalog MCP service by its full resource name.
+ *
+ * ## Example Usage
+ *
+ * The following example retrieves the MCP service named `knowledgeTools` from the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiGatewayMcpService({
+ *     name: "mcp-services/main.default.knowledge_tools",
+ * });
+ * export const mcpServiceConfig = example.then(example => example.config);
+ * ```
  */
 export function getAiGatewayMcpService(args: GetAiGatewayMcpServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAiGatewayMcpServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -46,14 +62,13 @@ export interface GetAiGatewayMcpServiceResult {
      */
     readonly comment: string;
     /**
-     * (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * (McpServiceConfig) - Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      */
     readonly config: outputs.GetAiGatewayMcpServiceConfig;
     /**
-     * (string) - When the MCP service was created
+     * (string) - Time the MCP service was created
      */
     readonly createTime: string;
     /**
@@ -61,16 +76,14 @@ export interface GetAiGatewayMcpServiceResult {
      */
     readonly createdBy: string;
     /**
-     * (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the MCP service
      */
     readonly effectiveOwner: string;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     readonly etag: string;
     /**
@@ -78,17 +91,13 @@ export interface GetAiGatewayMcpServiceResult {
      */
     readonly metastoreId: string;
     /**
-     * (string) - Name of the UC connection that hosts the MCP server, as
-     * `connections/{catalog}.{schema}.{connection}`
+     * (string) - Resource name of the Unity Catalog connection used to access the MCP
+     * server, in the form `connections/{catalog}.{schema}.{connection}`
      */
     readonly name: string;
-    /**
-     * (string) - The owner of the MCP service. Write-only; read owner via effective_owner
-     */
-    readonly owner: string;
     readonly providerConfig?: outputs.GetAiGatewayMcpServiceProviderConfig;
     /**
-     * (string) - When the MCP service was last modified
+     * (string) - Time the MCP service was last modified
      */
     readonly updateTime: string;
     /**
@@ -97,9 +106,25 @@ export interface GetAiGatewayMcpServiceResult {
     readonly updatedBy: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Retrieves a Unity Catalog MCP service by its full resource name.
+ *
+ * ## Example Usage
+ *
+ * The following example retrieves the MCP service named `knowledgeTools` from the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiGatewayMcpService({
+ *     name: "mcp-services/main.default.knowledge_tools",
+ * });
+ * export const mcpServiceConfig = example.then(example => example.config);
+ * ```
  */
 export function getAiGatewayMcpServiceOutput(args: GetAiGatewayMcpServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiGatewayMcpServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

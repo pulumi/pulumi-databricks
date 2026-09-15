@@ -7,9 +7,25 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+ *
+ * ## Example Usage
+ *
+ * The following example lists model provider services in the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAiGatewayModelProviderServices({
+ *     parent: "schemas/main.default",
+ * });
+ * export const modelProviderServices = all.then(all => all.modelProviderServices);
+ * ```
  */
 export function getAiGatewayModelProviderServices(args?: GetAiGatewayModelProviderServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetAiGatewayModelProviderServicesResult> {
     args = args || {};
@@ -32,9 +48,9 @@ export interface GetAiGatewayModelProviderServicesArgs {
      */
     pageSize?: number;
     /**
-     * Name of the parent schema to list within, as
-     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-     * characters individually
+     * Parent schema to list within, in the form
+     * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+     * 255 characters individually
      */
     parent?: string;
     /**
@@ -42,9 +58,10 @@ export interface GetAiGatewayModelProviderServicesArgs {
      */
     providerConfig?: inputs.GetAiGatewayModelProviderServicesProviderConfig;
     /**
-     * View selector controlling which fields are populated per row. `FULL`
-     * returns the full representation of the service; `BASIC` returns a more
-     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+     * Fields to return for each service. `FULL` includes resolved
+     * service-credential and inference-table details and rate-limit principal
+     * names. `BASIC` omits those details and principal names from rate limits.
+     * Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      */
     view?: string;
 }
@@ -56,18 +73,34 @@ export interface GetAiGatewayModelProviderServicesResult {
     readonly modelProviderServices: outputs.GetAiGatewayModelProviderServicesModelProviderService[];
     readonly pageSize?: number;
     /**
-     * (string) - Parent UC schema where the inference table is created.
-     * Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
-     * thereafter; changing it on an existing service is rejected
+     * (string) - Parent Unity Catalog schema where the inference table is created, in the
+     * form `schemas/{catalog}.{schema}`. Required when configuring an inference
+     * table. After the inference table is created, this field cannot be changed
      */
     readonly parent?: string;
     readonly providerConfig?: outputs.GetAiGatewayModelProviderServicesProviderConfig;
     readonly view?: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+ *
+ * ## Example Usage
+ *
+ * The following example lists model provider services in the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAiGatewayModelProviderServices({
+ *     parent: "schemas/main.default",
+ * });
+ * export const modelProviderServices = all.then(all => all.modelProviderServices);
+ * ```
  */
 export function getAiGatewayModelProviderServicesOutput(args?: GetAiGatewayModelProviderServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiGatewayModelProviderServicesResult> {
     args = args || {};
@@ -90,9 +123,9 @@ export interface GetAiGatewayModelProviderServicesOutputArgs {
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * Name of the parent schema to list within, as
-     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-     * characters individually
+     * Parent schema to list within, in the form
+     * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+     * 255 characters individually
      */
     parent?: pulumi.Input<string | undefined>;
     /**
@@ -100,9 +133,10 @@ export interface GetAiGatewayModelProviderServicesOutputArgs {
      */
     providerConfig?: pulumi.Input<inputs.GetAiGatewayModelProviderServicesProviderConfigArgs | undefined>;
     /**
-     * View selector controlling which fields are populated per row. `FULL`
-     * returns the full representation of the service; `BASIC` returns a more
-     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+     * Fields to return for each service. `FULL` includes resolved
+     * service-credential and inference-table details and rate-limit principal
+     * names. `BASIC` omits those details and principal names from rate limits.
+     * Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      */
     view?: pulumi.Input<string | undefined>;
 }

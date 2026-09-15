@@ -19,8 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
-        /// Entra ID client secret. Supplied as inline plaintext via
-        /// `ProviderSecret.plaintext`
+        /// Entra ID client secret. Supply the value in `client_secret.plaintext`
         /// </summary>
         [Input("clientSecret")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretGetArgs>? ClientSecret { get; set; }

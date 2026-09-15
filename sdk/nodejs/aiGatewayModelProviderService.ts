@@ -7,9 +7,45 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Manages a Unity Catalog model provider service. A model provider service defines how model services connect to an external model provider and which provider models they can access.
+ *
+ * Model provider services are contained in a Unity Catalog schema and governed by Unity Catalog permissions. Supply provider credentials through a sensitive variable or another secure input instead of hardcoding them in your configuration.
+ *
+ * ## Example Usage
+ *
+ * The following example creates a model provider service for a custom OpenAI-compatible provider. Pass `providerApiKey` through a secure input, such as the `TF_VAR_provider_api_key` environment variable.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const providerApiKey = config.require("providerApiKey");
+ * const example = new databricks.AiGatewayModelProviderService("example", {
+ *     parent: "schemas/main.default",
+ *     modelProviderServiceId: "custom_provider",
+ *     comment: "Connects to a custom model provider",
+ *     config: {
+ *         providerType: "EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM",
+ *         targets: [{
+ *             model: "chat-model",
+ *             nativeApiTypes: ["openai/v1/chat/completions"],
+ *         }],
+ *         custom: {
+ *             direct: {
+ *                 baseUrl: "https://api.example.com/v1",
+ *                 apiKey: {
+ *                     plaintext: providerApiKey,
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class AiGatewayModelProviderService extends pulumi.CustomResource {
     /**
@@ -44,14 +80,13 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     /**
-     * Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      */
     declare public readonly config: pulumi.Output<outputs.AiGatewayModelProviderServiceConfig | undefined>;
     /**
-     * (string) - When the provider service was created
+     * (string) - Time the provider service was created
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -59,16 +94,14 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
-     * (string) - The resolved owner of the model provider service. Falls back to the
-     * caller's identity when `owner` is not explicitly set on creation
+     * (string) - Owner of the model provider service
      */
     declare public /*out*/ readonly effectiveOwner: pulumi.Output<string>;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -88,11 +121,6 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     */
-    declare public readonly owner: pulumi.Output<string>;
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -103,7 +131,7 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.AiGatewayModelProviderServiceProviderConfig>;
     /**
-     * (string) - When the provider service was last modified
+     * (string) - Time the provider service was last modified
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
@@ -133,7 +161,6 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["modelProviderServiceId"] = state?.modelProviderServiceId;
             resourceInputs["name"] = state?.name;
-            resourceInputs["owner"] = state?.owner;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -149,7 +176,6 @@ export class AiGatewayModelProviderService extends pulumi.CustomResource {
             resourceInputs["comment"] = args?.comment;
             resourceInputs["config"] = args?.config;
             resourceInputs["modelProviderServiceId"] = args?.modelProviderServiceId;
-            resourceInputs["owner"] = args?.owner;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -175,14 +201,13 @@ export interface AiGatewayModelProviderServiceState {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      */
     config?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfig | undefined>;
     /**
-     * (string) - When the provider service was created
+     * (string) - Time the provider service was created
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
@@ -190,16 +215,14 @@ export interface AiGatewayModelProviderServiceState {
      */
     createdBy?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The resolved owner of the model provider service. Falls back to the
-     * caller's identity when `owner` is not explicitly set on creation
+     * (string) - Owner of the model provider service
      */
     effectiveOwner?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     etag?: pulumi.Input<string | undefined>;
     /**
@@ -219,11 +242,6 @@ export interface AiGatewayModelProviderServiceState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     */
-    owner?: pulumi.Input<string | undefined>;
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -234,7 +252,7 @@ export interface AiGatewayModelProviderServiceState {
      */
     providerConfig?: pulumi.Input<inputs.AiGatewayModelProviderServiceProviderConfig | undefined>;
     /**
-     * (string) - When the provider service was last modified
+     * (string) - Time the provider service was last modified
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
@@ -252,21 +270,15 @@ export interface AiGatewayModelProviderServiceArgs {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      */
     config?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfig | undefined>;
     /**
      * Name for the model provider service, e.g. "openaiProd"
      */
     modelProviderServiceId: pulumi.Input<string>;
-    /**
-     * The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     */
-    owner?: pulumi.Input<string | undefined>;
     /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.

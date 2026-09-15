@@ -12,16 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirect {
     /**
-     * @return (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required when creating the service. Supply the value in
+     * `api_key.plaintext`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKey apiKey;
 
     private GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirect() {}
     /**
-     * @return (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required when creating the service. Supply the value in
+     * `api_key.plaintext`
      * 
      */
     public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKey> apiKey() {

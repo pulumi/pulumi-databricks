@@ -11,9 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+//
+// Lists the Unity Catalog model services that are visible to the current principal in a schema.
+//
+// ## Example Usage
+//
+// The following example lists model services in the `main.default` schema:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetAiGatewayModelServices(ctx, &databricks.GetAiGatewayModelServicesArgs{
+//				Parent: pulumi.StringRef("schemas/main.default"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("modelServices", all.ModelServices)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAiGatewayModelServices(ctx *pulumi.Context, args *GetAiGatewayModelServicesArgs, opts ...pulumi.InvokeOption) (*GetAiGatewayModelServicesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAiGatewayModelServicesResult
@@ -29,15 +60,16 @@ type GetAiGatewayModelServicesArgs struct {
 	// Maximum number of model services to return. Defaults to 100 when unset or 0;
 	// the maximum is 100. Use `pageToken` to retrieve additional pages
 	PageSize *int `pulumi:"pageSize"`
-	// Name of the parent schema to list within, as
-	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-	// characters individually
+	// Parent schema to list within, in the form
+	// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+	// 255 characters individually
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAiGatewayModelServicesProviderConfig `pulumi:"providerConfig"`
-	// View selector controlling which fields are populated per row. `FULL`
-	// returns the full representation of the service; `BASIC` returns a more
-	// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+	// Fields to return for each service. `FULL` includes destinations,
+	// inference-table details, and rate-limit principal names. `BASIC` omits
+	// destinations and inference-table details and omits principal names from
+	// rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
 	View *string `pulumi:"view"`
 }
 
@@ -45,9 +77,9 @@ type GetAiGatewayModelServicesArgs struct {
 type GetAiGatewayModelServicesResult struct {
 	ModelServices []GetAiGatewayModelServicesModelService `pulumi:"modelServices"`
 	PageSize      *int                                    `pulumi:"pageSize"`
-	// (string) - Parent UC schema where the inference table is created.
-	// Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
-	// thereafter; changing it on an existing service is rejected
+	// (string) - Parent Unity Catalog schema where the inference table is created, in the
+	// form `schemas/{catalog}.{schema}`. Required when configuring an inference
+	// table. After the inference table is created, this field cannot be changed
 	Parent         *string                                  `pulumi:"parent"`
 	ProviderConfig *GetAiGatewayModelServicesProviderConfig `pulumi:"providerConfig"`
 	View           *string                                  `pulumi:"view"`
@@ -63,15 +95,16 @@ type GetAiGatewayModelServicesOutputArgs struct {
 	// Maximum number of model services to return. Defaults to 100 when unset or 0;
 	// the maximum is 100. Use `pageToken` to retrieve additional pages
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// Name of the parent schema to list within, as
-	// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-	// characters individually
+	// Parent schema to list within, in the form
+	// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+	// 255 characters individually
 	Parent pulumi.StringPtrInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAiGatewayModelServicesProviderConfigPtrInput `pulumi:"providerConfig"`
-	// View selector controlling which fields are populated per row. `FULL`
-	// returns the full representation of the service; `BASIC` returns a more
-	// compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+	// Fields to return for each service. `FULL` includes destinations,
+	// inference-table details, and rate-limit principal names. `BASIC` omits
+	// destinations and inference-table details and omits principal names from
+	// rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
 	View pulumi.StringPtrInput `pulumi:"view"`
 }
 
@@ -104,9 +137,9 @@ func (o GetAiGatewayModelServicesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAiGatewayModelServicesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// (string) - Parent UC schema where the inference table is created.
-// Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
-// thereafter; changing it on an existing service is rejected
+// (string) - Parent Unity Catalog schema where the inference table is created, in the
+// form `schemas/{catalog}.{schema}`. Required when configuring an inference
+// table. After the inference table is created, this field cannot be changed
 func (o GetAiGatewayModelServicesResultOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAiGatewayModelServicesResult) *string { return v.Parent }).(pulumi.StringPtrOutput)
 }

@@ -12,31 +12,67 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+//
+// Manages an MCP service in Unity Catalog. An MCP service governs access to an MCP server hosted through a Unity Catalog connection.
+//
+// The Unity Catalog connection must exist before you create the MCP service. MCP services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+//
+// ## Example Usage
+//
+// The following example registers an MCP service backed by a Unity Catalog connection:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAiGatewayMcpService(ctx, "example", &databricks.AiGatewayMcpServiceArgs{
+//				Parent:       pulumi.String("schemas/main.default"),
+//				McpServiceId: pulumi.String("knowledge_tools"),
+//				Comment:      pulumi.String("Provides governed access to knowledge tools"),
+//				Config: &databricks.AiGatewayMcpServiceConfigArgs{
+//					SourceConnection: &databricks.AiGatewayMcpServiceConfigSourceConnectionArgs{
+//						Name: pulumi.String("connections/main.default.mcp_connection"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AiGatewayMcpService struct {
 	pulumi.CustomResourceState
 
 	// User-provided description
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Operational configuration: connection, tool selectors, rate limit.
-	// Required on CreateMcpService; on
-	// UpdateMcpService it is required only when `config` (or a `config.*`
-	// subpath) appears in `updateMask`
+	// Connection, tool selectors, and rate limits. Required on Create. On Update,
+	// provide this field when `updateMask` contains `config` or one of its
+	// subpaths
 	Config AiGatewayMcpServiceConfigPtrOutput `pulumi:"config"`
-	// (string) - When the MCP service was created
+	// (string) - Time the MCP service was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// (string) - Creator identity
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-	// when `owner` is not explicitly set on creation
+	// (string) - Owner of the MCP service
 	EffectiveOwner pulumi.StringOutput `pulumi:"effectiveOwner"`
-	// (string) - Optimistic concurrency control token. Server-generated from the
-	// entity's state and returned on every read. To use it as an if-match
-	// precondition on a mutation, echo the last-read value back via the dedicated
-	// `etag` field on the Update / Delete request; the server rejects the mutation
-	// if the stored etag differs
+	// (string) - Optimistic concurrency token returned on every read. To make an Update or
+	// Delete conditional, pass the last-read value in that request's `etag`
+	// field. In REST responses, this value is a base64 string; URL-encode it when
+	// setting the `etag` query parameter
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId pulumi.StringOutput `pulumi:"mcpServiceId"`
@@ -48,15 +84,13 @@ type AiGatewayMcpService struct {
 	// Server-derived on Create from `parent` +
 	// `mcpServiceId`; required and immutable on Update/Get/Delete
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The owner of the MCP service. Write-only; read owner via effective_owner
-	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig AiGatewayMcpServiceProviderConfigOutput `pulumi:"providerConfig"`
-	// (string) - When the MCP service was last modified
+	// (string) - Time the MCP service was last modified
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// (string) - Identity of the last updater
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
@@ -100,23 +134,20 @@ func GetAiGatewayMcpService(ctx *pulumi.Context,
 type aiGatewayMcpServiceState struct {
 	// User-provided description
 	Comment *string `pulumi:"comment"`
-	// Operational configuration: connection, tool selectors, rate limit.
-	// Required on CreateMcpService; on
-	// UpdateMcpService it is required only when `config` (or a `config.*`
-	// subpath) appears in `updateMask`
+	// Connection, tool selectors, and rate limits. Required on Create. On Update,
+	// provide this field when `updateMask` contains `config` or one of its
+	// subpaths
 	Config *AiGatewayMcpServiceConfig `pulumi:"config"`
-	// (string) - When the MCP service was created
+	// (string) - Time the MCP service was created
 	CreateTime *string `pulumi:"createTime"`
 	// (string) - Creator identity
 	CreatedBy *string `pulumi:"createdBy"`
-	// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-	// when `owner` is not explicitly set on creation
+	// (string) - Owner of the MCP service
 	EffectiveOwner *string `pulumi:"effectiveOwner"`
-	// (string) - Optimistic concurrency control token. Server-generated from the
-	// entity's state and returned on every read. To use it as an if-match
-	// precondition on a mutation, echo the last-read value back via the dedicated
-	// `etag` field on the Update / Delete request; the server rejects the mutation
-	// if the stored etag differs
+	// (string) - Optimistic concurrency token returned on every read. To make an Update or
+	// Delete conditional, pass the last-read value in that request's `etag`
+	// field. In REST responses, this value is a base64 string; URL-encode it when
+	// setting the `etag` query parameter
 	Etag *string `pulumi:"etag"`
 	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId *string `pulumi:"mcpServiceId"`
@@ -128,15 +159,13 @@ type aiGatewayMcpServiceState struct {
 	// Server-derived on Create from `parent` +
 	// `mcpServiceId`; required and immutable on Update/Get/Delete
 	Name *string `pulumi:"name"`
-	// The owner of the MCP service. Write-only; read owner via effective_owner
-	Owner *string `pulumi:"owner"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *AiGatewayMcpServiceProviderConfig `pulumi:"providerConfig"`
-	// (string) - When the MCP service was last modified
+	// (string) - Time the MCP service was last modified
 	UpdateTime *string `pulumi:"updateTime"`
 	// (string) - Identity of the last updater
 	UpdatedBy *string `pulumi:"updatedBy"`
@@ -145,23 +174,20 @@ type aiGatewayMcpServiceState struct {
 type AiGatewayMcpServiceState struct {
 	// User-provided description
 	Comment pulumi.StringPtrInput
-	// Operational configuration: connection, tool selectors, rate limit.
-	// Required on CreateMcpService; on
-	// UpdateMcpService it is required only when `config` (or a `config.*`
-	// subpath) appears in `updateMask`
+	// Connection, tool selectors, and rate limits. Required on Create. On Update,
+	// provide this field when `updateMask` contains `config` or one of its
+	// subpaths
 	Config AiGatewayMcpServiceConfigPtrInput
-	// (string) - When the MCP service was created
+	// (string) - Time the MCP service was created
 	CreateTime pulumi.StringPtrInput
 	// (string) - Creator identity
 	CreatedBy pulumi.StringPtrInput
-	// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-	// when `owner` is not explicitly set on creation
+	// (string) - Owner of the MCP service
 	EffectiveOwner pulumi.StringPtrInput
-	// (string) - Optimistic concurrency control token. Server-generated from the
-	// entity's state and returned on every read. To use it as an if-match
-	// precondition on a mutation, echo the last-read value back via the dedicated
-	// `etag` field on the Update / Delete request; the server rejects the mutation
-	// if the stored etag differs
+	// (string) - Optimistic concurrency token returned on every read. To make an Update or
+	// Delete conditional, pass the last-read value in that request's `etag`
+	// field. In REST responses, this value is a base64 string; URL-encode it when
+	// setting the `etag` query parameter
 	Etag pulumi.StringPtrInput
 	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId pulumi.StringPtrInput
@@ -173,15 +199,13 @@ type AiGatewayMcpServiceState struct {
 	// Server-derived on Create from `parent` +
 	// `mcpServiceId`; required and immutable on Update/Get/Delete
 	Name pulumi.StringPtrInput
-	// The owner of the MCP service. Write-only; read owner via effective_owner
-	Owner pulumi.StringPtrInput
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig AiGatewayMcpServiceProviderConfigPtrInput
-	// (string) - When the MCP service was last modified
+	// (string) - Time the MCP service was last modified
 	UpdateTime pulumi.StringPtrInput
 	// (string) - Identity of the last updater
 	UpdatedBy pulumi.StringPtrInput
@@ -194,15 +218,12 @@ func (AiGatewayMcpServiceState) ElementType() reflect.Type {
 type aiGatewayMcpServiceArgs struct {
 	// User-provided description
 	Comment *string `pulumi:"comment"`
-	// Operational configuration: connection, tool selectors, rate limit.
-	// Required on CreateMcpService; on
-	// UpdateMcpService it is required only when `config` (or a `config.*`
-	// subpath) appears in `updateMask`
+	// Connection, tool selectors, and rate limits. Required on Create. On Update,
+	// provide this field when `updateMask` contains `config` or one of its
+	// subpaths
 	Config *AiGatewayMcpServiceConfig `pulumi:"config"`
 	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId string `pulumi:"mcpServiceId"`
-	// The owner of the MCP service. Write-only; read owner via effective_owner
-	Owner *string `pulumi:"owner"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
@@ -215,15 +236,12 @@ type aiGatewayMcpServiceArgs struct {
 type AiGatewayMcpServiceArgs struct {
 	// User-provided description
 	Comment pulumi.StringPtrInput
-	// Operational configuration: connection, tool selectors, rate limit.
-	// Required on CreateMcpService; on
-	// UpdateMcpService it is required only when `config` (or a `config.*`
-	// subpath) appears in `updateMask`
+	// Connection, tool selectors, and rate limits. Required on Create. On Update,
+	// provide this field when `updateMask` contains `config` or one of its
+	// subpaths
 	Config AiGatewayMcpServiceConfigPtrInput
 	// Name for the MCP service, e.g. "myMcpService"
 	McpServiceId pulumi.StringInput
-	// The owner of the MCP service. Write-only; read owner via effective_owner
-	Owner pulumi.StringPtrInput
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
 	// Each `{...}` component is capped at 255 characters individually
@@ -324,15 +342,14 @@ func (o AiGatewayMcpServiceOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Operational configuration: connection, tool selectors, rate limit.
-// Required on CreateMcpService; on
-// UpdateMcpService it is required only when `config` (or a `config.*`
-// subpath) appears in `updateMask`
+// Connection, tool selectors, and rate limits. Required on Create. On Update,
+// provide this field when `updateMask` contains `config` or one of its
+// subpaths
 func (o AiGatewayMcpServiceOutput) Config() AiGatewayMcpServiceConfigPtrOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) AiGatewayMcpServiceConfigPtrOutput { return v.Config }).(AiGatewayMcpServiceConfigPtrOutput)
 }
 
-// (string) - When the MCP service was created
+// (string) - Time the MCP service was created
 func (o AiGatewayMcpServiceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -342,17 +359,15 @@ func (o AiGatewayMcpServiceOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-// when `owner` is not explicitly set on creation
+// (string) - Owner of the MCP service
 func (o AiGatewayMcpServiceOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
 
-// (string) - Optimistic concurrency control token. Server-generated from the
-// entity's state and returned on every read. To use it as an if-match
-// precondition on a mutation, echo the last-read value back via the dedicated
-// `etag` field on the Update / Delete request; the server rejects the mutation
-// if the stored etag differs
+// (string) - Optimistic concurrency token returned on every read. To make an Update or
+// Delete conditional, pass the last-read value in that request's `etag`
+// field. In REST responses, this value is a base64 string; URL-encode it when
+// setting the `etag` query parameter
 func (o AiGatewayMcpServiceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -376,11 +391,6 @@ func (o AiGatewayMcpServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The owner of the MCP service. Write-only; read owner via effective_owner
-func (o AiGatewayMcpServiceOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
-}
-
 // Name of the parent schema.
 // Format: `schemas/{catalog}.{schema}`.
 // Each `{...}` component is capped at 255 characters individually
@@ -393,7 +403,7 @@ func (o AiGatewayMcpServiceOutput) ProviderConfig() AiGatewayMcpServiceProviderC
 	return o.ApplyT(func(v *AiGatewayMcpService) AiGatewayMcpServiceProviderConfigOutput { return v.ProviderConfig }).(AiGatewayMcpServiceProviderConfigOutput)
 }
 
-// (string) - When the MCP service was last modified
+// (string) - Time the MCP service was last modified
 func (o AiGatewayMcpServiceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

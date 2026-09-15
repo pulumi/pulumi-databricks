@@ -16,6 +16,16 @@ namespace Pulumi.Databricks
     public partial class FeatureEngineeringMaterializedFeature : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The ID of the budget policy used to attribute the serverless compute cost of this
+        /// materialization. If not specified, a default budget policy may be applied
+        /// </summary>
+        [Output("budgetPolicyId")]
+        public Output<string?> BudgetPolicyId { get; private set; } = null!;
+
+        [Output("cronSchedule")]
+        public Output<string?> CronSchedule { get; private set; } = null!;
+
+        /// <summary>
         /// A cron-based schedule trigger for the materialization pipeline
         /// </summary>
         [Output("cronScheduleTrigger")]
@@ -39,6 +49,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("lastMaterializationTime")]
         public Output<string> LastMaterializationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+        /// </summary>
+        [Output("latestBackfillOperation")]
+        public Output<string> LatestBackfillOperation { get; private set; } = null!;
 
         /// <summary>
         /// (string) - Server-assigned unique identifier for the materialized feature
@@ -91,6 +107,18 @@ namespace Pulumi.Databricks
         [Output("tableTrigger")]
         public Output<Outputs.FeatureEngineeringMaterializedFeatureTableTrigger?> TableTrigger { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom tags to associate with this materialization. They are applied to the materialization
+        /// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+        /// compute as cluster tags, so materialization cost can be attributed in the billing system
+        /// tables. These tags apply only to the materialization compute; they are not applied to the
+        /// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+        /// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+        /// same limitations as cluster tags
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a FeatureEngineeringMaterializedFeature resource with the given unique name, arguments, and options.
@@ -137,6 +165,16 @@ namespace Pulumi.Databricks
 
     public sealed class FeatureEngineeringMaterializedFeatureArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the budget policy used to attribute the serverless compute cost of this
+        /// materialization. If not specified, a default budget policy may be applied
+        /// </summary>
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
+        [Input("cronSchedule")]
+        public Input<string>? CronSchedule { get; set; }
+
         /// <summary>
         /// A cron-based schedule trigger for the materialization pipeline
         /// </summary>
@@ -188,6 +226,24 @@ namespace Pulumi.Databricks
         [Input("tableTrigger")]
         public Input<Inputs.FeatureEngineeringMaterializedFeatureTableTriggerArgs>? TableTrigger { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Custom tags to associate with this materialization. They are applied to the materialization
+        /// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+        /// compute as cluster tags, so materialization cost can be attributed in the billing system
+        /// tables. These tags apply only to the materialization compute; they are not applied to the
+        /// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+        /// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+        /// same limitations as cluster tags
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public FeatureEngineeringMaterializedFeatureArgs()
         {
         }
@@ -196,6 +252,16 @@ namespace Pulumi.Databricks
 
     public sealed class FeatureEngineeringMaterializedFeatureState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the budget policy used to attribute the serverless compute cost of this
+        /// materialization. If not specified, a default budget policy may be applied
+        /// </summary>
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
+        [Input("cronSchedule")]
+        public Input<string>? CronSchedule { get; set; }
+
         /// <summary>
         /// A cron-based schedule trigger for the materialization pipeline
         /// </summary>
@@ -220,6 +286,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("lastMaterializationTime")]
         public Input<string>? LastMaterializationTime { get; set; }
+
+        /// <summary>
+        /// (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+        /// </summary>
+        [Input("latestBackfillOperation")]
+        public Input<string>? LatestBackfillOperation { get; set; }
 
         /// <summary>
         /// (string) - Server-assigned unique identifier for the materialized feature
@@ -271,6 +343,24 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tableTrigger")]
         public Input<Inputs.FeatureEngineeringMaterializedFeatureTableTriggerGetArgs>? TableTrigger { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Custom tags to associate with this materialization. They are applied to the materialization
+        /// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+        /// compute as cluster tags, so materialization cost can be attributed in the billing system
+        /// tables. These tags apply only to the materialization compute; they are not applied to the
+        /// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+        /// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+        /// same limitations as cluster tags
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public FeatureEngineeringMaterializedFeatureState()
         {

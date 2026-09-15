@@ -13,32 +13,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServiceConfigAnthropic {
     /**
-     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAnthropicDirect direct;
     /**
-     * @return (ModelProviderServiceConfigAnthropicProviderRelayedConfig) - Relayed (credential-less) form: no Anthropic credential is stored. Each
-     * inference request instead carries the caller&#39;s own OAuth token, which the
-     * platform forwards to Anthropic on outbound requests. Mutually exclusive
-     * with `direct`; no `apiKey` is required or persisted
+     * @return (ModelProviderServiceConfigAnthropicProviderRelayedConfig) - Relayed authentication. Each inference request supplies the caller&#39;s
+     * OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+     * stored. Mutually exclusive with `direct`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAnthropicRelayed relayed;
 
     private GetAiGatewayModelProviderServiceConfigAnthropic() {}
     /**
-     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigAnthropicDirect> direct() {
         return Optional.ofNullable(this.direct);
     }
     /**
-     * @return (ModelProviderServiceConfigAnthropicProviderRelayedConfig) - Relayed (credential-less) form: no Anthropic credential is stored. Each
-     * inference request instead carries the caller&#39;s own OAuth token, which the
-     * platform forwards to Anthropic on outbound requests. Mutually exclusive
-     * with `direct`; no `apiKey` is required or persisted
+     * @return (ModelProviderServiceConfigAnthropicProviderRelayedConfig) - Relayed authentication. Each inference request supplies the caller&#39;s
+     * OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+     * stored. Mutually exclusive with `direct`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigAnthropicRelayed> relayed() {

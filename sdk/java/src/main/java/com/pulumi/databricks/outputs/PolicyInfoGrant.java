@@ -11,23 +11,9 @@ import java.util.Objects;
 
 @CustomType
 public final class PolicyInfoGrant {
-    /**
-     * @return List of privileges to grant.
-     * When any of these privileges are requested, the policy will grant access
-     * if the principal and condition match.
-     * Required on create and update
-     * 
-     */
     private List<String> privileges;
 
     private PolicyInfoGrant() {}
-    /**
-     * @return List of privileges to grant.
-     * When any of these privileges are requested, the policy will grant access
-     * if the principal and condition match.
-     * Required on create and update
-     * 
-     */
     public List<String> privileges() {
         return this.privileges;
     }

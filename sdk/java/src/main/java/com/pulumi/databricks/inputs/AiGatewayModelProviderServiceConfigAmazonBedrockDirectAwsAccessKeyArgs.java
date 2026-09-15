@@ -36,18 +36,18 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAcce
     }
 
     /**
-     * AWS secret access key paired with `accessKeyId`. Required on Create when
-     * using access-key auth. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * AWS secret access key paired with `accessKeyId`. Required when creating
+     * a service with access-key authentication. Supply the value in
+     * `secret_access_key.plaintext`
      * 
      */
     @Import(name="secretAccessKey")
     private @Nullable Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyArgs> secretAccessKey;
 
     /**
-     * @return AWS secret access key paired with `accessKeyId`. Required on Create when
-     * using access-key auth. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return AWS secret access key paired with `accessKeyId`. Required when creating
+     * a service with access-key authentication. Supply the value in
+     * `secret_access_key.plaintext`
      * 
      */
     public Optional<Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyArgs>> secretAccessKey() {
@@ -105,9 +105,9 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAcce
         }
 
         /**
-         * @param secretAccessKey AWS secret access key paired with `accessKeyId`. Required on Create when
-         * using access-key auth. Supplied as inline plaintext via
-         * `ProviderSecret.plaintext`
+         * @param secretAccessKey AWS secret access key paired with `accessKeyId`. Required when creating
+         * a service with access-key authentication. Supply the value in
+         * `secret_access_key.plaintext`
          * 
          * @return builder
          * 
@@ -118,9 +118,9 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAcce
         }
 
         /**
-         * @param secretAccessKey AWS secret access key paired with `accessKeyId`. Required on Create when
-         * using access-key auth. Supplied as inline plaintext via
-         * `ProviderSecret.plaintext`
+         * @param secretAccessKey AWS secret access key paired with `accessKeyId`. Required when creating
+         * a service with access-key authentication. Supply the value in
+         * `secret_access_key.plaintext`
          * 
          * @return builder
          * 

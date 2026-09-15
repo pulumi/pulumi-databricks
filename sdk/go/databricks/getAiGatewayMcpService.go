@@ -11,9 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+//
+// Retrieves a Unity Catalog MCP service by its full resource name.
+//
+// ## Example Usage
+//
+// The following example retrieves the MCP service named `knowledgeTools` from the `main.default` schema:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := databricks.GetAiGatewayMcpService(ctx, &databricks.LookupAiGatewayMcpServiceArgs{
+//				Name: "mcp-services/main.default.knowledge_tools",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mcpServiceConfig", example.Config)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAiGatewayMcpService(ctx *pulumi.Context, args *LookupAiGatewayMcpServiceArgs, opts ...pulumi.InvokeOption) (*LookupAiGatewayMcpServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiGatewayMcpServiceResult
@@ -40,33 +71,28 @@ type LookupAiGatewayMcpServiceArgs struct {
 type LookupAiGatewayMcpServiceResult struct {
 	// (string) - User-provided description
 	Comment string `pulumi:"comment"`
-	// (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
-	// Required on CreateMcpService; on
-	// UpdateMcpService it is required only when `config` (or a `config.*`
-	// subpath) appears in `updateMask`
+	// (McpServiceConfig) - Connection, tool selectors, and rate limits. Required on Create. On Update,
+	// provide this field when `updateMask` contains `config` or one of its
+	// subpaths
 	Config GetAiGatewayMcpServiceConfig `pulumi:"config"`
-	// (string) - When the MCP service was created
+	// (string) - Time the MCP service was created
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Creator identity
 	CreatedBy string `pulumi:"createdBy"`
-	// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-	// when `owner` is not explicitly set on creation
+	// (string) - Owner of the MCP service
 	EffectiveOwner string `pulumi:"effectiveOwner"`
-	// (string) - Optimistic concurrency control token. Server-generated from the
-	// entity's state and returned on every read. To use it as an if-match
-	// precondition on a mutation, echo the last-read value back via the dedicated
-	// `etag` field on the Update / Delete request; the server rejects the mutation
-	// if the stored etag differs
+	// (string) - Optimistic concurrency token returned on every read. To make an Update or
+	// Delete conditional, pass the last-read value in that request's `etag`
+	// field. In REST responses, this value is a base64 string; URL-encode it when
+	// setting the `etag` query parameter
 	Etag string `pulumi:"etag"`
 	// (string) - Metastore hosting the MCP service
 	MetastoreId string `pulumi:"metastoreId"`
-	// (string) - Name of the UC connection that hosts the MCP server, as
-	// `connections/{catalog}.{schema}.{connection}`
-	Name string `pulumi:"name"`
-	// (string) - The owner of the MCP service. Write-only; read owner via effective_owner
-	Owner          string                                `pulumi:"owner"`
+	// (string) - Resource name of the Unity Catalog connection used to access the MCP
+	// server, in the form `connections/{catalog}.{schema}.{connection}`
+	Name           string                                `pulumi:"name"`
 	ProviderConfig *GetAiGatewayMcpServiceProviderConfig `pulumi:"providerConfig"`
-	// (string) - When the MCP service was last modified
+	// (string) - Time the MCP service was last modified
 	UpdateTime string `pulumi:"updateTime"`
 	// (string) - Identity of the last updater
 	UpdatedBy string `pulumi:"updatedBy"`
@@ -113,15 +139,14 @@ func (o LookupAiGatewayMcpServiceResultOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.Comment }).(pulumi.StringOutput)
 }
 
-// (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
-// Required on CreateMcpService; on
-// UpdateMcpService it is required only when `config` (or a `config.*`
-// subpath) appears in `updateMask`
+// (McpServiceConfig) - Connection, tool selectors, and rate limits. Required on Create. On Update,
+// provide this field when `updateMask` contains `config` or one of its
+// subpaths
 func (o LookupAiGatewayMcpServiceResultOutput) Config() GetAiGatewayMcpServiceConfigOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) GetAiGatewayMcpServiceConfig { return v.Config }).(GetAiGatewayMcpServiceConfigOutput)
 }
 
-// (string) - When the MCP service was created
+// (string) - Time the MCP service was created
 func (o LookupAiGatewayMcpServiceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -131,17 +156,15 @@ func (o LookupAiGatewayMcpServiceResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-// when `owner` is not explicitly set on creation
+// (string) - Owner of the MCP service
 func (o LookupAiGatewayMcpServiceResultOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
 
-// (string) - Optimistic concurrency control token. Server-generated from the
-// entity's state and returned on every read. To use it as an if-match
-// precondition on a mutation, echo the last-read value back via the dedicated
-// `etag` field on the Update / Delete request; the server rejects the mutation
-// if the stored etag differs
+// (string) - Optimistic concurrency token returned on every read. To make an Update or
+// Delete conditional, pass the last-read value in that request's `etag`
+// field. In REST responses, this value is a base64 string; URL-encode it when
+// setting the `etag` query parameter
 func (o LookupAiGatewayMcpServiceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -151,22 +174,17 @@ func (o LookupAiGatewayMcpServiceResultOutput) MetastoreId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// (string) - Name of the UC connection that hosts the MCP server, as
-// `connections/{catalog}.{schema}.{connection}`
+// (string) - Resource name of the Unity Catalog connection used to access the MCP
+// server, in the form `connections/{catalog}.{schema}.{connection}`
 func (o LookupAiGatewayMcpServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// (string) - The owner of the MCP service. Write-only; read owner via effective_owner
-func (o LookupAiGatewayMcpServiceResultOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.Owner }).(pulumi.StringOutput)
 }
 
 func (o LookupAiGatewayMcpServiceResultOutput) ProviderConfig() GetAiGatewayMcpServiceProviderConfigPtrOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) *GetAiGatewayMcpServiceProviderConfig { return v.ProviderConfig }).(GetAiGatewayMcpServiceProviderConfigPtrOutput)
 }
 
-// (string) - When the MCP service was last modified
+// (string) - Time the MCP service was last modified
 func (o LookupAiGatewayMcpServiceResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayMcpServiceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

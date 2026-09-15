@@ -55,6 +55,7 @@ from .disable_legacy_dbfs_setting import *
 from .disable_legacy_features_setting import *
 from .disaster_recovery_failover_group import *
 from .disaster_recovery_stable_url import *
+from .domain import *
 from .endpoint import *
 from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
@@ -138,6 +139,8 @@ from .get_disaster_recovery_failover_group import *
 from .get_disaster_recovery_failover_groups import *
 from .get_disaster_recovery_stable_url import *
 from .get_disaster_recovery_stable_urls import *
+from .get_domain import *
+from .get_domains import *
 from .get_endpoint import *
 from .get_endpoints import *
 from .get_entity_tag_assignment import *
@@ -209,6 +212,8 @@ from .get_recipients import *
 from .get_registered_model import *
 from .get_registered_model_versions import *
 from .get_rfa_access_request_destinations import *
+from .get_sandbox import *
+from .get_sandboxes import *
 from .get_schema import *
 from .get_schemas import *
 from .get_secret_uc import *
@@ -326,6 +331,7 @@ from .registered_model import *
 from .repo import *
 from .restrict_workspace_admins_setting import *
 from .rfa_access_request_destinations import *
+from .sandbox import *
 from .schema import *
 from .secret import *
 from .secret_acl import *
@@ -774,6 +780,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl": "DisasterRecoveryStableUrl"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/domain",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/domain:Domain": "Domain"
   }
  },
  {
@@ -1398,6 +1412,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations": "RfaAccessRequestDestinations"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/sandbox",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/sandbox:Sandbox": "Sandbox"
   }
  },
  {

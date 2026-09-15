@@ -14,13 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("privileges", required: true)]
         private InputList<string>? _privileges;
-
-        /// <summary>
-        /// List of privileges to grant.
-        /// When any of these privileges are requested, the policy will grant access
-        /// if the principal and condition match.
-        /// Required on create and update
-        /// </summary>
         public InputList<string> Privileges
         {
             get => _privileges ?? (_privileges = new InputList<string>());

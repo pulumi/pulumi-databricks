@@ -312,9 +312,17 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<AppGitRepository>> gitRepository() {
         return Codegen.optional(this.gitRepository);
     }
+    /**
+     * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     * 
+     */
     @Export(name="gitSource", refs={AppGitSource.class}, tree="[0]")
     private Output<AppGitSource> gitSource;
 
+    /**
+     * @return The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     * 
+     */
     public Output<AppGitSource> gitSource() {
         return this.gitSource;
     }
@@ -443,14 +451,14 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.servicePrincipalName;
     }
     /**
-     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     @Export(name="sourceCodePath", refs={String.class}, tree="[0]")
     private Output<String> sourceCodePath;
 
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     public Output<String> sourceCodePath() {

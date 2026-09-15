@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterprise {
     /**
-     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
      * 
      */
     private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirect direct;
 
     private GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterprise() {}
     /**
-     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
      * 
      */
     public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirect> direct() {

@@ -10,9 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+    /// 
+    /// Manages a Unity Catalog model service. A model service provides a stable endpoint that routes inference requests to one or more destinations, such as Databricks foundation models or external model provider services.
+    /// 
+    /// Model services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The following example creates a model service that sends all traffic to a Databricks foundation model:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Databricks.AiGatewayModelService("example", new()
+    ///     {
+    ///         Parent = "schemas/main.default",
+    ///         ModelServiceId = "customer_support",
+    ///         Comment = "Routes customer support requests",
+    ///         Config = new Databricks.Inputs.AiGatewayModelServiceConfigArgs
+    ///         {
+    ///             Routing = new Databricks.Inputs.AiGatewayModelServiceConfigRoutingArgs
+    ///             {
+    ///                 Destinations = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.AiGatewayModelServiceConfigRoutingDestinationArgs
+    ///                     {
+    ///                         Name = "primary",
+    ///                         DestinationType = "DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL",
+    ///                         PayPerTokenConfig = new Databricks.Inputs.AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigArgs
+    ///                         {
+    ///                             Model = "models/system.ai.databricks-gpt-5",
+    ///                         },
+    ///                         TrafficPercentage = 100,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/aiGatewayModelService:AiGatewayModelService")]
     public partial class AiGatewayModelService : global::Pulumi.CustomResource
@@ -24,16 +69,15 @@ namespace Pulumi.Databricks
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Operational configuration: destinations, routing, rate limits, inference
-        /// table. Required on CreateModelService; on UpdateModelService it is
-        /// required only when `Config` (or a `config.*` subpath) appears in
-        /// `UpdateMask`
+        /// Destinations, routing, rate limits, and payload logging configuration.
+        /// Required on Create. On Update, provide this field when `UpdateMask`
+        /// contains `Config` or one of its subpaths
         /// </summary>
         [Output("config")]
         public Output<Outputs.AiGatewayModelServiceConfig?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - When the model service was created
+        /// (string) - Time the model service was created
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -45,18 +89,16 @@ namespace Pulumi.Databricks
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-        /// when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the model service
         /// </summary>
         [Output("effectiveOwner")]
         public Output<string> EffectiveOwner { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -84,12 +126,6 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the model service. Write-only; read owner via effective_owner
-        /// </summary>
-        [Output("owner")]
-        public Output<string> Owner { get; private set; } = null!;
-
-        /// <summary>
         /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
@@ -104,15 +140,16 @@ namespace Pulumi.Databricks
         public Output<Outputs.AiGatewayModelServiceProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-        /// "completions"). Derived from the destinations' backing models / providers
+        /// (list of string) - API types supported across this service's destinations, such as
+        /// `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+        /// `mlflow/v1/chat/completions`. Derived from the backing models and providers
         /// at read time
         /// </summary>
         [Output("supportedApiTypes")]
         public Output<ImmutableArray<string>> SupportedApiTypes { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - When the model service was last modified
+        /// (string) - Time the model service was last modified
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -176,10 +213,9 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Operational configuration: destinations, routing, rate limits, inference
-        /// table. Required on CreateModelService; on UpdateModelService it is
-        /// required only when `Config` (or a `config.*` subpath) appears in
-        /// `UpdateMask`
+        /// Destinations, routing, rate limits, and payload logging configuration.
+        /// Required on Create. On Update, provide this field when `UpdateMask`
+        /// contains `Config` or one of its subpaths
         /// </summary>
         [Input("config")]
         public Input<Inputs.AiGatewayModelServiceConfigArgs>? Config { get; set; }
@@ -189,12 +225,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("modelServiceId", required: true)]
         public Input<string> ModelServiceId { get; set; } = null!;
-
-        /// <summary>
-        /// The owner of the model service. Write-only; read owner via effective_owner
-        /// </summary>
-        [Input("owner")]
-        public Input<string>? Owner { get; set; }
 
         /// <summary>
         /// Name of the parent schema.
@@ -225,16 +255,15 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Operational configuration: destinations, routing, rate limits, inference
-        /// table. Required on CreateModelService; on UpdateModelService it is
-        /// required only when `Config` (or a `config.*` subpath) appears in
-        /// `UpdateMask`
+        /// Destinations, routing, rate limits, and payload logging configuration.
+        /// Required on Create. On Update, provide this field when `UpdateMask`
+        /// contains `Config` or one of its subpaths
         /// </summary>
         [Input("config")]
         public Input<Inputs.AiGatewayModelServiceConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// (string) - When the model service was created
+        /// (string) - Time the model service was created
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -246,18 +275,16 @@ namespace Pulumi.Databricks
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-        /// when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the model service
         /// </summary>
         [Input("effectiveOwner")]
         public Input<string>? EffectiveOwner { get; set; }
 
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -285,12 +312,6 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The owner of the model service. Write-only; read owner via effective_owner
-        /// </summary>
-        [Input("owner")]
-        public Input<string>? Owner { get; set; }
-
-        /// <summary>
         /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
@@ -308,8 +329,9 @@ namespace Pulumi.Databricks
         private InputList<string>? _supportedApiTypes;
 
         /// <summary>
-        /// (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-        /// "completions"). Derived from the destinations' backing models / providers
+        /// (list of string) - API types supported across this service's destinations, such as
+        /// `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+        /// `mlflow/v1/chat/completions`. Derived from the backing models and providers
         /// at read time
         /// </summary>
         public InputList<string> SupportedApiTypes
@@ -319,7 +341,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// (string) - When the model service was last modified
+        /// (string) - Time the model service was last modified
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

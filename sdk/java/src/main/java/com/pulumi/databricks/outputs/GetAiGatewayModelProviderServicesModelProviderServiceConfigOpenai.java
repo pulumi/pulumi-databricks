@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenai {
     /**
-     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
      * 
      */
     private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirect direct;
 
     private GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenai() {}
     /**
-     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+     * @return (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
      * 
      */
     public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirect> direct() {

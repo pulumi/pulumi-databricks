@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureLineageContextArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureProviderConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeseriesColumnArgs;
 import java.lang.String;
 import java.util.List;
@@ -97,6 +98,13 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         return Optional.ofNullable(this.entities);
     }
 
+    @Import(name="filterCondition")
+    private @Nullable Output<String> filterCondition;
+
+    public Optional<Output<String>> filterCondition() {
+        return Optional.ofNullable(this.filterCondition);
+    }
+
     /**
      * The full three-part name (catalog, schema, name) of the feature. This is the
      * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
@@ -129,6 +137,13 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
      */
     public Optional<Output<FeatureEngineeringFeatureFunctionArgs>> function() {
         return Optional.ofNullable(this.function);
+    }
+
+    @Import(name="inputs")
+    private @Nullable Output<List<String>> inputs;
+
+    public Optional<Output<List<String>>> inputs() {
+        return Optional.ofNullable(this.inputs);
     }
 
     /**
@@ -214,6 +229,13 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         return Optional.ofNullable(this.source);
     }
 
+    @Import(name="timeWindow")
+    private @Nullable Output<FeatureEngineeringFeatureTimeWindowArgs> timeWindow;
+
+    public Optional<Output<FeatureEngineeringFeatureTimeWindowArgs>> timeWindow() {
+        return Optional.ofNullable(this.timeWindow);
+    }
+
     /**
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      * 
@@ -237,13 +259,16 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         this.createdBy = $.createdBy;
         this.description = $.description;
         this.entities = $.entities;
+        this.filterCondition = $.filterCondition;
         this.fullName = $.fullName;
         this.function = $.function;
+        this.inputs = $.inputs;
         this.lineageContext = $.lineageContext;
         this.name = $.name;
         this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
         this.source = $.source;
+        this.timeWindow = $.timeWindow;
         this.timeseriesColumn = $.timeseriesColumn;
     }
 
@@ -380,6 +405,15 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
             return entities(List.of(entities));
         }
 
+        public Builder filterCondition(@Nullable Output<String> filterCondition) {
+            $.filterCondition = filterCondition;
+            return this;
+        }
+
+        public Builder filterCondition(String filterCondition) {
+            return filterCondition(Output.of(filterCondition));
+        }
+
         /**
          * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
          * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
@@ -424,6 +458,19 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
          */
         public Builder function(FeatureEngineeringFeatureFunctionArgs function) {
             return function(Output.of(function));
+        }
+
+        public Builder inputs(@Nullable Output<List<String>> inputs) {
+            $.inputs = inputs;
+            return this;
+        }
+
+        public Builder inputs(List<String> inputs) {
+            return inputs(Output.of(inputs));
+        }
+
+        public Builder inputs(String... inputs) {
+            return inputs(List.of(inputs));
         }
 
         /**
@@ -537,6 +584,15 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
          */
         public Builder source(FeatureEngineeringFeatureSourceArgs source) {
             return source(Output.of(source));
+        }
+
+        public Builder timeWindow(@Nullable Output<FeatureEngineeringFeatureTimeWindowArgs> timeWindow) {
+            $.timeWindow = timeWindow;
+            return this;
+        }
+
+        public Builder timeWindow(FeatureEngineeringFeatureTimeWindowArgs timeWindow) {
+            return timeWindow(Output.of(timeWindow));
         }
 
         /**

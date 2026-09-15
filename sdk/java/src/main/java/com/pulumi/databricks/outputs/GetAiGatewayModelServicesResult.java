@@ -19,9 +19,9 @@ public final class GetAiGatewayModelServicesResult {
     private List<GetAiGatewayModelServicesModelService> modelServices;
     private @Nullable Integer pageSize;
     /**
-     * @return (string) - Parent UC schema where the inference table is created.
-     * Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
-     * thereafter; changing it on an existing service is rejected
+     * @return (string) - Parent Unity Catalog schema where the inference table is created, in the
+     * form `schemas/{catalog}.{schema}`. Required when configuring an inference
+     * table. After the inference table is created, this field cannot be changed
      * 
      */
     private @Nullable String parent;
@@ -36,9 +36,9 @@ public final class GetAiGatewayModelServicesResult {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return (string) - Parent UC schema where the inference table is created.
-     * Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
-     * thereafter; changing it on an existing service is rejected
+     * @return (string) - Parent Unity Catalog schema where the inference table is created, in the
+     * form `schemas/{catalog}.{schema}`. Required when configuring an inference
+     * table. After the inference table is created, this field cannot be changed
      * 
      */
     public Optional<String> parent() {

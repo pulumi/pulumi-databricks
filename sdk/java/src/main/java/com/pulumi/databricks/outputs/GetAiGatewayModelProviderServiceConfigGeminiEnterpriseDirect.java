@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
     /**
-     * @return (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required when creating the service. Supply the value in
+     * `api_key.plaintext`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey apiKey;
@@ -32,8 +32,8 @@ public final class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect 
 
     private GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect() {}
     /**
-     * @return (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required when creating the service. Supply the value in
+     * `api_key.plaintext`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey> apiKey() {

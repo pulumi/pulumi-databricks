@@ -14,7 +14,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
     /**
-     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair authentication. Set `accessKeyId` and
+     * `secret_access_key.plaintext`. Mutually exclusive with
+     * `serviceCredential`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey awsAccessKey;
@@ -25,22 +27,21 @@ public final class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
      */
     private @Nullable String region;
     /**
-     * @return (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
-     * On Create the caller supplies `service_credential.name` in the AIP-122
-     * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and
-     * `entraServicePrincipal`. The credential is
-     * referenced by name; its value is not carried here. On read the resolved `id`
-     * and `isDeleted` are also populated. Only supported on Azure-hosted
-     * workspaces; Create requests from other clouds are rejected with
-     * INVALID_PARAMETER_VALUE
+     * @return (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+     * Foundry requests. On Create, supply `service_credential.name` in the form
+     * `credentials/{name}`. Required on Create when using service-credential
+     * authentication; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is referenced by name; its value
+     * is not carried here. Only supported on Azure-hosted workspaces
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential serviceCredential;
 
     private GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect() {}
     /**
-     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+     * @return (ModelProviderServiceConfigAwsAccessKey) - AWS access-key-pair authentication. Set `accessKeyId` and
+     * `secret_access_key.plaintext`. Mutually exclusive with
+     * `serviceCredential`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey> awsAccessKey() {
@@ -55,15 +56,12 @@ public final class GetAiGatewayModelProviderServiceConfigAmazonBedrockDirect {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
-     * On Create the caller supplies `service_credential.name` in the AIP-122
-     * resource-name form `credentials/{name}`. Required on Create when using
-     * UC-service-credential auth; mutually exclusive with `apiKey` and
-     * `entraServicePrincipal`. The credential is
-     * referenced by name; its value is not carried here. On read the resolved `id`
-     * and `isDeleted` are also populated. Only supported on Azure-hosted
-     * workspaces; Create requests from other clouds are rejected with
-     * INVALID_PARAMETER_VALUE
+     * @return (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+     * Foundry requests. On Create, supply `service_credential.name` in the form
+     * `credentials/{name}`. Required on Create when using service-credential
+     * authentication; mutually exclusive with `apiKey` and
+     * `entraServicePrincipal`. The credential is referenced by name; its value
+     * is not carried here. Only supported on Azure-hosted workspaces
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential> serviceCredential() {

@@ -556,6 +556,46 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Secret grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `MANAGE`, and `READ_SECRET` privileges to a Unity Catalog secret (databricks_secret_uc) specified in the `secret` attribute.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret = new Grants("secret", GrantsArgs.builder()
+ *             .secret("main.default.my_secret")
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges("READ_SECRET")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Model service grants
  * 
  * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `modelService` attribute.
@@ -1054,6 +1094,12 @@ public class Grants extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> schema() {
         return Codegen.optional(this.schema);
+    }
+    @Export(name="secret", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secret;
+
+    public Output<Optional<String>> secret() {
+        return Codegen.optional(this.secret);
     }
     @Export(name="share", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> share;

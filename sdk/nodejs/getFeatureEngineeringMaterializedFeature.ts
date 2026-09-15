@@ -36,6 +36,15 @@ export interface GetFeatureEngineeringMaterializedFeatureArgs {
  */
 export interface GetFeatureEngineeringMaterializedFeatureResult {
     /**
+     * (string) - The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     */
+    readonly budgetPolicyId: string;
+    /**
+     * (string, deprecated)
+     */
+    readonly cronSchedule: string;
+    /**
      * (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
      */
     readonly cronScheduleTrigger: outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger;
@@ -52,6 +61,10 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      * If the pipeline has not run yet, this field will be null
      */
     readonly lastMaterializationTime: string;
+    /**
+     * (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+     */
+    readonly latestBackfillOperation: string;
     /**
      * (string) - Server-assigned unique identifier for the materialized feature
      */
@@ -84,6 +97,16 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      * (TableTrigger) - A trigger that fires when the upstream source table changes
      */
     readonly tableTrigger: outputs.GetFeatureEngineeringMaterializedFeatureTableTrigger;
+    /**
+     * (object) - Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     */
+    readonly tags: {[key: string]: string};
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -18,8 +18,7 @@ public final class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServ
      */
     private @Nullable String clientId;
     /**
-     * @return Entra ID client secret. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return Entra ID client secret. Supply the value in `client_secret.plaintext`
      * 
      */
     private @Nullable AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret clientSecret;
@@ -38,8 +37,7 @@ public final class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServ
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return Entra ID client secret. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return Entra ID client secret. Supply the value in `client_secret.plaintext`
      * 
      */
     public Optional<AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret> clientSecret() {

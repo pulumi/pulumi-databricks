@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunction;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureLineageContext;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureProviderConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureSource;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeWindow;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureTimeseriesColumn;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -45,6 +46,11 @@ public final class GetFeatureEngineeringFeatureResult {
      */
     private List<GetFeatureEngineeringFeatureEntity> entities;
     /**
+     * @return (string) - The filter condition applied to the source data before aggregation
+     * 
+     */
+    private String filterCondition;
+    /**
      * @return (string) - Three-part full name of the Stream (catalog.schema.stream)
      * 
      */
@@ -54,6 +60,11 @@ public final class GetFeatureEngineeringFeatureResult {
      * 
      */
     private GetFeatureEngineeringFeatureFunction function;
+    /**
+     * @return (list of string, deprecated)
+     * 
+     */
+    private List<String> inputs;
     /**
      * @return (LineageContext) - Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -85,7 +96,12 @@ public final class GetFeatureEngineeringFeatureResult {
      */
     private GetFeatureEngineeringFeatureSource source;
     /**
-     * @return (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
+     * @return (TimeWindow) - The time window over which the aggregation is computed
+     * 
+     */
+    private GetFeatureEngineeringFeatureTimeWindow timeWindow;
+    /**
+     * @return (string, deprecated)
      * 
      */
     private GetFeatureEngineeringFeatureTimeseriesColumn timeseriesColumn;
@@ -127,6 +143,13 @@ public final class GetFeatureEngineeringFeatureResult {
         return this.entities;
     }
     /**
+     * @return (string) - The filter condition applied to the source data before aggregation
+     * 
+     */
+    public String filterCondition() {
+        return this.filterCondition;
+    }
+    /**
      * @return (string) - Three-part full name of the Stream (catalog.schema.stream)
      * 
      */
@@ -139,6 +162,13 @@ public final class GetFeatureEngineeringFeatureResult {
      */
     public GetFeatureEngineeringFeatureFunction function() {
         return this.function;
+    }
+    /**
+     * @return (list of string, deprecated)
+     * 
+     */
+    public List<String> inputs() {
+        return this.inputs;
     }
     /**
      * @return (LineageContext) - Lineage context information for this feature.
@@ -181,7 +211,14 @@ public final class GetFeatureEngineeringFeatureResult {
         return this.source;
     }
     /**
-     * @return (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
+     * @return (TimeWindow) - The time window over which the aggregation is computed
+     * 
+     */
+    public GetFeatureEngineeringFeatureTimeWindow timeWindow() {
+        return this.timeWindow;
+    }
+    /**
+     * @return (string, deprecated)
      * 
      */
     public GetFeatureEngineeringFeatureTimeseriesColumn timeseriesColumn() {
@@ -202,13 +239,16 @@ public final class GetFeatureEngineeringFeatureResult {
         private String createdBy;
         private String description;
         private List<GetFeatureEngineeringFeatureEntity> entities;
+        private String filterCondition;
         private String fullName;
         private GetFeatureEngineeringFeatureFunction function;
+        private List<String> inputs;
         private GetFeatureEngineeringFeatureLineageContext lineageContext;
         private String name;
         private @Nullable GetFeatureEngineeringFeatureProviderConfig providerConfig;
         private String schemaName;
         private GetFeatureEngineeringFeatureSource source;
+        private GetFeatureEngineeringFeatureTimeWindow timeWindow;
         private GetFeatureEngineeringFeatureTimeseriesColumn timeseriesColumn;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeatureResult defaults) {
@@ -218,13 +258,16 @@ public final class GetFeatureEngineeringFeatureResult {
     	      this.createdBy = defaults.createdBy;
     	      this.description = defaults.description;
     	      this.entities = defaults.entities;
+    	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
     	      this.function = defaults.function;
+    	      this.inputs = defaults.inputs;
     	      this.lineageContext = defaults.lineageContext;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
     	      this.source = defaults.source;
+    	      this.timeWindow = defaults.timeWindow;
     	      this.timeseriesColumn = defaults.timeseriesColumn;
         }
 
@@ -272,6 +315,14 @@ public final class GetFeatureEngineeringFeatureResult {
             return entities(List.of(entities));
         }
         @CustomType.Setter
+        public Builder filterCondition(String filterCondition) {
+            if (filterCondition == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureResult", "filterCondition");
+            }
+            this.filterCondition = filterCondition;
+            return this;
+        }
+        @CustomType.Setter
         public Builder fullName(String fullName) {
             if (fullName == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureResult", "fullName");
@@ -286,6 +337,17 @@ public final class GetFeatureEngineeringFeatureResult {
             }
             this.function = function;
             return this;
+        }
+        @CustomType.Setter
+        public Builder inputs(List<String> inputs) {
+            if (inputs == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureResult", "inputs");
+            }
+            this.inputs = inputs;
+            return this;
+        }
+        public Builder inputs(String... inputs) {
+            return inputs(List.of(inputs));
         }
         @CustomType.Setter
         public Builder lineageContext(GetFeatureEngineeringFeatureLineageContext lineageContext) {
@@ -326,6 +388,14 @@ public final class GetFeatureEngineeringFeatureResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeWindow(GetFeatureEngineeringFeatureTimeWindow timeWindow) {
+            if (timeWindow == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureResult", "timeWindow");
+            }
+            this.timeWindow = timeWindow;
+            return this;
+        }
+        @CustomType.Setter
         public Builder timeseriesColumn(GetFeatureEngineeringFeatureTimeseriesColumn timeseriesColumn) {
             if (timeseriesColumn == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureResult", "timeseriesColumn");
@@ -340,13 +410,16 @@ public final class GetFeatureEngineeringFeatureResult {
             _resultValue.createdBy = createdBy;
             _resultValue.description = description;
             _resultValue.entities = entities;
+            _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
             _resultValue.function = function;
+            _resultValue.inputs = inputs;
             _resultValue.lineageContext = lineageContext;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;
             _resultValue.source = source;
+            _resultValue.timeWindow = timeWindow;
             _resultValue.timeseriesColumn = timeseriesColumn;
             return _resultValue;
         }

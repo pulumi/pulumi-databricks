@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// When true, accepts any model exposed by the upstream provider; `Targets`
         /// is not required and does not restrict routability. When false, only
-        /// models listed in `Targets` are routable
+        /// models listed in `Targets` are routable. Defaults to false
         /// </summary>
         [Input("allowAllTargets")]
         public Input<bool>? AllowAllTargets { get; set; }
@@ -33,29 +33,28 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.AiGatewayModelProviderServiceConfigCustomArgs>? Custom { get; set; }
 
         /// <summary>
-        /// Whether to forward incoming request headers to the upstream provider.
-        /// Applies to managed (multi-model) requests as well as passthrough requests
-        /// served by this provider service. Governance-level decision by the provider
-        /// service owner; not selectable per inference call
+        /// Whether to forward incoming HTTP headers to the upstream provider. Defaults
+        /// to false and is configured for the entire provider service, not per request.
+        /// Upstream authentication is configured separately in the provider-specific
+        /// configuration
         /// </summary>
         [Input("forwardHeaders")]
         public Input<bool>? ForwardHeaders { get; set; }
 
         /// <summary>
-        /// Whether to forward incoming request query parameters to the upstream
-        /// provider. Same trust-boundary semantics as `ForwardHeaders`
+        /// Whether to forward incoming query parameters to the upstream provider.
+        /// Defaults to false and is configured for the entire provider service, not
+        /// per request
         /// </summary>
         [Input("forwardQueryParameters")]
         public Input<bool>? ForwardQueryParameters { get; set; }
 
         /// <summary>
-        /// Whether to forward request paths that fall outside this service's managed
-        /// API set to the upstream provider as opaque passthrough. When true,
-        /// requests addressed to subpaths not recognized by the managed API surface
-        /// are proxied to the upstream provider over the same provider connection.
-        /// When false, only managed-API paths are served. Governance-level decision
-        /// by the provider service owner; expanding this expands the trust boundary
-        /// that the ModelProviderService exposes
+        /// Whether to proxy paths that AI Gateway does not recognize as configured
+        /// provider-native API types. Defaults to false. When true, these paths are
+        /// forwarded unchanged to the upstream provider. When false, only
+        /// recognized API paths are served. Enabling this broadens the upstream API
+        /// surface exposed through the provider service
         /// </summary>
         [Input("forwardUnmanagedPaths")]
         public Input<bool>? ForwardUnmanagedPaths { get; set; }
@@ -64,11 +63,9 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs>? GeminiEnterprise { get; set; }
 
         /// <summary>
-        /// Inference table configuration for payload logging when this provider
-        /// service is invoked directly. When it is invoked through a model service,
-        /// the model service's own inference table captures the invocation instead.
-        /// Mirrors `ModelServiceConfig.inference_table` /
-        /// `AgentServiceConfig.inference_table`
+        /// Payload logging configuration for requests sent directly to this provider
+        /// service. Requests routed through a model service are captured by that model
+        /// service's inference table instead
         /// </summary>
         [Input("inferenceTable")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigInferenceTableArgs>? InferenceTable { get; set; }
@@ -80,12 +77,9 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.AiGatewayModelProviderServiceConfigOpenaiArgs>? Openai { get; set; }
 
         /// <summary>
-        /// Provider type discriminator. Required at create time; immutable after.
-        /// Determines which variant of the `Provider` oneof must be set. May not be
-        /// changed via Update; attempts to include `config.provider_type` in
-        /// `UpdateModelProviderServiceRequest.update_mask` are rejected.
-        /// 
-        /// Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+        /// External model provider. Required on Create and immutable thereafter. Set
+        /// the matching provider-specific configuration, such as `Openai`,
+        /// `AzureOpenai`, or `AmazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
         /// </summary>
         [Input("providerType")]
         public Input<string>? ProviderType { get; set; }
@@ -94,10 +88,8 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.AiGatewayModelProviderServiceConfigRateLimitArgs>? _rateLimits;
 
         /// <summary>
-        /// Rate limits applied when this provider service is invoked directly. When
-        /// it is invoked through a model service, the model service's own
-        /// `RateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
-        /// `McpServiceConfig.rate_limits`
+        /// Rate limits for requests sent directly to this provider service. Requests
+        /// routed through a model service use that model service's rate limits instead
         /// </summary>
         public InputList<Inputs.AiGatewayModelProviderServiceConfigRateLimitArgs> RateLimits
         {
@@ -109,11 +101,12 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.AiGatewayModelProviderServiceConfigTargetArgs>? _targets;
 
         /// <summary>
-        /// Routing targets this provider service exposes (provider-side model
-        /// identifier + unified API types per entry). Required (&gt;=1) when
-        /// `AllowAllTargets = false`; optional and additive when
-        /// `AllowAllTargets = true`. References from `ExternalModelConfig.target`
-        /// must match an entry here unless `AllowAllTargets = true`
+        /// Models and provider-native API types exposed by this provider service. Each
+        /// entry must include at least one `NativeApiTypes` value. When
+        /// `AllowAllTargets` is false, at least one entry is required and model
+        /// service destinations can reference only listed models. When
+        /// `AllowAllTargets` is true, any upstream model is routable; entries in
+        /// this list provide API-type metadata without restricting other models
         /// </summary>
         public InputList<Inputs.AiGatewayModelProviderServiceConfigTargetArgs> Targets
         {

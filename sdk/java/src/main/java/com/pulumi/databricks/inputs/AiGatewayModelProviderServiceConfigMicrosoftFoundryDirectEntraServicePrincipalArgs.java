@@ -32,16 +32,14 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntr
     }
 
     /**
-     * Entra ID client secret. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * Entra ID client secret. Supply the value in `client_secret.plaintext`
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretArgs> clientSecret;
 
     /**
-     * @return Entra ID client secret. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return Entra ID client secret. Supply the value in `client_secret.plaintext`
      * 
      */
     public Optional<Output<AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretArgs>> clientSecret() {
@@ -111,8 +109,7 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntr
         }
 
         /**
-         * @param clientSecret Entra ID client secret. Supplied as inline plaintext via
-         * `ProviderSecret.plaintext`
+         * @param clientSecret Entra ID client secret. Supply the value in `client_secret.plaintext`
          * 
          * @return builder
          * 
@@ -123,8 +120,7 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntr
         }
 
         /**
-         * @param clientSecret Entra ID client secret. Supplied as inline plaintext via
-         * `ProviderSecret.plaintext`
+         * @param clientSecret Entra ID client secret. Supply the value in `client_secret.plaintext`
          * 
          * @return builder
          * 

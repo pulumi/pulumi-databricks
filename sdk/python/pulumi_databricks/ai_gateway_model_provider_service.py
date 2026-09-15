@@ -25,7 +25,6 @@ class AiGatewayModelProviderServiceArgs:
                  parent: pulumi.Input[_builtins.str],
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigArgs']] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AiGatewayModelProviderServiceProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a AiGatewayModelProviderService resource.
@@ -35,12 +34,9 @@ class AiGatewayModelProviderServiceArgs:
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input['AiGatewayModelProviderServiceConfigArgs'] config: Behavioral configuration: provider connection, model catalog, and
-               passthrough policy. See `ModelProviderServiceConfig` for the per-field
-               contract. Required on CreateModelProviderService; on Update it is required
-               only when `config` (or a `config.*` subpath) appears in `update_mask`
-        :param pulumi.Input[_builtins.str] owner: The owner of the model provider service. Write-only; read owner via
-               effective_owner
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigArgs'] config: Provider authentication, exposed models, request-forwarding controls, rate
+               limits, and payload logging. Required on Create. On Update, it is required
+               only when `config` or one of its subpaths appears in `update_mask`
         :param pulumi.Input['AiGatewayModelProviderServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "model_provider_service_id", model_provider_service_id)
@@ -49,8 +45,6 @@ class AiGatewayModelProviderServiceArgs:
             pulumi.set(__self__, "comment", comment)
         if config is not None:
             pulumi.set(__self__, "config", config)
-        if owner is not None:
-            pulumi.set(__self__, "owner", owner)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
 
@@ -96,29 +90,15 @@ class AiGatewayModelProviderServiceArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigArgs']]:
         """
-        Behavioral configuration: provider connection, model catalog, and
-        passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        contract. Required on CreateModelProviderService; on Update it is required
-        only when `config` (or a `config.*` subpath) appears in `update_mask`
+        Provider authentication, exposed models, request-forwarding controls, rate
+        limits, and payload logging. Required on Create. On Update, it is required
+        only when `config` or one of its subpaths appears in `update_mask`
         """
         return pulumi.get(self, "config")
 
     @config.setter
     def config(self, value: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigArgs']]):
         pulumi.set(self, "config", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The owner of the model provider service. Write-only; read owner via
-        effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @owner.setter
-    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -145,7 +125,6 @@ class _AiGatewayModelProviderServiceState:
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  model_provider_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AiGatewayModelProviderServiceProviderConfigArgs']] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -154,19 +133,16 @@ class _AiGatewayModelProviderServiceState:
         Input properties used for looking up and filtering AiGatewayModelProviderService resources.
 
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input['AiGatewayModelProviderServiceConfigArgs'] config: Behavioral configuration: provider connection, model catalog, and
-               passthrough policy. See `ModelProviderServiceConfig` for the per-field
-               contract. Required on CreateModelProviderService; on Update it is required
-               only when `config` (or a `config.*` subpath) appears in `update_mask`
-        :param pulumi.Input[_builtins.str] create_time: (string) - When the provider service was created
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigArgs'] config: Provider authentication, exposed models, request-forwarding controls, rate
+               limits, and payload logging. Required on Create. On Update, it is required
+               only when `config` or one of its subpaths appears in `update_mask`
+        :param pulumi.Input[_builtins.str] create_time: (string) - Time the provider service was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - The resolved owner of the model provider service. Falls back to the
-               caller's identity when `owner` is not explicitly set on creation
-        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency control token. Server-generated from the
-               entity's state and returned on every read. To use it as an if-match
-               precondition on a mutation, echo the last-read value back via the dedicated
-               `etag` field on the Update / Delete request; the server rejects the mutation
-               if the stored etag differs
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the model provider service
+        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
+               Delete conditional, pass the last-read value in that request's `etag`
+               field. In REST responses, this value is a base64 string; URL-encode it when
+               setting the `etag` query parameter
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the provider service
         :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the provider service.
@@ -174,13 +150,11 @@ class _AiGatewayModelProviderServiceState:
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `model_provider_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.str] owner: The owner of the model provider service. Write-only; read owner via
-               effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input['AiGatewayModelProviderServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] update_time: (string) - When the provider service was last modified
+        :param pulumi.Input[_builtins.str] update_time: (string) - Time the provider service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """
         if comment is not None:
@@ -201,8 +175,6 @@ class _AiGatewayModelProviderServiceState:
             pulumi.set(__self__, "model_provider_service_id", model_provider_service_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if owner is not None:
-            pulumi.set(__self__, "owner", owner)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
@@ -228,10 +200,9 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigArgs']]:
         """
-        Behavioral configuration: provider connection, model catalog, and
-        passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        contract. Required on CreateModelProviderService; on Update it is required
-        only when `config` (or a `config.*` subpath) appears in `update_mask`
+        Provider authentication, exposed models, request-forwarding controls, rate
+        limits, and payload logging. Required on Create. On Update, it is required
+        only when `config` or one of its subpaths appears in `update_mask`
         """
         return pulumi.get(self, "config")
 
@@ -243,7 +214,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - When the provider service was created
+        (string) - Time the provider service was created
         """
         return pulumi.get(self, "create_time")
 
@@ -267,8 +238,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The resolved owner of the model provider service. Falls back to the
-        caller's identity when `owner` is not explicitly set on creation
+        (string) - Owner of the model provider service
         """
         return pulumi.get(self, "effective_owner")
 
@@ -280,11 +250,10 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter
     def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Optimistic concurrency control token. Server-generated from the
-        entity's state and returned on every read. To use it as an if-match
-        precondition on a mutation, echo the last-read value back via the dedicated
-        `etag` field on the Update / Delete request; the server rejects the mutation
-        if the stored etag differs
+        (string) - Optimistic concurrency token returned on every read. To make an Update or
+        Delete conditional, pass the last-read value in that request's `etag`
+        field. In REST responses, this value is a base64 string; URL-encode it when
+        setting the `etag` query parameter
         """
         return pulumi.get(self, "etag")
 
@@ -334,19 +303,6 @@ class _AiGatewayModelProviderServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The owner of the model provider service. Write-only; read owner via
-        effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @owner.setter
-    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "owner", value)
-
-    @_builtins.property
-    @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the parent schema.
@@ -375,7 +331,7 @@ class _AiGatewayModelProviderServiceState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - When the provider service was last modified
+        (string) - Time the provider service was last modified
         """
         return pulumi.get(self, "update_time")
 
@@ -405,26 +361,57 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']]] = None,
                  model_provider_service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+        Manages a Unity Catalog model provider service. A model provider service defines how model services connect to an external model provider and which provider models they can access.
+
+        Model provider services are contained in a Unity Catalog schema and governed by Unity Catalog permissions. Supply provider credentials through a sensitive variable or another secure input instead of hardcoding them in your configuration.
+
+        ## Example Usage
+
+        The following example creates a model provider service for a custom OpenAI-compatible provider. Pass `provider_api_key` through a secure input, such as the `TF_VAR_provider_api_key` environment variable.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        provider_api_key = config.require("providerApiKey")
+        example = databricks.AiGatewayModelProviderService("example",
+            parent="schemas/main.default",
+            model_provider_service_id="custom_provider",
+            comment="Connects to a custom model provider",
+            config={
+                "provider_type": "EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM",
+                "targets": [{
+                    "model": "chat-model",
+                    "native_api_types": ["openai/v1/chat/completions"],
+                }],
+                "custom": {
+                    "direct": {
+                        "base_url": "https://api.example.com/v1",
+                        "api_key": {
+                            "plaintext": provider_api_key,
+                        },
+                    },
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']] config: Behavioral configuration: provider connection, model catalog, and
-               passthrough policy. See `ModelProviderServiceConfig` for the per-field
-               contract. Required on CreateModelProviderService; on Update it is required
-               only when `config` (or a `config.*` subpath) appears in `update_mask`
+        :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']] config: Provider authentication, exposed models, request-forwarding controls, rate
+               limits, and payload logging. Required on Create. On Update, it is required
+               only when `config` or one of its subpaths appears in `update_mask`
         :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
-        :param pulumi.Input[_builtins.str] owner: The owner of the model provider service. Write-only; read owner via
-               effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -437,9 +424,44 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                  args: AiGatewayModelProviderServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+        Manages a Unity Catalog model provider service. A model provider service defines how model services connect to an external model provider and which provider models they can access.
+
+        Model provider services are contained in a Unity Catalog schema and governed by Unity Catalog permissions. Supply provider credentials through a sensitive variable or another secure input instead of hardcoding them in your configuration.
+
+        ## Example Usage
+
+        The following example creates a model provider service for a custom OpenAI-compatible provider. Pass `provider_api_key` through a secure input, such as the `TF_VAR_provider_api_key` environment variable.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        provider_api_key = config.require("providerApiKey")
+        example = databricks.AiGatewayModelProviderService("example",
+            parent="schemas/main.default",
+            model_provider_service_id="custom_provider",
+            comment="Connects to a custom model provider",
+            config={
+                "provider_type": "EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM",
+                "targets": [{
+                    "model": "chat-model",
+                    "native_api_types": ["openai/v1/chat/completions"],
+                }],
+                "custom": {
+                    "direct": {
+                        "base_url": "https://api.example.com/v1",
+                        "api_key": {
+                            "plaintext": provider_api_key,
+                        },
+                    },
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -460,7 +482,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']]] = None,
                  model_provider_service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']]] = None,
                  __props__=None):
@@ -477,7 +498,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
             if model_provider_service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'model_provider_service_id'")
             __props__.__dict__["model_provider_service_id"] = model_provider_service_id
-            __props__.__dict__["owner"] = owner
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
@@ -509,7 +529,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             model_provider_service_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            owner: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -522,19 +541,16 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']] config: Behavioral configuration: provider connection, model catalog, and
-               passthrough policy. See `ModelProviderServiceConfig` for the per-field
-               contract. Required on CreateModelProviderService; on Update it is required
-               only when `config` (or a `config.*` subpath) appears in `update_mask`
-        :param pulumi.Input[_builtins.str] create_time: (string) - When the provider service was created
+        :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']] config: Provider authentication, exposed models, request-forwarding controls, rate
+               limits, and payload logging. Required on Create. On Update, it is required
+               only when `config` or one of its subpaths appears in `update_mask`
+        :param pulumi.Input[_builtins.str] create_time: (string) - Time the provider service was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - The resolved owner of the model provider service. Falls back to the
-               caller's identity when `owner` is not explicitly set on creation
-        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency control token. Server-generated from the
-               entity's state and returned on every read. To use it as an if-match
-               precondition on a mutation, echo the last-read value back via the dedicated
-               `etag` field on the Update / Delete request; the server rejects the mutation
-               if the stored etag differs
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the model provider service
+        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
+               Delete conditional, pass the last-read value in that request's `etag`
+               field. In REST responses, this value is a base64 string; URL-encode it when
+               setting the `etag` query parameter
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the provider service
         :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the provider service.
@@ -542,13 +558,11 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `model_provider_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.str] owner: The owner of the model provider service. Write-only; read owner via
-               effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] update_time: (string) - When the provider service was last modified
+        :param pulumi.Input[_builtins.str] update_time: (string) - Time the provider service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -564,7 +578,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["model_provider_service_id"] = model_provider_service_id
         __props__.__dict__["name"] = name
-        __props__.__dict__["owner"] = owner
         __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["update_time"] = update_time
@@ -583,10 +596,9 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.AiGatewayModelProviderServiceConfig']]:
         """
-        Behavioral configuration: provider connection, model catalog, and
-        passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        contract. Required on CreateModelProviderService; on Update it is required
-        only when `config` (or a `config.*` subpath) appears in `update_mask`
+        Provider authentication, exposed models, request-forwarding controls, rate
+        limits, and payload logging. Required on Create. On Update, it is required
+        only when `config` or one of its subpaths appears in `update_mask`
         """
         return pulumi.get(self, "config")
 
@@ -594,7 +606,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - When the provider service was created
+        (string) - Time the provider service was created
         """
         return pulumi.get(self, "create_time")
 
@@ -610,8 +622,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resolved owner of the model provider service. Falls back to the
-        caller's identity when `owner` is not explicitly set on creation
+        (string) - Owner of the model provider service
         """
         return pulumi.get(self, "effective_owner")
 
@@ -619,11 +630,10 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Optimistic concurrency control token. Server-generated from the
-        entity's state and returned on every read. To use it as an if-match
-        precondition on a mutation, echo the last-read value back via the dedicated
-        `etag` field on the Update / Delete request; the server rejects the mutation
-        if the stored etag differs
+        (string) - Optimistic concurrency token returned on every read. To make an Update or
+        Delete conditional, pass the last-read value in that request's `etag`
+        field. In REST responses, this value is a base64 string; URL-encode it when
+        setting the `etag` query parameter
         """
         return pulumi.get(self, "etag")
 
@@ -657,15 +667,6 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> pulumi.Output[_builtins.str]:
-        """
-        The owner of the model provider service. Write-only; read owner via
-        effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @_builtins.property
-    @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
         Name of the parent schema.
@@ -686,7 +687,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - When the provider service was last modified
+        (string) - Time the provider service was last modified
         """
         return pulumi.get(self, "update_time")
 

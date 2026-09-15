@@ -18,49 +18,20 @@ public final class AiGatewayModelServiceConfigInferenceTableArgs extends com.pul
     public static final AiGatewayModelServiceConfigInferenceTableArgs Empty = new AiGatewayModelServiceConfigInferenceTableArgs();
 
     /**
-     * Indicates whether payload logging is disabled (opt-out). Unset means that
-     * payload logging is active (the on-by-default state coincides with the proto
-     * zero-value, so the server never fills this field for a client that leaves it
-     * unset). Set `disabled = true` to pause runtime logging while keeping the
-     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
-     * later flip back to active). `parent` remains required either way
-     * 
-     */
-    @Import(name="disabled")
-    private @Nullable Output<Boolean> disabled;
-
-    /**
-     * @return Indicates whether payload logging is disabled (opt-out). Unset means that
-     * payload logging is active (the on-by-default state coincides with the proto
-     * zero-value, so the server never fills this field for a client that leaves it
-     * unset). Set `disabled = true` to pause runtime logging while keeping the
-     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
-     * later flip back to active). `parent` remains required either way
-     * 
-     */
-    public Optional<Output<Boolean>> disabled() {
-        return Optional.ofNullable(this.disabled);
-    }
-
-    /**
-     * (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-     * deleted but the destination row still references it. The dangling
-     * destination is surfaced (not silently dropped) so callers can see the
-     * broken routing. Inference traffic through this destination fails closed
-     * (BAD_REQUEST / FAILED_PRECONDITION)
+     * (boolean) - Whether the destination&#39;s backing model or model provider service has
+     * been deleted. The destination remains visible so you can identify the
+     * broken dependency. Requests cannot use this destination until the backing
+     * resource is restored or the destination is replaced
      * 
      */
     @Import(name="isDeleted")
     private @Nullable Output<Boolean> isDeleted;
 
     /**
-     * @return (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-     * deleted but the destination row still references it. The dangling
-     * destination is surfaced (not silently dropped) so callers can see the
-     * broken routing. Inference traffic through this destination fails closed
-     * (BAD_REQUEST / FAILED_PRECONDITION)
+     * @return (boolean) - Whether the destination&#39;s backing model or model provider service has
+     * been deleted. The destination remains visible so you can identify the
+     * broken dependency. Requests cannot use this destination until the backing
+     * resource is restored or the destination is replaced
      * 
      */
     public Optional<Output<Boolean>> isDeleted() {
@@ -104,24 +75,22 @@ public final class AiGatewayModelServiceConfigInferenceTableArgs extends com.pul
     }
 
     /**
-     * Prefix for the inference-table&#39;s UC-registered name. The actual leaf name UC
-     * stores is `&lt;table_name_prefix&gt;_payload`; the `_payload` suffix is appended
-     * automatically. To find the actual UC table after Create, read the `table`
-     * field on the response. Defaults to `&lt;model_service_name&gt;_payload` when unset.
-     * Set at create time and immutable thereafter; changing it on an existing
-     * service is rejected
+     * Prefix used to form the inference table&#39;s registered name. AI Gateway
+     * appends `_payload`; for example, `tableNamePrefix = &#34;orders&#34;` creates
+     * `ordersPayload`. If unset, the prefix defaults to the service name. Read
+     * `table` from the response for the resulting resource name. After the
+     * inference table is created, this field cannot be changed
      * 
      */
     @Import(name="tableNamePrefix")
     private @Nullable Output<String> tableNamePrefix;
 
     /**
-     * @return Prefix for the inference-table&#39;s UC-registered name. The actual leaf name UC
-     * stores is `&lt;table_name_prefix&gt;_payload`; the `_payload` suffix is appended
-     * automatically. To find the actual UC table after Create, read the `table`
-     * field on the response. Defaults to `&lt;model_service_name&gt;_payload` when unset.
-     * Set at create time and immutable thereafter; changing it on an existing
-     * service is rejected
+     * @return Prefix used to form the inference table&#39;s registered name. AI Gateway
+     * appends `_payload`; for example, `tableNamePrefix = &#34;orders&#34;` creates
+     * `ordersPayload`. If unset, the prefix defaults to the service name. Read
+     * `table` from the response for the resulting resource name. After the
+     * inference table is created, this field cannot be changed
      * 
      */
     public Optional<Output<String>> tableNamePrefix() {
@@ -131,7 +100,6 @@ public final class AiGatewayModelServiceConfigInferenceTableArgs extends com.pul
     private AiGatewayModelServiceConfigInferenceTableArgs() {}
 
     private AiGatewayModelServiceConfigInferenceTableArgs(AiGatewayModelServiceConfigInferenceTableArgs $) {
-        this.disabled = $.disabled;
         this.isDeleted = $.isDeleted;
         this.parent = $.parent;
         this.table = $.table;
@@ -157,43 +125,10 @@ public final class AiGatewayModelServiceConfigInferenceTableArgs extends com.pul
         }
 
         /**
-         * @param disabled Indicates whether payload logging is disabled (opt-out). Unset means that
-         * payload logging is active (the on-by-default state coincides with the proto
-         * zero-value, so the server never fills this field for a client that leaves it
-         * unset). Set `disabled = true` to pause runtime logging while keeping the
-         * sub-message attached (preserving `parent` and `tableNamePrefix` for a
-         * later flip back to active). `parent` remains required either way
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disabled(@Nullable Output<Boolean> disabled) {
-            $.disabled = disabled;
-            return this;
-        }
-
-        /**
-         * @param disabled Indicates whether payload logging is disabled (opt-out). Unset means that
-         * payload logging is active (the on-by-default state coincides with the proto
-         * zero-value, so the server never fills this field for a client that leaves it
-         * unset). Set `disabled = true` to pause runtime logging while keeping the
-         * sub-message attached (preserving `parent` and `tableNamePrefix` for a
-         * later flip back to active). `parent` remains required either way
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disabled(Boolean disabled) {
-            return disabled(Output.of(disabled));
-        }
-
-        /**
-         * @param isDeleted (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-         * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-         * deleted but the destination row still references it. The dangling
-         * destination is surfaced (not silently dropped) so callers can see the
-         * broken routing. Inference traffic through this destination fails closed
-         * (BAD_REQUEST / FAILED_PRECONDITION)
+         * @param isDeleted (boolean) - Whether the destination&#39;s backing model or model provider service has
+         * been deleted. The destination remains visible so you can identify the
+         * broken dependency. Requests cannot use this destination until the backing
+         * resource is restored or the destination is replaced
          * 
          * @return builder
          * 
@@ -204,12 +139,10 @@ public final class AiGatewayModelServiceConfigInferenceTableArgs extends com.pul
         }
 
         /**
-         * @param isDeleted (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-         * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-         * deleted but the destination row still references it. The dangling
-         * destination is surfaced (not silently dropped) so callers can see the
-         * broken routing. Inference traffic through this destination fails closed
-         * (BAD_REQUEST / FAILED_PRECONDITION)
+         * @param isDeleted (boolean) - Whether the destination&#39;s backing model or model provider service has
+         * been deleted. The destination remains visible so you can identify the
+         * broken dependency. Requests cannot use this destination until the backing
+         * resource is restored or the destination is replaced
          * 
          * @return builder
          * 
@@ -267,12 +200,11 @@ public final class AiGatewayModelServiceConfigInferenceTableArgs extends com.pul
         }
 
         /**
-         * @param tableNamePrefix Prefix for the inference-table&#39;s UC-registered name. The actual leaf name UC
-         * stores is `&lt;table_name_prefix&gt;_payload`; the `_payload` suffix is appended
-         * automatically. To find the actual UC table after Create, read the `table`
-         * field on the response. Defaults to `&lt;model_service_name&gt;_payload` when unset.
-         * Set at create time and immutable thereafter; changing it on an existing
-         * service is rejected
+         * @param tableNamePrefix Prefix used to form the inference table&#39;s registered name. AI Gateway
+         * appends `_payload`; for example, `tableNamePrefix = &#34;orders&#34;` creates
+         * `ordersPayload`. If unset, the prefix defaults to the service name. Read
+         * `table` from the response for the resulting resource name. After the
+         * inference table is created, this field cannot be changed
          * 
          * @return builder
          * 
@@ -283,12 +215,11 @@ public final class AiGatewayModelServiceConfigInferenceTableArgs extends com.pul
         }
 
         /**
-         * @param tableNamePrefix Prefix for the inference-table&#39;s UC-registered name. The actual leaf name UC
-         * stores is `&lt;table_name_prefix&gt;_payload`; the `_payload` suffix is appended
-         * automatically. To find the actual UC table after Create, read the `table`
-         * field on the response. Defaults to `&lt;model_service_name&gt;_payload` when unset.
-         * Set at create time and immutable thereafter; changing it on an existing
-         * service is rejected
+         * @param tableNamePrefix Prefix used to form the inference table&#39;s registered name. AI Gateway
+         * appends `_payload`; for example, `tableNamePrefix = &#34;orders&#34;` creates
+         * `ordersPayload`. If unset, the prefix defaults to the service name. Read
+         * `table` from the response for the resulting resource name. After the
+         * inference table is created, this field cannot be changed
          * 
          * @return builder
          * 

@@ -14,7 +14,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiGatewayMcpServiceConfigSourceConnection {
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+     * the reference so callers can identify the broken dependency; tool
+     * invocation fails until the source connection is updated
      * 
      */
     private @Nullable Boolean isDeleted;
@@ -30,7 +32,9 @@ public final class AiGatewayMcpServiceConfigSourceConnection {
 
     private AiGatewayMcpServiceConfigSourceConnection() {}
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+     * the reference so callers can identify the broken dependency; tool
+     * invocation fails until the source connection is updated
      * 
      */
     public Optional<Boolean> isDeleted() {

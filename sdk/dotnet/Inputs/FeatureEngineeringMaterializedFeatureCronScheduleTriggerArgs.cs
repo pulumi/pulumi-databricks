@@ -13,10 +13,16 @@ namespace Pulumi.Databricks.Inputs
     public sealed class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+        /// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+        /// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+        /// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+        /// window timing and fills it in on the response
         /// </summary>
         [Input("cronExpression")]
         public Input<string>? CronExpression { get; set; }
+
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         public FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs()
         {

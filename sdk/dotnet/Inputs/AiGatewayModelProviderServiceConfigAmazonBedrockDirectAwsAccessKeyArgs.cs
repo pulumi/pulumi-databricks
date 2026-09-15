@@ -21,9 +21,9 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? AccessKeyId { get; set; }
 
         /// <summary>
-        /// AWS secret access key paired with `AccessKeyId`. Required on Create when
-        /// using access-key auth. Supplied as inline plaintext via
-        /// `ProviderSecret.plaintext`
+        /// AWS secret access key paired with `AccessKeyId`. Required when creating
+        /// a service with access-key authentication. Supply the value in
+        /// `secret_access_key.plaintext`
         /// </summary>
         [Input("secretAccessKey")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyArgs>? SecretAccessKey { get; set; }

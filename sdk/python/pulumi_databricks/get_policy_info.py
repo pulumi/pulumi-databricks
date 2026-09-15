@@ -28,7 +28,7 @@ class GetPolicyInfoResult:
     """
     A collection of values returned by getPolicyInfo.
     """
-    def __init__(__self__, column_mask=None, comment=None, created_at=None, created_by=None, except_principals=None, for_securable_type=None, grant=None, id=None, match_columns=None, name=None, on_securable_fullname=None, on_securable_type=None, policy_type=None, provider_config=None, row_filter=None, to_principals=None, updated_at=None, updated_by=None, when_condition=None):
+    def __init__(__self__, column_mask=None, comment=None, created_at=None, created_by=None, deny=None, except_principals=None, for_securable_type=None, grant=None, id=None, match_columns=None, name=None, on_securable_fullname=None, on_securable_type=None, policy_type=None, provider_config=None, row_filter=None, to_principals=None, updated_at=None, updated_by=None, when_condition=None):
         if column_mask and not isinstance(column_mask, dict):
             raise TypeError("Expected argument 'column_mask' to be a dict")
         pulumi.set(__self__, "column_mask", column_mask)
@@ -41,6 +41,9 @@ class GetPolicyInfoResult:
         if created_by and not isinstance(created_by, str):
             raise TypeError("Expected argument 'created_by' to be a str")
         pulumi.set(__self__, "created_by", created_by)
+        if deny and not isinstance(deny, dict):
+            raise TypeError("Expected argument 'deny' to be a dict")
+        pulumi.set(__self__, "deny", deny)
         if except_principals and not isinstance(except_principals, list):
             raise TypeError("Expected argument 'except_principals' to be a list")
         pulumi.set(__self__, "except_principals", except_principals)
@@ -122,6 +125,16 @@ class GetPolicyInfoResult:
         return pulumi.get(self, "created_by")
 
     @_builtins.property
+    @pulumi.getter
+    def deny(self) -> 'outputs.GetPolicyInfoDenyResult':
+        """
+        (DenyOptions) - Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "deny")
+
+    @_builtins.property
     @pulumi.getter(name="exceptPrincipals")
     def except_principals(self) -> Sequence[_builtins.str]:
         """
@@ -198,7 +211,7 @@ class GetPolicyInfoResult:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> _builtins.str:
         """
-        (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 
@@ -261,6 +274,7 @@ class AwaitableGetPolicyInfoResult(GetPolicyInfoResult):
             comment=self.comment,
             created_at=self.created_at,
             created_by=self.created_by,
+            deny=self.deny,
             except_principals=self.except_principals,
             for_securable_type=self.for_securable_type,
             grant=self.grant,
@@ -328,6 +342,7 @@ def get_policy_info(name: Optional[_builtins.str] = None,
         comment=pulumi.get(__ret__, 'comment'),
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
+        deny=pulumi.get(__ret__, 'deny'),
         except_principals=pulumi.get(__ret__, 'except_principals'),
         for_securable_type=pulumi.get(__ret__, 'for_securable_type'),
         grant=pulumi.get(__ret__, 'grant'),
@@ -392,6 +407,7 @@ def get_policy_info_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         comment=pulumi.get(__response__, 'comment'),
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),
+        deny=pulumi.get(__response__, 'deny'),
         except_principals=pulumi.get(__response__, 'except_principals'),
         for_securable_type=pulumi.get(__response__, 'for_securable_type'),
         grant=pulumi.get(__response__, 'grant'),

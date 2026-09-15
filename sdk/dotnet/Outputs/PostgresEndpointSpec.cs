@@ -40,7 +40,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// When set to true, explicitly disables automatic suspension (never suspend).
         /// Should be set to true when provided.
-        /// Mutually exclusive with `SuspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+        /// Mutually exclusive with `SuspendTimeoutDuration`
         /// </summary>
         public readonly bool? NoSuspension;
         /// <summary>

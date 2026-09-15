@@ -13,17 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAiGatewayModelProviderServiceConfigAnthropicRelayedResult
     {
-        /// <summary>
-        /// (string) - Which Anthropic subscription tier the relayed token belongs to. Optional;
-        /// when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
-        /// Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
-        /// </summary>
-        public readonly string? PlanType;
-
         [OutputConstructor]
-        private GetAiGatewayModelProviderServiceConfigAnthropicRelayedResult(string? planType)
+        private GetAiGatewayModelProviderServiceConfigAnthropicRelayedResult()
         {
-            PlanType = planType;
         }
     }
 }

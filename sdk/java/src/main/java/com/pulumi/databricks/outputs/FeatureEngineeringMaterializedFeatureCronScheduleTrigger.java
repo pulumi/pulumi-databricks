@@ -12,18 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
     /**
-     * @return The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight)
+     * @return The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
+     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
+     * window timing and fills it in on the response
      * 
      */
     private @Nullable String cronExpression;
+    private @Nullable String mode;
 
     private FeatureEngineeringMaterializedFeatureCronScheduleTrigger() {}
     /**
-     * @return The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight)
+     * @return The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
+     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
+     * window timing and fills it in on the response
      * 
      */
     public Optional<String> cronExpression() {
         return Optional.ofNullable(this.cronExpression);
+    }
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     public static Builder builder() {
@@ -36,10 +46,12 @@ public final class FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String cronExpression;
+        private @Nullable String mode;
         public Builder() {}
         public Builder(FeatureEngineeringMaterializedFeatureCronScheduleTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronExpression = defaults.cronExpression;
+    	      this.mode = defaults.mode;
         }
 
         @CustomType.Setter
@@ -48,9 +60,16 @@ public final class FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
             this.cronExpression = cronExpression;
             return this;
         }
+        @CustomType.Setter
+        public Builder mode(@Nullable String mode) {
+
+            this.mode = mode;
+            return this;
+        }
         public FeatureEngineeringMaterializedFeatureCronScheduleTrigger build() {
             final var _resultValue = new FeatureEngineeringMaterializedFeatureCronScheduleTrigger();
             _resultValue.cronExpression = cronExpression;
+            _resultValue.mode = mode;
             return _resultValue;
         }
     }

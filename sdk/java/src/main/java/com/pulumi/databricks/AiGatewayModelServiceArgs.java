@@ -34,20 +34,18 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      * 
      */
     @Import(name="config")
     private @Nullable Output<AiGatewayModelServiceConfigArgs> config;
 
     /**
-     * @return Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * @return Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      * 
      */
     public Optional<Output<AiGatewayModelServiceConfigArgs>> config() {
@@ -67,21 +65,6 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
      */
     public Output<String> modelServiceId() {
         return this.modelServiceId;
-    }
-
-    /**
-     * The owner of the model service. Write-only; read owner via effective_owner
-     * 
-     */
-    @Import(name="owner")
-    private @Nullable Output<String> owner;
-
-    /**
-     * @return The owner of the model service. Write-only; read owner via effective_owner
-     * 
-     */
-    public Optional<Output<String>> owner() {
-        return Optional.ofNullable(this.owner);
     }
 
     /**
@@ -124,7 +107,6 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         this.comment = $.comment;
         this.config = $.config;
         this.modelServiceId = $.modelServiceId;
-        this.owner = $.owner;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
     }
@@ -169,10 +151,9 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param config Operational configuration: destinations, routing, rate limits, inference
-         * table. Required on CreateModelService; on UpdateModelService it is
-         * required only when `config` (or a `config.*` subpath) appears in
-         * `updateMask`
+         * @param config Destinations, routing, rate limits, and payload logging configuration.
+         * Required on Create. On Update, provide this field when `updateMask`
+         * contains `config` or one of its subpaths
          * 
          * @return builder
          * 
@@ -183,10 +164,9 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param config Operational configuration: destinations, routing, rate limits, inference
-         * table. Required on CreateModelService; on UpdateModelService it is
-         * required only when `config` (or a `config.*` subpath) appears in
-         * `updateMask`
+         * @param config Destinations, routing, rate limits, and payload logging configuration.
+         * Required on Create. On Update, provide this field when `updateMask`
+         * contains `config` or one of its subpaths
          * 
          * @return builder
          * 
@@ -214,27 +194,6 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
          */
         public Builder modelServiceId(String modelServiceId) {
             return modelServiceId(Output.of(modelServiceId));
-        }
-
-        /**
-         * @param owner The owner of the model service. Write-only; read owner via effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(@Nullable Output<String> owner) {
-            $.owner = owner;
-            return this;
-        }
-
-        /**
-         * @param owner The owner of the model service. Write-only; read owner via effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(String owner) {
-            return owner(Output.of(owner));
         }
 
         /**

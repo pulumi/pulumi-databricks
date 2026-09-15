@@ -19,18 +19,20 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
     public static final AiGatewayMcpServiceConfigArgs Empty = new AiGatewayMcpServiceConfigArgs();
 
     /**
-     * Glob or exact-match patterns selecting which tools from the MCP server
-     * to expose. Prefix match for patterns with `*`, exact match otherwise.
-     * An empty list means all tools are included. Per-element max 256 chars
+     * Tool names or prefix patterns to expose from the MCP server. Use exact
+     * tool names or prefix patterns such as `read_*`. An empty list exposes all
+     * tools. At most 1,024 selectors are allowed, and each selector can contain
+     * at most 256 characters
      * 
      */
     @Import(name="includeToolSelectors")
     private @Nullable Output<List<String>> includeToolSelectors;
 
     /**
-     * @return Glob or exact-match patterns selecting which tools from the MCP server
-     * to expose. Prefix match for patterns with `*`, exact match otherwise.
-     * An empty list means all tools are included. Per-element max 256 chars
+     * @return Tool names or prefix patterns to expose from the MCP server. Use exact
+     * tool names or prefix patterns such as `read_*`. An empty list exposes all
+     * tools. At most 1,024 selectors are allowed, and each selector can contain
+     * at most 256 characters
      * 
      */
     public Optional<Output<List<String>>> includeToolSelectors() {
@@ -38,22 +40,18 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Per-principal rate limits applied to tool invocations routed through this
-     * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-     * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-     * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-     * configured
+     * Rate limits for tool invocations. Supported scopes are user, group, service
+     * principal, the service as a whole, and each user by default. Request and
+     * token limits are supported. Empty when no rate limit is configured
      * 
      */
     @Import(name="rateLimits")
     private @Nullable Output<List<AiGatewayMcpServiceConfigRateLimitArgs>> rateLimits;
 
     /**
-     * @return Per-principal rate limits applied to tool invocations routed through this
-     * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-     * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-     * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-     * configured
+     * @return Rate limits for tool invocations. Supported scopes are user, group, service
+     * principal, the service as a whole, and each user by default. Request and
+     * token limits are supported. Empty when no rate limit is configured
      * 
      */
     public Optional<Output<List<AiGatewayMcpServiceConfigRateLimitArgs>>> rateLimits() {
@@ -61,14 +59,14 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * UC Connection referencing the MCP server
+     * Unity Catalog connection referencing the MCP server. Required on Create
      * 
      */
     @Import(name="sourceConnection")
     private @Nullable Output<AiGatewayMcpServiceConfigSourceConnectionArgs> sourceConnection;
 
     /**
-     * @return UC Connection referencing the MCP server
+     * @return Unity Catalog connection referencing the MCP server. Required on Create
      * 
      */
     public Optional<Output<AiGatewayMcpServiceConfigSourceConnectionArgs>> sourceConnection() {
@@ -102,9 +100,10 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param includeToolSelectors Glob or exact-match patterns selecting which tools from the MCP server
-         * to expose. Prefix match for patterns with `*`, exact match otherwise.
-         * An empty list means all tools are included. Per-element max 256 chars
+         * @param includeToolSelectors Tool names or prefix patterns to expose from the MCP server. Use exact
+         * tool names or prefix patterns such as `read_*`. An empty list exposes all
+         * tools. At most 1,024 selectors are allowed, and each selector can contain
+         * at most 256 characters
          * 
          * @return builder
          * 
@@ -115,9 +114,10 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param includeToolSelectors Glob or exact-match patterns selecting which tools from the MCP server
-         * to expose. Prefix match for patterns with `*`, exact match otherwise.
-         * An empty list means all tools are included. Per-element max 256 chars
+         * @param includeToolSelectors Tool names or prefix patterns to expose from the MCP server. Use exact
+         * tool names or prefix patterns such as `read_*`. An empty list exposes all
+         * tools. At most 1,024 selectors are allowed, and each selector can contain
+         * at most 256 characters
          * 
          * @return builder
          * 
@@ -127,9 +127,10 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param includeToolSelectors Glob or exact-match patterns selecting which tools from the MCP server
-         * to expose. Prefix match for patterns with `*`, exact match otherwise.
-         * An empty list means all tools are included. Per-element max 256 chars
+         * @param includeToolSelectors Tool names or prefix patterns to expose from the MCP server. Use exact
+         * tool names or prefix patterns such as `read_*`. An empty list exposes all
+         * tools. At most 1,024 selectors are allowed, and each selector can contain
+         * at most 256 characters
          * 
          * @return builder
          * 
@@ -139,11 +140,9 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param rateLimits Per-principal rate limits applied to tool invocations routed through this
-         * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-         * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-         * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-         * configured
+         * @param rateLimits Rate limits for tool invocations. Supported scopes are user, group, service
+         * principal, the service as a whole, and each user by default. Request and
+         * token limits are supported. Empty when no rate limit is configured
          * 
          * @return builder
          * 
@@ -154,11 +153,9 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param rateLimits Per-principal rate limits applied to tool invocations routed through this
-         * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-         * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-         * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-         * configured
+         * @param rateLimits Rate limits for tool invocations. Supported scopes are user, group, service
+         * principal, the service as a whole, and each user by default. Request and
+         * token limits are supported. Empty when no rate limit is configured
          * 
          * @return builder
          * 
@@ -168,11 +165,9 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param rateLimits Per-principal rate limits applied to tool invocations routed through this
-         * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-         * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-         * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-         * configured
+         * @param rateLimits Rate limits for tool invocations. Supported scopes are user, group, service
+         * principal, the service as a whole, and each user by default. Request and
+         * token limits are supported. Empty when no rate limit is configured
          * 
          * @return builder
          * 
@@ -182,7 +177,7 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sourceConnection UC Connection referencing the MCP server
+         * @param sourceConnection Unity Catalog connection referencing the MCP server. Required on Create
          * 
          * @return builder
          * 
@@ -193,7 +188,7 @@ public final class AiGatewayMcpServiceConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sourceConnection UC Connection referencing the MCP server
+         * @param sourceConnection Unity Catalog connection referencing the MCP server. Required on Create
          * 
          * @return builder
          * 

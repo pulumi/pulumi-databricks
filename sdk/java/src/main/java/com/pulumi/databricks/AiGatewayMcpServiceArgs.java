@@ -34,20 +34,18 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      * 
      */
     @Import(name="config")
     private @Nullable Output<AiGatewayMcpServiceConfigArgs> config;
 
     /**
-     * @return Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * @return Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      * 
      */
     public Optional<Output<AiGatewayMcpServiceConfigArgs>> config() {
@@ -67,21 +65,6 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
      */
     public Output<String> mcpServiceId() {
         return this.mcpServiceId;
-    }
-
-    /**
-     * The owner of the MCP service. Write-only; read owner via effective_owner
-     * 
-     */
-    @Import(name="owner")
-    private @Nullable Output<String> owner;
-
-    /**
-     * @return The owner of the MCP service. Write-only; read owner via effective_owner
-     * 
-     */
-    public Optional<Output<String>> owner() {
-        return Optional.ofNullable(this.owner);
     }
 
     /**
@@ -124,7 +107,6 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         this.comment = $.comment;
         this.config = $.config;
         this.mcpServiceId = $.mcpServiceId;
-        this.owner = $.owner;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
     }
@@ -169,10 +151,9 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param config Operational configuration: connection, tool selectors, rate limit.
-         * Required on CreateMcpService; on
-         * UpdateMcpService it is required only when `config` (or a `config.*`
-         * subpath) appears in `updateMask`
+         * @param config Connection, tool selectors, and rate limits. Required on Create. On Update,
+         * provide this field when `updateMask` contains `config` or one of its
+         * subpaths
          * 
          * @return builder
          * 
@@ -183,10 +164,9 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param config Operational configuration: connection, tool selectors, rate limit.
-         * Required on CreateMcpService; on
-         * UpdateMcpService it is required only when `config` (or a `config.*`
-         * subpath) appears in `updateMask`
+         * @param config Connection, tool selectors, and rate limits. Required on Create. On Update,
+         * provide this field when `updateMask` contains `config` or one of its
+         * subpaths
          * 
          * @return builder
          * 
@@ -214,27 +194,6 @@ public final class AiGatewayMcpServiceArgs extends com.pulumi.resources.Resource
          */
         public Builder mcpServiceId(String mcpServiceId) {
             return mcpServiceId(Output.of(mcpServiceId));
-        }
-
-        /**
-         * @param owner The owner of the MCP service. Write-only; read owner via effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(@Nullable Output<String> owner) {
-            $.owner = owner;
-            return this;
-        }
-
-        /**
-         * @param owner The owner of the MCP service. Write-only; read owner via effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(String owner) {
-            return owner(Output.of(owner));
         }
 
         /**

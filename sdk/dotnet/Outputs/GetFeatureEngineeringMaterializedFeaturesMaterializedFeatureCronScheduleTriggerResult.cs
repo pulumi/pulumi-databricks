@@ -14,14 +14,25 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTriggerResult
     {
         /// <summary>
-        /// (string) - The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+        /// (string) - The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+        /// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+        /// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+        /// window timing and fills it in on the response
         /// </summary>
         public readonly string? CronExpression;
+        /// <summary>
+        /// (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
+        /// </summary>
+        public readonly string? Mode;
 
         [OutputConstructor]
-        private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTriggerResult(string? cronExpression)
+        private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTriggerResult(
+            string? cronExpression,
+
+            string? mode)
         {
             CronExpression = cronExpression;
+            Mode = mode;
         }
     }
 }

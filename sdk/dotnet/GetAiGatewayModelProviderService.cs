@@ -12,25 +12,106 @@ namespace Pulumi.Databricks
     public static class GetAiGatewayModelProviderService
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example retrieves the model provider service named `CustomProvider` from the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiGatewayModelProviderService.Invoke(new()
+        ///     {
+        ///         Name = "model-provider-services/main.default.custom_provider",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["providerType"] = example.Apply(getAiGatewayModelProviderServiceResult =&gt; getAiGatewayModelProviderServiceResult.Config?.ProviderType),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAiGatewayModelProviderServiceResult> InvokeAsync(GetAiGatewayModelProviderServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiGatewayModelProviderServiceResult>("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", args ?? new GetAiGatewayModelProviderServiceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example retrieves the model provider service named `CustomProvider` from the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiGatewayModelProviderService.Invoke(new()
+        ///     {
+        ///         Name = "model-provider-services/main.default.custom_provider",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["providerType"] = example.Apply(getAiGatewayModelProviderServiceResult =&gt; getAiGatewayModelProviderServiceResult.Config?.ProviderType),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiGatewayModelProviderServiceResult> Invoke(GetAiGatewayModelProviderServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiGatewayModelProviderServiceResult>("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", args ?? new GetAiGatewayModelProviderServiceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example retrieves the model provider service named `CustomProvider` from the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiGatewayModelProviderService.Invoke(new()
+        ///     {
+        ///         Name = "model-provider-services/main.default.custom_provider",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["providerType"] = example.Apply(getAiGatewayModelProviderServiceResult =&gt; getAiGatewayModelProviderServiceResult.Config?.ProviderType),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiGatewayModelProviderServiceResult> Invoke(GetAiGatewayModelProviderServiceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiGatewayModelProviderServiceResult>("databricks:index/getAiGatewayModelProviderService:getAiGatewayModelProviderService", args ?? new GetAiGatewayModelProviderServiceInvokeArgs(), options.WithDefaults());
@@ -94,14 +175,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Comment;
         /// <summary>
-        /// (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
-        /// passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        /// contract. Required on CreateModelProviderService; on Update it is required
-        /// only when `Config` (or a `config.*` subpath) appears in `UpdateMask`
+        /// (ModelProviderServiceConfig) - Provider authentication, exposed models, request-forwarding controls, rate
+        /// limits, and payload logging. Required on Create. On Update, it is required
+        /// only when `Config` or one of its subpaths appears in `UpdateMask`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServiceConfigResult Config;
         /// <summary>
-        /// (string) - When the provider service was created
+        /// (string) - Time the provider service was created
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -109,16 +189,14 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - The resolved owner of the model provider service. Falls back to the
-        /// caller's identity when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the model provider service
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -126,20 +204,15 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
-        /// (string) - Resource name of the bound UC service credential, in the AIP-122 form
-        /// `credentials/{name}` (a metastore-level single-part credential name). On
-        /// create the caller supplies the name here. On read it reflects the
-        /// credential's current name at read time
+        /// (string) - Resource name of the bound Unity Catalog service credential, in the form
+        /// `credentials/{name}`. Supply this field when creating the service or
+        /// rebinding its credential. On read, it reflects the credential's current
+        /// name
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string) - The owner of the model provider service. Write-only; read owner via
-        /// effective_owner
-        /// </summary>
-        public readonly string Owner;
         public readonly Outputs.GetAiGatewayModelProviderServiceProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - When the provider service was last modified
+        /// (string) - Time the provider service was last modified
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
@@ -165,8 +238,6 @@ namespace Pulumi.Databricks
 
             string name,
 
-            string owner,
-
             Outputs.GetAiGatewayModelProviderServiceProviderConfigResult? providerConfig,
 
             string updateTime,
@@ -181,7 +252,6 @@ namespace Pulumi.Databricks
             Etag = etag;
             MetastoreId = metastoreId;
             Name = name;
-            Owner = owner;
             ProviderConfig = providerConfig;
             UpdateTime = updateTime;
             UpdatedBy = updatedBy;

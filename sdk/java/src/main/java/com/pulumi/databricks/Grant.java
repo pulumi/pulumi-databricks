@@ -532,6 +532,43 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Secret grants
+ * 
+ * See databricks.Grants Secret grants for the list of privileges that apply to Secrets.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grant;
+ * import com.pulumi.databricks.GrantArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret = new Grant("secret", GrantArgs.builder()
+ *             .secret("main.default.my_secret")
+ *             .principal("Data Engineers")
+ *             .privileges("READ_SECRET")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Model service grants
  * 
  * See databricks.Grants Model service grants for the list of privileges that apply to model services.
@@ -1017,6 +1054,12 @@ public class Grant extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> schema() {
         return Codegen.optional(this.schema);
+    }
+    @Export(name="secret", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secret;
+
+    public Output<Optional<String>> secret() {
+        return Codegen.optional(this.secret);
     }
     @Export(name="share", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> share;

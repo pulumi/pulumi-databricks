@@ -7,9 +7,25 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Retrieves a Unity Catalog model service by its full resource name.
+ *
+ * ## Example Usage
+ *
+ * The following example retrieves the model service named `customerSupport` from the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiGatewayModelService({
+ *     name: "model-services/main.default.customer_support",
+ * });
+ * export const modelServiceConfig = example.then(example => example.config);
+ * ```
  */
 export function getAiGatewayModelService(args: GetAiGatewayModelServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAiGatewayModelServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -46,14 +62,13 @@ export interface GetAiGatewayModelServiceResult {
      */
     readonly comment: string;
     /**
-     * (ModelServiceConfig) - Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * (ModelServiceConfig) - Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      */
     readonly config: outputs.GetAiGatewayModelServiceConfig;
     /**
-     * (string) - When the model service was created
+     * (string) - Time the model service was created
      */
     readonly createTime: string;
     /**
@@ -61,16 +76,14 @@ export interface GetAiGatewayModelServiceResult {
      */
     readonly createdBy: string;
     /**
-     * (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the model service
      */
     readonly effectiveOwner: string;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     readonly etag: string;
     /**
@@ -81,19 +94,16 @@ export interface GetAiGatewayModelServiceResult {
      * (string) - User-facing label for this destination, used in routing references
      */
     readonly name: string;
-    /**
-     * (string) - The owner of the model service. Write-only; read owner via effective_owner
-     */
-    readonly owner: string;
     readonly providerConfig?: outputs.GetAiGatewayModelServiceProviderConfig;
     /**
-     * (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-     * "completions"). Derived from the destinations' backing models / providers
+     * (list of string) - API types supported across this service's destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      */
     readonly supportedApiTypes: string[];
     /**
-     * (string) - When the model service was last modified
+     * (string) - Time the model service was last modified
      */
     readonly updateTime: string;
     /**
@@ -102,9 +112,25 @@ export interface GetAiGatewayModelServiceResult {
     readonly updatedBy: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Retrieves a Unity Catalog model service by its full resource name.
+ *
+ * ## Example Usage
+ *
+ * The following example retrieves the model service named `customerSupport` from the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiGatewayModelService({
+ *     name: "model-services/main.default.customer_support",
+ * });
+ * export const modelServiceConfig = example.then(example => example.config);
+ * ```
  */
 export function getAiGatewayModelServiceOutput(args: GetAiGatewayModelServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiGatewayModelServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

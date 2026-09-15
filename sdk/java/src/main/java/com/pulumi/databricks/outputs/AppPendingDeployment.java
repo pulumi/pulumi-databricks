@@ -38,6 +38,10 @@ public final class AppPendingDeployment {
      */
     private @Nullable String deploymentId;
     private @Nullable List<AppPendingDeploymentEnvVar> envVars;
+    /**
+     * @return The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     * 
+     */
     private @Nullable AppPendingDeploymentGitSource gitSource;
     /**
      * @return The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
@@ -45,7 +49,7 @@ public final class AppPendingDeployment {
      */
     private @Nullable String mode;
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     private @Nullable String sourceCodePath;
@@ -95,6 +99,10 @@ public final class AppPendingDeployment {
     public List<AppPendingDeploymentEnvVar> envVars() {
         return this.envVars == null ? List.of() : this.envVars;
     }
+    /**
+     * @return The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     * 
+     */
     public Optional<AppPendingDeploymentGitSource> gitSource() {
         return Optional.ofNullable(this.gitSource);
     }
@@ -106,7 +114,7 @@ public final class AppPendingDeployment {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     public Optional<String> sourceCodePath() {

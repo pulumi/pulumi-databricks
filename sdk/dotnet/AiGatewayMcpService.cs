@@ -10,9 +10,42 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+    /// 
+    /// Manages an MCP service in Unity Catalog. An MCP service governs access to an MCP server hosted through a Unity Catalog connection.
+    /// 
+    /// The Unity Catalog connection must exist before you create the MCP service. MCP services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The following example registers an MCP service backed by a Unity Catalog connection:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Databricks.AiGatewayMcpService("example", new()
+    ///     {
+    ///         Parent = "schemas/main.default",
+    ///         McpServiceId = "knowledge_tools",
+    ///         Comment = "Provides governed access to knowledge tools",
+    ///         Config = new Databricks.Inputs.AiGatewayMcpServiceConfigArgs
+    ///         {
+    ///             SourceConnection = new Databricks.Inputs.AiGatewayMcpServiceConfigSourceConnectionArgs
+    ///             {
+    ///                 Name = "connections/main.default.mcp_connection",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/aiGatewayMcpService:AiGatewayMcpService")]
     public partial class AiGatewayMcpService : global::Pulumi.CustomResource
@@ -24,16 +57,15 @@ namespace Pulumi.Databricks
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Operational configuration: connection, tool selectors, rate limit.
-        /// Required on CreateMcpService; on
-        /// UpdateMcpService it is required only when `Config` (or a `config.*`
-        /// subpath) appears in `UpdateMask`
+        /// Connection, tool selectors, and rate limits. Required on Create. On Update,
+        /// provide this field when `UpdateMask` contains `Config` or one of its
+        /// subpaths
         /// </summary>
         [Output("config")]
         public Output<Outputs.AiGatewayMcpServiceConfig?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - When the MCP service was created
+        /// (string) - Time the MCP service was created
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -45,18 +77,16 @@ namespace Pulumi.Databricks
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-        /// when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the MCP service
         /// </summary>
         [Output("effectiveOwner")]
         public Output<string> EffectiveOwner { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -84,12 +114,6 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the MCP service. Write-only; read owner via effective_owner
-        /// </summary>
-        [Output("owner")]
-        public Output<string> Owner { get; private set; } = null!;
-
-        /// <summary>
         /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
@@ -104,7 +128,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.AiGatewayMcpServiceProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - When the MCP service was last modified
+        /// (string) - Time the MCP service was last modified
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -168,10 +192,9 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Operational configuration: connection, tool selectors, rate limit.
-        /// Required on CreateMcpService; on
-        /// UpdateMcpService it is required only when `Config` (or a `config.*`
-        /// subpath) appears in `UpdateMask`
+        /// Connection, tool selectors, and rate limits. Required on Create. On Update,
+        /// provide this field when `UpdateMask` contains `Config` or one of its
+        /// subpaths
         /// </summary>
         [Input("config")]
         public Input<Inputs.AiGatewayMcpServiceConfigArgs>? Config { get; set; }
@@ -181,12 +204,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("mcpServiceId", required: true)]
         public Input<string> McpServiceId { get; set; } = null!;
-
-        /// <summary>
-        /// The owner of the MCP service. Write-only; read owner via effective_owner
-        /// </summary>
-        [Input("owner")]
-        public Input<string>? Owner { get; set; }
 
         /// <summary>
         /// Name of the parent schema.
@@ -217,16 +234,15 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Operational configuration: connection, tool selectors, rate limit.
-        /// Required on CreateMcpService; on
-        /// UpdateMcpService it is required only when `Config` (or a `config.*`
-        /// subpath) appears in `UpdateMask`
+        /// Connection, tool selectors, and rate limits. Required on Create. On Update,
+        /// provide this field when `UpdateMask` contains `Config` or one of its
+        /// subpaths
         /// </summary>
         [Input("config")]
         public Input<Inputs.AiGatewayMcpServiceConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// (string) - When the MCP service was created
+        /// (string) - Time the MCP service was created
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -238,18 +254,16 @@ namespace Pulumi.Databricks
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-        /// when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the MCP service
         /// </summary>
         [Input("effectiveOwner")]
         public Input<string>? EffectiveOwner { get; set; }
 
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -277,12 +291,6 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The owner of the MCP service. Write-only; read owner via effective_owner
-        /// </summary>
-        [Input("owner")]
-        public Input<string>? Owner { get; set; }
-
-        /// <summary>
         /// Name of the parent schema.
         /// Format: `schemas/{catalog}.{schema}`.
         /// Each `{...}` component is capped at 255 characters individually
@@ -297,7 +305,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AiGatewayMcpServiceProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// (string) - When the MCP service was last modified
+        /// (string) - Time the MCP service was last modified
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

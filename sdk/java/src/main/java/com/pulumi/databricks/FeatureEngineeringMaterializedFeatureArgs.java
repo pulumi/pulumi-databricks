@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureStreami
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureTableTriggerArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,6 +22,30 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringMaterializedFeatureArgs Empty = new FeatureEngineeringMaterializedFeatureArgs();
+
+    /**
+     * The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    /**
+     * @return The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    @Import(name="cronSchedule")
+    private @Nullable Output<String> cronSchedule;
+
+    public Optional<Output<String>> cronSchedule() {
+        return Optional.ofNullable(this.cronSchedule);
+    }
 
     /**
      * A cron-based schedule trigger for the materialization pipeline
@@ -148,9 +173,38 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
         return Optional.ofNullable(this.tableTrigger);
     }
 
+    /**
+     * Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private FeatureEngineeringMaterializedFeatureArgs() {}
 
     private FeatureEngineeringMaterializedFeatureArgs(FeatureEngineeringMaterializedFeatureArgs $) {
+        this.budgetPolicyId = $.budgetPolicyId;
+        this.cronSchedule = $.cronSchedule;
         this.cronScheduleTrigger = $.cronScheduleTrigger;
         this.featureName = $.featureName;
         this.offlineStoreConfig = $.offlineStoreConfig;
@@ -159,6 +213,7 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
         this.providerConfig = $.providerConfig;
         this.streamingMode = $.streamingMode;
         this.tableTrigger = $.tableTrigger;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -177,6 +232,38 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
 
         public Builder(FeatureEngineeringMaterializedFeatureArgs defaults) {
             $ = new FeatureEngineeringMaterializedFeatureArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param budgetPolicyId The ID of the budget policy used to attribute the serverless compute cost of this
+         * materialization. If not specified, a default budget policy may be applied
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        /**
+         * @param budgetPolicyId The ID of the budget policy used to attribute the serverless compute cost of this
+         * materialization. If not specified, a default budget policy may be applied
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        public Builder cronSchedule(@Nullable Output<String> cronSchedule) {
+            $.cronSchedule = cronSchedule;
+            return this;
+        }
+
+        public Builder cronSchedule(String cronSchedule) {
+            return cronSchedule(Output.of(cronSchedule));
         }
 
         /**
@@ -351,6 +438,39 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
          */
         public Builder tableTrigger(FeatureEngineeringMaterializedFeatureTableTriggerArgs tableTrigger) {
             return tableTrigger(Output.of(tableTrigger));
+        }
+
+        /**
+         * @param tags Custom tags to associate with this materialization. They are applied to the materialization
+         * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+         * compute as cluster tags, so materialization cost can be attributed in the billing system
+         * tables. These tags apply only to the materialization compute; they are not applied to the
+         * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+         * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+         * same limitations as cluster tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Custom tags to associate with this materialization. They are applied to the materialization
+         * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+         * compute as cluster tags, so materialization cost can be attributed in the billing system
+         * tables. These tags apply only to the materialization compute; they are not applied to the
+         * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+         * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+         * same limitations as cluster tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public FeatureEngineeringMaterializedFeatureArgs build() {

@@ -14,8 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectResult
     {
         /// <summary>
-        /// (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
-        /// `ProviderSecret.plaintext`
+        /// (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required when creating the service. Supply the value in
+        /// `api_key.plaintext`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKeyResult? ApiKey;
         /// <summary>
@@ -24,20 +24,18 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? BaseUrl;
         /// <summary>
-        /// (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID (service principal) auth. Mutually exclusive with `ApiKey` and
+        /// (ModelProviderServiceConfigEntraServicePrincipal) - Entra ID service-principal authentication. Set `TenantId`, `ClientId`,
+        /// and `client_secret.plaintext`. Mutually exclusive with `ApiKey` and
         /// `ServiceCredential`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalResult? EntraServicePrincipal;
         /// <summary>
-        /// (ModelProviderServiceConfigServiceCredential) - Reference to a UC service credential authorizing Microsoft Foundry requests.
-        /// On Create the caller supplies `service_credential.name` in the AIP-122
-        /// resource-name form `credentials/{name}`. Required on Create when using
-        /// UC-service-credential auth; mutually exclusive with `ApiKey` and
-        /// `EntraServicePrincipal`. The credential is
-        /// referenced by name; its value is not carried here. On read the resolved `Id`
-        /// and `IsDeleted` are also populated. Only supported on Azure-hosted
-        /// workspaces; Create requests from other clouds are rejected with
-        /// INVALID_PARAMETER_VALUE
+        /// (ModelProviderServiceConfigServiceCredential) - Reference to a Unity Catalog service credential authorizing Microsoft
+        /// Foundry requests. On Create, supply `service_credential.name` in the form
+        /// `credentials/{name}`. Required on Create when using service-credential
+        /// authentication; mutually exclusive with `ApiKey` and
+        /// `EntraServicePrincipal`. The credential is referenced by name; its value
+        /// is not carried here. Only supported on Azure-hosted workspaces
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredentialResult? ServiceCredential;
 

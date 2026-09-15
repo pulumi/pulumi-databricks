@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow
     {
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous? Continuous;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling? Rolling;
         /// <summary>
         /// A sawtooth window served via the hybrid batch + streaming path
@@ -26,13 +27,16 @@ namespace Pulumi.Databricks.Outputs
         /// for 365 days of data; a lifetime window produces no output before start_time. If unset,
         /// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         /// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-        /// eligible source data exists
+        /// eligible source data exists.
+        /// Not currently supported for sawtooth windows or for Features with a stream source
         /// </summary>
         public readonly string? StartTime;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling? Tumbling;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow(
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous? continuous,
+
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling? rolling,
 
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth? sawtooth,
@@ -43,6 +47,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling? tumbling)
         {
+            Continuous = continuous;
             Rolling = rolling;
             Sawtooth = sawtooth;
             Sliding = sliding;

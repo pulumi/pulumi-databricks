@@ -13,6 +13,196 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ExternalLocationFileEventQueueManagedAqs struct {
+	// The ID of the managed resource.
+	ManagedResourceId *string `pulumi:"managedResourceId"`
+	QueueUrl          *string `pulumi:"queueUrl"`
+	// The name of the Azure resource group.
+	ResourceGroup string `pulumi:"resourceGroup"`
+	// The Azure subscription ID.
+	SubscriptionId string `pulumi:"subscriptionId"`
+}
+
+// ExternalLocationFileEventQueueManagedAqsInput is an input type that accepts ExternalLocationFileEventQueueManagedAqsArgs and ExternalLocationFileEventQueueManagedAqsOutput values.
+// You can construct a concrete instance of `ExternalLocationFileEventQueueManagedAqsInput` via:
+//
+//	ExternalLocationFileEventQueueManagedAqsArgs{...}
+type ExternalLocationFileEventQueueManagedAqsInput interface {
+	pulumi.Input
+
+	ToExternalLocationFileEventQueueManagedAqsOutput() ExternalLocationFileEventQueueManagedAqsOutput
+	ToExternalLocationFileEventQueueManagedAqsOutputWithContext(context.Context) ExternalLocationFileEventQueueManagedAqsOutput
+}
+
+type ExternalLocationFileEventQueueManagedAqsArgs struct {
+	// The ID of the managed resource.
+	ManagedResourceId pulumi.StringPtrInput `pulumi:"managedResourceId"`
+	QueueUrl          pulumi.StringPtrInput `pulumi:"queueUrl"`
+	// The name of the Azure resource group.
+	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
+	// The Azure subscription ID.
+	SubscriptionId pulumi.StringInput `pulumi:"subscriptionId"`
+}
+
+func (ExternalLocationFileEventQueueManagedAqsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqs)(nil)).Elem()
+}
+
+func (i ExternalLocationFileEventQueueManagedAqsArgs) ToExternalLocationFileEventQueueManagedAqsOutput() ExternalLocationFileEventQueueManagedAqsOutput {
+	return i.ToExternalLocationFileEventQueueManagedAqsOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationFileEventQueueManagedAqsArgs) ToExternalLocationFileEventQueueManagedAqsOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueManagedAqsOutput)
+}
+
+func (i ExternalLocationFileEventQueueManagedAqsArgs) ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return i.ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationFileEventQueueManagedAqsArgs) ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueManagedAqsOutput).ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx)
+}
+
+// ExternalLocationFileEventQueueManagedAqsPtrInput is an input type that accepts ExternalLocationFileEventQueueManagedAqsArgs, ExternalLocationFileEventQueueManagedAqsPtr and ExternalLocationFileEventQueueManagedAqsPtrOutput values.
+// You can construct a concrete instance of `ExternalLocationFileEventQueueManagedAqsPtrInput` via:
+//
+//	        ExternalLocationFileEventQueueManagedAqsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalLocationFileEventQueueManagedAqsPtrInput interface {
+	pulumi.Input
+
+	ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput
+	ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput
+}
+
+type externalLocationFileEventQueueManagedAqsPtrType ExternalLocationFileEventQueueManagedAqsArgs
+
+func ExternalLocationFileEventQueueManagedAqsPtr(v *ExternalLocationFileEventQueueManagedAqsArgs) ExternalLocationFileEventQueueManagedAqsPtrInput {
+	return (*externalLocationFileEventQueueManagedAqsPtrType)(v)
+}
+
+func (*externalLocationFileEventQueueManagedAqsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationFileEventQueueManagedAqs)(nil)).Elem()
+}
+
+func (i *externalLocationFileEventQueueManagedAqsPtrType) ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return i.ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(context.Background())
+}
+
+func (i *externalLocationFileEventQueueManagedAqsPtrType) ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueManagedAqsPtrOutput)
+}
+
+type ExternalLocationFileEventQueueManagedAqsOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationFileEventQueueManagedAqsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqs)(nil)).Elem()
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsOutput) ToExternalLocationFileEventQueueManagedAqsOutput() ExternalLocationFileEventQueueManagedAqsOutput {
+	return o
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsOutput) ToExternalLocationFileEventQueueManagedAqsOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsOutput {
+	return o
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsOutput) ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return o.ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsOutput) ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationFileEventQueueManagedAqs) *ExternalLocationFileEventQueueManagedAqs {
+		return &v
+	}).(ExternalLocationFileEventQueueManagedAqsPtrOutput)
+}
+
+// The ID of the managed resource.
+func (o ExternalLocationFileEventQueueManagedAqsOutput) ManagedResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueueManagedAqs) *string { return v.ManagedResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsOutput) QueueUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueueManagedAqs) *string { return v.QueueUrl }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Azure resource group.
+func (o ExternalLocationFileEventQueueManagedAqsOutput) ResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueueManagedAqs) string { return v.ResourceGroup }).(pulumi.StringOutput)
+}
+
+// The Azure subscription ID.
+func (o ExternalLocationFileEventQueueManagedAqsOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueueManagedAqs) string { return v.SubscriptionId }).(pulumi.StringOutput)
+}
+
+type ExternalLocationFileEventQueueManagedAqsPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationFileEventQueueManagedAqsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationFileEventQueueManagedAqs)(nil)).Elem()
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) Elem() ExternalLocationFileEventQueueManagedAqsOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) ExternalLocationFileEventQueueManagedAqs {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalLocationFileEventQueueManagedAqs
+		return ret
+	}).(ExternalLocationFileEventQueueManagedAqsOutput)
+}
+
+// The ID of the managed resource.
+func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) ManagedResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) QueueUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueueUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Azure resource group.
+func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure subscription ID.
+func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
 type ExternalLocationFileEventQueueManagedPubsub struct {
 	// The ID of the managed resource.
 	ManagedResourceId *string `pulumi:"managedResourceId"`
@@ -1192,7 +1382,10 @@ type FeatureEngineeringFeatureFunction struct {
 	// Selects the latest value of a single column in a data source
 	ColumnSelection *FeatureEngineeringFeatureFunctionColumnSelection `pulumi:"columnSelection"`
 	// Applies a registered Unity Catalog function row-wise to source columns
-	CustomUdf *FeatureEngineeringFeatureFunctionCustomUdf `pulumi:"customUdf"`
+	CustomUdf       *FeatureEngineeringFeatureFunctionCustomUdf       `pulumi:"customUdf"`
+	ExtraParameters []FeatureEngineeringFeatureFunctionExtraParameter `pulumi:"extraParameters"`
+	// Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+	FunctionType *string `pulumi:"functionType"`
 }
 
 // FeatureEngineeringFeatureFunctionInput is an input type that accepts FeatureEngineeringFeatureFunctionArgs and FeatureEngineeringFeatureFunctionOutput values.
@@ -1212,7 +1405,10 @@ type FeatureEngineeringFeatureFunctionArgs struct {
 	// Selects the latest value of a single column in a data source
 	ColumnSelection FeatureEngineeringFeatureFunctionColumnSelectionPtrInput `pulumi:"columnSelection"`
 	// Applies a registered Unity Catalog function row-wise to source columns
-	CustomUdf FeatureEngineeringFeatureFunctionCustomUdfPtrInput `pulumi:"customUdf"`
+	CustomUdf       FeatureEngineeringFeatureFunctionCustomUdfPtrInput        `pulumi:"customUdf"`
+	ExtraParameters FeatureEngineeringFeatureFunctionExtraParameterArrayInput `pulumi:"extraParameters"`
+	// Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+	FunctionType pulumi.StringPtrInput `pulumi:"functionType"`
 }
 
 func (FeatureEngineeringFeatureFunctionArgs) ElementType() reflect.Type {
@@ -1313,6 +1509,17 @@ func (o FeatureEngineeringFeatureFunctionOutput) CustomUdf() FeatureEngineeringF
 	}).(FeatureEngineeringFeatureFunctionCustomUdfPtrOutput)
 }
 
+func (o FeatureEngineeringFeatureFunctionOutput) ExtraParameters() FeatureEngineeringFeatureFunctionExtraParameterArrayOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunction) []FeatureEngineeringFeatureFunctionExtraParameter {
+		return v.ExtraParameters
+	}).(FeatureEngineeringFeatureFunctionExtraParameterArrayOutput)
+}
+
+// Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+func (o FeatureEngineeringFeatureFunctionOutput) FunctionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunction) *string { return v.FunctionType }).(pulumi.StringPtrOutput)
+}
+
 type FeatureEngineeringFeatureFunctionPtrOutput struct{ *pulumi.OutputState }
 
 func (FeatureEngineeringFeatureFunctionPtrOutput) ElementType() reflect.Type {
@@ -1367,6 +1574,25 @@ func (o FeatureEngineeringFeatureFunctionPtrOutput) CustomUdf() FeatureEngineeri
 	}).(FeatureEngineeringFeatureFunctionCustomUdfPtrOutput)
 }
 
+func (o FeatureEngineeringFeatureFunctionPtrOutput) ExtraParameters() FeatureEngineeringFeatureFunctionExtraParameterArrayOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureFunction) []FeatureEngineeringFeatureFunctionExtraParameter {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraParameters
+	}).(FeatureEngineeringFeatureFunctionExtraParameterArrayOutput)
+}
+
+// Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+func (o FeatureEngineeringFeatureFunctionPtrOutput) FunctionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FunctionType
+	}).(pulumi.StringPtrOutput)
+}
+
 type FeatureEngineeringFeatureFunctionAggregationFunction struct {
 	ApproxCountDistinct *FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct `pulumi:"approxCountDistinct"`
 	ApproxPercentile    *FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile    `pulumi:"approxPercentile"`
@@ -1383,10 +1609,9 @@ type FeatureEngineeringFeatureFunctionAggregationFunction struct {
 	StddevPop           *FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop           `pulumi:"stddevPop"`
 	StddevSamp          *FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp          `pulumi:"stddevSamp"`
 	Sum                 *FeatureEngineeringFeatureFunctionAggregationFunctionSum                 `pulumi:"sum"`
-	// The time window over which the aggregation is computed
-	TimeWindow *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow `pulumi:"timeWindow"`
-	VarPop     *FeatureEngineeringFeatureFunctionAggregationFunctionVarPop     `pulumi:"varPop"`
-	VarSamp    *FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp    `pulumi:"varSamp"`
+	TimeWindow          *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow          `pulumi:"timeWindow"`
+	VarPop              *FeatureEngineeringFeatureFunctionAggregationFunctionVarPop              `pulumi:"varPop"`
+	VarSamp             *FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp             `pulumi:"varSamp"`
 }
 
 // FeatureEngineeringFeatureFunctionAggregationFunctionInput is an input type that accepts FeatureEngineeringFeatureFunctionAggregationFunctionArgs and FeatureEngineeringFeatureFunctionAggregationFunctionOutput values.
@@ -1416,10 +1641,9 @@ type FeatureEngineeringFeatureFunctionAggregationFunctionArgs struct {
 	StddevPop           FeatureEngineeringFeatureFunctionAggregationFunctionStddevPopPtrInput           `pulumi:"stddevPop"`
 	StddevSamp          FeatureEngineeringFeatureFunctionAggregationFunctionStddevSampPtrInput          `pulumi:"stddevSamp"`
 	Sum                 FeatureEngineeringFeatureFunctionAggregationFunctionSumPtrInput                 `pulumi:"sum"`
-	// The time window over which the aggregation is computed
-	TimeWindow FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrInput `pulumi:"timeWindow"`
-	VarPop     FeatureEngineeringFeatureFunctionAggregationFunctionVarPopPtrInput     `pulumi:"varPop"`
-	VarSamp    FeatureEngineeringFeatureFunctionAggregationFunctionVarSampPtrInput    `pulumi:"varSamp"`
+	TimeWindow          FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrInput          `pulumi:"timeWindow"`
+	VarPop              FeatureEngineeringFeatureFunctionAggregationFunctionVarPopPtrInput              `pulumi:"varPop"`
+	VarSamp             FeatureEngineeringFeatureFunctionAggregationFunctionVarSampPtrInput             `pulumi:"varSamp"`
 }
 
 func (FeatureEngineeringFeatureFunctionAggregationFunctionArgs) ElementType() reflect.Type {
@@ -1589,7 +1813,6 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionOutput) Sum() Featur
 	}).(FeatureEngineeringFeatureFunctionAggregationFunctionSumPtrOutput)
 }
 
-// The time window over which the aggregation is computed
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionOutput) TimeWindow() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunction) *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
 		return v.TimeWindow
@@ -1767,7 +1990,6 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionPtrOutput) Sum() Fea
 	}).(FeatureEngineeringFeatureFunctionAggregationFunctionSumPtrOutput)
 }
 
-// The time window over which the aggregation is computed
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionPtrOutput) TimeWindow() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunction) *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
 		if v == nil {
@@ -3912,7 +4134,8 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionSumPtrOutput) Input(
 }
 
 type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow struct {
-	Rolling *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling `pulumi:"rolling"`
+	Continuous *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous `pulumi:"continuous"`
+	Rolling    *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling    `pulumi:"rolling"`
 	// A sawtooth window served via the hybrid batch + streaming path
 	Sawtooth *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth `pulumi:"sawtooth"`
 	Sliding  *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding  `pulumi:"sliding"`
@@ -3922,7 +4145,8 @@ type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow struct {
 	// for 365 days of data; a lifetime window produces no output before start_time. If unset,
 	// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 	// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-	// eligible source data exists
+	// eligible source data exists.
+	// Not currently supported for sawtooth windows or for Features with a stream source
 	StartTime *string                                                                 `pulumi:"startTime"`
 	Tumbling  *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling `pulumi:"tumbling"`
 }
@@ -3939,7 +4163,8 @@ type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowInput interfa
 }
 
 type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs struct {
-	Rolling FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingPtrInput `pulumi:"rolling"`
+	Continuous FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrInput `pulumi:"continuous"`
+	Rolling    FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingPtrInput    `pulumi:"rolling"`
 	// A sawtooth window served via the hybrid batch + streaming path
 	Sawtooth FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothPtrInput `pulumi:"sawtooth"`
 	Sliding  FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingPtrInput  `pulumi:"sliding"`
@@ -3949,7 +4174,8 @@ type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs struct {
 	// for 365 days of data; a lifetime window produces no output before start_time. If unset,
 	// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 	// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-	// eligible source data exists
+	// eligible source data exists.
+	// Not currently supported for sawtooth windows or for Features with a stream source
 	StartTime pulumi.StringPtrInput                                                          `pulumi:"startTime"`
 	Tumbling  FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingPtrInput `pulumi:"tumbling"`
 }
@@ -4031,6 +4257,12 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput) To
 	}).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput)
 }
 
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput) Continuous() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow) *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
+		return v.Continuous
+	}).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput)
+}
+
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput) Rolling() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow) *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
 		return v.Rolling
@@ -4056,7 +4288,8 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput) Sl
 // for 365 days of data; a lifetime window produces no output before start_time. If unset,
 // tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 // full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-// eligible source data exists
+// eligible source data exists.
+// Not currently supported for sawtooth windows or for Features with a stream source
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -4089,6 +4322,15 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput)
 		var ret FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow
 		return ret
 	}).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput)
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput) Continuous() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow) *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
+		if v == nil {
+			return nil
+		}
+		return v.Continuous
+	}).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput)
 }
 
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput) Rolling() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingPtrOutput {
@@ -4125,7 +4367,8 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput)
 // for 365 days of data; a lifetime window produces no output before start_time. If unset,
 // tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
 // full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-// eligible source data exists
+// eligible source data exists.
+// Not currently supported for sawtooth windows or for Features with a stream source
 func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow) *string {
 		if v == nil {
@@ -4142,6 +4385,158 @@ func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput)
 		}
 		return v.Tumbling
 	}).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingPtrOutput)
+}
+
+type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous struct {
+	Offset         *string `pulumi:"offset"`
+	WindowDuration string  `pulumi:"windowDuration"`
+}
+
+// FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousInput is an input type that accepts FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs and FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousInput` via:
+//
+//	FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs{...}
+type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput
+	ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutputWithContext(context.Context) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput
+}
+
+type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs struct {
+	Offset         pulumi.StringPtrInput `pulumi:"offset"`
+	WindowDuration pulumi.StringInput    `pulumi:"windowDuration"`
+}
+
+func (FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput {
+	return i.ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput)
+}
+
+func (i FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return i.ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput).ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrInput is an input type that accepts FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs, FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtr and FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrInput` via:
+//
+//	        FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput
+	ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(context.Context) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput
+}
+
+type featureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrType FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs
+
+func FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtr(v *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrInput {
+	return (*featureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrType)(v)
+}
+
+func (*featureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrType) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return i.ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrType) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput)
+}
+
+type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return o.ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous) *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
+		return &v
+	}).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous) *string {
+		return v.Offset
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput) WindowDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous) string {
+		return v.WindowDuration
+	}).(pulumi.StringOutput)
+}
+
+type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput) ToFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput) Elem() FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous) FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous
+		return ret
+	}).(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput)
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowDuration
+	}).(pulumi.StringPtrOutput)
 }
 
 type FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling struct {
@@ -5461,6 +5856,112 @@ func (o FeatureEngineeringFeatureFunctionCustomUdfInputBindingArrayOutput) Index
 	}).(FeatureEngineeringFeatureFunctionCustomUdfInputBindingOutput)
 }
 
+type FeatureEngineeringFeatureFunctionExtraParameter struct {
+	// The name of the parameter
+	Key string `pulumi:"key"`
+	// The value of the parameter
+	Value string `pulumi:"value"`
+}
+
+// FeatureEngineeringFeatureFunctionExtraParameterInput is an input type that accepts FeatureEngineeringFeatureFunctionExtraParameterArgs and FeatureEngineeringFeatureFunctionExtraParameterOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureFunctionExtraParameterInput` via:
+//
+//	FeatureEngineeringFeatureFunctionExtraParameterArgs{...}
+type FeatureEngineeringFeatureFunctionExtraParameterInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureFunctionExtraParameterOutput() FeatureEngineeringFeatureFunctionExtraParameterOutput
+	ToFeatureEngineeringFeatureFunctionExtraParameterOutputWithContext(context.Context) FeatureEngineeringFeatureFunctionExtraParameterOutput
+}
+
+type FeatureEngineeringFeatureFunctionExtraParameterArgs struct {
+	// The name of the parameter
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the parameter
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (FeatureEngineeringFeatureFunctionExtraParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureFunctionExtraParameter)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureFunctionExtraParameterArgs) ToFeatureEngineeringFeatureFunctionExtraParameterOutput() FeatureEngineeringFeatureFunctionExtraParameterOutput {
+	return i.ToFeatureEngineeringFeatureFunctionExtraParameterOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureFunctionExtraParameterArgs) ToFeatureEngineeringFeatureFunctionExtraParameterOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionExtraParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureFunctionExtraParameterOutput)
+}
+
+// FeatureEngineeringFeatureFunctionExtraParameterArrayInput is an input type that accepts FeatureEngineeringFeatureFunctionExtraParameterArray and FeatureEngineeringFeatureFunctionExtraParameterArrayOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureFunctionExtraParameterArrayInput` via:
+//
+//	FeatureEngineeringFeatureFunctionExtraParameterArray{ FeatureEngineeringFeatureFunctionExtraParameterArgs{...} }
+type FeatureEngineeringFeatureFunctionExtraParameterArrayInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureFunctionExtraParameterArrayOutput() FeatureEngineeringFeatureFunctionExtraParameterArrayOutput
+	ToFeatureEngineeringFeatureFunctionExtraParameterArrayOutputWithContext(context.Context) FeatureEngineeringFeatureFunctionExtraParameterArrayOutput
+}
+
+type FeatureEngineeringFeatureFunctionExtraParameterArray []FeatureEngineeringFeatureFunctionExtraParameterInput
+
+func (FeatureEngineeringFeatureFunctionExtraParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureEngineeringFeatureFunctionExtraParameter)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureFunctionExtraParameterArray) ToFeatureEngineeringFeatureFunctionExtraParameterArrayOutput() FeatureEngineeringFeatureFunctionExtraParameterArrayOutput {
+	return i.ToFeatureEngineeringFeatureFunctionExtraParameterArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureFunctionExtraParameterArray) ToFeatureEngineeringFeatureFunctionExtraParameterArrayOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionExtraParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureFunctionExtraParameterArrayOutput)
+}
+
+type FeatureEngineeringFeatureFunctionExtraParameterOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureFunctionExtraParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureFunctionExtraParameter)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureFunctionExtraParameterOutput) ToFeatureEngineeringFeatureFunctionExtraParameterOutput() FeatureEngineeringFeatureFunctionExtraParameterOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureFunctionExtraParameterOutput) ToFeatureEngineeringFeatureFunctionExtraParameterOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionExtraParameterOutput {
+	return o
+}
+
+// The name of the parameter
+func (o FeatureEngineeringFeatureFunctionExtraParameterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionExtraParameter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the parameter
+func (o FeatureEngineeringFeatureFunctionExtraParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureFunctionExtraParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type FeatureEngineeringFeatureFunctionExtraParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureFunctionExtraParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureEngineeringFeatureFunctionExtraParameter)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureFunctionExtraParameterArrayOutput) ToFeatureEngineeringFeatureFunctionExtraParameterArrayOutput() FeatureEngineeringFeatureFunctionExtraParameterArrayOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureFunctionExtraParameterArrayOutput) ToFeatureEngineeringFeatureFunctionExtraParameterArrayOutputWithContext(ctx context.Context) FeatureEngineeringFeatureFunctionExtraParameterArrayOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureFunctionExtraParameterArrayOutput) Index(i pulumi.IntInput) FeatureEngineeringFeatureFunctionExtraParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureEngineeringFeatureFunctionExtraParameter {
+		return vs[0].([]FeatureEngineeringFeatureFunctionExtraParameter)[vs[1].(int)]
+	}).(FeatureEngineeringFeatureFunctionExtraParameterOutput)
+}
+
 type FeatureEngineeringFeatureLineageContext struct {
 	// Job context information including job ID and run ID
 	JobContext *FeatureEngineeringFeatureLineageContextJobContext `pulumi:"jobContext"`
@@ -6138,12 +6639,15 @@ func (o FeatureEngineeringFeatureSourcePtrOutput) StreamSource() FeatureEngineer
 }
 
 type FeatureEngineeringFeatureSourceDeltaTableSource struct {
-	DataframeSchema *string `pulumi:"dataframeSchema"`
-	FilterCondition *string `pulumi:"filterCondition"`
+	DataframeSchema *string  `pulumi:"dataframeSchema"`
+	EntityColumns   []string `pulumi:"entityColumns"`
+	FilterCondition *string  `pulumi:"filterCondition"`
 	// The full three-part name (catalog, schema, name) of the feature. This is the
 	// feature's resource identifier; the catalog_name, schema_name, and name fields
 	// below are OUTPUT_ONLY decomposed views of this value
-	FullName          string  `pulumi:"fullName"`
+	FullName string `pulumi:"fullName"`
+	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	TimeseriesColumn  *string `pulumi:"timeseriesColumn"`
 	TransformationSql *string `pulumi:"transformationSql"`
 }
 
@@ -6159,12 +6663,15 @@ type FeatureEngineeringFeatureSourceDeltaTableSourceInput interface {
 }
 
 type FeatureEngineeringFeatureSourceDeltaTableSourceArgs struct {
-	DataframeSchema pulumi.StringPtrInput `pulumi:"dataframeSchema"`
-	FilterCondition pulumi.StringPtrInput `pulumi:"filterCondition"`
+	DataframeSchema pulumi.StringPtrInput   `pulumi:"dataframeSchema"`
+	EntityColumns   pulumi.StringArrayInput `pulumi:"entityColumns"`
+	FilterCondition pulumi.StringPtrInput   `pulumi:"filterCondition"`
 	// The full three-part name (catalog, schema, name) of the feature. This is the
 	// feature's resource identifier; the catalog_name, schema_name, and name fields
 	// below are OUTPUT_ONLY decomposed views of this value
-	FullName          pulumi.StringInput    `pulumi:"fullName"`
+	FullName pulumi.StringInput `pulumi:"fullName"`
+	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	TimeseriesColumn  pulumi.StringPtrInput `pulumi:"timeseriesColumn"`
 	TransformationSql pulumi.StringPtrInput `pulumi:"transformationSql"`
 }
 
@@ -6249,6 +6756,10 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) DataframeSchema()
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceDeltaTableSource) *string { return v.DataframeSchema }).(pulumi.StringPtrOutput)
 }
 
+func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) EntityColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceDeltaTableSource) []string { return v.EntityColumns }).(pulumi.StringArrayOutput)
+}
+
 func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceDeltaTableSource) *string { return v.FilterCondition }).(pulumi.StringPtrOutput)
 }
@@ -6258,6 +6769,11 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) FilterCondition()
 // below are OUTPUT_ONLY decomposed views of this value
 func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceDeltaTableSource) string { return v.FullName }).(pulumi.StringOutput)
+}
+
+// Column recording time, used for point-in-time joins, backfills, and aggregations
+func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) TimeseriesColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceDeltaTableSource) *string { return v.TimeseriesColumn }).(pulumi.StringPtrOutput)
 }
 
 func (o FeatureEngineeringFeatureSourceDeltaTableSourceOutput) TransformationSql() pulumi.StringPtrOutput {
@@ -6297,6 +6813,15 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) DataframeSchem
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) EntityColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceDeltaTableSource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityColumns
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceDeltaTableSource) *string {
 		if v == nil {
@@ -6318,6 +6843,16 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) FullName() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Column recording time, used for point-in-time joins, backfills, and aggregations
+func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) TimeseriesColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceDeltaTableSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeseriesColumn
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) TransformationSql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceDeltaTableSource) *string {
 		if v == nil {
@@ -6328,9 +6863,11 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) Transformation
 }
 
 type FeatureEngineeringFeatureSourceKafkaSource struct {
-	FilterCondition *string `pulumi:"filterCondition"`
+	EntityColumnIdentifiers []FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier `pulumi:"entityColumnIdentifiers"`
+	FilterCondition         *string                                                            `pulumi:"filterCondition"`
 	// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
-	Name string `pulumi:"name"`
+	Name                       string                                                                `pulumi:"name"`
+	TimeseriesColumnIdentifier *FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier `pulumi:"timeseriesColumnIdentifier"`
 }
 
 // FeatureEngineeringFeatureSourceKafkaSourceInput is an input type that accepts FeatureEngineeringFeatureSourceKafkaSourceArgs and FeatureEngineeringFeatureSourceKafkaSourceOutput values.
@@ -6345,9 +6882,11 @@ type FeatureEngineeringFeatureSourceKafkaSourceInput interface {
 }
 
 type FeatureEngineeringFeatureSourceKafkaSourceArgs struct {
-	FilterCondition pulumi.StringPtrInput `pulumi:"filterCondition"`
+	EntityColumnIdentifiers FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayInput `pulumi:"entityColumnIdentifiers"`
+	FilterCondition         pulumi.StringPtrInput                                                      `pulumi:"filterCondition"`
 	// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
-	Name pulumi.StringInput `pulumi:"name"`
+	Name                       pulumi.StringInput                                                           `pulumi:"name"`
+	TimeseriesColumnIdentifier FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrInput `pulumi:"timeseriesColumnIdentifier"`
 }
 
 func (FeatureEngineeringFeatureSourceKafkaSourceArgs) ElementType() reflect.Type {
@@ -6427,6 +6966,12 @@ func (o FeatureEngineeringFeatureSourceKafkaSourceOutput) ToFeatureEngineeringFe
 	}).(FeatureEngineeringFeatureSourceKafkaSourcePtrOutput)
 }
 
+func (o FeatureEngineeringFeatureSourceKafkaSourceOutput) EntityColumnIdentifiers() FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceKafkaSource) []FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
+		return v.EntityColumnIdentifiers
+	}).(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput)
+}
+
 func (o FeatureEngineeringFeatureSourceKafkaSourceOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceKafkaSource) *string { return v.FilterCondition }).(pulumi.StringPtrOutput)
 }
@@ -6434,6 +6979,12 @@ func (o FeatureEngineeringFeatureSourceKafkaSourceOutput) FilterCondition() pulu
 // (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
 func (o FeatureEngineeringFeatureSourceKafkaSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSourceKafkaSource) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceOutput) TimeseriesColumnIdentifier() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceKafkaSource) *FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
+		return v.TimeseriesColumnIdentifier
+	}).(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput)
 }
 
 type FeatureEngineeringFeatureSourceKafkaSourcePtrOutput struct{ *pulumi.OutputState }
@@ -6460,6 +7011,15 @@ func (o FeatureEngineeringFeatureSourceKafkaSourcePtrOutput) Elem() FeatureEngin
 	}).(FeatureEngineeringFeatureSourceKafkaSourceOutput)
 }
 
+func (o FeatureEngineeringFeatureSourceKafkaSourcePtrOutput) EntityColumnIdentifiers() FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceKafkaSource) []FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.EntityColumnIdentifiers
+	}).(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput)
+}
+
 func (o FeatureEngineeringFeatureSourceKafkaSourcePtrOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceKafkaSource) *string {
 		if v == nil {
@@ -6476,6 +7036,253 @@ func (o FeatureEngineeringFeatureSourceKafkaSourcePtrOutput) Name() pulumi.Strin
 			return nil
 		}
 		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourcePtrOutput) TimeseriesColumnIdentifier() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceKafkaSource) *FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.TimeseriesColumnIdentifier
+	}).(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput)
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier struct {
+	// String representation of the column name using dot-prefixed path notation
+	VariantExprPath string `pulumi:"variantExprPath"`
+}
+
+// FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierInput is an input type that accepts FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs and FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierInput` via:
+//
+//	FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs{...}
+type FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput() FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput
+	ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutputWithContext(context.Context) FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs struct {
+	// String representation of the column name using dot-prefixed path notation
+	VariantExprPath pulumi.StringInput `pulumi:"variantExprPath"`
+}
+
+func (FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs) ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput() FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput {
+	return i.ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs) ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput)
+}
+
+// FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayInput is an input type that accepts FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArray and FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayInput` via:
+//
+//	FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArray{ FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs{...} }
+type FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput() FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput
+	ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutputWithContext(context.Context) FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArray []FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierInput
+
+func (FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArray) ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput() FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput {
+	return i.ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArray) ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput)
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput) ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput() FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput) ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput {
+	return o
+}
+
+// String representation of the column name using dot-prefixed path notation
+func (o FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput) VariantExprPath() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier) string {
+		return v.VariantExprPath
+	}).(pulumi.StringOutput)
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput) ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput() FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput) ToFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput) Index(i pulumi.IntInput) FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
+		return vs[0].([]FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier)[vs[1].(int)]
+	}).(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput)
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier struct {
+	// String representation of the column name using dot-prefixed path notation
+	VariantExprPath string `pulumi:"variantExprPath"`
+}
+
+// FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierInput is an input type that accepts FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs and FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierInput` via:
+//
+//	FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs{...}
+type FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput
+	ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutputWithContext(context.Context) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs struct {
+	// String representation of the column name using dot-prefixed path notation
+	VariantExprPath pulumi.StringInput `pulumi:"variantExprPath"`
+}
+
+func (FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput {
+	return i.ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput)
+}
+
+func (i FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return i.ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput).ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrInput is an input type that accepts FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs, FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtr and FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrInput` via:
+//
+//	        FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput
+	ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(context.Context) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput
+}
+
+type featureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrType FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs
+
+func FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtr(v *FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrInput {
+	return (*featureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrType)(v)
+}
+
+func (*featureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrType) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return i.ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrType) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput)
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return o.ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier) *FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
+		return &v
+	}).(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput)
+}
+
+// String representation of the column name using dot-prefixed path notation
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput) VariantExprPath() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier) string {
+		return v.VariantExprPath
+	}).(pulumi.StringOutput)
+}
+
+type FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput) ToFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput) Elem() FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier) FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier
+		return ret
+	}).(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput)
+}
+
+// String representation of the column name using dot-prefixed path notation
+func (o FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput) VariantExprPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VariantExprPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7199,6 +8006,1049 @@ func (o FeatureEngineeringFeatureSourceStreamSourcePtrOutput) TransformationSql(
 			return nil
 		}
 		return v.TransformationSql
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindow struct {
+	Continuous *FeatureEngineeringFeatureTimeWindowContinuous `pulumi:"continuous"`
+	Rolling    *FeatureEngineeringFeatureTimeWindowRolling    `pulumi:"rolling"`
+	// A sawtooth window served via the hybrid batch + streaming path
+	Sawtooth *FeatureEngineeringFeatureTimeWindowSawtooth `pulumi:"sawtooth"`
+	Sliding  *FeatureEngineeringFeatureTimeWindowSliding  `pulumi:"sliding"`
+	// Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+	// the historical inputs read by a window. For example, a 365-day window with
+	// start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+	// for 365 days of data; a lifetime window produces no output before start_time. If unset,
+	// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+	// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+	// eligible source data exists.
+	// Not currently supported for sawtooth windows or for Features with a stream source
+	StartTime *string                                      `pulumi:"startTime"`
+	Tumbling  *FeatureEngineeringFeatureTimeWindowTumbling `pulumi:"tumbling"`
+}
+
+// FeatureEngineeringFeatureTimeWindowInput is an input type that accepts FeatureEngineeringFeatureTimeWindowArgs and FeatureEngineeringFeatureTimeWindowOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowInput` via:
+//
+//	FeatureEngineeringFeatureTimeWindowArgs{...}
+type FeatureEngineeringFeatureTimeWindowInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowOutput() FeatureEngineeringFeatureTimeWindowOutput
+	ToFeatureEngineeringFeatureTimeWindowOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowOutput
+}
+
+type FeatureEngineeringFeatureTimeWindowArgs struct {
+	Continuous FeatureEngineeringFeatureTimeWindowContinuousPtrInput `pulumi:"continuous"`
+	Rolling    FeatureEngineeringFeatureTimeWindowRollingPtrInput    `pulumi:"rolling"`
+	// A sawtooth window served via the hybrid batch + streaming path
+	Sawtooth FeatureEngineeringFeatureTimeWindowSawtoothPtrInput `pulumi:"sawtooth"`
+	Sliding  FeatureEngineeringFeatureTimeWindowSlidingPtrInput  `pulumi:"sliding"`
+	// Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+	// the historical inputs read by a window. For example, a 365-day window with
+	// start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+	// for 365 days of data; a lifetime window produces no output before start_time. If unset,
+	// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+	// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+	// eligible source data exists.
+	// Not currently supported for sawtooth windows or for Features with a stream source
+	StartTime pulumi.StringPtrInput                               `pulumi:"startTime"`
+	Tumbling  FeatureEngineeringFeatureTimeWindowTumblingPtrInput `pulumi:"tumbling"`
+}
+
+func (FeatureEngineeringFeatureTimeWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindow)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureTimeWindowArgs) ToFeatureEngineeringFeatureTimeWindowOutput() FeatureEngineeringFeatureTimeWindowOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowArgs) ToFeatureEngineeringFeatureTimeWindowOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowOutput)
+}
+
+func (i FeatureEngineeringFeatureTimeWindowArgs) ToFeatureEngineeringFeatureTimeWindowPtrOutput() FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowArgs) ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowOutput).ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureTimeWindowPtrInput is an input type that accepts FeatureEngineeringFeatureTimeWindowArgs, FeatureEngineeringFeatureTimeWindowPtr and FeatureEngineeringFeatureTimeWindowPtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowPtrInput` via:
+//
+//	        FeatureEngineeringFeatureTimeWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureTimeWindowPtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowPtrOutput() FeatureEngineeringFeatureTimeWindowPtrOutput
+	ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowPtrOutput
+}
+
+type featureEngineeringFeatureTimeWindowPtrType FeatureEngineeringFeatureTimeWindowArgs
+
+func FeatureEngineeringFeatureTimeWindowPtr(v *FeatureEngineeringFeatureTimeWindowArgs) FeatureEngineeringFeatureTimeWindowPtrInput {
+	return (*featureEngineeringFeatureTimeWindowPtrType)(v)
+}
+
+func (*featureEngineeringFeatureTimeWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindow)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureTimeWindowPtrType) ToFeatureEngineeringFeatureTimeWindowPtrOutput() FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureTimeWindowPtrType) ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindow)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowOutput) ToFeatureEngineeringFeatureTimeWindowOutput() FeatureEngineeringFeatureTimeWindowOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowOutput) ToFeatureEngineeringFeatureTimeWindowOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowOutput) ToFeatureEngineeringFeatureTimeWindowPtrOutput() FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return o.ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureTimeWindowOutput) ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindow {
+		return &v
+	}).(FeatureEngineeringFeatureTimeWindowPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowOutput) Continuous() FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowContinuous {
+		return v.Continuous
+	}).(FeatureEngineeringFeatureTimeWindowContinuousPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowOutput) Rolling() FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowRolling {
+		return v.Rolling
+	}).(FeatureEngineeringFeatureTimeWindowRollingPtrOutput)
+}
+
+// A sawtooth window served via the hybrid batch + streaming path
+func (o FeatureEngineeringFeatureTimeWindowOutput) Sawtooth() FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowSawtooth {
+		return v.Sawtooth
+	}).(FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowOutput) Sliding() FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowSliding {
+		return v.Sliding
+	}).(FeatureEngineeringFeatureTimeWindowSlidingPtrOutput)
+}
+
+// Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+// the historical inputs read by a window. For example, a 365-day window with
+// start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+// for 365 days of data; a lifetime window produces no output before start_time. If unset,
+// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+// eligible source data exists.
+// Not currently supported for sawtooth windows or for Features with a stream source
+func (o FeatureEngineeringFeatureTimeWindowOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowOutput) Tumbling() FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowTumbling {
+		return v.Tumbling
+	}).(FeatureEngineeringFeatureTimeWindowTumblingPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindow)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) ToFeatureEngineeringFeatureTimeWindowPtrOutput() FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) ToFeatureEngineeringFeatureTimeWindowPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) Elem() FeatureEngineeringFeatureTimeWindowOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindow) FeatureEngineeringFeatureTimeWindow {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureTimeWindow
+		return ret
+	}).(FeatureEngineeringFeatureTimeWindowOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) Continuous() FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowContinuous {
+		if v == nil {
+			return nil
+		}
+		return v.Continuous
+	}).(FeatureEngineeringFeatureTimeWindowContinuousPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) Rolling() FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowRolling {
+		if v == nil {
+			return nil
+		}
+		return v.Rolling
+	}).(FeatureEngineeringFeatureTimeWindowRollingPtrOutput)
+}
+
+// A sawtooth window served via the hybrid batch + streaming path
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) Sawtooth() FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowSawtooth {
+		if v == nil {
+			return nil
+		}
+		return v.Sawtooth
+	}).(FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) Sliding() FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowSliding {
+		if v == nil {
+			return nil
+		}
+		return v.Sliding
+	}).(FeatureEngineeringFeatureTimeWindowSlidingPtrOutput)
+}
+
+// Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+// the historical inputs read by a window. For example, a 365-day window with
+// start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+// for 365 days of data; a lifetime window produces no output before start_time. If unset,
+// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+// eligible source data exists.
+// Not currently supported for sawtooth windows or for Features with a stream source
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowPtrOutput) Tumbling() FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindow) *FeatureEngineeringFeatureTimeWindowTumbling {
+		if v == nil {
+			return nil
+		}
+		return v.Tumbling
+	}).(FeatureEngineeringFeatureTimeWindowTumblingPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowContinuous struct {
+	Offset         *string `pulumi:"offset"`
+	WindowDuration string  `pulumi:"windowDuration"`
+}
+
+// FeatureEngineeringFeatureTimeWindowContinuousInput is an input type that accepts FeatureEngineeringFeatureTimeWindowContinuousArgs and FeatureEngineeringFeatureTimeWindowContinuousOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowContinuousInput` via:
+//
+//	FeatureEngineeringFeatureTimeWindowContinuousArgs{...}
+type FeatureEngineeringFeatureTimeWindowContinuousInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowContinuousOutput() FeatureEngineeringFeatureTimeWindowContinuousOutput
+	ToFeatureEngineeringFeatureTimeWindowContinuousOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowContinuousOutput
+}
+
+type FeatureEngineeringFeatureTimeWindowContinuousArgs struct {
+	Offset         pulumi.StringPtrInput `pulumi:"offset"`
+	WindowDuration pulumi.StringInput    `pulumi:"windowDuration"`
+}
+
+func (FeatureEngineeringFeatureTimeWindowContinuousArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowContinuous)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureTimeWindowContinuousArgs) ToFeatureEngineeringFeatureTimeWindowContinuousOutput() FeatureEngineeringFeatureTimeWindowContinuousOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowContinuousOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowContinuousArgs) ToFeatureEngineeringFeatureTimeWindowContinuousOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowContinuousOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowContinuousOutput)
+}
+
+func (i FeatureEngineeringFeatureTimeWindowContinuousArgs) ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowContinuousArgs) ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowContinuousOutput).ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureTimeWindowContinuousPtrInput is an input type that accepts FeatureEngineeringFeatureTimeWindowContinuousArgs, FeatureEngineeringFeatureTimeWindowContinuousPtr and FeatureEngineeringFeatureTimeWindowContinuousPtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowContinuousPtrInput` via:
+//
+//	        FeatureEngineeringFeatureTimeWindowContinuousArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureTimeWindowContinuousPtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureTimeWindowContinuousPtrOutput
+	ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowContinuousPtrOutput
+}
+
+type featureEngineeringFeatureTimeWindowContinuousPtrType FeatureEngineeringFeatureTimeWindowContinuousArgs
+
+func FeatureEngineeringFeatureTimeWindowContinuousPtr(v *FeatureEngineeringFeatureTimeWindowContinuousArgs) FeatureEngineeringFeatureTimeWindowContinuousPtrInput {
+	return (*featureEngineeringFeatureTimeWindowContinuousPtrType)(v)
+}
+
+func (*featureEngineeringFeatureTimeWindowContinuousPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowContinuous)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureTimeWindowContinuousPtrType) ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureTimeWindowContinuousPtrType) ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowContinuousPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowContinuousOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowContinuousOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowContinuous)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousOutput) ToFeatureEngineeringFeatureTimeWindowContinuousOutput() FeatureEngineeringFeatureTimeWindowContinuousOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousOutput) ToFeatureEngineeringFeatureTimeWindowContinuousOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowContinuousOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousOutput) ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return o.ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousOutput) ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureTimeWindowContinuous) *FeatureEngineeringFeatureTimeWindowContinuous {
+		return &v
+	}).(FeatureEngineeringFeatureTimeWindowContinuousPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowContinuous) *string { return v.Offset }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousOutput) WindowDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowContinuous) string { return v.WindowDuration }).(pulumi.StringOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowContinuousPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowContinuousPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowContinuous)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousPtrOutput) ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutput() FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousPtrOutput) ToFeatureEngineeringFeatureTimeWindowContinuousPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowContinuousPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousPtrOutput) Elem() FeatureEngineeringFeatureTimeWindowContinuousOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowContinuous) FeatureEngineeringFeatureTimeWindowContinuous {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureTimeWindowContinuous
+		return ret
+	}).(FeatureEngineeringFeatureTimeWindowContinuousOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousPtrOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowContinuous) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowContinuousPtrOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowContinuous) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowRolling struct {
+	Delay          *string `pulumi:"delay"`
+	WindowDuration *string `pulumi:"windowDuration"`
+}
+
+// FeatureEngineeringFeatureTimeWindowRollingInput is an input type that accepts FeatureEngineeringFeatureTimeWindowRollingArgs and FeatureEngineeringFeatureTimeWindowRollingOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowRollingInput` via:
+//
+//	FeatureEngineeringFeatureTimeWindowRollingArgs{...}
+type FeatureEngineeringFeatureTimeWindowRollingInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowRollingOutput() FeatureEngineeringFeatureTimeWindowRollingOutput
+	ToFeatureEngineeringFeatureTimeWindowRollingOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowRollingOutput
+}
+
+type FeatureEngineeringFeatureTimeWindowRollingArgs struct {
+	Delay          pulumi.StringPtrInput `pulumi:"delay"`
+	WindowDuration pulumi.StringPtrInput `pulumi:"windowDuration"`
+}
+
+func (FeatureEngineeringFeatureTimeWindowRollingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowRolling)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureTimeWindowRollingArgs) ToFeatureEngineeringFeatureTimeWindowRollingOutput() FeatureEngineeringFeatureTimeWindowRollingOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowRollingOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowRollingArgs) ToFeatureEngineeringFeatureTimeWindowRollingOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowRollingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowRollingOutput)
+}
+
+func (i FeatureEngineeringFeatureTimeWindowRollingArgs) ToFeatureEngineeringFeatureTimeWindowRollingPtrOutput() FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowRollingArgs) ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowRollingOutput).ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureTimeWindowRollingPtrInput is an input type that accepts FeatureEngineeringFeatureTimeWindowRollingArgs, FeatureEngineeringFeatureTimeWindowRollingPtr and FeatureEngineeringFeatureTimeWindowRollingPtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowRollingPtrInput` via:
+//
+//	        FeatureEngineeringFeatureTimeWindowRollingArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureTimeWindowRollingPtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowRollingPtrOutput() FeatureEngineeringFeatureTimeWindowRollingPtrOutput
+	ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowRollingPtrOutput
+}
+
+type featureEngineeringFeatureTimeWindowRollingPtrType FeatureEngineeringFeatureTimeWindowRollingArgs
+
+func FeatureEngineeringFeatureTimeWindowRollingPtr(v *FeatureEngineeringFeatureTimeWindowRollingArgs) FeatureEngineeringFeatureTimeWindowRollingPtrInput {
+	return (*featureEngineeringFeatureTimeWindowRollingPtrType)(v)
+}
+
+func (*featureEngineeringFeatureTimeWindowRollingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowRolling)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureTimeWindowRollingPtrType) ToFeatureEngineeringFeatureTimeWindowRollingPtrOutput() FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureTimeWindowRollingPtrType) ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowRollingPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowRollingOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowRollingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowRolling)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingOutput) ToFeatureEngineeringFeatureTimeWindowRollingOutput() FeatureEngineeringFeatureTimeWindowRollingOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingOutput) ToFeatureEngineeringFeatureTimeWindowRollingOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowRollingOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingOutput) ToFeatureEngineeringFeatureTimeWindowRollingPtrOutput() FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return o.ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingOutput) ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureTimeWindowRolling) *FeatureEngineeringFeatureTimeWindowRolling {
+		return &v
+	}).(FeatureEngineeringFeatureTimeWindowRollingPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingOutput) Delay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowRolling) *string { return v.Delay }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowRolling) *string { return v.WindowDuration }).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowRollingPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowRollingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowRolling)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingPtrOutput) ToFeatureEngineeringFeatureTimeWindowRollingPtrOutput() FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingPtrOutput) ToFeatureEngineeringFeatureTimeWindowRollingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowRollingPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingPtrOutput) Elem() FeatureEngineeringFeatureTimeWindowRollingOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowRolling) FeatureEngineeringFeatureTimeWindowRolling {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureTimeWindowRolling
+		return ret
+	}).(FeatureEngineeringFeatureTimeWindowRollingOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingPtrOutput) Delay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowRolling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowRollingPtrOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowRolling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowSawtooth struct {
+	Delay          *string `pulumi:"delay"`
+	WindowDuration *string `pulumi:"windowDuration"`
+}
+
+// FeatureEngineeringFeatureTimeWindowSawtoothInput is an input type that accepts FeatureEngineeringFeatureTimeWindowSawtoothArgs and FeatureEngineeringFeatureTimeWindowSawtoothOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowSawtoothInput` via:
+//
+//	FeatureEngineeringFeatureTimeWindowSawtoothArgs{...}
+type FeatureEngineeringFeatureTimeWindowSawtoothInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowSawtoothOutput() FeatureEngineeringFeatureTimeWindowSawtoothOutput
+	ToFeatureEngineeringFeatureTimeWindowSawtoothOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowSawtoothOutput
+}
+
+type FeatureEngineeringFeatureTimeWindowSawtoothArgs struct {
+	Delay          pulumi.StringPtrInput `pulumi:"delay"`
+	WindowDuration pulumi.StringPtrInput `pulumi:"windowDuration"`
+}
+
+func (FeatureEngineeringFeatureTimeWindowSawtoothArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowSawtooth)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureTimeWindowSawtoothArgs) ToFeatureEngineeringFeatureTimeWindowSawtoothOutput() FeatureEngineeringFeatureTimeWindowSawtoothOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowSawtoothOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowSawtoothArgs) ToFeatureEngineeringFeatureTimeWindowSawtoothOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSawtoothOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowSawtoothOutput)
+}
+
+func (i FeatureEngineeringFeatureTimeWindowSawtoothArgs) ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutput() FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowSawtoothArgs) ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowSawtoothOutput).ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureTimeWindowSawtoothPtrInput is an input type that accepts FeatureEngineeringFeatureTimeWindowSawtoothArgs, FeatureEngineeringFeatureTimeWindowSawtoothPtr and FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowSawtoothPtrInput` via:
+//
+//	        FeatureEngineeringFeatureTimeWindowSawtoothArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureTimeWindowSawtoothPtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutput() FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput
+	ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput
+}
+
+type featureEngineeringFeatureTimeWindowSawtoothPtrType FeatureEngineeringFeatureTimeWindowSawtoothArgs
+
+func FeatureEngineeringFeatureTimeWindowSawtoothPtr(v *FeatureEngineeringFeatureTimeWindowSawtoothArgs) FeatureEngineeringFeatureTimeWindowSawtoothPtrInput {
+	return (*featureEngineeringFeatureTimeWindowSawtoothPtrType)(v)
+}
+
+func (*featureEngineeringFeatureTimeWindowSawtoothPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowSawtooth)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureTimeWindowSawtoothPtrType) ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutput() FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureTimeWindowSawtoothPtrType) ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowSawtoothOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowSawtoothOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowSawtooth)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothOutput) ToFeatureEngineeringFeatureTimeWindowSawtoothOutput() FeatureEngineeringFeatureTimeWindowSawtoothOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothOutput) ToFeatureEngineeringFeatureTimeWindowSawtoothOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSawtoothOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothOutput) ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutput() FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return o.ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothOutput) ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureTimeWindowSawtooth) *FeatureEngineeringFeatureTimeWindowSawtooth {
+		return &v
+	}).(FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothOutput) Delay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowSawtooth) *string { return v.Delay }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowSawtooth) *string { return v.WindowDuration }).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowSawtooth)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput) ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutput() FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput) ToFeatureEngineeringFeatureTimeWindowSawtoothPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput) Elem() FeatureEngineeringFeatureTimeWindowSawtoothOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowSawtooth) FeatureEngineeringFeatureTimeWindowSawtooth {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureTimeWindowSawtooth
+		return ret
+	}).(FeatureEngineeringFeatureTimeWindowSawtoothOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput) Delay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowSawtooth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowSawtooth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowSliding struct {
+	Delay  *string `pulumi:"delay"`
+	Offset *string `pulumi:"offset"`
+	// The slide duration (interval by which windows advance, must be positive and less than duration)
+	SlideDuration  string  `pulumi:"slideDuration"`
+	WindowDuration *string `pulumi:"windowDuration"`
+}
+
+// FeatureEngineeringFeatureTimeWindowSlidingInput is an input type that accepts FeatureEngineeringFeatureTimeWindowSlidingArgs and FeatureEngineeringFeatureTimeWindowSlidingOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowSlidingInput` via:
+//
+//	FeatureEngineeringFeatureTimeWindowSlidingArgs{...}
+type FeatureEngineeringFeatureTimeWindowSlidingInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowSlidingOutput() FeatureEngineeringFeatureTimeWindowSlidingOutput
+	ToFeatureEngineeringFeatureTimeWindowSlidingOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowSlidingOutput
+}
+
+type FeatureEngineeringFeatureTimeWindowSlidingArgs struct {
+	Delay  pulumi.StringPtrInput `pulumi:"delay"`
+	Offset pulumi.StringPtrInput `pulumi:"offset"`
+	// The slide duration (interval by which windows advance, must be positive and less than duration)
+	SlideDuration  pulumi.StringInput    `pulumi:"slideDuration"`
+	WindowDuration pulumi.StringPtrInput `pulumi:"windowDuration"`
+}
+
+func (FeatureEngineeringFeatureTimeWindowSlidingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowSliding)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureTimeWindowSlidingArgs) ToFeatureEngineeringFeatureTimeWindowSlidingOutput() FeatureEngineeringFeatureTimeWindowSlidingOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowSlidingOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowSlidingArgs) ToFeatureEngineeringFeatureTimeWindowSlidingOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSlidingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowSlidingOutput)
+}
+
+func (i FeatureEngineeringFeatureTimeWindowSlidingArgs) ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutput() FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowSlidingArgs) ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowSlidingOutput).ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureTimeWindowSlidingPtrInput is an input type that accepts FeatureEngineeringFeatureTimeWindowSlidingArgs, FeatureEngineeringFeatureTimeWindowSlidingPtr and FeatureEngineeringFeatureTimeWindowSlidingPtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowSlidingPtrInput` via:
+//
+//	        FeatureEngineeringFeatureTimeWindowSlidingArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureTimeWindowSlidingPtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutput() FeatureEngineeringFeatureTimeWindowSlidingPtrOutput
+	ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowSlidingPtrOutput
+}
+
+type featureEngineeringFeatureTimeWindowSlidingPtrType FeatureEngineeringFeatureTimeWindowSlidingArgs
+
+func FeatureEngineeringFeatureTimeWindowSlidingPtr(v *FeatureEngineeringFeatureTimeWindowSlidingArgs) FeatureEngineeringFeatureTimeWindowSlidingPtrInput {
+	return (*featureEngineeringFeatureTimeWindowSlidingPtrType)(v)
+}
+
+func (*featureEngineeringFeatureTimeWindowSlidingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowSliding)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureTimeWindowSlidingPtrType) ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutput() FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureTimeWindowSlidingPtrType) ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowSlidingPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowSlidingOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowSlidingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowSliding)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingOutput) ToFeatureEngineeringFeatureTimeWindowSlidingOutput() FeatureEngineeringFeatureTimeWindowSlidingOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingOutput) ToFeatureEngineeringFeatureTimeWindowSlidingOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSlidingOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingOutput) ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutput() FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return o.ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingOutput) ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureTimeWindowSliding) *FeatureEngineeringFeatureTimeWindowSliding {
+		return &v
+	}).(FeatureEngineeringFeatureTimeWindowSlidingPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingOutput) Delay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowSliding) *string { return v.Delay }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowSliding) *string { return v.Offset }).(pulumi.StringPtrOutput)
+}
+
+// The slide duration (interval by which windows advance, must be positive and less than duration)
+func (o FeatureEngineeringFeatureTimeWindowSlidingOutput) SlideDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowSliding) string { return v.SlideDuration }).(pulumi.StringOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowSliding) *string { return v.WindowDuration }).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowSlidingPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowSlidingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowSliding)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingPtrOutput) ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutput() FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingPtrOutput) ToFeatureEngineeringFeatureTimeWindowSlidingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowSlidingPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingPtrOutput) Elem() FeatureEngineeringFeatureTimeWindowSlidingOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowSliding) FeatureEngineeringFeatureTimeWindowSliding {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureTimeWindowSliding
+		return ret
+	}).(FeatureEngineeringFeatureTimeWindowSlidingOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingPtrOutput) Delay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowSliding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingPtrOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowSliding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.StringPtrOutput)
+}
+
+// The slide duration (interval by which windows advance, must be positive and less than duration)
+func (o FeatureEngineeringFeatureTimeWindowSlidingPtrOutput) SlideDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowSliding) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SlideDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowSlidingPtrOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowSliding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowTumbling struct {
+	Delay          *string `pulumi:"delay"`
+	Offset         *string `pulumi:"offset"`
+	WindowDuration string  `pulumi:"windowDuration"`
+}
+
+// FeatureEngineeringFeatureTimeWindowTumblingInput is an input type that accepts FeatureEngineeringFeatureTimeWindowTumblingArgs and FeatureEngineeringFeatureTimeWindowTumblingOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowTumblingInput` via:
+//
+//	FeatureEngineeringFeatureTimeWindowTumblingArgs{...}
+type FeatureEngineeringFeatureTimeWindowTumblingInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowTumblingOutput() FeatureEngineeringFeatureTimeWindowTumblingOutput
+	ToFeatureEngineeringFeatureTimeWindowTumblingOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowTumblingOutput
+}
+
+type FeatureEngineeringFeatureTimeWindowTumblingArgs struct {
+	Delay          pulumi.StringPtrInput `pulumi:"delay"`
+	Offset         pulumi.StringPtrInput `pulumi:"offset"`
+	WindowDuration pulumi.StringInput    `pulumi:"windowDuration"`
+}
+
+func (FeatureEngineeringFeatureTimeWindowTumblingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowTumbling)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureTimeWindowTumblingArgs) ToFeatureEngineeringFeatureTimeWindowTumblingOutput() FeatureEngineeringFeatureTimeWindowTumblingOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowTumblingOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowTumblingArgs) ToFeatureEngineeringFeatureTimeWindowTumblingOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowTumblingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowTumblingOutput)
+}
+
+func (i FeatureEngineeringFeatureTimeWindowTumblingArgs) ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutput() FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureTimeWindowTumblingArgs) ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowTumblingOutput).ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureTimeWindowTumblingPtrInput is an input type that accepts FeatureEngineeringFeatureTimeWindowTumblingArgs, FeatureEngineeringFeatureTimeWindowTumblingPtr and FeatureEngineeringFeatureTimeWindowTumblingPtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureTimeWindowTumblingPtrInput` via:
+//
+//	        FeatureEngineeringFeatureTimeWindowTumblingArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureTimeWindowTumblingPtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutput() FeatureEngineeringFeatureTimeWindowTumblingPtrOutput
+	ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(context.Context) FeatureEngineeringFeatureTimeWindowTumblingPtrOutput
+}
+
+type featureEngineeringFeatureTimeWindowTumblingPtrType FeatureEngineeringFeatureTimeWindowTumblingArgs
+
+func FeatureEngineeringFeatureTimeWindowTumblingPtr(v *FeatureEngineeringFeatureTimeWindowTumblingArgs) FeatureEngineeringFeatureTimeWindowTumblingPtrInput {
+	return (*featureEngineeringFeatureTimeWindowTumblingPtrType)(v)
+}
+
+func (*featureEngineeringFeatureTimeWindowTumblingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowTumbling)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureTimeWindowTumblingPtrType) ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutput() FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return i.ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureTimeWindowTumblingPtrType) ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureTimeWindowTumblingPtrOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowTumblingOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowTumblingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowTumbling)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingOutput) ToFeatureEngineeringFeatureTimeWindowTumblingOutput() FeatureEngineeringFeatureTimeWindowTumblingOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingOutput) ToFeatureEngineeringFeatureTimeWindowTumblingOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowTumblingOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingOutput) ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutput() FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return o.ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingOutput) ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureTimeWindowTumbling) *FeatureEngineeringFeatureTimeWindowTumbling {
+		return &v
+	}).(FeatureEngineeringFeatureTimeWindowTumblingPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingOutput) Delay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowTumbling) *string { return v.Delay }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowTumbling) *string { return v.Offset }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingOutput) WindowDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureTimeWindowTumbling) string { return v.WindowDuration }).(pulumi.StringOutput)
+}
+
+type FeatureEngineeringFeatureTimeWindowTumblingPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureTimeWindowTumblingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureTimeWindowTumbling)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingPtrOutput) ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutput() FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingPtrOutput) ToFeatureEngineeringFeatureTimeWindowTumblingPtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureTimeWindowTumblingPtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingPtrOutput) Elem() FeatureEngineeringFeatureTimeWindowTumblingOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowTumbling) FeatureEngineeringFeatureTimeWindowTumbling {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureTimeWindowTumbling
+		return ret
+	}).(FeatureEngineeringFeatureTimeWindowTumblingOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingPtrOutput) Delay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowTumbling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingPtrOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowTumbling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringFeatureTimeWindowTumblingPtrOutput) WindowDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureTimeWindowTumbling) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowDuration
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8421,11 +10271,13 @@ type FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource struct {
 	// Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
 	// Required if transformationSql is specified.
 	// Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
-	DataframeSchema *string `pulumi:"dataframeSchema"`
+	DataframeSchema *string  `pulumi:"dataframeSchema"`
+	EntityColumns   []string `pulumi:"entityColumns"`
 	// Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 	FilterCondition *string `pulumi:"filterCondition"`
 	// The full three-part (catalog, schema, table) name of the Delta table
-	FullName string `pulumi:"fullName"`
+	FullName         string  `pulumi:"fullName"`
+	TimeseriesColumn *string `pulumi:"timeseriesColumn"`
 	// A single SQL SELECT expression applied after filter_condition.
 	// Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
 	// If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -8447,11 +10299,13 @@ type FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs struct {
 	// Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
 	// Required if transformationSql is specified.
 	// Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
-	DataframeSchema pulumi.StringPtrInput `pulumi:"dataframeSchema"`
+	DataframeSchema pulumi.StringPtrInput   `pulumi:"dataframeSchema"`
+	EntityColumns   pulumi.StringArrayInput `pulumi:"entityColumns"`
 	// Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 	FilterCondition pulumi.StringPtrInput `pulumi:"filterCondition"`
 	// The full three-part (catalog, schema, table) name of the Delta table
-	FullName pulumi.StringInput `pulumi:"fullName"`
+	FullName         pulumi.StringInput    `pulumi:"fullName"`
+	TimeseriesColumn pulumi.StringPtrInput `pulumi:"timeseriesColumn"`
 	// A single SQL SELECT expression applied after filter_condition.
 	// Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
 	// If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -8542,6 +10396,10 @@ func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceOutput) Dataf
 	return o.ApplyT(func(v FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource) *string { return v.DataframeSchema }).(pulumi.StringPtrOutput)
 }
 
+func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceOutput) EntityColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource) []string { return v.EntityColumns }).(pulumi.StringArrayOutput)
+}
+
 // Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource) *string { return v.FilterCondition }).(pulumi.StringPtrOutput)
@@ -8550,6 +10408,10 @@ func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceOutput) Filte
 // The full three-part (catalog, schema, table) name of the Delta table
 func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource) string { return v.FullName }).(pulumi.StringOutput)
+}
+
+func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceOutput) TimeseriesColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource) *string { return v.TimeseriesColumn }).(pulumi.StringPtrOutput)
 }
 
 // A single SQL SELECT expression applied after filter_condition.
@@ -8597,6 +10459,15 @@ func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourcePtrOutput) Da
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourcePtrOutput) EntityColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityColumns
+	}).(pulumi.StringArrayOutput)
+}
+
 // Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourcePtrOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource) *string {
@@ -8614,6 +10485,15 @@ func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourcePtrOutput) Fu
 			return nil
 		}
 		return &v.FullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourcePtrOutput) TimeseriesColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeseriesColumn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8636,6 +10516,9 @@ type FeatureEngineeringKafkaConfigIngestionConfig struct {
 	// In the future, a separate table will be maintained by Databricks for forward filling data.
 	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
 	BackfillSource *FeatureEngineeringKafkaConfigIngestionConfigBackfillSource `pulumi:"backfillSource"`
+	// The ID of the budget policy used to attribute the serverless compute cost of this stream's
+	// managed ingestion. If not specified, a default budget policy may be applied
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// Column paths used to identify duplicate rows during ingestion; only one row per
 	// distinct combination of these values is kept. Use dot notation for nested fields
 	// (e.g. `value.user_id`). Empty list means every column is compared
@@ -8649,6 +10532,14 @@ type FeatureEngineeringKafkaConfigIngestionConfig struct {
 	// (string) - The ID of the SDP pipeline that continuously copies new events from the streaming source
 	// into the ingestion Delta table
 	IngestionPipelineId *string `pulumi:"ingestionPipelineId"`
+	// Custom tags to associate with this stream's managed ingestion. They are applied to the
+	// ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+	// compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+	// These tags apply only to the managed ingestion compute; they are not applied to the Stream
+	// entity itself, and are distinct from any Unity Catalog tags on the Stream.
+	// A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+	// cluster tags
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // FeatureEngineeringKafkaConfigIngestionConfigInput is an input type that accepts FeatureEngineeringKafkaConfigIngestionConfigArgs and FeatureEngineeringKafkaConfigIngestionConfigOutput values.
@@ -8669,6 +10560,9 @@ type FeatureEngineeringKafkaConfigIngestionConfigArgs struct {
 	// In the future, a separate table will be maintained by Databricks for forward filling data.
 	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
 	BackfillSource FeatureEngineeringKafkaConfigIngestionConfigBackfillSourcePtrInput `pulumi:"backfillSource"`
+	// The ID of the budget policy used to attribute the serverless compute cost of this stream's
+	// managed ingestion. If not specified, a default budget policy may be applied
+	BudgetPolicyId pulumi.StringPtrInput `pulumi:"budgetPolicyId"`
 	// Column paths used to identify duplicate rows during ingestion; only one row per
 	// distinct combination of these values is kept. Use dot notation for nested fields
 	// (e.g. `value.user_id`). Empty list means every column is compared
@@ -8682,6 +10576,14 @@ type FeatureEngineeringKafkaConfigIngestionConfigArgs struct {
 	// (string) - The ID of the SDP pipeline that continuously copies new events from the streaming source
 	// into the ingestion Delta table
 	IngestionPipelineId pulumi.StringPtrInput `pulumi:"ingestionPipelineId"`
+	// Custom tags to associate with this stream's managed ingestion. They are applied to the
+	// ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+	// compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+	// These tags apply only to the managed ingestion compute; they are not applied to the Stream
+	// entity itself, and are distinct from any Unity Catalog tags on the Stream.
+	// A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+	// cluster tags
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (FeatureEngineeringKafkaConfigIngestionConfigArgs) ElementType() reflect.Type {
@@ -8775,6 +10677,12 @@ func (o FeatureEngineeringKafkaConfigIngestionConfigOutput) BackfillSource() Fea
 	}).(FeatureEngineeringKafkaConfigIngestionConfigBackfillSourcePtrOutput)
 }
 
+// The ID of the budget policy used to attribute the serverless compute cost of this stream's
+// managed ingestion. If not specified, a default budget policy may be applied
+func (o FeatureEngineeringKafkaConfigIngestionConfigOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringKafkaConfigIngestionConfig) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
 // Column paths used to identify duplicate rows during ingestion; only one row per
 // distinct combination of these values is kept. Use dot notation for nested fields
 // (e.g. `value.user_id`). Empty list means every column is compared
@@ -8800,6 +10708,17 @@ func (o FeatureEngineeringKafkaConfigIngestionConfigOutput) IngestionJobId() pul
 // into the ingestion Delta table
 func (o FeatureEngineeringKafkaConfigIngestionConfigOutput) IngestionPipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringKafkaConfigIngestionConfig) *string { return v.IngestionPipelineId }).(pulumi.StringPtrOutput)
+}
+
+// Custom tags to associate with this stream's managed ingestion. They are applied to the
+// ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+// compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+// These tags apply only to the managed ingestion compute; they are not applied to the Stream
+// entity itself, and are distinct from any Unity Catalog tags on the Stream.
+// A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+// cluster tags
+func (o FeatureEngineeringKafkaConfigIngestionConfigOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FeatureEngineeringKafkaConfigIngestionConfig) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type FeatureEngineeringKafkaConfigIngestionConfigPtrOutput struct{ *pulumi.OutputState }
@@ -8848,6 +10767,17 @@ func (o FeatureEngineeringKafkaConfigIngestionConfigPtrOutput) BackfillSource() 
 	}).(FeatureEngineeringKafkaConfigIngestionConfigBackfillSourcePtrOutput)
 }
 
+// The ID of the budget policy used to attribute the serverless compute cost of this stream's
+// managed ingestion. If not specified, a default budget policy may be applied
+func (o FeatureEngineeringKafkaConfigIngestionConfigPtrOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfigIngestionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BudgetPolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Column paths used to identify duplicate rows during ingestion; only one row per
 // distinct combination of these values is kept. Use dot notation for nested fields
 // (e.g. `value.user_id`). Empty list means every column is compared
@@ -8891,6 +10821,22 @@ func (o FeatureEngineeringKafkaConfigIngestionConfigPtrOutput) IngestionPipeline
 		}
 		return v.IngestionPipelineId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Custom tags to associate with this stream's managed ingestion. They are applied to the
+// ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+// compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+// These tags apply only to the managed ingestion compute; they are not applied to the Stream
+// entity itself, and are distinct from any Unity Catalog tags on the Stream.
+// A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+// cluster tags
+func (o FeatureEngineeringKafkaConfigIngestionConfigPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfigIngestionConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
 }
 
 type FeatureEngineeringKafkaConfigIngestionConfigBackfillSource struct {
@@ -9059,11 +11005,13 @@ type FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource 
 	// Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
 	// Required if transformationSql is specified.
 	// Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
-	DataframeSchema *string `pulumi:"dataframeSchema"`
+	DataframeSchema *string  `pulumi:"dataframeSchema"`
+	EntityColumns   []string `pulumi:"entityColumns"`
 	// Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 	FilterCondition *string `pulumi:"filterCondition"`
 	// The full three-part (catalog, schema, table) name of the Delta table
-	FullName string `pulumi:"fullName"`
+	FullName         string  `pulumi:"fullName"`
+	TimeseriesColumn *string `pulumi:"timeseriesColumn"`
 	// A single SQL SELECT expression applied after filter_condition.
 	// Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
 	// If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -9085,11 +11033,13 @@ type FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSourceA
 	// Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
 	// Required if transformationSql is specified.
 	// Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
-	DataframeSchema pulumi.StringPtrInput `pulumi:"dataframeSchema"`
+	DataframeSchema pulumi.StringPtrInput   `pulumi:"dataframeSchema"`
+	EntityColumns   pulumi.StringArrayInput `pulumi:"entityColumns"`
 	// Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 	FilterCondition pulumi.StringPtrInput `pulumi:"filterCondition"`
 	// The full three-part (catalog, schema, table) name of the Delta table
-	FullName pulumi.StringInput `pulumi:"fullName"`
+	FullName         pulumi.StringInput    `pulumi:"fullName"`
+	TimeseriesColumn pulumi.StringPtrInput `pulumi:"timeseriesColumn"`
 	// A single SQL SELECT expression applied after filter_condition.
 	// Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
 	// If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
@@ -9182,6 +11132,12 @@ func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSour
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSourceOutput) EntityColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource) []string {
+		return v.EntityColumns
+	}).(pulumi.StringArrayOutput)
+}
+
 // Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSourceOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource) *string {
@@ -9194,6 +11150,12 @@ func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSour
 	return o.ApplyT(func(v FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource) string {
 		return v.FullName
 	}).(pulumi.StringOutput)
+}
+
+func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSourceOutput) TimeseriesColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource) *string {
+		return v.TimeseriesColumn
+	}).(pulumi.StringPtrOutput)
 }
 
 // A single SQL SELECT expression applied after filter_condition.
@@ -9241,6 +11203,15 @@ func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSour
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSourcePtrOutput) EntityColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityColumns
+	}).(pulumi.StringArrayOutput)
+}
+
 // Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSourcePtrOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource) *string {
@@ -9258,6 +11229,15 @@ func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSour
 			return nil
 		}
 		return &v.FullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSourcePtrOutput) TimeseriesColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeseriesColumn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10423,8 +12403,12 @@ func (o FeatureEngineeringKafkaConfigValueSchemaProtoSchemaPtrOutput) SchemaText
 }
 
 type FeatureEngineeringMaterializedFeatureCronScheduleTrigger struct {
-	// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+	// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+	// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+	// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+	// window timing and fills it in on the response
 	CronExpression *string `pulumi:"cronExpression"`
+	Mode           *string `pulumi:"mode"`
 }
 
 // FeatureEngineeringMaterializedFeatureCronScheduleTriggerInput is an input type that accepts FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs and FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput values.
@@ -10439,8 +12423,12 @@ type FeatureEngineeringMaterializedFeatureCronScheduleTriggerInput interface {
 }
 
 type FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs struct {
-	// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+	// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+	// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+	// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+	// window timing and fills it in on the response
 	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
+	Mode           pulumi.StringPtrInput `pulumi:"mode"`
 }
 
 func (FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs) ElementType() reflect.Type {
@@ -10520,9 +12508,16 @@ func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput) ToFeatur
 	}).(FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput)
 }
 
-// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+// window timing and fills it in on the response
 func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput) CronExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 type FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput struct{ *pulumi.OutputState }
@@ -10549,13 +12544,25 @@ func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput) Elem(
 	}).(FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput)
 }
 
-// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+// window timing and fills it in on the response
 func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput) CronExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string {
 		if v == nil {
 			return nil
 		}
 		return v.CronExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11045,8 +13052,7 @@ type FeatureEngineeringMaterializedFeatureStreamingMode struct {
 	// The desired data freshness for feature materialization, expressed as a
 	// duration string (e.g. "1 minute")
 	FreshnessTarget *string `pulumi:"freshnessTarget"`
-	// The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
-	Mode *string `pulumi:"mode"`
+	Mode            *string `pulumi:"mode"`
 }
 
 // FeatureEngineeringMaterializedFeatureStreamingModeInput is an input type that accepts FeatureEngineeringMaterializedFeatureStreamingModeArgs and FeatureEngineeringMaterializedFeatureStreamingModeOutput values.
@@ -11064,8 +13070,7 @@ type FeatureEngineeringMaterializedFeatureStreamingModeArgs struct {
 	// The desired data freshness for feature materialization, expressed as a
 	// duration string (e.g. "1 minute")
 	FreshnessTarget pulumi.StringPtrInput `pulumi:"freshnessTarget"`
-	// The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode            pulumi.StringPtrInput `pulumi:"mode"`
 }
 
 func (FeatureEngineeringMaterializedFeatureStreamingModeArgs) ElementType() reflect.Type {
@@ -11151,7 +13156,6 @@ func (o FeatureEngineeringMaterializedFeatureStreamingModeOutput) FreshnessTarge
 	return o.ApplyT(func(v FeatureEngineeringMaterializedFeatureStreamingMode) *string { return v.FreshnessTarget }).(pulumi.StringPtrOutput)
 }
 
-// The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
 func (o FeatureEngineeringMaterializedFeatureStreamingModeOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringMaterializedFeatureStreamingMode) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -11191,7 +13195,6 @@ func (o FeatureEngineeringMaterializedFeatureStreamingModePtrOutput) FreshnessTa
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
 func (o FeatureEngineeringMaterializedFeatureStreamingModePtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeatureStreamingMode) *string {
 		if v == nil {
@@ -32108,8 +34111,9 @@ func (o JobTaskAiRuntimeTaskDeploymentArrayOutput) Index(i pulumi.IntInput) JobT
 }
 
 type JobTaskAiRuntimeTaskDeploymentCompute struct {
-	AcceleratorCount int    `pulumi:"acceleratorCount"`
-	AcceleratorType  string `pulumi:"acceleratorType"`
+	AcceleratorCount      int     `pulumi:"acceleratorCount"`
+	AcceleratorType       string  `pulumi:"acceleratorType"`
+	ProvisionedCapacityId *string `pulumi:"provisionedCapacityId"`
 }
 
 // JobTaskAiRuntimeTaskDeploymentComputeInput is an input type that accepts JobTaskAiRuntimeTaskDeploymentComputeArgs and JobTaskAiRuntimeTaskDeploymentComputeOutput values.
@@ -32124,8 +34128,9 @@ type JobTaskAiRuntimeTaskDeploymentComputeInput interface {
 }
 
 type JobTaskAiRuntimeTaskDeploymentComputeArgs struct {
-	AcceleratorCount pulumi.IntInput    `pulumi:"acceleratorCount"`
-	AcceleratorType  pulumi.StringInput `pulumi:"acceleratorType"`
+	AcceleratorCount      pulumi.IntInput       `pulumi:"acceleratorCount"`
+	AcceleratorType       pulumi.StringInput    `pulumi:"acceleratorType"`
+	ProvisionedCapacityId pulumi.StringPtrInput `pulumi:"provisionedCapacityId"`
 }
 
 func (JobTaskAiRuntimeTaskDeploymentComputeArgs) ElementType() reflect.Type {
@@ -32160,6 +34165,10 @@ func (o JobTaskAiRuntimeTaskDeploymentComputeOutput) AcceleratorCount() pulumi.I
 
 func (o JobTaskAiRuntimeTaskDeploymentComputeOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskAiRuntimeTaskDeploymentCompute) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+func (o JobTaskAiRuntimeTaskDeploymentComputeOutput) ProvisionedCapacityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiRuntimeTaskDeploymentCompute) *string { return v.ProvisionedCapacityId }).(pulumi.StringPtrOutput)
 }
 
 type JobTaskAlertTask struct {
@@ -35706,8 +37715,9 @@ func (o JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArrayOutput) Index(i pulumi
 }
 
 type JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute struct {
-	AcceleratorCount int    `pulumi:"acceleratorCount"`
-	AcceleratorType  string `pulumi:"acceleratorType"`
+	AcceleratorCount      int     `pulumi:"acceleratorCount"`
+	AcceleratorType       string  `pulumi:"acceleratorType"`
+	ProvisionedCapacityId *string `pulumi:"provisionedCapacityId"`
 }
 
 // JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeInput is an input type that accepts JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs and JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeOutput values.
@@ -35722,8 +37732,9 @@ type JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeInput interface {
 }
 
 type JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs struct {
-	AcceleratorCount pulumi.IntInput    `pulumi:"acceleratorCount"`
-	AcceleratorType  pulumi.StringInput `pulumi:"acceleratorType"`
+	AcceleratorCount      pulumi.IntInput       `pulumi:"acceleratorCount"`
+	AcceleratorType       pulumi.StringInput    `pulumi:"acceleratorType"`
+	ProvisionedCapacityId pulumi.StringPtrInput `pulumi:"provisionedCapacityId"`
 }
 
 func (JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs) ElementType() reflect.Type {
@@ -35758,6 +37769,10 @@ func (o JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeOutput) AcceleratorC
 
 func (o JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeOutput) ProvisionedCapacityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute) *string { return v.ProvisionedCapacityId }).(pulumi.StringPtrOutput)
 }
 
 type JobTaskForEachTaskTaskAlertTask struct {
@@ -81183,9 +83198,9 @@ func (o MwsNetworksErrorMessageArrayOutput) Index(i pulumi.IntInput) MwsNetworks
 type MwsNetworksGcpNetworkInfo struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId string `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -81209,9 +83224,9 @@ type MwsNetworksGcpNetworkInfoInput interface {
 type MwsNetworksGcpNetworkInfoArgs struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -81303,12 +83318,12 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.NetworkProjectId }).(pulumi.StringOutput)
 }
 
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -81362,7 +83377,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -81372,7 +83387,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -81560,1873 +83575,9 @@ func (o MwsNetworksVpcEndpointsPtrOutput) RestApis() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-type MwsVpcEndpointGcpVpcEndpointInfo struct {
-	// Region of the PSC endpoint.
-	EndpointRegion string `pulumi:"endpointRegion"`
-	// The Google Cloud project ID of the VPC network where the PSC connection resides.
-	ProjectId string `pulumi:"projectId"`
-	// The unique ID of this PSC connection.
-	PscConnectionId *string `pulumi:"pscConnectionId"`
-	// The name of the PSC endpoint in the Google Cloud project.
-	PscEndpointName string `pulumi:"pscEndpointName"`
-	// The service attachment this PSC connection connects to.
-	ServiceAttachmentId *string `pulumi:"serviceAttachmentId"`
-}
-
-// MwsVpcEndpointGcpVpcEndpointInfoInput is an input type that accepts MwsVpcEndpointGcpVpcEndpointInfoArgs and MwsVpcEndpointGcpVpcEndpointInfoOutput values.
-// You can construct a concrete instance of `MwsVpcEndpointGcpVpcEndpointInfoInput` via:
-//
-//	MwsVpcEndpointGcpVpcEndpointInfoArgs{...}
-type MwsVpcEndpointGcpVpcEndpointInfoInput interface {
-	pulumi.Input
-
-	ToMwsVpcEndpointGcpVpcEndpointInfoOutput() MwsVpcEndpointGcpVpcEndpointInfoOutput
-	ToMwsVpcEndpointGcpVpcEndpointInfoOutputWithContext(context.Context) MwsVpcEndpointGcpVpcEndpointInfoOutput
-}
-
-type MwsVpcEndpointGcpVpcEndpointInfoArgs struct {
-	// Region of the PSC endpoint.
-	EndpointRegion pulumi.StringInput `pulumi:"endpointRegion"`
-	// The Google Cloud project ID of the VPC network where the PSC connection resides.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// The unique ID of this PSC connection.
-	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
-	// The name of the PSC endpoint in the Google Cloud project.
-	PscEndpointName pulumi.StringInput `pulumi:"pscEndpointName"`
-	// The service attachment this PSC connection connects to.
-	ServiceAttachmentId pulumi.StringPtrInput `pulumi:"serviceAttachmentId"`
-}
-
-func (MwsVpcEndpointGcpVpcEndpointInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfo)(nil)).Elem()
-}
-
-func (i MwsVpcEndpointGcpVpcEndpointInfoArgs) ToMwsVpcEndpointGcpVpcEndpointInfoOutput() MwsVpcEndpointGcpVpcEndpointInfoOutput {
-	return i.ToMwsVpcEndpointGcpVpcEndpointInfoOutputWithContext(context.Background())
-}
-
-func (i MwsVpcEndpointGcpVpcEndpointInfoArgs) ToMwsVpcEndpointGcpVpcEndpointInfoOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointGcpVpcEndpointInfoOutput)
-}
-
-func (i MwsVpcEndpointGcpVpcEndpointInfoArgs) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
-	return i.ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (i MwsVpcEndpointGcpVpcEndpointInfoArgs) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointGcpVpcEndpointInfoOutput).ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx)
-}
-
-// MwsVpcEndpointGcpVpcEndpointInfoPtrInput is an input type that accepts MwsVpcEndpointGcpVpcEndpointInfoArgs, MwsVpcEndpointGcpVpcEndpointInfoPtr and MwsVpcEndpointGcpVpcEndpointInfoPtrOutput values.
-// You can construct a concrete instance of `MwsVpcEndpointGcpVpcEndpointInfoPtrInput` via:
-//
-//	        MwsVpcEndpointGcpVpcEndpointInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsVpcEndpointGcpVpcEndpointInfoPtrInput interface {
-	pulumi.Input
-
-	ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput
-	ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput
-}
-
-type mwsVpcEndpointGcpVpcEndpointInfoPtrType MwsVpcEndpointGcpVpcEndpointInfoArgs
-
-func MwsVpcEndpointGcpVpcEndpointInfoPtr(v *MwsVpcEndpointGcpVpcEndpointInfoArgs) MwsVpcEndpointGcpVpcEndpointInfoPtrInput {
-	return (*mwsVpcEndpointGcpVpcEndpointInfoPtrType)(v)
-}
-
-func (*mwsVpcEndpointGcpVpcEndpointInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsVpcEndpointGcpVpcEndpointInfo)(nil)).Elem()
-}
-
-func (i *mwsVpcEndpointGcpVpcEndpointInfoPtrType) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
-	return i.ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsVpcEndpointGcpVpcEndpointInfoPtrType) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput)
-}
-
-type MwsVpcEndpointGcpVpcEndpointInfoOutput struct{ *pulumi.OutputState }
-
-func (MwsVpcEndpointGcpVpcEndpointInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfo)(nil)).Elem()
-}
-
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ToMwsVpcEndpointGcpVpcEndpointInfoOutput() MwsVpcEndpointGcpVpcEndpointInfoOutput {
-	return o
-}
-
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ToMwsVpcEndpointGcpVpcEndpointInfoOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoOutput {
-	return o
-}
-
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
-	return o.ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(context.Background())
-}
-
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsVpcEndpointGcpVpcEndpointInfo) *MwsVpcEndpointGcpVpcEndpointInfo {
-		return &v
-	}).(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput)
-}
-
-// Region of the PSC endpoint.
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) EndpointRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) string { return v.EndpointRegion }).(pulumi.StringOutput)
-}
-
-// The Google Cloud project ID of the VPC network where the PSC connection resides.
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-// The unique ID of this PSC connection.
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) PscConnectionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
-}
-
-// The name of the PSC endpoint in the Google Cloud project.
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) PscEndpointName() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) string { return v.PscEndpointName }).(pulumi.StringOutput)
-}
-
-// The service attachment this PSC connection connects to.
-func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ServiceAttachmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) *string { return v.ServiceAttachmentId }).(pulumi.StringPtrOutput)
-}
-
-type MwsVpcEndpointGcpVpcEndpointInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsVpcEndpointGcpVpcEndpointInfo)(nil)).Elem()
-}
-
-func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
-	return o
-}
-
-func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
-	return o
-}
-
-func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) Elem() MwsVpcEndpointGcpVpcEndpointInfoOutput {
-	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) MwsVpcEndpointGcpVpcEndpointInfo {
-		if v != nil {
-			return *v
-		}
-		var ret MwsVpcEndpointGcpVpcEndpointInfo
-		return ret
-	}).(MwsVpcEndpointGcpVpcEndpointInfoOutput)
-}
-
-// Region of the PSC endpoint.
-func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) EndpointRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndpointRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Google Cloud project ID of the VPC network where the PSC connection resides.
-func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The unique ID of this PSC connection.
-func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) PscConnectionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PscConnectionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the PSC endpoint in the Google Cloud project.
-func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) PscEndpointName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PscEndpointName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The service attachment this PSC connection connects to.
-func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ServiceAttachmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAttachmentId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesCloudResourceContainer struct {
-	// A block that consists of the following field:
-	Gcp MwsWorkspacesCloudResourceContainerGcp `pulumi:"gcp"`
-}
-
-// MwsWorkspacesCloudResourceContainerInput is an input type that accepts MwsWorkspacesCloudResourceContainerArgs and MwsWorkspacesCloudResourceContainerOutput values.
-// You can construct a concrete instance of `MwsWorkspacesCloudResourceContainerInput` via:
-//
-//	MwsWorkspacesCloudResourceContainerArgs{...}
-type MwsWorkspacesCloudResourceContainerInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesCloudResourceContainerOutput() MwsWorkspacesCloudResourceContainerOutput
-	ToMwsWorkspacesCloudResourceContainerOutputWithContext(context.Context) MwsWorkspacesCloudResourceContainerOutput
-}
-
-type MwsWorkspacesCloudResourceContainerArgs struct {
-	// A block that consists of the following field:
-	Gcp MwsWorkspacesCloudResourceContainerGcpInput `pulumi:"gcp"`
-}
-
-func (MwsWorkspacesCloudResourceContainerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesCloudResourceContainer)(nil)).Elem()
-}
-
-func (i MwsWorkspacesCloudResourceContainerArgs) ToMwsWorkspacesCloudResourceContainerOutput() MwsWorkspacesCloudResourceContainerOutput {
-	return i.ToMwsWorkspacesCloudResourceContainerOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesCloudResourceContainerArgs) ToMwsWorkspacesCloudResourceContainerOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesCloudResourceContainerOutput)
-}
-
-func (i MwsWorkspacesCloudResourceContainerArgs) ToMwsWorkspacesCloudResourceContainerPtrOutput() MwsWorkspacesCloudResourceContainerPtrOutput {
-	return i.ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesCloudResourceContainerArgs) ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesCloudResourceContainerOutput).ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(ctx)
-}
-
-// MwsWorkspacesCloudResourceContainerPtrInput is an input type that accepts MwsWorkspacesCloudResourceContainerArgs, MwsWorkspacesCloudResourceContainerPtr and MwsWorkspacesCloudResourceContainerPtrOutput values.
-// You can construct a concrete instance of `MwsWorkspacesCloudResourceContainerPtrInput` via:
-//
-//	        MwsWorkspacesCloudResourceContainerArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsWorkspacesCloudResourceContainerPtrInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesCloudResourceContainerPtrOutput() MwsWorkspacesCloudResourceContainerPtrOutput
-	ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(context.Context) MwsWorkspacesCloudResourceContainerPtrOutput
-}
-
-type mwsWorkspacesCloudResourceContainerPtrType MwsWorkspacesCloudResourceContainerArgs
-
-func MwsWorkspacesCloudResourceContainerPtr(v *MwsWorkspacesCloudResourceContainerArgs) MwsWorkspacesCloudResourceContainerPtrInput {
-	return (*mwsWorkspacesCloudResourceContainerPtrType)(v)
-}
-
-func (*mwsWorkspacesCloudResourceContainerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesCloudResourceContainer)(nil)).Elem()
-}
-
-func (i *mwsWorkspacesCloudResourceContainerPtrType) ToMwsWorkspacesCloudResourceContainerPtrOutput() MwsWorkspacesCloudResourceContainerPtrOutput {
-	return i.ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsWorkspacesCloudResourceContainerPtrType) ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesCloudResourceContainerPtrOutput)
-}
-
-type MwsWorkspacesCloudResourceContainerOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesCloudResourceContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesCloudResourceContainer)(nil)).Elem()
-}
-
-func (o MwsWorkspacesCloudResourceContainerOutput) ToMwsWorkspacesCloudResourceContainerOutput() MwsWorkspacesCloudResourceContainerOutput {
-	return o
-}
-
-func (o MwsWorkspacesCloudResourceContainerOutput) ToMwsWorkspacesCloudResourceContainerOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerOutput {
-	return o
-}
-
-func (o MwsWorkspacesCloudResourceContainerOutput) ToMwsWorkspacesCloudResourceContainerPtrOutput() MwsWorkspacesCloudResourceContainerPtrOutput {
-	return o.ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(context.Background())
-}
-
-func (o MwsWorkspacesCloudResourceContainerOutput) ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsWorkspacesCloudResourceContainer) *MwsWorkspacesCloudResourceContainer {
-		return &v
-	}).(MwsWorkspacesCloudResourceContainerPtrOutput)
-}
-
-// A block that consists of the following field:
-func (o MwsWorkspacesCloudResourceContainerOutput) Gcp() MwsWorkspacesCloudResourceContainerGcpOutput {
-	return o.ApplyT(func(v MwsWorkspacesCloudResourceContainer) MwsWorkspacesCloudResourceContainerGcp { return v.Gcp }).(MwsWorkspacesCloudResourceContainerGcpOutput)
-}
-
-type MwsWorkspacesCloudResourceContainerPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesCloudResourceContainerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesCloudResourceContainer)(nil)).Elem()
-}
-
-func (o MwsWorkspacesCloudResourceContainerPtrOutput) ToMwsWorkspacesCloudResourceContainerPtrOutput() MwsWorkspacesCloudResourceContainerPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesCloudResourceContainerPtrOutput) ToMwsWorkspacesCloudResourceContainerPtrOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesCloudResourceContainerPtrOutput) Elem() MwsWorkspacesCloudResourceContainerOutput {
-	return o.ApplyT(func(v *MwsWorkspacesCloudResourceContainer) MwsWorkspacesCloudResourceContainer {
-		if v != nil {
-			return *v
-		}
-		var ret MwsWorkspacesCloudResourceContainer
-		return ret
-	}).(MwsWorkspacesCloudResourceContainerOutput)
-}
-
-// A block that consists of the following field:
-func (o MwsWorkspacesCloudResourceContainerPtrOutput) Gcp() MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesCloudResourceContainer) *MwsWorkspacesCloudResourceContainerGcp {
-		if v == nil {
-			return nil
-		}
-		return &v.Gcp
-	}).(MwsWorkspacesCloudResourceContainerGcpPtrOutput)
-}
-
-type MwsWorkspacesCloudResourceContainerGcp struct {
-	// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-	ProjectId string `pulumi:"projectId"`
-}
-
-// MwsWorkspacesCloudResourceContainerGcpInput is an input type that accepts MwsWorkspacesCloudResourceContainerGcpArgs and MwsWorkspacesCloudResourceContainerGcpOutput values.
-// You can construct a concrete instance of `MwsWorkspacesCloudResourceContainerGcpInput` via:
-//
-//	MwsWorkspacesCloudResourceContainerGcpArgs{...}
-type MwsWorkspacesCloudResourceContainerGcpInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesCloudResourceContainerGcpOutput() MwsWorkspacesCloudResourceContainerGcpOutput
-	ToMwsWorkspacesCloudResourceContainerGcpOutputWithContext(context.Context) MwsWorkspacesCloudResourceContainerGcpOutput
-}
-
-type MwsWorkspacesCloudResourceContainerGcpArgs struct {
-	// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-}
-
-func (MwsWorkspacesCloudResourceContainerGcpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesCloudResourceContainerGcp)(nil)).Elem()
-}
-
-func (i MwsWorkspacesCloudResourceContainerGcpArgs) ToMwsWorkspacesCloudResourceContainerGcpOutput() MwsWorkspacesCloudResourceContainerGcpOutput {
-	return i.ToMwsWorkspacesCloudResourceContainerGcpOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesCloudResourceContainerGcpArgs) ToMwsWorkspacesCloudResourceContainerGcpOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerGcpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesCloudResourceContainerGcpOutput)
-}
-
-func (i MwsWorkspacesCloudResourceContainerGcpArgs) ToMwsWorkspacesCloudResourceContainerGcpPtrOutput() MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return i.ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesCloudResourceContainerGcpArgs) ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesCloudResourceContainerGcpOutput).ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(ctx)
-}
-
-// MwsWorkspacesCloudResourceContainerGcpPtrInput is an input type that accepts MwsWorkspacesCloudResourceContainerGcpArgs, MwsWorkspacesCloudResourceContainerGcpPtr and MwsWorkspacesCloudResourceContainerGcpPtrOutput values.
-// You can construct a concrete instance of `MwsWorkspacesCloudResourceContainerGcpPtrInput` via:
-//
-//	        MwsWorkspacesCloudResourceContainerGcpArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsWorkspacesCloudResourceContainerGcpPtrInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesCloudResourceContainerGcpPtrOutput() MwsWorkspacesCloudResourceContainerGcpPtrOutput
-	ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(context.Context) MwsWorkspacesCloudResourceContainerGcpPtrOutput
-}
-
-type mwsWorkspacesCloudResourceContainerGcpPtrType MwsWorkspacesCloudResourceContainerGcpArgs
-
-func MwsWorkspacesCloudResourceContainerGcpPtr(v *MwsWorkspacesCloudResourceContainerGcpArgs) MwsWorkspacesCloudResourceContainerGcpPtrInput {
-	return (*mwsWorkspacesCloudResourceContainerGcpPtrType)(v)
-}
-
-func (*mwsWorkspacesCloudResourceContainerGcpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesCloudResourceContainerGcp)(nil)).Elem()
-}
-
-func (i *mwsWorkspacesCloudResourceContainerGcpPtrType) ToMwsWorkspacesCloudResourceContainerGcpPtrOutput() MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return i.ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsWorkspacesCloudResourceContainerGcpPtrType) ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesCloudResourceContainerGcpPtrOutput)
-}
-
-type MwsWorkspacesCloudResourceContainerGcpOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesCloudResourceContainerGcpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesCloudResourceContainerGcp)(nil)).Elem()
-}
-
-func (o MwsWorkspacesCloudResourceContainerGcpOutput) ToMwsWorkspacesCloudResourceContainerGcpOutput() MwsWorkspacesCloudResourceContainerGcpOutput {
-	return o
-}
-
-func (o MwsWorkspacesCloudResourceContainerGcpOutput) ToMwsWorkspacesCloudResourceContainerGcpOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerGcpOutput {
-	return o
-}
-
-func (o MwsWorkspacesCloudResourceContainerGcpOutput) ToMwsWorkspacesCloudResourceContainerGcpPtrOutput() MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return o.ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(context.Background())
-}
-
-func (o MwsWorkspacesCloudResourceContainerGcpOutput) ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsWorkspacesCloudResourceContainerGcp) *MwsWorkspacesCloudResourceContainerGcp {
-		return &v
-	}).(MwsWorkspacesCloudResourceContainerGcpPtrOutput)
-}
-
-// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-func (o MwsWorkspacesCloudResourceContainerGcpOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesCloudResourceContainerGcp) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-type MwsWorkspacesCloudResourceContainerGcpPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesCloudResourceContainerGcpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesCloudResourceContainerGcp)(nil)).Elem()
-}
-
-func (o MwsWorkspacesCloudResourceContainerGcpPtrOutput) ToMwsWorkspacesCloudResourceContainerGcpPtrOutput() MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesCloudResourceContainerGcpPtrOutput) ToMwsWorkspacesCloudResourceContainerGcpPtrOutputWithContext(ctx context.Context) MwsWorkspacesCloudResourceContainerGcpPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesCloudResourceContainerGcpPtrOutput) Elem() MwsWorkspacesCloudResourceContainerGcpOutput {
-	return o.ApplyT(func(v *MwsWorkspacesCloudResourceContainerGcp) MwsWorkspacesCloudResourceContainerGcp {
-		if v != nil {
-			return *v
-		}
-		var ret MwsWorkspacesCloudResourceContainerGcp
-		return ret
-	}).(MwsWorkspacesCloudResourceContainerGcpOutput)
-}
-
-// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-func (o MwsWorkspacesCloudResourceContainerGcpPtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesCloudResourceContainerGcp) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesExternalCustomerInfo struct {
-	AuthoritativeUserEmail    string `pulumi:"authoritativeUserEmail"`
-	AuthoritativeUserFullName string `pulumi:"authoritativeUserFullName"`
-	CustomerName              string `pulumi:"customerName"`
-}
-
-// MwsWorkspacesExternalCustomerInfoInput is an input type that accepts MwsWorkspacesExternalCustomerInfoArgs and MwsWorkspacesExternalCustomerInfoOutput values.
-// You can construct a concrete instance of `MwsWorkspacesExternalCustomerInfoInput` via:
-//
-//	MwsWorkspacesExternalCustomerInfoArgs{...}
-type MwsWorkspacesExternalCustomerInfoInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesExternalCustomerInfoOutput() MwsWorkspacesExternalCustomerInfoOutput
-	ToMwsWorkspacesExternalCustomerInfoOutputWithContext(context.Context) MwsWorkspacesExternalCustomerInfoOutput
-}
-
-type MwsWorkspacesExternalCustomerInfoArgs struct {
-	AuthoritativeUserEmail    pulumi.StringInput `pulumi:"authoritativeUserEmail"`
-	AuthoritativeUserFullName pulumi.StringInput `pulumi:"authoritativeUserFullName"`
-	CustomerName              pulumi.StringInput `pulumi:"customerName"`
-}
-
-func (MwsWorkspacesExternalCustomerInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesExternalCustomerInfo)(nil)).Elem()
-}
-
-func (i MwsWorkspacesExternalCustomerInfoArgs) ToMwsWorkspacesExternalCustomerInfoOutput() MwsWorkspacesExternalCustomerInfoOutput {
-	return i.ToMwsWorkspacesExternalCustomerInfoOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesExternalCustomerInfoArgs) ToMwsWorkspacesExternalCustomerInfoOutputWithContext(ctx context.Context) MwsWorkspacesExternalCustomerInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesExternalCustomerInfoOutput)
-}
-
-func (i MwsWorkspacesExternalCustomerInfoArgs) ToMwsWorkspacesExternalCustomerInfoPtrOutput() MwsWorkspacesExternalCustomerInfoPtrOutput {
-	return i.ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesExternalCustomerInfoArgs) ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesExternalCustomerInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesExternalCustomerInfoOutput).ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(ctx)
-}
-
-// MwsWorkspacesExternalCustomerInfoPtrInput is an input type that accepts MwsWorkspacesExternalCustomerInfoArgs, MwsWorkspacesExternalCustomerInfoPtr and MwsWorkspacesExternalCustomerInfoPtrOutput values.
-// You can construct a concrete instance of `MwsWorkspacesExternalCustomerInfoPtrInput` via:
-//
-//	        MwsWorkspacesExternalCustomerInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsWorkspacesExternalCustomerInfoPtrInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesExternalCustomerInfoPtrOutput() MwsWorkspacesExternalCustomerInfoPtrOutput
-	ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(context.Context) MwsWorkspacesExternalCustomerInfoPtrOutput
-}
-
-type mwsWorkspacesExternalCustomerInfoPtrType MwsWorkspacesExternalCustomerInfoArgs
-
-func MwsWorkspacesExternalCustomerInfoPtr(v *MwsWorkspacesExternalCustomerInfoArgs) MwsWorkspacesExternalCustomerInfoPtrInput {
-	return (*mwsWorkspacesExternalCustomerInfoPtrType)(v)
-}
-
-func (*mwsWorkspacesExternalCustomerInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesExternalCustomerInfo)(nil)).Elem()
-}
-
-func (i *mwsWorkspacesExternalCustomerInfoPtrType) ToMwsWorkspacesExternalCustomerInfoPtrOutput() MwsWorkspacesExternalCustomerInfoPtrOutput {
-	return i.ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsWorkspacesExternalCustomerInfoPtrType) ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesExternalCustomerInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesExternalCustomerInfoPtrOutput)
-}
-
-type MwsWorkspacesExternalCustomerInfoOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesExternalCustomerInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesExternalCustomerInfo)(nil)).Elem()
-}
-
-func (o MwsWorkspacesExternalCustomerInfoOutput) ToMwsWorkspacesExternalCustomerInfoOutput() MwsWorkspacesExternalCustomerInfoOutput {
-	return o
-}
-
-func (o MwsWorkspacesExternalCustomerInfoOutput) ToMwsWorkspacesExternalCustomerInfoOutputWithContext(ctx context.Context) MwsWorkspacesExternalCustomerInfoOutput {
-	return o
-}
-
-func (o MwsWorkspacesExternalCustomerInfoOutput) ToMwsWorkspacesExternalCustomerInfoPtrOutput() MwsWorkspacesExternalCustomerInfoPtrOutput {
-	return o.ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(context.Background())
-}
-
-func (o MwsWorkspacesExternalCustomerInfoOutput) ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesExternalCustomerInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsWorkspacesExternalCustomerInfo) *MwsWorkspacesExternalCustomerInfo {
-		return &v
-	}).(MwsWorkspacesExternalCustomerInfoPtrOutput)
-}
-
-func (o MwsWorkspacesExternalCustomerInfoOutput) AuthoritativeUserEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesExternalCustomerInfo) string { return v.AuthoritativeUserEmail }).(pulumi.StringOutput)
-}
-
-func (o MwsWorkspacesExternalCustomerInfoOutput) AuthoritativeUserFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesExternalCustomerInfo) string { return v.AuthoritativeUserFullName }).(pulumi.StringOutput)
-}
-
-func (o MwsWorkspacesExternalCustomerInfoOutput) CustomerName() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesExternalCustomerInfo) string { return v.CustomerName }).(pulumi.StringOutput)
-}
-
-type MwsWorkspacesExternalCustomerInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesExternalCustomerInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesExternalCustomerInfo)(nil)).Elem()
-}
-
-func (o MwsWorkspacesExternalCustomerInfoPtrOutput) ToMwsWorkspacesExternalCustomerInfoPtrOutput() MwsWorkspacesExternalCustomerInfoPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesExternalCustomerInfoPtrOutput) ToMwsWorkspacesExternalCustomerInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesExternalCustomerInfoPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesExternalCustomerInfoPtrOutput) Elem() MwsWorkspacesExternalCustomerInfoOutput {
-	return o.ApplyT(func(v *MwsWorkspacesExternalCustomerInfo) MwsWorkspacesExternalCustomerInfo {
-		if v != nil {
-			return *v
-		}
-		var ret MwsWorkspacesExternalCustomerInfo
-		return ret
-	}).(MwsWorkspacesExternalCustomerInfoOutput)
-}
-
-func (o MwsWorkspacesExternalCustomerInfoPtrOutput) AuthoritativeUserEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesExternalCustomerInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AuthoritativeUserEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesExternalCustomerInfoPtrOutput) AuthoritativeUserFullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesExternalCustomerInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AuthoritativeUserFullName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesExternalCustomerInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CustomerName
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
-	SubnetCidr               string  `pulumi:"subnetCidr"`
-}
-
-// MwsWorkspacesGcpManagedNetworkConfigInput is an input type that accepts MwsWorkspacesGcpManagedNetworkConfigArgs and MwsWorkspacesGcpManagedNetworkConfigOutput values.
-// You can construct a concrete instance of `MwsWorkspacesGcpManagedNetworkConfigInput` via:
-//
-//	MwsWorkspacesGcpManagedNetworkConfigArgs{...}
-type MwsWorkspacesGcpManagedNetworkConfigInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesGcpManagedNetworkConfigOutput() MwsWorkspacesGcpManagedNetworkConfigOutput
-	ToMwsWorkspacesGcpManagedNetworkConfigOutputWithContext(context.Context) MwsWorkspacesGcpManagedNetworkConfigOutput
-}
-
-type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
-	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
-}
-
-func (MwsWorkspacesGcpManagedNetworkConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesGcpManagedNetworkConfig)(nil)).Elem()
-}
-
-func (i MwsWorkspacesGcpManagedNetworkConfigArgs) ToMwsWorkspacesGcpManagedNetworkConfigOutput() MwsWorkspacesGcpManagedNetworkConfigOutput {
-	return i.ToMwsWorkspacesGcpManagedNetworkConfigOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesGcpManagedNetworkConfigArgs) ToMwsWorkspacesGcpManagedNetworkConfigOutputWithContext(ctx context.Context) MwsWorkspacesGcpManagedNetworkConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesGcpManagedNetworkConfigOutput)
-}
-
-func (i MwsWorkspacesGcpManagedNetworkConfigArgs) ToMwsWorkspacesGcpManagedNetworkConfigPtrOutput() MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
-	return i.ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesGcpManagedNetworkConfigArgs) ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(ctx context.Context) MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesGcpManagedNetworkConfigOutput).ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(ctx)
-}
-
-// MwsWorkspacesGcpManagedNetworkConfigPtrInput is an input type that accepts MwsWorkspacesGcpManagedNetworkConfigArgs, MwsWorkspacesGcpManagedNetworkConfigPtr and MwsWorkspacesGcpManagedNetworkConfigPtrOutput values.
-// You can construct a concrete instance of `MwsWorkspacesGcpManagedNetworkConfigPtrInput` via:
-//
-//	        MwsWorkspacesGcpManagedNetworkConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsWorkspacesGcpManagedNetworkConfigPtrInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesGcpManagedNetworkConfigPtrOutput() MwsWorkspacesGcpManagedNetworkConfigPtrOutput
-	ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(context.Context) MwsWorkspacesGcpManagedNetworkConfigPtrOutput
-}
-
-type mwsWorkspacesGcpManagedNetworkConfigPtrType MwsWorkspacesGcpManagedNetworkConfigArgs
-
-func MwsWorkspacesGcpManagedNetworkConfigPtr(v *MwsWorkspacesGcpManagedNetworkConfigArgs) MwsWorkspacesGcpManagedNetworkConfigPtrInput {
-	return (*mwsWorkspacesGcpManagedNetworkConfigPtrType)(v)
-}
-
-func (*mwsWorkspacesGcpManagedNetworkConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesGcpManagedNetworkConfig)(nil)).Elem()
-}
-
-func (i *mwsWorkspacesGcpManagedNetworkConfigPtrType) ToMwsWorkspacesGcpManagedNetworkConfigPtrOutput() MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
-	return i.ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsWorkspacesGcpManagedNetworkConfigPtrType) ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(ctx context.Context) MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
-}
-
-type MwsWorkspacesGcpManagedNetworkConfigOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesGcpManagedNetworkConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesGcpManagedNetworkConfig)(nil)).Elem()
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNetworkConfigOutput() MwsWorkspacesGcpManagedNetworkConfigOutput {
-	return o
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNetworkConfigOutputWithContext(ctx context.Context) MwsWorkspacesGcpManagedNetworkConfigOutput {
-	return o
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNetworkConfigPtrOutput() MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
-	return o.ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(ctx context.Context) MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsWorkspacesGcpManagedNetworkConfig) *MwsWorkspacesGcpManagedNetworkConfig {
-		return &v
-	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
-}
-
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) SubnetCidr() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) string { return v.SubnetCidr }).(pulumi.StringOutput)
-}
-
-type MwsWorkspacesGcpManagedNetworkConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesGcpManagedNetworkConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesGcpManagedNetworkConfig)(nil)).Elem()
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) ToMwsWorkspacesGcpManagedNetworkConfigPtrOutput() MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) ToMwsWorkspacesGcpManagedNetworkConfigPtrOutputWithContext(ctx context.Context) MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpManagedNetworkConfigOutput {
-	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) MwsWorkspacesGcpManagedNetworkConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MwsWorkspacesGcpManagedNetworkConfig
-		return ret
-	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
-}
-
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GkeClusterPodIpRange
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GkeClusterServiceIpRange
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) SubnetCidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SubnetCidr
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesGkeConfig struct {
-	ConnectivityType *string `pulumi:"connectivityType"`
-	MasterIpRange    *string `pulumi:"masterIpRange"`
-}
-
-// MwsWorkspacesGkeConfigInput is an input type that accepts MwsWorkspacesGkeConfigArgs and MwsWorkspacesGkeConfigOutput values.
-// You can construct a concrete instance of `MwsWorkspacesGkeConfigInput` via:
-//
-//	MwsWorkspacesGkeConfigArgs{...}
-type MwsWorkspacesGkeConfigInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesGkeConfigOutput() MwsWorkspacesGkeConfigOutput
-	ToMwsWorkspacesGkeConfigOutputWithContext(context.Context) MwsWorkspacesGkeConfigOutput
-}
-
-type MwsWorkspacesGkeConfigArgs struct {
-	ConnectivityType pulumi.StringPtrInput `pulumi:"connectivityType"`
-	MasterIpRange    pulumi.StringPtrInput `pulumi:"masterIpRange"`
-}
-
-func (MwsWorkspacesGkeConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesGkeConfig)(nil)).Elem()
-}
-
-func (i MwsWorkspacesGkeConfigArgs) ToMwsWorkspacesGkeConfigOutput() MwsWorkspacesGkeConfigOutput {
-	return i.ToMwsWorkspacesGkeConfigOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesGkeConfigArgs) ToMwsWorkspacesGkeConfigOutputWithContext(ctx context.Context) MwsWorkspacesGkeConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesGkeConfigOutput)
-}
-
-func (i MwsWorkspacesGkeConfigArgs) ToMwsWorkspacesGkeConfigPtrOutput() MwsWorkspacesGkeConfigPtrOutput {
-	return i.ToMwsWorkspacesGkeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesGkeConfigArgs) ToMwsWorkspacesGkeConfigPtrOutputWithContext(ctx context.Context) MwsWorkspacesGkeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesGkeConfigOutput).ToMwsWorkspacesGkeConfigPtrOutputWithContext(ctx)
-}
-
-// MwsWorkspacesGkeConfigPtrInput is an input type that accepts MwsWorkspacesGkeConfigArgs, MwsWorkspacesGkeConfigPtr and MwsWorkspacesGkeConfigPtrOutput values.
-// You can construct a concrete instance of `MwsWorkspacesGkeConfigPtrInput` via:
-//
-//	        MwsWorkspacesGkeConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsWorkspacesGkeConfigPtrInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesGkeConfigPtrOutput() MwsWorkspacesGkeConfigPtrOutput
-	ToMwsWorkspacesGkeConfigPtrOutputWithContext(context.Context) MwsWorkspacesGkeConfigPtrOutput
-}
-
-type mwsWorkspacesGkeConfigPtrType MwsWorkspacesGkeConfigArgs
-
-func MwsWorkspacesGkeConfigPtr(v *MwsWorkspacesGkeConfigArgs) MwsWorkspacesGkeConfigPtrInput {
-	return (*mwsWorkspacesGkeConfigPtrType)(v)
-}
-
-func (*mwsWorkspacesGkeConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesGkeConfig)(nil)).Elem()
-}
-
-func (i *mwsWorkspacesGkeConfigPtrType) ToMwsWorkspacesGkeConfigPtrOutput() MwsWorkspacesGkeConfigPtrOutput {
-	return i.ToMwsWorkspacesGkeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsWorkspacesGkeConfigPtrType) ToMwsWorkspacesGkeConfigPtrOutputWithContext(ctx context.Context) MwsWorkspacesGkeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesGkeConfigPtrOutput)
-}
-
-type MwsWorkspacesGkeConfigOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesGkeConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesGkeConfig)(nil)).Elem()
-}
-
-func (o MwsWorkspacesGkeConfigOutput) ToMwsWorkspacesGkeConfigOutput() MwsWorkspacesGkeConfigOutput {
-	return o
-}
-
-func (o MwsWorkspacesGkeConfigOutput) ToMwsWorkspacesGkeConfigOutputWithContext(ctx context.Context) MwsWorkspacesGkeConfigOutput {
-	return o
-}
-
-func (o MwsWorkspacesGkeConfigOutput) ToMwsWorkspacesGkeConfigPtrOutput() MwsWorkspacesGkeConfigPtrOutput {
-	return o.ToMwsWorkspacesGkeConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MwsWorkspacesGkeConfigOutput) ToMwsWorkspacesGkeConfigPtrOutputWithContext(ctx context.Context) MwsWorkspacesGkeConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsWorkspacesGkeConfig) *MwsWorkspacesGkeConfig {
-		return &v
-	}).(MwsWorkspacesGkeConfigPtrOutput)
-}
-
-func (o MwsWorkspacesGkeConfigOutput) ConnectivityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesGkeConfig) *string { return v.ConnectivityType }).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesGkeConfigOutput) MasterIpRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesGkeConfig) *string { return v.MasterIpRange }).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesGkeConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesGkeConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesGkeConfig)(nil)).Elem()
-}
-
-func (o MwsWorkspacesGkeConfigPtrOutput) ToMwsWorkspacesGkeConfigPtrOutput() MwsWorkspacesGkeConfigPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesGkeConfigPtrOutput) ToMwsWorkspacesGkeConfigPtrOutputWithContext(ctx context.Context) MwsWorkspacesGkeConfigPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesGkeConfigPtrOutput) Elem() MwsWorkspacesGkeConfigOutput {
-	return o.ApplyT(func(v *MwsWorkspacesGkeConfig) MwsWorkspacesGkeConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MwsWorkspacesGkeConfig
-		return ret
-	}).(MwsWorkspacesGkeConfigOutput)
-}
-
-func (o MwsWorkspacesGkeConfigPtrOutput) ConnectivityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesGkeConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectivityType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesGkeConfigPtrOutput) MasterIpRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesGkeConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MasterIpRange
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesToken struct {
-	// Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
-	Comment *string `pulumi:"comment"`
-	// Token expiry lifetime. By default its 2592000 (30 days).
-	LifetimeSeconds *int    `pulumi:"lifetimeSeconds"`
-	TokenId         *string `pulumi:"tokenId"`
-	TokenValue      *string `pulumi:"tokenValue"`
-}
-
-// MwsWorkspacesTokenInput is an input type that accepts MwsWorkspacesTokenArgs and MwsWorkspacesTokenOutput values.
-// You can construct a concrete instance of `MwsWorkspacesTokenInput` via:
-//
-//	MwsWorkspacesTokenArgs{...}
-type MwsWorkspacesTokenInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesTokenOutput() MwsWorkspacesTokenOutput
-	ToMwsWorkspacesTokenOutputWithContext(context.Context) MwsWorkspacesTokenOutput
-}
-
-type MwsWorkspacesTokenArgs struct {
-	// Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
-	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// Token expiry lifetime. By default its 2592000 (30 days).
-	LifetimeSeconds pulumi.IntPtrInput    `pulumi:"lifetimeSeconds"`
-	TokenId         pulumi.StringPtrInput `pulumi:"tokenId"`
-	TokenValue      pulumi.StringPtrInput `pulumi:"tokenValue"`
-}
-
-func (MwsWorkspacesTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesToken)(nil)).Elem()
-}
-
-func (i MwsWorkspacesTokenArgs) ToMwsWorkspacesTokenOutput() MwsWorkspacesTokenOutput {
-	return i.ToMwsWorkspacesTokenOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesTokenArgs) ToMwsWorkspacesTokenOutputWithContext(ctx context.Context) MwsWorkspacesTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesTokenOutput)
-}
-
-func (i MwsWorkspacesTokenArgs) ToMwsWorkspacesTokenPtrOutput() MwsWorkspacesTokenPtrOutput {
-	return i.ToMwsWorkspacesTokenPtrOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesTokenArgs) ToMwsWorkspacesTokenPtrOutputWithContext(ctx context.Context) MwsWorkspacesTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesTokenOutput).ToMwsWorkspacesTokenPtrOutputWithContext(ctx)
-}
-
-// MwsWorkspacesTokenPtrInput is an input type that accepts MwsWorkspacesTokenArgs, MwsWorkspacesTokenPtr and MwsWorkspacesTokenPtrOutput values.
-// You can construct a concrete instance of `MwsWorkspacesTokenPtrInput` via:
-//
-//	        MwsWorkspacesTokenArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsWorkspacesTokenPtrInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesTokenPtrOutput() MwsWorkspacesTokenPtrOutput
-	ToMwsWorkspacesTokenPtrOutputWithContext(context.Context) MwsWorkspacesTokenPtrOutput
-}
-
-type mwsWorkspacesTokenPtrType MwsWorkspacesTokenArgs
-
-func MwsWorkspacesTokenPtr(v *MwsWorkspacesTokenArgs) MwsWorkspacesTokenPtrInput {
-	return (*mwsWorkspacesTokenPtrType)(v)
-}
-
-func (*mwsWorkspacesTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesToken)(nil)).Elem()
-}
-
-func (i *mwsWorkspacesTokenPtrType) ToMwsWorkspacesTokenPtrOutput() MwsWorkspacesTokenPtrOutput {
-	return i.ToMwsWorkspacesTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsWorkspacesTokenPtrType) ToMwsWorkspacesTokenPtrOutputWithContext(ctx context.Context) MwsWorkspacesTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesTokenPtrOutput)
-}
-
-type MwsWorkspacesTokenOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesToken)(nil)).Elem()
-}
-
-func (o MwsWorkspacesTokenOutput) ToMwsWorkspacesTokenOutput() MwsWorkspacesTokenOutput {
-	return o
-}
-
-func (o MwsWorkspacesTokenOutput) ToMwsWorkspacesTokenOutputWithContext(ctx context.Context) MwsWorkspacesTokenOutput {
-	return o
-}
-
-func (o MwsWorkspacesTokenOutput) ToMwsWorkspacesTokenPtrOutput() MwsWorkspacesTokenPtrOutput {
-	return o.ToMwsWorkspacesTokenPtrOutputWithContext(context.Background())
-}
-
-func (o MwsWorkspacesTokenOutput) ToMwsWorkspacesTokenPtrOutputWithContext(ctx context.Context) MwsWorkspacesTokenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsWorkspacesToken) *MwsWorkspacesToken {
-		return &v
-	}).(MwsWorkspacesTokenPtrOutput)
-}
-
-// Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
-func (o MwsWorkspacesTokenOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesToken) *string { return v.Comment }).(pulumi.StringPtrOutput)
-}
-
-// Token expiry lifetime. By default its 2592000 (30 days).
-func (o MwsWorkspacesTokenOutput) LifetimeSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesToken) *int { return v.LifetimeSeconds }).(pulumi.IntPtrOutput)
-}
-
-func (o MwsWorkspacesTokenOutput) TokenId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesToken) *string { return v.TokenId }).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesTokenOutput) TokenValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesToken) *string { return v.TokenValue }).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesTokenPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesToken)(nil)).Elem()
-}
-
-func (o MwsWorkspacesTokenPtrOutput) ToMwsWorkspacesTokenPtrOutput() MwsWorkspacesTokenPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesTokenPtrOutput) ToMwsWorkspacesTokenPtrOutputWithContext(ctx context.Context) MwsWorkspacesTokenPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesTokenPtrOutput) Elem() MwsWorkspacesTokenOutput {
-	return o.ApplyT(func(v *MwsWorkspacesToken) MwsWorkspacesToken {
-		if v != nil {
-			return *v
-		}
-		var ret MwsWorkspacesToken
-		return ret
-	}).(MwsWorkspacesTokenOutput)
-}
-
-// Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
-func (o MwsWorkspacesTokenPtrOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesToken) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Comment
-	}).(pulumi.StringPtrOutput)
-}
-
-// Token expiry lifetime. By default its 2592000 (30 days).
-func (o MwsWorkspacesTokenPtrOutput) LifetimeSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesToken) *int {
-		if v == nil {
-			return nil
-		}
-		return v.LifetimeSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsWorkspacesTokenPtrOutput) TokenId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesToken) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TokenId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesTokenPtrOutput) TokenValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesToken) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TokenValue
-	}).(pulumi.StringPtrOutput)
-}
-
-type NotebookProviderConfig struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId *string `pulumi:"workspaceId"`
-}
-
-// NotebookProviderConfigInput is an input type that accepts NotebookProviderConfigArgs and NotebookProviderConfigOutput values.
-// You can construct a concrete instance of `NotebookProviderConfigInput` via:
-//
-//	NotebookProviderConfigArgs{...}
-type NotebookProviderConfigInput interface {
-	pulumi.Input
-
-	ToNotebookProviderConfigOutput() NotebookProviderConfigOutput
-	ToNotebookProviderConfigOutputWithContext(context.Context) NotebookProviderConfigOutput
-}
-
-type NotebookProviderConfigArgs struct {
-	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
-}
-
-func (NotebookProviderConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotebookProviderConfig)(nil)).Elem()
-}
-
-func (i NotebookProviderConfigArgs) ToNotebookProviderConfigOutput() NotebookProviderConfigOutput {
-	return i.ToNotebookProviderConfigOutputWithContext(context.Background())
-}
-
-func (i NotebookProviderConfigArgs) ToNotebookProviderConfigOutputWithContext(ctx context.Context) NotebookProviderConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotebookProviderConfigOutput)
-}
-
-func (i NotebookProviderConfigArgs) ToNotebookProviderConfigPtrOutput() NotebookProviderConfigPtrOutput {
-	return i.ToNotebookProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i NotebookProviderConfigArgs) ToNotebookProviderConfigPtrOutputWithContext(ctx context.Context) NotebookProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotebookProviderConfigOutput).ToNotebookProviderConfigPtrOutputWithContext(ctx)
-}
-
-// NotebookProviderConfigPtrInput is an input type that accepts NotebookProviderConfigArgs, NotebookProviderConfigPtr and NotebookProviderConfigPtrOutput values.
-// You can construct a concrete instance of `NotebookProviderConfigPtrInput` via:
-//
-//	        NotebookProviderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type NotebookProviderConfigPtrInput interface {
-	pulumi.Input
-
-	ToNotebookProviderConfigPtrOutput() NotebookProviderConfigPtrOutput
-	ToNotebookProviderConfigPtrOutputWithContext(context.Context) NotebookProviderConfigPtrOutput
-}
-
-type notebookProviderConfigPtrType NotebookProviderConfigArgs
-
-func NotebookProviderConfigPtr(v *NotebookProviderConfigArgs) NotebookProviderConfigPtrInput {
-	return (*notebookProviderConfigPtrType)(v)
-}
-
-func (*notebookProviderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotebookProviderConfig)(nil)).Elem()
-}
-
-func (i *notebookProviderConfigPtrType) ToNotebookProviderConfigPtrOutput() NotebookProviderConfigPtrOutput {
-	return i.ToNotebookProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *notebookProviderConfigPtrType) ToNotebookProviderConfigPtrOutputWithContext(ctx context.Context) NotebookProviderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotebookProviderConfigPtrOutput)
-}
-
-type NotebookProviderConfigOutput struct{ *pulumi.OutputState }
-
-func (NotebookProviderConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotebookProviderConfig)(nil)).Elem()
-}
-
-func (o NotebookProviderConfigOutput) ToNotebookProviderConfigOutput() NotebookProviderConfigOutput {
-	return o
-}
-
-func (o NotebookProviderConfigOutput) ToNotebookProviderConfigOutputWithContext(ctx context.Context) NotebookProviderConfigOutput {
-	return o
-}
-
-func (o NotebookProviderConfigOutput) ToNotebookProviderConfigPtrOutput() NotebookProviderConfigPtrOutput {
-	return o.ToNotebookProviderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o NotebookProviderConfigOutput) ToNotebookProviderConfigPtrOutputWithContext(ctx context.Context) NotebookProviderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookProviderConfig) *NotebookProviderConfig {
-		return &v
-	}).(NotebookProviderConfigPtrOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o NotebookProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotebookProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
-}
-
-type NotebookProviderConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (NotebookProviderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotebookProviderConfig)(nil)).Elem()
-}
-
-func (o NotebookProviderConfigPtrOutput) ToNotebookProviderConfigPtrOutput() NotebookProviderConfigPtrOutput {
-	return o
-}
-
-func (o NotebookProviderConfigPtrOutput) ToNotebookProviderConfigPtrOutputWithContext(ctx context.Context) NotebookProviderConfigPtrOutput {
-	return o
-}
-
-func (o NotebookProviderConfigPtrOutput) Elem() NotebookProviderConfigOutput {
-	return o.ApplyT(func(v *NotebookProviderConfig) NotebookProviderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret NotebookProviderConfig
-		return ret
-	}).(NotebookProviderConfigOutput)
-}
-
-// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-func (o NotebookProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotebookProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type NotificationDestinationConfig struct {
-	// The email configuration of the Notification Destination. It must contain the following:
-	Email *NotificationDestinationConfigEmail `pulumi:"email"`
-	// The Generic Webhook configuration of the Notification Destination. It must contain the following:
-	GenericWebhook *NotificationDestinationConfigGenericWebhook `pulumi:"genericWebhook"`
-	// The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-	MicrosoftTeams *NotificationDestinationConfigMicrosoftTeams `pulumi:"microsoftTeams"`
-	// The PagerDuty configuration of the Notification Destination. It must contain the following:
-	Pagerduty *NotificationDestinationConfigPagerduty `pulumi:"pagerduty"`
-	// The Slack configuration of the Notification Destination. It must contain the following:
-	Slack *NotificationDestinationConfigSlack `pulumi:"slack"`
-}
-
-// NotificationDestinationConfigInput is an input type that accepts NotificationDestinationConfigArgs and NotificationDestinationConfigOutput values.
-// You can construct a concrete instance of `NotificationDestinationConfigInput` via:
-//
-//	NotificationDestinationConfigArgs{...}
-type NotificationDestinationConfigInput interface {
-	pulumi.Input
-
-	ToNotificationDestinationConfigOutput() NotificationDestinationConfigOutput
-	ToNotificationDestinationConfigOutputWithContext(context.Context) NotificationDestinationConfigOutput
-}
-
-type NotificationDestinationConfigArgs struct {
-	// The email configuration of the Notification Destination. It must contain the following:
-	Email NotificationDestinationConfigEmailPtrInput `pulumi:"email"`
-	// The Generic Webhook configuration of the Notification Destination. It must contain the following:
-	GenericWebhook NotificationDestinationConfigGenericWebhookPtrInput `pulumi:"genericWebhook"`
-	// The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-	MicrosoftTeams NotificationDestinationConfigMicrosoftTeamsPtrInput `pulumi:"microsoftTeams"`
-	// The PagerDuty configuration of the Notification Destination. It must contain the following:
-	Pagerduty NotificationDestinationConfigPagerdutyPtrInput `pulumi:"pagerduty"`
-	// The Slack configuration of the Notification Destination. It must contain the following:
-	Slack NotificationDestinationConfigSlackPtrInput `pulumi:"slack"`
-}
-
-func (NotificationDestinationConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationDestinationConfig)(nil)).Elem()
-}
-
-func (i NotificationDestinationConfigArgs) ToNotificationDestinationConfigOutput() NotificationDestinationConfigOutput {
-	return i.ToNotificationDestinationConfigOutputWithContext(context.Background())
-}
-
-func (i NotificationDestinationConfigArgs) ToNotificationDestinationConfigOutputWithContext(ctx context.Context) NotificationDestinationConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigOutput)
-}
-
-func (i NotificationDestinationConfigArgs) ToNotificationDestinationConfigPtrOutput() NotificationDestinationConfigPtrOutput {
-	return i.ToNotificationDestinationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i NotificationDestinationConfigArgs) ToNotificationDestinationConfigPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigOutput).ToNotificationDestinationConfigPtrOutputWithContext(ctx)
-}
-
-// NotificationDestinationConfigPtrInput is an input type that accepts NotificationDestinationConfigArgs, NotificationDestinationConfigPtr and NotificationDestinationConfigPtrOutput values.
-// You can construct a concrete instance of `NotificationDestinationConfigPtrInput` via:
-//
-//	        NotificationDestinationConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type NotificationDestinationConfigPtrInput interface {
-	pulumi.Input
-
-	ToNotificationDestinationConfigPtrOutput() NotificationDestinationConfigPtrOutput
-	ToNotificationDestinationConfigPtrOutputWithContext(context.Context) NotificationDestinationConfigPtrOutput
-}
-
-type notificationDestinationConfigPtrType NotificationDestinationConfigArgs
-
-func NotificationDestinationConfigPtr(v *NotificationDestinationConfigArgs) NotificationDestinationConfigPtrInput {
-	return (*notificationDestinationConfigPtrType)(v)
-}
-
-func (*notificationDestinationConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationDestinationConfig)(nil)).Elem()
-}
-
-func (i *notificationDestinationConfigPtrType) ToNotificationDestinationConfigPtrOutput() NotificationDestinationConfigPtrOutput {
-	return i.ToNotificationDestinationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *notificationDestinationConfigPtrType) ToNotificationDestinationConfigPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigPtrOutput)
-}
-
-type NotificationDestinationConfigOutput struct{ *pulumi.OutputState }
-
-func (NotificationDestinationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationDestinationConfig)(nil)).Elem()
-}
-
-func (o NotificationDestinationConfigOutput) ToNotificationDestinationConfigOutput() NotificationDestinationConfigOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigOutput) ToNotificationDestinationConfigOutputWithContext(ctx context.Context) NotificationDestinationConfigOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigOutput) ToNotificationDestinationConfigPtrOutput() NotificationDestinationConfigPtrOutput {
-	return o.ToNotificationDestinationConfigPtrOutputWithContext(context.Background())
-}
-
-func (o NotificationDestinationConfigOutput) ToNotificationDestinationConfigPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationDestinationConfig) *NotificationDestinationConfig {
-		return &v
-	}).(NotificationDestinationConfigPtrOutput)
-}
-
-// The email configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigOutput) Email() NotificationDestinationConfigEmailPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfig) *NotificationDestinationConfigEmail { return v.Email }).(NotificationDestinationConfigEmailPtrOutput)
-}
-
-// The Generic Webhook configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigOutput) GenericWebhook() NotificationDestinationConfigGenericWebhookPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfig) *NotificationDestinationConfigGenericWebhook {
-		return v.GenericWebhook
-	}).(NotificationDestinationConfigGenericWebhookPtrOutput)
-}
-
-// The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigOutput) MicrosoftTeams() NotificationDestinationConfigMicrosoftTeamsPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfig) *NotificationDestinationConfigMicrosoftTeams {
-		return v.MicrosoftTeams
-	}).(NotificationDestinationConfigMicrosoftTeamsPtrOutput)
-}
-
-// The PagerDuty configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigOutput) Pagerduty() NotificationDestinationConfigPagerdutyPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfig) *NotificationDestinationConfigPagerduty { return v.Pagerduty }).(NotificationDestinationConfigPagerdutyPtrOutput)
-}
-
-// The Slack configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigOutput) Slack() NotificationDestinationConfigSlackPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfig) *NotificationDestinationConfigSlack { return v.Slack }).(NotificationDestinationConfigSlackPtrOutput)
-}
-
-type NotificationDestinationConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (NotificationDestinationConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationDestinationConfig)(nil)).Elem()
-}
-
-func (o NotificationDestinationConfigPtrOutput) ToNotificationDestinationConfigPtrOutput() NotificationDestinationConfigPtrOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigPtrOutput) ToNotificationDestinationConfigPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigPtrOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigPtrOutput) Elem() NotificationDestinationConfigOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfig) NotificationDestinationConfig {
-		if v != nil {
-			return *v
-		}
-		var ret NotificationDestinationConfig
-		return ret
-	}).(NotificationDestinationConfigOutput)
-}
-
-// The email configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigPtrOutput) Email() NotificationDestinationConfigEmailPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfig) *NotificationDestinationConfigEmail {
-		if v == nil {
-			return nil
-		}
-		return v.Email
-	}).(NotificationDestinationConfigEmailPtrOutput)
-}
-
-// The Generic Webhook configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigPtrOutput) GenericWebhook() NotificationDestinationConfigGenericWebhookPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfig) *NotificationDestinationConfigGenericWebhook {
-		if v == nil {
-			return nil
-		}
-		return v.GenericWebhook
-	}).(NotificationDestinationConfigGenericWebhookPtrOutput)
-}
-
-// The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigPtrOutput) MicrosoftTeams() NotificationDestinationConfigMicrosoftTeamsPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfig) *NotificationDestinationConfigMicrosoftTeams {
-		if v == nil {
-			return nil
-		}
-		return v.MicrosoftTeams
-	}).(NotificationDestinationConfigMicrosoftTeamsPtrOutput)
-}
-
-// The PagerDuty configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigPtrOutput) Pagerduty() NotificationDestinationConfigPagerdutyPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfig) *NotificationDestinationConfigPagerduty {
-		if v == nil {
-			return nil
-		}
-		return v.Pagerduty
-	}).(NotificationDestinationConfigPagerdutyPtrOutput)
-}
-
-// The Slack configuration of the Notification Destination. It must contain the following:
-func (o NotificationDestinationConfigPtrOutput) Slack() NotificationDestinationConfigSlackPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfig) *NotificationDestinationConfigSlack {
-		if v == nil {
-			return nil
-		}
-		return v.Slack
-	}).(NotificationDestinationConfigSlackPtrOutput)
-}
-
-type NotificationDestinationConfigEmail struct {
-	// The list of email addresses to send notifications to.
-	Addresses []string `pulumi:"addresses"`
-}
-
-// NotificationDestinationConfigEmailInput is an input type that accepts NotificationDestinationConfigEmailArgs and NotificationDestinationConfigEmailOutput values.
-// You can construct a concrete instance of `NotificationDestinationConfigEmailInput` via:
-//
-//	NotificationDestinationConfigEmailArgs{...}
-type NotificationDestinationConfigEmailInput interface {
-	pulumi.Input
-
-	ToNotificationDestinationConfigEmailOutput() NotificationDestinationConfigEmailOutput
-	ToNotificationDestinationConfigEmailOutputWithContext(context.Context) NotificationDestinationConfigEmailOutput
-}
-
-type NotificationDestinationConfigEmailArgs struct {
-	// The list of email addresses to send notifications to.
-	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
-}
-
-func (NotificationDestinationConfigEmailArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationDestinationConfigEmail)(nil)).Elem()
-}
-
-func (i NotificationDestinationConfigEmailArgs) ToNotificationDestinationConfigEmailOutput() NotificationDestinationConfigEmailOutput {
-	return i.ToNotificationDestinationConfigEmailOutputWithContext(context.Background())
-}
-
-func (i NotificationDestinationConfigEmailArgs) ToNotificationDestinationConfigEmailOutputWithContext(ctx context.Context) NotificationDestinationConfigEmailOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigEmailOutput)
-}
-
-func (i NotificationDestinationConfigEmailArgs) ToNotificationDestinationConfigEmailPtrOutput() NotificationDestinationConfigEmailPtrOutput {
-	return i.ToNotificationDestinationConfigEmailPtrOutputWithContext(context.Background())
-}
-
-func (i NotificationDestinationConfigEmailArgs) ToNotificationDestinationConfigEmailPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigEmailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigEmailOutput).ToNotificationDestinationConfigEmailPtrOutputWithContext(ctx)
-}
-
-// NotificationDestinationConfigEmailPtrInput is an input type that accepts NotificationDestinationConfigEmailArgs, NotificationDestinationConfigEmailPtr and NotificationDestinationConfigEmailPtrOutput values.
-// You can construct a concrete instance of `NotificationDestinationConfigEmailPtrInput` via:
-//
-//	        NotificationDestinationConfigEmailArgs{...}
-//
-//	or:
-//
-//	        nil
-type NotificationDestinationConfigEmailPtrInput interface {
-	pulumi.Input
-
-	ToNotificationDestinationConfigEmailPtrOutput() NotificationDestinationConfigEmailPtrOutput
-	ToNotificationDestinationConfigEmailPtrOutputWithContext(context.Context) NotificationDestinationConfigEmailPtrOutput
-}
-
-type notificationDestinationConfigEmailPtrType NotificationDestinationConfigEmailArgs
-
-func NotificationDestinationConfigEmailPtr(v *NotificationDestinationConfigEmailArgs) NotificationDestinationConfigEmailPtrInput {
-	return (*notificationDestinationConfigEmailPtrType)(v)
-}
-
-func (*notificationDestinationConfigEmailPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationDestinationConfigEmail)(nil)).Elem()
-}
-
-func (i *notificationDestinationConfigEmailPtrType) ToNotificationDestinationConfigEmailPtrOutput() NotificationDestinationConfigEmailPtrOutput {
-	return i.ToNotificationDestinationConfigEmailPtrOutputWithContext(context.Background())
-}
-
-func (i *notificationDestinationConfigEmailPtrType) ToNotificationDestinationConfigEmailPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigEmailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigEmailPtrOutput)
-}
-
-type NotificationDestinationConfigEmailOutput struct{ *pulumi.OutputState }
-
-func (NotificationDestinationConfigEmailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationDestinationConfigEmail)(nil)).Elem()
-}
-
-func (o NotificationDestinationConfigEmailOutput) ToNotificationDestinationConfigEmailOutput() NotificationDestinationConfigEmailOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigEmailOutput) ToNotificationDestinationConfigEmailOutputWithContext(ctx context.Context) NotificationDestinationConfigEmailOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigEmailOutput) ToNotificationDestinationConfigEmailPtrOutput() NotificationDestinationConfigEmailPtrOutput {
-	return o.ToNotificationDestinationConfigEmailPtrOutputWithContext(context.Background())
-}
-
-func (o NotificationDestinationConfigEmailOutput) ToNotificationDestinationConfigEmailPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigEmailPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationDestinationConfigEmail) *NotificationDestinationConfigEmail {
-		return &v
-	}).(NotificationDestinationConfigEmailPtrOutput)
-}
-
-// The list of email addresses to send notifications to.
-func (o NotificationDestinationConfigEmailOutput) Addresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NotificationDestinationConfigEmail) []string { return v.Addresses }).(pulumi.StringArrayOutput)
-}
-
-type NotificationDestinationConfigEmailPtrOutput struct{ *pulumi.OutputState }
-
-func (NotificationDestinationConfigEmailPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationDestinationConfigEmail)(nil)).Elem()
-}
-
-func (o NotificationDestinationConfigEmailPtrOutput) ToNotificationDestinationConfigEmailPtrOutput() NotificationDestinationConfigEmailPtrOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigEmailPtrOutput) ToNotificationDestinationConfigEmailPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigEmailPtrOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigEmailPtrOutput) Elem() NotificationDestinationConfigEmailOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigEmail) NotificationDestinationConfigEmail {
-		if v != nil {
-			return *v
-		}
-		var ret NotificationDestinationConfigEmail
-		return ret
-	}).(NotificationDestinationConfigEmailOutput)
-}
-
-// The list of email addresses to send notifications to.
-func (o NotificationDestinationConfigEmailPtrOutput) Addresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigEmail) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Addresses
-	}).(pulumi.StringArrayOutput)
-}
-
-type NotificationDestinationConfigGenericWebhook struct {
-	// The password for basic authentication.
-	Password    *string `pulumi:"password"`
-	PasswordSet *bool   `pulumi:"passwordSet"`
-	// The Generic Webhook URL.
-	Url    *string `pulumi:"url"`
-	UrlSet *bool   `pulumi:"urlSet"`
-	// The username for basic authentication.
-	Username    *string `pulumi:"username"`
-	UsernameSet *bool   `pulumi:"usernameSet"`
-}
-
-// NotificationDestinationConfigGenericWebhookInput is an input type that accepts NotificationDestinationConfigGenericWebhookArgs and NotificationDestinationConfigGenericWebhookOutput values.
-// You can construct a concrete instance of `NotificationDestinationConfigGenericWebhookInput` via:
-//
-//	NotificationDestinationConfigGenericWebhookArgs{...}
-type NotificationDestinationConfigGenericWebhookInput interface {
-	pulumi.Input
-
-	ToNotificationDestinationConfigGenericWebhookOutput() NotificationDestinationConfigGenericWebhookOutput
-	ToNotificationDestinationConfigGenericWebhookOutputWithContext(context.Context) NotificationDestinationConfigGenericWebhookOutput
-}
-
-type NotificationDestinationConfigGenericWebhookArgs struct {
-	// The password for basic authentication.
-	Password    pulumi.StringPtrInput `pulumi:"password"`
-	PasswordSet pulumi.BoolPtrInput   `pulumi:"passwordSet"`
-	// The Generic Webhook URL.
-	Url    pulumi.StringPtrInput `pulumi:"url"`
-	UrlSet pulumi.BoolPtrInput   `pulumi:"urlSet"`
-	// The username for basic authentication.
-	Username    pulumi.StringPtrInput `pulumi:"username"`
-	UsernameSet pulumi.BoolPtrInput   `pulumi:"usernameSet"`
-}
-
-func (NotificationDestinationConfigGenericWebhookArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationDestinationConfigGenericWebhook)(nil)).Elem()
-}
-
-func (i NotificationDestinationConfigGenericWebhookArgs) ToNotificationDestinationConfigGenericWebhookOutput() NotificationDestinationConfigGenericWebhookOutput {
-	return i.ToNotificationDestinationConfigGenericWebhookOutputWithContext(context.Background())
-}
-
-func (i NotificationDestinationConfigGenericWebhookArgs) ToNotificationDestinationConfigGenericWebhookOutputWithContext(ctx context.Context) NotificationDestinationConfigGenericWebhookOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigGenericWebhookOutput)
-}
-
-func (i NotificationDestinationConfigGenericWebhookArgs) ToNotificationDestinationConfigGenericWebhookPtrOutput() NotificationDestinationConfigGenericWebhookPtrOutput {
-	return i.ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(context.Background())
-}
-
-func (i NotificationDestinationConfigGenericWebhookArgs) ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigGenericWebhookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigGenericWebhookOutput).ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(ctx)
-}
-
-// NotificationDestinationConfigGenericWebhookPtrInput is an input type that accepts NotificationDestinationConfigGenericWebhookArgs, NotificationDestinationConfigGenericWebhookPtr and NotificationDestinationConfigGenericWebhookPtrOutput values.
-// You can construct a concrete instance of `NotificationDestinationConfigGenericWebhookPtrInput` via:
-//
-//	        NotificationDestinationConfigGenericWebhookArgs{...}
-//
-//	or:
-//
-//	        nil
-type NotificationDestinationConfigGenericWebhookPtrInput interface {
-	pulumi.Input
-
-	ToNotificationDestinationConfigGenericWebhookPtrOutput() NotificationDestinationConfigGenericWebhookPtrOutput
-	ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(context.Context) NotificationDestinationConfigGenericWebhookPtrOutput
-}
-
-type notificationDestinationConfigGenericWebhookPtrType NotificationDestinationConfigGenericWebhookArgs
-
-func NotificationDestinationConfigGenericWebhookPtr(v *NotificationDestinationConfigGenericWebhookArgs) NotificationDestinationConfigGenericWebhookPtrInput {
-	return (*notificationDestinationConfigGenericWebhookPtrType)(v)
-}
-
-func (*notificationDestinationConfigGenericWebhookPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationDestinationConfigGenericWebhook)(nil)).Elem()
-}
-
-func (i *notificationDestinationConfigGenericWebhookPtrType) ToNotificationDestinationConfigGenericWebhookPtrOutput() NotificationDestinationConfigGenericWebhookPtrOutput {
-	return i.ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(context.Background())
-}
-
-func (i *notificationDestinationConfigGenericWebhookPtrType) ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigGenericWebhookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationDestinationConfigGenericWebhookPtrOutput)
-}
-
-type NotificationDestinationConfigGenericWebhookOutput struct{ *pulumi.OutputState }
-
-func (NotificationDestinationConfigGenericWebhookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationDestinationConfigGenericWebhook)(nil)).Elem()
-}
-
-func (o NotificationDestinationConfigGenericWebhookOutput) ToNotificationDestinationConfigGenericWebhookOutput() NotificationDestinationConfigGenericWebhookOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigGenericWebhookOutput) ToNotificationDestinationConfigGenericWebhookOutputWithContext(ctx context.Context) NotificationDestinationConfigGenericWebhookOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigGenericWebhookOutput) ToNotificationDestinationConfigGenericWebhookPtrOutput() NotificationDestinationConfigGenericWebhookPtrOutput {
-	return o.ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(context.Background())
-}
-
-func (o NotificationDestinationConfigGenericWebhookOutput) ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigGenericWebhookPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationDestinationConfigGenericWebhook) *NotificationDestinationConfigGenericWebhook {
-		return &v
-	}).(NotificationDestinationConfigGenericWebhookPtrOutput)
-}
-
-// The password for basic authentication.
-func (o NotificationDestinationConfigGenericWebhookOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfigGenericWebhook) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationDestinationConfigGenericWebhookOutput) PasswordSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfigGenericWebhook) *bool { return v.PasswordSet }).(pulumi.BoolPtrOutput)
-}
-
-// The Generic Webhook URL.
-func (o NotificationDestinationConfigGenericWebhookOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfigGenericWebhook) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationDestinationConfigGenericWebhookOutput) UrlSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfigGenericWebhook) *bool { return v.UrlSet }).(pulumi.BoolPtrOutput)
-}
-
-// The username for basic authentication.
-func (o NotificationDestinationConfigGenericWebhookOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfigGenericWebhook) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationDestinationConfigGenericWebhookOutput) UsernameSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NotificationDestinationConfigGenericWebhook) *bool { return v.UsernameSet }).(pulumi.BoolPtrOutput)
-}
-
-type NotificationDestinationConfigGenericWebhookPtrOutput struct{ *pulumi.OutputState }
-
-func (NotificationDestinationConfigGenericWebhookPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationDestinationConfigGenericWebhook)(nil)).Elem()
-}
-
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) ToNotificationDestinationConfigGenericWebhookPtrOutput() NotificationDestinationConfigGenericWebhookPtrOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) ToNotificationDestinationConfigGenericWebhookPtrOutputWithContext(ctx context.Context) NotificationDestinationConfigGenericWebhookPtrOutput {
-	return o
-}
-
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) Elem() NotificationDestinationConfigGenericWebhookOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigGenericWebhook) NotificationDestinationConfigGenericWebhook {
-		if v != nil {
-			return *v
-		}
-		var ret NotificationDestinationConfigGenericWebhook
-		return ret
-	}).(NotificationDestinationConfigGenericWebhookOutput)
-}
-
-// The password for basic authentication.
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigGenericWebhook) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) PasswordSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigGenericWebhook) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.PasswordSet
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The Generic Webhook URL.
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigGenericWebhook) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) UrlSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigGenericWebhook) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UrlSet
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The username for basic authentication.
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigGenericWebhook) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationDestinationConfigGenericWebhookPtrOutput) UsernameSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NotificationDestinationConfigGenericWebhook) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UsernameSet
-	}).(pulumi.BoolPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqsInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedAqsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqsPtrInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedAqsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedPubsubInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedPubsubPtrInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedSqsInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedSqsArgs{})
@@ -83479,6 +83630,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionSumPtrInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionAggregationFunctionSumArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingPtrInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs{})
@@ -83497,6 +83650,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionCustomUdfPtrInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionCustomUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionCustomUdfInputBindingInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionCustomUdfInputBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionCustomUdfInputBindingArrayInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionCustomUdfInputBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionExtraParameterInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionExtraParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureFunctionExtraParameterArrayInput)(nil)).Elem(), FeatureEngineeringFeatureFunctionExtraParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureLineageContextInput)(nil)).Elem(), FeatureEngineeringFeatureLineageContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureLineageContextPtrInput)(nil)).Elem(), FeatureEngineeringFeatureLineageContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureLineageContextJobContextInput)(nil)).Elem(), FeatureEngineeringFeatureLineageContextJobContextArgs{})
@@ -83509,6 +83664,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceDeltaTableSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceDeltaTableSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceLatenessInput)(nil)).Elem(), FeatureEngineeringFeatureSourceLatenessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceLatenessPtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceLatenessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceRequestSourceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceRequestSourceArgs{})
@@ -83519,6 +83678,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArrayInput)(nil)).Elem(), FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceStreamSourceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceStreamSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceStreamSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceStreamSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowPtrInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowContinuousInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowContinuousArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowContinuousPtrInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowContinuousArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowRollingInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowRollingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowRollingPtrInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowRollingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowSawtoothInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowSawtoothArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowSawtoothPtrInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowSawtoothArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowSlidingInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowSlidingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowSlidingPtrInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowSlidingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowTumblingInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowTumblingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeWindowTumblingPtrInput)(nil)).Elem(), FeatureEngineeringFeatureTimeWindowTumblingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeseriesColumnInput)(nil)).Elem(), FeatureEngineeringFeatureTimeseriesColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureTimeseriesColumnPtrInput)(nil)).Elem(), FeatureEngineeringFeatureTimeseriesColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringKafkaConfigAuthConfigInput)(nil)).Elem(), FeatureEngineeringKafkaConfigAuthConfigArgs{})
@@ -84400,28 +84571,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksGcpNetworkInfoPtrInput)(nil)).Elem(), MwsNetworksGcpNetworkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsPtrInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfoInput)(nil)).Elem(), MwsVpcEndpointGcpVpcEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfoPtrInput)(nil)).Elem(), MwsVpcEndpointGcpVpcEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerPtrInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerGcpInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerGcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerGcpPtrInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerGcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesExternalCustomerInfoInput)(nil)).Elem(), MwsWorkspacesExternalCustomerInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesExternalCustomerInfoPtrInput)(nil)).Elem(), MwsWorkspacesExternalCustomerInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesGcpManagedNetworkConfigInput)(nil)).Elem(), MwsWorkspacesGcpManagedNetworkConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesGcpManagedNetworkConfigPtrInput)(nil)).Elem(), MwsWorkspacesGcpManagedNetworkConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesGkeConfigInput)(nil)).Elem(), MwsWorkspacesGkeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesGkeConfigPtrInput)(nil)).Elem(), MwsWorkspacesGkeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesTokenInput)(nil)).Elem(), MwsWorkspacesTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesTokenPtrInput)(nil)).Elem(), MwsWorkspacesTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotebookProviderConfigInput)(nil)).Elem(), NotebookProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotebookProviderConfigPtrInput)(nil)).Elem(), NotebookProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigInput)(nil)).Elem(), NotificationDestinationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigPtrInput)(nil)).Elem(), NotificationDestinationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigEmailInput)(nil)).Elem(), NotificationDestinationConfigEmailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigEmailPtrInput)(nil)).Elem(), NotificationDestinationConfigEmailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigGenericWebhookInput)(nil)).Elem(), NotificationDestinationConfigGenericWebhookArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationDestinationConfigGenericWebhookPtrInput)(nil)).Elem(), NotificationDestinationConfigGenericWebhookArgs{})
+	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedAqsOutput{})
+	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedAqsPtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedPubsubOutput{})
 	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedPubsubPtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedSqsOutput{})
@@ -84474,6 +84625,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionAggregationFunctionSumPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowPtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothOutput{})
@@ -84492,6 +84645,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionCustomUdfPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionCustomUdfInputBindingOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionCustomUdfInputBindingArrayOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionExtraParameterOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureFunctionExtraParameterArrayOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureLineageContextOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureLineageContextPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureLineageContextJobContextOutput{})
@@ -84504,6 +84659,10 @@ func init() {
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourceOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourcePtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceLatenessOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceLatenessPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceRequestSourceOutput{})
@@ -84514,6 +84673,18 @@ func init() {
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArrayOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceStreamSourceOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceStreamSourcePtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowPtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowContinuousOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowContinuousPtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowRollingOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowRollingPtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowSawtoothOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowSawtoothPtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowSlidingOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowSlidingPtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowTumblingOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeWindowTumblingPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeseriesColumnOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureTimeseriesColumnPtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringKafkaConfigAuthConfigOutput{})
@@ -85395,26 +85566,4 @@ func init() {
 	pulumi.RegisterOutputType(MwsNetworksGcpNetworkInfoPtrOutput{})
 	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsOutput{})
 	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsPtrOutput{})
-	pulumi.RegisterOutputType(MwsVpcEndpointGcpVpcEndpointInfoOutput{})
-	pulumi.RegisterOutputType(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerPtrOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerGcpOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerGcpPtrOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesExternalCustomerInfoOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesExternalCustomerInfoPtrOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesGcpManagedNetworkConfigOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesGcpManagedNetworkConfigPtrOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesGkeConfigOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesGkeConfigPtrOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesTokenOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesTokenPtrOutput{})
-	pulumi.RegisterOutputType(NotebookProviderConfigOutput{})
-	pulumi.RegisterOutputType(NotebookProviderConfigPtrOutput{})
-	pulumi.RegisterOutputType(NotificationDestinationConfigOutput{})
-	pulumi.RegisterOutputType(NotificationDestinationConfigPtrOutput{})
-	pulumi.RegisterOutputType(NotificationDestinationConfigEmailOutput{})
-	pulumi.RegisterOutputType(NotificationDestinationConfigEmailPtrOutput{})
-	pulumi.RegisterOutputType(NotificationDestinationConfigGenericWebhookOutput{})
-	pulumi.RegisterOutputType(NotificationDestinationConfigGenericWebhookPtrOutput{})
 }

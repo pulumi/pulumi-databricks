@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +21,11 @@ public final class GetFeatureEngineeringFeatureSourceDeltaTableSource {
      */
     private @Nullable String dataframeSchema;
     /**
+     * @return (list of string, deprecated)
+     * 
+     */
+    private @Nullable List<String> entityColumns;
+    /**
      * @return (string) - The filter condition applied to the source data before aggregation
      * 
      */
@@ -31,6 +37,11 @@ public final class GetFeatureEngineeringFeatureSourceDeltaTableSource {
      * 
      */
     private String fullName;
+    /**
+     * @return (string, deprecated)
+     * 
+     */
+    private @Nullable String timeseriesColumn;
     /**
      * @return (string) - The pipeline runs these SQL statements immediately after conversion into
      * the schema specified on the Stream object
@@ -49,6 +60,13 @@ public final class GetFeatureEngineeringFeatureSourceDeltaTableSource {
         return Optional.ofNullable(this.dataframeSchema);
     }
     /**
+     * @return (list of string, deprecated)
+     * 
+     */
+    public List<String> entityColumns() {
+        return this.entityColumns == null ? List.of() : this.entityColumns;
+    }
+    /**
      * @return (string) - The filter condition applied to the source data before aggregation
      * 
      */
@@ -63,6 +81,13 @@ public final class GetFeatureEngineeringFeatureSourceDeltaTableSource {
      */
     public String fullName() {
         return this.fullName;
+    }
+    /**
+     * @return (string, deprecated)
+     * 
+     */
+    public Optional<String> timeseriesColumn() {
+        return Optional.ofNullable(this.timeseriesColumn);
     }
     /**
      * @return (string) - The pipeline runs these SQL statements immediately after conversion into
@@ -83,15 +108,19 @@ public final class GetFeatureEngineeringFeatureSourceDeltaTableSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dataframeSchema;
+        private @Nullable List<String> entityColumns;
         private @Nullable String filterCondition;
         private String fullName;
+        private @Nullable String timeseriesColumn;
         private @Nullable String transformationSql;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeatureSourceDeltaTableSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataframeSchema = defaults.dataframeSchema;
+    	      this.entityColumns = defaults.entityColumns;
     	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
+    	      this.timeseriesColumn = defaults.timeseriesColumn;
     	      this.transformationSql = defaults.transformationSql;
         }
 
@@ -100,6 +129,15 @@ public final class GetFeatureEngineeringFeatureSourceDeltaTableSource {
 
             this.dataframeSchema = dataframeSchema;
             return this;
+        }
+        @CustomType.Setter
+        public Builder entityColumns(@Nullable List<String> entityColumns) {
+
+            this.entityColumns = entityColumns;
+            return this;
+        }
+        public Builder entityColumns(String... entityColumns) {
+            return entityColumns(List.of(entityColumns));
         }
         @CustomType.Setter
         public Builder filterCondition(@Nullable String filterCondition) {
@@ -116,6 +154,12 @@ public final class GetFeatureEngineeringFeatureSourceDeltaTableSource {
             return this;
         }
         @CustomType.Setter
+        public Builder timeseriesColumn(@Nullable String timeseriesColumn) {
+
+            this.timeseriesColumn = timeseriesColumn;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transformationSql(@Nullable String transformationSql) {
 
             this.transformationSql = transformationSql;
@@ -124,8 +168,10 @@ public final class GetFeatureEngineeringFeatureSourceDeltaTableSource {
         public GetFeatureEngineeringFeatureSourceDeltaTableSource build() {
             final var _resultValue = new GetFeatureEngineeringFeatureSourceDeltaTableSource();
             _resultValue.dataframeSchema = dataframeSchema;
+            _resultValue.entityColumns = entityColumns;
             _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
+            _resultValue.timeseriesColumn = timeseriesColumn;
             _resultValue.transformationSql = transformationSql;
             return _resultValue;
         }

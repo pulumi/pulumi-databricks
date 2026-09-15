@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +34,13 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceAr
      */
     public Optional<Output<String>> dataframeSchema() {
         return Optional.ofNullable(this.dataframeSchema);
+    }
+
+    @Import(name="entityColumns")
+    private @Nullable Output<List<String>> entityColumns;
+
+    public Optional<Output<List<String>>> entityColumns() {
+        return Optional.ofNullable(this.entityColumns);
     }
 
     /**
@@ -65,6 +73,13 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceAr
         return this.fullName;
     }
 
+    @Import(name="timeseriesColumn")
+    private @Nullable Output<String> timeseriesColumn;
+
+    public Optional<Output<String>> timeseriesColumn() {
+        return Optional.ofNullable(this.timeseriesColumn);
+    }
+
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
@@ -88,8 +103,10 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceAr
 
     private FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs(FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs $) {
         this.dataframeSchema = $.dataframeSchema;
+        this.entityColumns = $.entityColumns;
         this.filterCondition = $.filterCondition;
         this.fullName = $.fullName;
+        this.timeseriesColumn = $.timeseriesColumn;
         this.transformationSql = $.transformationSql;
     }
 
@@ -136,6 +153,19 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceAr
             return dataframeSchema(Output.of(dataframeSchema));
         }
 
+        public Builder entityColumns(@Nullable Output<List<String>> entityColumns) {
+            $.entityColumns = entityColumns;
+            return this;
+        }
+
+        public Builder entityColumns(List<String> entityColumns) {
+            return entityColumns(Output.of(entityColumns));
+        }
+
+        public Builder entityColumns(String... entityColumns) {
+            return entityColumns(List.of(entityColumns));
+        }
+
         /**
          * @param filterCondition Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
          * 
@@ -176,6 +206,15 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceAr
          */
         public Builder fullName(String fullName) {
             return fullName(Output.of(fullName));
+        }
+
+        public Builder timeseriesColumn(@Nullable Output<String> timeseriesColumn) {
+            $.timeseriesColumn = timeseriesColumn;
+            return this;
+        }
+
+        public Builder timeseriesColumn(String timeseriesColumn) {
+            return timeseriesColumn(Output.of(timeseriesColumn));
         }
 
         /**

@@ -20,6 +20,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? DataframeSchema;
         /// <summary>
+        /// (list of string, deprecated)
+        /// </summary>
+        public readonly ImmutableArray<string> EntityColumns;
+        /// <summary>
         /// (string) - The filter condition applied to the source data before aggregation
         /// </summary>
         public readonly string? FilterCondition;
@@ -30,6 +34,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string FullName;
         /// <summary>
+        /// (string, deprecated)
+        /// </summary>
+        public readonly string? TimeseriesColumn;
+        /// <summary>
         /// (string) - The pipeline runs these SQL statements immediately after conversion into
         /// the schema specified on the Stream object
         /// </summary>
@@ -39,15 +47,21 @@ namespace Pulumi.Databricks.Outputs
         private GetFeatureEngineeringFeatureSourceDeltaTableSourceResult(
             string? dataframeSchema,
 
+            ImmutableArray<string> entityColumns,
+
             string? filterCondition,
 
             string fullName,
 
+            string? timeseriesColumn,
+
             string? transformationSql)
         {
             DataframeSchema = dataframeSchema;
+            EntityColumns = entityColumns;
             FilterCondition = filterCondition;
             FullName = fullName;
+            TimeseriesColumn = timeseriesColumn;
             TransformationSql = transformationSql;
         }
     }

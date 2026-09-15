@@ -59,9 +59,9 @@ class GetAiGatewayModelProviderServicesResult:
     @pulumi.getter
     def parent(self) -> Optional[_builtins.str]:
         """
-        (string) - Parent UC schema where the inference table is created.
-        Format: `schemas/{catalog}.{schema}`. Set at create time and immutable
-        thereafter; changing it on an existing service is rejected
+        (string) - Parent Unity Catalog schema where the inference table is created, in the
+        form `schemas/{catalog}.{schema}`. Required when configuring an inference
+        table. After the inference table is created, this field cannot be changed
         """
         return pulumi.get(self, "parent")
 
@@ -95,20 +95,35 @@ def get_ai_gateway_model_provider_services(page_size: Optional[_builtins.int] = 
                                            view: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiGatewayModelProviderServicesResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+    Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+
+    ## Example Usage
+
+    The following example lists model provider services in the `main.default` schema:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_ai_gateway_model_provider_services(parent="schemas/main.default")
+    pulumi.export("modelProviderServices", all.model_provider_services)
+    ```
 
 
     :param _builtins.int page_size: Maximum number of provider services to return. Defaults to 100 when unset or
            0; the maximum is 100. Use `page_token` to retrieve additional pages
-    :param _builtins.str parent: Name of the parent schema to list within, as
-           `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-           characters individually
+    :param _builtins.str parent: Parent schema to list within, in the form
+           `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+           255 characters individually
     :param Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str view: View selector controlling which fields are populated per row. `FULL`
-           returns the full representation of the service; `BASIC` returns a more
-           compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+    :param _builtins.str view: Fields to return for each service. `FULL` includes resolved
+           service-credential and inference-table details and rate-limit principal
+           names. `BASIC` omits those details and principal names from rate limits.
+           Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -130,20 +145,35 @@ def get_ai_gateway_model_provider_services_output(page_size: pulumi.Input[Option
                                                   view: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayModelProviderServicesResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+    Lists the Unity Catalog model provider services that are visible to the current principal in a schema. Secret values are not returned.
+
+    ## Example Usage
+
+    The following example lists model provider services in the `main.default` schema:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_ai_gateway_model_provider_services(parent="schemas/main.default")
+    pulumi.export("modelProviderServices", all.model_provider_services)
+    ```
 
 
     :param _builtins.int page_size: Maximum number of provider services to return. Defaults to 100 when unset or
            0; the maximum is 100. Use `page_token` to retrieve additional pages
-    :param _builtins.str parent: Name of the parent schema to list within, as
-           `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-           characters individually
+    :param _builtins.str parent: Parent schema to list within, in the form
+           `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+           255 characters individually
     :param Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str view: View selector controlling which fields are populated per row. `FULL`
-           returns the full representation of the service; `BASIC` returns a more
-           compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+    :param _builtins.str view: Fields to return for each service. `FULL` includes resolved
+           service-credential and inference-table details and rate-limit principal
+           names. `BASIC` omits those details and principal names from rate limits.
+           Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

@@ -14,27 +14,16 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelServicesModelServiceConfigInferenceTableResult
     {
         /// <summary>
-        /// (boolean) - Indicates whether payload logging is disabled (opt-out). Unset means that
-        /// payload logging is active (the on-by-default state coincides with the proto
-        /// zero-value, so the server never fills this field for a client that leaves it
-        /// unset). Set `disabled = true` to pause runtime logging while keeping the
-        /// sub-message attached (preserving `Parent` and `TableNamePrefix` for a
-        /// later flip back to active). `Parent` remains required either way
-        /// </summary>
-        public readonly bool? Disabled;
-        /// <summary>
-        /// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-        /// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-        /// deleted but the destination row still references it. The dangling
-        /// destination is surfaced (not silently dropped) so callers can see the
-        /// broken routing. Inference traffic through this destination fails closed
-        /// (BAD_REQUEST / FAILED_PRECONDITION)
+        /// (boolean) - Whether the destination's backing model or model provider service has
+        /// been deleted. The destination remains visible so you can identify the
+        /// broken dependency. Requests cannot use this destination until the backing
+        /// resource is restored or the destination is replaced
         /// </summary>
         public readonly bool IsDeleted;
         /// <summary>
-        /// Name of the parent schema to list within, as
-        /// `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-        /// characters individually
+        /// Parent schema to list within, in the form
+        /// `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+        /// 255 characters individually
         /// </summary>
         public readonly string Parent;
         /// <summary>
@@ -43,19 +32,16 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Table;
         /// <summary>
-        /// (string) - Prefix for the inference-table's UC-registered name. The actual leaf name UC
-        /// stores is `&lt;table_name_prefix&gt;_payload`; the `_payload` suffix is appended
-        /// automatically. To find the actual UC table after Create, read the `Table`
-        /// field on the response. Defaults to `&lt;model_service_name&gt;_payload` when unset.
-        /// Set at create time and immutable thereafter; changing it on an existing
-        /// service is rejected
+        /// (string) - Prefix used to form the inference table's registered name. AI Gateway
+        /// appends `_payload`; for example, `TableNamePrefix = "orders"` creates
+        /// `OrdersPayload`. If unset, the prefix defaults to the service name. Read
+        /// `Table` from the response for the resulting resource name. After the
+        /// inference table is created, this field cannot be changed
         /// </summary>
         public readonly string? TableNamePrefix;
 
         [OutputConstructor]
         private GetAiGatewayModelServicesModelServiceConfigInferenceTableResult(
-            bool? disabled,
-
             bool isDeleted,
 
             string parent,
@@ -64,7 +50,6 @@ namespace Pulumi.Databricks.Outputs
 
             string? tableNamePrefix)
         {
-            Disabled = disabled;
             IsDeleted = isDeleted;
             Parent = parent;
             Table = table;

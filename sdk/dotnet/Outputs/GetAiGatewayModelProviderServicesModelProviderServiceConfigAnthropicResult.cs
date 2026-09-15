@@ -14,14 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicResult
     {
         /// <summary>
-        /// (ModelProviderServiceConfigOpenAiProviderDirectConfig)
+        /// (ModelProviderServiceConfigOpenAiProviderDirectConfig) - OpenAI configuration with an API key supplied in the request
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectResult? Direct;
         /// <summary>
-        /// (ModelProviderServiceConfigAnthropicProviderRelayedConfig) - Relayed (credential-less) form: no Anthropic credential is stored. Each
-        /// inference request instead carries the caller's own OAuth token, which the
-        /// platform forwards to Anthropic on outbound requests. Mutually exclusive
-        /// with `Direct`; no `ApiKey` is required or persisted
+        /// (ModelProviderServiceConfigAnthropicProviderRelayedConfig) - Relayed authentication. Each inference request supplies the caller's
+        /// OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+        /// stored. Mutually exclusive with `Direct`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicRelayedResult? Relayed;
 

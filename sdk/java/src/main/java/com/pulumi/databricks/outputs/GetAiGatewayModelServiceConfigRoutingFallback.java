@@ -13,9 +13,10 @@ import javax.annotation.Nullable;
 public final class GetAiGatewayModelServiceConfigRoutingFallback {
     /**
      * @return (list of ModelServiceConfigDestinationConfig) - Primary routing destinations. At most 10 are allowed. At least one is
-     * required on CreateModelService; on UpdateModelService it is required only
-     * when `config.routing` (or a `config.routing.*` subpath) appears in
-     * `updateMask`
+     * required on Create. On Update, provide this list when replacing the full
+     * `config` or updating `config.routing.destinations`; other granular routing
+     * updates do not require resending destinations. The intermediate
+     * `config.routing` mask path is not supported
      * 
      */
     private @Nullable List<GetAiGatewayModelServiceConfigRoutingFallbackDestination> destinations;
@@ -23,9 +24,10 @@ public final class GetAiGatewayModelServiceConfigRoutingFallback {
     private GetAiGatewayModelServiceConfigRoutingFallback() {}
     /**
      * @return (list of ModelServiceConfigDestinationConfig) - Primary routing destinations. At most 10 are allowed. At least one is
-     * required on CreateModelService; on UpdateModelService it is required only
-     * when `config.routing` (or a `config.routing.*` subpath) appears in
-     * `updateMask`
+     * required on Create. On Update, provide this list when replacing the full
+     * `config` or updating `config.routing.destinations`; other granular routing
+     * updates do not require resending destinations. The intermediate
+     * `config.routing` mask path is not supported
      * 
      */
     public List<GetAiGatewayModelServiceConfigRoutingFallbackDestination> destinations() {

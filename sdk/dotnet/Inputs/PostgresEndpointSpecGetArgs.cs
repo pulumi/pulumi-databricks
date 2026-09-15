@@ -49,7 +49,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// When set to true, explicitly disables automatic suspension (never suspend).
         /// Should be set to true when provided.
-        /// Mutually exclusive with `SuspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+        /// Mutually exclusive with `SuspendTimeoutDuration`
         /// </summary>
         [Input("noSuspension")]
         public Input<bool>? NoSuspension { get; set; }

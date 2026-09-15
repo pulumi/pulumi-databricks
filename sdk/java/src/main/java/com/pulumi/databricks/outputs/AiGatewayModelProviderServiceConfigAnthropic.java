@@ -14,10 +14,9 @@ import javax.annotation.Nullable;
 public final class AiGatewayModelProviderServiceConfigAnthropic {
     private @Nullable AiGatewayModelProviderServiceConfigAnthropicDirect direct;
     /**
-     * @return Relayed (credential-less) form: no Anthropic credential is stored. Each
-     * inference request instead carries the caller&#39;s own OAuth token, which the
-     * platform forwards to Anthropic on outbound requests. Mutually exclusive
-     * with `direct`; no `apiKey` is required or persisted
+     * @return Relayed authentication. Each inference request supplies the caller&#39;s
+     * OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+     * stored. Mutually exclusive with `direct`
      * 
      */
     private @Nullable AiGatewayModelProviderServiceConfigAnthropicRelayed relayed;
@@ -27,10 +26,9 @@ public final class AiGatewayModelProviderServiceConfigAnthropic {
         return Optional.ofNullable(this.direct);
     }
     /**
-     * @return Relayed (credential-less) form: no Anthropic credential is stored. Each
-     * inference request instead carries the caller&#39;s own OAuth token, which the
-     * platform forwards to Anthropic on outbound requests. Mutually exclusive
-     * with `direct`; no `apiKey` is required or persisted
+     * @return Relayed authentication. Each inference request supplies the caller&#39;s
+     * OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+     * stored. Mutually exclusive with `direct`
      * 
      */
     public Optional<AiGatewayModelProviderServiceConfigAnthropicRelayed> relayed() {

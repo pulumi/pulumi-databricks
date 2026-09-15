@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs Empty = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs();
+
+    @Import(name="continuous")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs> continuous;
+
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs>> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
 
     @Import(name="rolling")
     private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs> rolling;
@@ -55,7 +63,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
      * for 365 days of data; a lifetime window produces no output before start_time. If unset,
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-     * eligible source data exists
+     * eligible source data exists.
+     * Not currently supported for sawtooth windows or for Features with a stream source
      * 
      */
     @Import(name="startTime")
@@ -68,7 +77,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
      * for 365 days of data; a lifetime window produces no output before start_time. If unset,
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-     * eligible source data exists
+     * eligible source data exists.
+     * Not currently supported for sawtooth windows or for Features with a stream source
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -85,6 +95,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs() {}
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs $) {
+        this.continuous = $.continuous;
         this.rolling = $.rolling;
         this.sawtooth = $.sawtooth;
         this.sliding = $.sliding;
@@ -108,6 +119,15 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs defaults) {
             $ = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder continuous(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs> continuous) {
+            $.continuous = continuous;
+            return this;
+        }
+
+        public Builder continuous(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs continuous) {
+            return continuous(Output.of(continuous));
         }
 
         public Builder rolling(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs> rolling) {
@@ -156,7 +176,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
          * for 365 days of data; a lifetime window produces no output before start_time. If unset,
          * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
          * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-         * eligible source data exists
+         * eligible source data exists.
+         * Not currently supported for sawtooth windows or for Features with a stream source
          * 
          * @return builder
          * 
@@ -173,7 +194,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
          * for 365 days of data; a lifetime window produces no output before start_time. If unset,
          * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
          * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-         * eligible source data exists
+         * eligible source data exists.
+         * Not currently supported for sawtooth windows or for Features with a stream source
          * 
          * @return builder
          * 

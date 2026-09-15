@@ -108,7 +108,8 @@ type App struct {
 	ForwardUserAccessToken pulumi.BoolOutput        `pulumi:"forwardUserAccessToken"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository AppGitRepositoryPtrOutput `pulumi:"gitRepository"`
-	GitSource     AppGitSourceOutput        `pulumi:"gitSource"`
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource AppGitSourceOutput `pulumi:"gitSource"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name      pulumi.StringOutput  `pulumi:"name"`
 	NoCompute pulumi.BoolPtrOutput `pulumi:"noCompute"`
@@ -127,7 +128,7 @@ type App struct {
 	ServicePrincipalId pulumi.IntOutput `pulumi:"servicePrincipalId"`
 	// name of the app service principal
 	ServicePrincipalName pulumi.StringOutput `pulumi:"servicePrincipalName"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath pulumi.StringOutput    `pulumi:"sourceCodePath"`
 	Space          pulumi.StringPtrOutput `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
@@ -206,7 +207,8 @@ type appState struct {
 	ForwardUserAccessToken *bool    `pulumi:"forwardUserAccessToken"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository *AppGitRepository `pulumi:"gitRepository"`
-	GitSource     *AppGitSource     `pulumi:"gitSource"`
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource *AppGitSource `pulumi:"gitSource"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name      *string `pulumi:"name"`
 	NoCompute *bool   `pulumi:"noCompute"`
@@ -225,7 +227,7 @@ type appState struct {
 	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
 	// name of the app service principal
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
 	Space          *string `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
@@ -275,7 +277,8 @@ type AppState struct {
 	ForwardUserAccessToken pulumi.BoolPtrInput
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository AppGitRepositoryPtrInput
-	GitSource     AppGitSourcePtrInput
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource AppGitSourcePtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name      pulumi.StringPtrInput
 	NoCompute pulumi.BoolPtrInput
@@ -294,7 +297,7 @@ type AppState struct {
 	ServicePrincipalId pulumi.IntPtrInput
 	// name of the app service principal
 	ServicePrincipalName pulumi.StringPtrInput
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath pulumi.StringPtrInput
 	Space          pulumi.StringPtrInput
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
@@ -329,14 +332,15 @@ type appArgs struct {
 	ForwardUserAccessToken *bool   `pulumi:"forwardUserAccessToken"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository *AppGitRepository `pulumi:"gitRepository"`
-	GitSource     *AppGitSource     `pulumi:"gitSource"`
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource *AppGitSource `pulumi:"gitSource"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name           *string            `pulumi:"name"`
 	NoCompute      *bool              `pulumi:"noCompute"`
 	ProviderConfig *AppProviderConfig `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
 	Resources []AppResource `pulumi:"resources"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
 	Space          *string `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
@@ -360,14 +364,15 @@ type AppArgs struct {
 	ForwardUserAccessToken pulumi.BoolPtrInput
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository AppGitRepositoryPtrInput
-	GitSource     AppGitSourcePtrInput
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource AppGitSourcePtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name           pulumi.StringPtrInput
 	NoCompute      pulumi.BoolPtrInput
 	ProviderConfig AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
 	Resources AppResourceArrayInput
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath pulumi.StringPtrInput
 	Space          pulumi.StringPtrInput
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
@@ -546,6 +551,7 @@ func (o AppOutput) GitRepository() AppGitRepositoryPtrOutput {
 	return o.ApplyT(func(v *App) AppGitRepositoryPtrOutput { return v.GitRepository }).(AppGitRepositoryPtrOutput)
 }
 
+// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
 func (o AppOutput) GitSource() AppGitSourceOutput {
 	return o.ApplyT(func(v *App) AppGitSourceOutput { return v.GitSource }).(AppGitSourceOutput)
 }
@@ -598,7 +604,7 @@ func (o AppOutput) ServicePrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ServicePrincipalName }).(pulumi.StringOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppOutput) SourceCodePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.SourceCodePath }).(pulumi.StringOutput)
 }

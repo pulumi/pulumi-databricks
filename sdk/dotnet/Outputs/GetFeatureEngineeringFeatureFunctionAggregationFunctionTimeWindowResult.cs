@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult
     {
         /// <summary>
+        /// (ContinuousWindow, deprecated)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousResult? Continuous;
+        /// <summary>
         /// (RollingWindow)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult? Rolling;
@@ -32,7 +36,8 @@ namespace Pulumi.Databricks.Outputs
         /// for 365 days of data; a lifetime window produces no output before start_time. If unset,
         /// tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         /// full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-        /// eligible source data exists
+        /// eligible source data exists.
+        /// Not currently supported for sawtooth windows or for Features with a stream source
         /// </summary>
         public readonly string? StartTime;
         /// <summary>
@@ -42,6 +47,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowResult(
+            Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousResult? continuous,
+
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingResult? rolling,
 
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothResult? sawtooth,
@@ -52,6 +59,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingResult? tumbling)
         {
+            Continuous = continuous;
             Rolling = rolling;
             Sawtooth = sawtooth;
             Sliding = sliding;

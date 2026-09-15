@@ -22,17 +22,22 @@ __all__ = ['FeatureEngineeringMaterializedFeatureArgs', 'FeatureEngineeringMater
 class FeatureEngineeringMaterializedFeatureArgs:
     def __init__(__self__, *,
                  feature_name: pulumi.Input[_builtins.str],
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs']] = None,
                  offline_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
                  online_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
                  pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']] = None,
                  streaming_mode: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureStreamingModeArgs']] = None,
-                 table_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureTableTriggerArgs']] = None):
+                 table_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureTableTriggerArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
 
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
+        :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the budget policy used to attribute the serverless compute cost of this
+               materialization. If not specified, a default budget policy may be applied
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs'] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs'] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs'] online_store_config: Destination for writing feature values to an online Lakebase table
@@ -43,8 +48,19 @@ class FeatureEngineeringMaterializedFeatureArgs:
                sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
                for ETL and analytics workloads
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureTableTriggerArgs'] table_trigger: A trigger that fires when the upstream source table changes
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Custom tags to associate with this materialization. They are applied to the materialization
+               job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+               compute as cluster tags, so materialization cost can be attributed in the billing system
+               tables. These tags apply only to the materialization compute; they are not applied to the
+               Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+               Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+               same limitations as cluster tags
         """
         pulumi.set(__self__, "feature_name", feature_name)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
+        if cron_schedule is not None:
+            pulumi.set(__self__, "cron_schedule", cron_schedule)
         if cron_schedule_trigger is not None:
             pulumi.set(__self__, "cron_schedule_trigger", cron_schedule_trigger)
         if offline_store_config is not None:
@@ -59,6 +75,8 @@ class FeatureEngineeringMaterializedFeatureArgs:
             pulumi.set(__self__, "streaming_mode", streaming_mode)
         if table_trigger is not None:
             pulumi.set(__self__, "table_trigger", table_trigger)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="featureName")
@@ -71,6 +89,28 @@ class FeatureEngineeringMaterializedFeatureArgs:
     @feature_name.setter
     def feature_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "feature_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the budget policy used to attribute the serverless compute cost of this
+        materialization. If not specified, a default budget policy may be applied
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "budget_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "cron_schedule")
+
+    @cron_schedule.setter
+    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="cronScheduleTrigger")
@@ -159,14 +199,35 @@ class FeatureEngineeringMaterializedFeatureArgs:
     def table_trigger(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureTableTriggerArgs']]):
         pulumi.set(self, "table_trigger", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Custom tags to associate with this materialization. They are applied to the materialization
+        job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+        compute as cluster tags, so materialization cost can be attributed in the billing system
+        tables. These tags apply only to the materialization compute; they are not applied to the
+        Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+        Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+        same limitations as cluster tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _FeatureEngineeringMaterializedFeatureState:
     def __init__(__self__, *,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs']] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_online: pulumi.Input[Optional[_builtins.bool]] = None,
                  last_materialization_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_backfill_operation: pulumi.Input[Optional[_builtins.str]] = None,
                  materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
                  offline_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
                  online_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
@@ -174,15 +235,19 @@ class _FeatureEngineeringMaterializedFeatureState:
                  provider_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']] = None,
                  streaming_mode: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureStreamingModeArgs']] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 table_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureTableTriggerArgs']] = None):
+                 table_trigger: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureTableTriggerArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
 
+        :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the budget policy used to attribute the serverless compute cost of this
+               materialization. If not specified, a default budget policy may be applied
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs'] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
+        :param pulumi.Input[_builtins.str] latest_backfill_operation: (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
         :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Server-assigned unique identifier for the materialized feature
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs'] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs'] online_store_config: Destination for writing feature values to an online Lakebase table
@@ -194,7 +259,18 @@ class _FeatureEngineeringMaterializedFeatureState:
                for ETL and analytics workloads
         :param pulumi.Input[_builtins.str] table_name: (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureTableTriggerArgs'] table_trigger: A trigger that fires when the upstream source table changes
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Custom tags to associate with this materialization. They are applied to the materialization
+               job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+               compute as cluster tags, so materialization cost can be attributed in the billing system
+               tables. These tags apply only to the materialization compute; they are not applied to the
+               Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+               Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+               same limitations as cluster tags
         """
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
+        if cron_schedule is not None:
+            pulumi.set(__self__, "cron_schedule", cron_schedule)
         if cron_schedule_trigger is not None:
             pulumi.set(__self__, "cron_schedule_trigger", cron_schedule_trigger)
         if feature_name is not None:
@@ -203,6 +279,8 @@ class _FeatureEngineeringMaterializedFeatureState:
             pulumi.set(__self__, "is_online", is_online)
         if last_materialization_time is not None:
             pulumi.set(__self__, "last_materialization_time", last_materialization_time)
+        if latest_backfill_operation is not None:
+            pulumi.set(__self__, "latest_backfill_operation", latest_backfill_operation)
         if materialized_feature_id is not None:
             pulumi.set(__self__, "materialized_feature_id", materialized_feature_id)
         if offline_store_config is not None:
@@ -219,6 +297,30 @@ class _FeatureEngineeringMaterializedFeatureState:
             pulumi.set(__self__, "table_name", table_name)
         if table_trigger is not None:
             pulumi.set(__self__, "table_trigger", table_trigger)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the budget policy used to attribute the serverless compute cost of this
+        materialization. If not specified, a default budget policy may be applied
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "budget_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "cron_schedule")
+
+    @cron_schedule.setter
+    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="cronScheduleTrigger")
@@ -268,6 +370,18 @@ class _FeatureEngineeringMaterializedFeatureState:
     @last_materialization_time.setter
     def last_materialization_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_materialization_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestBackfillOperation")
+    def latest_backfill_operation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+        """
+        return pulumi.get(self, "latest_backfill_operation")
+
+    @latest_backfill_operation.setter
+    def latest_backfill_operation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_backfill_operation", value)
 
     @_builtins.property
     @pulumi.getter(name="materializedFeatureId")
@@ -368,6 +482,24 @@ class _FeatureEngineeringMaterializedFeatureState:
     def table_trigger(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureTableTriggerArgs']]):
         pulumi.set(self, "table_trigger", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Custom tags to associate with this materialization. They are applied to the materialization
+        job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+        compute as cluster tags, so materialization cost can be attributed in the billing system
+        tables. These tags apply only to the materialization compute; they are not applied to the
+        Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+        Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+        same limitations as cluster tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.type_token("databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature")
 class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
@@ -375,6 +507,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
                  offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
@@ -383,6 +517,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
                  streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']]] = None,
                  table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -390,6 +525,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the budget policy used to attribute the serverless compute cost of this
+               materialization. If not specified, a default budget policy may be applied
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']] offline_store_config: Destination for writing feature values to an offline Delta table
@@ -401,6 +538,13 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
                for ETL and analytics workloads
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']] table_trigger: A trigger that fires when the upstream source table changes
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Custom tags to associate with this materialization. They are applied to the materialization
+               job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+               compute as cluster tags, so materialization cost can be attributed in the billing system
+               tables. These tags apply only to the materialization compute; they are not applied to the
+               Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+               Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+               same limitations as cluster tags
         """
         ...
     @overload
@@ -427,6 +571,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
                  offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
@@ -435,6 +581,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
                  streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']]] = None,
                  table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -444,6 +591,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureEngineeringMaterializedFeatureArgs.__new__(FeatureEngineeringMaterializedFeatureArgs)
 
+            __props__.__dict__["budget_policy_id"] = budget_policy_id
+            __props__.__dict__["cron_schedule"] = cron_schedule
             __props__.__dict__["cron_schedule_trigger"] = cron_schedule_trigger
             if feature_name is None and not opts.urn:
                 raise TypeError("Missing required property 'feature_name'")
@@ -454,8 +603,10 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["streaming_mode"] = streaming_mode
             __props__.__dict__["table_trigger"] = table_trigger
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["is_online"] = None
             __props__.__dict__["last_materialization_time"] = None
+            __props__.__dict__["latest_backfill_operation"] = None
             __props__.__dict__["materialized_feature_id"] = None
             __props__.__dict__["table_name"] = None
         super(FeatureEngineeringMaterializedFeature, __self__).__init__(
@@ -468,10 +619,13 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
             cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
             feature_name: pulumi.Input[Optional[_builtins.str]] = None,
             is_online: pulumi.Input[Optional[_builtins.bool]] = None,
             last_materialization_time: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_backfill_operation: pulumi.Input[Optional[_builtins.str]] = None,
             materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
             offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
             online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
@@ -479,7 +633,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
             provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
             streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']]] = None,
             table_name: pulumi.Input[Optional[_builtins.str]] = None,
-            table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']]] = None) -> 'FeatureEngineeringMaterializedFeature':
+            table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'FeatureEngineeringMaterializedFeature':
         """
         Get an existing FeatureEngineeringMaterializedFeature resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -487,11 +642,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the budget policy used to attribute the serverless compute cost of this
+               materialization. If not specified, a default budget policy may be applied
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
+        :param pulumi.Input[_builtins.str] latest_backfill_operation: (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
         :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Server-assigned unique identifier for the materialized feature
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']] online_store_config: Destination for writing feature values to an online Lakebase table
@@ -503,15 +661,25 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                for ETL and analytics workloads
         :param pulumi.Input[_builtins.str] table_name: (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']] table_trigger: A trigger that fires when the upstream source table changes
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Custom tags to associate with this materialization. They are applied to the materialization
+               job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+               compute as cluster tags, so materialization cost can be attributed in the billing system
+               tables. These tags apply only to the materialization compute; they are not applied to the
+               Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+               Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+               same limitations as cluster tags
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _FeatureEngineeringMaterializedFeatureState.__new__(_FeatureEngineeringMaterializedFeatureState)
 
+        __props__.__dict__["budget_policy_id"] = budget_policy_id
+        __props__.__dict__["cron_schedule"] = cron_schedule
         __props__.__dict__["cron_schedule_trigger"] = cron_schedule_trigger
         __props__.__dict__["feature_name"] = feature_name
         __props__.__dict__["is_online"] = is_online
         __props__.__dict__["last_materialization_time"] = last_materialization_time
+        __props__.__dict__["latest_backfill_operation"] = latest_backfill_operation
         __props__.__dict__["materialized_feature_id"] = materialized_feature_id
         __props__.__dict__["offline_store_config"] = offline_store_config
         __props__.__dict__["online_store_config"] = online_store_config
@@ -520,7 +688,22 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         __props__.__dict__["streaming_mode"] = streaming_mode
         __props__.__dict__["table_name"] = table_name
         __props__.__dict__["table_trigger"] = table_trigger
+        __props__.__dict__["tags"] = tags
         return FeatureEngineeringMaterializedFeature(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the budget policy used to attribute the serverless compute cost of this
+        materialization. If not specified, a default budget policy may be applied
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "cron_schedule")
 
     @_builtins.property
     @pulumi.getter(name="cronScheduleTrigger")
@@ -554,6 +737,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         If the pipeline has not run yet, this field will be null
         """
         return pulumi.get(self, "last_materialization_time")
+
+    @_builtins.property
+    @pulumi.getter(name="latestBackfillOperation")
+    def latest_backfill_operation(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+        """
+        return pulumi.get(self, "latest_backfill_operation")
 
     @_builtins.property
     @pulumi.getter(name="materializedFeatureId")
@@ -621,4 +812,18 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         A trigger that fires when the upstream source table changes
         """
         return pulumi.get(self, "table_trigger")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Custom tags to associate with this materialization. They are applied to the materialization
+        job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+        compute as cluster tags, so materialization cost can be attributed in the billing system
+        tables. These tags apply only to the materialization compute; they are not applied to the
+        Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+        Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+        same limitations as cluster tags
+        """
+        return pulumi.get(self, "tags")
 

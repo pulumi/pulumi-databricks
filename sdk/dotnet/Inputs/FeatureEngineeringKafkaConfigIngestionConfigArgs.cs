@@ -26,6 +26,13 @@ namespace Pulumi.Databricks.Inputs
         [Input("backfillSource")]
         public Input<Inputs.FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceArgs>? BackfillSource { get; set; }
 
+        /// <summary>
+        /// The ID of the budget policy used to attribute the serverless compute cost of this stream's
+        /// managed ingestion. If not specified, a default budget policy may be applied
+        /// </summary>
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
         [Input("deduplicationColumns")]
         private InputList<string>? _deduplicationColumns;
 
@@ -60,6 +67,24 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("ingestionPipelineId")]
         public Input<string>? IngestionPipelineId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Custom tags to associate with this stream's managed ingestion. They are applied to the
+        /// ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+        /// compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+        /// These tags apply only to the managed ingestion compute; they are not applied to the Stream
+        /// entity itself, and are distinct from any Unity Catalog tags on the Stream.
+        /// A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+        /// cluster tags
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public FeatureEngineeringKafkaConfigIngestionConfigArgs()
         {

@@ -19,9 +19,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("freshnessTarget")]
         public Input<string>? FreshnessTarget { get; set; }
 
-        /// <summary>
-        /// The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
-        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 

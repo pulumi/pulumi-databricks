@@ -21,15 +21,14 @@ public final class GetAiGatewayModelServicesModelService {
      */
     private String comment;
     /**
-     * @return (ModelServiceConfig) - Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * @return (ModelServiceConfig) - Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      * 
      */
     private GetAiGatewayModelServicesModelServiceConfig config;
     /**
-     * @return (string) - When the model service was created
+     * @return (string) - Time the model service was created
      * 
      */
     private String createTime;
@@ -39,17 +38,15 @@ public final class GetAiGatewayModelServicesModelService {
      */
     private String createdBy;
     /**
-     * @return (string) - The resolved owner of the ModelService. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the model service
      * 
      */
     private String effectiveOwner;
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     private String etag;
@@ -64,24 +61,20 @@ public final class GetAiGatewayModelServicesModelService {
      */
     private String name;
     /**
-     * @return (string) - The owner of the model service. Write-only; read owner via effective_owner
-     * 
-     */
-    private String owner;
-    /**
      * @return Configure the provider for management through account provider.
      * 
      */
     private @Nullable GetAiGatewayModelServicesModelServiceProviderConfig providerConfig;
     /**
-     * @return (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-     * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+     * @return (list of string) - API types supported across this service&#39;s destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      * 
      */
     private List<String> supportedApiTypes;
     /**
-     * @return (string) - When the model service was last modified
+     * @return (string) - Time the model service was last modified
      * 
      */
     private String updateTime;
@@ -100,17 +93,16 @@ public final class GetAiGatewayModelServicesModelService {
         return this.comment;
     }
     /**
-     * @return (ModelServiceConfig) - Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * @return (ModelServiceConfig) - Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      * 
      */
     public GetAiGatewayModelServicesModelServiceConfig config() {
         return this.config;
     }
     /**
-     * @return (string) - When the model service was created
+     * @return (string) - Time the model service was created
      * 
      */
     public String createTime() {
@@ -124,19 +116,17 @@ public final class GetAiGatewayModelServicesModelService {
         return this.createdBy;
     }
     /**
-     * @return (string) - The resolved owner of the ModelService. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the model service
      * 
      */
     public String effectiveOwner() {
         return this.effectiveOwner;
     }
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     public String etag() {
@@ -157,13 +147,6 @@ public final class GetAiGatewayModelServicesModelService {
         return this.name;
     }
     /**
-     * @return (string) - The owner of the model service. Write-only; read owner via effective_owner
-     * 
-     */
-    public String owner() {
-        return this.owner;
-    }
-    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -171,8 +154,9 @@ public final class GetAiGatewayModelServicesModelService {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-     * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+     * @return (list of string) - API types supported across this service&#39;s destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      * 
      */
@@ -180,7 +164,7 @@ public final class GetAiGatewayModelServicesModelService {
         return this.supportedApiTypes;
     }
     /**
-     * @return (string) - When the model service was last modified
+     * @return (string) - Time the model service was last modified
      * 
      */
     public String updateTime() {
@@ -211,7 +195,6 @@ public final class GetAiGatewayModelServicesModelService {
         private String etag;
         private String metastoreId;
         private String name;
-        private String owner;
         private @Nullable GetAiGatewayModelServicesModelServiceProviderConfig providerConfig;
         private List<String> supportedApiTypes;
         private String updateTime;
@@ -227,7 +210,6 @@ public final class GetAiGatewayModelServicesModelService {
     	      this.etag = defaults.etag;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
-    	      this.owner = defaults.owner;
     	      this.providerConfig = defaults.providerConfig;
     	      this.supportedApiTypes = defaults.supportedApiTypes;
     	      this.updateTime = defaults.updateTime;
@@ -299,14 +281,6 @@ public final class GetAiGatewayModelServicesModelService {
             return this;
         }
         @CustomType.Setter
-        public Builder owner(String owner) {
-            if (owner == null) {
-              throw new MissingRequiredPropertyException("GetAiGatewayModelServicesModelService", "owner");
-            }
-            this.owner = owner;
-            return this;
-        }
-        @CustomType.Setter
         public Builder providerConfig(@Nullable GetAiGatewayModelServicesModelServiceProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -349,7 +323,6 @@ public final class GetAiGatewayModelServicesModelService {
             _resultValue.etag = etag;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;
-            _resultValue.owner = owner;
             _resultValue.providerConfig = providerConfig;
             _resultValue.supportedApiTypes = supportedApiTypes;
             _resultValue.updateTime = updateTime;

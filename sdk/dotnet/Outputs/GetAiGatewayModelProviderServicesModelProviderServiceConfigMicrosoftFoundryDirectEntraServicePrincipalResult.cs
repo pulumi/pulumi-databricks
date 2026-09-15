@@ -18,8 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supplied as inline plaintext via
-        /// `ProviderSecret.plaintext`
+        /// (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supply the value in `client_secret.plaintext`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretResult? ClientSecret;
         /// <summary>
