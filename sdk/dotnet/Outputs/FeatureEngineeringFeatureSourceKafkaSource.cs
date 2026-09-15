@@ -13,20 +13,28 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureSourceKafkaSource
     {
+        public readonly ImmutableArray<Outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> EntityColumnIdentifiers;
         public readonly string? FilterCondition;
         /// <summary>
         /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier? TimeseriesColumnIdentifier;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureSourceKafkaSource(
+            ImmutableArray<Outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers,
+
             string? filterCondition,
 
-            string name)
+            string name,
+
+            Outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier? timeseriesColumnIdentifier)
         {
+            EntityColumnIdentifiers = entityColumnIdentifiers;
             FilterCondition = filterCondition;
             Name = name;
+            TimeseriesColumnIdentifier = timeseriesColumnIdentifier;
         }
     }
 }

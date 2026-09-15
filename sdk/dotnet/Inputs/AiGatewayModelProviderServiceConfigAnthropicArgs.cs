@@ -16,10 +16,9 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.AiGatewayModelProviderServiceConfigAnthropicDirectArgs>? Direct { get; set; }
 
         /// <summary>
-        /// Relayed (credential-less) form: no Anthropic credential is stored. Each
-        /// inference request instead carries the caller's own OAuth token, which the
-        /// platform forwards to Anthropic on outbound requests. Mutually exclusive
-        /// with `Direct`; no `ApiKey` is required or persisted
+        /// Relayed authentication. Each inference request supplies the caller's
+        /// OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+        /// stored. Mutually exclusive with `Direct`
         /// </summary>
         [Input("relayed")]
         public Input<Inputs.AiGatewayModelProviderServiceConfigAnthropicRelayedArgs>? Relayed { get; set; }

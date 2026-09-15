@@ -13,11 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AppActiveDeploymentGitSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        /// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `True`, since automatic deployment tracks pushes to a branch.
         /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
 
+        /// <summary>
+        /// Git commit SHA to check out and deploy from.
+        /// </summary>
         [Input("commit")]
         public Input<string>? Commit { get; set; }
 
@@ -31,11 +34,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? ResolvedCommit { get; set; }
 
         /// <summary>
-        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// Path to the app source code within the repository. Defaults to the repository root.
         /// </summary>
         [Input("sourceCodePath")]
         public Input<string>? SourceCodePath { get; set; }
 
+        /// <summary>
+        /// Git tag to check out and deploy from.
+        /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 

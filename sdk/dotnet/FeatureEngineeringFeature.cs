@@ -45,6 +45,9 @@ namespace Pulumi.Databricks
         [Output("entities")]
         public Output<ImmutableArray<Outputs.FeatureEngineeringFeatureEntity>> Entities { get; private set; } = null!;
 
+        [Output("filterCondition")]
+        public Output<string?> FilterCondition { get; private set; } = null!;
+
         /// <summary>
         /// The full three-part name (catalog, schema, name) of the feature. This is the
         /// feature's resource identifier; the catalog_name, schema_name, and name fields
@@ -58,6 +61,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("function")]
         public Output<Outputs.FeatureEngineeringFeatureFunction> Function { get; private set; } = null!;
+
+        [Output("inputs")]
+        public Output<ImmutableArray<string>> Inputs { get; private set; } = null!;
 
         /// <summary>
         /// Lineage context information for this feature.
@@ -92,6 +98,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("source")]
         public Output<Outputs.FeatureEngineeringFeatureSource> Source { get; private set; } = null!;
+
+        [Output("timeWindow")]
+        public Output<Outputs.FeatureEngineeringFeatureTimeWindow?> TimeWindow { get; private set; } = null!;
 
         /// <summary>
         /// Column recording time, used for point-in-time joins, backfills, and aggregations
@@ -163,6 +172,9 @@ namespace Pulumi.Databricks
             set => _entities = value;
         }
 
+        [Input("filterCondition")]
+        public Input<string>? FilterCondition { get; set; }
+
         /// <summary>
         /// The full three-part name (catalog, schema, name) of the feature. This is the
         /// feature's resource identifier; the catalog_name, schema_name, and name fields
@@ -176,6 +188,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("function", required: true)]
         public Input<Inputs.FeatureEngineeringFeatureFunctionArgs> Function { get; set; } = null!;
+
+        [Input("inputs")]
+        private InputList<string>? _inputs;
+        public InputList<string> Inputs
+        {
+            get => _inputs ?? (_inputs = new InputList<string>());
+            set => _inputs = value;
+        }
 
         /// <summary>
         /// Lineage context information for this feature.
@@ -198,6 +218,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("source", required: true)]
         public Input<Inputs.FeatureEngineeringFeatureSourceArgs> Source { get; set; } = null!;
+
+        [Input("timeWindow")]
+        public Input<Inputs.FeatureEngineeringFeatureTimeWindowArgs>? TimeWindow { get; set; }
 
         /// <summary>
         /// Column recording time, used for point-in-time joins, backfills, and aggregations
@@ -249,6 +272,9 @@ namespace Pulumi.Databricks
             set => _entities = value;
         }
 
+        [Input("filterCondition")]
+        public Input<string>? FilterCondition { get; set; }
+
         /// <summary>
         /// The full three-part name (catalog, schema, name) of the feature. This is the
         /// feature's resource identifier; the catalog_name, schema_name, and name fields
@@ -262,6 +288,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("function")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionGetArgs>? Function { get; set; }
+
+        [Input("inputs")]
+        private InputList<string>? _inputs;
+        public InputList<string> Inputs
+        {
+            get => _inputs ?? (_inputs = new InputList<string>());
+            set => _inputs = value;
+        }
 
         /// <summary>
         /// Lineage context information for this feature.
@@ -296,6 +330,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("source")]
         public Input<Inputs.FeatureEngineeringFeatureSourceGetArgs>? Source { get; set; }
+
+        [Input("timeWindow")]
+        public Input<Inputs.FeatureEngineeringFeatureTimeWindowGetArgs>? TimeWindow { get; set; }
 
         /// <summary>
         /// Column recording time, used for point-in-time joins, backfills, and aggregations

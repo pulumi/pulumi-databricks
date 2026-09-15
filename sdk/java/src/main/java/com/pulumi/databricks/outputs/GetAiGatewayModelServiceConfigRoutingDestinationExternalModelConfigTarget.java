@@ -20,11 +20,10 @@ public final class GetAiGatewayModelServiceConfigRoutingDestinationExternalModel
      */
     private String model;
     /**
-     * @return (list of string) - Provider-native API types the model supports (e.g.
-     * &#34;openai/v1/chat/completions&#34;). Used by the platform for request/response
-     * translation from the unified API type. At most 64 entries of at most 256
-     * characters each; the list is persisted into the destination binding&#39;s
-     * bounded storage envelope
+     * @return (list of string) - Provider-native API types supported by this model, such as
+     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
+     * uses these values to translate requests and responses. At most 64 entries
+     * of 256 characters each are allowed
      * 
      */
     private @Nullable List<String> nativeApiTypes;
@@ -40,11 +39,10 @@ public final class GetAiGatewayModelServiceConfigRoutingDestinationExternalModel
         return this.model;
     }
     /**
-     * @return (list of string) - Provider-native API types the model supports (e.g.
-     * &#34;openai/v1/chat/completions&#34;). Used by the platform for request/response
-     * translation from the unified API type. At most 64 entries of at most 256
-     * characters each; the list is persisted into the destination binding&#39;s
-     * bounded storage envelope
+     * @return (list of string) - Provider-native API types supported by this model, such as
+     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
+     * uses these values to translate requests and responses. At most 64 entries
+     * of 256 characters each are allowed
      * 
      */
     public List<String> nativeApiTypes() {

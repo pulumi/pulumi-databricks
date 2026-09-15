@@ -35,18 +35,18 @@ public final class GetAiGatewayMcpServicesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Name of the parent schema to list within, as
-     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-     * characters individually
+     * Parent schema to list within, in the form
+     * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+     * 255 characters individually
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return Name of the parent schema to list within, as
-     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-     * characters individually
+     * @return Parent schema to list within, in the form
+     * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+     * 255 characters individually
      * 
      */
     public Optional<Output<String>> parent() {
@@ -69,18 +69,18 @@ public final class GetAiGatewayMcpServicesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * View selector controlling which fields are populated per row. `FULL`
-     * returns the full representation of the service; `BASIC` returns a more
-     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+     * Fields to return for each service. `FULL` includes source-connection
+     * details and rate-limit principal names. `BASIC` omits the source connection
+     * and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      * 
      */
     @Import(name="view")
     private @Nullable Output<String> view;
 
     /**
-     * @return View selector controlling which fields are populated per row. `FULL`
-     * returns the full representation of the service; `BASIC` returns a more
-     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+     * @return Fields to return for each service. `FULL` includes source-connection
+     * details and rate-limit principal names. `BASIC` omits the source connection
+     * and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      * 
      */
     public Optional<Output<String>> view() {
@@ -138,9 +138,9 @@ public final class GetAiGatewayMcpServicesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param parent Name of the parent schema to list within, as
-         * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-         * characters individually
+         * @param parent Parent schema to list within, in the form
+         * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+         * 255 characters individually
          * 
          * @return builder
          * 
@@ -151,9 +151,9 @@ public final class GetAiGatewayMcpServicesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param parent Name of the parent schema to list within, as
-         * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-         * characters individually
+         * @param parent Parent schema to list within, in the form
+         * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+         * 255 characters individually
          * 
          * @return builder
          * 
@@ -184,9 +184,9 @@ public final class GetAiGatewayMcpServicesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param view View selector controlling which fields are populated per row. `FULL`
-         * returns the full representation of the service; `BASIC` returns a more
-         * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+         * @param view Fields to return for each service. `FULL` includes source-connection
+         * details and rate-limit principal names. `BASIC` omits the source connection
+         * and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
          * 
          * @return builder
          * 
@@ -197,9 +197,9 @@ public final class GetAiGatewayMcpServicesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param view View selector controlling which fields are populated per row. `FULL`
-         * returns the full representation of the service; `BASIC` returns a more
-         * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+         * @param view Fields to return for each service. `FULL` includes source-connection
+         * details and rate-limit principal names. `BASIC` omits the source connection
+         * and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
          * 
          * @return builder
          * 

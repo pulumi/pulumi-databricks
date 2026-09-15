@@ -408,6 +408,31 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Secret grants
+    /// 
+    /// See databricks.Grants Secret grants for the list of privileges that apply to Secrets.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret = new Databricks.Grant("secret", new()
+    ///     {
+    ///         Secret = "main.default.my_secret",
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "READ_SECRET",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Model service grants
     /// 
     /// See databricks.Grants Model service grants for the list of privileges that apply to model services.
@@ -755,6 +780,9 @@ namespace Pulumi.Databricks
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
+        [Output("secret")]
+        public Output<string?> Secret { get; private set; } = null!;
+
         [Output("share")]
         public Output<string?> Share { get; private set; } = null!;
 
@@ -866,6 +894,9 @@ namespace Pulumi.Databricks
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
+
         [Input("share")]
         public Input<string>? Share { get; set; }
 
@@ -938,6 +969,9 @@ namespace Pulumi.Databricks
 
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
 
         [Input("share")]
         public Input<string>? Share { get; set; }

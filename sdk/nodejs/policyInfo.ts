@@ -120,6 +120,12 @@ export class PolicyInfo extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
+     * Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     */
+    declare public readonly deny: pulumi.Output<outputs.PolicyInfoDeny | undefined>;
+    /**
      * Optional list of user or group names that should be excluded from the policy
      */
     declare public readonly exceptPrincipals: pulumi.Output<string[] | undefined>;
@@ -157,7 +163,7 @@ export class PolicyInfo extends pulumi.CustomResource {
      */
     declare public readonly onSecurableType: pulumi.Output<string | undefined>;
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      */
     declare public readonly policyType: pulumi.Output<string>;
     /**
@@ -205,6 +211,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["comment"] = state?.comment;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["deny"] = state?.deny;
             resourceInputs["exceptPrincipals"] = state?.exceptPrincipals;
             resourceInputs["forSecurableType"] = state?.forSecurableType;
             resourceInputs["grant"] = state?.grant;
@@ -232,6 +239,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             }
             resourceInputs["columnMask"] = args?.columnMask;
             resourceInputs["comment"] = args?.comment;
+            resourceInputs["deny"] = args?.deny;
             resourceInputs["exceptPrincipals"] = args?.exceptPrincipals;
             resourceInputs["forSecurableType"] = args?.forSecurableType;
             resourceInputs["grant"] = args?.grant;
@@ -277,6 +285,12 @@ export interface PolicyInfoState {
      */
     createdBy?: pulumi.Input<string | undefined>;
     /**
+     * Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     */
+    deny?: pulumi.Input<inputs.PolicyInfoDeny | undefined>;
+    /**
      * Optional list of user or group names that should be excluded from the policy
      */
     exceptPrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -314,7 +328,7 @@ export interface PolicyInfoState {
      */
     onSecurableType?: pulumi.Input<string | undefined>;
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      */
     policyType?: pulumi.Input<string | undefined>;
     /**
@@ -361,6 +375,12 @@ export interface PolicyInfoArgs {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
+     * Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     */
+    deny?: pulumi.Input<inputs.PolicyInfoDeny | undefined>;
+    /**
      * Optional list of user or group names that should be excluded from the policy
      */
     exceptPrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -398,7 +418,7 @@ export interface PolicyInfoArgs {
      */
     onSecurableType?: pulumi.Input<string | undefined>;
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      */
     policyType: pulumi.Input<string>;
     /**

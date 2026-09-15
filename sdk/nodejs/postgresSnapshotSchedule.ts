@@ -45,6 +45,10 @@ export class PostgresSnapshotSchedule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * The resource name of the parent
+     */
+    declare public readonly parent: pulumi.Output<string>;
+    /**
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresSnapshotScheduleProviderConfig>;
@@ -63,17 +67,22 @@ export class PostgresSnapshotSchedule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: PostgresSnapshotScheduleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: PostgresSnapshotScheduleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PostgresSnapshotScheduleArgs | PostgresSnapshotScheduleState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PostgresSnapshotScheduleState | undefined;
             resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schedules"] = state?.schedules;
         } else {
             const args = argsOrState as PostgresSnapshotScheduleArgs | undefined;
+            if (args?.parent === undefined && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schedules"] = args?.schedules;
             resourceInputs["name"] = undefined /*out*/;
@@ -93,6 +102,10 @@ export interface PostgresSnapshotScheduleState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * The resource name of the parent
+     */
+    parent?: pulumi.Input<string | undefined>;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.PostgresSnapshotScheduleProviderConfig | undefined>;
@@ -109,6 +122,10 @@ export interface PostgresSnapshotScheduleState {
  * The set of arguments for constructing a PostgresSnapshotSchedule resource.
  */
 export interface PostgresSnapshotScheduleArgs {
+    /**
+     * The resource name of the parent
+     */
+    parent: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider.
      */

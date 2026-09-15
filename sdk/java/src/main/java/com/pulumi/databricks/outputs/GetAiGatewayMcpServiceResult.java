@@ -20,15 +20,14 @@ public final class GetAiGatewayMcpServiceResult {
      */
     private String comment;
     /**
-     * @return (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * @return (McpServiceConfig) - Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      * 
      */
     private GetAiGatewayMcpServiceConfig config;
     /**
-     * @return (string) - When the MCP service was created
+     * @return (string) - Time the MCP service was created
      * 
      */
     private String createTime;
@@ -38,17 +37,15 @@ public final class GetAiGatewayMcpServiceResult {
      */
     private String createdBy;
     /**
-     * @return (string) - The resolved owner of the MCP service. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the MCP service
      * 
      */
     private String effectiveOwner;
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     private String etag;
@@ -58,19 +55,14 @@ public final class GetAiGatewayMcpServiceResult {
      */
     private String metastoreId;
     /**
-     * @return (string) - Name of the UC connection that hosts the MCP server, as
-     * `connections/{catalog}.{schema}.{connection}`
+     * @return (string) - Resource name of the Unity Catalog connection used to access the MCP
+     * server, in the form `connections/{catalog}.{schema}.{connection}`
      * 
      */
     private String name;
-    /**
-     * @return (string) - The owner of the MCP service. Write-only; read owner via effective_owner
-     * 
-     */
-    private String owner;
     private @Nullable GetAiGatewayMcpServiceProviderConfig providerConfig;
     /**
-     * @return (string) - When the MCP service was last modified
+     * @return (string) - Time the MCP service was last modified
      * 
      */
     private String updateTime;
@@ -89,17 +81,16 @@ public final class GetAiGatewayMcpServiceResult {
         return this.comment;
     }
     /**
-     * @return (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * @return (McpServiceConfig) - Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      * 
      */
     public GetAiGatewayMcpServiceConfig config() {
         return this.config;
     }
     /**
-     * @return (string) - When the MCP service was created
+     * @return (string) - Time the MCP service was created
      * 
      */
     public String createTime() {
@@ -113,19 +104,17 @@ public final class GetAiGatewayMcpServiceResult {
         return this.createdBy;
     }
     /**
-     * @return (string) - The resolved owner of the MCP service. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the MCP service
      * 
      */
     public String effectiveOwner() {
         return this.effectiveOwner;
     }
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     public String etag() {
@@ -139,25 +128,18 @@ public final class GetAiGatewayMcpServiceResult {
         return this.metastoreId;
     }
     /**
-     * @return (string) - Name of the UC connection that hosts the MCP server, as
-     * `connections/{catalog}.{schema}.{connection}`
+     * @return (string) - Resource name of the Unity Catalog connection used to access the MCP
+     * server, in the form `connections/{catalog}.{schema}.{connection}`
      * 
      */
     public String name() {
         return this.name;
     }
-    /**
-     * @return (string) - The owner of the MCP service. Write-only; read owner via effective_owner
-     * 
-     */
-    public String owner() {
-        return this.owner;
-    }
     public Optional<GetAiGatewayMcpServiceProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string) - When the MCP service was last modified
+     * @return (string) - Time the MCP service was last modified
      * 
      */
     public String updateTime() {
@@ -188,7 +170,6 @@ public final class GetAiGatewayMcpServiceResult {
         private String etag;
         private String metastoreId;
         private String name;
-        private String owner;
         private @Nullable GetAiGatewayMcpServiceProviderConfig providerConfig;
         private String updateTime;
         private String updatedBy;
@@ -203,7 +184,6 @@ public final class GetAiGatewayMcpServiceResult {
     	      this.etag = defaults.etag;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
-    	      this.owner = defaults.owner;
     	      this.providerConfig = defaults.providerConfig;
     	      this.updateTime = defaults.updateTime;
     	      this.updatedBy = defaults.updatedBy;
@@ -274,14 +254,6 @@ public final class GetAiGatewayMcpServiceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder owner(String owner) {
-            if (owner == null) {
-              throw new MissingRequiredPropertyException("GetAiGatewayMcpServiceResult", "owner");
-            }
-            this.owner = owner;
-            return this;
-        }
-        @CustomType.Setter
         public Builder providerConfig(@Nullable GetAiGatewayMcpServiceProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -313,7 +285,6 @@ public final class GetAiGatewayMcpServiceResult {
             _resultValue.etag = etag;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;
-            _resultValue.owner = owner;
             _resultValue.providerConfig = providerConfig;
             _resultValue.updateTime = updateTime;
             _resultValue.updatedBy = updatedBy;

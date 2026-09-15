@@ -123,6 +123,13 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.schema);
     }
 
+    @Import(name="secret")
+    private @Nullable Output<String> secret;
+
+    public Optional<Output<String>> secret() {
+        return Optional.ofNullable(this.secret);
+    }
+
     @Import(name="share")
     private @Nullable Output<String> share;
 
@@ -169,6 +176,7 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         this.providerConfig = $.providerConfig;
         this.recipient = $.recipient;
         this.schema = $.schema;
+        this.secret = $.secret;
         this.share = $.share;
         this.storageCredential = $.storageCredential;
         this.table = $.table;
@@ -330,6 +338,15 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder schema(String schema) {
             return schema(Output.of(schema));
+        }
+
+        public Builder secret(@Nullable Output<String> secret) {
+            $.secret = secret;
+            return this;
+        }
+
+        public Builder secret(String secret) {
+            return secret(Output.of(secret));
         }
 
         public Builder share(@Nullable Output<String> share) {

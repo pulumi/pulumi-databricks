@@ -15,43 +15,26 @@ namespace Pulumi.Databricks.Outputs
     {
         /// <summary>
         /// (list of ModelServiceConfigDestinationConfig) - Primary routing destinations. At most 10 are allowed. At least one is
-        /// required on CreateModelService; on UpdateModelService it is required only
-        /// when `config.routing` (or a `config.routing.*` subpath) appears in
-        /// `UpdateMask`
+        /// required on Create. On Update, provide this list when replacing the full
+        /// `Config` or updating `config.routing.destinations`; other granular routing
+        /// updates do not require resending destinations. The intermediate
+        /// `config.routing` mask path is not supported
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiGatewayModelServicesModelServiceConfigRoutingDestinationResult> Destinations;
         /// <summary>
-        /// (ModelServiceConfigFallbackConfig) - Fallback routing config, applied after primary destinations fail
+        /// (ModelServiceConfigFallbackConfig) - Fallback routing applied after a primary destination fails. Fallback
+        /// destinations are tried in the listed order
         /// </summary>
         public readonly Outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallbackResult? Fallback;
-        /// <summary>
-        /// (string) - Timeout for the first token of a streaming response. If a destination does
-        /// not return its first token within this duration, AI Gateway aborts the
-        /// attempt and fails over to the next destination. Applies to streaming
-        /// requests only. Leave unset for no first-token timeout
-        /// </summary>
-        public readonly string? FirstTokenTimeout;
-        /// <summary>
-        /// (ModelServiceConfigRoutingConfigTrafficSplitting) - Marker message selecting request-based traffic splitting. Traffic is
-        /// distributed according to each destination's TrafficPercentage value;
-        /// no configuration lives on this message itself
-        /// </summary>
-        public readonly Outputs.GetAiGatewayModelServicesModelServiceConfigRoutingTrafficSplittingResult? TrafficSplitting;
 
         [OutputConstructor]
         private GetAiGatewayModelServicesModelServiceConfigRoutingResult(
             ImmutableArray<Outputs.GetAiGatewayModelServicesModelServiceConfigRoutingDestinationResult> destinations,
 
-            Outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallbackResult? fallback,
-
-            string? firstTokenTimeout,
-
-            Outputs.GetAiGatewayModelServicesModelServiceConfigRoutingTrafficSplittingResult? trafficSplitting)
+            Outputs.GetAiGatewayModelServicesModelServiceConfigRoutingFallbackResult? fallback)
         {
             Destinations = destinations;
             Fallback = fallback;
-            FirstTokenTimeout = firstTokenTimeout;
-            TrafficSplitting = trafficSplitting;
         }
     }
 }

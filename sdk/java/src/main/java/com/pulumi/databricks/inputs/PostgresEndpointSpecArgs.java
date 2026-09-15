@@ -106,7 +106,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+     * Mutually exclusive with `suspendTimeoutDuration`
      * 
      */
     @Import(name="noSuspension")
@@ -115,7 +115,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+     * Mutually exclusive with `suspendTimeoutDuration`
      * 
      */
     public Optional<Output<Boolean>> noSuspension() {
@@ -299,7 +299,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         /**
          * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
          * Should be set to true when provided.
-         * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+         * Mutually exclusive with `suspendTimeoutDuration`
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         /**
          * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
          * Should be set to true when provided.
-         * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+         * Mutually exclusive with `suspendTimeoutDuration`
          * 
          * @return builder
          * 

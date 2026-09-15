@@ -7,9 +7,33 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Manages an MCP service in Unity Catalog. An MCP service governs access to an MCP server hosted through a Unity Catalog connection.
+ *
+ * The Unity Catalog connection must exist before you create the MCP service. MCP services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+ *
+ * ## Example Usage
+ *
+ * The following example registers an MCP service backed by a Unity Catalog connection:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = new databricks.AiGatewayMcpService("example", {
+ *     parent: "schemas/main.default",
+ *     mcpServiceId: "knowledge_tools",
+ *     comment: "Provides governed access to knowledge tools",
+ *     config: {
+ *         sourceConnection: {
+ *             name: "connections/main.default.mcp_connection",
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class AiGatewayMcpService extends pulumi.CustomResource {
     /**
@@ -44,14 +68,13 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     /**
-     * Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      */
     declare public readonly config: pulumi.Output<outputs.AiGatewayMcpServiceConfig | undefined>;
     /**
-     * (string) - When the MCP service was created
+     * (string) - Time the MCP service was created
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -59,16 +82,14 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
-     * (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the MCP service
      */
     declare public /*out*/ readonly effectiveOwner: pulumi.Output<string>;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -88,10 +109,6 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The owner of the MCP service. Write-only; read owner via effective_owner
-     */
-    declare public readonly owner: pulumi.Output<string>;
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -102,7 +119,7 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.AiGatewayMcpServiceProviderConfig>;
     /**
-     * (string) - When the MCP service was last modified
+     * (string) - Time the MCP service was last modified
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
@@ -132,7 +149,6 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
             resourceInputs["mcpServiceId"] = state?.mcpServiceId;
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
-            resourceInputs["owner"] = state?.owner;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -148,7 +164,6 @@ export class AiGatewayMcpService extends pulumi.CustomResource {
             resourceInputs["comment"] = args?.comment;
             resourceInputs["config"] = args?.config;
             resourceInputs["mcpServiceId"] = args?.mcpServiceId;
-            resourceInputs["owner"] = args?.owner;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -174,14 +189,13 @@ export interface AiGatewayMcpServiceState {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      */
     config?: pulumi.Input<inputs.AiGatewayMcpServiceConfig | undefined>;
     /**
-     * (string) - When the MCP service was created
+     * (string) - Time the MCP service was created
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
@@ -189,16 +203,14 @@ export interface AiGatewayMcpServiceState {
      */
     createdBy?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the MCP service
      */
     effectiveOwner?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity's state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request's `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      */
     etag?: pulumi.Input<string | undefined>;
     /**
@@ -218,10 +230,6 @@ export interface AiGatewayMcpServiceState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The owner of the MCP service. Write-only; read owner via effective_owner
-     */
-    owner?: pulumi.Input<string | undefined>;
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -232,7 +240,7 @@ export interface AiGatewayMcpServiceState {
      */
     providerConfig?: pulumi.Input<inputs.AiGatewayMcpServiceProviderConfig | undefined>;
     /**
-     * (string) - When the MCP service was last modified
+     * (string) - Time the MCP service was last modified
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
@@ -250,20 +258,15 @@ export interface AiGatewayMcpServiceArgs {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      */
     config?: pulumi.Input<inputs.AiGatewayMcpServiceConfig | undefined>;
     /**
      * Name for the MCP service, e.g. "myMcpService"
      */
     mcpServiceId: pulumi.Input<string>;
-    /**
-     * The owner of the MCP service. Write-only; read owner via effective_owner
-     */
-    owner?: pulumi.Input<string | undefined>;
     /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.

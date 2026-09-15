@@ -13,21 +13,9 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiGatewayModelProviderServiceConfigInferenceTableGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether payload logging is disabled (opt-out). Unset means that
-        /// payload logging is active (the on-by-default state coincides with the proto
-        /// zero-value, so the server never fills this field for a client that leaves it
-        /// unset). Set `disabled = true` to pause runtime logging while keeping the
-        /// sub-message attached (preserving `Parent` and `TableNamePrefix` for a
-        /// later flip back to active). `Parent` remains required either way
-        /// </summary>
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
-
-        /// <summary>
-        /// (boolean) - True when the bound inference TABLE has been deleted but the parent
-        /// service still references it. The dangling reference is surfaced (not
-        /// silently dropped) so callers can see the broken dependency. AI Gateway
-        /// payload logging fails closed in this state
+        /// (boolean) - Whether the referenced inference table has been deleted. The configuration
+        /// remains visible so you can identify the broken dependency. Payload logging
+        /// cannot continue until the table is restored or the configuration is updated
         /// </summary>
         [Input("isDeleted")]
         public Input<bool>? IsDeleted { get; set; }
@@ -48,12 +36,11 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Table { get; set; }
 
         /// <summary>
-        /// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-        /// stores is `&lt;table_name_prefix&gt;_payload`; the `_payload` suffix is appended
-        /// automatically. To find the actual UC table after Create, read the `Table`
-        /// field on the response. Defaults to `&lt;model_service_name&gt;_payload` when unset.
-        /// Set at create time and immutable thereafter; changing it on an existing
-        /// service is rejected
+        /// Prefix used to form the inference table's registered name. AI Gateway
+        /// appends `_payload`; for example, `TableNamePrefix = "orders"` creates
+        /// `OrdersPayload`. If unset, the prefix defaults to the service name. Read
+        /// `Table` from the response for the resulting resource name. After the
+        /// inference table is created, this field cannot be changed
         /// </summary>
         [Input("tableNamePrefix")]
         public Input<string>? TableNamePrefix { get; set; }

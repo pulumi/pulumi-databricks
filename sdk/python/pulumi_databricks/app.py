@@ -45,9 +45,10 @@ class AppArgs:
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
         :param pulumi.Input['AppGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        :param pulumi.Input['AppGitSourceArgs'] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
@@ -165,6 +166,9 @@ class AppArgs:
     @_builtins.property
     @pulumi.getter(name="gitSource")
     def git_source(self) -> pulumi.Input[Optional['AppGitSourceArgs']]:
+        """
+        The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+        """
         return pulumi.get(self, "git_source")
 
     @git_source.setter
@@ -217,7 +221,7 @@ class AppArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -327,6 +331,7 @@ class _AppState:
         :param pulumi.Input[_builtins.str] effective_usage_policy_id: The effective usage policy ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effective_user_api_scopes: A list of effective api scopes granted to the user access token.
         :param pulumi.Input['AppGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        :param pulumi.Input['AppGitSourceArgs'] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[_builtins.str] oauth2_app_client_id: The OAuth2 client ID of the app's integration, set when the app uses user authorization.
         :param pulumi.Input[_builtins.str] oauth2_app_integration_id: The unique ID of the OAuth2 integration associated with the app.
@@ -335,7 +340,7 @@ class _AppState:
         :param pulumi.Input[_builtins.str] service_principal_client_id: client_id (application_id) of the app service principal
         :param pulumi.Input[_builtins.int] service_principal_id: id of the app service principal
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
@@ -614,6 +619,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="gitSource")
     def git_source(self) -> pulumi.Input[Optional['AppGitSourceArgs']]:
+        """
+        The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+        """
         return pulumi.get(self, "git_source")
 
     @git_source.setter
@@ -738,7 +746,7 @@ class _AppState:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -921,9 +929,10 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
         :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        :param pulumi.Input[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
@@ -1130,6 +1139,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] effective_usage_policy_id: The effective usage policy ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effective_user_api_scopes: A list of effective api scopes granted to the user access token.
         :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        :param pulumi.Input[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[_builtins.str] oauth2_app_client_id: The OAuth2 client ID of the app's integration, set when the app uses user authorization.
         :param pulumi.Input[_builtins.str] oauth2_app_integration_id: The unique ID of the OAuth2 integration associated with the app.
@@ -1138,7 +1148,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_principal_client_id: client_id (application_id) of the app service principal
         :param pulumi.Input[_builtins.int] service_principal_id: id of the app service principal
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
@@ -1317,6 +1327,9 @@ class App(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="gitSource")
     def git_source(self) -> pulumi.Output['outputs.AppGitSource']:
+        """
+        The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+        """
         return pulumi.get(self, "git_source")
 
     @_builtins.property
@@ -1397,7 +1410,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Output[_builtins.str]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         return pulumi.get(self, "source_code_path")
 

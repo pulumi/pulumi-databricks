@@ -309,6 +309,23 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Secret grants
+ *
+ * You can grant `ALL_PRIVILEGES`, `MANAGE`, and `READ_SECRET` privileges to a Unity Catalog secret (databricks_secret_uc) specified in the `secret` attribute.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const secret = new databricks.Grants("secret", {
+ *     secret: "main.default.my_secret",
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: ["READ_SECRET"],
+ *     }],
+ * });
+ * ```
+ *
  * ## Model service grants
  *
  * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `modelService` attribute.
@@ -558,6 +575,7 @@ export class Grants extends pulumi.CustomResource {
     declare public readonly providerConfig: pulumi.Output<outputs.GrantsProviderConfig>;
     declare public readonly recipient: pulumi.Output<string | undefined>;
     declare public readonly schema: pulumi.Output<string | undefined>;
+    declare public readonly secret: pulumi.Output<string | undefined>;
     declare public readonly share: pulumi.Output<string | undefined>;
     declare public readonly storageCredential: pulumi.Output<string | undefined>;
     declare public readonly table: pulumi.Output<string | undefined>;
@@ -591,6 +609,7 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["recipient"] = state?.recipient;
             resourceInputs["schema"] = state?.schema;
+            resourceInputs["secret"] = state?.secret;
             resourceInputs["share"] = state?.share;
             resourceInputs["storageCredential"] = state?.storageCredential;
             resourceInputs["table"] = state?.table;
@@ -615,6 +634,7 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["recipient"] = args?.recipient;
             resourceInputs["schema"] = args?.schema;
+            resourceInputs["secret"] = args?.secret;
             resourceInputs["share"] = args?.share;
             resourceInputs["storageCredential"] = args?.storageCredential;
             resourceInputs["table"] = args?.table;
@@ -644,6 +664,7 @@ export interface GrantsState {
     providerConfig?: pulumi.Input<inputs.GrantsProviderConfig | undefined>;
     recipient?: pulumi.Input<string | undefined>;
     schema?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string | undefined>;
     share?: pulumi.Input<string | undefined>;
     storageCredential?: pulumi.Input<string | undefined>;
     table?: pulumi.Input<string | undefined>;
@@ -669,6 +690,7 @@ export interface GrantsArgs {
     providerConfig?: pulumi.Input<inputs.GrantsProviderConfig | undefined>;
     recipient?: pulumi.Input<string | undefined>;
     schema?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string | undefined>;
     share?: pulumi.Input<string | undefined>;
     storageCredential?: pulumi.Input<string | undefined>;
     table?: pulumi.Input<string | undefined>;

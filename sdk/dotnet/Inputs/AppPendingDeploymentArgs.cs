@@ -52,6 +52,9 @@ namespace Pulumi.Databricks.Inputs
             set => _envVars = value;
         }
 
+        /// <summary>
+        /// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `GitRepository` (see below).
+        /// </summary>
         [Input("gitSource")]
         public Input<Inputs.AppPendingDeploymentGitSourceArgs>? GitSource { get; set; }
 
@@ -62,7 +65,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`GitRepository`/`GitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `DefaultSourceCodePath`.
         /// </summary>
         [Input("sourceCodePath")]
         public Input<string>? SourceCodePath { get; set; }

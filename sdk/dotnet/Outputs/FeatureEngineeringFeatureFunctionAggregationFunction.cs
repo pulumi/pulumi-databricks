@@ -28,9 +28,6 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop? StddevPop;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp? StddevSamp;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionSum? Sum;
-        /// <summary>
-        /// The time window over which the aggregation is computed
-        /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow? TimeWindow;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarPop? VarPop;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp? VarSamp;

@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PolicyInfoColumnMaskArgs;
+import com.pulumi.databricks.inputs.PolicyInfoDenyArgs;
 import com.pulumi.databricks.inputs.PolicyInfoGrantArgs;
 import com.pulumi.databricks.inputs.PolicyInfoMatchColumnArgs;
 import com.pulumi.databricks.inputs.PolicyInfoProviderConfigArgs;
@@ -54,6 +55,25 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
+    }
+
+    /**
+     * Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    @Import(name="deny")
+    private @Nullable Output<PolicyInfoDenyArgs> deny;
+
+    /**
+     * @return Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    public Optional<Output<PolicyInfoDenyArgs>> deny() {
+        return Optional.ofNullable(this.deny);
     }
 
     /**
@@ -180,14 +200,14 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     @Import(name="policyType", required=true)
     private Output<String> policyType;
 
     /**
-     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public Output<String> policyType() {
@@ -265,6 +285,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     private PolicyInfoArgs(PolicyInfoArgs $) {
         this.columnMask = $.columnMask;
         this.comment = $.comment;
+        this.deny = $.deny;
         this.exceptPrincipals = $.exceptPrincipals;
         this.forSecurableType = $.forSecurableType;
         this.grant = $.grant;
@@ -341,6 +362,31 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        /**
+         * @param deny Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+         * Required on create and optional on update. When specified on update,
+         * the new options will replace the existing options as a whole
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deny(@Nullable Output<PolicyInfoDenyArgs> deny) {
+            $.deny = deny;
+            return this;
+        }
+
+        /**
+         * @param deny Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+         * Required on create and optional on update. When specified on update,
+         * the new options will replace the existing options as a whole
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deny(PolicyInfoDenyArgs deny) {
+            return deny(Output.of(deny));
         }
 
         /**
@@ -531,7 +577,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
          * 
          * @return builder
          * 
@@ -542,7 +588,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
          * 
          * @return builder
          * 

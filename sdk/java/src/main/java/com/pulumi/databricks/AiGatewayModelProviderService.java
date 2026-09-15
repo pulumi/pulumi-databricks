@@ -17,9 +17,72 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ * 
+ * Manages a Unity Catalog model provider service. A model provider service defines how model services connect to an external model provider and which provider models they can access.
+ * 
+ * Model provider services are contained in a Unity Catalog schema and governed by Unity Catalog permissions. Supply provider credentials through a sensitive variable or another secure input instead of hardcoding them in your configuration.
+ * 
+ * ## Example Usage
+ * 
+ * The following example creates a model provider service for a custom OpenAI-compatible provider. Pass `providerApiKey` through a secure input, such as the `TF_VAR_provider_api_key` environment variable.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AiGatewayModelProviderService;
+ * import com.pulumi.databricks.AiGatewayModelProviderServiceArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigTargetArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigCustomArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigCustomDirectArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var providerApiKey = config.require("providerApiKey");
+ *         var example = new AiGatewayModelProviderService("example", AiGatewayModelProviderServiceArgs.builder()
+ *             .parent("schemas/main.default")
+ *             .modelProviderServiceId("custom_provider")
+ *             .comment("Connects to a custom model provider")
+ *             .config(AiGatewayModelProviderServiceConfigArgs.builder()
+ *                 .providerType("EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM")
+ *                 .targets(AiGatewayModelProviderServiceConfigTargetArgs.builder()
+ *                     .model("chat-model")
+ *                     .nativeApiTypes("openai/v1/chat/completions")
+ *                     .build())
+ *                 .custom(AiGatewayModelProviderServiceConfigCustomArgs.builder()
+ *                     .direct(AiGatewayModelProviderServiceConfigCustomDirectArgs.builder()
+ *                         .baseUrl("https://api.example.com/v1")
+ *                         .apiKey(AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs.builder()
+ *                             .plaintext(providerApiKey)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/aiGatewayModelProviderService:AiGatewayModelProviderService")
@@ -39,34 +102,32 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.comment);
     }
     /**
-     * Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      * 
      */
     @Export(name="config", refs={AiGatewayModelProviderServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ AiGatewayModelProviderServiceConfig> config;
 
     /**
-     * @return Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * @return Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      * 
      */
     public Output<Optional<AiGatewayModelProviderServiceConfig>> config() {
         return Codegen.optional(this.config);
     }
     /**
-     * (string) - When the provider service was created
+     * (string) - Time the provider service was created
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return (string) - When the provider service was created
+     * @return (string) - Time the provider service was created
      * 
      */
     public Output<String> createTime() {
@@ -87,38 +148,34 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return this.createdBy;
     }
     /**
-     * (string) - The resolved owner of the model provider service. Falls back to the
-     * caller&#39;s identity when `owner` is not explicitly set on creation
+     * (string) - Owner of the model provider service
      * 
      */
     @Export(name="effectiveOwner", refs={String.class}, tree="[0]")
     private Output<String> effectiveOwner;
 
     /**
-     * @return (string) - The resolved owner of the model provider service. Falls back to the
-     * caller&#39;s identity when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the model provider service
      * 
      */
     public Output<String> effectiveOwner() {
         return this.effectiveOwner;
     }
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     public Output<String> etag() {
@@ -175,22 +232,6 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return this.name;
     }
     /**
-     * The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     * 
-     */
-    @Export(name="owner", refs={String.class}, tree="[0]")
-    private Output<String> owner;
-
-    /**
-     * @return The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     * 
-     */
-    public Output<String> owner() {
-        return this.owner;
-    }
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -223,14 +264,14 @@ public class AiGatewayModelProviderService extends com.pulumi.resources.CustomRe
         return this.providerConfig;
     }
     /**
-     * (string) - When the provider service was last modified
+     * (string) - Time the provider service was last modified
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return (string) - When the provider service was last modified
+     * @return (string) - Time the provider service was last modified
      * 
      */
     public Output<String> updateTime() {

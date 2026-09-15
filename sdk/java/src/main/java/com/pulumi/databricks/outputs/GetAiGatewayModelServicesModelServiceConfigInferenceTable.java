@@ -14,29 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelServicesModelServiceConfigInferenceTable {
     /**
-     * @return (boolean) - Indicates whether payload logging is disabled (opt-out). Unset means that
-     * payload logging is active (the on-by-default state coincides with the proto
-     * zero-value, so the server never fills this field for a client that leaves it
-     * unset). Set `disabled = true` to pause runtime logging while keeping the
-     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
-     * later flip back to active). `parent` remains required either way
-     * 
-     */
-    private @Nullable Boolean disabled;
-    /**
-     * @return (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-     * deleted but the destination row still references it. The dangling
-     * destination is surfaced (not silently dropped) so callers can see the
-     * broken routing. Inference traffic through this destination fails closed
-     * (BAD_REQUEST / FAILED_PRECONDITION)
+     * @return (boolean) - Whether the destination&#39;s backing model or model provider service has
+     * been deleted. The destination remains visible so you can identify the
+     * broken dependency. Requests cannot use this destination until the backing
+     * resource is restored or the destination is replaced
      * 
      */
     private Boolean isDeleted;
     /**
-     * @return Name of the parent schema to list within, as
-     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-     * characters individually
+     * @return Parent schema to list within, in the form
+     * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+     * 255 characters individually
      * 
      */
     private String parent;
@@ -47,45 +35,30 @@ public final class GetAiGatewayModelServicesModelServiceConfigInferenceTable {
      */
     private String table;
     /**
-     * @return (string) - Prefix for the inference-table&#39;s UC-registered name. The actual leaf name UC
-     * stores is `&lt;table_name_prefix&gt;_payload`; the `_payload` suffix is appended
-     * automatically. To find the actual UC table after Create, read the `table`
-     * field on the response. Defaults to `&lt;model_service_name&gt;_payload` when unset.
-     * Set at create time and immutable thereafter; changing it on an existing
-     * service is rejected
+     * @return (string) - Prefix used to form the inference table&#39;s registered name. AI Gateway
+     * appends `_payload`; for example, `tableNamePrefix = &#34;orders&#34;` creates
+     * `ordersPayload`. If unset, the prefix defaults to the service name. Read
+     * `table` from the response for the resulting resource name. After the
+     * inference table is created, this field cannot be changed
      * 
      */
     private @Nullable String tableNamePrefix;
 
     private GetAiGatewayModelServicesModelServiceConfigInferenceTable() {}
     /**
-     * @return (boolean) - Indicates whether payload logging is disabled (opt-out). Unset means that
-     * payload logging is active (the on-by-default state coincides with the proto
-     * zero-value, so the server never fills this field for a client that leaves it
-     * unset). Set `disabled = true` to pause runtime logging while keeping the
-     * sub-message attached (preserving `parent` and `tableNamePrefix` for a
-     * later flip back to active). `parent` remains required either way
-     * 
-     */
-    public Optional<Boolean> disabled() {
-        return Optional.ofNullable(this.disabled);
-    }
-    /**
-     * @return (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-     * deleted but the destination row still references it. The dangling
-     * destination is surfaced (not silently dropped) so callers can see the
-     * broken routing. Inference traffic through this destination fails closed
-     * (BAD_REQUEST / FAILED_PRECONDITION)
+     * @return (boolean) - Whether the destination&#39;s backing model or model provider service has
+     * been deleted. The destination remains visible so you can identify the
+     * broken dependency. Requests cannot use this destination until the backing
+     * resource is restored or the destination is replaced
      * 
      */
     public Boolean isDeleted() {
         return this.isDeleted;
     }
     /**
-     * @return Name of the parent schema to list within, as
-     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-     * characters individually
+     * @return Parent schema to list within, in the form
+     * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+     * 255 characters individually
      * 
      */
     public String parent() {
@@ -100,12 +73,11 @@ public final class GetAiGatewayModelServicesModelServiceConfigInferenceTable {
         return this.table;
     }
     /**
-     * @return (string) - Prefix for the inference-table&#39;s UC-registered name. The actual leaf name UC
-     * stores is `&lt;table_name_prefix&gt;_payload`; the `_payload` suffix is appended
-     * automatically. To find the actual UC table after Create, read the `table`
-     * field on the response. Defaults to `&lt;model_service_name&gt;_payload` when unset.
-     * Set at create time and immutable thereafter; changing it on an existing
-     * service is rejected
+     * @return (string) - Prefix used to form the inference table&#39;s registered name. AI Gateway
+     * appends `_payload`; for example, `tableNamePrefix = &#34;orders&#34;` creates
+     * `ordersPayload`. If unset, the prefix defaults to the service name. Read
+     * `table` from the response for the resulting resource name. After the
+     * inference table is created, this field cannot be changed
      * 
      */
     public Optional<String> tableNamePrefix() {
@@ -121,7 +93,6 @@ public final class GetAiGatewayModelServicesModelServiceConfigInferenceTable {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean disabled;
         private Boolean isDeleted;
         private String parent;
         private String table;
@@ -129,19 +100,12 @@ public final class GetAiGatewayModelServicesModelServiceConfigInferenceTable {
         public Builder() {}
         public Builder(GetAiGatewayModelServicesModelServiceConfigInferenceTable defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.disabled = defaults.disabled;
     	      this.isDeleted = defaults.isDeleted;
     	      this.parent = defaults.parent;
     	      this.table = defaults.table;
     	      this.tableNamePrefix = defaults.tableNamePrefix;
         }
 
-        @CustomType.Setter
-        public Builder disabled(@Nullable Boolean disabled) {
-
-            this.disabled = disabled;
-            return this;
-        }
         @CustomType.Setter
         public Builder isDeleted(Boolean isDeleted) {
             if (isDeleted == null) {
@@ -174,7 +138,6 @@ public final class GetAiGatewayModelServicesModelServiceConfigInferenceTable {
         }
         public GetAiGatewayModelServicesModelServiceConfigInferenceTable build() {
             final var _resultValue = new GetAiGatewayModelServicesModelServiceConfigInferenceTable();
-            _resultValue.disabled = disabled;
             _resultValue.isDeleted = isDeleted;
             _resultValue.parent = parent;
             _resultValue.table = table;

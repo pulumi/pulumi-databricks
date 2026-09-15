@@ -18,6 +18,7 @@ import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureStream
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureTableTrigger;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -27,6 +28,28 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature")
 public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.CustomResource {
+    /**
+     * The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     * 
+     */
+    @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> budgetPolicyId;
+
+    /**
+     * @return The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     * 
+     */
+    public Output<Optional<String>> budgetPolicyId() {
+        return Codegen.optional(this.budgetPolicyId);
+    }
+    @Export(name="cronSchedule", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cronSchedule;
+
+    public Output<Optional<String>> cronSchedule() {
+        return Codegen.optional(this.cronSchedule);
+    }
     /**
      * A cron-based schedule trigger for the materialization pipeline
      * 
@@ -84,6 +107,20 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
      */
     public Output<String> lastMaterializationTime() {
         return this.lastMaterializationTime;
+    }
+    /**
+     * (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+     * 
+     */
+    @Export(name="latestBackfillOperation", refs={String.class}, tree="[0]")
+    private Output<String> latestBackfillOperation;
+
+    /**
+     * @return (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+     * 
+     */
+    public Output<String> latestBackfillOperation() {
+        return this.latestBackfillOperation;
     }
     /**
      * (string) - Server-assigned unique identifier for the materialized feature
@@ -202,6 +239,32 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
      */
     public Output<Optional<FeatureEngineeringMaterializedFeatureTableTrigger>> tableTrigger() {
         return Codegen.optional(this.tableTrigger);
+    }
+    /**
+     * Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

@@ -19,14 +19,14 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
     public static final AiGatewayModelServiceConfigArgs Empty = new AiGatewayModelServiceConfigArgs();
 
     /**
-     * Inference table config for payload logging
+     * Inference table configuration for payload logging
      * 
      */
     @Import(name="inferenceTable")
     private @Nullable Output<AiGatewayModelServiceConfigInferenceTableArgs> inferenceTable;
 
     /**
-     * @return Inference table config for payload logging
+     * @return Inference table configuration for payload logging
      * 
      */
     public Optional<Output<AiGatewayModelServiceConfigInferenceTableArgs>> inferenceTable() {
@@ -49,14 +49,14 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Routing configuration: destinations, routing strategy, and fallback
+     * Routing configuration: destinations and fallback
      * 
      */
     @Import(name="routing")
     private @Nullable Output<AiGatewayModelServiceConfigRoutingArgs> routing;
 
     /**
-     * @return Routing configuration: destinations, routing strategy, and fallback
+     * @return Routing configuration: destinations and fallback
      * 
      */
     public Optional<Output<AiGatewayModelServiceConfigRoutingArgs>> routing() {
@@ -90,7 +90,7 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param inferenceTable Inference table config for payload logging
+         * @param inferenceTable Inference table configuration for payload logging
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param inferenceTable Inference table config for payload logging
+         * @param inferenceTable Inference table configuration for payload logging
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param routing Routing configuration: destinations, routing strategy, and fallback
+         * @param routing Routing configuration: destinations and fallback
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param routing Routing configuration: destinations, routing strategy, and fallback
+         * @param routing Routing configuration: destinations and fallback
          * 
          * @return builder
          * 

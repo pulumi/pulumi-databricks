@@ -24,20 +24,18 @@ public final class AiGatewayModelProviderServiceConfigAnthropicArgs extends com.
     }
 
     /**
-     * Relayed (credential-less) form: no Anthropic credential is stored. Each
-     * inference request instead carries the caller&#39;s own OAuth token, which the
-     * platform forwards to Anthropic on outbound requests. Mutually exclusive
-     * with `direct`; no `apiKey` is required or persisted
+     * Relayed authentication. Each inference request supplies the caller&#39;s
+     * OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+     * stored. Mutually exclusive with `direct`
      * 
      */
     @Import(name="relayed")
     private @Nullable Output<AiGatewayModelProviderServiceConfigAnthropicRelayedArgs> relayed;
 
     /**
-     * @return Relayed (credential-less) form: no Anthropic credential is stored. Each
-     * inference request instead carries the caller&#39;s own OAuth token, which the
-     * platform forwards to Anthropic on outbound requests. Mutually exclusive
-     * with `direct`; no `apiKey` is required or persisted
+     * @return Relayed authentication. Each inference request supplies the caller&#39;s
+     * OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+     * stored. Mutually exclusive with `direct`
      * 
      */
     public Optional<Output<AiGatewayModelProviderServiceConfigAnthropicRelayedArgs>> relayed() {
@@ -79,10 +77,9 @@ public final class AiGatewayModelProviderServiceConfigAnthropicArgs extends com.
         }
 
         /**
-         * @param relayed Relayed (credential-less) form: no Anthropic credential is stored. Each
-         * inference request instead carries the caller&#39;s own OAuth token, which the
-         * platform forwards to Anthropic on outbound requests. Mutually exclusive
-         * with `direct`; no `apiKey` is required or persisted
+         * @param relayed Relayed authentication. Each inference request supplies the caller&#39;s
+         * OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+         * stored. Mutually exclusive with `direct`
          * 
          * @return builder
          * 
@@ -93,10 +90,9 @@ public final class AiGatewayModelProviderServiceConfigAnthropicArgs extends com.
         }
 
         /**
-         * @param relayed Relayed (credential-less) form: no Anthropic credential is stored. Each
-         * inference request instead carries the caller&#39;s own OAuth token, which the
-         * platform forwards to Anthropic on outbound requests. Mutually exclusive
-         * with `direct`; no `apiKey` is required or persisted
+         * @param relayed Relayed authentication. Each inference request supplies the caller&#39;s
+         * OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+         * stored. Mutually exclusive with `direct`
          * 
          * @return builder
          * 

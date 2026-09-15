@@ -10,6 +10,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,10 +25,17 @@ public final class GetFeatureEngineeringKafkaConfigIngestionConfig {
     /**
      * @return (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
      * The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
-     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream
+     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream,
+     * except that it may omit any columns listed in excluded_columns
      * 
      */
     private @Nullable GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSource backfillSource;
+    /**
+     * @return (string) - The ID of the budget policy used to attribute the serverless compute cost of this stream&#39;s
+     * managed ingestion. If not specified, a default budget policy may be applied
+     * 
+     */
+    private @Nullable String budgetPolicyId;
     /**
      * @return (list of string) - Column paths used to identify duplicate rows during ingestion; only one row per
      * distinct combination of these values is kept. Use dot notation for nested fields
@@ -53,6 +61,17 @@ public final class GetFeatureEngineeringKafkaConfigIngestionConfig {
      * 
      */
     private String ingestionPipelineId;
+    /**
+     * @return (object) - Custom tags to associate with this stream&#39;s managed ingestion. They are applied to the
+     * ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+     * compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+     * These tags apply only to the managed ingestion compute; they are not applied to the Stream
+     * entity itself, and are distinct from any Unity Catalog tags on the Stream.
+     * A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+     * cluster tags
+     * 
+     */
+    private @Nullable Map<String,String> tags;
 
     private GetFeatureEngineeringKafkaConfigIngestionConfig() {}
     /**
@@ -65,11 +84,20 @@ public final class GetFeatureEngineeringKafkaConfigIngestionConfig {
     /**
      * @return (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
      * The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
-     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream
+     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream,
+     * except that it may omit any columns listed in excluded_columns
      * 
      */
     public Optional<GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSource> backfillSource() {
         return Optional.ofNullable(this.backfillSource);
+    }
+    /**
+     * @return (string) - The ID of the budget policy used to attribute the serverless compute cost of this stream&#39;s
+     * managed ingestion. If not specified, a default budget policy may be applied
+     * 
+     */
+    public Optional<String> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
     }
     /**
      * @return (list of string) - Column paths used to identify duplicate rows during ingestion; only one row per
@@ -104,6 +132,19 @@ public final class GetFeatureEngineeringKafkaConfigIngestionConfig {
     public String ingestionPipelineId() {
         return this.ingestionPipelineId;
     }
+    /**
+     * @return (object) - Custom tags to associate with this stream&#39;s managed ingestion. They are applied to the
+     * ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+     * compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+     * These tags apply only to the managed ingestion compute; they are not applied to the Stream
+     * entity itself, and are distinct from any Unity Catalog tags on the Stream.
+     * A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+     * cluster tags
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -116,19 +157,23 @@ public final class GetFeatureEngineeringKafkaConfigIngestionConfig {
     public static final class Builder {
         private Integer backfillJobId;
         private @Nullable GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSource backfillSource;
+        private @Nullable String budgetPolicyId;
         private @Nullable List<String> deduplicationColumns;
         private GetFeatureEngineeringKafkaConfigIngestionConfigIngestionDestination ingestionDestination;
         private Integer ingestionJobId;
         private String ingestionPipelineId;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetFeatureEngineeringKafkaConfigIngestionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backfillJobId = defaults.backfillJobId;
     	      this.backfillSource = defaults.backfillSource;
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
     	      this.deduplicationColumns = defaults.deduplicationColumns;
     	      this.ingestionDestination = defaults.ingestionDestination;
     	      this.ingestionJobId = defaults.ingestionJobId;
     	      this.ingestionPipelineId = defaults.ingestionPipelineId;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -143,6 +188,12 @@ public final class GetFeatureEngineeringKafkaConfigIngestionConfig {
         public Builder backfillSource(@Nullable GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSource backfillSource) {
 
             this.backfillSource = backfillSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
+
+            this.budgetPolicyId = budgetPolicyId;
             return this;
         }
         @CustomType.Setter
@@ -178,14 +229,22 @@ public final class GetFeatureEngineeringKafkaConfigIngestionConfig {
             this.ingestionPipelineId = ingestionPipelineId;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
         public GetFeatureEngineeringKafkaConfigIngestionConfig build() {
             final var _resultValue = new GetFeatureEngineeringKafkaConfigIngestionConfig();
             _resultValue.backfillJobId = backfillJobId;
             _resultValue.backfillSource = backfillSource;
+            _resultValue.budgetPolicyId = budgetPolicyId;
             _resultValue.deduplicationColumns = deduplicationColumns;
             _resultValue.ingestionDestination = ingestionDestination;
             _resultValue.ingestionJobId = ingestionJobId;
             _resultValue.ingestionPipelineId = ingestionPipelineId;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

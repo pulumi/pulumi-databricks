@@ -25,7 +25,6 @@ class AiGatewayMcpServiceArgs:
                  parent: pulumi.Input[_builtins.str],
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['AiGatewayMcpServiceConfigArgs']] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AiGatewayMcpServiceProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a AiGatewayMcpService resource.
@@ -35,11 +34,9 @@ class AiGatewayMcpServiceArgs:
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input['AiGatewayMcpServiceConfigArgs'] config: Operational configuration: connection, tool selectors, rate limit.
-               Required on CreateMcpService; on
-               UpdateMcpService it is required only when `config` (or a `config.*`
-               subpath) appears in `update_mask`
-        :param pulumi.Input[_builtins.str] owner: The owner of the MCP service. Write-only; read owner via effective_owner
+        :param pulumi.Input['AiGatewayMcpServiceConfigArgs'] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
+               provide this field when `update_mask` contains `config` or one of its
+               subpaths
         :param pulumi.Input['AiGatewayMcpServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "mcp_service_id", mcp_service_id)
@@ -48,8 +45,6 @@ class AiGatewayMcpServiceArgs:
             pulumi.set(__self__, "comment", comment)
         if config is not None:
             pulumi.set(__self__, "config", config)
-        if owner is not None:
-            pulumi.set(__self__, "owner", owner)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
 
@@ -95,28 +90,15 @@ class AiGatewayMcpServiceArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional['AiGatewayMcpServiceConfigArgs']]:
         """
-        Operational configuration: connection, tool selectors, rate limit.
-        Required on CreateMcpService; on
-        UpdateMcpService it is required only when `config` (or a `config.*`
-        subpath) appears in `update_mask`
+        Connection, tool selectors, and rate limits. Required on Create. On Update,
+        provide this field when `update_mask` contains `config` or one of its
+        subpaths
         """
         return pulumi.get(self, "config")
 
     @config.setter
     def config(self, value: pulumi.Input[Optional['AiGatewayMcpServiceConfigArgs']]):
         pulumi.set(self, "config", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The owner of the MCP service. Write-only; read owner via effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @owner.setter
-    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -143,7 +125,6 @@ class _AiGatewayMcpServiceState:
                  mcp_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AiGatewayMcpServiceProviderConfigArgs']] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -152,19 +133,16 @@ class _AiGatewayMcpServiceState:
         Input properties used for looking up and filtering AiGatewayMcpService resources.
 
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input['AiGatewayMcpServiceConfigArgs'] config: Operational configuration: connection, tool selectors, rate limit.
-               Required on CreateMcpService; on
-               UpdateMcpService it is required only when `config` (or a `config.*`
-               subpath) appears in `update_mask`
-        :param pulumi.Input[_builtins.str] create_time: (string) - When the MCP service was created
+        :param pulumi.Input['AiGatewayMcpServiceConfigArgs'] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
+               provide this field when `update_mask` contains `config` or one of its
+               subpaths
+        :param pulumi.Input[_builtins.str] create_time: (string) - Time the MCP service was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-               when `owner` is not explicitly set on creation
-        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency control token. Server-generated from the
-               entity's state and returned on every read. To use it as an if-match
-               precondition on a mutation, echo the last-read value back via the dedicated
-               `etag` field on the Update / Delete request; the server rejects the mutation
-               if the stored etag differs
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the MCP service
+        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
+               Delete conditional, pass the last-read value in that request's `etag`
+               field. In REST responses, this value is a base64 string; URL-encode it when
+               setting the `etag` query parameter
         :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the MCP service
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the MCP service.
@@ -172,12 +150,11 @@ class _AiGatewayMcpServiceState:
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `mcp_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.str] owner: The owner of the MCP service. Write-only; read owner via effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input['AiGatewayMcpServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] update_time: (string) - When the MCP service was last modified
+        :param pulumi.Input[_builtins.str] update_time: (string) - Time the MCP service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """
         if comment is not None:
@@ -198,8 +175,6 @@ class _AiGatewayMcpServiceState:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if owner is not None:
-            pulumi.set(__self__, "owner", owner)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
@@ -225,10 +200,9 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional['AiGatewayMcpServiceConfigArgs']]:
         """
-        Operational configuration: connection, tool selectors, rate limit.
-        Required on CreateMcpService; on
-        UpdateMcpService it is required only when `config` (or a `config.*`
-        subpath) appears in `update_mask`
+        Connection, tool selectors, and rate limits. Required on Create. On Update,
+        provide this field when `update_mask` contains `config` or one of its
+        subpaths
         """
         return pulumi.get(self, "config")
 
@@ -240,7 +214,7 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - When the MCP service was created
+        (string) - Time the MCP service was created
         """
         return pulumi.get(self, "create_time")
 
@@ -264,8 +238,7 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-        when `owner` is not explicitly set on creation
+        (string) - Owner of the MCP service
         """
         return pulumi.get(self, "effective_owner")
 
@@ -277,11 +250,10 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter
     def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Optimistic concurrency control token. Server-generated from the
-        entity's state and returned on every read. To use it as an if-match
-        precondition on a mutation, echo the last-read value back via the dedicated
-        `etag` field on the Update / Delete request; the server rejects the mutation
-        if the stored etag differs
+        (string) - Optimistic concurrency token returned on every read. To make an Update or
+        Delete conditional, pass the last-read value in that request's `etag`
+        field. In REST responses, this value is a base64 string; URL-encode it when
+        setting the `etag` query parameter
         """
         return pulumi.get(self, "etag")
 
@@ -331,18 +303,6 @@ class _AiGatewayMcpServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The owner of the MCP service. Write-only; read owner via effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @owner.setter
-    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "owner", value)
-
-    @_builtins.property
-    @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the parent schema.
@@ -371,7 +331,7 @@ class _AiGatewayMcpServiceState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - When the MCP service was last modified
+        (string) - Time the MCP service was last modified
         """
         return pulumi.get(self, "update_time")
 
@@ -401,25 +361,45 @@ class AiGatewayMcpService(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']]] = None,
                  mcp_service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+        Manages an MCP service in Unity Catalog. An MCP service governs access to an MCP server hosted through a Unity Catalog connection.
+
+        The Unity Catalog connection must exist before you create the MCP service. MCP services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+
+        ## Example Usage
+
+        The following example registers an MCP service backed by a Unity Catalog connection:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example = databricks.AiGatewayMcpService("example",
+            parent="schemas/main.default",
+            mcp_service_id="knowledge_tools",
+            comment="Provides governed access to knowledge tools",
+            config={
+                "source_connection": {
+                    "name": "connections/main.default.mcp_connection",
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']] config: Operational configuration: connection, tool selectors, rate limit.
-               Required on CreateMcpService; on
-               UpdateMcpService it is required only when `config` (or a `config.*`
-               subpath) appears in `update_mask`
+        :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
+               provide this field when `update_mask` contains `config` or one of its
+               subpaths
         :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
-        :param pulumi.Input[_builtins.str] owner: The owner of the MCP service. Write-only; read owner via effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -432,9 +412,32 @@ class AiGatewayMcpService(pulumi.CustomResource):
                  args: AiGatewayMcpServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+        Manages an MCP service in Unity Catalog. An MCP service governs access to an MCP server hosted through a Unity Catalog connection.
+
+        The Unity Catalog connection must exist before you create the MCP service. MCP services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+
+        ## Example Usage
+
+        The following example registers an MCP service backed by a Unity Catalog connection:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example = databricks.AiGatewayMcpService("example",
+            parent="schemas/main.default",
+            mcp_service_id="knowledge_tools",
+            comment="Provides governed access to knowledge tools",
+            config={
+                "source_connection": {
+                    "name": "connections/main.default.mcp_connection",
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -455,7 +458,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']]] = None,
                  mcp_service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']]] = None,
                  __props__=None):
@@ -472,7 +474,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
             if mcp_service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'mcp_service_id'")
             __props__.__dict__["mcp_service_id"] = mcp_service_id
-            __props__.__dict__["owner"] = owner
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
@@ -504,7 +505,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
             mcp_service_id: pulumi.Input[Optional[_builtins.str]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            owner: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -517,19 +517,16 @@ class AiGatewayMcpService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']] config: Operational configuration: connection, tool selectors, rate limit.
-               Required on CreateMcpService; on
-               UpdateMcpService it is required only when `config` (or a `config.*`
-               subpath) appears in `update_mask`
-        :param pulumi.Input[_builtins.str] create_time: (string) - When the MCP service was created
+        :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
+               provide this field when `update_mask` contains `config` or one of its
+               subpaths
+        :param pulumi.Input[_builtins.str] create_time: (string) - Time the MCP service was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-               when `owner` is not explicitly set on creation
-        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency control token. Server-generated from the
-               entity's state and returned on every read. To use it as an if-match
-               precondition on a mutation, echo the last-read value back via the dedicated
-               `etag` field on the Update / Delete request; the server rejects the mutation
-               if the stored etag differs
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the MCP service
+        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
+               Delete conditional, pass the last-read value in that request's `etag`
+               field. In REST responses, this value is a base64 string; URL-encode it when
+               setting the `etag` query parameter
         :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the MCP service
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the MCP service.
@@ -537,12 +534,11 @@ class AiGatewayMcpService(pulumi.CustomResource):
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `mcp_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.str] owner: The owner of the MCP service. Write-only; read owner via effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] update_time: (string) - When the MCP service was last modified
+        :param pulumi.Input[_builtins.str] update_time: (string) - Time the MCP service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -558,7 +554,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
         __props__.__dict__["mcp_service_id"] = mcp_service_id
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
-        __props__.__dict__["owner"] = owner
         __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["update_time"] = update_time
@@ -577,10 +572,9 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.AiGatewayMcpServiceConfig']]:
         """
-        Operational configuration: connection, tool selectors, rate limit.
-        Required on CreateMcpService; on
-        UpdateMcpService it is required only when `config` (or a `config.*`
-        subpath) appears in `update_mask`
+        Connection, tool selectors, and rate limits. Required on Create. On Update,
+        provide this field when `update_mask` contains `config` or one of its
+        subpaths
         """
         return pulumi.get(self, "config")
 
@@ -588,7 +582,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - When the MCP service was created
+        (string) - Time the MCP service was created
         """
         return pulumi.get(self, "create_time")
 
@@ -604,8 +598,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-        when `owner` is not explicitly set on creation
+        (string) - Owner of the MCP service
         """
         return pulumi.get(self, "effective_owner")
 
@@ -613,11 +606,10 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Optimistic concurrency control token. Server-generated from the
-        entity's state and returned on every read. To use it as an if-match
-        precondition on a mutation, echo the last-read value back via the dedicated
-        `etag` field on the Update / Delete request; the server rejects the mutation
-        if the stored etag differs
+        (string) - Optimistic concurrency token returned on every read. To make an Update or
+        Delete conditional, pass the last-read value in that request's `etag`
+        field. In REST responses, this value is a base64 string; URL-encode it when
+        setting the `etag` query parameter
         """
         return pulumi.get(self, "etag")
 
@@ -651,14 +643,6 @@ class AiGatewayMcpService(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> pulumi.Output[_builtins.str]:
-        """
-        The owner of the MCP service. Write-only; read owner via effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @_builtins.property
-    @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
         Name of the parent schema.
@@ -679,7 +663,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - When the MCP service was last modified
+        (string) - Time the MCP service was last modified
         """
         return pulumi.get(self, "update_time")
 

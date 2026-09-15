@@ -28,7 +28,13 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringMaterializedFeature.
     """
-    def __init__(__self__, cron_schedule_trigger=None, feature_name=None, is_online=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, provider_config=None, streaming_mode=None, table_name=None, table_trigger=None):
+    def __init__(__self__, budget_policy_id=None, cron_schedule=None, cron_schedule_trigger=None, feature_name=None, is_online=None, last_materialization_time=None, latest_backfill_operation=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, provider_config=None, streaming_mode=None, table_name=None, table_trigger=None, tags=None):
+        if budget_policy_id and not isinstance(budget_policy_id, str):
+            raise TypeError("Expected argument 'budget_policy_id' to be a str")
+        pulumi.set(__self__, "budget_policy_id", budget_policy_id)
+        if cron_schedule and not isinstance(cron_schedule, str):
+            raise TypeError("Expected argument 'cron_schedule' to be a str")
+        pulumi.set(__self__, "cron_schedule", cron_schedule)
         if cron_schedule_trigger and not isinstance(cron_schedule_trigger, dict):
             raise TypeError("Expected argument 'cron_schedule_trigger' to be a dict")
         pulumi.set(__self__, "cron_schedule_trigger", cron_schedule_trigger)
@@ -41,6 +47,9 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         if last_materialization_time and not isinstance(last_materialization_time, str):
             raise TypeError("Expected argument 'last_materialization_time' to be a str")
         pulumi.set(__self__, "last_materialization_time", last_materialization_time)
+        if latest_backfill_operation and not isinstance(latest_backfill_operation, str):
+            raise TypeError("Expected argument 'latest_backfill_operation' to be a str")
+        pulumi.set(__self__, "latest_backfill_operation", latest_backfill_operation)
         if materialized_feature_id and not isinstance(materialized_feature_id, str):
             raise TypeError("Expected argument 'materialized_feature_id' to be a str")
         pulumi.set(__self__, "materialized_feature_id", materialized_feature_id)
@@ -65,6 +74,26 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         if table_trigger and not isinstance(table_trigger, dict):
             raise TypeError("Expected argument 'table_trigger' to be a dict")
         pulumi.set(__self__, "table_trigger", table_trigger)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> _builtins.str:
+        """
+        (string) - The ID of the budget policy used to attribute the serverless compute cost of this
+        materialization. If not specified, a default budget policy may be applied
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> _builtins.str:
+        """
+        (string, deprecated)
+        """
+        return pulumi.get(self, "cron_schedule")
 
     @_builtins.property
     @pulumi.getter(name="cronScheduleTrigger")
@@ -98,6 +127,14 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         If the pipeline has not run yet, this field will be null
         """
         return pulumi.get(self, "last_materialization_time")
+
+    @_builtins.property
+    @pulumi.getter(name="latestBackfillOperation")
+    def latest_backfill_operation(self) -> _builtins.str:
+        """
+        (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+        """
+        return pulumi.get(self, "latest_backfill_operation")
 
     @_builtins.property
     @pulumi.getter(name="materializedFeatureId")
@@ -163,6 +200,20 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         """
         return pulumi.get(self, "table_trigger")
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        (object) - Custom tags to associate with this materialization. They are applied to the materialization
+        job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+        compute as cluster tags, so materialization cost can be attributed in the billing system
+        tables. These tags apply only to the materialization compute; they are not applied to the
+        Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+        Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+        same limitations as cluster tags
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineeringMaterializedFeatureResult):
     # pylint: disable=using-constant-test
@@ -170,10 +221,13 @@ class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineer
         if False:
             yield self
         return GetFeatureEngineeringMaterializedFeatureResult(
+            budget_policy_id=self.budget_policy_id,
+            cron_schedule=self.cron_schedule,
             cron_schedule_trigger=self.cron_schedule_trigger,
             feature_name=self.feature_name,
             is_online=self.is_online,
             last_materialization_time=self.last_materialization_time,
+            latest_backfill_operation=self.latest_backfill_operation,
             materialized_feature_id=self.materialized_feature_id,
             offline_store_config=self.offline_store_config,
             online_store_config=self.online_store_config,
@@ -181,7 +235,8 @@ class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineer
             provider_config=self.provider_config,
             streaming_mode=self.streaming_mode,
             table_name=self.table_name,
-            table_trigger=self.table_trigger)
+            table_trigger=self.table_trigger,
+            tags=self.tags)
 
 
 def get_feature_engineering_materialized_feature(materialized_feature_id: Optional[_builtins.str] = None,
@@ -201,10 +256,13 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
     __ret__ = pulumi.runtime.invoke('databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature', __args__, opts=opts, typ=GetFeatureEngineeringMaterializedFeatureResult).value
 
     return AwaitableGetFeatureEngineeringMaterializedFeatureResult(
+        budget_policy_id=pulumi.get(__ret__, 'budget_policy_id'),
+        cron_schedule=pulumi.get(__ret__, 'cron_schedule'),
         cron_schedule_trigger=pulumi.get(__ret__, 'cron_schedule_trigger'),
         feature_name=pulumi.get(__ret__, 'feature_name'),
         is_online=pulumi.get(__ret__, 'is_online'),
         last_materialization_time=pulumi.get(__ret__, 'last_materialization_time'),
+        latest_backfill_operation=pulumi.get(__ret__, 'latest_backfill_operation'),
         materialized_feature_id=pulumi.get(__ret__, 'materialized_feature_id'),
         offline_store_config=pulumi.get(__ret__, 'offline_store_config'),
         online_store_config=pulumi.get(__ret__, 'online_store_config'),
@@ -212,7 +270,8 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
         provider_config=pulumi.get(__ret__, 'provider_config'),
         streaming_mode=pulumi.get(__ret__, 'streaming_mode'),
         table_name=pulumi.get(__ret__, 'table_name'),
-        table_trigger=pulumi.get(__ret__, 'table_trigger'))
+        table_trigger=pulumi.get(__ret__, 'table_trigger'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_feature_engineering_materialized_feature_output(materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                         provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringMaterializedFeatureResult]:
@@ -229,10 +288,13 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature', __args__, opts=opts, typ=GetFeatureEngineeringMaterializedFeatureResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringMaterializedFeatureResult(
+        budget_policy_id=pulumi.get(__response__, 'budget_policy_id'),
+        cron_schedule=pulumi.get(__response__, 'cron_schedule'),
         cron_schedule_trigger=pulumi.get(__response__, 'cron_schedule_trigger'),
         feature_name=pulumi.get(__response__, 'feature_name'),
         is_online=pulumi.get(__response__, 'is_online'),
         last_materialization_time=pulumi.get(__response__, 'last_materialization_time'),
+        latest_backfill_operation=pulumi.get(__response__, 'latest_backfill_operation'),
         materialized_feature_id=pulumi.get(__response__, 'materialized_feature_id'),
         offline_store_config=pulumi.get(__response__, 'offline_store_config'),
         online_store_config=pulumi.get(__response__, 'online_store_config'),
@@ -240,4 +302,5 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
         provider_config=pulumi.get(__response__, 'provider_config'),
         streaming_mode=pulumi.get(__response__, 'streaming_mode'),
         table_name=pulumi.get(__response__, 'table_name'),
-        table_trigger=pulumi.get(__response__, 'table_trigger')))
+        table_trigger=pulumi.get(__response__, 'table_trigger'),
+        tags=pulumi.get(__response__, 'tags')))

@@ -14,14 +14,14 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelProviderServiceConfigRateLimitResult
     {
         /// <summary>
-        /// (string) - Scope key. Determines whether `Principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+        /// (string) - Scope of the rate limit. Depending on this value, the limit applies to a
+        /// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
         /// </summary>
         public readonly string Key;
         /// <summary>
         /// (string) - Principal this limit applies to: user email, group name, or service
-        /// principal application ID. Required unless `Key` is
-        /// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-        /// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+        /// principal application ID. Required when `Key` applies to a user, group, or
+        /// service principal; otherwise it must be unset
         /// </summary>
         public readonly string? Principal;
         /// <summary>
@@ -29,23 +29,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string RenewalPeriod;
         /// <summary>
-        /// (string) - Request tag key this limit applies to. Required when `Key` is
-        /// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-        /// </summary>
-        public readonly string? RequestTagKey;
-        /// <summary>
-        /// (string) - Request tag value this limit applies to. Only valid when `Key` is
-        /// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-        /// value of `RequestTagKey` (an any-value default); a set value is a
-        /// specific override for that value
-        /// </summary>
-        public readonly string? RequestTagValue;
-        /// <summary>
-        /// (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+        /// (integer) - Maximum requests allowed in one renewal period. Leave unset for no request
+        /// limit. Set to `0` to deny all requests
         /// </summary>
         public readonly int? Requests;
         /// <summary>
-        /// (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+        /// (integer) - Maximum tokens allowed in one renewal period. Leave unset for no token
+        /// limit. Set to `0` to deny all requests
         /// </summary>
         public readonly int? Tokens;
 
@@ -57,10 +47,6 @@ namespace Pulumi.Databricks.Outputs
 
             string renewalPeriod,
 
-            string? requestTagKey,
-
-            string? requestTagValue,
-
             int? requests,
 
             int? tokens)
@@ -68,8 +54,6 @@ namespace Pulumi.Databricks.Outputs
             Key = key;
             Principal = principal;
             RenewalPeriod = renewalPeriod;
-            RequestTagKey = requestTagKey;
-            RequestTagValue = requestTagValue;
             Requests = requests;
             Tokens = tokens;
         }

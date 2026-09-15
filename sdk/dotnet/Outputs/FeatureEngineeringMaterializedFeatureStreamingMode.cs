@@ -18,9 +18,6 @@ namespace Pulumi.Databricks.Outputs
         /// duration string (e.g. "1 minute")
         /// </summary>
         public readonly string? FreshnessTarget;
-        /// <summary>
-        /// The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
-        /// </summary>
         public readonly string? Mode;
 
         [OutputConstructor]

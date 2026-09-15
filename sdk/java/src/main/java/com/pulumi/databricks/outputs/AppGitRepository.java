@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppGitRepository {
+    /**
+     * @return When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+     * 
+     */
     private @Nullable Boolean autoDeploy;
+    /**
+     * @return ID of a personal access token Git credential owned by the caller, used to grant the app&#39;s service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+     * 
+     */
     private @Nullable Integer callerCredentialId;
     /**
      * @return Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
@@ -28,9 +36,17 @@ public final class AppGitRepository {
     private String url;
 
     private AppGitRepository() {}
+    /**
+     * @return When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+     * 
+     */
     public Optional<Boolean> autoDeploy() {
         return Optional.ofNullable(this.autoDeploy);
     }
+    /**
+     * @return ID of a personal access token Git credential owned by the caller, used to grant the app&#39;s service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+     * 
+     */
     public Optional<Integer> callerCredentialId() {
         return Optional.ofNullable(this.callerCredentialId);
     }

@@ -8,6 +8,9 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionColumnSelectionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionCustomUdfArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,12 +65,36 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
         return Optional.ofNullable(this.customUdf);
     }
 
+    @Import(name="extraParameters")
+    private @Nullable Output<List<FeatureEngineeringFeatureFunctionExtraParameterArgs>> extraParameters;
+
+    public Optional<Output<List<FeatureEngineeringFeatureFunctionExtraParameterArgs>>> extraParameters() {
+        return Optional.ofNullable(this.extraParameters);
+    }
+
+    /**
+     * Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * 
+     */
+    @Import(name="functionType")
+    private @Nullable Output<String> functionType;
+
+    /**
+     * @return Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * 
+     */
+    public Optional<Output<String>> functionType() {
+        return Optional.ofNullable(this.functionType);
+    }
+
     private FeatureEngineeringFeatureFunctionArgs() {}
 
     private FeatureEngineeringFeatureFunctionArgs(FeatureEngineeringFeatureFunctionArgs $) {
         this.aggregationFunction = $.aggregationFunction;
         this.columnSelection = $.columnSelection;
         this.customUdf = $.customUdf;
+        this.extraParameters = $.extraParameters;
+        this.functionType = $.functionType;
     }
 
     public static Builder builder() {
@@ -149,6 +176,40 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
          */
         public Builder customUdf(FeatureEngineeringFeatureFunctionCustomUdfArgs customUdf) {
             return customUdf(Output.of(customUdf));
+        }
+
+        public Builder extraParameters(@Nullable Output<List<FeatureEngineeringFeatureFunctionExtraParameterArgs>> extraParameters) {
+            $.extraParameters = extraParameters;
+            return this;
+        }
+
+        public Builder extraParameters(List<FeatureEngineeringFeatureFunctionExtraParameterArgs> extraParameters) {
+            return extraParameters(Output.of(extraParameters));
+        }
+
+        public Builder extraParameters(FeatureEngineeringFeatureFunctionExtraParameterArgs... extraParameters) {
+            return extraParameters(List.of(extraParameters));
+        }
+
+        /**
+         * @param functionType Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionType(@Nullable Output<String> functionType) {
+            $.functionType = functionType;
+            return this;
+        }
+
+        /**
+         * @param functionType Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionType(String functionType) {
+            return functionType(Output.of(functionType));
         }
 
         public FeatureEngineeringFeatureFunctionArgs build() {

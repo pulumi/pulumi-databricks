@@ -37,11 +37,11 @@ public final class AiGatewayModelServiceConfigRoutingDestinationProvisionedThrou
 
     /**
      * Name of the backing Model Serving endpoint serving the provisioned-
-     * throughput foundation model, as the AIP-122 typed resource name
-     * `serving-endpoints/{name}`. The same UC model can be served on multiple
-     * Model Serving endpoints (different throughput / region / config); the
-     * caller picks which one this destination routes to. The endpoint must
-     * exist at create time
+     * throughput foundation model, in the form `serving-endpoints/{name}`. The
+     * same Unity Catalog model can be served on multiple Model Serving endpoints
+     * with different throughput, regions, or configurations. The caller selects
+     * the endpoint to which this destination routes. The endpoint must exist at
+     * create time
      * 
      */
     @Import(name="modelServingEndpoint", required=true)
@@ -49,11 +49,11 @@ public final class AiGatewayModelServiceConfigRoutingDestinationProvisionedThrou
 
     /**
      * @return Name of the backing Model Serving endpoint serving the provisioned-
-     * throughput foundation model, as the AIP-122 typed resource name
-     * `serving-endpoints/{name}`. The same UC model can be served on multiple
-     * Model Serving endpoints (different throughput / region / config); the
-     * caller picks which one this destination routes to. The endpoint must
-     * exist at create time
+     * throughput foundation model, in the form `serving-endpoints/{name}`. The
+     * same Unity Catalog model can be served on multiple Model Serving endpoints
+     * with different throughput, regions, or configurations. The caller selects
+     * the endpoint to which this destination routes. The endpoint must exist at
+     * create time
      * 
      */
     public Output<String> modelServingEndpoint() {
@@ -112,11 +112,11 @@ public final class AiGatewayModelServiceConfigRoutingDestinationProvisionedThrou
 
         /**
          * @param modelServingEndpoint Name of the backing Model Serving endpoint serving the provisioned-
-         * throughput foundation model, as the AIP-122 typed resource name
-         * `serving-endpoints/{name}`. The same UC model can be served on multiple
-         * Model Serving endpoints (different throughput / region / config); the
-         * caller picks which one this destination routes to. The endpoint must
-         * exist at create time
+         * throughput foundation model, in the form `serving-endpoints/{name}`. The
+         * same Unity Catalog model can be served on multiple Model Serving endpoints
+         * with different throughput, regions, or configurations. The caller selects
+         * the endpoint to which this destination routes. The endpoint must exist at
+         * create time
          * 
          * @return builder
          * 
@@ -128,11 +128,11 @@ public final class AiGatewayModelServiceConfigRoutingDestinationProvisionedThrou
 
         /**
          * @param modelServingEndpoint Name of the backing Model Serving endpoint serving the provisioned-
-         * throughput foundation model, as the AIP-122 typed resource name
-         * `serving-endpoints/{name}`. The same UC model can be served on multiple
-         * Model Serving endpoints (different throughput / region / config); the
-         * caller picks which one this destination routes to. The endpoint must
-         * exist at create time
+         * throughput foundation model, in the form `serving-endpoints/{name}`. The
+         * same Unity Catalog model can be served on multiple Model Serving endpoints
+         * with different throughput, regions, or configurations. The caller selects
+         * the endpoint to which this destination routes. The endpoint must exist at
+         * create time
          * 
          * @return builder
          * 

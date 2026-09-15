@@ -18,8 +18,7 @@ public final class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectE
      */
     private @Nullable String clientId;
     /**
-     * @return (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supply the value in `client_secret.plaintext`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret clientSecret;
@@ -38,8 +37,7 @@ public final class GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectE
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return (ModelProviderServiceConfigProviderSecret) - Entra ID client secret. Supply the value in `client_secret.plaintext`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret> clientSecret() {

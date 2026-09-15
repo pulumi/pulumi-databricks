@@ -14,21 +14,20 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayMcpServicesMcpServiceConfigResult
     {
         /// <summary>
-        /// (list of string) - Glob or exact-match patterns selecting which tools from the MCP server
-        /// to expose. Prefix match for patterns with `*`, exact match otherwise.
-        /// An empty list means all tools are included. Per-element max 256 chars
+        /// (list of string) - Tool names or prefix patterns to expose from the MCP server. Use exact
+        /// tool names or prefix patterns such as `read_*`. An empty list exposes all
+        /// tools. At most 1,024 selectors are allowed, and each selector can contain
+        /// at most 256 characters
         /// </summary>
         public readonly ImmutableArray<string> IncludeToolSelectors;
         /// <summary>
-        /// (list of RateLimit) - Per-principal rate limits applied to tool invocations routed through this
-        /// MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-        /// / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-        /// `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-        /// configured
+        /// (list of RateLimit) - Rate limits for tool invocations. Supported scopes are user, group, service
+        /// principal, the service as a whole, and each user by default. Request and
+        /// token limits are supported. Empty when no rate limit is configured
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiGatewayMcpServicesMcpServiceConfigRateLimitResult> RateLimits;
         /// <summary>
-        /// (McpServiceConfigSourceConnection) - UC Connection referencing the MCP server
+        /// (McpServiceConfigSourceConnection) - Unity Catalog connection referencing the MCP server. Required on Create
         /// </summary>
         public readonly Outputs.GetAiGatewayMcpServicesMcpServiceConfigSourceConnectionResult? SourceConnection;
 

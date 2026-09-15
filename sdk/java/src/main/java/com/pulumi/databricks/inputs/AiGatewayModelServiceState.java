@@ -34,20 +34,18 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      * 
      */
     @Import(name="config")
     private @Nullable Output<AiGatewayModelServiceConfigArgs> config;
 
     /**
-     * @return Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * @return Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      * 
      */
     public Optional<Output<AiGatewayModelServiceConfigArgs>> config() {
@@ -55,14 +53,14 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - When the model service was created
+     * (string) - Time the model service was created
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return (string) - When the model service was created
+     * @return (string) - Time the model service was created
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -85,16 +83,14 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - The resolved owner of the ModelService. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the model service
      * 
      */
     @Import(name="effectiveOwner")
     private @Nullable Output<String> effectiveOwner;
 
     /**
-     * @return (string) - The resolved owner of the ModelService. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the model service
      * 
      */
     public Optional<Output<String>> effectiveOwner() {
@@ -102,22 +98,20 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     public Optional<Output<String>> etag() {
@@ -178,21 +172,6 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The owner of the model service. Write-only; read owner via effective_owner
-     * 
-     */
-    @Import(name="owner")
-    private @Nullable Output<String> owner;
-
-    /**
-     * @return The owner of the model service. Write-only; read owner via effective_owner
-     * 
-     */
-    public Optional<Output<String>> owner() {
-        return Optional.ofNullable(this.owner);
-    }
-
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -227,8 +206,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-     * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+     * (list of string) - API types supported across this service&#39;s destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      * 
      */
@@ -236,8 +216,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> supportedApiTypes;
 
     /**
-     * @return (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-     * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+     * @return (list of string) - API types supported across this service&#39;s destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      * 
      */
@@ -246,14 +227,14 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - When the model service was last modified
+     * (string) - Time the model service was last modified
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return (string) - When the model service was last modified
+     * @return (string) - Time the model service was last modified
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -287,7 +268,6 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         this.metastoreId = $.metastoreId;
         this.modelServiceId = $.modelServiceId;
         this.name = $.name;
-        this.owner = $.owner;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
         this.supportedApiTypes = $.supportedApiTypes;
@@ -335,10 +315,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param config Operational configuration: destinations, routing, rate limits, inference
-         * table. Required on CreateModelService; on UpdateModelService it is
-         * required only when `config` (or a `config.*` subpath) appears in
-         * `updateMask`
+         * @param config Destinations, routing, rate limits, and payload logging configuration.
+         * Required on Create. On Update, provide this field when `updateMask`
+         * contains `config` or one of its subpaths
          * 
          * @return builder
          * 
@@ -349,10 +328,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param config Operational configuration: destinations, routing, rate limits, inference
-         * table. Required on CreateModelService; on UpdateModelService it is
-         * required only when `config` (or a `config.*` subpath) appears in
-         * `updateMask`
+         * @param config Destinations, routing, rate limits, and payload logging configuration.
+         * Required on Create. On Update, provide this field when `updateMask`
+         * contains `config` or one of its subpaths
          * 
          * @return builder
          * 
@@ -362,7 +340,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createTime (string) - When the model service was created
+         * @param createTime (string) - Time the model service was created
          * 
          * @return builder
          * 
@@ -373,7 +351,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createTime (string) - When the model service was created
+         * @param createTime (string) - Time the model service was created
          * 
          * @return builder
          * 
@@ -404,8 +382,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param effectiveOwner (string) - The resolved owner of the ModelService. Falls back to the caller&#39;s identity
-         * when `owner` is not explicitly set on creation
+         * @param effectiveOwner (string) - Owner of the model service
          * 
          * @return builder
          * 
@@ -416,8 +393,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param effectiveOwner (string) - The resolved owner of the ModelService. Falls back to the caller&#39;s identity
-         * when `owner` is not explicitly set on creation
+         * @param effectiveOwner (string) - Owner of the model service
          * 
          * @return builder
          * 
@@ -427,11 +403,10 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param etag (string) - Optimistic concurrency control token. Server-generated from the
-         * entity&#39;s state and returned on every read. To use it as an if-match
-         * precondition on a mutation, echo the last-read value back via the dedicated
-         * `etag` field on the Update / Delete request; the server rejects the mutation
-         * if the stored etag differs
+         * @param etag (string) - Optimistic concurrency token returned on every read. To make an Update or
+         * Delete conditional, pass the last-read value in that request&#39;s `etag`
+         * field. In REST responses, this value is a base64 string; URL-encode it when
+         * setting the `etag` query parameter
          * 
          * @return builder
          * 
@@ -442,11 +417,10 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param etag (string) - Optimistic concurrency control token. Server-generated from the
-         * entity&#39;s state and returned on every read. To use it as an if-match
-         * precondition on a mutation, echo the last-read value back via the dedicated
-         * `etag` field on the Update / Delete request; the server rejects the mutation
-         * if the stored etag differs
+         * @param etag (string) - Optimistic concurrency token returned on every read. To make an Update or
+         * Delete conditional, pass the last-read value in that request&#39;s `etag`
+         * field. In REST responses, this value is a base64 string; URL-encode it when
+         * setting the `etag` query parameter
          * 
          * @return builder
          * 
@@ -527,27 +501,6 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param owner The owner of the model service. Write-only; read owner via effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(@Nullable Output<String> owner) {
-            $.owner = owner;
-            return this;
-        }
-
-        /**
-         * @param owner The owner of the model service. Write-only; read owner via effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(String owner) {
-            return owner(Output.of(owner));
-        }
-
-        /**
          * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
@@ -594,8 +547,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param supportedApiTypes (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-         * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+         * @param supportedApiTypes (list of string) - API types supported across this service&#39;s destinations, such as
+         * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+         * `mlflow/v1/chat/completions`. Derived from the backing models and providers
          * at read time
          * 
          * @return builder
@@ -607,8 +561,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param supportedApiTypes (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-         * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+         * @param supportedApiTypes (list of string) - API types supported across this service&#39;s destinations, such as
+         * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+         * `mlflow/v1/chat/completions`. Derived from the backing models and providers
          * at read time
          * 
          * @return builder
@@ -619,8 +574,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param supportedApiTypes (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-         * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+         * @param supportedApiTypes (list of string) - API types supported across this service&#39;s destinations, such as
+         * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+         * `mlflow/v1/chat/completions`. Derived from the backing models and providers
          * at read time
          * 
          * @return builder
@@ -631,7 +587,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param updateTime (string) - When the model service was last modified
+         * @param updateTime (string) - Time the model service was last modified
          * 
          * @return builder
          * 
@@ -642,7 +598,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param updateTime (string) - When the model service was last modified
+         * @param updateTime (string) - Time the model service was last modified
          * 
          * @return builder
          * 

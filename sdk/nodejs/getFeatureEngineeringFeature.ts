@@ -58,6 +58,10 @@ export interface GetFeatureEngineeringFeatureResult {
      */
     readonly entities: outputs.GetFeatureEngineeringFeatureEntity[];
     /**
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    readonly filterCondition: string;
+    /**
      * (string) - Three-part full name of the Stream (catalog.schema.stream)
      */
     readonly fullName: string;
@@ -65,6 +69,10 @@ export interface GetFeatureEngineeringFeatureResult {
      * (Function) - The function by which the feature is computed
      */
     readonly function: outputs.GetFeatureEngineeringFeatureFunction;
+    /**
+     * (list of string, deprecated)
+     */
+    readonly inputs: string[];
     /**
      * (LineageContext) - Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -92,7 +100,11 @@ export interface GetFeatureEngineeringFeatureResult {
      */
     readonly source: outputs.GetFeatureEngineeringFeatureSource;
     /**
-     * (TimeseriesColumn) - Column recording time, used for point-in-time joins, backfills, and aggregations
+     * (TimeWindow) - The time window over which the aggregation is computed
+     */
+    readonly timeWindow: outputs.GetFeatureEngineeringFeatureTimeWindow;
+    /**
+     * (string, deprecated)
      */
     readonly timeseriesColumn: outputs.GetFeatureEngineeringFeatureTimeseriesColumn;
 }

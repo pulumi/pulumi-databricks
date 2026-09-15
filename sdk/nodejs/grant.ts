@@ -285,6 +285,21 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Secret grants
+ *
+ * See databricks.Grants Secret grants for the list of privileges that apply to Secrets.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const secret = new databricks.Grant("secret", {
+ *     secret: "main.default.my_secret",
+ *     principal: "Data Engineers",
+ *     privileges: ["READ_SECRET"],
+ * });
+ * ```
+ *
  * ## Model service grants
  *
  * See databricks.Grants Model service grants for the list of privileges that apply to model services.
@@ -520,6 +535,7 @@ export class Grant extends pulumi.CustomResource {
     declare public readonly providerConfig: pulumi.Output<outputs.GrantProviderConfig>;
     declare public readonly recipient: pulumi.Output<string | undefined>;
     declare public readonly schema: pulumi.Output<string | undefined>;
+    declare public readonly secret: pulumi.Output<string | undefined>;
     declare public readonly share: pulumi.Output<string | undefined>;
     declare public readonly storageCredential: pulumi.Output<string | undefined>;
     declare public readonly table: pulumi.Output<string | undefined>;
@@ -554,6 +570,7 @@ export class Grant extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["recipient"] = state?.recipient;
             resourceInputs["schema"] = state?.schema;
+            resourceInputs["secret"] = state?.secret;
             resourceInputs["share"] = state?.share;
             resourceInputs["storageCredential"] = state?.storageCredential;
             resourceInputs["table"] = state?.table;
@@ -582,6 +599,7 @@ export class Grant extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["recipient"] = args?.recipient;
             resourceInputs["schema"] = args?.schema;
+            resourceInputs["secret"] = args?.secret;
             resourceInputs["share"] = args?.share;
             resourceInputs["storageCredential"] = args?.storageCredential;
             resourceInputs["table"] = args?.table;
@@ -612,6 +630,7 @@ export interface GrantState {
     providerConfig?: pulumi.Input<inputs.GrantProviderConfig | undefined>;
     recipient?: pulumi.Input<string | undefined>;
     schema?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string | undefined>;
     share?: pulumi.Input<string | undefined>;
     storageCredential?: pulumi.Input<string | undefined>;
     table?: pulumi.Input<string | undefined>;
@@ -638,6 +657,7 @@ export interface GrantArgs {
     providerConfig?: pulumi.Input<inputs.GrantProviderConfig | undefined>;
     recipient?: pulumi.Input<string | undefined>;
     schema?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string | undefined>;
     share?: pulumi.Input<string | undefined>;
     storageCredential?: pulumi.Input<string | undefined>;
     table?: pulumi.Input<string | undefined>;

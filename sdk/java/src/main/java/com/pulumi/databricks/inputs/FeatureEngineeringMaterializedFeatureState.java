@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureStreami
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureTableTriggerArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,6 +22,30 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringMaterializedFeatureState Empty = new FeatureEngineeringMaterializedFeatureState();
+
+    /**
+     * The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    /**
+     * @return The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    @Import(name="cronSchedule")
+    private @Nullable Output<String> cronSchedule;
+
+    public Optional<Output<String>> cronSchedule() {
+        return Optional.ofNullable(this.cronSchedule);
+    }
 
     /**
      * A cron-based schedule trigger for the materialization pipeline
@@ -82,6 +107,21 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
      */
     public Optional<Output<String>> lastMaterializationTime() {
         return Optional.ofNullable(this.lastMaterializationTime);
+    }
+
+    /**
+     * (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+     * 
+     */
+    @Import(name="latestBackfillOperation")
+    private @Nullable Output<String> latestBackfillOperation;
+
+    /**
+     * @return (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+     * 
+     */
+    public Optional<Output<String>> latestBackfillOperation() {
+        return Optional.ofNullable(this.latestBackfillOperation);
     }
 
     /**
@@ -210,13 +250,43 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         return Optional.ofNullable(this.tableTrigger);
     }
 
+    /**
+     * Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private FeatureEngineeringMaterializedFeatureState() {}
 
     private FeatureEngineeringMaterializedFeatureState(FeatureEngineeringMaterializedFeatureState $) {
+        this.budgetPolicyId = $.budgetPolicyId;
+        this.cronSchedule = $.cronSchedule;
         this.cronScheduleTrigger = $.cronScheduleTrigger;
         this.featureName = $.featureName;
         this.isOnline = $.isOnline;
         this.lastMaterializationTime = $.lastMaterializationTime;
+        this.latestBackfillOperation = $.latestBackfillOperation;
         this.materializedFeatureId = $.materializedFeatureId;
         this.offlineStoreConfig = $.offlineStoreConfig;
         this.onlineStoreConfig = $.onlineStoreConfig;
@@ -225,6 +295,7 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         this.streamingMode = $.streamingMode;
         this.tableName = $.tableName;
         this.tableTrigger = $.tableTrigger;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -243,6 +314,38 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
 
         public Builder(FeatureEngineeringMaterializedFeatureState defaults) {
             $ = new FeatureEngineeringMaterializedFeatureState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param budgetPolicyId The ID of the budget policy used to attribute the serverless compute cost of this
+         * materialization. If not specified, a default budget policy may be applied
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        /**
+         * @param budgetPolicyId The ID of the budget policy used to attribute the serverless compute cost of this
+         * materialization. If not specified, a default budget policy may be applied
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        public Builder cronSchedule(@Nullable Output<String> cronSchedule) {
+            $.cronSchedule = cronSchedule;
+            return this;
+        }
+
+        public Builder cronSchedule(String cronSchedule) {
+            return cronSchedule(Output.of(cronSchedule));
         }
 
         /**
@@ -329,6 +432,27 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
          */
         public Builder lastMaterializationTime(String lastMaterializationTime) {
             return lastMaterializationTime(Output.of(lastMaterializationTime));
+        }
+
+        /**
+         * @param latestBackfillOperation (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latestBackfillOperation(@Nullable Output<String> latestBackfillOperation) {
+            $.latestBackfillOperation = latestBackfillOperation;
+            return this;
+        }
+
+        /**
+         * @param latestBackfillOperation (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latestBackfillOperation(String latestBackfillOperation) {
+            return latestBackfillOperation(Output.of(latestBackfillOperation));
         }
 
         /**
@@ -503,6 +627,39 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
          */
         public Builder tableTrigger(FeatureEngineeringMaterializedFeatureTableTriggerArgs tableTrigger) {
             return tableTrigger(Output.of(tableTrigger));
+        }
+
+        /**
+         * @param tags Custom tags to associate with this materialization. They are applied to the materialization
+         * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+         * compute as cluster tags, so materialization cost can be attributed in the billing system
+         * tables. These tags apply only to the materialization compute; they are not applied to the
+         * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+         * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+         * same limitations as cluster tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Custom tags to associate with this materialization. They are applied to the materialization
+         * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+         * compute as cluster tags, so materialization cost can be attributed in the billing system
+         * tables. These tags apply only to the materialization compute; they are not applied to the
+         * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+         * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+         * same limitations as cluster tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public FeatureEngineeringMaterializedFeatureState build() {

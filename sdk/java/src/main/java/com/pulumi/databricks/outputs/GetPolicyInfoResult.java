@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPolicyInfoColumnMask;
+import com.pulumi.databricks.outputs.GetPolicyInfoDeny;
 import com.pulumi.databricks.outputs.GetPolicyInfoGrant;
 import com.pulumi.databricks.outputs.GetPolicyInfoMatchColumn;
 import com.pulumi.databricks.outputs.GetPolicyInfoProviderConfig;
@@ -41,6 +42,13 @@ public final class GetPolicyInfoResult {
      * 
      */
     private String createdBy;
+    /**
+     * @return (DenyOptions) - Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    private GetPolicyInfoDeny deny;
     /**
      * @return (list of string) - Optional list of user or group names that should be excluded from the policy
      * 
@@ -91,7 +99,7 @@ public final class GetPolicyInfoResult {
      */
     private String onSecurableType;
     /**
-     * @return (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * @return (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     private String policyType;
@@ -155,6 +163,15 @@ public final class GetPolicyInfoResult {
      */
     public String createdBy() {
         return this.createdBy;
+    }
+    /**
+     * @return (DenyOptions) - Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    public GetPolicyInfoDeny deny() {
+        return this.deny;
     }
     /**
      * @return (list of string) - Optional list of user or group names that should be excluded from the policy
@@ -222,7 +239,7 @@ public final class GetPolicyInfoResult {
         return this.onSecurableType;
     }
     /**
-     * @return (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * @return (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public String policyType() {
@@ -283,6 +300,7 @@ public final class GetPolicyInfoResult {
         private String comment;
         private Integer createdAt;
         private String createdBy;
+        private GetPolicyInfoDeny deny;
         private List<String> exceptPrincipals;
         private String forSecurableType;
         private GetPolicyInfoGrant grant;
@@ -305,6 +323,7 @@ public final class GetPolicyInfoResult {
     	      this.comment = defaults.comment;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
+    	      this.deny = defaults.deny;
     	      this.exceptPrincipals = defaults.exceptPrincipals;
     	      this.forSecurableType = defaults.forSecurableType;
     	      this.grant = defaults.grant;
@@ -352,6 +371,14 @@ public final class GetPolicyInfoResult {
               throw new MissingRequiredPropertyException("GetPolicyInfoResult", "createdBy");
             }
             this.createdBy = createdBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deny(GetPolicyInfoDeny deny) {
+            if (deny == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "deny");
+            }
+            this.deny = deny;
             return this;
         }
         @CustomType.Setter
@@ -487,6 +514,7 @@ public final class GetPolicyInfoResult {
             _resultValue.comment = comment;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
+            _resultValue.deny = deny;
             _resultValue.exceptPrincipals = exceptPrincipals;
             _resultValue.forSecurableType = forSecurableType;
             _resultValue.grant = grant;

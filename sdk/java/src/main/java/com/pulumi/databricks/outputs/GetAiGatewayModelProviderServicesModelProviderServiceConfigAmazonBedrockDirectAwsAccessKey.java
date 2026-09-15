@@ -20,9 +20,9 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAm
      */
     private @Nullable String accessKeyId;
     /**
-     * @return (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `accessKeyId`. Required on Create when
-     * using access-key auth. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `accessKeyId`. Required when creating
+     * a service with access-key authentication. Supply the value in
+     * `secret_access_key.plaintext`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey secretAccessKey;
@@ -38,9 +38,9 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigAm
         return Optional.ofNullable(this.accessKeyId);
     }
     /**
-     * @return (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `accessKeyId`. Required on Create when
-     * using access-key auth. Supplied as inline plaintext via
-     * `ProviderSecret.plaintext`
+     * @return (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `accessKeyId`. Required when creating
+     * a service with access-key authentication. Supply the value in
+     * `secret_access_key.plaintext`
      * 
      */
     public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey> secretAccessKey() {

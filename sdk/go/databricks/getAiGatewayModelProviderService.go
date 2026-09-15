@@ -11,9 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+//
+// Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+//
+// ## Example Usage
+//
+// The following example retrieves the model provider service named `customProvider` from the `main.default` schema:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := databricks.GetAiGatewayModelProviderService(ctx, &databricks.LookupAiGatewayModelProviderServiceArgs{
+//				Name: "model-provider-services/main.default.custom_provider",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("providerType", example.Config.ProviderType)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAiGatewayModelProviderService(ctx *pulumi.Context, args *LookupAiGatewayModelProviderServiceArgs, opts ...pulumi.InvokeOption) (*LookupAiGatewayModelProviderServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiGatewayModelProviderServiceResult
@@ -40,36 +71,30 @@ type LookupAiGatewayModelProviderServiceArgs struct {
 type LookupAiGatewayModelProviderServiceResult struct {
 	// (string) - User-provided description
 	Comment string `pulumi:"comment"`
-	// (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
-	// passthrough policy. See `ModelProviderServiceConfig` for the per-field
-	// contract. Required on CreateModelProviderService; on Update it is required
-	// only when `config` (or a `config.*` subpath) appears in `updateMask`
+	// (ModelProviderServiceConfig) - Provider authentication, exposed models, request-forwarding controls, rate
+	// limits, and payload logging. Required on Create. On Update, it is required
+	// only when `config` or one of its subpaths appears in `updateMask`
 	Config GetAiGatewayModelProviderServiceConfig `pulumi:"config"`
-	// (string) - When the provider service was created
+	// (string) - Time the provider service was created
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Creator identity
 	CreatedBy string `pulumi:"createdBy"`
-	// (string) - The resolved owner of the model provider service. Falls back to the
-	// caller's identity when `owner` is not explicitly set on creation
+	// (string) - Owner of the model provider service
 	EffectiveOwner string `pulumi:"effectiveOwner"`
-	// (string) - Optimistic concurrency control token. Server-generated from the
-	// entity's state and returned on every read. To use it as an if-match
-	// precondition on a mutation, echo the last-read value back via the dedicated
-	// `etag` field on the Update / Delete request; the server rejects the mutation
-	// if the stored etag differs
+	// (string) - Optimistic concurrency token returned on every read. To make an Update or
+	// Delete conditional, pass the last-read value in that request's `etag`
+	// field. In REST responses, this value is a base64 string; URL-encode it when
+	// setting the `etag` query parameter
 	Etag string `pulumi:"etag"`
 	// (string) - Metastore hosting the provider service
 	MetastoreId string `pulumi:"metastoreId"`
-	// (string) - Resource name of the bound UC service credential, in the AIP-122 form
-	// `credentials/{name}` (a metastore-level single-part credential name). On
-	// create the caller supplies the name here. On read it reflects the
-	// credential's current name at read time
-	Name string `pulumi:"name"`
-	// (string) - The owner of the model provider service. Write-only; read owner via
-	// effective_owner
-	Owner          string                                          `pulumi:"owner"`
+	// (string) - Resource name of the bound Unity Catalog service credential, in the form
+	// `credentials/{name}`. Supply this field when creating the service or
+	// rebinding its credential. On read, it reflects the credential's current
+	// name
+	Name           string                                          `pulumi:"name"`
 	ProviderConfig *GetAiGatewayModelProviderServiceProviderConfig `pulumi:"providerConfig"`
-	// (string) - When the provider service was last modified
+	// (string) - Time the provider service was last modified
 	UpdateTime string `pulumi:"updateTime"`
 	// (string) - Identity of the last updater
 	UpdatedBy string `pulumi:"updatedBy"`
@@ -116,17 +141,16 @@ func (o LookupAiGatewayModelProviderServiceResultOutput) Comment() pulumi.String
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.Comment }).(pulumi.StringOutput)
 }
 
-// (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
-// passthrough policy. See `ModelProviderServiceConfig` for the per-field
-// contract. Required on CreateModelProviderService; on Update it is required
-// only when `config` (or a `config.*` subpath) appears in `updateMask`
+// (ModelProviderServiceConfig) - Provider authentication, exposed models, request-forwarding controls, rate
+// limits, and payload logging. Required on Create. On Update, it is required
+// only when `config` or one of its subpaths appears in `updateMask`
 func (o LookupAiGatewayModelProviderServiceResultOutput) Config() GetAiGatewayModelProviderServiceConfigOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) GetAiGatewayModelProviderServiceConfig {
 		return v.Config
 	}).(GetAiGatewayModelProviderServiceConfigOutput)
 }
 
-// (string) - When the provider service was created
+// (string) - Time the provider service was created
 func (o LookupAiGatewayModelProviderServiceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -136,17 +160,15 @@ func (o LookupAiGatewayModelProviderServiceResultOutput) CreatedBy() pulumi.Stri
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - The resolved owner of the model provider service. Falls back to the
-// caller's identity when `owner` is not explicitly set on creation
+// (string) - Owner of the model provider service
 func (o LookupAiGatewayModelProviderServiceResultOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
 
-// (string) - Optimistic concurrency control token. Server-generated from the
-// entity's state and returned on every read. To use it as an if-match
-// precondition on a mutation, echo the last-read value back via the dedicated
-// `etag` field on the Update / Delete request; the server rejects the mutation
-// if the stored etag differs
+// (string) - Optimistic concurrency token returned on every read. To make an Update or
+// Delete conditional, pass the last-read value in that request's `etag`
+// field. In REST responses, this value is a base64 string; URL-encode it when
+// setting the `etag` query parameter
 func (o LookupAiGatewayModelProviderServiceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -156,18 +178,12 @@ func (o LookupAiGatewayModelProviderServiceResultOutput) MetastoreId() pulumi.St
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// (string) - Resource name of the bound UC service credential, in the AIP-122 form
-// `credentials/{name}` (a metastore-level single-part credential name). On
-// create the caller supplies the name here. On read it reflects the
-// credential's current name at read time
+// (string) - Resource name of the bound Unity Catalog service credential, in the form
+// `credentials/{name}`. Supply this field when creating the service or
+// rebinding its credential. On read, it reflects the credential's current
+// name
 func (o LookupAiGatewayModelProviderServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// (string) - The owner of the model provider service. Write-only; read owner via
-// effective_owner
-func (o LookupAiGatewayModelProviderServiceResultOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.Owner }).(pulumi.StringOutput)
 }
 
 func (o LookupAiGatewayModelProviderServiceResultOutput) ProviderConfig() GetAiGatewayModelProviderServiceProviderConfigPtrOutput {
@@ -176,7 +192,7 @@ func (o LookupAiGatewayModelProviderServiceResultOutput) ProviderConfig() GetAiG
 	}).(GetAiGatewayModelProviderServiceProviderConfigPtrOutput)
 }
 
-// (string) - When the provider service was last modified
+// (string) - Time the provider service was last modified
 func (o LookupAiGatewayModelProviderServiceResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

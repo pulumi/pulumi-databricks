@@ -48,7 +48,7 @@ public final class GetPostgresEndpointsEndpointSpec {
     /**
      * @return (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+     * Mutually exclusive with `suspendTimeoutDuration`
      * 
      */
     private @Nullable Boolean noSuspension;
@@ -106,7 +106,7 @@ public final class GetPostgresEndpointsEndpointSpec {
     /**
      * @return (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
+     * Mutually exclusive with `suspendTimeoutDuration`
      * 
      */
     public Optional<Boolean> noSuspension() {

@@ -11,6 +11,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -52,6 +53,23 @@ public final class FeatureEngineeringKafkaConfigIngestionConfigArgs extends com.
      */
     public Optional<Output<FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceArgs>> backfillSource() {
         return Optional.ofNullable(this.backfillSource);
+    }
+
+    /**
+     * The ID of the budget policy used to attribute the serverless compute cost of this stream&#39;s
+     * managed ingestion. If not specified, a default budget policy may be applied
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    /**
+     * @return The ID of the budget policy used to attribute the serverless compute cost of this stream&#39;s
+     * managed ingestion. If not specified, a default budget policy may be applied
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
     }
 
     /**
@@ -124,15 +142,44 @@ public final class FeatureEngineeringKafkaConfigIngestionConfigArgs extends com.
         return Optional.ofNullable(this.ingestionPipelineId);
     }
 
+    /**
+     * Custom tags to associate with this stream&#39;s managed ingestion. They are applied to the
+     * ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+     * compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+     * These tags apply only to the managed ingestion compute; they are not applied to the Stream
+     * entity itself, and are distinct from any Unity Catalog tags on the Stream.
+     * A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+     * cluster tags
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Custom tags to associate with this stream&#39;s managed ingestion. They are applied to the
+     * ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+     * compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+     * These tags apply only to the managed ingestion compute; they are not applied to the Stream
+     * entity itself, and are distinct from any Unity Catalog tags on the Stream.
+     * A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+     * cluster tags
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private FeatureEngineeringKafkaConfigIngestionConfigArgs() {}
 
     private FeatureEngineeringKafkaConfigIngestionConfigArgs(FeatureEngineeringKafkaConfigIngestionConfigArgs $) {
         this.backfillJobId = $.backfillJobId;
         this.backfillSource = $.backfillSource;
+        this.budgetPolicyId = $.budgetPolicyId;
         this.deduplicationColumns = $.deduplicationColumns;
         this.ingestionDestination = $.ingestionDestination;
         this.ingestionJobId = $.ingestionJobId;
         this.ingestionPipelineId = $.ingestionPipelineId;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -197,6 +244,29 @@ public final class FeatureEngineeringKafkaConfigIngestionConfigArgs extends com.
          */
         public Builder backfillSource(FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceArgs backfillSource) {
             return backfillSource(Output.of(backfillSource));
+        }
+
+        /**
+         * @param budgetPolicyId The ID of the budget policy used to attribute the serverless compute cost of this stream&#39;s
+         * managed ingestion. If not specified, a default budget policy may be applied
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        /**
+         * @param budgetPolicyId The ID of the budget policy used to attribute the serverless compute cost of this stream&#39;s
+         * managed ingestion. If not specified, a default budget policy may be applied
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
         /**
@@ -303,6 +373,39 @@ public final class FeatureEngineeringKafkaConfigIngestionConfigArgs extends com.
          */
         public Builder ingestionPipelineId(String ingestionPipelineId) {
             return ingestionPipelineId(Output.of(ingestionPipelineId));
+        }
+
+        /**
+         * @param tags Custom tags to associate with this stream&#39;s managed ingestion. They are applied to the
+         * ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+         * compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+         * These tags apply only to the managed ingestion compute; they are not applied to the Stream
+         * entity itself, and are distinct from any Unity Catalog tags on the Stream.
+         * A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+         * cluster tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Custom tags to associate with this stream&#39;s managed ingestion. They are applied to the
+         * ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+         * compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+         * These tags apply only to the managed ingestion compute; they are not applied to the Stream
+         * entity itself, and are distinct from any Unity Catalog tags on the Stream.
+         * A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+         * cluster tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public FeatureEngineeringKafkaConfigIngestionConfigArgs build() {

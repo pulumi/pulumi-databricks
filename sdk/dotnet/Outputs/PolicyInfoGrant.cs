@@ -13,12 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PolicyInfoGrant
     {
-        /// <summary>
-        /// List of privileges to grant.
-        /// When any of these privileges are requested, the policy will grant access
-        /// if the principal and condition match.
-        /// Required on create and update
-        /// </summary>
         public readonly ImmutableArray<string> Privileges;
 
         [OutputConstructor]

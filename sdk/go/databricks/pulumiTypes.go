@@ -32172,17 +32172,16 @@ func (o AccountSettingV2StringValPtrOutput) Value() pulumi.StringPtrOutput {
 }
 
 type AiGatewayMcpServiceConfig struct {
-	// Glob or exact-match patterns selecting which tools from the MCP server
-	// to expose. Prefix match for patterns with `*`, exact match otherwise.
-	// An empty list means all tools are included. Per-element max 256 chars
+	// Tool names or prefix patterns to expose from the MCP server. Use exact
+	// tool names or prefix patterns such as `read_*`. An empty list exposes all
+	// tools. At most 1,024 selectors are allowed, and each selector can contain
+	// at most 256 characters
 	IncludeToolSelectors []string `pulumi:"includeToolSelectors"`
-	// Per-principal rate limits applied to tool invocations routed through this
-	// MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-	// / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-	// `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-	// configured
+	// Rate limits for tool invocations. Supported scopes are user, group, service
+	// principal, the service as a whole, and each user by default. Request and
+	// token limits are supported. Empty when no rate limit is configured
 	RateLimits []AiGatewayMcpServiceConfigRateLimit `pulumi:"rateLimits"`
-	// UC Connection referencing the MCP server
+	// Unity Catalog connection referencing the MCP server. Required on Create
 	SourceConnection *AiGatewayMcpServiceConfigSourceConnection `pulumi:"sourceConnection"`
 }
 
@@ -32198,17 +32197,16 @@ type AiGatewayMcpServiceConfigInput interface {
 }
 
 type AiGatewayMcpServiceConfigArgs struct {
-	// Glob or exact-match patterns selecting which tools from the MCP server
-	// to expose. Prefix match for patterns with `*`, exact match otherwise.
-	// An empty list means all tools are included. Per-element max 256 chars
+	// Tool names or prefix patterns to expose from the MCP server. Use exact
+	// tool names or prefix patterns such as `read_*`. An empty list exposes all
+	// tools. At most 1,024 selectors are allowed, and each selector can contain
+	// at most 256 characters
 	IncludeToolSelectors pulumi.StringArrayInput `pulumi:"includeToolSelectors"`
-	// Per-principal rate limits applied to tool invocations routed through this
-	// MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-	// / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-	// `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-	// configured
+	// Rate limits for tool invocations. Supported scopes are user, group, service
+	// principal, the service as a whole, and each user by default. Request and
+	// token limits are supported. Empty when no rate limit is configured
 	RateLimits AiGatewayMcpServiceConfigRateLimitArrayInput `pulumi:"rateLimits"`
-	// UC Connection referencing the MCP server
+	// Unity Catalog connection referencing the MCP server. Required on Create
 	SourceConnection AiGatewayMcpServiceConfigSourceConnectionPtrInput `pulumi:"sourceConnection"`
 }
 
@@ -32289,23 +32287,22 @@ func (o AiGatewayMcpServiceConfigOutput) ToAiGatewayMcpServiceConfigPtrOutputWit
 	}).(AiGatewayMcpServiceConfigPtrOutput)
 }
 
-// Glob or exact-match patterns selecting which tools from the MCP server
-// to expose. Prefix match for patterns with `*`, exact match otherwise.
-// An empty list means all tools are included. Per-element max 256 chars
+// Tool names or prefix patterns to expose from the MCP server. Use exact
+// tool names or prefix patterns such as `read_*`. An empty list exposes all
+// tools. At most 1,024 selectors are allowed, and each selector can contain
+// at most 256 characters
 func (o AiGatewayMcpServiceConfigOutput) IncludeToolSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiGatewayMcpServiceConfig) []string { return v.IncludeToolSelectors }).(pulumi.StringArrayOutput)
 }
 
-// Per-principal rate limits applied to tool invocations routed through this
-// MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-// / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-// `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-// configured
+// Rate limits for tool invocations. Supported scopes are user, group, service
+// principal, the service as a whole, and each user by default. Request and
+// token limits are supported. Empty when no rate limit is configured
 func (o AiGatewayMcpServiceConfigOutput) RateLimits() AiGatewayMcpServiceConfigRateLimitArrayOutput {
 	return o.ApplyT(func(v AiGatewayMcpServiceConfig) []AiGatewayMcpServiceConfigRateLimit { return v.RateLimits }).(AiGatewayMcpServiceConfigRateLimitArrayOutput)
 }
 
-// UC Connection referencing the MCP server
+// Unity Catalog connection referencing the MCP server. Required on Create
 func (o AiGatewayMcpServiceConfigOutput) SourceConnection() AiGatewayMcpServiceConfigSourceConnectionPtrOutput {
 	return o.ApplyT(func(v AiGatewayMcpServiceConfig) *AiGatewayMcpServiceConfigSourceConnection {
 		return v.SourceConnection
@@ -32336,9 +32333,10 @@ func (o AiGatewayMcpServiceConfigPtrOutput) Elem() AiGatewayMcpServiceConfigOutp
 	}).(AiGatewayMcpServiceConfigOutput)
 }
 
-// Glob or exact-match patterns selecting which tools from the MCP server
-// to expose. Prefix match for patterns with `*`, exact match otherwise.
-// An empty list means all tools are included. Per-element max 256 chars
+// Tool names or prefix patterns to expose from the MCP server. Use exact
+// tool names or prefix patterns such as `read_*`. An empty list exposes all
+// tools. At most 1,024 selectors are allowed, and each selector can contain
+// at most 256 characters
 func (o AiGatewayMcpServiceConfigPtrOutput) IncludeToolSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiGatewayMcpServiceConfig) []string {
 		if v == nil {
@@ -32348,11 +32346,9 @@ func (o AiGatewayMcpServiceConfigPtrOutput) IncludeToolSelectors() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
-// Per-principal rate limits applied to tool invocations routed through this
-// MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-// / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-// `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-// configured
+// Rate limits for tool invocations. Supported scopes are user, group, service
+// principal, the service as a whole, and each user by default. Request and
+// token limits are supported. Empty when no rate limit is configured
 func (o AiGatewayMcpServiceConfigPtrOutput) RateLimits() AiGatewayMcpServiceConfigRateLimitArrayOutput {
 	return o.ApplyT(func(v *AiGatewayMcpServiceConfig) []AiGatewayMcpServiceConfigRateLimit {
 		if v == nil {
@@ -32362,7 +32358,7 @@ func (o AiGatewayMcpServiceConfigPtrOutput) RateLimits() AiGatewayMcpServiceConf
 	}).(AiGatewayMcpServiceConfigRateLimitArrayOutput)
 }
 
-// UC Connection referencing the MCP server
+// Unity Catalog connection referencing the MCP server. Required on Create
 func (o AiGatewayMcpServiceConfigPtrOutput) SourceConnection() AiGatewayMcpServiceConfigSourceConnectionPtrOutput {
 	return o.ApplyT(func(v *AiGatewayMcpServiceConfig) *AiGatewayMcpServiceConfigSourceConnection {
 		if v == nil {
@@ -32373,26 +32369,20 @@ func (o AiGatewayMcpServiceConfigPtrOutput) SourceConnection() AiGatewayMcpServi
 }
 
 type AiGatewayMcpServiceConfigRateLimit struct {
-	// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+	// Scope of the rate limit. Depending on this value, the limit applies to a
+	// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 	Key string `pulumi:"key"`
 	// Principal this limit applies to: user email, group name, or service
-	// principal application ID. Required unless `key` is
-	// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-	// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+	// principal application ID. Required when `key` applies to a user, group, or
+	// service principal; otherwise it must be unset
 	Principal *string `pulumi:"principal"`
 	// Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
 	RenewalPeriod string `pulumi:"renewalPeriod"`
-	// Request tag key this limit applies to. Required when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-	RequestTagKey *string `pulumi:"requestTagKey"`
-	// Request tag value this limit applies to. Only valid when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-	// value of `requestTagKey` (an any-value default); a set value is a
-	// specific override for that value
-	RequestTagValue *string `pulumi:"requestTagValue"`
-	// Max requests allowed within a renewal period. Leave unset for no request limit
+	// Maximum requests allowed in one renewal period. Leave unset for no request
+	// limit. Set to `0` to deny all requests
 	Requests *int `pulumi:"requests"`
-	// Max tokens allowed within a renewal period. Leave unset for no token limit
+	// Maximum tokens allowed in one renewal period. Leave unset for no token
+	// limit. Set to `0` to deny all requests
 	Tokens *int `pulumi:"tokens"`
 }
 
@@ -32408,26 +32398,20 @@ type AiGatewayMcpServiceConfigRateLimitInput interface {
 }
 
 type AiGatewayMcpServiceConfigRateLimitArgs struct {
-	// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+	// Scope of the rate limit. Depending on this value, the limit applies to a
+	// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 	Key pulumi.StringInput `pulumi:"key"`
 	// Principal this limit applies to: user email, group name, or service
-	// principal application ID. Required unless `key` is
-	// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-	// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+	// principal application ID. Required when `key` applies to a user, group, or
+	// service principal; otherwise it must be unset
 	Principal pulumi.StringPtrInput `pulumi:"principal"`
 	// Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
 	RenewalPeriod pulumi.StringInput `pulumi:"renewalPeriod"`
-	// Request tag key this limit applies to. Required when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-	RequestTagKey pulumi.StringPtrInput `pulumi:"requestTagKey"`
-	// Request tag value this limit applies to. Only valid when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-	// value of `requestTagKey` (an any-value default); a set value is a
-	// specific override for that value
-	RequestTagValue pulumi.StringPtrInput `pulumi:"requestTagValue"`
-	// Max requests allowed within a renewal period. Leave unset for no request limit
+	// Maximum requests allowed in one renewal period. Leave unset for no request
+	// limit. Set to `0` to deny all requests
 	Requests pulumi.IntPtrInput `pulumi:"requests"`
-	// Max tokens allowed within a renewal period. Leave unset for no token limit
+	// Maximum tokens allowed in one renewal period. Leave unset for no token
+	// limit. Set to `0` to deny all requests
 	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
 }
 
@@ -32482,15 +32466,15 @@ func (o AiGatewayMcpServiceConfigRateLimitOutput) ToAiGatewayMcpServiceConfigRat
 	return o
 }
 
-// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+// Scope of the rate limit. Depending on this value, the limit applies to a
+// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 func (o AiGatewayMcpServiceConfigRateLimitOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v AiGatewayMcpServiceConfigRateLimit) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Principal this limit applies to: user email, group name, or service
-// principal application ID. Required unless `key` is
-// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+// principal application ID. Required when `key` applies to a user, group, or
+// service principal; otherwise it must be unset
 func (o AiGatewayMcpServiceConfigRateLimitOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayMcpServiceConfigRateLimit) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
@@ -32500,26 +32484,14 @@ func (o AiGatewayMcpServiceConfigRateLimitOutput) RenewalPeriod() pulumi.StringO
 	return o.ApplyT(func(v AiGatewayMcpServiceConfigRateLimit) string { return v.RenewalPeriod }).(pulumi.StringOutput)
 }
 
-// Request tag key this limit applies to. Required when `key` is
-// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-func (o AiGatewayMcpServiceConfigRateLimitOutput) RequestTagKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiGatewayMcpServiceConfigRateLimit) *string { return v.RequestTagKey }).(pulumi.StringPtrOutput)
-}
-
-// Request tag value this limit applies to. Only valid when `key` is
-// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-// value of `requestTagKey` (an any-value default); a set value is a
-// specific override for that value
-func (o AiGatewayMcpServiceConfigRateLimitOutput) RequestTagValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiGatewayMcpServiceConfigRateLimit) *string { return v.RequestTagValue }).(pulumi.StringPtrOutput)
-}
-
-// Max requests allowed within a renewal period. Leave unset for no request limit
+// Maximum requests allowed in one renewal period. Leave unset for no request
+// limit. Set to `0` to deny all requests
 func (o AiGatewayMcpServiceConfigRateLimitOutput) Requests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiGatewayMcpServiceConfigRateLimit) *int { return v.Requests }).(pulumi.IntPtrOutput)
 }
 
-// Max tokens allowed within a renewal period. Leave unset for no token limit
+// Maximum tokens allowed in one renewal period. Leave unset for no token
+// limit. Set to `0` to deny all requests
 func (o AiGatewayMcpServiceConfigRateLimitOutput) Tokens() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiGatewayMcpServiceConfigRateLimit) *int { return v.Tokens }).(pulumi.IntPtrOutput)
 }
@@ -32545,7 +32517,9 @@ func (o AiGatewayMcpServiceConfigRateLimitArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type AiGatewayMcpServiceConfigSourceConnection struct {
-	// (boolean)
+	// (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+	// the reference so callers can identify the broken dependency; tool
+	// invocation fails until the source connection is updated
 	IsDeleted *bool `pulumi:"isDeleted"`
 	// (string) - Resource name of the MCP service.
 	// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
@@ -32567,7 +32541,9 @@ type AiGatewayMcpServiceConfigSourceConnectionInput interface {
 }
 
 type AiGatewayMcpServiceConfigSourceConnectionArgs struct {
-	// (boolean)
+	// (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+	// the reference so callers can identify the broken dependency; tool
+	// invocation fails until the source connection is updated
 	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
 	// (string) - Resource name of the MCP service.
 	// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
@@ -32654,7 +32630,9 @@ func (o AiGatewayMcpServiceConfigSourceConnectionOutput) ToAiGatewayMcpServiceCo
 	}).(AiGatewayMcpServiceConfigSourceConnectionPtrOutput)
 }
 
-// (boolean)
+// (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+// the reference so callers can identify the broken dependency; tool
+// invocation fails until the source connection is updated
 func (o AiGatewayMcpServiceConfigSourceConnectionOutput) IsDeleted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayMcpServiceConfigSourceConnection) *bool { return v.IsDeleted }).(pulumi.BoolPtrOutput)
 }
@@ -32692,7 +32670,9 @@ func (o AiGatewayMcpServiceConfigSourceConnectionPtrOutput) Elem() AiGatewayMcpS
 	}).(AiGatewayMcpServiceConfigSourceConnectionOutput)
 }
 
-// (boolean)
+// (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+// the reference so callers can identify the broken dependency; tool
+// invocation fails until the source connection is updated
 func (o AiGatewayMcpServiceConfigSourceConnectionPtrOutput) IsDeleted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayMcpServiceConfigSourceConnection) *bool {
 		if v == nil {
@@ -32856,54 +32836,47 @@ func (o AiGatewayMcpServiceProviderConfigPtrOutput) WorkspaceId() pulumi.StringP
 type AiGatewayModelProviderServiceConfig struct {
 	// When true, accepts any model exposed by the upstream provider; `targets`
 	// is not required and does not restrict routability. When false, only
-	// models listed in `targets` are routable
+	// models listed in `targets` are routable. Defaults to false
 	AllowAllTargets *bool                                             `pulumi:"allowAllTargets"`
 	AmazonBedrock   *AiGatewayModelProviderServiceConfigAmazonBedrock `pulumi:"amazonBedrock"`
 	Anthropic       *AiGatewayModelProviderServiceConfigAnthropic     `pulumi:"anthropic"`
 	AzureOpenai     *AiGatewayModelProviderServiceConfigAzureOpenai   `pulumi:"azureOpenai"`
 	Custom          *AiGatewayModelProviderServiceConfigCustom        `pulumi:"custom"`
-	// Whether to forward incoming request headers to the upstream provider.
-	// Applies to managed (multi-model) requests as well as passthrough requests
-	// served by this provider service. Governance-level decision by the provider
-	// service owner; not selectable per inference call
+	// Whether to forward incoming HTTP headers to the upstream provider. Defaults
+	// to false and is configured for the entire provider service, not per request.
+	// Upstream authentication is configured separately in the provider-specific
+	// configuration
 	ForwardHeaders *bool `pulumi:"forwardHeaders"`
-	// Whether to forward incoming request query parameters to the upstream
-	// provider. Same trust-boundary semantics as `forwardHeaders`
+	// Whether to forward incoming query parameters to the upstream provider.
+	// Defaults to false and is configured for the entire provider service, not
+	// per request
 	ForwardQueryParameters *bool `pulumi:"forwardQueryParameters"`
-	// Whether to forward request paths that fall outside this service's managed
-	// API set to the upstream provider as opaque passthrough. When true,
-	// requests addressed to subpaths not recognized by the managed API surface
-	// are proxied to the upstream provider over the same provider connection.
-	// When false, only managed-API paths are served. Governance-level decision
-	// by the provider service owner; expanding this expands the trust boundary
-	// that the ModelProviderService exposes
+	// Whether to proxy paths that AI Gateway does not recognize as configured
+	// provider-native API types. Defaults to false. When true, these paths are
+	// forwarded unchanged to the upstream provider. When false, only
+	// recognized API paths are served. Enabling this broadens the upstream API
+	// surface exposed through the provider service
 	ForwardUnmanagedPaths *bool                                                `pulumi:"forwardUnmanagedPaths"`
 	GeminiEnterprise      *AiGatewayModelProviderServiceConfigGeminiEnterprise `pulumi:"geminiEnterprise"`
-	// Inference table configuration for payload logging when this provider
-	// service is invoked directly. When it is invoked through a model service,
-	// the model service's own inference table captures the invocation instead.
-	// Mirrors `ModelServiceConfig.inference_table` /
-	// `AgentServiceConfig.inference_table`
+	// Payload logging configuration for requests sent directly to this provider
+	// service. Requests routed through a model service are captured by that model
+	// service's inference table instead
 	InferenceTable   *AiGatewayModelProviderServiceConfigInferenceTable   `pulumi:"inferenceTable"`
 	MicrosoftFoundry *AiGatewayModelProviderServiceConfigMicrosoftFoundry `pulumi:"microsoftFoundry"`
 	Openai           *AiGatewayModelProviderServiceConfigOpenai           `pulumi:"openai"`
-	// Provider type discriminator. Required at create time; immutable after.
-	// Determines which variant of the `provider` oneof must be set. May not be
-	// changed via Update; attempts to include `config.provider_type` in
-	// `UpdateModelProviderServiceRequest.update_mask` are rejected.
-	//
-	// Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+	// External model provider. Required on Create and immutable thereafter. Set
+	// the matching provider-specific configuration, such as `openai`,
+	// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
 	ProviderType *string `pulumi:"providerType"`
-	// Rate limits applied when this provider service is invoked directly. When
-	// it is invoked through a model service, the model service's own
-	// `rateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
-	// `McpServiceConfig.rate_limits`
+	// Rate limits for requests sent directly to this provider service. Requests
+	// routed through a model service use that model service's rate limits instead
 	RateLimits []AiGatewayModelProviderServiceConfigRateLimit `pulumi:"rateLimits"`
-	// Routing targets this provider service exposes (provider-side model
-	// identifier + unified API types per entry). Required (>=1) when
-	// `allowAllTargets = false`; optional and additive when
-	// `allowAllTargets = true`. References from `ExternalModelConfig.target`
-	// must match an entry here unless `allowAllTargets = true`
+	// Models and provider-native API types exposed by this provider service. Each
+	// entry must include at least one `nativeApiTypes` value. When
+	// `allowAllTargets` is false, at least one entry is required and model
+	// service destinations can reference only listed models. When
+	// `allowAllTargets` is true, any upstream model is routable; entries in
+	// this list provide API-type metadata without restricting other models
 	Targets []AiGatewayModelProviderServiceConfigTarget `pulumi:"targets"`
 }
 
@@ -32921,54 +32894,47 @@ type AiGatewayModelProviderServiceConfigInput interface {
 type AiGatewayModelProviderServiceConfigArgs struct {
 	// When true, accepts any model exposed by the upstream provider; `targets`
 	// is not required and does not restrict routability. When false, only
-	// models listed in `targets` are routable
+	// models listed in `targets` are routable. Defaults to false
 	AllowAllTargets pulumi.BoolPtrInput                                      `pulumi:"allowAllTargets"`
 	AmazonBedrock   AiGatewayModelProviderServiceConfigAmazonBedrockPtrInput `pulumi:"amazonBedrock"`
 	Anthropic       AiGatewayModelProviderServiceConfigAnthropicPtrInput     `pulumi:"anthropic"`
 	AzureOpenai     AiGatewayModelProviderServiceConfigAzureOpenaiPtrInput   `pulumi:"azureOpenai"`
 	Custom          AiGatewayModelProviderServiceConfigCustomPtrInput        `pulumi:"custom"`
-	// Whether to forward incoming request headers to the upstream provider.
-	// Applies to managed (multi-model) requests as well as passthrough requests
-	// served by this provider service. Governance-level decision by the provider
-	// service owner; not selectable per inference call
+	// Whether to forward incoming HTTP headers to the upstream provider. Defaults
+	// to false and is configured for the entire provider service, not per request.
+	// Upstream authentication is configured separately in the provider-specific
+	// configuration
 	ForwardHeaders pulumi.BoolPtrInput `pulumi:"forwardHeaders"`
-	// Whether to forward incoming request query parameters to the upstream
-	// provider. Same trust-boundary semantics as `forwardHeaders`
+	// Whether to forward incoming query parameters to the upstream provider.
+	// Defaults to false and is configured for the entire provider service, not
+	// per request
 	ForwardQueryParameters pulumi.BoolPtrInput `pulumi:"forwardQueryParameters"`
-	// Whether to forward request paths that fall outside this service's managed
-	// API set to the upstream provider as opaque passthrough. When true,
-	// requests addressed to subpaths not recognized by the managed API surface
-	// are proxied to the upstream provider over the same provider connection.
-	// When false, only managed-API paths are served. Governance-level decision
-	// by the provider service owner; expanding this expands the trust boundary
-	// that the ModelProviderService exposes
+	// Whether to proxy paths that AI Gateway does not recognize as configured
+	// provider-native API types. Defaults to false. When true, these paths are
+	// forwarded unchanged to the upstream provider. When false, only
+	// recognized API paths are served. Enabling this broadens the upstream API
+	// surface exposed through the provider service
 	ForwardUnmanagedPaths pulumi.BoolPtrInput                                         `pulumi:"forwardUnmanagedPaths"`
 	GeminiEnterprise      AiGatewayModelProviderServiceConfigGeminiEnterprisePtrInput `pulumi:"geminiEnterprise"`
-	// Inference table configuration for payload logging when this provider
-	// service is invoked directly. When it is invoked through a model service,
-	// the model service's own inference table captures the invocation instead.
-	// Mirrors `ModelServiceConfig.inference_table` /
-	// `AgentServiceConfig.inference_table`
+	// Payload logging configuration for requests sent directly to this provider
+	// service. Requests routed through a model service are captured by that model
+	// service's inference table instead
 	InferenceTable   AiGatewayModelProviderServiceConfigInferenceTablePtrInput   `pulumi:"inferenceTable"`
 	MicrosoftFoundry AiGatewayModelProviderServiceConfigMicrosoftFoundryPtrInput `pulumi:"microsoftFoundry"`
 	Openai           AiGatewayModelProviderServiceConfigOpenaiPtrInput           `pulumi:"openai"`
-	// Provider type discriminator. Required at create time; immutable after.
-	// Determines which variant of the `provider` oneof must be set. May not be
-	// changed via Update; attempts to include `config.provider_type` in
-	// `UpdateModelProviderServiceRequest.update_mask` are rejected.
-	//
-	// Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+	// External model provider. Required on Create and immutable thereafter. Set
+	// the matching provider-specific configuration, such as `openai`,
+	// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
 	ProviderType pulumi.StringPtrInput `pulumi:"providerType"`
-	// Rate limits applied when this provider service is invoked directly. When
-	// it is invoked through a model service, the model service's own
-	// `rateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
-	// `McpServiceConfig.rate_limits`
+	// Rate limits for requests sent directly to this provider service. Requests
+	// routed through a model service use that model service's rate limits instead
 	RateLimits AiGatewayModelProviderServiceConfigRateLimitArrayInput `pulumi:"rateLimits"`
-	// Routing targets this provider service exposes (provider-side model
-	// identifier + unified API types per entry). Required (>=1) when
-	// `allowAllTargets = false`; optional and additive when
-	// `allowAllTargets = true`. References from `ExternalModelConfig.target`
-	// must match an entry here unless `allowAllTargets = true`
+	// Models and provider-native API types exposed by this provider service. Each
+	// entry must include at least one `nativeApiTypes` value. When
+	// `allowAllTargets` is false, at least one entry is required and model
+	// service destinations can reference only listed models. When
+	// `allowAllTargets` is true, any upstream model is routable; entries in
+	// this list provide API-type metadata without restricting other models
 	Targets AiGatewayModelProviderServiceConfigTargetArrayInput `pulumi:"targets"`
 }
 
@@ -33051,7 +33017,7 @@ func (o AiGatewayModelProviderServiceConfigOutput) ToAiGatewayModelProviderServi
 
 // When true, accepts any model exposed by the upstream provider; `targets`
 // is not required and does not restrict routability. When false, only
-// models listed in `targets` are routable
+// models listed in `targets` are routable. Defaults to false
 func (o AiGatewayModelProviderServiceConfigOutput) AllowAllTargets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *bool { return v.AllowAllTargets }).(pulumi.BoolPtrOutput)
 }
@@ -33080,27 +33046,26 @@ func (o AiGatewayModelProviderServiceConfigOutput) Custom() AiGatewayModelProvid
 	}).(AiGatewayModelProviderServiceConfigCustomPtrOutput)
 }
 
-// Whether to forward incoming request headers to the upstream provider.
-// Applies to managed (multi-model) requests as well as passthrough requests
-// served by this provider service. Governance-level decision by the provider
-// service owner; not selectable per inference call
+// Whether to forward incoming HTTP headers to the upstream provider. Defaults
+// to false and is configured for the entire provider service, not per request.
+// Upstream authentication is configured separately in the provider-specific
+// configuration
 func (o AiGatewayModelProviderServiceConfigOutput) ForwardHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *bool { return v.ForwardHeaders }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to forward incoming request query parameters to the upstream
-// provider. Same trust-boundary semantics as `forwardHeaders`
+// Whether to forward incoming query parameters to the upstream provider.
+// Defaults to false and is configured for the entire provider service, not
+// per request
 func (o AiGatewayModelProviderServiceConfigOutput) ForwardQueryParameters() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *bool { return v.ForwardQueryParameters }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to forward request paths that fall outside this service's managed
-// API set to the upstream provider as opaque passthrough. When true,
-// requests addressed to subpaths not recognized by the managed API surface
-// are proxied to the upstream provider over the same provider connection.
-// When false, only managed-API paths are served. Governance-level decision
-// by the provider service owner; expanding this expands the trust boundary
-// that the ModelProviderService exposes
+// Whether to proxy paths that AI Gateway does not recognize as configured
+// provider-native API types. Defaults to false. When true, these paths are
+// forwarded unchanged to the upstream provider. When false, only
+// recognized API paths are served. Enabling this broadens the upstream API
+// surface exposed through the provider service
 func (o AiGatewayModelProviderServiceConfigOutput) ForwardUnmanagedPaths() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *bool { return v.ForwardUnmanagedPaths }).(pulumi.BoolPtrOutput)
 }
@@ -33111,11 +33076,9 @@ func (o AiGatewayModelProviderServiceConfigOutput) GeminiEnterprise() AiGatewayM
 	}).(AiGatewayModelProviderServiceConfigGeminiEnterprisePtrOutput)
 }
 
-// Inference table configuration for payload logging when this provider
-// service is invoked directly. When it is invoked through a model service,
-// the model service's own inference table captures the invocation instead.
-// Mirrors `ModelServiceConfig.inference_table` /
-// `AgentServiceConfig.inference_table`
+// Payload logging configuration for requests sent directly to this provider
+// service. Requests routed through a model service are captured by that model
+// service's inference table instead
 func (o AiGatewayModelProviderServiceConfigOutput) InferenceTable() AiGatewayModelProviderServiceConfigInferenceTablePtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *AiGatewayModelProviderServiceConfigInferenceTable {
 		return v.InferenceTable
@@ -33134,31 +33097,27 @@ func (o AiGatewayModelProviderServiceConfigOutput) Openai() AiGatewayModelProvid
 	}).(AiGatewayModelProviderServiceConfigOpenaiPtrOutput)
 }
 
-// Provider type discriminator. Required at create time; immutable after.
-// Determines which variant of the `provider` oneof must be set. May not be
-// changed via Update; attempts to include `config.provider_type` in
-// `UpdateModelProviderServiceRequest.update_mask` are rejected.
-//
-// Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+// External model provider. Required on Create and immutable thereafter. Set
+// the matching provider-specific configuration, such as `openai`,
+// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
 func (o AiGatewayModelProviderServiceConfigOutput) ProviderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) *string { return v.ProviderType }).(pulumi.StringPtrOutput)
 }
 
-// Rate limits applied when this provider service is invoked directly. When
-// it is invoked through a model service, the model service's own
-// `rateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
-// `McpServiceConfig.rate_limits`
+// Rate limits for requests sent directly to this provider service. Requests
+// routed through a model service use that model service's rate limits instead
 func (o AiGatewayModelProviderServiceConfigOutput) RateLimits() AiGatewayModelProviderServiceConfigRateLimitArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) []AiGatewayModelProviderServiceConfigRateLimit {
 		return v.RateLimits
 	}).(AiGatewayModelProviderServiceConfigRateLimitArrayOutput)
 }
 
-// Routing targets this provider service exposes (provider-side model
-// identifier + unified API types per entry). Required (>=1) when
-// `allowAllTargets = false`; optional and additive when
-// `allowAllTargets = true`. References from `ExternalModelConfig.target`
-// must match an entry here unless `allowAllTargets = true`
+// Models and provider-native API types exposed by this provider service. Each
+// entry must include at least one `nativeApiTypes` value. When
+// `allowAllTargets` is false, at least one entry is required and model
+// service destinations can reference only listed models. When
+// `allowAllTargets` is true, any upstream model is routable; entries in
+// this list provide API-type metadata without restricting other models
 func (o AiGatewayModelProviderServiceConfigOutput) Targets() AiGatewayModelProviderServiceConfigTargetArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfig) []AiGatewayModelProviderServiceConfigTarget {
 		return v.Targets
@@ -33191,7 +33150,7 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) Elem() AiGatewayModelProvi
 
 // When true, accepts any model exposed by the upstream provider; `targets`
 // is not required and does not restrict routability. When false, only
-// models listed in `targets` are routable
+// models listed in `targets` are routable. Defaults to false
 func (o AiGatewayModelProviderServiceConfigPtrOutput) AllowAllTargets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *bool {
 		if v == nil {
@@ -33237,10 +33196,10 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) Custom() AiGatewayModelPro
 	}).(AiGatewayModelProviderServiceConfigCustomPtrOutput)
 }
 
-// Whether to forward incoming request headers to the upstream provider.
-// Applies to managed (multi-model) requests as well as passthrough requests
-// served by this provider service. Governance-level decision by the provider
-// service owner; not selectable per inference call
+// Whether to forward incoming HTTP headers to the upstream provider. Defaults
+// to false and is configured for the entire provider service, not per request.
+// Upstream authentication is configured separately in the provider-specific
+// configuration
 func (o AiGatewayModelProviderServiceConfigPtrOutput) ForwardHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *bool {
 		if v == nil {
@@ -33250,8 +33209,9 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) ForwardHeaders() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to forward incoming request query parameters to the upstream
-// provider. Same trust-boundary semantics as `forwardHeaders`
+// Whether to forward incoming query parameters to the upstream provider.
+// Defaults to false and is configured for the entire provider service, not
+// per request
 func (o AiGatewayModelProviderServiceConfigPtrOutput) ForwardQueryParameters() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *bool {
 		if v == nil {
@@ -33261,13 +33221,11 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) ForwardQueryParameters() p
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to forward request paths that fall outside this service's managed
-// API set to the upstream provider as opaque passthrough. When true,
-// requests addressed to subpaths not recognized by the managed API surface
-// are proxied to the upstream provider over the same provider connection.
-// When false, only managed-API paths are served. Governance-level decision
-// by the provider service owner; expanding this expands the trust boundary
-// that the ModelProviderService exposes
+// Whether to proxy paths that AI Gateway does not recognize as configured
+// provider-native API types. Defaults to false. When true, these paths are
+// forwarded unchanged to the upstream provider. When false, only
+// recognized API paths are served. Enabling this broadens the upstream API
+// surface exposed through the provider service
 func (o AiGatewayModelProviderServiceConfigPtrOutput) ForwardUnmanagedPaths() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *bool {
 		if v == nil {
@@ -33286,11 +33244,9 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) GeminiEnterprise() AiGatew
 	}).(AiGatewayModelProviderServiceConfigGeminiEnterprisePtrOutput)
 }
 
-// Inference table configuration for payload logging when this provider
-// service is invoked directly. When it is invoked through a model service,
-// the model service's own inference table captures the invocation instead.
-// Mirrors `ModelServiceConfig.inference_table` /
-// `AgentServiceConfig.inference_table`
+// Payload logging configuration for requests sent directly to this provider
+// service. Requests routed through a model service are captured by that model
+// service's inference table instead
 func (o AiGatewayModelProviderServiceConfigPtrOutput) InferenceTable() AiGatewayModelProviderServiceConfigInferenceTablePtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *AiGatewayModelProviderServiceConfigInferenceTable {
 		if v == nil {
@@ -33318,12 +33274,9 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) Openai() AiGatewayModelPro
 	}).(AiGatewayModelProviderServiceConfigOpenaiPtrOutput)
 }
 
-// Provider type discriminator. Required at create time; immutable after.
-// Determines which variant of the `provider` oneof must be set. May not be
-// changed via Update; attempts to include `config.provider_type` in
-// `UpdateModelProviderServiceRequest.update_mask` are rejected.
-//
-// Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+// External model provider. Required on Create and immutable thereafter. Set
+// the matching provider-specific configuration, such as `openai`,
+// `azureOpenai`, or `amazonBedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
 func (o AiGatewayModelProviderServiceConfigPtrOutput) ProviderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) *string {
 		if v == nil {
@@ -33333,10 +33286,8 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) ProviderType() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Rate limits applied when this provider service is invoked directly. When
-// it is invoked through a model service, the model service's own
-// `rateLimits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
-// `McpServiceConfig.rate_limits`
+// Rate limits for requests sent directly to this provider service. Requests
+// routed through a model service use that model service's rate limits instead
 func (o AiGatewayModelProviderServiceConfigPtrOutput) RateLimits() AiGatewayModelProviderServiceConfigRateLimitArrayOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) []AiGatewayModelProviderServiceConfigRateLimit {
 		if v == nil {
@@ -33346,11 +33297,12 @@ func (o AiGatewayModelProviderServiceConfigPtrOutput) RateLimits() AiGatewayMode
 	}).(AiGatewayModelProviderServiceConfigRateLimitArrayOutput)
 }
 
-// Routing targets this provider service exposes (provider-side model
-// identifier + unified API types per entry). Required (>=1) when
-// `allowAllTargets = false`; optional and additive when
-// `allowAllTargets = true`. References from `ExternalModelConfig.target`
-// must match an entry here unless `allowAllTargets = true`
+// Models and provider-native API types exposed by this provider service. Each
+// entry must include at least one `nativeApiTypes` value. When
+// `allowAllTargets` is false, at least one entry is required and model
+// service destinations can reference only listed models. When
+// `allowAllTargets` is true, any upstream model is routable; entries in
+// this list provide API-type metadata without restricting other models
 func (o AiGatewayModelProviderServiceConfigPtrOutput) Targets() AiGatewayModelProviderServiceConfigTargetArrayOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfig) []AiGatewayModelProviderServiceConfigTarget {
 		if v == nil {
@@ -33496,7 +33448,9 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockPtrOutput) Direct() AiGa
 }
 
 type AiGatewayModelProviderServiceConfigAmazonBedrockDirect struct {
-	// AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+	// AWS access-key-pair authentication. Set `accessKeyId` and
+	// `secret_access_key.plaintext`. Mutually exclusive with
+	// `serviceCredential`
 	AwsAccessKey      *AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey      `pulumi:"awsAccessKey"`
 	Region            *string                                                                  `pulumi:"region"`
 	ServiceCredential *AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredential `pulumi:"serviceCredential"`
@@ -33514,7 +33468,9 @@ type AiGatewayModelProviderServiceConfigAmazonBedrockDirectInput interface {
 }
 
 type AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs struct {
-	// AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+	// AWS access-key-pair authentication. Set `accessKeyId` and
+	// `secret_access_key.plaintext`. Mutually exclusive with
+	// `serviceCredential`
 	AwsAccessKey      AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyPtrInput      `pulumi:"awsAccessKey"`
 	Region            pulumi.StringPtrInput                                                           `pulumi:"region"`
 	ServiceCredential AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredentialPtrInput `pulumi:"serviceCredential"`
@@ -33597,7 +33553,9 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectOutput) ToAiGatewa
 	}).(AiGatewayModelProviderServiceConfigAmazonBedrockDirectPtrOutput)
 }
 
-// AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+// AWS access-key-pair authentication. Set `accessKeyId` and
+// `secret_access_key.plaintext`. Mutually exclusive with
+// `serviceCredential`
 func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectOutput) AwsAccessKey() AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAmazonBedrockDirect) *AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey {
 		return v.AwsAccessKey
@@ -33638,7 +33596,9 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectPtrOutput) Elem() 
 	}).(AiGatewayModelProviderServiceConfigAmazonBedrockDirectOutput)
 }
 
-// AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+// AWS access-key-pair authentication. Set `accessKeyId` and
+// `secret_access_key.plaintext`. Mutually exclusive with
+// `serviceCredential`
 func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectPtrOutput) AwsAccessKey() AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAmazonBedrockDirect) *AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey {
 		if v == nil {
@@ -33671,9 +33631,9 @@ type AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey struct {
 	// username-equivalent (not a secret value): round-trips on reads and is
 	// scrubbed from audit logs
 	AccessKeyId *string `pulumi:"accessKeyId"`
-	// AWS secret access key paired with `accessKeyId`. Required on Create when
-	// using access-key auth. Supplied as inline plaintext via
-	// `ProviderSecret.plaintext`
+	// AWS secret access key paired with `accessKeyId`. Required when creating
+	// a service with access-key authentication. Supply the value in
+	// `secret_access_key.plaintext`
 	SecretAccessKey *AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey `pulumi:"secretAccessKey"`
 }
 
@@ -33693,9 +33653,9 @@ type AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs stru
 	// username-equivalent (not a secret value): round-trips on reads and is
 	// scrubbed from audit logs
 	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
-	// AWS secret access key paired with `accessKeyId`. Required on Create when
-	// using access-key auth. Supplied as inline plaintext via
-	// `ProviderSecret.plaintext`
+	// AWS secret access key paired with `accessKeyId`. Required when creating
+	// a service with access-key authentication. Supply the value in
+	// `secret_access_key.plaintext`
 	SecretAccessKey AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyPtrInput `pulumi:"secretAccessKey"`
 }
 
@@ -33785,9 +33745,9 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS secret access key paired with `accessKeyId`. Required on Create when
-// using access-key auth. Supplied as inline plaintext via
-// `ProviderSecret.plaintext`
+// AWS secret access key paired with `accessKeyId`. Required when creating
+// a service with access-key authentication. Supply the value in
+// `secret_access_key.plaintext`
 func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyOutput) SecretAccessKey() AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey) *AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
 		return v.SecretAccessKey
@@ -33830,9 +33790,9 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS secret access key paired with `accessKeyId`. Required on Create when
-// using access-key auth. Supplied as inline plaintext via
-// `ProviderSecret.plaintext`
+// AWS secret access key paired with `accessKeyId`. Required when creating
+// a service with access-key authentication. Supply the value in
+// `secret_access_key.plaintext`
 func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyPtrOutput) SecretAccessKey() AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKey) *AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
 		if v == nil {
@@ -33844,8 +33804,8 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyPtrOut
 
 type AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -33862,8 +33822,8 @@ type AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAcc
 
 type AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -33945,8 +33905,8 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecret
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey) *string {
 		return v.Plaintext
@@ -33978,8 +33938,8 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecret
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey) *string {
 		if v == nil {
@@ -34144,10 +34104,9 @@ func (o AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredentialP
 
 type AiGatewayModelProviderServiceConfigAnthropic struct {
 	Direct *AiGatewayModelProviderServiceConfigAnthropicDirect `pulumi:"direct"`
-	// Relayed (credential-less) form: no Anthropic credential is stored. Each
-	// inference request instead carries the caller's own OAuth token, which the
-	// platform forwards to Anthropic on outbound requests. Mutually exclusive
-	// with `direct`; no `apiKey` is required or persisted
+	// Relayed authentication. Each inference request supplies the caller's
+	// OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+	// stored. Mutually exclusive with `direct`
 	Relayed *AiGatewayModelProviderServiceConfigAnthropicRelayed `pulumi:"relayed"`
 }
 
@@ -34164,10 +34123,9 @@ type AiGatewayModelProviderServiceConfigAnthropicInput interface {
 
 type AiGatewayModelProviderServiceConfigAnthropicArgs struct {
 	Direct AiGatewayModelProviderServiceConfigAnthropicDirectPtrInput `pulumi:"direct"`
-	// Relayed (credential-less) form: no Anthropic credential is stored. Each
-	// inference request instead carries the caller's own OAuth token, which the
-	// platform forwards to Anthropic on outbound requests. Mutually exclusive
-	// with `direct`; no `apiKey` is required or persisted
+	// Relayed authentication. Each inference request supplies the caller's
+	// OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+	// stored. Mutually exclusive with `direct`
 	Relayed AiGatewayModelProviderServiceConfigAnthropicRelayedPtrInput `pulumi:"relayed"`
 }
 
@@ -34254,10 +34212,9 @@ func (o AiGatewayModelProviderServiceConfigAnthropicOutput) Direct() AiGatewayMo
 	}).(AiGatewayModelProviderServiceConfigAnthropicDirectPtrOutput)
 }
 
-// Relayed (credential-less) form: no Anthropic credential is stored. Each
-// inference request instead carries the caller's own OAuth token, which the
-// platform forwards to Anthropic on outbound requests. Mutually exclusive
-// with `direct`; no `apiKey` is required or persisted
+// Relayed authentication. Each inference request supplies the caller's
+// OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+// stored. Mutually exclusive with `direct`
 func (o AiGatewayModelProviderServiceConfigAnthropicOutput) Relayed() AiGatewayModelProviderServiceConfigAnthropicRelayedPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAnthropic) *AiGatewayModelProviderServiceConfigAnthropicRelayed {
 		return v.Relayed
@@ -34297,10 +34254,9 @@ func (o AiGatewayModelProviderServiceConfigAnthropicPtrOutput) Direct() AiGatewa
 	}).(AiGatewayModelProviderServiceConfigAnthropicDirectPtrOutput)
 }
 
-// Relayed (credential-less) form: no Anthropic credential is stored. Each
-// inference request instead carries the caller's own OAuth token, which the
-// platform forwards to Anthropic on outbound requests. Mutually exclusive
-// with `direct`; no `apiKey` is required or persisted
+// Relayed authentication. Each inference request supplies the caller's
+// OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+// stored. Mutually exclusive with `direct`
 func (o AiGatewayModelProviderServiceConfigAnthropicPtrOutput) Relayed() AiGatewayModelProviderServiceConfigAnthropicRelayedPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAnthropic) *AiGatewayModelProviderServiceConfigAnthropicRelayed {
 		if v == nil {
@@ -34447,8 +34403,8 @@ func (o AiGatewayModelProviderServiceConfigAnthropicDirectPtrOutput) ApiKey() Ai
 
 type AiGatewayModelProviderServiceConfigAnthropicDirectApiKey struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -34465,8 +34421,8 @@ type AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyInput interface {
 
 type AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -34548,8 +34504,8 @@ func (o AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyOutput) ToAiGate
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAnthropicDirectApiKey) *string { return v.Plaintext }).(pulumi.StringPtrOutput)
 }
@@ -34579,8 +34535,8 @@ func (o AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyPtrOutput) Elem(
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAnthropicDirectApiKey) *string {
 		if v == nil {
@@ -34591,10 +34547,6 @@ func (o AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyPtrOutput) Plain
 }
 
 type AiGatewayModelProviderServiceConfigAnthropicRelayed struct {
-	// Which Anthropic subscription tier the relayed token belongs to. Optional;
-	// when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
-	// Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
-	PlanType *string `pulumi:"planType"`
 }
 
 // AiGatewayModelProviderServiceConfigAnthropicRelayedInput is an input type that accepts AiGatewayModelProviderServiceConfigAnthropicRelayedArgs and AiGatewayModelProviderServiceConfigAnthropicRelayedOutput values.
@@ -34609,10 +34561,6 @@ type AiGatewayModelProviderServiceConfigAnthropicRelayedInput interface {
 }
 
 type AiGatewayModelProviderServiceConfigAnthropicRelayedArgs struct {
-	// Which Anthropic subscription tier the relayed token belongs to. Optional;
-	// when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
-	// Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
-	PlanType pulumi.StringPtrInput `pulumi:"planType"`
 }
 
 func (AiGatewayModelProviderServiceConfigAnthropicRelayedArgs) ElementType() reflect.Type {
@@ -34692,13 +34640,6 @@ func (o AiGatewayModelProviderServiceConfigAnthropicRelayedOutput) ToAiGatewayMo
 	}).(AiGatewayModelProviderServiceConfigAnthropicRelayedPtrOutput)
 }
 
-// Which Anthropic subscription tier the relayed token belongs to. Optional;
-// when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
-// Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
-func (o AiGatewayModelProviderServiceConfigAnthropicRelayedOutput) PlanType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAnthropicRelayed) *string { return v.PlanType }).(pulumi.StringPtrOutput)
-}
-
 type AiGatewayModelProviderServiceConfigAnthropicRelayedPtrOutput struct{ *pulumi.OutputState }
 
 func (AiGatewayModelProviderServiceConfigAnthropicRelayedPtrOutput) ElementType() reflect.Type {
@@ -34721,18 +34662,6 @@ func (o AiGatewayModelProviderServiceConfigAnthropicRelayedPtrOutput) Elem() AiG
 		var ret AiGatewayModelProviderServiceConfigAnthropicRelayed
 		return ret
 	}).(AiGatewayModelProviderServiceConfigAnthropicRelayedOutput)
-}
-
-// Which Anthropic subscription tier the relayed token belongs to. Optional;
-// when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
-// Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
-func (o AiGatewayModelProviderServiceConfigAnthropicRelayedPtrOutput) PlanType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAnthropicRelayed) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PlanType
-	}).(pulumi.StringPtrOutput)
 }
 
 type AiGatewayModelProviderServiceConfigAzureOpenai struct {
@@ -35056,8 +34985,8 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectPtrOutput) ServiceCr
 
 type AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -35074,8 +35003,8 @@ type AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyInput interface {
 
 type AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -35157,8 +35086,8 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyOutput) ToAiGa
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey) *string { return v.Plaintext }).(pulumi.StringPtrOutput)
 }
@@ -35188,8 +35117,8 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyPtrOutput) Ele
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey) *string {
 		if v == nil {
@@ -35202,8 +35131,7 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyPtrOutput) Pla
 type AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal struct {
 	// Entra ID client (application) ID. Required on Create
 	ClientId *string `pulumi:"clientId"`
-	// Entra ID client secret. Supplied as inline plaintext via
-	// `ProviderSecret.plaintext`
+	// Entra ID client secret. Supply the value in `client_secret.plaintext`
 	ClientSecret *AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret `pulumi:"clientSecret"`
 	// Entra ID (Azure AD) tenant ID. Required on Create
 	TenantId *string `pulumi:"tenantId"`
@@ -35223,8 +35151,7 @@ type AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalIn
 type AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalArgs struct {
 	// Entra ID client (application) ID. Required on Create
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Entra ID client secret. Supplied as inline plaintext via
-	// `ProviderSecret.plaintext`
+	// Entra ID client secret. Supply the value in `client_secret.plaintext`
 	ClientSecret AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretPtrInput `pulumi:"clientSecret"`
 	// Entra ID (Azure AD) tenant ID. Required on Create
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
@@ -35314,8 +35241,7 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipa
 	}).(pulumi.StringPtrOutput)
 }
 
-// Entra ID client secret. Supplied as inline plaintext via
-// `ProviderSecret.plaintext`
+// Entra ID client secret. Supply the value in `client_secret.plaintext`
 func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalOutput) ClientSecret() AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal) *AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
 		return v.ClientSecret
@@ -35363,8 +35289,7 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipa
 	}).(pulumi.StringPtrOutput)
 }
 
-// Entra ID client secret. Supplied as inline plaintext via
-// `ProviderSecret.plaintext`
+// Entra ID client secret. Supply the value in `client_secret.plaintext`
 func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalPtrOutput) ClientSecret() AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipal) *AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
 		if v == nil {
@@ -35386,8 +35311,8 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipa
 
 type AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -35404,8 +35329,8 @@ type AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalCl
 
 type AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -35487,8 +35412,8 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipa
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret) *string {
 		return v.Plaintext
@@ -35520,8 +35445,8 @@ func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipa
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret) *string {
 		if v == nil {
@@ -35971,8 +35896,8 @@ func (o AiGatewayModelProviderServiceConfigCustomDirectPtrOutput) BaseUrl() pulu
 
 type AiGatewayModelProviderServiceConfigCustomDirectApiKey struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -35989,8 +35914,8 @@ type AiGatewayModelProviderServiceConfigCustomDirectApiKeyInput interface {
 
 type AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -36072,8 +35997,8 @@ func (o AiGatewayModelProviderServiceConfigCustomDirectApiKeyOutput) ToAiGateway
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigCustomDirectApiKeyOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigCustomDirectApiKey) *string { return v.Plaintext }).(pulumi.StringPtrOutput)
 }
@@ -36103,8 +36028,8 @@ func (o AiGatewayModelProviderServiceConfigCustomDirectApiKeyPtrOutput) Elem() A
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigCustomDirectApiKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigCustomDirectApiKey) *string {
 		if v == nil {
@@ -36420,8 +36345,8 @@ func (o AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectPtrOutput) Regi
 
 type AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -36438,8 +36363,8 @@ type AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyInput interf
 
 type AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -36521,8 +36446,8 @@ func (o AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyOutput) T
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey) *string { return v.Plaintext }).(pulumi.StringPtrOutput)
 }
@@ -36552,8 +36477,8 @@ func (o AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyPtrOutput
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey) *string {
 		if v == nil {
@@ -36564,17 +36489,9 @@ func (o AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyPtrOutput
 }
 
 type AiGatewayModelProviderServiceConfigInferenceTable struct {
-	// Indicates whether payload logging is disabled (opt-out). Unset means that
-	// payload logging is active (the on-by-default state coincides with the proto
-	// zero-value, so the server never fills this field for a client that leaves it
-	// unset). Set `disabled = true` to pause runtime logging while keeping the
-	// sub-message attached (preserving `parent` and `tableNamePrefix` for a
-	// later flip back to active). `parent` remains required either way
-	Disabled *bool `pulumi:"disabled"`
-	// (boolean) - True when the bound inference TABLE has been deleted but the parent
-	// service still references it. The dangling reference is surfaced (not
-	// silently dropped) so callers can see the broken dependency. AI Gateway
-	// payload logging fails closed in this state
+	// (boolean) - Whether the referenced inference table has been deleted. The configuration
+	// remains visible so you can identify the broken dependency. Payload logging
+	// cannot continue until the table is restored or the configuration is updated
 	IsDeleted *bool `pulumi:"isDeleted"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -36583,12 +36500,11 @@ type AiGatewayModelProviderServiceConfigInferenceTable struct {
 	// (string) - Resolved UC table for payload logs.
 	// Format: `tables/{catalog}.{schema}.{table}`
 	Table *string `pulumi:"table"`
-	// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-	// stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-	// automatically. To find the actual UC table after Create, read the `table`
-	// field on the response. Defaults to `<model_service_name>_payload` when unset.
-	// Set at create time and immutable thereafter; changing it on an existing
-	// service is rejected
+	// Prefix used to form the inference table's registered name. AI Gateway
+	// appends `_payload`; for example, `tableNamePrefix = "orders"` creates
+	// `ordersPayload`. If unset, the prefix defaults to the service name. Read
+	// `table` from the response for the resulting resource name. After the
+	// inference table is created, this field cannot be changed
 	TableNamePrefix *string `pulumi:"tableNamePrefix"`
 }
 
@@ -36604,17 +36520,9 @@ type AiGatewayModelProviderServiceConfigInferenceTableInput interface {
 }
 
 type AiGatewayModelProviderServiceConfigInferenceTableArgs struct {
-	// Indicates whether payload logging is disabled (opt-out). Unset means that
-	// payload logging is active (the on-by-default state coincides with the proto
-	// zero-value, so the server never fills this field for a client that leaves it
-	// unset). Set `disabled = true` to pause runtime logging while keeping the
-	// sub-message attached (preserving `parent` and `tableNamePrefix` for a
-	// later flip back to active). `parent` remains required either way
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// (boolean) - True when the bound inference TABLE has been deleted but the parent
-	// service still references it. The dangling reference is surfaced (not
-	// silently dropped) so callers can see the broken dependency. AI Gateway
-	// payload logging fails closed in this state
+	// (boolean) - Whether the referenced inference table has been deleted. The configuration
+	// remains visible so you can identify the broken dependency. Payload logging
+	// cannot continue until the table is restored or the configuration is updated
 	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -36623,12 +36531,11 @@ type AiGatewayModelProviderServiceConfigInferenceTableArgs struct {
 	// (string) - Resolved UC table for payload logs.
 	// Format: `tables/{catalog}.{schema}.{table}`
 	Table pulumi.StringPtrInput `pulumi:"table"`
-	// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-	// stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-	// automatically. To find the actual UC table after Create, read the `table`
-	// field on the response. Defaults to `<model_service_name>_payload` when unset.
-	// Set at create time and immutable thereafter; changing it on an existing
-	// service is rejected
+	// Prefix used to form the inference table's registered name. AI Gateway
+	// appends `_payload`; for example, `tableNamePrefix = "orders"` creates
+	// `ordersPayload`. If unset, the prefix defaults to the service name. Read
+	// `table` from the response for the resulting resource name. After the
+	// inference table is created, this field cannot be changed
 	TableNamePrefix pulumi.StringPtrInput `pulumi:"tableNamePrefix"`
 }
 
@@ -36709,20 +36616,9 @@ func (o AiGatewayModelProviderServiceConfigInferenceTableOutput) ToAiGatewayMode
 	}).(AiGatewayModelProviderServiceConfigInferenceTablePtrOutput)
 }
 
-// Indicates whether payload logging is disabled (opt-out). Unset means that
-// payload logging is active (the on-by-default state coincides with the proto
-// zero-value, so the server never fills this field for a client that leaves it
-// unset). Set `disabled = true` to pause runtime logging while keeping the
-// sub-message attached (preserving `parent` and `tableNamePrefix` for a
-// later flip back to active). `parent` remains required either way
-func (o AiGatewayModelProviderServiceConfigInferenceTableOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigInferenceTable) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
-}
-
-// (boolean) - True when the bound inference TABLE has been deleted but the parent
-// service still references it. The dangling reference is surfaced (not
-// silently dropped) so callers can see the broken dependency. AI Gateway
-// payload logging fails closed in this state
+// (boolean) - Whether the referenced inference table has been deleted. The configuration
+// remains visible so you can identify the broken dependency. Payload logging
+// cannot continue until the table is restored or the configuration is updated
 func (o AiGatewayModelProviderServiceConfigInferenceTableOutput) IsDeleted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigInferenceTable) *bool { return v.IsDeleted }).(pulumi.BoolPtrOutput)
 }
@@ -36740,12 +36636,11 @@ func (o AiGatewayModelProviderServiceConfigInferenceTableOutput) Table() pulumi.
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigInferenceTable) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
 
-// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-// stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-// automatically. To find the actual UC table after Create, read the `table`
-// field on the response. Defaults to `<model_service_name>_payload` when unset.
-// Set at create time and immutable thereafter; changing it on an existing
-// service is rejected
+// Prefix used to form the inference table's registered name. AI Gateway
+// appends `_payload`; for example, `tableNamePrefix = "orders"` creates
+// `ordersPayload`. If unset, the prefix defaults to the service name. Read
+// `table` from the response for the resulting resource name. After the
+// inference table is created, this field cannot be changed
 func (o AiGatewayModelProviderServiceConfigInferenceTableOutput) TableNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigInferenceTable) *string { return v.TableNamePrefix }).(pulumi.StringPtrOutput)
 }
@@ -36774,25 +36669,9 @@ func (o AiGatewayModelProviderServiceConfigInferenceTablePtrOutput) Elem() AiGat
 	}).(AiGatewayModelProviderServiceConfigInferenceTableOutput)
 }
 
-// Indicates whether payload logging is disabled (opt-out). Unset means that
-// payload logging is active (the on-by-default state coincides with the proto
-// zero-value, so the server never fills this field for a client that leaves it
-// unset). Set `disabled = true` to pause runtime logging while keeping the
-// sub-message attached (preserving `parent` and `tableNamePrefix` for a
-// later flip back to active). `parent` remains required either way
-func (o AiGatewayModelProviderServiceConfigInferenceTablePtrOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigInferenceTable) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Disabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (boolean) - True when the bound inference TABLE has been deleted but the parent
-// service still references it. The dangling reference is surfaced (not
-// silently dropped) so callers can see the broken dependency. AI Gateway
-// payload logging fails closed in this state
+// (boolean) - Whether the referenced inference table has been deleted. The configuration
+// remains visible so you can identify the broken dependency. Payload logging
+// cannot continue until the table is restored or the configuration is updated
 func (o AiGatewayModelProviderServiceConfigInferenceTablePtrOutput) IsDeleted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigInferenceTable) *bool {
 		if v == nil {
@@ -36825,12 +36704,11 @@ func (o AiGatewayModelProviderServiceConfigInferenceTablePtrOutput) Table() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-// stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-// automatically. To find the actual UC table after Create, read the `table`
-// field on the response. Defaults to `<model_service_name>_payload` when unset.
-// Set at create time and immutable thereafter; changing it on an existing
-// service is rejected
+// Prefix used to form the inference table's registered name. AI Gateway
+// appends `_payload`; for example, `tableNamePrefix = "orders"` creates
+// `ordersPayload`. If unset, the prefix defaults to the service name. Read
+// `table` from the response for the resulting resource name. After the
+// inference table is created, this field cannot be changed
 func (o AiGatewayModelProviderServiceConfigInferenceTablePtrOutput) TableNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigInferenceTable) *string {
 		if v == nil {
@@ -37161,8 +37039,8 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectPtrOutput) Serv
 
 type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -37179,8 +37057,8 @@ type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyInput interf
 
 type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -37262,8 +37140,8 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyOutput) T
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey) *string { return v.Plaintext }).(pulumi.StringPtrOutput)
 }
@@ -37293,8 +37171,8 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyPtrOutput
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey) *string {
 		if v == nil {
@@ -37307,8 +37185,7 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyPtrOutput
 type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal struct {
 	// Entra ID client (application) ID. Required on Create
 	ClientId *string `pulumi:"clientId"`
-	// Entra ID client secret. Supplied as inline plaintext via
-	// `ProviderSecret.plaintext`
+	// Entra ID client secret. Supply the value in `client_secret.plaintext`
 	ClientSecret *AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret `pulumi:"clientSecret"`
 	// Entra ID (Azure AD) tenant ID. Required on Create
 	TenantId *string `pulumi:"tenantId"`
@@ -37328,8 +37205,7 @@ type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinci
 type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalArgs struct {
 	// Entra ID client (application) ID. Required on Create
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Entra ID client secret. Supplied as inline plaintext via
-	// `ProviderSecret.plaintext`
+	// Entra ID client secret. Supply the value in `client_secret.plaintext`
 	ClientSecret AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretPtrInput `pulumi:"clientSecret"`
 	// Entra ID (Azure AD) tenant ID. Required on Create
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
@@ -37419,8 +37295,7 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Entra ID client secret. Supplied as inline plaintext via
-// `ProviderSecret.plaintext`
+// Entra ID client secret. Supply the value in `client_secret.plaintext`
 func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalOutput) ClientSecret() AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal) *AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
 		return v.ClientSecret
@@ -37468,8 +37343,7 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Entra ID client secret. Supplied as inline plaintext via
-// `ProviderSecret.plaintext`
+// Entra ID client secret. Supply the value in `client_secret.plaintext`
 func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalPtrOutput) ClientSecret() AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipal) *AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
 		if v == nil {
@@ -37491,8 +37365,8 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePri
 
 type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -37509,8 +37383,8 @@ type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinci
 
 type AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -37592,8 +37466,8 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePri
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret) *string {
 		return v.Plaintext
@@ -37625,8 +37499,8 @@ func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePri
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret) *string {
 		if v == nil {
@@ -38101,8 +37975,8 @@ func (o AiGatewayModelProviderServiceConfigOpenaiDirectPtrOutput) Organization()
 
 type AiGatewayModelProviderServiceConfigOpenaiDirectApiKey struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext *string `pulumi:"plaintext"`
 }
 
@@ -38119,8 +37993,8 @@ type AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyInput interface {
 
 type AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyArgs struct {
 	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-	// reads. Get and List responses omit `plaintext`; the field's presence in
-	// the read shape only indicates that a secret is configured
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
 	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
 }
 
@@ -38202,8 +38076,8 @@ func (o AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyOutput) ToAiGateway
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigOpenaiDirectApiKey) *string { return v.Plaintext }).(pulumi.StringPtrOutput)
 }
@@ -38233,8 +38107,8 @@ func (o AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyPtrOutput) Elem() A
 }
 
 // Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-// reads. Get and List responses omit `plaintext`; the field's presence in
-// the read shape only indicates that a secret is configured
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigOpenaiDirectApiKey) *string {
 		if v == nil {
@@ -38245,26 +38119,20 @@ func (o AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyPtrOutput) Plaintex
 }
 
 type AiGatewayModelProviderServiceConfigRateLimit struct {
-	// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+	// Scope of the rate limit. Depending on this value, the limit applies to a
+	// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 	Key string `pulumi:"key"`
 	// Principal this limit applies to: user email, group name, or service
-	// principal application ID. Required unless `key` is
-	// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-	// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+	// principal application ID. Required when `key` applies to a user, group, or
+	// service principal; otherwise it must be unset
 	Principal *string `pulumi:"principal"`
 	// Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
 	RenewalPeriod string `pulumi:"renewalPeriod"`
-	// Request tag key this limit applies to. Required when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-	RequestTagKey *string `pulumi:"requestTagKey"`
-	// Request tag value this limit applies to. Only valid when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-	// value of `requestTagKey` (an any-value default); a set value is a
-	// specific override for that value
-	RequestTagValue *string `pulumi:"requestTagValue"`
-	// Max requests allowed within a renewal period. Leave unset for no request limit
+	// Maximum requests allowed in one renewal period. Leave unset for no request
+	// limit. Set to `0` to deny all requests
 	Requests *int `pulumi:"requests"`
-	// Max tokens allowed within a renewal period. Leave unset for no token limit
+	// Maximum tokens allowed in one renewal period. Leave unset for no token
+	// limit. Set to `0` to deny all requests
 	Tokens *int `pulumi:"tokens"`
 }
 
@@ -38280,26 +38148,20 @@ type AiGatewayModelProviderServiceConfigRateLimitInput interface {
 }
 
 type AiGatewayModelProviderServiceConfigRateLimitArgs struct {
-	// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+	// Scope of the rate limit. Depending on this value, the limit applies to a
+	// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 	Key pulumi.StringInput `pulumi:"key"`
 	// Principal this limit applies to: user email, group name, or service
-	// principal application ID. Required unless `key` is
-	// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-	// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+	// principal application ID. Required when `key` applies to a user, group, or
+	// service principal; otherwise it must be unset
 	Principal pulumi.StringPtrInput `pulumi:"principal"`
 	// Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
 	RenewalPeriod pulumi.StringInput `pulumi:"renewalPeriod"`
-	// Request tag key this limit applies to. Required when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-	RequestTagKey pulumi.StringPtrInput `pulumi:"requestTagKey"`
-	// Request tag value this limit applies to. Only valid when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-	// value of `requestTagKey` (an any-value default); a set value is a
-	// specific override for that value
-	RequestTagValue pulumi.StringPtrInput `pulumi:"requestTagValue"`
-	// Max requests allowed within a renewal period. Leave unset for no request limit
+	// Maximum requests allowed in one renewal period. Leave unset for no request
+	// limit. Set to `0` to deny all requests
 	Requests pulumi.IntPtrInput `pulumi:"requests"`
-	// Max tokens allowed within a renewal period. Leave unset for no token limit
+	// Maximum tokens allowed in one renewal period. Leave unset for no token
+	// limit. Set to `0` to deny all requests
 	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
 }
 
@@ -38354,15 +38216,15 @@ func (o AiGatewayModelProviderServiceConfigRateLimitOutput) ToAiGatewayModelProv
 	return o
 }
 
-// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+// Scope of the rate limit. Depending on this value, the limit applies to a
+// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 func (o AiGatewayModelProviderServiceConfigRateLimitOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigRateLimit) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Principal this limit applies to: user email, group name, or service
-// principal application ID. Required unless `key` is
-// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+// principal application ID. Required when `key` applies to a user, group, or
+// service principal; otherwise it must be unset
 func (o AiGatewayModelProviderServiceConfigRateLimitOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigRateLimit) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
@@ -38372,26 +38234,14 @@ func (o AiGatewayModelProviderServiceConfigRateLimitOutput) RenewalPeriod() pulu
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigRateLimit) string { return v.RenewalPeriod }).(pulumi.StringOutput)
 }
 
-// Request tag key this limit applies to. Required when `key` is
-// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-func (o AiGatewayModelProviderServiceConfigRateLimitOutput) RequestTagKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigRateLimit) *string { return v.RequestTagKey }).(pulumi.StringPtrOutput)
-}
-
-// Request tag value this limit applies to. Only valid when `key` is
-// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-// value of `requestTagKey` (an any-value default); a set value is a
-// specific override for that value
-func (o AiGatewayModelProviderServiceConfigRateLimitOutput) RequestTagValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigRateLimit) *string { return v.RequestTagValue }).(pulumi.StringPtrOutput)
-}
-
-// Max requests allowed within a renewal period. Leave unset for no request limit
+// Maximum requests allowed in one renewal period. Leave unset for no request
+// limit. Set to `0` to deny all requests
 func (o AiGatewayModelProviderServiceConfigRateLimitOutput) Requests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigRateLimit) *int { return v.Requests }).(pulumi.IntPtrOutput)
 }
 
-// Max tokens allowed within a renewal period. Leave unset for no token limit
+// Maximum tokens allowed in one renewal period. Leave unset for no token
+// limit. Set to `0` to deny all requests
 func (o AiGatewayModelProviderServiceConfigRateLimitOutput) Tokens() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigRateLimit) *int { return v.Tokens }).(pulumi.IntPtrOutput)
 }
@@ -38417,16 +38267,14 @@ func (o AiGatewayModelProviderServiceConfigRateLimitArrayOutput) Index(i pulumi.
 }
 
 type AiGatewayModelProviderServiceConfigTarget struct {
-	// Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
-	// a string on the LLM provider's side, not a UC entity. The UC governance
-	// hook for external destinations is the ModelProviderService referenced by
-	// `ExternalModelConfig.model_provider_service`, not the model itself
+	// Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
+	// This identifies a model at the upstream provider; it is not a Unity
+	// Catalog model resource
 	Model string `pulumi:"model"`
-	// Provider-native API types the model supports (e.g.
-	// "openai/v1/chat/completions"). Used by the platform for request/response
-	// translation from the unified API type. At most 64 entries of at most 256
-	// characters each; the list is persisted into the destination binding's
-	// bounded storage envelope
+	// Provider-native API types supported by this model, such as
+	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+	// uses these values to translate requests and responses. At most 64 entries
+	// of 256 characters each are allowed
 	NativeApiTypes []string `pulumi:"nativeApiTypes"`
 }
 
@@ -38442,16 +38290,14 @@ type AiGatewayModelProviderServiceConfigTargetInput interface {
 }
 
 type AiGatewayModelProviderServiceConfigTargetArgs struct {
-	// Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
-	// a string on the LLM provider's side, not a UC entity. The UC governance
-	// hook for external destinations is the ModelProviderService referenced by
-	// `ExternalModelConfig.model_provider_service`, not the model itself
+	// Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
+	// This identifies a model at the upstream provider; it is not a Unity
+	// Catalog model resource
 	Model pulumi.StringInput `pulumi:"model"`
-	// Provider-native API types the model supports (e.g.
-	// "openai/v1/chat/completions"). Used by the platform for request/response
-	// translation from the unified API type. At most 64 entries of at most 256
-	// characters each; the list is persisted into the destination binding's
-	// bounded storage envelope
+	// Provider-native API types supported by this model, such as
+	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+	// uses these values to translate requests and responses. At most 64 entries
+	// of 256 characters each are allowed
 	NativeApiTypes pulumi.StringArrayInput `pulumi:"nativeApiTypes"`
 }
 
@@ -38506,19 +38352,17 @@ func (o AiGatewayModelProviderServiceConfigTargetOutput) ToAiGatewayModelProvide
 	return o
 }
 
-// Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
-// a string on the LLM provider's side, not a UC entity. The UC governance
-// hook for external destinations is the ModelProviderService referenced by
-// `ExternalModelConfig.model_provider_service`, not the model itself
+// Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
+// This identifies a model at the upstream provider; it is not a Unity
+// Catalog model resource
 func (o AiGatewayModelProviderServiceConfigTargetOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigTarget) string { return v.Model }).(pulumi.StringOutput)
 }
 
-// Provider-native API types the model supports (e.g.
-// "openai/v1/chat/completions"). Used by the platform for request/response
-// translation from the unified API type. At most 64 entries of at most 256
-// characters each; the list is persisted into the destination binding's
-// bounded storage envelope
+// Provider-native API types supported by this model, such as
+// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+// uses these values to translate requests and responses. At most 64 entries
+// of 256 characters each are allowed
 func (o AiGatewayModelProviderServiceConfigTargetOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigTarget) []string { return v.NativeApiTypes }).(pulumi.StringArrayOutput)
 }
@@ -38681,11 +38525,11 @@ func (o AiGatewayModelProviderServiceProviderConfigPtrOutput) WorkspaceId() pulu
 }
 
 type AiGatewayModelServiceConfig struct {
-	// Inference table config for payload logging
+	// Inference table configuration for payload logging
 	InferenceTable *AiGatewayModelServiceConfigInferenceTable `pulumi:"inferenceTable"`
 	// Rate limits applied to requests routed through this model service
 	RateLimits []AiGatewayModelServiceConfigRateLimit `pulumi:"rateLimits"`
-	// Routing configuration: destinations, routing strategy, and fallback
+	// Routing configuration: destinations and fallback
 	Routing *AiGatewayModelServiceConfigRouting `pulumi:"routing"`
 }
 
@@ -38701,11 +38545,11 @@ type AiGatewayModelServiceConfigInput interface {
 }
 
 type AiGatewayModelServiceConfigArgs struct {
-	// Inference table config for payload logging
+	// Inference table configuration for payload logging
 	InferenceTable AiGatewayModelServiceConfigInferenceTablePtrInput `pulumi:"inferenceTable"`
 	// Rate limits applied to requests routed through this model service
 	RateLimits AiGatewayModelServiceConfigRateLimitArrayInput `pulumi:"rateLimits"`
-	// Routing configuration: destinations, routing strategy, and fallback
+	// Routing configuration: destinations and fallback
 	Routing AiGatewayModelServiceConfigRoutingPtrInput `pulumi:"routing"`
 }
 
@@ -38786,7 +38630,7 @@ func (o AiGatewayModelServiceConfigOutput) ToAiGatewayModelServiceConfigPtrOutpu
 	}).(AiGatewayModelServiceConfigPtrOutput)
 }
 
-// Inference table config for payload logging
+// Inference table configuration for payload logging
 func (o AiGatewayModelServiceConfigOutput) InferenceTable() AiGatewayModelServiceConfigInferenceTablePtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfig) *AiGatewayModelServiceConfigInferenceTable {
 		return v.InferenceTable
@@ -38798,7 +38642,7 @@ func (o AiGatewayModelServiceConfigOutput) RateLimits() AiGatewayModelServiceCon
 	return o.ApplyT(func(v AiGatewayModelServiceConfig) []AiGatewayModelServiceConfigRateLimit { return v.RateLimits }).(AiGatewayModelServiceConfigRateLimitArrayOutput)
 }
 
-// Routing configuration: destinations, routing strategy, and fallback
+// Routing configuration: destinations and fallback
 func (o AiGatewayModelServiceConfigOutput) Routing() AiGatewayModelServiceConfigRoutingPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfig) *AiGatewayModelServiceConfigRouting { return v.Routing }).(AiGatewayModelServiceConfigRoutingPtrOutput)
 }
@@ -38827,7 +38671,7 @@ func (o AiGatewayModelServiceConfigPtrOutput) Elem() AiGatewayModelServiceConfig
 	}).(AiGatewayModelServiceConfigOutput)
 }
 
-// Inference table config for payload logging
+// Inference table configuration for payload logging
 func (o AiGatewayModelServiceConfigPtrOutput) InferenceTable() AiGatewayModelServiceConfigInferenceTablePtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfig) *AiGatewayModelServiceConfigInferenceTable {
 		if v == nil {
@@ -38847,7 +38691,7 @@ func (o AiGatewayModelServiceConfigPtrOutput) RateLimits() AiGatewayModelService
 	}).(AiGatewayModelServiceConfigRateLimitArrayOutput)
 }
 
-// Routing configuration: destinations, routing strategy, and fallback
+// Routing configuration: destinations and fallback
 func (o AiGatewayModelServiceConfigPtrOutput) Routing() AiGatewayModelServiceConfigRoutingPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfig) *AiGatewayModelServiceConfigRouting {
 		if v == nil {
@@ -38858,19 +38702,10 @@ func (o AiGatewayModelServiceConfigPtrOutput) Routing() AiGatewayModelServiceCon
 }
 
 type AiGatewayModelServiceConfigInferenceTable struct {
-	// Indicates whether payload logging is disabled (opt-out). Unset means that
-	// payload logging is active (the on-by-default state coincides with the proto
-	// zero-value, so the server never fills this field for a client that leaves it
-	// unset). Set `disabled = true` to pause runtime logging while keeping the
-	// sub-message attached (preserving `parent` and `tableNamePrefix` for a
-	// later flip back to active). `parent` remains required either way
-	Disabled *bool `pulumi:"disabled"`
-	// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-	// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-	// deleted but the destination row still references it. The dangling
-	// destination is surfaced (not silently dropped) so callers can see the
-	// broken routing. Inference traffic through this destination fails closed
-	// (BAD_REQUEST / FAILED_PRECONDITION)
+	// (boolean) - Whether the destination's backing model or model provider service has
+	// been deleted. The destination remains visible so you can identify the
+	// broken dependency. Requests cannot use this destination until the backing
+	// resource is restored or the destination is replaced
 	IsDeleted *bool `pulumi:"isDeleted"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -38879,12 +38714,11 @@ type AiGatewayModelServiceConfigInferenceTable struct {
 	// (string) - Resolved UC table for payload logs.
 	// Format: `tables/{catalog}.{schema}.{table}`
 	Table *string `pulumi:"table"`
-	// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-	// stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-	// automatically. To find the actual UC table after Create, read the `table`
-	// field on the response. Defaults to `<model_service_name>_payload` when unset.
-	// Set at create time and immutable thereafter; changing it on an existing
-	// service is rejected
+	// Prefix used to form the inference table's registered name. AI Gateway
+	// appends `_payload`; for example, `tableNamePrefix = "orders"` creates
+	// `ordersPayload`. If unset, the prefix defaults to the service name. Read
+	// `table` from the response for the resulting resource name. After the
+	// inference table is created, this field cannot be changed
 	TableNamePrefix *string `pulumi:"tableNamePrefix"`
 }
 
@@ -38900,19 +38734,10 @@ type AiGatewayModelServiceConfigInferenceTableInput interface {
 }
 
 type AiGatewayModelServiceConfigInferenceTableArgs struct {
-	// Indicates whether payload logging is disabled (opt-out). Unset means that
-	// payload logging is active (the on-by-default state coincides with the proto
-	// zero-value, so the server never fills this field for a client that leaves it
-	// unset). Set `disabled = true` to pause runtime logging while keeping the
-	// sub-message attached (preserving `parent` and `tableNamePrefix` for a
-	// later flip back to active). `parent` remains required either way
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-	// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-	// deleted but the destination row still references it. The dangling
-	// destination is surfaced (not silently dropped) so callers can see the
-	// broken routing. Inference traffic through this destination fails closed
-	// (BAD_REQUEST / FAILED_PRECONDITION)
+	// (boolean) - Whether the destination's backing model or model provider service has
+	// been deleted. The destination remains visible so you can identify the
+	// broken dependency. Requests cannot use this destination until the backing
+	// resource is restored or the destination is replaced
 	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -38921,12 +38746,11 @@ type AiGatewayModelServiceConfigInferenceTableArgs struct {
 	// (string) - Resolved UC table for payload logs.
 	// Format: `tables/{catalog}.{schema}.{table}`
 	Table pulumi.StringPtrInput `pulumi:"table"`
-	// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-	// stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-	// automatically. To find the actual UC table after Create, read the `table`
-	// field on the response. Defaults to `<model_service_name>_payload` when unset.
-	// Set at create time and immutable thereafter; changing it on an existing
-	// service is rejected
+	// Prefix used to form the inference table's registered name. AI Gateway
+	// appends `_payload`; for example, `tableNamePrefix = "orders"` creates
+	// `ordersPayload`. If unset, the prefix defaults to the service name. Read
+	// `table` from the response for the resulting resource name. After the
+	// inference table is created, this field cannot be changed
 	TableNamePrefix pulumi.StringPtrInput `pulumi:"tableNamePrefix"`
 }
 
@@ -39007,22 +38831,10 @@ func (o AiGatewayModelServiceConfigInferenceTableOutput) ToAiGatewayModelService
 	}).(AiGatewayModelServiceConfigInferenceTablePtrOutput)
 }
 
-// Indicates whether payload logging is disabled (opt-out). Unset means that
-// payload logging is active (the on-by-default state coincides with the proto
-// zero-value, so the server never fills this field for a client that leaves it
-// unset). Set `disabled = true` to pause runtime logging while keeping the
-// sub-message attached (preserving `parent` and `tableNamePrefix` for a
-// later flip back to active). `parent` remains required either way
-func (o AiGatewayModelServiceConfigInferenceTableOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelServiceConfigInferenceTable) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
-}
-
-// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-// deleted but the destination row still references it. The dangling
-// destination is surfaced (not silently dropped) so callers can see the
-// broken routing. Inference traffic through this destination fails closed
-// (BAD_REQUEST / FAILED_PRECONDITION)
+// (boolean) - Whether the destination's backing model or model provider service has
+// been deleted. The destination remains visible so you can identify the
+// broken dependency. Requests cannot use this destination until the backing
+// resource is restored or the destination is replaced
 func (o AiGatewayModelServiceConfigInferenceTableOutput) IsDeleted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigInferenceTable) *bool { return v.IsDeleted }).(pulumi.BoolPtrOutput)
 }
@@ -39040,12 +38852,11 @@ func (o AiGatewayModelServiceConfigInferenceTableOutput) Table() pulumi.StringPt
 	return o.ApplyT(func(v AiGatewayModelServiceConfigInferenceTable) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
 
-// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-// stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-// automatically. To find the actual UC table after Create, read the `table`
-// field on the response. Defaults to `<model_service_name>_payload` when unset.
-// Set at create time and immutable thereafter; changing it on an existing
-// service is rejected
+// Prefix used to form the inference table's registered name. AI Gateway
+// appends `_payload`; for example, `tableNamePrefix = "orders"` creates
+// `ordersPayload`. If unset, the prefix defaults to the service name. Read
+// `table` from the response for the resulting resource name. After the
+// inference table is created, this field cannot be changed
 func (o AiGatewayModelServiceConfigInferenceTableOutput) TableNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigInferenceTable) *string { return v.TableNamePrefix }).(pulumi.StringPtrOutput)
 }
@@ -39074,27 +38885,10 @@ func (o AiGatewayModelServiceConfigInferenceTablePtrOutput) Elem() AiGatewayMode
 	}).(AiGatewayModelServiceConfigInferenceTableOutput)
 }
 
-// Indicates whether payload logging is disabled (opt-out). Unset means that
-// payload logging is active (the on-by-default state coincides with the proto
-// zero-value, so the server never fills this field for a client that leaves it
-// unset). Set `disabled = true` to pause runtime logging while keeping the
-// sub-message attached (preserving `parent` and `tableNamePrefix` for a
-// later flip back to active). `parent` remains required either way
-func (o AiGatewayModelServiceConfigInferenceTablePtrOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AiGatewayModelServiceConfigInferenceTable) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Disabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-// deleted but the destination row still references it. The dangling
-// destination is surfaced (not silently dropped) so callers can see the
-// broken routing. Inference traffic through this destination fails closed
-// (BAD_REQUEST / FAILED_PRECONDITION)
+// (boolean) - Whether the destination's backing model or model provider service has
+// been deleted. The destination remains visible so you can identify the
+// broken dependency. Requests cannot use this destination until the backing
+// resource is restored or the destination is replaced
 func (o AiGatewayModelServiceConfigInferenceTablePtrOutput) IsDeleted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigInferenceTable) *bool {
 		if v == nil {
@@ -39127,12 +38921,11 @@ func (o AiGatewayModelServiceConfigInferenceTablePtrOutput) Table() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Prefix for the inference-table's UC-registered name. The actual leaf name UC
-// stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-// automatically. To find the actual UC table after Create, read the `table`
-// field on the response. Defaults to `<model_service_name>_payload` when unset.
-// Set at create time and immutable thereafter; changing it on an existing
-// service is rejected
+// Prefix used to form the inference table's registered name. AI Gateway
+// appends `_payload`; for example, `tableNamePrefix = "orders"` creates
+// `ordersPayload`. If unset, the prefix defaults to the service name. Read
+// `table` from the response for the resulting resource name. After the
+// inference table is created, this field cannot be changed
 func (o AiGatewayModelServiceConfigInferenceTablePtrOutput) TableNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigInferenceTable) *string {
 		if v == nil {
@@ -39143,26 +38936,20 @@ func (o AiGatewayModelServiceConfigInferenceTablePtrOutput) TableNamePrefix() pu
 }
 
 type AiGatewayModelServiceConfigRateLimit struct {
-	// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+	// Scope of the rate limit. Depending on this value, the limit applies to a
+	// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 	Key string `pulumi:"key"`
 	// Principal this limit applies to: user email, group name, or service
-	// principal application ID. Required unless `key` is
-	// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-	// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+	// principal application ID. Required when `key` applies to a user, group, or
+	// service principal; otherwise it must be unset
 	Principal *string `pulumi:"principal"`
 	// Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
 	RenewalPeriod string `pulumi:"renewalPeriod"`
-	// Request tag key this limit applies to. Required when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-	RequestTagKey *string `pulumi:"requestTagKey"`
-	// Request tag value this limit applies to. Only valid when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-	// value of `requestTagKey` (an any-value default); a set value is a
-	// specific override for that value
-	RequestTagValue *string `pulumi:"requestTagValue"`
-	// Max requests allowed within a renewal period. Leave unset for no request limit
+	// Maximum requests allowed in one renewal period. Leave unset for no request
+	// limit. Set to `0` to deny all requests
 	Requests *int `pulumi:"requests"`
-	// Max tokens allowed within a renewal period. Leave unset for no token limit
+	// Maximum tokens allowed in one renewal period. Leave unset for no token
+	// limit. Set to `0` to deny all requests
 	Tokens *int `pulumi:"tokens"`
 }
 
@@ -39178,26 +38965,20 @@ type AiGatewayModelServiceConfigRateLimitInput interface {
 }
 
 type AiGatewayModelServiceConfigRateLimitArgs struct {
-	// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+	// Scope of the rate limit. Depending on this value, the limit applies to a
+	// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 	Key pulumi.StringInput `pulumi:"key"`
 	// Principal this limit applies to: user email, group name, or service
-	// principal application ID. Required unless `key` is
-	// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-	// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+	// principal application ID. Required when `key` applies to a user, group, or
+	// service principal; otherwise it must be unset
 	Principal pulumi.StringPtrInput `pulumi:"principal"`
 	// Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
 	RenewalPeriod pulumi.StringInput `pulumi:"renewalPeriod"`
-	// Request tag key this limit applies to. Required when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-	RequestTagKey pulumi.StringPtrInput `pulumi:"requestTagKey"`
-	// Request tag value this limit applies to. Only valid when `key` is
-	// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-	// value of `requestTagKey` (an any-value default); a set value is a
-	// specific override for that value
-	RequestTagValue pulumi.StringPtrInput `pulumi:"requestTagValue"`
-	// Max requests allowed within a renewal period. Leave unset for no request limit
+	// Maximum requests allowed in one renewal period. Leave unset for no request
+	// limit. Set to `0` to deny all requests
 	Requests pulumi.IntPtrInput `pulumi:"requests"`
-	// Max tokens allowed within a renewal period. Leave unset for no token limit
+	// Maximum tokens allowed in one renewal period. Leave unset for no token
+	// limit. Set to `0` to deny all requests
 	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
 }
 
@@ -39252,15 +39033,15 @@ func (o AiGatewayModelServiceConfigRateLimitOutput) ToAiGatewayModelServiceConfi
 	return o
 }
 
-// Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+// Scope of the rate limit. Depending on this value, the limit applies to a
+// principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
 func (o AiGatewayModelServiceConfigRateLimitOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRateLimit) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Principal this limit applies to: user email, group name, or service
-// principal application ID. Required unless `key` is
-// `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-// `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+// principal application ID. Required when `key` applies to a user, group, or
+// service principal; otherwise it must be unset
 func (o AiGatewayModelServiceConfigRateLimitOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRateLimit) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
@@ -39270,26 +39051,14 @@ func (o AiGatewayModelServiceConfigRateLimitOutput) RenewalPeriod() pulumi.Strin
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRateLimit) string { return v.RenewalPeriod }).(pulumi.StringOutput)
 }
 
-// Request tag key this limit applies to. Required when `key` is
-// `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-func (o AiGatewayModelServiceConfigRateLimitOutput) RequestTagKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelServiceConfigRateLimit) *string { return v.RequestTagKey }).(pulumi.StringPtrOutput)
-}
-
-// Request tag value this limit applies to. Only valid when `key` is
-// `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-// value of `requestTagKey` (an any-value default); a set value is a
-// specific override for that value
-func (o AiGatewayModelServiceConfigRateLimitOutput) RequestTagValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelServiceConfigRateLimit) *string { return v.RequestTagValue }).(pulumi.StringPtrOutput)
-}
-
-// Max requests allowed within a renewal period. Leave unset for no request limit
+// Maximum requests allowed in one renewal period. Leave unset for no request
+// limit. Set to `0` to deny all requests
 func (o AiGatewayModelServiceConfigRateLimitOutput) Requests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRateLimit) *int { return v.Requests }).(pulumi.IntPtrOutput)
 }
 
-// Max tokens allowed within a renewal period. Leave unset for no token limit
+// Maximum tokens allowed in one renewal period. Leave unset for no token
+// limit. Set to `0` to deny all requests
 func (o AiGatewayModelServiceConfigRateLimitOutput) Tokens() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRateLimit) *int { return v.Tokens }).(pulumi.IntPtrOutput)
 }
@@ -39316,17 +39085,9 @@ func (o AiGatewayModelServiceConfigRateLimitArrayOutput) Index(i pulumi.IntInput
 
 type AiGatewayModelServiceConfigRouting struct {
 	Destinations []AiGatewayModelServiceConfigRoutingDestination `pulumi:"destinations"`
-	// Fallback routing config, applied after primary destinations fail
+	// Fallback routing applied after a primary destination fails. Fallback
+	// destinations are tried in the listed order
 	Fallback *AiGatewayModelServiceConfigRoutingFallback `pulumi:"fallback"`
-	// Timeout for the first token of a streaming response. If a destination does
-	// not return its first token within this duration, AI Gateway aborts the
-	// attempt and fails over to the next destination. Applies to streaming
-	// requests only. Leave unset for no first-token timeout
-	FirstTokenTimeout *string `pulumi:"firstTokenTimeout"`
-	// Marker message selecting request-based traffic splitting. Traffic is
-	// distributed according to each destination's trafficPercentage value;
-	// no configuration lives on this message itself
-	TrafficSplitting *AiGatewayModelServiceConfigRoutingTrafficSplitting `pulumi:"trafficSplitting"`
 }
 
 // AiGatewayModelServiceConfigRoutingInput is an input type that accepts AiGatewayModelServiceConfigRoutingArgs and AiGatewayModelServiceConfigRoutingOutput values.
@@ -39342,17 +39103,9 @@ type AiGatewayModelServiceConfigRoutingInput interface {
 
 type AiGatewayModelServiceConfigRoutingArgs struct {
 	Destinations AiGatewayModelServiceConfigRoutingDestinationArrayInput `pulumi:"destinations"`
-	// Fallback routing config, applied after primary destinations fail
+	// Fallback routing applied after a primary destination fails. Fallback
+	// destinations are tried in the listed order
 	Fallback AiGatewayModelServiceConfigRoutingFallbackPtrInput `pulumi:"fallback"`
-	// Timeout for the first token of a streaming response. If a destination does
-	// not return its first token within this duration, AI Gateway aborts the
-	// attempt and fails over to the next destination. Applies to streaming
-	// requests only. Leave unset for no first-token timeout
-	FirstTokenTimeout pulumi.StringPtrInput `pulumi:"firstTokenTimeout"`
-	// Marker message selecting request-based traffic splitting. Traffic is
-	// distributed according to each destination's trafficPercentage value;
-	// no configuration lives on this message itself
-	TrafficSplitting AiGatewayModelServiceConfigRoutingTrafficSplittingPtrInput `pulumi:"trafficSplitting"`
 }
 
 func (AiGatewayModelServiceConfigRoutingArgs) ElementType() reflect.Type {
@@ -39438,28 +39191,12 @@ func (o AiGatewayModelServiceConfigRoutingOutput) Destinations() AiGatewayModelS
 	}).(AiGatewayModelServiceConfigRoutingDestinationArrayOutput)
 }
 
-// Fallback routing config, applied after primary destinations fail
+// Fallback routing applied after a primary destination fails. Fallback
+// destinations are tried in the listed order
 func (o AiGatewayModelServiceConfigRoutingOutput) Fallback() AiGatewayModelServiceConfigRoutingFallbackPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRouting) *AiGatewayModelServiceConfigRoutingFallback {
 		return v.Fallback
 	}).(AiGatewayModelServiceConfigRoutingFallbackPtrOutput)
-}
-
-// Timeout for the first token of a streaming response. If a destination does
-// not return its first token within this duration, AI Gateway aborts the
-// attempt and fails over to the next destination. Applies to streaming
-// requests only. Leave unset for no first-token timeout
-func (o AiGatewayModelServiceConfigRoutingOutput) FirstTokenTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelServiceConfigRouting) *string { return v.FirstTokenTimeout }).(pulumi.StringPtrOutput)
-}
-
-// Marker message selecting request-based traffic splitting. Traffic is
-// distributed according to each destination's trafficPercentage value;
-// no configuration lives on this message itself
-func (o AiGatewayModelServiceConfigRoutingOutput) TrafficSplitting() AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return o.ApplyT(func(v AiGatewayModelServiceConfigRouting) *AiGatewayModelServiceConfigRoutingTrafficSplitting {
-		return v.TrafficSplitting
-	}).(AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput)
 }
 
 type AiGatewayModelServiceConfigRoutingPtrOutput struct{ *pulumi.OutputState }
@@ -39495,7 +39232,8 @@ func (o AiGatewayModelServiceConfigRoutingPtrOutput) Destinations() AiGatewayMod
 	}).(AiGatewayModelServiceConfigRoutingDestinationArrayOutput)
 }
 
-// Fallback routing config, applied after primary destinations fail
+// Fallback routing applied after a primary destination fails. Fallback
+// destinations are tried in the listed order
 func (o AiGatewayModelServiceConfigRoutingPtrOutput) Fallback() AiGatewayModelServiceConfigRoutingFallbackPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigRouting) *AiGatewayModelServiceConfigRoutingFallback {
 		if v == nil {
@@ -39505,52 +39243,31 @@ func (o AiGatewayModelServiceConfigRoutingPtrOutput) Fallback() AiGatewayModelSe
 	}).(AiGatewayModelServiceConfigRoutingFallbackPtrOutput)
 }
 
-// Timeout for the first token of a streaming response. If a destination does
-// not return its first token within this duration, AI Gateway aborts the
-// attempt and fails over to the next destination. Applies to streaming
-// requests only. Leave unset for no first-token timeout
-func (o AiGatewayModelServiceConfigRoutingPtrOutput) FirstTokenTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiGatewayModelServiceConfigRouting) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FirstTokenTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Marker message selecting request-based traffic splitting. Traffic is
-// distributed according to each destination's trafficPercentage value;
-// no configuration lives on this message itself
-func (o AiGatewayModelServiceConfigRoutingPtrOutput) TrafficSplitting() AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return o.ApplyT(func(v *AiGatewayModelServiceConfigRouting) *AiGatewayModelServiceConfigRoutingTrafficSplitting {
-		if v == nil {
-			return nil
-		}
-		return v.TrafficSplitting
-	}).(AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput)
-}
-
 type AiGatewayModelServiceConfigRoutingDestination struct {
-	// Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
-	DestinationType     string                                                            `pulumi:"destinationType"`
+	// Backing-model category. Provide the matching type-specific configuration
+	// and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+	DestinationType string `pulumi:"destinationType"`
+	// Configuration for an external model reached through a model provider service
 	ExternalModelConfig *AiGatewayModelServiceConfigRoutingDestinationExternalModelConfig `pulumi:"externalModelConfig"`
-	// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-	// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-	// deleted but the destination row still references it. The dangling
-	// destination is surfaced (not silently dropped) so callers can see the
-	// broken routing. Inference traffic through this destination fails closed
-	// (BAD_REQUEST / FAILED_PRECONDITION)
+	// (boolean) - Whether the destination's backing model or model provider service has
+	// been deleted. The destination remains visible so you can identify the
+	// broken dependency. Requests cannot use this destination until the backing
+	// resource is restored or the destination is replaced
 	IsDeleted *bool `pulumi:"isDeleted"`
 	// (string) - Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
 	// Server-derived on Create from `parent` +
 	// `modelServiceId`; required and immutable on Update/Get/Delete
-	Name                        string                                                                    `pulumi:"name"`
-	PayPerTokenConfig           *AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig           `pulumi:"payPerTokenConfig"`
+	Name string `pulumi:"name"`
+	// Configuration for a pay-per-token Databricks foundation model
+	PayPerTokenConfig *AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig `pulumi:"payPerTokenConfig"`
+	// Configuration for a provisioned-throughput Databricks foundation model
 	ProvisionedThroughputConfig *AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig `pulumi:"provisionedThroughputConfig"`
-	// Share of traffic sent to this destination, 0-100. Optional on fallback
-	// destinations; see FallbackConfig
+	// Percentage of primary traffic sent to this destination, from 0 to 100.
+	// Required when there is more than one primary destination, in which case the
+	// primary percentages must sum to 100; a single primary destination receives
+	// all traffic. Fallback destinations are ordered and do not use this field
 	TrafficPercentage *int `pulumi:"trafficPercentage"`
 }
 
@@ -39566,26 +39283,30 @@ type AiGatewayModelServiceConfigRoutingDestinationInput interface {
 }
 
 type AiGatewayModelServiceConfigRoutingDestinationArgs struct {
-	// Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
-	DestinationType     pulumi.StringInput                                                       `pulumi:"destinationType"`
+	// Backing-model category. Provide the matching type-specific configuration
+	// and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+	DestinationType pulumi.StringInput `pulumi:"destinationType"`
+	// Configuration for an external model reached through a model provider service
 	ExternalModelConfig AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigPtrInput `pulumi:"externalModelConfig"`
-	// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-	// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-	// deleted but the destination row still references it. The dangling
-	// destination is surfaced (not silently dropped) so callers can see the
-	// broken routing. Inference traffic through this destination fails closed
-	// (BAD_REQUEST / FAILED_PRECONDITION)
+	// (boolean) - Whether the destination's backing model or model provider service has
+	// been deleted. The destination remains visible so you can identify the
+	// broken dependency. Requests cannot use this destination until the backing
+	// resource is restored or the destination is replaced
 	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
 	// (string) - Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
 	// Server-derived on Create from `parent` +
 	// `modelServiceId`; required and immutable on Update/Get/Delete
-	Name                        pulumi.StringInput                                                               `pulumi:"name"`
-	PayPerTokenConfig           AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigPtrInput           `pulumi:"payPerTokenConfig"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Configuration for a pay-per-token Databricks foundation model
+	PayPerTokenConfig AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigPtrInput `pulumi:"payPerTokenConfig"`
+	// Configuration for a provisioned-throughput Databricks foundation model
 	ProvisionedThroughputConfig AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigPtrInput `pulumi:"provisionedThroughputConfig"`
-	// Share of traffic sent to this destination, 0-100. Optional on fallback
-	// destinations; see FallbackConfig
+	// Percentage of primary traffic sent to this destination, from 0 to 100.
+	// Required when there is more than one primary destination, in which case the
+	// primary percentages must sum to 100; a single primary destination receives
+	// all traffic. Fallback destinations are ordered and do not use this field
 	TrafficPercentage pulumi.IntPtrInput `pulumi:"trafficPercentage"`
 }
 
@@ -39640,23 +39361,23 @@ func (o AiGatewayModelServiceConfigRoutingDestinationOutput) ToAiGatewayModelSer
 	return o
 }
 
-// Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+// Backing-model category. Provide the matching type-specific configuration
+// and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
 func (o AiGatewayModelServiceConfigRoutingDestinationOutput) DestinationType() pulumi.StringOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestination) string { return v.DestinationType }).(pulumi.StringOutput)
 }
 
+// Configuration for an external model reached through a model provider service
 func (o AiGatewayModelServiceConfigRoutingDestinationOutput) ExternalModelConfig() AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestination) *AiGatewayModelServiceConfigRoutingDestinationExternalModelConfig {
 		return v.ExternalModelConfig
 	}).(AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigPtrOutput)
 }
 
-// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-// deleted but the destination row still references it. The dangling
-// destination is surfaced (not silently dropped) so callers can see the
-// broken routing. Inference traffic through this destination fails closed
-// (BAD_REQUEST / FAILED_PRECONDITION)
+// (boolean) - Whether the destination's backing model or model provider service has
+// been deleted. The destination remains visible so you can identify the
+// broken dependency. Requests cannot use this destination until the backing
+// resource is restored or the destination is replaced
 func (o AiGatewayModelServiceConfigRoutingDestinationOutput) IsDeleted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestination) *bool { return v.IsDeleted }).(pulumi.BoolPtrOutput)
 }
@@ -39670,20 +39391,24 @@ func (o AiGatewayModelServiceConfigRoutingDestinationOutput) Name() pulumi.Strin
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configuration for a pay-per-token Databricks foundation model
 func (o AiGatewayModelServiceConfigRoutingDestinationOutput) PayPerTokenConfig() AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestination) *AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig {
 		return v.PayPerTokenConfig
 	}).(AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigPtrOutput)
 }
 
+// Configuration for a provisioned-throughput Databricks foundation model
 func (o AiGatewayModelServiceConfigRoutingDestinationOutput) ProvisionedThroughputConfig() AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestination) *AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
 		return v.ProvisionedThroughputConfig
 	}).(AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigPtrOutput)
 }
 
-// Share of traffic sent to this destination, 0-100. Optional on fallback
-// destinations; see FallbackConfig
+// Percentage of primary traffic sent to this destination, from 0 to 100.
+// Required when there is more than one primary destination, in which case the
+// primary percentages must sum to 100; a single primary destination receives
+// all traffic. Fallback destinations are ordered and do not use this field
 func (o AiGatewayModelServiceConfigRoutingDestinationOutput) TrafficPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestination) *int { return v.TrafficPercentage }).(pulumi.IntPtrOutput)
 }
@@ -39901,11 +39626,10 @@ type AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget stru
 	// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 	// Create/Update time
 	Model string `pulumi:"model"`
-	// Provider-native API types the model supports (e.g.
-	// "openai/v1/chat/completions"). Used by the platform for request/response
-	// translation from the unified API type. At most 64 entries of at most 256
-	// characters each; the list is persisted into the destination binding's
-	// bounded storage envelope
+	// Provider-native API types supported by this model, such as
+	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+	// uses these values to translate requests and responses. At most 64 entries
+	// of 256 characters each are allowed
 	NativeApiTypes []string `pulumi:"nativeApiTypes"`
 }
 
@@ -39925,11 +39649,10 @@ type AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetArgs 
 	// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 	// Create/Update time
 	Model pulumi.StringInput `pulumi:"model"`
-	// Provider-native API types the model supports (e.g.
-	// "openai/v1/chat/completions"). Used by the platform for request/response
-	// translation from the unified API type. At most 64 entries of at most 256
-	// characters each; the list is persisted into the destination binding's
-	// bounded storage envelope
+	// Provider-native API types supported by this model, such as
+	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+	// uses these values to translate requests and responses. At most 64 entries
+	// of 256 characters each are allowed
 	NativeApiTypes pulumi.StringArrayInput `pulumi:"nativeApiTypes"`
 }
 
@@ -40017,11 +39740,10 @@ func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetOu
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget) string { return v.Model }).(pulumi.StringOutput)
 }
 
-// Provider-native API types the model supports (e.g.
-// "openai/v1/chat/completions"). Used by the platform for request/response
-// translation from the unified API type. At most 64 entries of at most 256
-// characters each; the list is persisted into the destination binding's
-// bounded storage envelope
+// Provider-native API types supported by this model, such as
+// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+// uses these values to translate requests and responses. At most 64 entries
+// of 256 characters each are allowed
 func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget) []string {
 		return v.NativeApiTypes
@@ -40064,11 +39786,10 @@ func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Provider-native API types the model supports (e.g.
-// "openai/v1/chat/completions"). Used by the platform for request/response
-// translation from the unified API type. At most 64 entries of at most 256
-// characters each; the list is persisted into the destination binding's
-// bounded storage envelope
+// Provider-native API types supported by this model, such as
+// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+// uses these values to translate requests and responses. At most 64 entries
+// of 256 characters each are allowed
 func (o AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetPtrOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTarget) []string {
 		if v == nil {
@@ -40229,11 +39950,11 @@ type AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig st
 	// Create/Update time
 	Model *string `pulumi:"model"`
 	// Name of the backing Model Serving endpoint serving the provisioned-
-	// throughput foundation model, as the AIP-122 typed resource name
-	// `serving-endpoints/{name}`. The same UC model can be served on multiple
-	// Model Serving endpoints (different throughput / region / config); the
-	// caller picks which one this destination routes to. The endpoint must
-	// exist at create time
+	// throughput foundation model, in the form `serving-endpoints/{name}`. The
+	// same Unity Catalog model can be served on multiple Model Serving endpoints
+	// with different throughput, regions, or configurations. The caller selects
+	// the endpoint to which this destination routes. The endpoint must exist at
+	// create time
 	ModelServingEndpoint string `pulumi:"modelServingEndpoint"`
 }
 
@@ -40254,11 +39975,11 @@ type AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigArg
 	// Create/Update time
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	// Name of the backing Model Serving endpoint serving the provisioned-
-	// throughput foundation model, as the AIP-122 typed resource name
-	// `serving-endpoints/{name}`. The same UC model can be served on multiple
-	// Model Serving endpoints (different throughput / region / config); the
-	// caller picks which one this destination routes to. The endpoint must
-	// exist at create time
+	// throughput foundation model, in the form `serving-endpoints/{name}`. The
+	// same Unity Catalog model can be served on multiple Model Serving endpoints
+	// with different throughput, regions, or configurations. The caller selects
+	// the endpoint to which this destination routes. The endpoint must exist at
+	// create time
 	ModelServingEndpoint pulumi.StringInput `pulumi:"modelServingEndpoint"`
 }
 
@@ -40349,11 +40070,11 @@ func (o AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig
 }
 
 // Name of the backing Model Serving endpoint serving the provisioned-
-// throughput foundation model, as the AIP-122 typed resource name
-// `serving-endpoints/{name}`. The same UC model can be served on multiple
-// Model Serving endpoints (different throughput / region / config); the
-// caller picks which one this destination routes to. The endpoint must
-// exist at create time
+// throughput foundation model, in the form `serving-endpoints/{name}`. The
+// same Unity Catalog model can be served on multiple Model Serving endpoints
+// with different throughput, regions, or configurations. The caller selects
+// the endpoint to which this destination routes. The endpoint must exist at
+// create time
 func (o AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigOutput) ModelServingEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig) string {
 		return v.ModelServingEndpoint
@@ -40397,11 +40118,11 @@ func (o AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig
 }
 
 // Name of the backing Model Serving endpoint serving the provisioned-
-// throughput foundation model, as the AIP-122 typed resource name
-// `serving-endpoints/{name}`. The same UC model can be served on multiple
-// Model Serving endpoints (different throughput / region / config); the
-// caller picks which one this destination routes to. The endpoint must
-// exist at create time
+// throughput foundation model, in the form `serving-endpoints/{name}`. The
+// same Unity Catalog model can be served on multiple Model Serving endpoints
+// with different throughput, regions, or configurations. The caller selects
+// the endpoint to which this destination routes. The endpoint must exist at
+// create time
 func (o AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigPtrOutput) ModelServingEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig) *string {
 		if v == nil {
@@ -40547,26 +40268,30 @@ func (o AiGatewayModelServiceConfigRoutingFallbackPtrOutput) Destinations() AiGa
 }
 
 type AiGatewayModelServiceConfigRoutingFallbackDestination struct {
-	// Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
-	DestinationType     string                                                                    `pulumi:"destinationType"`
+	// Backing-model category. Provide the matching type-specific configuration
+	// and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+	DestinationType string `pulumi:"destinationType"`
+	// Configuration for an external model reached through a model provider service
 	ExternalModelConfig *AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig `pulumi:"externalModelConfig"`
-	// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-	// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-	// deleted but the destination row still references it. The dangling
-	// destination is surfaced (not silently dropped) so callers can see the
-	// broken routing. Inference traffic through this destination fails closed
-	// (BAD_REQUEST / FAILED_PRECONDITION)
+	// (boolean) - Whether the destination's backing model or model provider service has
+	// been deleted. The destination remains visible so you can identify the
+	// broken dependency. Requests cannot use this destination until the backing
+	// resource is restored or the destination is replaced
 	IsDeleted *bool `pulumi:"isDeleted"`
 	// (string) - Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
 	// Server-derived on Create from `parent` +
 	// `modelServiceId`; required and immutable on Update/Get/Delete
-	Name                        string                                                                            `pulumi:"name"`
-	PayPerTokenConfig           *AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig           `pulumi:"payPerTokenConfig"`
+	Name string `pulumi:"name"`
+	// Configuration for a pay-per-token Databricks foundation model
+	PayPerTokenConfig *AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig `pulumi:"payPerTokenConfig"`
+	// Configuration for a provisioned-throughput Databricks foundation model
 	ProvisionedThroughputConfig *AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig `pulumi:"provisionedThroughputConfig"`
-	// Share of traffic sent to this destination, 0-100. Optional on fallback
-	// destinations; see FallbackConfig
+	// Percentage of primary traffic sent to this destination, from 0 to 100.
+	// Required when there is more than one primary destination, in which case the
+	// primary percentages must sum to 100; a single primary destination receives
+	// all traffic. Fallback destinations are ordered and do not use this field
 	TrafficPercentage *int `pulumi:"trafficPercentage"`
 }
 
@@ -40582,26 +40307,30 @@ type AiGatewayModelServiceConfigRoutingFallbackDestinationInput interface {
 }
 
 type AiGatewayModelServiceConfigRoutingFallbackDestinationArgs struct {
-	// Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
-	DestinationType     pulumi.StringInput                                                               `pulumi:"destinationType"`
+	// Backing-model category. Provide the matching type-specific configuration
+	// and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+	DestinationType pulumi.StringInput `pulumi:"destinationType"`
+	// Configuration for an external model reached through a model provider service
 	ExternalModelConfig AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigPtrInput `pulumi:"externalModelConfig"`
-	// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-	// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-	// deleted but the destination row still references it. The dangling
-	// destination is surfaced (not silently dropped) so callers can see the
-	// broken routing. Inference traffic through this destination fails closed
-	// (BAD_REQUEST / FAILED_PRECONDITION)
+	// (boolean) - Whether the destination's backing model or model provider service has
+	// been deleted. The destination remains visible so you can identify the
+	// broken dependency. Requests cannot use this destination until the backing
+	// resource is restored or the destination is replaced
 	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
 	// (string) - Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
 	// Server-derived on Create from `parent` +
 	// `modelServiceId`; required and immutable on Update/Get/Delete
-	Name                        pulumi.StringInput                                                                       `pulumi:"name"`
-	PayPerTokenConfig           AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigPtrInput           `pulumi:"payPerTokenConfig"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Configuration for a pay-per-token Databricks foundation model
+	PayPerTokenConfig AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigPtrInput `pulumi:"payPerTokenConfig"`
+	// Configuration for a provisioned-throughput Databricks foundation model
 	ProvisionedThroughputConfig AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigPtrInput `pulumi:"provisionedThroughputConfig"`
-	// Share of traffic sent to this destination, 0-100. Optional on fallback
-	// destinations; see FallbackConfig
+	// Percentage of primary traffic sent to this destination, from 0 to 100.
+	// Required when there is more than one primary destination, in which case the
+	// primary percentages must sum to 100; a single primary destination receives
+	// all traffic. Fallback destinations are ordered and do not use this field
 	TrafficPercentage pulumi.IntPtrInput `pulumi:"trafficPercentage"`
 }
 
@@ -40656,23 +40385,23 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationOutput) ToAiGateway
 	return o
 }
 
-// Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+// Backing-model category. Provide the matching type-specific configuration
+// and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationOutput) DestinationType() pulumi.StringOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestination) string { return v.DestinationType }).(pulumi.StringOutput)
 }
 
+// Configuration for an external model reached through a model provider service
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationOutput) ExternalModelConfig() AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestination) *AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
 		return v.ExternalModelConfig
 	}).(AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigPtrOutput)
 }
 
-// (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-// destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-// deleted but the destination row still references it. The dangling
-// destination is surfaced (not silently dropped) so callers can see the
-// broken routing. Inference traffic through this destination fails closed
-// (BAD_REQUEST / FAILED_PRECONDITION)
+// (boolean) - Whether the destination's backing model or model provider service has
+// been deleted. The destination remains visible so you can identify the
+// broken dependency. Requests cannot use this destination until the backing
+// resource is restored or the destination is replaced
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationOutput) IsDeleted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestination) *bool { return v.IsDeleted }).(pulumi.BoolPtrOutput)
 }
@@ -40686,20 +40415,24 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationOutput) Name() pulu
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configuration for a pay-per-token Databricks foundation model
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationOutput) PayPerTokenConfig() AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestination) *AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
 		return v.PayPerTokenConfig
 	}).(AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigPtrOutput)
 }
 
+// Configuration for a provisioned-throughput Databricks foundation model
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationOutput) ProvisionedThroughputConfig() AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestination) *AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
 		return v.ProvisionedThroughputConfig
 	}).(AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigPtrOutput)
 }
 
-// Share of traffic sent to this destination, 0-100. Optional on fallback
-// destinations; see FallbackConfig
+// Percentage of primary traffic sent to this destination, from 0 to 100.
+// Required when there is more than one primary destination, in which case the
+// primary percentages must sum to 100; a single primary destination receives
+// all traffic. Fallback destinations are ordered and do not use this field
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationOutput) TrafficPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestination) *int { return v.TrafficPercentage }).(pulumi.IntPtrOutput)
 }
@@ -40917,11 +40650,10 @@ type AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTar
 	// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 	// Create/Update time
 	Model string `pulumi:"model"`
-	// Provider-native API types the model supports (e.g.
-	// "openai/v1/chat/completions"). Used by the platform for request/response
-	// translation from the unified API type. At most 64 entries of at most 256
-	// characters each; the list is persisted into the destination binding's
-	// bounded storage envelope
+	// Provider-native API types supported by this model, such as
+	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+	// uses these values to translate requests and responses. At most 64 entries
+	// of 256 characters each are allowed
 	NativeApiTypes []string `pulumi:"nativeApiTypes"`
 }
 
@@ -40941,11 +40673,10 @@ type AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTar
 	// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
 	// Create/Update time
 	Model pulumi.StringInput `pulumi:"model"`
-	// Provider-native API types the model supports (e.g.
-	// "openai/v1/chat/completions"). Used by the platform for request/response
-	// translation from the unified API type. At most 64 entries of at most 256
-	// characters each; the list is persisted into the destination binding's
-	// bounded storage envelope
+	// Provider-native API types supported by this model, such as
+	// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+	// uses these values to translate requests and responses. At most 64 entries
+	// of 256 characters each are allowed
 	NativeApiTypes pulumi.StringArrayInput `pulumi:"nativeApiTypes"`
 }
 
@@ -41035,11 +40766,10 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig
 	}).(pulumi.StringOutput)
 }
 
-// Provider-native API types the model supports (e.g.
-// "openai/v1/chat/completions"). Used by the platform for request/response
-// translation from the unified API type. At most 64 entries of at most 256
-// characters each; the list is persisted into the destination binding's
-// bounded storage envelope
+// Provider-native API types supported by this model, such as
+// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+// uses these values to translate requests and responses. At most 64 entries
+// of 256 characters each are allowed
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget) []string {
 		return v.NativeApiTypes
@@ -41082,11 +40812,10 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig
 	}).(pulumi.StringPtrOutput)
 }
 
-// Provider-native API types the model supports (e.g.
-// "openai/v1/chat/completions"). Used by the platform for request/response
-// translation from the unified API type. At most 64 entries of at most 256
-// characters each; the list is persisted into the destination binding's
-// bounded storage envelope
+// Provider-native API types supported by this model, such as
+// `openai/v1/chat/completions`. At least one value is required. AI Gateway
+// uses these values to translate requests and responses. At most 64 entries
+// of 256 characters each are allowed
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTargetPtrOutput) NativeApiTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTarget) []string {
 		if v == nil {
@@ -41247,11 +40976,11 @@ type AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputC
 	// Create/Update time
 	Model *string `pulumi:"model"`
 	// Name of the backing Model Serving endpoint serving the provisioned-
-	// throughput foundation model, as the AIP-122 typed resource name
-	// `serving-endpoints/{name}`. The same UC model can be served on multiple
-	// Model Serving endpoints (different throughput / region / config); the
-	// caller picks which one this destination routes to. The endpoint must
-	// exist at create time
+	// throughput foundation model, in the form `serving-endpoints/{name}`. The
+	// same Unity Catalog model can be served on multiple Model Serving endpoints
+	// with different throughput, regions, or configurations. The caller selects
+	// the endpoint to which this destination routes. The endpoint must exist at
+	// create time
 	ModelServingEndpoint string `pulumi:"modelServingEndpoint"`
 }
 
@@ -41272,11 +41001,11 @@ type AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputC
 	// Create/Update time
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	// Name of the backing Model Serving endpoint serving the provisioned-
-	// throughput foundation model, as the AIP-122 typed resource name
-	// `serving-endpoints/{name}`. The same UC model can be served on multiple
-	// Model Serving endpoints (different throughput / region / config); the
-	// caller picks which one this destination routes to. The endpoint must
-	// exist at create time
+	// throughput foundation model, in the form `serving-endpoints/{name}`. The
+	// same Unity Catalog model can be served on multiple Model Serving endpoints
+	// with different throughput, regions, or configurations. The caller selects
+	// the endpoint to which this destination routes. The endpoint must exist at
+	// create time
 	ModelServingEndpoint pulumi.StringInput `pulumi:"modelServingEndpoint"`
 }
 
@@ -41367,11 +41096,11 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughp
 }
 
 // Name of the backing Model Serving endpoint serving the provisioned-
-// throughput foundation model, as the AIP-122 typed resource name
-// `serving-endpoints/{name}`. The same UC model can be served on multiple
-// Model Serving endpoints (different throughput / region / config); the
-// caller picks which one this destination routes to. The endpoint must
-// exist at create time
+// throughput foundation model, in the form `serving-endpoints/{name}`. The
+// same Unity Catalog model can be served on multiple Model Serving endpoints
+// with different throughput, regions, or configurations. The caller selects
+// the endpoint to which this destination routes. The endpoint must exist at
+// create time
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigOutput) ModelServingEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig) string {
 		return v.ModelServingEndpoint
@@ -41415,11 +41144,11 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughp
 }
 
 // Name of the backing Model Serving endpoint serving the provisioned-
-// throughput foundation model, as the AIP-122 typed resource name
-// `serving-endpoints/{name}`. The same UC model can be served on multiple
-// Model Serving endpoints (different throughput / region / config); the
-// caller picks which one this destination routes to. The endpoint must
-// exist at create time
+// throughput foundation model, in the form `serving-endpoints/{name}`. The
+// same Unity Catalog model can be served on multiple Model Serving endpoints
+// with different throughput, regions, or configurations. The caller selects
+// the endpoint to which this destination routes. The endpoint must exist at
+// create time
 func (o AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigPtrOutput) ModelServingEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig) *string {
 		if v == nil {
@@ -41427,124 +41156,6 @@ func (o AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughp
 		}
 		return &v.ModelServingEndpoint
 	}).(pulumi.StringPtrOutput)
-}
-
-type AiGatewayModelServiceConfigRoutingTrafficSplitting struct {
-}
-
-// AiGatewayModelServiceConfigRoutingTrafficSplittingInput is an input type that accepts AiGatewayModelServiceConfigRoutingTrafficSplittingArgs and AiGatewayModelServiceConfigRoutingTrafficSplittingOutput values.
-// You can construct a concrete instance of `AiGatewayModelServiceConfigRoutingTrafficSplittingInput` via:
-//
-//	AiGatewayModelServiceConfigRoutingTrafficSplittingArgs{...}
-type AiGatewayModelServiceConfigRoutingTrafficSplittingInput interface {
-	pulumi.Input
-
-	ToAiGatewayModelServiceConfigRoutingTrafficSplittingOutput() AiGatewayModelServiceConfigRoutingTrafficSplittingOutput
-	ToAiGatewayModelServiceConfigRoutingTrafficSplittingOutputWithContext(context.Context) AiGatewayModelServiceConfigRoutingTrafficSplittingOutput
-}
-
-type AiGatewayModelServiceConfigRoutingTrafficSplittingArgs struct {
-}
-
-func (AiGatewayModelServiceConfigRoutingTrafficSplittingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AiGatewayModelServiceConfigRoutingTrafficSplitting)(nil)).Elem()
-}
-
-func (i AiGatewayModelServiceConfigRoutingTrafficSplittingArgs) ToAiGatewayModelServiceConfigRoutingTrafficSplittingOutput() AiGatewayModelServiceConfigRoutingTrafficSplittingOutput {
-	return i.ToAiGatewayModelServiceConfigRoutingTrafficSplittingOutputWithContext(context.Background())
-}
-
-func (i AiGatewayModelServiceConfigRoutingTrafficSplittingArgs) ToAiGatewayModelServiceConfigRoutingTrafficSplittingOutputWithContext(ctx context.Context) AiGatewayModelServiceConfigRoutingTrafficSplittingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelServiceConfigRoutingTrafficSplittingOutput)
-}
-
-func (i AiGatewayModelServiceConfigRoutingTrafficSplittingArgs) ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput() AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return i.ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(context.Background())
-}
-
-func (i AiGatewayModelServiceConfigRoutingTrafficSplittingArgs) ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(ctx context.Context) AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelServiceConfigRoutingTrafficSplittingOutput).ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(ctx)
-}
-
-// AiGatewayModelServiceConfigRoutingTrafficSplittingPtrInput is an input type that accepts AiGatewayModelServiceConfigRoutingTrafficSplittingArgs, AiGatewayModelServiceConfigRoutingTrafficSplittingPtr and AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput values.
-// You can construct a concrete instance of `AiGatewayModelServiceConfigRoutingTrafficSplittingPtrInput` via:
-//
-//	        AiGatewayModelServiceConfigRoutingTrafficSplittingArgs{...}
-//
-//	or:
-//
-//	        nil
-type AiGatewayModelServiceConfigRoutingTrafficSplittingPtrInput interface {
-	pulumi.Input
-
-	ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput() AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput
-	ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(context.Context) AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput
-}
-
-type aiGatewayModelServiceConfigRoutingTrafficSplittingPtrType AiGatewayModelServiceConfigRoutingTrafficSplittingArgs
-
-func AiGatewayModelServiceConfigRoutingTrafficSplittingPtr(v *AiGatewayModelServiceConfigRoutingTrafficSplittingArgs) AiGatewayModelServiceConfigRoutingTrafficSplittingPtrInput {
-	return (*aiGatewayModelServiceConfigRoutingTrafficSplittingPtrType)(v)
-}
-
-func (*aiGatewayModelServiceConfigRoutingTrafficSplittingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AiGatewayModelServiceConfigRoutingTrafficSplitting)(nil)).Elem()
-}
-
-func (i *aiGatewayModelServiceConfigRoutingTrafficSplittingPtrType) ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput() AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return i.ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(context.Background())
-}
-
-func (i *aiGatewayModelServiceConfigRoutingTrafficSplittingPtrType) ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(ctx context.Context) AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput)
-}
-
-type AiGatewayModelServiceConfigRoutingTrafficSplittingOutput struct{ *pulumi.OutputState }
-
-func (AiGatewayModelServiceConfigRoutingTrafficSplittingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AiGatewayModelServiceConfigRoutingTrafficSplitting)(nil)).Elem()
-}
-
-func (o AiGatewayModelServiceConfigRoutingTrafficSplittingOutput) ToAiGatewayModelServiceConfigRoutingTrafficSplittingOutput() AiGatewayModelServiceConfigRoutingTrafficSplittingOutput {
-	return o
-}
-
-func (o AiGatewayModelServiceConfigRoutingTrafficSplittingOutput) ToAiGatewayModelServiceConfigRoutingTrafficSplittingOutputWithContext(ctx context.Context) AiGatewayModelServiceConfigRoutingTrafficSplittingOutput {
-	return o
-}
-
-func (o AiGatewayModelServiceConfigRoutingTrafficSplittingOutput) ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput() AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return o.ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(context.Background())
-}
-
-func (o AiGatewayModelServiceConfigRoutingTrafficSplittingOutput) ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(ctx context.Context) AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelServiceConfigRoutingTrafficSplitting) *AiGatewayModelServiceConfigRoutingTrafficSplitting {
-		return &v
-	}).(AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput)
-}
-
-type AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput struct{ *pulumi.OutputState }
-
-func (AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AiGatewayModelServiceConfigRoutingTrafficSplitting)(nil)).Elem()
-}
-
-func (o AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput) ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput() AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return o
-}
-
-func (o AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput) ToAiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutputWithContext(ctx context.Context) AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput {
-	return o
-}
-
-func (o AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput) Elem() AiGatewayModelServiceConfigRoutingTrafficSplittingOutput {
-	return o.ApplyT(func(v *AiGatewayModelServiceConfigRoutingTrafficSplitting) AiGatewayModelServiceConfigRoutingTrafficSplitting {
-		if v != nil {
-			return *v
-		}
-		var ret AiGatewayModelServiceConfigRoutingTrafficSplitting
-		return ret
-	}).(AiGatewayModelServiceConfigRoutingTrafficSplittingOutput)
 }
 
 type AiGatewayModelServiceProviderConfig struct {
@@ -47242,12 +46853,13 @@ type AppActiveDeployment struct {
 	// attribute
 	DeploymentArtifacts *AppActiveDeploymentDeploymentArtifacts `pulumi:"deploymentArtifacts"`
 	// The unique ID of the deployment.
-	DeploymentId *string                       `pulumi:"deploymentId"`
-	EnvVars      []AppActiveDeploymentEnvVar   `pulumi:"envVars"`
-	GitSource    *AppActiveDeploymentGitSource `pulumi:"gitSource"`
+	DeploymentId *string                     `pulumi:"deploymentId"`
+	EnvVars      []AppActiveDeploymentEnvVar `pulumi:"envVars"`
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource *AppActiveDeploymentGitSource `pulumi:"gitSource"`
 	// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 	Mode *string `pulumi:"mode"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
 	// attribute
 	Status *AppActiveDeploymentStatus `pulumi:"status"`
@@ -47275,12 +46887,13 @@ type AppActiveDeploymentArgs struct {
 	// attribute
 	DeploymentArtifacts AppActiveDeploymentDeploymentArtifactsPtrInput `pulumi:"deploymentArtifacts"`
 	// The unique ID of the deployment.
-	DeploymentId pulumi.StringPtrInput                `pulumi:"deploymentId"`
-	EnvVars      AppActiveDeploymentEnvVarArrayInput  `pulumi:"envVars"`
-	GitSource    AppActiveDeploymentGitSourcePtrInput `pulumi:"gitSource"`
+	DeploymentId pulumi.StringPtrInput               `pulumi:"deploymentId"`
+	EnvVars      AppActiveDeploymentEnvVarArrayInput `pulumi:"envVars"`
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource AppActiveDeploymentGitSourcePtrInput `pulumi:"gitSource"`
 	// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
 	// attribute
 	Status AppActiveDeploymentStatusPtrInput `pulumi:"status"`
@@ -47393,6 +47006,7 @@ func (o AppActiveDeploymentOutput) EnvVars() AppActiveDeploymentEnvVarArrayOutpu
 	return o.ApplyT(func(v AppActiveDeployment) []AppActiveDeploymentEnvVar { return v.EnvVars }).(AppActiveDeploymentEnvVarArrayOutput)
 }
 
+// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
 func (o AppActiveDeploymentOutput) GitSource() AppActiveDeploymentGitSourcePtrOutput {
 	return o.ApplyT(func(v AppActiveDeployment) *AppActiveDeploymentGitSource { return v.GitSource }).(AppActiveDeploymentGitSourcePtrOutput)
 }
@@ -47402,7 +47016,7 @@ func (o AppActiveDeploymentOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppActiveDeployment) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppActiveDeploymentOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppActiveDeployment) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
 }
@@ -47499,6 +47113,7 @@ func (o AppActiveDeploymentPtrOutput) EnvVars() AppActiveDeploymentEnvVarArrayOu
 	}).(AppActiveDeploymentEnvVarArrayOutput)
 }
 
+// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
 func (o AppActiveDeploymentPtrOutput) GitSource() AppActiveDeploymentGitSourcePtrOutput {
 	return o.ApplyT(func(v *AppActiveDeployment) *AppActiveDeploymentGitSource {
 		if v == nil {
@@ -47518,7 +47133,7 @@ func (o AppActiveDeploymentPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppActiveDeploymentPtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppActiveDeployment) *string {
 		if v == nil {
@@ -47549,7 +47164,7 @@ func (o AppActiveDeploymentPtrOutput) UpdateTime() pulumi.StringPtrOutput {
 }
 
 type AppActiveDeploymentDeploymentArtifacts struct {
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
 }
 
@@ -47565,7 +47180,7 @@ type AppActiveDeploymentDeploymentArtifactsInput interface {
 }
 
 type AppActiveDeploymentDeploymentArtifactsArgs struct {
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
 }
 
@@ -47646,7 +47261,7 @@ func (o AppActiveDeploymentDeploymentArtifactsOutput) ToAppActiveDeploymentDeplo
 	}).(AppActiveDeploymentDeploymentArtifactsPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppActiveDeploymentDeploymentArtifactsOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppActiveDeploymentDeploymentArtifacts) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
 }
@@ -47675,7 +47290,7 @@ func (o AppActiveDeploymentDeploymentArtifactsPtrOutput) Elem() AppActiveDeploym
 	}).(AppActiveDeploymentDeploymentArtifactsOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppActiveDeploymentDeploymentArtifactsPtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppActiveDeploymentDeploymentArtifacts) *string {
 		if v == nil {
@@ -47795,15 +47410,17 @@ func (o AppActiveDeploymentEnvVarArrayOutput) Index(i pulumi.IntInput) AppActive
 }
 
 type AppActiveDeploymentGitSource struct {
-	// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+	// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 	Branch *string `pulumi:"branch"`
+	// Git commit SHA to check out and deploy from.
 	Commit *string `pulumi:"commit"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository  *AppActiveDeploymentGitSourceGitRepository `pulumi:"gitRepository"`
 	ResolvedCommit *string                                    `pulumi:"resolvedCommit"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Path to the app source code within the repository. Defaults to the repository root.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
-	Tag            *string `pulumi:"tag"`
+	// Git tag to check out and deploy from.
+	Tag *string `pulumi:"tag"`
 }
 
 // AppActiveDeploymentGitSourceInput is an input type that accepts AppActiveDeploymentGitSourceArgs and AppActiveDeploymentGitSourceOutput values.
@@ -47818,15 +47435,17 @@ type AppActiveDeploymentGitSourceInput interface {
 }
 
 type AppActiveDeploymentGitSourceArgs struct {
-	// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+	// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Git commit SHA to check out and deploy from.
 	Commit pulumi.StringPtrInput `pulumi:"commit"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository  AppActiveDeploymentGitSourceGitRepositoryPtrInput `pulumi:"gitRepository"`
 	ResolvedCommit pulumi.StringPtrInput                             `pulumi:"resolvedCommit"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Path to the app source code within the repository. Defaults to the repository root.
 	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
-	Tag            pulumi.StringPtrInput `pulumi:"tag"`
+	// Git tag to check out and deploy from.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (AppActiveDeploymentGitSourceArgs) ElementType() reflect.Type {
@@ -47906,11 +47525,12 @@ func (o AppActiveDeploymentGitSourceOutput) ToAppActiveDeploymentGitSourcePtrOut
 	}).(AppActiveDeploymentGitSourcePtrOutput)
 }
 
-// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 func (o AppActiveDeploymentGitSourceOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppActiveDeploymentGitSource) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// Git commit SHA to check out and deploy from.
 func (o AppActiveDeploymentGitSourceOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppActiveDeploymentGitSource) *string { return v.Commit }).(pulumi.StringPtrOutput)
 }
@@ -47926,11 +47546,12 @@ func (o AppActiveDeploymentGitSourceOutput) ResolvedCommit() pulumi.StringPtrOut
 	return o.ApplyT(func(v AppActiveDeploymentGitSource) *string { return v.ResolvedCommit }).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Path to the app source code within the repository. Defaults to the repository root.
 func (o AppActiveDeploymentGitSourceOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppActiveDeploymentGitSource) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
 }
 
+// Git tag to check out and deploy from.
 func (o AppActiveDeploymentGitSourceOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppActiveDeploymentGitSource) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -47959,7 +47580,7 @@ func (o AppActiveDeploymentGitSourcePtrOutput) Elem() AppActiveDeploymentGitSour
 	}).(AppActiveDeploymentGitSourceOutput)
 }
 
-// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 func (o AppActiveDeploymentGitSourcePtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppActiveDeploymentGitSource) *string {
 		if v == nil {
@@ -47969,6 +47590,7 @@ func (o AppActiveDeploymentGitSourcePtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Git commit SHA to check out and deploy from.
 func (o AppActiveDeploymentGitSourcePtrOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppActiveDeploymentGitSource) *string {
 		if v == nil {
@@ -47997,7 +47619,7 @@ func (o AppActiveDeploymentGitSourcePtrOutput) ResolvedCommit() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Path to the app source code within the repository. Defaults to the repository root.
 func (o AppActiveDeploymentGitSourcePtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppActiveDeploymentGitSource) *string {
 		if v == nil {
@@ -48007,6 +47629,7 @@ func (o AppActiveDeploymentGitSourcePtrOutput) SourceCodePath() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Git tag to check out and deploy from.
 func (o AppActiveDeploymentGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppActiveDeploymentGitSource) *string {
 		if v == nil {
@@ -48017,8 +47640,10 @@ func (o AppActiveDeploymentGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 type AppActiveDeploymentGitSourceGitRepository struct {
-	AutoDeploy         *bool `pulumi:"autoDeploy"`
-	CallerCredentialId *int  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy *bool `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId *int `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider string `pulumi:"provider"`
 	// URL of the Git repository.
@@ -48037,8 +47662,10 @@ type AppActiveDeploymentGitSourceGitRepositoryInput interface {
 }
 
 type AppActiveDeploymentGitSourceGitRepositoryArgs struct {
-	AutoDeploy         pulumi.BoolPtrInput `pulumi:"autoDeploy"`
-	CallerCredentialId pulumi.IntPtrInput  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy pulumi.BoolPtrInput `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId pulumi.IntPtrInput `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// URL of the Git repository.
@@ -48122,10 +47749,12 @@ func (o AppActiveDeploymentGitSourceGitRepositoryOutput) ToAppActiveDeploymentGi
 	}).(AppActiveDeploymentGitSourceGitRepositoryPtrOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppActiveDeploymentGitSourceGitRepositoryOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppActiveDeploymentGitSourceGitRepository) *bool { return v.AutoDeploy }).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppActiveDeploymentGitSourceGitRepositoryOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppActiveDeploymentGitSourceGitRepository) *int { return v.CallerCredentialId }).(pulumi.IntPtrOutput)
 }
@@ -48164,6 +47793,7 @@ func (o AppActiveDeploymentGitSourceGitRepositoryPtrOutput) Elem() AppActiveDepl
 	}).(AppActiveDeploymentGitSourceGitRepositoryOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppActiveDeploymentGitSourceGitRepositoryPtrOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppActiveDeploymentGitSourceGitRepository) *bool {
 		if v == nil {
@@ -48173,6 +47803,7 @@ func (o AppActiveDeploymentGitSourceGitRepositoryPtrOutput) AutoDeploy() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppActiveDeploymentGitSourceGitRepositoryPtrOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppActiveDeploymentGitSourceGitRepository) *int {
 		if v == nil {
@@ -48701,15 +48332,16 @@ func (o AppComputeStatusPtrOutput) State() pulumi.StringPtrOutput {
 }
 
 type AppDefaultGitSource struct {
-	// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
 	Branch *string `pulumi:"branch"`
+	// Git commit SHA to check out and deploy from.
 	Commit *string `pulumi:"commit"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository  *AppDefaultGitSourceGitRepository `pulumi:"gitRepository"`
 	ResolvedCommit *string                           `pulumi:"resolvedCommit"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
-	Tag            *string `pulumi:"tag"`
+	// Git tag to check out and deploy from.
+	Tag *string `pulumi:"tag"`
 }
 
 // AppDefaultGitSourceInput is an input type that accepts AppDefaultGitSourceArgs and AppDefaultGitSourceOutput values.
@@ -48724,15 +48356,16 @@ type AppDefaultGitSourceInput interface {
 }
 
 type AppDefaultGitSourceArgs struct {
-	// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Git commit SHA to check out and deploy from.
 	Commit pulumi.StringPtrInput `pulumi:"commit"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository  AppDefaultGitSourceGitRepositoryPtrInput `pulumi:"gitRepository"`
 	ResolvedCommit pulumi.StringPtrInput                    `pulumi:"resolvedCommit"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
-	Tag            pulumi.StringPtrInput `pulumi:"tag"`
+	// Git tag to check out and deploy from.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (AppDefaultGitSourceArgs) ElementType() reflect.Type {
@@ -48812,11 +48445,11 @@ func (o AppDefaultGitSourceOutput) ToAppDefaultGitSourcePtrOutputWithContext(ctx
 	}).(AppDefaultGitSourcePtrOutput)
 }
 
-// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
 func (o AppDefaultGitSourceOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppDefaultGitSource) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// Git commit SHA to check out and deploy from.
 func (o AppDefaultGitSourceOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppDefaultGitSource) *string { return v.Commit }).(pulumi.StringPtrOutput)
 }
@@ -48830,11 +48463,12 @@ func (o AppDefaultGitSourceOutput) ResolvedCommit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppDefaultGitSource) *string { return v.ResolvedCommit }).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppDefaultGitSourceOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppDefaultGitSource) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
 }
 
+// Git tag to check out and deploy from.
 func (o AppDefaultGitSourceOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppDefaultGitSource) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -48863,7 +48497,6 @@ func (o AppDefaultGitSourcePtrOutput) Elem() AppDefaultGitSourceOutput {
 	}).(AppDefaultGitSourceOutput)
 }
 
-// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
 func (o AppDefaultGitSourcePtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppDefaultGitSource) *string {
 		if v == nil {
@@ -48873,6 +48506,7 @@ func (o AppDefaultGitSourcePtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Git commit SHA to check out and deploy from.
 func (o AppDefaultGitSourcePtrOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppDefaultGitSource) *string {
 		if v == nil {
@@ -48901,7 +48535,7 @@ func (o AppDefaultGitSourcePtrOutput) ResolvedCommit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppDefaultGitSourcePtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppDefaultGitSource) *string {
 		if v == nil {
@@ -48911,6 +48545,7 @@ func (o AppDefaultGitSourcePtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Git tag to check out and deploy from.
 func (o AppDefaultGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppDefaultGitSource) *string {
 		if v == nil {
@@ -48921,8 +48556,10 @@ func (o AppDefaultGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 type AppDefaultGitSourceGitRepository struct {
-	AutoDeploy         *bool `pulumi:"autoDeploy"`
-	CallerCredentialId *int  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy *bool `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId *int `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider string `pulumi:"provider"`
 	// URL of the Git repository.
@@ -48941,8 +48578,10 @@ type AppDefaultGitSourceGitRepositoryInput interface {
 }
 
 type AppDefaultGitSourceGitRepositoryArgs struct {
-	AutoDeploy         pulumi.BoolPtrInput `pulumi:"autoDeploy"`
-	CallerCredentialId pulumi.IntPtrInput  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy pulumi.BoolPtrInput `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId pulumi.IntPtrInput `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// URL of the Git repository.
@@ -49026,10 +48665,12 @@ func (o AppDefaultGitSourceGitRepositoryOutput) ToAppDefaultGitSourceGitReposito
 	}).(AppDefaultGitSourceGitRepositoryPtrOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppDefaultGitSourceGitRepositoryOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppDefaultGitSourceGitRepository) *bool { return v.AutoDeploy }).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppDefaultGitSourceGitRepositoryOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppDefaultGitSourceGitRepository) *int { return v.CallerCredentialId }).(pulumi.IntPtrOutput)
 }
@@ -49068,6 +48709,7 @@ func (o AppDefaultGitSourceGitRepositoryPtrOutput) Elem() AppDefaultGitSourceGit
 	}).(AppDefaultGitSourceGitRepositoryOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppDefaultGitSourceGitRepositoryPtrOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppDefaultGitSourceGitRepository) *bool {
 		if v == nil {
@@ -49077,6 +48719,7 @@ func (o AppDefaultGitSourceGitRepositoryPtrOutput) AutoDeploy() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppDefaultGitSourceGitRepositoryPtrOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppDefaultGitSourceGitRepository) *int {
 		if v == nil {
@@ -49107,8 +48750,10 @@ func (o AppDefaultGitSourceGitRepositoryPtrOutput) Url() pulumi.StringPtrOutput 
 }
 
 type AppGitRepository struct {
-	AutoDeploy         *bool `pulumi:"autoDeploy"`
-	CallerCredentialId *int  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy *bool `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId *int `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider string `pulumi:"provider"`
 	// URL of the Git repository.
@@ -49127,8 +48772,10 @@ type AppGitRepositoryInput interface {
 }
 
 type AppGitRepositoryArgs struct {
-	AutoDeploy         pulumi.BoolPtrInput `pulumi:"autoDeploy"`
-	CallerCredentialId pulumi.IntPtrInput  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy pulumi.BoolPtrInput `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId pulumi.IntPtrInput `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// URL of the Git repository.
@@ -49212,10 +48859,12 @@ func (o AppGitRepositoryOutput) ToAppGitRepositoryPtrOutputWithContext(ctx conte
 	}).(AppGitRepositoryPtrOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppGitRepositoryOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppGitRepository) *bool { return v.AutoDeploy }).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppGitRepositoryOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppGitRepository) *int { return v.CallerCredentialId }).(pulumi.IntPtrOutput)
 }
@@ -49254,6 +48903,7 @@ func (o AppGitRepositoryPtrOutput) Elem() AppGitRepositoryOutput {
 	}).(AppGitRepositoryOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppGitRepositoryPtrOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppGitRepository) *bool {
 		if v == nil {
@@ -49263,6 +48913,7 @@ func (o AppGitRepositoryPtrOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppGitRepositoryPtrOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppGitRepository) *int {
 		if v == nil {
@@ -49293,15 +48944,17 @@ func (o AppGitRepositoryPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type AppGitSource struct {
-	// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+	// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 	Branch *string `pulumi:"branch"`
+	// Git commit SHA to check out and deploy from.
 	Commit *string `pulumi:"commit"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository  *AppGitSourceGitRepository `pulumi:"gitRepository"`
 	ResolvedCommit *string                    `pulumi:"resolvedCommit"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Path to the app source code within the repository. Defaults to the repository root.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
-	Tag            *string `pulumi:"tag"`
+	// Git tag to check out and deploy from.
+	Tag *string `pulumi:"tag"`
 }
 
 // AppGitSourceInput is an input type that accepts AppGitSourceArgs and AppGitSourceOutput values.
@@ -49316,15 +48969,17 @@ type AppGitSourceInput interface {
 }
 
 type AppGitSourceArgs struct {
-	// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+	// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Git commit SHA to check out and deploy from.
 	Commit pulumi.StringPtrInput `pulumi:"commit"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository  AppGitSourceGitRepositoryPtrInput `pulumi:"gitRepository"`
 	ResolvedCommit pulumi.StringPtrInput             `pulumi:"resolvedCommit"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Path to the app source code within the repository. Defaults to the repository root.
 	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
-	Tag            pulumi.StringPtrInput `pulumi:"tag"`
+	// Git tag to check out and deploy from.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (AppGitSourceArgs) ElementType() reflect.Type {
@@ -49404,11 +49059,12 @@ func (o AppGitSourceOutput) ToAppGitSourcePtrOutputWithContext(ctx context.Conte
 	}).(AppGitSourcePtrOutput)
 }
 
-// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 func (o AppGitSourceOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppGitSource) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// Git commit SHA to check out and deploy from.
 func (o AppGitSourceOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppGitSource) *string { return v.Commit }).(pulumi.StringPtrOutput)
 }
@@ -49422,11 +49078,12 @@ func (o AppGitSourceOutput) ResolvedCommit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppGitSource) *string { return v.ResolvedCommit }).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Path to the app source code within the repository. Defaults to the repository root.
 func (o AppGitSourceOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppGitSource) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
 }
 
+// Git tag to check out and deploy from.
 func (o AppGitSourceOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppGitSource) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -49455,7 +49112,7 @@ func (o AppGitSourcePtrOutput) Elem() AppGitSourceOutput {
 	}).(AppGitSourceOutput)
 }
 
-// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 func (o AppGitSourcePtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGitSource) *string {
 		if v == nil {
@@ -49465,6 +49122,7 @@ func (o AppGitSourcePtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Git commit SHA to check out and deploy from.
 func (o AppGitSourcePtrOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGitSource) *string {
 		if v == nil {
@@ -49493,7 +49151,7 @@ func (o AppGitSourcePtrOutput) ResolvedCommit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Path to the app source code within the repository. Defaults to the repository root.
 func (o AppGitSourcePtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGitSource) *string {
 		if v == nil {
@@ -49503,6 +49161,7 @@ func (o AppGitSourcePtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Git tag to check out and deploy from.
 func (o AppGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGitSource) *string {
 		if v == nil {
@@ -49513,8 +49172,10 @@ func (o AppGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 type AppGitSourceGitRepository struct {
-	AutoDeploy         *bool `pulumi:"autoDeploy"`
-	CallerCredentialId *int  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy *bool `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId *int `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider string `pulumi:"provider"`
 	// URL of the Git repository.
@@ -49533,8 +49194,10 @@ type AppGitSourceGitRepositoryInput interface {
 }
 
 type AppGitSourceGitRepositoryArgs struct {
-	AutoDeploy         pulumi.BoolPtrInput `pulumi:"autoDeploy"`
-	CallerCredentialId pulumi.IntPtrInput  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy pulumi.BoolPtrInput `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId pulumi.IntPtrInput `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// URL of the Git repository.
@@ -49618,10 +49281,12 @@ func (o AppGitSourceGitRepositoryOutput) ToAppGitSourceGitRepositoryPtrOutputWit
 	}).(AppGitSourceGitRepositoryPtrOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppGitSourceGitRepositoryOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppGitSourceGitRepository) *bool { return v.AutoDeploy }).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppGitSourceGitRepositoryOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppGitSourceGitRepository) *int { return v.CallerCredentialId }).(pulumi.IntPtrOutput)
 }
@@ -49660,6 +49325,7 @@ func (o AppGitSourceGitRepositoryPtrOutput) Elem() AppGitSourceGitRepositoryOutp
 	}).(AppGitSourceGitRepositoryOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppGitSourceGitRepositoryPtrOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppGitSourceGitRepository) *bool {
 		if v == nil {
@@ -49669,6 +49335,7 @@ func (o AppGitSourceGitRepositoryPtrOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppGitSourceGitRepositoryPtrOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppGitSourceGitRepository) *int {
 		if v == nil {
@@ -49707,12 +49374,13 @@ type AppPendingDeployment struct {
 	// attribute
 	DeploymentArtifacts *AppPendingDeploymentDeploymentArtifacts `pulumi:"deploymentArtifacts"`
 	// The unique ID of the deployment.
-	DeploymentId *string                        `pulumi:"deploymentId"`
-	EnvVars      []AppPendingDeploymentEnvVar   `pulumi:"envVars"`
-	GitSource    *AppPendingDeploymentGitSource `pulumi:"gitSource"`
+	DeploymentId *string                      `pulumi:"deploymentId"`
+	EnvVars      []AppPendingDeploymentEnvVar `pulumi:"envVars"`
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource *AppPendingDeploymentGitSource `pulumi:"gitSource"`
 	// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 	Mode *string `pulumi:"mode"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
 	// attribute
 	Status *AppPendingDeploymentStatus `pulumi:"status"`
@@ -49740,12 +49408,13 @@ type AppPendingDeploymentArgs struct {
 	// attribute
 	DeploymentArtifacts AppPendingDeploymentDeploymentArtifactsPtrInput `pulumi:"deploymentArtifacts"`
 	// The unique ID of the deployment.
-	DeploymentId pulumi.StringPtrInput                 `pulumi:"deploymentId"`
-	EnvVars      AppPendingDeploymentEnvVarArrayInput  `pulumi:"envVars"`
-	GitSource    AppPendingDeploymentGitSourcePtrInput `pulumi:"gitSource"`
+	DeploymentId pulumi.StringPtrInput                `pulumi:"deploymentId"`
+	EnvVars      AppPendingDeploymentEnvVarArrayInput `pulumi:"envVars"`
+	// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+	GitSource AppPendingDeploymentGitSourcePtrInput `pulumi:"gitSource"`
 	// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
 	// attribute
 	Status AppPendingDeploymentStatusPtrInput `pulumi:"status"`
@@ -49858,6 +49527,7 @@ func (o AppPendingDeploymentOutput) EnvVars() AppPendingDeploymentEnvVarArrayOut
 	return o.ApplyT(func(v AppPendingDeployment) []AppPendingDeploymentEnvVar { return v.EnvVars }).(AppPendingDeploymentEnvVarArrayOutput)
 }
 
+// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
 func (o AppPendingDeploymentOutput) GitSource() AppPendingDeploymentGitSourcePtrOutput {
 	return o.ApplyT(func(v AppPendingDeployment) *AppPendingDeploymentGitSource { return v.GitSource }).(AppPendingDeploymentGitSourcePtrOutput)
 }
@@ -49867,7 +49537,7 @@ func (o AppPendingDeploymentOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppPendingDeployment) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppPendingDeploymentOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppPendingDeployment) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
 }
@@ -49964,6 +49634,7 @@ func (o AppPendingDeploymentPtrOutput) EnvVars() AppPendingDeploymentEnvVarArray
 	}).(AppPendingDeploymentEnvVarArrayOutput)
 }
 
+// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
 func (o AppPendingDeploymentPtrOutput) GitSource() AppPendingDeploymentGitSourcePtrOutput {
 	return o.ApplyT(func(v *AppPendingDeployment) *AppPendingDeploymentGitSource {
 		if v == nil {
@@ -49983,7 +49654,7 @@ func (o AppPendingDeploymentPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppPendingDeploymentPtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppPendingDeployment) *string {
 		if v == nil {
@@ -50014,7 +49685,7 @@ func (o AppPendingDeploymentPtrOutput) UpdateTime() pulumi.StringPtrOutput {
 }
 
 type AppPendingDeploymentDeploymentArtifacts struct {
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
 }
 
@@ -50030,7 +49701,7 @@ type AppPendingDeploymentDeploymentArtifactsInput interface {
 }
 
 type AppPendingDeploymentDeploymentArtifactsArgs struct {
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
 }
 
@@ -50111,7 +49782,7 @@ func (o AppPendingDeploymentDeploymentArtifactsOutput) ToAppPendingDeploymentDep
 	}).(AppPendingDeploymentDeploymentArtifactsPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppPendingDeploymentDeploymentArtifactsOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppPendingDeploymentDeploymentArtifacts) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
 }
@@ -50140,7 +49811,7 @@ func (o AppPendingDeploymentDeploymentArtifactsPtrOutput) Elem() AppPendingDeplo
 	}).(AppPendingDeploymentDeploymentArtifactsOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
 func (o AppPendingDeploymentDeploymentArtifactsPtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppPendingDeploymentDeploymentArtifacts) *string {
 		if v == nil {
@@ -50260,15 +49931,17 @@ func (o AppPendingDeploymentEnvVarArrayOutput) Index(i pulumi.IntInput) AppPendi
 }
 
 type AppPendingDeploymentGitSource struct {
-	// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+	// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 	Branch *string `pulumi:"branch"`
+	// Git commit SHA to check out and deploy from.
 	Commit *string `pulumi:"commit"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository  *AppPendingDeploymentGitSourceGitRepository `pulumi:"gitRepository"`
 	ResolvedCommit *string                                     `pulumi:"resolvedCommit"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Path to the app source code within the repository. Defaults to the repository root.
 	SourceCodePath *string `pulumi:"sourceCodePath"`
-	Tag            *string `pulumi:"tag"`
+	// Git tag to check out and deploy from.
+	Tag *string `pulumi:"tag"`
 }
 
 // AppPendingDeploymentGitSourceInput is an input type that accepts AppPendingDeploymentGitSourceArgs and AppPendingDeploymentGitSourceOutput values.
@@ -50283,15 +49956,17 @@ type AppPendingDeploymentGitSourceInput interface {
 }
 
 type AppPendingDeploymentGitSourceArgs struct {
-	// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+	// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Git commit SHA to check out and deploy from.
 	Commit pulumi.StringPtrInput `pulumi:"commit"`
 	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository  AppPendingDeploymentGitSourceGitRepositoryPtrInput `pulumi:"gitRepository"`
 	ResolvedCommit pulumi.StringPtrInput                              `pulumi:"resolvedCommit"`
-	// The snapshotted workspace file system path of the source code loaded by the deployed app.
+	// Path to the app source code within the repository. Defaults to the repository root.
 	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
-	Tag            pulumi.StringPtrInput `pulumi:"tag"`
+	// Git tag to check out and deploy from.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (AppPendingDeploymentGitSourceArgs) ElementType() reflect.Type {
@@ -50371,11 +50046,12 @@ func (o AppPendingDeploymentGitSourceOutput) ToAppPendingDeploymentGitSourcePtrO
 	}).(AppPendingDeploymentGitSourcePtrOutput)
 }
 
-// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 func (o AppPendingDeploymentGitSourceOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppPendingDeploymentGitSource) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// Git commit SHA to check out and deploy from.
 func (o AppPendingDeploymentGitSourceOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppPendingDeploymentGitSource) *string { return v.Commit }).(pulumi.StringPtrOutput)
 }
@@ -50391,11 +50067,12 @@ func (o AppPendingDeploymentGitSourceOutput) ResolvedCommit() pulumi.StringPtrOu
 	return o.ApplyT(func(v AppPendingDeploymentGitSource) *string { return v.ResolvedCommit }).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Path to the app source code within the repository. Defaults to the repository root.
 func (o AppPendingDeploymentGitSourceOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppPendingDeploymentGitSource) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
 }
 
+// Git tag to check out and deploy from.
 func (o AppPendingDeploymentGitSourceOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppPendingDeploymentGitSource) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -50424,7 +50101,7 @@ func (o AppPendingDeploymentGitSourcePtrOutput) Elem() AppPendingDeploymentGitSo
 	}).(AppPendingDeploymentGitSourceOutput)
 }
 
-// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+// Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
 func (o AppPendingDeploymentGitSourcePtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppPendingDeploymentGitSource) *string {
 		if v == nil {
@@ -50434,6 +50111,7 @@ func (o AppPendingDeploymentGitSourcePtrOutput) Branch() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Git commit SHA to check out and deploy from.
 func (o AppPendingDeploymentGitSourcePtrOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppPendingDeploymentGitSource) *string {
 		if v == nil {
@@ -50462,7 +50140,7 @@ func (o AppPendingDeploymentGitSourcePtrOutput) ResolvedCommit() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The snapshotted workspace file system path of the source code loaded by the deployed app.
+// Path to the app source code within the repository. Defaults to the repository root.
 func (o AppPendingDeploymentGitSourcePtrOutput) SourceCodePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppPendingDeploymentGitSource) *string {
 		if v == nil {
@@ -50472,6 +50150,7 @@ func (o AppPendingDeploymentGitSourcePtrOutput) SourceCodePath() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Git tag to check out and deploy from.
 func (o AppPendingDeploymentGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppPendingDeploymentGitSource) *string {
 		if v == nil {
@@ -50482,8 +50161,10 @@ func (o AppPendingDeploymentGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 type AppPendingDeploymentGitSourceGitRepository struct {
-	AutoDeploy         *bool `pulumi:"autoDeploy"`
-	CallerCredentialId *int  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy *bool `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId *int `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider string `pulumi:"provider"`
 	// URL of the Git repository.
@@ -50502,8 +50183,10 @@ type AppPendingDeploymentGitSourceGitRepositoryInput interface {
 }
 
 type AppPendingDeploymentGitSourceGitRepositoryArgs struct {
-	AutoDeploy         pulumi.BoolPtrInput `pulumi:"autoDeploy"`
-	CallerCredentialId pulumi.IntPtrInput  `pulumi:"callerCredentialId"`
+	// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+	AutoDeploy pulumi.BoolPtrInput `pulumi:"autoDeploy"`
+	// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+	CallerCredentialId pulumi.IntPtrInput `pulumi:"callerCredentialId"`
 	// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// URL of the Git repository.
@@ -50587,10 +50270,12 @@ func (o AppPendingDeploymentGitSourceGitRepositoryOutput) ToAppPendingDeployment
 	}).(AppPendingDeploymentGitSourceGitRepositoryPtrOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppPendingDeploymentGitSourceGitRepositoryOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppPendingDeploymentGitSourceGitRepository) *bool { return v.AutoDeploy }).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppPendingDeploymentGitSourceGitRepositoryOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppPendingDeploymentGitSourceGitRepository) *int { return v.CallerCredentialId }).(pulumi.IntPtrOutput)
 }
@@ -50629,6 +50314,7 @@ func (o AppPendingDeploymentGitSourceGitRepositoryPtrOutput) Elem() AppPendingDe
 	}).(AppPendingDeploymentGitSourceGitRepositoryOutput)
 }
 
+// When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
 func (o AppPendingDeploymentGitSourceGitRepositoryPtrOutput) AutoDeploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppPendingDeploymentGitSourceGitRepository) *bool {
 		if v == nil {
@@ -50638,6 +50324,7 @@ func (o AppPendingDeploymentGitSourceGitRepositoryPtrOutput) AutoDeploy() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
 func (o AppPendingDeploymentGitSourceGitRepositoryPtrOutput) CallerCredentialId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppPendingDeploymentGitSourceGitRepository) *int {
 		if v == nil {
@@ -76237,6 +75924,311 @@ func (o DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput) Index(i pulumi.Int
 	}).(DisasterRecoveryFailoverGroupWorkspaceSetOutput)
 }
 
+type DomainIcon struct {
+	// Hex color code with # prefix (e.g., "#FF5733")
+	Color *string `pulumi:"color"`
+	// (string) - Full resource name of the domain. The primary identifier for this resource.
+	// Format: `domains/{domain_id}`
+	// Identifies the domain on get, update, and delete. Not an input on
+	// create — to choose the id, set `CreateDomainRequest.domain_id`
+	Name *string `pulumi:"name"`
+}
+
+// DomainIconInput is an input type that accepts DomainIconArgs and DomainIconOutput values.
+// You can construct a concrete instance of `DomainIconInput` via:
+//
+//	DomainIconArgs{...}
+type DomainIconInput interface {
+	pulumi.Input
+
+	ToDomainIconOutput() DomainIconOutput
+	ToDomainIconOutputWithContext(context.Context) DomainIconOutput
+}
+
+type DomainIconArgs struct {
+	// Hex color code with # prefix (e.g., "#FF5733")
+	Color pulumi.StringPtrInput `pulumi:"color"`
+	// (string) - Full resource name of the domain. The primary identifier for this resource.
+	// Format: `domains/{domain_id}`
+	// Identifies the domain on get, update, and delete. Not an input on
+	// create — to choose the id, set `CreateDomainRequest.domain_id`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DomainIconArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainIcon)(nil)).Elem()
+}
+
+func (i DomainIconArgs) ToDomainIconOutput() DomainIconOutput {
+	return i.ToDomainIconOutputWithContext(context.Background())
+}
+
+func (i DomainIconArgs) ToDomainIconOutputWithContext(ctx context.Context) DomainIconOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIconOutput)
+}
+
+func (i DomainIconArgs) ToDomainIconPtrOutput() DomainIconPtrOutput {
+	return i.ToDomainIconPtrOutputWithContext(context.Background())
+}
+
+func (i DomainIconArgs) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIconOutput).ToDomainIconPtrOutputWithContext(ctx)
+}
+
+// DomainIconPtrInput is an input type that accepts DomainIconArgs, DomainIconPtr and DomainIconPtrOutput values.
+// You can construct a concrete instance of `DomainIconPtrInput` via:
+//
+//	        DomainIconArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainIconPtrInput interface {
+	pulumi.Input
+
+	ToDomainIconPtrOutput() DomainIconPtrOutput
+	ToDomainIconPtrOutputWithContext(context.Context) DomainIconPtrOutput
+}
+
+type domainIconPtrType DomainIconArgs
+
+func DomainIconPtr(v *DomainIconArgs) DomainIconPtrInput {
+	return (*domainIconPtrType)(v)
+}
+
+func (*domainIconPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainIcon)(nil)).Elem()
+}
+
+func (i *domainIconPtrType) ToDomainIconPtrOutput() DomainIconPtrOutput {
+	return i.ToDomainIconPtrOutputWithContext(context.Background())
+}
+
+func (i *domainIconPtrType) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIconPtrOutput)
+}
+
+type DomainIconOutput struct{ *pulumi.OutputState }
+
+func (DomainIconOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainIcon)(nil)).Elem()
+}
+
+func (o DomainIconOutput) ToDomainIconOutput() DomainIconOutput {
+	return o
+}
+
+func (o DomainIconOutput) ToDomainIconOutputWithContext(ctx context.Context) DomainIconOutput {
+	return o
+}
+
+func (o DomainIconOutput) ToDomainIconPtrOutput() DomainIconPtrOutput {
+	return o.ToDomainIconPtrOutputWithContext(context.Background())
+}
+
+func (o DomainIconOutput) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainIcon) *DomainIcon {
+		return &v
+	}).(DomainIconPtrOutput)
+}
+
+// Hex color code with # prefix (e.g., "#FF5733")
+func (o DomainIconOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainIcon) *string { return v.Color }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Full resource name of the domain. The primary identifier for this resource.
+// Format: `domains/{domain_id}`
+// Identifies the domain on get, update, and delete. Not an input on
+// create — to choose the id, set `CreateDomainRequest.domain_id`
+func (o DomainIconOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainIcon) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DomainIconPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainIconPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainIcon)(nil)).Elem()
+}
+
+func (o DomainIconPtrOutput) ToDomainIconPtrOutput() DomainIconPtrOutput {
+	return o
+}
+
+func (o DomainIconPtrOutput) ToDomainIconPtrOutputWithContext(ctx context.Context) DomainIconPtrOutput {
+	return o
+}
+
+func (o DomainIconPtrOutput) Elem() DomainIconOutput {
+	return o.ApplyT(func(v *DomainIcon) DomainIcon {
+		if v != nil {
+			return *v
+		}
+		var ret DomainIcon
+		return ret
+	}).(DomainIconOutput)
+}
+
+// Hex color code with # prefix (e.g., "#FF5733")
+func (o DomainIconPtrOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainIcon) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Color
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - Full resource name of the domain. The primary identifier for this resource.
+// Format: `domains/{domain_id}`
+// Identifies the domain on get, update, and delete. Not an input on
+// create — to choose the id, set `CreateDomainRequest.domain_id`
+func (o DomainIconPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainIcon) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type DomainProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// DomainProviderConfigInput is an input type that accepts DomainProviderConfigArgs and DomainProviderConfigOutput values.
+// You can construct a concrete instance of `DomainProviderConfigInput` via:
+//
+//	DomainProviderConfigArgs{...}
+type DomainProviderConfigInput interface {
+	pulumi.Input
+
+	ToDomainProviderConfigOutput() DomainProviderConfigOutput
+	ToDomainProviderConfigOutputWithContext(context.Context) DomainProviderConfigOutput
+}
+
+type DomainProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (DomainProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainProviderConfig)(nil)).Elem()
+}
+
+func (i DomainProviderConfigArgs) ToDomainProviderConfigOutput() DomainProviderConfigOutput {
+	return i.ToDomainProviderConfigOutputWithContext(context.Background())
+}
+
+func (i DomainProviderConfigArgs) ToDomainProviderConfigOutputWithContext(ctx context.Context) DomainProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigOutput)
+}
+
+func (i DomainProviderConfigArgs) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
+	return i.ToDomainProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DomainProviderConfigArgs) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigOutput).ToDomainProviderConfigPtrOutputWithContext(ctx)
+}
+
+// DomainProviderConfigPtrInput is an input type that accepts DomainProviderConfigArgs, DomainProviderConfigPtr and DomainProviderConfigPtrOutput values.
+// You can construct a concrete instance of `DomainProviderConfigPtrInput` via:
+//
+//	        DomainProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput
+	ToDomainProviderConfigPtrOutputWithContext(context.Context) DomainProviderConfigPtrOutput
+}
+
+type domainProviderConfigPtrType DomainProviderConfigArgs
+
+func DomainProviderConfigPtr(v *DomainProviderConfigArgs) DomainProviderConfigPtrInput {
+	return (*domainProviderConfigPtrType)(v)
+}
+
+func (*domainProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainProviderConfig)(nil)).Elem()
+}
+
+func (i *domainProviderConfigPtrType) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
+	return i.ToDomainProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *domainProviderConfigPtrType) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainProviderConfigPtrOutput)
+}
+
+type DomainProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (DomainProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainProviderConfig)(nil)).Elem()
+}
+
+func (o DomainProviderConfigOutput) ToDomainProviderConfigOutput() DomainProviderConfigOutput {
+	return o
+}
+
+func (o DomainProviderConfigOutput) ToDomainProviderConfigOutputWithContext(ctx context.Context) DomainProviderConfigOutput {
+	return o
+}
+
+func (o DomainProviderConfigOutput) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
+	return o.ToDomainProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DomainProviderConfigOutput) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainProviderConfig) *DomainProviderConfig {
+		return &v
+	}).(DomainProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o DomainProviderConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainProviderConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type DomainProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainProviderConfig)(nil)).Elem()
+}
+
+func (o DomainProviderConfigPtrOutput) ToDomainProviderConfigPtrOutput() DomainProviderConfigPtrOutput {
+	return o
+}
+
+func (o DomainProviderConfigPtrOutput) ToDomainProviderConfigPtrOutputWithContext(ctx context.Context) DomainProviderConfigPtrOutput {
+	return o
+}
+
+func (o DomainProviderConfigPtrOutput) Elem() DomainProviderConfigOutput {
+	return o.ApplyT(func(v *DomainProviderConfig) DomainProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainProviderConfig
+		return ret
+	}).(DomainProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o DomainProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type EndpointAwsVpcEndpointInfo struct {
 	// (string) - The AWS account ID in which this VPC endpoint lives
 	AwsAccountId *string `pulumi:"awsAccountId"`
@@ -79586,196 +79578,6 @@ func (o ExternalLocationFileEventQueuePtrOutput) ProvidedSqs() ExternalLocationF
 	}).(ExternalLocationFileEventQueueProvidedSqsPtrOutput)
 }
 
-type ExternalLocationFileEventQueueManagedAqs struct {
-	// The ID of the managed resource.
-	ManagedResourceId *string `pulumi:"managedResourceId"`
-	QueueUrl          *string `pulumi:"queueUrl"`
-	// The name of the Azure resource group.
-	ResourceGroup string `pulumi:"resourceGroup"`
-	// The Azure subscription ID.
-	SubscriptionId string `pulumi:"subscriptionId"`
-}
-
-// ExternalLocationFileEventQueueManagedAqsInput is an input type that accepts ExternalLocationFileEventQueueManagedAqsArgs and ExternalLocationFileEventQueueManagedAqsOutput values.
-// You can construct a concrete instance of `ExternalLocationFileEventQueueManagedAqsInput` via:
-//
-//	ExternalLocationFileEventQueueManagedAqsArgs{...}
-type ExternalLocationFileEventQueueManagedAqsInput interface {
-	pulumi.Input
-
-	ToExternalLocationFileEventQueueManagedAqsOutput() ExternalLocationFileEventQueueManagedAqsOutput
-	ToExternalLocationFileEventQueueManagedAqsOutputWithContext(context.Context) ExternalLocationFileEventQueueManagedAqsOutput
-}
-
-type ExternalLocationFileEventQueueManagedAqsArgs struct {
-	// The ID of the managed resource.
-	ManagedResourceId pulumi.StringPtrInput `pulumi:"managedResourceId"`
-	QueueUrl          pulumi.StringPtrInput `pulumi:"queueUrl"`
-	// The name of the Azure resource group.
-	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
-	// The Azure subscription ID.
-	SubscriptionId pulumi.StringInput `pulumi:"subscriptionId"`
-}
-
-func (ExternalLocationFileEventQueueManagedAqsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqs)(nil)).Elem()
-}
-
-func (i ExternalLocationFileEventQueueManagedAqsArgs) ToExternalLocationFileEventQueueManagedAqsOutput() ExternalLocationFileEventQueueManagedAqsOutput {
-	return i.ToExternalLocationFileEventQueueManagedAqsOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationFileEventQueueManagedAqsArgs) ToExternalLocationFileEventQueueManagedAqsOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueManagedAqsOutput)
-}
-
-func (i ExternalLocationFileEventQueueManagedAqsArgs) ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return i.ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationFileEventQueueManagedAqsArgs) ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueManagedAqsOutput).ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx)
-}
-
-// ExternalLocationFileEventQueueManagedAqsPtrInput is an input type that accepts ExternalLocationFileEventQueueManagedAqsArgs, ExternalLocationFileEventQueueManagedAqsPtr and ExternalLocationFileEventQueueManagedAqsPtrOutput values.
-// You can construct a concrete instance of `ExternalLocationFileEventQueueManagedAqsPtrInput` via:
-//
-//	        ExternalLocationFileEventQueueManagedAqsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ExternalLocationFileEventQueueManagedAqsPtrInput interface {
-	pulumi.Input
-
-	ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput
-	ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput
-}
-
-type externalLocationFileEventQueueManagedAqsPtrType ExternalLocationFileEventQueueManagedAqsArgs
-
-func ExternalLocationFileEventQueueManagedAqsPtr(v *ExternalLocationFileEventQueueManagedAqsArgs) ExternalLocationFileEventQueueManagedAqsPtrInput {
-	return (*externalLocationFileEventQueueManagedAqsPtrType)(v)
-}
-
-func (*externalLocationFileEventQueueManagedAqsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationFileEventQueueManagedAqs)(nil)).Elem()
-}
-
-func (i *externalLocationFileEventQueueManagedAqsPtrType) ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return i.ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(context.Background())
-}
-
-func (i *externalLocationFileEventQueueManagedAqsPtrType) ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueManagedAqsPtrOutput)
-}
-
-type ExternalLocationFileEventQueueManagedAqsOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationFileEventQueueManagedAqsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqs)(nil)).Elem()
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsOutput) ToExternalLocationFileEventQueueManagedAqsOutput() ExternalLocationFileEventQueueManagedAqsOutput {
-	return o
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsOutput) ToExternalLocationFileEventQueueManagedAqsOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsOutput {
-	return o
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsOutput) ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return o.ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(context.Background())
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsOutput) ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationFileEventQueueManagedAqs) *ExternalLocationFileEventQueueManagedAqs {
-		return &v
-	}).(ExternalLocationFileEventQueueManagedAqsPtrOutput)
-}
-
-// The ID of the managed resource.
-func (o ExternalLocationFileEventQueueManagedAqsOutput) ManagedResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueueManagedAqs) *string { return v.ManagedResourceId }).(pulumi.StringPtrOutput)
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsOutput) QueueUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueueManagedAqs) *string { return v.QueueUrl }).(pulumi.StringPtrOutput)
-}
-
-// The name of the Azure resource group.
-func (o ExternalLocationFileEventQueueManagedAqsOutput) ResourceGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueueManagedAqs) string { return v.ResourceGroup }).(pulumi.StringOutput)
-}
-
-// The Azure subscription ID.
-func (o ExternalLocationFileEventQueueManagedAqsOutput) SubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueueManagedAqs) string { return v.SubscriptionId }).(pulumi.StringOutput)
-}
-
-type ExternalLocationFileEventQueueManagedAqsPtrOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationFileEventQueueManagedAqsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationFileEventQueueManagedAqs)(nil)).Elem()
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) ToExternalLocationFileEventQueueManagedAqsPtrOutput() ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return o
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) ToExternalLocationFileEventQueueManagedAqsPtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return o
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) Elem() ExternalLocationFileEventQueueManagedAqsOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) ExternalLocationFileEventQueueManagedAqs {
-		if v != nil {
-			return *v
-		}
-		var ret ExternalLocationFileEventQueueManagedAqs
-		return ret
-	}).(ExternalLocationFileEventQueueManagedAqsOutput)
-}
-
-// The ID of the managed resource.
-func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) ManagedResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) QueueUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.QueueUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the Azure resource group.
-func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Azure subscription ID.
-func (o ExternalLocationFileEventQueueManagedAqsPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueueManagedAqs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -80311,8 +80113,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigPtrInput)(nil)).Elem(), AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigInput)(nil)).Elem(), AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigPtrInput)(nil)).Elem(), AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelServiceConfigRoutingTrafficSplittingInput)(nil)).Elem(), AiGatewayModelServiceConfigRoutingTrafficSplittingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelServiceConfigRoutingTrafficSplittingPtrInput)(nil)).Elem(), AiGatewayModelServiceConfigRoutingTrafficSplittingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelServiceProviderConfigInput)(nil)).Elem(), AiGatewayModelServiceProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelServiceProviderConfigPtrInput)(nil)).Elem(), AiGatewayModelServiceProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchEndpointCustomTagInput)(nil)).Elem(), AiSearchEndpointCustomTagArgs{})
@@ -80734,6 +80534,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSetInput)(nil)).Elem(), DisasterRecoveryFailoverGroupWorkspaceSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisasterRecoveryFailoverGroupWorkspaceSetArrayInput)(nil)).Elem(), DisasterRecoveryFailoverGroupWorkspaceSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainIconInput)(nil)).Elem(), DomainIconArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainIconPtrInput)(nil)).Elem(), DomainIconArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainProviderConfigInput)(nil)).Elem(), DomainProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainProviderConfigPtrInput)(nil)).Elem(), DomainProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAwsVpcEndpointInfoInput)(nil)).Elem(), EndpointAwsVpcEndpointInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAwsVpcEndpointInfoPtrInput)(nil)).Elem(), EndpointAwsVpcEndpointInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAzurePrivateEndpointInfoInput)(nil)).Elem(), EndpointAzurePrivateEndpointInfoArgs{})
@@ -80774,8 +80578,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueInput)(nil)).Elem(), ExternalLocationFileEventQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueuePtrInput)(nil)).Elem(), ExternalLocationFileEventQueueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqsInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedAqsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqsPtrInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedAqsArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetProviderConfigOutput{})
@@ -81310,8 +81112,6 @@ func init() {
 	pulumi.RegisterOutputType(AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigPtrOutput{})
-	pulumi.RegisterOutputType(AiGatewayModelServiceConfigRoutingTrafficSplittingOutput{})
-	pulumi.RegisterOutputType(AiGatewayModelServiceConfigRoutingTrafficSplittingPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelServiceProviderConfigOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelServiceProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiSearchEndpointCustomTagOutput{})
@@ -81733,6 +81533,10 @@ func init() {
 	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArrayOutput{})
 	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupWorkspaceSetOutput{})
 	pulumi.RegisterOutputType(DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput{})
+	pulumi.RegisterOutputType(DomainIconOutput{})
+	pulumi.RegisterOutputType(DomainIconPtrOutput{})
+	pulumi.RegisterOutputType(DomainProviderConfigOutput{})
+	pulumi.RegisterOutputType(DomainProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(EndpointAwsVpcEndpointInfoOutput{})
 	pulumi.RegisterOutputType(EndpointAwsVpcEndpointInfoPtrOutput{})
 	pulumi.RegisterOutputType(EndpointAzurePrivateEndpointInfoOutput{})
@@ -81773,6 +81577,4 @@ func init() {
 	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationFileEventQueueOutput{})
 	pulumi.RegisterOutputType(ExternalLocationFileEventQueuePtrOutput{})
-	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedAqsOutput{})
-	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedAqsPtrOutput{})
 }

@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AppActiveDeploymentDeploymentArtifactsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`GitRepository`/`GitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `DefaultSourceCodePath`.
         /// </summary>
         [Input("sourceCodePath")]
         public Input<string>? SourceCodePath { get; set; }

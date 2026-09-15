@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PostgresSnapshotScheduleProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresSnapshotScheduleScheduleArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +18,21 @@ import javax.annotation.Nullable;
 public final class PostgresSnapshotScheduleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PostgresSnapshotScheduleArgs Empty = new PostgresSnapshotScheduleArgs();
+
+    /**
+     * The resource name of the parent
+     * 
+     */
+    @Import(name="parent", required=true)
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the parent
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
 
     /**
      * Configure the provider for management through account provider.
@@ -56,6 +73,7 @@ public final class PostgresSnapshotScheduleArgs extends com.pulumi.resources.Res
     private PostgresSnapshotScheduleArgs() {}
 
     private PostgresSnapshotScheduleArgs(PostgresSnapshotScheduleArgs $) {
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
         this.schedules = $.schedules;
     }
@@ -76,6 +94,27 @@ public final class PostgresSnapshotScheduleArgs extends com.pulumi.resources.Res
 
         public Builder(PostgresSnapshotScheduleArgs defaults) {
             $ = new PostgresSnapshotScheduleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param parent The resource name of the parent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the parent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**
@@ -140,6 +179,9 @@ public final class PostgresSnapshotScheduleArgs extends com.pulumi.resources.Res
         }
 
         public PostgresSnapshotScheduleArgs build() {
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("PostgresSnapshotScheduleArgs", "parent");
+            }
             return $;
         }
     }

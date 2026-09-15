@@ -196,6 +196,47 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Branch from a Snapshot
+ * 
+ * Create a branch whose data comes from an existing snapshot instead of a source branch. The snapshot must be `AVAILABLE` and belong to the same project. `sourceSnapshot` is immutable and mutually exclusive with `sourceBranch`. The restored snapshot is reported back in `status.source_snapshot`.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fromSnapshot = new PostgresBranch("fromSnapshot", PostgresBranchArgs.builder()
+ *             .branchId("restored-branch")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .sourceSnapshot("projects/my-project/snapshots/my-snapshot")
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="databricks:index/postgresBranch:PostgresBranch")
 public class PostgresBranch extends com.pulumi.resources.CustomResource {

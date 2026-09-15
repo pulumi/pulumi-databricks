@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureSourceKafkaSourceGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("entityColumnIdentifiers")]
+        private InputList<Inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierGetArgs>? _entityColumnIdentifiers;
+        public InputList<Inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierGetArgs> EntityColumnIdentifiers
+        {
+            get => _entityColumnIdentifiers ?? (_entityColumnIdentifiers = new InputList<Inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierGetArgs>());
+            set => _entityColumnIdentifiers = value;
+        }
+
         [Input("filterCondition")]
         public Input<string>? FilterCondition { get; set; }
 
@@ -20,6 +28,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("timeseriesColumnIdentifier")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierGetArgs>? TimeseriesColumnIdentifier { get; set; }
 
         public FeatureEngineeringFeatureSourceKafkaSourceGetArgs()
         {

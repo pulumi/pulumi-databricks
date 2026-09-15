@@ -18,16 +18,32 @@ public final class AppGitSourceGitRepositoryArgs extends com.pulumi.resources.Re
 
     public static final AppGitSourceGitRepositoryArgs Empty = new AppGitSourceGitRepositoryArgs();
 
+    /**
+     * When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+     * 
+     */
     @Import(name="autoDeploy")
     private @Nullable Output<Boolean> autoDeploy;
 
+    /**
+     * @return When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+     * 
+     */
     public Optional<Output<Boolean>> autoDeploy() {
         return Optional.ofNullable(this.autoDeploy);
     }
 
+    /**
+     * ID of a personal access token Git credential owned by the caller, used to grant the app&#39;s service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+     * 
+     */
     @Import(name="callerCredentialId")
     private @Nullable Output<Integer> callerCredentialId;
 
+    /**
+     * @return ID of a personal access token Git credential owned by the caller, used to grant the app&#39;s service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+     * 
+     */
     public Optional<Output<Integer>> callerCredentialId() {
         return Optional.ofNullable(this.callerCredentialId);
     }
@@ -89,20 +105,44 @@ public final class AppGitSourceGitRepositoryArgs extends com.pulumi.resources.Re
             $ = new AppGitSourceGitRepositoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoDeploy When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoDeploy(@Nullable Output<Boolean> autoDeploy) {
             $.autoDeploy = autoDeploy;
             return this;
         }
 
+        /**
+         * @param autoDeploy When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoDeploy(Boolean autoDeploy) {
             return autoDeploy(Output.of(autoDeploy));
         }
 
+        /**
+         * @param callerCredentialId ID of a personal access token Git credential owned by the caller, used to grant the app&#39;s service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder callerCredentialId(@Nullable Output<Integer> callerCredentialId) {
             $.callerCredentialId = callerCredentialId;
             return this;
         }
 
+        /**
+         * @param callerCredentialId ID of a personal access token Git credential owned by the caller, used to grant the app&#39;s service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder callerCredentialId(Integer callerCredentialId) {
             return callerCredentialId(Output.of(callerCredentialId));
         }

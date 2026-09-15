@@ -4,22 +4,30 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringFeatureSourceKafkaSource {
+    private @Nullable List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
     private @Nullable String filterCondition;
     /**
      * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
      * 
      */
     private String name;
+    private @Nullable FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
 
     private FeatureEngineeringFeatureSourceKafkaSource() {}
+    public List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers() {
+        return this.entityColumnIdentifiers == null ? List.of() : this.entityColumnIdentifiers;
+    }
     public Optional<String> filterCondition() {
         return Optional.ofNullable(this.filterCondition);
     }
@@ -29,6 +37,9 @@ public final class FeatureEngineeringFeatureSourceKafkaSource {
      */
     public String name() {
         return this.name;
+    }
+    public Optional<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier> timeseriesColumnIdentifier() {
+        return Optional.ofNullable(this.timeseriesColumnIdentifier);
     }
 
     public static Builder builder() {
@@ -40,15 +51,28 @@ public final class FeatureEngineeringFeatureSourceKafkaSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
         private @Nullable String filterCondition;
         private String name;
+        private @Nullable FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureSourceKafkaSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.entityColumnIdentifiers = defaults.entityColumnIdentifiers;
     	      this.filterCondition = defaults.filterCondition;
     	      this.name = defaults.name;
+    	      this.timeseriesColumnIdentifier = defaults.timeseriesColumnIdentifier;
         }
 
+        @CustomType.Setter
+        public Builder entityColumnIdentifiers(@Nullable List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers) {
+
+            this.entityColumnIdentifiers = entityColumnIdentifiers;
+            return this;
+        }
+        public Builder entityColumnIdentifiers(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier... entityColumnIdentifiers) {
+            return entityColumnIdentifiers(List.of(entityColumnIdentifiers));
+        }
         @CustomType.Setter
         public Builder filterCondition(@Nullable String filterCondition) {
 
@@ -63,10 +87,18 @@ public final class FeatureEngineeringFeatureSourceKafkaSource {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeseriesColumnIdentifier(@Nullable FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier) {
+
+            this.timeseriesColumnIdentifier = timeseriesColumnIdentifier;
+            return this;
+        }
         public FeatureEngineeringFeatureSourceKafkaSource build() {
             final var _resultValue = new FeatureEngineeringFeatureSourceKafkaSource();
+            _resultValue.entityColumnIdentifiers = entityColumnIdentifiers;
             _resultValue.filterCondition = filterCondition;
             _resultValue.name = name;
+            _resultValue.timeseriesColumnIdentifier = timeseriesColumnIdentifier;
             return _resultValue;
         }
     }

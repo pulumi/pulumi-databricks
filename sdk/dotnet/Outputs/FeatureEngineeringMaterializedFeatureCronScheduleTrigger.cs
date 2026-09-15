@@ -14,14 +14,22 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringMaterializedFeatureCronScheduleTrigger
     {
         /// <summary>
-        /// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+        /// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+        /// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+        /// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+        /// window timing and fills it in on the response
         /// </summary>
         public readonly string? CronExpression;
+        public readonly string? Mode;
 
         [OutputConstructor]
-        private FeatureEngineeringMaterializedFeatureCronScheduleTrigger(string? cronExpression)
+        private FeatureEngineeringMaterializedFeatureCronScheduleTrigger(
+            string? cronExpression,
+
+            string? mode)
         {
             CronExpression = cronExpression;
+            Mode = mode;
         }
     }
 }

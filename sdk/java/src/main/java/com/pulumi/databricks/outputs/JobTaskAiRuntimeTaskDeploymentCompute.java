@@ -8,11 +8,14 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskAiRuntimeTaskDeploymentCompute {
     private Integer acceleratorCount;
     private String acceleratorType;
+    private @Nullable String provisionedCapacityId;
 
     private JobTaskAiRuntimeTaskDeploymentCompute() {}
     public Integer acceleratorCount() {
@@ -20,6 +23,9 @@ public final class JobTaskAiRuntimeTaskDeploymentCompute {
     }
     public String acceleratorType() {
         return this.acceleratorType;
+    }
+    public Optional<String> provisionedCapacityId() {
+        return Optional.ofNullable(this.provisionedCapacityId);
     }
 
     public static Builder builder() {
@@ -33,11 +39,13 @@ public final class JobTaskAiRuntimeTaskDeploymentCompute {
     public static final class Builder {
         private Integer acceleratorCount;
         private String acceleratorType;
+        private @Nullable String provisionedCapacityId;
         public Builder() {}
         public Builder(JobTaskAiRuntimeTaskDeploymentCompute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorCount = defaults.acceleratorCount;
     	      this.acceleratorType = defaults.acceleratorType;
+    	      this.provisionedCapacityId = defaults.provisionedCapacityId;
         }
 
         @CustomType.Setter
@@ -56,10 +64,17 @@ public final class JobTaskAiRuntimeTaskDeploymentCompute {
             this.acceleratorType = acceleratorType;
             return this;
         }
+        @CustomType.Setter
+        public Builder provisionedCapacityId(@Nullable String provisionedCapacityId) {
+
+            this.provisionedCapacityId = provisionedCapacityId;
+            return this;
+        }
         public JobTaskAiRuntimeTaskDeploymentCompute build() {
             final var _resultValue = new JobTaskAiRuntimeTaskDeploymentCompute();
             _resultValue.acceleratorCount = acceleratorCount;
             _resultValue.acceleratorType = acceleratorType;
+            _resultValue.provisionedCapacityId = provisionedCapacityId;
             return _resultValue;
         }
     }

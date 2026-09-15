@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -20,6 +21,8 @@ type PostgresSnapshotSchedule struct {
 	// (string) - The resource name of the branch's snapshot schedule.
 	// Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource name of the parent
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresSnapshotScheduleProviderConfigOutput `pulumi:"providerConfig"`
 	// The cadences at which automatic snapshots are taken. Update replaces the
@@ -33,9 +36,12 @@ type PostgresSnapshotSchedule struct {
 func NewPostgresSnapshotSchedule(ctx *pulumi.Context,
 	name string, args *PostgresSnapshotScheduleArgs, opts ...pulumi.ResourceOption) (*PostgresSnapshotSchedule, error) {
 	if args == nil {
-		args = &PostgresSnapshotScheduleArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PostgresSnapshotSchedule
 	err := ctx.RegisterResource("databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule", name, args, &resource, opts...)
@@ -62,6 +68,8 @@ type postgresSnapshotScheduleState struct {
 	// (string) - The resource name of the branch's snapshot schedule.
 	// Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
 	Name *string `pulumi:"name"`
+	// The resource name of the parent
+	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresSnapshotScheduleProviderConfig `pulumi:"providerConfig"`
 	// The cadences at which automatic snapshots are taken. Update replaces the
@@ -75,6 +83,8 @@ type PostgresSnapshotScheduleState struct {
 	// (string) - The resource name of the branch's snapshot schedule.
 	// Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
 	Name pulumi.StringPtrInput
+	// The resource name of the parent
+	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresSnapshotScheduleProviderConfigPtrInput
 	// The cadences at which automatic snapshots are taken. Update replaces the
@@ -89,6 +99,8 @@ func (PostgresSnapshotScheduleState) ElementType() reflect.Type {
 }
 
 type postgresSnapshotScheduleArgs struct {
+	// The resource name of the parent
+	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresSnapshotScheduleProviderConfig `pulumi:"providerConfig"`
 	// The cadences at which automatic snapshots are taken. Update replaces the
@@ -100,6 +112,8 @@ type postgresSnapshotScheduleArgs struct {
 
 // The set of arguments for constructing a PostgresSnapshotSchedule resource.
 type PostgresSnapshotScheduleArgs struct {
+	// The resource name of the parent
+	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresSnapshotScheduleProviderConfigPtrInput
 	// The cadences at which automatic snapshots are taken. Update replaces the
@@ -200,6 +214,11 @@ func (o PostgresSnapshotScheduleOutput) ToPostgresSnapshotScheduleOutputWithCont
 // Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
 func (o PostgresSnapshotScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSnapshotSchedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the parent
+func (o PostgresSnapshotScheduleOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *PostgresSnapshotSchedule) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // Configure the provider for management through account provider.

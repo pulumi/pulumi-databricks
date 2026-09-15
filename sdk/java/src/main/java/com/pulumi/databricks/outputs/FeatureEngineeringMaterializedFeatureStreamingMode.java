@@ -17,10 +17,6 @@ public final class FeatureEngineeringMaterializedFeatureStreamingMode {
      * 
      */
     private @Nullable String freshnessTarget;
-    /**
-     * @return The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
-     * 
-     */
     private @Nullable String mode;
 
     private FeatureEngineeringMaterializedFeatureStreamingMode() {}
@@ -32,10 +28,6 @@ public final class FeatureEngineeringMaterializedFeatureStreamingMode {
     public Optional<String> freshnessTarget() {
         return Optional.ofNullable(this.freshnessTarget);
     }
-    /**
-     * @return The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
-     * 
-     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }

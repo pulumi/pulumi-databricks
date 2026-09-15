@@ -25,6 +25,11 @@ namespace Pulumi.Databricks.Outputs
         /// Applies a registered Unity Catalog function row-wise to source columns
         /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureFunctionCustomUdf? CustomUdf;
+        public readonly ImmutableArray<Outputs.FeatureEngineeringFeatureFunctionExtraParameter> ExtraParameters;
+        /// <summary>
+        /// Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+        /// </summary>
+        public readonly string? FunctionType;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureFunction(
@@ -32,11 +37,17 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.FeatureEngineeringFeatureFunctionColumnSelection? columnSelection,
 
-            Outputs.FeatureEngineeringFeatureFunctionCustomUdf? customUdf)
+            Outputs.FeatureEngineeringFeatureFunctionCustomUdf? customUdf,
+
+            ImmutableArray<Outputs.FeatureEngineeringFeatureFunctionExtraParameter> extraParameters,
+
+            string? functionType)
         {
             AggregationFunction = aggregationFunction;
             ColumnSelection = columnSelection;
             CustomUdf = customUdf;
+            ExtraParameters = extraParameters;
+            FunctionType = functionType;
         }
     }
 }

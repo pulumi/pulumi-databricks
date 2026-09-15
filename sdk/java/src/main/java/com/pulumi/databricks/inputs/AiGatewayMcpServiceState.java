@@ -33,20 +33,18 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      * 
      */
     @Import(name="config")
     private @Nullable Output<AiGatewayMcpServiceConfigArgs> config;
 
     /**
-     * @return Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * @return Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      * 
      */
     public Optional<Output<AiGatewayMcpServiceConfigArgs>> config() {
@@ -54,14 +52,14 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - When the MCP service was created
+     * (string) - Time the MCP service was created
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return (string) - When the MCP service was created
+     * @return (string) - Time the MCP service was created
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -84,16 +82,14 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - The resolved owner of the MCP service. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the MCP service
      * 
      */
     @Import(name="effectiveOwner")
     private @Nullable Output<String> effectiveOwner;
 
     /**
-     * @return (string) - The resolved owner of the MCP service. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the MCP service
      * 
      */
     public Optional<Output<String>> effectiveOwner() {
@@ -101,22 +97,20 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     public Optional<Output<String>> etag() {
@@ -177,21 +171,6 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The owner of the MCP service. Write-only; read owner via effective_owner
-     * 
-     */
-    @Import(name="owner")
-    private @Nullable Output<String> owner;
-
-    /**
-     * @return The owner of the MCP service. Write-only; read owner via effective_owner
-     * 
-     */
-    public Optional<Output<String>> owner() {
-        return Optional.ofNullable(this.owner);
-    }
-
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -226,14 +205,14 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - When the MCP service was last modified
+     * (string) - Time the MCP service was last modified
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return (string) - When the MCP service was last modified
+     * @return (string) - Time the MCP service was last modified
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -267,7 +246,6 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         this.mcpServiceId = $.mcpServiceId;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
-        this.owner = $.owner;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
         this.updateTime = $.updateTime;
@@ -314,10 +292,9 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param config Operational configuration: connection, tool selectors, rate limit.
-         * Required on CreateMcpService; on
-         * UpdateMcpService it is required only when `config` (or a `config.*`
-         * subpath) appears in `updateMask`
+         * @param config Connection, tool selectors, and rate limits. Required on Create. On Update,
+         * provide this field when `updateMask` contains `config` or one of its
+         * subpaths
          * 
          * @return builder
          * 
@@ -328,10 +305,9 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param config Operational configuration: connection, tool selectors, rate limit.
-         * Required on CreateMcpService; on
-         * UpdateMcpService it is required only when `config` (or a `config.*`
-         * subpath) appears in `updateMask`
+         * @param config Connection, tool selectors, and rate limits. Required on Create. On Update,
+         * provide this field when `updateMask` contains `config` or one of its
+         * subpaths
          * 
          * @return builder
          * 
@@ -341,7 +317,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime (string) - When the MCP service was created
+         * @param createTime (string) - Time the MCP service was created
          * 
          * @return builder
          * 
@@ -352,7 +328,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime (string) - When the MCP service was created
+         * @param createTime (string) - Time the MCP service was created
          * 
          * @return builder
          * 
@@ -383,8 +359,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param effectiveOwner (string) - The resolved owner of the MCP service. Falls back to the caller&#39;s identity
-         * when `owner` is not explicitly set on creation
+         * @param effectiveOwner (string) - Owner of the MCP service
          * 
          * @return builder
          * 
@@ -395,8 +370,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param effectiveOwner (string) - The resolved owner of the MCP service. Falls back to the caller&#39;s identity
-         * when `owner` is not explicitly set on creation
+         * @param effectiveOwner (string) - Owner of the MCP service
          * 
          * @return builder
          * 
@@ -406,11 +380,10 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param etag (string) - Optimistic concurrency control token. Server-generated from the
-         * entity&#39;s state and returned on every read. To use it as an if-match
-         * precondition on a mutation, echo the last-read value back via the dedicated
-         * `etag` field on the Update / Delete request; the server rejects the mutation
-         * if the stored etag differs
+         * @param etag (string) - Optimistic concurrency token returned on every read. To make an Update or
+         * Delete conditional, pass the last-read value in that request&#39;s `etag`
+         * field. In REST responses, this value is a base64 string; URL-encode it when
+         * setting the `etag` query parameter
          * 
          * @return builder
          * 
@@ -421,11 +394,10 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param etag (string) - Optimistic concurrency control token. Server-generated from the
-         * entity&#39;s state and returned on every read. To use it as an if-match
-         * precondition on a mutation, echo the last-read value back via the dedicated
-         * `etag` field on the Update / Delete request; the server rejects the mutation
-         * if the stored etag differs
+         * @param etag (string) - Optimistic concurrency token returned on every read. To make an Update or
+         * Delete conditional, pass the last-read value in that request&#39;s `etag`
+         * field. In REST responses, this value is a base64 string; URL-encode it when
+         * setting the `etag` query parameter
          * 
          * @return builder
          * 
@@ -506,27 +478,6 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param owner The owner of the MCP service. Write-only; read owner via effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(@Nullable Output<String> owner) {
-            $.owner = owner;
-            return this;
-        }
-
-        /**
-         * @param owner The owner of the MCP service. Write-only; read owner via effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(String owner) {
-            return owner(Output.of(owner));
-        }
-
-        /**
          * @param parent Name of the parent schema.
          * Format: `schemas/{catalog}.{schema}`.
          * Each `{...}` component is capped at 255 characters individually
@@ -573,7 +524,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updateTime (string) - When the MCP service was last modified
+         * @param updateTime (string) - Time the MCP service was last modified
          * 
          * @return builder
          * 
@@ -584,7 +535,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updateTime (string) - When the MCP service was last modified
+         * @param updateTime (string) - Time the MCP service was last modified
          * 
          * @return builder
          * 

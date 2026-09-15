@@ -13,40 +13,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiGatewayModelProviderServiceConfigTarget {
     /**
-     * @return Provider-side model identifier (e.g. &#34;gpt-5&#34;, &#34;claude-opus-4-7&#34;). This is
-     * a string on the LLM provider&#39;s side, not a UC entity. The UC governance
-     * hook for external destinations is the ModelProviderService referenced by
-     * `ExternalModelConfig.model_provider_service`, not the model itself
+     * @return Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
+     * This identifies a model at the upstream provider; it is not a Unity
+     * Catalog model resource
      * 
      */
     private String model;
     /**
-     * @return Provider-native API types the model supports (e.g.
-     * &#34;openai/v1/chat/completions&#34;). Used by the platform for request/response
-     * translation from the unified API type. At most 64 entries of at most 256
-     * characters each; the list is persisted into the destination binding&#39;s
-     * bounded storage envelope
+     * @return Provider-native API types supported by this model, such as
+     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
+     * uses these values to translate requests and responses. At most 64 entries
+     * of 256 characters each are allowed
      * 
      */
     private @Nullable List<String> nativeApiTypes;
 
     private AiGatewayModelProviderServiceConfigTarget() {}
     /**
-     * @return Provider-side model identifier (e.g. &#34;gpt-5&#34;, &#34;claude-opus-4-7&#34;). This is
-     * a string on the LLM provider&#39;s side, not a UC entity. The UC governance
-     * hook for external destinations is the ModelProviderService referenced by
-     * `ExternalModelConfig.model_provider_service`, not the model itself
+     * @return Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
+     * This identifies a model at the upstream provider; it is not a Unity
+     * Catalog model resource
      * 
      */
     public String model() {
         return this.model;
     }
     /**
-     * @return Provider-native API types the model supports (e.g.
-     * &#34;openai/v1/chat/completions&#34;). Used by the platform for request/response
-     * translation from the unified API type. At most 64 entries of at most 256
-     * characters each; the list is persisted into the destination binding&#39;s
-     * bounded storage envelope
+     * @return Provider-native API types supported by this model, such as
+     * `openai/v1/chat/completions`. At least one value is required. AI Gateway
+     * uses these values to translate requests and responses. At most 64 entries
+     * of 256 characters each are allowed
      * 
      */
     public List<String> nativeApiTypes() {

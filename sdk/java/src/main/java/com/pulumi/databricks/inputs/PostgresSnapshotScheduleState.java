@@ -36,6 +36,21 @@ public final class PostgresSnapshotScheduleState extends com.pulumi.resources.Re
     }
 
     /**
+     * The resource name of the parent
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The resource name of the parent
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -75,6 +90,7 @@ public final class PostgresSnapshotScheduleState extends com.pulumi.resources.Re
 
     private PostgresSnapshotScheduleState(PostgresSnapshotScheduleState $) {
         this.name = $.name;
+        this.parent = $.parent;
         this.providerConfig = $.providerConfig;
         this.schedules = $.schedules;
     }
@@ -118,6 +134,27 @@ public final class PostgresSnapshotScheduleState extends com.pulumi.resources.Re
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param parent The resource name of the parent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the parent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**

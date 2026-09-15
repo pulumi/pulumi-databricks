@@ -57,6 +57,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      * The entity columns for the feature, used as aggregation keys and for query-time lookup
      */
     declare public readonly entities: pulumi.Output<outputs.FeatureEngineeringFeatureEntity[] | undefined>;
+    declare public readonly filterCondition: pulumi.Output<string | undefined>;
     /**
      * The full three-part name (catalog, schema, name) of the feature. This is the
      * feature's resource identifier; the catalog_name, schema_name, and name fields
@@ -67,6 +68,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      * The function by which the feature is computed
      */
     declare public readonly function: pulumi.Output<outputs.FeatureEngineeringFeatureFunction>;
+    declare public readonly inputs: pulumi.Output<string[] | undefined>;
     /**
      * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -91,6 +93,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      * The data source of the feature
      */
     declare public readonly source: pulumi.Output<outputs.FeatureEngineeringFeatureSource>;
+    declare public readonly timeWindow: pulumi.Output<outputs.FeatureEngineeringFeatureTimeWindow | undefined>;
     /**
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
@@ -114,13 +117,16 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["description"] = state?.description;
             resourceInputs["entities"] = state?.entities;
+            resourceInputs["filterCondition"] = state?.filterCondition;
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["function"] = state?.function;
+            resourceInputs["inputs"] = state?.inputs;
             resourceInputs["lineageContext"] = state?.lineageContext;
             resourceInputs["name"] = state?.name;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schemaName"] = state?.schemaName;
             resourceInputs["source"] = state?.source;
+            resourceInputs["timeWindow"] = state?.timeWindow;
             resourceInputs["timeseriesColumn"] = state?.timeseriesColumn;
         } else {
             const args = argsOrState as FeatureEngineeringFeatureArgs | undefined;
@@ -135,11 +141,14 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["entities"] = args?.entities;
+            resourceInputs["filterCondition"] = args?.filterCondition;
             resourceInputs["fullName"] = args?.fullName;
             resourceInputs["function"] = args?.function;
+            resourceInputs["inputs"] = args?.inputs;
             resourceInputs["lineageContext"] = args?.lineageContext;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["source"] = args?.source;
+            resourceInputs["timeWindow"] = args?.timeWindow;
             resourceInputs["timeseriesColumn"] = args?.timeseriesColumn;
             resourceInputs["catalogName"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -176,6 +185,7 @@ export interface FeatureEngineeringFeatureState {
      * The entity columns for the feature, used as aggregation keys and for query-time lookup
      */
     entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[] | undefined>;
+    filterCondition?: pulumi.Input<string | undefined>;
     /**
      * The full three-part name (catalog, schema, name) of the feature. This is the
      * feature's resource identifier; the catalog_name, schema_name, and name fields
@@ -186,6 +196,7 @@ export interface FeatureEngineeringFeatureState {
      * The function by which the feature is computed
      */
     function?: pulumi.Input<inputs.FeatureEngineeringFeatureFunction | undefined>;
+    inputs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -210,6 +221,7 @@ export interface FeatureEngineeringFeatureState {
      * The data source of the feature
      */
     source?: pulumi.Input<inputs.FeatureEngineeringFeatureSource | undefined>;
+    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow | undefined>;
     /**
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
@@ -228,6 +240,7 @@ export interface FeatureEngineeringFeatureArgs {
      * The entity columns for the feature, used as aggregation keys and for query-time lookup
      */
     entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[] | undefined>;
+    filterCondition?: pulumi.Input<string | undefined>;
     /**
      * The full three-part name (catalog, schema, name) of the feature. This is the
      * feature's resource identifier; the catalog_name, schema_name, and name fields
@@ -238,6 +251,7 @@ export interface FeatureEngineeringFeatureArgs {
      * The function by which the feature is computed
      */
     function: pulumi.Input<inputs.FeatureEngineeringFeatureFunction>;
+    inputs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -254,6 +268,7 @@ export interface FeatureEngineeringFeatureArgs {
      * The data source of the feature
      */
     source: pulumi.Input<inputs.FeatureEngineeringFeatureSource>;
+    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow | undefined>;
     /**
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      */

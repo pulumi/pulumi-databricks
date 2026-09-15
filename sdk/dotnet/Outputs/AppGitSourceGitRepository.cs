@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppGitSourceGitRepository
     {
+        /// <summary>
+        /// When `True`, the app is automatically redeployed on push events to the branch configured in `GitSource`. This requires `GitSource` to specify a `Branch`; a `Tag` or `Commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        /// </summary>
         public readonly bool? AutoDeploy;
+        /// <summary>
+        /// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+        /// </summary>
         public readonly int? CallerCredentialId;
         /// <summary>
         /// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.

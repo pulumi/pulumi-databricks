@@ -11,6 +11,7 @@ import com.pulumi.databricks.PolicyInfoArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PolicyInfoState;
 import com.pulumi.databricks.outputs.PolicyInfoColumnMask;
+import com.pulumi.databricks.outputs.PolicyInfoDeny;
 import com.pulumi.databricks.outputs.PolicyInfoGrant;
 import com.pulumi.databricks.outputs.PolicyInfoMatchColumn;
 import com.pulumi.databricks.outputs.PolicyInfoProviderConfig;
@@ -202,6 +203,24 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
         return this.createdBy;
     }
     /**
+     * Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    @Export(name="deny", refs={PolicyInfoDeny.class}, tree="[0]")
+    private Output</* @Nullable */ PolicyInfoDeny> deny;
+
+    /**
+     * @return Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     * 
+     */
+    public Output<Optional<PolicyInfoDeny>> deny() {
+        return Codegen.optional(this.deny);
+    }
+    /**
      * Optional list of user or group names that should be excluded from the policy
      * 
      */
@@ -318,14 +337,14 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onSecurableType);
     }
     /**
-     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
-     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public Output<String> policyType() {

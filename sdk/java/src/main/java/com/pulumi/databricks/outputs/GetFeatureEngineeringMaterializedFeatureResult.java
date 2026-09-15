@@ -13,12 +13,24 @@ import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureTab
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeatureResult {
+    /**
+     * @return (string) - The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     * 
+     */
+    private String budgetPolicyId;
+    /**
+     * @return (string, deprecated)
+     * 
+     */
+    private String cronSchedule;
     /**
      * @return (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
      * 
@@ -40,6 +52,11 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      * 
      */
     private String lastMaterializationTime;
+    /**
+     * @return (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+     * 
+     */
+    private String latestBackfillOperation;
     /**
      * @return (string) - Server-assigned unique identifier for the materialized feature
      * 
@@ -79,8 +96,34 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      * 
      */
     private GetFeatureEngineeringMaterializedFeatureTableTrigger tableTrigger;
+    /**
+     * @return (object) - Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     * 
+     */
+    private Map<String,String> tags;
 
     private GetFeatureEngineeringMaterializedFeatureResult() {}
+    /**
+     * @return (string) - The ID of the budget policy used to attribute the serverless compute cost of this
+     * materialization. If not specified, a default budget policy may be applied
+     * 
+     */
+    public String budgetPolicyId() {
+        return this.budgetPolicyId;
+    }
+    /**
+     * @return (string, deprecated)
+     * 
+     */
+    public String cronSchedule() {
+        return this.cronSchedule;
+    }
     /**
      * @return (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
      * 
@@ -109,6 +152,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     public String lastMaterializationTime() {
         return this.lastMaterializationTime;
+    }
+    /**
+     * @return (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+     * 
+     */
+    public String latestBackfillOperation() {
+        return this.latestBackfillOperation;
     }
     /**
      * @return (string) - Server-assigned unique identifier for the materialized feature
@@ -165,6 +215,19 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     public GetFeatureEngineeringMaterializedFeatureTableTrigger tableTrigger() {
         return this.tableTrigger;
     }
+    /**
+     * @return (object) - Custom tags to associate with this materialization. They are applied to the materialization
+     * job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+     * compute as cluster tags, so materialization cost can be attributed in the billing system
+     * tables. These tags apply only to the materialization compute; they are not applied to the
+     * Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+     * Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+     * same limitations as cluster tags
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -175,10 +238,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String budgetPolicyId;
+        private String cronSchedule;
         private GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger cronScheduleTrigger;
         private String featureName;
         private Boolean isOnline;
         private String lastMaterializationTime;
+        private String latestBackfillOperation;
         private String materializedFeatureId;
         private GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig offlineStoreConfig;
         private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
@@ -187,13 +253,17 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         private GetFeatureEngineeringMaterializedFeatureStreamingMode streamingMode;
         private String tableName;
         private GetFeatureEngineeringMaterializedFeatureTableTrigger tableTrigger;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeatureResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.cronSchedule = defaults.cronSchedule;
     	      this.cronScheduleTrigger = defaults.cronScheduleTrigger;
     	      this.featureName = defaults.featureName;
     	      this.isOnline = defaults.isOnline;
     	      this.lastMaterializationTime = defaults.lastMaterializationTime;
+    	      this.latestBackfillOperation = defaults.latestBackfillOperation;
     	      this.materializedFeatureId = defaults.materializedFeatureId;
     	      this.offlineStoreConfig = defaults.offlineStoreConfig;
     	      this.onlineStoreConfig = defaults.onlineStoreConfig;
@@ -202,8 +272,25 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     	      this.streamingMode = defaults.streamingMode;
     	      this.tableName = defaults.tableName;
     	      this.tableTrigger = defaults.tableTrigger;
+    	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            if (budgetPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "budgetPolicyId");
+            }
+            this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cronSchedule(String cronSchedule) {
+            if (cronSchedule == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "cronSchedule");
+            }
+            this.cronSchedule = cronSchedule;
+            return this;
+        }
         @CustomType.Setter
         public Builder cronScheduleTrigger(GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger cronScheduleTrigger) {
             if (cronScheduleTrigger == null) {
@@ -234,6 +321,14 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "lastMaterializationTime");
             }
             this.lastMaterializationTime = lastMaterializationTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder latestBackfillOperation(String latestBackfillOperation) {
+            if (latestBackfillOperation == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "latestBackfillOperation");
+            }
+            this.latestBackfillOperation = latestBackfillOperation;
             return this;
         }
         @CustomType.Setter
@@ -298,12 +393,23 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             this.tableTrigger = tableTrigger;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
         public GetFeatureEngineeringMaterializedFeatureResult build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeatureResult();
+            _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.cronSchedule = cronSchedule;
             _resultValue.cronScheduleTrigger = cronScheduleTrigger;
             _resultValue.featureName = featureName;
             _resultValue.isOnline = isOnline;
             _resultValue.lastMaterializationTime = lastMaterializationTime;
+            _resultValue.latestBackfillOperation = latestBackfillOperation;
             _resultValue.materializedFeatureId = materializedFeatureId;
             _resultValue.offlineStoreConfig = offlineStoreConfig;
             _resultValue.onlineStoreConfig = onlineStoreConfig;
@@ -312,6 +418,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             _resultValue.streamingMode = streamingMode;
             _resultValue.tableName = tableName;
             _resultValue.tableTrigger = tableTrigger;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

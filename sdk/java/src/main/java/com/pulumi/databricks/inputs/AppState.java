@@ -251,9 +251,17 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gitRepository);
     }
 
+    /**
+     * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     * 
+     */
     @Import(name="gitSource")
     private @Nullable Output<AppGitSourceArgs> gitSource;
 
+    /**
+     * @return The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     * 
+     */
     public Optional<Output<AppGitSourceArgs>> gitSource() {
         return Optional.ofNullable(this.gitSource);
     }
@@ -393,14 +401,14 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     @Import(name="sourceCodePath")
     private @Nullable Output<String> sourceCodePath;
 
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     public Optional<Output<String>> sourceCodePath() {
@@ -898,11 +906,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return gitRepository(Output.of(gitRepository));
         }
 
+        /**
+         * @param gitSource The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitSource(@Nullable Output<AppGitSourceArgs> gitSource) {
             $.gitSource = gitSource;
             return this;
         }
 
+        /**
+         * @param gitSource The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitSource(AppGitSourceArgs gitSource) {
             return gitSource(Output.of(gitSource));
         }
@@ -1104,7 +1124,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * @param sourceCodePath Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
          * 
          * @return builder
          * 
@@ -1115,7 +1135,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * @param sourceCodePath Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
          * 
          * @return builder
          * 

@@ -15,50 +15,48 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayMcpServicesMcpServiceConfig {
     /**
-     * @return (list of string) - Glob or exact-match patterns selecting which tools from the MCP server
-     * to expose. Prefix match for patterns with `*`, exact match otherwise.
-     * An empty list means all tools are included. Per-element max 256 chars
+     * @return (list of string) - Tool names or prefix patterns to expose from the MCP server. Use exact
+     * tool names or prefix patterns such as `read_*`. An empty list exposes all
+     * tools. At most 1,024 selectors are allowed, and each selector can contain
+     * at most 256 characters
      * 
      */
     private @Nullable List<String> includeToolSelectors;
     /**
-     * @return (list of RateLimit) - Per-principal rate limits applied to tool invocations routed through this
-     * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-     * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-     * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-     * configured
+     * @return (list of RateLimit) - Rate limits for tool invocations. Supported scopes are user, group, service
+     * principal, the service as a whole, and each user by default. Request and
+     * token limits are supported. Empty when no rate limit is configured
      * 
      */
     private @Nullable List<GetAiGatewayMcpServicesMcpServiceConfigRateLimit> rateLimits;
     /**
-     * @return (McpServiceConfigSourceConnection) - UC Connection referencing the MCP server
+     * @return (McpServiceConfigSourceConnection) - Unity Catalog connection referencing the MCP server. Required on Create
      * 
      */
     private @Nullable GetAiGatewayMcpServicesMcpServiceConfigSourceConnection sourceConnection;
 
     private GetAiGatewayMcpServicesMcpServiceConfig() {}
     /**
-     * @return (list of string) - Glob or exact-match patterns selecting which tools from the MCP server
-     * to expose. Prefix match for patterns with `*`, exact match otherwise.
-     * An empty list means all tools are included. Per-element max 256 chars
+     * @return (list of string) - Tool names or prefix patterns to expose from the MCP server. Use exact
+     * tool names or prefix patterns such as `read_*`. An empty list exposes all
+     * tools. At most 1,024 selectors are allowed, and each selector can contain
+     * at most 256 characters
      * 
      */
     public List<String> includeToolSelectors() {
         return this.includeToolSelectors == null ? List.of() : this.includeToolSelectors;
     }
     /**
-     * @return (list of RateLimit) - Per-principal rate limits applied to tool invocations routed through this
-     * MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-     * / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-     * `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-     * configured
+     * @return (list of RateLimit) - Rate limits for tool invocations. Supported scopes are user, group, service
+     * principal, the service as a whole, and each user by default. Request and
+     * token limits are supported. Empty when no rate limit is configured
      * 
      */
     public List<GetAiGatewayMcpServicesMcpServiceConfigRateLimit> rateLimits() {
         return this.rateLimits == null ? List.of() : this.rateLimits;
     }
     /**
-     * @return (McpServiceConfigSourceConnection) - UC Connection referencing the MCP server
+     * @return (McpServiceConfigSourceConnection) - Unity Catalog connection referencing the MCP server. Required on Create
      * 
      */
     public Optional<GetAiGatewayMcpServicesMcpServiceConfigSourceConnection> sourceConnection() {

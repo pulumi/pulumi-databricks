@@ -12,8 +12,8 @@ import java.util.Objects;
 public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKey {
     /**
      * @return (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the field&#39;s presence in
-     * the read shape only indicates that a secret is configured
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
      * 
      */
     private String plaintext;
@@ -21,8 +21,8 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigOp
     private GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKey() {}
     /**
      * @return (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the field&#39;s presence in
-     * the read shape only indicates that a secret is configured
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
      * 
      */
     public String plaintext() {

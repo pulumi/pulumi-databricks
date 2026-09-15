@@ -17,9 +17,57 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ * 
+ * Manages an MCP service in Unity Catalog. An MCP service governs access to an MCP server hosted through a Unity Catalog connection.
+ * 
+ * The Unity Catalog connection must exist before you create the MCP service. MCP services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+ * 
+ * ## Example Usage
+ * 
+ * The following example registers an MCP service backed by a Unity Catalog connection:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AiGatewayMcpService;
+ * import com.pulumi.databricks.AiGatewayMcpServiceArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayMcpServiceConfigArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayMcpServiceConfigSourceConnectionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new AiGatewayMcpService("example", AiGatewayMcpServiceArgs.builder()
+ *             .parent("schemas/main.default")
+ *             .mcpServiceId("knowledge_tools")
+ *             .comment("Provides governed access to knowledge tools")
+ *             .config(AiGatewayMcpServiceConfigArgs.builder()
+ *                 .sourceConnection(AiGatewayMcpServiceConfigSourceConnectionArgs.builder()
+ *                     .name("connections/main.default.mcp_connection")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/aiGatewayMcpService:AiGatewayMcpService")
@@ -39,34 +87,32 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      * 
      */
     @Export(name="config", refs={AiGatewayMcpServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ AiGatewayMcpServiceConfig> config;
 
     /**
-     * @return Operational configuration: connection, tool selectors, rate limit.
-     * Required on CreateMcpService; on
-     * UpdateMcpService it is required only when `config` (or a `config.*`
-     * subpath) appears in `updateMask`
+     * @return Connection, tool selectors, and rate limits. Required on Create. On Update,
+     * provide this field when `updateMask` contains `config` or one of its
+     * subpaths
      * 
      */
     public Output<Optional<AiGatewayMcpServiceConfig>> config() {
         return Codegen.optional(this.config);
     }
     /**
-     * (string) - When the MCP service was created
+     * (string) - Time the MCP service was created
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return (string) - When the MCP service was created
+     * @return (string) - Time the MCP service was created
      * 
      */
     public Output<String> createTime() {
@@ -87,38 +133,34 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return this.createdBy;
     }
     /**
-     * (string) - The resolved owner of the MCP service. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the MCP service
      * 
      */
     @Export(name="effectiveOwner", refs={String.class}, tree="[0]")
     private Output<String> effectiveOwner;
 
     /**
-     * @return (string) - The resolved owner of the MCP service. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the MCP service
      * 
      */
     public Output<String> effectiveOwner() {
         return this.effectiveOwner;
     }
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     public Output<String> etag() {
@@ -175,20 +217,6 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The owner of the MCP service. Write-only; read owner via effective_owner
-     * 
-     */
-    @Export(name="owner", refs={String.class}, tree="[0]")
-    private Output<String> owner;
-
-    /**
-     * @return The owner of the MCP service. Write-only; read owner via effective_owner
-     * 
-     */
-    public Output<String> owner() {
-        return this.owner;
-    }
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -221,14 +249,14 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * (string) - When the MCP service was last modified
+     * (string) - Time the MCP service was last modified
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return (string) - When the MCP service was last modified
+     * @return (string) - Time the MCP service was last modified
      * 
      */
     public Output<String> updateTime() {

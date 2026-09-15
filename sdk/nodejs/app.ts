@@ -141,6 +141,9 @@ export class App extends pulumi.CustomResource {
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      */
     declare public readonly gitRepository: pulumi.Output<outputs.AppGitRepository | undefined>;
+    /**
+     * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     */
     declare public readonly gitSource: pulumi.Output<outputs.AppGitSource>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -177,7 +180,7 @@ export class App extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly servicePrincipalName: pulumi.Output<string>;
     /**
-     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      */
     declare public readonly sourceCodePath: pulumi.Output<string>;
     declare public readonly space: pulumi.Output<string | undefined>;
@@ -365,6 +368,9 @@ export interface AppState {
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      */
     gitRepository?: pulumi.Input<inputs.AppGitRepository | undefined>;
+    /**
+     * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     */
     gitSource?: pulumi.Input<inputs.AppGitSource | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -401,7 +407,7 @@ export interface AppState {
      */
     servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
-     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      */
     sourceCodePath?: pulumi.Input<string | undefined>;
     space?: pulumi.Input<string | undefined>;
@@ -458,6 +464,9 @@ export interface AppArgs {
      * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
      */
     gitRepository?: pulumi.Input<inputs.AppGitRepository | undefined>;
+    /**
+     * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     */
     gitSource?: pulumi.Input<inputs.AppGitSource | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -470,7 +479,7 @@ export interface AppArgs {
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[] | undefined>;
     /**
-     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      */
     sourceCodePath?: pulumi.Input<string | undefined>;
     space?: pulumi.Input<string | undefined>;

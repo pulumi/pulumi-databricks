@@ -30,6 +30,20 @@ namespace Pulumi.Databricks.Inputs
         [Input("customUdf")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionCustomUdfArgs>? CustomUdf { get; set; }
 
+        [Input("extraParameters")]
+        private InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs>? _extraParameters;
+        public InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs> ExtraParameters
+        {
+            get => _extraParameters ?? (_extraParameters = new InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs>());
+            set => _extraParameters = value;
+        }
+
+        /// <summary>
+        /// Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+        /// </summary>
+        [Input("functionType")]
+        public Input<string>? FunctionType { get; set; }
+
         public FeatureEngineeringFeatureFunctionArgs()
         {
         }

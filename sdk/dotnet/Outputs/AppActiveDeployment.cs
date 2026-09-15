@@ -31,13 +31,16 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? DeploymentId;
         public readonly ImmutableArray<Outputs.AppActiveDeploymentEnvVar> EnvVars;
+        /// <summary>
+        /// The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `GitRepository` (see below).
+        /// </summary>
         public readonly Outputs.AppActiveDeploymentGitSource? GitSource;
         /// <summary>
         /// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`GitRepository`/`GitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `DefaultSourceCodePath`.
         /// </summary>
         public readonly string? SourceCodePath;
         /// <summary>

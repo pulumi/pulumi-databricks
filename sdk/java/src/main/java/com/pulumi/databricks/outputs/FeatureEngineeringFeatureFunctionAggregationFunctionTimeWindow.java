@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
+    private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
     /**
      * @return A sawtooth window served via the hybrid batch + streaming path
@@ -29,13 +31,17 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
      * for 365 days of data; a lifetime window produces no output before start_time. If unset,
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-     * eligible source data exists
+     * eligible source data exists.
+     * Not currently supported for sawtooth windows or for Features with a stream source
      * 
      */
     private @Nullable String startTime;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling tumbling;
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow() {}
+    public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling> rolling() {
         return Optional.ofNullable(this.rolling);
     }
@@ -56,7 +62,8 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
      * for 365 days of data; a lifetime window produces no output before start_time. If unset,
      * tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
      * full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-     * eligible source data exists
+     * eligible source data exists.
+     * Not currently supported for sawtooth windows or for Features with a stream source
      * 
      */
     public Optional<String> startTime() {
@@ -75,6 +82,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtooth sawtooth;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
@@ -83,6 +91,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.continuous = defaults.continuous;
     	      this.rolling = defaults.rolling;
     	      this.sawtooth = defaults.sawtooth;
     	      this.sliding = defaults.sliding;
@@ -90,6 +99,12 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     	      this.tumbling = defaults.tumbling;
         }
 
+        @CustomType.Setter
+        public Builder continuous(@Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous) {
+
+            this.continuous = continuous;
+            return this;
+        }
         @CustomType.Setter
         public Builder rolling(@Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling) {
 
@@ -122,6 +137,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         }
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow build() {
             final var _resultValue = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow();
+            _resultValue.continuous = continuous;
             _resultValue.rolling = rolling;
             _resultValue.sawtooth = sawtooth;
             _resultValue.sliding = sliding;

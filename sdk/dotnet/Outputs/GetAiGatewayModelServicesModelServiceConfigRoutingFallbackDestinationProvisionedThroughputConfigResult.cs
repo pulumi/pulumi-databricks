@@ -21,11 +21,11 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Model;
         /// <summary>
         /// (string) - Name of the backing Model Serving endpoint serving the provisioned-
-        /// throughput foundation model, as the AIP-122 typed resource name
-        /// `serving-endpoints/{name}`. The same UC model can be served on multiple
-        /// Model Serving endpoints (different throughput / region / config); the
-        /// caller picks which one this destination routes to. The endpoint must
-        /// exist at create time
+        /// throughput foundation model, in the form `serving-endpoints/{name}`. The
+        /// same Unity Catalog model can be served on multiple Model Serving endpoints
+        /// with different throughput, regions, or configurations. The caller selects
+        /// the endpoint to which this destination routes. The endpoint must exist at
+        /// create time
         /// </summary>
         public readonly string ModelServingEndpoint;
 

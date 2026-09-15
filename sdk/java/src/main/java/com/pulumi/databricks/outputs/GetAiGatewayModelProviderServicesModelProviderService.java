@@ -20,15 +20,14 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
      */
     private String comment;
     /**
-     * @return (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * @return (ModelProviderServiceConfig) - Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      * 
      */
     private GetAiGatewayModelProviderServicesModelProviderServiceConfig config;
     /**
-     * @return (string) - When the provider service was created
+     * @return (string) - Time the provider service was created
      * 
      */
     private String createTime;
@@ -38,17 +37,15 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
      */
     private String createdBy;
     /**
-     * @return (string) - The resolved owner of the model provider service. Falls back to the
-     * caller&#39;s identity when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the model provider service
      * 
      */
     private String effectiveOwner;
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     private String etag;
@@ -58,26 +55,20 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
      */
     private String metastoreId;
     /**
-     * @return (string) - Resource name of the bound UC service credential, in the AIP-122 form
-     * `credentials/{name}` (a metastore-level single-part credential name). On
-     * create the caller supplies the name here. On read it reflects the
-     * credential&#39;s current name at read time
+     * @return (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential&#39;s current
+     * name
      * 
      */
     private String name;
-    /**
-     * @return (string) - The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     * 
-     */
-    private String owner;
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
     private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceProviderConfig providerConfig;
     /**
-     * @return (string) - When the provider service was last modified
+     * @return (string) - Time the provider service was last modified
      * 
      */
     private String updateTime;
@@ -96,17 +87,16 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
         return this.comment;
     }
     /**
-     * @return (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * @return (ModelProviderServiceConfig) - Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      * 
      */
     public GetAiGatewayModelProviderServicesModelProviderServiceConfig config() {
         return this.config;
     }
     /**
-     * @return (string) - When the provider service was created
+     * @return (string) - Time the provider service was created
      * 
      */
     public String createTime() {
@@ -120,19 +110,17 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
         return this.createdBy;
     }
     /**
-     * @return (string) - The resolved owner of the model provider service. Falls back to the
-     * caller&#39;s identity when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the model provider service
      * 
      */
     public String effectiveOwner() {
         return this.effectiveOwner;
     }
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     public String etag() {
@@ -146,22 +134,14 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
         return this.metastoreId;
     }
     /**
-     * @return (string) - Resource name of the bound UC service credential, in the AIP-122 form
-     * `credentials/{name}` (a metastore-level single-part credential name). On
-     * create the caller supplies the name here. On read it reflects the
-     * credential&#39;s current name at read time
+     * @return (string) - Resource name of the bound Unity Catalog service credential, in the form
+     * `credentials/{name}`. Supply this field when creating the service or
+     * rebinding its credential. On read, it reflects the credential&#39;s current
+     * name
      * 
      */
     public String name() {
         return this.name;
-    }
-    /**
-     * @return (string) - The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     * 
-     */
-    public String owner() {
-        return this.owner;
     }
     /**
      * @return Configure the provider for management through account provider.
@@ -171,7 +151,7 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string) - When the provider service was last modified
+     * @return (string) - Time the provider service was last modified
      * 
      */
     public String updateTime() {
@@ -202,7 +182,6 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
         private String etag;
         private String metastoreId;
         private String name;
-        private String owner;
         private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceProviderConfig providerConfig;
         private String updateTime;
         private String updatedBy;
@@ -217,7 +196,6 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
     	      this.etag = defaults.etag;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
-    	      this.owner = defaults.owner;
     	      this.providerConfig = defaults.providerConfig;
     	      this.updateTime = defaults.updateTime;
     	      this.updatedBy = defaults.updatedBy;
@@ -288,14 +266,6 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
             return this;
         }
         @CustomType.Setter
-        public Builder owner(String owner) {
-            if (owner == null) {
-              throw new MissingRequiredPropertyException("GetAiGatewayModelProviderServicesModelProviderService", "owner");
-            }
-            this.owner = owner;
-            return this;
-        }
-        @CustomType.Setter
         public Builder providerConfig(@Nullable GetAiGatewayModelProviderServicesModelProviderServiceProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -327,7 +297,6 @@ public final class GetAiGatewayModelProviderServicesModelProviderService {
             _resultValue.etag = etag;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;
-            _resultValue.owner = owner;
             _resultValue.providerConfig = providerConfig;
             _resultValue.updateTime = updateTime;
             _resultValue.updatedBy = updatedBy;

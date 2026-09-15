@@ -18,22 +18,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelServiceConfigRoutingDestination {
     /**
-     * @return (string) - Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     * @return (string) - Backing-model category. Provide the matching type-specific configuration
+     * and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
      * 
      */
     private String destinationType;
     /**
-     * @return (ModelServiceConfigExternalModelConfig)
+     * @return (ModelServiceConfigExternalModelConfig) - Configuration for an external model reached through a model provider service
      * 
      */
     private @Nullable GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfig externalModelConfig;
     /**
-     * @return (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-     * deleted but the destination row still references it. The dangling
-     * destination is surfaced (not silently dropped) so callers can see the
-     * broken routing. Inference traffic through this destination fails closed
-     * (BAD_REQUEST / FAILED_PRECONDITION)
+     * @return (boolean) - Whether the destination&#39;s backing model or model provider service has
+     * been deleted. The destination remains visible so you can identify the
+     * broken dependency. Requests cannot use this destination until the backing
+     * resource is restored or the destination is replaced
      * 
      */
     private Boolean isDeleted;
@@ -47,44 +46,45 @@ public final class GetAiGatewayModelServiceConfigRoutingDestination {
      */
     private String name;
     /**
-     * @return (ModelServiceConfigPayPerTokenConfig)
+     * @return (ModelServiceConfigPayPerTokenConfig) - Configuration for a pay-per-token Databricks foundation model
      * 
      */
     private @Nullable GetAiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig payPerTokenConfig;
     /**
-     * @return (ModelServiceConfigProvisionedThroughputConfig)
+     * @return (ModelServiceConfigProvisionedThroughputConfig) - Configuration for a provisioned-throughput Databricks foundation model
      * 
      */
     private @Nullable GetAiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig provisionedThroughputConfig;
     /**
-     * @return (integer) - Share of traffic sent to this destination, 0-100. Optional on fallback
-     * destinations; see FallbackConfig
+     * @return (integer) - Percentage of primary traffic sent to this destination, from 0 to 100.
+     * Required when there is more than one primary destination, in which case the
+     * primary percentages must sum to 100; a single primary destination receives
+     * all traffic. Fallback destinations are ordered and do not use this field
      * 
      */
     private @Nullable Integer trafficPercentage;
 
     private GetAiGatewayModelServiceConfigRoutingDestination() {}
     /**
-     * @return (string) - Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     * @return (string) - Backing-model category. Provide the matching type-specific configuration
+     * and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
      * 
      */
     public String destinationType() {
         return this.destinationType;
     }
     /**
-     * @return (ModelServiceConfigExternalModelConfig)
+     * @return (ModelServiceConfigExternalModelConfig) - Configuration for an external model reached through a model provider service
      * 
      */
     public Optional<GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfig> externalModelConfig() {
         return Optional.ofNullable(this.externalModelConfig);
     }
     /**
-     * @return (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-     * deleted but the destination row still references it. The dangling
-     * destination is surfaced (not silently dropped) so callers can see the
-     * broken routing. Inference traffic through this destination fails closed
-     * (BAD_REQUEST / FAILED_PRECONDITION)
+     * @return (boolean) - Whether the destination&#39;s backing model or model provider service has
+     * been deleted. The destination remains visible so you can identify the
+     * broken dependency. Requests cannot use this destination until the backing
+     * resource is restored or the destination is replaced
      * 
      */
     public Boolean isDeleted() {
@@ -102,22 +102,24 @@ public final class GetAiGatewayModelServiceConfigRoutingDestination {
         return this.name;
     }
     /**
-     * @return (ModelServiceConfigPayPerTokenConfig)
+     * @return (ModelServiceConfigPayPerTokenConfig) - Configuration for a pay-per-token Databricks foundation model
      * 
      */
     public Optional<GetAiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig> payPerTokenConfig() {
         return Optional.ofNullable(this.payPerTokenConfig);
     }
     /**
-     * @return (ModelServiceConfigProvisionedThroughputConfig)
+     * @return (ModelServiceConfigProvisionedThroughputConfig) - Configuration for a provisioned-throughput Databricks foundation model
      * 
      */
     public Optional<GetAiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig> provisionedThroughputConfig() {
         return Optional.ofNullable(this.provisionedThroughputConfig);
     }
     /**
-     * @return (integer) - Share of traffic sent to this destination, 0-100. Optional on fallback
-     * destinations; see FallbackConfig
+     * @return (integer) - Percentage of primary traffic sent to this destination, from 0 to 100.
+     * Required when there is more than one primary destination, in which case the
+     * primary percentages must sum to 100; a single primary destination receives
+     * all traffic. Fallback destinations are ordered and do not use this field
      * 
      */
     public Optional<Integer> trafficPercentage() {

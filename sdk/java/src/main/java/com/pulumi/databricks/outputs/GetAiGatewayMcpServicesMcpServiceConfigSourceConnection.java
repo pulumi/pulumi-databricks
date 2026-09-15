@@ -12,28 +12,32 @@ import java.util.Objects;
 @CustomType
 public final class GetAiGatewayMcpServicesMcpServiceConfigSourceConnection {
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+     * the reference so callers can identify the broken dependency; tool
+     * invocation fails until the source connection is updated
      * 
      */
     private Boolean isDeleted;
     /**
-     * @return (string) - Name of the UC connection that hosts the MCP server, as
-     * `connections/{catalog}.{schema}.{connection}`
+     * @return (string) - Resource name of the Unity Catalog connection used to access the MCP
+     * server, in the form `connections/{catalog}.{schema}.{connection}`
      * 
      */
     private String name;
 
     private GetAiGatewayMcpServicesMcpServiceConfigSourceConnection() {}
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+     * the reference so callers can identify the broken dependency; tool
+     * invocation fails until the source connection is updated
      * 
      */
     public Boolean isDeleted() {
         return this.isDeleted;
     }
     /**
-     * @return (string) - Name of the UC connection that hosts the MCP server, as
-     * `connections/{catalog}.{schema}.{connection}`
+     * @return (string) - Resource name of the Unity Catalog connection used to access the MCP
+     * server, in the form `connections/{catalog}.{schema}.{connection}`
      * 
      */
     public String name() {

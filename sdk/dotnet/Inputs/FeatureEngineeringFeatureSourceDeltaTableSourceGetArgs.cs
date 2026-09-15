@@ -15,6 +15,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataframeSchema")]
         public Input<string>? DataframeSchema { get; set; }
 
+        [Input("entityColumns")]
+        private InputList<string>? _entityColumns;
+        public InputList<string> EntityColumns
+        {
+            get => _entityColumns ?? (_entityColumns = new InputList<string>());
+            set => _entityColumns = value;
+        }
+
         [Input("filterCondition")]
         public Input<string>? FilterCondition { get; set; }
 
@@ -25,6 +33,12 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
+
+        /// <summary>
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// </summary>
+        [Input("timeseriesColumn")]
+        public Input<string>? TimeseriesColumn { get; set; }
 
         [Input("transformationSql")]
         public Input<string>? TransformationSql { get; set; }

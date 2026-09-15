@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureSourceDeltaTableSource
     {
         public readonly string? DataframeSchema;
+        public readonly ImmutableArray<string> EntityColumns;
         public readonly string? FilterCondition;
         /// <summary>
         /// The full three-part name (catalog, schema, name) of the feature. This is the
@@ -21,21 +22,31 @@ namespace Pulumi.Databricks.Outputs
         /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         public readonly string FullName;
+        /// <summary>
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// </summary>
+        public readonly string? TimeseriesColumn;
         public readonly string? TransformationSql;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureSourceDeltaTableSource(
             string? dataframeSchema,
 
+            ImmutableArray<string> entityColumns,
+
             string? filterCondition,
 
             string fullName,
 
+            string? timeseriesColumn,
+
             string? transformationSql)
         {
             DataframeSchema = dataframeSchema;
+            EntityColumns = entityColumns;
             FilterCondition = filterCondition;
             FullName = fullName;
+            TimeseriesColumn = timeseriesColumn;
             TransformationSql = transformationSql;
         }
     }

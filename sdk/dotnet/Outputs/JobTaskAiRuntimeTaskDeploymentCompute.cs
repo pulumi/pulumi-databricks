@@ -15,15 +15,19 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly int AcceleratorCount;
         public readonly string AcceleratorType;
+        public readonly string? ProvisionedCapacityId;
 
         [OutputConstructor]
         private JobTaskAiRuntimeTaskDeploymentCompute(
             int acceleratorCount,
 
-            string acceleratorType)
+            string acceleratorType,
+
+            string? provisionedCapacityId)
         {
             AcceleratorCount = acceleratorCount;
             AcceleratorType = acceleratorType;
+            ProvisionedCapacityId = provisionedCapacityId;
         }
     }
 }

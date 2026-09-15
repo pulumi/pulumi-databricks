@@ -42,6 +42,20 @@ public class PostgresSnapshotSchedule extends com.pulumi.resources.CustomResourc
         return this.name;
     }
     /**
+     * The resource name of the parent
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The resource name of the parent
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
+    }
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -88,7 +102,7 @@ public class PostgresSnapshotSchedule extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PostgresSnapshotSchedule(java.lang.String name, @Nullable PostgresSnapshotScheduleArgs args) {
+    public PostgresSnapshotSchedule(java.lang.String name, PostgresSnapshotScheduleArgs args) {
         this(name, args, null);
     }
     /**
@@ -97,7 +111,7 @@ public class PostgresSnapshotSchedule extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PostgresSnapshotSchedule(java.lang.String name, @Nullable PostgresSnapshotScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public PostgresSnapshotSchedule(java.lang.String name, PostgresSnapshotScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -105,7 +119,7 @@ public class PostgresSnapshotSchedule extends com.pulumi.resources.CustomResourc
         super("databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static PostgresSnapshotScheduleArgs makeArgs(@Nullable PostgresSnapshotScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static PostgresSnapshotScheduleArgs makeArgs(PostgresSnapshotScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

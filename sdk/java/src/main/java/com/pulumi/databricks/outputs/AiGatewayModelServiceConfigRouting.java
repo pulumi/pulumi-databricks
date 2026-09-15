@@ -6,8 +6,6 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AiGatewayModelServiceConfigRoutingDestination;
 import com.pulumi.databricks.outputs.AiGatewayModelServiceConfigRoutingFallback;
-import com.pulumi.databricks.outputs.AiGatewayModelServiceConfigRoutingTrafficSplitting;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,55 +15,23 @@ import javax.annotation.Nullable;
 public final class AiGatewayModelServiceConfigRouting {
     private @Nullable List<AiGatewayModelServiceConfigRoutingDestination> destinations;
     /**
-     * @return Fallback routing config, applied after primary destinations fail
+     * @return Fallback routing applied after a primary destination fails. Fallback
+     * destinations are tried in the listed order
      * 
      */
     private @Nullable AiGatewayModelServiceConfigRoutingFallback fallback;
-    /**
-     * @return Timeout for the first token of a streaming response. If a destination does
-     * not return its first token within this duration, AI Gateway aborts the
-     * attempt and fails over to the next destination. Applies to streaming
-     * requests only. Leave unset for no first-token timeout
-     * 
-     */
-    private @Nullable String firstTokenTimeout;
-    /**
-     * @return Marker message selecting request-based traffic splitting. Traffic is
-     * distributed according to each destination&#39;s trafficPercentage value;
-     * no configuration lives on this message itself
-     * 
-     */
-    private @Nullable AiGatewayModelServiceConfigRoutingTrafficSplitting trafficSplitting;
 
     private AiGatewayModelServiceConfigRouting() {}
     public List<AiGatewayModelServiceConfigRoutingDestination> destinations() {
         return this.destinations == null ? List.of() : this.destinations;
     }
     /**
-     * @return Fallback routing config, applied after primary destinations fail
+     * @return Fallback routing applied after a primary destination fails. Fallback
+     * destinations are tried in the listed order
      * 
      */
     public Optional<AiGatewayModelServiceConfigRoutingFallback> fallback() {
         return Optional.ofNullable(this.fallback);
-    }
-    /**
-     * @return Timeout for the first token of a streaming response. If a destination does
-     * not return its first token within this duration, AI Gateway aborts the
-     * attempt and fails over to the next destination. Applies to streaming
-     * requests only. Leave unset for no first-token timeout
-     * 
-     */
-    public Optional<String> firstTokenTimeout() {
-        return Optional.ofNullable(this.firstTokenTimeout);
-    }
-    /**
-     * @return Marker message selecting request-based traffic splitting. Traffic is
-     * distributed according to each destination&#39;s trafficPercentage value;
-     * no configuration lives on this message itself
-     * 
-     */
-    public Optional<AiGatewayModelServiceConfigRoutingTrafficSplitting> trafficSplitting() {
-        return Optional.ofNullable(this.trafficSplitting);
     }
 
     public static Builder builder() {
@@ -79,15 +45,11 @@ public final class AiGatewayModelServiceConfigRouting {
     public static final class Builder {
         private @Nullable List<AiGatewayModelServiceConfigRoutingDestination> destinations;
         private @Nullable AiGatewayModelServiceConfigRoutingFallback fallback;
-        private @Nullable String firstTokenTimeout;
-        private @Nullable AiGatewayModelServiceConfigRoutingTrafficSplitting trafficSplitting;
         public Builder() {}
         public Builder(AiGatewayModelServiceConfigRouting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinations = defaults.destinations;
     	      this.fallback = defaults.fallback;
-    	      this.firstTokenTimeout = defaults.firstTokenTimeout;
-    	      this.trafficSplitting = defaults.trafficSplitting;
         }
 
         @CustomType.Setter
@@ -105,24 +67,10 @@ public final class AiGatewayModelServiceConfigRouting {
             this.fallback = fallback;
             return this;
         }
-        @CustomType.Setter
-        public Builder firstTokenTimeout(@Nullable String firstTokenTimeout) {
-
-            this.firstTokenTimeout = firstTokenTimeout;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder trafficSplitting(@Nullable AiGatewayModelServiceConfigRoutingTrafficSplitting trafficSplitting) {
-
-            this.trafficSplitting = trafficSplitting;
-            return this;
-        }
         public AiGatewayModelServiceConfigRouting build() {
             final var _resultValue = new AiGatewayModelServiceConfigRouting();
             _resultValue.destinations = destinations;
             _resultValue.fallback = fallback;
-            _resultValue.firstTokenTimeout = firstTokenTimeout;
-            _resultValue.trafficSplitting = trafficSplitting;
             return _resultValue;
         }
     }

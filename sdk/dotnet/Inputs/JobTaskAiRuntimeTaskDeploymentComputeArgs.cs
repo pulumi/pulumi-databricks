@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("acceleratorType", required: true)]
         public Input<string> AcceleratorType { get; set; } = null!;
 
+        [Input("provisionedCapacityId")]
+        public Input<string>? ProvisionedCapacityId { get; set; }
+
         public JobTaskAiRuntimeTaskDeploymentComputeArgs()
         {
         }

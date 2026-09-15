@@ -119,6 +119,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DisasterRecoveryFailoverGroup{}
 	case "databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl":
 		r = &DisasterRecoveryStableUrl{}
+	case "databricks:index/domain:Domain":
+		r = &Domain{}
 	case "databricks:index/endpoint:Endpoint":
 		r = &Endpoint{}
 	case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
@@ -275,6 +277,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RestrictWorkspaceAdminsSetting{}
 	case "databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations":
 		r = &RfaAccessRequestDestinations{}
+	case "databricks:index/sandbox:Sandbox":
+		r = &Sandbox{}
 	case "databricks:index/schema:Schema":
 		r = &Schema{}
 	case "databricks:index/secret:Secret":
@@ -639,6 +643,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/disasterRecoveryStableUrl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/domain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1029,6 +1038,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/rfaAccessRequestDestinations",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/sandbox",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

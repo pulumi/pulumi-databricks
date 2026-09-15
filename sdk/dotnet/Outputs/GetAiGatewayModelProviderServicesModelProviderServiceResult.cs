@@ -18,14 +18,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Comment;
         /// <summary>
-        /// (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
-        /// passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        /// contract. Required on CreateModelProviderService; on Update it is required
-        /// only when `Config` (or a `config.*` subpath) appears in `UpdateMask`
+        /// (ModelProviderServiceConfig) - Provider authentication, exposed models, request-forwarding controls, rate
+        /// limits, and payload logging. Required on Create. On Update, it is required
+        /// only when `Config` or one of its subpaths appears in `UpdateMask`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigResult Config;
         /// <summary>
-        /// (string) - When the provider service was created
+        /// (string) - Time the provider service was created
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -33,16 +32,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - The resolved owner of the model provider service. Falls back to the
-        /// caller's identity when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the model provider service
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -50,23 +47,18 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
-        /// (string) - Resource name of the bound UC service credential, in the AIP-122 form
-        /// `credentials/{name}` (a metastore-level single-part credential name). On
-        /// create the caller supplies the name here. On read it reflects the
-        /// credential's current name at read time
+        /// (string) - Resource name of the bound Unity Catalog service credential, in the form
+        /// `credentials/{name}`. Supply this field when creating the service or
+        /// rebinding its credential. On read, it reflects the credential's current
+        /// name
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string) - The owner of the model provider service. Write-only; read owner via
-        /// effective_owner
-        /// </summary>
-        public readonly string Owner;
         /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - When the provider service was last modified
+        /// (string) - Time the provider service was last modified
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
@@ -92,8 +84,6 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
-            string owner,
-
             Outputs.GetAiGatewayModelProviderServicesModelProviderServiceProviderConfigResult? providerConfig,
 
             string updateTime,
@@ -108,7 +98,6 @@ namespace Pulumi.Databricks.Outputs
             Etag = etag;
             MetastoreId = metastoreId;
             Name = name;
-            Owner = owner;
             ProviderConfig = providerConfig;
             UpdateTime = updateTime;
             UpdatedBy = updatedBy;

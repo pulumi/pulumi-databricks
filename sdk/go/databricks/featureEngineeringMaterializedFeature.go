@@ -16,6 +16,10 @@ import (
 type FeatureEngineeringMaterializedFeature struct {
 	pulumi.CustomResourceState
 
+	// The ID of the budget policy used to attribute the serverless compute cost of this
+	// materialization. If not specified, a default budget policy may be applied
+	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
+	CronSchedule   pulumi.StringPtrOutput `pulumi:"cronSchedule"`
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput `pulumi:"cronScheduleTrigger"`
 	// The full name of the feature in Unity Catalog
@@ -25,6 +29,8 @@ type FeatureEngineeringMaterializedFeature struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringOutput `pulumi:"lastMaterializationTime"`
+	// (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+	LatestBackfillOperation pulumi.StringOutput `pulumi:"latestBackfillOperation"`
 	// (string) - Server-assigned unique identifier for the materialized feature
 	MaterializedFeatureId pulumi.StringOutput `pulumi:"materializedFeatureId"`
 	// Destination for writing feature values to an offline Delta table
@@ -44,6 +50,14 @@ type FeatureEngineeringMaterializedFeature struct {
 	TableName pulumi.StringOutput `pulumi:"tableName"`
 	// A trigger that fires when the upstream source table changes
 	TableTrigger FeatureEngineeringMaterializedFeatureTableTriggerPtrOutput `pulumi:"tableTrigger"`
+	// Custom tags to associate with this materialization. They are applied to the materialization
+	// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+	// compute as cluster tags, so materialization cost can be attributed in the billing system
+	// tables. These tags apply only to the materialization compute; they are not applied to the
+	// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+	// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+	// same limitations as cluster tags
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewFeatureEngineeringMaterializedFeature registers a new resource with the given unique name, arguments, and options.
@@ -79,6 +93,10 @@ func GetFeatureEngineeringMaterializedFeature(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
 type featureEngineeringMaterializedFeatureState struct {
+	// The ID of the budget policy used to attribute the serverless compute cost of this
+	// materialization. If not specified, a default budget policy may be applied
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	CronSchedule   *string `pulumi:"cronSchedule"`
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger *FeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
 	// The full name of the feature in Unity Catalog
@@ -88,6 +106,8 @@ type featureEngineeringMaterializedFeatureState struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime *string `pulumi:"lastMaterializationTime"`
+	// (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+	LatestBackfillOperation *string `pulumi:"latestBackfillOperation"`
 	// (string) - Server-assigned unique identifier for the materialized feature
 	MaterializedFeatureId *string `pulumi:"materializedFeatureId"`
 	// Destination for writing feature values to an offline Delta table
@@ -107,9 +127,21 @@ type featureEngineeringMaterializedFeatureState struct {
 	TableName *string `pulumi:"tableName"`
 	// A trigger that fires when the upstream source table changes
 	TableTrigger *FeatureEngineeringMaterializedFeatureTableTrigger `pulumi:"tableTrigger"`
+	// Custom tags to associate with this materialization. They are applied to the materialization
+	// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+	// compute as cluster tags, so materialization cost can be attributed in the billing system
+	// tables. These tags apply only to the materialization compute; they are not applied to the
+	// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+	// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+	// same limitations as cluster tags
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type FeatureEngineeringMaterializedFeatureState struct {
+	// The ID of the budget policy used to attribute the serverless compute cost of this
+	// materialization. If not specified, a default budget policy may be applied
+	BudgetPolicyId pulumi.StringPtrInput
+	CronSchedule   pulumi.StringPtrInput
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrInput
 	// The full name of the feature in Unity Catalog
@@ -119,6 +151,8 @@ type FeatureEngineeringMaterializedFeatureState struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringPtrInput
+	// (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+	LatestBackfillOperation pulumi.StringPtrInput
 	// (string) - Server-assigned unique identifier for the materialized feature
 	MaterializedFeatureId pulumi.StringPtrInput
 	// Destination for writing feature values to an offline Delta table
@@ -138,6 +172,14 @@ type FeatureEngineeringMaterializedFeatureState struct {
 	TableName pulumi.StringPtrInput
 	// A trigger that fires when the upstream source table changes
 	TableTrigger FeatureEngineeringMaterializedFeatureTableTriggerPtrInput
+	// Custom tags to associate with this materialization. They are applied to the materialization
+	// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+	// compute as cluster tags, so materialization cost can be attributed in the billing system
+	// tables. These tags apply only to the materialization compute; they are not applied to the
+	// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+	// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+	// same limitations as cluster tags
+	Tags pulumi.StringMapInput
 }
 
 func (FeatureEngineeringMaterializedFeatureState) ElementType() reflect.Type {
@@ -145,6 +187,10 @@ func (FeatureEngineeringMaterializedFeatureState) ElementType() reflect.Type {
 }
 
 type featureEngineeringMaterializedFeatureArgs struct {
+	// The ID of the budget policy used to attribute the serverless compute cost of this
+	// materialization. If not specified, a default budget policy may be applied
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	CronSchedule   *string `pulumi:"cronSchedule"`
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger *FeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
 	// The full name of the feature in Unity Catalog
@@ -164,10 +210,22 @@ type featureEngineeringMaterializedFeatureArgs struct {
 	StreamingMode *FeatureEngineeringMaterializedFeatureStreamingMode `pulumi:"streamingMode"`
 	// A trigger that fires when the upstream source table changes
 	TableTrigger *FeatureEngineeringMaterializedFeatureTableTrigger `pulumi:"tableTrigger"`
+	// Custom tags to associate with this materialization. They are applied to the materialization
+	// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+	// compute as cluster tags, so materialization cost can be attributed in the billing system
+	// tables. These tags apply only to the materialization compute; they are not applied to the
+	// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+	// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+	// same limitations as cluster tags
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
 type FeatureEngineeringMaterializedFeatureArgs struct {
+	// The ID of the budget policy used to attribute the serverless compute cost of this
+	// materialization. If not specified, a default budget policy may be applied
+	BudgetPolicyId pulumi.StringPtrInput
+	CronSchedule   pulumi.StringPtrInput
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrInput
 	// The full name of the feature in Unity Catalog
@@ -187,6 +245,14 @@ type FeatureEngineeringMaterializedFeatureArgs struct {
 	StreamingMode FeatureEngineeringMaterializedFeatureStreamingModePtrInput
 	// A trigger that fires when the upstream source table changes
 	TableTrigger FeatureEngineeringMaterializedFeatureTableTriggerPtrInput
+	// Custom tags to associate with this materialization. They are applied to the materialization
+	// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+	// compute as cluster tags, so materialization cost can be attributed in the billing system
+	// tables. These tags apply only to the materialization compute; they are not applied to the
+	// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+	// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+	// same limitations as cluster tags
+	Tags pulumi.StringMapInput
 }
 
 func (FeatureEngineeringMaterializedFeatureArgs) ElementType() reflect.Type {
@@ -276,6 +342,16 @@ func (o FeatureEngineeringMaterializedFeatureOutput) ToFeatureEngineeringMateria
 	return o
 }
 
+// The ID of the budget policy used to attribute the serverless compute cost of this
+// materialization. If not specified, a default budget policy may be applied
+func (o FeatureEngineeringMaterializedFeatureOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureEngineeringMaterializedFeatureOutput) CronSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.CronSchedule }).(pulumi.StringPtrOutput)
+}
+
 // A cron-based schedule trigger for the materialization pipeline
 func (o FeatureEngineeringMaterializedFeatureOutput) CronScheduleTrigger() FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput {
@@ -297,6 +373,11 @@ func (o FeatureEngineeringMaterializedFeatureOutput) IsOnline() pulumi.BoolOutpu
 // If the pipeline has not run yet, this field will be null
 func (o FeatureEngineeringMaterializedFeatureOutput) LastMaterializationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.LastMaterializationTime }).(pulumi.StringOutput)
+}
+
+// (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+func (o FeatureEngineeringMaterializedFeatureOutput) LatestBackfillOperation() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.LatestBackfillOperation }).(pulumi.StringOutput)
 }
 
 // (string) - Server-assigned unique identifier for the materialized feature
@@ -350,6 +431,17 @@ func (o FeatureEngineeringMaterializedFeatureOutput) TableTrigger() FeatureEngin
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureTableTriggerPtrOutput {
 		return v.TableTrigger
 	}).(FeatureEngineeringMaterializedFeatureTableTriggerPtrOutput)
+}
+
+// Custom tags to associate with this materialization. They are applied to the materialization
+// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+// compute as cluster tags, so materialization cost can be attributed in the billing system
+// tables. These tags apply only to the materialization compute; they are not applied to the
+// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+// same limitations as cluster tags
+func (o FeatureEngineeringMaterializedFeatureOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type FeatureEngineeringMaterializedFeatureArrayOutput struct{ *pulumi.OutputState }

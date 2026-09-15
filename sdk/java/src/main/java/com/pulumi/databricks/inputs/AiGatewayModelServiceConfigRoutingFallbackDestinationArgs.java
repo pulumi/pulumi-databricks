@@ -22,46 +22,52 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs ext
     public static final AiGatewayModelServiceConfigRoutingFallbackDestinationArgs Empty = new AiGatewayModelServiceConfigRoutingFallbackDestinationArgs();
 
     /**
-     * Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     * Backing-model category. Provide the matching type-specific configuration
+     * and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
      * 
      */
     @Import(name="destinationType", required=true)
     private Output<String> destinationType;
 
     /**
-     * @return Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+     * @return Backing-model category. Provide the matching type-specific configuration
+     * and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
      * 
      */
     public Output<String> destinationType() {
         return this.destinationType;
     }
 
+    /**
+     * Configuration for an external model reached through a model provider service
+     * 
+     */
     @Import(name="externalModelConfig")
     private @Nullable Output<AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigArgs> externalModelConfig;
 
+    /**
+     * @return Configuration for an external model reached through a model provider service
+     * 
+     */
     public Optional<Output<AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigArgs>> externalModelConfig() {
         return Optional.ofNullable(this.externalModelConfig);
     }
 
     /**
-     * (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-     * deleted but the destination row still references it. The dangling
-     * destination is surfaced (not silently dropped) so callers can see the
-     * broken routing. Inference traffic through this destination fails closed
-     * (BAD_REQUEST / FAILED_PRECONDITION)
+     * (boolean) - Whether the destination&#39;s backing model or model provider service has
+     * been deleted. The destination remains visible so you can identify the
+     * broken dependency. Requests cannot use this destination until the backing
+     * resource is restored or the destination is replaced
      * 
      */
     @Import(name="isDeleted")
     private @Nullable Output<Boolean> isDeleted;
 
     /**
-     * @return (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-     * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-     * deleted but the destination row still references it. The dangling
-     * destination is surfaced (not silently dropped) so callers can see the
-     * broken routing. Inference traffic through this destination fails closed
-     * (BAD_REQUEST / FAILED_PRECONDITION)
+     * @return (boolean) - Whether the destination&#39;s backing model or model provider service has
+     * been deleted. The destination remains visible so you can identify the
+     * broken dependency. Requests cannot use this destination until the backing
+     * resource is restored or the destination is replaced
      * 
      */
     public Optional<Output<Boolean>> isDeleted() {
@@ -91,31 +97,51 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs ext
         return this.name;
     }
 
+    /**
+     * Configuration for a pay-per-token Databricks foundation model
+     * 
+     */
     @Import(name="payPerTokenConfig")
     private @Nullable Output<AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgs> payPerTokenConfig;
 
+    /**
+     * @return Configuration for a pay-per-token Databricks foundation model
+     * 
+     */
     public Optional<Output<AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgs>> payPerTokenConfig() {
         return Optional.ofNullable(this.payPerTokenConfig);
     }
 
+    /**
+     * Configuration for a provisioned-throughput Databricks foundation model
+     * 
+     */
     @Import(name="provisionedThroughputConfig")
     private @Nullable Output<AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs> provisionedThroughputConfig;
 
+    /**
+     * @return Configuration for a provisioned-throughput Databricks foundation model
+     * 
+     */
     public Optional<Output<AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs>> provisionedThroughputConfig() {
         return Optional.ofNullable(this.provisionedThroughputConfig);
     }
 
     /**
-     * Share of traffic sent to this destination, 0-100. Optional on fallback
-     * destinations; see FallbackConfig
+     * Percentage of primary traffic sent to this destination, from 0 to 100.
+     * Required when there is more than one primary destination, in which case the
+     * primary percentages must sum to 100; a single primary destination receives
+     * all traffic. Fallback destinations are ordered and do not use this field
      * 
      */
     @Import(name="trafficPercentage")
     private @Nullable Output<Integer> trafficPercentage;
 
     /**
-     * @return Share of traffic sent to this destination, 0-100. Optional on fallback
-     * destinations; see FallbackConfig
+     * @return Percentage of primary traffic sent to this destination, from 0 to 100.
+     * Required when there is more than one primary destination, in which case the
+     * primary percentages must sum to 100; a single primary destination receives
+     * all traffic. Fallback destinations are ordered and do not use this field
      * 
      */
     public Optional<Output<Integer>> trafficPercentage() {
@@ -153,7 +179,8 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs ext
         }
 
         /**
-         * @param destinationType Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+         * @param destinationType Backing-model category. Provide the matching type-specific configuration
+         * and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
          * 
          * @return builder
          * 
@@ -164,7 +191,8 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs ext
         }
 
         /**
-         * @param destinationType Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+         * @param destinationType Backing-model category. Provide the matching type-specific configuration
+         * and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
          * 
          * @return builder
          * 
@@ -173,22 +201,32 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs ext
             return destinationType(Output.of(destinationType));
         }
 
+        /**
+         * @param externalModelConfig Configuration for an external model reached through a model provider service
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalModelConfig(@Nullable Output<AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigArgs> externalModelConfig) {
             $.externalModelConfig = externalModelConfig;
             return this;
         }
 
+        /**
+         * @param externalModelConfig Configuration for an external model reached through a model provider service
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalModelConfig(AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigArgs externalModelConfig) {
             return externalModelConfig(Output.of(externalModelConfig));
         }
 
         /**
-         * @param isDeleted (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-         * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-         * deleted but the destination row still references it. The dangling
-         * destination is surfaced (not silently dropped) so callers can see the
-         * broken routing. Inference traffic through this destination fails closed
-         * (BAD_REQUEST / FAILED_PRECONDITION)
+         * @param isDeleted (boolean) - Whether the destination&#39;s backing model or model provider service has
+         * been deleted. The destination remains visible so you can identify the
+         * broken dependency. Requests cannot use this destination until the backing
+         * resource is restored or the destination is replaced
          * 
          * @return builder
          * 
@@ -199,12 +237,10 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs ext
         }
 
         /**
-         * @param isDeleted (boolean) - True when the destination&#39;s backing UC entity (MODEL for foundation-model
-         * destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-         * deleted but the destination row still references it. The dangling
-         * destination is surfaced (not silently dropped) so callers can see the
-         * broken routing. Inference traffic through this destination fails closed
-         * (BAD_REQUEST / FAILED_PRECONDITION)
+         * @param isDeleted (boolean) - Whether the destination&#39;s backing model or model provider service has
+         * been deleted. The destination remains visible so you can identify the
+         * broken dependency. Requests cannot use this destination until the backing
+         * resource is restored or the destination is replaced
          * 
          * @return builder
          * 
@@ -242,27 +278,53 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs ext
             return name(Output.of(name));
         }
 
+        /**
+         * @param payPerTokenConfig Configuration for a pay-per-token Databricks foundation model
+         * 
+         * @return builder
+         * 
+         */
         public Builder payPerTokenConfig(@Nullable Output<AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgs> payPerTokenConfig) {
             $.payPerTokenConfig = payPerTokenConfig;
             return this;
         }
 
+        /**
+         * @param payPerTokenConfig Configuration for a pay-per-token Databricks foundation model
+         * 
+         * @return builder
+         * 
+         */
         public Builder payPerTokenConfig(AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgs payPerTokenConfig) {
             return payPerTokenConfig(Output.of(payPerTokenConfig));
         }
 
+        /**
+         * @param provisionedThroughputConfig Configuration for a provisioned-throughput Databricks foundation model
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedThroughputConfig(@Nullable Output<AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs> provisionedThroughputConfig) {
             $.provisionedThroughputConfig = provisionedThroughputConfig;
             return this;
         }
 
+        /**
+         * @param provisionedThroughputConfig Configuration for a provisioned-throughput Databricks foundation model
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedThroughputConfig(AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs provisionedThroughputConfig) {
             return provisionedThroughputConfig(Output.of(provisionedThroughputConfig));
         }
 
         /**
-         * @param trafficPercentage Share of traffic sent to this destination, 0-100. Optional on fallback
-         * destinations; see FallbackConfig
+         * @param trafficPercentage Percentage of primary traffic sent to this destination, from 0 to 100.
+         * Required when there is more than one primary destination, in which case the
+         * primary percentages must sum to 100; a single primary destination receives
+         * all traffic. Fallback destinations are ordered and do not use this field
          * 
          * @return builder
          * 
@@ -273,8 +335,10 @@ public final class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs ext
         }
 
         /**
-         * @param trafficPercentage Share of traffic sent to this destination, 0-100. Optional on fallback
-         * destinations; see FallbackConfig
+         * @param trafficPercentage Percentage of primary traffic sent to this destination, from 0 to 100.
+         * Required when there is more than one primary destination, in which case the
+         * primary percentages must sum to 100; a single primary destination receives
+         * all traffic. Fallback destinations are ordered and do not use this field
          * 
          * @return builder
          * 

@@ -18,14 +18,18 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs ex
     public static final AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs Empty = new AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs();
 
     /**
-     * AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+     * AWS access-key-pair authentication. Set `accessKeyId` and
+     * `secret_access_key.plaintext`. Mutually exclusive with
+     * `serviceCredential`
      * 
      */
     @Import(name="awsAccessKey")
     private @Nullable Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs> awsAccessKey;
 
     /**
-     * @return AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+     * @return AWS access-key-pair authentication. Set `accessKeyId` and
+     * `secret_access_key.plaintext`. Mutually exclusive with
+     * `serviceCredential`
      * 
      */
     public Optional<Output<AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs>> awsAccessKey() {
@@ -73,7 +77,9 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs ex
         }
 
         /**
-         * @param awsAccessKey AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+         * @param awsAccessKey AWS access-key-pair authentication. Set `accessKeyId` and
+         * `secret_access_key.plaintext`. Mutually exclusive with
+         * `serviceCredential`
          * 
          * @return builder
          * 
@@ -84,7 +90,9 @@ public final class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs ex
         }
 
         /**
-         * @param awsAccessKey AWS access-key-pair auth. Mutually exclusive with `serviceCredential`
+         * @param awsAccessKey AWS access-key-pair authentication. Set `accessKeyId` and
+         * `secret_access_key.plaintext`. Mutually exclusive with
+         * `serviceCredential`
          * 
          * @return builder
          * 

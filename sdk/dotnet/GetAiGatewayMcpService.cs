@@ -12,25 +12,106 @@ namespace Pulumi.Databricks
     public static class GetAiGatewayMcpService
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Retrieves a Unity Catalog MCP service by its full resource name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example retrieves the MCP service named `KnowledgeTools` from the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiGatewayMcpService.Invoke(new()
+        ///     {
+        ///         Name = "mcp-services/main.default.knowledge_tools",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mcpServiceConfig"] = example.Apply(getAiGatewayMcpServiceResult =&gt; getAiGatewayMcpServiceResult.Config),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAiGatewayMcpServiceResult> InvokeAsync(GetAiGatewayMcpServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiGatewayMcpServiceResult>("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", args ?? new GetAiGatewayMcpServiceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Retrieves a Unity Catalog MCP service by its full resource name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example retrieves the MCP service named `KnowledgeTools` from the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiGatewayMcpService.Invoke(new()
+        ///     {
+        ///         Name = "mcp-services/main.default.knowledge_tools",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mcpServiceConfig"] = example.Apply(getAiGatewayMcpServiceResult =&gt; getAiGatewayMcpServiceResult.Config),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiGatewayMcpServiceResult> Invoke(GetAiGatewayMcpServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiGatewayMcpServiceResult>("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", args ?? new GetAiGatewayMcpServiceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+        /// 
+        /// Retrieves a Unity Catalog MCP service by its full resource name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example retrieves the MCP service named `KnowledgeTools` from the `main.default` schema:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Databricks.GetAiGatewayMcpService.Invoke(new()
+        ///     {
+        ///         Name = "mcp-services/main.default.knowledge_tools",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mcpServiceConfig"] = example.Apply(getAiGatewayMcpServiceResult =&gt; getAiGatewayMcpServiceResult.Config),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiGatewayMcpServiceResult> Invoke(GetAiGatewayMcpServiceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiGatewayMcpServiceResult>("databricks:index/getAiGatewayMcpService:getAiGatewayMcpService", args ?? new GetAiGatewayMcpServiceInvokeArgs(), options.WithDefaults());
@@ -94,14 +175,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Comment;
         /// <summary>
-        /// (McpServiceConfig) - Operational configuration: connection, tool selectors, rate limit.
-        /// Required on CreateMcpService; on
-        /// UpdateMcpService it is required only when `Config` (or a `config.*`
-        /// subpath) appears in `UpdateMask`
+        /// (McpServiceConfig) - Connection, tool selectors, and rate limits. Required on Create. On Update,
+        /// provide this field when `UpdateMask` contains `Config` or one of its
+        /// subpaths
         /// </summary>
         public readonly Outputs.GetAiGatewayMcpServiceConfigResult Config;
         /// <summary>
-        /// (string) - When the MCP service was created
+        /// (string) - Time the MCP service was created
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -109,16 +189,14 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - The resolved owner of the MCP service. Falls back to the caller's identity
-        /// when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the MCP service
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -126,17 +204,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
-        /// (string) - Name of the UC connection that hosts the MCP server, as
-        /// `connections/{catalog}.{schema}.{connection}`
+        /// (string) - Resource name of the Unity Catalog connection used to access the MCP
+        /// server, in the form `connections/{catalog}.{schema}.{connection}`
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string) - The owner of the MCP service. Write-only; read owner via effective_owner
-        /// </summary>
-        public readonly string Owner;
         public readonly Outputs.GetAiGatewayMcpServiceProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - When the MCP service was last modified
+        /// (string) - Time the MCP service was last modified
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
@@ -162,8 +236,6 @@ namespace Pulumi.Databricks
 
             string name,
 
-            string owner,
-
             Outputs.GetAiGatewayMcpServiceProviderConfigResult? providerConfig,
 
             string updateTime,
@@ -178,7 +250,6 @@ namespace Pulumi.Databricks
             Etag = etag;
             MetastoreId = metastoreId;
             Name = name;
-            Owner = owner;
             ProviderConfig = providerConfig;
             UpdateTime = updateTime;
             UpdatedBy = updatedBy;

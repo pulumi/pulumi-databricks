@@ -18,14 +18,18 @@ public final class AiGatewayMcpServiceConfigSourceConnectionArgs extends com.pul
     public static final AiGatewayMcpServiceConfigSourceConnectionArgs Empty = new AiGatewayMcpServiceConfigSourceConnectionArgs();
 
     /**
-     * (boolean)
+     * (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+     * the reference so callers can identify the broken dependency; tool
+     * invocation fails until the source connection is updated
      * 
      */
     @Import(name="isDeleted")
     private @Nullable Output<Boolean> isDeleted;
 
     /**
-     * @return (boolean)
+     * @return (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+     * the reference so callers can identify the broken dependency; tool
+     * invocation fails until the source connection is updated
      * 
      */
     public Optional<Output<Boolean>> isDeleted() {
@@ -81,7 +85,9 @@ public final class AiGatewayMcpServiceConfigSourceConnectionArgs extends com.pul
         }
 
         /**
-         * @param isDeleted (boolean)
+         * @param isDeleted (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+         * the reference so callers can identify the broken dependency; tool
+         * invocation fails until the source connection is updated
          * 
          * @return builder
          * 
@@ -92,7 +98,9 @@ public final class AiGatewayMcpServiceConfigSourceConnectionArgs extends com.pul
         }
 
         /**
-         * @param isDeleted (boolean)
+         * @param isDeleted (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+         * the reference so callers can identify the broken dependency; tool
+         * invocation fails until the source connection is updated
          * 
          * @return builder
          * 

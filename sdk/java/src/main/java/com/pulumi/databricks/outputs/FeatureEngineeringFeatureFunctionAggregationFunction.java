@@ -43,10 +43,6 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunction {
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop stddevPop;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp stddevSamp;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionSum sum;
-    /**
-     * @return The time window over which the aggregation is computed
-     * 
-     */
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow timeWindow;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionVarPop varPop;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp varSamp;
@@ -97,10 +93,6 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunction {
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionSum> sum() {
         return Optional.ofNullable(this.sum);
     }
-    /**
-     * @return The time window over which the aggregation is computed
-     * 
-     */
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow> timeWindow() {
         return Optional.ofNullable(this.timeWindow);
     }

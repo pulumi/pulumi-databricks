@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppGitRepositoryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// When `True`, the app is automatically redeployed on push events to the branch configured in `GitSource`. This requires `GitSource` to specify a `Branch`; a `Tag` or `Commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        /// </summary>
         [Input("autoDeploy")]
         public Input<bool>? AutoDeploy { get; set; }
 
+        /// <summary>
+        /// ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+        /// </summary>
         [Input("callerCredentialId")]
         public Input<int>? CallerCredentialId { get; set; }
 

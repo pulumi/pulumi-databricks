@@ -20,9 +20,15 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
         /// The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
-        /// The schema for this source must match exactly that of the key and payload schemas specified for this Stream
+        /// The schema for this source must match exactly that of the key and payload schemas specified for this Stream,
+        /// except that it may omit any columns listed in excluded_columns
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceResult? BackfillSource;
+        /// <summary>
+        /// (string) - The ID of the budget policy used to attribute the serverless compute cost of this stream's
+        /// managed ingestion. If not specified, a default budget policy may be applied
+        /// </summary>
+        public readonly string? BudgetPolicyId;
         /// <summary>
         /// (list of string) - Column paths used to identify duplicate rows during ingestion; only one row per
         /// distinct combination of these values is kept. Use dot notation for nested fields
@@ -44,6 +50,16 @@ namespace Pulumi.Databricks.Outputs
         /// into the ingestion Delta table
         /// </summary>
         public readonly string IngestionPipelineId;
+        /// <summary>
+        /// (object) - Custom tags to associate with this stream's managed ingestion. They are applied to the
+        /// ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+        /// compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+        /// These tags apply only to the managed ingestion compute; they are not applied to the Stream
+        /// entity itself, and are distinct from any Unity Catalog tags on the Stream.
+        /// A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+        /// cluster tags
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetFeatureEngineeringKafkaConfigIngestionConfigResult(
@@ -51,20 +67,26 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceResult? backfillSource,
 
+            string? budgetPolicyId,
+
             ImmutableArray<string> deduplicationColumns,
 
             Outputs.GetFeatureEngineeringKafkaConfigIngestionConfigIngestionDestinationResult ingestionDestination,
 
             int ingestionJobId,
 
-            string ingestionPipelineId)
+            string ingestionPipelineId,
+
+            ImmutableDictionary<string, string>? tags)
         {
             BackfillJobId = backfillJobId;
             BackfillSource = backfillSource;
+            BudgetPolicyId = budgetPolicyId;
             DeduplicationColumns = deduplicationColumns;
             IngestionDestination = ingestionDestination;
             IngestionJobId = ingestionJobId;
             IngestionPipelineId = ingestionPipelineId;
+            Tags = tags;
         }
     }
 }

@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +21,11 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
      */
     private @Nullable String dataframeSchema;
     /**
+     * @return (list of string, deprecated)
+     * 
+     */
+    private @Nullable List<String> entityColumns;
+    /**
      * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      * 
      */
@@ -29,6 +35,11 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
      * 
      */
     private String fullName;
+    /**
+     * @return (string, deprecated)
+     * 
+     */
+    private @Nullable String timeseriesColumn;
     /**
      * @return (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
@@ -48,6 +59,13 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
         return Optional.ofNullable(this.dataframeSchema);
     }
     /**
+     * @return (list of string, deprecated)
+     * 
+     */
+    public List<String> entityColumns() {
+        return this.entityColumns == null ? List.of() : this.entityColumns;
+    }
+    /**
      * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      * 
      */
@@ -60,6 +78,13 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
      */
     public String fullName() {
         return this.fullName;
+    }
+    /**
+     * @return (string, deprecated)
+     * 
+     */
+    public Optional<String> timeseriesColumn() {
+        return Optional.ofNullable(this.timeseriesColumn);
     }
     /**
      * @return (string) - A single SQL SELECT expression applied after filter_condition.
@@ -81,15 +106,19 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dataframeSchema;
+        private @Nullable List<String> entityColumns;
         private @Nullable String filterCondition;
         private String fullName;
+        private @Nullable String timeseriesColumn;
         private @Nullable String transformationSql;
         public Builder() {}
         public Builder(GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataframeSchema = defaults.dataframeSchema;
+    	      this.entityColumns = defaults.entityColumns;
     	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
+    	      this.timeseriesColumn = defaults.timeseriesColumn;
     	      this.transformationSql = defaults.transformationSql;
         }
 
@@ -98,6 +127,15 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
 
             this.dataframeSchema = dataframeSchema;
             return this;
+        }
+        @CustomType.Setter
+        public Builder entityColumns(@Nullable List<String> entityColumns) {
+
+            this.entityColumns = entityColumns;
+            return this;
+        }
+        public Builder entityColumns(String... entityColumns) {
+            return entityColumns(List.of(entityColumns));
         }
         @CustomType.Setter
         public Builder filterCondition(@Nullable String filterCondition) {
@@ -114,6 +152,12 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
             return this;
         }
         @CustomType.Setter
+        public Builder timeseriesColumn(@Nullable String timeseriesColumn) {
+
+            this.timeseriesColumn = timeseriesColumn;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transformationSql(@Nullable String transformationSql) {
 
             this.transformationSql = transformationSql;
@@ -122,8 +166,10 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
         public GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource build() {
             final var _resultValue = new GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource();
             _resultValue.dataframeSchema = dataframeSchema;
+            _resultValue.entityColumns = entityColumns;
             _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
+            _resultValue.timeseriesColumn = timeseriesColumn;
             _resultValue.transformationSql = transformationSql;
             return _resultValue;
         }

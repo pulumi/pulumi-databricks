@@ -28,7 +28,7 @@ class GetAiGatewayModelProviderServiceResult:
     """
     A collection of values returned by getAiGatewayModelProviderService.
     """
-    def __init__(__self__, comment=None, config=None, create_time=None, created_by=None, effective_owner=None, etag=None, metastore_id=None, name=None, owner=None, provider_config=None, update_time=None, updated_by=None):
+    def __init__(__self__, comment=None, config=None, create_time=None, created_by=None, effective_owner=None, etag=None, metastore_id=None, name=None, provider_config=None, update_time=None, updated_by=None):
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
@@ -53,9 +53,6 @@ class GetAiGatewayModelProviderServiceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if owner and not isinstance(owner, str):
-            raise TypeError("Expected argument 'owner' to be a str")
-        pulumi.set(__self__, "owner", owner)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -78,10 +75,9 @@ class GetAiGatewayModelProviderServiceResult:
     @pulumi.getter
     def config(self) -> 'outputs.GetAiGatewayModelProviderServiceConfigResult':
         """
-        (ModelProviderServiceConfig) - Behavioral configuration: provider connection, model catalog, and
-        passthrough policy. See `ModelProviderServiceConfig` for the per-field
-        contract. Required on CreateModelProviderService; on Update it is required
-        only when `config` (or a `config.*` subpath) appears in `update_mask`
+        (ModelProviderServiceConfig) - Provider authentication, exposed models, request-forwarding controls, rate
+        limits, and payload logging. Required on Create. On Update, it is required
+        only when `config` or one of its subpaths appears in `update_mask`
         """
         return pulumi.get(self, "config")
 
@@ -89,7 +85,7 @@ class GetAiGatewayModelProviderServiceResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        (string) - When the provider service was created
+        (string) - Time the provider service was created
         """
         return pulumi.get(self, "create_time")
 
@@ -105,8 +101,7 @@ class GetAiGatewayModelProviderServiceResult:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> _builtins.str:
         """
-        (string) - The resolved owner of the model provider service. Falls back to the
-        caller's identity when `owner` is not explicitly set on creation
+        (string) - Owner of the model provider service
         """
         return pulumi.get(self, "effective_owner")
 
@@ -114,11 +109,10 @@ class GetAiGatewayModelProviderServiceResult:
     @pulumi.getter
     def etag(self) -> _builtins.str:
         """
-        (string) - Optimistic concurrency control token. Server-generated from the
-        entity's state and returned on every read. To use it as an if-match
-        precondition on a mutation, echo the last-read value back via the dedicated
-        `etag` field on the Update / Delete request; the server rejects the mutation
-        if the stored etag differs
+        (string) - Optimistic concurrency token returned on every read. To make an Update or
+        Delete conditional, pass the last-read value in that request's `etag`
+        field. In REST responses, this value is a base64 string; URL-encode it when
+        setting the `etag` query parameter
         """
         return pulumi.get(self, "etag")
 
@@ -134,21 +128,12 @@ class GetAiGatewayModelProviderServiceResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - Resource name of the bound UC service credential, in the AIP-122 form
-        `credentials/{name}` (a metastore-level single-part credential name). On
-        create the caller supplies the name here. On read it reflects the
-        credential's current name at read time
+        (string) - Resource name of the bound Unity Catalog service credential, in the form
+        `credentials/{name}`. Supply this field when creating the service or
+        rebinding its credential. On read, it reflects the credential's current
+        name
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def owner(self) -> _builtins.str:
-        """
-        (string) - The owner of the model provider service. Write-only; read owner via
-        effective_owner
-        """
-        return pulumi.get(self, "owner")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -159,7 +144,7 @@ class GetAiGatewayModelProviderServiceResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         """
-        (string) - When the provider service was last modified
+        (string) - Time the provider service was last modified
         """
         return pulumi.get(self, "update_time")
 
@@ -186,7 +171,6 @@ class AwaitableGetAiGatewayModelProviderServiceResult(GetAiGatewayModelProviderS
             etag=self.etag,
             metastore_id=self.metastore_id,
             name=self.name,
-            owner=self.owner,
             provider_config=self.provider_config,
             update_time=self.update_time,
             updated_by=self.updated_by)
@@ -196,9 +180,23 @@ def get_ai_gateway_model_provider_service(name: Optional[_builtins.str] = None,
                                           provider_config: Optional[Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict']] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiGatewayModelProviderServiceResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+    Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+
+    ## Example Usage
+
+    The following example retrieves the model provider service named `custom_provider` from the `main.default` schema:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example = databricks.get_ai_gateway_model_provider_service(name="model-provider-services/main.default.custom_provider")
+    pulumi.export("providerType", example.config.provider_type)
+    ```
 
 
     :param _builtins.str name: Resource name of the provider service.
@@ -223,7 +221,6 @@ def get_ai_gateway_model_provider_service(name: Optional[_builtins.str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         metastore_id=pulumi.get(__ret__, 'metastore_id'),
         name=pulumi.get(__ret__, 'name'),
-        owner=pulumi.get(__ret__, 'owner'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         update_time=pulumi.get(__ret__, 'update_time'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
@@ -231,9 +228,23 @@ def get_ai_gateway_model_provider_service_output(name: pulumi.Input[Optional[_bu
                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayModelProviderServiceResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+    Retrieves a Unity Catalog model provider service by its full resource name. Secret values are not returned.
+
+    ## Example Usage
+
+    The following example retrieves the model provider service named `custom_provider` from the `main.default` schema:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example = databricks.get_ai_gateway_model_provider_service(name="model-provider-services/main.default.custom_provider")
+    pulumi.export("providerType", example.config.provider_type)
+    ```
 
 
     :param _builtins.str name: Resource name of the provider service.
@@ -257,7 +268,6 @@ def get_ai_gateway_model_provider_service_output(name: pulumi.Input[Optional[_bu
         etag=pulumi.get(__response__, 'etag'),
         metastore_id=pulumi.get(__response__, 'metastore_id'),
         name=pulumi.get(__response__, 'name'),
-        owner=pulumi.get(__response__, 'owner'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         update_time=pulumi.get(__response__, 'update_time'),
         updated_by=pulumi.get(__response__, 'updated_by')))

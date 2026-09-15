@@ -34,20 +34,18 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
     }
 
     /**
-     * Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      * 
      */
     @Import(name="config")
     private @Nullable Output<AiGatewayModelProviderServiceConfigArgs> config;
 
     /**
-     * @return Behavioral configuration: provider connection, model catalog, and
-     * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-     * contract. Required on CreateModelProviderService; on Update it is required
-     * only when `config` (or a `config.*` subpath) appears in `updateMask`
+     * @return Provider authentication, exposed models, request-forwarding controls, rate
+     * limits, and payload logging. Required on Create. On Update, it is required
+     * only when `config` or one of its subpaths appears in `updateMask`
      * 
      */
     public Optional<Output<AiGatewayModelProviderServiceConfigArgs>> config() {
@@ -67,23 +65,6 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
      */
     public Output<String> modelProviderServiceId() {
         return this.modelProviderServiceId;
-    }
-
-    /**
-     * The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     * 
-     */
-    @Import(name="owner")
-    private @Nullable Output<String> owner;
-
-    /**
-     * @return The owner of the model provider service. Write-only; read owner via
-     * effective_owner
-     * 
-     */
-    public Optional<Output<String>> owner() {
-        return Optional.ofNullable(this.owner);
     }
 
     /**
@@ -126,7 +107,6 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         this.comment = $.comment;
         this.config = $.config;
         this.modelProviderServiceId = $.modelProviderServiceId;
-        this.owner = $.owner;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
     }
@@ -171,10 +151,9 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param config Behavioral configuration: provider connection, model catalog, and
-         * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-         * contract. Required on CreateModelProviderService; on Update it is required
-         * only when `config` (or a `config.*` subpath) appears in `updateMask`
+         * @param config Provider authentication, exposed models, request-forwarding controls, rate
+         * limits, and payload logging. Required on Create. On Update, it is required
+         * only when `config` or one of its subpaths appears in `updateMask`
          * 
          * @return builder
          * 
@@ -185,10 +164,9 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param config Behavioral configuration: provider connection, model catalog, and
-         * passthrough policy. See `ModelProviderServiceConfig` for the per-field
-         * contract. Required on CreateModelProviderService; on Update it is required
-         * only when `config` (or a `config.*` subpath) appears in `updateMask`
+         * @param config Provider authentication, exposed models, request-forwarding controls, rate
+         * limits, and payload logging. Required on Create. On Update, it is required
+         * only when `config` or one of its subpaths appears in `updateMask`
          * 
          * @return builder
          * 
@@ -216,29 +194,6 @@ public final class AiGatewayModelProviderServiceArgs extends com.pulumi.resource
          */
         public Builder modelProviderServiceId(String modelProviderServiceId) {
             return modelProviderServiceId(Output.of(modelProviderServiceId));
-        }
-
-        /**
-         * @param owner The owner of the model provider service. Write-only; read owner via
-         * effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(@Nullable Output<String> owner) {
-            $.owner = owner;
-            return this;
-        }
-
-        /**
-         * @param owner The owner of the model provider service. Write-only; read owner via
-         * effective_owner
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(String owner) {
-            return owner(Output.of(owner));
         }
 
         /**

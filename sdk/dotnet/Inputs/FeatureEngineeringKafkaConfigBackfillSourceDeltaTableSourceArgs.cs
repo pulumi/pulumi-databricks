@@ -20,6 +20,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataframeSchema")]
         public Input<string>? DataframeSchema { get; set; }
 
+        [Input("entityColumns")]
+        private InputList<string>? _entityColumns;
+        public InputList<string> EntityColumns
+        {
+            get => _entityColumns ?? (_entityColumns = new InputList<string>());
+            set => _entityColumns = value;
+        }
+
         /// <summary>
         /// Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         /// </summary>
@@ -31,6 +39,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
+
+        [Input("timeseriesColumn")]
+        public Input<string>? TimeseriesColumn { get; set; }
 
         /// <summary>
         /// A single SQL SELECT expression applied after filter_condition.

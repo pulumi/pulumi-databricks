@@ -414,6 +414,23 @@ class PostgresBranch(pulumi.CustomResource):
             })
         ```
 
+        ### Branch from a Snapshot
+
+        Create a branch whose data comes from an existing snapshot instead of a source branch. The snapshot must be `AVAILABLE` and belong to the same project. `source_snapshot` is immutable and mutually exclusive with `source_branch`. The restored snapshot is reported back in `status.source_snapshot`.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        from_snapshot = databricks.PostgresBranch("from_snapshot",
+            branch_id="restored-branch",
+            parent=this["name"],
+            spec={
+                "source_snapshot": "projects/my-project/snapshots/my-snapshot",
+                "no_expiry": True,
+            })
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -508,6 +525,23 @@ class PostgresBranch(pulumi.CustomResource):
             parent=this["name"],
             spec={
                 "ttl": "604800s",
+            })
+        ```
+
+        ### Branch from a Snapshot
+
+        Create a branch whose data comes from an existing snapshot instead of a source branch. The snapshot must be `AVAILABLE` and belong to the same project. `source_snapshot` is immutable and mutually exclusive with `source_branch`. The restored snapshot is reported back in `status.source_snapshot`.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        from_snapshot = databricks.PostgresBranch("from_snapshot",
+            branch_id="restored-branch",
+            parent=this["name"],
+            spec={
+                "source_snapshot": "projects/my-project/snapshots/my-snapshot",
+                "no_expiry": True,
             })
         ```
 

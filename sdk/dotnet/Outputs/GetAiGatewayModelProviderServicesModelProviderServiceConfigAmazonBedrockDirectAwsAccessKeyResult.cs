@@ -20,9 +20,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? AccessKeyId;
         /// <summary>
-        /// (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `AccessKeyId`. Required on Create when
-        /// using access-key auth. Supplied as inline plaintext via
-        /// `ProviderSecret.plaintext`
+        /// (ModelProviderServiceConfigProviderSecret) - AWS secret access key paired with `AccessKeyId`. Required when creating
+        /// a service with access-key authentication. Supply the value in
+        /// `secret_access_key.plaintext`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyResult? SecretAccessKey;
 

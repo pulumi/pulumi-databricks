@@ -21,21 +21,36 @@ __all__ = ['PostgresSnapshotScheduleArgs', 'PostgresSnapshotSchedule']
 @pulumi.input_type
 class PostgresSnapshotScheduleArgs:
     def __init__(__self__, *,
+                 parent: pulumi.Input[_builtins.str],
                  provider_config: pulumi.Input[Optional['PostgresSnapshotScheduleProviderConfigArgs']] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input['PostgresSnapshotScheduleScheduleArgs']]]] = None):
         """
         The set of arguments for constructing a PostgresSnapshotSchedule resource.
 
+        :param pulumi.Input[_builtins.str] parent: The resource name of the parent
         :param pulumi.Input['PostgresSnapshotScheduleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input['PostgresSnapshotScheduleScheduleArgs']]] schedules: The cadences at which automatic snapshots are taken. Update replaces the
                whole set; an empty set disables automatic snapshots. Order is not
                significant. When several cadences fire together, one snapshot is taken,
                retained for the longest of their retentions
         """
+        pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if schedules is not None:
             pulumi.set(__self__, "schedules", schedules)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the parent
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -69,6 +84,7 @@ class PostgresSnapshotScheduleArgs:
 class _PostgresSnapshotScheduleState:
     def __init__(__self__, *,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['PostgresSnapshotScheduleProviderConfigArgs']] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input['PostgresSnapshotScheduleScheduleArgs']]]] = None):
         """
@@ -76,6 +92,7 @@ class _PostgresSnapshotScheduleState:
 
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the branch's snapshot schedule.
                Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
+        :param pulumi.Input[_builtins.str] parent: The resource name of the parent
         :param pulumi.Input['PostgresSnapshotScheduleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input['PostgresSnapshotScheduleScheduleArgs']]] schedules: The cadences at which automatic snapshots are taken. Update replaces the
                whole set; an empty set disables automatic snapshots. Order is not
@@ -84,6 +101,8 @@ class _PostgresSnapshotScheduleState:
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if schedules is not None:
@@ -101,6 +120,18 @@ class _PostgresSnapshotScheduleState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the parent
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -136,6 +167,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]]] = None,
                  __props__=None):
@@ -147,6 +179,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] parent: The resource name of the parent
         :param pulumi.Input[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]] schedules: The cadences at which automatic snapshots are taken. Update replaces the
                whole set; an empty set disables automatic snapshots. Order is not
@@ -157,7 +190,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[PostgresSnapshotScheduleArgs] = None,
+                 args: PostgresSnapshotScheduleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -180,6 +213,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]]] = None,
                  __props__=None):
@@ -191,6 +225,9 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PostgresSnapshotScheduleArgs.__new__(PostgresSnapshotScheduleArgs)
 
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["schedules"] = schedules
             __props__.__dict__["name"] = None
@@ -205,6 +242,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']]] = None,
             schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]]] = None) -> 'PostgresSnapshotSchedule':
         """
@@ -216,6 +254,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the branch's snapshot schedule.
                Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
+        :param pulumi.Input[_builtins.str] parent: The resource name of the parent
         :param pulumi.Input[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]] schedules: The cadences at which automatic snapshots are taken. Update replaces the
                whole set; an empty set disables automatic snapshots. Order is not
@@ -227,6 +266,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
         __props__ = _PostgresSnapshotScheduleState.__new__(_PostgresSnapshotScheduleState)
 
         __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schedules"] = schedules
         return PostgresSnapshotSchedule(resource_name, opts=opts, __props__=__props__)
@@ -239,6 +279,14 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
         Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource name of the parent
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")

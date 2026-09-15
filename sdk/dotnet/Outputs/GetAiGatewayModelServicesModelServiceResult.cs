@@ -18,14 +18,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Comment;
         /// <summary>
-        /// (ModelServiceConfig) - Operational configuration: destinations, routing, rate limits, inference
-        /// table. Required on CreateModelService; on UpdateModelService it is
-        /// required only when `Config` (or a `config.*` subpath) appears in
-        /// `UpdateMask`
+        /// (ModelServiceConfig) - Destinations, routing, rate limits, and payload logging configuration.
+        /// Required on Create. On Update, provide this field when `UpdateMask`
+        /// contains `Config` or one of its subpaths
         /// </summary>
         public readonly Outputs.GetAiGatewayModelServicesModelServiceConfigResult Config;
         /// <summary>
-        /// (string) - When the model service was created
+        /// (string) - Time the model service was created
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -33,16 +32,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-        /// when `Owner` is not explicitly set on creation
+        /// (string) - Owner of the model service
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
-        /// (string) - Optimistic concurrency control token. Server-generated from the
-        /// entity's state and returned on every read. To use it as an if-match
-        /// precondition on a mutation, echo the last-read value back via the dedicated
-        /// `Etag` field on the Update / Delete request; the server rejects the mutation
-        /// if the stored etag differs
+        /// (string) - Optimistic concurrency token returned on every read. To make an Update or
+        /// Delete conditional, pass the last-read value in that request's `Etag`
+        /// field. In REST responses, this value is a base64 string; URL-encode it when
+        /// setting the `Etag` query parameter
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -54,21 +51,18 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The owner of the model service. Write-only; read owner via effective_owner
-        /// </summary>
-        public readonly string Owner;
-        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetAiGatewayModelServicesModelServiceProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-        /// "completions"). Derived from the destinations' backing models / providers
+        /// (list of string) - API types supported across this service's destinations, such as
+        /// `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+        /// `mlflow/v1/chat/completions`. Derived from the backing models and providers
         /// at read time
         /// </summary>
         public readonly ImmutableArray<string> SupportedApiTypes;
         /// <summary>
-        /// (string) - When the model service was last modified
+        /// (string) - Time the model service was last modified
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
@@ -94,8 +88,6 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
-            string owner,
-
             Outputs.GetAiGatewayModelServicesModelServiceProviderConfigResult? providerConfig,
 
             ImmutableArray<string> supportedApiTypes,
@@ -112,7 +104,6 @@ namespace Pulumi.Databricks.Outputs
             Etag = etag;
             MetastoreId = metastoreId;
             Name = name;
-            Owner = owner;
             ProviderConfig = providerConfig;
             SupportedApiTypes = supportedApiTypes;
             UpdateTime = updateTime;

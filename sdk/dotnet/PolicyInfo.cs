@@ -147,6 +147,14 @@ namespace Pulumi.Databricks
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
+        /// Options for deny policies. Valid only if `PolicyType` is `POLICY_TYPE_DENY`.
+        /// Required on create and optional on update. When specified on update,
+        /// the new options will replace the existing options as a whole
+        /// </summary>
+        [Output("deny")]
+        public Output<Outputs.PolicyInfoDeny?> Deny { get; private set; } = null!;
+
+        /// <summary>
         /// Optional list of user or group names that should be excluded from the policy
         /// </summary>
         [Output("exceptPrincipals")]
@@ -198,7 +206,7 @@ namespace Pulumi.Databricks
         public Output<string?> OnSecurableType { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
@@ -302,6 +310,14 @@ namespace Pulumi.Databricks
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Options for deny policies. Valid only if `PolicyType` is `POLICY_TYPE_DENY`.
+        /// Required on create and optional on update. When specified on update,
+        /// the new options will replace the existing options as a whole
+        /// </summary>
+        [Input("deny")]
+        public Input<Inputs.PolicyInfoDenyArgs>? Deny { get; set; }
+
         [Input("exceptPrincipals")]
         private InputList<string>? _exceptPrincipals;
 
@@ -366,7 +382,7 @@ namespace Pulumi.Databricks
         public Input<string>? OnSecurableType { get; set; }
 
         /// <summary>
-        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         [Input("policyType", required: true)]
         public Input<string> PolicyType { get; set; } = null!;
@@ -438,6 +454,14 @@ namespace Pulumi.Databricks
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Options for deny policies. Valid only if `PolicyType` is `POLICY_TYPE_DENY`.
+        /// Required on create and optional on update. When specified on update,
+        /// the new options will replace the existing options as a whole
+        /// </summary>
+        [Input("deny")]
+        public Input<Inputs.PolicyInfoDenyGetArgs>? Deny { get; set; }
+
         [Input("exceptPrincipals")]
         private InputList<string>? _exceptPrincipals;
 
@@ -502,7 +526,7 @@ namespace Pulumi.Databricks
         public Input<string>? OnSecurableType { get; set; }
 
         /// <summary>
-        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        /// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }

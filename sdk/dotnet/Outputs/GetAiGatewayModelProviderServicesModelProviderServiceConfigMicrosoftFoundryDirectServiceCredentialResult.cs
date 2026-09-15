@@ -14,10 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectServiceCredentialResult
     {
         /// <summary>
-        /// (string) - Resource name of the bound UC service credential, in the AIP-122 form
-        /// `credentials/{name}` (a metastore-level single-part credential name). On
-        /// create the caller supplies the name here. On read it reflects the
-        /// credential's current name at read time
+        /// (string) - Resource name of the bound Unity Catalog service credential, in the form
+        /// `credentials/{name}`. Supply this field when creating the service or
+        /// rebinding its credential. On read, it reflects the credential's current
+        /// name
         /// </summary>
         public readonly string Name;
 

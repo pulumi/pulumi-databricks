@@ -25,7 +25,6 @@ class AiGatewayModelServiceArgs:
                  parent: pulumi.Input[_builtins.str],
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['AiGatewayModelServiceConfigArgs']] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AiGatewayModelServiceProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a AiGatewayModelService resource.
@@ -35,11 +34,9 @@ class AiGatewayModelServiceArgs:
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input['AiGatewayModelServiceConfigArgs'] config: Operational configuration: destinations, routing, rate limits, inference
-               table. Required on CreateModelService; on UpdateModelService it is
-               required only when `config` (or a `config.*` subpath) appears in
-               `update_mask`
-        :param pulumi.Input[_builtins.str] owner: The owner of the model service. Write-only; read owner via effective_owner
+        :param pulumi.Input['AiGatewayModelServiceConfigArgs'] config: Destinations, routing, rate limits, and payload logging configuration.
+               Required on Create. On Update, provide this field when `update_mask`
+               contains `config` or one of its subpaths
         :param pulumi.Input['AiGatewayModelServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "model_service_id", model_service_id)
@@ -48,8 +45,6 @@ class AiGatewayModelServiceArgs:
             pulumi.set(__self__, "comment", comment)
         if config is not None:
             pulumi.set(__self__, "config", config)
-        if owner is not None:
-            pulumi.set(__self__, "owner", owner)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
 
@@ -95,28 +90,15 @@ class AiGatewayModelServiceArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigArgs']]:
         """
-        Operational configuration: destinations, routing, rate limits, inference
-        table. Required on CreateModelService; on UpdateModelService it is
-        required only when `config` (or a `config.*` subpath) appears in
-        `update_mask`
+        Destinations, routing, rate limits, and payload logging configuration.
+        Required on Create. On Update, provide this field when `update_mask`
+        contains `config` or one of its subpaths
         """
         return pulumi.get(self, "config")
 
     @config.setter
     def config(self, value: pulumi.Input[Optional['AiGatewayModelServiceConfigArgs']]):
         pulumi.set(self, "config", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The owner of the model service. Write-only; read owner via effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @owner.setter
-    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -143,7 +125,6 @@ class _AiGatewayModelServiceState:
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  model_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['AiGatewayModelServiceProviderConfigArgs']] = None,
                  supported_api_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -153,19 +134,16 @@ class _AiGatewayModelServiceState:
         Input properties used for looking up and filtering AiGatewayModelService resources.
 
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input['AiGatewayModelServiceConfigArgs'] config: Operational configuration: destinations, routing, rate limits, inference
-               table. Required on CreateModelService; on UpdateModelService it is
-               required only when `config` (or a `config.*` subpath) appears in
-               `update_mask`
-        :param pulumi.Input[_builtins.str] create_time: (string) - When the model service was created
+        :param pulumi.Input['AiGatewayModelServiceConfigArgs'] config: Destinations, routing, rate limits, and payload logging configuration.
+               Required on Create. On Update, provide this field when `update_mask`
+               contains `config` or one of its subpaths
+        :param pulumi.Input[_builtins.str] create_time: (string) - Time the model service was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-               when `owner` is not explicitly set on creation
-        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency control token. Server-generated from the
-               entity's state and returned on every read. To use it as an if-match
-               precondition on a mutation, echo the last-read value back via the dedicated
-               `etag` field on the Update / Delete request; the server rejects the mutation
-               if the stored etag differs
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the model service
+        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
+               Delete conditional, pass the last-read value in that request's `etag`
+               field. In REST responses, this value is a base64 string; URL-encode it when
+               setting the `etag` query parameter
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the model service
         :param pulumi.Input[_builtins.str] model_service_id: Name for the model service, e.g. "my_model_service"
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the model service.
@@ -173,15 +151,15 @@ class _AiGatewayModelServiceState:
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `model_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.str] owner: The owner of the model service. Write-only; read owner via effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input['AiGatewayModelServiceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_api_types: (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-               "completions"). Derived from the destinations' backing models / providers
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_api_types: (list of string) - API types supported across this service's destinations, such as
+               `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+               `mlflow/v1/chat/completions`. Derived from the backing models and providers
                at read time
-        :param pulumi.Input[_builtins.str] update_time: (string) - When the model service was last modified
+        :param pulumi.Input[_builtins.str] update_time: (string) - Time the model service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """
         if comment is not None:
@@ -202,8 +180,6 @@ class _AiGatewayModelServiceState:
             pulumi.set(__self__, "model_service_id", model_service_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if owner is not None:
-            pulumi.set(__self__, "owner", owner)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
@@ -231,10 +207,9 @@ class _AiGatewayModelServiceState:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigArgs']]:
         """
-        Operational configuration: destinations, routing, rate limits, inference
-        table. Required on CreateModelService; on UpdateModelService it is
-        required only when `config` (or a `config.*` subpath) appears in
-        `update_mask`
+        Destinations, routing, rate limits, and payload logging configuration.
+        Required on Create. On Update, provide this field when `update_mask`
+        contains `config` or one of its subpaths
         """
         return pulumi.get(self, "config")
 
@@ -246,7 +221,7 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - When the model service was created
+        (string) - Time the model service was created
         """
         return pulumi.get(self, "create_time")
 
@@ -270,8 +245,7 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-        when `owner` is not explicitly set on creation
+        (string) - Owner of the model service
         """
         return pulumi.get(self, "effective_owner")
 
@@ -283,11 +257,10 @@ class _AiGatewayModelServiceState:
     @pulumi.getter
     def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Optimistic concurrency control token. Server-generated from the
-        entity's state and returned on every read. To use it as an if-match
-        precondition on a mutation, echo the last-read value back via the dedicated
-        `etag` field on the Update / Delete request; the server rejects the mutation
-        if the stored etag differs
+        (string) - Optimistic concurrency token returned on every read. To make an Update or
+        Delete conditional, pass the last-read value in that request's `etag`
+        field. In REST responses, this value is a base64 string; URL-encode it when
+        setting the `etag` query parameter
         """
         return pulumi.get(self, "etag")
 
@@ -337,18 +310,6 @@ class _AiGatewayModelServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The owner of the model service. Write-only; read owner via effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @owner.setter
-    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "owner", value)
-
-    @_builtins.property
-    @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the parent schema.
@@ -377,8 +338,9 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="supportedApiTypes")
     def supported_api_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-        "completions"). Derived from the destinations' backing models / providers
+        (list of string) - API types supported across this service's destinations, such as
+        `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+        `mlflow/v1/chat/completions`. Derived from the backing models and providers
         at read time
         """
         return pulumi.get(self, "supported_api_types")
@@ -391,7 +353,7 @@ class _AiGatewayModelServiceState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - When the model service was last modified
+        (string) - Time the model service was last modified
         """
         return pulumi.get(self, "update_time")
 
@@ -421,25 +383,52 @@ class AiGatewayModelService(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']]] = None,
                  model_service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+        Manages a Unity Catalog model service. A model service provides a stable endpoint that routes inference requests to one or more destinations, such as Databricks foundation models or external model provider services.
+
+        Model services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+
+        ## Example Usage
+
+        The following example creates a model service that sends all traffic to a Databricks foundation model:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example = databricks.AiGatewayModelService("example",
+            parent="schemas/main.default",
+            model_service_id="customer_support",
+            comment="Routes customer support requests",
+            config={
+                "routing": {
+                    "destinations": [{
+                        "name": "primary",
+                        "destination_type": "DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL",
+                        "pay_per_token_config": {
+                            "model": "models/system.ai.databricks-gpt-5",
+                        },
+                        "traffic_percentage": 100,
+                    }],
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']] config: Operational configuration: destinations, routing, rate limits, inference
-               table. Required on CreateModelService; on UpdateModelService it is
-               required only when `config` (or a `config.*` subpath) appears in
-               `update_mask`
+        :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']] config: Destinations, routing, rate limits, and payload logging configuration.
+               Required on Create. On Update, provide this field when `update_mask`
+               contains `config` or one of its subpaths
         :param pulumi.Input[_builtins.str] model_service_id: Name for the model service, e.g. "my_model_service"
-        :param pulumi.Input[_builtins.str] owner: The owner of the model service. Write-only; read owner via effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
@@ -452,9 +441,39 @@ class AiGatewayModelService(pulumi.CustomResource):
                  args: AiGatewayModelServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+
+        Manages a Unity Catalog model service. A model service provides a stable endpoint that routes inference requests to one or more destinations, such as Databricks foundation models or external model provider services.
+
+        Model services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+
+        ## Example Usage
+
+        The following example creates a model service that sends all traffic to a Databricks foundation model:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example = databricks.AiGatewayModelService("example",
+            parent="schemas/main.default",
+            model_service_id="customer_support",
+            comment="Routes customer support requests",
+            config={
+                "routing": {
+                    "destinations": [{
+                        "name": "primary",
+                        "destination_type": "DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL",
+                        "pay_per_token_config": {
+                            "model": "models/system.ai.databricks-gpt-5",
+                        },
+                        "traffic_percentage": 100,
+                    }],
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -475,7 +494,6 @@ class AiGatewayModelService(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']]] = None,
                  model_service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']]] = None,
                  __props__=None):
@@ -492,7 +510,6 @@ class AiGatewayModelService(pulumi.CustomResource):
             if model_service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'model_service_id'")
             __props__.__dict__["model_service_id"] = model_service_id
-            __props__.__dict__["owner"] = owner
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
@@ -525,7 +542,6 @@ class AiGatewayModelService(pulumi.CustomResource):
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             model_service_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            owner: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']]] = None,
             supported_api_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -539,19 +555,16 @@ class AiGatewayModelService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']] config: Operational configuration: destinations, routing, rate limits, inference
-               table. Required on CreateModelService; on UpdateModelService it is
-               required only when `config` (or a `config.*` subpath) appears in
-               `update_mask`
-        :param pulumi.Input[_builtins.str] create_time: (string) - When the model service was created
+        :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']] config: Destinations, routing, rate limits, and payload logging configuration.
+               Required on Create. On Update, provide this field when `update_mask`
+               contains `config` or one of its subpaths
+        :param pulumi.Input[_builtins.str] create_time: (string) - Time the model service was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Creator identity
-        :param pulumi.Input[_builtins.str] effective_owner: (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-               when `owner` is not explicitly set on creation
-        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency control token. Server-generated from the
-               entity's state and returned on every read. To use it as an if-match
-               precondition on a mutation, echo the last-read value back via the dedicated
-               `etag` field on the Update / Delete request; the server rejects the mutation
-               if the stored etag differs
+        :param pulumi.Input[_builtins.str] effective_owner: (string) - Owner of the model service
+        :param pulumi.Input[_builtins.str] etag: (string) - Optimistic concurrency token returned on every read. To make an Update or
+               Delete conditional, pass the last-read value in that request's `etag`
+               field. In REST responses, this value is a base64 string; URL-encode it when
+               setting the `etag` query parameter
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Metastore hosting the model service
         :param pulumi.Input[_builtins.str] model_service_id: Name for the model service, e.g. "my_model_service"
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the model service.
@@ -559,15 +572,15 @@ class AiGatewayModelService(pulumi.CustomResource):
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `model_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.str] owner: The owner of the model service. Write-only; read owner via effective_owner
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
         :param pulumi.Input[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_api_types: (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-               "completions"). Derived from the destinations' backing models / providers
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_api_types: (list of string) - API types supported across this service's destinations, such as
+               `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+               `mlflow/v1/chat/completions`. Derived from the backing models and providers
                at read time
-        :param pulumi.Input[_builtins.str] update_time: (string) - When the model service was last modified
+        :param pulumi.Input[_builtins.str] update_time: (string) - Time the model service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -583,7 +596,6 @@ class AiGatewayModelService(pulumi.CustomResource):
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["model_service_id"] = model_service_id
         __props__.__dict__["name"] = name
-        __props__.__dict__["owner"] = owner
         __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["supported_api_types"] = supported_api_types
@@ -603,10 +615,9 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.AiGatewayModelServiceConfig']]:
         """
-        Operational configuration: destinations, routing, rate limits, inference
-        table. Required on CreateModelService; on UpdateModelService it is
-        required only when `config` (or a `config.*` subpath) appears in
-        `update_mask`
+        Destinations, routing, rate limits, and payload logging configuration.
+        Required on Create. On Update, provide this field when `update_mask`
+        contains `config` or one of its subpaths
         """
         return pulumi.get(self, "config")
 
@@ -614,7 +625,7 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - When the model service was created
+        (string) - Time the model service was created
         """
         return pulumi.get(self, "create_time")
 
@@ -630,8 +641,7 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resolved owner of the ModelService. Falls back to the caller's identity
-        when `owner` is not explicitly set on creation
+        (string) - Owner of the model service
         """
         return pulumi.get(self, "effective_owner")
 
@@ -639,11 +649,10 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Optimistic concurrency control token. Server-generated from the
-        entity's state and returned on every read. To use it as an if-match
-        precondition on a mutation, echo the last-read value back via the dedicated
-        `etag` field on the Update / Delete request; the server rejects the mutation
-        if the stored etag differs
+        (string) - Optimistic concurrency token returned on every read. To make an Update or
+        Delete conditional, pass the last-read value in that request's `etag`
+        field. In REST responses, this value is a base64 string; URL-encode it when
+        setting the `etag` query parameter
         """
         return pulumi.get(self, "etag")
 
@@ -677,14 +686,6 @@ class AiGatewayModelService(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> pulumi.Output[_builtins.str]:
-        """
-        The owner of the model service. Write-only; read owner via effective_owner
-        """
-        return pulumi.get(self, "owner")
-
-    @_builtins.property
-    @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
         Name of the parent schema.
@@ -705,8 +706,9 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="supportedApiTypes")
     def supported_api_types(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        (list of string) - Unified API types this endpoint supports (e.g. "chat", "embeddings",
-        "completions"). Derived from the destinations' backing models / providers
+        (list of string) - API types supported across this service's destinations, such as
+        `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+        `mlflow/v1/chat/completions`. Derived from the backing models and providers
         at read time
         """
         return pulumi.get(self, "supported_api_types")
@@ -715,7 +717,7 @@ class AiGatewayModelService(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - When the model service was last modified
+        (string) - Time the model service was last modified
         """
         return pulumi.get(self, "update_time")
 

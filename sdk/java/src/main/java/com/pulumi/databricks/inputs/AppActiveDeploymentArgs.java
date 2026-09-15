@@ -94,9 +94,17 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.envVars);
     }
 
+    /**
+     * The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     * 
+     */
     @Import(name="gitSource")
     private @Nullable Output<AppActiveDeploymentGitSourceArgs> gitSource;
 
+    /**
+     * @return The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+     * 
+     */
     public Optional<Output<AppActiveDeploymentGitSourceArgs>> gitSource() {
         return Optional.ofNullable(this.gitSource);
     }
@@ -117,14 +125,14 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     @Import(name="sourceCodePath")
     private @Nullable Output<String> sourceCodePath;
 
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     public Optional<Output<String>> sourceCodePath() {
@@ -305,11 +313,23 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
             return envVars(List.of(envVars));
         }
 
+        /**
+         * @param gitSource The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitSource(@Nullable Output<AppActiveDeploymentGitSourceArgs> gitSource) {
             $.gitSource = gitSource;
             return this;
         }
 
+        /**
+         * @param gitSource The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `gitRepository` (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitSource(AppActiveDeploymentGitSourceArgs gitSource) {
             return gitSource(Output.of(gitSource));
         }
@@ -336,7 +356,7 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * @param sourceCodePath Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
          * 
          * @return builder
          * 
@@ -347,7 +367,7 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * @param sourceCodePath Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
          * 
          * @return builder
          * 

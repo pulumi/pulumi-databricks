@@ -25,6 +25,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The resource name of the parent
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
@@ -47,7 +53,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public PostgresSnapshotSchedule(string name, PostgresSnapshotScheduleArgs? args = null, CustomResourceOptions? options = null)
+        public PostgresSnapshotSchedule(string name, PostgresSnapshotScheduleArgs args, CustomResourceOptions? options = null)
             : base("databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule", name, args ?? new PostgresSnapshotScheduleArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -86,6 +92,12 @@ namespace Pulumi.Databricks
     public sealed class PostgresSnapshotScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The resource name of the parent
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
@@ -120,6 +132,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The resource name of the parent
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// Configure the provider for management through account provider.

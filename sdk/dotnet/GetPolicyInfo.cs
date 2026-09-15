@@ -216,6 +216,12 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
+        /// (DenyOptions) - Options for deny policies. Valid only if `PolicyType` is `POLICY_TYPE_DENY`.
+        /// Required on create and optional on update. When specified on update,
+        /// the new options will replace the existing options as a whole
+        /// </summary>
+        public readonly Outputs.GetPolicyInfoDenyResult Deny;
+        /// <summary>
         /// (list of string) - Optional list of user or group names that should be excluded from the policy
         /// </summary>
         public readonly ImmutableArray<string> ExceptPrincipals;
@@ -257,7 +263,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string OnSecurableType;
         /// <summary>
-        /// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        /// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         public readonly string PolicyType;
         public readonly Outputs.GetPolicyInfoProviderConfigResult? ProviderConfig;
@@ -295,6 +301,8 @@ namespace Pulumi.Databricks
 
             string createdBy,
 
+            Outputs.GetPolicyInfoDenyResult deny,
+
             ImmutableArray<string> exceptPrincipals,
 
             string forSecurableType,
@@ -329,6 +337,7 @@ namespace Pulumi.Databricks
             Comment = comment;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
+            Deny = deny;
             ExceptPrincipals = exceptPrincipals;
             ForSecurableType = forSecurableType;
             Grant = grant;

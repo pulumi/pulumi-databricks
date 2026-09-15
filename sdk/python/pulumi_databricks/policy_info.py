@@ -26,6 +26,7 @@ class PolicyInfoArgs:
                  to_principals: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  column_mask: pulumi.Input[Optional['PolicyInfoColumnMaskArgs']] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny: pulumi.Input[Optional['PolicyInfoDenyArgs']] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  grant: pulumi.Input[Optional['PolicyInfoGrantArgs']] = None,
                  match_columns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]] = None,
@@ -40,13 +41,16 @@ class PolicyInfoArgs:
 
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] to_principals: List of user or group names that the policy applies to.
                Required on create and optional on update
         :param pulumi.Input['PolicyInfoColumnMaskArgs'] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[_builtins.str] comment: Optional description of the policy
+        :param pulumi.Input['PolicyInfoDenyArgs'] deny: Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input['PolicyInfoGrantArgs'] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
@@ -74,6 +78,8 @@ class PolicyInfoArgs:
             pulumi.set(__self__, "column_mask", column_mask)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if deny is not None:
+            pulumi.set(__self__, "deny", deny)
         if except_principals is not None:
             pulumi.set(__self__, "except_principals", except_principals)
         if grant is not None:
@@ -110,7 +116,7 @@ class PolicyInfoArgs:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 
@@ -156,6 +162,20 @@ class PolicyInfoArgs:
     @comment.setter
     def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deny(self) -> pulumi.Input[Optional['PolicyInfoDenyArgs']]:
+        """
+        Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "deny")
+
+    @deny.setter
+    def deny(self, value: pulumi.Input[Optional['PolicyInfoDenyArgs']]):
+        pulumi.set(self, "deny", value)
 
     @_builtins.property
     @pulumi.getter(name="exceptPrincipals")
@@ -283,6 +303,7 @@ class _PolicyInfoState:
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.int]] = None,
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny: pulumi.Input[Optional['PolicyInfoDenyArgs']] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  grant: pulumi.Input[Optional['PolicyInfoGrantArgs']] = None,
@@ -306,6 +327,9 @@ class _PolicyInfoState:
         :param pulumi.Input[_builtins.str] comment: Optional description of the policy
         :param pulumi.Input[_builtins.int] created_at: (integer) - Time at which the policy was created, in epoch milliseconds. Output only
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the policy. Output only
+        :param pulumi.Input['PolicyInfoDenyArgs'] deny: Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
@@ -322,7 +346,7 @@ class _PolicyInfoState:
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
                Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input['PolicyInfoProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PolicyInfoRowFilterArgs'] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
@@ -341,6 +365,8 @@ class _PolicyInfoState:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
+        if deny is not None:
+            pulumi.set(__self__, "deny", deny)
         if except_principals is not None:
             pulumi.set(__self__, "except_principals", except_principals)
         if for_securable_type is not None:
@@ -419,6 +445,20 @@ class _PolicyInfoState:
     @created_by.setter
     def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deny(self) -> pulumi.Input[Optional['PolicyInfoDenyArgs']]:
+        """
+        Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "deny")
+
+    @deny.setter
+    def deny(self, value: pulumi.Input[Optional['PolicyInfoDenyArgs']]):
+        pulumi.set(self, "deny", value)
 
     @_builtins.property
     @pulumi.getter(name="exceptPrincipals")
@@ -517,7 +557,7 @@ class _PolicyInfoState:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 
@@ -609,6 +649,7 @@ class PolicyInfo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']]] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
@@ -694,6 +735,9 @@ class PolicyInfo(pulumi.CustomResource):
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[_builtins.str] comment: Optional description of the policy
+        :param pulumi.Input[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']] deny: Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
@@ -710,7 +754,7 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
                Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
@@ -808,6 +852,7 @@ class PolicyInfo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']]] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
@@ -831,6 +876,7 @@ class PolicyInfo(pulumi.CustomResource):
 
             __props__.__dict__["column_mask"] = column_mask
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["deny"] = deny
             __props__.__dict__["except_principals"] = except_principals
             if for_securable_type is None and not opts.urn:
                 raise TypeError("Missing required property 'for_securable_type'")
@@ -867,6 +913,7 @@ class PolicyInfo(pulumi.CustomResource):
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']]] = None,
             except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
             grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
@@ -894,6 +941,9 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: Optional description of the policy
         :param pulumi.Input[_builtins.int] created_at: (integer) - Time at which the policy was created, in epoch milliseconds. Output only
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the policy. Output only
+        :param pulumi.Input[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']] deny: Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
@@ -910,7 +960,7 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
                Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
@@ -929,6 +979,7 @@ class PolicyInfo(pulumi.CustomResource):
         __props__.__dict__["comment"] = comment
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["deny"] = deny
         __props__.__dict__["except_principals"] = except_principals
         __props__.__dict__["for_securable_type"] = for_securable_type
         __props__.__dict__["grant"] = grant
@@ -978,6 +1029,16 @@ class PolicyInfo(pulumi.CustomResource):
         (string) - Username of the user who created the policy. Output only
         """
         return pulumi.get(self, "created_by")
+
+    @_builtins.property
+    @pulumi.getter
+    def deny(self) -> pulumi.Output[Optional['outputs.PolicyInfoDeny']]:
+        """
+        Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "deny")
 
     @_builtins.property
     @pulumi.getter(name="exceptPrincipals")
@@ -1048,7 +1109,7 @@ class PolicyInfo(pulumi.CustomResource):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 

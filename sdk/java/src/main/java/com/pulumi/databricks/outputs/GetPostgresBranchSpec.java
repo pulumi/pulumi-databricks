@@ -25,7 +25,7 @@ public final class GetPostgresBranchSpec {
     /**
      * @return (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
      * If set to false, the request is invalid; provide either ttl or expireTime instead.
-     * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
+     * Mutually exclusive with `expireTime` and `ttl`
      * 
      */
     private @Nullable Boolean noExpiry;
@@ -54,7 +54,7 @@ public final class GetPostgresBranchSpec {
     private @Nullable String sourceSnapshot;
     /**
      * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
-     * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
+     * Mutually exclusive with `expireTime` and `noExpiry`
      * 
      */
     private @Nullable String ttl;
@@ -77,7 +77,7 @@ public final class GetPostgresBranchSpec {
     /**
      * @return (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
      * If set to false, the request is invalid; provide either ttl or expireTime instead.
-     * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
+     * Mutually exclusive with `expireTime` and `ttl`
      * 
      */
     public Optional<Boolean> noExpiry() {
@@ -116,7 +116,7 @@ public final class GetPostgresBranchSpec {
     }
     /**
      * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
-     * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
+     * Mutually exclusive with `expireTime` and `noExpiry`
      * 
      */
     public Optional<String> ttl() {

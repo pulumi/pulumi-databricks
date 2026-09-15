@@ -15,37 +15,19 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly ImmutableArray<Outputs.AiGatewayModelServiceConfigRoutingDestination> Destinations;
         /// <summary>
-        /// Fallback routing config, applied after primary destinations fail
+        /// Fallback routing applied after a primary destination fails. Fallback
+        /// destinations are tried in the listed order
         /// </summary>
         public readonly Outputs.AiGatewayModelServiceConfigRoutingFallback? Fallback;
-        /// <summary>
-        /// Timeout for the first token of a streaming response. If a destination does
-        /// not return its first token within this duration, AI Gateway aborts the
-        /// attempt and fails over to the next destination. Applies to streaming
-        /// requests only. Leave unset for no first-token timeout
-        /// </summary>
-        public readonly string? FirstTokenTimeout;
-        /// <summary>
-        /// Marker message selecting request-based traffic splitting. Traffic is
-        /// distributed according to each destination's TrafficPercentage value;
-        /// no configuration lives on this message itself
-        /// </summary>
-        public readonly Outputs.AiGatewayModelServiceConfigRoutingTrafficSplitting? TrafficSplitting;
 
         [OutputConstructor]
         private AiGatewayModelServiceConfigRouting(
             ImmutableArray<Outputs.AiGatewayModelServiceConfigRoutingDestination> destinations,
 
-            Outputs.AiGatewayModelServiceConfigRoutingFallback? fallback,
-
-            string? firstTokenTimeout,
-
-            Outputs.AiGatewayModelServiceConfigRoutingTrafficSplitting? trafficSplitting)
+            Outputs.AiGatewayModelServiceConfigRoutingFallback? fallback)
         {
             Destinations = destinations;
             Fallback = fallback;
-            FirstTokenTimeout = firstTokenTimeout;
-            TrafficSplitting = trafficSplitting;
         }
     }
 }

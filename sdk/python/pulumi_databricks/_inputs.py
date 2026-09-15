@@ -549,8 +549,6 @@ __all__ = [
     'AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgsDict',
     'AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs',
     'AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgsDict',
-    'AiGatewayModelServiceConfigRoutingTrafficSplittingArgs',
-    'AiGatewayModelServiceConfigRoutingTrafficSplittingArgsDict',
     'AiGatewayModelServiceProviderConfigArgs',
     'AiGatewayModelServiceProviderConfigArgsDict',
     'AiSearchEndpointCustomTagArgs',
@@ -973,6 +971,10 @@ __all__ = [
     'DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgsDict',
     'DisasterRecoveryFailoverGroupWorkspaceSetArgs',
     'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict',
+    'DomainIconArgs',
+    'DomainIconArgsDict',
+    'DomainProviderConfigArgs',
+    'DomainProviderConfigArgsDict',
     'EndpointAwsVpcEndpointInfoArgs',
     'EndpointAwsVpcEndpointInfoArgsDict',
     'EndpointAzurePrivateEndpointInfoArgs',
@@ -1067,6 +1069,8 @@ __all__ = [
     'FeatureEngineeringFeatureFunctionAggregationFunctionSumArgsDict',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgsDict',
+    'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs',
+    'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgsDict',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgsDict',
     'FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs',
@@ -1085,6 +1089,8 @@ __all__ = [
     'FeatureEngineeringFeatureFunctionCustomUdfArgsDict',
     'FeatureEngineeringFeatureFunctionCustomUdfInputBindingArgs',
     'FeatureEngineeringFeatureFunctionCustomUdfInputBindingArgsDict',
+    'FeatureEngineeringFeatureFunctionExtraParameterArgs',
+    'FeatureEngineeringFeatureFunctionExtraParameterArgsDict',
     'FeatureEngineeringFeatureLineageContextArgs',
     'FeatureEngineeringFeatureLineageContextArgsDict',
     'FeatureEngineeringFeatureLineageContextJobContextArgs',
@@ -1097,6 +1103,10 @@ __all__ = [
     'FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict',
     'FeatureEngineeringFeatureSourceKafkaSourceArgs',
     'FeatureEngineeringFeatureSourceKafkaSourceArgsDict',
+    'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs',
+    'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict',
+    'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs',
+    'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict',
     'FeatureEngineeringFeatureSourceLatenessArgs',
     'FeatureEngineeringFeatureSourceLatenessArgsDict',
     'FeatureEngineeringFeatureSourceRequestSourceArgs',
@@ -1107,6 +1117,18 @@ __all__ = [
     'FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldArgsDict',
     'FeatureEngineeringFeatureSourceStreamSourceArgs',
     'FeatureEngineeringFeatureSourceStreamSourceArgsDict',
+    'FeatureEngineeringFeatureTimeWindowArgs',
+    'FeatureEngineeringFeatureTimeWindowArgsDict',
+    'FeatureEngineeringFeatureTimeWindowContinuousArgs',
+    'FeatureEngineeringFeatureTimeWindowContinuousArgsDict',
+    'FeatureEngineeringFeatureTimeWindowRollingArgs',
+    'FeatureEngineeringFeatureTimeWindowRollingArgsDict',
+    'FeatureEngineeringFeatureTimeWindowSawtoothArgs',
+    'FeatureEngineeringFeatureTimeWindowSawtoothArgsDict',
+    'FeatureEngineeringFeatureTimeWindowSlidingArgs',
+    'FeatureEngineeringFeatureTimeWindowSlidingArgsDict',
+    'FeatureEngineeringFeatureTimeWindowTumblingArgs',
+    'FeatureEngineeringFeatureTimeWindowTumblingArgsDict',
     'FeatureEngineeringFeatureTimeseriesColumnArgs',
     'FeatureEngineeringFeatureTimeseriesColumnArgsDict',
     'FeatureEngineeringKafkaConfigAuthConfigArgs',
@@ -2335,6 +2357,8 @@ __all__ = [
     'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionColumnTagValueArgsDict',
     'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs',
     'PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgsDict',
+    'PolicyInfoDenyArgs',
+    'PolicyInfoDenyArgsDict',
     'PolicyInfoGrantArgs',
     'PolicyInfoGrantArgsDict',
     'PolicyInfoMatchColumnArgs',
@@ -2535,6 +2559,14 @@ __all__ = [
     'RfaAccessRequestDestinationsProviderConfigArgsDict',
     'RfaAccessRequestDestinationsSecurableArgs',
     'RfaAccessRequestDestinationsSecurableArgsDict',
+    'SandboxProviderConfigArgs',
+    'SandboxProviderConfigArgsDict',
+    'SandboxSpecArgs',
+    'SandboxSpecArgsDict',
+    'SandboxSpecComputeArgs',
+    'SandboxSpecComputeArgsDict',
+    'SandboxStatusArgs',
+    'SandboxStatusArgsDict',
     'SchemaProviderConfigArgs',
     'SchemaProviderConfigArgsDict',
     'SecretAclProviderConfigArgs',
@@ -3025,6 +3057,10 @@ __all__ = [
     'GetDbfsFileProviderConfigArgsDict',
     'GetDirectoryProviderConfigArgs',
     'GetDirectoryProviderConfigArgsDict',
+    'GetDomainProviderConfigArgs',
+    'GetDomainProviderConfigArgsDict',
+    'GetDomainsProviderConfigArgs',
+    'GetDomainsProviderConfigArgsDict',
     'GetEntityTagAssignmentProviderConfigArgs',
     'GetEntityTagAssignmentProviderConfigArgsDict',
     'GetEntityTagAssignmentsProviderConfigArgs',
@@ -3703,6 +3739,10 @@ __all__ = [
     'GetRegisteredModelVersionsProviderConfigArgsDict',
     'GetRfaAccessRequestDestinationsProviderConfigArgs',
     'GetRfaAccessRequestDestinationsProviderConfigArgsDict',
+    'GetSandboxProviderConfigArgs',
+    'GetSandboxProviderConfigArgsDict',
+    'GetSandboxesProviderConfigArgs',
+    'GetSandboxesProviderConfigArgsDict',
     'GetSchemaProviderConfigArgs',
     'GetSchemaProviderConfigArgsDict',
     'GetSchemaSchemaInfoArgs',
@@ -13013,21 +13053,20 @@ class AccountSettingV2StringValArgs:
 class AiGatewayMcpServiceConfigArgsDict(TypedDict):
     include_tool_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    Glob or exact-match patterns selecting which tools from the MCP server
-    to expose. Prefix match for patterns with `*`, exact match otherwise.
-    An empty list means all tools are included. Per-element max 256 chars
+    Tool names or prefix patterns to expose from the MCP server. Use exact
+    tool names or prefix patterns such as `read_*`. An empty list exposes all
+    tools. At most 1,024 selectors are allowed, and each selector can contain
+    at most 256 characters
     """
     rate_limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayMcpServiceConfigRateLimitArgsDict']]]]]
     """
-    Per-principal rate limits applied to tool invocations routed through this
-    MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-    / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-    `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-    configured
+    Rate limits for tool invocations. Supported scopes are user, group, service
+    principal, the service as a whole, and each user by default. Request and
+    token limits are supported. Empty when no rate limit is configured
     """
     source_connection: NotRequired[pulumi.Input[Optional['AiGatewayMcpServiceConfigSourceConnectionArgsDict']]]
     """
-    UC Connection referencing the MCP server
+    Unity Catalog connection referencing the MCP server. Required on Create
     """
 
 @pulumi.input_type
@@ -13037,15 +13076,14 @@ class AiGatewayMcpServiceConfigArgs:
                  rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayMcpServiceConfigRateLimitArgs']]]] = None,
                  source_connection: pulumi.Input[Optional['AiGatewayMcpServiceConfigSourceConnectionArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_tool_selectors: Glob or exact-match patterns selecting which tools from the MCP server
-               to expose. Prefix match for patterns with `*`, exact match otherwise.
-               An empty list means all tools are included. Per-element max 256 chars
-        :param pulumi.Input[Sequence[pulumi.Input['AiGatewayMcpServiceConfigRateLimitArgs']]] rate_limits: Per-principal rate limits applied to tool invocations routed through this
-               MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-               / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-               `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-               configured
-        :param pulumi.Input['AiGatewayMcpServiceConfigSourceConnectionArgs'] source_connection: UC Connection referencing the MCP server
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_tool_selectors: Tool names or prefix patterns to expose from the MCP server. Use exact
+               tool names or prefix patterns such as `read_*`. An empty list exposes all
+               tools. At most 1,024 selectors are allowed, and each selector can contain
+               at most 256 characters
+        :param pulumi.Input[Sequence[pulumi.Input['AiGatewayMcpServiceConfigRateLimitArgs']]] rate_limits: Rate limits for tool invocations. Supported scopes are user, group, service
+               principal, the service as a whole, and each user by default. Request and
+               token limits are supported. Empty when no rate limit is configured
+        :param pulumi.Input['AiGatewayMcpServiceConfigSourceConnectionArgs'] source_connection: Unity Catalog connection referencing the MCP server. Required on Create
         """
         if include_tool_selectors is not None:
             pulumi.set(__self__, "include_tool_selectors", include_tool_selectors)
@@ -13058,9 +13096,10 @@ class AiGatewayMcpServiceConfigArgs:
     @pulumi.getter(name="includeToolSelectors")
     def include_tool_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Glob or exact-match patterns selecting which tools from the MCP server
-        to expose. Prefix match for patterns with `*`, exact match otherwise.
-        An empty list means all tools are included. Per-element max 256 chars
+        Tool names or prefix patterns to expose from the MCP server. Use exact
+        tool names or prefix patterns such as `read_*`. An empty list exposes all
+        tools. At most 1,024 selectors are allowed, and each selector can contain
+        at most 256 characters
         """
         return pulumi.get(self, "include_tool_selectors")
 
@@ -13072,11 +13111,9 @@ class AiGatewayMcpServiceConfigArgs:
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayMcpServiceConfigRateLimitArgs']]]]:
         """
-        Per-principal rate limits applied to tool invocations routed through this
-        MCP service. Repeated to support per-USER / USER_GROUP / SERVICE_PRINCIPAL
-        / SERVICE / USER_DEFAULT scopes simultaneously, mirroring the
-        `ModelServiceConfig.rate_limits` shape. Empty when no rate limit is
-        configured
+        Rate limits for tool invocations. Supported scopes are user, group, service
+        principal, the service as a whole, and each user by default. Request and
+        token limits are supported. Empty when no rate limit is configured
         """
         return pulumi.get(self, "rate_limits")
 
@@ -13088,7 +13125,7 @@ class AiGatewayMcpServiceConfigArgs:
     @pulumi.getter(name="sourceConnection")
     def source_connection(self) -> pulumi.Input[Optional['AiGatewayMcpServiceConfigSourceConnectionArgs']]:
         """
-        UC Connection referencing the MCP server
+        Unity Catalog connection referencing the MCP server. Required on Create
         """
         return pulumi.get(self, "source_connection")
 
@@ -13100,7 +13137,8 @@ class AiGatewayMcpServiceConfigArgs:
 class AiGatewayMcpServiceConfigRateLimitArgsDict(TypedDict):
     key: pulumi.Input[_builtins.str]
     """
-    Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+    Scope of the rate limit. Depending on this value, the limit applies to a
+    principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
     """
     renewal_period: pulumi.Input[_builtins.str]
     """
@@ -13109,29 +13147,18 @@ class AiGatewayMcpServiceConfigRateLimitArgsDict(TypedDict):
     principal: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Principal this limit applies to: user email, group name, or service
-    principal application ID. Required unless `key` is
-    `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-    `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
-    """
-    request_tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Request tag key this limit applies to. Required when `key` is
-    `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-    """
-    request_tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Request tag value this limit applies to. Only valid when `key` is
-    `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-    value of `request_tag_key` (an any-value default); a set value is a
-    specific override for that value
+    principal application ID. Required when `key` applies to a user, group, or
+    service principal; otherwise it must be unset
     """
     requests: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Max requests allowed within a renewal period. Leave unset for no request limit
+    Maximum requests allowed in one renewal period. Leave unset for no request
+    limit. Set to `0` to deny all requests
     """
     tokens: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Max tokens allowed within a renewal period. Leave unset for no token limit
+    Maximum tokens allowed in one renewal period. Leave unset for no token
+    limit. Set to `0` to deny all requests
     """
 
 @pulumi.input_type
@@ -13140,34 +13167,24 @@ class AiGatewayMcpServiceConfigRateLimitArgs:
                  key: pulumi.Input[_builtins.str],
                  renewal_period: pulumi.Input[_builtins.str],
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
-                 request_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 request_tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  requests: pulumi.Input[Optional[_builtins.int]] = None,
                  tokens: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+        :param pulumi.Input[_builtins.str] key: Scope of the rate limit. Depending on this value, the limit applies to a
+               principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
         :param pulumi.Input[_builtins.str] renewal_period: Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
         :param pulumi.Input[_builtins.str] principal: Principal this limit applies to: user email, group name, or service
-               principal application ID. Required unless `key` is
-               `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-               `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
-        :param pulumi.Input[_builtins.str] request_tag_key: Request tag key this limit applies to. Required when `key` is
-               `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-        :param pulumi.Input[_builtins.str] request_tag_value: Request tag value this limit applies to. Only valid when `key` is
-               `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-               value of `request_tag_key` (an any-value default); a set value is a
-               specific override for that value
-        :param pulumi.Input[_builtins.int] requests: Max requests allowed within a renewal period. Leave unset for no request limit
-        :param pulumi.Input[_builtins.int] tokens: Max tokens allowed within a renewal period. Leave unset for no token limit
+               principal application ID. Required when `key` applies to a user, group, or
+               service principal; otherwise it must be unset
+        :param pulumi.Input[_builtins.int] requests: Maximum requests allowed in one renewal period. Leave unset for no request
+               limit. Set to `0` to deny all requests
+        :param pulumi.Input[_builtins.int] tokens: Maximum tokens allowed in one renewal period. Leave unset for no token
+               limit. Set to `0` to deny all requests
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "renewal_period", renewal_period)
         if principal is not None:
             pulumi.set(__self__, "principal", principal)
-        if request_tag_key is not None:
-            pulumi.set(__self__, "request_tag_key", request_tag_key)
-        if request_tag_value is not None:
-            pulumi.set(__self__, "request_tag_value", request_tag_value)
         if requests is not None:
             pulumi.set(__self__, "requests", requests)
         if tokens is not None:
@@ -13177,7 +13194,8 @@ class AiGatewayMcpServiceConfigRateLimitArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+        Scope of the rate limit. Depending on this value, the limit applies to a
+        principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
         """
         return pulumi.get(self, "key")
 
@@ -13202,9 +13220,8 @@ class AiGatewayMcpServiceConfigRateLimitArgs:
     def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Principal this limit applies to: user email, group name, or service
-        principal application ID. Required unless `key` is
-        `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-        `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+        principal application ID. Required when `key` applies to a user, group, or
+        service principal; otherwise it must be unset
         """
         return pulumi.get(self, "principal")
 
@@ -13213,38 +13230,11 @@ class AiGatewayMcpServiceConfigRateLimitArgs:
         pulumi.set(self, "principal", value)
 
     @_builtins.property
-    @pulumi.getter(name="requestTagKey")
-    def request_tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Request tag key this limit applies to. Required when `key` is
-        `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-        """
-        return pulumi.get(self, "request_tag_key")
-
-    @request_tag_key.setter
-    def request_tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "request_tag_key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="requestTagValue")
-    def request_tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Request tag value this limit applies to. Only valid when `key` is
-        `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-        value of `request_tag_key` (an any-value default); a set value is a
-        specific override for that value
-        """
-        return pulumi.get(self, "request_tag_value")
-
-    @request_tag_value.setter
-    def request_tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "request_tag_value", value)
-
-    @_builtins.property
     @pulumi.getter
     def requests(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Max requests allowed within a renewal period. Leave unset for no request limit
+        Maximum requests allowed in one renewal period. Leave unset for no request
+        limit. Set to `0` to deny all requests
         """
         return pulumi.get(self, "requests")
 
@@ -13256,7 +13246,8 @@ class AiGatewayMcpServiceConfigRateLimitArgs:
     @pulumi.getter
     def tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Max tokens allowed within a renewal period. Leave unset for no token limit
+        Maximum tokens allowed in one renewal period. Leave unset for no token
+        limit. Set to `0` to deny all requests
         """
         return pulumi.get(self, "tokens")
 
@@ -13276,7 +13267,9 @@ class AiGatewayMcpServiceConfigSourceConnectionArgsDict(TypedDict):
     """
     is_deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    (boolean)
+    (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+    the reference so callers can identify the broken dependency; tool
+    invocation fails until the source connection is updated
     """
 
 @pulumi.input_type
@@ -13290,7 +13283,9 @@ class AiGatewayMcpServiceConfigSourceConnectionArgs:
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `mcp_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.bool] is_deleted: (boolean)
+        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+               the reference so callers can identify the broken dependency; tool
+               invocation fails until the source connection is updated
         """
         pulumi.set(__self__, "name", name)
         if is_deleted is not None:
@@ -13316,7 +13311,9 @@ class AiGatewayMcpServiceConfigSourceConnectionArgs:
     @pulumi.getter(name="isDeleted")
     def is_deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (boolean)
+        (boolean) - Whether the referenced connection has been deleted. The MCP service keeps
+        the reference so callers can identify the broken dependency; tool
+        invocation fails until the source connection is updated
         """
         return pulumi.get(self, "is_deleted")
 
@@ -13359,7 +13356,7 @@ class AiGatewayModelProviderServiceConfigArgsDict(TypedDict):
     """
     When true, accepts any model exposed by the upstream provider; `targets`
     is not required and does not restrict routability. When false, only
-    models listed in `targets` are routable
+    models listed in `targets` are routable. Defaults to false
     """
     amazon_bedrock: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockArgsDict']]]
     anthropic: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAnthropicArgsDict']]]
@@ -13367,60 +13364,53 @@ class AiGatewayModelProviderServiceConfigArgsDict(TypedDict):
     custom: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigCustomArgsDict']]]
     forward_headers: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Whether to forward incoming request headers to the upstream provider.
-    Applies to managed (multi-model) requests as well as passthrough requests
-    served by this provider service. Governance-level decision by the provider
-    service owner; not selectable per inference call
+    Whether to forward incoming HTTP headers to the upstream provider. Defaults
+    to false and is configured for the entire provider service, not per request.
+    Upstream authentication is configured separately in the provider-specific
+    configuration
     """
     forward_query_parameters: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Whether to forward incoming request query parameters to the upstream
-    provider. Same trust-boundary semantics as `forward_headers`
+    Whether to forward incoming query parameters to the upstream provider.
+    Defaults to false and is configured for the entire provider service, not
+    per request
     """
     forward_unmanaged_paths: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Whether to forward request paths that fall outside this service's managed
-    API set to the upstream provider as opaque passthrough. When true,
-    requests addressed to subpaths not recognized by the managed API surface
-    are proxied to the upstream provider over the same provider connection.
-    When false, only managed-API paths are served. Governance-level decision
-    by the provider service owner; expanding this expands the trust boundary
-    that the ModelProviderService exposes
+    Whether to proxy paths that AI Gateway does not recognize as configured
+    provider-native API types. Defaults to false. When true, these paths are
+    forwarded unchanged to the upstream provider. When false, only
+    recognized API paths are served. Enabling this broadens the upstream API
+    surface exposed through the provider service
     """
     gemini_enterprise: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigGeminiEnterpriseArgsDict']]]
     inference_table: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigInferenceTableArgsDict']]]
     """
-    Inference table configuration for payload logging when this provider
-    service is invoked directly. When it is invoked through a model service,
-    the model service's own inference table captures the invocation instead.
-    Mirrors `ModelServiceConfig.inference_table` /
-    `AgentServiceConfig.inference_table`
+    Payload logging configuration for requests sent directly to this provider
+    service. Requests routed through a model service are captured by that model
+    service's inference table instead
     """
     microsoft_foundry: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigMicrosoftFoundryArgsDict']]]
     openai: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigOpenaiArgsDict']]]
     provider_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Provider type discriminator. Required at create time; immutable after.
-    Determines which variant of the `provider` oneof must be set. May not be
-    changed via Update; attempts to include `config.provider_type` in
-    `UpdateModelProviderServiceRequest.update_mask` are rejected.
-
-    Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+    External model provider. Required on Create and immutable thereafter. Set
+    the matching provider-specific configuration, such as `openai`,
+    `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
     """
     rate_limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigRateLimitArgsDict']]]]]
     """
-    Rate limits applied when this provider service is invoked directly. When
-    it is invoked through a model service, the model service's own
-    `rate_limits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
-    `McpServiceConfig.rate_limits`
+    Rate limits for requests sent directly to this provider service. Requests
+    routed through a model service use that model service's rate limits instead
     """
     targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigTargetArgsDict']]]]]
     """
-    Routing targets this provider service exposes (provider-side model
-    identifier + unified API types per entry). Required (>=1) when
-    `allow_all_targets = false`; optional and additive when
-    `allow_all_targets = true`. References from `ExternalModelConfig.target`
-    must match an entry here unless `allow_all_targets = true`
+    Models and provider-native API types exposed by this provider service. Each
+    entry must include at least one `native_api_types` value. When
+    `allow_all_targets` is false, at least one entry is required and model
+    service destinations can reference only listed models. When
+    `allow_all_targets` is true, any upstream model is routable; entries in
+    this list provide API-type metadata without restricting other models
     """
 
 @pulumi.input_type
@@ -13444,40 +13434,33 @@ class AiGatewayModelProviderServiceConfigArgs:
         """
         :param pulumi.Input[_builtins.bool] allow_all_targets: When true, accepts any model exposed by the upstream provider; `targets`
                is not required and does not restrict routability. When false, only
-               models listed in `targets` are routable
-        :param pulumi.Input[_builtins.bool] forward_headers: Whether to forward incoming request headers to the upstream provider.
-               Applies to managed (multi-model) requests as well as passthrough requests
-               served by this provider service. Governance-level decision by the provider
-               service owner; not selectable per inference call
-        :param pulumi.Input[_builtins.bool] forward_query_parameters: Whether to forward incoming request query parameters to the upstream
-               provider. Same trust-boundary semantics as `forward_headers`
-        :param pulumi.Input[_builtins.bool] forward_unmanaged_paths: Whether to forward request paths that fall outside this service's managed
-               API set to the upstream provider as opaque passthrough. When true,
-               requests addressed to subpaths not recognized by the managed API surface
-               are proxied to the upstream provider over the same provider connection.
-               When false, only managed-API paths are served. Governance-level decision
-               by the provider service owner; expanding this expands the trust boundary
-               that the ModelProviderService exposes
-        :param pulumi.Input['AiGatewayModelProviderServiceConfigInferenceTableArgs'] inference_table: Inference table configuration for payload logging when this provider
-               service is invoked directly. When it is invoked through a model service,
-               the model service's own inference table captures the invocation instead.
-               Mirrors `ModelServiceConfig.inference_table` /
-               `AgentServiceConfig.inference_table`
-        :param pulumi.Input[_builtins.str] provider_type: Provider type discriminator. Required at create time; immutable after.
-               Determines which variant of the `provider` oneof must be set. May not be
-               changed via Update; attempts to include `config.provider_type` in
-               `UpdateModelProviderServiceRequest.update_mask` are rejected.
-               
-               Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
-        :param pulumi.Input[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigRateLimitArgs']]] rate_limits: Rate limits applied when this provider service is invoked directly. When
-               it is invoked through a model service, the model service's own
-               `rate_limits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
-               `McpServiceConfig.rate_limits`
-        :param pulumi.Input[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigTargetArgs']]] targets: Routing targets this provider service exposes (provider-side model
-               identifier + unified API types per entry). Required (>=1) when
-               `allow_all_targets = false`; optional and additive when
-               `allow_all_targets = true`. References from `ExternalModelConfig.target`
-               must match an entry here unless `allow_all_targets = true`
+               models listed in `targets` are routable. Defaults to false
+        :param pulumi.Input[_builtins.bool] forward_headers: Whether to forward incoming HTTP headers to the upstream provider. Defaults
+               to false and is configured for the entire provider service, not per request.
+               Upstream authentication is configured separately in the provider-specific
+               configuration
+        :param pulumi.Input[_builtins.bool] forward_query_parameters: Whether to forward incoming query parameters to the upstream provider.
+               Defaults to false and is configured for the entire provider service, not
+               per request
+        :param pulumi.Input[_builtins.bool] forward_unmanaged_paths: Whether to proxy paths that AI Gateway does not recognize as configured
+               provider-native API types. Defaults to false. When true, these paths are
+               forwarded unchanged to the upstream provider. When false, only
+               recognized API paths are served. Enabling this broadens the upstream API
+               surface exposed through the provider service
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigInferenceTableArgs'] inference_table: Payload logging configuration for requests sent directly to this provider
+               service. Requests routed through a model service are captured by that model
+               service's inference table instead
+        :param pulumi.Input[_builtins.str] provider_type: External model provider. Required on Create and immutable thereafter. Set
+               the matching provider-specific configuration, such as `openai`,
+               `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+        :param pulumi.Input[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigRateLimitArgs']]] rate_limits: Rate limits for requests sent directly to this provider service. Requests
+               routed through a model service use that model service's rate limits instead
+        :param pulumi.Input[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigTargetArgs']]] targets: Models and provider-native API types exposed by this provider service. Each
+               entry must include at least one `native_api_types` value. When
+               `allow_all_targets` is false, at least one entry is required and model
+               service destinations can reference only listed models. When
+               `allow_all_targets` is true, any upstream model is routable; entries in
+               this list provide API-type metadata without restricting other models
         """
         if allow_all_targets is not None:
             pulumi.set(__self__, "allow_all_targets", allow_all_targets)
@@ -13516,7 +13499,7 @@ class AiGatewayModelProviderServiceConfigArgs:
         """
         When true, accepts any model exposed by the upstream provider; `targets`
         is not required and does not restrict routability. When false, only
-        models listed in `targets` are routable
+        models listed in `targets` are routable. Defaults to false
         """
         return pulumi.get(self, "allow_all_targets")
 
@@ -13564,10 +13547,10 @@ class AiGatewayModelProviderServiceConfigArgs:
     @pulumi.getter(name="forwardHeaders")
     def forward_headers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to forward incoming request headers to the upstream provider.
-        Applies to managed (multi-model) requests as well as passthrough requests
-        served by this provider service. Governance-level decision by the provider
-        service owner; not selectable per inference call
+        Whether to forward incoming HTTP headers to the upstream provider. Defaults
+        to false and is configured for the entire provider service, not per request.
+        Upstream authentication is configured separately in the provider-specific
+        configuration
         """
         return pulumi.get(self, "forward_headers")
 
@@ -13579,8 +13562,9 @@ class AiGatewayModelProviderServiceConfigArgs:
     @pulumi.getter(name="forwardQueryParameters")
     def forward_query_parameters(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to forward incoming request query parameters to the upstream
-        provider. Same trust-boundary semantics as `forward_headers`
+        Whether to forward incoming query parameters to the upstream provider.
+        Defaults to false and is configured for the entire provider service, not
+        per request
         """
         return pulumi.get(self, "forward_query_parameters")
 
@@ -13592,13 +13576,11 @@ class AiGatewayModelProviderServiceConfigArgs:
     @pulumi.getter(name="forwardUnmanagedPaths")
     def forward_unmanaged_paths(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to forward request paths that fall outside this service's managed
-        API set to the upstream provider as opaque passthrough. When true,
-        requests addressed to subpaths not recognized by the managed API surface
-        are proxied to the upstream provider over the same provider connection.
-        When false, only managed-API paths are served. Governance-level decision
-        by the provider service owner; expanding this expands the trust boundary
-        that the ModelProviderService exposes
+        Whether to proxy paths that AI Gateway does not recognize as configured
+        provider-native API types. Defaults to false. When true, these paths are
+        forwarded unchanged to the upstream provider. When false, only
+        recognized API paths are served. Enabling this broadens the upstream API
+        surface exposed through the provider service
         """
         return pulumi.get(self, "forward_unmanaged_paths")
 
@@ -13619,11 +13601,9 @@ class AiGatewayModelProviderServiceConfigArgs:
     @pulumi.getter(name="inferenceTable")
     def inference_table(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigInferenceTableArgs']]:
         """
-        Inference table configuration for payload logging when this provider
-        service is invoked directly. When it is invoked through a model service,
-        the model service's own inference table captures the invocation instead.
-        Mirrors `ModelServiceConfig.inference_table` /
-        `AgentServiceConfig.inference_table`
+        Payload logging configuration for requests sent directly to this provider
+        service. Requests routed through a model service are captured by that model
+        service's inference table instead
         """
         return pulumi.get(self, "inference_table")
 
@@ -13653,12 +13633,9 @@ class AiGatewayModelProviderServiceConfigArgs:
     @pulumi.getter(name="providerType")
     def provider_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Provider type discriminator. Required at create time; immutable after.
-        Determines which variant of the `provider` oneof must be set. May not be
-        changed via Update; attempts to include `config.provider_type` in
-        `UpdateModelProviderServiceRequest.update_mask` are rejected.
-
-        Required on CreateModelProviderService and immutable thereafter. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+        External model provider. Required on Create and immutable thereafter. Set
+        the matching provider-specific configuration, such as `openai`,
+        `azure_openai`, or `amazon_bedrock`. Possible values are: `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`, `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`, `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`, `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`, `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`, `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`, `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
         """
         return pulumi.get(self, "provider_type")
 
@@ -13670,10 +13647,8 @@ class AiGatewayModelProviderServiceConfigArgs:
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigRateLimitArgs']]]]:
         """
-        Rate limits applied when this provider service is invoked directly. When
-        it is invoked through a model service, the model service's own
-        `rate_limits` apply instead. Mirrors `ModelServiceConfig.rate_limits` /
-        `McpServiceConfig.rate_limits`
+        Rate limits for requests sent directly to this provider service. Requests
+        routed through a model service use that model service's rate limits instead
         """
         return pulumi.get(self, "rate_limits")
 
@@ -13685,11 +13660,12 @@ class AiGatewayModelProviderServiceConfigArgs:
     @pulumi.getter
     def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelProviderServiceConfigTargetArgs']]]]:
         """
-        Routing targets this provider service exposes (provider-side model
-        identifier + unified API types per entry). Required (>=1) when
-        `allow_all_targets = false`; optional and additive when
-        `allow_all_targets = true`. References from `ExternalModelConfig.target`
-        must match an entry here unless `allow_all_targets = true`
+        Models and provider-native API types exposed by this provider service. Each
+        entry must include at least one `native_api_types` value. When
+        `allow_all_targets` is false, at least one entry is required and model
+        service destinations can reference only listed models. When
+        `allow_all_targets` is true, any upstream model is routable; entries in
+        this list provide API-type metadata without restricting other models
         """
         return pulumi.get(self, "targets")
 
@@ -13721,7 +13697,9 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockArgs:
 class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgsDict(TypedDict):
     aws_access_key: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgsDict']]]
     """
-    AWS access-key-pair auth. Mutually exclusive with `service_credential`
+    AWS access-key-pair authentication. Set `access_key_id` and
+    `secret_access_key.plaintext`. Mutually exclusive with
+    `service_credential`
     """
     region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     service_credential: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredentialArgsDict']]]
@@ -13733,7 +13711,9 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs:
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  service_credential: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCredentialArgs']] = None):
         """
-        :param pulumi.Input['AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs'] aws_access_key: AWS access-key-pair auth. Mutually exclusive with `service_credential`
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs'] aws_access_key: AWS access-key-pair authentication. Set `access_key_id` and
+               `secret_access_key.plaintext`. Mutually exclusive with
+               `service_credential`
         """
         if aws_access_key is not None:
             pulumi.set(__self__, "aws_access_key", aws_access_key)
@@ -13746,7 +13726,9 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectArgs:
     @pulumi.getter(name="awsAccessKey")
     def aws_access_key(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs']]:
         """
-        AWS access-key-pair auth. Mutually exclusive with `service_credential`
+        AWS access-key-pair authentication. Set `access_key_id` and
+        `secret_access_key.plaintext`. Mutually exclusive with
+        `service_credential`
         """
         return pulumi.get(self, "aws_access_key")
 
@@ -13782,9 +13764,9 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgsDict
     """
     secret_access_key: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyArgsDict']]]
     """
-    AWS secret access key paired with `access_key_id`. Required on Create when
-    using access-key auth. Supplied as inline plaintext via
-    `ProviderSecret.plaintext`
+    AWS secret access key paired with `access_key_id`. Required when creating
+    a service with access-key authentication. Supply the value in
+    `secret_access_key.plaintext`
     """
 
 @pulumi.input_type
@@ -13796,9 +13778,9 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs:
         :param pulumi.Input[_builtins.str] access_key_id: AWS access key ID. Required on Create when using access-key auth. Treated as
                username-equivalent (not a secret value): round-trips on reads and is
                scrubbed from audit logs
-        :param pulumi.Input['AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyArgs'] secret_access_key: AWS secret access key paired with `access_key_id`. Required on Create when
-               using access-key auth. Supplied as inline plaintext via
-               `ProviderSecret.plaintext`
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyArgs'] secret_access_key: AWS secret access key paired with `access_key_id`. Required when creating
+               a service with access-key authentication. Supply the value in
+               `secret_access_key.plaintext`
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
@@ -13823,9 +13805,9 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeyArgs:
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKeyArgs']]:
         """
-        AWS secret access key paired with `access_key_id`. Required on Create when
-        using access-key auth. Supplied as inline plaintext via
-        `ProviderSecret.plaintext`
+        AWS secret access key paired with `access_key_id`. Required when creating
+        a service with access-key authentication. Supply the value in
+        `secret_access_key.plaintext`
         """
         return pulumi.get(self, "secret_access_key")
 
@@ -13838,8 +13820,8 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAc
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -13848,8 +13830,8 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAc
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -13859,8 +13841,8 @@ class AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAc
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -13913,10 +13895,9 @@ class AiGatewayModelProviderServiceConfigAnthropicArgsDict(TypedDict):
     direct: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAnthropicDirectArgsDict']]]
     relayed: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAnthropicRelayedArgsDict']]]
     """
-    Relayed (credential-less) form: no Anthropic credential is stored. Each
-    inference request instead carries the caller's own OAuth token, which the
-    platform forwards to Anthropic on outbound requests. Mutually exclusive
-    with `direct`; no `api_key` is required or persisted
+    Relayed authentication. Each inference request supplies the caller's
+    OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+    stored. Mutually exclusive with `direct`
     """
 
 @pulumi.input_type
@@ -13925,10 +13906,9 @@ class AiGatewayModelProviderServiceConfigAnthropicArgs:
                  direct: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAnthropicDirectArgs']] = None,
                  relayed: pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAnthropicRelayedArgs']] = None):
         """
-        :param pulumi.Input['AiGatewayModelProviderServiceConfigAnthropicRelayedArgs'] relayed: Relayed (credential-less) form: no Anthropic credential is stored. Each
-               inference request instead carries the caller's own OAuth token, which the
-               platform forwards to Anthropic on outbound requests. Mutually exclusive
-               with `direct`; no `api_key` is required or persisted
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigAnthropicRelayedArgs'] relayed: Relayed authentication. Each inference request supplies the caller's
+               OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+               stored. Mutually exclusive with `direct`
         """
         if direct is not None:
             pulumi.set(__self__, "direct", direct)
@@ -13948,10 +13928,9 @@ class AiGatewayModelProviderServiceConfigAnthropicArgs:
     @pulumi.getter
     def relayed(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAnthropicRelayedArgs']]:
         """
-        Relayed (credential-less) form: no Anthropic credential is stored. Each
-        inference request instead carries the caller's own OAuth token, which the
-        platform forwards to Anthropic on outbound requests. Mutually exclusive
-        with `direct`; no `api_key` is required or persisted
+        Relayed authentication. Each inference request supplies the caller's
+        OAuth token, which is forwarded to Anthropic. No Anthropic credential is
+        stored. Mutually exclusive with `direct`
         """
         return pulumi.get(self, "relayed")
 
@@ -13984,8 +13963,8 @@ class AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyArgsDict(TypedDict
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -13994,8 +13973,8 @@ class AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyArgs:
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -14005,8 +13984,8 @@ class AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyArgs:
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -14016,38 +13995,12 @@ class AiGatewayModelProviderServiceConfigAnthropicDirectApiKeyArgs:
 
 
 class AiGatewayModelProviderServiceConfigAnthropicRelayedArgsDict(TypedDict):
-    plan_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Which Anthropic subscription tier the relayed token belongs to. Optional;
-    when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
-    Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
-    """
+    pass
 
 @pulumi.input_type
 class AiGatewayModelProviderServiceConfigAnthropicRelayedArgs:
-    def __init__(__self__, *,
-                 plan_type: pulumi.Input[Optional[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] plan_type: Which Anthropic subscription tier the relayed token belongs to. Optional;
-               when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
-               Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
-        """
-        if plan_type is not None:
-            pulumi.set(__self__, "plan_type", plan_type)
-
-    @_builtins.property
-    @pulumi.getter(name="planType")
-    def plan_type(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Which Anthropic subscription tier the relayed token belongs to. Optional;
-        when unset the MPS gets the full governance surface (see TEAM_ENTERPRISE).
-        Immutable after Create, so the tier cannot be flipped in place. Possible values are: `ANTHROPIC_RELAYED_PLAN_TYPE_MAX`, `ANTHROPIC_RELAYED_PLAN_TYPE_TEAM_ENTERPRISE`
-        """
-        return pulumi.get(self, "plan_type")
-
-    @plan_type.setter
-    def plan_type(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "plan_type", value)
+    def __init__(__self__):
+        pass
 
 
 class AiGatewayModelProviderServiceConfigAzureOpenaiArgsDict(TypedDict):
@@ -14133,8 +14086,8 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyArgsDict(TypedDi
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -14143,8 +14096,8 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyArgs:
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -14154,8 +14107,8 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeyArgs:
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -14171,8 +14124,7 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalA
     """
     client_secret: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretArgsDict']]]
     """
-    Entra ID client secret. Supplied as inline plaintext via
-    `ProviderSecret.plaintext`
+    Entra ID client secret. Supply the value in `client_secret.plaintext`
     """
     tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -14187,8 +14139,7 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalA
                  tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Entra ID client (application) ID. Required on Create
-        :param pulumi.Input['AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretArgs'] client_secret: Entra ID client secret. Supplied as inline plaintext via
-               `ProviderSecret.plaintext`
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretArgs'] client_secret: Entra ID client secret. Supply the value in `client_secret.plaintext`
         :param pulumi.Input[_builtins.str] tenant_id: Entra ID (Azure AD) tenant ID. Required on Create
         """
         if client_id is not None:
@@ -14214,8 +14165,7 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalA
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecretArgs']]:
         """
-        Entra ID client secret. Supplied as inline plaintext via
-        `ProviderSecret.plaintext`
+        Entra ID client secret. Supply the value in `client_secret.plaintext`
         """
         return pulumi.get(self, "client_secret")
 
@@ -14240,8 +14190,8 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalC
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -14250,8 +14200,8 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalC
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -14261,8 +14211,8 @@ class AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalC
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -14368,8 +14318,8 @@ class AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgsDict(TypedDict):
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -14378,8 +14328,8 @@ class AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs:
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -14389,8 +14339,8 @@ class AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs:
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -14478,8 +14428,8 @@ class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyArgsDict(Ty
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -14488,8 +14438,8 @@ class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyArgs:
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -14499,8 +14449,8 @@ class AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyArgs:
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -14516,21 +14466,11 @@ class AiGatewayModelProviderServiceConfigInferenceTableArgsDict(TypedDict):
     Format: `schemas/{catalog}.{schema}`.
     Each `{...}` component is capped at 255 characters individually
     """
-    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    """
-    Indicates whether payload logging is disabled (opt-out). Unset means that
-    payload logging is active (the on-by-default state coincides with the proto
-    zero-value, so the server never fills this field for a client that leaves it
-    unset). Set `disabled = true` to pause runtime logging while keeping the
-    sub-message attached (preserving `parent` and `table_name_prefix` for a
-    later flip back to active). `parent` remains required either way
-    """
     is_deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    (boolean) - True when the bound inference TABLE has been deleted but the parent
-    service still references it. The dangling reference is surfaced (not
-    silently dropped) so callers can see the broken dependency. AI Gateway
-    payload logging fails closed in this state
+    (boolean) - Whether the referenced inference table has been deleted. The configuration
+    remains visible so you can identify the broken dependency. Payload logging
+    cannot continue until the table is restored or the configuration is updated
     """
     table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -14539,19 +14479,17 @@ class AiGatewayModelProviderServiceConfigInferenceTableArgsDict(TypedDict):
     """
     table_name_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Prefix for the inference-table's UC-registered name. The actual leaf name UC
-    stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-    automatically. To find the actual UC table after Create, read the `table`
-    field on the response. Defaults to `<model_service_name>_payload` when unset.
-    Set at create time and immutable thereafter; changing it on an existing
-    service is rejected
+    Prefix used to form the inference table's registered name. AI Gateway
+    appends `_payload`; for example, `table_name_prefix = "orders"` creates
+    `orders_payload`. If unset, the prefix defaults to the service name. Read
+    `table` from the response for the resulting resource name. After the
+    inference table is created, this field cannot be changed
     """
 
 @pulumi.input_type
 class AiGatewayModelProviderServiceConfigInferenceTableArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_deleted: pulumi.Input[Optional[_builtins.bool]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
                  table_name_prefix: pulumi.Input[Optional[_builtins.str]] = None):
@@ -14559,28 +14497,18 @@ class AiGatewayModelProviderServiceConfigInferenceTableArgs:
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
-        :param pulumi.Input[_builtins.bool] disabled: Indicates whether payload logging is disabled (opt-out). Unset means that
-               payload logging is active (the on-by-default state coincides with the proto
-               zero-value, so the server never fills this field for a client that leaves it
-               unset). Set `disabled = true` to pause runtime logging while keeping the
-               sub-message attached (preserving `parent` and `table_name_prefix` for a
-               later flip back to active). `parent` remains required either way
-        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - True when the bound inference TABLE has been deleted but the parent
-               service still references it. The dangling reference is surfaced (not
-               silently dropped) so callers can see the broken dependency. AI Gateway
-               payload logging fails closed in this state
+        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - Whether the referenced inference table has been deleted. The configuration
+               remains visible so you can identify the broken dependency. Payload logging
+               cannot continue until the table is restored or the configuration is updated
         :param pulumi.Input[_builtins.str] table: (string) - Resolved UC table for payload logs.
                Format: `tables/{catalog}.{schema}.{table}`
-        :param pulumi.Input[_builtins.str] table_name_prefix: Prefix for the inference-table's UC-registered name. The actual leaf name UC
-               stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-               automatically. To find the actual UC table after Create, read the `table`
-               field on the response. Defaults to `<model_service_name>_payload` when unset.
-               Set at create time and immutable thereafter; changing it on an existing
-               service is rejected
+        :param pulumi.Input[_builtins.str] table_name_prefix: Prefix used to form the inference table's registered name. AI Gateway
+               appends `_payload`; for example, `table_name_prefix = "orders"` creates
+               `orders_payload`. If unset, the prefix defaults to the service name. Read
+               `table` from the response for the resulting resource name. After the
+               inference table is created, this field cannot be changed
         """
         pulumi.set(__self__, "parent", parent)
-        if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
         if is_deleted is not None:
             pulumi.set(__self__, "is_deleted", is_deleted)
         if table is not None:
@@ -14603,30 +14531,12 @@ class AiGatewayModelProviderServiceConfigInferenceTableArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
-    @pulumi.getter
-    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Indicates whether payload logging is disabled (opt-out). Unset means that
-        payload logging is active (the on-by-default state coincides with the proto
-        zero-value, so the server never fills this field for a client that leaves it
-        unset). Set `disabled = true` to pause runtime logging while keeping the
-        sub-message attached (preserving `parent` and `table_name_prefix` for a
-        later flip back to active). `parent` remains required either way
-        """
-        return pulumi.get(self, "disabled")
-
-    @disabled.setter
-    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "disabled", value)
-
-    @_builtins.property
     @pulumi.getter(name="isDeleted")
     def is_deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (boolean) - True when the bound inference TABLE has been deleted but the parent
-        service still references it. The dangling reference is surfaced (not
-        silently dropped) so callers can see the broken dependency. AI Gateway
-        payload logging fails closed in this state
+        (boolean) - Whether the referenced inference table has been deleted. The configuration
+        remains visible so you can identify the broken dependency. Payload logging
+        cannot continue until the table is restored or the configuration is updated
         """
         return pulumi.get(self, "is_deleted")
 
@@ -14651,12 +14561,11 @@ class AiGatewayModelProviderServiceConfigInferenceTableArgs:
     @pulumi.getter(name="tableNamePrefix")
     def table_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Prefix for the inference-table's UC-registered name. The actual leaf name UC
-        stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-        automatically. To find the actual UC table after Create, read the `table`
-        field on the response. Defaults to `<model_service_name>_payload` when unset.
-        Set at create time and immutable thereafter; changing it on an existing
-        service is rejected
+        Prefix used to form the inference table's registered name. AI Gateway
+        appends `_payload`; for example, `table_name_prefix = "orders"` creates
+        `orders_payload`. If unset, the prefix defaults to the service name. Read
+        `table` from the response for the resulting resource name. After the
+        inference table is created, this field cannot be changed
         """
         return pulumi.get(self, "table_name_prefix")
 
@@ -14748,8 +14657,8 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyArgsDict(Ty
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -14758,8 +14667,8 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyArgs:
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -14769,8 +14678,8 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKeyArgs:
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -14786,8 +14695,7 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinc
     """
     client_secret: NotRequired[pulumi.Input[Optional['AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretArgsDict']]]
     """
-    Entra ID client secret. Supplied as inline plaintext via
-    `ProviderSecret.plaintext`
+    Entra ID client secret. Supply the value in `client_secret.plaintext`
     """
     tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -14802,8 +14710,7 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinc
                  tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Entra ID client (application) ID. Required on Create
-        :param pulumi.Input['AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretArgs'] client_secret: Entra ID client secret. Supplied as inline plaintext via
-               `ProviderSecret.plaintext`
+        :param pulumi.Input['AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretArgs'] client_secret: Entra ID client secret. Supply the value in `client_secret.plaintext`
         :param pulumi.Input[_builtins.str] tenant_id: Entra ID (Azure AD) tenant ID. Required on Create
         """
         if client_id is not None:
@@ -14829,8 +14736,7 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinc
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Input[Optional['AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecretArgs']]:
         """
-        Entra ID client secret. Supplied as inline plaintext via
-        `ProviderSecret.plaintext`
+        Entra ID client secret. Supply the value in `client_secret.plaintext`
         """
         return pulumi.get(self, "client_secret")
 
@@ -14855,8 +14761,8 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinc
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -14865,8 +14771,8 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinc
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -14876,8 +14782,8 @@ class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrinc
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -15008,8 +14914,8 @@ class AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyArgsDict(TypedDict):
     plaintext: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-    reads. Get and List responses omit `plaintext`; the field's presence in
-    the read shape only indicates that a secret is configured
+    reads. Get and List responses omit `plaintext`; the enclosing secret
+    object remains present to indicate that a secret is configured
     """
 
 @pulumi.input_type
@@ -15018,8 +14924,8 @@ class AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyArgs:
                  plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-               reads. Get and List responses omit `plaintext`; the field's presence in
-               the read shape only indicates that a secret is configured
+               reads. Get and List responses omit `plaintext`; the enclosing secret
+               object remains present to indicate that a secret is configured
         """
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
@@ -15029,8 +14935,8 @@ class AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyArgs:
     def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-        reads. Get and List responses omit `plaintext`; the field's presence in
-        the read shape only indicates that a secret is configured
+        reads. Get and List responses omit `plaintext`; the enclosing secret
+        object remains present to indicate that a secret is configured
         """
         return pulumi.get(self, "plaintext")
 
@@ -15042,7 +14948,8 @@ class AiGatewayModelProviderServiceConfigOpenaiDirectApiKeyArgs:
 class AiGatewayModelProviderServiceConfigRateLimitArgsDict(TypedDict):
     key: pulumi.Input[_builtins.str]
     """
-    Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+    Scope of the rate limit. Depending on this value, the limit applies to a
+    principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
     """
     renewal_period: pulumi.Input[_builtins.str]
     """
@@ -15051,29 +14958,18 @@ class AiGatewayModelProviderServiceConfigRateLimitArgsDict(TypedDict):
     principal: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Principal this limit applies to: user email, group name, or service
-    principal application ID. Required unless `key` is
-    `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-    `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
-    """
-    request_tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Request tag key this limit applies to. Required when `key` is
-    `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-    """
-    request_tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Request tag value this limit applies to. Only valid when `key` is
-    `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-    value of `request_tag_key` (an any-value default); a set value is a
-    specific override for that value
+    principal application ID. Required when `key` applies to a user, group, or
+    service principal; otherwise it must be unset
     """
     requests: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Max requests allowed within a renewal period. Leave unset for no request limit
+    Maximum requests allowed in one renewal period. Leave unset for no request
+    limit. Set to `0` to deny all requests
     """
     tokens: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Max tokens allowed within a renewal period. Leave unset for no token limit
+    Maximum tokens allowed in one renewal period. Leave unset for no token
+    limit. Set to `0` to deny all requests
     """
 
 @pulumi.input_type
@@ -15082,34 +14978,24 @@ class AiGatewayModelProviderServiceConfigRateLimitArgs:
                  key: pulumi.Input[_builtins.str],
                  renewal_period: pulumi.Input[_builtins.str],
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
-                 request_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 request_tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  requests: pulumi.Input[Optional[_builtins.int]] = None,
                  tokens: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+        :param pulumi.Input[_builtins.str] key: Scope of the rate limit. Depending on this value, the limit applies to a
+               principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
         :param pulumi.Input[_builtins.str] renewal_period: Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
         :param pulumi.Input[_builtins.str] principal: Principal this limit applies to: user email, group name, or service
-               principal application ID. Required unless `key` is
-               `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-               `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
-        :param pulumi.Input[_builtins.str] request_tag_key: Request tag key this limit applies to. Required when `key` is
-               `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-        :param pulumi.Input[_builtins.str] request_tag_value: Request tag value this limit applies to. Only valid when `key` is
-               `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-               value of `request_tag_key` (an any-value default); a set value is a
-               specific override for that value
-        :param pulumi.Input[_builtins.int] requests: Max requests allowed within a renewal period. Leave unset for no request limit
-        :param pulumi.Input[_builtins.int] tokens: Max tokens allowed within a renewal period. Leave unset for no token limit
+               principal application ID. Required when `key` applies to a user, group, or
+               service principal; otherwise it must be unset
+        :param pulumi.Input[_builtins.int] requests: Maximum requests allowed in one renewal period. Leave unset for no request
+               limit. Set to `0` to deny all requests
+        :param pulumi.Input[_builtins.int] tokens: Maximum tokens allowed in one renewal period. Leave unset for no token
+               limit. Set to `0` to deny all requests
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "renewal_period", renewal_period)
         if principal is not None:
             pulumi.set(__self__, "principal", principal)
-        if request_tag_key is not None:
-            pulumi.set(__self__, "request_tag_key", request_tag_key)
-        if request_tag_value is not None:
-            pulumi.set(__self__, "request_tag_value", request_tag_value)
         if requests is not None:
             pulumi.set(__self__, "requests", requests)
         if tokens is not None:
@@ -15119,7 +15005,8 @@ class AiGatewayModelProviderServiceConfigRateLimitArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+        Scope of the rate limit. Depending on this value, the limit applies to a
+        principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
         """
         return pulumi.get(self, "key")
 
@@ -15144,9 +15031,8 @@ class AiGatewayModelProviderServiceConfigRateLimitArgs:
     def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Principal this limit applies to: user email, group name, or service
-        principal application ID. Required unless `key` is
-        `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-        `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+        principal application ID. Required when `key` applies to a user, group, or
+        service principal; otherwise it must be unset
         """
         return pulumi.get(self, "principal")
 
@@ -15155,38 +15041,11 @@ class AiGatewayModelProviderServiceConfigRateLimitArgs:
         pulumi.set(self, "principal", value)
 
     @_builtins.property
-    @pulumi.getter(name="requestTagKey")
-    def request_tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Request tag key this limit applies to. Required when `key` is
-        `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-        """
-        return pulumi.get(self, "request_tag_key")
-
-    @request_tag_key.setter
-    def request_tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "request_tag_key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="requestTagValue")
-    def request_tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Request tag value this limit applies to. Only valid when `key` is
-        `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-        value of `request_tag_key` (an any-value default); a set value is a
-        specific override for that value
-        """
-        return pulumi.get(self, "request_tag_value")
-
-    @request_tag_value.setter
-    def request_tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "request_tag_value", value)
-
-    @_builtins.property
     @pulumi.getter
     def requests(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Max requests allowed within a renewal period. Leave unset for no request limit
+        Maximum requests allowed in one renewal period. Leave unset for no request
+        limit. Set to `0` to deny all requests
         """
         return pulumi.get(self, "requests")
 
@@ -15198,7 +15057,8 @@ class AiGatewayModelProviderServiceConfigRateLimitArgs:
     @pulumi.getter
     def tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Max tokens allowed within a renewal period. Leave unset for no token limit
+        Maximum tokens allowed in one renewal period. Leave unset for no token
+        limit. Set to `0` to deny all requests
         """
         return pulumi.get(self, "tokens")
 
@@ -15210,18 +15070,16 @@ class AiGatewayModelProviderServiceConfigRateLimitArgs:
 class AiGatewayModelProviderServiceConfigTargetArgsDict(TypedDict):
     model: pulumi.Input[_builtins.str]
     """
-    Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
-    a string on the LLM provider's side, not a UC entity. The UC governance
-    hook for external destinations is the ModelProviderService referenced by
-    `ExternalModelConfig.model_provider_service`, not the model itself
+    Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
+    This identifies a model at the upstream provider; it is not a Unity
+    Catalog model resource
     """
     native_api_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    Provider-native API types the model supports (e.g.
-    "openai/v1/chat/completions"). Used by the platform for request/response
-    translation from the unified API type. At most 64 entries of at most 256
-    characters each; the list is persisted into the destination binding's
-    bounded storage envelope
+    Provider-native API types supported by this model, such as
+    `openai/v1/chat/completions`. At least one value is required. AI Gateway
+    uses these values to translate requests and responses. At most 64 entries
+    of 256 characters each are allowed
     """
 
 @pulumi.input_type
@@ -15230,15 +15088,13 @@ class AiGatewayModelProviderServiceConfigTargetArgs:
                  model: pulumi.Input[_builtins.str],
                  native_api_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[_builtins.str] model: Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
-               a string on the LLM provider's side, not a UC entity. The UC governance
-               hook for external destinations is the ModelProviderService referenced by
-               `ExternalModelConfig.model_provider_service`, not the model itself
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types the model supports (e.g.
-               "openai/v1/chat/completions"). Used by the platform for request/response
-               translation from the unified API type. At most 64 entries of at most 256
-               characters each; the list is persisted into the destination binding's
-               bounded storage envelope
+        :param pulumi.Input[_builtins.str] model: Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
+               This identifies a model at the upstream provider; it is not a Unity
+               Catalog model resource
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types supported by this model, such as
+               `openai/v1/chat/completions`. At least one value is required. AI Gateway
+               uses these values to translate requests and responses. At most 64 entries
+               of 256 characters each are allowed
         """
         pulumi.set(__self__, "model", model)
         if native_api_types is not None:
@@ -15248,10 +15104,9 @@ class AiGatewayModelProviderServiceConfigTargetArgs:
     @pulumi.getter
     def model(self) -> pulumi.Input[_builtins.str]:
         """
-        Provider-side model identifier (e.g. "gpt-5", "claude-opus-4-7"). This is
-        a string on the LLM provider's side, not a UC entity. The UC governance
-        hook for external destinations is the ModelProviderService referenced by
-        `ExternalModelConfig.model_provider_service`, not the model itself
+        Provider-side model identifier, such as `gpt-5` or `claude-opus-4-7`.
+        This identifies a model at the upstream provider; it is not a Unity
+        Catalog model resource
         """
         return pulumi.get(self, "model")
 
@@ -15263,11 +15118,10 @@ class AiGatewayModelProviderServiceConfigTargetArgs:
     @pulumi.getter(name="nativeApiTypes")
     def native_api_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Provider-native API types the model supports (e.g.
-        "openai/v1/chat/completions"). Used by the platform for request/response
-        translation from the unified API type. At most 64 entries of at most 256
-        characters each; the list is persisted into the destination binding's
-        bounded storage envelope
+        Provider-native API types supported by this model, such as
+        `openai/v1/chat/completions`. At least one value is required. AI Gateway
+        uses these values to translate requests and responses. At most 64 entries
+        of 256 characters each are allowed
         """
         return pulumi.get(self, "native_api_types")
 
@@ -15308,7 +15162,7 @@ class AiGatewayModelProviderServiceProviderConfigArgs:
 class AiGatewayModelServiceConfigArgsDict(TypedDict):
     inference_table: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigInferenceTableArgsDict']]]
     """
-    Inference table config for payload logging
+    Inference table configuration for payload logging
     """
     rate_limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelServiceConfigRateLimitArgsDict']]]]]
     """
@@ -15316,7 +15170,7 @@ class AiGatewayModelServiceConfigArgsDict(TypedDict):
     """
     routing: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingArgsDict']]]
     """
-    Routing configuration: destinations, routing strategy, and fallback
+    Routing configuration: destinations and fallback
     """
 
 @pulumi.input_type
@@ -15326,9 +15180,9 @@ class AiGatewayModelServiceConfigArgs:
                  rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelServiceConfigRateLimitArgs']]]] = None,
                  routing: pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingArgs']] = None):
         """
-        :param pulumi.Input['AiGatewayModelServiceConfigInferenceTableArgs'] inference_table: Inference table config for payload logging
+        :param pulumi.Input['AiGatewayModelServiceConfigInferenceTableArgs'] inference_table: Inference table configuration for payload logging
         :param pulumi.Input[Sequence[pulumi.Input['AiGatewayModelServiceConfigRateLimitArgs']]] rate_limits: Rate limits applied to requests routed through this model service
-        :param pulumi.Input['AiGatewayModelServiceConfigRoutingArgs'] routing: Routing configuration: destinations, routing strategy, and fallback
+        :param pulumi.Input['AiGatewayModelServiceConfigRoutingArgs'] routing: Routing configuration: destinations and fallback
         """
         if inference_table is not None:
             pulumi.set(__self__, "inference_table", inference_table)
@@ -15341,7 +15195,7 @@ class AiGatewayModelServiceConfigArgs:
     @pulumi.getter(name="inferenceTable")
     def inference_table(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigInferenceTableArgs']]:
         """
-        Inference table config for payload logging
+        Inference table configuration for payload logging
         """
         return pulumi.get(self, "inference_table")
 
@@ -15365,7 +15219,7 @@ class AiGatewayModelServiceConfigArgs:
     @pulumi.getter
     def routing(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingArgs']]:
         """
-        Routing configuration: destinations, routing strategy, and fallback
+        Routing configuration: destinations and fallback
         """
         return pulumi.get(self, "routing")
 
@@ -15381,23 +15235,12 @@ class AiGatewayModelServiceConfigInferenceTableArgsDict(TypedDict):
     Format: `schemas/{catalog}.{schema}`.
     Each `{...}` component is capped at 255 characters individually
     """
-    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    """
-    Indicates whether payload logging is disabled (opt-out). Unset means that
-    payload logging is active (the on-by-default state coincides with the proto
-    zero-value, so the server never fills this field for a client that leaves it
-    unset). Set `disabled = true` to pause runtime logging while keeping the
-    sub-message attached (preserving `parent` and `table_name_prefix` for a
-    later flip back to active). `parent` remains required either way
-    """
     is_deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-    destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-    deleted but the destination row still references it. The dangling
-    destination is surfaced (not silently dropped) so callers can see the
-    broken routing. Inference traffic through this destination fails closed
-    (BAD_REQUEST / FAILED_PRECONDITION)
+    (boolean) - Whether the destination's backing model or model provider service has
+    been deleted. The destination remains visible so you can identify the
+    broken dependency. Requests cannot use this destination until the backing
+    resource is restored or the destination is replaced
     """
     table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -15406,19 +15249,17 @@ class AiGatewayModelServiceConfigInferenceTableArgsDict(TypedDict):
     """
     table_name_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Prefix for the inference-table's UC-registered name. The actual leaf name UC
-    stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-    automatically. To find the actual UC table after Create, read the `table`
-    field on the response. Defaults to `<model_service_name>_payload` when unset.
-    Set at create time and immutable thereafter; changing it on an existing
-    service is rejected
+    Prefix used to form the inference table's registered name. AI Gateway
+    appends `_payload`; for example, `table_name_prefix = "orders"` creates
+    `orders_payload`. If unset, the prefix defaults to the service name. Read
+    `table` from the response for the resulting resource name. After the
+    inference table is created, this field cannot be changed
     """
 
 @pulumi.input_type
 class AiGatewayModelServiceConfigInferenceTableArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_deleted: pulumi.Input[Optional[_builtins.bool]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
                  table_name_prefix: pulumi.Input[Optional[_builtins.str]] = None):
@@ -15426,30 +15267,19 @@ class AiGatewayModelServiceConfigInferenceTableArgs:
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
-        :param pulumi.Input[_builtins.bool] disabled: Indicates whether payload logging is disabled (opt-out). Unset means that
-               payload logging is active (the on-by-default state coincides with the proto
-               zero-value, so the server never fills this field for a client that leaves it
-               unset). Set `disabled = true` to pause runtime logging while keeping the
-               sub-message attached (preserving `parent` and `table_name_prefix` for a
-               later flip back to active). `parent` remains required either way
-        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-               destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-               deleted but the destination row still references it. The dangling
-               destination is surfaced (not silently dropped) so callers can see the
-               broken routing. Inference traffic through this destination fails closed
-               (BAD_REQUEST / FAILED_PRECONDITION)
+        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - Whether the destination's backing model or model provider service has
+               been deleted. The destination remains visible so you can identify the
+               broken dependency. Requests cannot use this destination until the backing
+               resource is restored or the destination is replaced
         :param pulumi.Input[_builtins.str] table: (string) - Resolved UC table for payload logs.
                Format: `tables/{catalog}.{schema}.{table}`
-        :param pulumi.Input[_builtins.str] table_name_prefix: Prefix for the inference-table's UC-registered name. The actual leaf name UC
-               stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-               automatically. To find the actual UC table after Create, read the `table`
-               field on the response. Defaults to `<model_service_name>_payload` when unset.
-               Set at create time and immutable thereafter; changing it on an existing
-               service is rejected
+        :param pulumi.Input[_builtins.str] table_name_prefix: Prefix used to form the inference table's registered name. AI Gateway
+               appends `_payload`; for example, `table_name_prefix = "orders"` creates
+               `orders_payload`. If unset, the prefix defaults to the service name. Read
+               `table` from the response for the resulting resource name. After the
+               inference table is created, this field cannot be changed
         """
         pulumi.set(__self__, "parent", parent)
-        if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
         if is_deleted is not None:
             pulumi.set(__self__, "is_deleted", is_deleted)
         if table is not None:
@@ -15472,32 +15302,13 @@ class AiGatewayModelServiceConfigInferenceTableArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
-    @pulumi.getter
-    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Indicates whether payload logging is disabled (opt-out). Unset means that
-        payload logging is active (the on-by-default state coincides with the proto
-        zero-value, so the server never fills this field for a client that leaves it
-        unset). Set `disabled = true` to pause runtime logging while keeping the
-        sub-message attached (preserving `parent` and `table_name_prefix` for a
-        later flip back to active). `parent` remains required either way
-        """
-        return pulumi.get(self, "disabled")
-
-    @disabled.setter
-    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "disabled", value)
-
-    @_builtins.property
     @pulumi.getter(name="isDeleted")
     def is_deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-        destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-        deleted but the destination row still references it. The dangling
-        destination is surfaced (not silently dropped) so callers can see the
-        broken routing. Inference traffic through this destination fails closed
-        (BAD_REQUEST / FAILED_PRECONDITION)
+        (boolean) - Whether the destination's backing model or model provider service has
+        been deleted. The destination remains visible so you can identify the
+        broken dependency. Requests cannot use this destination until the backing
+        resource is restored or the destination is replaced
         """
         return pulumi.get(self, "is_deleted")
 
@@ -15522,12 +15333,11 @@ class AiGatewayModelServiceConfigInferenceTableArgs:
     @pulumi.getter(name="tableNamePrefix")
     def table_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Prefix for the inference-table's UC-registered name. The actual leaf name UC
-        stores is `<table_name_prefix>_payload`; the `_payload` suffix is appended
-        automatically. To find the actual UC table after Create, read the `table`
-        field on the response. Defaults to `<model_service_name>_payload` when unset.
-        Set at create time and immutable thereafter; changing it on an existing
-        service is rejected
+        Prefix used to form the inference table's registered name. AI Gateway
+        appends `_payload`; for example, `table_name_prefix = "orders"` creates
+        `orders_payload`. If unset, the prefix defaults to the service name. Read
+        `table` from the response for the resulting resource name. After the
+        inference table is created, this field cannot be changed
         """
         return pulumi.get(self, "table_name_prefix")
 
@@ -15539,7 +15349,8 @@ class AiGatewayModelServiceConfigInferenceTableArgs:
 class AiGatewayModelServiceConfigRateLimitArgsDict(TypedDict):
     key: pulumi.Input[_builtins.str]
     """
-    Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+    Scope of the rate limit. Depending on this value, the limit applies to a
+    principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
     """
     renewal_period: pulumi.Input[_builtins.str]
     """
@@ -15548,29 +15359,18 @@ class AiGatewayModelServiceConfigRateLimitArgsDict(TypedDict):
     principal: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Principal this limit applies to: user email, group name, or service
-    principal application ID. Required unless `key` is
-    `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-    `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
-    """
-    request_tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Request tag key this limit applies to. Required when `key` is
-    `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-    """
-    request_tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Request tag value this limit applies to. Only valid when `key` is
-    `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-    value of `request_tag_key` (an any-value default); a set value is a
-    specific override for that value
+    principal application ID. Required when `key` applies to a user, group, or
+    service principal; otherwise it must be unset
     """
     requests: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Max requests allowed within a renewal period. Leave unset for no request limit
+    Maximum requests allowed in one renewal period. Leave unset for no request
+    limit. Set to `0` to deny all requests
     """
     tokens: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Max tokens allowed within a renewal period. Leave unset for no token limit
+    Maximum tokens allowed in one renewal period. Leave unset for no token
+    limit. Set to `0` to deny all requests
     """
 
 @pulumi.input_type
@@ -15579,34 +15379,24 @@ class AiGatewayModelServiceConfigRateLimitArgs:
                  key: pulumi.Input[_builtins.str],
                  renewal_period: pulumi.Input[_builtins.str],
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
-                 request_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 request_tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  requests: pulumi.Input[Optional[_builtins.int]] = None,
                  tokens: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+        :param pulumi.Input[_builtins.str] key: Scope of the rate limit. Depending on this value, the limit applies to a
+               principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
         :param pulumi.Input[_builtins.str] renewal_period: Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
         :param pulumi.Input[_builtins.str] principal: Principal this limit applies to: user email, group name, or service
-               principal application ID. Required unless `key` is
-               `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-               `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
-        :param pulumi.Input[_builtins.str] request_tag_key: Request tag key this limit applies to. Required when `key` is
-               `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-        :param pulumi.Input[_builtins.str] request_tag_value: Request tag value this limit applies to. Only valid when `key` is
-               `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-               value of `request_tag_key` (an any-value default); a set value is a
-               specific override for that value
-        :param pulumi.Input[_builtins.int] requests: Max requests allowed within a renewal period. Leave unset for no request limit
-        :param pulumi.Input[_builtins.int] tokens: Max tokens allowed within a renewal period. Leave unset for no token limit
+               principal application ID. Required when `key` applies to a user, group, or
+               service principal; otherwise it must be unset
+        :param pulumi.Input[_builtins.int] requests: Maximum requests allowed in one renewal period. Leave unset for no request
+               limit. Set to `0` to deny all requests
+        :param pulumi.Input[_builtins.int] tokens: Maximum tokens allowed in one renewal period. Leave unset for no token
+               limit. Set to `0` to deny all requests
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "renewal_period", renewal_period)
         if principal is not None:
             pulumi.set(__self__, "principal", principal)
-        if request_tag_key is not None:
-            pulumi.set(__self__, "request_tag_key", request_tag_key)
-        if request_tag_value is not None:
-            pulumi.set(__self__, "request_tag_value", request_tag_value)
         if requests is not None:
             pulumi.set(__self__, "requests", requests)
         if tokens is not None:
@@ -15616,7 +15406,8 @@ class AiGatewayModelServiceConfigRateLimitArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+        Scope of the rate limit. Depending on this value, the limit applies to a
+        principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
         """
         return pulumi.get(self, "key")
 
@@ -15641,9 +15432,8 @@ class AiGatewayModelServiceConfigRateLimitArgs:
     def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Principal this limit applies to: user email, group name, or service
-        principal application ID. Required unless `key` is
-        `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-        `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+        principal application ID. Required when `key` applies to a user, group, or
+        service principal; otherwise it must be unset
         """
         return pulumi.get(self, "principal")
 
@@ -15652,38 +15442,11 @@ class AiGatewayModelServiceConfigRateLimitArgs:
         pulumi.set(self, "principal", value)
 
     @_builtins.property
-    @pulumi.getter(name="requestTagKey")
-    def request_tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Request tag key this limit applies to. Required when `key` is
-        `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-        """
-        return pulumi.get(self, "request_tag_key")
-
-    @request_tag_key.setter
-    def request_tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "request_tag_key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="requestTagValue")
-    def request_tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Request tag value this limit applies to. Only valid when `key` is
-        `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-        value of `request_tag_key` (an any-value default); a set value is a
-        specific override for that value
-        """
-        return pulumi.get(self, "request_tag_value")
-
-    @request_tag_value.setter
-    def request_tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "request_tag_value", value)
-
-    @_builtins.property
     @pulumi.getter
     def requests(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Max requests allowed within a renewal period. Leave unset for no request limit
+        Maximum requests allowed in one renewal period. Leave unset for no request
+        limit. Set to `0` to deny all requests
         """
         return pulumi.get(self, "requests")
 
@@ -15695,7 +15458,8 @@ class AiGatewayModelServiceConfigRateLimitArgs:
     @pulumi.getter
     def tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Max tokens allowed within a renewal period. Leave unset for no token limit
+        Maximum tokens allowed in one renewal period. Leave unset for no token
+        limit. Set to `0` to deny all requests
         """
         return pulumi.get(self, "tokens")
 
@@ -15708,47 +15472,23 @@ class AiGatewayModelServiceConfigRoutingArgsDict(TypedDict):
     destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelServiceConfigRoutingDestinationArgsDict']]]]]
     fallback: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackArgsDict']]]
     """
-    Fallback routing config, applied after primary destinations fail
-    """
-    first_token_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Timeout for the first token of a streaming response. If a destination does
-    not return its first token within this duration, AI Gateway aborts the
-    attempt and fails over to the next destination. Applies to streaming
-    requests only. Leave unset for no first-token timeout
-    """
-    traffic_splitting: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingTrafficSplittingArgsDict']]]
-    """
-    Marker message selecting request-based traffic splitting. Traffic is
-    distributed according to each destination's traffic_percentage value;
-    no configuration lives on this message itself
+    Fallback routing applied after a primary destination fails. Fallback
+    destinations are tried in the listed order
     """
 
 @pulumi.input_type
 class AiGatewayModelServiceConfigRoutingArgs:
     def __init__(__self__, *,
                  destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayModelServiceConfigRoutingDestinationArgs']]]] = None,
-                 fallback: pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackArgs']] = None,
-                 first_token_timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 traffic_splitting: pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingTrafficSplittingArgs']] = None):
+                 fallback: pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackArgs']] = None):
         """
-        :param pulumi.Input['AiGatewayModelServiceConfigRoutingFallbackArgs'] fallback: Fallback routing config, applied after primary destinations fail
-        :param pulumi.Input[_builtins.str] first_token_timeout: Timeout for the first token of a streaming response. If a destination does
-               not return its first token within this duration, AI Gateway aborts the
-               attempt and fails over to the next destination. Applies to streaming
-               requests only. Leave unset for no first-token timeout
-        :param pulumi.Input['AiGatewayModelServiceConfigRoutingTrafficSplittingArgs'] traffic_splitting: Marker message selecting request-based traffic splitting. Traffic is
-               distributed according to each destination's traffic_percentage value;
-               no configuration lives on this message itself
+        :param pulumi.Input['AiGatewayModelServiceConfigRoutingFallbackArgs'] fallback: Fallback routing applied after a primary destination fails. Fallback
+               destinations are tried in the listed order
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
         if fallback is not None:
             pulumi.set(__self__, "fallback", fallback)
-        if first_token_timeout is not None:
-            pulumi.set(__self__, "first_token_timeout", first_token_timeout)
-        if traffic_splitting is not None:
-            pulumi.set(__self__, "traffic_splitting", traffic_splitting)
 
     @_builtins.property
     @pulumi.getter
@@ -15763,7 +15503,8 @@ class AiGatewayModelServiceConfigRoutingArgs:
     @pulumi.getter
     def fallback(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackArgs']]:
         """
-        Fallback routing config, applied after primary destinations fail
+        Fallback routing applied after a primary destination fails. Fallback
+        destinations are tried in the listed order
         """
         return pulumi.get(self, "fallback")
 
@@ -15771,40 +15512,12 @@ class AiGatewayModelServiceConfigRoutingArgs:
     def fallback(self, value: pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackArgs']]):
         pulumi.set(self, "fallback", value)
 
-    @_builtins.property
-    @pulumi.getter(name="firstTokenTimeout")
-    def first_token_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Timeout for the first token of a streaming response. If a destination does
-        not return its first token within this duration, AI Gateway aborts the
-        attempt and fails over to the next destination. Applies to streaming
-        requests only. Leave unset for no first-token timeout
-        """
-        return pulumi.get(self, "first_token_timeout")
-
-    @first_token_timeout.setter
-    def first_token_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "first_token_timeout", value)
-
-    @_builtins.property
-    @pulumi.getter(name="trafficSplitting")
-    def traffic_splitting(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingTrafficSplittingArgs']]:
-        """
-        Marker message selecting request-based traffic splitting. Traffic is
-        distributed according to each destination's traffic_percentage value;
-        no configuration lives on this message itself
-        """
-        return pulumi.get(self, "traffic_splitting")
-
-    @traffic_splitting.setter
-    def traffic_splitting(self, value: pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingTrafficSplittingArgs']]):
-        pulumi.set(self, "traffic_splitting", value)
-
 
 class AiGatewayModelServiceConfigRoutingDestinationArgsDict(TypedDict):
     destination_type: pulumi.Input[_builtins.str]
     """
-    Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+    Backing-model category. Provide the matching type-specific configuration
+    and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
     """
     name: pulumi.Input[_builtins.str]
     """
@@ -15815,21 +15528,30 @@ class AiGatewayModelServiceConfigRoutingDestinationArgsDict(TypedDict):
     `model_service_id`; required and immutable on Update/Get/Delete
     """
     external_model_config: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigArgsDict']]]
+    """
+    Configuration for an external model reached through a model provider service
+    """
     is_deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-    destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-    deleted but the destination row still references it. The dangling
-    destination is surfaced (not silently dropped) so callers can see the
-    broken routing. Inference traffic through this destination fails closed
-    (BAD_REQUEST / FAILED_PRECONDITION)
+    (boolean) - Whether the destination's backing model or model provider service has
+    been deleted. The destination remains visible so you can identify the
+    broken dependency. Requests cannot use this destination until the backing
+    resource is restored or the destination is replaced
     """
     pay_per_token_config: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigArgsDict']]]
+    """
+    Configuration for a pay-per-token Databricks foundation model
+    """
     provisioned_throughput_config: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigArgsDict']]]
+    """
+    Configuration for a provisioned-throughput Databricks foundation model
+    """
     traffic_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Share of traffic sent to this destination, 0-100. Optional on fallback
-    destinations; see FallbackConfig
+    Percentage of primary traffic sent to this destination, from 0 to 100.
+    Required when there is more than one primary destination, in which case the
+    primary percentages must sum to 100; a single primary destination receives
+    all traffic. Fallback destinations are ordered and do not use this field
     """
 
 @pulumi.input_type
@@ -15843,20 +15565,24 @@ class AiGatewayModelServiceConfigRoutingDestinationArgs:
                  provisioned_throughput_config: pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigArgs']] = None,
                  traffic_percentage: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] destination_type: Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+        :param pulumi.Input[_builtins.str] destination_type: Backing-model category. Provide the matching type-specific configuration
+               and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the model service.
                Format: `model-services/{catalog}.{schema}.{model_service}`.
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `model_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-               destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-               deleted but the destination row still references it. The dangling
-               destination is surfaced (not silently dropped) so callers can see the
-               broken routing. Inference traffic through this destination fails closed
-               (BAD_REQUEST / FAILED_PRECONDITION)
-        :param pulumi.Input[_builtins.int] traffic_percentage: Share of traffic sent to this destination, 0-100. Optional on fallback
-               destinations; see FallbackConfig
+        :param pulumi.Input['AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigArgs'] external_model_config: Configuration for an external model reached through a model provider service
+        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - Whether the destination's backing model or model provider service has
+               been deleted. The destination remains visible so you can identify the
+               broken dependency. Requests cannot use this destination until the backing
+               resource is restored or the destination is replaced
+        :param pulumi.Input['AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigArgs'] pay_per_token_config: Configuration for a pay-per-token Databricks foundation model
+        :param pulumi.Input['AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigArgs'] provisioned_throughput_config: Configuration for a provisioned-throughput Databricks foundation model
+        :param pulumi.Input[_builtins.int] traffic_percentage: Percentage of primary traffic sent to this destination, from 0 to 100.
+               Required when there is more than one primary destination, in which case the
+               primary percentages must sum to 100; a single primary destination receives
+               all traffic. Fallback destinations are ordered and do not use this field
         """
         pulumi.set(__self__, "destination_type", destination_type)
         pulumi.set(__self__, "name", name)
@@ -15875,7 +15601,8 @@ class AiGatewayModelServiceConfigRoutingDestinationArgs:
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+        Backing-model category. Provide the matching type-specific configuration
+        and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
         """
         return pulumi.get(self, "destination_type")
 
@@ -15902,6 +15629,9 @@ class AiGatewayModelServiceConfigRoutingDestinationArgs:
     @_builtins.property
     @pulumi.getter(name="externalModelConfig")
     def external_model_config(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigArgs']]:
+        """
+        Configuration for an external model reached through a model provider service
+        """
         return pulumi.get(self, "external_model_config")
 
     @external_model_config.setter
@@ -15912,12 +15642,10 @@ class AiGatewayModelServiceConfigRoutingDestinationArgs:
     @pulumi.getter(name="isDeleted")
     def is_deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-        destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-        deleted but the destination row still references it. The dangling
-        destination is surfaced (not silently dropped) so callers can see the
-        broken routing. Inference traffic through this destination fails closed
-        (BAD_REQUEST / FAILED_PRECONDITION)
+        (boolean) - Whether the destination's backing model or model provider service has
+        been deleted. The destination remains visible so you can identify the
+        broken dependency. Requests cannot use this destination until the backing
+        resource is restored or the destination is replaced
         """
         return pulumi.get(self, "is_deleted")
 
@@ -15928,6 +15656,9 @@ class AiGatewayModelServiceConfigRoutingDestinationArgs:
     @_builtins.property
     @pulumi.getter(name="payPerTokenConfig")
     def pay_per_token_config(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigArgs']]:
+        """
+        Configuration for a pay-per-token Databricks foundation model
+        """
         return pulumi.get(self, "pay_per_token_config")
 
     @pay_per_token_config.setter
@@ -15937,6 +15668,9 @@ class AiGatewayModelServiceConfigRoutingDestinationArgs:
     @_builtins.property
     @pulumi.getter(name="provisionedThroughputConfig")
     def provisioned_throughput_config(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigArgs']]:
+        """
+        Configuration for a provisioned-throughput Databricks foundation model
+        """
         return pulumi.get(self, "provisioned_throughput_config")
 
     @provisioned_throughput_config.setter
@@ -15947,8 +15681,10 @@ class AiGatewayModelServiceConfigRoutingDestinationArgs:
     @pulumi.getter(name="trafficPercentage")
     def traffic_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Share of traffic sent to this destination, 0-100. Optional on fallback
-        destinations; see FallbackConfig
+        Percentage of primary traffic sent to this destination, from 0 to 100.
+        Required when there is more than one primary destination, in which case the
+        primary percentages must sum to 100; a single primary destination receives
+        all traffic. Fallback destinations are ordered and do not use this field
         """
         return pulumi.get(self, "traffic_percentage")
 
@@ -16034,11 +15770,10 @@ class AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetArgs
     """
     native_api_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    Provider-native API types the model supports (e.g.
-    "openai/v1/chat/completions"). Used by the platform for request/response
-    translation from the unified API type. At most 64 entries of at most 256
-    characters each; the list is persisted into the destination binding's
-    bounded storage envelope
+    Provider-native API types supported by this model, such as
+    `openai/v1/chat/completions`. At least one value is required. AI Gateway
+    uses these values to translate requests and responses. At most 64 entries
+    of 256 characters each are allowed
     """
 
 @pulumi.input_type
@@ -16050,11 +15785,10 @@ class AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetArgs
         :param pulumi.Input[_builtins.str] model: (string) - UC model FQN of the model served by the backing endpoint (e.g.,
                `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
                Create/Update time
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types the model supports (e.g.
-               "openai/v1/chat/completions"). Used by the platform for request/response
-               translation from the unified API type. At most 64 entries of at most 256
-               characters each; the list is persisted into the destination binding's
-               bounded storage envelope
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types supported by this model, such as
+               `openai/v1/chat/completions`. At least one value is required. AI Gateway
+               uses these values to translate requests and responses. At most 64 entries
+               of 256 characters each are allowed
         """
         pulumi.set(__self__, "model", model)
         if native_api_types is not None:
@@ -16078,11 +15812,10 @@ class AiGatewayModelServiceConfigRoutingDestinationExternalModelConfigTargetArgs
     @pulumi.getter(name="nativeApiTypes")
     def native_api_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Provider-native API types the model supports (e.g.
-        "openai/v1/chat/completions"). Used by the platform for request/response
-        translation from the unified API type. At most 64 entries of at most 256
-        characters each; the list is persisted into the destination binding's
-        bounded storage envelope
+        Provider-native API types supported by this model, such as
+        `openai/v1/chat/completions`. At least one value is required. AI Gateway
+        uses these values to translate requests and responses. At most 64 entries
+        of 256 characters each are allowed
         """
         return pulumi.get(self, "native_api_types")
 
@@ -16129,11 +15862,11 @@ class AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigAr
     model_serving_endpoint: pulumi.Input[_builtins.str]
     """
     Name of the backing Model Serving endpoint serving the provisioned-
-    throughput foundation model, as the AIP-122 typed resource name
-    `serving-endpoints/{name}`. The same UC model can be served on multiple
-    Model Serving endpoints (different throughput / region / config); the
-    caller picks which one this destination routes to. The endpoint must
-    exist at create time
+    throughput foundation model, in the form `serving-endpoints/{name}`. The
+    same Unity Catalog model can be served on multiple Model Serving endpoints
+    with different throughput, regions, or configurations. The caller selects
+    the endpoint to which this destination routes. The endpoint must exist at
+    create time
     """
     model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -16149,11 +15882,11 @@ class AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigAr
                  model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] model_serving_endpoint: Name of the backing Model Serving endpoint serving the provisioned-
-               throughput foundation model, as the AIP-122 typed resource name
-               `serving-endpoints/{name}`. The same UC model can be served on multiple
-               Model Serving endpoints (different throughput / region / config); the
-               caller picks which one this destination routes to. The endpoint must
-               exist at create time
+               throughput foundation model, in the form `serving-endpoints/{name}`. The
+               same Unity Catalog model can be served on multiple Model Serving endpoints
+               with different throughput, regions, or configurations. The caller selects
+               the endpoint to which this destination routes. The endpoint must exist at
+               create time
         :param pulumi.Input[_builtins.str] model: (string) - UC model FQN of the model served by the backing endpoint (e.g.,
                `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
                Create/Update time
@@ -16167,11 +15900,11 @@ class AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfigAr
     def model_serving_endpoint(self) -> pulumi.Input[_builtins.str]:
         """
         Name of the backing Model Serving endpoint serving the provisioned-
-        throughput foundation model, as the AIP-122 typed resource name
-        `serving-endpoints/{name}`. The same UC model can be served on multiple
-        Model Serving endpoints (different throughput / region / config); the
-        caller picks which one this destination routes to. The endpoint must
-        exist at create time
+        throughput foundation model, in the form `serving-endpoints/{name}`. The
+        same Unity Catalog model can be served on multiple Model Serving endpoints
+        with different throughput, regions, or configurations. The caller selects
+        the endpoint to which this destination routes. The endpoint must exist at
+        create time
         """
         return pulumi.get(self, "model_serving_endpoint")
 
@@ -16217,7 +15950,8 @@ class AiGatewayModelServiceConfigRoutingFallbackArgs:
 class AiGatewayModelServiceConfigRoutingFallbackDestinationArgsDict(TypedDict):
     destination_type: pulumi.Input[_builtins.str]
     """
-    Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+    Backing-model category. Provide the matching type-specific configuration
+    and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
     """
     name: pulumi.Input[_builtins.str]
     """
@@ -16228,21 +15962,30 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationArgsDict(TypedDict):
     `model_service_id`; required and immutable on Update/Get/Delete
     """
     external_model_config: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigArgsDict']]]
+    """
+    Configuration for an external model reached through a model provider service
+    """
     is_deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-    destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-    deleted but the destination row still references it. The dangling
-    destination is surfaced (not silently dropped) so callers can see the
-    broken routing. Inference traffic through this destination fails closed
-    (BAD_REQUEST / FAILED_PRECONDITION)
+    (boolean) - Whether the destination's backing model or model provider service has
+    been deleted. The destination remains visible so you can identify the
+    broken dependency. Requests cannot use this destination until the backing
+    resource is restored or the destination is replaced
     """
     pay_per_token_config: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgsDict']]]
+    """
+    Configuration for a pay-per-token Databricks foundation model
+    """
     provisioned_throughput_config: NotRequired[pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgsDict']]]
+    """
+    Configuration for a provisioned-throughput Databricks foundation model
+    """
     traffic_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Share of traffic sent to this destination, 0-100. Optional on fallback
-    destinations; see FallbackConfig
+    Percentage of primary traffic sent to this destination, from 0 to 100.
+    Required when there is more than one primary destination, in which case the
+    primary percentages must sum to 100; a single primary destination receives
+    all traffic. Fallback destinations are ordered and do not use this field
     """
 
 @pulumi.input_type
@@ -16256,20 +15999,24 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs:
                  provisioned_throughput_config: pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs']] = None,
                  traffic_percentage: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] destination_type: Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+        :param pulumi.Input[_builtins.str] destination_type: Backing-model category. Provide the matching type-specific configuration
+               and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
         :param pulumi.Input[_builtins.str] name: (string) - Resource name of the model service.
                Format: `model-services/{catalog}.{schema}.{model_service}`.
                Each `{...}` component is capped at 255 characters individually.
                Server-derived on Create from `parent` +
                `model_service_id`; required and immutable on Update/Get/Delete
-        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-               destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-               deleted but the destination row still references it. The dangling
-               destination is surfaced (not silently dropped) so callers can see the
-               broken routing. Inference traffic through this destination fails closed
-               (BAD_REQUEST / FAILED_PRECONDITION)
-        :param pulumi.Input[_builtins.int] traffic_percentage: Share of traffic sent to this destination, 0-100. Optional on fallback
-               destinations; see FallbackConfig
+        :param pulumi.Input['AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigArgs'] external_model_config: Configuration for an external model reached through a model provider service
+        :param pulumi.Input[_builtins.bool] is_deleted: (boolean) - Whether the destination's backing model or model provider service has
+               been deleted. The destination remains visible so you can identify the
+               broken dependency. Requests cannot use this destination until the backing
+               resource is restored or the destination is replaced
+        :param pulumi.Input['AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgs'] pay_per_token_config: Configuration for a pay-per-token Databricks foundation model
+        :param pulumi.Input['AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs'] provisioned_throughput_config: Configuration for a provisioned-throughput Databricks foundation model
+        :param pulumi.Input[_builtins.int] traffic_percentage: Percentage of primary traffic sent to this destination, from 0 to 100.
+               Required when there is more than one primary destination, in which case the
+               primary percentages must sum to 100; a single primary destination receives
+               all traffic. Fallback destinations are ordered and do not use this field
         """
         pulumi.set(__self__, "destination_type", destination_type)
         pulumi.set(__self__, "name", name)
@@ -16288,7 +16035,8 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs:
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Backing-model category. Determines which oneof variant is populated. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
+        Backing-model category. Provide the matching type-specific configuration
+        and leave the other type-specific configurations unset. Possible values are: `DESTINATION_TYPE_EXTERNAL_FOUNDATION_MODEL`, `DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL`, `DESTINATION_TYPE_PROVISIONED_THROUGHPUT_FOUNDATION_MODEL`
         """
         return pulumi.get(self, "destination_type")
 
@@ -16315,6 +16063,9 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs:
     @_builtins.property
     @pulumi.getter(name="externalModelConfig")
     def external_model_config(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigArgs']]:
+        """
+        Configuration for an external model reached through a model provider service
+        """
         return pulumi.get(self, "external_model_config")
 
     @external_model_config.setter
@@ -16325,12 +16076,10 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs:
     @pulumi.getter(name="isDeleted")
     def is_deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (boolean) - True when the destination's backing UC entity (MODEL for foundation-model
-        destinations, MODEL_PROVIDER_SERVICE for external destinations) has been
-        deleted but the destination row still references it. The dangling
-        destination is surfaced (not silently dropped) so callers can see the
-        broken routing. Inference traffic through this destination fails closed
-        (BAD_REQUEST / FAILED_PRECONDITION)
+        (boolean) - Whether the destination's backing model or model provider service has
+        been deleted. The destination remains visible so you can identify the
+        broken dependency. Requests cannot use this destination until the backing
+        resource is restored or the destination is replaced
         """
         return pulumi.get(self, "is_deleted")
 
@@ -16341,6 +16090,9 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs:
     @_builtins.property
     @pulumi.getter(name="payPerTokenConfig")
     def pay_per_token_config(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfigArgs']]:
+        """
+        Configuration for a pay-per-token Databricks foundation model
+        """
         return pulumi.get(self, "pay_per_token_config")
 
     @pay_per_token_config.setter
@@ -16350,6 +16102,9 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs:
     @_builtins.property
     @pulumi.getter(name="provisionedThroughputConfig")
     def provisioned_throughput_config(self) -> pulumi.Input[Optional['AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigArgs']]:
+        """
+        Configuration for a provisioned-throughput Databricks foundation model
+        """
         return pulumi.get(self, "provisioned_throughput_config")
 
     @provisioned_throughput_config.setter
@@ -16360,8 +16115,10 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationArgs:
     @pulumi.getter(name="trafficPercentage")
     def traffic_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Share of traffic sent to this destination, 0-100. Optional on fallback
-        destinations; see FallbackConfig
+        Percentage of primary traffic sent to this destination, from 0 to 100.
+        Required when there is more than one primary destination, in which case the
+        primary percentages must sum to 100; a single primary destination receives
+        all traffic. Fallback destinations are ordered and do not use this field
         """
         return pulumi.get(self, "traffic_percentage")
 
@@ -16447,11 +16204,10 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTa
     """
     native_api_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    Provider-native API types the model supports (e.g.
-    "openai/v1/chat/completions"). Used by the platform for request/response
-    translation from the unified API type. At most 64 entries of at most 256
-    characters each; the list is persisted into the destination binding's
-    bounded storage envelope
+    Provider-native API types supported by this model, such as
+    `openai/v1/chat/completions`. At least one value is required. AI Gateway
+    uses these values to translate requests and responses. At most 64 entries
+    of 256 characters each are allowed
     """
 
 @pulumi.input_type
@@ -16463,11 +16219,10 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTa
         :param pulumi.Input[_builtins.str] model: (string) - UC model FQN of the model served by the backing endpoint (e.g.,
                `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
                Create/Update time
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types the model supports (e.g.
-               "openai/v1/chat/completions"). Used by the platform for request/response
-               translation from the unified API type. At most 64 entries of at most 256
-               characters each; the list is persisted into the destination binding's
-               bounded storage envelope
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] native_api_types: Provider-native API types supported by this model, such as
+               `openai/v1/chat/completions`. At least one value is required. AI Gateway
+               uses these values to translate requests and responses. At most 64 entries
+               of 256 characters each are allowed
         """
         pulumi.set(__self__, "model", model)
         if native_api_types is not None:
@@ -16491,11 +16246,10 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfigTa
     @pulumi.getter(name="nativeApiTypes")
     def native_api_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Provider-native API types the model supports (e.g.
-        "openai/v1/chat/completions"). Used by the platform for request/response
-        translation from the unified API type. At most 64 entries of at most 256
-        characters each; the list is persisted into the destination binding's
-        bounded storage envelope
+        Provider-native API types supported by this model, such as
+        `openai/v1/chat/completions`. At least one value is required. AI Gateway
+        uses these values to translate requests and responses. At most 64 entries
+        of 256 characters each are allowed
         """
         return pulumi.get(self, "native_api_types")
 
@@ -16542,11 +16296,11 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughput
     model_serving_endpoint: pulumi.Input[_builtins.str]
     """
     Name of the backing Model Serving endpoint serving the provisioned-
-    throughput foundation model, as the AIP-122 typed resource name
-    `serving-endpoints/{name}`. The same UC model can be served on multiple
-    Model Serving endpoints (different throughput / region / config); the
-    caller picks which one this destination routes to. The endpoint must
-    exist at create time
+    throughput foundation model, in the form `serving-endpoints/{name}`. The
+    same Unity Catalog model can be served on multiple Model Serving endpoints
+    with different throughput, regions, or configurations. The caller selects
+    the endpoint to which this destination routes. The endpoint must exist at
+    create time
     """
     model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -16562,11 +16316,11 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughput
                  model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] model_serving_endpoint: Name of the backing Model Serving endpoint serving the provisioned-
-               throughput foundation model, as the AIP-122 typed resource name
-               `serving-endpoints/{name}`. The same UC model can be served on multiple
-               Model Serving endpoints (different throughput / region / config); the
-               caller picks which one this destination routes to. The endpoint must
-               exist at create time
+               throughput foundation model, in the form `serving-endpoints/{name}`. The
+               same Unity Catalog model can be served on multiple Model Serving endpoints
+               with different throughput, regions, or configurations. The caller selects
+               the endpoint to which this destination routes. The endpoint must exist at
+               create time
         :param pulumi.Input[_builtins.str] model: (string) - UC model FQN of the model served by the backing endpoint (e.g.,
                `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
                Create/Update time
@@ -16580,11 +16334,11 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughput
     def model_serving_endpoint(self) -> pulumi.Input[_builtins.str]:
         """
         Name of the backing Model Serving endpoint serving the provisioned-
-        throughput foundation model, as the AIP-122 typed resource name
-        `serving-endpoints/{name}`. The same UC model can be served on multiple
-        Model Serving endpoints (different throughput / region / config); the
-        caller picks which one this destination routes to. The endpoint must
-        exist at create time
+        throughput foundation model, in the form `serving-endpoints/{name}`. The
+        same Unity Catalog model can be served on multiple Model Serving endpoints
+        with different throughput, regions, or configurations. The caller selects
+        the endpoint to which this destination routes. The endpoint must exist at
+        create time
         """
         return pulumi.get(self, "model_serving_endpoint")
 
@@ -16605,15 +16359,6 @@ class AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughput
     @model.setter
     def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
-
-
-class AiGatewayModelServiceConfigRoutingTrafficSplittingArgsDict(TypedDict):
-    pass
-
-@pulumi.input_type
-class AiGatewayModelServiceConfigRoutingTrafficSplittingArgs:
-    def __init__(__self__):
-        pass
 
 
 class AiGatewayModelServiceProviderConfigArgsDict(TypedDict):
@@ -18751,13 +18496,16 @@ class AppActiveDeploymentArgsDict(TypedDict):
     """
     env_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppActiveDeploymentEnvVarArgsDict']]]]]
     git_source: NotRequired[pulumi.Input[Optional['AppActiveDeploymentGitSourceArgsDict']]]
+    """
+    The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+    """
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
     """
     source_code_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshotted workspace file system path of the source code loaded by the deployed app.
+    Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
     """
     status: NotRequired[pulumi.Input[Optional['AppActiveDeploymentStatusArgsDict']]]
     """
@@ -18787,8 +18535,9 @@ class AppActiveDeploymentArgs:
         :param pulumi.Input[_builtins.str] creator: The email of the user that created the deployment.
         :param pulumi.Input['AppActiveDeploymentDeploymentArtifactsArgs'] deployment_artifacts: attribute
         :param pulumi.Input[_builtins.str] deployment_id: The unique ID of the deployment.
+        :param pulumi.Input['AppActiveDeploymentGitSourceArgs'] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
         :param pulumi.Input[_builtins.str] mode: The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input['AppActiveDeploymentStatusArgs'] status: attribute
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
         """
@@ -18884,6 +18633,9 @@ class AppActiveDeploymentArgs:
     @_builtins.property
     @pulumi.getter(name="gitSource")
     def git_source(self) -> pulumi.Input[Optional['AppActiveDeploymentGitSourceArgs']]:
+        """
+        The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+        """
         return pulumi.get(self, "git_source")
 
     @git_source.setter
@@ -18906,7 +18658,7 @@ class AppActiveDeploymentArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -18942,7 +18694,7 @@ class AppActiveDeploymentArgs:
 class AppActiveDeploymentDeploymentArtifactsArgsDict(TypedDict):
     source_code_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshotted workspace file system path of the source code loaded by the deployed app.
+    Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
     """
 
 @pulumi.input_type
@@ -18950,7 +18702,7 @@ class AppActiveDeploymentDeploymentArtifactsArgs:
     def __init__(__self__, *,
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         if source_code_path is not None:
             pulumi.set(__self__, "source_code_path", source_code_path)
@@ -18959,7 +18711,7 @@ class AppActiveDeploymentDeploymentArtifactsArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -19026,9 +18778,12 @@ class AppActiveDeploymentEnvVarArgs:
 class AppActiveDeploymentGitSourceArgsDict(TypedDict):
     branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+    Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
     """
     commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Git commit SHA to check out and deploy from.
+    """
     git_repository: NotRequired[pulumi.Input[Optional['AppActiveDeploymentGitSourceGitRepositoryArgsDict']]]
     """
     Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
@@ -19036,9 +18791,12 @@ class AppActiveDeploymentGitSourceArgsDict(TypedDict):
     resolved_commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     source_code_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshotted workspace file system path of the source code loaded by the deployed app.
+    Path to the app source code within the repository. Defaults to the repository root.
     """
     tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Git tag to check out and deploy from.
+    """
 
 @pulumi.input_type
 class AppActiveDeploymentGitSourceArgs:
@@ -19050,9 +18808,11 @@ class AppActiveDeploymentGitSourceArgs:
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] branch: The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        :param pulumi.Input[_builtins.str] branch: Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
+        :param pulumi.Input[_builtins.str] commit: Git commit SHA to check out and deploy from.
         :param pulumi.Input['AppActiveDeploymentGitSourceGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Path to the app source code within the repository. Defaults to the repository root.
+        :param pulumi.Input[_builtins.str] tag: Git tag to check out and deploy from.
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -19071,7 +18831,7 @@ class AppActiveDeploymentGitSourceArgs:
     @pulumi.getter
     def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
         """
         return pulumi.get(self, "branch")
 
@@ -19082,6 +18842,9 @@ class AppActiveDeploymentGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def commit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Git commit SHA to check out and deploy from.
+        """
         return pulumi.get(self, "commit")
 
     @commit.setter
@@ -19113,7 +18876,7 @@ class AppActiveDeploymentGitSourceArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Path to the app source code within the repository. Defaults to the repository root.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -19124,6 +18887,9 @@ class AppActiveDeploymentGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Git tag to check out and deploy from.
+        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -19141,7 +18907,13 @@ class AppActiveDeploymentGitSourceGitRepositoryArgsDict(TypedDict):
     URL of the Git repository.
     """
     auto_deploy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+    """
     caller_credential_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+    """
 
 @pulumi.input_type
 class AppActiveDeploymentGitSourceGitRepositoryArgs:
@@ -19153,6 +18925,8 @@ class AppActiveDeploymentGitSourceGitRepositoryArgs:
         """
         :param pulumi.Input[_builtins.str] provider: Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] url: URL of the Git repository.
+        :param pulumi.Input[_builtins.bool] auto_deploy: When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        :param pulumi.Input[_builtins.int] caller_credential_id: ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
         """
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "url", url)
@@ -19188,6 +18962,9 @@ class AppActiveDeploymentGitSourceGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="autoDeploy")
     def auto_deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        """
         return pulumi.get(self, "auto_deploy")
 
     @auto_deploy.setter
@@ -19197,6 +18974,9 @@ class AppActiveDeploymentGitSourceGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="callerCredentialId")
     def caller_credential_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+        """
         return pulumi.get(self, "caller_credential_id")
 
     @caller_credential_id.setter
@@ -19379,10 +19159,10 @@ class AppComputeStatusArgs:
 
 class AppDefaultGitSourceArgsDict(TypedDict):
     branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
-    """
     commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Git commit SHA to check out and deploy from.
+    """
     git_repository: NotRequired[pulumi.Input[Optional['AppDefaultGitSourceGitRepositoryArgsDict']]]
     """
     Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
@@ -19390,9 +19170,12 @@ class AppDefaultGitSourceArgsDict(TypedDict):
     resolved_commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     source_code_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshotted workspace file system path of the source code loaded by the deployed app.
+    Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
     """
     tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Git tag to check out and deploy from.
+    """
 
 @pulumi.input_type
 class AppDefaultGitSourceArgs:
@@ -19404,9 +19187,10 @@ class AppDefaultGitSourceArgs:
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] branch: The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        :param pulumi.Input[_builtins.str] commit: Git commit SHA to check out and deploy from.
         :param pulumi.Input['AppDefaultGitSourceGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
+        :param pulumi.Input[_builtins.str] tag: Git tag to check out and deploy from.
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -19424,9 +19208,6 @@ class AppDefaultGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
-        """
         return pulumi.get(self, "branch")
 
     @branch.setter
@@ -19436,6 +19217,9 @@ class AppDefaultGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def commit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Git commit SHA to check out and deploy from.
+        """
         return pulumi.get(self, "commit")
 
     @commit.setter
@@ -19467,7 +19251,7 @@ class AppDefaultGitSourceArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -19478,6 +19262,9 @@ class AppDefaultGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Git tag to check out and deploy from.
+        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -19495,7 +19282,13 @@ class AppDefaultGitSourceGitRepositoryArgsDict(TypedDict):
     URL of the Git repository.
     """
     auto_deploy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+    """
     caller_credential_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+    """
 
 @pulumi.input_type
 class AppDefaultGitSourceGitRepositoryArgs:
@@ -19507,6 +19300,8 @@ class AppDefaultGitSourceGitRepositoryArgs:
         """
         :param pulumi.Input[_builtins.str] provider: Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] url: URL of the Git repository.
+        :param pulumi.Input[_builtins.bool] auto_deploy: When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        :param pulumi.Input[_builtins.int] caller_credential_id: ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
         """
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "url", url)
@@ -19542,6 +19337,9 @@ class AppDefaultGitSourceGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="autoDeploy")
     def auto_deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        """
         return pulumi.get(self, "auto_deploy")
 
     @auto_deploy.setter
@@ -19551,6 +19349,9 @@ class AppDefaultGitSourceGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="callerCredentialId")
     def caller_credential_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+        """
         return pulumi.get(self, "caller_credential_id")
 
     @caller_credential_id.setter
@@ -19568,7 +19369,13 @@ class AppGitRepositoryArgsDict(TypedDict):
     URL of the Git repository.
     """
     auto_deploy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+    """
     caller_credential_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+    """
 
 @pulumi.input_type
 class AppGitRepositoryArgs:
@@ -19580,6 +19387,8 @@ class AppGitRepositoryArgs:
         """
         :param pulumi.Input[_builtins.str] provider: Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] url: URL of the Git repository.
+        :param pulumi.Input[_builtins.bool] auto_deploy: When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        :param pulumi.Input[_builtins.int] caller_credential_id: ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
         """
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "url", url)
@@ -19615,6 +19424,9 @@ class AppGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="autoDeploy")
     def auto_deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        """
         return pulumi.get(self, "auto_deploy")
 
     @auto_deploy.setter
@@ -19624,6 +19436,9 @@ class AppGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="callerCredentialId")
     def caller_credential_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+        """
         return pulumi.get(self, "caller_credential_id")
 
     @caller_credential_id.setter
@@ -19634,9 +19449,12 @@ class AppGitRepositoryArgs:
 class AppGitSourceArgsDict(TypedDict):
     branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+    Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
     """
     commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Git commit SHA to check out and deploy from.
+    """
     git_repository: NotRequired[pulumi.Input[Optional['AppGitSourceGitRepositoryArgsDict']]]
     """
     Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
@@ -19644,9 +19462,12 @@ class AppGitSourceArgsDict(TypedDict):
     resolved_commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     source_code_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshotted workspace file system path of the source code loaded by the deployed app.
+    Path to the app source code within the repository. Defaults to the repository root.
     """
     tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Git tag to check out and deploy from.
+    """
 
 @pulumi.input_type
 class AppGitSourceArgs:
@@ -19658,9 +19479,11 @@ class AppGitSourceArgs:
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] branch: The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        :param pulumi.Input[_builtins.str] branch: Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
+        :param pulumi.Input[_builtins.str] commit: Git commit SHA to check out and deploy from.
         :param pulumi.Input['AppGitSourceGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Path to the app source code within the repository. Defaults to the repository root.
+        :param pulumi.Input[_builtins.str] tag: Git tag to check out and deploy from.
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -19679,7 +19502,7 @@ class AppGitSourceArgs:
     @pulumi.getter
     def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
         """
         return pulumi.get(self, "branch")
 
@@ -19690,6 +19513,9 @@ class AppGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def commit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Git commit SHA to check out and deploy from.
+        """
         return pulumi.get(self, "commit")
 
     @commit.setter
@@ -19721,7 +19547,7 @@ class AppGitSourceArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Path to the app source code within the repository. Defaults to the repository root.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -19732,6 +19558,9 @@ class AppGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Git tag to check out and deploy from.
+        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -19749,7 +19578,13 @@ class AppGitSourceGitRepositoryArgsDict(TypedDict):
     URL of the Git repository.
     """
     auto_deploy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+    """
     caller_credential_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+    """
 
 @pulumi.input_type
 class AppGitSourceGitRepositoryArgs:
@@ -19761,6 +19596,8 @@ class AppGitSourceGitRepositoryArgs:
         """
         :param pulumi.Input[_builtins.str] provider: Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] url: URL of the Git repository.
+        :param pulumi.Input[_builtins.bool] auto_deploy: When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        :param pulumi.Input[_builtins.int] caller_credential_id: ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
         """
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "url", url)
@@ -19796,6 +19633,9 @@ class AppGitSourceGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="autoDeploy")
     def auto_deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        """
         return pulumi.get(self, "auto_deploy")
 
     @auto_deploy.setter
@@ -19805,6 +19645,9 @@ class AppGitSourceGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="callerCredentialId")
     def caller_credential_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+        """
         return pulumi.get(self, "caller_credential_id")
 
     @caller_credential_id.setter
@@ -19832,13 +19675,16 @@ class AppPendingDeploymentArgsDict(TypedDict):
     """
     env_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppPendingDeploymentEnvVarArgsDict']]]]]
     git_source: NotRequired[pulumi.Input[Optional['AppPendingDeploymentGitSourceArgsDict']]]
+    """
+    The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+    """
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
     """
     source_code_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshotted workspace file system path of the source code loaded by the deployed app.
+    Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
     """
     status: NotRequired[pulumi.Input[Optional['AppPendingDeploymentStatusArgsDict']]]
     """
@@ -19868,8 +19714,9 @@ class AppPendingDeploymentArgs:
         :param pulumi.Input[_builtins.str] creator: The email of the user that created the deployment.
         :param pulumi.Input['AppPendingDeploymentDeploymentArtifactsArgs'] deployment_artifacts: attribute
         :param pulumi.Input[_builtins.str] deployment_id: The unique ID of the deployment.
+        :param pulumi.Input['AppPendingDeploymentGitSourceArgs'] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
         :param pulumi.Input[_builtins.str] mode: The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input['AppPendingDeploymentStatusArgs'] status: attribute
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
         """
@@ -19965,6 +19812,9 @@ class AppPendingDeploymentArgs:
     @_builtins.property
     @pulumi.getter(name="gitSource")
     def git_source(self) -> pulumi.Input[Optional['AppPendingDeploymentGitSourceArgs']]:
+        """
+        The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+        """
         return pulumi.get(self, "git_source")
 
     @git_source.setter
@@ -19987,7 +19837,7 @@ class AppPendingDeploymentArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -20023,7 +19873,7 @@ class AppPendingDeploymentArgs:
 class AppPendingDeploymentDeploymentArtifactsArgsDict(TypedDict):
     source_code_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshotted workspace file system path of the source code loaded by the deployed app.
+    Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
     """
 
 @pulumi.input_type
@@ -20031,7 +19881,7 @@ class AppPendingDeploymentDeploymentArtifactsArgs:
     def __init__(__self__, *,
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         if source_code_path is not None:
             pulumi.set(__self__, "source_code_path", source_code_path)
@@ -20040,7 +19890,7 @@ class AppPendingDeploymentDeploymentArtifactsArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -20107,9 +19957,12 @@ class AppPendingDeploymentEnvVarArgs:
 class AppPendingDeploymentGitSourceArgsDict(TypedDict):
     branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+    Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
     """
     commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Git commit SHA to check out and deploy from.
+    """
     git_repository: NotRequired[pulumi.Input[Optional['AppPendingDeploymentGitSourceGitRepositoryArgsDict']]]
     """
     Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
@@ -20117,9 +19970,12 @@ class AppPendingDeploymentGitSourceArgsDict(TypedDict):
     resolved_commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     source_code_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The snapshotted workspace file system path of the source code loaded by the deployed app.
+    Path to the app source code within the repository. Defaults to the repository root.
     """
     tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Git tag to check out and deploy from.
+    """
 
 @pulumi.input_type
 class AppPendingDeploymentGitSourceArgs:
@@ -20131,9 +19987,11 @@ class AppPendingDeploymentGitSourceArgs:
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] branch: The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        :param pulumi.Input[_builtins.str] branch: Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
+        :param pulumi.Input[_builtins.str] commit: Git commit SHA to check out and deploy from.
         :param pulumi.Input['AppPendingDeploymentGitSourceGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
-        :param pulumi.Input[_builtins.str] source_code_path: The snapshotted workspace file system path of the source code loaded by the deployed app.
+        :param pulumi.Input[_builtins.str] source_code_path: Path to the app source code within the repository. Defaults to the repository root.
+        :param pulumi.Input[_builtins.str] tag: Git tag to check out and deploy from.
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -20152,7 +20010,7 @@ class AppPendingDeploymentGitSourceArgs:
     @pulumi.getter
     def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        Git branch to check out and deploy from. Required when `git_repository.auto_deploy` is `true`, since automatic deployment tracks pushes to a branch.
         """
         return pulumi.get(self, "branch")
 
@@ -20163,6 +20021,9 @@ class AppPendingDeploymentGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def commit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Git commit SHA to check out and deploy from.
+        """
         return pulumi.get(self, "commit")
 
     @commit.setter
@@ -20194,7 +20055,7 @@ class AppPendingDeploymentGitSourceArgs:
     @pulumi.getter(name="sourceCodePath")
     def source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The snapshotted workspace file system path of the source code loaded by the deployed app.
+        Path to the app source code within the repository. Defaults to the repository root.
         """
         return pulumi.get(self, "source_code_path")
 
@@ -20205,6 +20066,9 @@ class AppPendingDeploymentGitSourceArgs:
     @_builtins.property
     @pulumi.getter
     def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Git tag to check out and deploy from.
+        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -20222,7 +20086,13 @@ class AppPendingDeploymentGitSourceGitRepositoryArgsDict(TypedDict):
     URL of the Git repository.
     """
     auto_deploy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+    """
     caller_credential_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+    """
 
 @pulumi.input_type
 class AppPendingDeploymentGitSourceGitRepositoryArgs:
@@ -20234,6 +20104,8 @@ class AppPendingDeploymentGitSourceGitRepositoryArgs:
         """
         :param pulumi.Input[_builtins.str] provider: Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         :param pulumi.Input[_builtins.str] url: URL of the Git repository.
+        :param pulumi.Input[_builtins.bool] auto_deploy: When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        :param pulumi.Input[_builtins.int] caller_credential_id: ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
         """
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "url", url)
@@ -20269,6 +20141,9 @@ class AppPendingDeploymentGitSourceGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="autoDeploy")
     def auto_deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When `true`, the app is automatically redeployed on push events to the branch configured in `git_source`. This requires `git_source` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
+        """
         return pulumi.get(self, "auto_deploy")
 
     @auto_deploy.setter
@@ -20278,6 +20153,9 @@ class AppPendingDeploymentGitSourceGitRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="callerCredentialId")
     def caller_credential_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        ID of a personal access token Git credential owned by the caller, used to grant the app's service principal access to this repository. This is only applied when the app is created and is not returned by the service; changing it on an existing app is not supported.
+        """
         return pulumi.get(self, "caller_credential_id")
 
     @caller_credential_id.setter
@@ -29718,6 +29596,93 @@ class DisasterRecoveryFailoverGroupWorkspaceSetArgs:
         pulumi.set(self, "stable_url_names", value)
 
 
+class DomainIconArgsDict(TypedDict):
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Hex color code with # prefix (e.g., "#FF5733")
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (string) - Full resource name of the domain. The primary identifier for this resource.
+    Format: `domains/{domain_id}`
+    Identifies the domain on get, update, and delete. Not an input on
+    create — to choose the id, set `CreateDomainRequest.domain_id`
+    """
+
+@pulumi.input_type
+class DomainIconArgs:
+    def __init__(__self__, *,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] color: Hex color code with # prefix (e.g., "#FF5733")
+        :param pulumi.Input[_builtins.str] name: (string) - Full resource name of the domain. The primary identifier for this resource.
+               Format: `domains/{domain_id}`
+               Identifies the domain on get, update, and delete. Not an input on
+               create — to choose the id, set `CreateDomainRequest.domain_id`
+        """
+        if color is not None:
+            pulumi.set(__self__, "color", color)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Hex color code with # prefix (e.g., "#FF5733")
+        """
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Full resource name of the domain. The primary identifier for this resource.
+        Format: `domains/{domain_id}`
+        Identifies the domain on get, update, and delete. Not an input on
+        create — to choose the id, set `CreateDomainRequest.domain_id`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+class DomainProviderConfigArgsDict(TypedDict):
+    workspace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class DomainProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class EndpointAwsVpcEndpointInfoArgsDict(TypedDict):
     aws_vpc_endpoint_id: pulumi.Input[_builtins.str]
     """
@@ -31285,17 +31250,25 @@ class FeatureEngineeringFeatureFunctionArgsDict(TypedDict):
     """
     Applies a registered Unity Catalog function row-wise to source columns
     """
+    extra_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgsDict']]]]]
+    function_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+    """
 
 @pulumi.input_type
 class FeatureEngineeringFeatureFunctionArgs:
     def __init__(__self__, *,
                  aggregation_function: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionArgs']] = None,
                  column_selection: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionColumnSelectionArgs']] = None,
-                 custom_udf: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionCustomUdfArgs']] = None):
+                 custom_udf: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionCustomUdfArgs']] = None,
+                 extra_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]] = None,
+                 function_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeatureEngineeringFeatureFunctionAggregationFunctionArgs'] aggregation_function: An aggregation function applied over a time window
         :param pulumi.Input['FeatureEngineeringFeatureFunctionColumnSelectionArgs'] column_selection: Selects the latest value of a single column in a data source
         :param pulumi.Input['FeatureEngineeringFeatureFunctionCustomUdfArgs'] custom_udf: Applies a registered Unity Catalog function row-wise to source columns
+        :param pulumi.Input[_builtins.str] function_type: Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
         """
         if aggregation_function is not None:
             pulumi.set(__self__, "aggregation_function", aggregation_function)
@@ -31303,6 +31276,10 @@ class FeatureEngineeringFeatureFunctionArgs:
             pulumi.set(__self__, "column_selection", column_selection)
         if custom_udf is not None:
             pulumi.set(__self__, "custom_udf", custom_udf)
+        if extra_parameters is not None:
+            pulumi.set(__self__, "extra_parameters", extra_parameters)
+        if function_type is not None:
+            pulumi.set(__self__, "function_type", function_type)
 
     @_builtins.property
     @pulumi.getter(name="aggregationFunction")
@@ -31340,6 +31317,27 @@ class FeatureEngineeringFeatureFunctionArgs:
     def custom_udf(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionCustomUdfArgs']]):
         pulumi.set(self, "custom_udf", value)
 
+    @_builtins.property
+    @pulumi.getter(name="extraParameters")
+    def extra_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]]:
+        return pulumi.get(self, "extra_parameters")
+
+    @extra_parameters.setter
+    def extra_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]]):
+        pulumi.set(self, "extra_parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="functionType")
+    def function_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+        """
+        return pulumi.get(self, "function_type")
+
+    @function_type.setter
+    def function_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "function_type", value)
+
 
 class FeatureEngineeringFeatureFunctionAggregationFunctionArgsDict(TypedDict):
     approx_count_distinct: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinctArgsDict']]]
@@ -31358,9 +31356,6 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionArgsDict(TypedDict):
     stddev_samp: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionStddevSampArgsDict']]]
     sum: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionSumArgsDict']]]
     time_window: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgsDict']]]
-    """
-    The time window over which the aggregation is computed
-    """
     var_pop: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionVarPopArgsDict']]]
     var_samp: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionVarSampArgsDict']]]
 
@@ -31385,9 +31380,6 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionArgs:
                  time_window: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs']] = None,
                  var_pop: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionVarPopArgs']] = None,
                  var_samp: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionVarSampArgs']] = None):
-        """
-        :param pulumi.Input['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs'] time_window: The time window over which the aggregation is computed
-        """
         if approx_count_distinct is not None:
             pulumi.set(__self__, "approx_count_distinct", approx_count_distinct)
         if approx_percentile is not None:
@@ -31563,9 +31555,6 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionArgs:
     @_builtins.property
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs']]:
-        """
-        The time window over which the aggregation is computed
-        """
         return pulumi.get(self, "time_window")
 
     @time_window.setter
@@ -31988,6 +31977,7 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionSumArgs:
 
 
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgsDict(TypedDict):
+    continuous: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgsDict']]]
     rolling: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgsDict']]]
     sawtooth: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgsDict']]]
     """
@@ -32002,13 +31992,15 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgsDict(Typ
     for 365 days of data; a lifetime window produces no output before start_time. If unset,
     tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
     full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-    eligible source data exists
+    eligible source data exists.
+    Not currently supported for sawtooth windows or for Features with a stream source
     """
     tumbling: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgsDict']]]
 
 @pulumi.input_type
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs:
     def __init__(__self__, *,
+                 continuous: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs']] = None,
                  rolling: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs']] = None,
                  sawtooth: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSawtoothArgs']] = None,
                  sliding: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs']] = None,
@@ -32022,8 +32014,11 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs:
                for 365 days of data; a lifetime window produces no output before start_time. If unset,
                tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
                full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-               eligible source data exists
+               eligible source data exists.
+               Not currently supported for sawtooth windows or for Features with a stream source
         """
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if rolling is not None:
             pulumi.set(__self__, "rolling", rolling)
         if sawtooth is not None:
@@ -32034,6 +32029,15 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs:
             pulumi.set(__self__, "start_time", start_time)
         if tumbling is not None:
             pulumi.set(__self__, "tumbling", tumbling)
+
+    @_builtins.property
+    @pulumi.getter
+    def continuous(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs']]:
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs']]):
+        pulumi.set(self, "continuous", value)
 
     @_builtins.property
     @pulumi.getter
@@ -32075,7 +32079,8 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs:
         for 365 days of data; a lifetime window produces no output before start_time. If unset,
         tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
         full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
-        eligible source data exists
+        eligible source data exists.
+        Not currently supported for sawtooth windows or for Features with a stream source
         """
         return pulumi.get(self, "start_time")
 
@@ -32091,6 +32096,38 @@ class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs:
     @tumbling.setter
     def tumbling(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs']]):
         pulumi.set(self, "tumbling", value)
+
+
+class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgsDict(TypedDict):
+    window_duration: pulumi.Input[_builtins.str]
+    offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs:
+    def __init__(__self__, *,
+                 window_duration: pulumi.Input[_builtins.str],
+                 offset: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "window_duration", window_duration)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "window_duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "offset", value)
 
 
 class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgsDict(TypedDict):
@@ -32419,6 +32456,53 @@ class FeatureEngineeringFeatureFunctionCustomUdfInputBindingArgs:
         pulumi.set(self, "parameter", value)
 
 
+class FeatureEngineeringFeatureFunctionExtraParameterArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The name of the parameter
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the parameter
+    """
+
+@pulumi.input_type
+class FeatureEngineeringFeatureFunctionExtraParameterArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: The name of the parameter
+        :param pulumi.Input[_builtins.str] value: The value of the parameter
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the parameter
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the parameter
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
 class FeatureEngineeringFeatureLineageContextArgsDict(TypedDict):
     job_context: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextJobContextArgsDict']]]
     """
@@ -32666,7 +32750,12 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict(TypedDict):
     below are OUTPUT_ONLY decomposed views of this value
     """
     dataframe_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    entity_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    timeseries_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Column recording time, used for point-in-time joins, backfills, and aggregations
+    """
     transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -32674,18 +32763,25 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
     def __init__(__self__, *,
                  full_name: pulumi.Input[_builtins.str],
                  dataframe_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeseries_column: pulumi.Input[Optional[_builtins.str]] = None,
                  transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
                feature's resource identifier; the catalog_name, schema_name, and name fields
                below are OUTPUT_ONLY decomposed views of this value
+        :param pulumi.Input[_builtins.str] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
+        if entity_columns is not None:
+            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
+        if timeseries_column is not None:
+            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -32713,6 +32809,15 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
         pulumi.set(self, "dataframe_schema", value)
 
     @_builtins.property
+    @pulumi.getter(name="entityColumns")
+    def entity_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "entity_columns")
+
+    @entity_columns.setter
+    def entity_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "entity_columns", value)
+
+    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "filter_condition")
@@ -32720,6 +32825,18 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
     @filter_condition.setter
     def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumn")
+    def timeseries_column(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Column recording time, used for point-in-time joins, backfills, and aggregations
+        """
+        return pulumi.get(self, "timeseries_column")
+
+    @timeseries_column.setter
+    def timeseries_column(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeseries_column", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -32736,19 +32853,27 @@ class FeatureEngineeringFeatureSourceKafkaSourceArgsDict(TypedDict):
     """
     (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
     """
+    entity_column_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict']]]]]
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    timeseries_column_identifier: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict']]]
 
 @pulumi.input_type
 class FeatureEngineeringFeatureSourceKafkaSourceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None):
+                 entity_column_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]]] = None,
+                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeseries_column_identifier: pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
         """
         pulumi.set(__self__, "name", name)
+        if entity_column_identifiers is not None:
+            pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
+        if timeseries_column_identifier is not None:
+            pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
 
     @_builtins.property
     @pulumi.getter
@@ -32763,6 +32888,15 @@ class FeatureEngineeringFeatureSourceKafkaSourceArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="entityColumnIdentifiers")
+    def entity_column_identifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]]]:
+        return pulumi.get(self, "entity_column_identifiers")
+
+    @entity_column_identifiers.setter
+    def entity_column_identifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]]]):
+        pulumi.set(self, "entity_column_identifiers", value)
+
+    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "filter_condition")
@@ -32770,6 +32904,71 @@ class FeatureEngineeringFeatureSourceKafkaSourceArgs:
     @filter_condition.setter
     def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumnIdentifier")
+    def timeseries_column_identifier(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']]:
+        return pulumi.get(self, "timeseries_column_identifier")
+
+    @timeseries_column_identifier.setter
+    def timeseries_column_identifier(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']]):
+        pulumi.set(self, "timeseries_column_identifier", value)
+
+
+class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict(TypedDict):
+    variant_expr_path: pulumi.Input[_builtins.str]
+    """
+    String representation of the column name using dot-prefixed path notation
+    """
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs:
+    def __init__(__self__, *,
+                 variant_expr_path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] variant_expr_path: String representation of the column name using dot-prefixed path notation
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        String representation of the column name using dot-prefixed path notation
+        """
+        return pulumi.get(self, "variant_expr_path")
+
+    @variant_expr_path.setter
+    def variant_expr_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "variant_expr_path", value)
+
+
+class FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict(TypedDict):
+    variant_expr_path: pulumi.Input[_builtins.str]
+    """
+    String representation of the column name using dot-prefixed path notation
+    """
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs:
+    def __init__(__self__, *,
+                 variant_expr_path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] variant_expr_path: String representation of the column name using dot-prefixed path notation
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        String representation of the column name using dot-prefixed path notation
+        """
+        return pulumi.get(self, "variant_expr_path")
+
+    @variant_expr_path.setter
+    def variant_expr_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "variant_expr_path", value)
 
 
 class FeatureEngineeringFeatureSourceLatenessArgsDict(TypedDict):
@@ -32985,6 +33184,338 @@ class FeatureEngineeringFeatureSourceStreamSourceArgs:
     @transformation_sql.setter
     def transformation_sql(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transformation_sql", value)
+
+
+class FeatureEngineeringFeatureTimeWindowArgsDict(TypedDict):
+    continuous: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowContinuousArgsDict']]]
+    rolling: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowRollingArgsDict']]]
+    sawtooth: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSawtoothArgsDict']]]
+    """
+    A sawtooth window served via the hybrid batch + streaming path
+    """
+    sliding: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSlidingArgsDict']]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+    the historical inputs read by a window. For example, a 365-day window with
+    start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+    for 365 days of data; a lifetime window produces no output before start_time. If unset,
+    tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+    full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+    eligible source data exists.
+    Not currently supported for sawtooth windows or for Features with a stream source
+    """
+    tumbling: NotRequired[pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowTumblingArgsDict']]]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowArgs:
+    def __init__(__self__, *,
+                 continuous: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowContinuousArgs']] = None,
+                 rolling: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowRollingArgs']] = None,
+                 sawtooth: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSawtoothArgs']] = None,
+                 sliding: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSlidingArgs']] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 tumbling: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowTumblingArgs']] = None):
+        """
+        :param pulumi.Input['FeatureEngineeringFeatureTimeWindowSawtoothArgs'] sawtooth: A sawtooth window served via the hybrid batch + streaming path
+        :param pulumi.Input[_builtins.str] start_time: Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+               the historical inputs read by a window. For example, a 365-day window with
+               start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+               for 365 days of data; a lifetime window produces no output before start_time. If unset,
+               tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+               full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+               eligible source data exists.
+               Not currently supported for sawtooth windows or for Features with a stream source
+        """
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
+        if rolling is not None:
+            pulumi.set(__self__, "rolling", rolling)
+        if sawtooth is not None:
+            pulumi.set(__self__, "sawtooth", sawtooth)
+        if sliding is not None:
+            pulumi.set(__self__, "sliding", sliding)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if tumbling is not None:
+            pulumi.set(__self__, "tumbling", tumbling)
+
+    @_builtins.property
+    @pulumi.getter
+    def continuous(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowContinuousArgs']]:
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowContinuousArgs']]):
+        pulumi.set(self, "continuous", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rolling(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowRollingArgs']]:
+        return pulumi.get(self, "rolling")
+
+    @rolling.setter
+    def rolling(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowRollingArgs']]):
+        pulumi.set(self, "rolling", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sawtooth(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSawtoothArgs']]:
+        """
+        A sawtooth window served via the hybrid batch + streaming path
+        """
+        return pulumi.get(self, "sawtooth")
+
+    @sawtooth.setter
+    def sawtooth(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSawtoothArgs']]):
+        pulumi.set(self, "sawtooth", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sliding(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSlidingArgs']]:
+        return pulumi.get(self, "sliding")
+
+    @sliding.setter
+    def sliding(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowSlidingArgs']]):
+        pulumi.set(self, "sliding", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Earliest event-time boundary at which the Feature may emit an output. This gates outputs, not
+        the historical inputs read by a window. For example, a 365-day window with
+        start_time=2026-01-01 begins emitting partial-window values on that date instead of waiting
+        for 365 days of data; a lifetime window produces no output before start_time. If unset,
+        tumbling and fixed-duration sliding windows first emit at an offset-aligned boundary after a
+        full window can be formed. If unset, lifetime sliding windows and rolling windows emit as soon as
+        eligible source data exists.
+        Not currently supported for sawtooth windows or for Features with a stream source
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tumbling(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowTumblingArgs']]:
+        return pulumi.get(self, "tumbling")
+
+    @tumbling.setter
+    def tumbling(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowTumblingArgs']]):
+        pulumi.set(self, "tumbling", value)
+
+
+class FeatureEngineeringFeatureTimeWindowContinuousArgsDict(TypedDict):
+    window_duration: pulumi.Input[_builtins.str]
+    offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowContinuousArgs:
+    def __init__(__self__, *,
+                 window_duration: pulumi.Input[_builtins.str],
+                 offset: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "window_duration", window_duration)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "window_duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "offset", value)
+
+
+class FeatureEngineeringFeatureTimeWindowRollingArgsDict(TypedDict):
+    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    window_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowRollingArgs:
+    def __init__(__self__, *,
+                 delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 window_duration: pulumi.Input[Optional[_builtins.str]] = None):
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if window_duration is not None:
+            pulumi.set(__self__, "window_duration", window_duration)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delay", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "window_duration", value)
+
+
+class FeatureEngineeringFeatureTimeWindowSawtoothArgsDict(TypedDict):
+    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    window_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowSawtoothArgs:
+    def __init__(__self__, *,
+                 delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 window_duration: pulumi.Input[Optional[_builtins.str]] = None):
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if window_duration is not None:
+            pulumi.set(__self__, "window_duration", window_duration)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delay", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "window_duration", value)
+
+
+class FeatureEngineeringFeatureTimeWindowSlidingArgsDict(TypedDict):
+    slide_duration: pulumi.Input[_builtins.str]
+    """
+    The slide duration (interval by which windows advance, must be positive and less than duration)
+    """
+    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    window_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowSlidingArgs:
+    def __init__(__self__, *,
+                 slide_duration: pulumi.Input[_builtins.str],
+                 delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 window_duration: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] slide_duration: The slide duration (interval by which windows advance, must be positive and less than duration)
+        """
+        pulumi.set(__self__, "slide_duration", slide_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+        if window_duration is not None:
+            pulumi.set(__self__, "window_duration", window_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="slideDuration")
+    def slide_duration(self) -> pulumi.Input[_builtins.str]:
+        """
+        The slide duration (interval by which windows advance, must be positive and less than duration)
+        """
+        return pulumi.get(self, "slide_duration")
+
+    @slide_duration.setter
+    def slide_duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "slide_duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delay", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "offset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "window_duration", value)
+
+
+class FeatureEngineeringFeatureTimeWindowTumblingArgsDict(TypedDict):
+    window_duration: pulumi.Input[_builtins.str]
+    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowTumblingArgs:
+    def __init__(__self__, *,
+                 window_duration: pulumi.Input[_builtins.str],
+                 delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 offset: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "window_duration", window_duration)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "window_duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delay", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "offset", value)
 
 
 class FeatureEngineeringFeatureTimeseriesColumnArgsDict(TypedDict):
@@ -33427,10 +33958,12 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgsDict(TypedD
     Required if transformation_sql is specified.
     Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
     """
+    entity_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
     """
+    timeseries_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A single SQL SELECT expression applied after filter_condition.
@@ -33443,7 +33976,9 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
     def __init__(__self__, *,
                  full_name: pulumi.Input[_builtins.str],
                  dataframe_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeseries_column: pulumi.Input[Optional[_builtins.str]] = None,
                  transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] full_name: The full three-part (catalog, schema, table) name of the Delta table
@@ -33458,8 +33993,12 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
+        if entity_columns is not None:
+            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
+        if timeseries_column is not None:
+            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -33490,6 +34029,15 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
         pulumi.set(self, "dataframe_schema", value)
 
     @_builtins.property
+    @pulumi.getter(name="entityColumns")
+    def entity_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "entity_columns")
+
+    @entity_columns.setter
+    def entity_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "entity_columns", value)
+
+    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -33500,6 +34048,15 @@ class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
     @filter_condition.setter
     def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumn")
+    def timeseries_column(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "timeseries_column")
+
+    @timeseries_column.setter
+    def timeseries_column(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeseries_column", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -33533,6 +34090,11 @@ class FeatureEngineeringKafkaConfigIngestionConfigArgsDict(TypedDict):
     In the future, a separate table will be maintained by Databricks for forward filling data.
     The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
     """
+    budget_policy_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the budget policy used to attribute the serverless compute cost of this stream's
+    managed ingestion. If not specified, a default budget policy may be applied
+    """
     deduplication_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Column paths used to identify duplicate rows during ingestion; only one row per
@@ -33548,6 +34110,16 @@ class FeatureEngineeringKafkaConfigIngestionConfigArgsDict(TypedDict):
     (string) - The ID of the SDP pipeline that continuously copies new events from the streaming source
     into the ingestion Delta table
     """
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Custom tags to associate with this stream's managed ingestion. They are applied to the
+    ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+    compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+    These tags apply only to the managed ingestion compute; they are not applied to the Stream
+    entity itself, and are distinct from any Unity Catalog tags on the Stream.
+    A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+    cluster tags
+    """
 
 @pulumi.input_type
 class FeatureEngineeringKafkaConfigIngestionConfigArgs:
@@ -33555,9 +34127,11 @@ class FeatureEngineeringKafkaConfigIngestionConfigArgs:
                  ingestion_destination: pulumi.Input['FeatureEngineeringKafkaConfigIngestionConfigIngestionDestinationArgs'],
                  backfill_job_id: pulumi.Input[Optional[_builtins.int]] = None,
                  backfill_source: pulumi.Input[Optional['FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceArgs']] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deduplication_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ingestion_job_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 ingestion_pipeline_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 ingestion_pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['FeatureEngineeringKafkaConfigIngestionConfigIngestionDestinationArgs'] ingestion_destination: Destination for the Databricks-managed Delta table that holds an offline copy of the streaming data for querying and training.
                This table contains both 1) forward-filled data from the Stream and 2) backfilled data from the BackfillSource (if provided).
@@ -33566,24 +34140,37 @@ class FeatureEngineeringKafkaConfigIngestionConfigArgs:
         :param pulumi.Input['FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceArgs'] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
                In the future, a separate table will be maintained by Databricks for forward filling data.
                The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the budget policy used to attribute the serverless compute cost of this stream's
+               managed ingestion. If not specified, a default budget policy may be applied
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deduplication_columns: Column paths used to identify duplicate rows during ingestion; only one row per
                distinct combination of these values is kept. Use dot notation for nested fields
                (e.g. `value.user_id`). Empty list means every column is compared
         :param pulumi.Input[_builtins.int] ingestion_job_id: (integer) - The ID of the Databricks Job that performs the forward-fill ingestion
         :param pulumi.Input[_builtins.str] ingestion_pipeline_id: (string) - The ID of the SDP pipeline that continuously copies new events from the streaming source
                into the ingestion Delta table
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Custom tags to associate with this stream's managed ingestion. They are applied to the
+               ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+               compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+               These tags apply only to the managed ingestion compute; they are not applied to the Stream
+               entity itself, and are distinct from any Unity Catalog tags on the Stream.
+               A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+               cluster tags
         """
         pulumi.set(__self__, "ingestion_destination", ingestion_destination)
         if backfill_job_id is not None:
             pulumi.set(__self__, "backfill_job_id", backfill_job_id)
         if backfill_source is not None:
             pulumi.set(__self__, "backfill_source", backfill_source)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if deduplication_columns is not None:
             pulumi.set(__self__, "deduplication_columns", deduplication_columns)
         if ingestion_job_id is not None:
             pulumi.set(__self__, "ingestion_job_id", ingestion_job_id)
         if ingestion_pipeline_id is not None:
             pulumi.set(__self__, "ingestion_pipeline_id", ingestion_pipeline_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="ingestionDestination")
@@ -33626,6 +34213,19 @@ class FeatureEngineeringKafkaConfigIngestionConfigArgs:
         pulumi.set(self, "backfill_source", value)
 
     @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the budget policy used to attribute the serverless compute cost of this stream's
+        managed ingestion. If not specified, a default budget policy may be applied
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "budget_policy_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="deduplicationColumns")
     def deduplication_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -33663,6 +34263,24 @@ class FeatureEngineeringKafkaConfigIngestionConfigArgs:
     @ingestion_pipeline_id.setter
     def ingestion_pipeline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingestion_pipeline_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Custom tags to associate with this stream's managed ingestion. They are applied to the
+        ingestion pipeline and its forward-fill and backfill jobs, and forwarded to the underlying
+        compute as cluster tags, so ingestion cost can be attributed in the billing system tables.
+        These tags apply only to the managed ingestion compute; they are not applied to the Stream
+        entity itself, and are distinct from any Unity Catalog tags on the Stream.
+        A maximum of 25 tags is supported; keys and values are subject to the same limitations as
+        cluster tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceArgsDict(TypedDict):
@@ -33724,10 +34342,12 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
     Required if transformation_sql is specified.
     Example: {"type":"struct","fields":[{"name":"col_a","type":"integer","nullable":true,"metadata":{}},{"name":"col_c","type":"integer","nullable":true,"metadata":{}}]}
     """
+    entity_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     filter_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
     """
+    timeseries_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     transformation_sql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A single SQL SELECT expression applied after filter_condition.
@@ -33740,7 +34360,9 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
     def __init__(__self__, *,
                  full_name: pulumi.Input[_builtins.str],
                  dataframe_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeseries_column: pulumi.Input[Optional[_builtins.str]] = None,
                  transformation_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] full_name: The full three-part (catalog, schema, table) name of the Delta table
@@ -33755,8 +34377,12 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
         pulumi.set(__self__, "full_name", full_name)
         if dataframe_schema is not None:
             pulumi.set(__self__, "dataframe_schema", dataframe_schema)
+        if entity_columns is not None:
+            pulumi.set(__self__, "entity_columns", entity_columns)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
+        if timeseries_column is not None:
+            pulumi.set(__self__, "timeseries_column", timeseries_column)
         if transformation_sql is not None:
             pulumi.set(__self__, "transformation_sql", transformation_sql)
 
@@ -33787,6 +34413,15 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
         pulumi.set(self, "dataframe_schema", value)
 
     @_builtins.property
+    @pulumi.getter(name="entityColumns")
+    def entity_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "entity_columns")
+
+    @entity_columns.setter
+    def entity_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "entity_columns", value)
+
+    @_builtins.property
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -33797,6 +34432,15 @@ class FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource
     @filter_condition.setter
     def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumn")
+    def timeseries_column(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "timeseries_column")
+
+    @timeseries_column.setter
+    def timeseries_column(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeseries_column", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationSql")
@@ -34193,30 +34837,52 @@ class FeatureEngineeringKafkaConfigValueSchemaProtoSchemaArgs:
 class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict(TypedDict):
     cron_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+    The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+    schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+    empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+    window timing and fills it in on the response
     """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs:
     def __init__(__self__, *,
-                 cron_expression: pulumi.Input[Optional[_builtins.str]] = None):
+                 cron_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] cron_expression: The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+        :param pulumi.Input[_builtins.str] cron_expression: The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+               schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+               empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+               window timing and fills it in on the response
         """
         if cron_expression is not None:
             pulumi.set(__self__, "cron_expression", cron_expression)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
 
     @_builtins.property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+        The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
+        schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+        empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
+        window timing and fills it in on the response
         """
         return pulumi.get(self, "cron_expression")
 
     @cron_expression.setter
     def cron_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
 
 
 class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict(TypedDict):
@@ -34362,9 +35028,6 @@ class FeatureEngineeringMaterializedFeatureStreamingModeArgsDict(TypedDict):
     duration string (e.g. "1 minute")
     """
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
-    """
 
 @pulumi.input_type
 class FeatureEngineeringMaterializedFeatureStreamingModeArgs:
@@ -34374,7 +35037,6 @@ class FeatureEngineeringMaterializedFeatureStreamingModeArgs:
         """
         :param pulumi.Input[_builtins.str] freshness_target: The desired data freshness for feature materialization, expressed as a
                duration string (e.g. "1 minute")
-        :param pulumi.Input[_builtins.str] mode: The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
         """
         if freshness_target is not None:
             pulumi.set(__self__, "freshness_target", freshness_target)
@@ -34397,9 +35059,6 @@ class FeatureEngineeringMaterializedFeatureStreamingModeArgs:
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
-        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -42240,14 +42899,18 @@ class JobTaskAiRuntimeTaskDeploymentArgs:
 class JobTaskAiRuntimeTaskDeploymentComputeArgsDict(TypedDict):
     accelerator_count: pulumi.Input[_builtins.int]
     accelerator_type: pulumi.Input[_builtins.str]
+    provisioned_capacity_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobTaskAiRuntimeTaskDeploymentComputeArgs:
     def __init__(__self__, *,
                  accelerator_count: pulumi.Input[_builtins.int],
-                 accelerator_type: pulumi.Input[_builtins.str]):
+                 accelerator_type: pulumi.Input[_builtins.str],
+                 provisioned_capacity_id: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "accelerator_count", accelerator_count)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if provisioned_capacity_id is not None:
+            pulumi.set(__self__, "provisioned_capacity_id", provisioned_capacity_id)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorCount")
@@ -42266,6 +42929,15 @@ class JobTaskAiRuntimeTaskDeploymentComputeArgs:
     @accelerator_type.setter
     def accelerator_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "accelerator_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedCapacityId")
+    def provisioned_capacity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "provisioned_capacity_id")
+
+    @provisioned_capacity_id.setter
+    def provisioned_capacity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "provisioned_capacity_id", value)
 
 
 class JobTaskAlertTaskArgsDict(TypedDict):
@@ -44121,14 +44793,18 @@ class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentArgs:
 class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgsDict(TypedDict):
     accelerator_count: pulumi.Input[_builtins.int]
     accelerator_type: pulumi.Input[_builtins.str]
+    provisioned_capacity_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs:
     def __init__(__self__, *,
                  accelerator_count: pulumi.Input[_builtins.int],
-                 accelerator_type: pulumi.Input[_builtins.str]):
+                 accelerator_type: pulumi.Input[_builtins.str],
+                 provisioned_capacity_id: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "accelerator_count", accelerator_count)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if provisioned_capacity_id is not None:
+            pulumi.set(__self__, "provisioned_capacity_id", provisioned_capacity_id)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorCount")
@@ -44147,6 +44823,15 @@ class JobTaskForEachTaskTaskAiRuntimeTaskDeploymentComputeArgs:
     @accelerator_type.setter
     def accelerator_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "accelerator_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedCapacityId")
+    def provisioned_capacity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "provisioned_capacity_id")
+
+    @provisioned_capacity_id.setter
+    def provisioned_capacity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "provisioned_capacity_id", value)
 
 
 class JobTaskForEachTaskTaskAlertTaskArgsDict(TypedDict):
@@ -61929,13 +62614,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -61989,7 +62674,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -61999,7 +62684,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -62257,13 +62942,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -62278,7 +62963,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -62288,7 +62973,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.131.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -72714,36 +73399,37 @@ class PolicyInfoColumnMaskUsingFunctionArgExpressionTagIntrospectionTagValueArgs
         pulumi.set(self, "tag_key", value)
 
 
-class PolicyInfoGrantArgsDict(TypedDict):
+class PolicyInfoDenyArgsDict(TypedDict):
     privileges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-    """
-    List of privileges to grant.
-    When any of these privileges are requested, the policy will grant access
-    if the principal and condition match.
-    Required on create and update
-    """
 
 @pulumi.input_type
-class PolicyInfoGrantArgs:
+class PolicyInfoDenyArgs:
     def __init__(__self__, *,
                  privileges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] privileges: List of privileges to grant.
-               When any of these privileges are requested, the policy will grant access
-               if the principal and condition match.
-               Required on create and update
-        """
         pulumi.set(__self__, "privileges", privileges)
 
     @_builtins.property
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        List of privileges to grant.
-        When any of these privileges are requested, the policy will grant access
-        if the principal and condition match.
-        Required on create and update
-        """
+        return pulumi.get(self, "privileges")
+
+    @privileges.setter
+    def privileges(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "privileges", value)
+
+
+class PolicyInfoGrantArgsDict(TypedDict):
+    privileges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+
+@pulumi.input_type
+class PolicyInfoGrantArgs:
+    def __init__(__self__, *,
+                 privileges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(__self__, "privileges", privileges)
+
+    @_builtins.property
+    @pulumi.getter
+    def privileges(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         return pulumi.get(self, "privileges")
 
     @privileges.setter
@@ -73101,7 +73787,7 @@ class PostgresBranchSpecArgsDict(TypedDict):
     """
     Explicitly disable expiration. When set to true, the branch will not expire.
     If set to false, the request is invalid; provide either ttl or expire_time instead.
-    Mutually exclusive with `expire_time` and `ttl`. When updating, use `spec.expiration` in the update_mask
+    Mutually exclusive with `expire_time` and `ttl`
     """
     source_branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -73125,7 +73811,7 @@ class PostgresBranchSpecArgsDict(TypedDict):
     ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Relative time-to-live duration. When set, the branch will expire at creation_time + ttl.
-    Mutually exclusive with `expire_time` and `no_expiry`. When updating, use `spec.expiration` in the update_mask
+    Mutually exclusive with `expire_time` and `no_expiry`
     """
 
 @pulumi.input_type
@@ -73144,7 +73830,7 @@ class PostgresBranchSpecArgs:
         :param pulumi.Input[_builtins.bool] is_protected: (boolean) - Whether the branch is protected
         :param pulumi.Input[_builtins.bool] no_expiry: Explicitly disable expiration. When set to true, the branch will not expire.
                If set to false, the request is invalid; provide either ttl or expire_time instead.
-               Mutually exclusive with `expire_time` and `ttl`. When updating, use `spec.expiration` in the update_mask
+               Mutually exclusive with `expire_time` and `ttl`
         :param pulumi.Input[_builtins.str] source_branch: (string) - The name of the source branch from which this branch was created.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[_builtins.str] source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
@@ -73153,7 +73839,7 @@ class PostgresBranchSpecArgs:
                restoring a snapshot; unset for all other branches.
                Format: projects/{project_id}/snapshots/{snapshot_id}
         :param pulumi.Input[_builtins.str] ttl: Relative time-to-live duration. When set, the branch will expire at creation_time + ttl.
-               Mutually exclusive with `expire_time` and `no_expiry`. When updating, use `spec.expiration` in the update_mask
+               Mutually exclusive with `expire_time` and `no_expiry`
         """
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
@@ -73202,7 +73888,7 @@ class PostgresBranchSpecArgs:
         """
         Explicitly disable expiration. When set to true, the branch will not expire.
         If set to false, the request is invalid; provide either ttl or expire_time instead.
-        Mutually exclusive with `expire_time` and `ttl`. When updating, use `spec.expiration` in the update_mask
+        Mutually exclusive with `expire_time` and `ttl`
         """
         return pulumi.get(self, "no_expiry")
 
@@ -73266,7 +73952,7 @@ class PostgresBranchSpecArgs:
     def ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Relative time-to-live duration. When set, the branch will expire at creation_time + ttl.
-        Mutually exclusive with `expire_time` and `no_expiry`. When updating, use `spec.expiration` in the update_mask
+        Mutually exclusive with `expire_time` and `no_expiry`
         """
         return pulumi.get(self, "ttl")
 
@@ -74407,7 +75093,7 @@ class PostgresEndpointSpecArgsDict(TypedDict):
     """
     When set to true, explicitly disables automatic suspension (never suspend).
     Should be set to true when provided.
-    Mutually exclusive with `suspend_timeout_duration`. When updating, use `spec.suspension` in the update_mask
+    Mutually exclusive with `suspend_timeout_duration`
     """
     settings: NotRequired[pulumi.Input[Optional['PostgresEndpointSpecSettingsArgsDict']]]
     """
@@ -74441,7 +75127,7 @@ class PostgresEndpointSpecArgs:
         :param pulumi.Input['PostgresEndpointSpecGroupArgs'] group: (EndpointGroupStatus) - Details on the HA configuration of the endpoint
         :param pulumi.Input[_builtins.bool] no_suspension: When set to true, explicitly disables automatic suspension (never suspend).
                Should be set to true when provided.
-               Mutually exclusive with `suspend_timeout_duration`. When updating, use `spec.suspension` in the update_mask
+               Mutually exclusive with `suspend_timeout_duration`
         :param pulumi.Input['PostgresEndpointSpecSettingsArgs'] settings: (EndpointSettings)
         :param pulumi.Input[_builtins.str] suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -74531,7 +75217,7 @@ class PostgresEndpointSpecArgs:
         """
         When set to true, explicitly disables automatic suspension (never suspend).
         Should be set to true when provided.
-        Mutually exclusive with `suspend_timeout_duration`. When updating, use `spec.suspension` in the update_mask
+        Mutually exclusive with `suspend_timeout_duration`
         """
         return pulumi.get(self, "no_suspension")
 
@@ -79870,6 +80556,122 @@ class RfaAccessRequestDestinationsSecurableArgs:
     @type.setter
     def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
+
+
+class SandboxProviderConfigArgsDict(TypedDict):
+    workspace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class SandboxProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class SandboxSpecArgsDict(TypedDict):
+    compute: NotRequired[pulumi.Input[Optional['SandboxSpecComputeArgsDict']]]
+    """
+    Compute configuration (size, inactivity timeout) requested for the sandbox
+    """
+
+@pulumi.input_type
+class SandboxSpecArgs:
+    def __init__(__self__, *,
+                 compute: pulumi.Input[Optional['SandboxSpecComputeArgs']] = None):
+        """
+        :param pulumi.Input['SandboxSpecComputeArgs'] compute: Compute configuration (size, inactivity timeout) requested for the sandbox
+        """
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> pulumi.Input[Optional['SandboxSpecComputeArgs']]:
+        """
+        Compute configuration (size, inactivity timeout) requested for the sandbox
+        """
+        return pulumi.get(self, "compute")
+
+    @compute.setter
+    def compute(self, value: pulumi.Input[Optional['SandboxSpecComputeArgs']]):
+        pulumi.set(self, "compute", value)
+
+
+class SandboxSpecComputeArgsDict(TypedDict):
+    inactivity_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Idle duration after which the sandbox is automatically terminated
+    """
+
+@pulumi.input_type
+class SandboxSpecComputeArgs:
+    def __init__(__self__, *,
+                 inactivity_timeout: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] inactivity_timeout: Idle duration after which the sandbox is automatically terminated
+        """
+        if inactivity_timeout is not None:
+            pulumi.set(__self__, "inactivity_timeout", inactivity_timeout)
+
+    @_builtins.property
+    @pulumi.getter(name="inactivityTimeout")
+    def inactivity_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Idle duration after which the sandbox is automatically terminated
+        """
+        return pulumi.get(self, "inactivity_timeout")
+
+    @inactivity_timeout.setter
+    def inactivity_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "inactivity_timeout", value)
+
+
+class SandboxStatusArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+    """
+
+@pulumi.input_type
+class SandboxStatusArgs:
+    def __init__(__self__, *,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 class SchemaProviderConfigArgsDict(TypedDict):
@@ -92491,6 +93293,62 @@ class GetDirectoryProviderConfigArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetDirectoryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetDomainProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetDomainProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetDomainsProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetDomainsProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """
@@ -112017,6 +112875,62 @@ class GetRfaAccessRequestDestinationsProviderConfigArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetRfaAccessRequestDestinationsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetSandboxProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetSandboxProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetSandboxesProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetSandboxesProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """

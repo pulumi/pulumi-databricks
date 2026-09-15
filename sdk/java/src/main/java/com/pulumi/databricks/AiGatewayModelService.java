@@ -18,9 +18,66 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ * 
+ * Manages a Unity Catalog model service. A model service provides a stable endpoint that routes inference requests to one or more destinations, such as Databricks foundation models or external model provider services.
+ * 
+ * Model services are contained in a Unity Catalog schema and governed by Unity Catalog permissions.
+ * 
+ * ## Example Usage
+ * 
+ * The following example creates a model service that sends all traffic to a Databricks foundation model:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AiGatewayModelService;
+ * import com.pulumi.databricks.AiGatewayModelServiceArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelServiceConfigArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelServiceConfigRoutingArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelServiceConfigRoutingDestinationArgs;
+ * import com.pulumi.databricks.inputs.AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new AiGatewayModelService("example", AiGatewayModelServiceArgs.builder()
+ *             .parent("schemas/main.default")
+ *             .modelServiceId("customer_support")
+ *             .comment("Routes customer support requests")
+ *             .config(AiGatewayModelServiceConfigArgs.builder()
+ *                 .routing(AiGatewayModelServiceConfigRoutingArgs.builder()
+ *                     .destinations(AiGatewayModelServiceConfigRoutingDestinationArgs.builder()
+ *                         .name("primary")
+ *                         .destinationType("DESTINATION_TYPE_PAY_PER_TOKEN_FOUNDATION_MODEL")
+ *                         .payPerTokenConfig(AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfigArgs.builder()
+ *                             .model("models/system.ai.databricks-gpt-5")
+ *                             .build())
+ *                         .trafficPercentage(100)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/aiGatewayModelService:AiGatewayModelService")
@@ -40,34 +97,32 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      * 
      */
     @Export(name="config", refs={AiGatewayModelServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ AiGatewayModelServiceConfig> config;
 
     /**
-     * @return Operational configuration: destinations, routing, rate limits, inference
-     * table. Required on CreateModelService; on UpdateModelService it is
-     * required only when `config` (or a `config.*` subpath) appears in
-     * `updateMask`
+     * @return Destinations, routing, rate limits, and payload logging configuration.
+     * Required on Create. On Update, provide this field when `updateMask`
+     * contains `config` or one of its subpaths
      * 
      */
     public Output<Optional<AiGatewayModelServiceConfig>> config() {
         return Codegen.optional(this.config);
     }
     /**
-     * (string) - When the model service was created
+     * (string) - Time the model service was created
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return (string) - When the model service was created
+     * @return (string) - Time the model service was created
      * 
      */
     public Output<String> createTime() {
@@ -88,38 +143,34 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
         return this.createdBy;
     }
     /**
-     * (string) - The resolved owner of the ModelService. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * (string) - Owner of the model service
      * 
      */
     @Export(name="effectiveOwner", refs={String.class}, tree="[0]")
     private Output<String> effectiveOwner;
 
     /**
-     * @return (string) - The resolved owner of the ModelService. Falls back to the caller&#39;s identity
-     * when `owner` is not explicitly set on creation
+     * @return (string) - Owner of the model service
      * 
      */
     public Output<String> effectiveOwner() {
         return this.effectiveOwner;
     }
     /**
-     * (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return (string) - Optimistic concurrency control token. Server-generated from the
-     * entity&#39;s state and returned on every read. To use it as an if-match
-     * precondition on a mutation, echo the last-read value back via the dedicated
-     * `etag` field on the Update / Delete request; the server rejects the mutation
-     * if the stored etag differs
+     * @return (string) - Optimistic concurrency token returned on every read. To make an Update or
+     * Delete conditional, pass the last-read value in that request&#39;s `etag`
+     * field. In REST responses, this value is a base64 string; URL-encode it when
+     * setting the `etag` query parameter
      * 
      */
     public Output<String> etag() {
@@ -176,20 +227,6 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The owner of the model service. Write-only; read owner via effective_owner
-     * 
-     */
-    @Export(name="owner", refs={String.class}, tree="[0]")
-    private Output<String> owner;
-
-    /**
-     * @return The owner of the model service. Write-only; read owner via effective_owner
-     * 
-     */
-    public Output<String> owner() {
-        return this.owner;
-    }
-    /**
      * Name of the parent schema.
      * Format: `schemas/{catalog}.{schema}`.
      * Each `{...}` component is capped at 255 characters individually
@@ -222,8 +259,9 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-     * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+     * (list of string) - API types supported across this service&#39;s destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      * 
      */
@@ -231,8 +269,9 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
     private Output<List<String>> supportedApiTypes;
 
     /**
-     * @return (list of string) - Unified API types this endpoint supports (e.g. &#34;chat&#34;, &#34;embeddings&#34;,
-     * &#34;completions&#34;). Derived from the destinations&#39; backing models / providers
+     * @return (list of string) - API types supported across this service&#39;s destinations, such as
+     * `openai/v1/chat/completions`, `openai/v1/embeddings`, and
+     * `mlflow/v1/chat/completions`. Derived from the backing models and providers
      * at read time
      * 
      */
@@ -240,14 +279,14 @@ public class AiGatewayModelService extends com.pulumi.resources.CustomResource {
         return this.supportedApiTypes;
     }
     /**
-     * (string) - When the model service was last modified
+     * (string) - Time the model service was last modified
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return (string) - When the model service was last modified
+     * @return (string) - Time the model service was last modified
      * 
      */
     public Output<String> updateTime() {

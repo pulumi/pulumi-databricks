@@ -14,8 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectResult
     {
         /// <summary>
-        /// (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required on Create. Supplied as inline plaintext via
-        /// `ProviderSecret.plaintext`
+        /// (ModelProviderServiceConfigProviderSecret) - OpenAI API key. Required when creating the service. Supply the value in
+        /// `api_key.plaintext`
         /// </summary>
         public readonly Outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKeyResult? ApiKey;
         /// <summary>

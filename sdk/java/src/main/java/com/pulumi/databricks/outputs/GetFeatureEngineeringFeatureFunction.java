@@ -7,6 +7,9 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionAggregationFunction;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionColumnSelection;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionCustomUdf;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureFunctionExtraParameter;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +31,16 @@ public final class GetFeatureEngineeringFeatureFunction {
      * 
      */
     private @Nullable GetFeatureEngineeringFeatureFunctionCustomUdf customUdf;
+    /**
+     * @return (list of FunctionExtraParameter, deprecated)
+     * 
+     */
+    private @Nullable List<GetFeatureEngineeringFeatureFunctionExtraParameter> extraParameters;
+    /**
+     * @return (string, deprecated) - Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * 
+     */
+    private @Nullable String functionType;
 
     private GetFeatureEngineeringFeatureFunction() {}
     /**
@@ -51,6 +64,20 @@ public final class GetFeatureEngineeringFeatureFunction {
     public Optional<GetFeatureEngineeringFeatureFunctionCustomUdf> customUdf() {
         return Optional.ofNullable(this.customUdf);
     }
+    /**
+     * @return (list of FunctionExtraParameter, deprecated)
+     * 
+     */
+    public List<GetFeatureEngineeringFeatureFunctionExtraParameter> extraParameters() {
+        return this.extraParameters == null ? List.of() : this.extraParameters;
+    }
+    /**
+     * @return (string, deprecated) - Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `FUNCTION_TYPE_UNSPECIFIED`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * 
+     */
+    public Optional<String> functionType() {
+        return Optional.ofNullable(this.functionType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +91,16 @@ public final class GetFeatureEngineeringFeatureFunction {
         private @Nullable GetFeatureEngineeringFeatureFunctionAggregationFunction aggregationFunction;
         private @Nullable GetFeatureEngineeringFeatureFunctionColumnSelection columnSelection;
         private @Nullable GetFeatureEngineeringFeatureFunctionCustomUdf customUdf;
+        private @Nullable List<GetFeatureEngineeringFeatureFunctionExtraParameter> extraParameters;
+        private @Nullable String functionType;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeatureFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregationFunction = defaults.aggregationFunction;
     	      this.columnSelection = defaults.columnSelection;
     	      this.customUdf = defaults.customUdf;
+    	      this.extraParameters = defaults.extraParameters;
+    	      this.functionType = defaults.functionType;
         }
 
         @CustomType.Setter
@@ -90,11 +121,28 @@ public final class GetFeatureEngineeringFeatureFunction {
             this.customUdf = customUdf;
             return this;
         }
+        @CustomType.Setter
+        public Builder extraParameters(@Nullable List<GetFeatureEngineeringFeatureFunctionExtraParameter> extraParameters) {
+
+            this.extraParameters = extraParameters;
+            return this;
+        }
+        public Builder extraParameters(GetFeatureEngineeringFeatureFunctionExtraParameter... extraParameters) {
+            return extraParameters(List.of(extraParameters));
+        }
+        @CustomType.Setter
+        public Builder functionType(@Nullable String functionType) {
+
+            this.functionType = functionType;
+            return this;
+        }
         public GetFeatureEngineeringFeatureFunction build() {
             final var _resultValue = new GetFeatureEngineeringFeatureFunction();
             _resultValue.aggregationFunction = aggregationFunction;
             _resultValue.columnSelection = columnSelection;
             _resultValue.customUdf = customUdf;
+            _resultValue.extraParameters = extraParameters;
+            _resultValue.functionType = functionType;
             return _resultValue;
         }
     }

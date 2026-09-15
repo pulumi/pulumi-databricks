@@ -89,6 +89,12 @@ export interface GetPolicyInfoResult {
      */
     readonly createdBy: string;
     /**
+     * (DenyOptions) - Options for deny policies. Valid only if `policyType` is `POLICY_TYPE_DENY`.
+     * Required on create and optional on update. When specified on update,
+     * the new options will replace the existing options as a whole
+     */
+    readonly deny: outputs.GetPolicyInfoDeny;
+    /**
      * (list of string) - Optional list of user or group names that should be excluded from the policy
      */
     readonly exceptPrincipals: string[];
@@ -130,7 +136,7 @@ export interface GetPolicyInfoResult {
      */
     readonly onSecurableType: string;
     /**
-     * (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
+     * (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
      */
     readonly policyType: string;
     readonly providerConfig?: outputs.GetPolicyInfoProviderConfig;

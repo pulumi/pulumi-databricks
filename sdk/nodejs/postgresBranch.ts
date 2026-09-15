@@ -87,6 +87,24 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ### Branch from a Snapshot
+ *
+ * Create a branch whose data comes from an existing snapshot instead of a source branch. The snapshot must be `AVAILABLE` and belong to the same project. `sourceSnapshot` is immutable and mutually exclusive with `sourceBranch`. The restored snapshot is reported back in `status.source_snapshot`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const fromSnapshot = new databricks.PostgresBranch("from_snapshot", {
+ *     branchId: "restored-branch",
+ *     parent: _this.name,
+ *     spec: {
+ *         sourceSnapshot: "projects/my-project/snapshots/my-snapshot",
+ *         noExpiry: true,
+ *     },
+ * });
+ * ```
  */
 export class PostgresBranch extends pulumi.CustomResource {
     /**

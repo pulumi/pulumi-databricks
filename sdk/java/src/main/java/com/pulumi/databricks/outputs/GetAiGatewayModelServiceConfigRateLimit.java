@@ -14,15 +14,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelServiceConfigRateLimit {
     /**
-     * @return (string) - Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     * @return (string) - Scope of the rate limit. Depending on this value, the limit applies to a
+     * principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
      * 
      */
     private String key;
     /**
      * @return (string) - Principal this limit applies to: user email, group name, or service
-     * principal application ID. Required unless `key` is
-     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     * principal application ID. Required when `key` applies to a user, group, or
+     * service principal; otherwise it must be unset
      * 
      */
     private @Nullable String principal;
@@ -32,33 +32,22 @@ public final class GetAiGatewayModelServiceConfigRateLimit {
      */
     private String renewalPeriod;
     /**
-     * @return (string) - Request tag key this limit applies to. Required when `key` is
-     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-     * 
-     */
-    private @Nullable String requestTagKey;
-    /**
-     * @return (string) - Request tag value this limit applies to. Only valid when `key` is
-     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-     * value of `requestTagKey` (an any-value default); a set value is a
-     * specific override for that value
-     * 
-     */
-    private @Nullable String requestTagValue;
-    /**
-     * @return (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+     * @return (integer) - Maximum requests allowed in one renewal period. Leave unset for no request
+     * limit. Set to `0` to deny all requests
      * 
      */
     private @Nullable Integer requests;
     /**
-     * @return (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+     * @return (integer) - Maximum tokens allowed in one renewal period. Leave unset for no token
+     * limit. Set to `0` to deny all requests
      * 
      */
     private @Nullable Integer tokens;
 
     private GetAiGatewayModelServiceConfigRateLimit() {}
     /**
-     * @return (string) - Scope key. Determines whether `principal` is required. Possible values are: `RATE_LIMIT_KEY_REQUEST_TAG`, `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
+     * @return (string) - Scope of the rate limit. Depending on this value, the limit applies to a
+     * principal, the service as a whole, or each user by default. Possible values are: `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_SERVICE_PRINCIPAL`, `RATE_LIMIT_KEY_USER`, `RATE_LIMIT_KEY_USER_DEFAULT`, `RATE_LIMIT_KEY_USER_GROUP`
      * 
      */
     public String key() {
@@ -66,9 +55,8 @@ public final class GetAiGatewayModelServiceConfigRateLimit {
     }
     /**
      * @return (string) - Principal this limit applies to: user email, group name, or service
-     * principal application ID. Required unless `key` is
-     * `RATE_LIMIT_KEY_SERVICE`, `RATE_LIMIT_KEY_USER_DEFAULT`, or
-     * `RATE_LIMIT_KEY_REQUEST_TAG` (which must not set a principal)
+     * principal application ID. Required when `key` applies to a user, group, or
+     * service principal; otherwise it must be unset
      * 
      */
     public Optional<String> principal() {
@@ -82,32 +70,16 @@ public final class GetAiGatewayModelServiceConfigRateLimit {
         return this.renewalPeriod;
     }
     /**
-     * @return (string) - Request tag key this limit applies to. Required when `key` is
-     * `RATE_LIMIT_KEY_REQUEST_TAG`, forbidden otherwise
-     * 
-     */
-    public Optional<String> requestTagKey() {
-        return Optional.ofNullable(this.requestTagKey);
-    }
-    /**
-     * @return (string) - Request tag value this limit applies to. Only valid when `key` is
-     * `RATE_LIMIT_KEY_REQUEST_TAG`. Leave unset to apply the limit to every
-     * value of `requestTagKey` (an any-value default); a set value is a
-     * specific override for that value
-     * 
-     */
-    public Optional<String> requestTagValue() {
-        return Optional.ofNullable(this.requestTagValue);
-    }
-    /**
-     * @return (integer) - Max requests allowed within a renewal period. Leave unset for no request limit
+     * @return (integer) - Maximum requests allowed in one renewal period. Leave unset for no request
+     * limit. Set to `0` to deny all requests
      * 
      */
     public Optional<Integer> requests() {
         return Optional.ofNullable(this.requests);
     }
     /**
-     * @return (integer) - Max tokens allowed within a renewal period. Leave unset for no token limit
+     * @return (integer) - Maximum tokens allowed in one renewal period. Leave unset for no token
+     * limit. Set to `0` to deny all requests
      * 
      */
     public Optional<Integer> tokens() {
@@ -126,8 +98,6 @@ public final class GetAiGatewayModelServiceConfigRateLimit {
         private String key;
         private @Nullable String principal;
         private String renewalPeriod;
-        private @Nullable String requestTagKey;
-        private @Nullable String requestTagValue;
         private @Nullable Integer requests;
         private @Nullable Integer tokens;
         public Builder() {}
@@ -136,8 +106,6 @@ public final class GetAiGatewayModelServiceConfigRateLimit {
     	      this.key = defaults.key;
     	      this.principal = defaults.principal;
     	      this.renewalPeriod = defaults.renewalPeriod;
-    	      this.requestTagKey = defaults.requestTagKey;
-    	      this.requestTagValue = defaults.requestTagValue;
     	      this.requests = defaults.requests;
     	      this.tokens = defaults.tokens;
         }
@@ -165,18 +133,6 @@ public final class GetAiGatewayModelServiceConfigRateLimit {
             return this;
         }
         @CustomType.Setter
-        public Builder requestTagKey(@Nullable String requestTagKey) {
-
-            this.requestTagKey = requestTagKey;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder requestTagValue(@Nullable String requestTagValue) {
-
-            this.requestTagValue = requestTagValue;
-            return this;
-        }
-        @CustomType.Setter
         public Builder requests(@Nullable Integer requests) {
 
             this.requests = requests;
@@ -193,8 +149,6 @@ public final class GetAiGatewayModelServiceConfigRateLimit {
             _resultValue.key = key;
             _resultValue.principal = principal;
             _resultValue.renewalPeriod = renewalPeriod;
-            _resultValue.requestTagKey = requestTagKey;
-            _resultValue.requestTagValue = requestTagValue;
             _resultValue.requests = requests;
             _resultValue.tokens = tokens;
             return _resultValue;

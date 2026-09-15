@@ -76,6 +76,15 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringMaterializedFeatureResult
     {
         /// <summary>
+        /// (string) - The ID of the budget policy used to attribute the serverless compute cost of this
+        /// materialization. If not specified, a default budget policy may be applied
+        /// </summary>
+        public readonly string BudgetPolicyId;
+        /// <summary>
+        /// (string, deprecated)
+        /// </summary>
+        public readonly string CronSchedule;
+        /// <summary>
         /// (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTriggerResult CronScheduleTrigger;
@@ -92,6 +101,10 @@ namespace Pulumi.Databricks
         /// If the pipeline has not run yet, this field will be null
         /// </summary>
         public readonly string LastMaterializationTime;
+        /// <summary>
+        /// (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
+        /// </summary>
+        public readonly string LatestBackfillOperation;
         /// <summary>
         /// (string) - Server-assigned unique identifier for the materialized feature
         /// </summary>
@@ -124,9 +137,23 @@ namespace Pulumi.Databricks
         /// (TableTrigger) - A trigger that fires when the upstream source table changes
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeatureTableTriggerResult TableTrigger;
+        /// <summary>
+        /// (object) - Custom tags to associate with this materialization. They are applied to the materialization
+        /// job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
+        /// compute as cluster tags, so materialization cost can be attributed in the billing system
+        /// tables. These tags apply only to the materialization compute; they are not applied to the
+        /// Unity Catalog Feature resource itself, whose tags are managed separately through the Unity
+        /// Catalog tagging API. A maximum of 25 tags is supported; keys and values are subject to the
+        /// same limitations as cluster tags
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetFeatureEngineeringMaterializedFeatureResult(
+            string budgetPolicyId,
+
+            string cronSchedule,
+
             Outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTriggerResult cronScheduleTrigger,
 
             string featureName,
@@ -134,6 +161,8 @@ namespace Pulumi.Databricks
             bool isOnline,
 
             string lastMaterializationTime,
+
+            string latestBackfillOperation,
 
             string materializedFeatureId,
 
@@ -149,12 +178,17 @@ namespace Pulumi.Databricks
 
             string tableName,
 
-            Outputs.GetFeatureEngineeringMaterializedFeatureTableTriggerResult tableTrigger)
+            Outputs.GetFeatureEngineeringMaterializedFeatureTableTriggerResult tableTrigger,
+
+            ImmutableDictionary<string, string> tags)
         {
+            BudgetPolicyId = budgetPolicyId;
+            CronSchedule = cronSchedule;
             CronScheduleTrigger = cronScheduleTrigger;
             FeatureName = featureName;
             IsOnline = isOnline;
             LastMaterializationTime = lastMaterializationTime;
+            LatestBackfillOperation = latestBackfillOperation;
             MaterializedFeatureId = materializedFeatureId;
             OfflineStoreConfig = offlineStoreConfig;
             OnlineStoreConfig = onlineStoreConfig;
@@ -163,6 +197,7 @@ namespace Pulumi.Databricks
             StreamingMode = streamingMode;
             TableName = tableName;
             TableTrigger = tableTrigger;
+            Tags = tags;
         }
     }
 }

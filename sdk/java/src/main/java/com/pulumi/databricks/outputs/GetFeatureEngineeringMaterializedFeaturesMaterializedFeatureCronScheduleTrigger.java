@@ -12,18 +12,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger {
     /**
-     * @return (string) - The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight)
+     * @return (string) - The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
+     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
+     * window timing and fills it in on the response
      * 
      */
     private @Nullable String cronExpression;
+    /**
+     * @return (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
+     * 
+     */
+    private @Nullable String mode;
 
     private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger() {}
     /**
-     * @return (string) - The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight)
+     * @return (string) - The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
+     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
+     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
+     * window timing and fills it in on the response
      * 
      */
     public Optional<String> cronExpression() {
         return Optional.ofNullable(this.cronExpression);
+    }
+    /**
+     * @return (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
+     * 
+     */
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     public static Builder builder() {
@@ -36,10 +54,12 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureC
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String cronExpression;
+        private @Nullable String mode;
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronExpression = defaults.cronExpression;
+    	      this.mode = defaults.mode;
         }
 
         @CustomType.Setter
@@ -48,9 +68,16 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureC
             this.cronExpression = cronExpression;
             return this;
         }
+        @CustomType.Setter
+        public Builder mode(@Nullable String mode) {
+
+            this.mode = mode;
+            return this;
+        }
         public GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger();
             _resultValue.cronExpression = cronExpression;
+            _resultValue.mode = mode;
             return _resultValue;
         }
     }

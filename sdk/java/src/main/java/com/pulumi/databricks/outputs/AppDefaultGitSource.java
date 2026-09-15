@@ -12,11 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppDefaultGitSource {
+    private @Nullable String branch;
     /**
-     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * @return Git commit SHA to check out and deploy from.
      * 
      */
-    private @Nullable String branch;
     private @Nullable String commit;
     /**
      * @return Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
@@ -25,20 +25,24 @@ public final class AppDefaultGitSource {
     private @Nullable AppDefaultGitSourceGitRepository gitRepository;
     private @Nullable String resolvedCommit;
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     private @Nullable String sourceCodePath;
+    /**
+     * @return Git tag to check out and deploy from.
+     * 
+     */
     private @Nullable String tag;
 
     private AppDefaultGitSource() {}
-    /**
-     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
-     * 
-     */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
+    /**
+     * @return Git commit SHA to check out and deploy from.
+     * 
+     */
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
     }
@@ -53,12 +57,16 @@ public final class AppDefaultGitSource {
         return Optional.ofNullable(this.resolvedCommit);
     }
     /**
-     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * @return Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      * 
      */
     public Optional<String> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }
+    /**
+     * @return Git tag to check out and deploy from.
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }

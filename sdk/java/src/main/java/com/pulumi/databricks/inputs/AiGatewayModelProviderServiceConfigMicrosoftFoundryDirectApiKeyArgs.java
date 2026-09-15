@@ -17,8 +17,8 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiK
 
     /**
      * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the field&#39;s presence in
-     * the read shape only indicates that a secret is configured
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
      * 
      */
     @Import(name="plaintext")
@@ -26,8 +26,8 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiK
 
     /**
      * @return Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the field&#39;s presence in
-     * the read shape only indicates that a secret is configured
+     * reads. Get and List responses omit `plaintext`; the enclosing secret
+     * object remains present to indicate that a secret is configured
      * 
      */
     public Optional<Output<String>> plaintext() {
@@ -60,8 +60,8 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiK
 
         /**
          * @param plaintext Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-         * reads. Get and List responses omit `plaintext`; the field&#39;s presence in
-         * the read shape only indicates that a secret is configured
+         * reads. Get and List responses omit `plaintext`; the enclosing secret
+         * object remains present to indicate that a secret is configured
          * 
          * @return builder
          * 
@@ -73,8 +73,8 @@ public final class AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiK
 
         /**
          * @param plaintext Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-         * reads. Get and List responses omit `plaintext`; the field&#39;s presence in
-         * the read shape only indicates that a secret is configured
+         * reads. Get and List responses omit `plaintext`; the enclosing secret
+         * object remains present to indicate that a secret is configured
          * 
          * @return builder
          * 

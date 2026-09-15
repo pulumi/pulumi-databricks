@@ -15,9 +15,10 @@ namespace Pulumi.Databricks.Outputs
     {
         /// <summary>
         /// (list of ModelServiceConfigDestinationConfig) - Primary routing destinations. At most 10 are allowed. At least one is
-        /// required on CreateModelService; on UpdateModelService it is required only
-        /// when `config.routing` (or a `config.routing.*` subpath) appears in
-        /// `UpdateMask`
+        /// required on Create. On Update, provide this list when replacing the full
+        /// `Config` or updating `config.routing.destinations`; other granular routing
+        /// updates do not require resending destinations. The intermediate
+        /// `config.routing` mask path is not supported
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiGatewayModelServiceConfigRoutingFallbackDestinationResult> Destinations;
 

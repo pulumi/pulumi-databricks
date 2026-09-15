@@ -7,9 +7,25 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+ *
+ * ## Example Usage
+ *
+ * The following example lists MCP services in the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAiGatewayMcpServices({
+ *     parent: "schemas/main.default",
+ * });
+ * export const mcpServices = all.then(all => all.mcpServices);
+ * ```
  */
 export function getAiGatewayMcpServices(args?: GetAiGatewayMcpServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetAiGatewayMcpServicesResult> {
     args = args || {};
@@ -32,9 +48,9 @@ export interface GetAiGatewayMcpServicesArgs {
      */
     pageSize?: number;
     /**
-     * Name of the parent schema to list within, as
-     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-     * characters individually
+     * Parent schema to list within, in the form
+     * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+     * 255 characters individually
      */
     parent?: string;
     /**
@@ -42,9 +58,9 @@ export interface GetAiGatewayMcpServicesArgs {
      */
     providerConfig?: inputs.GetAiGatewayMcpServicesProviderConfig;
     /**
-     * View selector controlling which fields are populated per row. `FULL`
-     * returns the full representation of the service; `BASIC` returns a more
-     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+     * Fields to return for each service. `FULL` includes source-connection
+     * details and rate-limit principal names. `BASIC` omits the source connection
+     * and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      */
     view?: string;
 }
@@ -60,9 +76,25 @@ export interface GetAiGatewayMcpServicesResult {
     readonly view?: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aigateway)
+ *
+ * Lists the Unity Catalog MCP services that are visible to the current principal in a schema.
+ *
+ * ## Example Usage
+ *
+ * The following example lists MCP services in the `main.default` schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAiGatewayMcpServices({
+ *     parent: "schemas/main.default",
+ * });
+ * export const mcpServices = all.then(all => all.mcpServices);
+ * ```
  */
 export function getAiGatewayMcpServicesOutput(args?: GetAiGatewayMcpServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiGatewayMcpServicesResult> {
     args = args || {};
@@ -85,9 +117,9 @@ export interface GetAiGatewayMcpServicesOutputArgs {
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * Name of the parent schema to list within, as
-     * `schemas/{catalog}.{schema}`. Each `{...}` component is capped at 255
-     * characters individually
+     * Parent schema to list within, in the form
+     * `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
+     * 255 characters individually
      */
     parent?: pulumi.Input<string | undefined>;
     /**
@@ -95,9 +127,9 @@ export interface GetAiGatewayMcpServicesOutputArgs {
      */
     providerConfig?: pulumi.Input<inputs.GetAiGatewayMcpServicesProviderConfigArgs | undefined>;
     /**
-     * View selector controlling which fields are populated per row. `FULL`
-     * returns the full representation of the service; `BASIC` returns a more
-     * compact version. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
+     * Fields to return for each service. `FULL` includes source-connection
+     * details and rate-limit principal names. `BASIC` omits the source connection
+     * and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
      */
     view?: pulumi.Input<string | undefined>;
 }

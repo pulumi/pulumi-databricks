@@ -7,8 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AiGatewayModelServiceConfigRoutingDestinationArgs;
 import com.pulumi.databricks.inputs.AiGatewayModelServiceConfigRoutingFallbackArgs;
-import com.pulumi.databricks.inputs.AiGatewayModelServiceConfigRoutingTrafficSplittingArgs;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,58 +25,20 @@ public final class AiGatewayModelServiceConfigRoutingArgs extends com.pulumi.res
     }
 
     /**
-     * Fallback routing config, applied after primary destinations fail
+     * Fallback routing applied after a primary destination fails. Fallback
+     * destinations are tried in the listed order
      * 
      */
     @Import(name="fallback")
     private @Nullable Output<AiGatewayModelServiceConfigRoutingFallbackArgs> fallback;
 
     /**
-     * @return Fallback routing config, applied after primary destinations fail
+     * @return Fallback routing applied after a primary destination fails. Fallback
+     * destinations are tried in the listed order
      * 
      */
     public Optional<Output<AiGatewayModelServiceConfigRoutingFallbackArgs>> fallback() {
         return Optional.ofNullable(this.fallback);
-    }
-
-    /**
-     * Timeout for the first token of a streaming response. If a destination does
-     * not return its first token within this duration, AI Gateway aborts the
-     * attempt and fails over to the next destination. Applies to streaming
-     * requests only. Leave unset for no first-token timeout
-     * 
-     */
-    @Import(name="firstTokenTimeout")
-    private @Nullable Output<String> firstTokenTimeout;
-
-    /**
-     * @return Timeout for the first token of a streaming response. If a destination does
-     * not return its first token within this duration, AI Gateway aborts the
-     * attempt and fails over to the next destination. Applies to streaming
-     * requests only. Leave unset for no first-token timeout
-     * 
-     */
-    public Optional<Output<String>> firstTokenTimeout() {
-        return Optional.ofNullable(this.firstTokenTimeout);
-    }
-
-    /**
-     * Marker message selecting request-based traffic splitting. Traffic is
-     * distributed according to each destination&#39;s trafficPercentage value;
-     * no configuration lives on this message itself
-     * 
-     */
-    @Import(name="trafficSplitting")
-    private @Nullable Output<AiGatewayModelServiceConfigRoutingTrafficSplittingArgs> trafficSplitting;
-
-    /**
-     * @return Marker message selecting request-based traffic splitting. Traffic is
-     * distributed according to each destination&#39;s trafficPercentage value;
-     * no configuration lives on this message itself
-     * 
-     */
-    public Optional<Output<AiGatewayModelServiceConfigRoutingTrafficSplittingArgs>> trafficSplitting() {
-        return Optional.ofNullable(this.trafficSplitting);
     }
 
     private AiGatewayModelServiceConfigRoutingArgs() {}
@@ -86,8 +46,6 @@ public final class AiGatewayModelServiceConfigRoutingArgs extends com.pulumi.res
     private AiGatewayModelServiceConfigRoutingArgs(AiGatewayModelServiceConfigRoutingArgs $) {
         this.destinations = $.destinations;
         this.fallback = $.fallback;
-        this.firstTokenTimeout = $.firstTokenTimeout;
-        this.trafficSplitting = $.trafficSplitting;
     }
 
     public static Builder builder() {
@@ -122,7 +80,8 @@ public final class AiGatewayModelServiceConfigRoutingArgs extends com.pulumi.res
         }
 
         /**
-         * @param fallback Fallback routing config, applied after primary destinations fail
+         * @param fallback Fallback routing applied after a primary destination fails. Fallback
+         * destinations are tried in the listed order
          * 
          * @return builder
          * 
@@ -133,65 +92,14 @@ public final class AiGatewayModelServiceConfigRoutingArgs extends com.pulumi.res
         }
 
         /**
-         * @param fallback Fallback routing config, applied after primary destinations fail
+         * @param fallback Fallback routing applied after a primary destination fails. Fallback
+         * destinations are tried in the listed order
          * 
          * @return builder
          * 
          */
         public Builder fallback(AiGatewayModelServiceConfigRoutingFallbackArgs fallback) {
             return fallback(Output.of(fallback));
-        }
-
-        /**
-         * @param firstTokenTimeout Timeout for the first token of a streaming response. If a destination does
-         * not return its first token within this duration, AI Gateway aborts the
-         * attempt and fails over to the next destination. Applies to streaming
-         * requests only. Leave unset for no first-token timeout
-         * 
-         * @return builder
-         * 
-         */
-        public Builder firstTokenTimeout(@Nullable Output<String> firstTokenTimeout) {
-            $.firstTokenTimeout = firstTokenTimeout;
-            return this;
-        }
-
-        /**
-         * @param firstTokenTimeout Timeout for the first token of a streaming response. If a destination does
-         * not return its first token within this duration, AI Gateway aborts the
-         * attempt and fails over to the next destination. Applies to streaming
-         * requests only. Leave unset for no first-token timeout
-         * 
-         * @return builder
-         * 
-         */
-        public Builder firstTokenTimeout(String firstTokenTimeout) {
-            return firstTokenTimeout(Output.of(firstTokenTimeout));
-        }
-
-        /**
-         * @param trafficSplitting Marker message selecting request-based traffic splitting. Traffic is
-         * distributed according to each destination&#39;s trafficPercentage value;
-         * no configuration lives on this message itself
-         * 
-         * @return builder
-         * 
-         */
-        public Builder trafficSplitting(@Nullable Output<AiGatewayModelServiceConfigRoutingTrafficSplittingArgs> trafficSplitting) {
-            $.trafficSplitting = trafficSplitting;
-            return this;
-        }
-
-        /**
-         * @param trafficSplitting Marker message selecting request-based traffic splitting. Traffic is
-         * distributed according to each destination&#39;s trafficPercentage value;
-         * no configuration lives on this message itself
-         * 
-         * @return builder
-         * 
-         */
-        public Builder trafficSplitting(AiGatewayModelServiceConfigRoutingTrafficSplittingArgs trafficSplitting) {
-            return trafficSplitting(Output.of(trafficSplitting));
         }
 
         public AiGatewayModelServiceConfigRoutingArgs build() {

@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiGatewayModelServiceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Inference table config for payload logging
+        /// Inference table configuration for payload logging
         /// </summary>
         [Input("inferenceTable")]
         public Input<Inputs.AiGatewayModelServiceConfigInferenceTableArgs>? InferenceTable { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Routing configuration: destinations, routing strategy, and fallback
+        /// Routing configuration: destinations and fallback
         /// </summary>
         [Input("routing")]
         public Input<Inputs.AiGatewayModelServiceConfigRoutingArgs>? Routing { get; set; }
