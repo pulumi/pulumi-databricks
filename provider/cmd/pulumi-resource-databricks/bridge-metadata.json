@@ -1650,6 +1650,18 @@
                 "current": "databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl",
                 "majorVersion": 1
             },
+            "databricks_domain": {
+                "current": "databricks:index/domain:Domain",
+                "majorVersion": 1,
+                "fields": {
+                    "business_owner_ids": {
+                        "maxItemsOne": false
+                    },
+                    "technical_owner_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_endpoint": {
                 "current": "databricks:index/endpoint:Endpoint",
                 "majorVersion": 1
@@ -1789,11 +1801,31 @@
                                         "maxItemsOne": false
                                     }
                                 }
+                            },
+                            "extra_parameters": {
+                                "maxItemsOne": false
                             }
                         }
                     },
+                    "inputs": {
+                        "maxItemsOne": false
+                    },
                     "source": {
                         "fields": {
+                            "delta_table_source": {
+                                "fields": {
+                                    "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "kafka_source": {
+                                "fields": {
+                                    "entity_column_identifiers": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "request_source": {
                                 "fields": {
                                     "flat_schema": {
@@ -1813,8 +1845,30 @@
                 "current": "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig",
                 "majorVersion": 1,
                 "fields": {
+                    "backfill_source": {
+                        "fields": {
+                            "delta_table_source": {
+                                "fields": {
+                                    "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "ingestion_config": {
                         "fields": {
+                            "backfill_source": {
+                                "fields": {
+                                    "delta_table_source": {
+                                        "fields": {
+                                            "entity_columns": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            },
                             "deduplication_columns": {
                                 "maxItemsOne": false
                             }
@@ -5476,6 +5530,13 @@
                             }
                         }
                     },
+                    "deny": {
+                        "fields": {
+                            "privileges": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "except_principals": {
                         "maxItemsOne": false
                     },
@@ -5892,6 +5953,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "databricks_sandbox": {
+                "current": "databricks:index/sandbox:Sandbox",
+                "majorVersion": 1
             },
             "databricks_schema": {
                 "current": "databricks:index/schema:Schema",
@@ -9284,6 +9349,37 @@
                     }
                 }
             },
+            "databricks_domain": {
+                "current": "databricks:index/getDomain:getDomain",
+                "majorVersion": 1,
+                "fields": {
+                    "business_owner_ids": {
+                        "maxItemsOne": false
+                    },
+                    "technical_owner_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_domains": {
+                "current": "databricks:index/getDomains:getDomains",
+                "majorVersion": 1,
+                "fields": {
+                    "domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "business_owner_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "technical_owner_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_endpoint": {
                 "current": "databricks:index/getEndpoint:getEndpoint",
                 "majorVersion": 1
@@ -9475,11 +9571,31 @@
                                         "maxItemsOne": false
                                     }
                                 }
+                            },
+                            "extra_parameters": {
+                                "maxItemsOne": false
                             }
                         }
                     },
+                    "inputs": {
+                        "maxItemsOne": false
+                    },
                     "source": {
                         "fields": {
+                            "delta_table_source": {
+                                "fields": {
+                                    "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "kafka_source": {
+                                "fields": {
+                                    "entity_column_identifiers": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "request_source": {
                                 "fields": {
                                     "flat_schema": {
@@ -9514,11 +9630,31 @@
                                                     "maxItemsOne": false
                                                 }
                                             }
+                                        },
+                                        "extra_parameters": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 },
+                                "inputs": {
+                                    "maxItemsOne": false
+                                },
                                 "source": {
                                     "fields": {
+                                        "delta_table_source": {
+                                            "fields": {
+                                                "entity_columns": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "kafka_source": {
+                                            "fields": {
+                                                "entity_column_identifiers": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
                                         "request_source": {
                                             "fields": {
                                                 "flat_schema": {
@@ -9541,8 +9677,30 @@
                 "current": "databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig",
                 "majorVersion": 1,
                 "fields": {
+                    "backfill_source": {
+                        "fields": {
+                            "delta_table_source": {
+                                "fields": {
+                                    "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "ingestion_config": {
                         "fields": {
+                            "backfill_source": {
+                                "fields": {
+                                    "delta_table_source": {
+                                        "fields": {
+                                            "entity_columns": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            },
                             "deduplication_columns": {
                                 "maxItemsOne": false
                             }
@@ -9558,8 +9716,30 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "backfill_source": {
+                                    "fields": {
+                                        "delta_table_source": {
+                                            "fields": {
+                                                "entity_columns": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "ingestion_config": {
                                     "fields": {
+                                        "backfill_source": {
+                                            "fields": {
+                                                "delta_table_source": {
+                                                    "fields": {
+                                                        "entity_columns": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
                                         "deduplication_columns": {
                                             "maxItemsOne": false
                                         }
@@ -11086,6 +11266,13 @@
                             }
                         }
                     },
+                    "deny": {
+                        "fields": {
+                            "privileges": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "except_principals": {
                         "maxItemsOne": false
                     },
@@ -11122,6 +11309,13 @@
                                 "column_mask": {
                                     "fields": {
                                         "using": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "deny": {
+                                    "fields": {
+                                        "privileges": {
                                             "maxItemsOne": false
                                         }
                                     }
@@ -11541,6 +11735,19 @@
                 "majorVersion": 1,
                 "fields": {
                     "destinations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_sandbox": {
+                "current": "databricks:index/getSandbox:getSandbox",
+                "majorVersion": 1
+            },
+            "databricks_sandboxes": {
+                "current": "databricks:index/getSandboxes:getSandboxes",
+                "majorVersion": 1,
+                "fields": {
+                    "sandboxes": {
                         "maxItemsOne": false
                     }
                 }
@@ -12511,6 +12718,11 @@
                     "kind": "missing"
                 }
             },
+            "databricks_domain": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_endpoint": {
                 "computeID": {
                     "kind": "missing"
@@ -12614,6 +12826,11 @@
             },
             "databricks_quality_monitor_v2": {},
             "databricks_rfa_access_request_destinations": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_sandbox": {
                 "computeID": {
                     "kind": "missing"
                 }
@@ -12825,6 +13042,7 @@
             "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting": 0,
             "databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup": 1,
             "databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl": 1,
+            "databricks:index/domain:Domain": 1,
             "databricks:index/endpoint:Endpoint": 1,
             "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting": 0,
             "databricks:index/entitlements:Entitlements": 0,
@@ -12903,6 +13121,7 @@
             "databricks:index/repo:Repo": 0,
             "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting": 0,
             "databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations": 1,
+            "databricks:index/sandbox:Sandbox": 1,
             "databricks:index/schema:Schema": 0,
             "databricks:index/secret:Secret": 0,
             "databricks:index/secretAcl:SecretAcl": 0,
@@ -13021,6 +13240,8 @@
             "databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups": 1,
             "databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl": 1,
             "databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls": 1,
+            "databricks:index/getDomain:getDomain": 1,
+            "databricks:index/getDomains:getDomains": 1,
             "databricks:index/getEndpoint:getEndpoint": 1,
             "databricks:index/getEndpoints:getEndpoints": 1,
             "databricks:index/getEntityTagAssignment:getEntityTagAssignment": 1,
@@ -13092,6 +13313,8 @@
             "databricks:index/getRegisteredModel:getRegisteredModel": 1,
             "databricks:index/getRegisteredModelVersions:getRegisteredModelVersions": 1,
             "databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations": 1,
+            "databricks:index/getSandbox:getSandbox": 1,
+            "databricks:index/getSandboxes:getSandboxes": 1,
             "databricks:index/getSchema:getSchema": 0,
             "databricks:index/getSchemas:getSchemas": 0,
             "databricks:index/getSecretUc:getSecretUc": 1,
@@ -16180,6 +16403,9 @@
             "databricks_disable_legacy_features_setting": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_domain": [
+                "provider_config.workspace_id"
+            ],
             "databricks_enhanced_security_monitoring_workspace_setting": [
                 "provider_config.$.workspace_id"
             ],
@@ -16397,6 +16623,9 @@
                 "provider_config.$.workspace_id"
             ],
             "databricks_rfa_access_request_destinations": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_sandbox": [
                 "provider_config.workspace_id"
             ],
             "databricks_schema": [
@@ -16680,6 +16909,13 @@
             "databricks_directory": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_domain": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_domains": [
+                "domains.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
             "databricks_entity_tag_assignment": [
                 "provider_config.workspace_id"
             ],
@@ -16896,6 +17132,13 @@
             ],
             "databricks_rfa_access_request_destinations": [
                 "provider_config.workspace_id"
+            ],
+            "databricks_sandbox": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_sandboxes": [
+                "provider_config.workspace_id",
+                "sandboxes.$.provider_config.workspace_id"
             ],
             "databricks_schema": [
                 "provider_config.$.workspace_id"
