@@ -177,7 +177,7 @@ class AwaitableGetAiGatewayModelProviderServiceResult(GetAiGatewayModelProviderS
 
 
 def get_ai_gateway_model_provider_service(name: Optional[_builtins.str] = None,
-                                          provider_config: Optional[Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict']] = None,
+                                          provider_config: Optional[Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.GetAiGatewayModelProviderServiceProviderConfigResult']] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiGatewayModelProviderServiceResult:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -204,7 +204,7 @@ def get_ai_gateway_model_provider_service(name: Optional[_builtins.str] = None,
            Each `{...}` component is capped at 255 characters individually.
            Server-derived on Create from `parent` +
            `model_provider_service_id`; required and immutable on Update/Get/Delete
-    :param Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.GetAiGatewayModelProviderServiceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -225,7 +225,7 @@ def get_ai_gateway_model_provider_service(name: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
 def get_ai_gateway_model_provider_service_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                                 provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict']]]] = None,
+                                                 provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.GetAiGatewayModelProviderServiceProviderConfigResult']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayModelProviderServiceResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -252,7 +252,7 @@ def get_ai_gateway_model_provider_service_output(name: pulumi.Input[Optional[_bu
            Each `{...}` component is capped at 255 characters individually.
            Server-derived on Create from `parent` +
            `model_provider_service_id`; required and immutable on Update/Get/Delete
-    :param Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayModelProviderServiceProviderConfigArgs', 'GetAiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.GetAiGatewayModelProviderServiceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

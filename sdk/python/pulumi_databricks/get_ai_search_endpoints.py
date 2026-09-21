@@ -77,7 +77,7 @@ class AwaitableGetAiSearchEndpointsResult(GetAiSearchEndpointsResult):
 
 def get_ai_search_endpoints(page_size: Optional[_builtins.int] = None,
                             parent: Optional[_builtins.str] = None,
-                            provider_config: Optional[Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict']] = None,
+                            provider_config: Optional[Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict', 'outputs.GetAiSearchEndpointsProviderConfigResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchEndpointsResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -103,7 +103,7 @@ def get_ai_search_endpoints(page_size: Optional[_builtins.int] = None,
            widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
     :param _builtins.str parent: The Workspace that owns this collection of endpoints.
            Format: `workspaces/{workspace_id}`
-    :param Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict', 'outputs.GetAiSearchEndpointsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -119,7 +119,7 @@ def get_ai_search_endpoints(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_ai_search_endpoints_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                    parent: pulumi.Input[Optional[_builtins.str]] = None,
-                                   provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict']]]] = None,
+                                   provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict', 'outputs.GetAiSearchEndpointsProviderConfigResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchEndpointsResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -145,7 +145,7 @@ def get_ai_search_endpoints_output(page_size: pulumi.Input[Optional[Optional[_bu
            widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
     :param _builtins.str parent: The Workspace that owns this collection of endpoints.
            Format: `workspaces/{workspace_id}`
-    :param Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict', 'outputs.GetAiSearchEndpointsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

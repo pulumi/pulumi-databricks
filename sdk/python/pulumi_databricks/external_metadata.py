@@ -414,7 +414,7 @@ class ExternalMetadata(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict', 'outputs.ExternalMetadataProviderConfig']]] = None,
                  system_type: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -464,7 +464,7 @@ class ExternalMetadata(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
-        :param pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict', 'outputs.ExternalMetadataProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
         """
@@ -533,7 +533,7 @@ class ExternalMetadata(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict', 'outputs.ExternalMetadataProviderConfig']]] = None,
                  system_type: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -582,7 +582,7 @@ class ExternalMetadata(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: pulumi.Input[Optional[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict', 'outputs.ExternalMetadataProviderConfig']]] = None,
             system_type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None,
@@ -603,7 +603,7 @@ class ExternalMetadata(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
-        :param pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict', 'outputs.ExternalMetadataProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time at which this external metadata object was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of user who last modified external metadata object

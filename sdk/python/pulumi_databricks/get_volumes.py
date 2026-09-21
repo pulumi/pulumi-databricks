@@ -80,7 +80,7 @@ class AwaitableGetVolumesResult(GetVolumesResult):
 
 def get_volumes(catalog_name: Optional[_builtins.str] = None,
                 ids: Optional[Sequence[_builtins.str]] = None,
-                provider_config: Optional[Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict']] = None,
+                provider_config: Optional[Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict', 'outputs.GetVolumesProviderConfigResult']] = None,
                 schema_name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
@@ -118,7 +118,7 @@ def get_volumes(catalog_name: Optional[_builtins.str] = None,
 
     :param _builtins.str catalog_name: Name of databricks_catalog
     :param Sequence[_builtins.str] ids: a list of Volume full names: *`catalog`.`schema`.`volume`*
-    :param Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict', 'outputs.GetVolumesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str schema_name: Name of databricks_schema
     """
     __args__ = dict()
@@ -136,7 +136,7 @@ def get_volumes(catalog_name: Optional[_builtins.str] = None,
         schema_name=pulumi.get(__ret__, 'schema_name'))
 def get_volumes_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                       provider_config: pulumi.Input[Optional[Optional[Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict']]]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict', 'outputs.GetVolumesProviderConfigResult']]]] = None,
                        schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
@@ -174,7 +174,7 @@ def get_volumes_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = Non
 
     :param _builtins.str catalog_name: Name of databricks_catalog
     :param Sequence[_builtins.str] ids: a list of Volume full names: *`catalog`.`schema`.`volume`*
-    :param Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict', 'outputs.GetVolumesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str schema_name: Name of databricks_schema
     """
     __args__ = dict()

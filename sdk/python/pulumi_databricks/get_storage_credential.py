@@ -83,8 +83,8 @@ class AwaitableGetStorageCredentialResult(GetStorageCredentialResult):
 
 def get_storage_credential(id: Optional[_builtins.str] = None,
                            name: Optional[_builtins.str] = None,
-                           provider_config: Optional[Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict']] = None,
-                           storage_credential_info: Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']] = None,
+                           provider_config: Optional[Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict', 'outputs.GetStorageCredentialProviderConfigResult']] = None,
+                           storage_credential_info: Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict', 'outputs.GetStorageCredentialStorageCredentialInfoResult']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialResult:
     """
     Retrieves details about a StorageCredential that were created by Pulumi or manually.
@@ -113,8 +113,8 @@ def get_storage_credential(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: Unique ID of storage credential.
     :param _builtins.str name: The name of the storage credential
-    :param Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
+    :param Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict', 'outputs.GetStorageCredentialProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict', 'outputs.GetStorageCredentialStorageCredentialInfoResult'] storage_credential_info: array of objects with information about storage credential.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -131,8 +131,8 @@ def get_storage_credential(id: Optional[_builtins.str] = None,
         storage_credential_info=pulumi.get(__ret__, 'storage_credential_info'))
 def get_storage_credential_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   name: pulumi.Input[Optional[_builtins.str]] = None,
-                                  provider_config: pulumi.Input[Optional[Optional[Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict']]]] = None,
-                                  storage_credential_info: pulumi.Input[Optional[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict', 'outputs.GetStorageCredentialProviderConfigResult']]]] = None,
+                                  storage_credential_info: pulumi.Input[Optional[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict', 'outputs.GetStorageCredentialStorageCredentialInfoResult']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
     Retrieves details about a StorageCredential that were created by Pulumi or manually.
@@ -161,8 +161,8 @@ def get_storage_credential_output(id: pulumi.Input[Optional[Optional[_builtins.s
 
     :param _builtins.str id: Unique ID of storage credential.
     :param _builtins.str name: The name of the storage credential
-    :param Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
+    :param Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict', 'outputs.GetStorageCredentialProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict', 'outputs.GetStorageCredentialStorageCredentialInfoResult'] storage_credential_info: array of objects with information about storage credential.
     """
     __args__ = dict()
     __args__['id'] = id

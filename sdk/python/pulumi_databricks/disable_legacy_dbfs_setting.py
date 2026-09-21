@@ -153,9 +153,9 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
+                 disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict', 'outputs.DisableLegacyDbfsSettingDisableLegacyDbfs']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict', 'outputs.DisableLegacyDbfsSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -192,8 +192,8 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']] disable_legacy_dbfs: block with following attributes:
-        :param pulumi.Input[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict', 'outputs.DisableLegacyDbfsSettingDisableLegacyDbfs']] disable_legacy_dbfs: block with following attributes:
+        :param pulumi.Input[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict', 'outputs.DisableLegacyDbfsSettingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -248,9 +248,9 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
+                 disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict', 'outputs.DisableLegacyDbfsSettingDisableLegacyDbfs']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict', 'outputs.DisableLegacyDbfsSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -277,9 +277,9 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
+            disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict', 'outputs.DisableLegacyDbfsSettingDisableLegacyDbfs']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict', 'outputs.DisableLegacyDbfsSettingProviderConfig']]] = None,
             setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DisableLegacyDbfsSetting':
         """
         Get an existing DisableLegacyDbfsSetting resource's state with the given name, id, and optional extra
@@ -288,8 +288,8 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']] disable_legacy_dbfs: block with following attributes:
-        :param pulumi.Input[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict', 'outputs.DisableLegacyDbfsSettingDisableLegacyDbfs']] disable_legacy_dbfs: block with following attributes:
+        :param pulumi.Input[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict', 'outputs.DisableLegacyDbfsSettingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -365,17 +365,17 @@ class SupervisorAgentTool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app: pulumi.Input[Optional[Union['SupervisorAgentToolAppArgs', 'SupervisorAgentToolAppArgsDict']]] = None,
+                 app: pulumi.Input[Optional[Union['SupervisorAgentToolAppArgs', 'SupervisorAgentToolAppArgsDict', 'outputs.SupervisorAgentToolApp']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 genie_space: pulumi.Input[Optional[Union['SupervisorAgentToolGenieSpaceArgs', 'SupervisorAgentToolGenieSpaceArgsDict']]] = None,
-                 knowledge_assistant: pulumi.Input[Optional[Union['SupervisorAgentToolKnowledgeAssistantArgs', 'SupervisorAgentToolKnowledgeAssistantArgsDict']]] = None,
+                 genie_space: pulumi.Input[Optional[Union['SupervisorAgentToolGenieSpaceArgs', 'SupervisorAgentToolGenieSpaceArgsDict', 'outputs.SupervisorAgentToolGenieSpace']]] = None,
+                 knowledge_assistant: pulumi.Input[Optional[Union['SupervisorAgentToolKnowledgeAssistantArgs', 'SupervisorAgentToolKnowledgeAssistantArgsDict', 'outputs.SupervisorAgentToolKnowledgeAssistant']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict', 'outputs.SupervisorAgentToolProviderConfig']]] = None,
                  tool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tool_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 uc_connection: pulumi.Input[Optional[Union['SupervisorAgentToolUcConnectionArgs', 'SupervisorAgentToolUcConnectionArgsDict']]] = None,
-                 uc_function: pulumi.Input[Optional[Union['SupervisorAgentToolUcFunctionArgs', 'SupervisorAgentToolUcFunctionArgsDict']]] = None,
-                 volume: pulumi.Input[Optional[Union['SupervisorAgentToolVolumeArgs', 'SupervisorAgentToolVolumeArgsDict']]] = None,
+                 uc_connection: pulumi.Input[Optional[Union['SupervisorAgentToolUcConnectionArgs', 'SupervisorAgentToolUcConnectionArgsDict', 'outputs.SupervisorAgentToolUcConnection']]] = None,
+                 uc_function: pulumi.Input[Optional[Union['SupervisorAgentToolUcFunctionArgs', 'SupervisorAgentToolUcFunctionArgsDict', 'outputs.SupervisorAgentToolUcFunction']]] = None,
+                 volume: pulumi.Input[Optional[Union['SupervisorAgentToolVolumeArgs', 'SupervisorAgentToolVolumeArgsDict', 'outputs.SupervisorAgentToolVolume']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -388,7 +388,7 @@ class SupervisorAgentTool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of what this tool does (user-facing)
         :param pulumi.Input[_builtins.str] parent: Parent resource where this tool will be created.
                Format: supervisor-agents/{supervisor_agent_id}
-        :param pulumi.Input[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict', 'outputs.SupervisorAgentToolProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tool_id: User specified id of the Tool
         :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         """
@@ -419,17 +419,17 @@ class SupervisorAgentTool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app: pulumi.Input[Optional[Union['SupervisorAgentToolAppArgs', 'SupervisorAgentToolAppArgsDict']]] = None,
+                 app: pulumi.Input[Optional[Union['SupervisorAgentToolAppArgs', 'SupervisorAgentToolAppArgsDict', 'outputs.SupervisorAgentToolApp']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 genie_space: pulumi.Input[Optional[Union['SupervisorAgentToolGenieSpaceArgs', 'SupervisorAgentToolGenieSpaceArgsDict']]] = None,
-                 knowledge_assistant: pulumi.Input[Optional[Union['SupervisorAgentToolKnowledgeAssistantArgs', 'SupervisorAgentToolKnowledgeAssistantArgsDict']]] = None,
+                 genie_space: pulumi.Input[Optional[Union['SupervisorAgentToolGenieSpaceArgs', 'SupervisorAgentToolGenieSpaceArgsDict', 'outputs.SupervisorAgentToolGenieSpace']]] = None,
+                 knowledge_assistant: pulumi.Input[Optional[Union['SupervisorAgentToolKnowledgeAssistantArgs', 'SupervisorAgentToolKnowledgeAssistantArgsDict', 'outputs.SupervisorAgentToolKnowledgeAssistant']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict', 'outputs.SupervisorAgentToolProviderConfig']]] = None,
                  tool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tool_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 uc_connection: pulumi.Input[Optional[Union['SupervisorAgentToolUcConnectionArgs', 'SupervisorAgentToolUcConnectionArgsDict']]] = None,
-                 uc_function: pulumi.Input[Optional[Union['SupervisorAgentToolUcFunctionArgs', 'SupervisorAgentToolUcFunctionArgsDict']]] = None,
-                 volume: pulumi.Input[Optional[Union['SupervisorAgentToolVolumeArgs', 'SupervisorAgentToolVolumeArgsDict']]] = None,
+                 uc_connection: pulumi.Input[Optional[Union['SupervisorAgentToolUcConnectionArgs', 'SupervisorAgentToolUcConnectionArgsDict', 'outputs.SupervisorAgentToolUcConnection']]] = None,
+                 uc_function: pulumi.Input[Optional[Union['SupervisorAgentToolUcFunctionArgs', 'SupervisorAgentToolUcFunctionArgsDict', 'outputs.SupervisorAgentToolUcFunction']]] = None,
+                 volume: pulumi.Input[Optional[Union['SupervisorAgentToolVolumeArgs', 'SupervisorAgentToolVolumeArgsDict', 'outputs.SupervisorAgentToolVolume']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,18 +467,18 @@ class SupervisorAgentTool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app: pulumi.Input[Optional[Union['SupervisorAgentToolAppArgs', 'SupervisorAgentToolAppArgsDict']]] = None,
+            app: pulumi.Input[Optional[Union['SupervisorAgentToolAppArgs', 'SupervisorAgentToolAppArgsDict', 'outputs.SupervisorAgentToolApp']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            genie_space: pulumi.Input[Optional[Union['SupervisorAgentToolGenieSpaceArgs', 'SupervisorAgentToolGenieSpaceArgsDict']]] = None,
-            knowledge_assistant: pulumi.Input[Optional[Union['SupervisorAgentToolKnowledgeAssistantArgs', 'SupervisorAgentToolKnowledgeAssistantArgsDict']]] = None,
+            genie_space: pulumi.Input[Optional[Union['SupervisorAgentToolGenieSpaceArgs', 'SupervisorAgentToolGenieSpaceArgsDict', 'outputs.SupervisorAgentToolGenieSpace']]] = None,
+            knowledge_assistant: pulumi.Input[Optional[Union['SupervisorAgentToolKnowledgeAssistantArgs', 'SupervisorAgentToolKnowledgeAssistantArgsDict', 'outputs.SupervisorAgentToolKnowledgeAssistant']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict', 'outputs.SupervisorAgentToolProviderConfig']]] = None,
             tool_id: pulumi.Input[Optional[_builtins.str]] = None,
             tool_type: pulumi.Input[Optional[_builtins.str]] = None,
-            uc_connection: pulumi.Input[Optional[Union['SupervisorAgentToolUcConnectionArgs', 'SupervisorAgentToolUcConnectionArgsDict']]] = None,
-            uc_function: pulumi.Input[Optional[Union['SupervisorAgentToolUcFunctionArgs', 'SupervisorAgentToolUcFunctionArgsDict']]] = None,
-            volume: pulumi.Input[Optional[Union['SupervisorAgentToolVolumeArgs', 'SupervisorAgentToolVolumeArgsDict']]] = None) -> 'SupervisorAgentTool':
+            uc_connection: pulumi.Input[Optional[Union['SupervisorAgentToolUcConnectionArgs', 'SupervisorAgentToolUcConnectionArgsDict', 'outputs.SupervisorAgentToolUcConnection']]] = None,
+            uc_function: pulumi.Input[Optional[Union['SupervisorAgentToolUcFunctionArgs', 'SupervisorAgentToolUcFunctionArgsDict', 'outputs.SupervisorAgentToolUcFunction']]] = None,
+            volume: pulumi.Input[Optional[Union['SupervisorAgentToolVolumeArgs', 'SupervisorAgentToolVolumeArgsDict', 'outputs.SupervisorAgentToolVolume']]] = None) -> 'SupervisorAgentTool':
         """
         Get an existing SupervisorAgentTool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -491,7 +491,7 @@ class SupervisorAgentTool(pulumi.CustomResource):
                supervisor-agents/{supervisor_agent_id}/tools/{tool_id}
         :param pulumi.Input[_builtins.str] parent: Parent resource where this tool will be created.
                Format: supervisor-agents/{supervisor_agent_id}
-        :param pulumi.Input[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['SupervisorAgentToolProviderConfigArgs', 'SupervisorAgentToolProviderConfigArgsDict', 'outputs.SupervisorAgentToolProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tool_id: User specified id of the Tool
         :param pulumi.Input[_builtins.str] tool_type: Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "databricks_web_search", "skill". The legacy values "lakeview_dashboard", "uc_table", and "web_search" are also accepted and remain equivalent to "dashboard", "table", and "databricks_web_search" respectively. The "databricks_web_search" tool_type maps to the `web_search` spec field
         """

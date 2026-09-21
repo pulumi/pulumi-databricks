@@ -73,7 +73,7 @@ class AwaitableGetExternalLocationsResult(GetExternalLocationsResult):
 
 
 def get_external_locations(names: Optional[Sequence[_builtins.str]] = None,
-                           provider_config: Optional[Union['GetExternalLocationsProviderConfigArgs', 'GetExternalLocationsProviderConfigArgsDict']] = None,
+                           provider_config: Optional[Union['GetExternalLocationsProviderConfigArgs', 'GetExternalLocationsProviderConfigArgsDict', 'outputs.GetExternalLocationsProviderConfigResult']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationsResult:
     """
     Retrieves a list of ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -101,7 +101,7 @@ def get_external_locations(names: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] names: List of names of ExternalLocation in the metastore
-    :param Union['GetExternalLocationsProviderConfigArgs', 'GetExternalLocationsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetExternalLocationsProviderConfigArgs', 'GetExternalLocationsProviderConfigArgsDict', 'outputs.GetExternalLocationsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['names'] = names
@@ -114,7 +114,7 @@ def get_external_locations(names: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_external_locations_output(names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                                  provider_config: pulumi.Input[Optional[Optional[Union['GetExternalLocationsProviderConfigArgs', 'GetExternalLocationsProviderConfigArgsDict']]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetExternalLocationsProviderConfigArgs', 'GetExternalLocationsProviderConfigArgsDict', 'outputs.GetExternalLocationsProviderConfigResult']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationsResult]:
     """
     Retrieves a list of ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -142,7 +142,7 @@ def get_external_locations_output(names: pulumi.Input[Optional[Optional[Sequence
 
 
     :param Sequence[_builtins.str] names: List of names of ExternalLocation in the metastore
-    :param Union['GetExternalLocationsProviderConfigArgs', 'GetExternalLocationsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetExternalLocationsProviderConfigArgs', 'GetExternalLocationsProviderConfigArgsDict', 'outputs.GetExternalLocationsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['names'] = names

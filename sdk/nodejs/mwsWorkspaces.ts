@@ -257,8 +257,8 @@ import * as utilities from "./utilities";
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject<any>("databricksAccountId");
- * const me = google.ClientOpenidUserinfo({});
- * const current = google.ClientConfig({});
+ * const me = google.clientOpenidUserinfo({});
+ * const current = google.clientConfig({});
  * const _this = new databricks.MwsWorkspaces("this", {
  *     accountId: databricksAccountId,
  *     workspaceName: prefix,

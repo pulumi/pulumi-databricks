@@ -70,7 +70,7 @@ class AwaitableGetDashboardsResult(GetDashboardsResult):
 
 
 def get_dashboards(dashboard_name_contains: Optional[_builtins.str] = None,
-                   provider_config: Optional[Union['GetDashboardsProviderConfigArgs', 'GetDashboardsProviderConfigArgsDict']] = None,
+                   provider_config: Optional[Union['GetDashboardsProviderConfigArgs', 'GetDashboardsProviderConfigArgsDict', 'outputs.GetDashboardsProviderConfigResult']] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDashboardsResult:
     """
     This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
@@ -110,7 +110,7 @@ def get_dashboards(dashboard_name_contains: Optional[_builtins.str] = None,
         dashboards=pulumi.get(__ret__, 'dashboards'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_dashboards_output(dashboard_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          provider_config: pulumi.Input[Optional[Optional[Union['GetDashboardsProviderConfigArgs', 'GetDashboardsProviderConfigArgsDict']]]] = None,
+                          provider_config: pulumi.Input[Optional[Optional[Union['GetDashboardsProviderConfigArgs', 'GetDashboardsProviderConfigArgsDict', 'outputs.GetDashboardsProviderConfigResult']]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDashboardsResult]:
     """
     This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).

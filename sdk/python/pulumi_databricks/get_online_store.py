@@ -133,14 +133,14 @@ class AwaitableGetOnlineStoreResult(GetOnlineStoreResult):
 
 
 def get_online_store(name: Optional[_builtins.str] = None,
-                     provider_config: Optional[Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict']] = None,
+                     provider_config: Optional[Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict', 'outputs.GetOnlineStoreProviderConfigResult']] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOnlineStoreResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.str name: The name of the online store. This is the unique identifier for the online store
-    :param Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict', 'outputs.GetOnlineStoreProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -158,14 +158,14 @@ def get_online_store(name: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'))
 def get_online_store_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                            provider_config: pulumi.Input[Optional[Optional[Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict']]]] = None,
+                            provider_config: pulumi.Input[Optional[Optional[Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict', 'outputs.GetOnlineStoreProviderConfigResult']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOnlineStoreResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.str name: The name of the online store. This is the unique identifier for the online store
-    :param Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict', 'outputs.GetOnlineStoreProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

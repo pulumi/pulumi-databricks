@@ -370,13 +370,13 @@ class Library(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
+                 cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict', 'outputs.LibraryCran']]] = None,
                  egg: pulumi.Input[Optional[_builtins.str]] = None,
                  jar: pulumi.Input[Optional[_builtins.str]] = None,
                  library_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
-                 pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
+                 maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict', 'outputs.LibraryMaven']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict', 'outputs.LibraryProviderConfig']]] = None,
+                 pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict', 'outputs.LibraryPypi']]] = None,
                  requirements: pulumi.Input[Optional[_builtins.str]] = None,
                  whl: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -500,12 +500,12 @@ class Library(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
                
                You must specify exactly **one** of the following library types:
-        :param pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']] cran: Configuration block for a CRAN library. The block consists of the following fields:
+        :param pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict', 'outputs.LibraryCran']] cran: Configuration block for a CRAN library. The block consists of the following fields:
         :param pulumi.Input[_builtins.str] egg: Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
         :param pulumi.Input[_builtins.str] jar: Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
-        :param pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']] maven: Configuration block for a Maven library. The block consists of the following fields:
-        :param pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']] provider_config: Configuration block for management through the account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']] pypi: Configuration block for a PyPI library. The block consists of the following fields:
+        :param pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict', 'outputs.LibraryMaven']] maven: Configuration block for a Maven library. The block consists of the following fields:
+        :param pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict', 'outputs.LibraryProviderConfig']] provider_config: Configuration block for management through the account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict', 'outputs.LibraryPypi']] pypi: Configuration block for a PyPI library. The block consists of the following fields:
         :param pulumi.Input[_builtins.str] requirements: Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
         :param pulumi.Input[_builtins.str] whl: Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
@@ -646,13 +646,13 @@ class Library(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
+                 cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict', 'outputs.LibraryCran']]] = None,
                  egg: pulumi.Input[Optional[_builtins.str]] = None,
                  jar: pulumi.Input[Optional[_builtins.str]] = None,
                  library_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
-                 pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
+                 maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict', 'outputs.LibraryMaven']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict', 'outputs.LibraryProviderConfig']]] = None,
+                 pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict', 'outputs.LibraryPypi']]] = None,
                  requirements: pulumi.Input[Optional[_builtins.str]] = None,
                  whl: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -687,13 +687,13 @@ class Library(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-            cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
+            cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict', 'outputs.LibraryCran']]] = None,
             egg: pulumi.Input[Optional[_builtins.str]] = None,
             jar: pulumi.Input[Optional[_builtins.str]] = None,
             library_id: pulumi.Input[Optional[_builtins.str]] = None,
-            maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
-            provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
-            pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
+            maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict', 'outputs.LibraryMaven']]] = None,
+            provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict', 'outputs.LibraryProviderConfig']]] = None,
+            pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict', 'outputs.LibraryPypi']]] = None,
             requirements: pulumi.Input[Optional[_builtins.str]] = None,
             whl: pulumi.Input[Optional[_builtins.str]] = None) -> 'Library':
         """
@@ -706,12 +706,12 @@ class Library(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
                
                You must specify exactly **one** of the following library types:
-        :param pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']] cran: Configuration block for a CRAN library. The block consists of the following fields:
+        :param pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict', 'outputs.LibraryCran']] cran: Configuration block for a CRAN library. The block consists of the following fields:
         :param pulumi.Input[_builtins.str] egg: Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
         :param pulumi.Input[_builtins.str] jar: Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
-        :param pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']] maven: Configuration block for a Maven library. The block consists of the following fields:
-        :param pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']] provider_config: Configuration block for management through the account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']] pypi: Configuration block for a PyPI library. The block consists of the following fields:
+        :param pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict', 'outputs.LibraryMaven']] maven: Configuration block for a Maven library. The block consists of the following fields:
+        :param pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict', 'outputs.LibraryProviderConfig']] provider_config: Configuration block for management through the account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict', 'outputs.LibraryPypi']] pypi: Configuration block for a PyPI library. The block consists of the following fields:
         :param pulumi.Input[_builtins.str] requirements: Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
         :param pulumi.Input[_builtins.str] whl: Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """

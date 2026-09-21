@@ -81,7 +81,7 @@ class AwaitableGetPostgresDatabasesResult(GetPostgresDatabasesResult):
 
 def get_postgres_databases(page_size: Optional[_builtins.int] = None,
                            parent: Optional[_builtins.str] = None,
-                           provider_config: Optional[Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict']] = None,
+                           provider_config: Optional[Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict', 'outputs.GetPostgresDatabasesProviderConfigResult']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresDatabasesResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -107,7 +107,7 @@ def get_postgres_databases(page_size: Optional[_builtins.int] = None,
     :param _builtins.int page_size: Upper bound for items returned
     :param _builtins.str parent: The Branch that owns this collection of databases.
            Format: projects/{project_id}/branches/{branch_id}
-    :param Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict', 'outputs.GetPostgresDatabasesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -123,7 +123,7 @@ def get_postgres_databases(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_postgres_databases_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                   parent: pulumi.Input[Optional[_builtins.str]] = None,
-                                  provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict']]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict', 'outputs.GetPostgresDatabasesProviderConfigResult']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresDatabasesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -149,7 +149,7 @@ def get_postgres_databases_output(page_size: pulumi.Input[Optional[Optional[_bui
     :param _builtins.int page_size: Upper bound for items returned
     :param _builtins.str parent: The Branch that owns this collection of databases.
            Format: projects/{project_id}/branches/{branch_id}
-    :param Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict', 'outputs.GetPostgresDatabasesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

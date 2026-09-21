@@ -359,10 +359,10 @@ class AiGatewayMcpService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict', 'outputs.AiGatewayMcpServiceConfig']]] = None,
                  mcp_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict', 'outputs.AiGatewayMcpServiceProviderConfig']]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -396,14 +396,14 @@ class AiGatewayMcpService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
+        :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict', 'outputs.AiGatewayMcpServiceConfig']] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
                provide this field when `update_mask` contains `config` or one of its
                subpaths
         :param pulumi.Input[_builtins.str] mcp_service_id: Name for the MCP service, e.g. "my_mcp_service"
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
-        :param pulumi.Input[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict', 'outputs.AiGatewayMcpServiceProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -456,10 +456,10 @@ class AiGatewayMcpService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict', 'outputs.AiGatewayMcpServiceConfig']]] = None,
                  mcp_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict', 'outputs.AiGatewayMcpServiceProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -497,7 +497,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict', 'outputs.AiGatewayMcpServiceConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
@@ -506,7 +506,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict', 'outputs.AiGatewayMcpServiceProviderConfig']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiGatewayMcpService':
         """
@@ -517,7 +517,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict']] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
+        :param pulumi.Input[Union['AiGatewayMcpServiceConfigArgs', 'AiGatewayMcpServiceConfigArgsDict', 'outputs.AiGatewayMcpServiceConfig']] config: Connection, tool selectors, and rate limits. Required on Create. On Update,
                provide this field when `update_mask` contains `config` or one of its
                subpaths
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the MCP service was created
@@ -537,7 +537,7 @@ class AiGatewayMcpService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
-        :param pulumi.Input[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiGatewayMcpServiceProviderConfigArgs', 'AiGatewayMcpServiceProviderConfigArgsDict', 'outputs.AiGatewayMcpServiceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the MCP service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """

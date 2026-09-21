@@ -300,10 +300,10 @@ class PostgresRole(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict', 'outputs.PostgresRoleProviderConfig']]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  role_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -492,7 +492,7 @@ class PostgresRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict', 'outputs.PostgresRoleProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
                error.
                
@@ -502,7 +502,7 @@ class PostgresRole(pulumi.CustomResource):
                including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
                memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
-        :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
+        :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
         ...
     @overload
@@ -709,10 +709,10 @@ class PostgresRole(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict', 'outputs.PostgresRoleProviderConfig']]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  role_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -746,11 +746,11 @@ class PostgresRole(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict', 'outputs.PostgresRoleProviderConfig']]] = None,
             replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
             role_id: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict', 'outputs.PostgresRoleStatus']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresRole':
         """
         Get an existing PostgresRole resource's state with the given name, id, and optional extra
@@ -764,7 +764,7 @@ class PostgresRole(pulumi.CustomResource):
                Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict', 'outputs.PostgresRoleProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
                error.
                
@@ -774,8 +774,8 @@ class PostgresRole(pulumi.CustomResource):
                including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
                memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
-        :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
-        :param pulumi.Input[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict']] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
+        :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
+        :param pulumi.Input[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict', 'outputs.PostgresRoleStatus']] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
         :param pulumi.Input[_builtins.str] update_time: (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

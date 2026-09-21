@@ -87,7 +87,7 @@ import * as utilities from "./utilities";
  * const resourceGroup = config.require("resourceGroup");
  * // Name of the Databricks Workspace
  * const workspaceName = config.require("workspaceName");
- * const _this = azurerm.DatabricksWorkspace({
+ * const _this = azurerm.databricksWorkspace({
  *     name: workspaceName,
  *     resourceGroupName: resourceGroup,
  * });

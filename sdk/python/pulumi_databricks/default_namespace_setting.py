@@ -154,8 +154,8 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 namespace: pulumi.Input[Optional[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict']]] = None,
+                 namespace: pulumi.Input[Optional[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict', 'outputs.DefaultNamespaceSettingNamespace']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict', 'outputs.DefaultNamespaceSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -185,8 +185,8 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']] namespace: The configuration details.
-        :param pulumi.Input[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict', 'outputs.DefaultNamespaceSettingNamespace']] namespace: The configuration details.
+        :param pulumi.Input[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict', 'outputs.DefaultNamespaceSettingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -235,8 +235,8 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 namespace: pulumi.Input[Optional[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict']]] = None,
+                 namespace: pulumi.Input[Optional[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict', 'outputs.DefaultNamespaceSettingNamespace']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict', 'outputs.DefaultNamespaceSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -264,8 +264,8 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            namespace: pulumi.Input[Optional[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']]] = None,
-            provider_config: pulumi.Input[Optional[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict']]] = None,
+            namespace: pulumi.Input[Optional[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict', 'outputs.DefaultNamespaceSettingNamespace']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict', 'outputs.DefaultNamespaceSettingProviderConfig']]] = None,
             setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DefaultNamespaceSetting':
         """
         Get an existing DefaultNamespaceSetting resource's state with the given name, id, and optional extra
@@ -274,8 +274,8 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']] namespace: The configuration details.
-        :param pulumi.Input[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict', 'outputs.DefaultNamespaceSettingNamespace']] namespace: The configuration details.
+        :param pulumi.Input[Union['DefaultNamespaceSettingProviderConfigArgs', 'DefaultNamespaceSettingProviderConfigArgsDict', 'outputs.DefaultNamespaceSettingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

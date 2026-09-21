@@ -256,7 +256,7 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
               groups: Optional[Sequence[_builtins.str]] = None,
               instance_profiles: Optional[Sequence[_builtins.str]] = None,
               members: Optional[Sequence[_builtins.str]] = None,
-              provider_config: Optional[Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict']] = None,
+              provider_config: Optional[Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict', 'outputs.GetGroupProviderConfigResult']] = None,
               recursive: Optional[_builtins.bool] = None,
               roles: Optional[Sequence[_builtins.str]] = None,
               service_principals: Optional[Sequence[_builtins.str]] = None,
@@ -305,7 +305,7 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
     :param _builtins.str external_id: ID of the group in an external identity provider.
     :param Sequence[_builtins.str] groups: Set of group identifiers, that can be modified with GroupMember resource.
     :param Sequence[_builtins.str] instance_profiles: (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
-    :param Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict', 'outputs.GetGroupProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool recursive: Collect information for all nested groups. *Defaults to true.*
     :param Sequence[_builtins.str] roles: Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
     :param Sequence[_builtins.str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
@@ -364,7 +364,7 @@ def get_group_output(acl_principal_id: pulumi.Input[Optional[Optional[_builtins.
                      groups: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      instance_profiles: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      members: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                     provider_config: pulumi.Input[Optional[Optional[Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict']]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict', 'outputs.GetGroupProviderConfigResult']]]] = None,
                      recursive: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                      roles: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      service_principals: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
@@ -413,7 +413,7 @@ def get_group_output(acl_principal_id: pulumi.Input[Optional[Optional[_builtins.
     :param _builtins.str external_id: ID of the group in an external identity provider.
     :param Sequence[_builtins.str] groups: Set of group identifiers, that can be modified with GroupMember resource.
     :param Sequence[_builtins.str] instance_profiles: (Deprecated) Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource. Use `roles` instead.
-    :param Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetGroupProviderConfigArgs', 'GetGroupProviderConfigArgsDict', 'outputs.GetGroupProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool recursive: Collect information for all nested groups. *Defaults to true.*
     :param Sequence[_builtins.str] roles: Set of role ARNs (e.g., instance profile ARNs), that can be modified by GroupInstanceProfile or GroupRole resources.
     :param Sequence[_builtins.str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.

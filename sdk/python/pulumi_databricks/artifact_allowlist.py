@@ -216,12 +216,12 @@ class ArtifactAllowlist(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict']]]]] = None,
+                 artifact_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict', 'outputs.ArtifactAllowlistArtifactMatcher']]]]] = None,
                  artifact_type: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.int]] = None,
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict', 'outputs.ArtifactAllowlistProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/artifactallowlists)
@@ -313,12 +313,12 @@ class ArtifactAllowlist(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict']]]]] = None,
+                 artifact_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict', 'outputs.ArtifactAllowlistArtifactMatcher']]]]] = None,
                  artifact_type: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.int]] = None,
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict', 'outputs.ArtifactAllowlistProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -348,12 +348,12 @@ class ArtifactAllowlist(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            artifact_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict']]]]] = None,
+            artifact_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict', 'outputs.ArtifactAllowlistArtifactMatcher']]]]] = None,
             artifact_type: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict']]] = None) -> 'ArtifactAllowlist':
+            provider_config: pulumi.Input[Optional[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict', 'outputs.ArtifactAllowlistProviderConfig']]] = None) -> 'ArtifactAllowlist':
         """
         Get an existing ArtifactAllowlist resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -246,7 +246,7 @@ class SqlDashboard(pulumi.CustomResource):
                  dashboard_filters_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict', 'outputs.SqlDashboardProviderConfig']]] = None,
                  run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -304,7 +304,7 @@ class SqlDashboard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict', 'outputs.SqlDashboardProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -382,7 +382,7 @@ class SqlDashboard(pulumi.CustomResource):
                  dashboard_filters_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict', 'outputs.SqlDashboardProviderConfig']]] = None,
                  run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -417,7 +417,7 @@ class SqlDashboard(pulumi.CustomResource):
             dashboard_filters_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict', 'outputs.SqlDashboardProviderConfig']]] = None,
             run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlDashboard':
@@ -428,7 +428,7 @@ class SqlDashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict', 'outputs.SqlDashboardProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

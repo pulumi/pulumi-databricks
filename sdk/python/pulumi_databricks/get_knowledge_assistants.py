@@ -67,7 +67,7 @@ class AwaitableGetKnowledgeAssistantsResult(GetKnowledgeAssistantsResult):
 
 
 def get_knowledge_assistants(page_size: Optional[_builtins.int] = None,
-                             provider_config: Optional[Union['GetKnowledgeAssistantsProviderConfigArgs', 'GetKnowledgeAssistantsProviderConfigArgsDict']] = None,
+                             provider_config: Optional[Union['GetKnowledgeAssistantsProviderConfigArgs', 'GetKnowledgeAssistantsProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantsProviderConfigResult']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKnowledgeAssistantsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -78,7 +78,7 @@ def get_knowledge_assistants(page_size: Optional[_builtins.int] = None,
     :param _builtins.int page_size: The maximum number of knowledge assistants to return.
            If unspecified, at most 100 knowledge assistants will be returned.
            The maximum value is 100; values above 100 will be coerced to 100
-    :param Union['GetKnowledgeAssistantsProviderConfigArgs', 'GetKnowledgeAssistantsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetKnowledgeAssistantsProviderConfigArgs', 'GetKnowledgeAssistantsProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -91,7 +91,7 @@ def get_knowledge_assistants(page_size: Optional[_builtins.int] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_knowledge_assistants_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                    provider_config: pulumi.Input[Optional[Optional[Union['GetKnowledgeAssistantsProviderConfigArgs', 'GetKnowledgeAssistantsProviderConfigArgsDict']]]] = None,
+                                    provider_config: pulumi.Input[Optional[Optional[Union['GetKnowledgeAssistantsProviderConfigArgs', 'GetKnowledgeAssistantsProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantsProviderConfigResult']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKnowledgeAssistantsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -102,7 +102,7 @@ def get_knowledge_assistants_output(page_size: pulumi.Input[Optional[Optional[_b
     :param _builtins.int page_size: The maximum number of knowledge assistants to return.
            If unspecified, at most 100 knowledge assistants will be returned.
            The maximum value is 100; values above 100 will be coerced to 100
-    :param Union['GetKnowledgeAssistantsProviderConfigArgs', 'GetKnowledgeAssistantsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetKnowledgeAssistantsProviderConfigArgs', 'GetKnowledgeAssistantsProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

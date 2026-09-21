@@ -203,7 +203,7 @@ class MetastoreProvider(pulumi.CustomResource):
                  authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict', 'outputs.MetastoreProviderProviderConfig']]] = None,
                  recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -250,7 +250,7 @@ class MetastoreProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
         :param pulumi.Input[_builtins.str] comment: Description about the provider.
         :param pulumi.Input[_builtins.str] name: Name of provider. Change forces creation of a new resource.
-        :param pulumi.Input[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict', 'outputs.MetastoreProviderProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] recipient_profile_str: This is the json file that is created from a recipient url.
         """
         ...
@@ -316,7 +316,7 @@ class MetastoreProvider(pulumi.CustomResource):
                  authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict', 'outputs.MetastoreProviderProviderConfig']]] = None,
                  recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -351,7 +351,7 @@ class MetastoreProvider(pulumi.CustomResource):
             authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict', 'outputs.MetastoreProviderProviderConfig']]] = None,
             recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None) -> 'MetastoreProvider':
         """
         Get an existing MetastoreProvider resource's state with the given name, id, and optional extra
@@ -363,7 +363,7 @@ class MetastoreProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
         :param pulumi.Input[_builtins.str] comment: Description about the provider.
         :param pulumi.Input[_builtins.str] name: Name of provider. Change forces creation of a new resource.
-        :param pulumi.Input[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict', 'outputs.MetastoreProviderProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] recipient_profile_str: This is the json file that is created from a recipient url.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

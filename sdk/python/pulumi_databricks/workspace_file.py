@@ -261,7 +261,7 @@ class WorkspaceFile(pulumi.CustomResource):
                  md5: pulumi.Input[Optional[_builtins.str]] = None,
                  object_id: pulumi.Input[Optional[_builtins.int]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict', 'outputs.WorkspaceFileProviderConfig']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -277,7 +277,7 @@ class WorkspaceFile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a workspace file
         :param pulumi.Input[_builtins.str] path: The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
-        :param pulumi.Input[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict', 'outputs.WorkspaceFileProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to file on local filesystem. Conflicts with `content_base64`.
         """
         ...
@@ -313,7 +313,7 @@ class WorkspaceFile(pulumi.CustomResource):
                  md5: pulumi.Input[Optional[_builtins.str]] = None,
                  object_id: pulumi.Input[Optional[_builtins.int]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict', 'outputs.WorkspaceFileProviderConfig']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -348,7 +348,7 @@ class WorkspaceFile(pulumi.CustomResource):
             md5: pulumi.Input[Optional[_builtins.str]] = None,
             object_id: pulumi.Input[Optional[_builtins.int]] = None,
             path: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict', 'outputs.WorkspaceFileProviderConfig']]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceFile':
@@ -362,7 +362,7 @@ class WorkspaceFile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a workspace file
         :param pulumi.Input[_builtins.str] path: The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
-        :param pulumi.Input[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['WorkspaceFileProviderConfigArgs', 'WorkspaceFileProviderConfigArgsDict', 'outputs.WorkspaceFileProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to file on local filesystem. Conflicts with `content_base64`.
         :param pulumi.Input[_builtins.str] url: Routable URL of the workspace file
         :param pulumi.Input[_builtins.str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`

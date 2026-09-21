@@ -92,7 +92,7 @@ class AwaitableGetTablesResult(GetTablesResult):
 
 def get_tables(catalog_name: Optional[_builtins.str] = None,
                ids: Optional[Sequence[_builtins.str]] = None,
-               provider_config: Optional[Union['GetTablesProviderConfigArgs', 'GetTablesProviderConfigArgsDict']] = None,
+               provider_config: Optional[Union['GetTablesProviderConfigArgs', 'GetTablesProviderConfigArgsDict', 'outputs.GetTablesProviderConfigResult']] = None,
                schema_name: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTablesResult:
     """
@@ -134,7 +134,7 @@ def get_tables(catalog_name: Optional[_builtins.str] = None,
 
     :param _builtins.str catalog_name: Name of databricks_catalog
     :param Sequence[_builtins.str] ids: set of Table full names: *`catalog`.`schema`.`table`*
-    :param Union['GetTablesProviderConfigArgs', 'GetTablesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetTablesProviderConfigArgs', 'GetTablesProviderConfigArgsDict', 'outputs.GetTablesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str schema_name: Name of databricks_schema
     """
     __args__ = dict()
@@ -153,7 +153,7 @@ def get_tables(catalog_name: Optional[_builtins.str] = None,
         schema_name=pulumi.get(__ret__, 'schema_name'))
 def get_tables_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                      provider_config: pulumi.Input[Optional[Optional[Union['GetTablesProviderConfigArgs', 'GetTablesProviderConfigArgsDict']]]] = None,
+                      provider_config: pulumi.Input[Optional[Optional[Union['GetTablesProviderConfigArgs', 'GetTablesProviderConfigArgsDict', 'outputs.GetTablesProviderConfigResult']]]] = None,
                       schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTablesResult]:
     """
@@ -195,7 +195,7 @@ def get_tables_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None
 
     :param _builtins.str catalog_name: Name of databricks_catalog
     :param Sequence[_builtins.str] ids: set of Table full names: *`catalog`.`schema`.`table`*
-    :param Union['GetTablesProviderConfigArgs', 'GetTablesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetTablesProviderConfigArgs', 'GetTablesProviderConfigArgsDict', 'outputs.GetTablesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str schema_name: Name of databricks_schema
     """
     __args__ = dict()

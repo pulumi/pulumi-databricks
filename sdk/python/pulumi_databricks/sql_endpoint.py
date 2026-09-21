@@ -666,7 +666,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
-                 channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
+                 channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']]] = None,
                  cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -676,10 +676,10 @@ class SqlEndpoint(pulumi.CustomResource):
                  min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']]] = None,
                  spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']]] = None,
                  warehouse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -727,7 +727,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
-        :param pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']] channel: block, consisting of following fields:
+        :param pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']] channel: block, consisting of following fields:
         :param pulumi.Input[_builtins.str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         :param pulumi.Input[_builtins.str] data_source_id: (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[_builtins.bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -738,10 +738,10 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
         :param pulumi.Input[_builtins.bool] no_wait: Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
-        :param pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[_builtins.str] sql_endpoint_id: the unique ID of the SQL warehouse.
-        :param pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']] tags: Databricks tags all endpoint resources with these tags.
+        :param pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']] tags: Databricks tags all endpoint resources with these tags.
         :param pulumi.Input[_builtins.str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
         """
         ...
@@ -808,7 +808,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
-                 channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
+                 channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']]] = None,
                  cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -818,10 +818,10 @@ class SqlEndpoint(pulumi.CustomResource):
                  min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']]] = None,
                  spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']]] = None,
                  warehouse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -868,13 +868,13 @@ class SqlEndpoint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
-            channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
+            channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']]] = None,
             cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
             creator_name: pulumi.Input[Optional[_builtins.str]] = None,
             data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
             enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
-            healths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict']]]]] = None,
+            healths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict', 'outputs.SqlEndpointHealth']]]]] = None,
             instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
             jdbc_url: pulumi.Input[Optional[_builtins.str]] = None,
             max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
@@ -883,12 +883,12 @@ class SqlEndpoint(pulumi.CustomResource):
             no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
             num_active_sessions: pulumi.Input[Optional[_builtins.int]] = None,
             num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
-            odbc_params: pulumi.Input[Optional[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict']]] = None,
-            provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
+            odbc_params: pulumi.Input[Optional[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict', 'outputs.SqlEndpointOdbcParams']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']]] = None,
             spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
             sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']]] = None,
             warehouse_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlEndpoint':
         """
         Get an existing SqlEndpoint resource's state with the given name, id, and optional extra
@@ -898,7 +898,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
-        :param pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']] channel: block, consisting of following fields:
+        :param pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict', 'outputs.SqlEndpointChannel']] channel: block, consisting of following fields:
         :param pulumi.Input[_builtins.str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         :param pulumi.Input[_builtins.str] creator_name: The username of the user who created the endpoint.
         :param pulumi.Input[_builtins.str] data_source_id: (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
@@ -906,7 +906,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
                
                * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict']]]] healths: Health status of the endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict', 'outputs.SqlEndpointHealth']]]] healths: Health status of the endpoint.
         :param pulumi.Input[_builtins.str] jdbc_url: JDBC connection string.
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
@@ -914,12 +914,12 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] no_wait: Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
         :param pulumi.Input[_builtins.int] num_active_sessions: The current number of clusters used by the endpoint.
         :param pulumi.Input[_builtins.int] num_clusters: The current number of clusters used by the endpoint.
-        :param pulumi.Input[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict']] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-        :param pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict', 'outputs.SqlEndpointOdbcParams']] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+        :param pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict', 'outputs.SqlEndpointProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[_builtins.str] sql_endpoint_id: the unique ID of the SQL warehouse.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
-        :param pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']] tags: Databricks tags all endpoint resources with these tags.
+        :param pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict', 'outputs.SqlEndpointTags']] tags: Databricks tags all endpoint resources with these tags.
         :param pulumi.Input[_builtins.str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

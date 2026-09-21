@@ -288,7 +288,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
                  cdf_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  postgres_schema: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -342,7 +342,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
                Format: projects/{project}/branches/{branch}/databases/{database}
         :param pulumi.Input[_builtins.str] postgres_schema: The Postgres schema this CdfConfig replicates from. Unique within the
                parent database. Set at creation; the CdfConfig is immutable
-        :param pulumi.Input[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema: The Unity Catalog schema that replicated tables are written into.
                Set at creation; the CdfConfig is immutable
         """
@@ -412,7 +412,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
                  cdf_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  postgres_schema: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -455,7 +455,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             postgres_schema: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']]] = None,
             schema: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresCdfConfig':
         """
         Get an existing PostgresCdfConfig resource's state with the given name, id, and optional extra
@@ -475,7 +475,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
                Format: projects/{project}/branches/{branch}/databases/{database}
         :param pulumi.Input[_builtins.str] postgres_schema: The Postgres schema this CdfConfig replicates from. Unique within the
                parent database. Set at creation; the CdfConfig is immutable
-        :param pulumi.Input[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema: The Unity Catalog schema that replicated tables are written into.
                Set at creation; the CdfConfig is immutable
         """

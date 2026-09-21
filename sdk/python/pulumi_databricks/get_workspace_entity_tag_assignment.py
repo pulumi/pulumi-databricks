@@ -98,7 +98,7 @@ class AwaitableGetWorkspaceEntityTagAssignmentResult(GetWorkspaceEntityTagAssign
 
 def get_workspace_entity_tag_assignment(entity_id: Optional[_builtins.str] = None,
                                         entity_type: Optional[_builtins.str] = None,
-                                        provider_config: Optional[Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict']] = None,
+                                        provider_config: Optional[Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult']] = None,
                                         tag_key: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceEntityTagAssignmentResult:
     """
@@ -131,7 +131,7 @@ def get_workspace_entity_tag_assignment(entity_id: Optional[_builtins.str] = Non
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
     :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
-    :param Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
     """
     __args__ = dict()
@@ -150,7 +150,7 @@ def get_workspace_entity_tag_assignment(entity_id: Optional[_builtins.str] = Non
         tag_value=pulumi.get(__ret__, 'tag_value'))
 def get_workspace_entity_tag_assignment_output(entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                                               provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict']]]] = None,
+                                               provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult']]]] = None,
                                                tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceEntityTagAssignmentResult]:
     """
@@ -183,7 +183,7 @@ def get_workspace_entity_tag_assignment_output(entity_id: pulumi.Input[Optional[
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
     :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
-    :param Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceEntityTagAssignmentProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
     """
     __args__ = dict()

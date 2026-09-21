@@ -337,9 +337,9 @@ class MlflowExperiment(pulumi.CustomResource):
                  last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
                  lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
-                 trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict', 'outputs.MlflowExperimentProviderConfig']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict', 'outputs.MlflowExperimentTag']]]]] = None,
+                 trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict', 'outputs.MlflowExperimentTraceLocation']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/experiments)
@@ -407,9 +407,9 @@ class MlflowExperiment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-        :param pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
-        :param pulumi.Input[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']] trace_location: Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+        :param pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict', 'outputs.MlflowExperimentProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict', 'outputs.MlflowExperimentTag']]]] tags: Tags for the MLflow experiment.
+        :param pulumi.Input[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict', 'outputs.MlflowExperimentTraceLocation']] trace_location: Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
         """
         ...
     @overload
@@ -501,9 +501,9 @@ class MlflowExperiment(pulumi.CustomResource):
                  last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
                  lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
-                 trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict', 'outputs.MlflowExperimentProviderConfig']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict', 'outputs.MlflowExperimentTag']]]]] = None,
+                 trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict', 'outputs.MlflowExperimentTraceLocation']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -540,9 +540,9 @@ class MlflowExperiment(pulumi.CustomResource):
             last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
             lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
-            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
-            trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']]] = None) -> 'MlflowExperiment':
+            provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict', 'outputs.MlflowExperimentProviderConfig']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict', 'outputs.MlflowExperimentTag']]]]] = None,
+            trace_location: pulumi.Input[Optional[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict', 'outputs.MlflowExperimentTraceLocation']]] = None) -> 'MlflowExperiment':
         """
         Get an existing MlflowExperiment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -552,9 +552,9 @@ class MlflowExperiment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-        :param pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
-        :param pulumi.Input[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict']] trace_location: Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
+        :param pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict', 'outputs.MlflowExperimentProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict', 'outputs.MlflowExperimentTag']]]] tags: Tags for the MLflow experiment.
+        :param pulumi.Input[Union['MlflowExperimentTraceLocationArgs', 'MlflowExperimentTraceLocationArgsDict', 'outputs.MlflowExperimentTraceLocation']] trace_location: Unity Catalog location where the experiment's traces are stored. Cannot be changed after the experiment is created; changing it forces replacement of the experiment. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

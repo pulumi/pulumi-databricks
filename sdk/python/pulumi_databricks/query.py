@@ -524,9 +524,9 @@ class Query(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict', 'outputs.QueryParameter']]]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict', 'outputs.QueryProviderConfig']]] = None,
                  query_text: pulumi.Input[Optional[_builtins.str]] = None,
                  run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
@@ -637,9 +637,9 @@ class Query(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: General description that conveys additional information about this query such as usage notes.
         :param pulumi.Input[_builtins.str] display_name: Name of the query.
         :param pulumi.Input[_builtins.str] owner_user_name: Query owner's username.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict', 'outputs.QueryParameter']]]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
         :param pulumi.Input[_builtins.str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        :param pulumi.Input[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict', 'outputs.QueryProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] query_text: Text of SQL query.
         :param pulumi.Input[_builtins.str] run_as_mode: Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         :param pulumi.Input[_builtins.str] schema: Name of the schema where this query will be executed.
@@ -769,9 +769,9 @@ class Query(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict', 'outputs.QueryParameter']]]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict', 'outputs.QueryProviderConfig']]] = None,
                  query_text: pulumi.Input[Optional[_builtins.str]] = None,
                  run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
@@ -827,9 +827,9 @@ class Query(pulumi.CustomResource):
             last_modifier_user_name: pulumi.Input[Optional[_builtins.str]] = None,
             lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
             owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict', 'outputs.QueryParameter']]]]] = None,
             parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict', 'outputs.QueryProviderConfig']]] = None,
             query_text: pulumi.Input[Optional[_builtins.str]] = None,
             run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
             schema: pulumi.Input[Optional[_builtins.str]] = None,
@@ -851,9 +851,9 @@ class Query(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] last_modifier_user_name: Username of the user who last saved changes to this query.
         :param pulumi.Input[_builtins.str] lifecycle_state: The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
         :param pulumi.Input[_builtins.str] owner_user_name: Query owner's username.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict', 'outputs.QueryParameter']]]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
         :param pulumi.Input[_builtins.str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        :param pulumi.Input[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict', 'outputs.QueryProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] query_text: Text of SQL query.
         :param pulumi.Input[_builtins.str] run_as_mode: Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         :param pulumi.Input[_builtins.str] schema: Name of the schema where this query will be executed.

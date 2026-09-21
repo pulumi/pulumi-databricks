@@ -77,7 +77,7 @@ class AwaitableGetWorkspaceIamUsersV2Result(GetWorkspaceIamUsersV2Result):
 
 def get_workspace_iam_users_v2(filter: Optional[_builtins.str] = None,
                                page_size: Optional[_builtins.int] = None,
-                               provider_config: Optional[Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict']] = None,
+                               provider_config: Optional[Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamUsersV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -103,7 +103,7 @@ def get_workspace_iam_users_v2(filter: Optional[_builtins.str] = None,
     :param _builtins.str filter: Optional. Allows filtering users by username or external id
     :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -119,7 +119,7 @@ def get_workspace_iam_users_v2(filter: Optional[_builtins.str] = None,
         users=pulumi.get(__ret__, 'users'))
 def get_workspace_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                      provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict']]]] = None,
+                                      provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamUsersV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -145,7 +145,7 @@ def get_workspace_iam_users_v2_output(filter: pulumi.Input[Optional[Optional[_bu
     :param _builtins.str filter: Optional. Allows filtering users by username or external id
     :param _builtins.int page_size: The maximum number of users to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamUsersV2ProviderConfigArgs', 'GetWorkspaceIamUsersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUsersV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['filter'] = filter

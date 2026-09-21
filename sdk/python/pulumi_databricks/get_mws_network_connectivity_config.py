@@ -137,7 +137,7 @@ class AwaitableGetMwsNetworkConnectivityConfigResult(GetMwsNetworkConnectivityCo
 
 def get_mws_network_connectivity_config(account_id: Optional[_builtins.str] = None,
                                         creation_time: Optional[_builtins.int] = None,
-                                        egress_config: Optional[Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict']] = None,
+                                        egress_config: Optional[Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.GetMwsNetworkConnectivityConfigEgressConfigResult']] = None,
                                         name: Optional[_builtins.str] = None,
                                         network_connectivity_config_id: Optional[_builtins.str] = None,
                                         region: Optional[_builtins.str] = None,
@@ -170,7 +170,7 @@ def get_mws_network_connectivity_config(account_id: Optional[_builtins.str] = No
 
     :param _builtins.str account_id: The Databricks account ID associated with this network configuration.
     :param _builtins.int creation_time: Time in epoch milliseconds when this object was created.
-    :param Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict'] egress_config: Array of egress configuration objects.
+    :param Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.GetMwsNetworkConnectivityConfigEgressConfigResult'] egress_config: Array of egress configuration objects.
     :param _builtins.str name: Name of the network connectivity configuration.
     :param _builtins.str network_connectivity_config_id: The Databricks network connectivity configuration ID.
     :param _builtins.str region: The region of the network connectivity configuration.
@@ -198,7 +198,7 @@ def get_mws_network_connectivity_config(account_id: Optional[_builtins.str] = No
         updated_time=pulumi.get(__ret__, 'updated_time'))
 def get_mws_network_connectivity_config_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                creation_time: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                               egress_config: pulumi.Input[Optional[Optional[Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict']]]] = None,
+                                               egress_config: pulumi.Input[Optional[Optional[Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.GetMwsNetworkConnectivityConfigEgressConfigResult']]]] = None,
                                                name: pulumi.Input[Optional[_builtins.str]] = None,
                                                network_connectivity_config_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -231,7 +231,7 @@ def get_mws_network_connectivity_config_output(account_id: pulumi.Input[Optional
 
     :param _builtins.str account_id: The Databricks account ID associated with this network configuration.
     :param _builtins.int creation_time: Time in epoch milliseconds when this object was created.
-    :param Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict'] egress_config: Array of egress configuration objects.
+    :param Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.GetMwsNetworkConnectivityConfigEgressConfigResult'] egress_config: Array of egress configuration objects.
     :param _builtins.str name: Name of the network connectivity configuration.
     :param _builtins.str network_connectivity_config_id: The Databricks network connectivity configuration ID.
     :param _builtins.str region: The region of the network connectivity configuration.

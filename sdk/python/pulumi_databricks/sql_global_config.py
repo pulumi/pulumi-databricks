@@ -270,7 +270,7 @@ class SqlGlobalConfig(pulumi.CustomResource):
                  enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict', 'outputs.SqlGlobalConfigProviderConfig']]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -335,7 +335,7 @@ class SqlGlobalConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data_access_config: Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         :param pulumi.Input[_builtins.str] google_service_account: used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
         :param pulumi.Input[_builtins.str] instance_profile_arn: databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-        :param pulumi.Input[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict', 'outputs.SqlGlobalConfigProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] security_policy: The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sql_config_params: SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         """
@@ -420,7 +420,7 @@ class SqlGlobalConfig(pulumi.CustomResource):
                  enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict', 'outputs.SqlGlobalConfigProviderConfig']]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -453,7 +453,7 @@ class SqlGlobalConfig(pulumi.CustomResource):
             enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
             google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
             instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict', 'outputs.SqlGlobalConfigProviderConfig']]] = None,
             security_policy: pulumi.Input[Optional[_builtins.str]] = None,
             sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'SqlGlobalConfig':
         """
@@ -466,7 +466,7 @@ class SqlGlobalConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data_access_config: Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         :param pulumi.Input[_builtins.str] google_service_account: used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
         :param pulumi.Input[_builtins.str] instance_profile_arn: databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-        :param pulumi.Input[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict', 'outputs.SqlGlobalConfigProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] security_policy: The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sql_config_params: SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         """

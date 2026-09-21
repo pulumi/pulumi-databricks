@@ -193,7 +193,7 @@ class AccountIamUserV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict']]] = None,
+                 full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict', 'outputs.AccountIamUserV2FullName']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -283,7 +283,7 @@ class AccountIamUserV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict']]] = None,
+                 full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict', 'outputs.AccountIamUserV2FullName']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -319,7 +319,7 @@ class AccountIamUserV2(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
-            full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict']]] = None,
+            full_name: pulumi.Input[Optional[Union['AccountIamUserV2FullNameArgs', 'AccountIamUserV2FullNameArgsDict', 'outputs.AccountIamUserV2FullName']]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountIamUserV2':
         """

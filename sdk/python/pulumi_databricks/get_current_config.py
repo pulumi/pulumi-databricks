@@ -130,7 +130,7 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
                        cloud_type: Optional[_builtins.str] = None,
                        host: Optional[_builtins.str] = None,
                        is_account: Optional[_builtins.bool] = None,
-                       provider_config: Optional[Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict']] = None,
+                       provider_config: Optional[Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict', 'outputs.GetCurrentConfigProviderConfigResult']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentConfigResult:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
@@ -191,7 +191,7 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cloud: Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
-    :param Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict', 'outputs.GetCurrentConfigProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -222,7 +222,7 @@ def get_current_config_output(account_id: pulumi.Input[Optional[Optional[_builti
                               cloud_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               host: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               is_account: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                              provider_config: pulumi.Input[Optional[Optional[Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict']]]] = None,
+                              provider_config: pulumi.Input[Optional[Optional[Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict', 'outputs.GetCurrentConfigProviderConfigResult']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentConfigResult]:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
@@ -283,7 +283,7 @@ def get_current_config_output(account_id: pulumi.Input[Optional[Optional[_builti
 
 
     :param _builtins.str cloud: Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
-    :param Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict', 'outputs.GetCurrentConfigProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['accountId'] = account_id

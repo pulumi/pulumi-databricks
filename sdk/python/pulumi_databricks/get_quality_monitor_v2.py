@@ -98,7 +98,7 @@ class AwaitableGetQualityMonitorV2Result(GetQualityMonitorV2Result):
 
 def get_quality_monitor_v2(object_id: Optional[_builtins.str] = None,
                            object_type: Optional[_builtins.str] = None,
-                           provider_config: Optional[Union['GetQualityMonitorV2ProviderConfigArgs', 'GetQualityMonitorV2ProviderConfigArgsDict']] = None,
+                           provider_config: Optional[Union['GetQualityMonitorV2ProviderConfigArgs', 'GetQualityMonitorV2ProviderConfigArgsDict', 'outputs.GetQualityMonitorV2ProviderConfigResult']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQualityMonitorV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -129,7 +129,7 @@ def get_quality_monitor_v2(object_id: Optional[_builtins.str] = None,
 
     :param _builtins.str object_id: The uuid of the request object. For example, schema id
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: schema
-    :param Union['GetQualityMonitorV2ProviderConfigArgs', 'GetQualityMonitorV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetQualityMonitorV2ProviderConfigArgs', 'GetQualityMonitorV2ProviderConfigArgsDict', 'outputs.GetQualityMonitorV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id
@@ -146,7 +146,7 @@ def get_quality_monitor_v2(object_id: Optional[_builtins.str] = None,
         validity_check_configurations=pulumi.get(__ret__, 'validity_check_configurations'))
 def get_quality_monitor_v2_output(object_id: pulumi.Input[Optional[_builtins.str]] = None,
                                   object_type: pulumi.Input[Optional[_builtins.str]] = None,
-                                  provider_config: pulumi.Input[Optional[Optional[Union['GetQualityMonitorV2ProviderConfigArgs', 'GetQualityMonitorV2ProviderConfigArgsDict']]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetQualityMonitorV2ProviderConfigArgs', 'GetQualityMonitorV2ProviderConfigArgsDict', 'outputs.GetQualityMonitorV2ProviderConfigResult']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQualityMonitorV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -177,7 +177,7 @@ def get_quality_monitor_v2_output(object_id: pulumi.Input[Optional[_builtins.str
 
     :param _builtins.str object_id: The uuid of the request object. For example, schema id
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: schema
-    :param Union['GetQualityMonitorV2ProviderConfigArgs', 'GetQualityMonitorV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetQualityMonitorV2ProviderConfigArgs', 'GetQualityMonitorV2ProviderConfigArgsDict', 'outputs.GetQualityMonitorV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id

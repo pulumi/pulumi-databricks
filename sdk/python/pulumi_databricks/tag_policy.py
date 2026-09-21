@@ -178,9 +178,9 @@ class TagPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict', 'outputs.TagPolicyProviderConfig']]] = None,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict', 'outputs.TagPolicyValue']]]]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -223,7 +223,7 @@ class TagPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict', 'outputs.TagPolicyProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -286,9 +286,9 @@ class TagPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict', 'outputs.TagPolicyProviderConfig']]] = None,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict', 'outputs.TagPolicyValue']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -318,10 +318,10 @@ class TagPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict', 'outputs.TagPolicyProviderConfig']]] = None,
             tag_key: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None) -> 'TagPolicy':
+            values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict', 'outputs.TagPolicyValue']]]]] = None) -> 'TagPolicy':
         """
         Get an existing TagPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -330,7 +330,7 @@ class TagPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the tag policy was created
-        :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict', 'outputs.TagPolicyProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the tag policy was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

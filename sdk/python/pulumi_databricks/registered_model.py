@@ -458,7 +458,7 @@ class RegisteredModel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict']]]]] = None,
+                 aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict', 'outputs.RegisteredModelAlias']]]]] = None,
                  browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
@@ -468,7 +468,7 @@ class RegisteredModel(pulumi.CustomResource):
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict', 'outputs.RegisteredModelProviderConfig']]] = None,
                  schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_location: pulumi.Input[Optional[_builtins.str]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.int]] = None,
@@ -513,7 +513,7 @@ class RegisteredModel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: The comment attached to the registered model.
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] owner: Name of the registered model owner.
-        :param pulumi.Input[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict', 'outputs.RegisteredModelProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """
@@ -571,7 +571,7 @@ class RegisteredModel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict']]]]] = None,
+                 aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict', 'outputs.RegisteredModelAlias']]]]] = None,
                  browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
@@ -581,7 +581,7 @@ class RegisteredModel(pulumi.CustomResource):
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict', 'outputs.RegisteredModelProviderConfig']]] = None,
                  schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_location: pulumi.Input[Optional[_builtins.str]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.int]] = None,
@@ -620,7 +620,7 @@ class RegisteredModel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict']]]]] = None,
+            aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict', 'outputs.RegisteredModelAlias']]]]] = None,
             browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
             catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
@@ -630,7 +630,7 @@ class RegisteredModel(pulumi.CustomResource):
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict', 'outputs.RegisteredModelProviderConfig']]] = None,
             schema_name: pulumi.Input[Optional[_builtins.str]] = None,
             storage_location: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None,
@@ -646,7 +646,7 @@ class RegisteredModel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: The comment attached to the registered model.
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] owner: Name of the registered model owner.
-        :param pulumi.Input[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['RegisteredModelProviderConfigArgs', 'RegisteredModelProviderConfigArgsDict', 'outputs.RegisteredModelProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """

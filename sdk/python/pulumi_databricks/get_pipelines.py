@@ -83,7 +83,7 @@ class AwaitableGetPipelinesResult(GetPipelinesResult):
 
 def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
                   pipeline_name: Optional[_builtins.str] = None,
-                  provider_config: Optional[Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict']] = None,
+                  provider_config: Optional[Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict', 'outputs.GetPipelinesProviderConfigResult']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelinesResult:
     """
     Retrieves a list of all Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
@@ -135,7 +135,7 @@ def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
 
     :param Sequence[_builtins.str] ids: List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
     :param _builtins.str pipeline_name: Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
-    :param Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict', 'outputs.GetPipelinesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -151,7 +151,7 @@ def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_pipelines_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                          pipeline_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                         provider_config: pulumi.Input[Optional[Optional[Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict']]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict', 'outputs.GetPipelinesProviderConfigResult']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelinesResult]:
     """
     Retrieves a list of all Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
@@ -203,7 +203,7 @@ def get_pipelines_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
 
     :param Sequence[_builtins.str] ids: List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
     :param _builtins.str pipeline_name: Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
-    :param Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict', 'outputs.GetPipelinesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids

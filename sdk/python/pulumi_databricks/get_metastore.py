@@ -101,7 +101,7 @@ class AwaitableGetMetastoreResult(GetMetastoreResult):
 
 def get_metastore(id: Optional[_builtins.str] = None,
                   metastore_id: Optional[_builtins.str] = None,
-                  metastore_info: Optional[Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict']] = None,
+                  metastore_info: Optional[Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict', 'outputs.GetMetastoreMetastoreInfoResult']] = None,
                   name: Optional[_builtins.str] = None,
                   region: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoreResult:
@@ -142,7 +142,7 @@ def get_metastore(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: ID of the metastore
     :param _builtins.str metastore_id: ID of the metastore
-    :param Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
+    :param Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict', 'outputs.GetMetastoreMetastoreInfoResult'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
     :param _builtins.str name: Name of the metastore
     :param _builtins.str region: Region of the metastore
     """
@@ -163,7 +163,7 @@ def get_metastore(id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'))
 def get_metastore_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          metastore_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                         metastore_info: pulumi.Input[Optional[Optional[Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict']]]] = None,
+                         metastore_info: pulumi.Input[Optional[Optional[Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict', 'outputs.GetMetastoreMetastoreInfoResult']]]] = None,
                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreResult]:
@@ -204,7 +204,7 @@ def get_metastore_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = N
 
     :param _builtins.str id: ID of the metastore
     :param _builtins.str metastore_id: ID of the metastore
-    :param Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
+    :param Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict', 'outputs.GetMetastoreMetastoreInfoResult'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
     :param _builtins.str name: Name of the metastore
     :param _builtins.str region: Region of the metastore
     """

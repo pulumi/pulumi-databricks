@@ -86,7 +86,7 @@ class AwaitableGetZonesResult(GetZonesResult):
 
 def get_zones(default_zone: Optional[_builtins.str] = None,
               id: Optional[_builtins.str] = None,
-              provider_config: Optional[Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict']] = None,
+              provider_config: Optional[Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict', 'outputs.GetZonesProviderConfigResult']] = None,
               zones: Optional[Sequence[_builtins.str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
@@ -106,7 +106,7 @@ def get_zones(default_zone: Optional[_builtins.str] = None,
 
     :param _builtins.str default_zone: This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
     :param _builtins.str id: The id for the zone object.
-    :param Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict', 'outputs.GetZonesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] zones: This is a list of all the zones available for your subnets in your Databricks workspace.
     """
     __args__ = dict()
@@ -124,7 +124,7 @@ def get_zones(default_zone: Optional[_builtins.str] = None,
         zones=pulumi.get(__ret__, 'zones'))
 def get_zones_output(default_zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                     provider_config: pulumi.Input[Optional[Optional[Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict']]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict', 'outputs.GetZonesProviderConfigResult']]]] = None,
                      zones: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
@@ -144,7 +144,7 @@ def get_zones_output(default_zone: pulumi.Input[Optional[Optional[_builtins.str]
 
     :param _builtins.str default_zone: This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
     :param _builtins.str id: The id for the zone object.
-    :param Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict', 'outputs.GetZonesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] zones: This is a list of all the zones available for your subnets in your Databricks workspace.
     """
     __args__ = dict()

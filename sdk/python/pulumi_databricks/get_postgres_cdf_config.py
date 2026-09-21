@@ -126,7 +126,7 @@ class AwaitableGetPostgresCdfConfigResult(GetPostgresCdfConfigResult):
 
 
 def get_postgres_cdf_config(name: Optional[_builtins.str] = None,
-                            provider_config: Optional[Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict']] = None,
+                            provider_config: Optional[Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigProviderConfigResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresCdfConfigResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -150,7 +150,7 @@ def get_postgres_cdf_config(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Output only. The full resource name of the CdfConfig.
            Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
-    :param Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -167,7 +167,7 @@ def get_postgres_cdf_config(name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema=pulumi.get(__ret__, 'schema'))
 def get_postgres_cdf_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                   provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict']]]] = None,
+                                   provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigProviderConfigResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresCdfConfigResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -191,7 +191,7 @@ def get_postgres_cdf_config_output(name: pulumi.Input[Optional[_builtins.str]] =
 
     :param _builtins.str name: Output only. The full resource name of the CdfConfig.
            Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
-    :param Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

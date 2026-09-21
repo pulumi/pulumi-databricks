@@ -182,7 +182,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
                           external_id: Optional[_builtins.str] = None,
                           home: Optional[_builtins.str] = None,
                           id: Optional[_builtins.str] = None,
-                          provider_config: Optional[Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict']] = None,
+                          provider_config: Optional[Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict', 'outputs.GetServicePrincipalProviderConfigResult']] = None,
                           repos: Optional[_builtins.str] = None,
                           scim_id: Optional[_builtins.str] = None,
                           sp_id: Optional[_builtins.str] = None,
@@ -228,7 +228,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
     :param _builtins.str external_id: ID of the service principal in an external identity provider.
     :param _builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
     :param _builtins.str id: The id of the service principal (SCIM ID).
-    :param Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict', 'outputs.GetServicePrincipalProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
     :param _builtins.str scim_id: Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
     """
@@ -269,7 +269,7 @@ def get_service_principal_output(acl_principal_id: pulumi.Input[Optional[Optiona
                                  external_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  home: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict', 'outputs.GetServicePrincipalProviderConfigResult']]]] = None,
                                  repos: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  scim_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  sp_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -315,7 +315,7 @@ def get_service_principal_output(acl_principal_id: pulumi.Input[Optional[Optiona
     :param _builtins.str external_id: ID of the service principal in an external identity provider.
     :param _builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
     :param _builtins.str id: The id of the service principal (SCIM ID).
-    :param Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict', 'outputs.GetServicePrincipalProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
     :param _builtins.str scim_id: Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
     """

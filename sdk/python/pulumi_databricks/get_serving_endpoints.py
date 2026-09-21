@@ -60,8 +60,8 @@ class AwaitableGetServingEndpointsResult(GetServingEndpointsResult):
             provider_config=self.provider_config)
 
 
-def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]] = None,
-                          provider_config: Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict']] = None,
+def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict', 'outputs.GetServingEndpointsEndpointResult']]] = None,
+                          provider_config: Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict', 'outputs.GetServingEndpointsProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServingEndpointsResult:
     """
     This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -103,7 +103,7 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
     * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
 
 
-    :param Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']] endpoints: List of objects describing the serving endpoints. Each object consists of following attributes:
+    :param Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict', 'outputs.GetServingEndpointsEndpointResult']] endpoints: List of objects describing the serving endpoints. Each object consists of following attributes:
     """
     __args__ = dict()
     __args__['endpoints'] = endpoints
@@ -114,8 +114,8 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
     return AwaitableGetServingEndpointsResult(
         endpoints=pulumi.get(__ret__, 'endpoints'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_serving_endpoints_output(endpoints: pulumi.Input[Optional[Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]]]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict']]]] = None,
+def get_serving_endpoints_output(endpoints: pulumi.Input[Optional[Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict', 'outputs.GetServingEndpointsEndpointResult']]]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict', 'outputs.GetServingEndpointsProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServingEndpointsResult]:
     """
     This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -157,7 +157,7 @@ def get_serving_endpoints_output(endpoints: pulumi.Input[Optional[Optional[Seque
     * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
 
 
-    :param Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']] endpoints: List of objects describing the serving endpoints. Each object consists of following attributes:
+    :param Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict', 'outputs.GetServingEndpointsEndpointResult']] endpoints: List of objects describing the serving endpoints. Each object consists of following attributes:
     """
     __args__ = dict()
     __args__['endpoints'] = endpoints

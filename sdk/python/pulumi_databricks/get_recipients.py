@@ -60,7 +60,7 @@ class AwaitableGetRecipientsResult(GetRecipientsResult):
             recipients=self.recipients)
 
 
-def get_recipients(provider_config: Optional[Union['GetRecipientsProviderConfigArgs', 'GetRecipientsProviderConfigArgsDict']] = None,
+def get_recipients(provider_config: Optional[Union['GetRecipientsProviderConfigArgs', 'GetRecipientsProviderConfigArgsDict', 'outputs.GetRecipientsProviderConfigResult']] = None,
                    recipients: Optional[Sequence[_builtins.str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecipientsResult:
     """
@@ -90,7 +90,7 @@ def get_recipients(provider_config: Optional[Union['GetRecipientsProviderConfigA
     * Grants to manage Delta Sharing permissions.
 
 
-    :param Union['GetRecipientsProviderConfigArgs', 'GetRecipientsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetRecipientsProviderConfigArgs', 'GetRecipientsProviderConfigArgsDict', 'outputs.GetRecipientsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] recipients: set of Recipient names.
     """
     __args__ = dict()
@@ -102,7 +102,7 @@ def get_recipients(provider_config: Optional[Union['GetRecipientsProviderConfigA
     return AwaitableGetRecipientsResult(
         provider_config=pulumi.get(__ret__, 'provider_config'),
         recipients=pulumi.get(__ret__, 'recipients'))
-def get_recipients_output(provider_config: pulumi.Input[Optional[Optional[Union['GetRecipientsProviderConfigArgs', 'GetRecipientsProviderConfigArgsDict']]]] = None,
+def get_recipients_output(provider_config: pulumi.Input[Optional[Optional[Union['GetRecipientsProviderConfigArgs', 'GetRecipientsProviderConfigArgsDict', 'outputs.GetRecipientsProviderConfigResult']]]] = None,
                           recipients: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecipientsResult]:
     """
@@ -132,7 +132,7 @@ def get_recipients_output(provider_config: pulumi.Input[Optional[Optional[Union[
     * Grants to manage Delta Sharing permissions.
 
 
-    :param Union['GetRecipientsProviderConfigArgs', 'GetRecipientsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetRecipientsProviderConfigArgs', 'GetRecipientsProviderConfigArgsDict', 'outputs.GetRecipientsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] recipients: set of Recipient names.
     """
     __args__ = dict()

@@ -206,8 +206,8 @@ class PostgresDataApi(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict', 'outputs.PostgresDataApiProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict', 'outputs.PostgresDataApiSpec']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -304,8 +304,8 @@ class PostgresDataApi(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] parent: The database containing this Data API configuration.
                Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
-        :param pulumi.Input[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict']] spec: The desired Data API configuration
+        :param pulumi.Input[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict', 'outputs.PostgresDataApiProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict', 'outputs.PostgresDataApiSpec']] spec: The desired Data API configuration
         """
         ...
     @overload
@@ -420,8 +420,8 @@ class PostgresDataApi(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict', 'outputs.PostgresDataApiProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict', 'outputs.PostgresDataApiSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -453,9 +453,9 @@ class PostgresDataApi(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict']]] = None,
-            spec: pulumi.Input[Optional[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['PostgresDataApiStatusArgs', 'PostgresDataApiStatusArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict', 'outputs.PostgresDataApiProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict', 'outputs.PostgresDataApiSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresDataApiStatusArgs', 'PostgresDataApiStatusArgsDict', 'outputs.PostgresDataApiStatus']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresDataApi':
         """
         Get an existing PostgresDataApi resource's state with the given name, id, and optional extra
@@ -468,9 +468,9 @@ class PostgresDataApi(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: (string) - Resource name: projects/{project_id}/branches/{branch_id}/databases/{database_id}/data-api
         :param pulumi.Input[_builtins.str] parent: The database containing this Data API configuration.
                Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
-        :param pulumi.Input[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict']] spec: The desired Data API configuration
-        :param pulumi.Input[Union['PostgresDataApiStatusArgs', 'PostgresDataApiStatusArgsDict']] status: (DataApiDataApiStatus) - The observed Data API state (read-only)
+        :param pulumi.Input[Union['PostgresDataApiProviderConfigArgs', 'PostgresDataApiProviderConfigArgsDict', 'outputs.PostgresDataApiProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresDataApiSpecArgs', 'PostgresDataApiSpecArgsDict', 'outputs.PostgresDataApiSpec']] spec: The desired Data API configuration
+        :param pulumi.Input[Union['PostgresDataApiStatusArgs', 'PostgresDataApiStatusArgsDict', 'outputs.PostgresDataApiStatus']] status: (DataApiDataApiStatus) - The observed Data API state (read-only)
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the Data API configuration was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

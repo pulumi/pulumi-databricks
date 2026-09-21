@@ -447,9 +447,9 @@ class Domain(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  draft: pulumi.Input[Optional[_builtins.bool]] = None,
-                 icon: pulumi.Input[Optional[Union['DomainIconArgs', 'DomainIconArgsDict']]] = None,
+                 icon: pulumi.Input[Optional[Union['DomainIconArgs', 'DomainIconArgsDict', 'outputs.DomainIcon']]] = None,
                  parent_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict', 'outputs.DomainProviderConfig']]] = None,
                  subtitle: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  technical_owner_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -488,10 +488,10 @@ class Domain(pulumi.CustomResource):
                generates one
         :param pulumi.Input[_builtins.bool] draft: Whether to mark the domain as a draft. If omitted on Create, the server
                applies a default; the resolved value is returned in `effective_draft`
-        :param pulumi.Input[Union['DomainIconArgs', 'DomainIconArgsDict']] icon: Icon to display for the domain
+        :param pulumi.Input[Union['DomainIconArgs', 'DomainIconArgsDict', 'outputs.DomainIcon']] icon: Icon to display for the domain
         :param pulumi.Input[_builtins.str] parent_domain_id: Domain ID of the parent. If absent, this is a top-level domain.
                If present, this domain is a subdomain of the specified parent
-        :param pulumi.Input[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict', 'outputs.DomainProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] subtitle: Short description (max 280 chars)
         :param pulumi.Input[_builtins.str] tag_key: Governed tag key associated with this domain
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] technical_owner_ids: Principal IDs of the technical owners (users, groups, or service principals)
@@ -547,9 +547,9 @@ class Domain(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  draft: pulumi.Input[Optional[_builtins.bool]] = None,
-                 icon: pulumi.Input[Optional[Union['DomainIconArgs', 'DomainIconArgsDict']]] = None,
+                 icon: pulumi.Input[Optional[Union['DomainIconArgs', 'DomainIconArgsDict', 'outputs.DomainIcon']]] = None,
                  parent_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict', 'outputs.DomainProviderConfig']]] = None,
                  subtitle: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  technical_owner_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -594,10 +594,10 @@ class Domain(pulumi.CustomResource):
             domain_id: pulumi.Input[Optional[_builtins.str]] = None,
             draft: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_draft: pulumi.Input[Optional[_builtins.bool]] = None,
-            icon: pulumi.Input[Optional[Union['DomainIconArgs', 'DomainIconArgsDict']]] = None,
+            icon: pulumi.Input[Optional[Union['DomainIconArgs', 'DomainIconArgsDict', 'outputs.DomainIcon']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict', 'outputs.DomainProviderConfig']]] = None,
             subtitle: pulumi.Input[Optional[_builtins.str]] = None,
             tag_key: pulumi.Input[Optional[_builtins.str]] = None,
             technical_owner_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -617,14 +617,14 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] draft: Whether to mark the domain as a draft. If omitted on Create, the server
                applies a default; the resolved value is returned in `effective_draft`
         :param pulumi.Input[_builtins.bool] effective_draft: (boolean) - Resolved draft state of the domain
-        :param pulumi.Input[Union['DomainIconArgs', 'DomainIconArgsDict']] icon: Icon to display for the domain
+        :param pulumi.Input[Union['DomainIconArgs', 'DomainIconArgsDict', 'outputs.DomainIcon']] icon: Icon to display for the domain
         :param pulumi.Input[_builtins.str] name: (string) - Full resource name of the domain. The primary identifier for this resource.
                Format: `domains/{domain_id}`
                Identifies the domain on get, update, and delete. Not an input on
                create — to choose the id, set `CreateDomainRequest.domain_id`
         :param pulumi.Input[_builtins.str] parent_domain_id: Domain ID of the parent. If absent, this is a top-level domain.
                If present, this domain is a subdomain of the specified parent
-        :param pulumi.Input[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DomainProviderConfigArgs', 'DomainProviderConfigArgsDict', 'outputs.DomainProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] subtitle: Short description (max 280 chars)
         :param pulumi.Input[_builtins.str] tag_key: Governed tag key associated with this domain
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] technical_owner_ids: Principal IDs of the technical owners (users, groups, or service principals)

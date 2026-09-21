@@ -532,7 +532,7 @@ class Dashboard(pulumi.CustomResource):
                  md5: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict', 'outputs.DashboardProviderConfig']]] = None,
                  serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -572,7 +572,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[_builtins.str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
-        :param pulumi.Input[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict', 'outputs.DashboardProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
         :param pulumi.Input[_builtins.str] warehouse_id: The warehouse ID used to run the dashboard.
         """
@@ -637,7 +637,7 @@ class Dashboard(pulumi.CustomResource):
                  md5: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict', 'outputs.DashboardProviderConfig']]] = None,
                  serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -696,7 +696,7 @@ class Dashboard(pulumi.CustomResource):
             md5: pulumi.Input[Optional[_builtins.str]] = None,
             parent_path: pulumi.Input[Optional[_builtins.str]] = None,
             path: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict', 'outputs.DashboardProviderConfig']]] = None,
             serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Dashboard':
@@ -713,7 +713,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[_builtins.str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
-        :param pulumi.Input[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict', 'outputs.DashboardProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
         :param pulumi.Input[_builtins.str] warehouse_id: The warehouse ID used to run the dashboard.
         """

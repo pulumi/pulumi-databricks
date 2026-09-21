@@ -191,7 +191,7 @@ class AwaitableGetKnowledgeAssistantResult(GetKnowledgeAssistantResult):
 
 
 def get_knowledge_assistant(name: Optional[_builtins.str] = None,
-                            provider_config: Optional[Union['GetKnowledgeAssistantProviderConfigArgs', 'GetKnowledgeAssistantProviderConfigArgsDict']] = None,
+                            provider_config: Optional[Union['GetKnowledgeAssistantProviderConfigArgs', 'GetKnowledgeAssistantProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantProviderConfigResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKnowledgeAssistantResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -201,7 +201,7 @@ def get_knowledge_assistant(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The resource name of the Knowledge Assistant.
            Format: knowledge-assistants/{knowledge_assistant_id}
-    :param Union['GetKnowledgeAssistantProviderConfigArgs', 'GetKnowledgeAssistantProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetKnowledgeAssistantProviderConfigArgs', 'GetKnowledgeAssistantProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -223,7 +223,7 @@ def get_knowledge_assistant(name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         state=pulumi.get(__ret__, 'state'))
 def get_knowledge_assistant_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                   provider_config: pulumi.Input[Optional[Optional[Union['GetKnowledgeAssistantProviderConfigArgs', 'GetKnowledgeAssistantProviderConfigArgsDict']]]] = None,
+                                   provider_config: pulumi.Input[Optional[Optional[Union['GetKnowledgeAssistantProviderConfigArgs', 'GetKnowledgeAssistantProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantProviderConfigResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKnowledgeAssistantResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -233,7 +233,7 @@ def get_knowledge_assistant_output(name: pulumi.Input[Optional[_builtins.str]] =
 
     :param _builtins.str name: The resource name of the Knowledge Assistant.
            Format: knowledge-assistants/{knowledge_assistant_id}
-    :param Union['GetKnowledgeAssistantProviderConfigArgs', 'GetKnowledgeAssistantProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetKnowledgeAssistantProviderConfigArgs', 'GetKnowledgeAssistantProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

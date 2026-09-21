@@ -67,7 +67,7 @@ class AwaitableGetSupervisorAgentsResult(GetSupervisorAgentsResult):
 
 
 def get_supervisor_agents(page_size: Optional[_builtins.int] = None,
-                          provider_config: Optional[Union['GetSupervisorAgentsProviderConfigArgs', 'GetSupervisorAgentsProviderConfigArgsDict']] = None,
+                          provider_config: Optional[Union['GetSupervisorAgentsProviderConfigArgs', 'GetSupervisorAgentsProviderConfigArgsDict', 'outputs.GetSupervisorAgentsProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSupervisorAgentsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -78,7 +78,7 @@ def get_supervisor_agents(page_size: Optional[_builtins.int] = None,
     :param _builtins.int page_size: The maximum number of supervisor agents to return.
            If unspecified, at most 100 supervisor agents will be returned.
            The maximum value is 100; values above 100 will be coerced to 100
-    :param Union['GetSupervisorAgentsProviderConfigArgs', 'GetSupervisorAgentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSupervisorAgentsProviderConfigArgs', 'GetSupervisorAgentsProviderConfigArgsDict', 'outputs.GetSupervisorAgentsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -91,7 +91,7 @@ def get_supervisor_agents(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         supervisor_agents=pulumi.get(__ret__, 'supervisor_agents'))
 def get_supervisor_agents_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetSupervisorAgentsProviderConfigArgs', 'GetSupervisorAgentsProviderConfigArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetSupervisorAgentsProviderConfigArgs', 'GetSupervisorAgentsProviderConfigArgsDict', 'outputs.GetSupervisorAgentsProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSupervisorAgentsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -102,7 +102,7 @@ def get_supervisor_agents_output(page_size: pulumi.Input[Optional[Optional[_buil
     :param _builtins.int page_size: The maximum number of supervisor agents to return.
            If unspecified, at most 100 supervisor agents will be returned.
            The maximum value is 100; values above 100 will be coerced to 100
-    :param Union['GetSupervisorAgentsProviderConfigArgs', 'GetSupervisorAgentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSupervisorAgentsProviderConfigArgs', 'GetSupervisorAgentsProviderConfigArgsDict', 'outputs.GetSupervisorAgentsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

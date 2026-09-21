@@ -203,7 +203,7 @@ class IpAccessList(pulumi.CustomResource):
                  ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  list_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict', 'outputs.IpAccessListProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/ipaccesslists)
@@ -252,7 +252,7 @@ class IpAccessList(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
         :param pulumi.Input[_builtins.str] label: This is the display name for the given IP ACL List.
         :param pulumi.Input[_builtins.str] list_type: Can only be "ALLOW" or "BLOCK".
-        :param pulumi.Input[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict', 'outputs.IpAccessListProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -320,7 +320,7 @@ class IpAccessList(pulumi.CustomResource):
                  ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  list_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict', 'outputs.IpAccessListProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -355,7 +355,7 @@ class IpAccessList(pulumi.CustomResource):
             ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             list_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None) -> 'IpAccessList':
+            provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict', 'outputs.IpAccessListProviderConfig']]] = None) -> 'IpAccessList':
         """
         Get an existing IpAccessList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -367,7 +367,7 @@ class IpAccessList(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
         :param pulumi.Input[_builtins.str] label: This is the display name for the given IP ACL List.
         :param pulumi.Input[_builtins.str] list_type: Can only be "ALLOW" or "BLOCK".
-        :param pulumi.Input[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict', 'outputs.IpAccessListProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

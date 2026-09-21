@@ -107,7 +107,7 @@ class WorkspaceConf(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict', 'outputs.WorkspaceConfProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/workspaceconf)
@@ -147,7 +147,7 @@ class WorkspaceConf(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-        :param pulumi.Input[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict', 'outputs.WorkspaceConfProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -206,7 +206,7 @@ class WorkspaceConf(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict', 'outputs.WorkspaceConfProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -229,7 +229,7 @@ class WorkspaceConf(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None) -> 'WorkspaceConf':
+            provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict', 'outputs.WorkspaceConfProviderConfig']]] = None) -> 'WorkspaceConf':
         """
         Get an existing WorkspaceConf resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -238,7 +238,7 @@ class WorkspaceConf(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-        :param pulumi.Input[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict', 'outputs.WorkspaceConfProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -73,7 +73,7 @@ class AwaitableGetStorageCredentialsResult(GetStorageCredentialsResult):
 
 
 def get_storage_credentials(names: Optional[Sequence[_builtins.str]] = None,
-                            provider_config: Optional[Union['GetStorageCredentialsProviderConfigArgs', 'GetStorageCredentialsProviderConfigArgsDict']] = None,
+                            provider_config: Optional[Union['GetStorageCredentialsProviderConfigArgs', 'GetStorageCredentialsProviderConfigArgsDict', 'outputs.GetStorageCredentialsProviderConfigResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialsResult:
     """
     Retrieves a list of StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -101,7 +101,7 @@ def get_storage_credentials(names: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] names: List of names of StorageCredential in the metastore
-    :param Union['GetStorageCredentialsProviderConfigArgs', 'GetStorageCredentialsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetStorageCredentialsProviderConfigArgs', 'GetStorageCredentialsProviderConfigArgsDict', 'outputs.GetStorageCredentialsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['names'] = names
@@ -114,7 +114,7 @@ def get_storage_credentials(names: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_storage_credentials_output(names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                                   provider_config: pulumi.Input[Optional[Optional[Union['GetStorageCredentialsProviderConfigArgs', 'GetStorageCredentialsProviderConfigArgsDict']]]] = None,
+                                   provider_config: pulumi.Input[Optional[Optional[Union['GetStorageCredentialsProviderConfigArgs', 'GetStorageCredentialsProviderConfigArgsDict', 'outputs.GetStorageCredentialsProviderConfigResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageCredentialsResult]:
     """
     Retrieves a list of StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -142,7 +142,7 @@ def get_storage_credentials_output(names: pulumi.Input[Optional[Optional[Sequenc
 
 
     :param Sequence[_builtins.str] names: List of names of StorageCredential in the metastore
-    :param Union['GetStorageCredentialsProviderConfigArgs', 'GetStorageCredentialsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetStorageCredentialsProviderConfigArgs', 'GetStorageCredentialsProviderConfigArgsDict', 'outputs.GetStorageCredentialsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['names'] = names

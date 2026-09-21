@@ -94,9 +94,9 @@ class AwaitableGetFunctionsResult(GetFunctionsResult):
 
 
 def get_functions(catalog_name: Optional[_builtins.str] = None,
-                  functions: Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']]] = None,
+                  functions: Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict', 'outputs.GetFunctionsFunctionResult']]] = None,
                   include_browse: Optional[_builtins.bool] = None,
-                  provider_config: Optional[Union['GetFunctionsProviderConfigArgs', 'GetFunctionsProviderConfigArgsDict']] = None,
+                  provider_config: Optional[Union['GetFunctionsProviderConfigArgs', 'GetFunctionsProviderConfigArgsDict', 'outputs.GetFunctionsProviderConfigResult']] = None,
                   schema_name: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionsResult:
     """
@@ -125,7 +125,7 @@ def get_functions(catalog_name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str catalog_name: Name of databricks_catalog.
-    :param Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']] functions: list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+    :param Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict', 'outputs.GetFunctionsFunctionResult']] functions: list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
     :param _builtins.bool include_browse: flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
     :param _builtins.str schema_name: Name of databricks_schema.
     """
@@ -145,9 +145,9 @@ def get_functions(catalog_name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
 def get_functions_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
-                         functions: pulumi.Input[Optional[Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']]]]] = None,
+                         functions: pulumi.Input[Optional[Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict', 'outputs.GetFunctionsFunctionResult']]]]] = None,
                          include_browse: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                         provider_config: pulumi.Input[Optional[Optional[Union['GetFunctionsProviderConfigArgs', 'GetFunctionsProviderConfigArgsDict']]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetFunctionsProviderConfigArgs', 'GetFunctionsProviderConfigArgsDict', 'outputs.GetFunctionsProviderConfigResult']]]] = None,
                          schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionsResult]:
     """
@@ -176,7 +176,7 @@ def get_functions_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = N
 
 
     :param _builtins.str catalog_name: Name of databricks_catalog.
-    :param Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']] functions: list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+    :param Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict', 'outputs.GetFunctionsFunctionResult']] functions: list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
     :param _builtins.bool include_browse: flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
     :param _builtins.str schema_name: Name of databricks_schema.
     """

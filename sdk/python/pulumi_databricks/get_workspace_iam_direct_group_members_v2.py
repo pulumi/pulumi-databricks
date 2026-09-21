@@ -80,7 +80,7 @@ class AwaitableGetWorkspaceIamDirectGroupMembersV2Result(GetWorkspaceIamDirectGr
 
 def get_workspace_iam_direct_group_members_v2(group_id: Optional[_builtins.int] = None,
                                               page_size: Optional[_builtins.int] = None,
-                                              provider_config: Optional[Union['GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict']] = None,
+                                              provider_config: Optional[Union['GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMembersV2ProviderConfigResult']] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamDirectGroupMembersV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -106,7 +106,7 @@ def get_workspace_iam_direct_group_members_v2(group_id: Optional[_builtins.int] 
     :param _builtins.int group_id: Required. Internal ID of the group in Databricks whose direct members are being listed
     :param _builtins.int page_size: The maximum number of members to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param Union['GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMembersV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['groupId'] = group_id
@@ -122,7 +122,7 @@ def get_workspace_iam_direct_group_members_v2(group_id: Optional[_builtins.int] 
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_workspace_iam_direct_group_members_v2_output(group_id: pulumi.Input[Optional[_builtins.int]] = None,
                                                      page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict']]]] = None,
+                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMembersV2ProviderConfigResult']]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamDirectGroupMembersV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -148,7 +148,7 @@ def get_workspace_iam_direct_group_members_v2_output(group_id: pulumi.Input[Opti
     :param _builtins.int group_id: Required. Internal ID of the group in Databricks whose direct members are being listed
     :param _builtins.int page_size: The maximum number of members to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param Union['GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMembersV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMembersV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['groupId'] = group_id

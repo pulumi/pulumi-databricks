@@ -300,9 +300,9 @@ class Share(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
+                 objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict', 'outputs.ShareObject']]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict', 'outputs.ShareProviderConfig']]] = None,
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -436,7 +436,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.str] name: Name of share. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the share owner.
-        :param pulumi.Input[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict', 'outputs.ShareProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -587,9 +587,9 @@ class Share(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
+                 objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict', 'outputs.ShareObject']]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict', 'outputs.ShareProviderConfig']]] = None,
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -627,9 +627,9 @@ class Share(pulumi.CustomResource):
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
+            objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict', 'outputs.ShareObject']]]]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict', 'outputs.ShareProviderConfig']]] = None,
             storage_location: pulumi.Input[Optional[_builtins.str]] = None,
             storage_root: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None,
@@ -646,7 +646,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_by: The principal that created the share.
         :param pulumi.Input[_builtins.str] name: Name of share. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the share owner.
-        :param pulumi.Input[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict', 'outputs.ShareProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

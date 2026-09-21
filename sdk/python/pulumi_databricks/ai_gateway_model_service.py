@@ -381,10 +381,10 @@ class AiGatewayModelService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict', 'outputs.AiGatewayModelServiceConfig']]] = None,
                  model_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict', 'outputs.AiGatewayModelServiceProviderConfig']]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -425,14 +425,14 @@ class AiGatewayModelService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']] config: Destinations, routing, rate limits, and payload logging configuration.
+        :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict', 'outputs.AiGatewayModelServiceConfig']] config: Destinations, routing, rate limits, and payload logging configuration.
                Required on Create. On Update, provide this field when `update_mask`
                contains `config` or one of its subpaths
         :param pulumi.Input[_builtins.str] model_service_id: Name for the model service, e.g. "my_model_service"
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
-        :param pulumi.Input[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict', 'outputs.AiGatewayModelServiceProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -492,10 +492,10 @@ class AiGatewayModelService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict', 'outputs.AiGatewayModelServiceConfig']]] = None,
                  model_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict', 'outputs.AiGatewayModelServiceProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -534,7 +534,7 @@ class AiGatewayModelService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict', 'outputs.AiGatewayModelServiceConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
@@ -543,7 +543,7 @@ class AiGatewayModelService(pulumi.CustomResource):
             model_service_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict', 'outputs.AiGatewayModelServiceProviderConfig']]] = None,
             supported_api_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiGatewayModelService':
@@ -555,7 +555,7 @@ class AiGatewayModelService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict']] config: Destinations, routing, rate limits, and payload logging configuration.
+        :param pulumi.Input[Union['AiGatewayModelServiceConfigArgs', 'AiGatewayModelServiceConfigArgsDict', 'outputs.AiGatewayModelServiceConfig']] config: Destinations, routing, rate limits, and payload logging configuration.
                Required on Create. On Update, provide this field when `update_mask`
                contains `config` or one of its subpaths
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the model service was created
@@ -575,7 +575,7 @@ class AiGatewayModelService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
-        :param pulumi.Input[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiGatewayModelServiceProviderConfigArgs', 'AiGatewayModelServiceProviderConfigArgsDict', 'outputs.AiGatewayModelServiceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_api_types: (list of string) - API types supported across this service's destinations, such as
                `openai/v1/chat/completions`, `openai/v1/embeddings`, and
                `mlflow/v1/chat/completions`. Derived from the backing models and providers

@@ -125,7 +125,7 @@ class AwaitableGetWorkspaceIamWorkspaceAssignmentV2Result(GetWorkspaceIamWorkspa
 
 
 def get_workspace_iam_workspace_assignment_v2(principal_id: Optional[_builtins.str] = None,
-                                              provider_config: Optional[Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']] = None,
+                                              provider_config: Optional[Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigResult']] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamWorkspaceAssignmentV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -150,7 +150,7 @@ def get_workspace_iam_workspace_assignment_v2(principal_id: Optional[_builtins.s
 
 
     :param _builtins.str principal_id: The internal ID of the principal (user/sp/group) in Databricks
-    :param Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['principalId'] = principal_id
@@ -167,7 +167,7 @@ def get_workspace_iam_workspace_assignment_v2(principal_id: Optional[_builtins.s
         provider_config=pulumi.get(__ret__, 'provider_config'),
         workspace_id=pulumi.get(__ret__, 'workspace_id'))
 def get_workspace_iam_workspace_assignment_v2_output(principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']]]] = None,
+                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigResult']]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamWorkspaceAssignmentV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -192,7 +192,7 @@ def get_workspace_iam_workspace_assignment_v2_output(principal_id: pulumi.Input[
 
 
     :param _builtins.str principal_id: The internal ID of the principal (user/sp/group) in Databricks
-    :param Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['principalId'] = principal_id

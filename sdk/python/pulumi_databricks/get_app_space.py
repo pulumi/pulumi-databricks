@@ -255,7 +255,7 @@ class AwaitableGetAppSpaceResult(GetAppSpaceResult):
 
 
 def get_app_space(name: Optional[_builtins.str] = None,
-                  provider_config: Optional[Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict']] = None,
+                  provider_config: Optional[Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict', 'outputs.GetAppSpaceProviderConfigResult']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppSpaceResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -265,7 +265,7 @@ def get_app_space(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
            It must be unique within the workspace
-    :param Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict', 'outputs.GetAppSpaceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -293,7 +293,7 @@ def get_app_space(name: Optional[_builtins.str] = None,
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'),
         user_api_scopes=pulumi.get(__ret__, 'user_api_scopes'))
 def get_app_space_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                         provider_config: pulumi.Input[Optional[Optional[Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict']]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict', 'outputs.GetAppSpaceProviderConfigResult']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppSpaceResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -303,7 +303,7 @@ def get_app_space_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
            It must be unique within the workspace
-    :param Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict', 'outputs.GetAppSpaceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

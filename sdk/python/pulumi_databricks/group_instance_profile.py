@@ -163,7 +163,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict', 'outputs.GroupInstanceProfileProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/groups)
@@ -273,7 +273,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict', 'outputs.GroupInstanceProfileProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,7 +304,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
             api: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None) -> 'GroupInstanceProfile':
+            provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict', 'outputs.GroupInstanceProfileProviderConfig']]] = None) -> 'GroupInstanceProfile':
         """
         Get an existing GroupInstanceProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

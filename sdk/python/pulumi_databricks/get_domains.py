@@ -81,7 +81,7 @@ class AwaitableGetDomainsResult(GetDomainsResult):
 
 def get_domains(page_size: Optional[_builtins.int] = None,
                 parent_domain_id: Optional[_builtins.str] = None,
-                provider_config: Optional[Union['GetDomainsProviderConfigArgs', 'GetDomainsProviderConfigArgsDict']] = None,
+                provider_config: Optional[Union['GetDomainsProviderConfigArgs', 'GetDomainsProviderConfigArgsDict', 'outputs.GetDomainsProviderConfigResult']] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -104,7 +104,7 @@ def get_domains(page_size: Optional[_builtins.int] = None,
     :param _builtins.str parent_domain_id: Filter by parent domain.
            - Absent: return all domains regardless of hierarchy.
            - Present: return only direct children of the specified domain
-    :param Union['GetDomainsProviderConfigArgs', 'GetDomainsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDomainsProviderConfigArgs', 'GetDomainsProviderConfigArgsDict', 'outputs.GetDomainsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -120,7 +120,7 @@ def get_domains(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_domains_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                        parent_domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                       provider_config: pulumi.Input[Optional[Optional[Union['GetDomainsProviderConfigArgs', 'GetDomainsProviderConfigArgsDict']]]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetDomainsProviderConfigArgs', 'GetDomainsProviderConfigArgsDict', 'outputs.GetDomainsProviderConfigResult']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -143,7 +143,7 @@ def get_domains_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]
     :param _builtins.str parent_domain_id: Filter by parent domain.
            - Absent: return all domains regardless of hierarchy.
            - Present: return only direct children of the specified domain
-    :param Union['GetDomainsProviderConfigArgs', 'GetDomainsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDomainsProviderConfigArgs', 'GetDomainsProviderConfigArgsDict', 'outputs.GetDomainsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

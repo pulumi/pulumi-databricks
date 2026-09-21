@@ -97,7 +97,7 @@ class AwaitableGetWorkspaceIamGroupV2Result(GetWorkspaceIamGroupV2Result):
 
 
 def get_workspace_iam_group_v2(group_id: Optional[_builtins.str] = None,
-                               provider_config: Optional[Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict']] = None,
+                               provider_config: Optional[Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupV2ProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamGroupV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -121,7 +121,7 @@ def get_workspace_iam_group_v2(group_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str group_id: Internal group ID of the group in Databricks
-    :param Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['groupId'] = group_id
@@ -136,7 +136,7 @@ def get_workspace_iam_group_v2(group_id: Optional[_builtins.str] = None,
         group_name=pulumi.get(__ret__, 'group_name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_workspace_iam_group_v2_output(group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                      provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict']]]] = None,
+                                      provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupV2ProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamGroupV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -160,7 +160,7 @@ def get_workspace_iam_group_v2_output(group_id: pulumi.Input[Optional[_builtins.
 
 
     :param _builtins.str group_id: Internal group ID of the group in Databricks
-    :param Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamGroupV2ProviderConfigArgs', 'GetWorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamGroupV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['groupId'] = group_id

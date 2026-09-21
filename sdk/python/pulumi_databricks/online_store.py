@@ -251,7 +251,7 @@ class OnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict', 'outputs.OnlineStoreProviderConfig']]] = None,
                  read_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -263,7 +263,7 @@ class OnlineStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
-        :param pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict', 'outputs.OnlineStoreProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy applied to the online store to track billing
         """
@@ -294,7 +294,7 @@ class OnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict', 'outputs.OnlineStoreProviderConfig']]] = None,
                  read_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -330,7 +330,7 @@ class OnlineStore(pulumi.CustomResource):
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict', 'outputs.OnlineStoreProviderConfig']]] = None,
             read_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OnlineStore':
@@ -345,7 +345,7 @@ class OnlineStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the online store was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the online store
         :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
-        :param pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict', 'outputs.OnlineStoreProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy applied to the online store to track billing

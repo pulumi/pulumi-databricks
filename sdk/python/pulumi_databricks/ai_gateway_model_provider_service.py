@@ -359,10 +359,10 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict', 'outputs.AiGatewayModelProviderServiceConfig']]] = None,
                  model_provider_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.AiGatewayModelProviderServiceProviderConfig']]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -408,14 +408,14 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']] config: Provider authentication, exposed models, request-forwarding controls, rate
+        :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict', 'outputs.AiGatewayModelProviderServiceConfig']] config: Provider authentication, exposed models, request-forwarding controls, rate
                limits, and payload logging. Required on Create. On Update, it is required
                only when `config` or one of its subpaths appears in `update_mask`
         :param pulumi.Input[_builtins.str] model_provider_service_id: Name for the model provider service, e.g. "openai_prod"
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
-        :param pulumi.Input[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.AiGatewayModelProviderServiceProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -480,10 +480,10 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict', 'outputs.AiGatewayModelProviderServiceConfig']]] = None,
                  model_provider_service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.AiGatewayModelProviderServiceProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -521,7 +521,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict', 'outputs.AiGatewayModelProviderServiceConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
@@ -530,7 +530,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
             model_provider_service_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.AiGatewayModelProviderServiceProviderConfig']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiGatewayModelProviderService':
         """
@@ -541,7 +541,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided description
-        :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict']] config: Provider authentication, exposed models, request-forwarding controls, rate
+        :param pulumi.Input[Union['AiGatewayModelProviderServiceConfigArgs', 'AiGatewayModelProviderServiceConfigArgsDict', 'outputs.AiGatewayModelProviderServiceConfig']] config: Provider authentication, exposed models, request-forwarding controls, rate
                limits, and payload logging. Required on Create. On Update, it is required
                only when `config` or one of its subpaths appears in `update_mask`
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the provider service was created
@@ -561,7 +561,7 @@ class AiGatewayModelProviderService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: Name of the parent schema.
                Format: `schemas/{catalog}.{schema}`.
                Each `{...}` component is capped at 255 characters individually
-        :param pulumi.Input[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiGatewayModelProviderServiceProviderConfigArgs', 'AiGatewayModelProviderServiceProviderConfigArgsDict', 'outputs.AiGatewayModelProviderServiceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the provider service was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Identity of the last updater
         """

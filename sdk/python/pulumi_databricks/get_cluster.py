@@ -94,10 +94,10 @@ class AwaitableGetClusterResult(GetClusterResult):
 
 
 def get_cluster(cluster_id: Optional[_builtins.str] = None,
-                cluster_info: Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']] = None,
+                cluster_info: Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict', 'outputs.GetClusterClusterInfoResult']] = None,
                 cluster_name: Optional[_builtins.str] = None,
                 id: Optional[_builtins.str] = None,
-                provider_config: Optional[Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict']] = None,
+                provider_config: Optional[Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict', 'outputs.GetClusterProviderConfigResult']] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Retrieves information about a Cluster using its id. This could be retrieved programmatically using get_clusters data source.
@@ -145,10 +145,10 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cluster_id: The id of the cluster.
-    :param Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict'] cluster_info: block, consisting of following fields:
+    :param Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict', 'outputs.GetClusterClusterInfoResult'] cluster_info: block, consisting of following fields:
     :param _builtins.str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
     :param _builtins.str id: cluster ID
-    :param Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict', 'outputs.GetClusterProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -166,10 +166,10 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_cluster_output(cluster_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                       cluster_info: pulumi.Input[Optional[Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']]]] = None,
+                       cluster_info: pulumi.Input[Optional[Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict', 'outputs.GetClusterClusterInfoResult']]]] = None,
                        cluster_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                       provider_config: pulumi.Input[Optional[Optional[Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict']]]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict', 'outputs.GetClusterProviderConfigResult']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     Retrieves information about a Cluster using its id. This could be retrieved programmatically using get_clusters data source.
@@ -217,10 +217,10 @@ def get_cluster_output(cluster_id: pulumi.Input[Optional[Optional[_builtins.str]
 
 
     :param _builtins.str cluster_id: The id of the cluster.
-    :param Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict'] cluster_info: block, consisting of following fields:
+    :param Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict', 'outputs.GetClusterClusterInfoResult'] cluster_info: block, consisting of following fields:
     :param _builtins.str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
     :param _builtins.str id: cluster ID
-    :param Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict', 'outputs.GetClusterProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

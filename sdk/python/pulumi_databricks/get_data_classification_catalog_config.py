@@ -104,7 +104,7 @@ class AwaitableGetDataClassificationCatalogConfigResult(GetDataClassificationCat
 
 
 def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
-                                           provider_config: Optional[Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict']] = None,
+                                           provider_config: Optional[Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.GetDataClassificationCatalogConfigProviderConfigResult']] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataClassificationCatalogConfigResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -132,7 +132,7 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Resource name in the format: catalogs/{catalog_name}/config
-    :param Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.GetDataClassificationCatalogConfigProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -147,7 +147,7 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict']]]] = None,
+                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.GetDataClassificationCatalogConfigProviderConfigResult']]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataClassificationCatalogConfigResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -175,7 +175,7 @@ def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_b
 
 
     :param _builtins.str name: Resource name in the format: catalogs/{catalog_name}/config
-    :param Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDataClassificationCatalogConfigProviderConfigArgs', 'GetDataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.GetDataClassificationCatalogConfigProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

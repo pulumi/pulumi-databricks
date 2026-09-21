@@ -166,7 +166,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
                  gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -222,7 +222,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] gpu_workspace_base_environment: The default workspace base environment for GPU compute.
                Format: workspace-base-environments/{workspace_base_environment}
-        :param pulumi.Input[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -295,7 +295,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
                  gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,7 +322,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
             cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
             gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None) -> 'EnvironmentsDefaultWorkspaceBaseEnvironment':
+            provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']]] = None) -> 'EnvironmentsDefaultWorkspaceBaseEnvironment':
         """
         Get an existing EnvironmentsDefaultWorkspaceBaseEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -336,7 +336,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of this singleton resource.
                Format: default-workspace-base-environment
-        :param pulumi.Input[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

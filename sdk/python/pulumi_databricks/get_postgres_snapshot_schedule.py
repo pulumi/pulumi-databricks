@@ -77,7 +77,7 @@ class AwaitableGetPostgresSnapshotScheduleResult(GetPostgresSnapshotScheduleResu
 
 
 def get_postgres_snapshot_schedule(name: Optional[_builtins.str] = None,
-                                   provider_config: Optional[Union['GetPostgresSnapshotScheduleProviderConfigArgs', 'GetPostgresSnapshotScheduleProviderConfigArgsDict']] = None,
+                                   provider_config: Optional[Union['GetPostgresSnapshotScheduleProviderConfigArgs', 'GetPostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.GetPostgresSnapshotScheduleProviderConfigResult']] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresSnapshotScheduleResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -87,7 +87,7 @@ def get_postgres_snapshot_schedule(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The resource name of the branch's snapshot schedule.
            Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
-    :param Union['GetPostgresSnapshotScheduleProviderConfigArgs', 'GetPostgresSnapshotScheduleProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresSnapshotScheduleProviderConfigArgs', 'GetPostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.GetPostgresSnapshotScheduleProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -100,7 +100,7 @@ def get_postgres_snapshot_schedule(name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schedules=pulumi.get(__ret__, 'schedules'))
 def get_postgres_snapshot_schedule_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                          provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresSnapshotScheduleProviderConfigArgs', 'GetPostgresSnapshotScheduleProviderConfigArgsDict']]]] = None,
+                                          provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresSnapshotScheduleProviderConfigArgs', 'GetPostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.GetPostgresSnapshotScheduleProviderConfigResult']]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresSnapshotScheduleResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -110,7 +110,7 @@ def get_postgres_snapshot_schedule_output(name: pulumi.Input[Optional[_builtins.
 
     :param _builtins.str name: The resource name of the branch's snapshot schedule.
            Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
-    :param Union['GetPostgresSnapshotScheduleProviderConfigArgs', 'GetPostgresSnapshotScheduleProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresSnapshotScheduleProviderConfigArgs', 'GetPostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.GetPostgresSnapshotScheduleProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

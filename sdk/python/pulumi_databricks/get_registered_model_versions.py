@@ -73,8 +73,8 @@ class AwaitableGetRegisteredModelVersionsResult(GetRegisteredModelVersionsResult
 
 
 def get_registered_model_versions(full_name: Optional[_builtins.str] = None,
-                                  model_versions: Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]] = None,
-                                  provider_config: Optional[Union['GetRegisteredModelVersionsProviderConfigArgs', 'GetRegisteredModelVersionsProviderConfigArgsDict']] = None,
+                                  model_versions: Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict', 'outputs.GetRegisteredModelVersionsModelVersionResult']]] = None,
+                                  provider_config: Optional[Union['GetRegisteredModelVersionsProviderConfigArgs', 'GetRegisteredModelVersionsProviderConfigArgsDict', 'outputs.GetRegisteredModelVersionsProviderConfigResult']] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegisteredModelVersionsResult:
     """
     This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
@@ -101,7 +101,7 @@ def get_registered_model_versions(full_name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-    :param Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']] model_versions: list of objects describing the model versions. Each object consists of following attributes:
+    :param Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict', 'outputs.GetRegisteredModelVersionsModelVersionResult']] model_versions: list of objects describing the model versions. Each object consists of following attributes:
     """
     __args__ = dict()
     __args__['fullName'] = full_name
@@ -115,8 +115,8 @@ def get_registered_model_versions(full_name: Optional[_builtins.str] = None,
         model_versions=pulumi.get(__ret__, 'model_versions'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_registered_model_versions_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                         model_versions: pulumi.Input[Optional[Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]]]] = None,
-                                         provider_config: pulumi.Input[Optional[Optional[Union['GetRegisteredModelVersionsProviderConfigArgs', 'GetRegisteredModelVersionsProviderConfigArgsDict']]]] = None,
+                                         model_versions: pulumi.Input[Optional[Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict', 'outputs.GetRegisteredModelVersionsModelVersionResult']]]]] = None,
+                                         provider_config: pulumi.Input[Optional[Optional[Union['GetRegisteredModelVersionsProviderConfigArgs', 'GetRegisteredModelVersionsProviderConfigArgsDict', 'outputs.GetRegisteredModelVersionsProviderConfigResult']]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelVersionsResult]:
     """
     This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
@@ -143,7 +143,7 @@ def get_registered_model_versions_output(full_name: pulumi.Input[Optional[_built
 
 
     :param _builtins.str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-    :param Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']] model_versions: list of objects describing the model versions. Each object consists of following attributes:
+    :param Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict', 'outputs.GetRegisteredModelVersionsModelVersionResult']] model_versions: list of objects describing the model versions. Each object consists of following attributes:
     """
     __args__ = dict()
     __args__['fullName'] = full_name

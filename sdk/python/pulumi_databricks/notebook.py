@@ -352,7 +352,7 @@ class Notebook(pulumi.CustomResource):
                  object_id: pulumi.Input[Optional[_builtins.int]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict', 'outputs.NotebookProviderConfig']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -369,7 +369,7 @@ class Notebook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[_builtins.str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-        :param pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict', 'outputs.NotebookProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         """
         ...
@@ -408,7 +408,7 @@ class Notebook(pulumi.CustomResource):
                  object_id: pulumi.Input[Optional[_builtins.int]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict', 'outputs.NotebookProviderConfig']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -449,7 +449,7 @@ class Notebook(pulumi.CustomResource):
             object_id: pulumi.Input[Optional[_builtins.int]] = None,
             object_type: pulumi.Input[Optional[_builtins.str]] = None,
             path: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict', 'outputs.NotebookProviderConfig']]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Notebook':
@@ -464,7 +464,7 @@ class Notebook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[_builtins.str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-        :param pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict', 'outputs.NotebookProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         :param pulumi.Input[_builtins.str] url: Routable URL of the notebook
         :param pulumi.Input[_builtins.str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`

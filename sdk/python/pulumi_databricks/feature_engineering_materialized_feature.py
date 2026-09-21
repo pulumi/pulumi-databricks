@@ -509,14 +509,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-                 cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
+                 cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger']]] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
-                 online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
+                 offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']]] = None,
+                 online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']]] = None,
                  pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
-                 streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']]] = None,
-                 table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureProviderConfig']]] = None,
+                 streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureStreamingMode']]] = None,
+                 table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureTableTrigger']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -527,17 +527,17 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the budget policy used to attribute the serverless compute cost of this
                materialization. If not specified, a default budget policy may be applied
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']] offline_store_config: Destination for writing feature values to an offline Delta table
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']] online_store_config: Destination for writing feature values to an online Lakebase table
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']] offline_store_config: Destination for writing feature values to an offline Delta table
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']] online_store_config: Destination for writing feature values to an online Lakebase table
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline.
                Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']] streaming_mode: The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureStreamingMode']] streaming_mode: The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
                sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
                for ETL and analytics workloads
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']] table_trigger: A trigger that fires when the upstream source table changes
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureTableTrigger']] table_trigger: A trigger that fires when the upstream source table changes
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Custom tags to associate with this materialization. They are applied to the materialization
                job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
                compute as cluster tags, so materialization cost can be attributed in the billing system
@@ -573,14 +573,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-                 cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
+                 cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger']]] = None,
                  feature_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
-                 online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
+                 offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']]] = None,
+                 online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']]] = None,
                  pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
-                 streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']]] = None,
-                 table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureProviderConfig']]] = None,
+                 streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureStreamingMode']]] = None,
+                 table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureTableTrigger']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -621,19 +621,19 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-            cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']]] = None,
+            cron_schedule_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger']]] = None,
             feature_name: pulumi.Input[Optional[_builtins.str]] = None,
             is_online: pulumi.Input[Optional[_builtins.bool]] = None,
             last_materialization_time: pulumi.Input[Optional[_builtins.str]] = None,
             latest_backfill_operation: pulumi.Input[Optional[_builtins.str]] = None,
             materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
-            offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
-            online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
+            offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']]] = None,
+            online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']]] = None,
             pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
-            streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureProviderConfig']]] = None,
+            streaming_mode: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureStreamingMode']]] = None,
             table_name: pulumi.Input[Optional[_builtins.str]] = None,
-            table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']]] = None,
+            table_trigger: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureTableTrigger']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'FeatureEngineeringMaterializedFeature':
         """
         Get an existing FeatureEngineeringMaterializedFeature resource's state with the given name, id, and optional extra
@@ -644,23 +644,23 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the budget policy used to attribute the serverless compute cost of this
                materialization. If not specified, a default budget policy may be applied
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
         :param pulumi.Input[_builtins.str] latest_backfill_operation: (string) - Name of the latest backfill operation on this materialized feature. Format: operations/{operation_id}
         :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Server-assigned unique identifier for the materialized feature
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']] offline_store_config: Destination for writing feature values to an offline Delta table
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']] online_store_config: Destination for writing feature values to an online Lakebase table
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']] offline_store_config: Destination for writing feature values to an offline Delta table
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']] online_store_config: Destination for writing feature values to an online Lakebase table
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline.
                Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']] streaming_mode: The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureStreamingMode']] streaming_mode: The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
                sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
                for ETL and analytics workloads
         :param pulumi.Input[_builtins.str] table_name: (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
-        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict']] table_trigger: A trigger that fires when the upstream source table changes
+        :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureTableTriggerArgs', 'FeatureEngineeringMaterializedFeatureTableTriggerArgsDict', 'outputs.FeatureEngineeringMaterializedFeatureTableTrigger']] table_trigger: A trigger that fires when the upstream source table changes
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Custom tags to associate with this materialization. They are applied to the materialization
                job (for batch features) or pipeline (for streaming features) and forwarded to the underlying
                compute as cluster tags, so materialization cost can be attributed in the billing system

@@ -187,8 +187,8 @@ class OnlineTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict', 'outputs.OnlineTableProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict', 'outputs.OnlineTableSpec']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/onlinetables)
@@ -216,8 +216,8 @@ class OnlineTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
-        :param pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']] spec: object containing specification of the online table:
+        :param pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict', 'outputs.OnlineTableProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict', 'outputs.OnlineTableSpec']] spec: object containing specification of the online table:
         """
         ...
     @overload
@@ -264,8 +264,8 @@ class OnlineTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict', 'outputs.OnlineTableProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict', 'outputs.OnlineTableSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -292,9 +292,9 @@ class OnlineTable(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
-            spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict', 'outputs.OnlineTableProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict', 'outputs.OnlineTableSpec']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict', 'outputs.OnlineTableStatus']]]]] = None,
             table_serving_url: pulumi.Input[Optional[_builtins.str]] = None,
             unity_catalog_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None) -> 'OnlineTable':
         """
@@ -305,9 +305,9 @@ class OnlineTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
-        :param pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']] spec: object containing specification of the online table:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]] statuses: object describing status of the online table:
+        :param pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict', 'outputs.OnlineTableProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict', 'outputs.OnlineTableSpec']] spec: object containing specification of the online table:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict', 'outputs.OnlineTableStatus']]]] statuses: object describing status of the online table:
         :param pulumi.Input[_builtins.str] table_serving_url: Data serving REST API URL for this table.
         :param pulumi.Input[_builtins.str] unity_catalog_provisioning_state: The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
         """

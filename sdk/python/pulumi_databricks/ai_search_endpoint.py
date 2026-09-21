@@ -519,11 +519,11 @@ class AiSearchEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict']]]]] = None,
+                 custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict', 'outputs.AiSearchEndpointCustomTag']]]]] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict', 'outputs.AiSearchEndpointProviderConfig']]] = None,
                  replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  target_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -552,7 +552,7 @@ class AiSearchEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The user-selected budget policy id for the endpoint
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict']]]] custom_tags: The custom tags assigned to the endpoint
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict', 'outputs.AiSearchEndpointCustomTag']]]] custom_tags: The custom tags assigned to the endpoint
         :param pulumi.Input[_builtins.str] endpoint_id: The user-supplied short name for the Endpoint, per AIP-133. The server composes the
                full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
                `endpoint_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
@@ -560,7 +560,7 @@ class AiSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] endpoint_type: Type of endpoint. Required on create and immutable thereafter. Possible values are: `STANDARD`, `STORAGE_OPTIMIZED`
         :param pulumi.Input[_builtins.str] parent: The Workspace where this Endpoint will be created.
                Format: `workspaces/{workspace_id}`
-        :param pulumi.Input[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict', 'outputs.AiSearchEndpointProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] replica_count: The client-supplied desired number of replicas for the endpoint, applied at
                create/update time. Mutually exclusive with `target_qps`
         :param pulumi.Input[_builtins.int] target_qps: Target QPS for the endpoint. Mutually exclusive with `replica_count`. Best-effort;
@@ -610,11 +610,11 @@ class AiSearchEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict']]]]] = None,
+                 custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict', 'outputs.AiSearchEndpointCustomTag']]]]] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict', 'outputs.AiSearchEndpointProviderConfig']]] = None,
                  replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  target_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -663,20 +663,20 @@ class AiSearchEndpoint(pulumi.CustomResource):
             budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict']]]]] = None,
+            custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict', 'outputs.AiSearchEndpointCustomTag']]]]] = None,
             effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint_status: pulumi.Input[Optional[Union['AiSearchEndpointEndpointStatusArgs', 'AiSearchEndpointEndpointStatusArgsDict']]] = None,
+            endpoint_status: pulumi.Input[Optional[Union['AiSearchEndpointEndpointStatusArgs', 'AiSearchEndpointEndpointStatusArgsDict', 'outputs.AiSearchEndpointEndpointStatus']]] = None,
             endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
             index_count: pulumi.Input[Optional[_builtins.int]] = None,
             last_updated_user: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict', 'outputs.AiSearchEndpointProviderConfig']]] = None,
             replica_count: pulumi.Input[Optional[_builtins.int]] = None,
-            scaling_info: pulumi.Input[Optional[Union['AiSearchEndpointScalingInfoArgs', 'AiSearchEndpointScalingInfoArgsDict']]] = None,
+            scaling_info: pulumi.Input[Optional[Union['AiSearchEndpointScalingInfoArgs', 'AiSearchEndpointScalingInfoArgsDict', 'outputs.AiSearchEndpointScalingInfo']]] = None,
             target_qps: pulumi.Input[Optional[_builtins.int]] = None,
-            throughput_info: pulumi.Input[Optional[Union['AiSearchEndpointThroughputInfoArgs', 'AiSearchEndpointThroughputInfoArgsDict']]] = None,
+            throughput_info: pulumi.Input[Optional[Union['AiSearchEndpointThroughputInfoArgs', 'AiSearchEndpointThroughputInfoArgsDict', 'outputs.AiSearchEndpointThroughputInfo']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiSearchEndpoint':
         """
@@ -689,13 +689,13 @@ class AiSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] budget_policy_id: The user-selected budget policy id for the endpoint
         :param pulumi.Input[_builtins.str] create_time: (string) - Time the endpoint was created
         :param pulumi.Input[_builtins.str] creator: (string) - Creator of the endpoint
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict']]]] custom_tags: The custom tags assigned to the endpoint
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiSearchEndpointCustomTagArgs', 'AiSearchEndpointCustomTagArgsDict', 'outputs.AiSearchEndpointCustomTag']]]] custom_tags: The custom tags assigned to the endpoint
         :param pulumi.Input[_builtins.str] effective_budget_policy_id: (string) - The budget policy id applied to the endpoint
         :param pulumi.Input[_builtins.str] endpoint_id: The user-supplied short name for the Endpoint, per AIP-133. The server composes the
                full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
                `endpoint_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
                wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
-        :param pulumi.Input[Union['AiSearchEndpointEndpointStatusArgs', 'AiSearchEndpointEndpointStatusArgsDict']] endpoint_status: (EndpointStatus) - Current status of the endpoint
+        :param pulumi.Input[Union['AiSearchEndpointEndpointStatusArgs', 'AiSearchEndpointEndpointStatusArgsDict', 'outputs.AiSearchEndpointEndpointStatus']] endpoint_status: (EndpointStatus) - Current status of the endpoint
         :param pulumi.Input[_builtins.str] endpoint_type: Type of endpoint. Required on create and immutable thereafter. Possible values are: `STANDARD`, `STORAGE_OPTIMIZED`
         :param pulumi.Input[_builtins.int] index_count: (integer) - Number of indexes on the endpoint
         :param pulumi.Input[_builtins.str] last_updated_user: (string) - User who last updated the endpoint
@@ -705,13 +705,13 @@ class AiSearchEndpoint(pulumi.CustomResource):
                the server composes the full `name` and returns it on the response
         :param pulumi.Input[_builtins.str] parent: The Workspace where this Endpoint will be created.
                Format: `workspaces/{workspace_id}`
-        :param pulumi.Input[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiSearchEndpointProviderConfigArgs', 'AiSearchEndpointProviderConfigArgsDict', 'outputs.AiSearchEndpointProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] replica_count: The client-supplied desired number of replicas for the endpoint, applied at
                create/update time. Mutually exclusive with `target_qps`
-        :param pulumi.Input[Union['AiSearchEndpointScalingInfoArgs', 'AiSearchEndpointScalingInfoArgsDict']] scaling_info: (EndpointScalingInfo) - Scaling information for the endpoint
+        :param pulumi.Input[Union['AiSearchEndpointScalingInfoArgs', 'AiSearchEndpointScalingInfoArgsDict', 'outputs.AiSearchEndpointScalingInfo']] scaling_info: (EndpointScalingInfo) - Scaling information for the endpoint
         :param pulumi.Input[_builtins.int] target_qps: Target QPS for the endpoint. Mutually exclusive with `replica_count`. Best-effort;
                the system does not guarantee this QPS will be achieved
-        :param pulumi.Input[Union['AiSearchEndpointThroughputInfoArgs', 'AiSearchEndpointThroughputInfoArgsDict']] throughput_info: (EndpointThroughputInfo) - Throughput information for the endpoint
+        :param pulumi.Input[Union['AiSearchEndpointThroughputInfoArgs', 'AiSearchEndpointThroughputInfoArgsDict', 'outputs.AiSearchEndpointThroughputInfo']] throughput_info: (EndpointThroughputInfo) - Throughput information for the endpoint
         :param pulumi.Input[_builtins.str] update_time: (string) - Time the endpoint was last updated
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy id applied to the endpoint
         """

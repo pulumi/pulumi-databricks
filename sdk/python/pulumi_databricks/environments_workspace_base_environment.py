@@ -370,7 +370,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
                  base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  filepath: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']]] = None,
                  workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -419,7 +419,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name for the workspace base environment
         :param pulumi.Input[_builtins.str] filepath: The WSFS or UC Volumes path to the environment YAML file
-        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_base_environment_id: The ID to use for the workspace base environment, which will become the final component of
                the resource name.
                This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
@@ -489,7 +489,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
                  base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  filepath: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']]] = None,
                  workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -537,8 +537,8 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
             last_updated_user_id: pulumi.Input[Optional[_builtins.str]] = None,
             message: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
-            spec: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentSpec']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvironmentsWorkspaceBaseEnvironment':
@@ -559,8 +559,8 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] message: (string) - Status message providing additional details about the environment status
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace base environment.
                Format: workspace-base-environments/{workspace-base-environment}
-        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict']] spec: (EnvironmentSpec) - The environment specification containing version and dependencies
+        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentSpec']] spec: (EnvironmentSpec) - The environment specification containing version and dependencies
         :param pulumi.Input[_builtins.str] status: (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the environment was last updated
         :param pulumi.Input[_builtins.str] workspace_base_environment_id: The ID to use for the workspace base environment, which will become the final component of

@@ -99,7 +99,7 @@ class AwaitableGetDataQualityMonitorResult(GetDataQualityMonitorResult):
 
 def get_data_quality_monitor(object_id: Optional[_builtins.str] = None,
                              object_type: Optional[_builtins.str] = None,
-                             provider_config: Optional[Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict']] = None,
+                             provider_config: Optional[Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict', 'outputs.GetDataQualityMonitorProviderConfigResult']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataQualityMonitorResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -142,7 +142,7 @@ def get_data_quality_monitor(object_id: Optional[_builtins.str] = None,
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-    :param Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict', 'outputs.GetDataQualityMonitorProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id
@@ -159,7 +159,7 @@ def get_data_quality_monitor(object_id: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_data_quality_monitor_output(object_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     object_type: pulumi.Input[Optional[_builtins.str]] = None,
-                                    provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict']]]] = None,
+                                    provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict', 'outputs.GetDataQualityMonitorProviderConfigResult']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityMonitorResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -202,7 +202,7 @@ def get_data_quality_monitor_output(object_id: pulumi.Input[Optional[_builtins.s
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-    :param Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict', 'outputs.GetDataQualityMonitorProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id

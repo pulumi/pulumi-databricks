@@ -91,7 +91,7 @@ class AwaitableGetAiGatewayModelProviderServicesResult(GetAiGatewayModelProvider
 
 def get_ai_gateway_model_provider_services(page_size: Optional[_builtins.int] = None,
                                            parent: Optional[_builtins.str] = None,
-                                           provider_config: Optional[Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict']] = None,
+                                           provider_config: Optional[Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict', 'outputs.GetAiGatewayModelProviderServicesProviderConfigResult']] = None,
                                            view: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiGatewayModelProviderServicesResult:
     """
@@ -119,7 +119,7 @@ def get_ai_gateway_model_provider_services(page_size: Optional[_builtins.int] = 
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually
-    :param Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict', 'outputs.GetAiGatewayModelProviderServicesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str view: Fields to return for each service. `FULL` includes resolved
            service-credential and inference-table details and rate-limit principal
            names. `BASIC` omits those details and principal names from rate limits.
@@ -141,7 +141,7 @@ def get_ai_gateway_model_provider_services(page_size: Optional[_builtins.int] = 
         view=pulumi.get(__ret__, 'view'))
 def get_ai_gateway_model_provider_services_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                   parent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict']]]] = None,
+                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict', 'outputs.GetAiGatewayModelProviderServicesProviderConfigResult']]]] = None,
                                                   view: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayModelProviderServicesResult]:
     """
@@ -169,7 +169,7 @@ def get_ai_gateway_model_provider_services_output(page_size: pulumi.Input[Option
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually
-    :param Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayModelProviderServicesProviderConfigArgs', 'GetAiGatewayModelProviderServicesProviderConfigArgsDict', 'outputs.GetAiGatewayModelProviderServicesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str view: Fields to return for each service. `FULL` includes resolved
            service-credential and inference-table details and rate-limit principal
            names. `BASIC` omits those details and principal names from rate limits.

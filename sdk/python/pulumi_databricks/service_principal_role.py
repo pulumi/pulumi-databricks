@@ -161,7 +161,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict', 'outputs.ServicePrincipalRoleProviderConfig']]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -297,7 +297,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict', 'outputs.ServicePrincipalRoleProviderConfig']]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -328,7 +328,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict', 'outputs.ServicePrincipalRoleProviderConfig']]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServicePrincipalRole':
         """

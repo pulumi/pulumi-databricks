@@ -324,8 +324,8 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
-                 scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict', 'outputs.VectorSearchEndpointProviderConfig']]] = None,
+                 scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict', 'outputs.VectorSearchEndpointScalingInfo']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints)
@@ -351,7 +351,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         :param pulumi.Input[_builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
-        :param pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict', 'outputs.VectorSearchEndpointProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -396,8 +396,8 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
-                 scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict', 'outputs.VectorSearchEndpointProviderConfig']]] = None,
+                 scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict', 'outputs.VectorSearchEndpointScalingInfo']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -437,14 +437,14 @@ class VectorSearchEndpoint(pulumi.CustomResource):
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]]] = None,
+            endpoint_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict', 'outputs.VectorSearchEndpointEndpointStatus']]]]] = None,
             endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
             last_updated_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
             last_updated_user: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             num_indexes: pulumi.Input[Optional[_builtins.int]] = None,
-            provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
-            scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None) -> 'VectorSearchEndpoint':
+            provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict', 'outputs.VectorSearchEndpointProviderConfig']]] = None,
+            scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict', 'outputs.VectorSearchEndpointScalingInfo']]] = None) -> 'VectorSearchEndpoint':
         """
         Get an existing VectorSearchEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -457,13 +457,13 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creator: Creator of the endpoint.
         :param pulumi.Input[_builtins.str] effective_budget_policy_id: The effective budget policy ID.
         :param pulumi.Input[_builtins.str] endpoint_id: Unique internal identifier of the endpoint (UUID).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict', 'outputs.VectorSearchEndpointEndpointStatus']]]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
         :param pulumi.Input[_builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         :param pulumi.Input[_builtins.int] last_updated_timestamp: Timestamp of the last update to the endpoint (milliseconds).
         :param pulumi.Input[_builtins.str] last_updated_user: User who last updated the endpoint.
         :param pulumi.Input[_builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         :param pulumi.Input[_builtins.int] num_indexes: Number of indexes on the endpoint.
-        :param pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict', 'outputs.VectorSearchEndpointProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

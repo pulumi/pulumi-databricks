@@ -160,9 +160,9 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
                           last_update_time: Optional[_builtins.int] = None,
                           lifecycle_stage: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
-                          provider_config: Optional[Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict']] = None,
-                          tags: Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]] = None,
-                          trace_location: Optional[Union['GetMlflowExperimentTraceLocationArgs', 'GetMlflowExperimentTraceLocationArgsDict']] = None,
+                          provider_config: Optional[Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict', 'outputs.GetMlflowExperimentProviderConfigResult']] = None,
+                          tags: Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict', 'outputs.GetMlflowExperimentTagResult']]] = None,
+                          trace_location: Optional[Union['GetMlflowExperimentTraceLocationArgs', 'GetMlflowExperimentTraceLocationArgsDict', 'outputs.GetMlflowExperimentTraceLocationResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowExperimentResult:
     """
     Retrieves the settings of MlflowExperiment by id or name.
@@ -177,8 +177,8 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
     :param _builtins.int last_update_time: Last update time in unix time stamp.
     :param _builtins.str lifecycle_stage: Current life cycle stage of the experiment: `active` or `deleted`.
     :param _builtins.str name: Path to experiment.
-    :param Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
+    :param Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict', 'outputs.GetMlflowExperimentProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict', 'outputs.GetMlflowExperimentTagResult']] tags: Additional metadata key-value pairs.
     """
     __args__ = dict()
     __args__['artifactLocation'] = artifact_location
@@ -212,9 +212,9 @@ def get_mlflow_experiment_output(artifact_location: pulumi.Input[Optional[Option
                                  last_update_time: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                  lifecycle_stage: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict']]]] = None,
-                                 tags: pulumi.Input[Optional[Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]]]] = None,
-                                 trace_location: pulumi.Input[Optional[Optional[Union['GetMlflowExperimentTraceLocationArgs', 'GetMlflowExperimentTraceLocationArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict', 'outputs.GetMlflowExperimentProviderConfigResult']]]] = None,
+                                 tags: pulumi.Input[Optional[Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict', 'outputs.GetMlflowExperimentTagResult']]]]] = None,
+                                 trace_location: pulumi.Input[Optional[Optional[Union['GetMlflowExperimentTraceLocationArgs', 'GetMlflowExperimentTraceLocationArgsDict', 'outputs.GetMlflowExperimentTraceLocationResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowExperimentResult]:
     """
     Retrieves the settings of MlflowExperiment by id or name.
@@ -229,8 +229,8 @@ def get_mlflow_experiment_output(artifact_location: pulumi.Input[Optional[Option
     :param _builtins.int last_update_time: Last update time in unix time stamp.
     :param _builtins.str lifecycle_stage: Current life cycle stage of the experiment: `active` or `deleted`.
     :param _builtins.str name: Path to experiment.
-    :param Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
+    :param Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict', 'outputs.GetMlflowExperimentProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict', 'outputs.GetMlflowExperimentTagResult']] tags: Additional metadata key-value pairs.
     """
     __args__ = dict()
     __args__['artifactLocation'] = artifact_location

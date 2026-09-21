@@ -175,7 +175,7 @@ class AwaitableGetAiGatewayMcpServiceResult(GetAiGatewayMcpServiceResult):
 
 
 def get_ai_gateway_mcp_service(name: Optional[_builtins.str] = None,
-                               provider_config: Optional[Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict']] = None,
+                               provider_config: Optional[Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServiceProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiGatewayMcpServiceResult:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -202,7 +202,7 @@ def get_ai_gateway_mcp_service(name: Optional[_builtins.str] = None,
            Each `{...}` component is capped at 255 characters individually.
            Server-derived on Create from `parent` +
            `mcp_service_id`; required and immutable on Update/Get/Delete
-    :param Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServiceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -223,7 +223,7 @@ def get_ai_gateway_mcp_service(name: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
 def get_ai_gateway_mcp_service_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                      provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict']]]] = None,
+                                      provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServiceProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayMcpServiceResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -250,7 +250,7 @@ def get_ai_gateway_mcp_service_output(name: pulumi.Input[Optional[_builtins.str]
            Each `{...}` component is capped at 255 characters individually.
            Server-derived on Create from `parent` +
            `mcp_service_id`; required and immutable on Update/Get/Delete
-    :param Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayMcpServiceProviderConfigArgs', 'GetAiGatewayMcpServiceProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServiceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

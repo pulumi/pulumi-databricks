@@ -164,9 +164,9 @@ class AwaitableGetShareResult(GetShareResult):
 
 def get_share(comment: Optional[_builtins.str] = None,
               name: Optional[_builtins.str] = None,
-              objects: Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]] = None,
+              objects: Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict', 'outputs.GetShareObjectResult']]] = None,
               owner: Optional[_builtins.str] = None,
-              provider_config: Optional[Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict']] = None,
+              provider_config: Optional[Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict', 'outputs.GetShareProviderConfigResult']] = None,
               storage_root: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareResult:
     """
@@ -203,8 +203,8 @@ def get_share(comment: Optional[_builtins.str] = None,
 
     :param _builtins.str comment: Description about the object.
     :param _builtins.str name: The name of the share
-    :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']] objects: arrays containing details of each object in the share.
-    :param Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict', 'outputs.GetShareObjectResult']] objects: arrays containing details of each object in the share.
+    :param Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict', 'outputs.GetShareProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['comment'] = comment
@@ -231,9 +231,9 @@ def get_share(comment: Optional[_builtins.str] = None,
         updated_by=pulumi.get(__ret__, 'updated_by'))
 def get_share_output(comment: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                     objects: pulumi.Input[Optional[Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]]]] = None,
+                     objects: pulumi.Input[Optional[Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict', 'outputs.GetShareObjectResult']]]]] = None,
                      owner: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                     provider_config: pulumi.Input[Optional[Optional[Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict']]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict', 'outputs.GetShareProviderConfigResult']]]] = None,
                      storage_root: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetShareResult]:
     """
@@ -270,8 +270,8 @@ def get_share_output(comment: pulumi.Input[Optional[Optional[_builtins.str]]] = 
 
     :param _builtins.str comment: Description about the object.
     :param _builtins.str name: The name of the share
-    :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']] objects: arrays containing details of each object in the share.
-    :param Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict', 'outputs.GetShareObjectResult']] objects: arrays containing details of each object in the share.
+    :param Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict', 'outputs.GetShareProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['comment'] = comment

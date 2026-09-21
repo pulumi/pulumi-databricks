@@ -77,7 +77,7 @@ class AwaitableGetPostgresCdfStatusesResult(GetPostgresCdfStatusesResult):
 
 def get_postgres_cdf_statuses(page_size: Optional[_builtins.int] = None,
                               parent: Optional[_builtins.str] = None,
-                              provider_config: Optional[Union['GetPostgresCdfStatusesProviderConfigArgs', 'GetPostgresCdfStatusesProviderConfigArgsDict']] = None,
+                              provider_config: Optional[Union['GetPostgresCdfStatusesProviderConfigArgs', 'GetPostgresCdfStatusesProviderConfigArgsDict', 'outputs.GetPostgresCdfStatusesProviderConfigResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresCdfStatusesResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -102,7 +102,7 @@ def get_postgres_cdf_statuses(page_size: Optional[_builtins.int] = None,
     :param _builtins.int page_size: Maximum number of CdfStatuses to return
     :param _builtins.str parent: The parent CdfConfig to list CdfStatuses for.
            Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
-    :param Union['GetPostgresCdfStatusesProviderConfigArgs', 'GetPostgresCdfStatusesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresCdfStatusesProviderConfigArgs', 'GetPostgresCdfStatusesProviderConfigArgsDict', 'outputs.GetPostgresCdfStatusesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -118,7 +118,7 @@ def get_postgres_cdf_statuses(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_postgres_cdf_statuses_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                      parent: pulumi.Input[Optional[_builtins.str]] = None,
-                                     provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCdfStatusesProviderConfigArgs', 'GetPostgresCdfStatusesProviderConfigArgsDict']]]] = None,
+                                     provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCdfStatusesProviderConfigArgs', 'GetPostgresCdfStatusesProviderConfigArgsDict', 'outputs.GetPostgresCdfStatusesProviderConfigResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresCdfStatusesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -143,7 +143,7 @@ def get_postgres_cdf_statuses_output(page_size: pulumi.Input[Optional[Optional[_
     :param _builtins.int page_size: Maximum number of CdfStatuses to return
     :param _builtins.str parent: The parent CdfConfig to list CdfStatuses for.
            Format: projects/{project}/branches/{branch}/databases/{database}/cdf-configs/{cdf_config}
-    :param Union['GetPostgresCdfStatusesProviderConfigArgs', 'GetPostgresCdfStatusesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresCdfStatusesProviderConfigArgs', 'GetPostgresCdfStatusesProviderConfigArgsDict', 'outputs.GetPostgresCdfStatusesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

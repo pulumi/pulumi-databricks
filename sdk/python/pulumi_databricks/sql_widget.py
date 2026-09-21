@@ -267,9 +267,9 @@ class SqlWidget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
-                 position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict', 'outputs.SqlWidgetParameter']]]]] = None,
+                 position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict', 'outputs.SqlWidgetPosition']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict', 'outputs.SqlWidgetProviderConfig']]] = None,
                  text: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -327,7 +327,7 @@ class SqlWidget(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict', 'outputs.SqlWidgetProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -402,9 +402,9 @@ class SqlWidget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
-                 position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict', 'outputs.SqlWidgetParameter']]]]] = None,
+                 position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict', 'outputs.SqlWidgetPosition']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict', 'outputs.SqlWidgetProviderConfig']]] = None,
                  text: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -441,9 +441,9 @@ class SqlWidget(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
-            position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
-            provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict', 'outputs.SqlWidgetParameter']]]]] = None,
+            position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict', 'outputs.SqlWidgetPosition']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict', 'outputs.SqlWidgetProviderConfig']]] = None,
             text: pulumi.Input[Optional[_builtins.str]] = None,
             title: pulumi.Input[Optional[_builtins.str]] = None,
             visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -455,7 +455,7 @@ class SqlWidget(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict', 'outputs.SqlWidgetProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

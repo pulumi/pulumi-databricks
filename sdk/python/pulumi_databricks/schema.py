@@ -377,7 +377,7 @@ class Schema(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict', 'outputs.SchemaProviderConfig']]] = None,
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -428,7 +428,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Schema properties.
-        :param pulumi.Input[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict', 'outputs.SchemaProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         ...
@@ -499,7 +499,7 @@ class Schema(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict', 'outputs.SchemaProviderConfig']]] = None,
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -541,7 +541,7 @@ class Schema(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: pulumi.Input[Optional[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict', 'outputs.SchemaProviderConfig']]] = None,
             schema_id: pulumi.Input[Optional[_builtins.str]] = None,
             storage_root: pulumi.Input[Optional[_builtins.str]] = None) -> 'Schema':
         """
@@ -558,7 +558,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Schema properties.
-        :param pulumi.Input[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SchemaProviderConfigArgs', 'SchemaProviderConfigArgsDict', 'outputs.SchemaProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_id: The unique identifier of the schema.
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """

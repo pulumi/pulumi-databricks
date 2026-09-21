@@ -154,7 +154,7 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']]] = None,
                  workspace_identity_status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -190,7 +190,7 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_identity_status: The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
         """
         ...
@@ -245,7 +245,7 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']]] = None,
                  workspace_identity_status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -274,7 +274,7 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
             assignment_type: pulumi.Input[Optional[_builtins.str]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             principal_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']]] = None,
             workspace_identity_status: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceIamWorkspaceIdentityDetailV2':
         """
         Get an existing WorkspaceIamWorkspaceIdentityDetailV2 resource's state with the given name, id, and optional extra
@@ -286,7 +286,7 @@ class WorkspaceIamWorkspaceIdentityDetailV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] assignment_type: (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
         :param pulumi.Input[_builtins.str] principal_id: (integer) - The internal ID of the principal (user/sp/group) in Databricks
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
-        :param pulumi.Input[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'WorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_identity_status: The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

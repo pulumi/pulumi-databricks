@@ -323,8 +323,8 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                  database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.DatabaseSyncedDatabaseTableProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict', 'outputs.DatabaseSyncedDatabaseTableSpec']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -485,7 +485,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
                Note that this has implications for the `create_database_objects_is_missing` field in `spec`
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
-        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.DatabaseSyncedDatabaseTableProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -653,8 +653,8 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                  database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.DatabaseSyncedDatabaseTableProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict', 'outputs.DatabaseSyncedDatabaseTableSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -683,14 +683,14 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_synchronization_status: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict']]] = None,
+            data_synchronization_status: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict', 'outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus']]] = None,
             database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
             logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
-            spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.DatabaseSyncedDatabaseTableProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict', 'outputs.DatabaseSyncedDatabaseTableSpec']]] = None,
             unity_catalog_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseSyncedDatabaseTable':
         """
         Get an existing DatabaseSyncedDatabaseTable resource's state with the given name, id, and optional extra
@@ -699,7 +699,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict']] data_synchronization_status: (SyncedTableStatus) - Synced Table data synchronization status
+        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict', 'outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus']] data_synchronization_status: (SyncedTableStatus) - Synced Table data synchronization status
         :param pulumi.Input[_builtins.str] database_instance_name: Name of the target database instance. This is required when creating synced database tables in standard catalogs.
                This is optional when creating synced database tables in registered catalogs. If this field is specified
                when creating synced database tables in registered catalogs, the database instance name MUST
@@ -722,7 +722,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
                Note that this has implications for the `create_database_objects_is_missing` field in `spec`
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
-        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.DatabaseSyncedDatabaseTableProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] unity_catalog_provisioning_state: (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
                state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
                may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`

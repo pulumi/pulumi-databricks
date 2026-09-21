@@ -122,7 +122,7 @@ class AwaitableGetWorkspaceIamDirectGroupMemberV2Result(GetWorkspaceIamDirectGro
 
 def get_workspace_iam_direct_group_member_v2(group_id: Optional[_builtins.int] = None,
                                              principal_id: Optional[_builtins.str] = None,
-                                             provider_config: Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']] = None,
+                                             provider_config: Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult']] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamDirectGroupMemberV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -149,7 +149,7 @@ def get_workspace_iam_direct_group_member_v2(group_id: Optional[_builtins.int] =
 
     :param _builtins.int group_id: The internal ID of the group this member belongs to
     :param _builtins.str principal_id: Internal ID of the principal in Databricks
-    :param Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['groupId'] = group_id
@@ -168,7 +168,7 @@ def get_workspace_iam_direct_group_member_v2(group_id: Optional[_builtins.int] =
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_workspace_iam_direct_group_member_v2_output(group_id: pulumi.Input[Optional[_builtins.int]] = None,
                                                     principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                    provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']]]] = None,
+                                                    provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult']]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamDirectGroupMemberV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -195,7 +195,7 @@ def get_workspace_iam_direct_group_member_v2_output(group_id: pulumi.Input[Optio
 
     :param _builtins.int group_id: The internal ID of the group this member belongs to
     :param _builtins.str principal_id: Internal ID of the principal in Databricks
-    :param Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['groupId'] = group_id

@@ -93,8 +93,8 @@ class AwaitableGetRegisteredModelResult(GetRegisteredModelResult):
 def get_registered_model(full_name: Optional[_builtins.str] = None,
                          include_aliases: Optional[_builtins.bool] = None,
                          include_browse: Optional[_builtins.bool] = None,
-                         model_infos: Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]] = None,
-                         provider_config: Optional[Union['GetRegisteredModelProviderConfigArgs', 'GetRegisteredModelProviderConfigArgsDict']] = None,
+                         model_infos: Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict', 'outputs.GetRegisteredModelModelInfoResult']]] = None,
+                         provider_config: Optional[Union['GetRegisteredModelProviderConfigArgs', 'GetRegisteredModelProviderConfigArgsDict', 'outputs.GetRegisteredModelProviderConfigResult']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegisteredModelResult:
     """
     This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -122,7 +122,7 @@ def get_registered_model(full_name: Optional[_builtins.str] = None,
     :param _builtins.str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
     :param _builtins.bool include_aliases: flag to specify if list of aliases should be included into output.
     :param _builtins.bool include_browse: flag to specify if include registered models in the response for which the principal can only access selective metadata for.
-    :param Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']] model_infos: block with information about the model in Unity Catalog:
+    :param Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict', 'outputs.GetRegisteredModelModelInfoResult']] model_infos: block with information about the model in Unity Catalog:
     """
     __args__ = dict()
     __args__['fullName'] = full_name
@@ -142,8 +142,8 @@ def get_registered_model(full_name: Optional[_builtins.str] = None,
 def get_registered_model_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
                                 include_aliases: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                 include_browse: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                                model_infos: pulumi.Input[Optional[Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]]]] = None,
-                                provider_config: pulumi.Input[Optional[Optional[Union['GetRegisteredModelProviderConfigArgs', 'GetRegisteredModelProviderConfigArgsDict']]]] = None,
+                                model_infos: pulumi.Input[Optional[Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict', 'outputs.GetRegisteredModelModelInfoResult']]]]] = None,
+                                provider_config: pulumi.Input[Optional[Optional[Union['GetRegisteredModelProviderConfigArgs', 'GetRegisteredModelProviderConfigArgsDict', 'outputs.GetRegisteredModelProviderConfigResult']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelResult]:
     """
     This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -171,7 +171,7 @@ def get_registered_model_output(full_name: pulumi.Input[Optional[_builtins.str]]
     :param _builtins.str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
     :param _builtins.bool include_aliases: flag to specify if list of aliases should be included into output.
     :param _builtins.bool include_browse: flag to specify if include registered models in the response for which the principal can only access selective metadata for.
-    :param Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']] model_infos: block with information about the model in Unity Catalog:
+    :param Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict', 'outputs.GetRegisteredModelModelInfoResult']] model_infos: block with information about the model in Unity Catalog:
     """
     __args__ = dict()
     __args__['fullName'] = full_name

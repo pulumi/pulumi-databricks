@@ -86,7 +86,7 @@ class AwaitableGetAiGatewayMcpServicesResult(GetAiGatewayMcpServicesResult):
 
 def get_ai_gateway_mcp_services(page_size: Optional[_builtins.int] = None,
                                 parent: Optional[_builtins.str] = None,
-                                provider_config: Optional[Union['GetAiGatewayMcpServicesProviderConfigArgs', 'GetAiGatewayMcpServicesProviderConfigArgsDict']] = None,
+                                provider_config: Optional[Union['GetAiGatewayMcpServicesProviderConfigArgs', 'GetAiGatewayMcpServicesProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServicesProviderConfigResult']] = None,
                                 view: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiGatewayMcpServicesResult:
     """
@@ -114,7 +114,7 @@ def get_ai_gateway_mcp_services(page_size: Optional[_builtins.int] = None,
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually
-    :param Union['GetAiGatewayMcpServicesProviderConfigArgs', 'GetAiGatewayMcpServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayMcpServicesProviderConfigArgs', 'GetAiGatewayMcpServicesProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServicesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str view: Fields to return for each service. `FULL` includes source-connection
            details and rate-limit principal names. `BASIC` omits the source connection
            and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`
@@ -135,7 +135,7 @@ def get_ai_gateway_mcp_services(page_size: Optional[_builtins.int] = None,
         view=pulumi.get(__ret__, 'view'))
 def get_ai_gateway_mcp_services_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                        parent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                       provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayMcpServicesProviderConfigArgs', 'GetAiGatewayMcpServicesProviderConfigArgsDict']]]] = None,
+                                       provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayMcpServicesProviderConfigArgs', 'GetAiGatewayMcpServicesProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServicesProviderConfigResult']]]] = None,
                                        view: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayMcpServicesResult]:
     """
@@ -163,7 +163,7 @@ def get_ai_gateway_mcp_services_output(page_size: pulumi.Input[Optional[Optional
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually
-    :param Union['GetAiGatewayMcpServicesProviderConfigArgs', 'GetAiGatewayMcpServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayMcpServicesProviderConfigArgs', 'GetAiGatewayMcpServicesProviderConfigArgsDict', 'outputs.GetAiGatewayMcpServicesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str view: Fields to return for each service. `FULL` includes source-connection
            details and rate-limit principal names. `BASIC` omits the source connection
            and omits principal names from rate limits. Defaults to `BASIC` when unset. Possible values are: `BASIC`, `FULL`

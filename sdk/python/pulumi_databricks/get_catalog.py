@@ -84,10 +84,10 @@ class AwaitableGetCatalogResult(GetCatalogResult):
             provider_config=self.provider_config)
 
 
-def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']] = None,
+def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict', 'outputs.GetCatalogCatalogInfoResult']] = None,
                 id: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
-                provider_config: Optional[Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict']] = None,
+                provider_config: Optional[Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict', 'outputs.GetCatalogProviderConfigResult']] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogResult:
     """
     Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog
@@ -119,10 +119,10 @@ def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCa
     * get_catalogs to list all catalogs within Unity Catalog metastore.
 
 
-    :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
+    :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict', 'outputs.GetCatalogCatalogInfoResult'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
     :param _builtins.str id: same as the `name`
     :param _builtins.str name: name of the catalog
-    :param Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict', 'outputs.GetCatalogProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['catalogInfo'] = catalog_info
@@ -137,10 +137,10 @@ def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCa
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_catalog_output(catalog_info: pulumi.Input[Optional[Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']]]] = None,
+def get_catalog_output(catalog_info: pulumi.Input[Optional[Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict', 'outputs.GetCatalogCatalogInfoResult']]]] = None,
                        id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        name: pulumi.Input[Optional[_builtins.str]] = None,
-                       provider_config: pulumi.Input[Optional[Optional[Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict']]]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict', 'outputs.GetCatalogProviderConfigResult']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogResult]:
     """
     Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog
@@ -172,10 +172,10 @@ def get_catalog_output(catalog_info: pulumi.Input[Optional[Optional[Union['GetCa
     * get_catalogs to list all catalogs within Unity Catalog metastore.
 
 
-    :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
+    :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict', 'outputs.GetCatalogCatalogInfoResult'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
     :param _builtins.str id: same as the `name`
     :param _builtins.str name: name of the catalog
-    :param Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict', 'outputs.GetCatalogProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['catalogInfo'] = catalog_info

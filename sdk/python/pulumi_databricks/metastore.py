@@ -644,7 +644,7 @@ class Metastore(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict', 'outputs.MetastoreProviderConfig']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -732,7 +732,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] privilege_model_version: Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
-        :param pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict', 'outputs.MetastoreProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] region: The region of the metastore
         :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.  **It's recommended to define `storage_root` on the catalog level.
         :param pulumi.Input[_builtins.str] storage_root_credential_id: (Optional) UUID of storage credential to access the metastore storage_root.
@@ -839,7 +839,7 @@ class Metastore(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict', 'outputs.MetastoreProviderConfig']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -900,7 +900,7 @@ class Metastore(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict', 'outputs.MetastoreProviderConfig']]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             storage_root: pulumi.Input[Optional[_builtins.str]] = None,
             storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -929,7 +929,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] privilege_model_version: Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
-        :param pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict', 'outputs.MetastoreProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] region: The region of the metastore
         :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.  **It's recommended to define `storage_root` on the catalog level.
         :param pulumi.Input[_builtins.str] storage_root_credential_id: (Optional) UUID of storage credential to access the metastore storage_root.

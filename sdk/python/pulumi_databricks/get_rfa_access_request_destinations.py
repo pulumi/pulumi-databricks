@@ -124,7 +124,7 @@ class AwaitableGetRfaAccessRequestDestinationsResult(GetRfaAccessRequestDestinat
 
 
 def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = None,
-                                        provider_config: Optional[Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict']] = None,
+                                        provider_config: Optional[Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.GetRfaAccessRequestDestinationsProviderConfigResult']] = None,
                                         securable_type: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRfaAccessRequestDestinationsResult:
     """
@@ -148,7 +148,7 @@ def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = Non
 
 
     :param _builtins.str full_name: The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
-    :param Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.GetRfaAccessRequestDestinationsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str securable_type: The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
     """
     __args__ = dict()
@@ -167,7 +167,7 @@ def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = Non
         securable=pulumi.get(__ret__, 'securable'),
         securable_type=pulumi.get(__ret__, 'securable_type'))
 def get_rfa_access_request_destinations_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                               provider_config: pulumi.Input[Optional[Optional[Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict']]]] = None,
+                                               provider_config: pulumi.Input[Optional[Optional[Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.GetRfaAccessRequestDestinationsProviderConfigResult']]]] = None,
                                                securable_type: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRfaAccessRequestDestinationsResult]:
     """
@@ -191,7 +191,7 @@ def get_rfa_access_request_destinations_output(full_name: pulumi.Input[Optional[
 
 
     :param _builtins.str full_name: The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
-    :param Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.GetRfaAccessRequestDestinationsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str securable_type: The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
     """
     __args__ = dict()

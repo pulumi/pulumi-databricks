@@ -135,9 +135,9 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compliance_security_profile_workspace: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict']]] = None,
+                 compliance_security_profile_workspace: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict', 'outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict', 'outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -170,9 +170,9 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compliance_security_profile_workspace: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict']]] = None,
+                 compliance_security_profile_workspace: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict', 'outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict', 'outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -199,9 +199,9 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compliance_security_profile_workspace: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict']]] = None,
+            compliance_security_profile_workspace: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict', 'outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict', 'outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig']]] = None,
             setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ComplianceSecurityProfileWorkspaceSetting':
         """
         Get an existing ComplianceSecurityProfileWorkspaceSetting resource's state with the given name, id, and optional extra

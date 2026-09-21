@@ -154,8 +154,8 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']]] = None,
-                 restrict_workspace_admins: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict', 'outputs.RestrictWorkspaceAdminsSettingProviderConfig']]] = None,
+                 restrict_workspace_admins: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict', 'outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -193,8 +193,8 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict', 'outputs.RestrictWorkspaceAdminsSettingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict', 'outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins']] restrict_workspace_admins: The configuration details.
         """
         ...
     @overload
@@ -251,8 +251,8 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']]] = None,
-                 restrict_workspace_admins: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict', 'outputs.RestrictWorkspaceAdminsSettingProviderConfig']]] = None,
+                 restrict_workspace_admins: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict', 'outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -280,8 +280,8 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']]] = None,
-            restrict_workspace_admins: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict', 'outputs.RestrictWorkspaceAdminsSettingProviderConfig']]] = None,
+            restrict_workspace_admins: pulumi.Input[Optional[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict', 'outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins']]] = None,
             setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RestrictWorkspaceAdminsSetting':
         """
         Get an existing RestrictWorkspaceAdminsSetting resource's state with the given name, id, and optional extra
@@ -290,8 +290,8 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict', 'outputs.RestrictWorkspaceAdminsSettingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict', 'outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins']] restrict_workspace_admins: The configuration details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

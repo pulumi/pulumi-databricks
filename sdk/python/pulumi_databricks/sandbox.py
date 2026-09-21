@@ -234,9 +234,9 @@ class Sandbox(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']]] = None,
                  sandbox_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -269,9 +269,9 @@ class Sandbox(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 bytes
-        :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
-        :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
+        :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
         """
         ...
     @overload
@@ -323,9 +323,9 @@ class Sandbox(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']]] = None,
                  sandbox_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,10 +358,10 @@ class Sandbox(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']]] = None,
             sandbox_id: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['SandboxStatusArgs', 'SandboxStatusArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']]] = None,
+            status: pulumi.Input[Optional[Union['SandboxStatusArgs', 'SandboxStatusArgsDict', 'outputs.SandboxStatus']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Sandbox':
         """
         Get an existing Sandbox resource's state with the given name, id, and optional extra
@@ -373,10 +373,10 @@ class Sandbox(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: (string) - Output only. The creation time of the sandbox
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 bytes
         :param pulumi.Input[_builtins.str] name: (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
-        :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
-        :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
-        :param pulumi.Input[Union['SandboxStatusArgs', 'SandboxStatusArgsDict']] status: (SandboxStatus) - The observed runtime state of the sandbox, populated by the server
+        :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
+        :param pulumi.Input[Union['SandboxStatusArgs', 'SandboxStatusArgsDict', 'outputs.SandboxStatus']] status: (SandboxStatus) - The observed runtime state of the sandbox, populated by the server
         :param pulumi.Input[_builtins.str] update_time: (string) - Output only. The last update time of the sandbox metadata and spec
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -93,7 +93,7 @@ class AwaitableGetJobsResult(GetJobsResult):
 def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
              job_name_contains: Optional[_builtins.str] = None,
              key: Optional[_builtins.str] = None,
-             provider_config: Optional[Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict']] = None,
+             provider_config: Optional[Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict', 'outputs.GetJobsProviderConfigResult']] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobsResult:
     """
     Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -160,7 +160,7 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
     :param Mapping[str, _builtins.str] ids: map of Job names to ids
     :param _builtins.str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
     :param _builtins.str key: Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
-    :param Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict', 'outputs.GetJobsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -179,7 +179,7 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
 def get_jobs_output(ids: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                     job_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                    provider_config: pulumi.Input[Optional[Optional[Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict']]]] = None,
+                    provider_config: pulumi.Input[Optional[Optional[Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict', 'outputs.GetJobsProviderConfigResult']]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobsResult]:
     """
     Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -246,7 +246,7 @@ def get_jobs_output(ids: pulumi.Input[Optional[Optional[Mapping[str, _builtins.s
     :param Mapping[str, _builtins.str] ids: map of Job names to ids
     :param _builtins.str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
     :param _builtins.str key: Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
-    :param Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict', 'outputs.GetJobsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids

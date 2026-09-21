@@ -191,7 +191,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_warehouse_override_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict', 'outputs.WarehousesDefaultWarehouseOverrideProviderConfig']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -240,7 +240,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
-        :param pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict', 'outputs.WarehousesDefaultWarehouseOverrideProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] type: The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         :param pulumi.Input[_builtins.str] warehouse_id: The specific warehouse ID when type is CUSTOM.
                Not set for LAST_SELECTED type
@@ -309,7 +309,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_warehouse_override_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict', 'outputs.WarehousesDefaultWarehouseOverrideProviderConfig']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -342,7 +342,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             default_warehouse_override_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict', 'outputs.WarehousesDefaultWarehouseOverrideProviderConfig']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WarehousesDefaultWarehouseOverride':
         """
@@ -355,7 +355,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the default warehouse override.
                Format: default-warehouse-overrides/{default_warehouse_override_id}
-        :param pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict', 'outputs.WarehousesDefaultWarehouseOverrideProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] type: The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         :param pulumi.Input[_builtins.str] warehouse_id: The specific warehouse ID when type is CUSTOM.
                Not set for LAST_SELECTED type

@@ -184,7 +184,7 @@ class AwaitableGetUserResult(GetUserResult):
 
 
 def get_user(api: Optional[_builtins.str] = None,
-             provider_config: Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']] = None,
+             provider_config: Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict', 'outputs.GetUserProviderConfigResult']] = None,
              user_id: Optional[_builtins.str] = None,
              user_name: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
@@ -223,7 +223,7 @@ def get_user(api: Optional[_builtins.str] = None,
     - UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
 
 
-    :param Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict', 'outputs.GetUserProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str user_id: ID of the user.
     :param _builtins.str user_name: User name of the user. The user must exist before this resource can be planned.
     """
@@ -250,7 +250,7 @@ def get_user(api: Optional[_builtins.str] = None,
         user_id=pulumi.get(__ret__, 'user_id'),
         user_name=pulumi.get(__ret__, 'user_name'))
 def get_user_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                    provider_config: pulumi.Input[Optional[Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']]]] = None,
+                    provider_config: pulumi.Input[Optional[Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict', 'outputs.GetUserProviderConfigResult']]]] = None,
                     user_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     user_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
@@ -289,7 +289,7 @@ def get_user_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
     - UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
 
 
-    :param Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict', 'outputs.GetUserProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str user_id: ID of the user.
     :param _builtins.str user_name: User name of the user. The user must exist before this resource can be planned.
     """

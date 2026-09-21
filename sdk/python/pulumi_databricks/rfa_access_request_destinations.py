@@ -205,9 +205,9 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']]] = None,
-                 securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']]] = None,
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict', 'outputs.RfaAccessRequestDestinationsDestination']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.RfaAccessRequestDestinationsProviderConfig']]] = None,
+                 securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsSecurable']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -257,9 +257,9 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]] destinations: The access request destinations for the securable
-        :param pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']] securable: The securable for which the access request destinations are being modified or read
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict', 'outputs.RfaAccessRequestDestinationsDestination']]]] destinations: The access request destinations for the securable
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.RfaAccessRequestDestinationsProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsSecurable']] securable: The securable for which the access request destinations are being modified or read
         """
         ...
     @overload
@@ -328,9 +328,9 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']]] = None,
-                 securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']]] = None,
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict', 'outputs.RfaAccessRequestDestinationsDestination']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.RfaAccessRequestDestinationsProviderConfig']]] = None,
+                 securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsSecurable']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -360,11 +360,11 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             are_any_destinations_hidden: pulumi.Input[Optional[_builtins.bool]] = None,
-            destination_source_securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict']]] = None,
-            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]]] = None,
+            destination_source_securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsDestinationSourceSecurable']]] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict', 'outputs.RfaAccessRequestDestinationsDestination']]]]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']]] = None,
-            securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.RfaAccessRequestDestinationsProviderConfig']]] = None,
+            securable: pulumi.Input[Optional[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsSecurable']]] = None,
             securable_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'RfaAccessRequestDestinations':
         """
         Get an existing RfaAccessRequestDestinations resource's state with the given name, id, and optional extra
@@ -375,12 +375,12 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] are_any_destinations_hidden: (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
                This value is true if the caller does not have permission to see all destinations
-        :param pulumi.Input[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict']] destination_source_securable: (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsDestinationSourceSecurable']] destination_source_securable: (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
                is set directly on the securable) or the nearest parent securable with destinations set
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]] destinations: The access request destinations for the securable
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict', 'outputs.RfaAccessRequestDestinationsDestination']]]] destinations: The access request destinations for the securable
         :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
-        :param pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']] securable: The securable for which the access request destinations are being modified or read
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.RfaAccessRequestDestinationsProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsSecurable']] securable: The securable for which the access request destinations are being modified or read
         :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

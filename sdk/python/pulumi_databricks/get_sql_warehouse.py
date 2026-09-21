@@ -298,13 +298,13 @@ class AwaitableGetSqlWarehouseResult(GetSqlWarehouseResult):
 
 
 def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
-                      channel: Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict']] = None,
+                      channel: Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict', 'outputs.GetSqlWarehouseChannelResult']] = None,
                       cluster_size: Optional[_builtins.str] = None,
                       creator_name: Optional[_builtins.str] = None,
                       data_source_id: Optional[_builtins.str] = None,
                       enable_photon: Optional[_builtins.bool] = None,
                       enable_serverless_compute: Optional[_builtins.bool] = None,
-                      health: Optional[Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict']] = None,
+                      health: Optional[Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict', 'outputs.GetSqlWarehouseHealthResult']] = None,
                       id: Optional[_builtins.str] = None,
                       instance_profile_arn: Optional[_builtins.str] = None,
                       jdbc_url: Optional[_builtins.str] = None,
@@ -313,11 +313,11 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
                       name: Optional[_builtins.str] = None,
                       num_active_sessions: Optional[_builtins.int] = None,
                       num_clusters: Optional[_builtins.int] = None,
-                      odbc_params: Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict']] = None,
-                      provider_config: Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict']] = None,
+                      odbc_params: Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult']] = None,
+                      provider_config: Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict', 'outputs.GetSqlWarehouseProviderConfigResult']] = None,
                       spot_instance_policy: Optional[_builtins.str] = None,
                       state: Optional[_builtins.str] = None,
-                      tags: Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict']] = None,
+                      tags: Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult']] = None,
                       warehouse_type: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlWarehouseResult:
     """
@@ -358,13 +358,13 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
 
 
     :param _builtins.int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
-    :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict'] channel: block, consisting of following fields:
+    :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict', 'outputs.GetSqlWarehouseChannelResult'] channel: block, consisting of following fields:
     :param _builtins.str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
     :param _builtins.str creator_name: The username of the user who created the endpoint.
     :param _builtins.str data_source_id: (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param _builtins.bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
     :param _builtins.bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
-    :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict'] health: Health status of the endpoint.
+    :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict', 'outputs.GetSqlWarehouseHealthResult'] health: Health status of the endpoint.
     :param _builtins.str id: The ID of the SQL warehouse.
     :param _builtins.str jdbc_url: JDBC connection string.
     :param _builtins.int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
@@ -372,10 +372,10 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     :param _builtins.str name: Name of the SQL warehouse to search (case-sensitive).
     :param _builtins.int num_active_sessions: The current number of clusters used by the endpoint.
     :param _builtins.int num_clusters: The current number of clusters used by the endpoint.
-    :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+    :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param _builtins.str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
     :param _builtins.str state: The current state of the endpoint.
-    :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict'] tags: tags used for SQL warehouse resources.
+    :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult'] tags: tags used for SQL warehouse resources.
     :param _builtins.str warehouse_type: SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
     """
     __args__ = dict()
@@ -428,13 +428,13 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
         tags=pulumi.get(__ret__, 'tags'),
         warehouse_type=pulumi.get(__ret__, 'warehouse_type'))
 def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                             channel: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict']]]] = None,
+                             channel: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict', 'outputs.GetSqlWarehouseChannelResult']]]] = None,
                              cluster_size: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              creator_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              data_source_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              enable_photon: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                              enable_serverless_compute: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                             health: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict']]]] = None,
+                             health: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict', 'outputs.GetSqlWarehouseHealthResult']]]] = None,
                              id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              instance_profile_arn: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              jdbc_url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -443,11 +443,11 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              num_active_sessions: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              num_clusters: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                             odbc_params: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict']]]] = None,
-                             provider_config: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict']]]] = None,
+                             odbc_params: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult']]]] = None,
+                             provider_config: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict', 'outputs.GetSqlWarehouseProviderConfigResult']]]] = None,
                              spot_instance_policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                             tags: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict']]]] = None,
+                             tags: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult']]]] = None,
                              warehouse_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehouseResult]:
     """
@@ -488,13 +488,13 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
 
 
     :param _builtins.int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
-    :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict'] channel: block, consisting of following fields:
+    :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict', 'outputs.GetSqlWarehouseChannelResult'] channel: block, consisting of following fields:
     :param _builtins.str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
     :param _builtins.str creator_name: The username of the user who created the endpoint.
     :param _builtins.str data_source_id: (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param _builtins.bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
     :param _builtins.bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
-    :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict'] health: Health status of the endpoint.
+    :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict', 'outputs.GetSqlWarehouseHealthResult'] health: Health status of the endpoint.
     :param _builtins.str id: The ID of the SQL warehouse.
     :param _builtins.str jdbc_url: JDBC connection string.
     :param _builtins.int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
@@ -502,10 +502,10 @@ def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_bui
     :param _builtins.str name: Name of the SQL warehouse to search (case-sensitive).
     :param _builtins.int num_active_sessions: The current number of clusters used by the endpoint.
     :param _builtins.int num_clusters: The current number of clusters used by the endpoint.
-    :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+    :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict', 'outputs.GetSqlWarehouseOdbcParamsResult'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param _builtins.str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
     :param _builtins.str state: The current state of the endpoint.
-    :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict'] tags: tags used for SQL warehouse resources.
+    :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict', 'outputs.GetSqlWarehouseTagsResult'] tags: tags used for SQL warehouse resources.
     :param _builtins.str warehouse_type: SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
     """
     __args__ = dict()

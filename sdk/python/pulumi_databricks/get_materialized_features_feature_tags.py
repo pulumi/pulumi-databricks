@@ -86,7 +86,7 @@ class AwaitableGetMaterializedFeaturesFeatureTagsResult(GetMaterializedFeaturesF
 
 def get_materialized_features_feature_tags(feature_name: Optional[_builtins.str] = None,
                                            page_size: Optional[_builtins.int] = None,
-                                           provider_config: Optional[Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict']] = None,
+                                           provider_config: Optional[Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict', 'outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult']] = None,
                                            table_name: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaterializedFeaturesFeatureTagsResult:
     """
@@ -94,7 +94,7 @@ def get_materialized_features_feature_tags(feature_name: Optional[_builtins.str]
 
 
     :param _builtins.int page_size: The maximum number of results to return
-    :param Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict', 'outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['featureName'] = feature_name
@@ -112,7 +112,7 @@ def get_materialized_features_feature_tags(feature_name: Optional[_builtins.str]
         table_name=pulumi.get(__ret__, 'table_name'))
 def get_materialized_features_feature_tags_output(feature_name: pulumi.Input[Optional[_builtins.str]] = None,
                                                   page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict']]]] = None,
+                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict', 'outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult']]]] = None,
                                                   table_name: pulumi.Input[Optional[_builtins.str]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaterializedFeaturesFeatureTagsResult]:
     """
@@ -120,7 +120,7 @@ def get_materialized_features_feature_tags_output(feature_name: pulumi.Input[Opt
 
 
     :param _builtins.int page_size: The maximum number of results to return
-    :param Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict', 'outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['featureName'] = feature_name

@@ -121,7 +121,7 @@ class AwaitableGetWorkspaceIamServicePrincipalV2Result(GetWorkspaceIamServicePri
             service_principal_id=self.service_principal_id)
 
 
-def get_workspace_iam_service_principal_v2(provider_config: Optional[Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict']] = None,
+def get_workspace_iam_service_principal_v2(provider_config: Optional[Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult']] = None,
                                            service_principal_id: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamServicePrincipalV2Result:
     """
@@ -145,7 +145,7 @@ def get_workspace_iam_service_principal_v2(provider_config: Optional[Union['GetW
     ```
 
 
-    :param Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str service_principal_id: Internal service principal ID of the service principal in Databricks
     """
     __args__ = dict()
@@ -162,7 +162,7 @@ def get_workspace_iam_service_principal_v2(provider_config: Optional[Union['GetW
         external_id=pulumi.get(__ret__, 'external_id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         service_principal_id=pulumi.get(__ret__, 'service_principal_id'))
-def get_workspace_iam_service_principal_v2_output(provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict']]]] = None,
+def get_workspace_iam_service_principal_v2_output(provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult']]]] = None,
                                                   service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamServicePrincipalV2Result]:
     """
@@ -186,7 +186,7 @@ def get_workspace_iam_service_principal_v2_output(provider_config: pulumi.Input[
     ```
 
 
-    :param Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str service_principal_id: Internal service principal ID of the service principal in Databricks
     """
     __args__ = dict()

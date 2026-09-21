@@ -82,8 +82,8 @@ class AwaitableGetInstancePoolResult(GetInstancePoolResult):
 
 
 def get_instance_pool(name: Optional[_builtins.str] = None,
-                      pool_info: Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']] = None,
-                      provider_config: Optional[Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict']] = None,
+                      pool_info: Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict', 'outputs.GetInstancePoolPoolInfoResult']] = None,
+                      provider_config: Optional[Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict', 'outputs.GetInstancePoolProviderConfigResult']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolResult:
     """
     Retrieves information about databricks_instance_pool.
@@ -104,8 +104,8 @@ def get_instance_pool(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
-    :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
-    :param Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict', 'outputs.GetInstancePoolPoolInfoResult'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
+    :param Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict', 'outputs.GetInstancePoolProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['name'] = name
@@ -120,8 +120,8 @@ def get_instance_pool(name: Optional[_builtins.str] = None,
         pool_info=pulumi.get(__ret__, 'pool_info'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_instance_pool_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                             pool_info: pulumi.Input[Optional[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']]]] = None,
-                             provider_config: pulumi.Input[Optional[Optional[Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict']]]] = None,
+                             pool_info: pulumi.Input[Optional[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict', 'outputs.GetInstancePoolPoolInfoResult']]]] = None,
+                             provider_config: pulumi.Input[Optional[Optional[Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict', 'outputs.GetInstancePoolProviderConfigResult']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
     Retrieves information about databricks_instance_pool.
@@ -142,8 +142,8 @@ def get_instance_pool_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
 
     :param _builtins.str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
-    :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
-    :param Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict', 'outputs.GetInstancePoolPoolInfoResult'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
+    :param Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict', 'outputs.GetInstancePoolProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['name'] = name

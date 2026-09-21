@@ -410,13 +410,13 @@ class MwsNetworks(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
-                 gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
+                 error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict', 'outputs.MwsNetworksErrorMessage']]]]] = None,
+                 gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict', 'outputs.MwsNetworksGcpNetworkInfo']]] = None,
                  network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
+                 vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict', 'outputs.MwsNetworksVpcEndpoints']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -546,12 +546,12 @@ class MwsNetworks(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict', 'outputs.MwsNetworksGcpNetworkInfo']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[_builtins.str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[_builtins.str] network_name: name under which this network is registered
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: ids of aws_security_group
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnet_ids: ids of aws_subnet
-        :param pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
+        :param pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict', 'outputs.MwsNetworksVpcEndpoints']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[_builtins.str] vpc_id: aws_vpc id
         :param pulumi.Input[_builtins.str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[_builtins.str] workspace_id: (Integer) id of associated workspace
@@ -701,13 +701,13 @@ class MwsNetworks(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
-                 gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
+                 error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict', 'outputs.MwsNetworksErrorMessage']]]]] = None,
+                 gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict', 'outputs.MwsNetworksGcpNetworkInfo']]] = None,
                  network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
+                 vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict', 'outputs.MwsNetworksVpcEndpoints']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -750,13 +750,13 @@ class MwsNetworks(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             creation_time: pulumi.Input[Optional[_builtins.int]] = None,
-            error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
-            gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
+            error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict', 'outputs.MwsNetworksErrorMessage']]]]] = None,
+            gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict', 'outputs.MwsNetworksGcpNetworkInfo']]] = None,
             network_id: pulumi.Input[Optional[_builtins.str]] = None,
             network_name: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
+            vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict', 'outputs.MwsNetworksVpcEndpoints']]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MwsNetworks':
@@ -768,12 +768,12 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict', 'outputs.MwsNetworksGcpNetworkInfo']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[_builtins.str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[_builtins.str] network_name: name under which this network is registered
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: ids of aws_security_group
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnet_ids: ids of aws_subnet
-        :param pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
+        :param pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict', 'outputs.MwsNetworksVpcEndpoints']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[_builtins.str] vpc_id: aws_vpc id
         :param pulumi.Input[_builtins.str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[_builtins.str] workspace_id: (Integer) id of associated workspace

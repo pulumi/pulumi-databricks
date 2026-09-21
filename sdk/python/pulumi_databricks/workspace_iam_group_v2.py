@@ -172,7 +172,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -201,7 +201,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
         :param pulumi.Input[_builtins.str] group_name: Display name of the group
-        :param pulumi.Input[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -249,7 +249,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,7 +278,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict']]] = None) -> 'WorkspaceIamGroupV2':
+            provider_config: pulumi.Input[Optional[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']]] = None) -> 'WorkspaceIamGroupV2':
         """
         Get an existing WorkspaceIamGroupV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -290,7 +290,7 @@ class WorkspaceIamGroupV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the group in the customer's IdP
         :param pulumi.Input[_builtins.str] group_id: (string) - Internal group ID of the group in Databricks
         :param pulumi.Input[_builtins.str] group_name: Display name of the group
-        :param pulumi.Input[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamGroupV2ProviderConfigArgs', 'WorkspaceIamGroupV2ProviderConfigArgsDict', 'outputs.WorkspaceIamGroupV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

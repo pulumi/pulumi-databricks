@@ -203,7 +203,7 @@ class AwaitableGetEnvironmentsWorkspaceBaseEnvironmentResult(GetEnvironmentsWork
 
 
 def get_environments_workspace_base_environment(name: Optional[_builtins.str] = None,
-                                                provider_config: Optional[Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']] = None,
+                                                provider_config: Optional[Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult']] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnvironmentsWorkspaceBaseEnvironmentResult:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -224,7 +224,7 @@ def get_environments_workspace_base_environment(name: Optional[_builtins.str] = 
 
     :param _builtins.str name: The resource name of the workspace base environment.
            Format: workspace-base-environments/{workspace-base-environment}
-    :param Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -248,7 +248,7 @@ def get_environments_workspace_base_environment(name: Optional[_builtins.str] = 
         status=pulumi.get(__ret__, 'status'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_environments_workspace_base_environment_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                                       provider_config: pulumi.Input[Optional[Optional[Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]]] = None,
+                                                       provider_config: pulumi.Input[Optional[Optional[Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult']]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentsWorkspaceBaseEnvironmentResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -269,7 +269,7 @@ def get_environments_workspace_base_environment_output(name: pulumi.Input[Option
 
     :param _builtins.str name: The resource name of the workspace base environment.
            Format: workspace-base-environments/{workspace-base-environment}
-    :param Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

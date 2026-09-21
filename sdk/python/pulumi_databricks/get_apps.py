@@ -60,7 +60,7 @@ class AwaitableGetAppsResult(GetAppsResult):
             provider_config=self.provider_config)
 
 
-def get_apps(provider_config: Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict']] = None,
+def get_apps(provider_config: Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict', 'outputs.GetAppsProviderConfigResult']] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsResult:
     """
     > This data source can only be used with a workspace-level provider!
@@ -96,7 +96,7 @@ def get_apps(provider_config: Optional[Union['GetAppsProviderConfigArgs', 'GetAp
     return AwaitableGetAppsResult(
         apps=pulumi.get(__ret__, 'apps'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_apps_output(provider_config: pulumi.Input[Optional[Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict']]]] = None,
+def get_apps_output(provider_config: pulumi.Input[Optional[Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict', 'outputs.GetAppsProviderConfigResult']]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
     """
     > This data source can only be used with a workspace-level provider!

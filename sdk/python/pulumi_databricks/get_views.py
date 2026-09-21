@@ -92,7 +92,7 @@ class AwaitableGetViewsResult(GetViewsResult):
 
 def get_views(catalog_name: Optional[_builtins.str] = None,
               ids: Optional[Sequence[_builtins.str]] = None,
-              provider_config: Optional[Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict']] = None,
+              provider_config: Optional[Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict', 'outputs.GetViewsProviderConfigResult']] = None,
               schema_name: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetViewsResult:
     """
@@ -134,7 +134,7 @@ def get_views(catalog_name: Optional[_builtins.str] = None,
 
     :param _builtins.str catalog_name: Name of databricks_catalog
     :param Sequence[_builtins.str] ids: set of databricks_view full names: *`catalog`.`schema`.`view`*
-    :param Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict', 'outputs.GetViewsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str schema_name: Name of databricks_schema
     """
     __args__ = dict()
@@ -153,7 +153,7 @@ def get_views(catalog_name: Optional[_builtins.str] = None,
         schema_name=pulumi.get(__ret__, 'schema_name'))
 def get_views_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                     provider_config: pulumi.Input[Optional[Optional[Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict']]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict', 'outputs.GetViewsProviderConfigResult']]]] = None,
                      schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetViewsResult]:
     """
@@ -195,7 +195,7 @@ def get_views_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str catalog_name: Name of databricks_catalog
     :param Sequence[_builtins.str] ids: set of databricks_view full names: *`catalog`.`schema`.`view`*
-    :param Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict', 'outputs.GetViewsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str schema_name: Name of databricks_schema
     """
     __args__ = dict()

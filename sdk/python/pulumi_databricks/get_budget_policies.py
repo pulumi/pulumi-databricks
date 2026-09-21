@@ -75,9 +75,9 @@ class AwaitableGetBudgetPoliciesResult(GetBudgetPoliciesResult):
             sort_spec=self.sort_spec)
 
 
-def get_budget_policies(filter_by: Optional[Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict']] = None,
+def get_budget_policies(filter_by: Optional[Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict', 'outputs.GetBudgetPoliciesFilterByResult']] = None,
                         page_size: Optional[_builtins.int] = None,
-                        sort_spec: Optional[Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict']] = None,
+                        sort_spec: Optional[Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict', 'outputs.GetBudgetPoliciesSortSpecResult']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBudgetPoliciesResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -100,11 +100,11 @@ def get_budget_policies(filter_by: Optional[Union['GetBudgetPoliciesFilterByArgs
     ```
 
 
-    :param Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict'] filter_by: A filter to apply to the list of policies
+    :param Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict', 'outputs.GetBudgetPoliciesFilterByResult'] filter_by: A filter to apply to the list of policies
     :param _builtins.int page_size: The maximum number of budget policies to return.
            If unspecified, at most 100 budget policies will be returned.
            The maximum value is 1000; values above 1000 will be coerced to 1000
-    :param Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict'] sort_spec: The sort specification
+    :param Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict', 'outputs.GetBudgetPoliciesSortSpecResult'] sort_spec: The sort specification
     """
     __args__ = dict()
     __args__['filterBy'] = filter_by
@@ -118,9 +118,9 @@ def get_budget_policies(filter_by: Optional[Union['GetBudgetPoliciesFilterByArgs
         page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'),
         sort_spec=pulumi.get(__ret__, 'sort_spec'))
-def get_budget_policies_output(filter_by: pulumi.Input[Optional[Optional[Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict']]]] = None,
+def get_budget_policies_output(filter_by: pulumi.Input[Optional[Optional[Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict', 'outputs.GetBudgetPoliciesFilterByResult']]]] = None,
                                page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                               sort_spec: pulumi.Input[Optional[Optional[Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict']]]] = None,
+                               sort_spec: pulumi.Input[Optional[Optional[Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict', 'outputs.GetBudgetPoliciesSortSpecResult']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBudgetPoliciesResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -143,11 +143,11 @@ def get_budget_policies_output(filter_by: pulumi.Input[Optional[Optional[Union['
     ```
 
 
-    :param Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict'] filter_by: A filter to apply to the list of policies
+    :param Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict', 'outputs.GetBudgetPoliciesFilterByResult'] filter_by: A filter to apply to the list of policies
     :param _builtins.int page_size: The maximum number of budget policies to return.
            If unspecified, at most 100 budget policies will be returned.
            The maximum value is 1000; values above 1000 will be coerced to 1000
-    :param Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict'] sort_spec: The sort specification
+    :param Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict', 'outputs.GetBudgetPoliciesSortSpecResult'] sort_spec: The sort specification
     """
     __args__ = dict()
     __args__['filterBy'] = filter_by

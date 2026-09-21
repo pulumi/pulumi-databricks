@@ -472,16 +472,16 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
+                 function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict', 'outputs.FeatureEngineeringFeatureFunction']]] = None,
                  inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
-                 source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
-                 time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
-                 timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None,
+                 lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']]] = None,
+                 source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']]] = None,
+                 time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict', 'outputs.FeatureEngineeringFeatureTimeWindow']]] = None,
+                 timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -490,19 +490,19 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
                feature's resource identifier; the catalog_name, schema_name, and name fields
                below are OUTPUT_ONLY decomposed views of this value
-        :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']] function: The function by which the feature is computed
-        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']] lineage_context: Lineage context information for this feature.
+        :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict', 'outputs.FeatureEngineeringFeatureFunction']] function: The function by which the feature is computed
+        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']] lineage_context: Lineage context information for this feature.
                WARNING: This field is primarily intended for internal use by Databricks systems and
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
-        :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']] source: The data source of the feature
-        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
+        :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']] source: The data source of the feature
+        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         ...
     @overload
@@ -530,16 +530,16 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
+                 function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict', 'outputs.FeatureEngineeringFeatureFunction']]] = None,
                  inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
-                 source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
-                 time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
-                 timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None,
+                 lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']]] = None,
+                 source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']]] = None,
+                 time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict', 'outputs.FeatureEngineeringFeatureTimeWindow']]] = None,
+                 timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -585,18 +585,18 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]]] = None,
             filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
-            function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
+            function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict', 'outputs.FeatureEngineeringFeatureFunction']]] = None,
             inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
+            lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']]] = None,
             schema_name: pulumi.Input[Optional[_builtins.str]] = None,
-            source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
-            time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
-            timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None) -> 'FeatureEngineeringFeature':
+            source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']]] = None,
+            time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict', 'outputs.FeatureEngineeringFeatureTimeWindow']]] = None,
+            timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']]] = None) -> 'FeatureEngineeringFeature':
         """
         Get an existing FeatureEngineeringFeature resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -608,21 +608,21 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: (string) - Time at which this feature was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of the feature creator
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict', 'outputs.FeatureEngineeringFeatureEntity']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
                feature's resource identifier; the catalog_name, schema_name, and name fields
                below are OUTPUT_ONLY decomposed views of this value
-        :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']] function: The function by which the feature is computed
-        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']] lineage_context: Lineage context information for this feature.
+        :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict', 'outputs.FeatureEngineeringFeatureFunction']] function: The function by which the feature is computed
+        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']] lineage_context: Lineage context information for this feature.
                WARNING: This field is primarily intended for internal use by Databricks systems and
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input[_builtins.str] name: (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
-        :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema_name: (string) - Name of parent schema relative to its parent catalog
-        :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']] source: The data source of the feature
-        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
+        :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']] source: The data source of the feature
+        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict', 'outputs.FeatureEngineeringFeatureTimeseriesColumn']] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

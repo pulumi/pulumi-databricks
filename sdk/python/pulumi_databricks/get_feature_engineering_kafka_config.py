@@ -162,7 +162,7 @@ class AwaitableGetFeatureEngineeringKafkaConfigResult(GetFeatureEngineeringKafka
 
 
 def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
-                                         provider_config: Optional[Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict']] = None,
+                                         provider_config: Optional[Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.GetFeatureEngineeringKafkaConfigProviderConfigResult']] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringKafkaConfigResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -170,7 +170,7 @@ def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
            Can be distinct from topic name
-    :param Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.GetFeatureEngineeringKafkaConfigProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -190,7 +190,7 @@ def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
         subscription_mode=pulumi.get(__ret__, 'subscription_mode'),
         value_schema=pulumi.get(__ret__, 'value_schema'))
 def get_feature_engineering_kafka_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                                provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict']]]] = None,
+                                                provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.GetFeatureEngineeringKafkaConfigProviderConfigResult']]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringKafkaConfigResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -198,7 +198,7 @@ def get_feature_engineering_kafka_config_output(name: pulumi.Input[Optional[_bui
 
     :param _builtins.str name: Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
            Can be distinct from topic name
-    :param Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.GetFeatureEngineeringKafkaConfigProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

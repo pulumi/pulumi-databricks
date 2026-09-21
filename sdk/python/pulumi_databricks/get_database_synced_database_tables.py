@@ -77,7 +77,7 @@ class AwaitableGetDatabaseSyncedDatabaseTablesResult(GetDatabaseSyncedDatabaseTa
 
 def get_database_synced_database_tables(instance_name: Optional[_builtins.str] = None,
                                         page_size: Optional[_builtins.int] = None,
-                                        provider_config: Optional[Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict']] = None,
+                                        provider_config: Optional[Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict', 'outputs.GetDatabaseSyncedDatabaseTablesProviderConfigResult']] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseSyncedDatabaseTablesResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -87,7 +87,7 @@ def get_database_synced_database_tables(instance_name: Optional[_builtins.str] =
 
     :param _builtins.str instance_name: Name of the instance to get synced tables for
     :param _builtins.int page_size: Upper bound for items returned
-    :param Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict', 'outputs.GetDatabaseSyncedDatabaseTablesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name
@@ -103,7 +103,7 @@ def get_database_synced_database_tables(instance_name: Optional[_builtins.str] =
         synced_tables=pulumi.get(__ret__, 'synced_tables'))
 def get_database_synced_database_tables_output(instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                                                page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                               provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict']]]] = None,
+                                               provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict', 'outputs.GetDatabaseSyncedDatabaseTablesProviderConfigResult']]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTablesResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -113,7 +113,7 @@ def get_database_synced_database_tables_output(instance_name: pulumi.Input[Optio
 
     :param _builtins.str instance_name: Name of the instance to get synced tables for
     :param _builtins.int page_size: Upper bound for items returned
-    :param Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict', 'outputs.GetDatabaseSyncedDatabaseTablesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name

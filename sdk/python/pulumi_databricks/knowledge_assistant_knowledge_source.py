@@ -366,11 +366,11 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
-                 files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
-                 index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
+                 file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceFileTable']]] = None,
+                 files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceFiles']]] = None,
+                 index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceIndex']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceProviderConfig']]] = None,
                  source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -389,7 +389,7 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
                When updating a Knowledge Source, optional unless included in update_mask
         :param pulumi.Input[_builtins.str] parent: Parent resource where this source will be created.
                Format: knowledge-assistants/{knowledge_assistant_id}
-        :param pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] source_type: The type of the source: "index", "files", or "file_table".
                Required when creating a Knowledge Source.
                When updating a Knowledge Source, this field is ignored
@@ -423,11 +423,11 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
-                 files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
-                 index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
+                 file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceFileTable']]] = None,
+                 files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceFiles']]] = None,
+                 index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceIndex']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceProviderConfig']]] = None,
                  source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -471,13 +471,13 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
-            files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
-            index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
+            file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceFileTable']]] = None,
+            files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceFiles']]] = None,
+            index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceIndex']]] = None,
             knowledge_cutoff_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceProviderConfig']]] = None,
             source_type: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'KnowledgeAssistantKnowledgeSource':
         """
@@ -499,7 +499,7 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
                knowledge-assistants/{knowledge_assistant_id}/knowledge-sources/{knowledge_source_id}
         :param pulumi.Input[_builtins.str] parent: Parent resource where this source will be created.
                Format: knowledge-assistants/{knowledge_assistant_id}
-        :param pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict', 'outputs.KnowledgeAssistantKnowledgeSourceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] source_type: The type of the source: "index", "files", or "file_table".
                Required when creating a Knowledge Source.
                When updating a Knowledge Source, this field is ignored

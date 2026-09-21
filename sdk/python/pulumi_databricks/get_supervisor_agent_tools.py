@@ -77,7 +77,7 @@ class AwaitableGetSupervisorAgentToolsResult(GetSupervisorAgentToolsResult):
 
 def get_supervisor_agent_tools(page_size: Optional[_builtins.int] = None,
                                parent: Optional[_builtins.str] = None,
-                               provider_config: Optional[Union['GetSupervisorAgentToolsProviderConfigArgs', 'GetSupervisorAgentToolsProviderConfigArgsDict']] = None,
+                               provider_config: Optional[Union['GetSupervisorAgentToolsProviderConfigArgs', 'GetSupervisorAgentToolsProviderConfigArgsDict', 'outputs.GetSupervisorAgentToolsProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSupervisorAgentToolsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -87,7 +87,7 @@ def get_supervisor_agent_tools(page_size: Optional[_builtins.int] = None,
 
     :param _builtins.str parent: Parent resource to list from.
            Format: supervisor-agents/{supervisor_agent_id}
-    :param Union['GetSupervisorAgentToolsProviderConfigArgs', 'GetSupervisorAgentToolsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSupervisorAgentToolsProviderConfigArgs', 'GetSupervisorAgentToolsProviderConfigArgsDict', 'outputs.GetSupervisorAgentToolsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -103,7 +103,7 @@ def get_supervisor_agent_tools(page_size: Optional[_builtins.int] = None,
         tools=pulumi.get(__ret__, 'tools'))
 def get_supervisor_agent_tools_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                       parent: pulumi.Input[Optional[_builtins.str]] = None,
-                                      provider_config: pulumi.Input[Optional[Optional[Union['GetSupervisorAgentToolsProviderConfigArgs', 'GetSupervisorAgentToolsProviderConfigArgsDict']]]] = None,
+                                      provider_config: pulumi.Input[Optional[Optional[Union['GetSupervisorAgentToolsProviderConfigArgs', 'GetSupervisorAgentToolsProviderConfigArgsDict', 'outputs.GetSupervisorAgentToolsProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSupervisorAgentToolsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -113,7 +113,7 @@ def get_supervisor_agent_tools_output(page_size: pulumi.Input[Optional[Optional[
 
     :param _builtins.str parent: Parent resource to list from.
            Format: supervisor-agents/{supervisor_agent_id}
-    :param Union['GetSupervisorAgentToolsProviderConfigArgs', 'GetSupervisorAgentToolsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSupervisorAgentToolsProviderConfigArgs', 'GetSupervisorAgentToolsProviderConfigArgsDict', 'outputs.GetSupervisorAgentToolsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

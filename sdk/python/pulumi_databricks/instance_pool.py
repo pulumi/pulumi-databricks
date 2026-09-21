@@ -528,23 +528,23 @@ class InstancePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_attributes: pulumi.Input[Optional[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
-                 azure_attributes: pulumi.Input[Optional[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
+                 aws_attributes: pulumi.Input[Optional[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict', 'outputs.InstancePoolAwsAttributes']]] = None,
+                 azure_attributes: pulumi.Input[Optional[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict', 'outputs.InstancePoolAzureAttributes']]] = None,
                  custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 disk_spec: pulumi.Input[Optional[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
+                 disk_spec: pulumi.Input[Optional[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict', 'outputs.InstancePoolDiskSpec']]] = None,
                  enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gcp_attributes: pulumi.Input[Optional[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
+                 gcp_attributes: pulumi.Input[Optional[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict', 'outputs.InstancePoolGcpAttributes']]] = None,
                  idle_instance_autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
-                 instance_pool_fleet_attributes: pulumi.Input[Optional[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict']]] = None,
+                 instance_pool_fleet_attributes: pulumi.Input[Optional[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict', 'outputs.InstancePoolInstancePoolFleetAttributes']]] = None,
                  instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  min_idle_instances: pulumi.Input[Optional[_builtins.int]] = None,
-                 node_type_flexibility: pulumi.Input[Optional[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']]] = None,
+                 node_type_flexibility: pulumi.Input[Optional[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict', 'outputs.InstancePoolNodeTypeFlexibility']]] = None,
                  node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 preloaded_docker_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
+                 preloaded_docker_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict', 'outputs.InstancePoolPreloadedDockerImage']]]]] = None,
                  preloaded_spark_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict', 'outputs.InstancePoolProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/instancepools)
@@ -598,10 +598,10 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
         :param pulumi.Input[_builtins.int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[_builtins.int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
-        :param pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']] node_type_flexibility: a block describing the alternative driver node types if `node_type_id` isn't available.
+        :param pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict', 'outputs.InstancePoolNodeTypeFlexibility']] node_type_flexibility: a block describing the alternative driver node types if `node_type_id` isn't available.
         :param pulumi.Input[_builtins.str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-        :param pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict', 'outputs.InstancePoolProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -668,23 +668,23 @@ class InstancePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_attributes: pulumi.Input[Optional[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
-                 azure_attributes: pulumi.Input[Optional[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
+                 aws_attributes: pulumi.Input[Optional[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict', 'outputs.InstancePoolAwsAttributes']]] = None,
+                 azure_attributes: pulumi.Input[Optional[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict', 'outputs.InstancePoolAzureAttributes']]] = None,
                  custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 disk_spec: pulumi.Input[Optional[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
+                 disk_spec: pulumi.Input[Optional[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict', 'outputs.InstancePoolDiskSpec']]] = None,
                  enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gcp_attributes: pulumi.Input[Optional[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
+                 gcp_attributes: pulumi.Input[Optional[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict', 'outputs.InstancePoolGcpAttributes']]] = None,
                  idle_instance_autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
-                 instance_pool_fleet_attributes: pulumi.Input[Optional[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict']]] = None,
+                 instance_pool_fleet_attributes: pulumi.Input[Optional[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict', 'outputs.InstancePoolInstancePoolFleetAttributes']]] = None,
                  instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  min_idle_instances: pulumi.Input[Optional[_builtins.int]] = None,
-                 node_type_flexibility: pulumi.Input[Optional[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']]] = None,
+                 node_type_flexibility: pulumi.Input[Optional[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict', 'outputs.InstancePoolNodeTypeFlexibility']]] = None,
                  node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 preloaded_docker_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
+                 preloaded_docker_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict', 'outputs.InstancePoolPreloadedDockerImage']]]]] = None,
                  preloaded_spark_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict', 'outputs.InstancePoolProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -725,23 +725,23 @@ class InstancePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws_attributes: pulumi.Input[Optional[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
-            azure_attributes: pulumi.Input[Optional[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
+            aws_attributes: pulumi.Input[Optional[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict', 'outputs.InstancePoolAwsAttributes']]] = None,
+            azure_attributes: pulumi.Input[Optional[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict', 'outputs.InstancePoolAzureAttributes']]] = None,
             custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            disk_spec: pulumi.Input[Optional[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
+            disk_spec: pulumi.Input[Optional[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict', 'outputs.InstancePoolDiskSpec']]] = None,
             enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
-            gcp_attributes: pulumi.Input[Optional[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
+            gcp_attributes: pulumi.Input[Optional[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict', 'outputs.InstancePoolGcpAttributes']]] = None,
             idle_instance_autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
-            instance_pool_fleet_attributes: pulumi.Input[Optional[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict']]] = None,
+            instance_pool_fleet_attributes: pulumi.Input[Optional[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict', 'outputs.InstancePoolInstancePoolFleetAttributes']]] = None,
             instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
             max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
             min_idle_instances: pulumi.Input[Optional[_builtins.int]] = None,
-            node_type_flexibility: pulumi.Input[Optional[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']]] = None,
+            node_type_flexibility: pulumi.Input[Optional[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict', 'outputs.InstancePoolNodeTypeFlexibility']]] = None,
             node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
-            preloaded_docker_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
+            preloaded_docker_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict', 'outputs.InstancePoolPreloadedDockerImage']]]]] = None,
             preloaded_spark_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            provider_config: pulumi.Input[Optional[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']]] = None) -> 'InstancePool':
+            provider_config: pulumi.Input[Optional[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict', 'outputs.InstancePoolProviderConfig']]] = None) -> 'InstancePool':
         """
         Get an existing InstancePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -755,10 +755,10 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
         :param pulumi.Input[_builtins.int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[_builtins.int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
-        :param pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']] node_type_flexibility: a block describing the alternative driver node types if `node_type_id` isn't available.
+        :param pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict', 'outputs.InstancePoolNodeTypeFlexibility']] node_type_flexibility: a block describing the alternative driver node types if `node_type_id` isn't available.
         :param pulumi.Input[_builtins.str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-        :param pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict', 'outputs.InstancePoolProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -204,7 +204,7 @@ class InstanceProfile(pulumi.CustomResource):
                  iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  is_meta_instance_profile: pulumi.Input[Optional[_builtins.bool]] = None,
-                 provider_config: pulumi.Input[Optional[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict', 'outputs.InstanceProfileProviderConfig']]] = None,
                  skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -256,7 +256,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[_builtins.str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[_builtins.bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
-        :param pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict', 'outputs.InstanceProfileProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         ...
@@ -327,7 +327,7 @@ class InstanceProfile(pulumi.CustomResource):
                  iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  is_meta_instance_profile: pulumi.Input[Optional[_builtins.bool]] = None,
-                 provider_config: pulumi.Input[Optional[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict', 'outputs.InstanceProfileProviderConfig']]] = None,
                  skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -358,7 +358,7 @@ class InstanceProfile(pulumi.CustomResource):
             iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
             instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
             is_meta_instance_profile: pulumi.Input[Optional[_builtins.bool]] = None,
-            provider_config: pulumi.Input[Optional[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict', 'outputs.InstanceProfileProviderConfig']]] = None,
             skip_validation: pulumi.Input[Optional[_builtins.bool]] = None) -> 'InstanceProfile':
         """
         Get an existing InstanceProfile resource's state with the given name, id, and optional extra
@@ -370,7 +370,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[_builtins.str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[_builtins.bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
-        :param pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict', 'outputs.InstanceProfileProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

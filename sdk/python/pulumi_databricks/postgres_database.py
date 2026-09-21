@@ -277,9 +277,9 @@ class PostgresDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict', 'outputs.PostgresDatabaseProviderConfig']]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -442,10 +442,10 @@ class PostgresDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_id: (string) - Part of the resource name
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict', 'outputs.PostgresDatabaseProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
                error
-        :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']] spec: The desired state of the Database
+        :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']] spec: The desired state of the Database
         """
         ...
     @overload
@@ -626,9 +626,9 @@ class PostgresDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict', 'outputs.PostgresDatabaseProviderConfig']]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -663,10 +663,10 @@ class PostgresDatabase(pulumi.CustomResource):
             database_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict', 'outputs.PostgresDatabaseProviderConfig']]] = None,
             replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-            spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['PostgresDatabaseStatusArgs', 'PostgresDatabaseStatusArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresDatabaseStatusArgs', 'PostgresDatabaseStatusArgsDict', 'outputs.PostgresDatabaseStatus']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresDatabase':
         """
         Get an existing PostgresDatabase resource's state with the given name, id, and optional extra
@@ -681,11 +681,11 @@ class PostgresDatabase(pulumi.CustomResource):
                Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict', 'outputs.PostgresDatabaseProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
                error
-        :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']] spec: The desired state of the Database
-        :param pulumi.Input[Union['PostgresDatabaseStatusArgs', 'PostgresDatabaseStatusArgsDict']] status: (DatabaseDatabaseStatus) - The observed state of the Database
+        :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']] spec: The desired state of the Database
+        :param pulumi.Input[Union['PostgresDatabaseStatusArgs', 'PostgresDatabaseStatusArgsDict', 'outputs.PostgresDatabaseStatus']] status: (DatabaseDatabaseStatus) - The observed state of the Database
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the database was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

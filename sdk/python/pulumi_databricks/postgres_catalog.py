@@ -218,8 +218,8 @@ class PostgresCatalog(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict', 'outputs.PostgresCatalogProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -275,8 +275,8 @@ class PostgresCatalog(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
-        :param pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']] spec: The desired state of the Catalog
+        :param pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict', 'outputs.PostgresCatalogProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']] spec: The desired state of the Catalog
         """
         ...
     @overload
@@ -351,8 +351,8 @@ class PostgresCatalog(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict', 'outputs.PostgresCatalogProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -385,9 +385,9 @@ class PostgresCatalog(pulumi.CustomResource):
             catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
-            spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['PostgresCatalogStatusArgs', 'PostgresCatalogStatusArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict', 'outputs.PostgresCatalogProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresCatalogStatusArgs', 'PostgresCatalogStatusArgsDict', 'outputs.PostgresCatalogStatus']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresCatalog':
         """
@@ -400,9 +400,9 @@ class PostgresCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the catalog was created
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the catalog.
-        :param pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']] spec: The desired state of the Catalog
-        :param pulumi.Input[Union['PostgresCatalogStatusArgs', 'PostgresCatalogStatusArgsDict']] status: (CatalogCatalogStatus) - The observed state of the Catalog
+        :param pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict', 'outputs.PostgresCatalogProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']] spec: The desired state of the Catalog
+        :param pulumi.Input[Union['PostgresCatalogStatusArgs', 'PostgresCatalogStatusArgsDict', 'outputs.PostgresCatalogStatus']] status: (CatalogCatalogStatus) - The observed state of the Catalog
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique identifier for the catalog
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the catalog was last updated
         """

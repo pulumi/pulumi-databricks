@@ -77,7 +77,7 @@ class AwaitableGetDatabaseDatabaseCatalogsResult(GetDatabaseDatabaseCatalogsResu
 
 def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None,
                                    page_size: Optional[_builtins.int] = None,
-                                   provider_config: Optional[Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict']] = None,
+                                   provider_config: Optional[Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict', 'outputs.GetDatabaseDatabaseCatalogsProviderConfigResult']] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseDatabaseCatalogsResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -87,7 +87,7 @@ def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None
 
     :param _builtins.str instance_name: Name of the instance to get database catalogs for
     :param _builtins.int page_size: Upper bound for items returned
-    :param Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict', 'outputs.GetDatabaseDatabaseCatalogsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name
@@ -103,7 +103,7 @@ def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_database_database_catalogs_output(instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                                           page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                          provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict']]]] = None,
+                                          provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict', 'outputs.GetDatabaseDatabaseCatalogsProviderConfigResult']]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseDatabaseCatalogsResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -113,7 +113,7 @@ def get_database_database_catalogs_output(instance_name: pulumi.Input[Optional[_
 
     :param _builtins.str instance_name: Name of the instance to get database catalogs for
     :param _builtins.int page_size: Upper bound for items returned
-    :param Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict', 'outputs.GetDatabaseDatabaseCatalogsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name

@@ -92,7 +92,7 @@ class AwaitableGetSecretUcsResult(GetSecretUcsResult):
 
 def get_secret_ucs(catalog_name: Optional[_builtins.str] = None,
                    page_size: Optional[_builtins.int] = None,
-                   provider_config: Optional[Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict']] = None,
+                   provider_config: Optional[Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict', 'outputs.GetSecretUcsProviderConfigResult']] = None,
                    schema_name: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretUcsResult:
     """
@@ -126,7 +126,7 @@ def get_secret_ucs(catalog_name: Optional[_builtins.str] = None,
            - If set to a value greater than 0, the page length is the minimum of this value and 1000.
            - If set to 0, the page length is set to 1000.
            - If set to a value less than 0, an invalid parameter error is returned
-    :param Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict', 'outputs.GetSecretUcsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str schema_name: The name of the schema under which to list secrets. Both **catalog_name** and
            **schema_name** must be specified together
     """
@@ -146,7 +146,7 @@ def get_secret_ucs(catalog_name: Optional[_builtins.str] = None,
         secrets=pulumi.get(__ret__, 'secrets'))
 def get_secret_ucs_output(catalog_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                          provider_config: pulumi.Input[Optional[Optional[Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict']]]] = None,
+                          provider_config: pulumi.Input[Optional[Optional[Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict', 'outputs.GetSecretUcsProviderConfigResult']]]] = None,
                           schema_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretUcsResult]:
     """
@@ -180,7 +180,7 @@ def get_secret_ucs_output(catalog_name: pulumi.Input[Optional[Optional[_builtins
            - If set to a value greater than 0, the page length is the minimum of this value and 1000.
            - If set to 0, the page length is set to 1000.
            - If set to a value less than 0, an invalid parameter error is returned
-    :param Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSecretUcsProviderConfigArgs', 'GetSecretUcsProviderConfigArgsDict', 'outputs.GetSecretUcsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str schema_name: The name of the schema under which to list secrets. Both **catalog_name** and
            **schema_name** must be specified together
     """
