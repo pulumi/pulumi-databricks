@@ -664,9 +664,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
@@ -683,9 +683,9 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
@@ -767,12 +767,12 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
@@ -805,7 +805,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -815,7 +815,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.132.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
