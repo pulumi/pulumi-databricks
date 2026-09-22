@@ -489,7 +489,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Model service grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `ModelService` attribute.
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model service (databricks_ai_gateway_model_service) specified in the `ModelService` attribute. Pass either the bare full name (`catalog.schema.name`) or the resource's `Name` attribute (`databricks_ai_gateway_model_service.this.name`); the provider strips the `model-services/` resource-name prefix that `Name` carries.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -520,7 +520,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Model provider service grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model provider service (databricks_ai_gateway_model_provider_service) specified in the `ModelProviderService` attribute.
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway model provider service (databricks_ai_gateway_model_provider_service) specified in the `ModelProviderService` attribute. Pass either the bare full name (`catalog.schema.name`) or the resource's `Name` attribute (`databricks_ai_gateway_model_provider_service.this.name`); the provider strips the `model-provider-services/` resource-name prefix that `Name` carries.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -551,7 +551,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## MCP service grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway MCP service (databricks_ai_gateway_mcp_service) specified in the `McpService` attribute.
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, `MANAGE`, and `READ_METADATA` privileges to a Unity AI Gateway MCP service (databricks_ai_gateway_mcp_service) specified in the `McpService` attribute. Pass either the bare full name (`catalog.schema.name`) or the resource's `Name` attribute (`databricks_ai_gateway_mcp_service.this.name`); the provider strips the `mcp-services/` resource-name prefix that `Name` carries.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
