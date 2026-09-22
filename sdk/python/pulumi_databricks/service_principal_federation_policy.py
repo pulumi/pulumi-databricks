@@ -237,7 +237,7 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
+                 oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict', 'outputs.ServicePrincipalFederationPolicyOidcPolicy']]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -325,7 +325,7 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
+                 oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict', 'outputs.ServicePrincipalFederationPolicyOidcPolicy']]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -358,7 +358,7 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
+            oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict', 'outputs.ServicePrincipalFederationPolicyOidcPolicy']]] = None,
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,

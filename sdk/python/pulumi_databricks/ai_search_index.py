@@ -385,14 +385,14 @@ class AiSearchIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delta_sync_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
-                 direct_access_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
+                 delta_sync_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict', 'outputs.AiSearchIndexDeltaSyncIndexSpec']]] = None,
+                 direct_access_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.AiSearchIndexDirectAccessIndexSpec']]] = None,
                  index_id: pulumi.Input[Optional[_builtins.str]] = None,
                  index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
                  index_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -422,8 +422,8 @@ class AiSearchIndex(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict']] delta_sync_index_spec: Specification for a Delta Sync index. Set when `index_type` is `DELTA_SYNC`
-        :param pulumi.Input[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict']] direct_access_index_spec: Specification for a Direct Access index. Set when `index_type` is `DIRECT_ACCESS`
+        :param pulumi.Input[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict', 'outputs.AiSearchIndexDeltaSyncIndexSpec']] delta_sync_index_spec: Specification for a Delta Sync index. Set when `index_type` is `DELTA_SYNC`
+        :param pulumi.Input[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.AiSearchIndexDirectAccessIndexSpec']] direct_access_index_spec: Specification for a Direct Access index. Set when `index_type` is `DIRECT_ACCESS`
         :param pulumi.Input[_builtins.str] index_id: The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
                composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
                list `index_id` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
@@ -433,7 +433,7 @@ class AiSearchIndex(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The Endpoint where this Index will be created.
                Format: `workspaces/{workspace_id}/endpoints/{endpoint_id}`
         :param pulumi.Input[_builtins.str] primary_key: Primary key of the index. Set on create and immutable thereafter
-        :param pulumi.Input[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -482,14 +482,14 @@ class AiSearchIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delta_sync_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
-                 direct_access_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
+                 delta_sync_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict', 'outputs.AiSearchIndexDeltaSyncIndexSpec']]] = None,
+                 direct_access_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.AiSearchIndexDirectAccessIndexSpec']]] = None,
                  index_id: pulumi.Input[Optional[_builtins.str]] = None,
                  index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
                  index_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -528,8 +528,8 @@ class AiSearchIndex(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
-            delta_sync_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
-            direct_access_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
+            delta_sync_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict', 'outputs.AiSearchIndexDeltaSyncIndexSpec']]] = None,
+            direct_access_index_spec: pulumi.Input[Optional[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.AiSearchIndexDirectAccessIndexSpec']]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             index_id: pulumi.Input[Optional[_builtins.str]] = None,
             index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
@@ -537,8 +537,8 @@ class AiSearchIndex(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             primary_key: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['AiSearchIndexStatusArgs', 'AiSearchIndexStatusArgsDict']]] = None) -> 'AiSearchIndex':
+            provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']]] = None,
+            status: pulumi.Input[Optional[Union['AiSearchIndexStatusArgs', 'AiSearchIndexStatusArgsDict', 'outputs.AiSearchIndexStatus']]] = None) -> 'AiSearchIndex':
         """
         Get an existing AiSearchIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -547,8 +547,8 @@ class AiSearchIndex(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] creator: (string) - Creator of the index
-        :param pulumi.Input[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict']] delta_sync_index_spec: Specification for a Delta Sync index. Set when `index_type` is `DELTA_SYNC`
-        :param pulumi.Input[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict']] direct_access_index_spec: Specification for a Direct Access index. Set when `index_type` is `DIRECT_ACCESS`
+        :param pulumi.Input[Union['AiSearchIndexDeltaSyncIndexSpecArgs', 'AiSearchIndexDeltaSyncIndexSpecArgsDict', 'outputs.AiSearchIndexDeltaSyncIndexSpec']] delta_sync_index_spec: Specification for a Delta Sync index. Set when `index_type` is `DELTA_SYNC`
+        :param pulumi.Input[Union['AiSearchIndexDirectAccessIndexSpecArgs', 'AiSearchIndexDirectAccessIndexSpecArgsDict', 'outputs.AiSearchIndexDirectAccessIndexSpec']] direct_access_index_spec: Specification for a Direct Access index. Set when `index_type` is `DIRECT_ACCESS`
         :param pulumi.Input[_builtins.str] endpoint: (string) - Name of the endpoint associated with the index. Ignored on create — the endpoint is
                taken from `CreateIndexRequest.parent`; populated only on output
         :param pulumi.Input[_builtins.str] index_id: The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
@@ -565,8 +565,8 @@ class AiSearchIndex(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The Endpoint where this Index will be created.
                Format: `workspaces/{workspace_id}/endpoints/{endpoint_id}`
         :param pulumi.Input[_builtins.str] primary_key: Primary key of the index. Set on create and immutable thereafter
-        :param pulumi.Input[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['AiSearchIndexStatusArgs', 'AiSearchIndexStatusArgsDict']] status: (IndexStatus) - Current status of the index
+        :param pulumi.Input[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict', 'outputs.AiSearchIndexProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AiSearchIndexStatusArgs', 'AiSearchIndexStatusArgsDict', 'outputs.AiSearchIndexStatus']] status: (IndexStatus) - Current status of the index
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

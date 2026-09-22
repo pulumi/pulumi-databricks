@@ -238,7 +238,7 @@ class AwaitableGetFeatureEngineeringFeatureResult(GetFeatureEngineeringFeatureRe
 
 
 def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
-                                    provider_config: Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict']] = None,
+                                    provider_config: Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeatureProviderConfigResult']] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringFeatureResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -247,7 +247,7 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
     :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
            feature's resource identifier; the catalog_name, schema_name, and name fields
            below are OUTPUT_ONLY decomposed views of this value
-    :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeatureProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['fullName'] = full_name
@@ -273,7 +273,7 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
         time_window=pulumi.get(__ret__, 'time_window'),
         timeseries_column=pulumi.get(__ret__, 'timeseries_column'))
 def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                           provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict']]]] = None,
+                                           provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeatureProviderConfigResult']]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringFeatureResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -282,7 +282,7 @@ def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_bui
     :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
            feature's resource identifier; the catalog_name, schema_name, and name fields
            below are OUTPUT_ONLY decomposed views of this value
-    :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeatureProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['fullName'] = full_name

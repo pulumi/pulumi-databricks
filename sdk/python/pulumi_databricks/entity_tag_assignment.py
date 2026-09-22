@@ -249,7 +249,7 @@ class EntityTagAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_name: pulumi.Input[Optional[_builtins.str]] = None,
                  entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict', 'outputs.EntityTagAssignmentProviderConfig']]] = None,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -300,7 +300,7 @@ class EntityTagAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned
-        :param pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict', 'outputs.EntityTagAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
         """
@@ -370,7 +370,7 @@ class EntityTagAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_name: pulumi.Input[Optional[_builtins.str]] = None,
                  entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict', 'outputs.EntityTagAssignmentProviderConfig']]] = None,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -408,7 +408,7 @@ class EntityTagAssignment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             entity_name: pulumi.Input[Optional[_builtins.str]] = None,
             entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict', 'outputs.EntityTagAssignmentProviderConfig']]] = None,
             source_type: pulumi.Input[Optional[_builtins.str]] = None,
             tag_key: pulumi.Input[Optional[_builtins.str]] = None,
             tag_value: pulumi.Input[Optional[_builtins.str]] = None,
@@ -423,7 +423,7 @@ class EntityTagAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned
-        :param pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict', 'outputs.EntityTagAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] source_type: (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag

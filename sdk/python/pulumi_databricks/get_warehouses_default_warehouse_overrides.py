@@ -67,7 +67,7 @@ class AwaitableGetWarehousesDefaultWarehouseOverridesResult(GetWarehousesDefault
 
 
 def get_warehouses_default_warehouse_overrides(page_size: Optional[_builtins.int] = None,
-                                               provider_config: Optional[Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict']] = None,
+                                               provider_config: Optional[Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict', 'outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult']] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWarehousesDefaultWarehouseOverridesResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -95,7 +95,7 @@ def get_warehouses_default_warehouse_overrides(page_size: Optional[_builtins.int
            this value.
            If unspecified, at most 100 overrides will be returned.
            The maximum value is 1000; values above 1000 will be coerced to 1000
-    :param Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict', 'outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -108,7 +108,7 @@ def get_warehouses_default_warehouse_overrides(page_size: Optional[_builtins.int
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_warehouses_default_warehouse_overrides_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                                      provider_config: pulumi.Input[Optional[Optional[Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict']]]] = None,
+                                                      provider_config: pulumi.Input[Optional[Optional[Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict', 'outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult']]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWarehousesDefaultWarehouseOverridesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -136,7 +136,7 @@ def get_warehouses_default_warehouse_overrides_output(page_size: pulumi.Input[Op
            this value.
            If unspecified, at most 100 overrides will be returned.
            The maximum value is 1000; values above 1000 will be coerced to 1000
-    :param Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict', 'outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

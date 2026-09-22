@@ -441,8 +441,8 @@ class AppSpace(pulumi.CustomResource):
                  assume_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict', 'outputs.AppSpaceProviderConfig']]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict', 'outputs.AppSpaceResource']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -460,8 +460,8 @@ class AppSpace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the app space
         :param pulumi.Input[_builtins.str] name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
                It must be unique within the workspace
-        :param pulumi.Input[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]] resources: Resources for the app space. Resources configured at the space level are available to all apps in the space
+        :param pulumi.Input[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict', 'outputs.AppSpaceProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict', 'outputs.AppSpaceResource']]]] resources: Resources for the app space. Resources configured at the space level are available to all apps in the space
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy ID for managing cost at the space level
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: OAuth scopes for apps in the space
         """
@@ -495,8 +495,8 @@ class AppSpace(pulumi.CustomResource):
                  assume_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict', 'outputs.AppSpaceProviderConfig']]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict', 'outputs.AppSpaceResource']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -542,12 +542,12 @@ class AppSpace(pulumi.CustomResource):
             effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict', 'outputs.AppSpaceProviderConfig']]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict', 'outputs.AppSpaceResource']]]]] = None,
             service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
             service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
-            status: pulumi.Input[Optional[Union['AppSpaceStatusArgs', 'AppSpaceStatusArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['AppSpaceStatusArgs', 'AppSpaceStatusArgsDict', 'outputs.AppSpaceStatus']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updater: pulumi.Input[Optional[_builtins.str]] = None,
             usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -569,12 +569,12 @@ class AppSpace(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effective_user_api_scopes: (list of string) - The effective api scopes granted to the user access token
         :param pulumi.Input[_builtins.str] name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
                It must be unique within the workspace
-        :param pulumi.Input[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]] resources: Resources for the app space. Resources configured at the space level are available to all apps in the space
+        :param pulumi.Input[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict', 'outputs.AppSpaceProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict', 'outputs.AppSpaceResource']]]] resources: Resources for the app space. Resources configured at the space level are available to all apps in the space
         :param pulumi.Input[_builtins.str] service_principal_client_id: (string) - The service principal client ID for the app space
         :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID for the app space
         :param pulumi.Input[_builtins.str] service_principal_name: (string) - The service principal name for the app space
-        :param pulumi.Input[Union['AppSpaceStatusArgs', 'AppSpaceStatusArgsDict']] status: (SpaceStatus) - The status of the app space
+        :param pulumi.Input[Union['AppSpaceStatusArgs', 'AppSpaceStatusArgsDict', 'outputs.AppSpaceStatus']] status: (SpaceStatus) - The status of the app space
         :param pulumi.Input[_builtins.str] update_time: (string) - The update time of the app space. Formatted timestamp in ISO 6801
         :param pulumi.Input[_builtins.str] updater: (string) - The email of the user that last updated the app space
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy ID for managing cost at the space level

@@ -1436,48 +1436,48 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: pulumi.Input[Optional[_builtins.bool]] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 continuous: pulumi.Input[Optional[Union['JobContinuousArgs', 'JobContinuousArgsDict']]] = None,
+                 continuous: pulumi.Input[Optional[Union['JobContinuousArgs', 'JobContinuousArgsDict', 'outputs.JobContinuous']]] = None,
                  control_run_state: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict']]] = None,
-                 deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict']]] = None,
+                 dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict', 'outputs.JobDbtTask']]] = None,
+                 deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict', 'outputs.JobDeployment']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']]] = None,
-                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict']]]]] = None,
+                 email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict', 'outputs.JobEnvironment']]]]] = None,
                  existing_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
-                 git_source: pulumi.Input[Optional[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']]] = None,
-                 health: pulumi.Input[Optional[Union['JobHealthArgs', 'JobHealthArgsDict']]] = None,
-                 job_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]]] = None,
-                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]]] = None,
+                 git_source: pulumi.Input[Optional[Union['JobGitSourceArgs', 'JobGitSourceArgsDict', 'outputs.JobGitSource']]] = None,
+                 health: pulumi.Input[Optional[Union['JobHealthArgs', 'JobHealthArgsDict', 'outputs.JobHealth']]] = None,
+                 job_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict', 'outputs.JobJobCluster']]]]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict', 'outputs.JobLibrary']]]]] = None,
                  max_concurrent_runs: pulumi.Input[Optional[_builtins.int]] = None,
                  max_retries: pulumi.Input[Optional[_builtins.int]] = None,
                  min_retry_interval_millis: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 new_cluster: pulumi.Input[Optional[Union['JobNewClusterArgs', 'JobNewClusterArgsDict']]] = None,
-                 notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
-                 notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+                 new_cluster: pulumi.Input[Optional[Union['JobNewClusterArgs', 'JobNewClusterArgsDict', 'outputs.JobNewCluster']]] = None,
+                 notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict', 'outputs.JobNotebookTask']]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict', 'outputs.JobNotificationSettings']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict', 'outputs.JobParameter']]]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_target: pulumi.Input[Optional[_builtins.str]] = None,
-                 pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
-                 python_wheel_task: pulumi.Input[Optional[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
-                 queue: pulumi.Input[Optional[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
+                 pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict', 'outputs.JobPipelineTask']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict', 'outputs.JobProviderConfig']]] = None,
+                 python_wheel_task: pulumi.Input[Optional[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict', 'outputs.JobPythonWheelTask']]] = None,
+                 queue: pulumi.Input[Optional[Union['JobQueueArgs', 'JobQueueArgsDict', 'outputs.JobQueue']]] = None,
                  retry_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
-                 run_as: pulumi.Input[Optional[Union['JobRunAsArgs', 'JobRunAsArgsDict']]] = None,
-                 run_job_task: pulumi.Input[Optional[Union['JobRunJobTaskArgs', 'JobRunJobTaskArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['JobScheduleArgs', 'JobScheduleArgsDict']]] = None,
-                 spark_jar_task: pulumi.Input[Optional[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict']]] = None,
-                 spark_python_task: pulumi.Input[Optional[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict']]] = None,
-                 spark_submit_task: pulumi.Input[Optional[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict']]] = None,
+                 run_as: pulumi.Input[Optional[Union['JobRunAsArgs', 'JobRunAsArgsDict', 'outputs.JobRunAs']]] = None,
+                 run_job_task: pulumi.Input[Optional[Union['JobRunJobTaskArgs', 'JobRunJobTaskArgsDict', 'outputs.JobRunJobTask']]] = None,
+                 schedule: pulumi.Input[Optional[Union['JobScheduleArgs', 'JobScheduleArgsDict', 'outputs.JobSchedule']]] = None,
+                 spark_jar_task: pulumi.Input[Optional[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict', 'outputs.JobSparkJarTask']]] = None,
+                 spark_python_task: pulumi.Input[Optional[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict', 'outputs.JobSparkPythonTask']]] = None,
+                 spark_submit_task: pulumi.Input[Optional[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict', 'outputs.JobSparkSubmitTask']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
+                 tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict', 'outputs.JobTask']]]]] = None,
                  timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
-                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]]]] = None,
+                 trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict', 'outputs.JobTrigger']]] = None,
+                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict', 'outputs.JobTrigger']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None,
+                 webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict', 'outputs.JobWebhookNotifications']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/jobs)
@@ -1557,34 +1557,34 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-        :param pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']] continuous: Configuration block to configure pause status. See continuous Configuration Block.
+        :param pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict', 'outputs.JobContinuous']] continuous: Configuration block to configure pause status. See continuous Configuration Block.
         :param pulumi.Input[_builtins.bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         :param pulumi.Input[_builtins.str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[_builtins.str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
-        :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifies the a Git repository for task source code. See git_source Configuration Block below.
-        :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict']] health: An optional block that specifies the health conditions for the job documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict', 'outputs.JobGitSource']] git_source: Specifies the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict', 'outputs.JobHealth']] health: An optional block that specifies the health conditions for the job documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict', 'outputs.JobJobCluster']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict', 'outputs.JobLibrary']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param pulumi.Input[_builtins.int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[_builtins.int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[_builtins.str] name: An optional name for the job. The default value is Untitled.
-        :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']] notification_settings: An optional block controlling the notification settings on the job level documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifies job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict', 'outputs.JobNotificationSettings']] notification_settings: An optional block controlling the notification settings on the job level documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict', 'outputs.JobParameter']]]] parameters: Specifies job parameter for the job. See parameter Configuration Block
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
-        :param pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
-        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
-        :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        :param pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict', 'outputs.JobProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict', 'outputs.JobQueue']] queue: The queue status for the job. See queue Configuration Block below.
+        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict', 'outputs.JobRunAs']] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict', 'outputs.JobSchedule']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict', 'outputs.JobTask']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[_builtins.int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        :param pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
-        :param pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        :param pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict', 'outputs.JobTrigger']] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
+        :param pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict', 'outputs.JobWebhookNotifications']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         ...
     @overload
@@ -1683,48 +1683,48 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: pulumi.Input[Optional[_builtins.bool]] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 continuous: pulumi.Input[Optional[Union['JobContinuousArgs', 'JobContinuousArgsDict']]] = None,
+                 continuous: pulumi.Input[Optional[Union['JobContinuousArgs', 'JobContinuousArgsDict', 'outputs.JobContinuous']]] = None,
                  control_run_state: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict']]] = None,
-                 deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict']]] = None,
+                 dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict', 'outputs.JobDbtTask']]] = None,
+                 deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict', 'outputs.JobDeployment']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']]] = None,
-                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict']]]]] = None,
+                 email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict', 'outputs.JobEnvironment']]]]] = None,
                  existing_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
-                 git_source: pulumi.Input[Optional[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']]] = None,
-                 health: pulumi.Input[Optional[Union['JobHealthArgs', 'JobHealthArgsDict']]] = None,
-                 job_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]]] = None,
-                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]]] = None,
+                 git_source: pulumi.Input[Optional[Union['JobGitSourceArgs', 'JobGitSourceArgsDict', 'outputs.JobGitSource']]] = None,
+                 health: pulumi.Input[Optional[Union['JobHealthArgs', 'JobHealthArgsDict', 'outputs.JobHealth']]] = None,
+                 job_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict', 'outputs.JobJobCluster']]]]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict', 'outputs.JobLibrary']]]]] = None,
                  max_concurrent_runs: pulumi.Input[Optional[_builtins.int]] = None,
                  max_retries: pulumi.Input[Optional[_builtins.int]] = None,
                  min_retry_interval_millis: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 new_cluster: pulumi.Input[Optional[Union['JobNewClusterArgs', 'JobNewClusterArgsDict']]] = None,
-                 notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
-                 notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+                 new_cluster: pulumi.Input[Optional[Union['JobNewClusterArgs', 'JobNewClusterArgsDict', 'outputs.JobNewCluster']]] = None,
+                 notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict', 'outputs.JobNotebookTask']]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict', 'outputs.JobNotificationSettings']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict', 'outputs.JobParameter']]]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_target: pulumi.Input[Optional[_builtins.str]] = None,
-                 pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
-                 python_wheel_task: pulumi.Input[Optional[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
-                 queue: pulumi.Input[Optional[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
+                 pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict', 'outputs.JobPipelineTask']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict', 'outputs.JobProviderConfig']]] = None,
+                 python_wheel_task: pulumi.Input[Optional[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict', 'outputs.JobPythonWheelTask']]] = None,
+                 queue: pulumi.Input[Optional[Union['JobQueueArgs', 'JobQueueArgsDict', 'outputs.JobQueue']]] = None,
                  retry_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
-                 run_as: pulumi.Input[Optional[Union['JobRunAsArgs', 'JobRunAsArgsDict']]] = None,
-                 run_job_task: pulumi.Input[Optional[Union['JobRunJobTaskArgs', 'JobRunJobTaskArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['JobScheduleArgs', 'JobScheduleArgsDict']]] = None,
-                 spark_jar_task: pulumi.Input[Optional[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict']]] = None,
-                 spark_python_task: pulumi.Input[Optional[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict']]] = None,
-                 spark_submit_task: pulumi.Input[Optional[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict']]] = None,
+                 run_as: pulumi.Input[Optional[Union['JobRunAsArgs', 'JobRunAsArgsDict', 'outputs.JobRunAs']]] = None,
+                 run_job_task: pulumi.Input[Optional[Union['JobRunJobTaskArgs', 'JobRunJobTaskArgsDict', 'outputs.JobRunJobTask']]] = None,
+                 schedule: pulumi.Input[Optional[Union['JobScheduleArgs', 'JobScheduleArgsDict', 'outputs.JobSchedule']]] = None,
+                 spark_jar_task: pulumi.Input[Optional[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict', 'outputs.JobSparkJarTask']]] = None,
+                 spark_python_task: pulumi.Input[Optional[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict', 'outputs.JobSparkPythonTask']]] = None,
+                 spark_submit_task: pulumi.Input[Optional[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict', 'outputs.JobSparkSubmitTask']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
+                 tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict', 'outputs.JobTask']]]]] = None,
                  timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
-                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]]]] = None,
+                 trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict', 'outputs.JobTrigger']]] = None,
+                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict', 'outputs.JobTrigger']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None,
+                 webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict', 'outputs.JobWebhookNotifications']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1791,49 +1791,49 @@ class Job(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             always_running: pulumi.Input[Optional[_builtins.bool]] = None,
             budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            continuous: pulumi.Input[Optional[Union['JobContinuousArgs', 'JobContinuousArgsDict']]] = None,
+            continuous: pulumi.Input[Optional[Union['JobContinuousArgs', 'JobContinuousArgsDict', 'outputs.JobContinuous']]] = None,
             control_run_state: pulumi.Input[Optional[_builtins.bool]] = None,
-            dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict']]] = None,
-            deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict']]] = None,
+            dbt_task: pulumi.Input[Optional[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict', 'outputs.JobDbtTask']]] = None,
+            deployment: pulumi.Input[Optional[Union['JobDeploymentArgs', 'JobDeploymentArgsDict', 'outputs.JobDeployment']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             edit_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']]] = None,
-            environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict']]]]] = None,
+            email_notifications: pulumi.Input[Optional[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']]] = None,
+            environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobEnvironmentArgs', 'JobEnvironmentArgsDict', 'outputs.JobEnvironment']]]]] = None,
             existing_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             format: pulumi.Input[Optional[_builtins.str]] = None,
-            git_source: pulumi.Input[Optional[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']]] = None,
-            health: pulumi.Input[Optional[Union['JobHealthArgs', 'JobHealthArgsDict']]] = None,
-            job_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]]] = None,
-            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]]] = None,
+            git_source: pulumi.Input[Optional[Union['JobGitSourceArgs', 'JobGitSourceArgsDict', 'outputs.JobGitSource']]] = None,
+            health: pulumi.Input[Optional[Union['JobHealthArgs', 'JobHealthArgsDict', 'outputs.JobHealth']]] = None,
+            job_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict', 'outputs.JobJobCluster']]]]] = None,
+            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict', 'outputs.JobLibrary']]]]] = None,
             max_concurrent_runs: pulumi.Input[Optional[_builtins.int]] = None,
             max_retries: pulumi.Input[Optional[_builtins.int]] = None,
             min_retry_interval_millis: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            new_cluster: pulumi.Input[Optional[Union['JobNewClusterArgs', 'JobNewClusterArgsDict']]] = None,
-            notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
-            notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+            new_cluster: pulumi.Input[Optional[Union['JobNewClusterArgs', 'JobNewClusterArgsDict', 'outputs.JobNewCluster']]] = None,
+            notebook_task: pulumi.Input[Optional[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict', 'outputs.JobNotebookTask']]] = None,
+            notification_settings: pulumi.Input[Optional[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict', 'outputs.JobNotificationSettings']]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict', 'outputs.JobParameter']]]]] = None,
             parent_path: pulumi.Input[Optional[_builtins.str]] = None,
             performance_target: pulumi.Input[Optional[_builtins.str]] = None,
-            pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
-            provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
-            python_wheel_task: pulumi.Input[Optional[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
-            queue: pulumi.Input[Optional[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
+            pipeline_task: pulumi.Input[Optional[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict', 'outputs.JobPipelineTask']]] = None,
+            provider_config: pulumi.Input[Optional[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict', 'outputs.JobProviderConfig']]] = None,
+            python_wheel_task: pulumi.Input[Optional[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict', 'outputs.JobPythonWheelTask']]] = None,
+            queue: pulumi.Input[Optional[Union['JobQueueArgs', 'JobQueueArgsDict', 'outputs.JobQueue']]] = None,
             retry_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
-            run_as: pulumi.Input[Optional[Union['JobRunAsArgs', 'JobRunAsArgsDict']]] = None,
-            run_job_task: pulumi.Input[Optional[Union['JobRunJobTaskArgs', 'JobRunJobTaskArgsDict']]] = None,
-            schedule: pulumi.Input[Optional[Union['JobScheduleArgs', 'JobScheduleArgsDict']]] = None,
-            spark_jar_task: pulumi.Input[Optional[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict']]] = None,
-            spark_python_task: pulumi.Input[Optional[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict']]] = None,
-            spark_submit_task: pulumi.Input[Optional[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict']]] = None,
+            run_as: pulumi.Input[Optional[Union['JobRunAsArgs', 'JobRunAsArgsDict', 'outputs.JobRunAs']]] = None,
+            run_job_task: pulumi.Input[Optional[Union['JobRunJobTaskArgs', 'JobRunJobTaskArgsDict', 'outputs.JobRunJobTask']]] = None,
+            schedule: pulumi.Input[Optional[Union['JobScheduleArgs', 'JobScheduleArgsDict', 'outputs.JobSchedule']]] = None,
+            spark_jar_task: pulumi.Input[Optional[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict', 'outputs.JobSparkJarTask']]] = None,
+            spark_python_task: pulumi.Input[Optional[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict', 'outputs.JobSparkPythonTask']]] = None,
+            spark_submit_task: pulumi.Input[Optional[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict', 'outputs.JobSparkSubmitTask']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
+            tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict', 'outputs.JobTask']]]]] = None,
             timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-            trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
-            triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]]]] = None,
+            trigger: pulumi.Input[Optional[Union['JobTriggerArgs', 'JobTriggerArgsDict', 'outputs.JobTrigger']]] = None,
+            triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict', 'outputs.JobTrigger']]]]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None) -> 'Job':
+            webhook_notifications: pulumi.Input[Optional[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict', 'outputs.JobWebhookNotifications']]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1843,35 +1843,35 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-        :param pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']] continuous: Configuration block to configure pause status. See continuous Configuration Block.
+        :param pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict', 'outputs.JobContinuous']] continuous: Configuration block to configure pause status. See continuous Configuration Block.
         :param pulumi.Input[_builtins.bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         :param pulumi.Input[_builtins.str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[_builtins.str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
-        :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifies the a Git repository for task source code. See git_source Configuration Block below.
-        :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict']] health: An optional block that specifies the health conditions for the job documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict', 'outputs.JobEmailNotifications']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict', 'outputs.JobGitSource']] git_source: Specifies the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict', 'outputs.JobHealth']] health: An optional block that specifies the health conditions for the job documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict', 'outputs.JobJobCluster']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict', 'outputs.JobLibrary']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param pulumi.Input[_builtins.int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[_builtins.int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[_builtins.str] name: An optional name for the job. The default value is Untitled.
-        :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']] notification_settings: An optional block controlling the notification settings on the job level documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifies job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict', 'outputs.JobNotificationSettings']] notification_settings: An optional block controlling the notification settings on the job level documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict', 'outputs.JobParameter']]]] parameters: Specifies job parameter for the job. See parameter Configuration Block
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
-        :param pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
-        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
-        :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        :param pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict', 'outputs.JobProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict', 'outputs.JobQueue']] queue: The queue status for the job. See queue Configuration Block below.
+        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict', 'outputs.JobRunAs']] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict', 'outputs.JobSchedule']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict', 'outputs.JobTask']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[_builtins.int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        :param pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
+        :param pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict', 'outputs.JobTrigger']] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
         :param pulumi.Input[_builtins.str] url: URL of the job on the given workspace
-        :param pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        :param pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict', 'outputs.JobWebhookNotifications']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

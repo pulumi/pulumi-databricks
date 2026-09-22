@@ -91,7 +91,7 @@ class AwaitableGetNotebookPathsResult(GetNotebookPathsResult):
 
 
 def get_notebook_paths(path: Optional[_builtins.str] = None,
-                       provider_config: Optional[Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict']] = None,
+                       provider_config: Optional[Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict', 'outputs.GetNotebookPathsProviderConfigResult']] = None,
                        recursive: Optional[_builtins.bool] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotebookPathsResult:
     """
@@ -111,7 +111,7 @@ def get_notebook_paths(path: Optional[_builtins.str] = None,
 
 
     :param _builtins.str path: Path to workspace directory
-    :param Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict', 'outputs.GetNotebookPathsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool recursive: Either or recursively walk given path
     """
     __args__ = dict()
@@ -128,7 +128,7 @@ def get_notebook_paths(path: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         recursive=pulumi.get(__ret__, 'recursive'))
 def get_notebook_paths_output(path: pulumi.Input[Optional[_builtins.str]] = None,
-                              provider_config: pulumi.Input[Optional[Optional[Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict']]]] = None,
+                              provider_config: pulumi.Input[Optional[Optional[Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict', 'outputs.GetNotebookPathsProviderConfigResult']]]] = None,
                               recursive: pulumi.Input[Optional[_builtins.bool]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookPathsResult]:
     """
@@ -148,7 +148,7 @@ def get_notebook_paths_output(path: pulumi.Input[Optional[_builtins.str]] = None
 
 
     :param _builtins.str path: Path to workspace directory
-    :param Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict', 'outputs.GetNotebookPathsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool recursive: Either or recursively walk given path
     """
     __args__ = dict()

@@ -86,8 +86,8 @@ class AwaitableGetSchemaResult(GetSchemaResult):
 
 def get_schema(id: Optional[_builtins.str] = None,
                name: Optional[_builtins.str] = None,
-               provider_config: Optional[Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict']] = None,
-               schema_info: Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict']] = None,
+               provider_config: Optional[Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict', 'outputs.GetSchemaProviderConfigResult']] = None,
+               schema_info: Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict', 'outputs.GetSchemaSchemaInfoResult']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemaResult:
     """
     Retrieves details about Schema that was created by Pulumi or manually.
@@ -126,8 +126,8 @@ def get_schema(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
     :param _builtins.str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
-    :param Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+    :param Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict', 'outputs.GetSchemaProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict', 'outputs.GetSchemaSchemaInfoResult'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -144,8 +144,8 @@ def get_schema(id: Optional[_builtins.str] = None,
         schema_info=pulumi.get(__ret__, 'schema_info'))
 def get_schema_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       name: pulumi.Input[Optional[_builtins.str]] = None,
-                      provider_config: pulumi.Input[Optional[Optional[Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict']]]] = None,
-                      schema_info: pulumi.Input[Optional[Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict']]]] = None,
+                      provider_config: pulumi.Input[Optional[Optional[Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict', 'outputs.GetSchemaProviderConfigResult']]]] = None,
+                      schema_info: pulumi.Input[Optional[Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict', 'outputs.GetSchemaSchemaInfoResult']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemaResult]:
     """
     Retrieves details about Schema that was created by Pulumi or manually.
@@ -184,8 +184,8 @@ def get_schema_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None
 
     :param _builtins.str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
     :param _builtins.str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
-    :param Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+    :param Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict', 'outputs.GetSchemaProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict', 'outputs.GetSchemaSchemaInfoResult'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id

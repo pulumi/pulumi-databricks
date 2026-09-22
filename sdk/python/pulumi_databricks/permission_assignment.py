@@ -260,7 +260,7 @@ class PermissionAssignment(pulumi.CustomResource):
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict', 'outputs.PermissionAssignmentProviderConfig']]] = None,
                  service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
                  user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -369,7 +369,7 @@ class PermissionAssignment(pulumi.CustomResource):
                * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
                * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
-        :param pulumi.Input[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict', 'outputs.PermissionAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] service_principal_name: the application ID of service principal to assign to a workspace.
         :param pulumi.Input[_builtins.str] user_name: the user name (email) to assign to a workspace.
         """
@@ -495,7 +495,7 @@ class PermissionAssignment(pulumi.CustomResource):
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict', 'outputs.PermissionAssignmentProviderConfig']]] = None,
                  service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
                  user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -530,7 +530,7 @@ class PermissionAssignment(pulumi.CustomResource):
             group_name: pulumi.Input[Optional[_builtins.str]] = None,
             permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict', 'outputs.PermissionAssignmentProviderConfig']]] = None,
             service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
             user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'PermissionAssignment':
         """
@@ -546,7 +546,7 @@ class PermissionAssignment(pulumi.CustomResource):
                * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
                * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
-        :param pulumi.Input[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict', 'outputs.PermissionAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] service_principal_name: the application ID of service principal to assign to a workspace.
         :param pulumi.Input[_builtins.str] user_name: the user name (email) to assign to a workspace.
         """

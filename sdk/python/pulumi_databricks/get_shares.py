@@ -60,7 +60,7 @@ class AwaitableGetSharesResult(GetSharesResult):
             shares=self.shares)
 
 
-def get_shares(provider_config: Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict']] = None,
+def get_shares(provider_config: Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict', 'outputs.GetSharesProviderConfigResult']] = None,
                shares: Optional[Sequence[_builtins.str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSharesResult:
     """
@@ -95,7 +95,7 @@ def get_shares(provider_config: Optional[Union['GetSharesProviderConfigArgs', 'G
     * Grants to manage Delta Sharing permissions.
 
 
-    :param Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict', 'outputs.GetSharesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] shares: list of Share names.
     """
     __args__ = dict()
@@ -107,7 +107,7 @@ def get_shares(provider_config: Optional[Union['GetSharesProviderConfigArgs', 'G
     return AwaitableGetSharesResult(
         provider_config=pulumi.get(__ret__, 'provider_config'),
         shares=pulumi.get(__ret__, 'shares'))
-def get_shares_output(provider_config: pulumi.Input[Optional[Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict']]]] = None,
+def get_shares_output(provider_config: pulumi.Input[Optional[Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict', 'outputs.GetSharesProviderConfigResult']]]] = None,
                       shares: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSharesResult]:
     """
@@ -142,7 +142,7 @@ def get_shares_output(provider_config: pulumi.Input[Optional[Optional[Union['Get
     * Grants to manage Delta Sharing permissions.
 
 
-    :param Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict', 'outputs.GetSharesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] shares: list of Share names.
     """
     __args__ = dict()

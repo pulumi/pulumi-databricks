@@ -241,10 +241,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
+                 aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysAwsKeyInfo']]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
+                 gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysGcpKeyInfo']]] = None,
                  use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -324,10 +324,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
+        :param pulumi.Input[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysAwsKeyInfo']] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[_builtins.int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[_builtins.str] customer_managed_key_id: (String) ID of the encryption key configuration object.
-        :param pulumi.Input[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
+        :param pulumi.Input[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysGcpKeyInfo']] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
                * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
                * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
@@ -428,10 +428,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
+                 aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysAwsKeyInfo']]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
+                 gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysGcpKeyInfo']]] = None,
                  use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -463,10 +463,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
+            aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysAwsKeyInfo']]] = None,
             creation_time: pulumi.Input[Optional[_builtins.int]] = None,
             customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
-            gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
+            gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysGcpKeyInfo']]] = None,
             use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'MwsCustomerManagedKeys':
         """
         Get an existing MwsCustomerManagedKeys resource's state with the given name, id, and optional extra
@@ -476,10 +476,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
+        :param pulumi.Input[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysAwsKeyInfo']] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[_builtins.int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[_builtins.str] customer_managed_key_id: (String) ID of the encryption key configuration object.
-        :param pulumi.Input[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
+        :param pulumi.Input[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict', 'outputs.MwsCustomerManagedKeysGcpKeyInfo']] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
                * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
                * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes

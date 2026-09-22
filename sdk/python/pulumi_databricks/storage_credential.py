@@ -563,20 +563,20 @@ class StorageCredential(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
-                 azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
-                 azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
-                 cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
+                 aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict', 'outputs.StorageCredentialAwsIamRole']]] = None,
+                 azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict', 'outputs.StorageCredentialAzureManagedIdentity']]] = None,
+                 azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict', 'outputs.StorageCredentialAzureServicePrincipal']]] = None,
+                 cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict', 'outputs.StorageCredentialCloudflareApiToken']]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict', 'outputs.StorageCredentialDatabricksGcpServiceAccount']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
+                 gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict', 'outputs.StorageCredentialGcpServiceAccountKey']]] = None,
                  isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict', 'outputs.StorageCredentialProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -657,14 +657,14 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']] aws_iam_role: exposes two additional attributes:
+        :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict', 'outputs.StorageCredentialAwsIamRole']] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[_builtins.str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the storage credential owner.
-        :param pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict', 'outputs.StorageCredentialProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the storage credential is only usable for read operations.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
@@ -762,20 +762,20 @@ class StorageCredential(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
-                 azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
-                 azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
-                 cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
+                 aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict', 'outputs.StorageCredentialAwsIamRole']]] = None,
+                 azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict', 'outputs.StorageCredentialAzureManagedIdentity']]] = None,
+                 azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict', 'outputs.StorageCredentialAzureServicePrincipal']]] = None,
+                 cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict', 'outputs.StorageCredentialCloudflareApiToken']]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict', 'outputs.StorageCredentialDatabricksGcpServiceAccount']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
+                 gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict', 'outputs.StorageCredentialGcpServiceAccountKey']]] = None,
                  isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict', 'outputs.StorageCredentialProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -816,20 +816,20 @@ class StorageCredential(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api: pulumi.Input[Optional[_builtins.str]] = None,
-            aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
-            azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
-            azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
-            cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
+            aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict', 'outputs.StorageCredentialAwsIamRole']]] = None,
+            azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict', 'outputs.StorageCredentialAzureManagedIdentity']]] = None,
+            azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict', 'outputs.StorageCredentialAzureServicePrincipal']]] = None,
+            cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict', 'outputs.StorageCredentialCloudflareApiToken']]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
-            databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+            databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict', 'outputs.StorageCredentialDatabricksGcpServiceAccount']]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             force_update: pulumi.Input[Optional[_builtins.bool]] = None,
-            gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
+            gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict', 'outputs.StorageCredentialGcpServiceAccountKey']]] = None,
             isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict', 'outputs.StorageCredentialProviderConfig']]] = None,
             read_only: pulumi.Input[Optional[_builtins.bool]] = None,
             skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
             storage_credential_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'StorageCredential':
@@ -843,14 +843,14 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']] aws_iam_role: exposes two additional attributes:
+        :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict', 'outputs.StorageCredentialAwsIamRole']] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[_builtins.str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the storage credential owner.
-        :param pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict', 'outputs.StorageCredentialProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the storage credential is only usable for read operations.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         :param pulumi.Input[_builtins.str] storage_credential_id: Unique ID of storage credential.

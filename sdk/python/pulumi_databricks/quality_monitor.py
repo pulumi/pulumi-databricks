@@ -661,20 +661,20 @@ class QualityMonitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
                  baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
-                 data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
-                 inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
+                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict', 'outputs.QualityMonitorCustomMetric']]]]] = None,
+                 data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict', 'outputs.QualityMonitorDataClassificationConfig']]] = None,
+                 inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict', 'outputs.QualityMonitorInferenceLog']]] = None,
                  latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
+                 notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict', 'outputs.QualityMonitorNotifications']]] = None,
                  output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict', 'outputs.QualityMonitorProviderConfig']]] = None,
+                 schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict', 'outputs.QualityMonitorSchedule']]] = None,
                  skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
                  slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
+                 snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict', 'outputs.QualityMonitorSnapshot']]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
+                 time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict', 'outputs.QualityMonitorTimeSeries']]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -786,19 +786,19 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] assets_dir: The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
         :param pulumi.Input[_builtins.str] baseline_table_name: Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
                table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-        :param pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']] data_classification_config: The data classification config for the monitor
-        :param pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict', 'outputs.QualityMonitorCustomMetric']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+        :param pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict', 'outputs.QualityMonitorDataClassificationConfig']] data_classification_config: The data classification config for the monitor
+        :param pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict', 'outputs.QualityMonitorInferenceLog']] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[_builtins.str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-        :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict', 'outputs.QualityMonitorNotifications']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
-        :param pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+        :param pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict', 'outputs.QualityMonitorProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict', 'outputs.QualityMonitorSchedule']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[_builtins.bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-        :param pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']] snapshot: Configuration for monitoring snapshot tables.
+        :param pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict', 'outputs.QualityMonitorSnapshot']] snapshot: Configuration for monitoring snapshot tables.
         :param pulumi.Input[_builtins.str] table_name: The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-        :param pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']] time_series: Configuration for monitoring timeseries tables.
+        :param pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict', 'outputs.QualityMonitorTimeSeries']] time_series: Configuration for monitoring timeseries tables.
         :param pulumi.Input[_builtins.str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         ...
@@ -928,20 +928,20 @@ class QualityMonitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
                  baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
-                 data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
-                 inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
+                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict', 'outputs.QualityMonitorCustomMetric']]]]] = None,
+                 data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict', 'outputs.QualityMonitorDataClassificationConfig']]] = None,
+                 inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict', 'outputs.QualityMonitorInferenceLog']]] = None,
                  latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
+                 notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict', 'outputs.QualityMonitorNotifications']]] = None,
                  output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict', 'outputs.QualityMonitorProviderConfig']]] = None,
+                 schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict', 'outputs.QualityMonitorSchedule']]] = None,
                  skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
                  slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
+                 snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict', 'outputs.QualityMonitorSnapshot']]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
+                 time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict', 'outputs.QualityMonitorTimeSeries']]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -992,25 +992,25 @@ class QualityMonitor(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
             baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
+            custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict', 'outputs.QualityMonitorCustomMetric']]]]] = None,
             dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
-            data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
+            data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict', 'outputs.QualityMonitorDataClassificationConfig']]] = None,
             drift_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
-            inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
+            inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict', 'outputs.QualityMonitorInferenceLog']]] = None,
             latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
             monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
             monitor_version: pulumi.Input[Optional[_builtins.int]] = None,
-            notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
+            notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict', 'outputs.QualityMonitorNotifications']]] = None,
             output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
             profile_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
-            schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict', 'outputs.QualityMonitorProviderConfig']]] = None,
+            schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict', 'outputs.QualityMonitorSchedule']]] = None,
             skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
             slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
+            snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict', 'outputs.QualityMonitorSnapshot']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             table_name: pulumi.Input[Optional[_builtins.str]] = None,
-            time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
+            time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict', 'outputs.QualityMonitorTimeSeries']]] = None,
             warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'QualityMonitor':
         """
         Get an existing QualityMonitor resource's state with the given name, id, and optional extra
@@ -1022,24 +1022,24 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] assets_dir: The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
         :param pulumi.Input[_builtins.str] baseline_table_name: Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
                table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict', 'outputs.QualityMonitorCustomMetric']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         :param pulumi.Input[_builtins.str] dashboard_id: The ID of the generated dashboard.
-        :param pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']] data_classification_config: The data classification config for the monitor
+        :param pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict', 'outputs.QualityMonitorDataClassificationConfig']] data_classification_config: The data classification config for the monitor
         :param pulumi.Input[_builtins.str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-        :param pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
+        :param pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict', 'outputs.QualityMonitorInferenceLog']] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[_builtins.str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         :param pulumi.Input[_builtins.int] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-        :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict', 'outputs.QualityMonitorNotifications']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[_builtins.str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-        :param pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+        :param pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict', 'outputs.QualityMonitorProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict', 'outputs.QualityMonitorSchedule']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[_builtins.bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-        :param pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']] snapshot: Configuration for monitoring snapshot tables.
+        :param pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict', 'outputs.QualityMonitorSnapshot']] snapshot: Configuration for monitoring snapshot tables.
         :param pulumi.Input[_builtins.str] status: Status of the Monitor
         :param pulumi.Input[_builtins.str] table_name: The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-        :param pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']] time_series: Configuration for monitoring timeseries tables.
+        :param pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict', 'outputs.QualityMonitorTimeSeries']] time_series: Configuration for monitoring timeseries tables.
         :param pulumi.Input[_builtins.str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

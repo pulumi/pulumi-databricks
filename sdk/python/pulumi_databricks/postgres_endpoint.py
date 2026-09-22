@@ -288,9 +288,9 @@ class PostgresEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict', 'outputs.PostgresEndpointProviderConfig']]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -508,9 +508,9 @@ class PostgresEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] endpoint_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict', 'outputs.PostgresEndpointProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
-        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         ...
     @overload
@@ -746,9 +746,9 @@ class PostgresEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict', 'outputs.PostgresEndpointProviderConfig']]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -786,10 +786,10 @@ class PostgresEndpoint(pulumi.CustomResource):
             endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict', 'outputs.PostgresEndpointProviderConfig']]] = None,
             replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-            spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict', 'outputs.PostgresEndpointStatus']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresEndpoint':
         """
@@ -805,10 +805,10 @@ class PostgresEndpoint(pulumi.CustomResource):
                Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict', 'outputs.PostgresEndpointProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
-        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
-        :param pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']] status: (EndpointStatus) - Current operational status of the compute endpoint
+        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        :param pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict', 'outputs.PostgresEndpointStatus']] status: (EndpointStatus) - Current operational status of the compute endpoint
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the compute endpoint was last updated
         """

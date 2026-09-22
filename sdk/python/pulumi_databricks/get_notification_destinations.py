@@ -79,7 +79,7 @@ class AwaitableGetNotificationDestinationsResult(GetNotificationDestinationsResu
 
 
 def get_notification_destinations(display_name_contains: Optional[_builtins.str] = None,
-                                  provider_config: Optional[Union['GetNotificationDestinationsProviderConfigArgs', 'GetNotificationDestinationsProviderConfigArgsDict']] = None,
+                                  provider_config: Optional[Union['GetNotificationDestinationsProviderConfigArgs', 'GetNotificationDestinationsProviderConfigArgsDict', 'outputs.GetNotificationDestinationsProviderConfigResult']] = None,
                                   type: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotificationDestinationsResult:
     """
@@ -136,7 +136,7 @@ def get_notification_destinations(display_name_contains: Optional[_builtins.str]
         provider_config=pulumi.get(__ret__, 'provider_config'),
         type=pulumi.get(__ret__, 'type'))
 def get_notification_destinations_output(display_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                         provider_config: pulumi.Input[Optional[Optional[Union['GetNotificationDestinationsProviderConfigArgs', 'GetNotificationDestinationsProviderConfigArgsDict']]]] = None,
+                                         provider_config: pulumi.Input[Optional[Optional[Union['GetNotificationDestinationsProviderConfigArgs', 'GetNotificationDestinationsProviderConfigArgsDict', 'outputs.GetNotificationDestinationsProviderConfigResult']]]] = None,
                                          type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationDestinationsResult]:
     """

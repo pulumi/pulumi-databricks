@@ -92,7 +92,7 @@ class AwaitableGetFeatureEngineeringFeaturesResult(GetFeatureEngineeringFeatures
 
 def get_feature_engineering_features(catalog_name: Optional[_builtins.str] = None,
                                      page_size: Optional[_builtins.int] = None,
-                                     provider_config: Optional[Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict']] = None,
+                                     provider_config: Optional[Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeaturesProviderConfigResult']] = None,
                                      schema_name: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringFeaturesResult:
     """
@@ -101,7 +101,7 @@ def get_feature_engineering_features(catalog_name: Optional[_builtins.str] = Non
 
     :param _builtins.str catalog_name: Name of parent catalog for features of interest
     :param _builtins.int page_size: The maximum number of results to return
-    :param Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeaturesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str schema_name: Name of parent schema relative to its parent catalog
     """
     __args__ = dict()
@@ -120,7 +120,7 @@ def get_feature_engineering_features(catalog_name: Optional[_builtins.str] = Non
         schema_name=pulumi.get(__ret__, 'schema_name'))
 def get_feature_engineering_features_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                                             page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                            provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict']]]] = None,
+                                            provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeaturesProviderConfigResult']]]] = None,
                                             schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringFeaturesResult]:
     """
@@ -129,7 +129,7 @@ def get_feature_engineering_features_output(catalog_name: pulumi.Input[Optional[
 
     :param _builtins.str catalog_name: Name of parent catalog for features of interest
     :param _builtins.int page_size: The maximum number of results to return
-    :param Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict', 'outputs.GetFeatureEngineeringFeaturesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str schema_name: Name of parent schema relative to its parent catalog
     """
     __args__ = dict()

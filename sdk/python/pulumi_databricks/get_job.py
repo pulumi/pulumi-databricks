@@ -105,9 +105,9 @@ class AwaitableGetJobResult(GetJobResult):
 def get_job(id: Optional[_builtins.str] = None,
             job_id: Optional[_builtins.str] = None,
             job_name: Optional[_builtins.str] = None,
-            job_settings: Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']] = None,
+            job_settings: Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict', 'outputs.GetJobJobSettingsResult']] = None,
             name: Optional[_builtins.str] = None,
-            provider_config: Optional[Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict']] = None,
+            provider_config: Optional[Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict', 'outputs.GetJobProviderConfigResult']] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
     Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.
@@ -135,9 +135,9 @@ def get_job(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str id: the id of Job if the resource was matched by name.
-    :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
+    :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict', 'outputs.GetJobJobSettingsResult'] job_settings: the same fields as in databricks_job.
     :param _builtins.str name: the job name of Job if the resource was matched by id.
-    :param Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict', 'outputs.GetJobProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -159,9 +159,9 @@ def get_job(id: Optional[_builtins.str] = None,
 def get_job_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                    job_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                    job_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                   job_settings: pulumi.Input[Optional[Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']]]] = None,
+                   job_settings: pulumi.Input[Optional[Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict', 'outputs.GetJobJobSettingsResult']]]] = None,
                    name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                   provider_config: pulumi.Input[Optional[Optional[Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict']]]] = None,
+                   provider_config: pulumi.Input[Optional[Optional[Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict', 'outputs.GetJobProviderConfigResult']]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobResult]:
     """
     Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.
@@ -189,9 +189,9 @@ def get_job_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
 
 
     :param _builtins.str id: the id of Job if the resource was matched by name.
-    :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
+    :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict', 'outputs.GetJobJobSettingsResult'] job_settings: the same fields as in databricks_job.
     :param _builtins.str name: the job name of Job if the resource was matched by id.
-    :param Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict', 'outputs.GetJobProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['id'] = id

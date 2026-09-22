@@ -357,15 +357,15 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']]] = None,
-                 backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
+                 auth_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigAuthConfig']]] = None,
+                 backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict', 'outputs.FeatureEngineeringKafkaConfigBackfillSource']]] = None,
                  bootstrap_servers: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']]] = None,
-                 key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
-                 subscription_mode: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']]] = None,
-                 value_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']]] = None,
+                 ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigIngestionConfig']]] = None,
+                 key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigKeySchema']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigProviderConfig']]] = None,
+                 subscription_mode: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict', 'outputs.FeatureEngineeringKafkaConfigSubscriptionMode']]] = None,
+                 value_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigValueSchema']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -373,18 +373,18 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']] auth_config: Authentication configuration for connection to topics
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigAuthConfig']] auth_config: Authentication configuration for connection to topics
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict', 'outputs.FeatureEngineeringKafkaConfigBackfillSource']] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
                In the future, a separate table will be maintained by Databricks for forward filling data.
                The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']] ingestion_config: Configuration for ingesting Kafka data into a Databricks-managed
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigIngestionConfig']] ingestion_config: Configuration for ingesting Kafka data into a Databricks-managed
                Delta table
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']] subscription_mode: Options to configure which Kafka topics to pull data from
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigKeySchema']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict', 'outputs.FeatureEngineeringKafkaConfigSubscriptionMode']] subscription_mode: Options to configure which Kafka topics to pull data from
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigValueSchema']] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
         """
         ...
     @overload
@@ -411,15 +411,15 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']]] = None,
-                 backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
+                 auth_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigAuthConfig']]] = None,
+                 backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict', 'outputs.FeatureEngineeringKafkaConfigBackfillSource']]] = None,
                  bootstrap_servers: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']]] = None,
-                 key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
-                 subscription_mode: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']]] = None,
-                 value_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']]] = None,
+                 ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigIngestionConfig']]] = None,
+                 key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigKeySchema']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigProviderConfig']]] = None,
+                 subscription_mode: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict', 'outputs.FeatureEngineeringKafkaConfigSubscriptionMode']]] = None,
+                 value_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigValueSchema']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -455,16 +455,16 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']]] = None,
-            backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
+            auth_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigAuthConfig']]] = None,
+            backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict', 'outputs.FeatureEngineeringKafkaConfigBackfillSource']]] = None,
             bootstrap_servers: pulumi.Input[Optional[_builtins.str]] = None,
             extra_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']]] = None,
-            key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
+            ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigIngestionConfig']]] = None,
+            key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigKeySchema']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
-            subscription_mode: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']]] = None,
-            value_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']]] = None) -> 'FeatureEngineeringKafkaConfig':
+            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigProviderConfig']]] = None,
+            subscription_mode: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict', 'outputs.FeatureEngineeringKafkaConfigSubscriptionMode']]] = None,
+            value_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigValueSchema']]] = None) -> 'FeatureEngineeringKafkaConfig':
         """
         Get an existing FeatureEngineeringKafkaConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -472,20 +472,20 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']] auth_config: Authentication configuration for connection to topics
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigAuthConfig']] auth_config: Authentication configuration for connection to topics
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict', 'outputs.FeatureEngineeringKafkaConfigBackfillSource']] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
                In the future, a separate table will be maintained by Databricks for forward filling data.
                The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']] ingestion_config: Configuration for ingesting Kafka data into a Databricks-managed
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigIngestionConfig']] ingestion_config: Configuration for ingesting Kafka data into a Databricks-managed
                Delta table
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigKeySchema']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
         :param pulumi.Input[_builtins.str] name: (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
                Can be distinct from topic name
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']] subscription_mode: Options to configure which Kafka topics to pull data from
-        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict', 'outputs.FeatureEngineeringKafkaConfigProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict', 'outputs.FeatureEngineeringKafkaConfigSubscriptionMode']] subscription_mode: Options to configure which Kafka topics to pull data from
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict', 'outputs.FeatureEngineeringKafkaConfigValueSchema']] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -73,13 +73,13 @@ class AwaitableGetMaterializedFeaturesFeatureTagResult(GetMaterializedFeaturesFe
 
 
 def get_materialized_features_feature_tag(key: Optional[_builtins.str] = None,
-                                          provider_config: Optional[Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict']] = None,
+                                          provider_config: Optional[Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.GetMaterializedFeaturesFeatureTagProviderConfigResult']] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaterializedFeaturesFeatureTagResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
-    :param Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.GetMaterializedFeaturesFeatureTagProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['key'] = key
@@ -92,13 +92,13 @@ def get_materialized_features_feature_tag(key: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         value=pulumi.get(__ret__, 'value'))
 def get_materialized_features_feature_tag_output(key: pulumi.Input[Optional[_builtins.str]] = None,
-                                                 provider_config: pulumi.Input[Optional[Optional[Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict']]]] = None,
+                                                 provider_config: pulumi.Input[Optional[Optional[Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.GetMaterializedFeaturesFeatureTagProviderConfigResult']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaterializedFeaturesFeatureTagResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
-    :param Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.GetMaterializedFeaturesFeatureTagProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['key'] = key

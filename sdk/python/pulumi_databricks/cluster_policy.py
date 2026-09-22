@@ -300,12 +300,12 @@ class ClusterPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict', 'outputs.ClusterPolicyLibrary']]]]] = None,
                  max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict', 'outputs.ClusterPolicyProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/clusterpolicies)
@@ -605,12 +605,12 @@ class ClusterPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict', 'outputs.ClusterPolicyLibrary']]]]] = None,
                  max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict', 'outputs.ClusterPolicyProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -641,13 +641,13 @@ class ClusterPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             definition: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
+            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict', 'outputs.ClusterPolicyLibrary']]]]] = None,
             max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
             policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None) -> 'ClusterPolicy':
+            provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict', 'outputs.ClusterPolicyProviderConfig']]] = None) -> 'ClusterPolicy':
         """
         Get an existing ClusterPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

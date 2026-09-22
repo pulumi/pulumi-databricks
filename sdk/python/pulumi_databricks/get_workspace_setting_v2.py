@@ -325,7 +325,7 @@ class AwaitableGetWorkspaceSettingV2Result(GetWorkspaceSettingV2Result):
 
 
 def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
-                             provider_config: Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict']] = None,
+                             provider_config: Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict', 'outputs.GetWorkspaceSettingV2ProviderConfigResult']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceSettingV2Result:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -340,7 +340,7 @@ def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Name of the setting
-    :param Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict', 'outputs.GetWorkspaceSettingV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -374,7 +374,7 @@ def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
         restrict_workspace_admins=pulumi.get(__ret__, 'restrict_workspace_admins'),
         string_val=pulumi.get(__ret__, 'string_val'))
 def get_workspace_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                    provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict']]]] = None,
+                                    provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict', 'outputs.GetWorkspaceSettingV2ProviderConfigResult']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceSettingV2Result]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -389,7 +389,7 @@ def get_workspace_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] 
 
 
     :param _builtins.str name: Name of the setting
-    :param Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict', 'outputs.GetWorkspaceSettingV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

@@ -375,12 +375,12 @@ class PostgresProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']]] = None,
-                 initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
+                 initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict', 'outputs.PostgresProjectInitialBranchSpec']]] = None,
+                 initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict', 'outputs.PostgresProjectInitialEndpointSpec']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict', 'outputs.PostgresProjectProviderConfig']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -489,18 +489,18 @@ class PostgresProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
+        :param pulumi.Input[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict', 'outputs.PostgresProjectInitialBranchSpec']] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
                Allows overriding branch protection. These settings only apply at creation time
                and do not affect resources created after project creation
-        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
+        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict', 'outputs.PostgresProjectInitialEndpointSpec']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
-        :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict', 'outputs.PostgresProjectProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
                If false or unset, performs a soft delete
-        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
+        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         ...
     @overload
@@ -628,12 +628,12 @@ class PostgresProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']]] = None,
-                 initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
+                 initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict', 'outputs.PostgresProjectInitialBranchSpec']]] = None,
+                 initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict', 'outputs.PostgresProjectInitialEndpointSpec']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict', 'outputs.PostgresProjectProviderConfig']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -670,15 +670,15 @@ class PostgresProject(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
-            initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']]] = None,
-            initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
+            initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict', 'outputs.PostgresProjectInitialBranchSpec']]] = None,
+            initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict', 'outputs.PostgresProjectInitialEndpointSpec']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict', 'outputs.PostgresProjectProviderConfig']]] = None,
             purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             purge_time: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict', 'outputs.PostgresProjectStatus']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresProject':
         """
@@ -691,23 +691,23 @@ class PostgresProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
         :param pulumi.Input[_builtins.str] delete_time: (string) - A timestamp indicating when the project was soft-deleted.
                Empty if the project is not deleted, otherwise set to a timestamp in the past
-        :param pulumi.Input[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
+        :param pulumi.Input[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict', 'outputs.PostgresProjectInitialBranchSpec']] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
                Allows overriding branch protection. These settings only apply at creation time
                and do not affect resources created after project creation
-        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
+        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict', 'outputs.PostgresProjectInitialEndpointSpec']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the project.
                Format: projects/{project_id}
         :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
-        :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict', 'outputs.PostgresProjectProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
                If false or unset, performs a soft delete
         :param pulumi.Input[_builtins.str] purge_time: (string) - A timestamp indicating when the project is scheduled for permanent deletion.
                Empty if the project is not deleted, otherwise set to a timestamp in the future
-        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
-        :param pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']] status: (ProjectStatus) - The current status of a Project
+        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
+        :param pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict', 'outputs.PostgresProjectStatus']] status: (ProjectStatus) - The current status of a Project
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the project was last updated
         """

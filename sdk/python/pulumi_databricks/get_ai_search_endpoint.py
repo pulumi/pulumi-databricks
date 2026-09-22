@@ -258,7 +258,7 @@ class AwaitableGetAiSearchEndpointResult(GetAiSearchEndpointResult):
 
 
 def get_ai_search_endpoint(name: Optional[_builtins.str] = None,
-                           provider_config: Optional[Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict']] = None,
+                           provider_config: Optional[Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict', 'outputs.GetAiSearchEndpointProviderConfigResult']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchEndpointResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -283,7 +283,7 @@ def get_ai_search_endpoint(name: Optional[_builtins.str] = None,
            (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
            user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
            the server composes the full `name` and returns it on the response
-    :param Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict', 'outputs.GetAiSearchEndpointProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -311,7 +311,7 @@ def get_ai_search_endpoint(name: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'))
 def get_ai_search_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                  provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict']]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict', 'outputs.GetAiSearchEndpointProviderConfigResult']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchEndpointResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -336,7 +336,7 @@ def get_ai_search_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = 
            (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
            user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
            the server composes the full `name` and returns it on the response
-    :param Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict', 'outputs.GetAiSearchEndpointProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

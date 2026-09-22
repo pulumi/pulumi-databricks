@@ -67,7 +67,7 @@ class AwaitableGetQualityMonitorsV2Result(GetQualityMonitorsV2Result):
 
 
 def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
-                            provider_config: Optional[Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict']] = None,
+                            provider_config: Optional[Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict', 'outputs.GetQualityMonitorsV2ProviderConfigResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQualityMonitorsV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -94,7 +94,7 @@ def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
     ```
 
 
-    :param Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict', 'outputs.GetQualityMonitorsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -107,7 +107,7 @@ def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         quality_monitors=pulumi.get(__ret__, 'quality_monitors'))
 def get_quality_monitors_v2_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                   provider_config: pulumi.Input[Optional[Optional[Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict']]]] = None,
+                                   provider_config: pulumi.Input[Optional[Optional[Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict', 'outputs.GetQualityMonitorsV2ProviderConfigResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQualityMonitorsV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -134,7 +134,7 @@ def get_quality_monitors_v2_output(page_size: pulumi.Input[Optional[Optional[_bu
     ```
 
 
-    :param Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict', 'outputs.GetQualityMonitorsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

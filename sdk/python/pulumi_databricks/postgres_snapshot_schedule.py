@@ -168,8 +168,8 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']]] = None,
-                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.PostgresSnapshotScheduleProviderConfig']]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict', 'outputs.PostgresSnapshotScheduleSchedule']]]]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -180,8 +180,8 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] parent: The resource name of the parent
-        :param pulumi.Input[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]] schedules: The cadences at which automatic snapshots are taken. Update replaces the
+        :param pulumi.Input[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.PostgresSnapshotScheduleProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict', 'outputs.PostgresSnapshotScheduleSchedule']]]] schedules: The cadences at which automatic snapshots are taken. Update replaces the
                whole set; an empty set disables automatic snapshots. Order is not
                significant. When several cadences fire together, one snapshot is taken,
                retained for the longest of their retentions
@@ -214,8 +214,8 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']]] = None,
-                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.PostgresSnapshotScheduleProviderConfig']]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict', 'outputs.PostgresSnapshotScheduleSchedule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -243,8 +243,8 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']]] = None,
-            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]]] = None) -> 'PostgresSnapshotSchedule':
+            provider_config: pulumi.Input[Optional[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.PostgresSnapshotScheduleProviderConfig']]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict', 'outputs.PostgresSnapshotScheduleSchedule']]]]] = None) -> 'PostgresSnapshotSchedule':
         """
         Get an existing PostgresSnapshotSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -255,8 +255,8 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the branch's snapshot schedule.
                Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
         :param pulumi.Input[_builtins.str] parent: The resource name of the parent
-        :param pulumi.Input[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict']]]] schedules: The cadences at which automatic snapshots are taken. Update replaces the
+        :param pulumi.Input[Union['PostgresSnapshotScheduleProviderConfigArgs', 'PostgresSnapshotScheduleProviderConfigArgsDict', 'outputs.PostgresSnapshotScheduleProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict', 'outputs.PostgresSnapshotScheduleSchedule']]]] schedules: The cadences at which automatic snapshots are taken. Update replaces the
                whole set; an empty set disables automatic snapshots. Order is not
                significant. When several cadences fire together, one snapshot is taken,
                retained for the longest of their retentions

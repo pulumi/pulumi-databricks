@@ -266,7 +266,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict', 'outputs.DataQualityRefreshProviderConfig']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -338,7 +338,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-        :param pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict', 'outputs.DataQualityRefreshProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -421,7 +421,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict', 'outputs.DataQualityRefreshProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -458,7 +458,7 @@ class DataQualityRefresh(pulumi.CustomResource):
             message: pulumi.Input[Optional[_builtins.str]] = None,
             object_id: pulumi.Input[Optional[_builtins.str]] = None,
             object_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict', 'outputs.DataQualityRefreshProviderConfig']]] = None,
             refresh_id: pulumi.Input[Optional[_builtins.int]] = None,
             start_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -482,7 +482,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-        :param pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict', 'outputs.DataQualityRefreshProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] refresh_id: (integer) - Unique id of the refresh operation
         :param pulumi.Input[_builtins.int] start_time_ms: (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the refresh. Possible values are: `MONITOR_REFRESH_STATE_CANCELED`, `MONITOR_REFRESH_STATE_FAILED`, `MONITOR_REFRESH_STATE_PENDING`, `MONITOR_REFRESH_STATE_RUNNING`, `MONITOR_REFRESH_STATE_SUCCESS`, `MONITOR_REFRESH_STATE_UNKNOWN`

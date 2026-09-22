@@ -162,7 +162,7 @@ class UserInstanceProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict', 'outputs.UserInstanceProfileProviderConfig']]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -266,7 +266,7 @@ class UserInstanceProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict', 'outputs.UserInstanceProfileProviderConfig']]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -297,7 +297,7 @@ class UserInstanceProfile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api: pulumi.Input[Optional[_builtins.str]] = None,
             instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict', 'outputs.UserInstanceProfileProviderConfig']]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserInstanceProfile':
         """
         Get an existing UserInstanceProfile resource's state with the given name, id, and optional extra

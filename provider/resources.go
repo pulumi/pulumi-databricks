@@ -94,7 +94,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		P:            p,
-		Name:         "databricks",
+		Name:         mainPkg,
 		Version:      version.Version,
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
@@ -116,12 +116,12 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:         []string{"pulumi", "databricks", "category/infrastructure"},
+		Keywords:         []string{"pulumi", mainPkg, "category/infrastructure"},
 		License:          "Apache-2.0",
 		Homepage:         "https://www.pulumi.com",
 		Repository:       "https://github.com/pulumi/pulumi-databricks",
 		UpstreamRepoPath: "./upstream",
-		GitHubOrg:        "databricks",
+		GitHubOrg:        mainPkg,
 		Config:           map[string]*tfbridge.SchemaInfo{},
 		DocRules:         &tfbridge.DocRuleInfo{EditRules: editRules},
 		IgnoreMappings: []string{
@@ -168,7 +168,7 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_account_network_policy": {
 				ComputeID: tfbridge.DelegateIDField(
 					"networkPolicyId",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
@@ -178,7 +178,7 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_database_instance": {
 				ComputeID: tfbridge.DelegateIDField(
 					"name",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
@@ -194,7 +194,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 				ComputeID: tfbridge.DelegateIDField(
 					"libraryId",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
@@ -204,35 +204,35 @@ func Provider() tfbridge.ProviderInfo {
 				},
 				ComputeID: tfbridge.DelegateIDField(
 					"monitorId",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
 			"databricks_app": {
 				ComputeID: tfbridge.DelegateIDField(
 					"name",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
 			"databricks_budget_policy": {
 				ComputeID: tfbridge.DelegateIDField(
 					"policyId",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
 			"databricks_workspace_network_option": {
 				ComputeID: tfbridge.DelegateIDField(
 					"workspaceId",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
 			"databricks_online_store": {
 				ComputeID: tfbridge.DelegateIDField(
 					"name",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
@@ -247,21 +247,21 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_database_database_catalog": {
 				ComputeID: tfbridge.DelegateIDField(
 					"name",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
 			"databricks_database_synced_database_table": {
 				ComputeID: tfbridge.DelegateIDField(
 					"name",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
 			"databricks_materialized_features_feature_tag": {
 				ComputeID: tfbridge.DelegateIDField(
 					"key",
-					"databricks",
+					mainPkg,
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},

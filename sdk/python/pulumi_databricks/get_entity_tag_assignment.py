@@ -134,7 +134,7 @@ class AwaitableGetEntityTagAssignmentResult(GetEntityTagAssignmentResult):
 
 def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
                               entity_type: Optional[_builtins.str] = None,
-                              provider_config: Optional[Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict']] = None,
+                              provider_config: Optional[Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetEntityTagAssignmentProviderConfigResult']] = None,
                               tag_key: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntityTagAssignmentResult:
     """
@@ -172,7 +172,7 @@ def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
 
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned
-    :param Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetEntityTagAssignmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str tag_key: The key of the tag
     """
     __args__ = dict()
@@ -194,7 +194,7 @@ def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
         updated_by=pulumi.get(__ret__, 'updated_by'))
 def get_entity_tag_assignment_output(entity_name: pulumi.Input[Optional[_builtins.str]] = None,
                                      entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                                     provider_config: pulumi.Input[Optional[Optional[Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict']]]] = None,
+                                     provider_config: pulumi.Input[Optional[Optional[Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetEntityTagAssignmentProviderConfigResult']]]] = None,
                                      tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntityTagAssignmentResult]:
     """
@@ -232,7 +232,7 @@ def get_entity_tag_assignment_output(entity_name: pulumi.Input[Optional[_builtin
 
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned
-    :param Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict', 'outputs.GetEntityTagAssignmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str tag_key: The key of the tag
     """
     __args__ = dict()

@@ -81,7 +81,7 @@ class AwaitableGetPostgresRolesResult(GetPostgresRolesResult):
 
 def get_postgres_roles(page_size: Optional[_builtins.int] = None,
                        parent: Optional[_builtins.str] = None,
-                       provider_config: Optional[Union['GetPostgresRolesProviderConfigArgs', 'GetPostgresRolesProviderConfigArgsDict']] = None,
+                       provider_config: Optional[Union['GetPostgresRolesProviderConfigArgs', 'GetPostgresRolesProviderConfigArgsDict', 'outputs.GetPostgresRolesProviderConfigResult']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresRolesResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -107,7 +107,7 @@ def get_postgres_roles(page_size: Optional[_builtins.int] = None,
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Branch that owns this collection of roles.
            Format: projects/{project_id}/branches/{branch_id}
-    :param Union['GetPostgresRolesProviderConfigArgs', 'GetPostgresRolesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresRolesProviderConfigArgs', 'GetPostgresRolesProviderConfigArgsDict', 'outputs.GetPostgresRolesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -123,7 +123,7 @@ def get_postgres_roles(page_size: Optional[_builtins.int] = None,
         roles=pulumi.get(__ret__, 'roles'))
 def get_postgres_roles_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                               parent: pulumi.Input[Optional[_builtins.str]] = None,
-                              provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresRolesProviderConfigArgs', 'GetPostgresRolesProviderConfigArgsDict']]]] = None,
+                              provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresRolesProviderConfigArgs', 'GetPostgresRolesProviderConfigArgsDict', 'outputs.GetPostgresRolesProviderConfigResult']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresRolesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -149,7 +149,7 @@ def get_postgres_roles_output(page_size: pulumi.Input[Optional[Optional[_builtin
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Branch that owns this collection of roles.
            Format: projects/{project_id}/branches/{branch_id}
-    :param Union['GetPostgresRolesProviderConfigArgs', 'GetPostgresRolesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresRolesProviderConfigArgs', 'GetPostgresRolesProviderConfigArgsDict', 'outputs.GetPostgresRolesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

@@ -217,7 +217,7 @@ class AwaitableGetExternalMetadataResult(GetExternalMetadataResult):
 
 
 def get_external_metadata(name: Optional[_builtins.str] = None,
-                          provider_config: Optional[Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict']] = None,
+                          provider_config: Optional[Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict', 'outputs.GetExternalMetadataProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalMetadataResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -241,7 +241,7 @@ def get_external_metadata(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Name of the external metadata object
-    :param Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict', 'outputs.GetExternalMetadataProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -266,7 +266,7 @@ def get_external_metadata(name: Optional[_builtins.str] = None,
         updated_by=pulumi.get(__ret__, 'updated_by'),
         url=pulumi.get(__ret__, 'url'))
 def get_external_metadata_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict', 'outputs.GetExternalMetadataProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadataResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -290,7 +290,7 @@ def get_external_metadata_output(name: pulumi.Input[Optional[_builtins.str]] = N
 
 
     :param _builtins.str name: Name of the external metadata object
-    :param Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict', 'outputs.GetExternalMetadataProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

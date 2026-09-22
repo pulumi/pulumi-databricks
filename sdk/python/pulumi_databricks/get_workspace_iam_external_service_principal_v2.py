@@ -136,7 +136,7 @@ class AwaitableGetWorkspaceIamExternalServicePrincipalV2Result(GetWorkspaceIamEx
 
 
 def get_workspace_iam_external_service_principal_v2(name: Optional[_builtins.str] = None,
-                                                    provider_config: Optional[Union['GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict']] = None,
+                                                    provider_config: Optional[Union['GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigResult']] = None,
                                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamExternalServicePrincipalV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -170,7 +170,7 @@ def get_workspace_iam_external_service_principal_v2(name: Optional[_builtins.str
            the API that returned it:
            - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
            - Workspace-scoped: external-service-principals/{external_service_principal_id}
-    :param Union['GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -188,7 +188,7 @@ def get_workspace_iam_external_service_principal_v2(name: Optional[_builtins.str
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_workspace_iam_external_service_principal_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                                           provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict']]]] = None,
+                                                           provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigResult']]]] = None,
                                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamExternalServicePrincipalV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -222,7 +222,7 @@ def get_workspace_iam_external_service_principal_v2_output(name: pulumi.Input[Op
            the API that returned it:
            - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
            - Workspace-scoped: external-service-principals/{external_service_principal_id}
-    :param Union['GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgs', 'GetWorkspaceIamExternalServicePrincipalV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalServicePrincipalV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

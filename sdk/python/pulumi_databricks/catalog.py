@@ -738,19 +738,19 @@ class Catalog(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
-                 effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
+                 effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict', 'outputs.CatalogEffectivePredictiveOptimizationFlag']]] = None,
                  enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
+                 managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict', 'outputs.CatalogManagedEncryptionSettings']]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict', 'outputs.CatalogProviderConfig']]] = None,
                  provider_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
+                 provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict', 'outputs.CatalogProvisioningInfo']]] = None,
                  share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -798,7 +798,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
-        :param pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict', 'outputs.CatalogProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
@@ -860,19 +860,19 @@ class Catalog(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
-                 effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
+                 effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict', 'outputs.CatalogEffectivePredictiveOptimizationFlag']]] = None,
                  enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
+                 managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict', 'outputs.CatalogManagedEncryptionSettings']]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict', 'outputs.CatalogProviderConfig']]] = None,
                  provider_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
+                 provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict', 'outputs.CatalogProvisioningInfo']]] = None,
                  share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -928,20 +928,20 @@ class Catalog(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
-            effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
+            effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict', 'outputs.CatalogEffectivePredictiveOptimizationFlag']]] = None,
             enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
             isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
+            managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict', 'outputs.CatalogManagedEncryptionSettings']]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict', 'outputs.CatalogProviderConfig']]] = None,
             provider_name: pulumi.Input[Optional[_builtins.str]] = None,
-            provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
+            provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict', 'outputs.CatalogProvisioningInfo']]] = None,
             securable_type: pulumi.Input[Optional[_builtins.str]] = None,
             share_name: pulumi.Input[Optional[_builtins.str]] = None,
             storage_location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -968,7 +968,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
-        :param pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict', 'outputs.CatalogProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: the type of Unity Catalog securable.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.

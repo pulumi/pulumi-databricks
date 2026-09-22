@@ -72,8 +72,8 @@ class AwaitableGetInstanceProfilesResult(GetInstanceProfilesResult):
             provider_config=self.provider_config)
 
 
-def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]] = None,
-                          provider_config: Optional[Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict']] = None,
+def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict', 'outputs.GetInstanceProfilesInstanceProfileResult']]] = None,
+                          provider_config: Optional[Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict', 'outputs.GetInstanceProfilesProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceProfilesResult:
     """
     Lists all available databricks_instance_profiles.
@@ -93,8 +93,8 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanc
     ```
 
 
-    :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
-    :param Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict', 'outputs.GetInstanceProfilesInstanceProfileResult']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
+    :param Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict', 'outputs.GetInstanceProfilesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['instanceProfiles'] = instance_profiles
@@ -106,8 +106,8 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanc
         id=pulumi.get(__ret__, 'id'),
         instance_profiles=pulumi.get(__ret__, 'instance_profiles'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_instance_profiles_output(instance_profiles: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]]]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict']]]] = None,
+def get_instance_profiles_output(instance_profiles: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict', 'outputs.GetInstanceProfilesInstanceProfileResult']]]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict', 'outputs.GetInstanceProfilesProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceProfilesResult]:
     """
     Lists all available databricks_instance_profiles.
@@ -127,8 +127,8 @@ def get_instance_profiles_output(instance_profiles: pulumi.Input[Optional[Option
     ```
 
 
-    :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
-    :param Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict', 'outputs.GetInstanceProfilesInstanceProfileResult']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
+    :param Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict', 'outputs.GetInstanceProfilesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['instanceProfiles'] = instance_profiles

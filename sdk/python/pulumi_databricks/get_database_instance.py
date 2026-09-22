@@ -387,7 +387,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
 
 
 def get_database_instance(name: Optional[_builtins.str] = None,
-                          provider_config: Optional[Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict']] = None,
+                          provider_config: Optional[Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict', 'outputs.GetDatabaseInstanceProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstanceResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -409,7 +409,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
-    :param Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict', 'outputs.GetDatabaseInstanceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -446,7 +446,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'))
 def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict', 'outputs.GetDatabaseInstanceProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -468,7 +468,7 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
 
 
     :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
-    :param Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict', 'outputs.GetDatabaseInstanceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

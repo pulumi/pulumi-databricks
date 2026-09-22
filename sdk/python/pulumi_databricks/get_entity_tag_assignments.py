@@ -93,7 +93,7 @@ class AwaitableGetEntityTagAssignmentsResult(GetEntityTagAssignmentsResult):
 def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
                                entity_type: Optional[_builtins.str] = None,
                                max_results: Optional[_builtins.int] = None,
-                               provider_config: Optional[Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict']] = None,
+                               provider_config: Optional[Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict', 'outputs.GetEntityTagAssignmentsProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntityTagAssignmentsResult:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -126,7 +126,7 @@ def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned
     :param _builtins.int max_results: Optional. Maximum number of tag assignments to return in a single page
-    :param Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict', 'outputs.GetEntityTagAssignmentsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['entityName'] = entity_name
@@ -145,7 +145,7 @@ def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
 def get_entity_tag_assignments_output(entity_name: pulumi.Input[Optional[_builtins.str]] = None,
                                       entity_type: pulumi.Input[Optional[_builtins.str]] = None,
                                       max_results: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                      provider_config: pulumi.Input[Optional[Optional[Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict']]]] = None,
+                                      provider_config: pulumi.Input[Optional[Optional[Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict', 'outputs.GetEntityTagAssignmentsProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntityTagAssignmentsResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -178,7 +178,7 @@ def get_entity_tag_assignments_output(entity_name: pulumi.Input[Optional[_builti
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned
     :param _builtins.int max_results: Optional. Maximum number of tag assignments to return in a single page
-    :param Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict', 'outputs.GetEntityTagAssignmentsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['entityName'] = entity_name

@@ -67,14 +67,14 @@ class AwaitableGetFeatureEngineeringKafkaConfigsResult(GetFeatureEngineeringKafk
 
 
 def get_feature_engineering_kafka_configs(page_size: Optional[_builtins.int] = None,
-                                          provider_config: Optional[Union['GetFeatureEngineeringKafkaConfigsProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigsProviderConfigArgsDict']] = None,
+                                          provider_config: Optional[Union['GetFeatureEngineeringKafkaConfigsProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigsProviderConfigArgsDict', 'outputs.GetFeatureEngineeringKafkaConfigsProviderConfigResult']] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringKafkaConfigsResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.int page_size: The maximum number of results to return
-    :param Union['GetFeatureEngineeringKafkaConfigsProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringKafkaConfigsProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigsProviderConfigArgsDict', 'outputs.GetFeatureEngineeringKafkaConfigsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -87,14 +87,14 @@ def get_feature_engineering_kafka_configs(page_size: Optional[_builtins.int] = N
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_feature_engineering_kafka_configs_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                                 provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringKafkaConfigsProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigsProviderConfigArgsDict']]]] = None,
+                                                 provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringKafkaConfigsProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigsProviderConfigArgsDict', 'outputs.GetFeatureEngineeringKafkaConfigsProviderConfigResult']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringKafkaConfigsResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.int page_size: The maximum number of results to return
-    :param Union['GetFeatureEngineeringKafkaConfigsProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringKafkaConfigsProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigsProviderConfigArgsDict', 'outputs.GetFeatureEngineeringKafkaConfigsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

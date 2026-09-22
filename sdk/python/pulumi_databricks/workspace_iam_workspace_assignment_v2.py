@@ -233,7 +233,7 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entitlements: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceAssignmentV2ProviderConfig']]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -271,7 +271,7 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
                principal also holds through a group.
                List responses leave this field empty. Get a single principal to read its entitlements
         :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks
-        :param pulumi.Input[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceAssignmentV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_id: (integer) - The workspace ID where the principal is assigned
         """
         ...
@@ -325,7 +325,7 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entitlements: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceAssignmentV2ProviderConfig']]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -360,7 +360,7 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
             entitlements: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             principal_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceAssignmentV2ProviderConfig']]] = None,
             workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceIamWorkspaceAssignmentV2':
         """
         Get an existing WorkspaceIamWorkspaceAssignmentV2 resource's state with the given name, id, and optional extra
@@ -378,7 +378,7 @@ class WorkspaceIamWorkspaceAssignmentV2(pulumi.CustomResource):
                List responses leave this field empty. Get a single principal to read its entitlements
         :param pulumi.Input[_builtins.str] principal_id: The internal ID of the principal (user/sp/group) in Databricks
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
-        :param pulumi.Input[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs', 'WorkspaceIamWorkspaceAssignmentV2ProviderConfigArgsDict', 'outputs.WorkspaceIamWorkspaceAssignmentV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_id: (integer) - The workspace ID where the principal is assigned
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

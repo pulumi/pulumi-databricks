@@ -123,7 +123,7 @@ class AwaitableGetPostgresSyncedTableResult(GetPostgresSyncedTableResult):
 
 
 def get_postgres_synced_table(name: Optional[_builtins.str] = None,
-                              provider_config: Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict']] = None,
+                              provider_config: Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict', 'outputs.GetPostgresSyncedTableProviderConfigResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresSyncedTableResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -151,7 +151,7 @@ def get_postgres_synced_table(name: Optional[_builtins.str] = None,
            Format "synced_tables/{catalog}.{schema}.{table}"
            
            For the corresponding source table in the Unity catalog look for the "source_table_full_name" attribute
-    :param Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict', 'outputs.GetPostgresSyncedTableProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -168,7 +168,7 @@ def get_postgres_synced_table(name: Optional[_builtins.str] = None,
         synced_table_id=pulumi.get(__ret__, 'synced_table_id'),
         uid=pulumi.get(__ret__, 'uid'))
 def get_postgres_synced_table_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                     provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict']]]] = None,
+                                     provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict', 'outputs.GetPostgresSyncedTableProviderConfigResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresSyncedTableResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -196,7 +196,7 @@ def get_postgres_synced_table_output(name: pulumi.Input[Optional[_builtins.str]]
            Format "synced_tables/{catalog}.{schema}.{table}"
            
            For the corresponding source table in the Unity catalog look for the "source_table_full_name" attribute
-    :param Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict', 'outputs.GetPostgresSyncedTableProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

@@ -105,8 +105,8 @@ class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
 def get_service_principals(api: Optional[_builtins.str] = None,
                            application_ids: Optional[Sequence[_builtins.str]] = None,
                            display_name_contains: Optional[_builtins.str] = None,
-                           provider_config: Optional[Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict']] = None,
-                           service_principals: Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']]] = None,
+                           provider_config: Optional[Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict', 'outputs.GetServicePrincipalsProviderConfigResult']] = None,
+                           service_principals: Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict', 'outputs.GetServicePrincipalsServicePrincipalResult']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalsResult:
     """
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
@@ -149,8 +149,8 @@ def get_service_principals(api: Optional[_builtins.str] = None,
 
     :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `service_principals` attribute.
     :param _builtins.str display_name_contains: Only return ServicePrincipal display name that match the given name string
-    :param Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']] service_principals: List of objects describing individual service principals. Each object has the following attributes:
+    :param Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict', 'outputs.GetServicePrincipalsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict', 'outputs.GetServicePrincipalsServicePrincipalResult']] service_principals: List of objects describing individual service principals. Each object has the following attributes:
     """
     __args__ = dict()
     __args__['api'] = api
@@ -171,8 +171,8 @@ def get_service_principals(api: Optional[_builtins.str] = None,
 def get_service_principals_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   application_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                   display_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                  provider_config: pulumi.Input[Optional[Optional[Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict']]]] = None,
-                                  service_principals: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']]]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict', 'outputs.GetServicePrincipalsProviderConfigResult']]]] = None,
+                                  service_principals: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict', 'outputs.GetServicePrincipalsServicePrincipalResult']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
@@ -215,8 +215,8 @@ def get_service_principals_output(api: pulumi.Input[Optional[Optional[_builtins.
 
     :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `service_principals` attribute.
     :param _builtins.str display_name_contains: Only return ServicePrincipal display name that match the given name string
-    :param Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']] service_principals: List of objects describing individual service principals. Each object has the following attributes:
+    :param Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict', 'outputs.GetServicePrincipalsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict', 'outputs.GetServicePrincipalsServicePrincipalResult']] service_principals: List of objects describing individual service principals. Each object has the following attributes:
     """
     __args__ = dict()
     __args__['api'] = api

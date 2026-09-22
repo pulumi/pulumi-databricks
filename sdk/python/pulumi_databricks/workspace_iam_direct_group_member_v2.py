@@ -203,7 +203,7 @@ class WorkspaceIamDirectGroupMemberV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.WorkspaceIamDirectGroupMemberV2ProviderConfig']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -235,7 +235,7 @@ class WorkspaceIamDirectGroupMemberV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] group_id: (integer) - The internal ID of the group this member belongs to
         :param pulumi.Input[_builtins.str] principal_id: Internal ID of the principal in Databricks
-        :param pulumi.Input[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.WorkspaceIamDirectGroupMemberV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -286,7 +286,7 @@ class WorkspaceIamDirectGroupMemberV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  principal_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.WorkspaceIamDirectGroupMemberV2ProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -321,7 +321,7 @@ class WorkspaceIamDirectGroupMemberV2(pulumi.CustomResource):
             membership_source: pulumi.Input[Optional[_builtins.str]] = None,
             principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             principal_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']]] = None) -> 'WorkspaceIamDirectGroupMemberV2':
+            provider_config: pulumi.Input[Optional[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.WorkspaceIamDirectGroupMemberV2ProviderConfig']]] = None) -> 'WorkspaceIamDirectGroupMemberV2':
         """
         Get an existing WorkspaceIamDirectGroupMemberV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -335,7 +335,7 @@ class WorkspaceIamDirectGroupMemberV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] membership_source: (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         :param pulumi.Input[_builtins.str] principal_id: Internal ID of the principal in Databricks
         :param pulumi.Input[_builtins.str] principal_type: (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
-        :param pulumi.Input[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'WorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.WorkspaceIamDirectGroupMemberV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

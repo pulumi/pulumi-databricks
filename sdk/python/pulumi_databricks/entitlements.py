@@ -342,7 +342,7 @@ class Entitlements(pulumi.CustomResource):
                  allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
                  databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict', 'outputs.EntitlementsProviderConfig']]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -417,7 +417,7 @@ class Entitlements(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] group_id: Canonical unique identifier for the group.
-        :param pulumi.Input[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict', 'outputs.EntitlementsProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] service_principal_id: Canonical unique identifier for the service principal.
                
                The following entitlements are available.
@@ -513,7 +513,7 @@ class Entitlements(pulumi.CustomResource):
                  allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
                  databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict', 'outputs.EntitlementsProviderConfig']]] = None,
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -550,7 +550,7 @@ class Entitlements(pulumi.CustomResource):
             allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
             databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict', 'outputs.EntitlementsProviderConfig']]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -566,7 +566,7 @@ class Entitlements(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] group_id: Canonical unique identifier for the group.
-        :param pulumi.Input[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict', 'outputs.EntitlementsProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] service_principal_id: Canonical unique identifier for the service principal.
                
                The following entitlements are available.

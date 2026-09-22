@@ -155,7 +155,7 @@ class AwaitableGetDatabaseSyncedDatabaseTableResult(GetDatabaseSyncedDatabaseTab
 
 
 def get_database_synced_database_table(name: Optional[_builtins.str] = None,
-                                       provider_config: Optional[Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict']] = None,
+                                       provider_config: Optional[Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.GetDatabaseSyncedDatabaseTableProviderConfigResult']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseSyncedDatabaseTableResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -177,7 +177,7 @@ def get_database_synced_database_table(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Full three-part (catalog, schema, table) name of the table
-    :param Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.GetDatabaseSyncedDatabaseTableProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -196,7 +196,7 @@ def get_database_synced_database_table(name: Optional[_builtins.str] = None,
         spec=pulumi.get(__ret__, 'spec'),
         unity_catalog_provisioning_state=pulumi.get(__ret__, 'unity_catalog_provisioning_state'))
 def get_database_synced_database_table_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                              provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict']]]] = None,
+                                              provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.GetDatabaseSyncedDatabaseTableProviderConfigResult']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTableResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -218,7 +218,7 @@ def get_database_synced_database_table_output(name: pulumi.Input[Optional[_built
 
 
     :param _builtins.str name: Full three-part (catalog, schema, table) name of the table
-    :param Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.GetDatabaseSyncedDatabaseTableProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

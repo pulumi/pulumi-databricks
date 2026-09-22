@@ -73,7 +73,7 @@ class AwaitableGetMlflowModelsResult(GetMlflowModelsResult):
 
 
 def get_mlflow_models(names: Optional[Sequence[_builtins.str]] = None,
-                      provider_config: Optional[Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict']] = None,
+                      provider_config: Optional[Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict', 'outputs.GetMlflowModelsProviderConfigResult']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowModelsResult:
     """
     Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -92,7 +92,7 @@ def get_mlflow_models(names: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] names: List of names of databricks_mlflow_model
-    :param Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict', 'outputs.GetMlflowModelsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['names'] = names
@@ -105,7 +105,7 @@ def get_mlflow_models(names: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_mlflow_models_output(names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                             provider_config: pulumi.Input[Optional[Optional[Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict']]]] = None,
+                             provider_config: pulumi.Input[Optional[Optional[Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict', 'outputs.GetMlflowModelsProviderConfigResult']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelsResult]:
     """
     Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -124,7 +124,7 @@ def get_mlflow_models_output(names: pulumi.Input[Optional[Optional[Sequence[_bui
 
 
     :param Sequence[_builtins.str] names: List of names of databricks_mlflow_model
-    :param Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict', 'outputs.GetMlflowModelsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['names'] = names

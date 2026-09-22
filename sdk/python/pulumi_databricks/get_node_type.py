@@ -201,7 +201,7 @@ def get_node_type(arm: Optional[_builtins.bool] = None,
                   min_memory_gb: Optional[_builtins.int] = None,
                   photon_driver_capable: Optional[_builtins.bool] = None,
                   photon_worker_capable: Optional[_builtins.bool] = None,
-                  provider_config: Optional[Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict']] = None,
+                  provider_config: Optional[Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict', 'outputs.GetNodeTypeProviderConfigResult']] = None,
                   support_port_forwarding: Optional[_builtins.bool] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeTypeResult:
     """
@@ -266,7 +266,7 @@ def get_node_type(arm: Optional[_builtins.bool] = None,
     :param _builtins.int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to _0_.
     :param _builtins.bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to _false_.
     :param _builtins.bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
-    :param Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict', 'outputs.GetNodeTypeProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
     """
     __args__ = dict()
@@ -320,7 +320,7 @@ def get_node_type_output(arm: pulumi.Input[Optional[Optional[_builtins.bool]]] =
                          min_memory_gb: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                          photon_driver_capable: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                          photon_worker_capable: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                         provider_config: pulumi.Input[Optional[Optional[Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict']]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict', 'outputs.GetNodeTypeProviderConfigResult']]]] = None,
                          support_port_forwarding: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeTypeResult]:
     """
@@ -385,7 +385,7 @@ def get_node_type_output(arm: pulumi.Input[Optional[Optional[_builtins.bool]]] =
     :param _builtins.int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to _0_.
     :param _builtins.bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to _false_.
     :param _builtins.bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
-    :param Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict', 'outputs.GetNodeTypeProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
     """
     __args__ = dict()

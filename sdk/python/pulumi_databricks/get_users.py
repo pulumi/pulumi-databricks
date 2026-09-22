@@ -90,8 +90,8 @@ class AwaitableGetUsersResult(GetUsersResult):
 def get_users(api: Optional[_builtins.str] = None,
               extra_attributes: Optional[_builtins.str] = None,
               filter: Optional[_builtins.str] = None,
-              provider_config: Optional[Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict']] = None,
-              users: Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]] = None,
+              provider_config: Optional[Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict', 'outputs.GetUsersProviderConfigResult']] = None,
+              users: Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict', 'outputs.GetUsersUserResult']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     Retrieves information about multiple User resources.
@@ -133,8 +133,8 @@ def get_users(api: Optional[_builtins.str] = None,
            
            **Examples:**
            - User whose `displayName` equals "john":
-    :param Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']] users: A list of users matching the specified criteria. Each user has the following attributes:
+    :param Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict', 'outputs.GetUsersProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict', 'outputs.GetUsersUserResult']] users: A list of users matching the specified criteria. Each user has the following attributes:
     """
     __args__ = dict()
     __args__['api'] = api
@@ -154,8 +154,8 @@ def get_users(api: Optional[_builtins.str] = None,
 def get_users_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      extra_attributes: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                     provider_config: pulumi.Input[Optional[Optional[Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict']]]] = None,
-                     users: pulumi.Input[Optional[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict', 'outputs.GetUsersProviderConfigResult']]]] = None,
+                     users: pulumi.Input[Optional[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict', 'outputs.GetUsersUserResult']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     Retrieves information about multiple User resources.
@@ -197,8 +197,8 @@ def get_users_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None
            
            **Examples:**
            - User whose `displayName` equals "john":
-    :param Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']] users: A list of users matching the specified criteria. Each user has the following attributes:
+    :param Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict', 'outputs.GetUsersProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict', 'outputs.GetUsersUserResult']] users: A list of users matching the specified criteria. Each user has the following attributes:
     """
     __args__ = dict()
     __args__['api'] = api

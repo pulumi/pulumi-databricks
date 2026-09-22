@@ -86,8 +86,8 @@ class AwaitableGetVolumeResult(GetVolumeResult):
 
 def get_volume(id: Optional[_builtins.str] = None,
                name: Optional[_builtins.str] = None,
-               provider_config: Optional[Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict']] = None,
-               volume_info: Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']] = None,
+               provider_config: Optional[Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict', 'outputs.GetVolumeProviderConfigResult']] = None,
+               volume_info: Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict', 'outputs.GetVolumeVolumeInfoResult']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
     Retrieves details about Volume that was created by Pulumi or manually.
@@ -128,8 +128,8 @@ def get_volume(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
     :param _builtins.str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-    :param Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+    :param Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict', 'outputs.GetVolumeProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict', 'outputs.GetVolumeVolumeInfoResult'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -146,8 +146,8 @@ def get_volume(id: Optional[_builtins.str] = None,
         volume_info=pulumi.get(__ret__, 'volume_info'))
 def get_volume_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       name: pulumi.Input[Optional[_builtins.str]] = None,
-                      provider_config: pulumi.Input[Optional[Optional[Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict']]]] = None,
-                      volume_info: pulumi.Input[Optional[Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']]]] = None,
+                      provider_config: pulumi.Input[Optional[Optional[Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict', 'outputs.GetVolumeProviderConfigResult']]]] = None,
+                      volume_info: pulumi.Input[Optional[Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict', 'outputs.GetVolumeVolumeInfoResult']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
     Retrieves details about Volume that was created by Pulumi or manually.
@@ -188,8 +188,8 @@ def get_volume_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None
 
     :param _builtins.str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
     :param _builtins.str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-    :param Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-    :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+    :param Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict', 'outputs.GetVolumeProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict', 'outputs.GetVolumeVolumeInfoResult'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id

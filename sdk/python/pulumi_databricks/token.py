@@ -230,7 +230,7 @@ class Token(pulumi.CustomResource):
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
                  lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict', 'outputs.TokenProviderConfig']]] = None,
                  token_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -275,7 +275,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
-        :param pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict', 'outputs.TokenProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -340,7 +340,7 @@ class Token(pulumi.CustomResource):
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
                  lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict', 'outputs.TokenProviderConfig']]] = None,
                  token_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -374,7 +374,7 @@ class Token(pulumi.CustomResource):
             creation_time: pulumi.Input[Optional[_builtins.int]] = None,
             expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
             lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-            provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict', 'outputs.TokenProviderConfig']]] = None,
             token_id: pulumi.Input[Optional[_builtins.str]] = None,
             token_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'Token':
         """
@@ -386,7 +386,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
-        :param pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict', 'outputs.TokenProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] token_value: **Sensitive** value of the newly-created token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

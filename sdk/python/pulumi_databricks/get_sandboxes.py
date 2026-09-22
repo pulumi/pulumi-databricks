@@ -67,7 +67,7 @@ class AwaitableGetSandboxesResult(GetSandboxesResult):
 
 
 def get_sandboxes(page_size: Optional[_builtins.int] = None,
-                  provider_config: Optional[Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict']] = None,
+                  provider_config: Optional[Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict', 'outputs.GetSandboxesProviderConfigResult']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSandboxesResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -87,7 +87,7 @@ def get_sandboxes(page_size: Optional[_builtins.int] = None,
     ```
 
 
-    :param Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict', 'outputs.GetSandboxesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -100,7 +100,7 @@ def get_sandboxes(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         sandboxes=pulumi.get(__ret__, 'sandboxes'))
 def get_sandboxes_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                         provider_config: pulumi.Input[Optional[Optional[Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict']]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict', 'outputs.GetSandboxesProviderConfigResult']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSandboxesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -120,7 +120,7 @@ def get_sandboxes_output(page_size: pulumi.Input[Optional[Optional[_builtins.int
     ```
 
 
-    :param Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSandboxesProviderConfigArgs', 'GetSandboxesProviderConfigArgsDict', 'outputs.GetSandboxesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

@@ -91,7 +91,7 @@ class AwaitableGetAiGatewayModelServicesResult(GetAiGatewayModelServicesResult):
 
 def get_ai_gateway_model_services(page_size: Optional[_builtins.int] = None,
                                   parent: Optional[_builtins.str] = None,
-                                  provider_config: Optional[Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict']] = None,
+                                  provider_config: Optional[Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict', 'outputs.GetAiGatewayModelServicesProviderConfigResult']] = None,
                                   view: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiGatewayModelServicesResult:
     """
@@ -119,7 +119,7 @@ def get_ai_gateway_model_services(page_size: Optional[_builtins.int] = None,
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually
-    :param Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict', 'outputs.GetAiGatewayModelServicesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str view: Fields to return for each service. `FULL` includes destinations,
            inference-table details, and rate-limit principal names. `BASIC` omits
            destinations and inference-table details and omits principal names from
@@ -141,7 +141,7 @@ def get_ai_gateway_model_services(page_size: Optional[_builtins.int] = None,
         view=pulumi.get(__ret__, 'view'))
 def get_ai_gateway_model_services_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                          parent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                         provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict']]]] = None,
+                                         provider_config: pulumi.Input[Optional[Optional[Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict', 'outputs.GetAiGatewayModelServicesProviderConfigResult']]]] = None,
                                          view: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayModelServicesResult]:
     """
@@ -169,7 +169,7 @@ def get_ai_gateway_model_services_output(page_size: pulumi.Input[Optional[Option
     :param _builtins.str parent: Parent schema to list within, in the form
            `schemas/{catalog}.{schema}`. Required. Each `{...}` component is capped at
            255 characters individually
-    :param Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiGatewayModelServicesProviderConfigArgs', 'GetAiGatewayModelServicesProviderConfigArgsDict', 'outputs.GetAiGatewayModelServicesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str view: Fields to return for each service. `FULL` includes destinations,
            inference-table details, and rate-limit principal names. `BASIC` omits
            destinations and inference-table details and omits principal names from

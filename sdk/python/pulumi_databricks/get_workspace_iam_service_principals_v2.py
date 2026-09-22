@@ -77,7 +77,7 @@ class AwaitableGetWorkspaceIamServicePrincipalsV2Result(GetWorkspaceIamServicePr
 
 def get_workspace_iam_service_principals_v2(filter: Optional[_builtins.str] = None,
                                             page_size: Optional[_builtins.int] = None,
-                                            provider_config: Optional[Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict']] = None,
+                                            provider_config: Optional[Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfigResult']] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamServicePrincipalsV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -103,7 +103,7 @@ def get_workspace_iam_service_principals_v2(filter: Optional[_builtins.str] = No
     :param _builtins.str filter: Optional. Allows filtering service principals by application id or external id
     :param _builtins.int page_size: The maximum number of SPs to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -119,7 +119,7 @@ def get_workspace_iam_service_principals_v2(filter: Optional[_builtins.str] = No
         service_principals=pulumi.get(__ret__, 'service_principals'))
 def get_workspace_iam_service_principals_v2_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                    page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                                   provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict']]]] = None,
+                                                   provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfigResult']]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamServicePrincipalsV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -145,7 +145,7 @@ def get_workspace_iam_service_principals_v2_output(filter: pulumi.Input[Optional
     :param _builtins.str filter: Optional. Allows filtering service principals by application id or external id
     :param _builtins.int page_size: The maximum number of SPs to return. The service may return fewer than this value.
            If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamServicePrincipalsV2ProviderConfigArgs', 'GetWorkspaceIamServicePrincipalsV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamServicePrincipalsV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['filter'] = filter

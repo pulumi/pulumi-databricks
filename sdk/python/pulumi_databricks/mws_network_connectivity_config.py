@@ -259,7 +259,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
+                 egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -301,7 +301,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] creation_time: time in epoch milliseconds when this object was created.
-        :param pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']] egress_config: block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        :param pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']] egress_config: block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
         :param pulumi.Input[_builtins.str] name: Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
         :param pulumi.Input[_builtins.str] region: Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
@@ -363,7 +363,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
+                 egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -398,7 +398,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             creation_time: pulumi.Input[Optional[_builtins.int]] = None,
-            egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
+            egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -411,7 +411,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] creation_time: time in epoch milliseconds when this object was created.
-        :param pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']] egress_config: block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        :param pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict', 'outputs.MwsNetworkConnectivityConfigEgressConfig']] egress_config: block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
         :param pulumi.Input[_builtins.str] name: Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
         :param pulumi.Input[_builtins.str] region: Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.

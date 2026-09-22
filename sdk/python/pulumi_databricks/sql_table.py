@@ -638,7 +638,7 @@ class SqlTable(pulumi.CustomResource):
                  catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict', 'outputs.SqlTableColumn']]]]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -646,7 +646,7 @@ class SqlTable(pulumi.CustomResource):
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict', 'outputs.SqlTableProviderConfig']]] = None,
                  schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -862,7 +862,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the table owner.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
-        :param pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict', 'outputs.SqlTableProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
@@ -1090,7 +1090,7 @@ class SqlTable(pulumi.CustomResource):
                  catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict', 'outputs.SqlTableColumn']]]]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1098,7 +1098,7 @@ class SqlTable(pulumi.CustomResource):
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict', 'outputs.SqlTableProviderConfig']]] = None,
                  schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1153,7 +1153,7 @@ class SqlTable(pulumi.CustomResource):
             catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict', 'outputs.SqlTableColumn']]]]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
             effective_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1162,7 +1162,7 @@ class SqlTable(pulumi.CustomResource):
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict', 'outputs.SqlTableProviderConfig']]] = None,
             schema_name: pulumi.Input[Optional[_builtins.str]] = None,
             storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
             storage_location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1187,7 +1187,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the table owner.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
-        :param pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict', 'outputs.SqlTableProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.

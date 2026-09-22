@@ -647,19 +647,19 @@ class PolicyInfo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
+                 column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict', 'outputs.PolicyInfoColumnMask']]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']]] = None,
+                 deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict', 'outputs.PolicyInfoDeny']]] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
-                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
+                 grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict', 'outputs.PolicyInfoGrant']]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict', 'outputs.PolicyInfoMatchColumn']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
                  on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
-                 row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict', 'outputs.PolicyInfoProviderConfig']]] = None,
+                 row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict', 'outputs.PolicyInfoRowFilter']]] = None,
                  to_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  when_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -731,20 +731,20 @@ class PolicyInfo(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+        :param pulumi.Input[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict', 'outputs.PolicyInfoColumnMask']] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[_builtins.str] comment: Optional description of the policy
-        :param pulumi.Input[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']] deny: Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+        :param pulumi.Input[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict', 'outputs.PolicyInfoDeny']] deny: Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+        :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict', 'outputs.PolicyInfoGrant']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]] match_columns: Optional list of condition expressions used to match table columns.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict', 'outputs.PolicyInfoMatchColumn']]]] match_columns: Optional list of condition expressions used to match table columns.
                Only valid when `for_securable_type` is `TABLE`.
                When specified, the policy only applies to tables whose columns satisfy all match conditions
         :param pulumi.Input[_builtins.str] name: Name of the policy. Required on create and optional on update.
@@ -755,8 +755,8 @@ class PolicyInfo(pulumi.CustomResource):
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
                Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
-        :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+        :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict', 'outputs.PolicyInfoProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict', 'outputs.PolicyInfoRowFilter']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] to_principals: List of user or group names that the policy applies to.
@@ -850,19 +850,19 @@ class PolicyInfo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
+                 column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict', 'outputs.PolicyInfoColumnMask']]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']]] = None,
+                 deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict', 'outputs.PolicyInfoDeny']]] = None,
                  except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
-                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
+                 grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict', 'outputs.PolicyInfoGrant']]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict', 'outputs.PolicyInfoMatchColumn']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
                  on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
-                 row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict', 'outputs.PolicyInfoProviderConfig']]] = None,
+                 row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict', 'outputs.PolicyInfoRowFilter']]] = None,
                  to_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  when_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -909,21 +909,21 @@ class PolicyInfo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
+            column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict', 'outputs.PolicyInfoColumnMask']]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
-            deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']]] = None,
+            deny: pulumi.Input[Optional[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict', 'outputs.PolicyInfoDeny']]] = None,
             except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
-            grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']]] = None,
-            match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
+            grant: pulumi.Input[Optional[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict', 'outputs.PolicyInfoGrant']]] = None,
+            match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict', 'outputs.PolicyInfoMatchColumn']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
             on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
             policy_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
-            row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict', 'outputs.PolicyInfoProviderConfig']]] = None,
+            row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict', 'outputs.PolicyInfoRowFilter']]] = None,
             to_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None,
@@ -935,22 +935,22 @@ class PolicyInfo(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+        :param pulumi.Input[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict', 'outputs.PolicyInfoColumnMask']] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[_builtins.str] comment: Optional description of the policy
         :param pulumi.Input[_builtins.int] created_at: (integer) - Time at which the policy was created, in epoch milliseconds. Output only
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of the user who created the policy. Output only
-        :param pulumi.Input[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict']] deny: Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
+        :param pulumi.Input[Union['PolicyInfoDenyArgs', 'PolicyInfoDenyArgsDict', 'outputs.PolicyInfoDeny']] deny: Options for deny policies. Valid only if `policy_type` is `POLICY_TYPE_DENY`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] except_principals: Optional list of user or group names that should be excluded from the policy
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
+        :param pulumi.Input[Union['PolicyInfoGrantArgs', 'PolicyInfoGrantArgsDict', 'outputs.PolicyInfoGrant']] grant: Options for grant policies. Valid only if `policy_type` is `POLICY_TYPE_GRANT`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]] match_columns: Optional list of condition expressions used to match table columns.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict', 'outputs.PolicyInfoMatchColumn']]]] match_columns: Optional list of condition expressions used to match table columns.
                Only valid when `for_securable_type` is `TABLE`.
                When specified, the policy only applies to tables whose columns satisfy all match conditions
         :param pulumi.Input[_builtins.str] name: Name of the policy. Required on create and optional on update.
@@ -961,8 +961,8 @@ class PolicyInfo(pulumi.CustomResource):
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
                Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `MCP_SERVICE`, `METASTORE`, `MODEL`, `MODEL_PROVIDER_SERVICE`, `MODEL_SERVICE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_DENY`, `POLICY_TYPE_GRANT`, `POLICY_TYPE_ROW_FILTER`
-        :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+        :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict', 'outputs.PolicyInfoProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict', 'outputs.PolicyInfoRowFilter']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] to_principals: List of user or group names that the policy applies to.

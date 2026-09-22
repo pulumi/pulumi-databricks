@@ -120,7 +120,7 @@ class AwaitableGetWorkspaceIamUserV2Result(GetWorkspaceIamUserV2Result):
             username=self.username)
 
 
-def get_workspace_iam_user_v2(provider_config: Optional[Union['GetWorkspaceIamUserV2ProviderConfigArgs', 'GetWorkspaceIamUserV2ProviderConfigArgsDict']] = None,
+def get_workspace_iam_user_v2(provider_config: Optional[Union['GetWorkspaceIamUserV2ProviderConfigArgs', 'GetWorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUserV2ProviderConfigResult']] = None,
                               user_id: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamUserV2Result:
     """
@@ -144,7 +144,7 @@ def get_workspace_iam_user_v2(provider_config: Optional[Union['GetWorkspaceIamUs
     ```
 
 
-    :param Union['GetWorkspaceIamUserV2ProviderConfigArgs', 'GetWorkspaceIamUserV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamUserV2ProviderConfigArgs', 'GetWorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUserV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str user_id: Internal userId of the user in Databricks
     """
     __args__ = dict()
@@ -161,7 +161,7 @@ def get_workspace_iam_user_v2(provider_config: Optional[Union['GetWorkspaceIamUs
         provider_config=pulumi.get(__ret__, 'provider_config'),
         user_id=pulumi.get(__ret__, 'user_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_workspace_iam_user_v2_output(provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamUserV2ProviderConfigArgs', 'GetWorkspaceIamUserV2ProviderConfigArgsDict']]]] = None,
+def get_workspace_iam_user_v2_output(provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamUserV2ProviderConfigArgs', 'GetWorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUserV2ProviderConfigResult']]]] = None,
                                      user_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamUserV2Result]:
     """
@@ -185,7 +185,7 @@ def get_workspace_iam_user_v2_output(provider_config: pulumi.Input[Optional[Opti
     ```
 
 
-    :param Union['GetWorkspaceIamUserV2ProviderConfigArgs', 'GetWorkspaceIamUserV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamUserV2ProviderConfigArgs', 'GetWorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamUserV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str user_id: Internal userId of the user in Databricks
     """
     __args__ = dict()

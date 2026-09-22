@@ -93,7 +93,7 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
 def get_directory(id: Optional[_builtins.str] = None,
                   object_id: Optional[_builtins.int] = None,
                   path: Optional[_builtins.str] = None,
-                  provider_config: Optional[Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict']] = None,
+                  provider_config: Optional[Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict', 'outputs.GetDirectoryProviderConfigResult']] = None,
                   workspace_path: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
@@ -113,7 +113,7 @@ def get_directory(id: Optional[_builtins.str] = None,
 
     :param _builtins.int object_id: directory object ID
     :param _builtins.str path: Path to a directory in the workspace
-    :param Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict', 'outputs.GetDirectoryProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
     """
     __args__ = dict()
@@ -134,7 +134,7 @@ def get_directory(id: Optional[_builtins.str] = None,
 def get_directory_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          object_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                          path: pulumi.Input[Optional[_builtins.str]] = None,
-                         provider_config: pulumi.Input[Optional[Optional[Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict']]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict', 'outputs.GetDirectoryProviderConfigResult']]]] = None,
                          workspace_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryResult]:
     """
@@ -154,7 +154,7 @@ def get_directory_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = N
 
     :param _builtins.int object_id: directory object ID
     :param _builtins.str path: Path to a directory in the workspace
-    :param Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict', 'outputs.GetDirectoryProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
     """
     __args__ = dict()

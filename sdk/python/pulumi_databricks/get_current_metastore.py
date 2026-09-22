@@ -73,8 +73,8 @@ class AwaitableGetCurrentMetastoreResult(GetCurrentMetastoreResult):
 
 
 def get_current_metastore(id: Optional[_builtins.str] = None,
-                          metastore_info: Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']] = None,
-                          provider_config: Optional[Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict']] = None,
+                          metastore_info: Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict', 'outputs.GetCurrentMetastoreMetastoreInfoResult']] = None,
+                          provider_config: Optional[Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict', 'outputs.GetCurrentMetastoreProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentMetastoreResult:
     """
     Retrieves information about metastore attached to a given workspace.
@@ -104,8 +104,8 @@ def get_current_metastore(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-    :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-    :param Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict', 'outputs.GetCurrentMetastoreMetastoreInfoResult'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+    :param Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict', 'outputs.GetCurrentMetastoreProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -119,8 +119,8 @@ def get_current_metastore(id: Optional[_builtins.str] = None,
         metastore_info=pulumi.get(__ret__, 'metastore_info'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_current_metastore_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 metastore_info: pulumi.Input[Optional[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']]]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict']]]] = None,
+                                 metastore_info: pulumi.Input[Optional[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict', 'outputs.GetCurrentMetastoreMetastoreInfoResult']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict', 'outputs.GetCurrentMetastoreProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentMetastoreResult]:
     """
     Retrieves information about metastore attached to a given workspace.
@@ -150,8 +150,8 @@ def get_current_metastore_output(id: pulumi.Input[Optional[Optional[_builtins.st
 
 
     :param _builtins.str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-    :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-    :param Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict', 'outputs.GetCurrentMetastoreMetastoreInfoResult'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+    :param Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict', 'outputs.GetCurrentMetastoreProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['id'] = id

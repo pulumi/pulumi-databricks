@@ -212,7 +212,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                  database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  database_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.DatabaseDatabaseCatalogProviderConfig']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -269,7 +269,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
-        :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.DatabaseDatabaseCatalogProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -346,7 +346,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                  database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  database_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.DatabaseDatabaseCatalogProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -380,7 +380,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
             database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             database_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.DatabaseDatabaseCatalogProviderConfig']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseDatabaseCatalog':
         """
         Get an existing DatabaseDatabaseCatalog resource's state with the given name, id, and optional extra
@@ -392,7 +392,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
-        :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.DatabaseDatabaseCatalogProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] uid: (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

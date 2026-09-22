@@ -321,7 +321,7 @@ class KnowledgeAssistant(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict', 'outputs.KnowledgeAssistantProviderConfig']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -343,7 +343,7 @@ class KnowledgeAssistant(pulumi.CustomResource):
                Optional on create and update.
                When updating a Knowledge Assistant, include this field in update_mask to
                modify it
-        :param pulumi.Input[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict', 'outputs.KnowledgeAssistantProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -375,7 +375,7 @@ class KnowledgeAssistant(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict', 'outputs.KnowledgeAssistantProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -419,7 +419,7 @@ class KnowledgeAssistant(pulumi.CustomResource):
             experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
             instructions: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict', 'outputs.KnowledgeAssistantProviderConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'KnowledgeAssistant':
         """
         Get an existing KnowledgeAssistant resource's state with the given name, id, and optional extra
@@ -447,7 +447,7 @@ class KnowledgeAssistant(pulumi.CustomResource):
                modify it
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the Knowledge Assistant.
                Format: knowledge-assistants/{knowledge_assistant_id}
-        :param pulumi.Input[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict', 'outputs.KnowledgeAssistantProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] state: (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

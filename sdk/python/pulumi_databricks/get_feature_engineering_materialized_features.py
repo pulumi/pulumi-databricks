@@ -80,7 +80,7 @@ class AwaitableGetFeatureEngineeringMaterializedFeaturesResult(GetFeatureEnginee
 
 def get_feature_engineering_materialized_features(feature_name: Optional[_builtins.str] = None,
                                                   page_size: Optional[_builtins.int] = None,
-                                                  provider_config: Optional[Union['GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeaturesProviderConfigArgsDict']] = None,
+                                                  provider_config: Optional[Union['GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeaturesProviderConfigArgsDict', 'outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigResult']] = None,
                                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringMaterializedFeaturesResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -88,7 +88,7 @@ def get_feature_engineering_materialized_features(feature_name: Optional[_builti
 
     :param _builtins.str feature_name: Filter by feature name. If specified, only materialized features materialized from this feature will be returned
     :param _builtins.int page_size: The maximum number of results to return. Defaults to 100 if not specified. Cannot be greater than 1000
-    :param Union['GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeaturesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeaturesProviderConfigArgsDict', 'outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['featureName'] = feature_name
@@ -104,7 +104,7 @@ def get_feature_engineering_materialized_features(feature_name: Optional[_builti
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_feature_engineering_materialized_features_output(feature_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                          page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                                         provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeaturesProviderConfigArgsDict']]]] = None,
+                                                         provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeaturesProviderConfigArgsDict', 'outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigResult']]]] = None,
                                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringMaterializedFeaturesResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -112,7 +112,7 @@ def get_feature_engineering_materialized_features_output(feature_name: pulumi.In
 
     :param _builtins.str feature_name: Filter by feature name. If specified, only materialized features materialized from this feature will be returned
     :param _builtins.int page_size: The maximum number of results to return. Defaults to 100 if not specified. Cannot be greater than 1000
-    :param Union['GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeaturesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeaturesProviderConfigArgsDict', 'outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['featureName'] = feature_name

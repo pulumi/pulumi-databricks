@@ -106,7 +106,7 @@ def get_policy_infos(include_inherited: Optional[_builtins.bool] = None,
                      max_results: Optional[_builtins.int] = None,
                      on_securable_fullname: Optional[_builtins.str] = None,
                      on_securable_type: Optional[_builtins.str] = None,
-                     provider_config: Optional[Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict']] = None,
+                     provider_config: Optional[Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict', 'outputs.GetPolicyInfosProviderConfigResult']] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyInfosResult:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -137,7 +137,7 @@ def get_policy_infos(include_inherited: Optional[_builtins.bool] = None,
            - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
     :param _builtins.str on_securable_fullname: Required. The fully qualified name of securable to list policies for
     :param _builtins.str on_securable_type: Required. The type of the securable to list policies for
-    :param Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict', 'outputs.GetPolicyInfosProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['includeInherited'] = include_inherited
@@ -159,7 +159,7 @@ def get_policy_infos_output(include_inherited: pulumi.Input[Optional[Optional[_b
                             max_results: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                             on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
                             on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
-                            provider_config: pulumi.Input[Optional[Optional[Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict']]]] = None,
+                            provider_config: pulumi.Input[Optional[Optional[Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict', 'outputs.GetPolicyInfosProviderConfigResult']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyInfosResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -190,7 +190,7 @@ def get_policy_infos_output(include_inherited: pulumi.Input[Optional[Optional[_b
            - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
     :param _builtins.str on_securable_fullname: Required. The fully qualified name of securable to list policies for
     :param _builtins.str on_securable_type: Required. The type of the securable to list policies for
-    :param Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict', 'outputs.GetPolicyInfosProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['includeInherited'] = include_inherited

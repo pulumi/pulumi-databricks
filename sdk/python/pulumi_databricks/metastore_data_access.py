@@ -499,21 +499,21 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 aws_iam_role: pulumi.Input[Optional[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
-                 azure_managed_identity: pulumi.Input[Optional[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
-                 azure_service_principal: pulumi.Input[Optional[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
-                 cloudflare_api_token: pulumi.Input[Optional[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict']]] = None,
+                 aws_iam_role: pulumi.Input[Optional[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict', 'outputs.MetastoreDataAccessAwsIamRole']]] = None,
+                 azure_managed_identity: pulumi.Input[Optional[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict', 'outputs.MetastoreDataAccessAzureManagedIdentity']]] = None,
+                 azure_service_principal: pulumi.Input[Optional[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict', 'outputs.MetastoreDataAccessAzureServicePrincipal']]] = None,
+                 cloudflare_api_token: pulumi.Input[Optional[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict', 'outputs.MetastoreDataAccessCloudflareApiToken']]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 databricks_gcp_service_account: pulumi.Input[Optional[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict']]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict', 'outputs.MetastoreDataAccessDatabricksGcpServiceAccount']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gcp_service_account_key: pulumi.Input[Optional[Union['MetastoreDataAccessGcpServiceAccountKeyArgs', 'MetastoreDataAccessGcpServiceAccountKeyArgsDict']]] = None,
+                 gcp_service_account_key: pulumi.Input[Optional[Union['MetastoreDataAccessGcpServiceAccountKeyArgs', 'MetastoreDataAccessGcpServiceAccountKeyArgsDict', 'outputs.MetastoreDataAccessGcpServiceAccountKey']]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict', 'outputs.MetastoreDataAccessProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -578,7 +578,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
-        :param pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict', 'outputs.MetastoreDataAccessProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -659,21 +659,21 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 aws_iam_role: pulumi.Input[Optional[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
-                 azure_managed_identity: pulumi.Input[Optional[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
-                 azure_service_principal: pulumi.Input[Optional[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
-                 cloudflare_api_token: pulumi.Input[Optional[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict']]] = None,
+                 aws_iam_role: pulumi.Input[Optional[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict', 'outputs.MetastoreDataAccessAwsIamRole']]] = None,
+                 azure_managed_identity: pulumi.Input[Optional[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict', 'outputs.MetastoreDataAccessAzureManagedIdentity']]] = None,
+                 azure_service_principal: pulumi.Input[Optional[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict', 'outputs.MetastoreDataAccessAzureServicePrincipal']]] = None,
+                 cloudflare_api_token: pulumi.Input[Optional[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict', 'outputs.MetastoreDataAccessCloudflareApiToken']]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 databricks_gcp_service_account: pulumi.Input[Optional[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict']]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict', 'outputs.MetastoreDataAccessDatabricksGcpServiceAccount']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gcp_service_account_key: pulumi.Input[Optional[Union['MetastoreDataAccessGcpServiceAccountKeyArgs', 'MetastoreDataAccessGcpServiceAccountKeyArgsDict']]] = None,
+                 gcp_service_account_key: pulumi.Input[Optional[Union['MetastoreDataAccessGcpServiceAccountKeyArgs', 'MetastoreDataAccessGcpServiceAccountKeyArgsDict', 'outputs.MetastoreDataAccessGcpServiceAccountKey']]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict', 'outputs.MetastoreDataAccessProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -714,21 +714,21 @@ class MetastoreDataAccess(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api: pulumi.Input[Optional[_builtins.str]] = None,
-            aws_iam_role: pulumi.Input[Optional[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
-            azure_managed_identity: pulumi.Input[Optional[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
-            azure_service_principal: pulumi.Input[Optional[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
-            cloudflare_api_token: pulumi.Input[Optional[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict']]] = None,
+            aws_iam_role: pulumi.Input[Optional[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict', 'outputs.MetastoreDataAccessAwsIamRole']]] = None,
+            azure_managed_identity: pulumi.Input[Optional[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict', 'outputs.MetastoreDataAccessAzureManagedIdentity']]] = None,
+            azure_service_principal: pulumi.Input[Optional[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict', 'outputs.MetastoreDataAccessAzureServicePrincipal']]] = None,
+            cloudflare_api_token: pulumi.Input[Optional[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict', 'outputs.MetastoreDataAccessCloudflareApiToken']]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
-            databricks_gcp_service_account: pulumi.Input[Optional[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict']]] = None,
+            databricks_gcp_service_account: pulumi.Input[Optional[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict', 'outputs.MetastoreDataAccessDatabricksGcpServiceAccount']]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             force_update: pulumi.Input[Optional[_builtins.bool]] = None,
-            gcp_service_account_key: pulumi.Input[Optional[Union['MetastoreDataAccessGcpServiceAccountKeyArgs', 'MetastoreDataAccessGcpServiceAccountKeyArgsDict']]] = None,
+            gcp_service_account_key: pulumi.Input[Optional[Union['MetastoreDataAccessGcpServiceAccountKeyArgs', 'MetastoreDataAccessGcpServiceAccountKeyArgsDict', 'outputs.MetastoreDataAccessGcpServiceAccountKey']]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict', 'outputs.MetastoreDataAccessProviderConfig']]] = None,
             read_only: pulumi.Input[Optional[_builtins.bool]] = None,
             skip_validation: pulumi.Input[Optional[_builtins.bool]] = None) -> 'MetastoreDataAccess':
         """
@@ -740,7 +740,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
-        :param pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict', 'outputs.MetastoreDataAccessProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

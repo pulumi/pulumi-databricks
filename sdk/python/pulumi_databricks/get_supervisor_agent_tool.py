@@ -182,7 +182,7 @@ class AwaitableGetSupervisorAgentToolResult(GetSupervisorAgentToolResult):
 
 
 def get_supervisor_agent_tool(name: Optional[_builtins.str] = None,
-                              provider_config: Optional[Union['GetSupervisorAgentToolProviderConfigArgs', 'GetSupervisorAgentToolProviderConfigArgsDict']] = None,
+                              provider_config: Optional[Union['GetSupervisorAgentToolProviderConfigArgs', 'GetSupervisorAgentToolProviderConfigArgsDict', 'outputs.GetSupervisorAgentToolProviderConfigResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSupervisorAgentToolResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -192,7 +192,7 @@ def get_supervisor_agent_tool(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Full resource name:
            supervisor-agents/{supervisor_agent_id}/tools/{tool_id}
-    :param Union['GetSupervisorAgentToolProviderConfigArgs', 'GetSupervisorAgentToolProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSupervisorAgentToolProviderConfigArgs', 'GetSupervisorAgentToolProviderConfigArgsDict', 'outputs.GetSupervisorAgentToolProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -214,7 +214,7 @@ def get_supervisor_agent_tool(name: Optional[_builtins.str] = None,
         uc_function=pulumi.get(__ret__, 'uc_function'),
         volume=pulumi.get(__ret__, 'volume'))
 def get_supervisor_agent_tool_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                     provider_config: pulumi.Input[Optional[Optional[Union['GetSupervisorAgentToolProviderConfigArgs', 'GetSupervisorAgentToolProviderConfigArgsDict']]]] = None,
+                                     provider_config: pulumi.Input[Optional[Optional[Union['GetSupervisorAgentToolProviderConfigArgs', 'GetSupervisorAgentToolProviderConfigArgsDict', 'outputs.GetSupervisorAgentToolProviderConfigResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSupervisorAgentToolResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -224,7 +224,7 @@ def get_supervisor_agent_tool_output(name: pulumi.Input[Optional[_builtins.str]]
 
     :param _builtins.str name: Full resource name:
            supervisor-agents/{supervisor_agent_id}/tools/{tool_id}
-    :param Union['GetSupervisorAgentToolProviderConfigArgs', 'GetSupervisorAgentToolProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSupervisorAgentToolProviderConfigArgs', 'GetSupervisorAgentToolProviderConfigArgsDict', 'outputs.GetSupervisorAgentToolProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

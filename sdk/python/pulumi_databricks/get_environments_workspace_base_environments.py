@@ -67,7 +67,7 @@ class AwaitableGetEnvironmentsWorkspaceBaseEnvironmentsResult(GetEnvironmentsWor
 
 
 def get_environments_workspace_base_environments(page_size: Optional[_builtins.int] = None,
-                                                 provider_config: Optional[Union['GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgsDict']] = None,
+                                                 provider_config: Optional[Union['GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigResult']] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnvironmentsWorkspaceBaseEnvironmentsResult:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -90,7 +90,7 @@ def get_environments_workspace_base_environments(page_size: Optional[_builtins.i
 
     :param _builtins.int page_size: The maximum number of environments to return per page.
            Default is 1000
-    :param Union['GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -103,7 +103,7 @@ def get_environments_workspace_base_environments(page_size: Optional[_builtins.i
         provider_config=pulumi.get(__ret__, 'provider_config'),
         workspace_base_environments=pulumi.get(__ret__, 'workspace_base_environments'))
 def get_environments_workspace_base_environments_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                                        provider_config: pulumi.Input[Optional[Optional[Union['GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgsDict']]]] = None,
+                                                        provider_config: pulumi.Input[Optional[Optional[Union['GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigResult']]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentsWorkspaceBaseEnvironmentsResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -126,7 +126,7 @@ def get_environments_workspace_base_environments_output(page_size: pulumi.Input[
 
     :param _builtins.int page_size: The maximum number of environments to return per page.
            Default is 1000
-    :param Union['GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

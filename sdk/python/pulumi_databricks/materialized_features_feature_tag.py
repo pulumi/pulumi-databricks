@@ -122,7 +122,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.MaterializedFeaturesFeatureTagProviderConfig']]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -131,7 +131,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.MaterializedFeaturesFeatureTagProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -159,7 +159,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.MaterializedFeaturesFeatureTagProviderConfig']]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -186,7 +186,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.MaterializedFeaturesFeatureTagProviderConfig']]] = None,
             value: pulumi.Input[Optional[_builtins.str]] = None) -> 'MaterializedFeaturesFeatureTag':
         """
         Get an existing MaterializedFeaturesFeatureTag resource's state with the given name, id, and optional extra
@@ -195,7 +195,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict', 'outputs.MaterializedFeaturesFeatureTagProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

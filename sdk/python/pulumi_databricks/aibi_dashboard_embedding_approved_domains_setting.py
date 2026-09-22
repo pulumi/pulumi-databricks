@@ -153,9 +153,9 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -189,8 +189,8 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']] aibi_dashboard_embedding_approved_domains: block with following attributes:
-        :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains']] aibi_dashboard_embedding_approved_domains: block with following attributes:
+        :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -242,9 +242,9 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -271,9 +271,9 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+            aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig']]] = None,
             setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AibiDashboardEmbeddingApprovedDomainsSetting':
         """
         Get an existing AibiDashboardEmbeddingApprovedDomainsSetting resource's state with the given name, id, and optional extra
@@ -282,8 +282,8 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']] aibi_dashboard_embedding_approved_domains: block with following attributes:
-        :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains']] aibi_dashboard_embedding_approved_domains: block with following attributes:
+        :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict', 'outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -147,7 +147,7 @@ class AwaitableGetPostgresEndpointResult(GetPostgresEndpointResult):
 
 
 def get_postgres_endpoint(name: Optional[_builtins.str] = None,
-                          provider_config: Optional[Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict']] = None,
+                          provider_config: Optional[Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict', 'outputs.GetPostgresEndpointProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresEndpointResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -171,7 +171,7 @@ def get_postgres_endpoint(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Output only. The full resource path of the endpoint.
            Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
-    :param Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict', 'outputs.GetPostgresEndpointProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -190,7 +190,7 @@ def get_postgres_endpoint(name: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_postgres_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict', 'outputs.GetPostgresEndpointProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresEndpointResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -214,7 +214,7 @@ def get_postgres_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = N
 
     :param _builtins.str name: Output only. The full resource path of the endpoint.
            Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
-    :param Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict', 'outputs.GetPostgresEndpointProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

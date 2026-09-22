@@ -74,7 +74,7 @@ class AwaitableGetMwsCredentialsResult(GetMwsCredentialsResult):
 
 
 def get_mws_credentials(ids: Optional[Mapping[str, _builtins.str]] = None,
-                        provider_config: Optional[Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict']] = None,
+                        provider_config: Optional[Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict', 'outputs.GetMwsCredentialsProviderConfigResult']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsCredentialsResult:
     """
     Lists all MwsCredentials in Databricks Account.
@@ -106,7 +106,7 @@ def get_mws_credentials(ids: Optional[Mapping[str, _builtins.str]] = None,
 
 
     :param Mapping[str, _builtins.str] ids: name-to-id map for all of the credentials in the account
-    :param Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
+    :param Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict', 'outputs.GetMwsCredentialsProviderConfigResult'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -119,7 +119,7 @@ def get_mws_credentials(ids: Optional[Mapping[str, _builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_mws_credentials_output(ids: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
-                               provider_config: pulumi.Input[Optional[Optional[Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict']]]] = None,
+                               provider_config: pulumi.Input[Optional[Optional[Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict', 'outputs.GetMwsCredentialsProviderConfigResult']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsCredentialsResult]:
     """
     Lists all MwsCredentials in Databricks Account.
@@ -151,7 +151,7 @@ def get_mws_credentials_output(ids: pulumi.Input[Optional[Optional[Mapping[str, 
 
 
     :param Mapping[str, _builtins.str] ids: name-to-id map for all of the credentials in the account
-    :param Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
+    :param Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict', 'outputs.GetMwsCredentialsProviderConfigResult'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
     """
     __args__ = dict()
     __args__['ids'] = ids

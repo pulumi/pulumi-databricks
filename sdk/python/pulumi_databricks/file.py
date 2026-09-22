@@ -252,7 +252,7 @@ class File(pulumi.CustomResource):
                  content_base64: pulumi.Input[Optional[_builtins.str]] = None,
                  md5: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict', 'outputs.FileProviderConfig']]] = None,
                  remote_file_modified: pulumi.Input[Optional[_builtins.bool]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -327,7 +327,7 @@ class File(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: Contents in base 64 format. Conflicts with `source`.
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-        :param pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict', 'outputs.FileProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         ...
@@ -421,7 +421,7 @@ class File(pulumi.CustomResource):
                  content_base64: pulumi.Input[Optional[_builtins.str]] = None,
                  md5: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict', 'outputs.FileProviderConfig']]] = None,
                  remote_file_modified: pulumi.Input[Optional[_builtins.bool]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -458,7 +458,7 @@ class File(pulumi.CustomResource):
             md5: pulumi.Input[Optional[_builtins.str]] = None,
             modification_time: pulumi.Input[Optional[_builtins.str]] = None,
             path: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict', 'outputs.FileProviderConfig']]] = None,
             remote_file_modified: pulumi.Input[Optional[_builtins.bool]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None) -> 'File':
         """
@@ -472,7 +472,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] file_size: The file size of the file that is being tracked by this resource in bytes.
         :param pulumi.Input[_builtins.str] modification_time: The last time stamp when the file was modified
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-        :param pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict', 'outputs.FileProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

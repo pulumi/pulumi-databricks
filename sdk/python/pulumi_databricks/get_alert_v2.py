@@ -261,7 +261,7 @@ class AwaitableGetAlertV2Result(GetAlertV2Result):
 
 
 def get_alert_v2(id: Optional[_builtins.str] = None,
-                 provider_config: Optional[Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict']] = None,
+                 provider_config: Optional[Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict', 'outputs.GetAlertV2ProviderConfigResult']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertV2Result:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -290,7 +290,7 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str id: The canonical identifier of the alert to retrieve information about
-    :param Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict', 'outputs.GetAlertV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -318,7 +318,7 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         warehouse_id=pulumi.get(__ret__, 'warehouse_id'))
 def get_alert_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
-                        provider_config: pulumi.Input[Optional[Optional[Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict']]]] = None,
+                        provider_config: pulumi.Input[Optional[Optional[Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict', 'outputs.GetAlertV2ProviderConfigResult']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertV2Result]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -347,7 +347,7 @@ def get_alert_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
 
 
     :param _builtins.str id: The canonical identifier of the alert to retrieve information about
-    :param Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict', 'outputs.GetAlertV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['id'] = id

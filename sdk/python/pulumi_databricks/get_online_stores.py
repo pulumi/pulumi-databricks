@@ -67,14 +67,14 @@ class AwaitableGetOnlineStoresResult(GetOnlineStoresResult):
 
 
 def get_online_stores(page_size: Optional[_builtins.int] = None,
-                      provider_config: Optional[Union['GetOnlineStoresProviderConfigArgs', 'GetOnlineStoresProviderConfigArgsDict']] = None,
+                      provider_config: Optional[Union['GetOnlineStoresProviderConfigArgs', 'GetOnlineStoresProviderConfigArgsDict', 'outputs.GetOnlineStoresProviderConfigResult']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOnlineStoresResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.int page_size: The maximum number of results to return. Defaults to 100 if not specified
-    :param Union['GetOnlineStoresProviderConfigArgs', 'GetOnlineStoresProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetOnlineStoresProviderConfigArgs', 'GetOnlineStoresProviderConfigArgsDict', 'outputs.GetOnlineStoresProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -87,14 +87,14 @@ def get_online_stores(page_size: Optional[_builtins.int] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_online_stores_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                             provider_config: pulumi.Input[Optional[Optional[Union['GetOnlineStoresProviderConfigArgs', 'GetOnlineStoresProviderConfigArgsDict']]]] = None,
+                             provider_config: pulumi.Input[Optional[Optional[Union['GetOnlineStoresProviderConfigArgs', 'GetOnlineStoresProviderConfigArgsDict', 'outputs.GetOnlineStoresProviderConfigResult']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOnlineStoresResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.int page_size: The maximum number of results to return. Defaults to 100 if not specified
-    :param Union['GetOnlineStoresProviderConfigArgs', 'GetOnlineStoresProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetOnlineStoresProviderConfigArgs', 'GetOnlineStoresProviderConfigArgsDict', 'outputs.GetOnlineStoresProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

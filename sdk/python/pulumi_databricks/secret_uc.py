@@ -456,7 +456,7 @@ class SecretUc(pulumi.CustomResource):
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict', 'outputs.SecretUcProviderConfig']]] = None,
                  schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -499,7 +499,7 @@ class SecretUc(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the secret, relative to its parent schema
         :param pulumi.Input[_builtins.str] owner: The owner of the secret. Defaults to the creating principal on creation. Can be updated to
                transfer ownership of the secret to another principal
-        :param pulumi.Input[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict', 'outputs.SecretUcProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the secret resides
         :param pulumi.Input[_builtins.str] value: The secret value to store. This field is input-only and is not returned in responses — use
                the **effective_value** field (via GetSecret with **include_value** set to true) to read the
@@ -561,7 +561,7 @@ class SecretUc(pulumi.CustomResource):
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict', 'outputs.SecretUcProviderConfig']]] = None,
                  schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -618,7 +618,7 @@ class SecretUc(pulumi.CustomResource):
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict', 'outputs.SecretUcProviderConfig']]] = None,
             schema_name: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None,
@@ -646,7 +646,7 @@ class SecretUc(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the secret, relative to its parent schema
         :param pulumi.Input[_builtins.str] owner: The owner of the secret. Defaults to the creating principal on creation. Can be updated to
                transfer ownership of the secret to another principal
-        :param pulumi.Input[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['SecretUcProviderConfigArgs', 'SecretUcProviderConfigArgsDict', 'outputs.SecretUcProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the secret resides
         :param pulumi.Input[_builtins.str] update_time: (string) - The time at which this secret was last updated
         :param pulumi.Input[_builtins.str] updated_by: (string) - The principal that last updated the secret

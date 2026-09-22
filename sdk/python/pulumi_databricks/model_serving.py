@@ -426,17 +426,17 @@ class ModelServing(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_gateway: pulumi.Input[Optional[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
+                 ai_gateway: pulumi.Input[Optional[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict', 'outputs.ModelServingAiGateway']]] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict', 'outputs.ModelServingConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 email_notifications: pulumi.Input[Optional[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
+                 email_notifications: pulumi.Input[Optional[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict', 'outputs.ModelServingEmailNotifications']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']]] = None,
-                 rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict', 'outputs.ModelServingProviderConfig']]] = None,
+                 rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict', 'outputs.ModelServingRateLimit']]]]] = None,
                  route_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
-                 telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict', 'outputs.ModelServingTag']]]]] = None,
+                 telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict', 'outputs.ModelServingTelemetryConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/servingendpoints)
@@ -585,16 +585,16 @@ class ModelServing(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+        :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict', 'outputs.ModelServingAiGateway']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
-        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict', 'outputs.ModelServingConfig']] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
         :param pulumi.Input[_builtins.str] description: The description of the model serving endpoint.
-        :param pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
+        :param pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict', 'outputs.ModelServingEmailNotifications']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        :param pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+        :param pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict', 'outputs.ModelServingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict', 'outputs.ModelServingRateLimit']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict', 'outputs.ModelServingTag']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         ...
     @overload
@@ -762,17 +762,17 @@ class ModelServing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_gateway: pulumi.Input[Optional[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
+                 ai_gateway: pulumi.Input[Optional[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict', 'outputs.ModelServingAiGateway']]] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict', 'outputs.ModelServingConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 email_notifications: pulumi.Input[Optional[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
+                 email_notifications: pulumi.Input[Optional[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict', 'outputs.ModelServingEmailNotifications']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']]] = None,
-                 rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict', 'outputs.ModelServingProviderConfig']]] = None,
+                 rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict', 'outputs.ModelServingRateLimit']]]]] = None,
                  route_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
-                 telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict', 'outputs.ModelServingTag']]]]] = None,
+                 telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict', 'outputs.ModelServingTelemetryConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -805,19 +805,19 @@ class ModelServing(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ai_gateway: pulumi.Input[Optional[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
+            ai_gateway: pulumi.Input[Optional[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict', 'outputs.ModelServingAiGateway']]] = None,
             budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict', 'outputs.ModelServingConfig']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            email_notifications: pulumi.Input[Optional[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
+            email_notifications: pulumi.Input[Optional[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict', 'outputs.ModelServingEmailNotifications']]] = None,
             endpoint_url: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']]] = None,
-            rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict', 'outputs.ModelServingProviderConfig']]] = None,
+            rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict', 'outputs.ModelServingRateLimit']]]]] = None,
             route_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
             serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
-            telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict']]] = None) -> 'ModelServing':
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict', 'outputs.ModelServingTag']]]]] = None,
+            telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict', 'outputs.ModelServingTelemetryConfig']]] = None) -> 'ModelServing':
         """
         Get an existing ModelServing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -825,18 +825,18 @@ class ModelServing(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+        :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict', 'outputs.ModelServingAiGateway']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
-        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict', 'outputs.ModelServingConfig']] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
         :param pulumi.Input[_builtins.str] description: The description of the model serving endpoint.
-        :param pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
+        :param pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict', 'outputs.ModelServingEmailNotifications']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] endpoint_url: Invocation url of the endpoint.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        :param pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+        :param pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict', 'outputs.ModelServingProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict', 'outputs.ModelServingRateLimit']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         :param pulumi.Input[_builtins.str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict', 'outputs.ModelServingTag']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

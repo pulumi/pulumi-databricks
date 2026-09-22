@@ -396,7 +396,7 @@ class CustomAppIntegration(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  redirect_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 token_access_policy: pulumi.Input[Optional[Union['CustomAppIntegrationTokenAccessPolicyArgs', 'CustomAppIntegrationTokenAccessPolicyArgsDict']]] = None,
+                 token_access_policy: pulumi.Input[Optional[Union['CustomAppIntegrationTokenAccessPolicyArgs', 'CustomAppIntegrationTokenAccessPolicyArgsDict', 'outputs.CustomAppIntegrationTokenAccessPolicy']]] = None,
                  user_authorized_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -500,7 +500,7 @@ class CustomAppIntegration(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  redirect_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 token_access_policy: pulumi.Input[Optional[Union['CustomAppIntegrationTokenAccessPolicyArgs', 'CustomAppIntegrationTokenAccessPolicyArgsDict']]] = None,
+                 token_access_policy: pulumi.Input[Optional[Union['CustomAppIntegrationTokenAccessPolicyArgs', 'CustomAppIntegrationTokenAccessPolicyArgsDict', 'outputs.CustomAppIntegrationTokenAccessPolicy']]] = None,
                  user_authorized_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -545,7 +545,7 @@ class CustomAppIntegration(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             redirect_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            token_access_policy: pulumi.Input[Optional[Union['CustomAppIntegrationTokenAccessPolicyArgs', 'CustomAppIntegrationTokenAccessPolicyArgsDict']]] = None,
+            token_access_policy: pulumi.Input[Optional[Union['CustomAppIntegrationTokenAccessPolicyArgs', 'CustomAppIntegrationTokenAccessPolicyArgsDict', 'outputs.CustomAppIntegrationTokenAccessPolicy']]] = None,
             user_authorized_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CustomAppIntegration':
         """
         Get an existing CustomAppIntegration resource's state with the given name, id, and optional extra

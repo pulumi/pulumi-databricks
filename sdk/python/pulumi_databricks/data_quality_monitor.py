@@ -236,11 +236,11 @@ class DataQualityMonitor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
-                 data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
+                 anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']]] = None,
+                 data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']]] = None,
                  object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict', 'outputs.DataQualityMonitorProviderConfig']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -277,8 +277,8 @@ class DataQualityMonitor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
-        :param pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
+        :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
+        :param pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
                must be present
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
                
@@ -290,7 +290,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-        :param pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict', 'outputs.DataQualityMonitorProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -346,11 +346,11 @@ class DataQualityMonitor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
-                 data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
+                 anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']]] = None,
+                 data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']]] = None,
                  object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict', 'outputs.DataQualityMonitorProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -379,11 +379,11 @@ class DataQualityMonitor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
-            data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
+            anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']]] = None,
+            data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']]] = None,
             object_id: pulumi.Input[Optional[_builtins.str]] = None,
             object_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None) -> 'DataQualityMonitor':
+            provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict', 'outputs.DataQualityMonitorProviderConfig']]] = None) -> 'DataQualityMonitor':
         """
         Get an existing DataQualityMonitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -391,8 +391,8 @@ class DataQualityMonitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
-        :param pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
+        :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict', 'outputs.DataQualityMonitorAnomalyDetectionConfig']] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
+        :param pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict', 'outputs.DataQualityMonitorDataProfilingConfig']] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
                must be present
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
                
@@ -404,7 +404,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-        :param pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict', 'outputs.DataQualityMonitorProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

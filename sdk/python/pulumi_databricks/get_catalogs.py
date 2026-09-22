@@ -73,7 +73,7 @@ class AwaitableGetCatalogsResult(GetCatalogsResult):
 
 
 def get_catalogs(ids: Optional[Sequence[_builtins.str]] = None,
-                 provider_config: Optional[Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict']] = None,
+                 provider_config: Optional[Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict', 'outputs.GetCatalogsProviderConfigResult']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogsResult:
     """
     Retrieves a list of Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -101,7 +101,7 @@ def get_catalogs(ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] ids: set of Catalog names
-    :param Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict', 'outputs.GetCatalogsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -114,7 +114,7 @@ def get_catalogs(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_catalogs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                        provider_config: pulumi.Input[Optional[Optional[Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict']]]] = None,
+                        provider_config: pulumi.Input[Optional[Optional[Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict', 'outputs.GetCatalogsProviderConfigResult']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogsResult]:
     """
     Retrieves a list of Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -142,7 +142,7 @@ def get_catalogs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
 
 
     :param Sequence[_builtins.str] ids: set of Catalog names
-    :param Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict', 'outputs.GetCatalogsProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids

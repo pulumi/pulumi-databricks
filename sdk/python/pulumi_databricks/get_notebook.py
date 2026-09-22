@@ -143,7 +143,7 @@ def get_notebook(format: Optional[_builtins.str] = None,
                  object_id: Optional[_builtins.int] = None,
                  object_type: Optional[_builtins.str] = None,
                  path: Optional[_builtins.str] = None,
-                 provider_config: Optional[Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict']] = None,
+                 provider_config: Optional[Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict', 'outputs.GetNotebookProviderConfigResult']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotebookResult:
     """
     This data source allows to export a notebook from Databricks Workspace.
@@ -166,7 +166,7 @@ def get_notebook(format: Optional[_builtins.str] = None,
     :param _builtins.int object_id: notebook object ID
     :param _builtins.str object_type: notebook object type
     :param _builtins.str path: Notebook path on the workspace
-    :param Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict', 'outputs.GetNotebookProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['format'] = format
@@ -193,7 +193,7 @@ def get_notebook_output(format: pulumi.Input[Optional[_builtins.str]] = None,
                         object_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                         object_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         path: pulumi.Input[Optional[_builtins.str]] = None,
-                        provider_config: pulumi.Input[Optional[Optional[Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict']]]] = None,
+                        provider_config: pulumi.Input[Optional[Optional[Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict', 'outputs.GetNotebookProviderConfigResult']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookResult]:
     """
     This data source allows to export a notebook from Databricks Workspace.
@@ -216,7 +216,7 @@ def get_notebook_output(format: pulumi.Input[Optional[_builtins.str]] = None,
     :param _builtins.int object_id: notebook object ID
     :param _builtins.str object_type: notebook object type
     :param _builtins.str path: Notebook path on the workspace
-    :param Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict', 'outputs.GetNotebookProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['format'] = format

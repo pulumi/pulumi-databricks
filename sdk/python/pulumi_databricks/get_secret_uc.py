@@ -237,7 +237,7 @@ class AwaitableGetSecretUcResult(GetSecretUcResult):
 
 
 def get_secret_uc(full_name: Optional[_builtins.str] = None,
-                  provider_config: Optional[Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict']] = None,
+                  provider_config: Optional[Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict', 'outputs.GetSecretUcProviderConfigResult']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretUcResult:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -262,7 +262,7 @@ def get_secret_uc(full_name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str full_name: The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
-    :param Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict', 'outputs.GetSecretUcProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['fullName'] = full_name
@@ -288,7 +288,7 @@ def get_secret_uc(full_name: Optional[_builtins.str] = None,
         updated_by=pulumi.get(__ret__, 'updated_by'),
         value=pulumi.get(__ret__, 'value'))
 def get_secret_uc_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
-                         provider_config: pulumi.Input[Optional[Optional[Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict']]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict', 'outputs.GetSecretUcProviderConfigResult']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretUcResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -313,7 +313,7 @@ def get_secret_uc_output(full_name: pulumi.Input[Optional[_builtins.str]] = None
 
 
     :param _builtins.str full_name: The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
-    :param Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetSecretUcProviderConfigArgs', 'GetSecretUcProviderConfigArgsDict', 'outputs.GetSecretUcProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['fullName'] = full_name

@@ -341,10 +341,10 @@ class Endpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_vpc_endpoint_info: pulumi.Input[Optional[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict']]] = None,
-                 azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
+                 aws_vpc_endpoint_info: pulumi.Input[Optional[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict', 'outputs.EndpointAwsVpcEndpointInfo']]] = None,
+                 azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict', 'outputs.EndpointAzurePrivateEndpointInfo']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 gcp_psc_endpoint_info: pulumi.Input[Optional[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict']]] = None,
+                 gcp_psc_endpoint_info: pulumi.Input[Optional[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict', 'outputs.EndpointGcpPscEndpointInfo']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -378,12 +378,12 @@ class Endpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict']] aws_vpc_endpoint_info: Info for an AWS VPC endpoint
-        :param pulumi.Input[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']] azure_private_endpoint_info: Info for an Azure private endpoint
+        :param pulumi.Input[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict', 'outputs.EndpointAwsVpcEndpointInfo']] aws_vpc_endpoint_info: Info for an AWS VPC endpoint
+        :param pulumi.Input[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict', 'outputs.EndpointAzurePrivateEndpointInfo']] azure_private_endpoint_info: Info for an Azure private endpoint
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of this endpoint.
                The input should conform to RFC-1034, which restricts to letters, numbers, and hyphens,
                with the first character a letter, the last a letter or a number, and a 63 character maximum
-        :param pulumi.Input[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict']] gcp_psc_endpoint_info: Info for a GCP Private Service Connect endpoint
+        :param pulumi.Input[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict', 'outputs.EndpointGcpPscEndpointInfo']] gcp_psc_endpoint_info: Info for a GCP Private Service Connect endpoint
         :param pulumi.Input[_builtins.str] parent: The parent resource name of the account under which the endpoint is created.
                Format: `accounts/{account_id}`
         :param pulumi.Input[_builtins.str] region: The cloud provider region where this endpoint is located
@@ -437,10 +437,10 @@ class Endpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_vpc_endpoint_info: pulumi.Input[Optional[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict']]] = None,
-                 azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
+                 aws_vpc_endpoint_info: pulumi.Input[Optional[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict', 'outputs.EndpointAwsVpcEndpointInfo']]] = None,
+                 azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict', 'outputs.EndpointAzurePrivateEndpointInfo']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 gcp_psc_endpoint_info: pulumi.Input[Optional[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict']]] = None,
+                 gcp_psc_endpoint_info: pulumi.Input[Optional[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict', 'outputs.EndpointGcpPscEndpointInfo']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -481,12 +481,12 @@ class Endpoint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            aws_vpc_endpoint_info: pulumi.Input[Optional[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict']]] = None,
-            azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
+            aws_vpc_endpoint_info: pulumi.Input[Optional[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict', 'outputs.EndpointAwsVpcEndpointInfo']]] = None,
+            azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict', 'outputs.EndpointAzurePrivateEndpointInfo']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-            gcp_psc_endpoint_info: pulumi.Input[Optional[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict']]] = None,
+            gcp_psc_endpoint_info: pulumi.Input[Optional[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict', 'outputs.EndpointGcpPscEndpointInfo']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -500,14 +500,14 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: (string) - The Databricks Account in which the endpoint object exists
-        :param pulumi.Input[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict']] aws_vpc_endpoint_info: Info for an AWS VPC endpoint
-        :param pulumi.Input[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']] azure_private_endpoint_info: Info for an Azure private endpoint
+        :param pulumi.Input[Union['EndpointAwsVpcEndpointInfoArgs', 'EndpointAwsVpcEndpointInfoArgsDict', 'outputs.EndpointAwsVpcEndpointInfo']] aws_vpc_endpoint_info: Info for an AWS VPC endpoint
+        :param pulumi.Input[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict', 'outputs.EndpointAzurePrivateEndpointInfo']] azure_private_endpoint_info: Info for an Azure private endpoint
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp when the endpoint was created. The timestamp is in RFC 3339 format in UTC timezone
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of this endpoint.
                The input should conform to RFC-1034, which restricts to letters, numbers, and hyphens,
                with the first character a letter, the last a letter or a number, and a 63 character maximum
         :param pulumi.Input[_builtins.str] endpoint_id: (string) - The unique identifier for this endpoint under the account. This field is a UUID generated by Databricks
-        :param pulumi.Input[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict']] gcp_psc_endpoint_info: Info for a GCP Private Service Connect endpoint
+        :param pulumi.Input[Union['EndpointGcpPscEndpointInfoArgs', 'EndpointGcpPscEndpointInfoArgsDict', 'outputs.EndpointGcpPscEndpointInfo']] gcp_psc_endpoint_info: Info for a GCP Private Service Connect endpoint
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the endpoint, which uniquely identifies the endpoint
         :param pulumi.Input[_builtins.str] parent: The parent resource name of the account under which the endpoint is created.
                Format: `accounts/{account_id}`

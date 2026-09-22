@@ -161,7 +161,7 @@ def get_spark_version(beta: Optional[_builtins.bool] = None,
                       long_term_support: Optional[_builtins.bool] = None,
                       ml: Optional[_builtins.bool] = None,
                       photon: Optional[_builtins.bool] = None,
-                      provider_config: Optional[Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict']] = None,
+                      provider_config: Optional[Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict', 'outputs.GetSparkVersionProviderConfigResult']] = None,
                       scala: Optional[_builtins.str] = None,
                       spark_version: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSparkVersionResult:
@@ -215,7 +215,7 @@ def get_spark_version(beta: Optional[_builtins.bool] = None,
     :param _builtins.bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
     :param _builtins.bool ml: if we should limit the search only to ML runtimes. Default to `false`.
     :param _builtins.bool photon: if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\"PHOTON\\"` in the cluster configuration instead!*
-    :param Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict', 'outputs.GetSparkVersionProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
     :param _builtins.str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """
@@ -257,7 +257,7 @@ def get_spark_version_output(beta: pulumi.Input[Optional[Optional[_builtins.bool
                              long_term_support: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                              ml: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                              photon: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                             provider_config: pulumi.Input[Optional[Optional[Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict']]]] = None,
+                             provider_config: pulumi.Input[Optional[Optional[Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict', 'outputs.GetSparkVersionProviderConfigResult']]]] = None,
                              scala: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              spark_version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSparkVersionResult]:
@@ -311,7 +311,7 @@ def get_spark_version_output(beta: pulumi.Input[Optional[Optional[_builtins.bool
     :param _builtins.bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
     :param _builtins.bool ml: if we should limit the search only to ML runtimes. Default to `false`.
     :param _builtins.bool photon: if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\"PHOTON\\"` in the cluster configuration instead!*
-    :param Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict', 'outputs.GetSparkVersionProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
     :param _builtins.str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """

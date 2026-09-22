@@ -90,7 +90,7 @@ class AwaitableGetPostgresBranchesResult(GetPostgresBranchesResult):
 
 def get_postgres_branches(page_size: Optional[_builtins.int] = None,
                           parent: Optional[_builtins.str] = None,
-                          provider_config: Optional[Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict']] = None,
+                          provider_config: Optional[Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict', 'outputs.GetPostgresBranchesProviderConfigResult']] = None,
                           show_deleted: Optional[_builtins.bool] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresBranchesResult:
     """
@@ -116,7 +116,7 @@ def get_postgres_branches(page_size: Optional[_builtins.int] = None,
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Project that owns this collection of branches.
            Format: projects/{project_id}
-    :param Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict', 'outputs.GetPostgresBranchesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.bool show_deleted: Whether to include soft-deleted branches in the response.
            When true, deleted branches are included alongside active branches.
            Purged branches are never returned
@@ -137,7 +137,7 @@ def get_postgres_branches(page_size: Optional[_builtins.int] = None,
         show_deleted=pulumi.get(__ret__, 'show_deleted'))
 def get_postgres_branches_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict', 'outputs.GetPostgresBranchesProviderConfigResult']]]] = None,
                                  show_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresBranchesResult]:
     """
@@ -163,7 +163,7 @@ def get_postgres_branches_output(page_size: pulumi.Input[Optional[Optional[_buil
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Project that owns this collection of branches.
            Format: projects/{project_id}
-    :param Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict', 'outputs.GetPostgresBranchesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.bool show_deleted: Whether to include soft-deleted branches in the response.
            When true, deleted branches are included alongside active branches.
            Purged branches are never returned

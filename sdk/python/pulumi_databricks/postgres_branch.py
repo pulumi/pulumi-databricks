@@ -332,10 +332,10 @@ class PostgresBranch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict', 'outputs.PostgresBranchProviderConfig']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -440,10 +440,10 @@ class PostgresBranch(pulumi.CustomResource):
                
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
-        :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict', 'outputs.PostgresBranchProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
-        :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']] spec: The spec contains the branch configuration
+        :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']] spec: The spec contains the branch configuration
         """
         ...
     @overload
@@ -563,10 +563,10 @@ class PostgresBranch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict', 'outputs.PostgresBranchProviderConfig']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -605,11 +605,11 @@ class PostgresBranch(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict', 'outputs.PostgresBranchProviderConfig']]] = None,
             purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
-            spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict', 'outputs.PostgresBranchStatus']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresBranch':
         """
@@ -628,11 +628,11 @@ class PostgresBranch(pulumi.CustomResource):
                
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
-        :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict', 'outputs.PostgresBranchProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
-        :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']] spec: The spec contains the branch configuration
-        :param pulumi.Input[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']] status: (BranchStatus) - The current status of a Branch
+        :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']] spec: The spec contains the branch configuration
+        :param pulumi.Input[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict', 'outputs.PostgresBranchStatus']] status: (BranchStatus) - The current status of a Branch
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the branch
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the branch was last updated
         """

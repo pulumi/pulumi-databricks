@@ -163,7 +163,7 @@ class GroupMember(pulumi.CustomResource):
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  member_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict', 'outputs.GroupMemberProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/groups)
@@ -281,7 +281,7 @@ class GroupMember(pulumi.CustomResource):
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  member_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict', 'outputs.GroupMemberProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,7 +312,7 @@ class GroupMember(pulumi.CustomResource):
             api: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             member_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None) -> 'GroupMember':
+            provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict', 'outputs.GroupMemberProviderConfig']]] = None) -> 'GroupMember':
         """
         Get an existing GroupMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

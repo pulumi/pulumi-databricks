@@ -751,13 +751,13 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]]] = None,
+                 custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]]] = None,
                  enable_pg_native_login: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_readable_secondaries: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 parent_instance_ref: pulumi.Input[Optional[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']]] = None,
+                 parent_instance_ref: pulumi.Input[Optional[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict', 'outputs.DatabaseInstanceProviderConfig']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  retention_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
                  stopped: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -844,17 +844,17 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
         :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
         :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
                1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
-        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
+        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
                child instance.
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
-        :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict', 'outputs.DatabaseInstanceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
                of false will throw a bad request
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
@@ -963,13 +963,13 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]]] = None,
+                 custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]]] = None,
                  enable_pg_native_login: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_readable_secondaries: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 parent_instance_ref: pulumi.Input[Optional[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']]] = None,
+                 parent_instance_ref: pulumi.Input[Optional[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict', 'outputs.DatabaseInstanceProviderConfig']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  retention_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
                  stopped: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1022,12 +1022,12 @@ class DatabaseInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             capacity: pulumi.Input[Optional[_builtins.str]] = None,
-            child_instance_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict']]]]] = None,
+            child_instance_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict', 'outputs.DatabaseInstanceChildInstanceRef']]]]] = None,
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]]] = None,
+            custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]]] = None,
             effective_capacity: pulumi.Input[Optional[_builtins.str]] = None,
-            effective_custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict']]]]] = None,
+            effective_custom_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict', 'outputs.DatabaseInstanceEffectiveCustomTag']]]]] = None,
             effective_enable_pg_native_login: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_enable_readable_secondaries: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_node_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1038,9 +1038,9 @@ class DatabaseInstance(pulumi.CustomResource):
             enable_readable_secondaries: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
-            parent_instance_ref: pulumi.Input[Optional[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
+            parent_instance_ref: pulumi.Input[Optional[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']]] = None,
             pg_version: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict', 'outputs.DatabaseInstanceProviderConfig']]] = None,
             purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             read_only_dns: pulumi.Input[Optional[_builtins.str]] = None,
             read_write_dns: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1057,15 +1057,15 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict']]]] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict', 'outputs.DatabaseInstanceChildInstanceRef']]]] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
                parent instance
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the instance
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict', 'outputs.DatabaseInstanceCustomTag']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
         :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
                This is an output only field that contains the value computed from the input field combined with
                server side defaults. Use the field without the effective_ prefix to set the value
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict']]]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict', 'outputs.DatabaseInstanceEffectiveCustomTag']]]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance.
                This is an output only field that contains the value computed from the input field combined with
                server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled.
@@ -1093,12 +1093,12 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
                1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
-        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
+        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict', 'outputs.DatabaseInstanceParentInstanceRef']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
                child instance.
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[_builtins.str] pg_version: (string) - The version of Postgres running on the instance
-        :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict', 'outputs.DatabaseInstanceProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
                of false will throw a bad request
         :param pulumi.Input[_builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if

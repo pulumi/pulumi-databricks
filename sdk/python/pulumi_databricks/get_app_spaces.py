@@ -67,7 +67,7 @@ class AwaitableGetAppSpacesResult(GetAppSpacesResult):
 
 
 def get_app_spaces(page_size: Optional[_builtins.int] = None,
-                   provider_config: Optional[Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict']] = None,
+                   provider_config: Optional[Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict', 'outputs.GetAppSpacesProviderConfigResult']] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppSpacesResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -76,7 +76,7 @@ def get_app_spaces(page_size: Optional[_builtins.int] = None,
 
 
     :param _builtins.int page_size: Upper bound for items returned
-    :param Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict', 'outputs.GetAppSpacesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -89,7 +89,7 @@ def get_app_spaces(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         spaces=pulumi.get(__ret__, 'spaces'))
 def get_app_spaces_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                          provider_config: pulumi.Input[Optional[Optional[Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict']]]] = None,
+                          provider_config: pulumi.Input[Optional[Optional[Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict', 'outputs.GetAppSpacesProviderConfigResult']]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppSpacesResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -98,7 +98,7 @@ def get_app_spaces_output(page_size: pulumi.Input[Optional[Optional[_builtins.in
 
 
     :param _builtins.int page_size: Upper bound for items returned
-    :param Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAppSpacesProviderConfigArgs', 'GetAppSpacesProviderConfigArgsDict', 'outputs.GetAppSpacesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

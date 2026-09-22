@@ -270,7 +270,7 @@ class SupervisorAgent(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict', 'outputs.SupervisorAgentProviderConfig']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -283,7 +283,7 @@ class SupervisorAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of what this agent can do (user-facing)
         :param pulumi.Input[_builtins.str] display_name: The display name of the Supervisor Agent, unique at workspace level
         :param pulumi.Input[_builtins.str] instructions: Optional natural-language instructions for the supervisor agent
-        :param pulumi.Input[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict', 'outputs.SupervisorAgentProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -315,7 +315,7 @@ class SupervisorAgent(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict', 'outputs.SupervisorAgentProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -355,7 +355,7 @@ class SupervisorAgent(pulumi.CustomResource):
             experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
             instructions: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict', 'outputs.SupervisorAgentProviderConfig']]] = None,
             supervisor_agent_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SupervisorAgent':
         """
         Get an existing SupervisorAgent resource's state with the given name, id, and optional extra
@@ -373,7 +373,7 @@ class SupervisorAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instructions: Optional natural-language instructions for the supervisor agent
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the SupervisorAgent.
                Format: supervisor-agents/{supervisor_agent_id}
-        :param pulumi.Input[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['SupervisorAgentProviderConfigArgs', 'SupervisorAgentProviderConfigArgsDict', 'outputs.SupervisorAgentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] supervisor_agent_id: (string) - The universally unique identifier (UUID) of the Supervisor Agent
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

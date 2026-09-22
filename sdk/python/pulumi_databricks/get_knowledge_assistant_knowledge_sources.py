@@ -77,7 +77,7 @@ class AwaitableGetKnowledgeAssistantKnowledgeSourcesResult(GetKnowledgeAssistant
 
 def get_knowledge_assistant_knowledge_sources(page_size: Optional[_builtins.int] = None,
                                               parent: Optional[_builtins.str] = None,
-                                              provider_config: Optional[Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict']] = None,
+                                              provider_config: Optional[Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantKnowledgeSourcesProviderConfigResult']] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKnowledgeAssistantKnowledgeSourcesResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -87,7 +87,7 @@ def get_knowledge_assistant_knowledge_sources(page_size: Optional[_builtins.int]
 
     :param _builtins.str parent: Parent resource to list from.
            Format: knowledge-assistants/{knowledge_assistant_id}
-    :param Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantKnowledgeSourcesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -103,7 +103,7 @@ def get_knowledge_assistant_knowledge_sources(page_size: Optional[_builtins.int]
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_knowledge_assistant_knowledge_sources_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                      parent: pulumi.Input[Optional[_builtins.str]] = None,
-                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict']]]] = None,
+                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantKnowledgeSourcesProviderConfigResult']]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKnowledgeAssistantKnowledgeSourcesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -113,7 +113,7 @@ def get_knowledge_assistant_knowledge_sources_output(page_size: pulumi.Input[Opt
 
     :param _builtins.str parent: Parent resource to list from.
            Format: knowledge-assistants/{knowledge_assistant_id}
-    :param Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict', 'outputs.GetKnowledgeAssistantKnowledgeSourcesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

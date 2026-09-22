@@ -196,9 +196,9 @@ class SecretScope(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_type: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_manage_principal: pulumi.Input[Optional[_builtins.str]] = None,
-                 keyvault_metadata: pulumi.Input[Optional[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict']]] = None,
+                 keyvault_metadata: pulumi.Input[Optional[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict', 'outputs.SecretScopeKeyvaultMetadata']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict', 'outputs.SecretScopeProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/secrets)
@@ -232,7 +232,7 @@ class SecretScope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backend_type: Either `DATABRICKS` or `AZURE_KEYVAULT`
         :param pulumi.Input[_builtins.str] initial_manage_principal: The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         :param pulumi.Input[_builtins.str] name: Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-        :param pulumi.Input[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict', 'outputs.SecretScopeProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -284,9 +284,9 @@ class SecretScope(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_type: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_manage_principal: pulumi.Input[Optional[_builtins.str]] = None,
-                 keyvault_metadata: pulumi.Input[Optional[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict']]] = None,
+                 keyvault_metadata: pulumi.Input[Optional[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict', 'outputs.SecretScopeKeyvaultMetadata']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict', 'outputs.SecretScopeProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -313,9 +313,9 @@ class SecretScope(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backend_type: pulumi.Input[Optional[_builtins.str]] = None,
             initial_manage_principal: pulumi.Input[Optional[_builtins.str]] = None,
-            keyvault_metadata: pulumi.Input[Optional[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict']]] = None,
+            keyvault_metadata: pulumi.Input[Optional[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict', 'outputs.SecretScopeKeyvaultMetadata']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict']]] = None) -> 'SecretScope':
+            provider_config: pulumi.Input[Optional[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict', 'outputs.SecretScopeProviderConfig']]] = None) -> 'SecretScope':
         """
         Get an existing SecretScope resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -326,7 +326,7 @@ class SecretScope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backend_type: Either `DATABRICKS` or `AZURE_KEYVAULT`
         :param pulumi.Input[_builtins.str] initial_manage_principal: The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         :param pulumi.Input[_builtins.str] name: Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-        :param pulumi.Input[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SecretScopeProviderConfigArgs', 'SecretScopeProviderConfigArgsDict', 'outputs.SecretScopeProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

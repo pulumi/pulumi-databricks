@@ -73,7 +73,7 @@ class AwaitableGetMwsWorkspacesResult(GetMwsWorkspacesResult):
             provider_config=self.provider_config)
 
 
-def get_mws_workspaces(provider_config: Optional[Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict']] = None,
+def get_mws_workspaces(provider_config: Optional[Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict', 'outputs.GetMwsWorkspacesProviderConfigResult']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
     """
     Lists all MwsWorkspaces in Databricks Account.
@@ -100,7 +100,7 @@ def get_mws_workspaces(provider_config: Optional[Union['GetMwsWorkspacesProvider
     * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
 
 
-    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
+    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict', 'outputs.GetMwsWorkspacesProviderConfigResult'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
     """
     __args__ = dict()
     __args__['providerConfig'] = provider_config
@@ -111,7 +111,7 @@ def get_mws_workspaces(provider_config: Optional[Union['GetMwsWorkspacesProvider
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_mws_workspaces_output(provider_config: pulumi.Input[Optional[Optional[Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict']]]] = None,
+def get_mws_workspaces_output(provider_config: pulumi.Input[Optional[Optional[Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict', 'outputs.GetMwsWorkspacesProviderConfigResult']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
     Lists all MwsWorkspaces in Databricks Account.
@@ -138,7 +138,7 @@ def get_mws_workspaces_output(provider_config: pulumi.Input[Optional[Optional[Un
     * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
 
 
-    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
+    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict', 'outputs.GetMwsWorkspacesProviderConfigResult'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
     """
     __args__ = dict()
     __args__['providerConfig'] = provider_config

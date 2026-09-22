@@ -67,7 +67,7 @@ class AwaitableGetExternalMetadatasResult(GetExternalMetadatasResult):
 
 
 def get_external_metadatas(page_size: Optional[_builtins.int] = None,
-                           provider_config: Optional[Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict']] = None,
+                           provider_config: Optional[Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict', 'outputs.GetExternalMetadatasProviderConfigResult']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalMetadatasResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -92,7 +92,7 @@ def get_external_metadatas(page_size: Optional[_builtins.int] = None,
 
     :param _builtins.int page_size: Specifies the maximum number of external metadata objects to return in a single response.
            The value must be less than or equal to 1000
-    :param Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict', 'outputs.GetExternalMetadatasProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -105,7 +105,7 @@ def get_external_metadatas(page_size: Optional[_builtins.int] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_external_metadatas_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                  provider_config: pulumi.Input[Optional[Optional[Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict']]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict', 'outputs.GetExternalMetadatasProviderConfigResult']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadatasResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -130,7 +130,7 @@ def get_external_metadatas_output(page_size: pulumi.Input[Optional[Optional[_bui
 
     :param _builtins.int page_size: Specifies the maximum number of external metadata objects to return in a single response.
            The value must be less than or equal to 1000
-    :param Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict', 'outputs.GetExternalMetadatasProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

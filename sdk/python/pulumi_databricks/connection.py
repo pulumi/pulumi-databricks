@@ -508,12 +508,12 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
+                 environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -660,12 +660,12 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-provided free-form text description. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] connection_type: The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
-        :param pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']] environment_settings: Connection environment settings. This block consists of the following fields:
+        :param pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']] environment_settings: Connection environment settings. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
-        :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
         """
         ...
@@ -831,12 +831,12 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
+                 environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -885,15 +885,15 @@ class Connection(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             credential_type: pulumi.Input[Optional[_builtins.str]] = None,
-            environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
+            environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
-            provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']]] = None,
+            provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict', 'outputs.ConnectionProvisioningInfo']]]]] = None,
             read_only: pulumi.Input[Optional[_builtins.bool]] = None,
             securable_type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None,
@@ -912,15 +912,15 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] created_at: Time at which this connection was created, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] created_by: Username of connection creator.
         :param pulumi.Input[_builtins.str] credential_type: The type of credential.
-        :param pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']] environment_settings: Connection environment settings. This block consists of the following fields:
+        :param pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict', 'outputs.ConnectionEnvironmentSettings']] environment_settings: Connection environment settings. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] full_name: Full name of connection.
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of parent metastore.
         :param pulumi.Input[_builtins.str] name: Name of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
-        :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]] provisioning_infos: Status of an asynchronously provisioned resource. This block consists of the following fields:
+        :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict', 'outputs.ConnectionProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict', 'outputs.ConnectionProvisioningInfo']]]] provisioning_infos: Status of an asynchronously provisioned resource. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: Securable type.
         :param pulumi.Input[_builtins.int] updated_at: Time at which this connection was updated, in epoch milliseconds.

@@ -355,8 +355,8 @@ class SqlPermissions(pulumi.CustomResource):
                  catalog: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
-                 privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
+                 privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict', 'outputs.SqlPermissionsPrivilegeAssignment']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict', 'outputs.SqlPermissionsProviderConfig']]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
                  view: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -529,8 +529,8 @@ class SqlPermissions(pulumi.CustomResource):
                  catalog: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
-                 privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
+                 privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict', 'outputs.SqlPermissionsPrivilegeAssignment']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict', 'outputs.SqlPermissionsProviderConfig']]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
                  view: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -566,8 +566,8 @@ class SqlPermissions(pulumi.CustomResource):
             catalog: pulumi.Input[Optional[_builtins.bool]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             database: pulumi.Input[Optional[_builtins.str]] = None,
-            privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
-            provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
+            privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict', 'outputs.SqlPermissionsPrivilegeAssignment']]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict', 'outputs.SqlPermissionsProviderConfig']]] = None,
             table: pulumi.Input[Optional[_builtins.str]] = None,
             view: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlPermissions':
         """

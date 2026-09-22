@@ -146,7 +146,7 @@ class AwaitableGetDataQualityRefreshResult(GetDataQualityRefreshResult):
 
 def get_data_quality_refresh(object_id: Optional[_builtins.str] = None,
                              object_type: Optional[_builtins.str] = None,
-                             provider_config: Optional[Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict']] = None,
+                             provider_config: Optional[Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict', 'outputs.GetDataQualityRefreshProviderConfigResult']] = None,
                              refresh_id: Optional[_builtins.int] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataQualityRefreshResult:
     """
@@ -190,7 +190,7 @@ def get_data_quality_refresh(object_id: Optional[_builtins.str] = None,
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-    :param Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict', 'outputs.GetDataQualityRefreshProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.int refresh_id: Unique id of the refresh operation
     """
     __args__ = dict()
@@ -213,7 +213,7 @@ def get_data_quality_refresh(object_id: Optional[_builtins.str] = None,
         trigger=pulumi.get(__ret__, 'trigger'))
 def get_data_quality_refresh_output(object_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     object_type: pulumi.Input[Optional[_builtins.str]] = None,
-                                    provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict']]]] = None,
+                                    provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict', 'outputs.GetDataQualityRefreshProviderConfigResult']]]] = None,
                                     refresh_id: pulumi.Input[Optional[_builtins.int]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityRefreshResult]:
     """
@@ -257,7 +257,7 @@ def get_data_quality_refresh_output(object_id: pulumi.Input[Optional[_builtins.s
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-    :param Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict', 'outputs.GetDataQualityRefreshProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.int refresh_id: Unique id of the refresh operation
     """
     __args__ = dict()

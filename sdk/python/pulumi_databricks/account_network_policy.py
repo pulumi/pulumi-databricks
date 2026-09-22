@@ -211,9 +211,9 @@ class AccountNetworkPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 egress: pulumi.Input[Optional[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']]] = None,
-                 ingress: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']]] = None,
-                 ingress_dry_run: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']]] = None,
+                 egress: pulumi.Input[Optional[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict', 'outputs.AccountNetworkPolicyEgress']]] = None,
+                 ingress: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict', 'outputs.AccountNetworkPolicyIngress']]] = None,
+                 ingress_dry_run: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict', 'outputs.AccountNetworkPolicyIngressDryRun']]] = None,
                  network_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -286,9 +286,9 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: (string) - The associated account ID for this Network Policy object
-        :param pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']] egress: The network policies applying for egress traffic
-        :param pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']] ingress: The network policies applying for ingress traffic
-        :param pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']] ingress_dry_run: The ingress policy for dry run mode. Dry run will always run even if the request
+        :param pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict', 'outputs.AccountNetworkPolicyEgress']] egress: The network policies applying for egress traffic
+        :param pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict', 'outputs.AccountNetworkPolicyIngress']] ingress: The network policies applying for ingress traffic
+        :param pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict', 'outputs.AccountNetworkPolicyIngressDryRun']] ingress_dry_run: The ingress policy for dry run mode. Dry run will always run even if the request
                is allowed by the ingress policy. When this field is set, the policy will be evaluated
                and emit logs only without blocking requests
         :param pulumi.Input[_builtins.str] network_policy_id: The unique identifier for the network policy
@@ -382,9 +382,9 @@ class AccountNetworkPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 egress: pulumi.Input[Optional[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']]] = None,
-                 ingress: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']]] = None,
-                 ingress_dry_run: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']]] = None,
+                 egress: pulumi.Input[Optional[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict', 'outputs.AccountNetworkPolicyEgress']]] = None,
+                 ingress: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict', 'outputs.AccountNetworkPolicyIngress']]] = None,
+                 ingress_dry_run: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict', 'outputs.AccountNetworkPolicyIngressDryRun']]] = None,
                  network_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -411,9 +411,9 @@ class AccountNetworkPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            egress: pulumi.Input[Optional[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']]] = None,
-            ingress: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']]] = None,
-            ingress_dry_run: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']]] = None,
+            egress: pulumi.Input[Optional[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict', 'outputs.AccountNetworkPolicyEgress']]] = None,
+            ingress: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict', 'outputs.AccountNetworkPolicyIngress']]] = None,
+            ingress_dry_run: pulumi.Input[Optional[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict', 'outputs.AccountNetworkPolicyIngressDryRun']]] = None,
             network_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountNetworkPolicy':
         """
         Get an existing AccountNetworkPolicy resource's state with the given name, id, and optional extra
@@ -423,9 +423,9 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: (string) - The associated account ID for this Network Policy object
-        :param pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']] egress: The network policies applying for egress traffic
-        :param pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']] ingress: The network policies applying for ingress traffic
-        :param pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']] ingress_dry_run: The ingress policy for dry run mode. Dry run will always run even if the request
+        :param pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict', 'outputs.AccountNetworkPolicyEgress']] egress: The network policies applying for egress traffic
+        :param pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict', 'outputs.AccountNetworkPolicyIngress']] ingress: The network policies applying for ingress traffic
+        :param pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict', 'outputs.AccountNetworkPolicyIngressDryRun']] ingress_dry_run: The ingress policy for dry run mode. Dry run will always run even if the request
                is allowed by the ingress policy. When this field is set, the policy will be evaluated
                and emit logs only without blocking requests
         :param pulumi.Input[_builtins.str] network_policy_id: The unique identifier for the network policy

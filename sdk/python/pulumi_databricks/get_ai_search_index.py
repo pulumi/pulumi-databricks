@@ -158,7 +158,7 @@ class AwaitableGetAiSearchIndexResult(GetAiSearchIndexResult):
 
 
 def get_ai_search_index(name: Optional[_builtins.str] = None,
-                        provider_config: Optional[Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict']] = None,
+                        provider_config: Optional[Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict', 'outputs.GetAiSearchIndexProviderConfigResult']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchIndexResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -177,7 +177,7 @@ def get_ai_search_index(name: Optional[_builtins.str] = None,
            `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
            table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
            full `name` and returns it on the response
-    :param Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict', 'outputs.GetAiSearchIndexProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -197,7 +197,7 @@ def get_ai_search_index(name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         status=pulumi.get(__ret__, 'status'))
 def get_ai_search_index_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                               provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict']]]] = None,
+                               provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict', 'outputs.GetAiSearchIndexProviderConfigResult']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchIndexResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -216,7 +216,7 @@ def get_ai_search_index_output(name: pulumi.Input[Optional[_builtins.str]] = Non
            `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
            table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
            full `name` and returns it on the response
-    :param Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict', 'outputs.GetAiSearchIndexProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

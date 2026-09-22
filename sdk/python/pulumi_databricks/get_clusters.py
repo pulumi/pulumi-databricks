@@ -88,10 +88,10 @@ class AwaitableGetClustersResult(GetClustersResult):
 
 
 def get_clusters(cluster_name_contains: Optional[_builtins.str] = None,
-                 filter_by: Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']] = None,
+                 filter_by: Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict', 'outputs.GetClustersFilterByResult']] = None,
                  id: Optional[_builtins.str] = None,
                  ids: Optional[Sequence[_builtins.str]] = None,
-                 provider_config: Optional[Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict']] = None,
+                 provider_config: Optional[Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict', 'outputs.GetClustersProviderConfigResult']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
     Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
@@ -154,9 +154,9 @@ def get_clusters(cluster_name_contains: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cluster_name_contains: Only return Cluster ids that match the given name string.
-    :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+    :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict', 'outputs.GetClustersFilterByResult'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
     :param Sequence[_builtins.str] ids: list of Cluster ids
-    :param Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict', 'outputs.GetClustersProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['clusterNameContains'] = cluster_name_contains
@@ -174,10 +174,10 @@ def get_clusters(cluster_name_contains: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_clusters_output(cluster_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                        filter_by: pulumi.Input[Optional[Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']]]] = None,
+                        filter_by: pulumi.Input[Optional[Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict', 'outputs.GetClustersFilterByResult']]]] = None,
                         id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                        provider_config: pulumi.Input[Optional[Optional[Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict']]]] = None,
+                        provider_config: pulumi.Input[Optional[Optional[Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict', 'outputs.GetClustersProviderConfigResult']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClustersResult]:
     """
     Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
@@ -240,9 +240,9 @@ def get_clusters_output(cluster_name_contains: pulumi.Input[Optional[Optional[_b
 
 
     :param _builtins.str cluster_name_contains: Only return Cluster ids that match the given name string.
-    :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+    :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict', 'outputs.GetClustersFilterByResult'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
     :param Sequence[_builtins.str] ids: list of Cluster ids
-    :param Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict', 'outputs.GetClustersProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['clusterNameContains'] = cluster_name_contains

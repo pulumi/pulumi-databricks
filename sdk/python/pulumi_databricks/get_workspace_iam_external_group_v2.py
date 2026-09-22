@@ -112,7 +112,7 @@ class AwaitableGetWorkspaceIamExternalGroupV2Result(GetWorkspaceIamExternalGroup
 
 
 def get_workspace_iam_external_group_v2(name: Optional[_builtins.str] = None,
-                                        provider_config: Optional[Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict']] = None,
+                                        provider_config: Optional[Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalGroupV2ProviderConfigResult']] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamExternalGroupV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -146,7 +146,7 @@ def get_workspace_iam_external_group_v2(name: Optional[_builtins.str] = None,
            returned it:
            - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
            - Workspace-scoped: external-groups/{external_group_id}
-    :param Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalGroupV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -162,7 +162,7 @@ def get_workspace_iam_external_group_v2(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_workspace_iam_external_group_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                               provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict']]]] = None,
+                                               provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalGroupV2ProviderConfigResult']]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamExternalGroupV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -196,7 +196,7 @@ def get_workspace_iam_external_group_v2_output(name: pulumi.Input[Optional[_buil
            returned it:
            - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
            - Workspace-scoped: external-groups/{external_group_id}
-    :param Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalGroupV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

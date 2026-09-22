@@ -81,10 +81,10 @@ class AwaitableGetExternalLocationResult(GetExternalLocationResult):
             provider_config=self.provider_config)
 
 
-def get_external_location(external_location_info: Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']] = None,
+def get_external_location(external_location_info: Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict', 'outputs.GetExternalLocationExternalLocationInfoResult']] = None,
                           id: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
-                          provider_config: Optional[Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict']] = None,
+                          provider_config: Optional[Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict', 'outputs.GetExternalLocationProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationResult:
     """
     Retrieves details about a ExternalLocation that were created by Pulumi or manually.
@@ -111,10 +111,10 @@ def get_external_location(external_location_info: Optional[Union['GetExternalLoc
     * ExternalLocation to manage external locations within Unity Catalog.
 
 
-    :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict'] external_location_info: array of objects with information about external location:
+    :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict', 'outputs.GetExternalLocationExternalLocationInfoResult'] external_location_info: array of objects with information about external location:
     :param _builtins.str id: external location ID - same as name.
     :param _builtins.str name: The name of the external location
-    :param Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict', 'outputs.GetExternalLocationProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['externalLocationInfo'] = external_location_info
@@ -129,10 +129,10 @@ def get_external_location(external_location_info: Optional[Union['GetExternalLoc
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_external_location_output(external_location_info: pulumi.Input[Optional[Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']]]] = None,
+def get_external_location_output(external_location_info: pulumi.Input[Optional[Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict', 'outputs.GetExternalLocationExternalLocationInfoResult']]]] = None,
                                  id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict', 'outputs.GetExternalLocationProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationResult]:
     """
     Retrieves details about a ExternalLocation that were created by Pulumi or manually.
@@ -159,10 +159,10 @@ def get_external_location_output(external_location_info: pulumi.Input[Optional[O
     * ExternalLocation to manage external locations within Unity Catalog.
 
 
-    :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict'] external_location_info: array of objects with information about external location:
+    :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict', 'outputs.GetExternalLocationExternalLocationInfoResult'] external_location_info: array of objects with information about external location:
     :param _builtins.str id: external location ID - same as name.
     :param _builtins.str name: The name of the external location
-    :param Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict', 'outputs.GetExternalLocationProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['externalLocationInfo'] = external_location_info

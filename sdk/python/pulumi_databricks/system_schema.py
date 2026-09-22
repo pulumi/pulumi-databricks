@@ -161,7 +161,7 @@ class SystemSchema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict', 'outputs.SystemSchemaProviderConfig']]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -187,7 +187,7 @@ class SystemSchema(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict', 'outputs.SystemSchemaProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
         """
         ...
@@ -232,7 +232,7 @@ class SystemSchema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict', 'outputs.SystemSchemaProviderConfig']]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -264,7 +264,7 @@ class SystemSchema(pulumi.CustomResource):
             auto_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict', 'outputs.SystemSchemaProviderConfig']]] = None,
             schema: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'SystemSchema':
         """
@@ -275,7 +275,7 @@ class SystemSchema(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] full_name: the full name of the system schema, in form of `system.<schema>`.
-        :param pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict', 'outputs.SystemSchemaProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
         :param pulumi.Input[_builtins.str] state: The current state of enablement for the system schema.
         """

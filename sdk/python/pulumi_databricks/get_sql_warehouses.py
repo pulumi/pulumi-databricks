@@ -82,7 +82,7 @@ class AwaitableGetSqlWarehousesResult(GetSqlWarehousesResult):
 
 
 def get_sql_warehouses(ids: Optional[Sequence[_builtins.str]] = None,
-                       provider_config: Optional[Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict']] = None,
+                       provider_config: Optional[Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict', 'outputs.GetSqlWarehousesProviderConfigResult']] = None,
                        warehouse_name_contains: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlWarehousesResult:
     """
@@ -122,7 +122,7 @@ def get_sql_warehouses(ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] ids: list of SqlEndpoint ids
-    :param Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict', 'outputs.GetSqlWarehousesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str warehouse_name_contains: Only return SqlEndpoint ids that match the given name string.
     """
     __args__ = dict()
@@ -138,7 +138,7 @@ def get_sql_warehouses(ids: Optional[Sequence[_builtins.str]] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         warehouse_name_contains=pulumi.get(__ret__, 'warehouse_name_contains'))
 def get_sql_warehouses_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                              provider_config: pulumi.Input[Optional[Optional[Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict']]]] = None,
+                              provider_config: pulumi.Input[Optional[Optional[Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict', 'outputs.GetSqlWarehousesProviderConfigResult']]]] = None,
                               warehouse_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehousesResult]:
     """
@@ -178,7 +178,7 @@ def get_sql_warehouses_output(ids: pulumi.Input[Optional[Optional[Sequence[_buil
 
 
     :param Sequence[_builtins.str] ids: list of SqlEndpoint ids
-    :param Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict', 'outputs.GetSqlWarehousesProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str warehouse_name_contains: Only return SqlEndpoint ids that match the given name string.
     """
     __args__ = dict()

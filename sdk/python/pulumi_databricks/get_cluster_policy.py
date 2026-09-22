@@ -149,7 +149,7 @@ def get_cluster_policy(definition: Optional[_builtins.str] = None,
                        name: Optional[_builtins.str] = None,
                        policy_family_definition_overrides: Optional[_builtins.str] = None,
                        policy_family_id: Optional[_builtins.str] = None,
-                       provider_config: Optional[Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict']] = None,
+                       provider_config: Optional[Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict', 'outputs.GetClusterPolicyProviderConfigResult']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterPolicyResult:
     """
     Retrieves information about databricks_cluster_policy.
@@ -177,7 +177,7 @@ def get_cluster_policy(definition: Optional[_builtins.str] = None,
     :param _builtins.str name: Name of the cluster policy. The cluster policy must exist before this resource can be planned.
     :param _builtins.str policy_family_definition_overrides: Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
     :param _builtins.str policy_family_id: ID of the policy family.
-    :param Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict', 'outputs.GetClusterPolicyProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['definition'] = definition
@@ -210,7 +210,7 @@ def get_cluster_policy_output(definition: pulumi.Input[Optional[Optional[_builti
                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               policy_family_definition_overrides: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               policy_family_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              provider_config: pulumi.Input[Optional[Optional[Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict']]]] = None,
+                              provider_config: pulumi.Input[Optional[Optional[Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict', 'outputs.GetClusterPolicyProviderConfigResult']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterPolicyResult]:
     """
     Retrieves information about databricks_cluster_policy.
@@ -238,7 +238,7 @@ def get_cluster_policy_output(definition: pulumi.Input[Optional[Optional[_builti
     :param _builtins.str name: Name of the cluster policy. The cluster policy must exist before this resource can be planned.
     :param _builtins.str policy_family_definition_overrides: Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
     :param _builtins.str policy_family_id: ID of the policy family.
-    :param Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict', 'outputs.GetClusterPolicyProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['definition'] = definition

@@ -860,15 +860,15 @@ class App(pulumi.CustomResource):
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
-                 git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
-                 git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']]] = None,
+                 git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict', 'outputs.AppGitRepository']]] = None,
+                 git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict', 'outputs.AppGitSource']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict', 'outputs.AppProviderConfig']]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict', 'outputs.AppResource']]]]] = None,
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
-                 telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
+                 telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -928,12 +928,12 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
-        :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
-        :param pulumi.Input[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+        :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict', 'outputs.AppGitRepository']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        :param pulumi.Input[Union['AppGitSourceArgs', 'AppGitSourceArgsDict', 'outputs.AppGitSource']] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict', 'outputs.AppResource']]]] resources: A list of resources that the app have access to.
         :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
@@ -1015,15 +1015,15 @@ class App(pulumi.CustomResource):
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
-                 git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
-                 git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']]] = None,
+                 git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict', 'outputs.AppGitRepository']]] = None,
+                 git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict', 'outputs.AppGitSource']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict', 'outputs.AppProviderConfig']]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict', 'outputs.AppResource']]]]] = None,
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
-                 telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
+                 telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -1082,37 +1082,37 @@ class App(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_deployment: pulumi.Input[Optional[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict']]] = None,
-            app_status: pulumi.Input[Optional[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']]] = None,
+            active_deployment: pulumi.Input[Optional[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict', 'outputs.AppActiveDeployment']]] = None,
+            app_status: pulumi.Input[Optional[Union['AppAppStatusArgs', 'AppAppStatusArgsDict', 'outputs.AppAppStatus']]] = None,
             budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             compute_max_instances: pulumi.Input[Optional[_builtins.int]] = None,
             compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
             compute_size: pulumi.Input[Optional[_builtins.str]] = None,
-            compute_status: pulumi.Input[Optional[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']]] = None,
+            compute_status: pulumi.Input[Optional[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict', 'outputs.AppComputeStatus']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
-            default_git_source: pulumi.Input[Optional[Union['AppDefaultGitSourceArgs', 'AppDefaultGitSourceArgsDict']]] = None,
+            default_git_source: pulumi.Input[Optional[Union['AppDefaultGitSourceArgs', 'AppDefaultGitSourceArgsDict', 'outputs.AppDefaultGitSource']]] = None,
             default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
-            git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
-            git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']]] = None,
+            git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict', 'outputs.AppGitRepository']]] = None,
+            git_source: pulumi.Input[Optional[Union['AppGitSourceArgs', 'AppGitSourceArgsDict', 'outputs.AppGitSource']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
             oauth2_app_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             oauth2_app_integration_id: pulumi.Input[Optional[_builtins.str]] = None,
-            pending_deployment: pulumi.Input[Optional[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict']]] = None,
-            provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+            pending_deployment: pulumi.Input[Optional[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict', 'outputs.AppPendingDeployment']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict', 'outputs.AppProviderConfig']]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict', 'outputs.AppResource']]]]] = None,
             service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
             service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
             source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
             space: pulumi.Input[Optional[_builtins.str]] = None,
-            telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
+            telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]]] = None,
             thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updater: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1126,11 +1126,11 @@ class App(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict']] active_deployment: attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
-        :param pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']] app_status: attribute
+        :param pulumi.Input[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict', 'outputs.AppActiveDeployment']] active_deployment: attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+        :param pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict', 'outputs.AppAppStatus']] app_status: attribute
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
-        :param pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']] compute_status: attribute
+        :param pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict', 'outputs.AppComputeStatus']] compute_status: attribute
         :param pulumi.Input[_builtins.str] create_time: The creation time of the deployment.
         :param pulumi.Input[_builtins.str] creator: The email of the user that created the deployment.
         :param pulumi.Input[_builtins.str] default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
@@ -1138,18 +1138,18 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] effective_budget_policy_id: The effective budget policy ID.
         :param pulumi.Input[_builtins.str] effective_usage_policy_id: The effective usage policy ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effective_user_api_scopes: A list of effective api scopes granted to the user access token.
-        :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
-        :param pulumi.Input[Union['AppGitSourceArgs', 'AppGitSourceArgsDict']] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
+        :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict', 'outputs.AppGitRepository']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        :param pulumi.Input[Union['AppGitSourceArgs', 'AppGitSourceArgsDict', 'outputs.AppGitSource']] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[_builtins.str] oauth2_app_client_id: The OAuth2 client ID of the app's integration, set when the app uses user authorization.
         :param pulumi.Input[_builtins.str] oauth2_app_integration_id: The unique ID of the OAuth2 integration associated with the app.
-        :param pulumi.Input[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict']] pending_deployment: attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `active_deployment`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
+        :param pulumi.Input[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict', 'outputs.AppPendingDeployment']] pending_deployment: attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `active_deployment`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict', 'outputs.AppResource']]]] resources: A list of resources that the app have access to.
         :param pulumi.Input[_builtins.str] service_principal_client_id: client_id (application_id) of the app service principal
         :param pulumi.Input[_builtins.int] service_principal_id: id of the app service principal
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
         :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
         :param pulumi.Input[_builtins.str] updater: The email of the user that last updated the app.

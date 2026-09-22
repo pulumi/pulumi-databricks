@@ -93,7 +93,7 @@ class AwaitableGetDataQualityRefreshesResult(GetDataQualityRefreshesResult):
 def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
                                object_type: Optional[_builtins.str] = None,
                                page_size: Optional[_builtins.int] = None,
-                               provider_config: Optional[Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict']] = None,
+                               provider_config: Optional[Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict', 'outputs.GetDataQualityRefreshesProviderConfigResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataQualityRefreshesResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -136,7 +136,7 @@ def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-    :param Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict', 'outputs.GetDataQualityRefreshesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id
@@ -155,7 +155,7 @@ def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
 def get_data_quality_refreshes_output(object_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       object_type: pulumi.Input[Optional[_builtins.str]] = None,
                                       page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                      provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict']]]] = None,
+                                      provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict', 'outputs.GetDataQualityRefreshesProviderConfigResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityRefreshesResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -198,7 +198,7 @@ def get_data_quality_refreshes_output(object_id: pulumi.Input[Optional[_builtins
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
-    :param Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict', 'outputs.GetDataQualityRefreshesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id

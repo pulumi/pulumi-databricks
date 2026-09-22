@@ -76,7 +76,7 @@ class AwaitableGetPostgresProjectsResult(GetPostgresProjectsResult):
 
 
 def get_postgres_projects(page_size: Optional[_builtins.int] = None,
-                          provider_config: Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict']] = None,
+                          provider_config: Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict', 'outputs.GetPostgresProjectsProviderConfigResult']] = None,
                           show_deleted: Optional[_builtins.bool] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresProjectsResult:
     """
@@ -100,7 +100,7 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
 
 
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative. The maximum value is 100
-    :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict', 'outputs.GetPostgresProjectsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.bool show_deleted: Whether to include soft-deleted projects in the response.
            When true, soft-deleted projects are included alongside active projects.
            Hard-deleted and already-purged projects are never returned
@@ -118,7 +118,7 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         show_deleted=pulumi.get(__ret__, 'show_deleted'))
 def get_postgres_projects_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict', 'outputs.GetPostgresProjectsProviderConfigResult']]]] = None,
                                  show_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectsResult]:
     """
@@ -142,7 +142,7 @@ def get_postgres_projects_output(page_size: pulumi.Input[Optional[Optional[_buil
 
 
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative. The maximum value is 100
-    :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict', 'outputs.GetPostgresProjectsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.bool show_deleted: Whether to include soft-deleted projects in the response.
            When true, soft-deleted projects are included alongside active projects.
            Hard-deleted and already-purged projects are never returned

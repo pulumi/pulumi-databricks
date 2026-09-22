@@ -357,8 +357,8 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
                  initial_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unity_catalog_assets: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict']]] = None,
-                 workspace_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict']]]]] = None,
+                 unity_catalog_assets: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict', 'outputs.DisasterRecoveryFailoverGroupUnityCatalogAssets']]] = None,
+                 workspace_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict', 'outputs.DisasterRecoveryFailoverGroupWorkspaceSet']]]]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -405,8 +405,8 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
                primary region. Not returned in responses
         :param pulumi.Input[_builtins.str] parent: The parent resource. Format: accounts/{account_id}
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: List of all regions participating in this failover group
-        :param pulumi.Input[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict']] unity_catalog_assets: Unity Catalog replication configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict']]]] workspace_sets: Workspace sets, each containing workspaces that replicate to each other
+        :param pulumi.Input[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict', 'outputs.DisasterRecoveryFailoverGroupUnityCatalogAssets']] unity_catalog_assets: Unity Catalog replication configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict', 'outputs.DisasterRecoveryFailoverGroupWorkspaceSet']]]] workspace_sets: Workspace sets, each containing workspaces that replicate to each other
         """
         ...
     @overload
@@ -470,8 +470,8 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
                  initial_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unity_catalog_assets: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict']]] = None,
-                 workspace_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict']]]]] = None,
+                 unity_catalog_assets: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict', 'outputs.DisasterRecoveryFailoverGroupUnityCatalogAssets']]] = None,
+                 workspace_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict', 'outputs.DisasterRecoveryFailoverGroupWorkspaceSet']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -524,9 +524,9 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
             regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             replication_point: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            unity_catalog_assets: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict']]] = None,
+            unity_catalog_assets: pulumi.Input[Optional[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict', 'outputs.DisasterRecoveryFailoverGroupUnityCatalogAssets']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            workspace_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict']]]]] = None) -> 'DisasterRecoveryFailoverGroup':
+            workspace_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict', 'outputs.DisasterRecoveryFailoverGroupWorkspaceSet']]]]] = None) -> 'DisasterRecoveryFailoverGroup':
         """
         Get an existing DisasterRecoveryFailoverGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -548,9 +548,9 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: List of all regions participating in this failover group
         :param pulumi.Input[_builtins.str] replication_point: (string) - The latest point in time to which data has been replicated
         :param pulumi.Input[_builtins.str] state: (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
-        :param pulumi.Input[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict']] unity_catalog_assets: Unity Catalog replication configuration
+        :param pulumi.Input[Union['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs', 'DisasterRecoveryFailoverGroupUnityCatalogAssetsArgsDict', 'outputs.DisasterRecoveryFailoverGroupUnityCatalogAssets']] unity_catalog_assets: Unity Catalog replication configuration
         :param pulumi.Input[_builtins.str] update_time: (string) - Time at which this failover group was last modified
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict']]]] workspace_sets: Workspace sets, each containing workspaces that replicate to each other
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DisasterRecoveryFailoverGroupWorkspaceSetArgs', 'DisasterRecoveryFailoverGroupWorkspaceSetArgsDict', 'outputs.DisasterRecoveryFailoverGroupWorkspaceSet']]]] workspace_sets: Workspace sets, each containing workspaces that replicate to each other
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

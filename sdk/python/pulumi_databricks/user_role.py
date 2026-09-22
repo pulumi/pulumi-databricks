@@ -161,7 +161,7 @@ class UserRole(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict', 'outputs.UserRoleProviderConfig']]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -293,7 +293,7 @@ class UserRole(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict', 'outputs.UserRoleProviderConfig']]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -324,7 +324,7 @@ class UserRole(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict', 'outputs.UserRoleProviderConfig']]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserRole':
         """

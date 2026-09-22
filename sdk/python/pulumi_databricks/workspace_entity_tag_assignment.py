@@ -201,7 +201,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']]] = None,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -245,7 +245,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
         :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
-        :param pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
         """
@@ -308,7 +308,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']]] = None,
                  tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -343,7 +343,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             entity_id: pulumi.Input[Optional[_builtins.str]] = None,
             entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']]] = None,
             tag_key: pulumi.Input[Optional[_builtins.str]] = None,
             tag_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceEntityTagAssignment':
         """
@@ -355,7 +355,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
         :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
-        :param pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
         """

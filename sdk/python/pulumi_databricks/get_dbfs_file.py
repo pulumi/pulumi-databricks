@@ -104,7 +104,7 @@ class AwaitableGetDbfsFileResult(GetDbfsFileResult):
 
 def get_dbfs_file(limit_file_size: Optional[_builtins.bool] = None,
                   path: Optional[_builtins.str] = None,
-                  provider_config: Optional[Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict']] = None,
+                  provider_config: Optional[Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict', 'outputs.GetDbfsFileProviderConfigResult']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbfsFileResult:
     """
     This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -133,7 +133,7 @@ def get_dbfs_file(limit_file_size: Optional[_builtins.bool] = None,
 
     :param _builtins.bool limit_file_size: Do not load content for files larger than 4MB.
     :param _builtins.str path: Path on DBFS for the file from which to get content.
-    :param Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict', 'outputs.GetDbfsFileProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['limitFileSize'] = limit_file_size
@@ -151,7 +151,7 @@ def get_dbfs_file(limit_file_size: Optional[_builtins.bool] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_dbfs_file_output(limit_file_size: pulumi.Input[Optional[_builtins.bool]] = None,
                          path: pulumi.Input[Optional[_builtins.str]] = None,
-                         provider_config: pulumi.Input[Optional[Optional[Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict']]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict', 'outputs.GetDbfsFileProviderConfigResult']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFileResult]:
     """
     This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -180,7 +180,7 @@ def get_dbfs_file_output(limit_file_size: pulumi.Input[Optional[_builtins.bool]]
 
     :param _builtins.bool limit_file_size: Do not load content for files larger than 4MB.
     :param _builtins.str path: Path on DBFS for the file from which to get content.
-    :param Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict', 'outputs.GetDbfsFileProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['limitFileSize'] = limit_file_size

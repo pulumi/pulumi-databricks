@@ -240,7 +240,7 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.WorkspaceIamServicePrincipalV2ProviderConfig']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -274,7 +274,7 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
                afterwards; when omitted, the server generates one
         :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
-        :param pulumi.Input[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.WorkspaceIamServicePrincipalV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -326,7 +326,7 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.WorkspaceIamServicePrincipalV2ProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -362,7 +362,7 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.WorkspaceIamServicePrincipalV2ProviderConfig']]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceIamServicePrincipalV2':
         """
         Get an existing WorkspaceIamServicePrincipalV2 resource's state with the given name, id, and optional extra
@@ -377,7 +377,7 @@ class WorkspaceIamServicePrincipalV2(pulumi.CustomResource):
                afterwards; when omitted, the server generates one
         :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
-        :param pulumi.Input[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamServicePrincipalV2ProviderConfigArgs', 'WorkspaceIamServicePrincipalV2ProviderConfigArgsDict', 'outputs.WorkspaceIamServicePrincipalV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

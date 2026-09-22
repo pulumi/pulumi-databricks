@@ -203,9 +203,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
+                 grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict', 'outputs.AccessControlRuleSetGrantRule']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict', 'outputs.AccessControlRuleSetProviderConfig']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/accountaccesscontrolproxy)
@@ -436,7 +436,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict', 'outputs.AccessControlRuleSetGrantRule']]]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
                
                > Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[_builtins.str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
@@ -694,9 +694,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
-                 grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
+                 grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict', 'outputs.AccessControlRuleSetGrantRule']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict', 'outputs.AccessControlRuleSetProviderConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -723,9 +723,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
+            grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict', 'outputs.AccessControlRuleSetGrantRule']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None) -> 'AccessControlRuleSet':
+            provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict', 'outputs.AccessControlRuleSetProviderConfig']]] = None) -> 'AccessControlRuleSet':
         """
         Get an existing AccessControlRuleSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -734,7 +734,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict', 'outputs.AccessControlRuleSetGrantRule']]]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
                
                > Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[_builtins.str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:

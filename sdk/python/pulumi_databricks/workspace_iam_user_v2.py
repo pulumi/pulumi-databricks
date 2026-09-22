@@ -225,8 +225,8 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 full_name: pulumi.Input[Optional[Union['WorkspaceIamUserV2FullNameArgs', 'WorkspaceIamUserV2FullNameArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict']]] = None,
+                 full_name: pulumi.Input[Optional[Union['WorkspaceIamUserV2FullNameArgs', 'WorkspaceIamUserV2FullNameArgsDict', 'outputs.WorkspaceIamUserV2FullName']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.WorkspaceIamUserV2ProviderConfig']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -262,7 +262,7 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
-        :param pulumi.Input[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.WorkspaceIamUserV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] username: Username/email of the user
         """
         ...
@@ -317,8 +317,8 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 full_name: pulumi.Input[Optional[Union['WorkspaceIamUserV2FullNameArgs', 'WorkspaceIamUserV2FullNameArgsDict']]] = None,
-                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict']]] = None,
+                 full_name: pulumi.Input[Optional[Union['WorkspaceIamUserV2FullNameArgs', 'WorkspaceIamUserV2FullNameArgsDict', 'outputs.WorkspaceIamUserV2FullName']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.WorkspaceIamUserV2ProviderConfig']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -355,8 +355,8 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             account_user_status: pulumi.Input[Optional[_builtins.str]] = None,
             external_id: pulumi.Input[Optional[_builtins.str]] = None,
-            full_name: pulumi.Input[Optional[Union['WorkspaceIamUserV2FullNameArgs', 'WorkspaceIamUserV2FullNameArgsDict']]] = None,
-            provider_config: pulumi.Input[Optional[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict']]] = None,
+            full_name: pulumi.Input[Optional[Union['WorkspaceIamUserV2FullNameArgs', 'WorkspaceIamUserV2FullNameArgsDict', 'outputs.WorkspaceIamUserV2FullName']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.WorkspaceIamUserV2ProviderConfig']]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceIamUserV2':
         """
@@ -369,7 +369,7 @@ class WorkspaceIamUserV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: (string) - The accountId parent of the user in Databricks
         :param pulumi.Input[_builtins.str] account_user_status: The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
         :param pulumi.Input[_builtins.str] external_id: ExternalId of the user in the customer's IdP
-        :param pulumi.Input[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['WorkspaceIamUserV2ProviderConfigArgs', 'WorkspaceIamUserV2ProviderConfigArgsDict', 'outputs.WorkspaceIamUserV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] user_id: (string) - Internal userId of the user in Databricks
         :param pulumi.Input[_builtins.str] username: Username/email of the user
         """

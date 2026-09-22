@@ -77,7 +77,7 @@ class AwaitableGetPostgresCdfConfigsResult(GetPostgresCdfConfigsResult):
 
 def get_postgres_cdf_configs(page_size: Optional[_builtins.int] = None,
                              parent: Optional[_builtins.str] = None,
-                             provider_config: Optional[Union['GetPostgresCdfConfigsProviderConfigArgs', 'GetPostgresCdfConfigsProviderConfigArgsDict']] = None,
+                             provider_config: Optional[Union['GetPostgresCdfConfigsProviderConfigArgs', 'GetPostgresCdfConfigsProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigsProviderConfigResult']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresCdfConfigsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -102,7 +102,7 @@ def get_postgres_cdf_configs(page_size: Optional[_builtins.int] = None,
     :param _builtins.int page_size: Maximum number of CdfConfigs to return
     :param _builtins.str parent: The parent database to list CdfConfigs for.
            Format: projects/{project}/branches/{branch}/databases/{database}
-    :param Union['GetPostgresCdfConfigsProviderConfigArgs', 'GetPostgresCdfConfigsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresCdfConfigsProviderConfigArgs', 'GetPostgresCdfConfigsProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -118,7 +118,7 @@ def get_postgres_cdf_configs(page_size: Optional[_builtins.int] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_postgres_cdf_configs_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                     parent: pulumi.Input[Optional[_builtins.str]] = None,
-                                    provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCdfConfigsProviderConfigArgs', 'GetPostgresCdfConfigsProviderConfigArgsDict']]]] = None,
+                                    provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCdfConfigsProviderConfigArgs', 'GetPostgresCdfConfigsProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigsProviderConfigResult']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresCdfConfigsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -143,7 +143,7 @@ def get_postgres_cdf_configs_output(page_size: pulumi.Input[Optional[Optional[_b
     :param _builtins.int page_size: Maximum number of CdfConfigs to return
     :param _builtins.str parent: The parent database to list CdfConfigs for.
            Format: projects/{project}/branches/{branch}/databases/{database}
-    :param Union['GetPostgresCdfConfigsProviderConfigArgs', 'GetPostgresCdfConfigsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresCdfConfigsProviderConfigArgs', 'GetPostgresCdfConfigsProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

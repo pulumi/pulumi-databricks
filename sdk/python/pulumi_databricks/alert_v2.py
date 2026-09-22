@@ -588,15 +588,15 @@ class AlertV2(pulumi.CustomResource):
                  custom_description: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]]] = None,
+                 evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict', 'outputs.AlertV2ProviderConfig']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  query_text: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
+                 run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict', 'outputs.AlertV2RunAs']]] = None,
                  run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict', 'outputs.AlertV2Schedule']]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -655,7 +655,7 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
                
                Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
                Each parameter consists of a name, a value, and optionally a type. To represent a NULL
@@ -667,10 +667,10 @@ class AlertV2(pulumi.CustomResource):
                the requested type using the `cast` function. The exact semantics are described in
                the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-        :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict', 'outputs.AlertV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
-        :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']] run_as: Specifies the identity that will be used to run the alert.
+        :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict', 'outputs.AlertV2RunAs']] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
@@ -755,15 +755,15 @@ class AlertV2(pulumi.CustomResource):
                  custom_description: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]]] = None,
+                 evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict', 'outputs.AlertV2ProviderConfig']]] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  query_text: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
+                 run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict', 'outputs.AlertV2RunAs']]] = None,
                  run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict', 'outputs.AlertV2Schedule']]] = None,
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -816,18 +816,18 @@ class AlertV2(pulumi.CustomResource):
             custom_description: pulumi.Input[Optional[_builtins.str]] = None,
             custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            effective_run_as: pulumi.Input[Optional[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict']]] = None,
-            evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
+            effective_run_as: pulumi.Input[Optional[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict', 'outputs.AlertV2EffectiveRunAs']]] = None,
+            evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict', 'outputs.AlertV2Evaluation']]] = None,
             lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
             owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]]] = None,
             parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict', 'outputs.AlertV2ProviderConfig']]] = None,
             purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             query_text: pulumi.Input[Optional[_builtins.str]] = None,
-            run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
+            run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict', 'outputs.AlertV2RunAs']]] = None,
             run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict', 'outputs.AlertV2Schedule']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AlertV2':
         """
@@ -841,12 +841,12 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
-        :param pulumi.Input[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict']] effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+        :param pulumi.Input[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict', 'outputs.AlertV2EffectiveRunAs']] effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
                This is an output-only field that shows the resolved run-as identity after applying
                permissions and defaults
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertV2ParameterArgs', 'AlertV2ParameterArgsDict', 'outputs.AlertV2Parameter']]]] parameters: A list of parameters to pass into the alert SQL query statement containing parameter markers. Static values only.
                
                Reference a parameter in the query text as `:name`. Each parameter must have a unique, non-empty name.
                Each parameter consists of a name, a value, and optionally a type. To represent a NULL
@@ -858,10 +858,10 @@ class AlertV2(pulumi.CustomResource):
                the requested type using the `cast` function. The exact semantics are described in
                the section [`cast` function](https://docs.databricks.com/sql/language-manual/functions/cast.html) of the SQL language reference
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-        :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict', 'outputs.AlertV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
-        :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']] run_as: Specifies the identity that will be used to run the alert.
+        :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict', 'outputs.AlertV2RunAs']] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
                - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.

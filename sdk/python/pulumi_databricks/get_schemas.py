@@ -83,7 +83,7 @@ class AwaitableGetSchemasResult(GetSchemasResult):
 
 def get_schemas(catalog_name: Optional[_builtins.str] = None,
                 ids: Optional[Sequence[_builtins.str]] = None,
-                provider_config: Optional[Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict']] = None,
+                provider_config: Optional[Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict', 'outputs.GetSchemasProviderConfigResult']] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemasResult:
     """
     Retrieves a list of Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -112,7 +112,7 @@ def get_schemas(catalog_name: Optional[_builtins.str] = None,
 
     :param _builtins.str catalog_name: Name of databricks_catalog
     :param Sequence[_builtins.str] ids: set of Schema full names: *`catalog`.`schema`*
-    :param Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict', 'outputs.GetSchemasProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name
@@ -128,7 +128,7 @@ def get_schemas(catalog_name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_schemas_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                       provider_config: pulumi.Input[Optional[Optional[Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict']]]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict', 'outputs.GetSchemasProviderConfigResult']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemasResult]:
     """
     Retrieves a list of Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -157,7 +157,7 @@ def get_schemas_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = Non
 
     :param _builtins.str catalog_name: Name of databricks_catalog
     :param Sequence[_builtins.str] ids: set of Schema full names: *`catalog`.`schema`*
-    :param Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict', 'outputs.GetSchemasProviderConfigResult'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name

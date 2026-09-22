@@ -439,14 +439,14 @@ class Alert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict', 'outputs.AlertCondition']]] = None,
                  custom_body: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
                  owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict', 'outputs.AlertProviderConfig']]] = None,
                  query_id: pulumi.Input[Optional[_builtins.str]] = None,
                  seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -593,14 +593,14 @@ class Alert(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict']] condition: Trigger conditions of the alert. Block consists of the following attributes:
+        :param pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict', 'outputs.AlertCondition']] condition: Trigger conditions of the alert. Block consists of the following attributes:
         :param pulumi.Input[_builtins.str] custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
         :param pulumi.Input[_builtins.str] custom_subject: Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
         :param pulumi.Input[_builtins.str] display_name: Name of the alert.
         :param pulumi.Input[_builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
         :param pulumi.Input[_builtins.str] owner_user_name: Alert owner's username.
         :param pulumi.Input[_builtins.str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        :param pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict', 'outputs.AlertProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[_builtins.int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         """
@@ -766,14 +766,14 @@ class Alert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict', 'outputs.AlertCondition']]] = None,
                  custom_body: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
                  owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict', 'outputs.AlertProviderConfig']]] = None,
                  query_id: pulumi.Input[Optional[_builtins.str]] = None,
                  seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -816,7 +816,7 @@ class Alert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict', 'outputs.AlertCondition']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_body: pulumi.Input[Optional[_builtins.str]] = None,
             custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
@@ -825,7 +825,7 @@ class Alert(pulumi.CustomResource):
             notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
             owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
             parent_path: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict', 'outputs.AlertProviderConfig']]] = None,
             query_id: pulumi.Input[Optional[_builtins.str]] = None,
             seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -838,7 +838,7 @@ class Alert(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict']] condition: Trigger conditions of the alert. Block consists of the following attributes:
+        :param pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict', 'outputs.AlertCondition']] condition: Trigger conditions of the alert. Block consists of the following attributes:
         :param pulumi.Input[_builtins.str] create_time: The timestamp string indicating when the alert was created.
         :param pulumi.Input[_builtins.str] custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
         :param pulumi.Input[_builtins.str] custom_subject: Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
@@ -847,7 +847,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
         :param pulumi.Input[_builtins.str] owner_user_name: Alert owner's username.
         :param pulumi.Input[_builtins.str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        :param pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict', 'outputs.AlertProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[_builtins.int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         :param pulumi.Input[_builtins.str] state: Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.

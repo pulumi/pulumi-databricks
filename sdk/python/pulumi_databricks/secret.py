@@ -200,7 +200,7 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -242,7 +242,7 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-        :param pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
         """
@@ -303,7 +303,7 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -342,7 +342,7 @@ class Secret(pulumi.CustomResource):
             config_reference: pulumi.Input[Optional[_builtins.str]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             last_updated_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
-            provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
             string_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'Secret':
         """
@@ -355,7 +355,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_reference: (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.int] last_updated_timestamp: (Integer) time secret was updated
-        :param pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict', 'outputs.SecretProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
         """

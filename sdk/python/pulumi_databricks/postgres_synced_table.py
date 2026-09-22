@@ -207,8 +207,8 @@ class PostgresSyncedTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']]] = None,
                  synced_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -307,8 +307,8 @@ class PostgresSyncedTable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
+        :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
                This attribute is specified at creation time and most fields are returned as is on subsequent queries
         :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         """
@@ -427,8 +427,8 @@ class PostgresSyncedTable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
-                 spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']]] = None,
                  synced_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -460,9 +460,9 @@ class PostgresSyncedTable(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
-            spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict', 'outputs.PostgresSyncedTableStatus']]] = None,
             synced_table_id: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresSyncedTable':
         """
@@ -475,10 +475,10 @@ class PostgresSyncedTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: (string)
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The Full resource name of the synced table in Postgres
                where (catalog, schema, table) are the UC entity names.
-        :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
+        :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict', 'outputs.PostgresSyncedTableProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict', 'outputs.PostgresSyncedTableSpec']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
                This attribute is specified at creation time and most fields are returned as is on subsequent queries
-        :param pulumi.Input[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict']] status: (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
+        :param pulumi.Input[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict', 'outputs.PostgresSyncedTableStatus']] status: (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
         :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] uid: (string) - The Unity Catalog table ID for this synced table
         """

@@ -169,7 +169,7 @@ class SecretAcl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permission: pulumi.Input[Optional[_builtins.str]] = None,
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict', 'outputs.SecretAclProviderConfig']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -215,7 +215,7 @@ class SecretAcl(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] permission: `READ`, `WRITE` or `MANAGE`.
         :param pulumi.Input[_builtins.str] principal: principal's identifier. It can be:
-        :param pulumi.Input[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict', 'outputs.SecretAclProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: name of the scope
         """
         ...
@@ -280,7 +280,7 @@ class SecretAcl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permission: pulumi.Input[Optional[_builtins.str]] = None,
                  principal: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict', 'outputs.SecretAclProviderConfig']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -313,7 +313,7 @@ class SecretAcl(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             permission: pulumi.Input[Optional[_builtins.str]] = None,
             principal: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict', 'outputs.SecretAclProviderConfig']]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecretAcl':
         """
         Get an existing SecretAcl resource's state with the given name, id, and optional extra
@@ -324,7 +324,7 @@ class SecretAcl(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] permission: `READ`, `WRITE` or `MANAGE`.
         :param pulumi.Input[_builtins.str] principal: principal's identifier. It can be:
-        :param pulumi.Input[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['SecretAclProviderConfigArgs', 'SecretAclProviderConfigArgsDict', 'outputs.SecretAclProviderConfig']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: name of the scope
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

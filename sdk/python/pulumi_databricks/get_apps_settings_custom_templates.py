@@ -67,7 +67,7 @@ class AwaitableGetAppsSettingsCustomTemplatesResult(GetAppsSettingsCustomTemplat
 
 
 def get_apps_settings_custom_templates(page_size: Optional[_builtins.int] = None,
-                                       provider_config: Optional[Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict']] = None,
+                                       provider_config: Optional[Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict', 'outputs.GetAppsSettingsCustomTemplatesProviderConfigResult']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsSettingsCustomTemplatesResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -89,7 +89,7 @@ def get_apps_settings_custom_templates(page_size: Optional[_builtins.int] = None
 
 
     :param _builtins.int page_size: Upper bound for items returned
-    :param Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict', 'outputs.GetAppsSettingsCustomTemplatesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -102,7 +102,7 @@ def get_apps_settings_custom_templates(page_size: Optional[_builtins.int] = None
         provider_config=pulumi.get(__ret__, 'provider_config'),
         templates=pulumi.get(__ret__, 'templates'))
 def get_apps_settings_custom_templates_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                              provider_config: pulumi.Input[Optional[Optional[Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict']]]] = None,
+                                              provider_config: pulumi.Input[Optional[Optional[Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict', 'outputs.GetAppsSettingsCustomTemplatesProviderConfigResult']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsSettingsCustomTemplatesResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -124,7 +124,7 @@ def get_apps_settings_custom_templates_output(page_size: pulumi.Input[Optional[O
 
 
     :param _builtins.int page_size: Upper bound for items returned
-    :param Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict', 'outputs.GetAppsSettingsCustomTemplatesProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

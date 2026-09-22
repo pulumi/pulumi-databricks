@@ -135,9 +135,9 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enhanced_security_monitoring_workspace: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
+                 enhanced_security_monitoring_workspace: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict', 'outputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict', 'outputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -170,9 +170,9 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enhanced_security_monitoring_workspace: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
+                 enhanced_security_monitoring_workspace: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict', 'outputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict', 'outputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig']]] = None,
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -199,9 +199,9 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enhanced_security_monitoring_workspace: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
+            enhanced_security_monitoring_workspace: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict', 'outputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict', 'outputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig']]] = None,
             setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnhancedSecurityMonitoringWorkspaceSetting':
         """
         Get an existing EnhancedSecurityMonitoringWorkspaceSetting resource's state with the given name, id, and optional extra

@@ -334,8 +334,8 @@ class Repo(pulumi.CustomResource):
                  git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
                  git_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
-                 sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict', 'outputs.RepoProviderConfig']]] = None,
+                 sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict', 'outputs.RepoSparseCheckout']]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -451,8 +451,8 @@ class Repo(pulumi.CustomResource):
                  git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
                  git_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
-                 sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict', 'outputs.RepoProviderConfig']]] = None,
+                 sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict', 'outputs.RepoSparseCheckout']]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -491,8 +491,8 @@ class Repo(pulumi.CustomResource):
             git_credential_id: pulumi.Input[Optional[_builtins.int]] = None,
             git_provider: pulumi.Input[Optional[_builtins.str]] = None,
             path: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
-            sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict', 'outputs.RepoProviderConfig']]] = None,
+            sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict', 'outputs.RepoSparseCheckout']]] = None,
             tag: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Repo':

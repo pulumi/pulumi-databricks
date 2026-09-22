@@ -208,7 +208,7 @@ class AwaitableGetDomainResult(GetDomainResult):
 
 
 def get_domain(name: Optional[_builtins.str] = None,
-               provider_config: Optional[Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict']] = None,
+               provider_config: Optional[Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict', 'outputs.GetDomainProviderConfigResult']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -231,7 +231,7 @@ def get_domain(name: Optional[_builtins.str] = None,
            Format: `domains/{domain_id}`
            Identifies the domain on get, update, and delete. Not an input on
            create — to choose the id, set `CreateDomainRequest.domain_id`
-    :param Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict', 'outputs.GetDomainProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -255,7 +255,7 @@ def get_domain(name: Optional[_builtins.str] = None,
         technical_owner_ids=pulumi.get(__ret__, 'technical_owner_ids'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_domain_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                      provider_config: pulumi.Input[Optional[Optional[Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict']]]] = None,
+                      provider_config: pulumi.Input[Optional[Optional[Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict', 'outputs.GetDomainProviderConfigResult']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -278,7 +278,7 @@ def get_domain_output(name: pulumi.Input[Optional[_builtins.str]] = None,
            Format: `domains/{domain_id}`
            Identifies the domain on get, update, and delete. Not an input on
            create — to choose the id, set `CreateDomainRequest.domain_id`
-    :param Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetDomainProviderConfigArgs', 'GetDomainProviderConfigArgsDict', 'outputs.GetDomainProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name

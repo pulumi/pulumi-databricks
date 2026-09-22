@@ -251,10 +251,10 @@ class MlflowWebhook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
-                 job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
+                 http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict', 'outputs.MlflowWebhookHttpUrlSpec']]] = None,
+                 job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict', 'outputs.MlflowWebhookJobSpec']]] = None,
                  model_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict', 'outputs.MlflowWebhookProviderConfig']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -469,10 +469,10 @@ class MlflowWebhook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
-                 job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
+                 http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict', 'outputs.MlflowWebhookHttpUrlSpec']]] = None,
+                 job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict', 'outputs.MlflowWebhookJobSpec']]] = None,
                  model_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict', 'outputs.MlflowWebhookProviderConfig']]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -504,10 +504,10 @@ class MlflowWebhook(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
-            job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
+            http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict', 'outputs.MlflowWebhookHttpUrlSpec']]] = None,
+            job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict', 'outputs.MlflowWebhookJobSpec']]] = None,
             model_name: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict', 'outputs.MlflowWebhookProviderConfig']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'MlflowWebhook':
         """
         Get an existing MlflowWebhook resource's state with the given name, id, and optional extra

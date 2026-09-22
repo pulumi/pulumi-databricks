@@ -162,7 +162,7 @@ class GroupRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict', 'outputs.GroupRoleProviderConfig']]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -300,7 +300,7 @@ class GroupRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict', 'outputs.GroupRoleProviderConfig']]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -331,7 +331,7 @@ class GroupRole(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_config: pulumi.Input[Optional[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict', 'outputs.GroupRoleProviderConfig']]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupRole':
         """
         Get an existing GroupRole resource's state with the given name, id, and optional extra

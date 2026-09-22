@@ -133,7 +133,7 @@ class AwaitableGetPostgresCatalogResult(GetPostgresCatalogResult):
 
 
 def get_postgres_catalog(name: Optional[_builtins.str] = None,
-                         provider_config: Optional[Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict']] = None,
+                         provider_config: Optional[Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict', 'outputs.GetPostgresCatalogProviderConfigResult']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresCatalogResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -158,7 +158,7 @@ def get_postgres_catalog(name: Optional[_builtins.str] = None,
     :param _builtins.str name: Output only. The full resource path of the catalog.
            
            Format: "catalogs/{catalog_id}"
-    :param Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict', 'outputs.GetPostgresCatalogProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -176,7 +176,7 @@ def get_postgres_catalog(name: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_postgres_catalog_output(name: pulumi.Input[Optional[_builtins.str]] = None,
-                                provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict']]]] = None,
+                                provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict', 'outputs.GetPostgresCatalogProviderConfigResult']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresCatalogResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -201,7 +201,7 @@ def get_postgres_catalog_output(name: pulumi.Input[Optional[_builtins.str]] = No
     :param _builtins.str name: Output only. The full resource path of the catalog.
            
            Format: "catalogs/{catalog_id}"
-    :param Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict', 'outputs.GetPostgresCatalogProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
