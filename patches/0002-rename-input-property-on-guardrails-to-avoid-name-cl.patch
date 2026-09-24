@@ -5,7 +5,7 @@ Subject: [PATCH] rename input property on guardrails to avoid name clash
 
 
 diff --git a/internal/service/serving_tf/legacy_model.go b/internal/service/serving_tf/legacy_model.go
-index 32357e191652..aaa92367f7ba 100644
+index 8e00522b0117..f3b37481371d 100644
 --- a/internal/service/serving_tf/legacy_model.go
 +++ b/internal/service/serving_tf/legacy_model.go
 @@ -670,7 +670,7 @@ func (m AiGatewayGuardrailPiiBehavior_SdkV2) Type(ctx context.Context) attr.Type
@@ -69,7 +69,7 @@ index 32357e191652..aaa92367f7ba 100644
  }
  
 diff --git a/internal/service/serving_tf/model.go b/internal/service/serving_tf/model.go
-index 28de417a12cf..9f7810631aea 100644
+index 0a543111a736..34bbfc12624c 100644
 --- a/internal/service/serving_tf/model.go
 +++ b/internal/service/serving_tf/model.go
 @@ -649,7 +649,7 @@ func (m AiGatewayGuardrailPiiBehavior) Type(ctx context.Context) attr.Type {

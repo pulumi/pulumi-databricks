@@ -97,14 +97,14 @@ public class WorkspaceEntityTagAssignment extends com.pulumi.resources.CustomRes
         return this.entityId;
     }
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      * 
      */
     @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**
-     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      * 
      */
     public Output<String> entityType() {

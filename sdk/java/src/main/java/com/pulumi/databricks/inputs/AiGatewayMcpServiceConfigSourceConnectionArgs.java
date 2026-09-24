@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,11 +60,33 @@ public final class AiGatewayMcpServiceConfigSourceConnectionArgs extends com.pul
         return this.name;
     }
 
+    /**
+     * (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+     * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+     * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+     * `oauthProvider` (the OAuth provider)
+     * 
+     */
+    @Import(name="options")
+    private @Nullable Output<Map<String,String>> options;
+
+    /**
+     * @return (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+     * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+     * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+     * `oauthProvider` (the OAuth provider)
+     * 
+     */
+    public Optional<Output<Map<String,String>>> options() {
+        return Optional.ofNullable(this.options);
+    }
+
     private AiGatewayMcpServiceConfigSourceConnectionArgs() {}
 
     private AiGatewayMcpServiceConfigSourceConnectionArgs(AiGatewayMcpServiceConfigSourceConnectionArgs $) {
         this.isDeleted = $.isDeleted;
         this.name = $.name;
+        this.options = $.options;
     }
 
     public static Builder builder() {
@@ -136,6 +159,33 @@ public final class AiGatewayMcpServiceConfigSourceConnectionArgs extends com.pul
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param options (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+         * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+         * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+         * `oauthProvider` (the OAuth provider)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(@Nullable Output<Map<String,String>> options) {
+            $.options = options;
+            return this;
+        }
+
+        /**
+         * @param options (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+         * includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+         * URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+         * `oauthProvider` (the OAuth provider)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(Map<String,String> options) {
+            return options(Output.of(options));
         }
 
         public AiGatewayMcpServiceConfigSourceConnectionArgs build() {

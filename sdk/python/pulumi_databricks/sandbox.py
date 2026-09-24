@@ -29,7 +29,7 @@ class SandboxArgs:
         The set of arguments for constructing a Sandbox resource.
 
         :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
-        :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 bytes
+        :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
         :param pulumi.Input['SandboxProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['SandboxSpecArgs'] spec: The desired configuration of the sandbox, supplied by the caller at creation time
         """
@@ -57,7 +57,7 @@ class SandboxArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Human-readable display label for the sandbox. At most 256 bytes
+        Human-readable display label for the sandbox. At most 256 characters
         """
         return pulumi.get(self, "display_name")
 
@@ -105,8 +105,9 @@ class _SandboxState:
         Input properties used for looking up and filtering Sandbox resources.
 
         :param pulumi.Input[_builtins.str] create_time: (string) - Output only. The creation time of the sandbox
-        :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 bytes
-        :param pulumi.Input[_builtins.str] name: (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+        :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
+        :param pulumi.Input[_builtins.str] name: (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+               `sandbox_id`; any value supplied in a create or update request body is ignored
         :param pulumi.Input['SandboxProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
         :param pulumi.Input['SandboxSpecArgs'] spec: The desired configuration of the sandbox, supplied by the caller at creation time
@@ -146,7 +147,7 @@ class _SandboxState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Human-readable display label for the sandbox. At most 256 bytes
+        Human-readable display label for the sandbox. At most 256 characters
         """
         return pulumi.get(self, "display_name")
 
@@ -158,7 +159,8 @@ class _SandboxState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+        (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+        `sandbox_id`; any value supplied in a create or update request body is ignored
         """
         return pulumi.get(self, "name")
 
@@ -268,7 +270,7 @@ class Sandbox(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 bytes
+        :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
         :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
         :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
@@ -371,8 +373,9 @@ class Sandbox(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - Output only. The creation time of the sandbox
-        :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 bytes
-        :param pulumi.Input[_builtins.str] name: (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+        :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
+        :param pulumi.Input[_builtins.str] name: (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+               `sandbox_id`; any value supplied in a create or update request body is ignored
         :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
         :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
@@ -405,7 +408,7 @@ class Sandbox(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Human-readable display label for the sandbox. At most 256 bytes
+        Human-readable display label for the sandbox. At most 256 characters
         """
         return pulumi.get(self, "display_name")
 
@@ -413,7 +416,8 @@ class Sandbox(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+        (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+        `sandbox_id`; any value supplied in a create or update request body is ignored
         """
         return pulumi.get(self, "name")
 

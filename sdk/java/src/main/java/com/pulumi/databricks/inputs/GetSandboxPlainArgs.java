@@ -17,14 +17,16 @@ public final class GetSandboxPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSandboxPlainArgs Empty = new GetSandboxPlainArgs();
 
     /**
-     * The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+     * The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+     * @return The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      * 
      */
     public String name() {
@@ -72,7 +74,8 @@ public final class GetSandboxPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+         * @param name The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+         * `sandboxId`; any value supplied in a create or update request body is ignored
          * 
          * @return builder
          * 

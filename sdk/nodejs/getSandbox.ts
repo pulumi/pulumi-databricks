@@ -38,7 +38,8 @@ export function getSandbox(args: GetSandboxArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetSandboxArgs {
     /**
-     * The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+     * The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      */
     name: string;
     /**
@@ -56,11 +57,12 @@ export interface GetSandboxResult {
      */
     readonly createTime: string;
     /**
-     * (string) - Human-readable display label for the sandbox. At most 256 bytes
+     * (string) - Human-readable display label for the sandbox. At most 256 characters
      */
     readonly displayName: string;
     /**
-     * (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+     * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetSandboxProviderConfig;
@@ -109,7 +111,8 @@ export function getSandboxOutput(args: GetSandboxOutputArgs, opts?: pulumi.Invok
  */
 export interface GetSandboxOutputArgs {
     /**
-     * The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+     * The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      */
     name: pulumi.Input<string>;
     /**

@@ -60,7 +60,7 @@ export interface GetWorkspaceEntityTagAssignmentArgs {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      */
     entityType: string;
     /**
@@ -82,7 +82,7 @@ export interface GetWorkspaceEntityTagAssignmentResult {
      */
     readonly entityId: string;
     /**
-     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      */
     readonly entityType: string;
     readonly providerConfig?: outputs.GetWorkspaceEntityTagAssignmentProviderConfig;
@@ -149,7 +149,7 @@ export interface GetWorkspaceEntityTagAssignmentOutputArgs {
      */
     entityId: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      */
     entityType: pulumi.Input<string>;
     /**

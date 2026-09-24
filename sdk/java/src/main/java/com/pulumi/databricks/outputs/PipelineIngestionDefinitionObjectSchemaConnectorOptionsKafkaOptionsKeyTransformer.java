@@ -4,7 +4,9 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer {
+    private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions avroOptions;
     private @Nullable String format;
     private @Nullable String inputColumn;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions jsonOptions;
     private @Nullable String outputColumn;
+    private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions protobufOptions;
 
     private PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer() {}
+    public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions> avroOptions() {
+        return Optional.ofNullable(this.avroOptions);
+    }
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
@@ -30,6 +37,9 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaO
     public Optional<String> outputColumn() {
         return Optional.ofNullable(this.outputColumn);
     }
+    public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions> protobufOptions() {
+        return Optional.ofNullable(this.protobufOptions);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -40,19 +50,29 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaO
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions avroOptions;
         private @Nullable String format;
         private @Nullable String inputColumn;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions jsonOptions;
         private @Nullable String outputColumn;
+        private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions protobufOptions;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.avroOptions = defaults.avroOptions;
     	      this.format = defaults.format;
     	      this.inputColumn = defaults.inputColumn;
     	      this.jsonOptions = defaults.jsonOptions;
     	      this.outputColumn = defaults.outputColumn;
+    	      this.protobufOptions = defaults.protobufOptions;
         }
 
+        @CustomType.Setter
+        public Builder avroOptions(@Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerAvroOptions avroOptions) {
+
+            this.avroOptions = avroOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder format(@Nullable String format) {
 
@@ -77,12 +97,20 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaO
             this.outputColumn = outputColumn;
             return this;
         }
+        @CustomType.Setter
+        public Builder protobufOptions(@Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerProtobufOptions protobufOptions) {
+
+            this.protobufOptions = protobufOptions;
+            return this;
+        }
         public PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer();
+            _resultValue.avroOptions = avroOptions;
             _resultValue.format = format;
             _resultValue.inputColumn = inputColumn;
             _resultValue.jsonOptions = jsonOptions;
             _resultValue.outputColumn = outputColumn;
+            _resultValue.protobufOptions = protobufOptions;
             return _resultValue;
         }
     }

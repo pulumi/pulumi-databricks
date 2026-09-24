@@ -32,14 +32,14 @@ public final class GetWorkspaceEntityTagAssignmentPlainArgs extends com.pulumi.r
     }
 
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      * 
      */
     @Import(name="entityType", required=true)
     private String entityType;
 
     /**
-     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      * 
      */
     public String entityType() {
@@ -115,7 +115,7 @@ public final class GetWorkspaceEntityTagAssignmentPlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param entityType The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+         * @param entityType The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
          * 
          * @return builder
          * 

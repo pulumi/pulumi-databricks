@@ -19,14 +19,14 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
     public static final SandboxArgs Empty = new SandboxArgs();
 
     /**
-     * Human-readable display label for the sandbox. At most 256 bytes
+     * Human-readable display label for the sandbox. At most 256 characters
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Human-readable display label for the sandbox. At most 256 bytes
+     * @return Human-readable display label for the sandbox. At most 256 characters
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -106,7 +106,7 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Human-readable display label for the sandbox. At most 256 bytes
+         * @param displayName Human-readable display label for the sandbox. At most 256 characters
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Human-readable display label for the sandbox. At most 256 bytes
+         * @param displayName Human-readable display label for the sandbox. At most 256 characters
          * 
          * @return builder
          * 

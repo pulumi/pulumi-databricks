@@ -15,6 +15,68 @@ import (
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+//
+// ## Example Usage
+//
+// ### Managing a Branch's Snapshot Schedule
+//
+// A branch's snapshot schedule is a singleton addressed by the branch it belongs
+// to. Set `parent` to the branch's resource name and provide the desired cadences;
+// Pulumi applies them in place. The example below takes a daily snapshot at
+// 03:00 UTC and keeps it for 7 days.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("My Project"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresSnapshotSchedule(ctx, "this", &databricks.PostgresSnapshotScheduleArgs{
+//				Parent: this.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("%v/branches/production", name), nil
+//				}).(pulumi.StringOutput),
+//				Schedules: databricks.PostgresSnapshotScheduleScheduleArray{
+//					&databricks.PostgresSnapshotScheduleScheduleArgs{
+//						DailySchedule: &databricks.PostgresSnapshotScheduleScheduleDailyScheduleArgs{
+//							Hour: pulumi.Int(3),
+//						},
+//						Retention: pulumi.String("168h0m0s"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The `schedule` set can hold more than one cadence — for example, add a weekly
+// cadence alongside the daily one to keep some snapshots longer than others.
+//
+// To disable automatic snapshots, set `schedule = []` and apply. Removing the
+// resource from your configuration only removes it from Pulumi state; it does
+// not change the schedule on the branch.
 type PostgresSnapshotSchedule struct {
 	pulumi.CustomResourceState
 

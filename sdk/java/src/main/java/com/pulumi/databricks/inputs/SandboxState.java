@@ -34,14 +34,14 @@ public final class SandboxState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Human-readable display label for the sandbox. At most 256 bytes
+     * Human-readable display label for the sandbox. At most 256 characters
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Human-readable display label for the sandbox. At most 256 bytes
+     * @return Human-readable display label for the sandbox. At most 256 characters
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -49,14 +49,16 @@ public final class SandboxState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (string) - The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+     * (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+     * @return (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+     * `sandboxId`; any value supplied in a create or update request body is ignored
      * 
      */
     public Optional<Output<String>> name() {
@@ -191,7 +193,7 @@ public final class SandboxState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Human-readable display label for the sandbox. At most 256 bytes
+         * @param displayName Human-readable display label for the sandbox. At most 256 characters
          * 
          * @return builder
          * 
@@ -202,7 +204,7 @@ public final class SandboxState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Human-readable display label for the sandbox. At most 256 bytes
+         * @param displayName Human-readable display label for the sandbox. At most 256 characters
          * 
          * @return builder
          * 
@@ -212,7 +214,8 @@ public final class SandboxState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name (string) - The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+         * @param name (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+         * `sandboxId`; any value supplied in a create or update request body is ignored
          * 
          * @return builder
          * 
@@ -223,7 +226,8 @@ public final class SandboxState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name (string) - The AIP-compliant resource name, such as &#34;sandboxes/my-sandbox&#34;
+         * @param name (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+         * `sandboxId`; any value supplied in a create or update request body is ignored
          * 
          * @return builder
          * 

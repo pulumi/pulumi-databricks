@@ -3459,6 +3459,10 @@ func (o AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationLakeb
 }
 
 type AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -3475,6 +3479,10 @@ type AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspac
 }
 
 type AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -3556,6 +3564,15 @@ func (o AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorks
 	}).(AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -3590,6 +3607,18 @@ func (o AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorks
 		var ret AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -5392,6 +5421,10 @@ func (o AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationLakeba
 }
 
 type AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -5408,6 +5441,10 @@ type AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspace
 }
 
 type AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -5489,6 +5526,15 @@ func (o AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorksp
 	}).(AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -5523,6 +5569,18 @@ func (o AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorksp
 		var ret AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -7677,6 +7735,10 @@ func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinatio
 }
 
 type AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -7693,6 +7755,10 @@ type AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWo
 }
 
 type AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -7774,6 +7840,15 @@ func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinatio
 	}).(AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -7808,6 +7883,18 @@ func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinatio
 		var ret AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -9610,6 +9697,10 @@ func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination
 }
 
 type AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -9626,6 +9717,10 @@ type AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWor
 }
 
 type AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -9707,6 +9802,15 @@ func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination
 	}).(AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -9741,6 +9845,18 @@ func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination
 		var ret AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -11710,6 +11826,10 @@ func (o AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationLakeba
 }
 
 type AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -11726,6 +11846,10 @@ type AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspace
 }
 
 type AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -11807,6 +11931,15 @@ func (o AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorksp
 	}).(AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -11841,6 +11974,18 @@ func (o AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorksp
 		var ret AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -13711,6 +13856,10 @@ func (o AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationLakebas
 }
 
 type AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -13727,6 +13876,10 @@ type AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceA
 }
 
 type AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -13808,6 +13961,15 @@ func (o AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspa
 	}).(AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -13842,6 +14004,18 @@ func (o AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspa
 		var ret AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -15879,6 +16053,10 @@ func (o AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebas
 }
 
 type AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -15895,6 +16073,10 @@ type AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceA
 }
 
 type AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -15976,6 +16158,15 @@ func (o AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspa
 	}).(AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -16010,6 +16201,18 @@ func (o AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspa
 		var ret AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -17974,6 +18177,10 @@ func (o AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebase
 }
 
 type AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -17990,6 +18197,10 @@ type AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceAp
 }
 
 type AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -18071,6 +18282,15 @@ func (o AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspac
 	}).(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -18105,6 +18325,18 @@ func (o AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspac
 		var ret AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -20232,6 +20464,10 @@ func (o AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationLakebaseRunt
 }
 
 type AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -20248,6 +20484,10 @@ type AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiInp
 }
 
 type AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -20329,6 +20569,15 @@ func (o AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi
 	}).(AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -20363,6 +20612,18 @@ func (o AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi
 		var ret AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -22227,6 +22488,10 @@ func (o AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationLakebaseRunti
 }
 
 type AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -22243,6 +22508,10 @@ type AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiInpu
 }
 
 type AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -22324,6 +22593,15 @@ func (o AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiO
 	}).(AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -22358,6 +22636,18 @@ func (o AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiP
 		var ret AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -24387,6 +24677,10 @@ func (o AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLakebaseRunti
 }
 
 type AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -24403,6 +24697,10 @@ type AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiInpu
 }
 
 type AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -24484,6 +24782,15 @@ func (o AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiO
 	}).(AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -24518,6 +24825,18 @@ func (o AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiP
 		var ret AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -26476,6 +26795,10 @@ func (o AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntim
 }
 
 type AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes []string `pulumi:"excludedScopes"`
 	ScopeQualifier *string  `pulumi:"scopeQualifier"`
 	Scopes         []string `pulumi:"scopes"`
 }
@@ -26492,6 +26815,10 @@ type AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiInput
 }
 
 type AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiArgs struct {
+	// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+	// ("allow all except"). Mutually exclusive with `scopes` — a single
+	// destination may set at most one of the two
+	ExcludedScopes pulumi.StringArrayInput `pulumi:"excludedScopes"`
 	ScopeQualifier pulumi.StringPtrInput   `pulumi:"scopeQualifier"`
 	Scopes         pulumi.StringArrayInput `pulumi:"scopes"`
 }
@@ -26573,6 +26900,15 @@ func (o AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiOu
 	}).(AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiPtrOutput)
 }
 
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi) []string {
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiOutput) ScopeQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi) *string {
 		return v.ScopeQualifier
@@ -26607,6 +26943,18 @@ func (o AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiPt
 		var ret AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi
 		return ret
 	}).(AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiOutput)
+}
+
+// Inverse of `scopes`: matches every API scope EXCEPT those listed here
+// ("allow all except"). Mutually exclusive with `scopes` — a single
+// destination may set at most one of the two
+func (o AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiPtrOutput) ExcludedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiPtrOutput) ScopeQualifier() pulumi.StringPtrOutput {
@@ -31479,6 +31827,154 @@ func (o AccountSettingV2EffectiveStringValPtrOutput) Value() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccountSettingV2EffectiveWorkspaceLabel struct {
+	Color *string `pulumi:"color"`
+	Label *string `pulumi:"label"`
+}
+
+// AccountSettingV2EffectiveWorkspaceLabelInput is an input type that accepts AccountSettingV2EffectiveWorkspaceLabelArgs and AccountSettingV2EffectiveWorkspaceLabelOutput values.
+// You can construct a concrete instance of `AccountSettingV2EffectiveWorkspaceLabelInput` via:
+//
+//	AccountSettingV2EffectiveWorkspaceLabelArgs{...}
+type AccountSettingV2EffectiveWorkspaceLabelInput interface {
+	pulumi.Input
+
+	ToAccountSettingV2EffectiveWorkspaceLabelOutput() AccountSettingV2EffectiveWorkspaceLabelOutput
+	ToAccountSettingV2EffectiveWorkspaceLabelOutputWithContext(context.Context) AccountSettingV2EffectiveWorkspaceLabelOutput
+}
+
+type AccountSettingV2EffectiveWorkspaceLabelArgs struct {
+	Color pulumi.StringPtrInput `pulumi:"color"`
+	Label pulumi.StringPtrInput `pulumi:"label"`
+}
+
+func (AccountSettingV2EffectiveWorkspaceLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountSettingV2EffectiveWorkspaceLabel)(nil)).Elem()
+}
+
+func (i AccountSettingV2EffectiveWorkspaceLabelArgs) ToAccountSettingV2EffectiveWorkspaceLabelOutput() AccountSettingV2EffectiveWorkspaceLabelOutput {
+	return i.ToAccountSettingV2EffectiveWorkspaceLabelOutputWithContext(context.Background())
+}
+
+func (i AccountSettingV2EffectiveWorkspaceLabelArgs) ToAccountSettingV2EffectiveWorkspaceLabelOutputWithContext(ctx context.Context) AccountSettingV2EffectiveWorkspaceLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingV2EffectiveWorkspaceLabelOutput)
+}
+
+func (i AccountSettingV2EffectiveWorkspaceLabelArgs) ToAccountSettingV2EffectiveWorkspaceLabelPtrOutput() AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return i.ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(context.Background())
+}
+
+func (i AccountSettingV2EffectiveWorkspaceLabelArgs) ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(ctx context.Context) AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingV2EffectiveWorkspaceLabelOutput).ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(ctx)
+}
+
+// AccountSettingV2EffectiveWorkspaceLabelPtrInput is an input type that accepts AccountSettingV2EffectiveWorkspaceLabelArgs, AccountSettingV2EffectiveWorkspaceLabelPtr and AccountSettingV2EffectiveWorkspaceLabelPtrOutput values.
+// You can construct a concrete instance of `AccountSettingV2EffectiveWorkspaceLabelPtrInput` via:
+//
+//	        AccountSettingV2EffectiveWorkspaceLabelArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccountSettingV2EffectiveWorkspaceLabelPtrInput interface {
+	pulumi.Input
+
+	ToAccountSettingV2EffectiveWorkspaceLabelPtrOutput() AccountSettingV2EffectiveWorkspaceLabelPtrOutput
+	ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(context.Context) AccountSettingV2EffectiveWorkspaceLabelPtrOutput
+}
+
+type accountSettingV2EffectiveWorkspaceLabelPtrType AccountSettingV2EffectiveWorkspaceLabelArgs
+
+func AccountSettingV2EffectiveWorkspaceLabelPtr(v *AccountSettingV2EffectiveWorkspaceLabelArgs) AccountSettingV2EffectiveWorkspaceLabelPtrInput {
+	return (*accountSettingV2EffectiveWorkspaceLabelPtrType)(v)
+}
+
+func (*accountSettingV2EffectiveWorkspaceLabelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountSettingV2EffectiveWorkspaceLabel)(nil)).Elem()
+}
+
+func (i *accountSettingV2EffectiveWorkspaceLabelPtrType) ToAccountSettingV2EffectiveWorkspaceLabelPtrOutput() AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return i.ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *accountSettingV2EffectiveWorkspaceLabelPtrType) ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(ctx context.Context) AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingV2EffectiveWorkspaceLabelPtrOutput)
+}
+
+type AccountSettingV2EffectiveWorkspaceLabelOutput struct{ *pulumi.OutputState }
+
+func (AccountSettingV2EffectiveWorkspaceLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountSettingV2EffectiveWorkspaceLabel)(nil)).Elem()
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelOutput) ToAccountSettingV2EffectiveWorkspaceLabelOutput() AccountSettingV2EffectiveWorkspaceLabelOutput {
+	return o
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelOutput) ToAccountSettingV2EffectiveWorkspaceLabelOutputWithContext(ctx context.Context) AccountSettingV2EffectiveWorkspaceLabelOutput {
+	return o
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelOutput) ToAccountSettingV2EffectiveWorkspaceLabelPtrOutput() AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return o.ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(context.Background())
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelOutput) ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(ctx context.Context) AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountSettingV2EffectiveWorkspaceLabel) *AccountSettingV2EffectiveWorkspaceLabel {
+		return &v
+	}).(AccountSettingV2EffectiveWorkspaceLabelPtrOutput)
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountSettingV2EffectiveWorkspaceLabel) *string { return v.Color }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountSettingV2EffectiveWorkspaceLabel) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+type AccountSettingV2EffectiveWorkspaceLabelPtrOutput struct{ *pulumi.OutputState }
+
+func (AccountSettingV2EffectiveWorkspaceLabelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountSettingV2EffectiveWorkspaceLabel)(nil)).Elem()
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelPtrOutput) ToAccountSettingV2EffectiveWorkspaceLabelPtrOutput() AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return o
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelPtrOutput) ToAccountSettingV2EffectiveWorkspaceLabelPtrOutputWithContext(ctx context.Context) AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return o
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelPtrOutput) Elem() AccountSettingV2EffectiveWorkspaceLabelOutput {
+	return o.ApplyT(func(v *AccountSettingV2EffectiveWorkspaceLabel) AccountSettingV2EffectiveWorkspaceLabel {
+		if v != nil {
+			return *v
+		}
+		var ret AccountSettingV2EffectiveWorkspaceLabel
+		return ret
+	}).(AccountSettingV2EffectiveWorkspaceLabelOutput)
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelPtrOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountSettingV2EffectiveWorkspaceLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Color
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccountSettingV2EffectiveWorkspaceLabelPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountSettingV2EffectiveWorkspaceLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccountSettingV2IntegerVal struct {
 	Value *int `pulumi:"value"`
 }
@@ -32171,6 +32667,154 @@ func (o AccountSettingV2StringValPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccountSettingV2WorkspaceLabel struct {
+	Color *string `pulumi:"color"`
+	Label *string `pulumi:"label"`
+}
+
+// AccountSettingV2WorkspaceLabelInput is an input type that accepts AccountSettingV2WorkspaceLabelArgs and AccountSettingV2WorkspaceLabelOutput values.
+// You can construct a concrete instance of `AccountSettingV2WorkspaceLabelInput` via:
+//
+//	AccountSettingV2WorkspaceLabelArgs{...}
+type AccountSettingV2WorkspaceLabelInput interface {
+	pulumi.Input
+
+	ToAccountSettingV2WorkspaceLabelOutput() AccountSettingV2WorkspaceLabelOutput
+	ToAccountSettingV2WorkspaceLabelOutputWithContext(context.Context) AccountSettingV2WorkspaceLabelOutput
+}
+
+type AccountSettingV2WorkspaceLabelArgs struct {
+	Color pulumi.StringPtrInput `pulumi:"color"`
+	Label pulumi.StringPtrInput `pulumi:"label"`
+}
+
+func (AccountSettingV2WorkspaceLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountSettingV2WorkspaceLabel)(nil)).Elem()
+}
+
+func (i AccountSettingV2WorkspaceLabelArgs) ToAccountSettingV2WorkspaceLabelOutput() AccountSettingV2WorkspaceLabelOutput {
+	return i.ToAccountSettingV2WorkspaceLabelOutputWithContext(context.Background())
+}
+
+func (i AccountSettingV2WorkspaceLabelArgs) ToAccountSettingV2WorkspaceLabelOutputWithContext(ctx context.Context) AccountSettingV2WorkspaceLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingV2WorkspaceLabelOutput)
+}
+
+func (i AccountSettingV2WorkspaceLabelArgs) ToAccountSettingV2WorkspaceLabelPtrOutput() AccountSettingV2WorkspaceLabelPtrOutput {
+	return i.ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(context.Background())
+}
+
+func (i AccountSettingV2WorkspaceLabelArgs) ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(ctx context.Context) AccountSettingV2WorkspaceLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingV2WorkspaceLabelOutput).ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(ctx)
+}
+
+// AccountSettingV2WorkspaceLabelPtrInput is an input type that accepts AccountSettingV2WorkspaceLabelArgs, AccountSettingV2WorkspaceLabelPtr and AccountSettingV2WorkspaceLabelPtrOutput values.
+// You can construct a concrete instance of `AccountSettingV2WorkspaceLabelPtrInput` via:
+//
+//	        AccountSettingV2WorkspaceLabelArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccountSettingV2WorkspaceLabelPtrInput interface {
+	pulumi.Input
+
+	ToAccountSettingV2WorkspaceLabelPtrOutput() AccountSettingV2WorkspaceLabelPtrOutput
+	ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(context.Context) AccountSettingV2WorkspaceLabelPtrOutput
+}
+
+type accountSettingV2WorkspaceLabelPtrType AccountSettingV2WorkspaceLabelArgs
+
+func AccountSettingV2WorkspaceLabelPtr(v *AccountSettingV2WorkspaceLabelArgs) AccountSettingV2WorkspaceLabelPtrInput {
+	return (*accountSettingV2WorkspaceLabelPtrType)(v)
+}
+
+func (*accountSettingV2WorkspaceLabelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountSettingV2WorkspaceLabel)(nil)).Elem()
+}
+
+func (i *accountSettingV2WorkspaceLabelPtrType) ToAccountSettingV2WorkspaceLabelPtrOutput() AccountSettingV2WorkspaceLabelPtrOutput {
+	return i.ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *accountSettingV2WorkspaceLabelPtrType) ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(ctx context.Context) AccountSettingV2WorkspaceLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingV2WorkspaceLabelPtrOutput)
+}
+
+type AccountSettingV2WorkspaceLabelOutput struct{ *pulumi.OutputState }
+
+func (AccountSettingV2WorkspaceLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountSettingV2WorkspaceLabel)(nil)).Elem()
+}
+
+func (o AccountSettingV2WorkspaceLabelOutput) ToAccountSettingV2WorkspaceLabelOutput() AccountSettingV2WorkspaceLabelOutput {
+	return o
+}
+
+func (o AccountSettingV2WorkspaceLabelOutput) ToAccountSettingV2WorkspaceLabelOutputWithContext(ctx context.Context) AccountSettingV2WorkspaceLabelOutput {
+	return o
+}
+
+func (o AccountSettingV2WorkspaceLabelOutput) ToAccountSettingV2WorkspaceLabelPtrOutput() AccountSettingV2WorkspaceLabelPtrOutput {
+	return o.ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(context.Background())
+}
+
+func (o AccountSettingV2WorkspaceLabelOutput) ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(ctx context.Context) AccountSettingV2WorkspaceLabelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountSettingV2WorkspaceLabel) *AccountSettingV2WorkspaceLabel {
+		return &v
+	}).(AccountSettingV2WorkspaceLabelPtrOutput)
+}
+
+func (o AccountSettingV2WorkspaceLabelOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountSettingV2WorkspaceLabel) *string { return v.Color }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountSettingV2WorkspaceLabelOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountSettingV2WorkspaceLabel) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+type AccountSettingV2WorkspaceLabelPtrOutput struct{ *pulumi.OutputState }
+
+func (AccountSettingV2WorkspaceLabelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountSettingV2WorkspaceLabel)(nil)).Elem()
+}
+
+func (o AccountSettingV2WorkspaceLabelPtrOutput) ToAccountSettingV2WorkspaceLabelPtrOutput() AccountSettingV2WorkspaceLabelPtrOutput {
+	return o
+}
+
+func (o AccountSettingV2WorkspaceLabelPtrOutput) ToAccountSettingV2WorkspaceLabelPtrOutputWithContext(ctx context.Context) AccountSettingV2WorkspaceLabelPtrOutput {
+	return o
+}
+
+func (o AccountSettingV2WorkspaceLabelPtrOutput) Elem() AccountSettingV2WorkspaceLabelOutput {
+	return o.ApplyT(func(v *AccountSettingV2WorkspaceLabel) AccountSettingV2WorkspaceLabel {
+		if v != nil {
+			return *v
+		}
+		var ret AccountSettingV2WorkspaceLabel
+		return ret
+	}).(AccountSettingV2WorkspaceLabelOutput)
+}
+
+func (o AccountSettingV2WorkspaceLabelPtrOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountSettingV2WorkspaceLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Color
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccountSettingV2WorkspaceLabelPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountSettingV2WorkspaceLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiGatewayMcpServiceConfig struct {
 	// Tool names or prefix patterns to expose from the MCP server. Use exact
 	// tool names or prefix patterns such as `read_*`. An empty list exposes all
@@ -32527,6 +33171,11 @@ type AiGatewayMcpServiceConfigSourceConnection struct {
 	// Server-derived on Create from `parent` +
 	// `mcpServiceId`; required and immutable on Update/Get/Delete
 	Name string `pulumi:"name"`
+	// (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+	// includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+	// URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+	// `oauthProvider` (the OAuth provider)
+	Options map[string]string `pulumi:"options"`
 }
 
 // AiGatewayMcpServiceConfigSourceConnectionInput is an input type that accepts AiGatewayMcpServiceConfigSourceConnectionArgs and AiGatewayMcpServiceConfigSourceConnectionOutput values.
@@ -32551,6 +33200,11 @@ type AiGatewayMcpServiceConfigSourceConnectionArgs struct {
 	// Server-derived on Create from `parent` +
 	// `mcpServiceId`; required and immutable on Update/Get/Delete
 	Name pulumi.StringInput `pulumi:"name"`
+	// (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+	// includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+	// URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+	// `oauthProvider` (the OAuth provider)
+	Options pulumi.StringMapInput `pulumi:"options"`
 }
 
 func (AiGatewayMcpServiceConfigSourceConnectionArgs) ElementType() reflect.Type {
@@ -32646,6 +33300,14 @@ func (o AiGatewayMcpServiceConfigSourceConnectionOutput) Name() pulumi.StringOut
 	return o.ApplyT(func(v AiGatewayMcpServiceConfigSourceConnection) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+// includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+// URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+// `oauthProvider` (the OAuth provider)
+func (o AiGatewayMcpServiceConfigSourceConnectionOutput) Options() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiGatewayMcpServiceConfigSourceConnection) map[string]string { return v.Options }).(pulumi.StringMapOutput)
+}
+
 type AiGatewayMcpServiceConfigSourceConnectionPtrOutput struct{ *pulumi.OutputState }
 
 func (AiGatewayMcpServiceConfigSourceConnectionPtrOutput) ElementType() reflect.Type {
@@ -32694,6 +33356,19 @@ func (o AiGatewayMcpServiceConfigSourceConnectionPtrOutput) Name() pulumi.String
 		}
 		return &v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+// includes: `authorizationEndpoint` (OAuth authorize URL), `tokenEndpoint` (token-exchange
+// URL), `oauthScope` (space-separated scopes to request), `clientId` (OAuth client id), and
+// `oauthProvider` (the OAuth provider)
+func (o AiGatewayMcpServiceConfigSourceConnectionPtrOutput) Options() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiGatewayMcpServiceConfigSourceConnection) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(pulumi.StringMapOutput)
 }
 
 type AiGatewayMcpServiceProviderConfig struct {
@@ -35747,6 +36422,10 @@ func (o AiGatewayModelProviderServiceConfigCustomPtrOutput) Direct() AiGatewayMo
 type AiGatewayModelProviderServiceConfigCustomDirect struct {
 	ApiKey  *AiGatewayModelProviderServiceConfigCustomDirectApiKey `pulumi:"apiKey"`
 	BaseUrl *string                                                `pulumi:"baseUrl"`
+	// Header-based API-key auth: the secret is forwarded on outbound requests
+	// under a caller-chosen HTTP header rather than as an `Authorization`
+	// bearer token. Set this instead of `apiKey` for header auth
+	HeaderAuth *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth `pulumi:"headerAuth"`
 }
 
 // AiGatewayModelProviderServiceConfigCustomDirectInput is an input type that accepts AiGatewayModelProviderServiceConfigCustomDirectArgs and AiGatewayModelProviderServiceConfigCustomDirectOutput values.
@@ -35763,6 +36442,10 @@ type AiGatewayModelProviderServiceConfigCustomDirectInput interface {
 type AiGatewayModelProviderServiceConfigCustomDirectArgs struct {
 	ApiKey  AiGatewayModelProviderServiceConfigCustomDirectApiKeyPtrInput `pulumi:"apiKey"`
 	BaseUrl pulumi.StringPtrInput                                         `pulumi:"baseUrl"`
+	// Header-based API-key auth: the secret is forwarded on outbound requests
+	// under a caller-chosen HTTP header rather than as an `Authorization`
+	// bearer token. Set this instead of `apiKey` for header auth
+	HeaderAuth AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrInput `pulumi:"headerAuth"`
 }
 
 func (AiGatewayModelProviderServiceConfigCustomDirectArgs) ElementType() reflect.Type {
@@ -35852,6 +36535,15 @@ func (o AiGatewayModelProviderServiceConfigCustomDirectOutput) BaseUrl() pulumi.
 	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigCustomDirect) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
+// Header-based API-key auth: the secret is forwarded on outbound requests
+// under a caller-chosen HTTP header rather than as an `Authorization`
+// bearer token. Set this instead of `apiKey` for header auth
+func (o AiGatewayModelProviderServiceConfigCustomDirectOutput) HeaderAuth() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigCustomDirect) *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
+		return v.HeaderAuth
+	}).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput)
+}
+
 type AiGatewayModelProviderServiceConfigCustomDirectPtrOutput struct{ *pulumi.OutputState }
 
 func (AiGatewayModelProviderServiceConfigCustomDirectPtrOutput) ElementType() reflect.Type {
@@ -35892,6 +36584,18 @@ func (o AiGatewayModelProviderServiceConfigCustomDirectPtrOutput) BaseUrl() pulu
 		}
 		return v.BaseUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+// Header-based API-key auth: the secret is forwarded on outbound requests
+// under a caller-chosen HTTP header rather than as an `Authorization`
+// bearer token. Set this instead of `apiKey` for header auth
+func (o AiGatewayModelProviderServiceConfigCustomDirectPtrOutput) HeaderAuth() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigCustomDirect) *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderAuth
+	}).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput)
 }
 
 type AiGatewayModelProviderServiceConfigCustomDirectApiKey struct {
@@ -36032,6 +36736,323 @@ func (o AiGatewayModelProviderServiceConfigCustomDirectApiKeyPtrOutput) Elem() A
 // object remains present to indicate that a secret is configured
 func (o AiGatewayModelProviderServiceConfigCustomDirectApiKeyPtrOutput) Plaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigCustomDirectApiKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Plaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth struct {
+	// HTTP header name that carries the API key on outbound requests (e.g.,
+	// `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+	// supplied via `apiKeyValue`
+	ApiKeyName *string `pulumi:"apiKeyName"`
+	// Secret value forwarded under the `apiKeyName` header on outbound
+	// requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+	ApiKeyValue *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue `pulumi:"apiKeyValue"`
+}
+
+// AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthInput is an input type that accepts AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs and AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthInput` via:
+//
+//	AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs{...}
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput
+	ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput
+}
+
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs struct {
+	// HTTP header name that carries the API key on outbound requests (e.g.,
+	// `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+	// supplied via `apiKeyValue`
+	ApiKeyName pulumi.StringPtrInput `pulumi:"apiKeyName"`
+	// Secret value forwarded under the `apiKeyName` header on outbound
+	// requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+	ApiKeyValue AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrInput `pulumi:"apiKeyValue"`
+}
+
+func (AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput {
+	return i.ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput).ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrInput is an input type that accepts AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs, AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtr and AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput
+	ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrType AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs
+
+func AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtr(v *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrInput {
+	return (*aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrType) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrType) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth) *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput)
+}
+
+// HTTP header name that carries the API key on outbound requests (e.g.,
+// `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+// supplied via `apiKeyValue`
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput) ApiKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth) *string { return v.ApiKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Secret value forwarded under the `apiKeyName` header on outbound
+// requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput) ApiKeyValue() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth) *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
+		return v.ApiKeyValue
+	}).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput) Elem() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth
+		return ret
+	}).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput)
+}
+
+// HTTP header name that carries the API key on outbound requests (e.g.,
+// `Ocp-Apim-Subscription-Key`). The value forwarded under this header is
+// supplied via `apiKeyValue`
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput) ApiKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret value forwarded under the `apiKeyName` header on outbound
+// requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput) ApiKeyValue() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth) *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyValue
+	}).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue struct {
+	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
+	Plaintext *string `pulumi:"plaintext"`
+}
+
+// AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueInput is an input type that accepts AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs and AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueInput` via:
+//
+//	AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs{...}
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput
+	ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput
+}
+
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs struct {
+	// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+	// reads. Get and List responses omit `plaintext`; the enclosing secret
+	// object remains present to indicate that a secret is configured
+	Plaintext pulumi.StringPtrInput `pulumi:"plaintext"`
+}
+
+func (AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue)(nil)).Elem()
+}
+
+func (i AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput {
+	return i.ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput)
+}
+
+func (i AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(context.Background())
+}
+
+func (i AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput).ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(ctx)
+}
+
+// AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrInput is an input type that accepts AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs, AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtr and AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput values.
+// You can construct a concrete instance of `AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrInput` via:
+//
+//	        AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrInput interface {
+	pulumi.Input
+
+	ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput
+	ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput
+}
+
+type aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrType AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs
+
+func AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtr(v *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrInput {
+	return (*aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrType)(v)
+}
+
+func (*aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue)(nil)).Elem()
+}
+
+func (i *aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrType) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return i.ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(context.Background())
+}
+
+func (i *aiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrType) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return o.ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(context.Background())
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue) *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
+		return &v
+	}).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput)
+}
+
+// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput) Plaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue) *string {
+		return v.Plaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput struct{ *pulumi.OutputState }
+
+func (AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue)(nil)).Elem()
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput) ToAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutputWithContext(ctx context.Context) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput {
+	return o
+}
+
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput) Elem() AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue) AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
+		if v != nil {
+			return *v
+		}
+		var ret AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue
+		return ret
+	}).(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput)
+}
+
+// Inline plaintext credential. INPUT_ONLY: the value never round-trips on
+// reads. Get and List responses omit `plaintext`; the enclosing secret
+// object remains present to indicate that a secret is configured
+func (o AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput) Plaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue) *string {
 		if v == nil {
 			return nil
 		}
@@ -78895,689 +79916,6 @@ func (o ExternalLocationEffectiveFileEventQueueProvidedPubsubPtrOutput) Subscrip
 	}).(pulumi.StringPtrOutput)
 }
 
-type ExternalLocationEffectiveFileEventQueueProvidedSqs struct {
-	ManagedResourceId *string `pulumi:"managedResourceId"`
-	QueueUrl          *string `pulumi:"queueUrl"`
-}
-
-// ExternalLocationEffectiveFileEventQueueProvidedSqsInput is an input type that accepts ExternalLocationEffectiveFileEventQueueProvidedSqsArgs and ExternalLocationEffectiveFileEventQueueProvidedSqsOutput values.
-// You can construct a concrete instance of `ExternalLocationEffectiveFileEventQueueProvidedSqsInput` via:
-//
-//	ExternalLocationEffectiveFileEventQueueProvidedSqsArgs{...}
-type ExternalLocationEffectiveFileEventQueueProvidedSqsInput interface {
-	pulumi.Input
-
-	ToExternalLocationEffectiveFileEventQueueProvidedSqsOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsOutput
-	ToExternalLocationEffectiveFileEventQueueProvidedSqsOutputWithContext(context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsOutput
-}
-
-type ExternalLocationEffectiveFileEventQueueProvidedSqsArgs struct {
-	ManagedResourceId pulumi.StringPtrInput `pulumi:"managedResourceId"`
-	QueueUrl          pulumi.StringPtrInput `pulumi:"queueUrl"`
-}
-
-func (ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedSqs)(nil)).Elem()
-}
-
-func (i ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ToExternalLocationEffectiveFileEventQueueProvidedSqsOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
-	return i.ToExternalLocationEffectiveFileEventQueueProvidedSqsOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ToExternalLocationEffectiveFileEventQueueProvidedSqsOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEffectiveFileEventQueueProvidedSqsOutput)
-}
-
-func (i ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
-	return i.ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEffectiveFileEventQueueProvidedSqsOutput).ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx)
-}
-
-// ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput is an input type that accepts ExternalLocationEffectiveFileEventQueueProvidedSqsArgs, ExternalLocationEffectiveFileEventQueueProvidedSqsPtr and ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput values.
-// You can construct a concrete instance of `ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput` via:
-//
-//	        ExternalLocationEffectiveFileEventQueueProvidedSqsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput interface {
-	pulumi.Input
-
-	ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput
-	ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput
-}
-
-type externalLocationEffectiveFileEventQueueProvidedSqsPtrType ExternalLocationEffectiveFileEventQueueProvidedSqsArgs
-
-func ExternalLocationEffectiveFileEventQueueProvidedSqsPtr(v *ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput {
-	return (*externalLocationEffectiveFileEventQueueProvidedSqsPtrType)(v)
-}
-
-func (*externalLocationEffectiveFileEventQueueProvidedSqsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationEffectiveFileEventQueueProvidedSqs)(nil)).Elem()
-}
-
-func (i *externalLocationEffectiveFileEventQueueProvidedSqsPtrType) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
-	return i.ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(context.Background())
-}
-
-func (i *externalLocationEffectiveFileEventQueueProvidedSqsPtrType) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput)
-}
-
-type ExternalLocationEffectiveFileEventQueueProvidedSqsOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedSqs)(nil)).Elem()
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
-	return o
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
-	return o
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
-	return o.ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(context.Background())
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationEffectiveFileEventQueueProvidedSqs) *ExternalLocationEffectiveFileEventQueueProvidedSqs {
-		return &v
-	}).(ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput)
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ManagedResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExternalLocationEffectiveFileEventQueueProvidedSqs) *string { return v.ManagedResourceId }).(pulumi.StringPtrOutput)
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) QueueUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExternalLocationEffectiveFileEventQueueProvidedSqs) *string { return v.QueueUrl }).(pulumi.StringPtrOutput)
-}
-
-type ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationEffectiveFileEventQueueProvidedSqs)(nil)).Elem()
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
-	return o
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
-	return o
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) Elem() ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
-	return o.ApplyT(func(v *ExternalLocationEffectiveFileEventQueueProvidedSqs) ExternalLocationEffectiveFileEventQueueProvidedSqs {
-		if v != nil {
-			return *v
-		}
-		var ret ExternalLocationEffectiveFileEventQueueProvidedSqs
-		return ret
-	}).(ExternalLocationEffectiveFileEventQueueProvidedSqsOutput)
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) ManagedResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationEffectiveFileEventQueueProvidedSqs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) QueueUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationEffectiveFileEventQueueProvidedSqs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.QueueUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type ExternalLocationEncryptionDetails struct {
-	// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
-	SseEncryptionDetails *ExternalLocationEncryptionDetailsSseEncryptionDetails `pulumi:"sseEncryptionDetails"`
-}
-
-// ExternalLocationEncryptionDetailsInput is an input type that accepts ExternalLocationEncryptionDetailsArgs and ExternalLocationEncryptionDetailsOutput values.
-// You can construct a concrete instance of `ExternalLocationEncryptionDetailsInput` via:
-//
-//	ExternalLocationEncryptionDetailsArgs{...}
-type ExternalLocationEncryptionDetailsInput interface {
-	pulumi.Input
-
-	ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput
-	ToExternalLocationEncryptionDetailsOutputWithContext(context.Context) ExternalLocationEncryptionDetailsOutput
-}
-
-type ExternalLocationEncryptionDetailsArgs struct {
-	// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
-	SseEncryptionDetails ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput `pulumi:"sseEncryptionDetails"`
-}
-
-func (ExternalLocationEncryptionDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationEncryptionDetails)(nil)).Elem()
-}
-
-func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput {
-	return i.ToExternalLocationEncryptionDetailsOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsOutput)
-}
-
-func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
-	return i.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsOutput).ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx)
-}
-
-// ExternalLocationEncryptionDetailsPtrInput is an input type that accepts ExternalLocationEncryptionDetailsArgs, ExternalLocationEncryptionDetailsPtr and ExternalLocationEncryptionDetailsPtrOutput values.
-// You can construct a concrete instance of `ExternalLocationEncryptionDetailsPtrInput` via:
-//
-//	        ExternalLocationEncryptionDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ExternalLocationEncryptionDetailsPtrInput interface {
-	pulumi.Input
-
-	ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput
-	ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Context) ExternalLocationEncryptionDetailsPtrOutput
-}
-
-type externalLocationEncryptionDetailsPtrType ExternalLocationEncryptionDetailsArgs
-
-func ExternalLocationEncryptionDetailsPtr(v *ExternalLocationEncryptionDetailsArgs) ExternalLocationEncryptionDetailsPtrInput {
-	return (*externalLocationEncryptionDetailsPtrType)(v)
-}
-
-func (*externalLocationEncryptionDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationEncryptionDetails)(nil)).Elem()
-}
-
-func (i *externalLocationEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
-	return i.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *externalLocationEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsPtrOutput)
-}
-
-type ExternalLocationEncryptionDetailsOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationEncryptionDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationEncryptionDetails)(nil)).Elem()
-}
-
-func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput {
-	return o
-}
-
-func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsOutput {
-	return o
-}
-
-func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
-	return o.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetails {
-		return &v
-	}).(ExternalLocationEncryptionDetailsPtrOutput)
-}
-
-// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
-func (o ExternalLocationEncryptionDetailsOutput) SseEncryptionDetails() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o.ApplyT(func(v ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
-		return v.SseEncryptionDetails
-	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
-}
-
-type ExternalLocationEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationEncryptionDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationEncryptionDetails)(nil)).Elem()
-}
-
-func (o ExternalLocationEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
-	return o
-}
-
-func (o ExternalLocationEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
-	return o
-}
-
-func (o ExternalLocationEncryptionDetailsPtrOutput) Elem() ExternalLocationEncryptionDetailsOutput {
-	return o.ApplyT(func(v *ExternalLocationEncryptionDetails) ExternalLocationEncryptionDetails {
-		if v != nil {
-			return *v
-		}
-		var ret ExternalLocationEncryptionDetails
-		return ret
-	}).(ExternalLocationEncryptionDetailsOutput)
-}
-
-// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
-func (o ExternalLocationEncryptionDetailsPtrOutput) SseEncryptionDetails() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
-		if v == nil {
-			return nil
-		}
-		return v.SseEncryptionDetails
-	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
-}
-
-type ExternalLocationEncryptionDetailsSseEncryptionDetails struct {
-	// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
-	Algorithm *string `pulumi:"algorithm"`
-	// Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
-	AwsKmsKeyArn *string `pulumi:"awsKmsKeyArn"`
-}
-
-// ExternalLocationEncryptionDetailsSseEncryptionDetailsInput is an input type that accepts ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs and ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput values.
-// You can construct a concrete instance of `ExternalLocationEncryptionDetailsSseEncryptionDetailsInput` via:
-//
-//	ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{...}
-type ExternalLocationEncryptionDetailsSseEncryptionDetailsInput interface {
-	pulumi.Input
-
-	ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput
-	ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput
-}
-
-type ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs struct {
-	// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
-	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
-	// Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
-	AwsKmsKeyArn pulumi.StringPtrInput `pulumi:"awsKmsKeyArn"`
-}
-
-func (ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
-}
-
-func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
-	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput)
-}
-
-func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput).ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx)
-}
-
-// ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput is an input type that accepts ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs, ExternalLocationEncryptionDetailsSseEncryptionDetailsPtr and ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput values.
-// You can construct a concrete instance of `ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput` via:
-//
-//	        ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput interface {
-	pulumi.Input
-
-	ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput
-	ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput
-}
-
-type externalLocationEncryptionDetailsSseEncryptionDetailsPtrType ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs
-
-func ExternalLocationEncryptionDetailsSseEncryptionDetailsPtr(v *ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput {
-	return (*externalLocationEncryptionDetailsSseEncryptionDetailsPtrType)(v)
-}
-
-func (*externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
-}
-
-func (i *externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
-}
-
-type ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
-}
-
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
-	return o
-}
-
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
-	return o
-}
-
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationEncryptionDetailsSseEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
-		return &v
-	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
-}
-
-// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExternalLocationEncryptionDetailsSseEncryptionDetails) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
-}
-
-// Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExternalLocationEncryptionDetailsSseEncryptionDetails) *string { return v.AwsKmsKeyArn }).(pulumi.StringPtrOutput)
-}
-
-type ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
-}
-
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o
-}
-
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
-	return o
-}
-
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) Elem() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
-	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) ExternalLocationEncryptionDetailsSseEncryptionDetails {
-		if v != nil {
-			return *v
-		}
-		var ret ExternalLocationEncryptionDetailsSseEncryptionDetails
-		return ret
-	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput)
-}
-
-// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Algorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
-func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsKmsKeyArn
-	}).(pulumi.StringPtrOutput)
-}
-
-type ExternalLocationFileEventQueue struct {
-	// Configuration for managed Azure Queue Storage queue.
-	ManagedAqs *ExternalLocationFileEventQueueManagedAqs `pulumi:"managedAqs"`
-	// Configuration for managed Google Cloud Pub/Sub queue.
-	ManagedPubsub *ExternalLocationFileEventQueueManagedPubsub `pulumi:"managedPubsub"`
-	// Configuration for managed Amazon SQS queue.
-	ManagedSqs *ExternalLocationFileEventQueueManagedSqs `pulumi:"managedSqs"`
-	// Configuration for provided Azure Storage Queue.
-	ProvidedAqs *ExternalLocationFileEventQueueProvidedAqs `pulumi:"providedAqs"`
-	// Configuration for provided Google Cloud Pub/Sub queue.
-	ProvidedPubsub *ExternalLocationFileEventQueueProvidedPubsub `pulumi:"providedPubsub"`
-	// Configuration for provided Amazon SQS queue.
-	ProvidedSqs *ExternalLocationFileEventQueueProvidedSqs `pulumi:"providedSqs"`
-}
-
-// ExternalLocationFileEventQueueInput is an input type that accepts ExternalLocationFileEventQueueArgs and ExternalLocationFileEventQueueOutput values.
-// You can construct a concrete instance of `ExternalLocationFileEventQueueInput` via:
-//
-//	ExternalLocationFileEventQueueArgs{...}
-type ExternalLocationFileEventQueueInput interface {
-	pulumi.Input
-
-	ToExternalLocationFileEventQueueOutput() ExternalLocationFileEventQueueOutput
-	ToExternalLocationFileEventQueueOutputWithContext(context.Context) ExternalLocationFileEventQueueOutput
-}
-
-type ExternalLocationFileEventQueueArgs struct {
-	// Configuration for managed Azure Queue Storage queue.
-	ManagedAqs ExternalLocationFileEventQueueManagedAqsPtrInput `pulumi:"managedAqs"`
-	// Configuration for managed Google Cloud Pub/Sub queue.
-	ManagedPubsub ExternalLocationFileEventQueueManagedPubsubPtrInput `pulumi:"managedPubsub"`
-	// Configuration for managed Amazon SQS queue.
-	ManagedSqs ExternalLocationFileEventQueueManagedSqsPtrInput `pulumi:"managedSqs"`
-	// Configuration for provided Azure Storage Queue.
-	ProvidedAqs ExternalLocationFileEventQueueProvidedAqsPtrInput `pulumi:"providedAqs"`
-	// Configuration for provided Google Cloud Pub/Sub queue.
-	ProvidedPubsub ExternalLocationFileEventQueueProvidedPubsubPtrInput `pulumi:"providedPubsub"`
-	// Configuration for provided Amazon SQS queue.
-	ProvidedSqs ExternalLocationFileEventQueueProvidedSqsPtrInput `pulumi:"providedSqs"`
-}
-
-func (ExternalLocationFileEventQueueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationFileEventQueue)(nil)).Elem()
-}
-
-func (i ExternalLocationFileEventQueueArgs) ToExternalLocationFileEventQueueOutput() ExternalLocationFileEventQueueOutput {
-	return i.ToExternalLocationFileEventQueueOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationFileEventQueueArgs) ToExternalLocationFileEventQueueOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueOutput)
-}
-
-func (i ExternalLocationFileEventQueueArgs) ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput {
-	return i.ToExternalLocationFileEventQueuePtrOutputWithContext(context.Background())
-}
-
-func (i ExternalLocationFileEventQueueArgs) ToExternalLocationFileEventQueuePtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueOutput).ToExternalLocationFileEventQueuePtrOutputWithContext(ctx)
-}
-
-// ExternalLocationFileEventQueuePtrInput is an input type that accepts ExternalLocationFileEventQueueArgs, ExternalLocationFileEventQueuePtr and ExternalLocationFileEventQueuePtrOutput values.
-// You can construct a concrete instance of `ExternalLocationFileEventQueuePtrInput` via:
-//
-//	        ExternalLocationFileEventQueueArgs{...}
-//
-//	or:
-//
-//	        nil
-type ExternalLocationFileEventQueuePtrInput interface {
-	pulumi.Input
-
-	ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput
-	ToExternalLocationFileEventQueuePtrOutputWithContext(context.Context) ExternalLocationFileEventQueuePtrOutput
-}
-
-type externalLocationFileEventQueuePtrType ExternalLocationFileEventQueueArgs
-
-func ExternalLocationFileEventQueuePtr(v *ExternalLocationFileEventQueueArgs) ExternalLocationFileEventQueuePtrInput {
-	return (*externalLocationFileEventQueuePtrType)(v)
-}
-
-func (*externalLocationFileEventQueuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationFileEventQueue)(nil)).Elem()
-}
-
-func (i *externalLocationFileEventQueuePtrType) ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput {
-	return i.ToExternalLocationFileEventQueuePtrOutputWithContext(context.Background())
-}
-
-func (i *externalLocationFileEventQueuePtrType) ToExternalLocationFileEventQueuePtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueuePtrOutput)
-}
-
-type ExternalLocationFileEventQueueOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationFileEventQueueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalLocationFileEventQueue)(nil)).Elem()
-}
-
-func (o ExternalLocationFileEventQueueOutput) ToExternalLocationFileEventQueueOutput() ExternalLocationFileEventQueueOutput {
-	return o
-}
-
-func (o ExternalLocationFileEventQueueOutput) ToExternalLocationFileEventQueueOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueOutput {
-	return o
-}
-
-func (o ExternalLocationFileEventQueueOutput) ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput {
-	return o.ToExternalLocationFileEventQueuePtrOutputWithContext(context.Background())
-}
-
-func (o ExternalLocationFileEventQueueOutput) ToExternalLocationFileEventQueuePtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueue {
-		return &v
-	}).(ExternalLocationFileEventQueuePtrOutput)
-}
-
-// Configuration for managed Azure Queue Storage queue.
-func (o ExternalLocationFileEventQueueOutput) ManagedAqs() ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedAqs { return v.ManagedAqs }).(ExternalLocationFileEventQueueManagedAqsPtrOutput)
-}
-
-// Configuration for managed Google Cloud Pub/Sub queue.
-func (o ExternalLocationFileEventQueueOutput) ManagedPubsub() ExternalLocationFileEventQueueManagedPubsubPtrOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedPubsub {
-		return v.ManagedPubsub
-	}).(ExternalLocationFileEventQueueManagedPubsubPtrOutput)
-}
-
-// Configuration for managed Amazon SQS queue.
-func (o ExternalLocationFileEventQueueOutput) ManagedSqs() ExternalLocationFileEventQueueManagedSqsPtrOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedSqs { return v.ManagedSqs }).(ExternalLocationFileEventQueueManagedSqsPtrOutput)
-}
-
-// Configuration for provided Azure Storage Queue.
-func (o ExternalLocationFileEventQueueOutput) ProvidedAqs() ExternalLocationFileEventQueueProvidedAqsPtrOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedAqs {
-		return v.ProvidedAqs
-	}).(ExternalLocationFileEventQueueProvidedAqsPtrOutput)
-}
-
-// Configuration for provided Google Cloud Pub/Sub queue.
-func (o ExternalLocationFileEventQueueOutput) ProvidedPubsub() ExternalLocationFileEventQueueProvidedPubsubPtrOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedPubsub {
-		return v.ProvidedPubsub
-	}).(ExternalLocationFileEventQueueProvidedPubsubPtrOutput)
-}
-
-// Configuration for provided Amazon SQS queue.
-func (o ExternalLocationFileEventQueueOutput) ProvidedSqs() ExternalLocationFileEventQueueProvidedSqsPtrOutput {
-	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedSqs {
-		return v.ProvidedSqs
-	}).(ExternalLocationFileEventQueueProvidedSqsPtrOutput)
-}
-
-type ExternalLocationFileEventQueuePtrOutput struct{ *pulumi.OutputState }
-
-func (ExternalLocationFileEventQueuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalLocationFileEventQueue)(nil)).Elem()
-}
-
-func (o ExternalLocationFileEventQueuePtrOutput) ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput {
-	return o
-}
-
-func (o ExternalLocationFileEventQueuePtrOutput) ToExternalLocationFileEventQueuePtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueuePtrOutput {
-	return o
-}
-
-func (o ExternalLocationFileEventQueuePtrOutput) Elem() ExternalLocationFileEventQueueOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueue) ExternalLocationFileEventQueue {
-		if v != nil {
-			return *v
-		}
-		var ret ExternalLocationFileEventQueue
-		return ret
-	}).(ExternalLocationFileEventQueueOutput)
-}
-
-// Configuration for managed Azure Queue Storage queue.
-func (o ExternalLocationFileEventQueuePtrOutput) ManagedAqs() ExternalLocationFileEventQueueManagedAqsPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedAqs {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedAqs
-	}).(ExternalLocationFileEventQueueManagedAqsPtrOutput)
-}
-
-// Configuration for managed Google Cloud Pub/Sub queue.
-func (o ExternalLocationFileEventQueuePtrOutput) ManagedPubsub() ExternalLocationFileEventQueueManagedPubsubPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedPubsub {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedPubsub
-	}).(ExternalLocationFileEventQueueManagedPubsubPtrOutput)
-}
-
-// Configuration for managed Amazon SQS queue.
-func (o ExternalLocationFileEventQueuePtrOutput) ManagedSqs() ExternalLocationFileEventQueueManagedSqsPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedSqs {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedSqs
-	}).(ExternalLocationFileEventQueueManagedSqsPtrOutput)
-}
-
-// Configuration for provided Azure Storage Queue.
-func (o ExternalLocationFileEventQueuePtrOutput) ProvidedAqs() ExternalLocationFileEventQueueProvidedAqsPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedAqs {
-		if v == nil {
-			return nil
-		}
-		return v.ProvidedAqs
-	}).(ExternalLocationFileEventQueueProvidedAqsPtrOutput)
-}
-
-// Configuration for provided Google Cloud Pub/Sub queue.
-func (o ExternalLocationFileEventQueuePtrOutput) ProvidedPubsub() ExternalLocationFileEventQueueProvidedPubsubPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedPubsub {
-		if v == nil {
-			return nil
-		}
-		return v.ProvidedPubsub
-	}).(ExternalLocationFileEventQueueProvidedPubsubPtrOutput)
-}
-
-// Configuration for provided Amazon SQS queue.
-func (o ExternalLocationFileEventQueuePtrOutput) ProvidedSqs() ExternalLocationFileEventQueueProvidedSqsPtrOutput {
-	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedSqs {
-		if v == nil {
-			return nil
-		}
-		return v.ProvidedSqs
-	}).(ExternalLocationFileEventQueueProvidedSqsPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -79995,6 +80333,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2EffectiveRestrictWorkspaceAdminsPtrInput)(nil)).Elem(), AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2EffectiveStringValInput)(nil)).Elem(), AccountSettingV2EffectiveStringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2EffectiveStringValPtrInput)(nil)).Elem(), AccountSettingV2EffectiveStringValArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2EffectiveWorkspaceLabelInput)(nil)).Elem(), AccountSettingV2EffectiveWorkspaceLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2EffectiveWorkspaceLabelPtrInput)(nil)).Elem(), AccountSettingV2EffectiveWorkspaceLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2IntegerValInput)(nil)).Elem(), AccountSettingV2IntegerValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2IntegerValPtrInput)(nil)).Elem(), AccountSettingV2IntegerValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2OperationalEmailCustomRecipientInput)(nil)).Elem(), AccountSettingV2OperationalEmailCustomRecipientArgs{})
@@ -80005,6 +80345,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2RestrictWorkspaceAdminsPtrInput)(nil)).Elem(), AccountSettingV2RestrictWorkspaceAdminsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2StringValInput)(nil)).Elem(), AccountSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2StringValPtrInput)(nil)).Elem(), AccountSettingV2StringValArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2WorkspaceLabelInput)(nil)).Elem(), AccountSettingV2WorkspaceLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountSettingV2WorkspaceLabelPtrInput)(nil)).Elem(), AccountSettingV2WorkspaceLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayMcpServiceConfigInput)(nil)).Elem(), AiGatewayMcpServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayMcpServiceConfigPtrInput)(nil)).Elem(), AiGatewayMcpServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayMcpServiceConfigRateLimitInput)(nil)).Elem(), AiGatewayMcpServiceConfigRateLimitArgs{})
@@ -80051,6 +80393,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomDirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectApiKeyInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectApiKeyPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigGeminiEnterpriseInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigGeminiEnterprisePtrInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigGeminiEnterpriseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectInput)(nil)).Elem(), AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectArgs{})
@@ -80570,14 +80916,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedAqsPtrInput)(nil)).Elem(), ExternalLocationEffectiveFileEventQueueProvidedAqsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedPubsubInput)(nil)).Elem(), ExternalLocationEffectiveFileEventQueueProvidedPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedPubsubPtrInput)(nil)).Elem(), ExternalLocationEffectiveFileEventQueueProvidedPubsubArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedSqsInput)(nil)).Elem(), ExternalLocationEffectiveFileEventQueueProvidedSqsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput)(nil)).Elem(), ExternalLocationEffectiveFileEventQueueProvidedSqsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsPtrInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueInput)(nil)).Elem(), ExternalLocationFileEventQueueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueuePtrInput)(nil)).Elem(), ExternalLocationFileEventQueueArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetProviderConfigOutput{})
@@ -80994,6 +81332,8 @@ func init() {
 	pulumi.RegisterOutputType(AccountSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2EffectiveStringValOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2EffectiveStringValPtrOutput{})
+	pulumi.RegisterOutputType(AccountSettingV2EffectiveWorkspaceLabelOutput{})
+	pulumi.RegisterOutputType(AccountSettingV2EffectiveWorkspaceLabelPtrOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2IntegerValOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2IntegerValPtrOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2OperationalEmailCustomRecipientOutput{})
@@ -81004,6 +81344,8 @@ func init() {
 	pulumi.RegisterOutputType(AccountSettingV2RestrictWorkspaceAdminsPtrOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2StringValOutput{})
 	pulumi.RegisterOutputType(AccountSettingV2StringValPtrOutput{})
+	pulumi.RegisterOutputType(AccountSettingV2WorkspaceLabelOutput{})
+	pulumi.RegisterOutputType(AccountSettingV2WorkspaceLabelPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayMcpServiceConfigOutput{})
 	pulumi.RegisterOutputType(AiGatewayMcpServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayMcpServiceConfigRateLimitOutput{})
@@ -81050,6 +81392,10 @@ func init() {
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomDirectPtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomDirectApiKeyOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomDirectApiKeyPtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthPtrOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValueOutput{})
+	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValuePtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigGeminiEnterpriseOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigGeminiEnterprisePtrOutput{})
 	pulumi.RegisterOutputType(AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectOutput{})
@@ -81569,12 +81915,4 @@ func init() {
 	pulumi.RegisterOutputType(ExternalLocationEffectiveFileEventQueueProvidedAqsPtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationEffectiveFileEventQueueProvidedPubsubOutput{})
 	pulumi.RegisterOutputType(ExternalLocationEffectiveFileEventQueueProvidedPubsubPtrOutput{})
-	pulumi.RegisterOutputType(ExternalLocationEffectiveFileEventQueueProvidedSqsOutput{})
-	pulumi.RegisterOutputType(ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput{})
-	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsOutput{})
-	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsPtrOutput{})
-	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput{})
-	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput{})
-	pulumi.RegisterOutputType(ExternalLocationFileEventQueueOutput{})
-	pulumi.RegisterOutputType(ExternalLocationFileEventQueuePtrOutput{})
 }

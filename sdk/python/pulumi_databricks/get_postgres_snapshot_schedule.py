@@ -84,6 +84,20 @@ def get_postgres_snapshot_schedule(name: Optional[_builtins.str] = None,
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
+    This data source retrieves the snapshot schedule for a branch.
+
+    ## Example Usage
+
+    ### Retrieve a Branch's Snapshot Schedule
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_snapshot_schedule(name="projects/my-project/branches/production/snapshot-schedule")
+    pulumi.export("cadences", this.schedules)
+    ```
+
 
     :param _builtins.str name: The resource name of the branch's snapshot schedule.
            Format: projects/{project_id}/branches/{branch_id}/snapshot-schedule
@@ -106,6 +120,20 @@ def get_postgres_snapshot_schedule_output(name: pulumi.Input[Optional[_builtins.
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+
+    This data source retrieves the snapshot schedule for a branch.
+
+    ## Example Usage
+
+    ### Retrieve a Branch's Snapshot Schedule
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_snapshot_schedule(name="projects/my-project/branches/production/snapshot-schedule")
+    pulumi.export("cadences", this.schedules)
+    ```
 
 
     :param _builtins.str name: The resource name of the branch's snapshot schedule.

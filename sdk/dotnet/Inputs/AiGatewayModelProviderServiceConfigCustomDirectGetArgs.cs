@@ -18,6 +18,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 
+        /// <summary>
+        /// Header-based API-key auth: the secret is forwarded on outbound requests
+        /// under a caller-chosen HTTP header rather than as an `Authorization`
+        /// bearer token. Set this instead of `ApiKey` for header auth
+        /// </summary>
+        [Input("headerAuth")]
+        public Input<Inputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthGetArgs>? HeaderAuth { get; set; }
+
         public AiGatewayModelProviderServiceConfigCustomDirectGetArgs()
         {
         }

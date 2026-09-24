@@ -56,13 +56,14 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Human-readable display label for the sandbox. At most 256 bytes
+        /// Human-readable display label for the sandbox. At most 256 characters
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+        /// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+        /// `SandboxId`; any value supplied in a create or update request body is ignored
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -144,7 +145,7 @@ namespace Pulumi.Databricks
     public sealed class SandboxArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Human-readable display label for the sandbox. At most 256 bytes
+        /// Human-readable display label for the sandbox. At most 256 characters
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -182,13 +183,14 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Human-readable display label for the sandbox. At most 256 bytes
+        /// Human-readable display label for the sandbox. At most 256 characters
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+        /// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+        /// `SandboxId`; any value supplied in a create or update request body is ignored
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -5,7 +5,9 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +17,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs Empty = new PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs();
+
+    @Import(name="avroOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs> avroOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs>> avroOptions() {
+        return Optional.ofNullable(this.avroOptions);
+    }
 
     @Import(name="format")
     private @Nullable Output<String> format;
@@ -44,13 +53,22 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOp
         return Optional.ofNullable(this.outputColumn);
     }
 
+    @Import(name="protobufOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs> protobufOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs>> protobufOptions() {
+        return Optional.ofNullable(this.protobufOptions);
+    }
+
     private PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs() {}
 
     private PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs(PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs $) {
+        this.avroOptions = $.avroOptions;
         this.format = $.format;
         this.inputColumn = $.inputColumn;
         this.jsonOptions = $.jsonOptions;
         this.outputColumn = $.outputColumn;
+        this.protobufOptions = $.protobufOptions;
     }
 
     public static Builder builder() {
@@ -69,6 +87,15 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOp
 
         public Builder(PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder avroOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs> avroOptions) {
+            $.avroOptions = avroOptions;
+            return this;
+        }
+
+        public Builder avroOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerAvroOptionsArgs avroOptions) {
+            return avroOptions(Output.of(avroOptions));
         }
 
         public Builder format(@Nullable Output<String> format) {
@@ -105,6 +132,15 @@ public final class PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOp
 
         public Builder outputColumn(String outputColumn) {
             return outputColumn(Output.of(outputColumn));
+        }
+
+        public Builder protobufOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs> protobufOptions) {
+            $.protobufOptions = protobufOptions;
+            return this;
+        }
+
+        public Builder protobufOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerProtobufOptionsArgs protobufOptions) {
+            return protobufOptions(Output.of(protobufOptions));
         }
 
         public PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerArgs build() {

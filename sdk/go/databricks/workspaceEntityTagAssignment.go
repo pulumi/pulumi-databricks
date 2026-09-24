@@ -78,7 +78,7 @@ type WorkspaceEntityTagAssignment struct {
 
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId pulumi.StringOutput `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigOutput `pulumi:"providerConfig"`
@@ -129,7 +129,7 @@ func GetWorkspaceEntityTagAssignment(ctx *pulumi.Context,
 type workspaceEntityTagAssignmentState struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId *string `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
 	EntityType *string `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *WorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
@@ -142,7 +142,7 @@ type workspaceEntityTagAssignmentState struct {
 type WorkspaceEntityTagAssignmentState struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId pulumi.StringPtrInput
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
 	EntityType pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigPtrInput
@@ -159,7 +159,7 @@ func (WorkspaceEntityTagAssignmentState) ElementType() reflect.Type {
 type workspaceEntityTagAssignmentArgs struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
 	EntityType string `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *WorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
@@ -173,7 +173,7 @@ type workspaceEntityTagAssignmentArgs struct {
 type WorkspaceEntityTagAssignmentArgs struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId pulumi.StringInput
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
 	EntityType pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigPtrInput
@@ -275,7 +275,7 @@ func (o WorkspaceEntityTagAssignmentOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceEntityTagAssignment) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
 func (o WorkspaceEntityTagAssignmentOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceEntityTagAssignment) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
 }

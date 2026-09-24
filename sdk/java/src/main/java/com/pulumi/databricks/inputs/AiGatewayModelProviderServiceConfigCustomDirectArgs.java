@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigCustomDirectApiKeyArgs;
+import com.pulumi.databricks.inputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,11 +31,31 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectArgs extends c
         return Optional.ofNullable(this.baseUrl);
     }
 
+    /**
+     * Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     * 
+     */
+    @Import(name="headerAuth")
+    private @Nullable Output<AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs> headerAuth;
+
+    /**
+     * @return Header-based API-key auth: the secret is forwarded on outbound requests
+     * under a caller-chosen HTTP header rather than as an `Authorization`
+     * bearer token. Set this instead of `apiKey` for header auth
+     * 
+     */
+    public Optional<Output<AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs>> headerAuth() {
+        return Optional.ofNullable(this.headerAuth);
+    }
+
     private AiGatewayModelProviderServiceConfigCustomDirectArgs() {}
 
     private AiGatewayModelProviderServiceConfigCustomDirectArgs(AiGatewayModelProviderServiceConfigCustomDirectArgs $) {
         this.apiKey = $.apiKey;
         this.baseUrl = $.baseUrl;
+        this.headerAuth = $.headerAuth;
     }
 
     public static Builder builder() {
@@ -71,6 +92,31 @@ public final class AiGatewayModelProviderServiceConfigCustomDirectArgs extends c
 
         public Builder baseUrl(String baseUrl) {
             return baseUrl(Output.of(baseUrl));
+        }
+
+        /**
+         * @param headerAuth Header-based API-key auth: the secret is forwarded on outbound requests
+         * under a caller-chosen HTTP header rather than as an `Authorization`
+         * bearer token. Set this instead of `apiKey` for header auth
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAuth(@Nullable Output<AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs> headerAuth) {
+            $.headerAuth = headerAuth;
+            return this;
+        }
+
+        /**
+         * @param headerAuth Header-based API-key auth: the secret is forwarded on outbound requests
+         * under a caller-chosen HTTP header rather than as an `Authorization`
+         * bearer token. Set this instead of `apiKey` for header auth
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAuth(AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthArgs headerAuth) {
+            return headerAuth(Output.of(headerAuth));
         }
 
         public AiGatewayModelProviderServiceConfigCustomDirectArgs build() {

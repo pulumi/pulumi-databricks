@@ -27,12 +27,14 @@ import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveOperationalEmail
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveStringVal;
+import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveWorkspaceLabel;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2IntegerVal;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2OperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2PersonalCompute;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2ProviderConfig;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2RestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2StringVal;
+import com.pulumi.databricks.outputs.WorkspaceSettingV2WorkspaceLabel;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -328,6 +330,20 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
         return this.effectiveStringVal;
     }
     /**
+     * Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     * 
+     */
+    @Export(name="effectiveWorkspaceLabel", refs={WorkspaceSettingV2EffectiveWorkspaceLabel.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceSettingV2EffectiveWorkspaceLabel> effectiveWorkspaceLabel;
+
+    /**
+     * @return Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+     * 
+     */
+    public Output<Optional<WorkspaceSettingV2EffectiveWorkspaceLabel>> effectiveWorkspaceLabel() {
+        return Codegen.optional(this.effectiveWorkspaceLabel);
+    }
+    /**
      * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      * 
      */
@@ -424,6 +440,20 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WorkspaceSettingV2StringVal>> stringVal() {
         return Codegen.optional(this.stringVal);
+    }
+    /**
+     * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     * 
+     */
+    @Export(name="workspaceLabel", refs={WorkspaceSettingV2WorkspaceLabel.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceSettingV2WorkspaceLabel> workspaceLabel;
+
+    /**
+     * @return Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+     * 
+     */
+    public Output<Optional<WorkspaceSettingV2WorkspaceLabel>> workspaceLabel() {
+        return Codegen.optional(this.workspaceLabel);
     }
 
     /**

@@ -30,6 +30,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("options")]
+        private InputMap<string>? _options;
+
+        /// <summary>
+        /// (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+        /// includes: `AuthorizationEndpoint` (OAuth authorize URL), `TokenEndpoint` (token-exchange
+        /// URL), `OauthScope` (space-separated scopes to request), `ClientId` (OAuth client id), and
+        /// `OauthProvider` (the OAuth provider)
+        /// </summary>
+        public InputMap<string> Options
+        {
+            get => _options ?? (_options = new InputMap<string>());
+            set => _options = value;
+        }
+
         public AiGatewayMcpServiceConfigSourceConnectionArgs()
         {
         }

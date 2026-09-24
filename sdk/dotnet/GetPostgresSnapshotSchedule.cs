@@ -15,6 +15,33 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+        /// 
+        /// This data source retrieves the snapshot schedule for a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve a Branch's Snapshot Schedule
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresSnapshotSchedule.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/production/snapshot-schedule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cadences"] = @this.Apply(@this =&gt; @this.Apply(getPostgresSnapshotScheduleResult =&gt; getPostgresSnapshotScheduleResult.Schedules)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresSnapshotScheduleResult> InvokeAsync(GetPostgresSnapshotScheduleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresSnapshotScheduleResult>("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", args ?? new GetPostgresSnapshotScheduleArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+        /// 
+        /// This data source retrieves the snapshot schedule for a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve a Branch's Snapshot Schedule
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresSnapshotSchedule.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/production/snapshot-schedule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cadences"] = @this.Apply(@this =&gt; @this.Apply(getPostgresSnapshotScheduleResult =&gt; getPostgresSnapshotScheduleResult.Schedules)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresSnapshotScheduleResult> Invoke(GetPostgresSnapshotScheduleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSnapshotScheduleResult>("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", args ?? new GetPostgresSnapshotScheduleInvokeArgs(), options.WithDefaults());
@@ -31,6 +85,33 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+        /// 
+        /// This data source retrieves the snapshot schedule for a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve a Branch's Snapshot Schedule
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresSnapshotSchedule.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/production/snapshot-schedule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cadences"] = @this.Apply(@this =&gt; @this.Apply(getPostgresSnapshotScheduleResult =&gt; getPostgresSnapshotScheduleResult.Schedules)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresSnapshotScheduleResult> Invoke(GetPostgresSnapshotScheduleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSnapshotScheduleResult>("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", args ?? new GetPostgresSnapshotScheduleInvokeArgs(), options.WithDefaults());

@@ -24,15 +24,25 @@ namespace Pulumi.Databricks.Outputs
         /// server, in the form `connections/{catalog}.{schema}.{connection}`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// (object) - Options needed to build the U2M authorize request, returned as a flat map. When set, it
+        /// includes: `AuthorizationEndpoint` (OAuth authorize URL), `TokenEndpoint` (token-exchange
+        /// URL), `OauthScope` (space-separated scopes to request), `ClientId` (OAuth client id), and
+        /// `OauthProvider` (the OAuth provider)
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Options;
 
         [OutputConstructor]
         private GetAiGatewayMcpServicesMcpServiceConfigSourceConnectionResult(
             bool isDeleted,
 
-            string name)
+            string name,
+
+            ImmutableDictionary<string, string> options)
         {
             IsDeleted = isDeleted;
             Name = name;
+            Options = options;
         }
     }
 }

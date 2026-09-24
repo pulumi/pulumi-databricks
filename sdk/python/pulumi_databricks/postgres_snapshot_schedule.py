@@ -176,6 +176,42 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
+        ## Example Usage
+
+        ### Managing a Branch's Snapshot Schedule
+
+        A branch's snapshot schedule is a singleton addressed by the branch it belongs
+        to. Set `parent` to the branch's resource name and provide the desired cadences;
+        Pulumi applies them in place. The example below takes a daily snapshot at
+        03:00 UTC and keeps it for 7 days.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        this_postgres_snapshot_schedule = databricks.PostgresSnapshotSchedule("this",
+            parent=this.name.apply(lambda name: f"{name}/branches/production"),
+            schedules=[{
+                "daily_schedule": {
+                    "hour": 3,
+                },
+                "retention": "168h0m0s",
+            }])
+        ```
+
+        The `schedule` set can hold more than one cadence — for example, add a weekly
+        cadence alongside the daily one to keep some snapshots longer than others.
+
+        To disable automatic snapshots, set `schedule = []` and apply. Removing the
+        resource from your configuration only removes it from Pulumi state; it does
+        not change the schedule on the branch.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -196,6 +232,42 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+
+        ## Example Usage
+
+        ### Managing a Branch's Snapshot Schedule
+
+        A branch's snapshot schedule is a singleton addressed by the branch it belongs
+        to. Set `parent` to the branch's resource name and provide the desired cadences;
+        Pulumi applies them in place. The example below takes a daily snapshot at
+        03:00 UTC and keeps it for 7 days.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        this_postgres_snapshot_schedule = databricks.PostgresSnapshotSchedule("this",
+            parent=this.name.apply(lambda name: f"{name}/branches/production"),
+            schedules=[{
+                "daily_schedule": {
+                    "hour": 3,
+                },
+                "retention": "168h0m0s",
+            }])
+        ```
+
+        The `schedule` set can hold more than one cadence — for example, add a weekly
+        cadence alongside the daily one to keep some snapshots longer than others.
+
+        To disable automatic snapshots, set `schedule = []` and apply. Removing the
+        resource from your configuration only removes it from Pulumi state; it does
+        not change the schedule on the branch.
 
 
         :param str resource_name: The name of the resource.

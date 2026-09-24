@@ -13,15 +13,24 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi
     {
+        /// <summary>
+        /// Inverse of `Scopes`: matches every API scope EXCEPT those listed here
+        /// ("allow all except"). Mutually exclusive with `Scopes` — a single
+        /// destination may set at most one of the two
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludedScopes;
         public readonly string? ScopeQualifier;
         public readonly ImmutableArray<string> Scopes;
 
         [OutputConstructor]
         private AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi(
+            ImmutableArray<string> excludedScopes,
+
             string? scopeQualifier,
 
             ImmutableArray<string> scopes)
         {
+            ExcludedScopes = excludedScopes;
             ScopeQualifier = scopeQualifier;
             Scopes = scopes;
         }

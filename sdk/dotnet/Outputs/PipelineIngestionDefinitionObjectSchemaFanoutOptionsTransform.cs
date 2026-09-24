@@ -13,25 +13,33 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions? AvroOptions;
         public readonly string? Format;
         public readonly string? InputColumn;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions? JsonOptions;
         public readonly string? OutputColumn;
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions? ProtobufOptions;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform(
+            Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions? avroOptions,
+
             string? format,
 
             string? inputColumn,
 
             Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions? jsonOptions,
 
-            string? outputColumn)
+            string? outputColumn,
+
+            Outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions? protobufOptions)
         {
+            AvroOptions = avroOptions;
             Format = format;
             InputColumn = inputColumn;
             JsonOptions = jsonOptions;
             OutputColumn = outputColumn;
+            ProtobufOptions = protobufOptions;
         }
     }
 }

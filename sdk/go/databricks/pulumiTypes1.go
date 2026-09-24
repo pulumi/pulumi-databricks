@@ -13,6 +13,689 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ExternalLocationEffectiveFileEventQueueProvidedSqs struct {
+	ManagedResourceId *string `pulumi:"managedResourceId"`
+	QueueUrl          *string `pulumi:"queueUrl"`
+}
+
+// ExternalLocationEffectiveFileEventQueueProvidedSqsInput is an input type that accepts ExternalLocationEffectiveFileEventQueueProvidedSqsArgs and ExternalLocationEffectiveFileEventQueueProvidedSqsOutput values.
+// You can construct a concrete instance of `ExternalLocationEffectiveFileEventQueueProvidedSqsInput` via:
+//
+//	ExternalLocationEffectiveFileEventQueueProvidedSqsArgs{...}
+type ExternalLocationEffectiveFileEventQueueProvidedSqsInput interface {
+	pulumi.Input
+
+	ToExternalLocationEffectiveFileEventQueueProvidedSqsOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsOutput
+	ToExternalLocationEffectiveFileEventQueueProvidedSqsOutputWithContext(context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsOutput
+}
+
+type ExternalLocationEffectiveFileEventQueueProvidedSqsArgs struct {
+	ManagedResourceId pulumi.StringPtrInput `pulumi:"managedResourceId"`
+	QueueUrl          pulumi.StringPtrInput `pulumi:"queueUrl"`
+}
+
+func (ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedSqs)(nil)).Elem()
+}
+
+func (i ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ToExternalLocationEffectiveFileEventQueueProvidedSqsOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
+	return i.ToExternalLocationEffectiveFileEventQueueProvidedSqsOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ToExternalLocationEffectiveFileEventQueueProvidedSqsOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEffectiveFileEventQueueProvidedSqsOutput)
+}
+
+func (i ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
+	return i.ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEffectiveFileEventQueueProvidedSqsOutput).ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx)
+}
+
+// ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput is an input type that accepts ExternalLocationEffectiveFileEventQueueProvidedSqsArgs, ExternalLocationEffectiveFileEventQueueProvidedSqsPtr and ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput values.
+// You can construct a concrete instance of `ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput` via:
+//
+//	        ExternalLocationEffectiveFileEventQueueProvidedSqsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput interface {
+	pulumi.Input
+
+	ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput
+	ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput
+}
+
+type externalLocationEffectiveFileEventQueueProvidedSqsPtrType ExternalLocationEffectiveFileEventQueueProvidedSqsArgs
+
+func ExternalLocationEffectiveFileEventQueueProvidedSqsPtr(v *ExternalLocationEffectiveFileEventQueueProvidedSqsArgs) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput {
+	return (*externalLocationEffectiveFileEventQueueProvidedSqsPtrType)(v)
+}
+
+func (*externalLocationEffectiveFileEventQueueProvidedSqsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEffectiveFileEventQueueProvidedSqs)(nil)).Elem()
+}
+
+func (i *externalLocationEffectiveFileEventQueueProvidedSqsPtrType) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
+	return i.ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(context.Background())
+}
+
+func (i *externalLocationEffectiveFileEventQueueProvidedSqsPtrType) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput)
+}
+
+type ExternalLocationEffectiveFileEventQueueProvidedSqsOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedSqs)(nil)).Elem()
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
+	return o
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
+	return o
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
+	return o.ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationEffectiveFileEventQueueProvidedSqs) *ExternalLocationEffectiveFileEventQueueProvidedSqs {
+		return &v
+	}).(ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput)
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) ManagedResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLocationEffectiveFileEventQueueProvidedSqs) *string { return v.ManagedResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsOutput) QueueUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLocationEffectiveFileEventQueueProvidedSqs) *string { return v.QueueUrl }).(pulumi.StringPtrOutput)
+}
+
+type ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEffectiveFileEventQueueProvidedSqs)(nil)).Elem()
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput() ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) ToExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutputWithContext(ctx context.Context) ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) Elem() ExternalLocationEffectiveFileEventQueueProvidedSqsOutput {
+	return o.ApplyT(func(v *ExternalLocationEffectiveFileEventQueueProvidedSqs) ExternalLocationEffectiveFileEventQueueProvidedSqs {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalLocationEffectiveFileEventQueueProvidedSqs
+		return ret
+	}).(ExternalLocationEffectiveFileEventQueueProvidedSqsOutput)
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) ManagedResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationEffectiveFileEventQueueProvidedSqs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput) QueueUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationEffectiveFileEventQueueProvidedSqs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueueUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalLocationEncryptionDetails struct {
+	// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+	SseEncryptionDetails *ExternalLocationEncryptionDetailsSseEncryptionDetails `pulumi:"sseEncryptionDetails"`
+}
+
+// ExternalLocationEncryptionDetailsInput is an input type that accepts ExternalLocationEncryptionDetailsArgs and ExternalLocationEncryptionDetailsOutput values.
+// You can construct a concrete instance of `ExternalLocationEncryptionDetailsInput` via:
+//
+//	ExternalLocationEncryptionDetailsArgs{...}
+type ExternalLocationEncryptionDetailsInput interface {
+	pulumi.Input
+
+	ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput
+	ToExternalLocationEncryptionDetailsOutputWithContext(context.Context) ExternalLocationEncryptionDetailsOutput
+}
+
+type ExternalLocationEncryptionDetailsArgs struct {
+	// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+	SseEncryptionDetails ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput `pulumi:"sseEncryptionDetails"`
+}
+
+func (ExternalLocationEncryptionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEncryptionDetails)(nil)).Elem()
+}
+
+func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput {
+	return i.ToExternalLocationEncryptionDetailsOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsOutput)
+}
+
+func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
+	return i.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsOutput).ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx)
+}
+
+// ExternalLocationEncryptionDetailsPtrInput is an input type that accepts ExternalLocationEncryptionDetailsArgs, ExternalLocationEncryptionDetailsPtr and ExternalLocationEncryptionDetailsPtrOutput values.
+// You can construct a concrete instance of `ExternalLocationEncryptionDetailsPtrInput` via:
+//
+//	        ExternalLocationEncryptionDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalLocationEncryptionDetailsPtrInput interface {
+	pulumi.Input
+
+	ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput
+	ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Context) ExternalLocationEncryptionDetailsPtrOutput
+}
+
+type externalLocationEncryptionDetailsPtrType ExternalLocationEncryptionDetailsArgs
+
+func ExternalLocationEncryptionDetailsPtr(v *ExternalLocationEncryptionDetailsArgs) ExternalLocationEncryptionDetailsPtrInput {
+	return (*externalLocationEncryptionDetailsPtrType)(v)
+}
+
+func (*externalLocationEncryptionDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEncryptionDetails)(nil)).Elem()
+}
+
+func (i *externalLocationEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
+	return i.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *externalLocationEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEncryptionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEncryptionDetails)(nil)).Elem()
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
+	return o.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetails {
+		return &v
+	}).(ExternalLocationEncryptionDetailsPtrOutput)
+}
+
+// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+func (o ExternalLocationEncryptionDetailsOutput) SseEncryptionDetails() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
+		return v.SseEncryptionDetails
+	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEncryptionDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEncryptionDetails)(nil)).Elem()
+}
+
+func (o ExternalLocationEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsPtrOutput) Elem() ExternalLocationEncryptionDetailsOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetails) ExternalLocationEncryptionDetails {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalLocationEncryptionDetails
+		return ret
+	}).(ExternalLocationEncryptionDetailsOutput)
+}
+
+// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+func (o ExternalLocationEncryptionDetailsPtrOutput) SseEncryptionDetails() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
+		if v == nil {
+			return nil
+		}
+		return v.SseEncryptionDetails
+	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsSseEncryptionDetails struct {
+	// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+	Algorithm *string `pulumi:"algorithm"`
+	// Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+	AwsKmsKeyArn *string `pulumi:"awsKmsKeyArn"`
+}
+
+// ExternalLocationEncryptionDetailsSseEncryptionDetailsInput is an input type that accepts ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs and ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput values.
+// You can construct a concrete instance of `ExternalLocationEncryptionDetailsSseEncryptionDetailsInput` via:
+//
+//	ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{...}
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsInput interface {
+	pulumi.Input
+
+	ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput
+	ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput
+}
+
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs struct {
+	// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+	AwsKmsKeyArn pulumi.StringPtrInput `pulumi:"awsKmsKeyArn"`
+}
+
+func (ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput)
+}
+
+func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput).ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx)
+}
+
+// ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput is an input type that accepts ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs, ExternalLocationEncryptionDetailsSseEncryptionDetailsPtr and ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput values.
+// You can construct a concrete instance of `ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput` via:
+//
+//	        ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput interface {
+	pulumi.Input
+
+	ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput
+	ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput
+}
+
+type externalLocationEncryptionDetailsSseEncryptionDetailsPtrType ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs
+
+func ExternalLocationEncryptionDetailsSseEncryptionDetailsPtr(v *ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput {
+	return (*externalLocationEncryptionDetailsSseEncryptionDetailsPtrType)(v)
+}
+
+func (*externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (i *externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationEncryptionDetailsSseEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
+		return &v
+	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLocationEncryptionDetailsSseEncryptionDetails) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+// Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLocationEncryptionDetailsSseEncryptionDetails) *string { return v.AwsKmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) Elem() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) ExternalLocationEncryptionDetailsSseEncryptionDetails {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalLocationEncryptionDetailsSseEncryptionDetails
+		return ret
+	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput)
+}
+
+// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsKmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalLocationFileEventQueue struct {
+	// Configuration for managed Azure Queue Storage queue.
+	ManagedAqs *ExternalLocationFileEventQueueManagedAqs `pulumi:"managedAqs"`
+	// Configuration for managed Google Cloud Pub/Sub queue.
+	ManagedPubsub *ExternalLocationFileEventQueueManagedPubsub `pulumi:"managedPubsub"`
+	// Configuration for managed Amazon SQS queue.
+	ManagedSqs *ExternalLocationFileEventQueueManagedSqs `pulumi:"managedSqs"`
+	// Configuration for provided Azure Storage Queue.
+	ProvidedAqs *ExternalLocationFileEventQueueProvidedAqs `pulumi:"providedAqs"`
+	// Configuration for provided Google Cloud Pub/Sub queue.
+	ProvidedPubsub *ExternalLocationFileEventQueueProvidedPubsub `pulumi:"providedPubsub"`
+	// Configuration for provided Amazon SQS queue.
+	ProvidedSqs *ExternalLocationFileEventQueueProvidedSqs `pulumi:"providedSqs"`
+}
+
+// ExternalLocationFileEventQueueInput is an input type that accepts ExternalLocationFileEventQueueArgs and ExternalLocationFileEventQueueOutput values.
+// You can construct a concrete instance of `ExternalLocationFileEventQueueInput` via:
+//
+//	ExternalLocationFileEventQueueArgs{...}
+type ExternalLocationFileEventQueueInput interface {
+	pulumi.Input
+
+	ToExternalLocationFileEventQueueOutput() ExternalLocationFileEventQueueOutput
+	ToExternalLocationFileEventQueueOutputWithContext(context.Context) ExternalLocationFileEventQueueOutput
+}
+
+type ExternalLocationFileEventQueueArgs struct {
+	// Configuration for managed Azure Queue Storage queue.
+	ManagedAqs ExternalLocationFileEventQueueManagedAqsPtrInput `pulumi:"managedAqs"`
+	// Configuration for managed Google Cloud Pub/Sub queue.
+	ManagedPubsub ExternalLocationFileEventQueueManagedPubsubPtrInput `pulumi:"managedPubsub"`
+	// Configuration for managed Amazon SQS queue.
+	ManagedSqs ExternalLocationFileEventQueueManagedSqsPtrInput `pulumi:"managedSqs"`
+	// Configuration for provided Azure Storage Queue.
+	ProvidedAqs ExternalLocationFileEventQueueProvidedAqsPtrInput `pulumi:"providedAqs"`
+	// Configuration for provided Google Cloud Pub/Sub queue.
+	ProvidedPubsub ExternalLocationFileEventQueueProvidedPubsubPtrInput `pulumi:"providedPubsub"`
+	// Configuration for provided Amazon SQS queue.
+	ProvidedSqs ExternalLocationFileEventQueueProvidedSqsPtrInput `pulumi:"providedSqs"`
+}
+
+func (ExternalLocationFileEventQueueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationFileEventQueue)(nil)).Elem()
+}
+
+func (i ExternalLocationFileEventQueueArgs) ToExternalLocationFileEventQueueOutput() ExternalLocationFileEventQueueOutput {
+	return i.ToExternalLocationFileEventQueueOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationFileEventQueueArgs) ToExternalLocationFileEventQueueOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueOutput)
+}
+
+func (i ExternalLocationFileEventQueueArgs) ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput {
+	return i.ToExternalLocationFileEventQueuePtrOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationFileEventQueueArgs) ToExternalLocationFileEventQueuePtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueueOutput).ToExternalLocationFileEventQueuePtrOutputWithContext(ctx)
+}
+
+// ExternalLocationFileEventQueuePtrInput is an input type that accepts ExternalLocationFileEventQueueArgs, ExternalLocationFileEventQueuePtr and ExternalLocationFileEventQueuePtrOutput values.
+// You can construct a concrete instance of `ExternalLocationFileEventQueuePtrInput` via:
+//
+//	        ExternalLocationFileEventQueueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalLocationFileEventQueuePtrInput interface {
+	pulumi.Input
+
+	ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput
+	ToExternalLocationFileEventQueuePtrOutputWithContext(context.Context) ExternalLocationFileEventQueuePtrOutput
+}
+
+type externalLocationFileEventQueuePtrType ExternalLocationFileEventQueueArgs
+
+func ExternalLocationFileEventQueuePtr(v *ExternalLocationFileEventQueueArgs) ExternalLocationFileEventQueuePtrInput {
+	return (*externalLocationFileEventQueuePtrType)(v)
+}
+
+func (*externalLocationFileEventQueuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationFileEventQueue)(nil)).Elem()
+}
+
+func (i *externalLocationFileEventQueuePtrType) ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput {
+	return i.ToExternalLocationFileEventQueuePtrOutputWithContext(context.Background())
+}
+
+func (i *externalLocationFileEventQueuePtrType) ToExternalLocationFileEventQueuePtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationFileEventQueuePtrOutput)
+}
+
+type ExternalLocationFileEventQueueOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationFileEventQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationFileEventQueue)(nil)).Elem()
+}
+
+func (o ExternalLocationFileEventQueueOutput) ToExternalLocationFileEventQueueOutput() ExternalLocationFileEventQueueOutput {
+	return o
+}
+
+func (o ExternalLocationFileEventQueueOutput) ToExternalLocationFileEventQueueOutputWithContext(ctx context.Context) ExternalLocationFileEventQueueOutput {
+	return o
+}
+
+func (o ExternalLocationFileEventQueueOutput) ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput {
+	return o.ToExternalLocationFileEventQueuePtrOutputWithContext(context.Background())
+}
+
+func (o ExternalLocationFileEventQueueOutput) ToExternalLocationFileEventQueuePtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueue {
+		return &v
+	}).(ExternalLocationFileEventQueuePtrOutput)
+}
+
+// Configuration for managed Azure Queue Storage queue.
+func (o ExternalLocationFileEventQueueOutput) ManagedAqs() ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedAqs { return v.ManagedAqs }).(ExternalLocationFileEventQueueManagedAqsPtrOutput)
+}
+
+// Configuration for managed Google Cloud Pub/Sub queue.
+func (o ExternalLocationFileEventQueueOutput) ManagedPubsub() ExternalLocationFileEventQueueManagedPubsubPtrOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedPubsub {
+		return v.ManagedPubsub
+	}).(ExternalLocationFileEventQueueManagedPubsubPtrOutput)
+}
+
+// Configuration for managed Amazon SQS queue.
+func (o ExternalLocationFileEventQueueOutput) ManagedSqs() ExternalLocationFileEventQueueManagedSqsPtrOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedSqs { return v.ManagedSqs }).(ExternalLocationFileEventQueueManagedSqsPtrOutput)
+}
+
+// Configuration for provided Azure Storage Queue.
+func (o ExternalLocationFileEventQueueOutput) ProvidedAqs() ExternalLocationFileEventQueueProvidedAqsPtrOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedAqs {
+		return v.ProvidedAqs
+	}).(ExternalLocationFileEventQueueProvidedAqsPtrOutput)
+}
+
+// Configuration for provided Google Cloud Pub/Sub queue.
+func (o ExternalLocationFileEventQueueOutput) ProvidedPubsub() ExternalLocationFileEventQueueProvidedPubsubPtrOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedPubsub {
+		return v.ProvidedPubsub
+	}).(ExternalLocationFileEventQueueProvidedPubsubPtrOutput)
+}
+
+// Configuration for provided Amazon SQS queue.
+func (o ExternalLocationFileEventQueueOutput) ProvidedSqs() ExternalLocationFileEventQueueProvidedSqsPtrOutput {
+	return o.ApplyT(func(v ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedSqs {
+		return v.ProvidedSqs
+	}).(ExternalLocationFileEventQueueProvidedSqsPtrOutput)
+}
+
+type ExternalLocationFileEventQueuePtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationFileEventQueuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationFileEventQueue)(nil)).Elem()
+}
+
+func (o ExternalLocationFileEventQueuePtrOutput) ToExternalLocationFileEventQueuePtrOutput() ExternalLocationFileEventQueuePtrOutput {
+	return o
+}
+
+func (o ExternalLocationFileEventQueuePtrOutput) ToExternalLocationFileEventQueuePtrOutputWithContext(ctx context.Context) ExternalLocationFileEventQueuePtrOutput {
+	return o
+}
+
+func (o ExternalLocationFileEventQueuePtrOutput) Elem() ExternalLocationFileEventQueueOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueue) ExternalLocationFileEventQueue {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalLocationFileEventQueue
+		return ret
+	}).(ExternalLocationFileEventQueueOutput)
+}
+
+// Configuration for managed Azure Queue Storage queue.
+func (o ExternalLocationFileEventQueuePtrOutput) ManagedAqs() ExternalLocationFileEventQueueManagedAqsPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedAqs {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedAqs
+	}).(ExternalLocationFileEventQueueManagedAqsPtrOutput)
+}
+
+// Configuration for managed Google Cloud Pub/Sub queue.
+func (o ExternalLocationFileEventQueuePtrOutput) ManagedPubsub() ExternalLocationFileEventQueueManagedPubsubPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedPubsub {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedPubsub
+	}).(ExternalLocationFileEventQueueManagedPubsubPtrOutput)
+}
+
+// Configuration for managed Amazon SQS queue.
+func (o ExternalLocationFileEventQueuePtrOutput) ManagedSqs() ExternalLocationFileEventQueueManagedSqsPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueManagedSqs {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedSqs
+	}).(ExternalLocationFileEventQueueManagedSqsPtrOutput)
+}
+
+// Configuration for provided Azure Storage Queue.
+func (o ExternalLocationFileEventQueuePtrOutput) ProvidedAqs() ExternalLocationFileEventQueueProvidedAqsPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedAqs {
+		if v == nil {
+			return nil
+		}
+		return v.ProvidedAqs
+	}).(ExternalLocationFileEventQueueProvidedAqsPtrOutput)
+}
+
+// Configuration for provided Google Cloud Pub/Sub queue.
+func (o ExternalLocationFileEventQueuePtrOutput) ProvidedPubsub() ExternalLocationFileEventQueueProvidedPubsubPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedPubsub {
+		if v == nil {
+			return nil
+		}
+		return v.ProvidedPubsub
+	}).(ExternalLocationFileEventQueueProvidedPubsubPtrOutput)
+}
+
+// Configuration for provided Amazon SQS queue.
+func (o ExternalLocationFileEventQueuePtrOutput) ProvidedSqs() ExternalLocationFileEventQueueProvidedSqsPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationFileEventQueue) *ExternalLocationFileEventQueueProvidedSqs {
+		if v == nil {
+			return nil
+		}
+		return v.ProvidedSqs
+	}).(ExternalLocationFileEventQueueProvidedSqsPtrOutput)
+}
+
 type ExternalLocationFileEventQueueManagedAqs struct {
 	// The ID of the managed resource.
 	ManagedResourceId *string `pulumi:"managedResourceId"`
@@ -6416,6 +7099,8 @@ func (o FeatureEngineeringFeatureProviderConfigPtrOutput) WorkspaceId() pulumi.S
 type FeatureEngineeringFeatureSource struct {
 	// A Delta table data source
 	DeltaTableSource *FeatureEngineeringFeatureSourceDeltaTableSource `pulumi:"deltaTableSource"`
+	// A data source composed from registered upstream Features
+	FeatureViewSource *FeatureEngineeringFeatureSourceFeatureViewSource `pulumi:"featureViewSource"`
 	// A Kafka stream data source
 	KafkaSource *FeatureEngineeringFeatureSourceKafkaSource `pulumi:"kafkaSource"`
 	// Completeness timing for this Feature's use of the source. This configuration is part of the
@@ -6441,6 +7126,8 @@ type FeatureEngineeringFeatureSourceInput interface {
 type FeatureEngineeringFeatureSourceArgs struct {
 	// A Delta table data source
 	DeltaTableSource FeatureEngineeringFeatureSourceDeltaTableSourcePtrInput `pulumi:"deltaTableSource"`
+	// A data source composed from registered upstream Features
+	FeatureViewSource FeatureEngineeringFeatureSourceFeatureViewSourcePtrInput `pulumi:"featureViewSource"`
 	// A Kafka stream data source
 	KafkaSource FeatureEngineeringFeatureSourceKafkaSourcePtrInput `pulumi:"kafkaSource"`
 	// Completeness timing for this Feature's use of the source. This configuration is part of the
@@ -6536,6 +7223,13 @@ func (o FeatureEngineeringFeatureSourceOutput) DeltaTableSource() FeatureEnginee
 	}).(FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput)
 }
 
+// A data source composed from registered upstream Features
+func (o FeatureEngineeringFeatureSourceOutput) FeatureViewSource() FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSource) *FeatureEngineeringFeatureSourceFeatureViewSource {
+		return v.FeatureViewSource
+	}).(FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput)
+}
+
 // A Kafka stream data source
 func (o FeatureEngineeringFeatureSourceOutput) KafkaSource() FeatureEngineeringFeatureSourceKafkaSourcePtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringFeatureSource) *FeatureEngineeringFeatureSourceKafkaSource {
@@ -6595,6 +7289,16 @@ func (o FeatureEngineeringFeatureSourcePtrOutput) DeltaTableSource() FeatureEngi
 		}
 		return v.DeltaTableSource
 	}).(FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput)
+}
+
+// A data source composed from registered upstream Features
+func (o FeatureEngineeringFeatureSourcePtrOutput) FeatureViewSource() FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSource) *FeatureEngineeringFeatureSourceFeatureViewSource {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureViewSource
+	}).(FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput)
 }
 
 // A Kafka stream data source
@@ -6860,6 +7564,242 @@ func (o FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput) Transformation
 		}
 		return v.TransformationSql
 	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSource struct {
+	// The upstream Features this source reads. Must include at least one feature
+	FeatureReferences []FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference `pulumi:"featureReferences"`
+}
+
+// FeatureEngineeringFeatureSourceFeatureViewSourceInput is an input type that accepts FeatureEngineeringFeatureSourceFeatureViewSourceArgs and FeatureEngineeringFeatureSourceFeatureViewSourceOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceFeatureViewSourceInput` via:
+//
+//	FeatureEngineeringFeatureSourceFeatureViewSourceArgs{...}
+type FeatureEngineeringFeatureSourceFeatureViewSourceInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceFeatureViewSourceOutput() FeatureEngineeringFeatureSourceFeatureViewSourceOutput
+	ToFeatureEngineeringFeatureSourceFeatureViewSourceOutputWithContext(context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceOutput
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSourceArgs struct {
+	// The upstream Features this source reads. Must include at least one feature
+	FeatureReferences FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayInput `pulumi:"featureReferences"`
+}
+
+func (FeatureEngineeringFeatureSourceFeatureViewSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceFeatureViewSource)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureSourceFeatureViewSourceArgs) ToFeatureEngineeringFeatureSourceFeatureViewSourceOutput() FeatureEngineeringFeatureSourceFeatureViewSourceOutput {
+	return i.ToFeatureEngineeringFeatureSourceFeatureViewSourceOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceFeatureViewSourceArgs) ToFeatureEngineeringFeatureSourceFeatureViewSourceOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceFeatureViewSourceOutput)
+}
+
+func (i FeatureEngineeringFeatureSourceFeatureViewSourceArgs) ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput() FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return i.ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceFeatureViewSourceArgs) ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceFeatureViewSourceOutput).ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(ctx)
+}
+
+// FeatureEngineeringFeatureSourceFeatureViewSourcePtrInput is an input type that accepts FeatureEngineeringFeatureSourceFeatureViewSourceArgs, FeatureEngineeringFeatureSourceFeatureViewSourcePtr and FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceFeatureViewSourcePtrInput` via:
+//
+//	        FeatureEngineeringFeatureSourceFeatureViewSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureEngineeringFeatureSourceFeatureViewSourcePtrInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput() FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput
+	ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(context.Context) FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput
+}
+
+type featureEngineeringFeatureSourceFeatureViewSourcePtrType FeatureEngineeringFeatureSourceFeatureViewSourceArgs
+
+func FeatureEngineeringFeatureSourceFeatureViewSourcePtr(v *FeatureEngineeringFeatureSourceFeatureViewSourceArgs) FeatureEngineeringFeatureSourceFeatureViewSourcePtrInput {
+	return (*featureEngineeringFeatureSourceFeatureViewSourcePtrType)(v)
+}
+
+func (*featureEngineeringFeatureSourceFeatureViewSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureSourceFeatureViewSource)(nil)).Elem()
+}
+
+func (i *featureEngineeringFeatureSourceFeatureViewSourcePtrType) ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput() FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return i.ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *featureEngineeringFeatureSourceFeatureViewSourcePtrType) ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput)
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSourceOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceFeatureViewSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceFeatureViewSource)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourceOutput() FeatureEngineeringFeatureSourceFeatureViewSourceOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourceOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput() FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return o.ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureEngineeringFeatureSourceFeatureViewSource) *FeatureEngineeringFeatureSourceFeatureViewSource {
+		return &v
+	}).(FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput)
+}
+
+// The upstream Features this source reads. Must include at least one feature
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceOutput) FeatureReferences() FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceFeatureViewSource) []FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference {
+		return v.FeatureReferences
+	}).(FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput)
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureEngineeringFeatureSourceFeatureViewSource)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput() FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourcePtrOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput) Elem() FeatureEngineeringFeatureSourceFeatureViewSourceOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceFeatureViewSource) FeatureEngineeringFeatureSourceFeatureViewSource {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureEngineeringFeatureSourceFeatureViewSource
+		return ret
+	}).(FeatureEngineeringFeatureSourceFeatureViewSourceOutput)
+}
+
+// The upstream Features this source reads. Must include at least one feature
+func (o FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput) FeatureReferences() FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeatureSourceFeatureViewSource) []FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureReferences
+	}).(FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput)
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference struct {
+	// The three-part full name of the upstream Feature
+	Feature string `pulumi:"feature"`
+}
+
+// FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceInput is an input type that accepts FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs and FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceInput` via:
+//
+//	FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs{...}
+type FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput() FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput
+	ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutputWithContext(context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs struct {
+	// The three-part full name of the upstream Feature
+	Feature pulumi.StringInput `pulumi:"feature"`
+}
+
+func (FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs) ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput() FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput {
+	return i.ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs) ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput)
+}
+
+// FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayInput is an input type that accepts FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArray and FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput values.
+// You can construct a concrete instance of `FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayInput` via:
+//
+//	FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArray{ FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs{...} }
+type FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayInput interface {
+	pulumi.Input
+
+	ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput() FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput
+	ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutputWithContext(context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArray []FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceInput
+
+func (FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference)(nil)).Elem()
+}
+
+func (i FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArray) ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput() FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput {
+	return i.ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArray) ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput)
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput() FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput {
+	return o
+}
+
+// The three-part full name of the upstream Feature
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput) Feature() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference) string { return v.Feature }).(pulumi.StringOutput)
+}
+
+type FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference)(nil)).Elem()
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput() FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput) ToFeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutputWithContext(ctx context.Context) FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput {
+	return o
+}
+
+func (o FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput) Index(i pulumi.IntInput) FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference {
+		return vs[0].([]FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReference)[vs[1].(int)]
+	}).(FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput)
 }
 
 type FeatureEngineeringFeatureSourceKafkaSource struct {
@@ -12404,11 +13344,15 @@ func (o FeatureEngineeringKafkaConfigValueSchemaProtoSchemaPtrOutput) SchemaText
 
 type FeatureEngineeringMaterializedFeatureCronScheduleTrigger struct {
 	// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-	// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-	// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-	// window timing and fills it in on the response
+	// schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+	// unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+	// the features' window timing and fills it in on the response
 	CronExpression *string `pulumi:"cronExpression"`
 	Mode           *string `pulumi:"mode"`
+	// A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+	// when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+	// to UTC
+	TimezoneId *string `pulumi:"timezoneId"`
 }
 
 // FeatureEngineeringMaterializedFeatureCronScheduleTriggerInput is an input type that accepts FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs and FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput values.
@@ -12424,11 +13368,15 @@ type FeatureEngineeringMaterializedFeatureCronScheduleTriggerInput interface {
 
 type FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs struct {
 	// The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-	// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-	// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-	// window timing and fills it in on the response
+	// schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+	// unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+	// the features' window timing and fills it in on the response
 	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
 	Mode           pulumi.StringPtrInput `pulumi:"mode"`
+	// A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+	// when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+	// to UTC
+	TimezoneId pulumi.StringPtrInput `pulumi:"timezoneId"`
 }
 
 func (FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs) ElementType() reflect.Type {
@@ -12509,15 +13457,22 @@ func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput) ToFeatur
 }
 
 // The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-// window timing and fills it in on the response
+// schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+// unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+// the features' window timing and fills it in on the response
 func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput) CronExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
 }
 
 func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+// when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+// to UTC
+func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput) TimezoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string { return v.TimezoneId }).(pulumi.StringPtrOutput)
 }
 
 type FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput struct{ *pulumi.OutputState }
@@ -12545,9 +13500,9 @@ func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput) Elem(
 }
 
 // The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight). The
-// schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-// empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features'
-// window timing and fills it in on the response
+// schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+// unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+// the features' window timing and fills it in on the response
 func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput) CronExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string {
 		if v == nil {
@@ -12563,6 +13518,18 @@ func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput) Mode(
 			return nil
 		}
 		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+// when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+// to UTC
+func (o FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput) TimezoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeatureCronScheduleTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimezoneId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33777,6 +34744,8 @@ type JobTaskAiRuntimeTask struct {
 	MlflowArtifactLocation    *string                          `pulumi:"mlflowArtifactLocation"`
 	MlflowExperimentDirectory *string                          `pulumi:"mlflowExperimentDirectory"`
 	MlflowRun                 *string                          `pulumi:"mlflowRun"`
+	PriorityClass             *string                          `pulumi:"priorityClass"`
+	UnityCatalogImagePath     *string                          `pulumi:"unityCatalogImagePath"`
 }
 
 // JobTaskAiRuntimeTaskInput is an input type that accepts JobTaskAiRuntimeTaskArgs and JobTaskAiRuntimeTaskOutput values.
@@ -33798,6 +34767,8 @@ type JobTaskAiRuntimeTaskArgs struct {
 	MlflowArtifactLocation    pulumi.StringPtrInput                    `pulumi:"mlflowArtifactLocation"`
 	MlflowExperimentDirectory pulumi.StringPtrInput                    `pulumi:"mlflowExperimentDirectory"`
 	MlflowRun                 pulumi.StringPtrInput                    `pulumi:"mlflowRun"`
+	PriorityClass             pulumi.StringPtrInput                    `pulumi:"priorityClass"`
+	UnityCatalogImagePath     pulumi.StringPtrInput                    `pulumi:"unityCatalogImagePath"`
 }
 
 func (JobTaskAiRuntimeTaskArgs) ElementType() reflect.Type {
@@ -33905,6 +34876,14 @@ func (o JobTaskAiRuntimeTaskOutput) MlflowRun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskAiRuntimeTask) *string { return v.MlflowRun }).(pulumi.StringPtrOutput)
 }
 
+func (o JobTaskAiRuntimeTaskOutput) PriorityClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiRuntimeTask) *string { return v.PriorityClass }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiRuntimeTaskOutput) UnityCatalogImagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskAiRuntimeTask) *string { return v.UnityCatalogImagePath }).(pulumi.StringPtrOutput)
+}
+
 type JobTaskAiRuntimeTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (JobTaskAiRuntimeTaskPtrOutput) ElementType() reflect.Type {
@@ -33989,6 +34968,24 @@ func (o JobTaskAiRuntimeTaskPtrOutput) MlflowRun() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.MlflowRun
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiRuntimeTaskPtrOutput) PriorityClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiRuntimeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityClass
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskAiRuntimeTaskPtrOutput) UnityCatalogImagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskAiRuntimeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnityCatalogImagePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37377,6 +38374,8 @@ type JobTaskForEachTaskTaskAiRuntimeTask struct {
 	MlflowArtifactLocation    *string                                         `pulumi:"mlflowArtifactLocation"`
 	MlflowExperimentDirectory *string                                         `pulumi:"mlflowExperimentDirectory"`
 	MlflowRun                 *string                                         `pulumi:"mlflowRun"`
+	PriorityClass             *string                                         `pulumi:"priorityClass"`
+	UnityCatalogImagePath     *string                                         `pulumi:"unityCatalogImagePath"`
 }
 
 // JobTaskForEachTaskTaskAiRuntimeTaskInput is an input type that accepts JobTaskForEachTaskTaskAiRuntimeTaskArgs and JobTaskForEachTaskTaskAiRuntimeTaskOutput values.
@@ -37398,6 +38397,8 @@ type JobTaskForEachTaskTaskAiRuntimeTaskArgs struct {
 	MlflowArtifactLocation    pulumi.StringPtrInput                                   `pulumi:"mlflowArtifactLocation"`
 	MlflowExperimentDirectory pulumi.StringPtrInput                                   `pulumi:"mlflowExperimentDirectory"`
 	MlflowRun                 pulumi.StringPtrInput                                   `pulumi:"mlflowRun"`
+	PriorityClass             pulumi.StringPtrInput                                   `pulumi:"priorityClass"`
+	UnityCatalogImagePath     pulumi.StringPtrInput                                   `pulumi:"unityCatalogImagePath"`
 }
 
 func (JobTaskForEachTaskTaskAiRuntimeTaskArgs) ElementType() reflect.Type {
@@ -37507,6 +38508,14 @@ func (o JobTaskForEachTaskTaskAiRuntimeTaskOutput) MlflowRun() pulumi.StringPtrO
 	return o.ApplyT(func(v JobTaskForEachTaskTaskAiRuntimeTask) *string { return v.MlflowRun }).(pulumi.StringPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskAiRuntimeTaskOutput) PriorityClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiRuntimeTask) *string { return v.PriorityClass }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiRuntimeTaskOutput) UnityCatalogImagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskAiRuntimeTask) *string { return v.UnityCatalogImagePath }).(pulumi.StringPtrOutput)
+}
+
 type JobTaskForEachTaskTaskAiRuntimeTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (JobTaskForEachTaskTaskAiRuntimeTaskPtrOutput) ElementType() reflect.Type {
@@ -37591,6 +38600,24 @@ func (o JobTaskForEachTaskTaskAiRuntimeTaskPtrOutput) MlflowRun() pulumi.StringP
 			return nil
 		}
 		return v.MlflowRun
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiRuntimeTaskPtrOutput) PriorityClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiRuntimeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityClass
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskAiRuntimeTaskPtrOutput) UnityCatalogImagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskAiRuntimeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnityCatalogImagePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -74153,8 +75180,9 @@ type ModelServingConfigServedEntityExternalModelAmazonBedrockConfig struct {
 	// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
 	AwsSecretAccessKeyPlaintext *string `pulumi:"awsSecretAccessKeyPlaintext"`
 	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-	BedrockProvider    string  `pulumi:"bedrockProvider"`
-	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
+	BedrockProvider         string  `pulumi:"bedrockProvider"`
+	InstanceProfileArn      *string `pulumi:"instanceProfileArn"`
+	UcServiceCredentialName *string `pulumi:"ucServiceCredentialName"`
 }
 
 // ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs and ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput values.
@@ -74180,8 +75208,9 @@ type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs struct {
 	// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
 	AwsSecretAccessKeyPlaintext pulumi.StringPtrInput `pulumi:"awsSecretAccessKeyPlaintext"`
 	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-	BedrockProvider    pulumi.StringInput    `pulumi:"bedrockProvider"`
-	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
+	BedrockProvider         pulumi.StringInput    `pulumi:"bedrockProvider"`
+	InstanceProfileArn      pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
+	UcServiceCredentialName pulumi.StringPtrInput `pulumi:"ucServiceCredentialName"`
 }
 
 func (ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ElementType() reflect.Type {
@@ -74307,6 +75336,12 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) In
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) UcServiceCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
+		return v.UcServiceCredentialName
+	}).(pulumi.StringPtrOutput)
+}
+
 type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) ElementType() reflect.Type {
@@ -74397,6 +75432,15 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 			return nil
 		}
 		return v.InstanceProfileArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) UcServiceCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UcServiceCredentialName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -82533,1049 +83577,15 @@ func (o MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpoint
 	}).(pulumi.StringArrayOutput)
 }
 
-type MwsNetworkConnectivityConfigEgressConfigTargetRules struct {
-	// (AWS only) - list containing information about configure AWS Private Endpoints.
-	AwsPrivateEndpointRules []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule `pulumi:"awsPrivateEndpointRules"`
-	// (Azure only) - list containing information about configure Azure Private Endpoints.
-	AzurePrivateEndpointRules []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule `pulumi:"azurePrivateEndpointRules"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs struct {
-	// (AWS only) - list containing information about configure AWS Private Endpoints.
-	AwsPrivateEndpointRules MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput `pulumi:"awsPrivateEndpointRules"`
-	// (Azure only) - list containing information about configure Azure Private Endpoints.
-	AzurePrivateEndpointRules MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput `pulumi:"azurePrivateEndpointRules"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput)
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput).ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs, MwsNetworkConnectivityConfigEgressConfigTargetRulesPtr and MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput` via:
-//
-//	        MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput
-}
-
-type mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs
-
-func MwsNetworkConnectivityConfigEgressConfigTargetRulesPtr(v *MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput {
-	return (*mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType)(v)
-}
-
-func (*mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNetworkConnectivityConfigEgressConfigTargetRulesPtrType) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(context.Background())
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworkConnectivityConfigEgressConfigTargetRules) *MwsNetworkConnectivityConfigEgressConfigTargetRules {
-		return &v
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
-}
-
-// (AWS only) - list containing information about configure AWS Private Endpoints.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) AwsPrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
-		return v.AwsPrivateEndpointRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
-}
-
-// (Azure only) - list containing information about configure Azure Private Endpoints.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) AzurePrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
-		return v.AzurePrivateEndpointRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworkConnectivityConfigEgressConfigTargetRules)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) Elem() MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) MwsNetworkConnectivityConfigEgressConfigTargetRules {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNetworkConnectivityConfigEgressConfigTargetRules
-		return ret
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput)
-}
-
-// (AWS only) - list containing information about configure AWS Private Endpoints.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AwsPrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
-		if v == nil {
-			return nil
-		}
-		return v.AwsPrivateEndpointRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
-}
-
-// (Azure only) - list containing information about configure Azure Private Endpoints.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AzurePrivateEndpointRules() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return o.ApplyT(func(v *MwsNetworkConnectivityConfigEgressConfigTargetRules) []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
-		if v == nil {
-			return nil
-		}
-		return v.AzurePrivateEndpointRules
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule struct {
-	AccountId       *string `pulumi:"accountId"`
-	ConnectionState *string `pulumi:"connectionState"`
-	// time in epoch milliseconds when this object was created.
-	CreationTime    *int     `pulumi:"creationTime"`
-	Deactivated     *bool    `pulumi:"deactivated"`
-	DeactivatedAt   *int     `pulumi:"deactivatedAt"`
-	DomainNames     []string `pulumi:"domainNames"`
-	Enabled         *bool    `pulumi:"enabled"`
-	EndpointService *string  `pulumi:"endpointService"`
-	ErrorMessage    *string  `pulumi:"errorMessage"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account
-	NetworkConnectivityConfigId *string  `pulumi:"networkConnectivityConfigId"`
-	ResourceNames               []string `pulumi:"resourceNames"`
-	RuleId                      *string  `pulumi:"ruleId"`
-	// time in epoch milliseconds when this object was updated.
-	UpdatedTime   *int    `pulumi:"updatedTime"`
-	VpcEndpointId *string `pulumi:"vpcEndpointId"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs struct {
-	AccountId       pulumi.StringPtrInput `pulumi:"accountId"`
-	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
-	// time in epoch milliseconds when this object was created.
-	CreationTime    pulumi.IntPtrInput      `pulumi:"creationTime"`
-	Deactivated     pulumi.BoolPtrInput     `pulumi:"deactivated"`
-	DeactivatedAt   pulumi.IntPtrInput      `pulumi:"deactivatedAt"`
-	DomainNames     pulumi.StringArrayInput `pulumi:"domainNames"`
-	Enabled         pulumi.BoolPtrInput     `pulumi:"enabled"`
-	EndpointService pulumi.StringPtrInput   `pulumi:"endpointService"`
-	ErrorMessage    pulumi.StringPtrInput   `pulumi:"errorMessage"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account
-	NetworkConnectivityConfigId pulumi.StringPtrInput   `pulumi:"networkConnectivityConfigId"`
-	ResourceNames               pulumi.StringArrayInput `pulumi:"resourceNames"`
-	RuleId                      pulumi.StringPtrInput   `pulumi:"ruleId"`
-	// time in epoch milliseconds when this object was updated.
-	UpdatedTime   pulumi.IntPtrInput    `pulumi:"updatedTime"`
-	VpcEndpointId pulumi.StringPtrInput `pulumi:"vpcEndpointId"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray and MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray{ MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{...} }
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray []MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.AccountId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ConnectionState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.ConnectionState
-	}).(pulumi.StringPtrOutput)
-}
-
-// time in epoch milliseconds when this object was created.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) CreationTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
-		return v.CreationTime
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *bool {
-		return v.Deactivated
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
-		return v.DeactivatedAt
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) DomainNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) []string {
-		return v.DomainNames
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *bool {
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) EndpointService() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.EndpointService
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.ErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// Canonical unique identifier of Network Connectivity Config in Databricks Account
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) NetworkConnectivityConfigId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.NetworkConnectivityConfigId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) ResourceNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) []string {
-		return v.ResourceNames
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.RuleId
-	}).(pulumi.StringPtrOutput)
-}
-
-// time in epoch milliseconds when this object was updated.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) UpdatedTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *int {
-		return v.UpdatedTime
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput) VpcEndpointId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule) *string {
-		return v.VpcEndpointId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput) Index(i pulumi.IntInput) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
-		return vs[0].([]MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule)[vs[1].(int)]
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule struct {
-	ConnectionState *string `pulumi:"connectionState"`
-	// time in epoch milliseconds when this object was created.
-	CreationTime  *int     `pulumi:"creationTime"`
-	Deactivated   *bool    `pulumi:"deactivated"`
-	DeactivatedAt *int     `pulumi:"deactivatedAt"`
-	DomainNames   []string `pulumi:"domainNames"`
-	EndpointName  *string  `pulumi:"endpointName"`
-	ErrorMessage  *string  `pulumi:"errorMessage"`
-	GroupId       *string  `pulumi:"groupId"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account
-	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
-	ResourceId                  *string `pulumi:"resourceId"`
-	RuleId                      *string `pulumi:"ruleId"`
-	// time in epoch milliseconds when this object was updated.
-	UpdatedTime *int `pulumi:"updatedTime"`
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs and MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{...}
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs struct {
-	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
-	// time in epoch milliseconds when this object was created.
-	CreationTime  pulumi.IntPtrInput      `pulumi:"creationTime"`
-	Deactivated   pulumi.BoolPtrInput     `pulumi:"deactivated"`
-	DeactivatedAt pulumi.IntPtrInput      `pulumi:"deactivatedAt"`
-	DomainNames   pulumi.StringArrayInput `pulumi:"domainNames"`
-	EndpointName  pulumi.StringPtrInput   `pulumi:"endpointName"`
-	ErrorMessage  pulumi.StringPtrInput   `pulumi:"errorMessage"`
-	GroupId       pulumi.StringPtrInput   `pulumi:"groupId"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account
-	NetworkConnectivityConfigId pulumi.StringPtrInput `pulumi:"networkConnectivityConfigId"`
-	ResourceId                  pulumi.StringPtrInput `pulumi:"resourceId"`
-	RuleId                      pulumi.StringPtrInput `pulumi:"ruleId"`
-	// time in epoch milliseconds when this object was updated.
-	UpdatedTime pulumi.IntPtrInput `pulumi:"updatedTime"`
-}
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput)
-}
-
-// MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput is an input type that accepts MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray and MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput values.
-// You can construct a concrete instance of `MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput` via:
-//
-//	MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray{ MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{...} }
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput interface {
-	pulumi.Input
-
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput
-	ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray []MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return i.ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(context.Background())
-}
-
-func (i MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ConnectionState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.ConnectionState
-	}).(pulumi.StringPtrOutput)
-}
-
-// time in epoch milliseconds when this object was created.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) CreationTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
-		return v.CreationTime
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *bool {
-		return v.Deactivated
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
-		return v.DeactivatedAt
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) DomainNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) []string {
-		return v.DomainNames
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) EndpointName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.EndpointName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.ErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.GroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Canonical unique identifier of Network Connectivity Config in Databricks Account
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) NetworkConnectivityConfigId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.NetworkConnectivityConfigId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.ResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
-		return v.RuleId
-	}).(pulumi.StringPtrOutput)
-}
-
-// time in epoch milliseconds when this object was updated.
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) UpdatedTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
-		return v.UpdatedTime
-	}).(pulumi.IntPtrOutput)
-}
-
-type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)(nil)).Elem()
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput() MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) ToMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutputWithContext(ctx context.Context) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
-	return o
-}
-
-func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput) Index(i pulumi.IntInput) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
-		return vs[0].([]MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule)[vs[1].(int)]
-	}).(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput)
-}
-
-type MwsNetworksErrorMessage struct {
-	ErrorMessage *string `pulumi:"errorMessage"`
-	ErrorType    *string `pulumi:"errorType"`
-}
-
-// MwsNetworksErrorMessageInput is an input type that accepts MwsNetworksErrorMessageArgs and MwsNetworksErrorMessageOutput values.
-// You can construct a concrete instance of `MwsNetworksErrorMessageInput` via:
-//
-//	MwsNetworksErrorMessageArgs{...}
-type MwsNetworksErrorMessageInput interface {
-	pulumi.Input
-
-	ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput
-	ToMwsNetworksErrorMessageOutputWithContext(context.Context) MwsNetworksErrorMessageOutput
-}
-
-type MwsNetworksErrorMessageArgs struct {
-	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
-	ErrorType    pulumi.StringPtrInput `pulumi:"errorType"`
-}
-
-func (MwsNetworksErrorMessageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworksErrorMessage)(nil)).Elem()
-}
-
-func (i MwsNetworksErrorMessageArgs) ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput {
-	return i.ToMwsNetworksErrorMessageOutputWithContext(context.Background())
-}
-
-func (i MwsNetworksErrorMessageArgs) ToMwsNetworksErrorMessageOutputWithContext(ctx context.Context) MwsNetworksErrorMessageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksErrorMessageOutput)
-}
-
-// MwsNetworksErrorMessageArrayInput is an input type that accepts MwsNetworksErrorMessageArray and MwsNetworksErrorMessageArrayOutput values.
-// You can construct a concrete instance of `MwsNetworksErrorMessageArrayInput` via:
-//
-//	MwsNetworksErrorMessageArray{ MwsNetworksErrorMessageArgs{...} }
-type MwsNetworksErrorMessageArrayInput interface {
-	pulumi.Input
-
-	ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput
-	ToMwsNetworksErrorMessageArrayOutputWithContext(context.Context) MwsNetworksErrorMessageArrayOutput
-}
-
-type MwsNetworksErrorMessageArray []MwsNetworksErrorMessageInput
-
-func (MwsNetworksErrorMessageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworksErrorMessage)(nil)).Elem()
-}
-
-func (i MwsNetworksErrorMessageArray) ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput {
-	return i.ToMwsNetworksErrorMessageArrayOutputWithContext(context.Background())
-}
-
-func (i MwsNetworksErrorMessageArray) ToMwsNetworksErrorMessageArrayOutputWithContext(ctx context.Context) MwsNetworksErrorMessageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksErrorMessageArrayOutput)
-}
-
-type MwsNetworksErrorMessageOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworksErrorMessageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworksErrorMessage)(nil)).Elem()
-}
-
-func (o MwsNetworksErrorMessageOutput) ToMwsNetworksErrorMessageOutput() MwsNetworksErrorMessageOutput {
-	return o
-}
-
-func (o MwsNetworksErrorMessageOutput) ToMwsNetworksErrorMessageOutputWithContext(ctx context.Context) MwsNetworksErrorMessageOutput {
-	return o
-}
-
-func (o MwsNetworksErrorMessageOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworksErrorMessage) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
-}
-
-func (o MwsNetworksErrorMessageOutput) ErrorType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworksErrorMessage) *string { return v.ErrorType }).(pulumi.StringPtrOutput)
-}
-
-type MwsNetworksErrorMessageArrayOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworksErrorMessageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MwsNetworksErrorMessage)(nil)).Elem()
-}
-
-func (o MwsNetworksErrorMessageArrayOutput) ToMwsNetworksErrorMessageArrayOutput() MwsNetworksErrorMessageArrayOutput {
-	return o
-}
-
-func (o MwsNetworksErrorMessageArrayOutput) ToMwsNetworksErrorMessageArrayOutputWithContext(ctx context.Context) MwsNetworksErrorMessageArrayOutput {
-	return o
-}
-
-func (o MwsNetworksErrorMessageArrayOutput) Index(i pulumi.IntInput) MwsNetworksErrorMessageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MwsNetworksErrorMessage {
-		return vs[0].([]MwsNetworksErrorMessage)[vs[1].(int)]
-	}).(MwsNetworksErrorMessageOutput)
-}
-
-type MwsNetworksGcpNetworkInfo struct {
-	// The Google Cloud project ID of the VPC network.
-	NetworkProjectId string `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
-	PodIpRangeName *string `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
-	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
-	// The ID of the subnet associated with this network.
-	SubnetId string `pulumi:"subnetId"`
-	// The Google Cloud region of the workspace data plane. For example, `us-east4`.
-	SubnetRegion string `pulumi:"subnetRegion"`
-	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-	VpcId string `pulumi:"vpcId"`
-}
-
-// MwsNetworksGcpNetworkInfoInput is an input type that accepts MwsNetworksGcpNetworkInfoArgs and MwsNetworksGcpNetworkInfoOutput values.
-// You can construct a concrete instance of `MwsNetworksGcpNetworkInfoInput` via:
-//
-//	MwsNetworksGcpNetworkInfoArgs{...}
-type MwsNetworksGcpNetworkInfoInput interface {
-	pulumi.Input
-
-	ToMwsNetworksGcpNetworkInfoOutput() MwsNetworksGcpNetworkInfoOutput
-	ToMwsNetworksGcpNetworkInfoOutputWithContext(context.Context) MwsNetworksGcpNetworkInfoOutput
-}
-
-type MwsNetworksGcpNetworkInfoArgs struct {
-	// The Google Cloud project ID of the VPC network.
-	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
-	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
-	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
-	// The ID of the subnet associated with this network.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// The Google Cloud region of the workspace data plane. For example, `us-east4`.
-	SubnetRegion pulumi.StringInput `pulumi:"subnetRegion"`
-	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
-}
-
-func (MwsNetworksGcpNetworkInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworksGcpNetworkInfo)(nil)).Elem()
-}
-
-func (i MwsNetworksGcpNetworkInfoArgs) ToMwsNetworksGcpNetworkInfoOutput() MwsNetworksGcpNetworkInfoOutput {
-	return i.ToMwsNetworksGcpNetworkInfoOutputWithContext(context.Background())
-}
-
-func (i MwsNetworksGcpNetworkInfoArgs) ToMwsNetworksGcpNetworkInfoOutputWithContext(ctx context.Context) MwsNetworksGcpNetworkInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksGcpNetworkInfoOutput)
-}
-
-func (i MwsNetworksGcpNetworkInfoArgs) ToMwsNetworksGcpNetworkInfoPtrOutput() MwsNetworksGcpNetworkInfoPtrOutput {
-	return i.ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(context.Background())
-}
-
-func (i MwsNetworksGcpNetworkInfoArgs) ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(ctx context.Context) MwsNetworksGcpNetworkInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksGcpNetworkInfoOutput).ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(ctx)
-}
-
-// MwsNetworksGcpNetworkInfoPtrInput is an input type that accepts MwsNetworksGcpNetworkInfoArgs, MwsNetworksGcpNetworkInfoPtr and MwsNetworksGcpNetworkInfoPtrOutput values.
-// You can construct a concrete instance of `MwsNetworksGcpNetworkInfoPtrInput` via:
-//
-//	        MwsNetworksGcpNetworkInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNetworksGcpNetworkInfoPtrInput interface {
-	pulumi.Input
-
-	ToMwsNetworksGcpNetworkInfoPtrOutput() MwsNetworksGcpNetworkInfoPtrOutput
-	ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(context.Context) MwsNetworksGcpNetworkInfoPtrOutput
-}
-
-type mwsNetworksGcpNetworkInfoPtrType MwsNetworksGcpNetworkInfoArgs
-
-func MwsNetworksGcpNetworkInfoPtr(v *MwsNetworksGcpNetworkInfoArgs) MwsNetworksGcpNetworkInfoPtrInput {
-	return (*mwsNetworksGcpNetworkInfoPtrType)(v)
-}
-
-func (*mwsNetworksGcpNetworkInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworksGcpNetworkInfo)(nil)).Elem()
-}
-
-func (i *mwsNetworksGcpNetworkInfoPtrType) ToMwsNetworksGcpNetworkInfoPtrOutput() MwsNetworksGcpNetworkInfoPtrOutput {
-	return i.ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNetworksGcpNetworkInfoPtrType) ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(ctx context.Context) MwsNetworksGcpNetworkInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksGcpNetworkInfoPtrOutput)
-}
-
-type MwsNetworksGcpNetworkInfoOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworksGcpNetworkInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworksGcpNetworkInfo)(nil)).Elem()
-}
-
-func (o MwsNetworksGcpNetworkInfoOutput) ToMwsNetworksGcpNetworkInfoOutput() MwsNetworksGcpNetworkInfoOutput {
-	return o
-}
-
-func (o MwsNetworksGcpNetworkInfoOutput) ToMwsNetworksGcpNetworkInfoOutputWithContext(ctx context.Context) MwsNetworksGcpNetworkInfoOutput {
-	return o
-}
-
-func (o MwsNetworksGcpNetworkInfoOutput) ToMwsNetworksGcpNetworkInfoPtrOutput() MwsNetworksGcpNetworkInfoPtrOutput {
-	return o.ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(context.Background())
-}
-
-func (o MwsNetworksGcpNetworkInfoOutput) ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(ctx context.Context) MwsNetworksGcpNetworkInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworksGcpNetworkInfo) *MwsNetworksGcpNetworkInfo {
-		return &v
-	}).(MwsNetworksGcpNetworkInfoPtrOutput)
-}
-
-// The Google Cloud project ID of the VPC network.
-func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.NetworkProjectId }).(pulumi.StringOutput)
-}
-
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
-func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
-func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the subnet associated with this network.
-func (o MwsNetworksGcpNetworkInfoOutput) SubnetId() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.SubnetId }).(pulumi.StringOutput)
-}
-
-// The Google Cloud region of the workspace data plane. For example, `us-east4`.
-func (o MwsNetworksGcpNetworkInfoOutput) SubnetRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.SubnetRegion }).(pulumi.StringOutput)
-}
-
-// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-func (o MwsNetworksGcpNetworkInfoOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.VpcId }).(pulumi.StringOutput)
-}
-
-type MwsNetworksGcpNetworkInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworksGcpNetworkInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworksGcpNetworkInfo)(nil)).Elem()
-}
-
-func (o MwsNetworksGcpNetworkInfoPtrOutput) ToMwsNetworksGcpNetworkInfoPtrOutput() MwsNetworksGcpNetworkInfoPtrOutput {
-	return o
-}
-
-func (o MwsNetworksGcpNetworkInfoPtrOutput) ToMwsNetworksGcpNetworkInfoPtrOutputWithContext(ctx context.Context) MwsNetworksGcpNetworkInfoPtrOutput {
-	return o
-}
-
-func (o MwsNetworksGcpNetworkInfoPtrOutput) Elem() MwsNetworksGcpNetworkInfoOutput {
-	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) MwsNetworksGcpNetworkInfo {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNetworksGcpNetworkInfo
-		return ret
-	}).(MwsNetworksGcpNetworkInfoOutput)
-}
-
-// The Google Cloud project ID of the VPC network.
-func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NetworkProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
-func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PodIpRangeName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.133.0/docs/guides/gcp-workspace#creating-a-vpc
-func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceIpRangeName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the subnet associated with this network.
-func (o MwsNetworksGcpNetworkInfoPtrOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SubnetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Google Cloud region of the workspace data plane. For example, `us-east4`.
-func (o MwsNetworksGcpNetworkInfoPtrOutput) SubnetRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SubnetRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-func (o MwsNetworksGcpNetworkInfoPtrOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VpcId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsNetworksVpcEndpoints struct {
-	DataplaneRelays []string `pulumi:"dataplaneRelays"`
-	RestApis        []string `pulumi:"restApis"`
-}
-
-// MwsNetworksVpcEndpointsInput is an input type that accepts MwsNetworksVpcEndpointsArgs and MwsNetworksVpcEndpointsOutput values.
-// You can construct a concrete instance of `MwsNetworksVpcEndpointsInput` via:
-//
-//	MwsNetworksVpcEndpointsArgs{...}
-type MwsNetworksVpcEndpointsInput interface {
-	pulumi.Input
-
-	ToMwsNetworksVpcEndpointsOutput() MwsNetworksVpcEndpointsOutput
-	ToMwsNetworksVpcEndpointsOutputWithContext(context.Context) MwsNetworksVpcEndpointsOutput
-}
-
-type MwsNetworksVpcEndpointsArgs struct {
-	DataplaneRelays pulumi.StringArrayInput `pulumi:"dataplaneRelays"`
-	RestApis        pulumi.StringArrayInput `pulumi:"restApis"`
-}
-
-func (MwsNetworksVpcEndpointsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworksVpcEndpoints)(nil)).Elem()
-}
-
-func (i MwsNetworksVpcEndpointsArgs) ToMwsNetworksVpcEndpointsOutput() MwsNetworksVpcEndpointsOutput {
-	return i.ToMwsNetworksVpcEndpointsOutputWithContext(context.Background())
-}
-
-func (i MwsNetworksVpcEndpointsArgs) ToMwsNetworksVpcEndpointsOutputWithContext(ctx context.Context) MwsNetworksVpcEndpointsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksVpcEndpointsOutput)
-}
-
-func (i MwsNetworksVpcEndpointsArgs) ToMwsNetworksVpcEndpointsPtrOutput() MwsNetworksVpcEndpointsPtrOutput {
-	return i.ToMwsNetworksVpcEndpointsPtrOutputWithContext(context.Background())
-}
-
-func (i MwsNetworksVpcEndpointsArgs) ToMwsNetworksVpcEndpointsPtrOutputWithContext(ctx context.Context) MwsNetworksVpcEndpointsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksVpcEndpointsOutput).ToMwsNetworksVpcEndpointsPtrOutputWithContext(ctx)
-}
-
-// MwsNetworksVpcEndpointsPtrInput is an input type that accepts MwsNetworksVpcEndpointsArgs, MwsNetworksVpcEndpointsPtr and MwsNetworksVpcEndpointsPtrOutput values.
-// You can construct a concrete instance of `MwsNetworksVpcEndpointsPtrInput` via:
-//
-//	        MwsNetworksVpcEndpointsArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsNetworksVpcEndpointsPtrInput interface {
-	pulumi.Input
-
-	ToMwsNetworksVpcEndpointsPtrOutput() MwsNetworksVpcEndpointsPtrOutput
-	ToMwsNetworksVpcEndpointsPtrOutputWithContext(context.Context) MwsNetworksVpcEndpointsPtrOutput
-}
-
-type mwsNetworksVpcEndpointsPtrType MwsNetworksVpcEndpointsArgs
-
-func MwsNetworksVpcEndpointsPtr(v *MwsNetworksVpcEndpointsArgs) MwsNetworksVpcEndpointsPtrInput {
-	return (*mwsNetworksVpcEndpointsPtrType)(v)
-}
-
-func (*mwsNetworksVpcEndpointsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworksVpcEndpoints)(nil)).Elem()
-}
-
-func (i *mwsNetworksVpcEndpointsPtrType) ToMwsNetworksVpcEndpointsPtrOutput() MwsNetworksVpcEndpointsPtrOutput {
-	return i.ToMwsNetworksVpcEndpointsPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsNetworksVpcEndpointsPtrType) ToMwsNetworksVpcEndpointsPtrOutputWithContext(ctx context.Context) MwsNetworksVpcEndpointsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksVpcEndpointsPtrOutput)
-}
-
-type MwsNetworksVpcEndpointsOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworksVpcEndpointsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsNetworksVpcEndpoints)(nil)).Elem()
-}
-
-func (o MwsNetworksVpcEndpointsOutput) ToMwsNetworksVpcEndpointsOutput() MwsNetworksVpcEndpointsOutput {
-	return o
-}
-
-func (o MwsNetworksVpcEndpointsOutput) ToMwsNetworksVpcEndpointsOutputWithContext(ctx context.Context) MwsNetworksVpcEndpointsOutput {
-	return o
-}
-
-func (o MwsNetworksVpcEndpointsOutput) ToMwsNetworksVpcEndpointsPtrOutput() MwsNetworksVpcEndpointsPtrOutput {
-	return o.ToMwsNetworksVpcEndpointsPtrOutputWithContext(context.Background())
-}
-
-func (o MwsNetworksVpcEndpointsOutput) ToMwsNetworksVpcEndpointsPtrOutputWithContext(ctx context.Context) MwsNetworksVpcEndpointsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsNetworksVpcEndpoints) *MwsNetworksVpcEndpoints {
-		return &v
-	}).(MwsNetworksVpcEndpointsPtrOutput)
-}
-
-func (o MwsNetworksVpcEndpointsOutput) DataplaneRelays() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworksVpcEndpoints) []string { return v.DataplaneRelays }).(pulumi.StringArrayOutput)
-}
-
-func (o MwsNetworksVpcEndpointsOutput) RestApis() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MwsNetworksVpcEndpoints) []string { return v.RestApis }).(pulumi.StringArrayOutput)
-}
-
-type MwsNetworksVpcEndpointsPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsNetworksVpcEndpointsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsNetworksVpcEndpoints)(nil)).Elem()
-}
-
-func (o MwsNetworksVpcEndpointsPtrOutput) ToMwsNetworksVpcEndpointsPtrOutput() MwsNetworksVpcEndpointsPtrOutput {
-	return o
-}
-
-func (o MwsNetworksVpcEndpointsPtrOutput) ToMwsNetworksVpcEndpointsPtrOutputWithContext(ctx context.Context) MwsNetworksVpcEndpointsPtrOutput {
-	return o
-}
-
-func (o MwsNetworksVpcEndpointsPtrOutput) Elem() MwsNetworksVpcEndpointsOutput {
-	return o.ApplyT(func(v *MwsNetworksVpcEndpoints) MwsNetworksVpcEndpoints {
-		if v != nil {
-			return *v
-		}
-		var ret MwsNetworksVpcEndpoints
-		return ret
-	}).(MwsNetworksVpcEndpointsOutput)
-}
-
-func (o MwsNetworksVpcEndpointsPtrOutput) DataplaneRelays() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MwsNetworksVpcEndpoints) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DataplaneRelays
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o MwsNetworksVpcEndpointsPtrOutput) RestApis() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MwsNetworksVpcEndpoints) []string {
-		if v == nil {
-			return nil
-		}
-		return v.RestApis
-	}).(pulumi.StringArrayOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedSqsInput)(nil)).Elem(), ExternalLocationEffectiveFileEventQueueProvidedSqsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEffectiveFileEventQueueProvidedSqsPtrInput)(nil)).Elem(), ExternalLocationEffectiveFileEventQueueProvidedSqsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsPtrInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueInput)(nil)).Elem(), ExternalLocationFileEventQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueuePtrInput)(nil)).Elem(), ExternalLocationFileEventQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqsInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedAqsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedAqsPtrInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedAqsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationFileEventQueueManagedPubsubInput)(nil)).Elem(), ExternalLocationFileEventQueueManagedPubsubArgs{})
@@ -83662,6 +83672,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceDeltaTableSourceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceDeltaTableSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceDeltaTableSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceDeltaTableSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceFeatureViewSourceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceFeatureViewSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceFeatureViewSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceFeatureViewSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayInput)(nil)).Elem(), FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourcePtrInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierInput)(nil)).Elem(), FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs{})
@@ -84559,18 +84573,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput)(nil)).Elem(), MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksErrorMessageInput)(nil)).Elem(), MwsNetworksErrorMessageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksErrorMessageArrayInput)(nil)).Elem(), MwsNetworksErrorMessageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksGcpNetworkInfoInput)(nil)).Elem(), MwsNetworksGcpNetworkInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksGcpNetworkInfoPtrInput)(nil)).Elem(), MwsNetworksGcpNetworkInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsPtrInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
+	pulumi.RegisterOutputType(ExternalLocationEffectiveFileEventQueueProvidedSqsOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEffectiveFileEventQueueProvidedSqsPtrOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsPtrOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput{})
+	pulumi.RegisterOutputType(ExternalLocationFileEventQueueOutput{})
+	pulumi.RegisterOutputType(ExternalLocationFileEventQueuePtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedAqsOutput{})
 	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedAqsPtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationFileEventQueueManagedPubsubOutput{})
@@ -84657,6 +84667,10 @@ func init() {
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourcePtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceDeltaTableSourceOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceDeltaTableSourcePtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceFeatureViewSourceOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceFeatureViewSourcePtrOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceOutput{})
+	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenceArrayOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourceOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourcePtrOutput{})
 	pulumi.RegisterOutputType(FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierOutput{})
@@ -85554,16 +85568,4 @@ func init() {
 	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput{})
 	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput{})
 	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArrayOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput{})
-	pulumi.RegisterOutputType(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput{})
-	pulumi.RegisterOutputType(MwsNetworksErrorMessageOutput{})
-	pulumi.RegisterOutputType(MwsNetworksErrorMessageArrayOutput{})
-	pulumi.RegisterOutputType(MwsNetworksGcpNetworkInfoOutput{})
-	pulumi.RegisterOutputType(MwsNetworksGcpNetworkInfoPtrOutput{})
-	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsOutput{})
-	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsPtrOutput{})
 }

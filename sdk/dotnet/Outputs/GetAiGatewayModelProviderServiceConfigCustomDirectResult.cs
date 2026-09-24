@@ -23,15 +23,24 @@ namespace Pulumi.Databricks.Outputs
         /// OpenAI-API-compatible third-party endpoints or in-network proxies
         /// </summary>
         public readonly string? BaseUrl;
+        /// <summary>
+        /// (ModelProviderServiceConfigCustomProviderApiKeyHeaderAuth) - Header-based API-key auth: the secret is forwarded on outbound requests
+        /// under a caller-chosen HTTP header rather than as an `Authorization`
+        /// bearer token. Set this instead of `ApiKey` for header auth
+        /// </summary>
+        public readonly Outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthResult? HeaderAuth;
 
         [OutputConstructor]
         private GetAiGatewayModelProviderServiceConfigCustomDirectResult(
             Outputs.GetAiGatewayModelProviderServiceConfigCustomDirectApiKeyResult? apiKey,
 
-            string? baseUrl)
+            string? baseUrl,
+
+            Outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthResult? headerAuth)
         {
             ApiKey = apiKey;
             BaseUrl = baseUrl;
+            HeaderAuth = headerAuth;
         }
     }
 }

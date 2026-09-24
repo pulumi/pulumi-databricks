@@ -55,7 +55,8 @@ func LookupSandbox(ctx *pulumi.Context, args *LookupSandboxArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getSandbox.
 type LookupSandboxArgs struct {
-	// The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+	// The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetSandboxProviderConfig `pulumi:"providerConfig"`
@@ -65,9 +66,10 @@ type LookupSandboxArgs struct {
 type LookupSandboxResult struct {
 	// (string) - Output only. The creation time of the sandbox
 	CreateTime string `pulumi:"createTime"`
-	// (string) - Human-readable display label for the sandbox. At most 256 bytes
+	// (string) - Human-readable display label for the sandbox. At most 256 characters
 	DisplayName string `pulumi:"displayName"`
-	// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+	// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name           string                    `pulumi:"name"`
 	ProviderConfig *GetSandboxProviderConfig `pulumi:"providerConfig"`
 	// (SandboxSpec) - The desired configuration of the sandbox, supplied by the caller at creation time
@@ -85,7 +87,8 @@ func LookupSandboxOutput(ctx *pulumi.Context, args LookupSandboxOutputArgs, opts
 
 // A collection of arguments for invoking getSandbox.
 type LookupSandboxOutputArgs struct {
-	// The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+	// The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+	// `sandboxId`; any value supplied in a create or update request body is ignored
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetSandboxProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -115,12 +118,13 @@ func (o LookupSandboxResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSandboxResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Human-readable display label for the sandbox. At most 256 bytes
+// (string) - Human-readable display label for the sandbox. At most 256 characters
 func (o LookupSandboxResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSandboxResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+// `sandboxId`; any value supplied in a create or update request body is ignored
 func (o LookupSandboxResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSandboxResult) string { return v.Name }).(pulumi.StringOutput)
 }

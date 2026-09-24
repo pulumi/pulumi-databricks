@@ -19,6 +19,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
     private String awsSecretAccessKeyPlaintext;
     private String bedrockProvider;
     private @Nullable String instanceProfileArn;
+    private @Nullable String ucServiceCredentialName;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig() {}
     public Optional<String> awsAccessKeyId() {
@@ -42,6 +43,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
     public Optional<String> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
     }
+    public Optional<String> ucServiceCredentialName() {
+        return Optional.ofNullable(this.ucServiceCredentialName);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -59,6 +63,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
         private String awsSecretAccessKeyPlaintext;
         private String bedrockProvider;
         private @Nullable String instanceProfileArn;
+        private @Nullable String ucServiceCredentialName;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -69,6 +74,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
     	      this.awsSecretAccessKeyPlaintext = defaults.awsSecretAccessKeyPlaintext;
     	      this.bedrockProvider = defaults.bedrockProvider;
     	      this.instanceProfileArn = defaults.instanceProfileArn;
+    	      this.ucServiceCredentialName = defaults.ucServiceCredentialName;
         }
 
         @CustomType.Setter
@@ -121,6 +127,12 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
             this.instanceProfileArn = instanceProfileArn;
             return this;
         }
+        @CustomType.Setter
+        public Builder ucServiceCredentialName(@Nullable String ucServiceCredentialName) {
+
+            this.ucServiceCredentialName = ucServiceCredentialName;
+            return this;
+        }
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig build() {
             final var _resultValue = new GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig();
             _resultValue.awsAccessKeyId = awsAccessKeyId;
@@ -130,6 +142,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
             _resultValue.awsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             _resultValue.bedrockProvider = bedrockProvider;
             _resultValue.instanceProfileArn = instanceProfileArn;
+            _resultValue.ucServiceCredentialName = ucServiceCredentialName;
             return _resultValue;
         }
     }

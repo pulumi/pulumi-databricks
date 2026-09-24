@@ -4,7 +4,9 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform {
+    private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions avroOptions;
     private @Nullable String format;
     private @Nullable String inputColumn;
     private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions jsonOptions;
     private @Nullable String outputColumn;
+    private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions protobufOptions;
 
     private PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform() {}
+    public Optional<PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions> avroOptions() {
+        return Optional.ofNullable(this.avroOptions);
+    }
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
@@ -30,6 +37,9 @@ public final class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
     public Optional<String> outputColumn() {
         return Optional.ofNullable(this.outputColumn);
     }
+    public Optional<PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions> protobufOptions() {
+        return Optional.ofNullable(this.protobufOptions);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -40,19 +50,29 @@ public final class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions avroOptions;
         private @Nullable String format;
         private @Nullable String inputColumn;
         private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformJsonOptions jsonOptions;
         private @Nullable String outputColumn;
+        private @Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions protobufOptions;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.avroOptions = defaults.avroOptions;
     	      this.format = defaults.format;
     	      this.inputColumn = defaults.inputColumn;
     	      this.jsonOptions = defaults.jsonOptions;
     	      this.outputColumn = defaults.outputColumn;
+    	      this.protobufOptions = defaults.protobufOptions;
         }
 
+        @CustomType.Setter
+        public Builder avroOptions(@Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformAvroOptions avroOptions) {
+
+            this.avroOptions = avroOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder format(@Nullable String format) {
 
@@ -77,12 +97,20 @@ public final class PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform
             this.outputColumn = outputColumn;
             return this;
         }
+        @CustomType.Setter
+        public Builder protobufOptions(@Nullable PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransformProtobufOptions protobufOptions) {
+
+            this.protobufOptions = protobufOptions;
+            return this;
+        }
         public PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectSchemaFanoutOptionsTransform();
+            _resultValue.avroOptions = avroOptions;
             _resultValue.format = format;
             _resultValue.inputColumn = inputColumn;
             _resultValue.jsonOptions = jsonOptions;
             _resultValue.outputColumn = outputColumn;
+            _resultValue.protobufOptions = protobufOptions;
             return _resultValue;
         }
     }

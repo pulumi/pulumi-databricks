@@ -78,7 +78,7 @@ export class WorkspaceEntityTagAssignment extends pulumi.CustomResource {
      */
     declare public readonly entityId: pulumi.Output<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      */
     declare public readonly entityType: pulumi.Output<string>;
     /**
@@ -143,7 +143,7 @@ export interface WorkspaceEntityTagAssignmentState {
      */
     entityId?: pulumi.Input<string | undefined>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      */
     entityType?: pulumi.Input<string | undefined>;
     /**
@@ -169,7 +169,7 @@ export interface WorkspaceEntityTagAssignmentArgs {
      */
     entityId: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, designerfiles, geniespaces, notebooks
      */
     entityType: pulumi.Input<string>;
     /**

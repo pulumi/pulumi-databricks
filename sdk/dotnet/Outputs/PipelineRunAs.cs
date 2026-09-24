@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineRunAs
     {
+        public readonly string? GroupName;
         /// <summary>
         /// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
         /// 
@@ -45,10 +46,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineRunAs(
+            string? groupName,
+
             string? servicePrincipalName,
 
             string? userName)
         {
+            GroupName = groupName;
             ServicePrincipalName = servicePrincipalName;
             UserName = userName;
         }

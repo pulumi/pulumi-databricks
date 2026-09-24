@@ -87,6 +87,8 @@ type AccountSettingV2 struct {
 	EffectiveRestrictWorkspaceAdmins AccountSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal AccountSettingV2EffectiveStringValOutput `pulumi:"effectiveStringVal"`
+	// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+	EffectiveWorkspaceLabel AccountSettingV2EffectiveWorkspaceLabelPtrOutput `pulumi:"effectiveWorkspaceLabel"`
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal AccountSettingV2IntegerValPtrOutput `pulumi:"integerVal"`
 	// Name of the setting
@@ -99,6 +101,8 @@ type AccountSettingV2 struct {
 	RestrictWorkspaceAdmins AccountSettingV2RestrictWorkspaceAdminsPtrOutput `pulumi:"restrictWorkspaceAdmins"`
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal AccountSettingV2StringValPtrOutput `pulumi:"stringVal"`
+	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+	WorkspaceLabel AccountSettingV2WorkspaceLabelPtrOutput `pulumi:"workspaceLabel"`
 }
 
 // NewAccountSettingV2 registers a new resource with the given unique name, arguments, and options.
@@ -165,6 +169,8 @@ type accountSettingV2State struct {
 	EffectiveRestrictWorkspaceAdmins *AccountSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal *AccountSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
+	// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+	EffectiveWorkspaceLabel *AccountSettingV2EffectiveWorkspaceLabel `pulumi:"effectiveWorkspaceLabel"`
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal *AccountSettingV2IntegerVal `pulumi:"integerVal"`
 	// Name of the setting
@@ -177,6 +183,8 @@ type accountSettingV2State struct {
 	RestrictWorkspaceAdmins *AccountSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal *AccountSettingV2StringVal `pulumi:"stringVal"`
+	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+	WorkspaceLabel *AccountSettingV2WorkspaceLabel `pulumi:"workspaceLabel"`
 }
 
 type AccountSettingV2State struct {
@@ -214,6 +222,8 @@ type AccountSettingV2State struct {
 	EffectiveRestrictWorkspaceAdmins AccountSettingV2EffectiveRestrictWorkspaceAdminsPtrInput
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal AccountSettingV2EffectiveStringValPtrInput
+	// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+	EffectiveWorkspaceLabel AccountSettingV2EffectiveWorkspaceLabelPtrInput
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal AccountSettingV2IntegerValPtrInput
 	// Name of the setting
@@ -226,6 +236,8 @@ type AccountSettingV2State struct {
 	RestrictWorkspaceAdmins AccountSettingV2RestrictWorkspaceAdminsPtrInput
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal AccountSettingV2StringValPtrInput
+	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+	WorkspaceLabel AccountSettingV2WorkspaceLabelPtrInput
 }
 
 func (AccountSettingV2State) ElementType() reflect.Type {
@@ -255,6 +267,8 @@ type accountSettingV2Args struct {
 	EffectivePersonalCompute *AccountSettingV2EffectivePersonalCompute `pulumi:"effectivePersonalCompute"`
 	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
 	EffectiveRestrictWorkspaceAdmins *AccountSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
+	// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+	EffectiveWorkspaceLabel *AccountSettingV2EffectiveWorkspaceLabel `pulumi:"effectiveWorkspaceLabel"`
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal *AccountSettingV2IntegerVal `pulumi:"integerVal"`
 	// Name of the setting
@@ -267,6 +281,8 @@ type accountSettingV2Args struct {
 	RestrictWorkspaceAdmins *AccountSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal *AccountSettingV2StringVal `pulumi:"stringVal"`
+	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+	WorkspaceLabel *AccountSettingV2WorkspaceLabel `pulumi:"workspaceLabel"`
 }
 
 // The set of arguments for constructing a AccountSettingV2 resource.
@@ -293,6 +309,8 @@ type AccountSettingV2Args struct {
 	EffectivePersonalCompute AccountSettingV2EffectivePersonalComputePtrInput
 	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
 	EffectiveRestrictWorkspaceAdmins AccountSettingV2EffectiveRestrictWorkspaceAdminsPtrInput
+	// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+	EffectiveWorkspaceLabel AccountSettingV2EffectiveWorkspaceLabelPtrInput
 	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal AccountSettingV2IntegerValPtrInput
 	// Name of the setting
@@ -305,6 +323,8 @@ type AccountSettingV2Args struct {
 	RestrictWorkspaceAdmins AccountSettingV2RestrictWorkspaceAdminsPtrInput
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal AccountSettingV2StringValPtrInput
+	// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+	WorkspaceLabel AccountSettingV2WorkspaceLabelPtrInput
 }
 
 func (AccountSettingV2Args) ElementType() reflect.Type {
@@ -505,6 +525,13 @@ func (o AccountSettingV2Output) EffectiveStringVal() AccountSettingV2EffectiveSt
 	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2EffectiveStringValOutput { return v.EffectiveStringVal }).(AccountSettingV2EffectiveStringValOutput)
 }
 
+// Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+func (o AccountSettingV2Output) EffectiveWorkspaceLabel() AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2EffectiveWorkspaceLabelPtrOutput {
+		return v.EffectiveWorkspaceLabel
+	}).(AccountSettingV2EffectiveWorkspaceLabelPtrOutput)
+}
+
 // Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 func (o AccountSettingV2Output) IntegerVal() AccountSettingV2IntegerValPtrOutput {
 	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2IntegerValPtrOutput { return v.IntegerVal }).(AccountSettingV2IntegerValPtrOutput)
@@ -537,6 +564,11 @@ func (o AccountSettingV2Output) RestrictWorkspaceAdmins() AccountSettingV2Restri
 // Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 func (o AccountSettingV2Output) StringVal() AccountSettingV2StringValPtrOutput {
 	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2StringValPtrOutput { return v.StringVal }).(AccountSettingV2StringValPtrOutput)
+}
+
+// Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
+func (o AccountSettingV2Output) WorkspaceLabel() AccountSettingV2WorkspaceLabelPtrOutput {
+	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2WorkspaceLabelPtrOutput { return v.WorkspaceLabel }).(AccountSettingV2WorkspaceLabelPtrOutput)
 }
 
 type AccountSettingV2ArrayOutput struct{ *pulumi.OutputState }

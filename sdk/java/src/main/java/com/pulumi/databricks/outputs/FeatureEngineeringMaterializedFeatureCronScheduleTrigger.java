@@ -13,20 +13,27 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
     /**
      * @return The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
-     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
-     * window timing and fills it in on the response
+     * schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+     * unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+     * the features&#39; window timing and fills it in on the response
      * 
      */
     private @Nullable String cronExpression;
     private @Nullable String mode;
+    /**
+     * @return A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+     * when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+     * to UTC
+     * 
+     */
+    private @Nullable String timezoneId;
 
     private FeatureEngineeringMaterializedFeatureCronScheduleTrigger() {}
     /**
      * @return The cron expression defining the schedule (e.g., &#34;0 0 * * *&#34; for daily at midnight). The
-     * schedule is interpreted in the UTC time zone. Required when mode is MANUAL (or unset). Left
-     * empty when mode is DERIVED, where the service computes it (aligned to UTC) from the features&#39;
-     * window timing and fills it in on the response
+     * schedule is interpreted in timezoneId (defaults to UTC). Required when mode is MANUAL (or
+     * unset). Left empty when mode is DERIVED, where the service computes it (aligned to UTC) from
+     * the features&#39; window timing and fills it in on the response
      * 
      */
     public Optional<String> cronExpression() {
@@ -34,6 +41,15 @@ public final class FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
     }
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
+    }
+    /**
+     * @return A Java timezone ID. The schedule is resolved with respect to this timezone. Defaults to UTC
+     * when omitted. Can only be configured for MANUAL schedules; DERIVED schedules are always aligned
+     * to UTC
+     * 
+     */
+    public Optional<String> timezoneId() {
+        return Optional.ofNullable(this.timezoneId);
     }
 
     public static Builder builder() {
@@ -47,11 +63,13 @@ public final class FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
     public static final class Builder {
         private @Nullable String cronExpression;
         private @Nullable String mode;
+        private @Nullable String timezoneId;
         public Builder() {}
         public Builder(FeatureEngineeringMaterializedFeatureCronScheduleTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronExpression = defaults.cronExpression;
     	      this.mode = defaults.mode;
+    	      this.timezoneId = defaults.timezoneId;
         }
 
         @CustomType.Setter
@@ -66,10 +84,17 @@ public final class FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
+        public Builder timezoneId(@Nullable String timezoneId) {
+
+            this.timezoneId = timezoneId;
+            return this;
+        }
         public FeatureEngineeringMaterializedFeatureCronScheduleTrigger build() {
             final var _resultValue = new FeatureEngineeringMaterializedFeatureCronScheduleTrigger();
             _resultValue.cronExpression = cronExpression;
             _resultValue.mode = mode;
+            _resultValue.timezoneId = timezoneId;
             return _resultValue;
         }
     }

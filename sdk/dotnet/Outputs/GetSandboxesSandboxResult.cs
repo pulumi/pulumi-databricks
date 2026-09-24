@@ -18,11 +18,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Human-readable display label for the sandbox. At most 256 bytes
+        /// (string) - Human-readable display label for the sandbox. At most 256 characters
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - The AIP-compliant resource name, such as "sandboxes/my-sandbox"
+        /// (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
+        /// `SandboxId`; any value supplied in a create or update request body is ignored
         /// </summary>
         public readonly string Name;
         /// <summary>

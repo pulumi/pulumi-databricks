@@ -168,6 +168,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetWorkspaceSettingV2EffectiveStringValResult EffectiveStringVal;
         /// <summary>
+        /// (WorkspaceLabelMessage) - Effective setting value for WorkspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
+        /// </summary>
+        public readonly Outputs.GetWorkspaceSettingV2EffectiveWorkspaceLabelResult EffectiveWorkspaceLabel;
+        /// <summary>
         /// (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check EffectiveIntegerVal for final setting value
         /// </summary>
         public readonly Outputs.GetWorkspaceSettingV2IntegerValResult IntegerVal;
@@ -192,6 +196,10 @@ namespace Pulumi.Databricks
         /// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check EffectiveStringVal for final setting value
         /// </summary>
         public readonly Outputs.GetWorkspaceSettingV2StringValResult StringVal;
+        /// <summary>
+        /// (WorkspaceLabelMessage) - Setting value for WorkspaceLabel setting. This is the setting value set by consumers, check EffectiveWorkspaceLabel for final setting value
+        /// </summary>
+        public readonly Outputs.GetWorkspaceSettingV2WorkspaceLabelResult WorkspaceLabel;
 
         [OutputConstructor]
         private GetWorkspaceSettingV2Result(
@@ -229,6 +237,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetWorkspaceSettingV2EffectiveStringValResult effectiveStringVal,
 
+            Outputs.GetWorkspaceSettingV2EffectiveWorkspaceLabelResult effectiveWorkspaceLabel,
+
             Outputs.GetWorkspaceSettingV2IntegerValResult integerVal,
 
             string name,
@@ -241,7 +251,9 @@ namespace Pulumi.Databricks
 
             Outputs.GetWorkspaceSettingV2RestrictWorkspaceAdminsResult restrictWorkspaceAdmins,
 
-            Outputs.GetWorkspaceSettingV2StringValResult stringVal)
+            Outputs.GetWorkspaceSettingV2StringValResult stringVal,
+
+            Outputs.GetWorkspaceSettingV2WorkspaceLabelResult workspaceLabel)
         {
             AibiDashboardEmbeddingAccessPolicy = aibiDashboardEmbeddingAccessPolicy;
             AibiDashboardEmbeddingApprovedDomains = aibiDashboardEmbeddingApprovedDomains;
@@ -260,6 +272,7 @@ namespace Pulumi.Databricks
             EffectivePersonalCompute = effectivePersonalCompute;
             EffectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             EffectiveStringVal = effectiveStringVal;
+            EffectiveWorkspaceLabel = effectiveWorkspaceLabel;
             IntegerVal = integerVal;
             Name = name;
             OperationalEmailCustomRecipient = operationalEmailCustomRecipient;
@@ -267,6 +280,7 @@ namespace Pulumi.Databricks
             ProviderConfig = providerConfig;
             RestrictWorkspaceAdmins = restrictWorkspaceAdmins;
             StringVal = stringVal;
+            WorkspaceLabel = workspaceLabel;
         }
     }
 }

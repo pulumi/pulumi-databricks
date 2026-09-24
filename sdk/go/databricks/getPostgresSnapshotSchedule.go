@@ -14,6 +14,37 @@ import (
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+//
+// This data source retrieves the snapshot schedule for a branch.
+//
+// ## Example Usage
+//
+// ### Retrieve a Branch's Snapshot Schedule
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetPostgresSnapshotSchedule(ctx, &databricks.LookupPostgresSnapshotScheduleArgs{
+//				Name: "projects/my-project/branches/production/snapshot-schedule",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cadences", this.Schedules)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresSnapshotSchedule(ctx *pulumi.Context, args *LookupPostgresSnapshotScheduleArgs, opts ...pulumi.InvokeOption) (*LookupPostgresSnapshotScheduleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresSnapshotScheduleResult

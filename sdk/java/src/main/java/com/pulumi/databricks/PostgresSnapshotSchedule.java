@@ -22,6 +22,72 @@ import javax.annotation.Nullable;
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  * 
+ * ## Example Usage
+ * 
+ * ### Managing a Branch&#39;s Snapshot Schedule
+ * 
+ * A branch&#39;s snapshot schedule is a singleton addressed by the branch it belongs
+ * to. Set `parent` to the branch&#39;s resource name and provide the desired cadences;
+ * Pulumi applies them in place. The example below takes a daily snapshot at
+ * 03:00 UTC and keeps it for 7 days.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresSnapshotSchedule;
+ * import com.pulumi.databricks.PostgresSnapshotScheduleArgs;
+ * import com.pulumi.databricks.inputs.PostgresSnapshotScheduleScheduleArgs;
+ * import com.pulumi.databricks.inputs.PostgresSnapshotScheduleScheduleDailyScheduleArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var thisPostgresSnapshotSchedule = new PostgresSnapshotSchedule("thisPostgresSnapshotSchedule", PostgresSnapshotScheduleArgs.builder()
+ *             .parent(this_.name().applyValue(_name -> String.format("%s/branches/production", _name)))
+ *             .schedules(PostgresSnapshotScheduleScheduleArgs.builder()
+ *                 .dailySchedule(PostgresSnapshotScheduleScheduleDailyScheduleArgs.builder()
+ *                     .hour(3)
+ *                     .build())
+ *                 .retention("168h0m0s")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * The `schedule` set can hold more than one cadence — for example, add a weekly
+ * cadence alongside the daily one to keep some snapshots longer than others.
+ * 
+ * To disable automatic snapshots, set `schedule = []` and apply. Removing the
+ * resource from your configuration only removes it from Pulumi state; it does
+ * not change the schedule on the branch.
+ * 
  */
 @ResourceType(type="databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule")
 public class PostgresSnapshotSchedule extends com.pulumi.resources.CustomResource {

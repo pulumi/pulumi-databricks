@@ -13,6 +13,59 @@ namespace Pulumi.Databricks
     /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Managing a Branch's Snapshot Schedule
+    /// 
+    /// A branch's snapshot schedule is a singleton addressed by the branch it belongs
+    /// to. Set `Parent` to the branch's resource name and provide the desired cadences;
+    /// Pulumi applies them in place. The example below takes a daily snapshot at
+    /// 03:00 UTC and keeps it for 7 days.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 17,
+    ///             DisplayName = "My Project",
+    ///         },
+    ///     });
+    /// 
+    ///     var thisPostgresSnapshotSchedule = new Databricks.PostgresSnapshotSchedule("this", new()
+    ///     {
+    ///         Parent = @this.Name.Apply(name =&gt; $"{name}/branches/production"),
+    ///         Schedules = new[]
+    ///         {
+    ///             new Databricks.Inputs.PostgresSnapshotScheduleScheduleArgs
+    ///             {
+    ///                 DailySchedule = new Databricks.Inputs.PostgresSnapshotScheduleScheduleDailyScheduleArgs
+    ///                 {
+    ///                     Hour = 3,
+    ///                 },
+    ///                 Retention = "168h0m0s",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The `Schedule` set can hold more than one cadence — for example, add a weekly
+    /// cadence alongside the daily one to keep some snapshots longer than others.
+    /// 
+    /// To disable automatic snapshots, set `schedule = []` and apply. Removing the
+    /// resource from your configuration only removes it from Pulumi state; it does
+    /// not change the schedule on the branch.
     /// </summary>
     [DatabricksResourceType("databricks:index/postgresSnapshotSchedule:PostgresSnapshotSchedule")]
     public partial class PostgresSnapshotSchedule : global::Pulumi.CustomResource

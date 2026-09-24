@@ -67,6 +67,20 @@ public final class JobTaskAiRuntimeTaskArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.mlflowRun);
     }
 
+    @Import(name="priorityClass")
+    private @Nullable Output<String> priorityClass;
+
+    public Optional<Output<String>> priorityClass() {
+        return Optional.ofNullable(this.priorityClass);
+    }
+
+    @Import(name="unityCatalogImagePath")
+    private @Nullable Output<String> unityCatalogImagePath;
+
+    public Optional<Output<String>> unityCatalogImagePath() {
+        return Optional.ofNullable(this.unityCatalogImagePath);
+    }
+
     private JobTaskAiRuntimeTaskArgs() {}
 
     private JobTaskAiRuntimeTaskArgs(JobTaskAiRuntimeTaskArgs $) {
@@ -77,6 +91,8 @@ public final class JobTaskAiRuntimeTaskArgs extends com.pulumi.resources.Resourc
         this.mlflowArtifactLocation = $.mlflowArtifactLocation;
         this.mlflowExperimentDirectory = $.mlflowExperimentDirectory;
         this.mlflowRun = $.mlflowRun;
+        this.priorityClass = $.priorityClass;
+        this.unityCatalogImagePath = $.unityCatalogImagePath;
     }
 
     public static Builder builder() {
@@ -162,6 +178,24 @@ public final class JobTaskAiRuntimeTaskArgs extends com.pulumi.resources.Resourc
 
         public Builder mlflowRun(String mlflowRun) {
             return mlflowRun(Output.of(mlflowRun));
+        }
+
+        public Builder priorityClass(@Nullable Output<String> priorityClass) {
+            $.priorityClass = priorityClass;
+            return this;
+        }
+
+        public Builder priorityClass(String priorityClass) {
+            return priorityClass(Output.of(priorityClass));
+        }
+
+        public Builder unityCatalogImagePath(@Nullable Output<String> unityCatalogImagePath) {
+            $.unityCatalogImagePath = unityCatalogImagePath;
+            return this;
+        }
+
+        public Builder unityCatalogImagePath(String unityCatalogImagePath) {
+            return unityCatalogImagePath(Output.of(unityCatalogImagePath));
         }
 
         public JobTaskAiRuntimeTaskArgs build() {
